@@ -1,0 +1,65 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "d-rabbena-atina",
+ "kuran": {
+  "sure": 2,
+  "ayetler": [
+   201,
+   201
+  ]
+ },
+ "sureAdi": "الْبَقَرَةِ",
+ "bolumler": [
+  {
+   "no": 201,
+   "ar": "وَمِنْهُمْ مَنْ یَقُولُ رَبَّنَٓا اٰتِنَا فِی الدُّنْیَا حَسَنَةً وَفِی الْاٰخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ",
+   "sayfa": 30
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı Meâli (kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      201,
+      201
+     ],
+     "metin": "Onlardan, \"Rabbimiz! Bize dünyada da iyilik ver, ahirette de iyilik ver ve bizi ateş azabından koru\" diyenler de vardır."
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "The Holy Quran with English Translation (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      201,
+      201
+     ],
+     "metin": "Yet there are others who say, “Our Lord! Grant us the good of this world and the Hereafter, and protect us from the torment of the Fire.”"
+    }
+   ]
+  },
+  "de": {
+   "kaynak": "Der Heilige Koran – Deutsche Übersetzung (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      201,
+      201
+     ],
+     "metin": "Andere unter ihnen sprechen: „Unser Herr, gib uns im Diesseits Gutes und im Jenseits Gutes und hüte uns vor der Strafe des Feuers.“"
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Kur'an-ı Kerim (kuran.diyanet.gov.tr, «Amasya Abay» metni)",
+  "url": "https://kuran.diyanet.gov.tr",
+  "alindi": "2026-10-19"
+ },
+ "ozet": "2572f9f5d671f25d1e36a1a74a346dbf58c00dba43b1f68af906a4b193f956cb",
+ "zor": [],
+ "onay": null
+}

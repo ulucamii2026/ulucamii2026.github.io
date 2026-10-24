@@ -1,0 +1,117 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "s-kevser",
+ "kuran": {
+  "sure": 108,
+  "ayetler": [
+   1,
+   3
+  ]
+ },
+ "sureAdi": "الْكَوْثَرِ",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "اِنَّٓا اَعْطَیْنَاكَ الْكَوْثَرَؕ",
+   "sayfa": 602
+  },
+  {
+   "no": 2,
+   "ar": "فَصَلِّ لِرَبِّكَ وَانْحَرْؕ",
+   "sayfa": 602
+  },
+  {
+   "no": 3,
+   "ar": "اِنَّ شَانِئَكَ هُوَ الْاَبْتَرُ",
+   "sayfa": 602
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı Meâli (kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Şüphesiz biz sana Kevseri verdik."
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "O Halde, Rabbin için namaz kıl, kurban kes."
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "Doğrusu sana buğzeden, soyu kesik olanın ta kendisidir."
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "The Holy Quran with English Translation (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Indeed, We have granted you ˹O Prophet˺ abundant goodness."
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "So pray and sacrifice to your Lord ˹alone˺."
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "Only the one who hates you is truly cut off ˹from any goodness˺."
+    }
+   ]
+  },
+  "de": {
+   "kaynak": "Der Heilige Koran – Deutsche Übersetzung (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Wahrlich, wir haben dir Überfluss gegeben,"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "darum bete zu deinem Herrn und schlachte."
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "Gewiss, dein Hasser wird kinderlos sein."
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Kur'an-ı Kerim (kuran.diyanet.gov.tr, «Amasya Abay» metni)",
+  "url": "https://kuran.diyanet.gov.tr",
+  "alindi": "2026-10-19"
+ },
+ "ozet": "78f6850d03745e115d29f9a804ac0a35dd5eda0b1c7440847b8137e3925b7983",
+ "zor": [],
+ "onay": null
+}

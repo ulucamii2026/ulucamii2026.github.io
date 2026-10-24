@@ -1,0 +1,758 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "s-tekvir",
+ "kuran": {
+  "sure": 81,
+  "ayetler": [
+   1,
+   29
+  ]
+ },
+ "sureAdi": "التَّكْو۪يرِ",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "اِذَا الشَّمْسُ كُوِّرَتْࣕۙ",
+   "sayfa": 585
+  },
+  {
+   "no": 2,
+   "ar": "وَاِذَا النُّجُومُ انْكَدَرَتْࣕۙ",
+   "sayfa": 585
+  },
+  {
+   "no": 3,
+   "ar": "وَاِذَا الْجِبَالُ سُیِّرَتْࣕۙ",
+   "sayfa": 585
+  },
+  {
+   "no": 4,
+   "ar": "وَاِذَا الْعِشَارُ عُطِّلَتْࣕۙ",
+   "sayfa": 585
+  },
+  {
+   "no": 5,
+   "ar": "وَاِذَا الْوُحُوشُ حُشِرَتْࣕۙ",
+   "sayfa": 585
+  },
+  {
+   "no": 6,
+   "ar": "وَاِذَا الْبِحَارُ سُجِّرَتْࣕۙ",
+   "sayfa": 585
+  },
+  {
+   "no": 7,
+   "ar": "وَاِذَا النُّفُوسُ زُوِّجَتْࣕۙ",
+   "sayfa": 585
+  },
+  {
+   "no": 8,
+   "ar": "وَاِذَا الْمَوْءُ𐻿دَةُ سُئِلَتْۙ",
+   "sayfa": 585
+  },
+  {
+   "no": 9,
+   "ar": "بِاَیِّ ذَنْبٍ قُتِلَتْۚ",
+   "sayfa": 585
+  },
+  {
+   "no": 10,
+   "ar": "وَاِذَا الصُّحُفُ نُشِرَتْࣕۙ",
+   "sayfa": 585
+  },
+  {
+   "no": 11,
+   "ar": "وَاِذَا السَّمَٓاءُ كُشِطَتْࣕۙ",
+   "sayfa": 585
+  },
+  {
+   "no": 12,
+   "ar": "وَاِذَا الْجَحٖیمُ سُعِّرَتْࣕۙ",
+   "sayfa": 585
+  },
+  {
+   "no": 13,
+   "ar": "وَاِذَا الْجَنَّةُ اُزْلِفَتْࣕۙ",
+   "sayfa": 585
+  },
+  {
+   "no": 14,
+   "ar": "عَلِمَتْ نَفْسٌ مَٓا اَحْضَرَتْؕ",
+   "sayfa": 585
+  },
+  {
+   "no": 15,
+   "ar": "فَلَٓا اُقْسِمُ بِالْخُنَّسِۙ",
+   "sayfa": 585
+  },
+  {
+   "no": 16,
+   "ar": "اَلْجَوَارِ الْكُنَّسِۙ",
+   "sayfa": 585
+  },
+  {
+   "no": 17,
+   "ar": "وَالَّیْلِ اِذَا عَسْعَسَۙ",
+   "sayfa": 585
+  },
+  {
+   "no": 18,
+   "ar": "وَالصُّبْحِ اِذَا تَنَفَّسَۙ",
+   "sayfa": 585
+  },
+  {
+   "no": 19,
+   "ar": "اِنَّهُ لَقَوْلُ رَسُولٍ كَرٖیمٍۙ",
+   "sayfa": 585
+  },
+  {
+   "no": 20,
+   "ar": "ذٖی قُوَّةٍ عِنْدَ ذِی الْعَرْشِ مَكٖینٍۙ",
+   "sayfa": 585
+  },
+  {
+   "no": 21,
+   "ar": "مُطَاعٍ ثَمَّ اَمٖینٍؕ",
+   "sayfa": 586
+  },
+  {
+   "no": 22,
+   "ar": "وَمَا صَاحِبُكُمْ بِمَجْنُونٍۚ",
+   "sayfa": 586
+  },
+  {
+   "no": 23,
+   "ar": "وَلَقَدْ رَاٰهُ بِالْاُفُقِ الْمُبٖینِۚ",
+   "sayfa": 586
+  },
+  {
+   "no": 24,
+   "ar": "وَمَا هُوَ عَلَى الْغَیْبِ بِضَنٖینٍۚ",
+   "sayfa": 586
+  },
+  {
+   "no": 25,
+   "ar": "وَمَا هُوَ بِقَوْلِ شَیْطَانٍ رَجٖیمٍۚ",
+   "sayfa": 586
+  },
+  {
+   "no": 26,
+   "ar": "فَاَیْنَ تَذْهَبُونَؕ",
+   "sayfa": 586
+  },
+  {
+   "no": 27,
+   "ar": "اِنْ هُوَ اِلَّا ذِكْرٌ لِلْعَالَمٖینَۙ",
+   "sayfa": 586
+  },
+  {
+   "no": 28,
+   "ar": "لِمَنْ شَٓاءَ مِنْكُمْ اَنْ یَسْتَقٖیمَ",
+   "sayfa": 586
+  },
+  {
+   "no": 29,
+   "ar": "وَمَا تَشَٓاؤُ𐻿نَ اِلَّٓا اَنْ یَشَٓاءَ اللّٰهُ رَبُّ الْعَالَمٖینَ",
+   "sayfa": 586
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı Meâli (kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Güneş, dürüldüğü zaman,"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "Yıldızlar, bulanıp söndüğü zaman,"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "Dağlar, yürütüldüğü zaman,"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Gebe develer salıverildiği zaman."
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "Yaban hayatı yaşayan (irili ufaklı) tüm canlılar toplandığı zaman,"
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "Denizler kaynatıldığı zaman,"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "Ruhlar (bedenlerle) eşleştirildiği zaman."
+    },
+    {
+     "ayetler": [
+      8,
+      9
+     ],
+     "metin": "Diri diri gömülen kız çocuğunun, hangi günahtan ötürü öldürüldüğü sorulduğu zaman,"
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "Amel defterleri açıldığı zaman,"
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "Gökyüzü (yerinden) sıyrılıp koparıldığı zaman,"
+    },
+    {
+     "ayetler": [
+      12,
+      12
+     ],
+     "metin": "Cehennem alevlendirildiği zaman,"
+    },
+    {
+     "ayetler": [
+      13,
+      13
+     ],
+     "metin": "Cennet yaklaştırıldığı zaman,"
+    },
+    {
+     "ayetler": [
+      14,
+      14
+     ],
+     "metin": "Herkes önceden hazırlayıp getirdiği şeyleri bilecektir."
+    },
+    {
+     "ayetler": [
+      15,
+      16
+     ],
+     "metin": "Andolsun, bir görünüp bir sinenlere, akıp gidip kaybolanlara,"
+    },
+    {
+     "ayetler": [
+      17,
+      17
+     ],
+     "metin": "Andolsun, yöneldiği zaman geceye,"
+    },
+    {
+     "ayetler": [
+      18,
+      18
+     ],
+     "metin": "Andolsun, aydınlandığı zaman sabaha ki,"
+    },
+    {
+     "ayetler": [
+      19,
+      21
+     ],
+     "metin": "O (Kur'an), şüphesiz değerli, güçlü ve arşın sahibi katında itibarlı, orada (meleklerce) itaat edilen, güvenilir bir elçinin (Cebrail'in) getirdiği sözdür."
+    },
+    {
+     "ayetler": [
+      22,
+      22
+     ],
+     "metin": "(Ey Kureyşliler!) Sizin arkadaşınız (Muhammed) bir deli değildir."
+    },
+    {
+     "ayetler": [
+      23,
+      23
+     ],
+     "metin": "Andolsun o, Cebrâil'i apaçık ufukta gördü."
+    },
+    {
+     "ayetler": [
+      24,
+      24
+     ],
+     "metin": "O, gayb hakkında cimri değildir."
+    },
+    {
+     "ayetler": [
+      25,
+      25
+     ],
+     "metin": "Kur'an, kovulmuş şeytanın sözü değildir."
+    },
+    {
+     "ayetler": [
+      26,
+      26
+     ],
+     "metin": "(Hal böyle iken) nereye gidiyorsunuz?"
+    },
+    {
+     "ayetler": [
+      27,
+      28
+     ],
+     "metin": "O, âlemler için, içinizden dürüst olmak isteyenler için, ancak bir öğüttür."
+    },
+    {
+     "ayetler": [
+      29,
+      29
+     ],
+     "metin": "Âlemlerin Rabbi olan Allah dilemedikçe siz dileyemezsiniz."
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "The Holy Quran with English Translation (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "When the sun is put out,"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "and when the stars fall down,"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "and when the mountains are blown away,"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "and when pregnant camels are left untended,"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "and when wild beasts are gathered together,"
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "and when the seas are set on fire,"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "and when the souls ˹and their bodies˺ are paired ˹once more˺,"
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "and when baby girls, buried alive, are asked"
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "for what crime they were put to death,"
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "and when the records ˹of deeds˺ are laid open,"
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "and when the sky is stripped away,"
+    },
+    {
+     "ayetler": [
+      12,
+      12
+     ],
+     "metin": "and when the Hellfire is fiercely flared up,"
+    },
+    {
+     "ayetler": [
+      13,
+      13
+     ],
+     "metin": "and when Paradise is brought near—"
+    },
+    {
+     "ayetler": [
+      14,
+      14
+     ],
+     "metin": "˹on that Day˺ each soul will know what ˹deeds˺ it has brought along."
+    },
+    {
+     "ayetler": [
+      15,
+      15
+     ],
+     "metin": "I do swear by the receding stars"
+    },
+    {
+     "ayetler": [
+      16,
+      16
+     ],
+     "metin": "which travel and hide,"
+    },
+    {
+     "ayetler": [
+      17,
+      17
+     ],
+     "metin": "and the night as it falls"
+    },
+    {
+     "ayetler": [
+      18,
+      18
+     ],
+     "metin": "and the day as it breaks!"
+    },
+    {
+     "ayetler": [
+      19,
+      19
+     ],
+     "metin": "Indeed, this ˹Quran˺ is the Word of ˹Allah delivered by Gabriel,˺ a noble messenger-angel,"
+    },
+    {
+     "ayetler": [
+      20,
+      20
+     ],
+     "metin": "full of power, held in honour by the Lord of the Throne,"
+    },
+    {
+     "ayetler": [
+      21,
+      21
+     ],
+     "metin": "obeyed there ˹in heaven˺, and trustworthy."
+    },
+    {
+     "ayetler": [
+      22,
+      22
+     ],
+     "metin": "And your fellow man is not insane."
+    },
+    {
+     "ayetler": [
+      23,
+      23
+     ],
+     "metin": "And he did see that ˹angel˺ on the clear horizon,"
+    },
+    {
+     "ayetler": [
+      24,
+      24
+     ],
+     "metin": "and he does not withhold ˹what is revealed to him of˺ the unseen."
+    },
+    {
+     "ayetler": [
+      25,
+      25
+     ],
+     "metin": "And this ˹Quran˺ is not the word of an outcast devil."
+    },
+    {
+     "ayetler": [
+      26,
+      26
+     ],
+     "metin": "So what ˹other˺ path would you take?"
+    },
+    {
+     "ayetler": [
+      27,
+      27
+     ],
+     "metin": "Surely this ˹Quran˺ is only a reminder to the whole world—"
+    },
+    {
+     "ayetler": [
+      28,
+      28
+     ],
+     "metin": "to whoever of you wills to take the Straight Way."
+    },
+    {
+     "ayetler": [
+      29,
+      29
+     ],
+     "metin": "But you cannot will ˹to do so˺, except by the Will of Allah, the Lord of all worlds."
+    }
+   ]
+  },
+  "de": {
+   "kaynak": "Der Heilige Koran – Deutsche Übersetzung (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Wenn die Sonne zusammengefaltet wird"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "und wenn die Sterne herabfallen"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "und wenn die Berge sich rühren"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "und die hochschwangeren Kamelstuten vernachlässigt werden"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "und wenn die wilden Tiere sich versammeln"
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "und wenn die Meere anschwellen"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "und wenn die Seelen gepaart werden mit ihren Leibern"
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "und wenn das lebendig begrabene Mädchen gefragt wird,"
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "um welcher Sünde willen es getötet war,"
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "und wenn die Seiten aufgerollt werden"
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "und wenn der Himmel weggezogen wird"
+    },
+    {
+     "ayetler": [
+      12,
+      12
+     ],
+     "metin": "und wenn das Höllenfeuer entflammt wird"
+    },
+    {
+     "ayetler": [
+      13,
+      13
+     ],
+     "metin": "und wenn das Paradies nahegebracht wird,"
+    },
+    {
+     "ayetler": [
+      14,
+      14
+     ],
+     "metin": "dann wird jede Seele wissen, was sie getan hat."
+    },
+    {
+     "ayetler": [
+      15,
+      15
+     ],
+     "metin": "Und ich schwöre bei den rücklaufenden Sternen,"
+    },
+    {
+     "ayetler": [
+      16,
+      16
+     ],
+     "metin": "den eilenden und sich verbergenden,"
+    },
+    {
+     "ayetler": [
+      17,
+      17
+     ],
+     "metin": "und bei der Nacht, wenn sie dunkelt,"
+    },
+    {
+     "ayetler": [
+      18,
+      18
+     ],
+     "metin": "und dem Morgen, wenn er aufatmet!"
+    },
+    {
+     "ayetler": [
+      19,
+      19
+     ],
+     "metin": "Dies ist wahrlich das Wort eines edlen Gesandten,"
+    },
+    {
+     "ayetler": [
+      20,
+      20
+     ],
+     "metin": "der begabt ist mit Macht bei dem Herrn des Thrones und in Ansehen steht,"
+    },
+    {
+     "ayetler": [
+      21,
+      21
+     ],
+     "metin": "dem gehorcht wird und der getreu ist."
+    },
+    {
+     "ayetler": [
+      22,
+      22
+     ],
+     "metin": "Und euer Gefährte ist nicht besessen;"
+    },
+    {
+     "ayetler": [
+      23,
+      23
+     ],
+     "metin": "wahrlich, er sah ihn am klaren Horizont,"
+    },
+    {
+     "ayetler": [
+      24,
+      24
+     ],
+     "metin": "und er geizt nicht mit dem Verborgenen."
+    },
+    {
+     "ayetler": [
+      25,
+      25
+     ],
+     "metin": "Auch ist es nicht das Wort eines gesteinigten Satans."
+    },
+    {
+     "ayetler": [
+      26,
+      26
+     ],
+     "metin": "Darum, wohin geht ihr?"
+    },
+    {
+     "ayetler": [
+      27,
+      27
+     ],
+     "metin": "Es ist nur eine Ermahnung für alle Welt,"
+    },
+    {
+     "ayetler": [
+      28,
+      28
+     ],
+     "metin": "für jeden von euch, der den geraden Weg nehmen will."
+    },
+    {
+     "ayetler": [
+      29,
+      29
+     ],
+     "metin": "Doch werdet ihr nicht wollen, es sei denn, dass Allah will, der Herr der ­Welten."
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Kur'an-ı Kerim (kuran.diyanet.gov.tr, «Amasya Abay» metni)",
+  "url": "https://kuran.diyanet.gov.tr",
+  "alindi": "2026-10-19"
+ },
+ "ozet": "3635db32c15ceaa052c7b3b1858c89b305f58715ff6a85fa15dc702ca3694e38",
+ "zor": [],
+ "onay": null
+}

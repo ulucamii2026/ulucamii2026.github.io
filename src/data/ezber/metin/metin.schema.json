@@ -1,0 +1,128 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Ezber maddesinin metni",
+  "description": "Madde başına bir dosya (Faz 2b, 19 Ekim 2026). Kur'an maddeleri scripts/ezber-metin-cek.mjs ile kuran.diyanet.gov.tr'den birebir gelir; elle düzenlenmez. Hoca alanları (okunus, zor, onay) yeniden çekimde korunur. Çapraz kurallar: tests/ezber-madde-metni.test.mjs.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "bolumler", "meal", "kaynak", "ozet", "zor", "onay"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "id": { "type": "string", "pattern": "^[sdb]-[a-z0-9-]+$" },
+    "kuran": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sure", "ayetler"],
+      "properties": {
+        "sure": { "type": "integer", "minimum": 1, "maximum": 114 },
+        "ayetler": { "type": "array", "items": { "type": "integer", "minimum": 1 }, "minItems": 2, "maxItems": 2 }
+      }
+    },
+    "sureAdi": { "type": "string", "minLength": 1, "description": "Diyanet'in Arapça sûre adı (/sure ucu, «ad_ar»), tamlama hâlinde" },
+    "bolumler": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["no", "ar"],
+        "properties": {
+          "no": { "type": "integer", "minimum": 0 },
+          "ar": { "type": "string", "minLength": 1 },
+          "sayfa": { "type": "integer", "minimum": 0, "maximum": 604 }
+        }
+      }
+    },
+    "meal": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tr": { "$ref": "#/definitions/meal" },
+        "fr": { "$ref": "#/definitions/meal" },
+        "en": { "$ref": "#/definitions/meal" },
+        "nl": { "$ref": "#/definitions/meal" },
+        "de": { "$ref": "#/definitions/meal" }
+      }
+    },
+    "kaynak": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ar", "url", "alindi"],
+      "properties": {
+        "ar": { "type": "string", "minLength": 1 },
+        "url": { "type": "string", "pattern": "^https://[a-z.]+\\.diyanet\\.gov\\.tr(/.*)?$" },
+        "alindi": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" }
+      }
+    },
+    "ozet": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "okunus": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tr": { "$ref": "#/definitions/okunus" },
+        "fr": { "$ref": "#/definitions/okunus" }
+      }
+    },
+    "zor": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["bolum", "kelime"],
+        "properties": {
+          "bolum": { "type": "integer", "minimum": 0 },
+          "kelime": { "type": "string", "minLength": 1 },
+          "not": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "onay": {
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["tarih", "kapsam"],
+          "properties": {
+            "tarih": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+            "kapsam": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "enum": ["ar", "meal", "okunus-tr", "okunus-fr"] } }
+          }
+        }
+      ]
+    }
+  },
+  "definitions": {
+    "meal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kaynak", "gruplar"],
+      "properties": {
+        "kaynak": { "type": "string", "minLength": 1 },
+        "inceleme": { "type": "boolean" },
+        "gruplar": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["ayetler", "metin"],
+            "properties": {
+              "ayetler": { "type": "array", "items": { "type": "integer", "minimum": 0 }, "minItems": 2, "maxItems": 2 },
+              "metin": { "type": "string", "minLength": 1 },
+              "duzeltme": { "type": "string", "minLength": 1, "description": "Diyanet kaydına duzeltmeler.json ile yapılan düzeltmenin gerekçesi ve kaynağı" }
+            }
+          }
+        }
+      }
+    },
+    "okunus": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["no", "metin"],
+        "properties": { "no": { "type": "integer", "minimum": 0 }, "metin": { "type": "string", "minLength": 1 } }
+      }
+    }
+  }
+}

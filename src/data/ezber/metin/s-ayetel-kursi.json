@@ -1,0 +1,65 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "s-ayetel-kursi",
+ "kuran": {
+  "sure": 2,
+  "ayetler": [
+   255,
+   255
+  ]
+ },
+ "sureAdi": "الْبَقَرَةِ",
+ "bolumler": [
+  {
+   "no": 255,
+   "ar": "اَللّٰهُ لَٓا اِلٰهَ اِلَّا هُوَۚ اَلْحَیُّ الْقَیُّومُۚ لَا تَاْخُذُهُ سِنَةٌ وَلَا نَوْمٌؕ لَهُ مَا فِی السَّمٰوَاتِ وَمَا فِی الْاَرْضِؕ مَنْ ذَا الَّذٖی یَشْفَعُ عِنْدَهُٓ اِلَّا بِاِذْنِهٖؕ یَعْلَمُ مَا بَیْنَ اَیْدٖیهِمْ وَمَا خَلْفَهُمْۚ وَلَا یُحٖیطُونَ بِشَیْءٍ مِنْ عِلْمِهٖٓ اِلَّا بِمَا شَٓاءَۚ وَسِعَ كُرْسِیُّهُ السَّمٰوَاتِ وَالْاَرْضَۚ وَلَا یَؤُ𐻿دُهُ حِفْظُهُمَاۚ وَهُوَ الْعَلِیُّ الْعَظٖیمُ",
+   "sayfa": 41
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı Meâli (kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      255,
+      255
+     ],
+     "metin": "Allah kendisinden başka hiçbir ilah olmayandır. Diridir, kayyumdur. Onu ne bir uyuklama tutabilir, ne de bir uyku. Göklerdeki her şey, yerdeki her şey onundur. İzni olmaksızın onun katında şefaatte bulunacak kimdir? O, kulların önlerindekileri ve arkalarındakileri (yaptıklarını ve yapacaklarını) bilir. Onlar onun ilminden, kendisinin dilediği kadarından başka bir şey kavrayamazlar. Onun kürsüsü bütün gökleri ve yeri kaplayıp kuşatmıştır. (O, göklere, yere, bütün evrene hükmetmektedir.) Gökleri ve yeri koruyup gözetmek ona güç gelmez. O, yücedir, büyüktür."
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "The Holy Quran with English Translation (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      255,
+      255
+     ],
+     "metin": "Allah! There is no god ˹worthy of worship˺ except Him, the Ever-Living, All-Sustaining. Neither drowsiness nor sleep overtakes Him. To Him belongs whatever is in the heavens and whatever is on the earth. Who could possibly intercede with Him without His permission? He ˹fully˺ knows what is ahead of them and what is behind them, but no one can grasp any of His knowledge—except what He wills ˹to reveal˺. His Seat encompasses the heavens and the earth, and the preservation of both does not tire Him. For He is the Most High, the Greatest."
+    }
+   ]
+  },
+  "de": {
+   "kaynak": "Der Heilige Koran – Deutsche Übersetzung (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      255,
+      255
+     ],
+     "metin": "Allah! Es gibt keinen Allah außer ihm, dem Lebendigen, dem Ewigen! Ihn ergreift kein Schlummer und kein Schlaf. Sein ist, was in den Himmeln und was auf Erden ist. Wer ist es, der da Fürsprache einlegt bei ihm ohne seine Erlaubnis? Er weiß, was vor ihnen ist und was hinter ihnen, und sie begreifen nichts von seinem Wissen, außer was er will. Sein Thron umspannt die Himmel und die Erde. Und es fällt ihm nicht schwer, beide zu bewahren. Denn er ist der Hohe, der Erhabene."
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Kur'an-ı Kerim (kuran.diyanet.gov.tr, «Amasya Abay» metni)",
+  "url": "https://kuran.diyanet.gov.tr",
+  "alindi": "2026-10-19"
+ },
+ "ozet": "566bd806a9474985d68ea6b33cc62443f46c5f277aacd60856ecc83a6db756aa",
+ "zor": [],
+ "onay": null
+}

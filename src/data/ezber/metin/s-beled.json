@@ -1,0 +1,503 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "s-beled",
+ "kuran": {
+  "sure": 90,
+  "ayetler": [
+   1,
+   20
+  ]
+ },
+ "sureAdi": "الْبَلَدِ",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "لَٓا اُقْسِمُ بِهٰذَا الْبَلَدِۙ",
+   "sayfa": 593
+  },
+  {
+   "no": 2,
+   "ar": "وَاَنْتَ حِلٌّ بِهٰذَا الْبَلَدِۙ",
+   "sayfa": 593
+  },
+  {
+   "no": 3,
+   "ar": "وَوَالِدٍ وَمَا وَلَدَۙ",
+   "sayfa": 593
+  },
+  {
+   "no": 4,
+   "ar": "لَقَدْ خَلَقْنَا الْاِنْسَانَ فٖی كَبَدٍؕ",
+   "sayfa": 593
+  },
+  {
+   "no": 5,
+   "ar": "اَیَحْسَبُ اَنْ لَنْ یَقْدِرَ عَلَیْهِ اَحَدٌۘ",
+   "sayfa": 593
+  },
+  {
+   "no": 6,
+   "ar": "یَقُولُ اَهْلَكْتُ مَالًا لُبَدًاؕ",
+   "sayfa": 593
+  },
+  {
+   "no": 7,
+   "ar": "اَیَحْسَبُ اَنْ لَمْ یَرَهُٓ اَحَدٌؕ",
+   "sayfa": 593
+  },
+  {
+   "no": 8,
+   "ar": "اَلَمْ نَجْعَلْ لَهُ عَیْنَیْنِۙ",
+   "sayfa": 594
+  },
+  {
+   "no": 9,
+   "ar": "وَلِسَانًا وَشَفَتَیْنِۙ",
+   "sayfa": 594
+  },
+  {
+   "no": 10,
+   "ar": "وَهَدَیْنَاهُ النَّجْدَیْنِۚ",
+   "sayfa": 594
+  },
+  {
+   "no": 11,
+   "ar": "فَلَا اقْتَحَمَ الْعَقَبَةَؗ",
+   "sayfa": 594
+  },
+  {
+   "no": 12,
+   "ar": "وَمَٓا اَدْرٰیكَ مَا الْعَقَبَةُؕ",
+   "sayfa": 594
+  },
+  {
+   "no": 13,
+   "ar": "فَكُّ رَقَبَةٍۙ",
+   "sayfa": 594
+  },
+  {
+   "no": 14,
+   "ar": "اَوْ اِطْعَامٌ فٖی یَوْمٍ ذٖی مَسْغَبَةٍۙ",
+   "sayfa": 594
+  },
+  {
+   "no": 15,
+   "ar": "یَتٖیمًا ذَا مَقْرَبَةٍۙ",
+   "sayfa": 594
+  },
+  {
+   "no": 16,
+   "ar": "اَوْ مِسْكٖینًا ذَا مَتْرَبَةٍؕ",
+   "sayfa": 594
+  },
+  {
+   "no": 17,
+   "ar": "ثُمَّ كَانَ مِنَ الَّذٖینَ اٰمَنُوا وَتَوَاصَوْا بِالصَّبْرِ وَتَوَاصَوْا بِالْمَرْحَمَةِؕ",
+   "sayfa": 594
+  },
+  {
+   "no": 18,
+   "ar": "اُو𐻾لٰٓئِكَ اَصْحَابُ الْمَیْمَنَةِؕ",
+   "sayfa": 594
+  },
+  {
+   "no": 19,
+   "ar": "وَالَّذٖینَ كَفَرُوا بِاٰیَاتِنَا هُمْ اَصْحَابُ الْمَشْـَٔمَةِؕ",
+   "sayfa": 594
+  },
+  {
+   "no": 20,
+   "ar": "عَلَیْهِمْ نَارٌ مُؤْصَدَةٌ",
+   "sayfa": 594
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı Meâli (kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      4
+     ],
+     "metin": "Sen bu beldedeyken bu beldeye (Mekke'ye), babaya ve ondan meydana gelen çocuğa yemin ederim ki biz insanı bir sıkıntı ve zorluk içinde (olacak ve bunlara göğüs gerecek şekilde) yarattık."
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "İnsanoğlu, kendisine kimsenin güç yetiremeyeceğini mi sanıyor?"
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "\"Yığınla mal harcadım\" diyor."
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "Kendisini kimsenin görmediğini mi sanıyor?"
+    },
+    {
+     "ayetler": [
+      8,
+      10
+     ],
+     "metin": "Biz ona iki göz, bir dil, iki dudak vermedik mi; iki apaçık yolu (hayır ve şer yollarını) göstermedik mi?"
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "Fakat o, sarp yokuşa atılmadı."
+    },
+    {
+     "ayetler": [
+      12,
+      12
+     ],
+     "metin": "Sarp yokuşun ne olduğunu sen ne bileceksin?"
+    },
+    {
+     "ayetler": [
+      13,
+      13
+     ],
+     "metin": "O tutsak bir boynu çözmek(köle azat etmek) tir."
+    },
+    {
+     "ayetler": [
+      14,
+      16
+     ],
+     "metin": "Yahut şiddetli bir açlık gününde kendisiyle yakınlığı olan bir yetimi, yahut yerde sürünen bir yoksulu doyurmaktır."
+    },
+    {
+     "ayetler": [
+      17,
+      18
+     ],
+     "metin": "Sonra da iman edenlerden olup birbirine sabrı tavsiye edenlerden, birbirine merhameti tavsiye edenlerden olanlar var ya, işte onlar Ahiret mutluluğuna erenlerdir."
+    },
+    {
+     "ayetler": [
+      19,
+      19
+     ],
+     "metin": "Âyetlerimizi inkar edenler ise; kötülüğe batmış kimselerdir."
+    },
+    {
+     "ayetler": [
+      20,
+      20
+     ],
+     "metin": "Üzerlerinde etrafı sımsıkı kapatılmış bir ateş vardır."
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "The Holy Quran with English Translation (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "I do swear by this city ˹of Mecca˺—"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "even though you ˹O Prophet˺ are subject to abuse in this city—"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "and by every parent and ˹their˺ child!"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Indeed, We have created humankind in ˹constant˺ struggle."
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "Do they think that no one has power over them,"
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "boasting, “I have wasted enormous wealth!”?"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "Do they think that no one sees them?"
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "Have We not given them two eyes,"
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "a tongue, and two lips;"
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "and shown them the two ways ˹of right and wrong˺?"
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "If only they had attempted the challenging path ˹of goodness instead˺!"
+    },
+    {
+     "ayetler": [
+      12,
+      12
+     ],
+     "metin": "And what will make you realize what ˹attempting˺ the challenging path is?"
+    },
+    {
+     "ayetler": [
+      13,
+      13
+     ],
+     "metin": "It is to free a slave,"
+    },
+    {
+     "ayetler": [
+      14,
+      14
+     ],
+     "metin": "or to give food in times of famine"
+    },
+    {
+     "ayetler": [
+      15,
+      15
+     ],
+     "metin": "to an orphaned relative"
+    },
+    {
+     "ayetler": [
+      16,
+      16
+     ],
+     "metin": "or to a poor person in distress,"
+    },
+    {
+     "ayetler": [
+      17,
+      17
+     ],
+     "metin": "and—above all—to be one of those who have faith and urge each other to perseverance and urge each other to compassion."
+    },
+    {
+     "ayetler": [
+      18,
+      18
+     ],
+     "metin": "These are the people of the right."
+    },
+    {
+     "ayetler": [
+      19,
+      19
+     ],
+     "metin": "As for those who deny Our signs, they are the people of the left."
+    },
+    {
+     "ayetler": [
+      20,
+      20
+     ],
+     "metin": "The Fire will be sealed over them."
+    }
+   ]
+  },
+  "de": {
+   "kaynak": "Der Heilige Koran – Deutsche Übersetzung (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Ich schwöre bei diesem Land –"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "und du bist ein Bewohner dieses Landes –"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "und beim Vater und was er erzeugt."
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Wahrlich, wir erschufen den Menschen in Bedrängnis."
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "Glaubt er etwa, dass niemand etwas gegen ihn vermag?"
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "Er sagt: „Ich habe viel ausgegeben.“"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "Glaubt er etwa, dass ihn niemand sieht?"
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "Gaben wir ihm nicht zwei Augen"
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "und eine Zunge und zwei Lippen"
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "und zeigten ihm die beiden Wege?"
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "Und doch erklimmt er nicht den steilen Weg."
+    },
+    {
+     "ayetler": [
+      12,
+      12
+     ],
+     "metin": "Und was lehrt dich wissen, was der steile Weg ist?"
+    },
+    {
+     "ayetler": [
+      13,
+      13
+     ],
+     "metin": "Die Befreiung eines Sklaven"
+    },
+    {
+     "ayetler": [
+      14,
+      14
+     ],
+     "metin": "oder zu speisen am Tag der Hungersnot"
+    },
+    {
+     "ayetler": [
+      15,
+      15
+     ],
+     "metin": "eine verwandte Waise"
+    },
+    {
+     "ayetler": [
+      16,
+      16
+     ],
+     "metin": "oder einen Armen, der in Not leidet!"
+    },
+    {
+     "ayetler": [
+      17,
+      17
+     ],
+     "metin": "Dann zu denen zu gehören, die glauben und zur Geduld und Barmherzigkeit mahnen:"
+    },
+    {
+     "ayetler": [
+      18,
+      18
+     ],
+     "metin": "Das sind die Gefährten der Rechten."
+    },
+    {
+     "ayetler": [
+      19,
+      19
+     ],
+     "metin": "Diejenigen aber, die unsere Zeichen verleugnen, das sind die Gefährten der ­Linken:"
+    },
+    {
+     "ayetler": [
+      20,
+      20
+     ],
+     "metin": "über ihnen ist ein überdachendes Feuer."
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Kur'an-ı Kerim (kuran.diyanet.gov.tr, «Amasya Abay» metni)",
+  "url": "https://kuran.diyanet.gov.tr",
+  "alindi": "2026-10-19"
+ },
+ "ozet": "a40359262256f5ca899d3718898e608d3e26cbe9ce70a8e8ae63a0ef68c6ceea",
+ "zor": [],
+ "onay": null
+}

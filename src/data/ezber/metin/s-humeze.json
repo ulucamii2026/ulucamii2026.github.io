@@ -1,0 +1,252 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "s-humeze",
+ "kuran": {
+  "sure": 104,
+  "ayetler": [
+   1,
+   9
+  ]
+ },
+ "sureAdi": "الْهُمَزَةِ",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "وَیْلٌ لِكُلِّ هُمَزَةٍ لُمَزَةٍۙ",
+   "sayfa": 601
+  },
+  {
+   "no": 2,
+   "ar": "اَلَّذٖی جَمَعَ مَالًا وَعَدَّدَهُۙ",
+   "sayfa": 601
+  },
+  {
+   "no": 3,
+   "ar": "یَحْسَبُ اَنَّ مَالَهُٓ اَخْلَدَهُۚ",
+   "sayfa": 601
+  },
+  {
+   "no": 4,
+   "ar": "كَلَّا لَیُنْبَذَنَّ فِی الْحُطَمَةِؗ",
+   "sayfa": 601
+  },
+  {
+   "no": 5,
+   "ar": "وَمَٓا اَدْرٰیكَ مَا الْحُطَمَةُؕ",
+   "sayfa": 601
+  },
+  {
+   "no": 6,
+   "ar": "نَارُ اللّٰهِ الْمُوقَدَةُۙ",
+   "sayfa": 601
+  },
+  {
+   "no": 7,
+   "ar": "اَلَّتٖی تَطَّلِعُ عَلَى الْاَفْــِٔدَةِؕ",
+   "sayfa": 601
+  },
+  {
+   "no": 8,
+   "ar": "اِنَّهَا عَلَیْهِمْ مُؤْصَدَةٌۙ",
+   "sayfa": 601
+  },
+  {
+   "no": 9,
+   "ar": "فٖی عَمَدٍ مُمَدَّدَةٍ",
+   "sayfa": 601
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı Meâli (kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      2
+     ],
+     "metin": "Mal toplayan ve onu durmadan sayan, insanları arkadan çekiştiren, kaş göz işaretiyle alay eden her kişinin vay haline!"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "O, malının, kendisini ebedileştirdiğini sanır."
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Hayır! Andolsun ki o, Hutâme'ye atılacaktır."
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "Hutame'nin ne olduğunu sen ne bileceksin?"
+    },
+    {
+     "ayetler": [
+      6,
+      7
+     ],
+     "metin": "O, Allah'ın, yüreklere işleyen tutuşturulmuş ateşidir."
+    },
+    {
+     "ayetler": [
+      8,
+      9
+     ],
+     "metin": "Şüphesiz uzatılmış direkler arasında (bağlı oldukları halde) ateş onların üzerine kapatılacaktır."
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "The Holy Quran with English Translation (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Woe to every backbiter, slanderer,"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "who amasses wealth ˹greedily˺ and counts it ˹repeatedly˺,"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "thinking that their wealth will make them immortal!"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Not at all! Such a person will certainly be tossed into the Crusher."
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "And what will make you realize what the Crusher is?"
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "˹It is˺ Allah’s kindled Fire,"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "which rages over the hearts."
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "It will be sealed over them,"
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "˹tightly secured˺ with long braces."
+    }
+   ]
+  },
+  "de": {
+   "kaynak": "Der Heilige Koran – Deutsche Übersetzung (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Weh jedem lästernden Verleumder,"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "der Gut zusammen scharrt und es hinterlegt."
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "Er denkt, dass sein Vermögen ihn unsterblich machen kann."
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Keineswegs; wahrlich, hinab gestürzt wird er in El-Hutama."
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "Und was lässt dich wissen, was El-Hutama ist?"
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "Es ist Allahs angezündetes Feuer,"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "das über die Herzen emporsteigt."
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "Es bildet ein Dach über ihnen"
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "in langen Feuersäulen."
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Kur'an-ı Kerim (kuran.diyanet.gov.tr, «Amasya Abay» metni)",
+  "url": "https://kuran.diyanet.gov.tr",
+  "alindi": "2026-10-19"
+ },
+ "ozet": "afb03b2e95879a4c29e987a3140f621c4ba9ec7b463c095f5779ed890d36c3a2",
+ "zor": [],
+ "onay": null
+}

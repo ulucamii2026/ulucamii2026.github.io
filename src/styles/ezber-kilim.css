@@ -85,6 +85,9 @@ svg.ezber-kilim { display: block; width: 100%; height: auto; max-width: 34rem; m
 .kilim-kart .kl-maddeler li { display: flex; flex-wrap: wrap; align-items: center; gap: 0.1rem 0.55rem; min-height: 1.9rem; font-size: 0.9rem; line-height: 1.35; }
 .kilim-kart .kl-maddeler .kl-lejant-isaret { flex: none; width: 1.5rem; height: 1.5rem; }
 .kilim-kart .kl-madde-ad { flex: 1 1 9rem; min-width: 0; }
+/* Sesi ya da metni olan madde egitim.ulucamii.be'deki çalışma sayfasına bağlanır (Faz 2b). */
+.kilim-kart a.kl-madde-ad { color: inherit; text-decoration: underline; text-decoration-color: color-mix(in oklab, currentColor 40%, transparent); text-underline-offset: 0.2em; }
+.kilim-kart a.kl-madde-ad:hover { text-decoration-color: currentColor; }
 .kilim-kart .kl-basamak { font-size: 0.8rem; color: var(--metin-2); }
 .kilim-kart .kl-basamak.kl-t1 { color: var(--metin); }
 .kilim-kart .kl-basamak.kl-t2 { color: color-mix(in oklab, var(--kl-b2) 72%, var(--metin)); font-weight: 600; }

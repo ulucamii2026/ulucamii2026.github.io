@@ -1,0 +1,995 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "s-nebe",
+ "kuran": {
+  "sure": 78,
+  "ayetler": [
+   1,
+   40
+  ]
+ },
+ "sureAdi": "النَّبَأِ",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "عَمَّ یَتَسَٓاءَلُونَۚ",
+   "sayfa": 581
+  },
+  {
+   "no": 2,
+   "ar": "عَنِ النَّبَاِ الْعَظٖیمِۙ",
+   "sayfa": 581
+  },
+  {
+   "no": 3,
+   "ar": "اَلَّذٖی هُمْ فٖیهِ مُخْتَلِفُونَؕ",
+   "sayfa": 581
+  },
+  {
+   "no": 4,
+   "ar": "كَلَّا سَیَعْلَمُونَۙ",
+   "sayfa": 581
+  },
+  {
+   "no": 5,
+   "ar": "ثُمَّ كَلَّا سَیَعْلَمُونَ",
+   "sayfa": 581
+  },
+  {
+   "no": 6,
+   "ar": "اَلَمْ نَجْعَلِ الْاَرْضَ مِهَادًاۙ",
+   "sayfa": 581
+  },
+  {
+   "no": 7,
+   "ar": "وَالْجِبَالَ اَوْتَادًاࣕ",
+   "sayfa": 581
+  },
+  {
+   "no": 8,
+   "ar": "وَخَلَقْنَاكُمْ اَزْوَاجًاۙ",
+   "sayfa": 581
+  },
+  {
+   "no": 9,
+   "ar": "وَجَعَلْنَا نَوْمَكُمْ سُبَاتًاۙ",
+   "sayfa": 581
+  },
+  {
+   "no": 10,
+   "ar": "وَجَعَلْنَا الَّیْلَ لِبَاسًاۙ",
+   "sayfa": 581
+  },
+  {
+   "no": 11,
+   "ar": "وَجَعَلْنَا النَّهَارَ مَعَاشًاࣕ",
+   "sayfa": 581
+  },
+  {
+   "no": 12,
+   "ar": "وَبَنَیْنَا فَوْقَكُمْ سَبْعًا شِدَادًاۙ",
+   "sayfa": 581
+  },
+  {
+   "no": 13,
+   "ar": "وَجَعَلْنَا سِرَاجًا وَهَّاجًاࣕ",
+   "sayfa": 581
+  },
+  {
+   "no": 14,
+   "ar": "وَاَنْزَلْنَا مِنَ الْمُعْصِرَاتِ مَٓاءً ثَجَّاجًاۙ",
+   "sayfa": 581
+  },
+  {
+   "no": 15,
+   "ar": "لِنُخْرِجَ بِهٖ حَبًّا وَنَبَاتًاۙ",
+   "sayfa": 581
+  },
+  {
+   "no": 16,
+   "ar": "وَجَنَّاتٍ اَلْفَافًاؕ",
+   "sayfa": 581
+  },
+  {
+   "no": 17,
+   "ar": "اِنَّ یَوْمَ الْفَصْلِ كَانَ مٖیقَاتًاۙ",
+   "sayfa": 581
+  },
+  {
+   "no": 18,
+   "ar": "یَوْمَ یُنْفَخُ فِی الصُّورِ فَتَاْتُونَ اَفْوَاجًاۙ",
+   "sayfa": 581
+  },
+  {
+   "no": 19,
+   "ar": "وَفُتِحَتِ السَّمَٓاءُ فَكَانَتْ اَبْوَابًاۙ",
+   "sayfa": 581
+  },
+  {
+   "no": 20,
+   "ar": "وَسُیِّرَتِ الْجِبَالُ فَكَانَتْ سَرَابًاؕ",
+   "sayfa": 581
+  },
+  {
+   "no": 21,
+   "ar": "اِنَّ جَهَنَّمَ كَانَتْ مِرْصَادًاۙ",
+   "sayfa": 581
+  },
+  {
+   "no": 22,
+   "ar": "لِلطَّاغٖینَ مَاٰبًاۙ",
+   "sayfa": 581
+  },
+  {
+   "no": 23,
+   "ar": "لَابِثٖینَ فٖیهَٓا اَحْقَابًاۚ",
+   "sayfa": 581
+  },
+  {
+   "no": 24,
+   "ar": "لَا یَذُوقُونَ فٖیهَا بَرْدًا وَلَا شَرَابًاۙ",
+   "sayfa": 581
+  },
+  {
+   "no": 25,
+   "ar": "اِلَّا حَمٖیمًا وَغَسَّاقًاۙ",
+   "sayfa": 581
+  },
+  {
+   "no": 26,
+   "ar": "جَزَٓاءً وِفَاقًا",
+   "sayfa": 581
+  },
+  {
+   "no": 27,
+   "ar": "اِنَّهُمْ كَانُوا لَا یَرْجُونَ حِسَابًاۙ",
+   "sayfa": 581
+  },
+  {
+   "no": 28,
+   "ar": "وَكَذَّبُوا بِاٰیَاتِنَا كِذَّابًاؕ",
+   "sayfa": 581
+  },
+  {
+   "no": 29,
+   "ar": "وَكُلَّ شَیْءٍ اَحْصَیْنَاهُ كِتَابًا",
+   "sayfa": 581
+  },
+  {
+   "no": 30,
+   "ar": "فَذُوقُوا فَلَنْ نَزٖیدَكُمْ اِلَّا عَذَابًاࣖ",
+   "sayfa": 581
+  },
+  {
+   "no": 31,
+   "ar": "اِنَّ لِلْمُتَّقٖینَ مَفَازًاۙ",
+   "sayfa": 582
+  },
+  {
+   "no": 32,
+   "ar": "حَدَٓائِقَ وَاَعْنَابًاۙ",
+   "sayfa": 582
+  },
+  {
+   "no": 33,
+   "ar": "وَكَوَاعِبَ اَتْرَابًاۙ",
+   "sayfa": 582
+  },
+  {
+   "no": 34,
+   "ar": "وَكَاْسًا دِهَاقًاؕ",
+   "sayfa": 582
+  },
+  {
+   "no": 35,
+   "ar": "لَا یَسْمَعُونَ فٖیهَا لَغْوًا وَلَا كِذَّابًاۚ",
+   "sayfa": 582
+  },
+  {
+   "no": 36,
+   "ar": "جَزَٓاءً مِنْ رَبِّكَ عَطَٓاءً حِسَابًاۙ",
+   "sayfa": 582
+  },
+  {
+   "no": 37,
+   "ar": "رَبِّ السَّمٰوَاتِ وَالْاَرْضِ وَمَا بَیْنَهُمَاۙ الرَّحْمٰنِ لَا یَمْلِكُونَ مِنْهُ خِطَابًاۙ",
+   "sayfa": 582
+  },
+  {
+   "no": 38,
+   "ar": "یَوْمَ یَقُومُ الرُّوحُ وَالْمَلٰٓئِكَةُ صَفًّاؕ لَا یَتَكَلَّمُونَ اِلَّا مَنْ اَذِنَ لَهُ الرَّحْمٰنُ وَقَالَ صَوَابًا",
+   "sayfa": 582
+  },
+  {
+   "no": 39,
+   "ar": "ذٰلِكَ الْیَوْمُ الْحَقُّۚ فَمَنْ شَٓاءَ اتَّخَذَ اِلٰى رَبِّهٖ مَاٰبًا",
+   "sayfa": 582
+  },
+  {
+   "no": 40,
+   "ar": "اِنَّٓا اَنْذَرْنَا‌كُمْ عَذَابًا قَرٖیبًاۚ یَوْمَ یَنْظُرُ الْمَرْءُ مَا قَدَّمَتْ یَدَاهُ وَیَقُولُ الْكَافِرُ یَا لَیْتَنٖی كُنْتُ تُرَابًا",
+   "sayfa": 582
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı Meâli (kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Birbirlerine neyi soruyorlar?"
+    },
+    {
+     "ayetler": [
+      2,
+      3
+     ],
+     "metin": "Üzerinde anlaşmazlığa düştükleri büyük haberi (mi)?"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Hayır, ileride bilecekler."
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "Yine hayır; ileride bilecekler."
+    },
+    {
+     "ayetler": [
+      6,
+      7
+     ],
+     "metin": "Biz, yeryüzünü bir döşek, dağları da birer kazık yapmadık mı?"
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "Sizleri (erkekli-dişili) eşler halinde yarattık."
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "Uykunuzu bir dinlenme (sebebi) kıldık."
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "Geceyi (sizi örten) bir elbise yaptık."
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "Gündüzü de geçimi temin zamanı kıldık."
+    },
+    {
+     "ayetler": [
+      12,
+      12
+     ],
+     "metin": "Üstünüze yedi sağlam gök bina ettik."
+    },
+    {
+     "ayetler": [
+      13,
+      13
+     ],
+     "metin": "Alev alev yanan aydınlatıcı ve ısıtıcı bir kandil yarattık."
+    },
+    {
+     "ayetler": [
+      14,
+      16
+     ],
+     "metin": "Taneler, bitkiler, sarmaş dolaş bahçeler çıkaralım diye yağmur yüklü yoğun bulutlardan şarıl şarıl yağmur yağdırdık."
+    },
+    {
+     "ayetler": [
+      17,
+      17
+     ],
+     "metin": "Şüphesiz hüküm ve ayırma günü belirlenmiş bir vakittir."
+    },
+    {
+     "ayetler": [
+      18,
+      18
+     ],
+     "metin": "Bu, sûra üfürüleceği gün gerçekleşir ve siz bölük bölük gelirsiniz."
+    },
+    {
+     "ayetler": [
+      19,
+      19
+     ],
+     "metin": "Gök açılır ve kapı kapı olur."
+    },
+    {
+     "ayetler": [
+      20,
+      20
+     ],
+     "metin": "Dağlar yürütülür, serap haline gelir."
+    },
+    {
+     "ayetler": [
+      21,
+      23
+     ],
+     "metin": "Şüphesiz cehennem, bir gözetleme yeridir; azgınlar için, içinde çağlar boyu kalacakları bir dönüş yeridir."
+    },
+    {
+     "ayetler": [
+      24,
+      24
+     ],
+     "metin": "Orada ne bir serinlik ve ne de içecek bir şey tadacaklar!"
+    },
+    {
+     "ayetler": [
+      25,
+      26
+     ],
+     "metin": "Ancak, uygun bir ceza olarak kaynar su ve irin içecekler."
+    },
+    {
+     "ayetler": [
+      27,
+      27
+     ],
+     "metin": "Çünkü onlar hesaba çekilmeyi ummuyorlardı."
+    },
+    {
+     "ayetler": [
+      28,
+      28
+     ],
+     "metin": "Âyetlerimizi de alabildiğine yalanlamışlardı."
+    },
+    {
+     "ayetler": [
+      29,
+      29
+     ],
+     "metin": "Biz ise, her şeyi bir kitapta (Levh-i Mahfûz'da) tamamiyle sayıp tespit ettik."
+    },
+    {
+     "ayetler": [
+      30,
+      30
+     ],
+     "metin": "Kafirlere şöyle denilir: \"Şimdi tadın. Artık bundan sonra yalnızca azabınızı artıracağız.\""
+    },
+    {
+     "ayetler": [
+      31,
+      34
+     ],
+     "metin": "Şüphesiz Allah'a karşı gelmekten sakınanlara bir kurtuluş, bahçeler, üzümler, kendileriyle bir yaşta, göğüsleri çıkmış genç kızlar ve dolu dolu kadehler vardır."
+    },
+    {
+     "ayetler": [
+      35,
+      35
+     ],
+     "metin": "Orada ne bir boş söz işitirler, ne de bir yalan."
+    },
+    {
+     "ayetler": [
+      36,
+      38
+     ],
+     "metin": "Bunlar kendilerine; Rabbinden, göklerin ve yerin ve ikisi arasındakilerin Rabbinden, Rahmân'dan bir mükafat, yeterli bir ihsan olarak verilmiştir. Onlar, Ruh'un (Cebrail'in) ve meleklerin saf duracakları gün Allah'a hitap edemeyeceklerdir. Sadece Rahmân'ın izin vereceği ve doğru söyleyecek olan kimseler konuşabilecektir."
+    },
+    {
+     "ayetler": [
+      39,
+      39
+     ],
+     "metin": "İşte bu, hak olan gündür. Artık dileyen kimse Rabbine ulaştıran bir yol tutar."
+    },
+    {
+     "ayetler": [
+      40,
+      40
+     ],
+     "metin": "Şüphesiz biz sizi, kişinin önceden elleriyle yaptıklarına bakacağı ve inkarcının, \"Keşke toprak olaydım!\" diyeceği günde gerçekleşecek olan yakın bir azaba karşı uyardık."
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "The Holy Quran with English Translation (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "What are they asking one another about?"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "About the momentous news,"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "over which they disagree."
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "But no! They will come to know."
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "Again, no! They will come to know."
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "Have We not smoothed out the earth ˹like a bed˺,"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "and ˹made˺ the mountains as ˹its˺ pegs,"
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "and created you in pairs,"
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "and made your sleep for rest,"
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "and made the night as a cover,"
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "and made the day for livelihood,"
+    },
+    {
+     "ayetler": [
+      12,
+      12
+     ],
+     "metin": "and built above you seven mighty ˹heavens˺,"
+    },
+    {
+     "ayetler": [
+      13,
+      13
+     ],
+     "metin": "and placed ˹in them˺ a shining lamp,"
+    },
+    {
+     "ayetler": [
+      14,
+      14
+     ],
+     "metin": "and sent down from rainclouds pouring water,"
+    },
+    {
+     "ayetler": [
+      15,
+      15
+     ],
+     "metin": "producing by it grain and ˹various˺ plants,"
+    },
+    {
+     "ayetler": [
+      16,
+      16
+     ],
+     "metin": "and dense orchards?"
+    },
+    {
+     "ayetler": [
+      17,
+      17
+     ],
+     "metin": "Indeed, the Day of ˹Final˺ Decision is an appointed time—"
+    },
+    {
+     "ayetler": [
+      18,
+      18
+     ],
+     "metin": "˹it is˺ the Day the Trumpet will be blown, and you will ˹all˺ come forth in crowds."
+    },
+    {
+     "ayetler": [
+      19,
+      19
+     ],
+     "metin": "The sky will be ˹split˺ open, becoming ˹many˺ gates,"
+    },
+    {
+     "ayetler": [
+      20,
+      20
+     ],
+     "metin": "and the mountains will be blown away, becoming ˹like˺ a mirage."
+    },
+    {
+     "ayetler": [
+      21,
+      21
+     ],
+     "metin": "Indeed, Hell is lying in ambush"
+    },
+    {
+     "ayetler": [
+      22,
+      22
+     ],
+     "metin": "as a home for the transgressors,"
+    },
+    {
+     "ayetler": [
+      23,
+      23
+     ],
+     "metin": "where they will remain for ˹endless˺ ages."
+    },
+    {
+     "ayetler": [
+      24,
+      24
+     ],
+     "metin": "There they will not taste any coolness or drink,"
+    },
+    {
+     "ayetler": [
+      25,
+      25
+     ],
+     "metin": "except boiling water and ˹oozing˺ pus—"
+    },
+    {
+     "ayetler": [
+      26,
+      26
+     ],
+     "metin": "a fitting reward."
+    },
+    {
+     "ayetler": [
+      27,
+      27
+     ],
+     "metin": "For they never expected any reckoning,"
+    },
+    {
+     "ayetler": [
+      28,
+      28
+     ],
+     "metin": "and totally rejected Our signs."
+    },
+    {
+     "ayetler": [
+      29,
+      29
+     ],
+     "metin": "And We have everything recorded precisely."
+    },
+    {
+     "ayetler": [
+      30,
+      30
+     ],
+     "metin": "˹So the deniers will be told,˺ “Taste ˹the punishment˺, for all you will get from Us is more torment.”"
+    },
+    {
+     "ayetler": [
+      31,
+      31
+     ],
+     "metin": "Indeed, the righteous will have salvation—"
+    },
+    {
+     "ayetler": [
+      32,
+      32
+     ],
+     "metin": "Gardens, vineyards,"
+    },
+    {
+     "ayetler": [
+      33,
+      33
+     ],
+     "metin": "and full-bosomed maidens of equal age,"
+    },
+    {
+     "ayetler": [
+      34,
+      34
+     ],
+     "metin": "and full cups ˹of pure wine˺,"
+    },
+    {
+     "ayetler": [
+      35,
+      35
+     ],
+     "metin": "never to hear any idle talk or lying therein—"
+    },
+    {
+     "ayetler": [
+      36,
+      36
+     ],
+     "metin": "a ˹fitting˺ reward as a generous gift from your Lord,"
+    },
+    {
+     "ayetler": [
+      37,
+      37
+     ],
+     "metin": "the Lord of the heavens and the earth and everything in between, the Most Compassionate. No one will dare speak to Him"
+    },
+    {
+     "ayetler": [
+      38,
+      38
+     ],
+     "metin": "on the Day the ˹holy˺ spirit and the angels will stand in ranks. None will talk, except those granted permission by the Most Compassionate and whose words are true."
+    },
+    {
+     "ayetler": [
+      39,
+      39
+     ],
+     "metin": "That Day is the ˹ultimate˺ truth. So let whoever wills take the path leading back to their Lord."
+    },
+    {
+     "ayetler": [
+      40,
+      40
+     ],
+     "metin": "Indeed, We have warned you of an imminent punishment—the Day every person will see ˹the consequences of˺ what their hands have done, and the disbelievers will cry, “I wish I were dust.”"
+    }
+   ]
+  },
+  "de": {
+   "kaynak": "Der Heilige Koran – Deutsche Übersetzung (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Wonach befragen sie einander?"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "Nach einer gewaltigen Kunde,"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "über die sie uneins sind."
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Fürwahr, sie sollen sie wissen;"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "wiederum, fürwahr, sie sollen sie wissen."
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "Machten wir nicht die Erde zu einem Bett"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "und die Berge zu Pflöcken"
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "und schufen euch in Paaren"
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "und machten euren Schlaf zur Ruhe"
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "und die Nacht zu einem Kleid"
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "und machten den Tag zum Erwerb des Unterhalts"
+    },
+    {
+     "ayetler": [
+      12,
+      12
+     ],
+     "metin": "und bauten über euch sieben Festen"
+    },
+    {
+     "ayetler": [
+      13,
+      13
+     ],
+     "metin": "und machten eine hellbrennende ­Leuchte"
+    },
+    {
+     "ayetler": [
+      14,
+      14
+     ],
+     "metin": "und sandten aus den Regenwolken Wasser in Strömen,"
+    },
+    {
+     "ayetler": [
+      15,
+      15
+     ],
+     "metin": "dadurch hervorzubringen Korn und Kraut"
+    },
+    {
+     "ayetler": [
+      16,
+      16
+     ],
+     "metin": "und dicht bestandene Gärten?"
+    },
+    {
+     "ayetler": [
+      17,
+      17
+     ],
+     "metin": "Der Tag der Entscheidung ist festgesetzt:"
+    },
+    {
+     "ayetler": [
+      18,
+      18
+     ],
+     "metin": "Der Tag, an dem in die Posaune gestoßen wird und ihr in Scharen kommt"
+    },
+    {
+     "ayetler": [
+      19,
+      19
+     ],
+     "metin": "und der Himmel sich öffnet und zu Toren wird"
+    },
+    {
+     "ayetler": [
+      20,
+      20
+     ],
+     "metin": "und die Berge sich rühren und zur Luftspiegelung werden."
+    },
+    {
+     "ayetler": [
+      21,
+      21
+     ],
+     "metin": "Die Hölle ist ein Hinterhalt,"
+    },
+    {
+     "ayetler": [
+      22,
+      22
+     ],
+     "metin": "für die Übertreter ein Heim,"
+    },
+    {
+     "ayetler": [
+      23,
+      23
+     ],
+     "metin": "werden dort für längere Zeit verweilen."
+    },
+    {
+     "ayetler": [
+      24,
+      24
+     ],
+     "metin": "Sie bekommen in ihm weder Kühlung noch Getränk"
+    },
+    {
+     "ayetler": [
+      25,
+      25
+     ],
+     "metin": "außer siedendem Wasser und Jauche –"
+    },
+    {
+     "ayetler": [
+      26,
+      26
+     ],
+     "metin": "eine angemessene Belohnung!"
+    },
+    {
+     "ayetler": [
+      27,
+      27
+     ],
+     "metin": "Sie erwarteten keine Rechenschaft"
+    },
+    {
+     "ayetler": [
+      28,
+      28
+     ],
+     "metin": "und erklären unsere Zeichen für Lüge,"
+    },
+    {
+     "ayetler": [
+      29,
+      29
+     ],
+     "metin": "doch wir schrieben alles auf in ein Buch."
+    },
+    {
+     "ayetler": [
+      30,
+      30
+     ],
+     "metin": "„So erlebt, und nur die Strafe wollen wir euch mehren.“"
+    },
+    {
+     "ayetler": [
+      31,
+      31
+     ],
+     "metin": "Für die Gottesfürchtigen ist ein seliger Ort,"
+    },
+    {
+     "ayetler": [
+      32,
+      32
+     ],
+     "metin": "Gartengehege und Weinberge,"
+    },
+    {
+     "ayetler": [
+      33,
+      33
+     ],
+     "metin": "junge Altersgenossinnen"
+    },
+    {
+     "ayetler": [
+      34,
+      34
+     ],
+     "metin": "und volle Becher."
+    },
+    {
+     "ayetler": [
+      35,
+      35
+     ],
+     "metin": "Sie hören darinnen weder Geschwätz noch Lüge –"
+    },
+    {
+     "ayetler": [
+      36,
+      36
+     ],
+     "metin": "ein Lohn von deinem Herrn, eine hinreichende Gabe."
+    },
+    {
+     "ayetler": [
+      37,
+      37
+     ],
+     "metin": "Dem Herrn der Himmel und der Erde und was zwischen beiden, dem Erbarmer, bei dem sie kein Recht zur Zwischenrede erhalten."
+    },
+    {
+     "ayetler": [
+      38,
+      38
+     ],
+     "metin": "An jenem Tage, da der Geist und die Engel in Reihen stehen, wird nur der reden dürfen, dem es der Erbarmer erlaubt, und wer das Rechte spricht."
+    },
+    {
+     "ayetler": [
+      39,
+      39
+     ],
+     "metin": "Dies ist der gewisse Tag. Drum, wer da will, der nehme Einkehr zu seinem Herrn."
+    },
+    {
+     "ayetler": [
+      40,
+      40
+     ],
+     "metin": "Wir warnen euch vor naher Strafe an jenem Tage, an dem der Mensch schauen wird, was seine Hände vorausgeschickt, und der Ungläubige sagen wird: „O dass ich doch Staub wäre!“"
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Kur'an-ı Kerim (kuran.diyanet.gov.tr, «Amasya Abay» metni)",
+  "url": "https://kuran.diyanet.gov.tr",
+  "alindi": "2026-10-19"
+ },
+ "ozet": "e9c98e9a70e53502f3d6d489782c57894c16490f458ccea35d5cb82109c82a8b",
+ "zor": [],
+ "onay": null
+}

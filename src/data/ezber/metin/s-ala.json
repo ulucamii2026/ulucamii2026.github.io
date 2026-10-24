@@ -1,0 +1,505 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "s-ala",
+ "kuran": {
+  "sure": 87,
+  "ayetler": [
+   1,
+   19
+  ]
+ },
+ "sureAdi": "الْاَعْلٰى",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "سَبِّحِ اسْمَ رَبِّكَ الْاَعْلٰىۙ",
+   "sayfa": 591
+  },
+  {
+   "no": 2,
+   "ar": "اَلَّذٖی خَلَقَ فَسَوّٰىࣕۙ",
+   "sayfa": 591
+  },
+  {
+   "no": 3,
+   "ar": "وَالَّذٖی قَدَّرَ فَهَدٰىࣕۙ",
+   "sayfa": 591
+  },
+  {
+   "no": 4,
+   "ar": "وَالَّذٖٓی اَخْرَجَ الْمَرْعٰىࣕۙ",
+   "sayfa": 591
+  },
+  {
+   "no": 5,
+   "ar": "فَجَعَلَهُ غُثَٓاءً اَحْوٰىؕ",
+   "sayfa": 591
+  },
+  {
+   "no": 6,
+   "ar": "سَنُقْرِئُكَ فَلَا تَنْسٰىۙ",
+   "sayfa": 591
+  },
+  {
+   "no": 7,
+   "ar": "اِلَّا مَا شَٓاءَ اللّٰهُؕ اِنَّهُ یَعْلَمُ الْجَهْرَ وَمَا یَخْفٰىؕ",
+   "sayfa": 591
+  },
+  {
+   "no": 8,
+   "ar": "وَنُیَسِّرُكَ لِلْیُسْرٰىۚ",
+   "sayfa": 591
+  },
+  {
+   "no": 9,
+   "ar": "فَذَكِّرْ اِنْ نَفَعَتِ الذِّكْرٰىؕ",
+   "sayfa": 591
+  },
+  {
+   "no": 10,
+   "ar": "سَیَذَّكَّرُ مَنْ یَخْشٰىۙ",
+   "sayfa": 591
+  },
+  {
+   "no": 11,
+   "ar": "وَیَتَجَنَّبُهَا الْاَشْقٰىۙ",
+   "sayfa": 591
+  },
+  {
+   "no": 12,
+   "ar": "اَلَّذٖی یَصْلَى النَّارَ الْكُبْرٰىۚ",
+   "sayfa": 591
+  },
+  {
+   "no": 13,
+   "ar": "ثُمَّ لَا یَمُوتُ فٖیهَا وَلَا یَحْیٰىؕ",
+   "sayfa": 591
+  },
+  {
+   "no": 14,
+   "ar": "قَدْ اَفْلَحَ مَنْ تَزَكّٰىۙ",
+   "sayfa": 591
+  },
+  {
+   "no": 15,
+   "ar": "وَذَكَرَ اسْمَ رَبِّهٖ فَصَلّٰىؕ",
+   "sayfa": 591
+  },
+  {
+   "no": 16,
+   "ar": "بَلْ تُؤْثِرُونَ الْحَیٰوةَ الدُّنْیَاؗ",
+   "sayfa": 591
+  },
+  {
+   "no": 17,
+   "ar": "وَالْاٰخِرَةُ خَیْرٌ وَاَبْقٰىؕ",
+   "sayfa": 591
+  },
+  {
+   "no": 18,
+   "ar": "اِنَّ هٰذَا لَفِی الصُّحُفِ الْاُو𐻿لٰىۙ",
+   "sayfa": 591
+  },
+  {
+   "no": 19,
+   "ar": "صُحُفِ اِبْرٰهٖیمَ وَمُوسٰى",
+   "sayfa": 591
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı Meâli (kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Yüce Rabbinin adını tespih et."
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "O, yaratıp şekillendiren, âhenk veren ve düzene koyandır."
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "O, (her şeyi) ölçüyle yapıp yönlendirendir."
+    },
+    {
+     "ayetler": [
+      4,
+      5
+     ],
+     "metin": "O, yeşil bitki örtüsünü çıkaran, sonra da onları çürüyüp kararmış çerçöpe çevirendir."
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "Sana Kur'an'ı okutacağız ve sen onu unutmayacaksın."
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "Ancak Allah'ın dilediği başka. Şüphesiz O, açık olanı da bilir, gizliyi de."
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "Biz seni en kolay olana kolayca ileteceğiz."
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "O halde, eğer öğüt fayda verirse, öğüt ver."
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "Allah'a karşı derin saygı duyarak ondan korkan öğüt alacaktır."
+    },
+    {
+     "ayetler": [
+      11,
+      12
+     ],
+     "metin": "En büyük ateşe girecek olan en bedbaht kimse (kâfir) ise, öğüt almaktan kaçınır."
+    },
+    {
+     "ayetler": [
+      13,
+      13
+     ],
+     "metin": "Sonra orada ne ölür (kurtulur), ne de (rahat bir hayat) yaşar."
+    },
+    {
+     "ayetler": [
+      14,
+      15
+     ],
+     "metin": "Arınan ve Rabbinin adını anıp, namaz kılan kimse mutlaka kurtuluşa erer."
+    },
+    {
+     "ayetler": [
+      16,
+      16
+     ],
+     "metin": "Fakat sizler dünya hayatını tercih ediyorsunuz."
+    },
+    {
+     "ayetler": [
+      17,
+      17
+     ],
+     "metin": "Oysa âhiret, daha hayırlı ve süreklidir."
+    },
+    {
+     "ayetler": [
+      18,
+      19
+     ],
+     "metin": "Şüphesiz bu hükümler ilk sayfalarda, İbrahim ve Mûsâ'nın sayfalarında da vardır."
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "The Holy Quran with English Translation (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Glorify the Name of your Lord, the Most High,"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "Who created and ˹perfectly˺ fashioned ˹all˺,"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "and Who ordained precisely and inspired accordingly,"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "and Who brings forth ˹green˺ pasture,"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "then reduces it to withered chaff."
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "We will have you recite ˹the Quran, O Prophet,˺ so you will not forget ˹any of it˺,"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "unless Allah wills otherwise. He surely knows what is open and what is hidden."
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "We will facilitate for you the Way of Ease."
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "So ˹always˺ remind ˹with the Quran˺—˹even˺ if the reminder is beneficial ˹only to some˺."
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "Those in awe ˹of Allah˺ will be mindful ˹of it˺."
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "But it will be shunned by the most wretched,"
+    },
+    {
+     "ayetler": [
+      12,
+      12
+     ],
+     "metin": "who will burn in the greatest Fire,"
+    },
+    {
+     "ayetler": [
+      13,
+      13
+     ],
+     "metin": "where they will not ˹be able to˺ live or die."
+    },
+    {
+     "ayetler": [
+      14,
+      14
+     ],
+     "metin": "Successful indeed are those who purify themselves,"
+    },
+    {
+     "ayetler": [
+      15,
+      15
+     ],
+     "metin": "remember the Name of their Lord, and pray."
+    },
+    {
+     "ayetler": [
+      16,
+      16
+     ],
+     "metin": "But you ˹deniers only˺ prefer the life of this world,"
+    },
+    {
+     "ayetler": [
+      17,
+      17
+     ],
+     "metin": "even though the Hereafter is far better and more lasting."
+    },
+    {
+     "ayetler": [
+      18,
+      18
+     ],
+     "metin": "This is certainly ˹mentioned˺ in the earlier Scriptures—"
+    },
+    {
+     "ayetler": [
+      19,
+      19
+     ],
+     "metin": "the Scriptures of Abraham and Moses."
+    }
+   ]
+  },
+  "de": {
+   "kaynak": "Der Heilige Koran – Deutsche Übersetzung (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Preise den Namen deines Herrn, des Höchsten,"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "der da geschaffen und gebildet,"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "der bestimmt und rechtleitet,"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "der die Weide hervorbringt"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "und sie zu dunkler Spreu macht."
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "Wir wollen dich rezitieren lassen, damit du nicht vergisst,"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "außer was Allah will, denn er kennt das Offenkundige und das Verborgene."
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "Und wir werden dir den einfachen Weg erleichtern,"
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "so ermahne, die Ermahnung nützt."
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "Ermahnen lässt sich, wer Ehrfürchtig ist,"
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "doch der Bösewicht geht ihr aus dem Weg,"
+    },
+    {
+     "ayetler": [
+      12,
+      12
+     ],
+     "metin": "er, der im größten Feuer brennen wird;"
+    },
+    {
+     "ayetler": [
+      13,
+      13
+     ],
+     "metin": "dann wird er in ihm nicht sterben und nicht leben."
+    },
+    {
+     "ayetler": [
+      14,
+      14
+     ],
+     "metin": "Wohl ergeht es dem, der sich läutert"
+    },
+    {
+     "ayetler": [
+      15,
+      15
+     ],
+     "metin": "und der des Namens seines Herrn gedenkt und betet."
+    },
+    {
+     "ayetler": [
+      16,
+      16
+     ],
+     "metin": "Doch ihr zieht das irdische Leben vor,"
+    },
+    {
+     "ayetler": [
+      17,
+      17
+     ],
+     "metin": "während das Jenseits besser und bleibender ist."
+    },
+    {
+     "ayetler": [
+      18,
+      18
+     ],
+     "metin": "Wahrlich, dies stand in den früheren Büchern,"
+    },
+    {
+     "ayetler": [
+      19,
+      19
+     ],
+     "metin": "den Büchern von Abrahams und Moses."
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Kur'an-ı Kerim (kuran.diyanet.gov.tr, «Amasya Abay» metni)",
+  "url": "https://kuran.diyanet.gov.tr",
+  "alindi": "2026-10-19"
+ },
+ "ozet": "4afdb894fa44bd050e23cb5ed4080d1120658caa119ac9017c994626caf3499d",
+ "zor": [],
+ "onay": null
+}

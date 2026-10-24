@@ -2,10 +2,10 @@
 /**
  * Şerit listesindeki bir madde: rozet karo, ad, tür ve sınıf hedefi. Sesi olan maddede kare çal düğmesi (DESIGN.md
  * «Çal düğmesi»; erişilebilir adı «Dinle: …» / «Durdur: …»); ses ulucamii.be'den gelir (Hosting ses taşımaz). Yalnız
- * parça sesleri olan madde (Eûzü–Besmele) parçaları sırayla çalar.
+ * parça sesleri olan madde parçaları sırayla çalar; sûrenin başından başlıyorsa önce eûzü ve besmele (`dinlemeSirasi`).
  */
 import type { Dil } from '@ortak/i18n/ui';
-import type { KatalogOgesi } from '@ortak/lib/ezber/katalog';
+import { calismaSayfasiVar, dinlemeSirasi, type KatalogOgesi } from '@ortak/lib/ezber/katalog';
 import type { MotifAdi } from '@ortak/lib/ezber/motifler';
 import { metin, tarihYaz } from '../i18n/metinler';
 import { ANA_SITE } from '../lib/kimlik';
@@ -16,13 +16,13 @@ interface Props { oge: KatalogOgesi; motif: MotifAdi; dil: Dil; hedef?: string }
 const { oge, motif, dil, hedef } = Astro.props;
 const m = metin(dil);
 const ad = oge.ad[dil];
-const sesler = (oge.ses?.tam ? [oge.ses.tam] : [...(oge.ses?.parcalar ?? [])]).map((s) => `${ANA_SITE}${s}`);
+const sesler = dinlemeSirasi(oge).map((s) => `${ANA_SITE}${s}`);
 ---
 <li id={`m-${oge.id}`}>
   <div class="madde-ic">
     <span class="rozet-karo" aria-hidden="true"><svg viewBox="0 0 120 120" focusable="false"><use href={`#mt-${motif}`} /></svg></span>
     <span>
-      {sesler.length > 0 ? <a class="ad" href={`/${dil}/calis/${oge.id}/`} aria-label={`${calismaMetinleri(dil).ac}: ${ad}`}>{ad}</a> : <span class="ad">{ad}</span>}
+      {calismaSayfasiVar(oge) ? <a class="ad" href={`/${dil}/calis/${oge.id}/`} aria-label={`${calismaMetinleri(dil).ac}: ${ad}`}>{ad}</a> : <span class="ad">{ad}</span>}
       <span class="ust-bilgi"><span>{m.tur[oge.tur]}</span>{hedef && <span>{m.sinifHedefi(tarihYaz(hedef, dil))}</span>}</span>
     </span>
   </div>

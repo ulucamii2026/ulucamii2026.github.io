@@ -1,0 +1,325 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "s-karia",
+ "kuran": {
+  "sure": 101,
+  "ayetler": [
+   1,
+   11
+  ]
+ },
+ "sureAdi": "الْقَارِعَةِ",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "اَلْقَارِعَةُۙ",
+   "sayfa": 600
+  },
+  {
+   "no": 2,
+   "ar": "مَا الْقَارِعَةُۚ",
+   "sayfa": 600
+  },
+  {
+   "no": 3,
+   "ar": "وَمَٓا اَدْرٰیكَ مَا الْقَارِعَةُؕ",
+   "sayfa": 600
+  },
+  {
+   "no": 4,
+   "ar": "یَوْمَ یَكُونُ النَّاسُ كَالْفَرَاشِ الْمَبْثُوثِۙ",
+   "sayfa": 600
+  },
+  {
+   "no": 5,
+   "ar": "وَتَكُونُ الْجِبَالُ كَالْعِهْنِ الْمَنْفُوشِؕ",
+   "sayfa": 600
+  },
+  {
+   "no": 6,
+   "ar": "فَاَمَّا مَنْ ثَقُلَتْ مَوَازٖینُهُۙ",
+   "sayfa": 600
+  },
+  {
+   "no": 7,
+   "ar": "فَهُوَ فٖی عٖیشَةٍ رَاضِیَةٍؕ",
+   "sayfa": 600
+  },
+  {
+   "no": 8,
+   "ar": "وَاَمَّا مَنْ خَفَّتْ مَوَازٖینُهُۙ",
+   "sayfa": 600
+  },
+  {
+   "no": 9,
+   "ar": "فَاُمُّهُ هَاوِیَةٌؕ",
+   "sayfa": 600
+  },
+  {
+   "no": 10,
+   "ar": "وَمَٓا اَدْرٰیكَ مَا هِیَهْؕ",
+   "sayfa": 600
+  },
+  {
+   "no": 11,
+   "ar": "نَارٌ حَامِیَةٌ",
+   "sayfa": 600
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı Meâli (kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Yürekleri hoplatan büyük felaket!"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "Nedir o yürekleri hoplatan büyük felaket?"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "Yürekleri hoplatan büyük felaketin ne olduğunu sen ne bileceksin?"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "O gün insanlar, her biri bir tarafa uçuşan küçük kelebekler gibi olacaktır."
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "Dağlar da atılmış renkli yünler gibi olacaktır."
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "İşte o vakit, kimin tartıları ağır gelmişse,"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "Artık o, hoşnut olacağı bir hayat içinde olacaktır."
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "Ama kimin de tartıları hafif gelirse,"
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "İşte onun anası (varacağı yer) Hâviye'dir."
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "Sen Hâviye'nin ne olduğunu ne bileceksin?"
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "O, kızgın bir ateştir."
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "The Holy Quran with English Translation (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "The Striking Disaster!"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "What is the Striking Disaster?"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "And what will make you realize what the Striking Disaster is?"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "˹It is˺ the Day people will be like scattered moths,"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "and the mountains will be like carded wool."
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "So as for those whose scale is heavy ˹with good deeds˺,"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "they will be in a life of bliss."
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "And as for those whose scale is light,"
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "their home will be the abyss."
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "And what will make you realize what that is?"
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "˹It is˺ a scorching Fire."
+    }
+   ]
+  },
+  "de": {
+   "kaynak": "Der Heilige Koran – Deutsche Übersetzung (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Die Pochende!"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "Was ist die Pochende?"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "Und was lässt dich wissen, was die Pochende ist?"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "An dem Tag, da die Menschen gleich verstreuten Motten sind"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "und die Berge gleich bunter zerflockter Wolle,"
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "dann wird der, dessen Waage schwer ist,"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "im angenehmen Leben sein;"
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "doch der, dessen Waage leicht ist"
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "– sein Endziel wird der Höllenschlund sein."
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "Und was lässt dich wissen, was er ist?"
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "Ein glühendes Feuer!"
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Kur'an-ı Kerim (kuran.diyanet.gov.tr, «Amasya Abay» metni)",
+  "url": "https://kuran.diyanet.gov.tr",
+  "alindi": "2026-10-19"
+ },
+ "ozet": "ff39a8a0928ff26810d3fb79119c49539f942504410b10bdc32490f0f736dce6",
+ "zor": [],
+ "onay": null
+}

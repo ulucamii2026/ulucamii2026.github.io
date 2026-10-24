@@ -1,0 +1,536 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "s-leyl",
+ "kuran": {
+  "sure": 92,
+  "ayetler": [
+   1,
+   21
+  ]
+ },
+ "sureAdi": "الَّيْلِ",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "وَالَّیْلِ اِذَا یَغْشٰىۙ",
+   "sayfa": 595
+  },
+  {
+   "no": 2,
+   "ar": "وَالنَّهَارِ اِذَا تَجَلّٰىۙ",
+   "sayfa": 595
+  },
+  {
+   "no": 3,
+   "ar": "وَمَا خَلَقَ الذَّكَرَ وَالْاُنْثٰىۙ",
+   "sayfa": 595
+  },
+  {
+   "no": 4,
+   "ar": "اِنَّ سَعْیَكُمْ لَشَتّٰىؕ",
+   "sayfa": 595
+  },
+  {
+   "no": 5,
+   "ar": "فَاَمَّا مَنْ اَعْطٰى وَاتَّقٰىۙ",
+   "sayfa": 595
+  },
+  {
+   "no": 6,
+   "ar": "وَصَدَّقَ بِالْحُسْنٰىۙ",
+   "sayfa": 595
+  },
+  {
+   "no": 7,
+   "ar": "فَسَنُیَسِّرُهُ لِلْیُسْرٰىؕ",
+   "sayfa": 595
+  },
+  {
+   "no": 8,
+   "ar": "وَاَمَّا مَنْ بَخِلَ وَاسْتَغْنٰىۙ",
+   "sayfa": 595
+  },
+  {
+   "no": 9,
+   "ar": "وَكَذَّبَ بِالْحُسْنٰىۙ",
+   "sayfa": 595
+  },
+  {
+   "no": 10,
+   "ar": "فَسَنُیَسِّرُهُ لِلْعُسْرٰىؕ",
+   "sayfa": 595
+  },
+  {
+   "no": 11,
+   "ar": "وَمَا یُغْنٖی عَنْهُ مَالُهُٓ اِذَا تَرَدّٰىؕ",
+   "sayfa": 595
+  },
+  {
+   "no": 12,
+   "ar": "اِنَّ عَلَیْنَا لَلْهُدٰىؗ",
+   "sayfa": 595
+  },
+  {
+   "no": 13,
+   "ar": "وَاِنَّ لَنَا لَلْاٰخِرَةَ وَالْاُو𐻿لٰى",
+   "sayfa": 595
+  },
+  {
+   "no": 14,
+   "ar": "فَاَنْذَرْتُكُمْ نَارًا تَلَظّٰىۚ",
+   "sayfa": 595
+  },
+  {
+   "no": 15,
+   "ar": "لَا یَصْلٰیهَٓا اِلَّا الْاَشْقٰىۙ",
+   "sayfa": 595
+  },
+  {
+   "no": 16,
+   "ar": "اَلَّذٖی كَذَّبَ وَتَوَلّٰىؕ",
+   "sayfa": 595
+  },
+  {
+   "no": 17,
+   "ar": "وَسَیُجَنَّبُهَا الْاَتْقٰىۙ",
+   "sayfa": 595
+  },
+  {
+   "no": 18,
+   "ar": "اَلَّذٖی یُؤْتٖی مَالَهُ یَتَزَكّٰىۚ",
+   "sayfa": 595
+  },
+  {
+   "no": 19,
+   "ar": "وَمَا لِاَحَدٍ عِنْدَهُ مِنْ نِعْمَةٍ تُجْزٰىۙ",
+   "sayfa": 595
+  },
+  {
+   "no": 20,
+   "ar": "اِلَّا ابْتِغَٓاءَ وَجْهِ رَبِّهِ الْاَعْلٰىۚ",
+   "sayfa": 595
+  },
+  {
+   "no": 21,
+   "ar": "وَلَسَوْفَ یَرْضٰى",
+   "sayfa": 595
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı Meâli (kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "(Ortalığı) bürüdüğü zaman geceye andolsun,"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "Açılıp aydınlandığı zaman gündüze andolsun,"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "Erkeği ve dişiyi yaratana andolsun ki,"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Şüphesiz sizin çabalarınız elbette çeşit çeşittir."
+    },
+    {
+     "ayetler": [
+      5,
+      7
+     ],
+     "metin": "Onun için kim (elinde bulunandan) verir, Allah'a karşı gelmekten sakınır ve en güzel sözü (kelime-i tevhidi) tasdik ederse, biz onu en kolay olana kolayca iletiriz."
+    },
+    {
+     "ayetler": [
+      8,
+      10
+     ],
+     "metin": "Fakat, kim cimrilik eder, kendini Allah'a muhtaç görmez ve en güzel sözü (kelime-i tevhidi) yalanlarsa biz de onu en zor olana kolayca iletiriz."
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "Cehenneme yuvarlandığı zaman, malı ona fayda vermez."
+    },
+    {
+     "ayetler": [
+      12,
+      12
+     ],
+     "metin": "Şüphesiz bize düşen sadece doğru yolu göstermektir."
+    },
+    {
+     "ayetler": [
+      13,
+      13
+     ],
+     "metin": "Şüphesiz ahiret de dünya da bizimdir."
+    },
+    {
+     "ayetler": [
+      14,
+      14
+     ],
+     "metin": "Sizi alevler saçan ateşe karşı uyardım."
+    },
+    {
+     "ayetler": [
+      15,
+      16
+     ],
+     "metin": "O ateşe, ancak yalanlayıp yüz çeviren en bedbaht kimse girer."
+    },
+    {
+     "ayetler": [
+      17,
+      18
+     ],
+     "metin": "Temizlenmek için malını hayra veren en muttekî (Allah'a karşı gelmekten en çok sakınan) kimse o ateşten uzak tutulacaktır."
+    },
+    {
+     "ayetler": [
+      19,
+      20
+     ],
+     "metin": "O, hiç kimseye karşılık bekleyerek iyilik yapmaz.(Yaptığı iyiliği) Ancak yüce Rabbinin rızasını istediği için (yapar)."
+    },
+    {
+     "ayetler": [
+      21,
+      21
+     ],
+     "metin": "Elbette kendisi de hoşnut olacaktır."
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "The Holy Quran with English Translation (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "By the night when it covers,"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "and the day when it shines!"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "And by ˹the One˺ Who created male and female!"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Surely the ends you strive for are diverse."
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "As for the one who is charitable, mindful ˹of Allah˺,"
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "and ˹firmly˺ believes in the finest reward,"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "We will facilitate for them the Way of Ease."
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "And as for the one who is stingy, indifferent ˹to Allah˺,"
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "and ˹staunchly˺ denies the finest reward,"
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "We will facilitate for them the path of hardship."
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "And their wealth will be of no benefit to them when they tumble ˹into Hell˺."
+    },
+    {
+     "ayetler": [
+      12,
+      12
+     ],
+     "metin": "It is certainly upon Us ˹alone˺ to show ˹the way to˺ guidance."
+    },
+    {
+     "ayetler": [
+      13,
+      13
+     ],
+     "metin": "And surely to Us ˹alone˺ belong this life and the next."
+    },
+    {
+     "ayetler": [
+      14,
+      14
+     ],
+     "metin": "And so I have warned you of a raging Fire,"
+    },
+    {
+     "ayetler": [
+      15,
+      15
+     ],
+     "metin": "in which none will burn except the most wretched—"
+    },
+    {
+     "ayetler": [
+      16,
+      16
+     ],
+     "metin": "who deny and turn away."
+    },
+    {
+     "ayetler": [
+      17,
+      17
+     ],
+     "metin": "But the righteous will be spared from it—"
+    },
+    {
+     "ayetler": [
+      18,
+      18
+     ],
+     "metin": "who donate ˹some of˺ their wealth only to purify themselves,"
+    },
+    {
+     "ayetler": [
+      19,
+      19
+     ],
+     "metin": "not in return for someone’s favours,"
+    },
+    {
+     "ayetler": [
+      20,
+      20
+     ],
+     "metin": "but seeking the pleasure of their Lord, the Most High."
+    },
+    {
+     "ayetler": [
+      21,
+      21
+     ],
+     "metin": "They will certainly be pleased."
+    }
+   ]
+  },
+  "de": {
+   "kaynak": "Der Heilige Koran – Deutsche Übersetzung (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Bei der Nacht, wenn sie bedeckt,"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "und dem Tag, wenn er sich enthüllt,"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "und bei dem, was Mann und Frau erschuf!"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Euer Streben ist wahrlich verschieden."
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "Und was den betrifft, der gibt und ehrfürchtig ist"
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "und an das Schönste glaubt,"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "dem machen wir es leicht zum Heil."
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "Was aber den betrifft, der geizig ist und nach Reichtum trachtet,"
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "und das Schönste für Lüge erklärt,"
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "dem machen wir es leicht zum Unheil."
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "Ihm nützt sein Reichtum nicht, wenn er ins Feuer hinab gestürzt wird."
+    },
+    {
+     "ayetler": [
+      12,
+      12
+     ],
+     "metin": "Uns obliegt die Rechtleitung,"
+    },
+    {
+     "ayetler": [
+      13,
+      13
+     ],
+     "metin": "und unser ist das Künftige und Gegenwärtige."
+    },
+    {
+     "ayetler": [
+      14,
+      14
+     ],
+     "metin": "Und so warnte ich euch vor dem Feuer, das lodert."
+    },
+    {
+     "ayetler": [
+      15,
+      15
+     ],
+     "metin": "Nur der Elendste brennt in ihm,"
+    },
+    {
+     "ayetler": [
+      16,
+      16
+     ],
+     "metin": "der da leugnet und sich abwendet,"
+    },
+    {
+     "ayetler": [
+      17,
+      17
+     ],
+     "metin": "doch fern von ihm wird der Gottesfürchtige gehalten,"
+    },
+    {
+     "ayetler": [
+      18,
+      18
+     ],
+     "metin": "der sein Hab und Gut hingibt als Spende"
+    },
+    {
+     "ayetler": [
+      19,
+      19
+     ],
+     "metin": "und der keinem eine Gunst um des Lohnes willen erweist,"
+    },
+    {
+     "ayetler": [
+      20,
+      20
+     ],
+     "metin": "allein im Trachten nach dem Angesicht seines Herrn, des Höchsten;"
+    },
+    {
+     "ayetler": [
+      21,
+      21
+     ],
+     "metin": "und wahrlich, er soll zufrieden sein."
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Kur'an-ı Kerim (kuran.diyanet.gov.tr, «Amasya Abay» metni)",
+  "url": "https://kuran.diyanet.gov.tr",
+  "alindi": "2026-10-19"
+ },
+ "ozet": "1320a1a27e8bafab0b148a92f1b86639737ae40773f3296caac68a5a6ef144ba",
+ "zor": [],
+ "onay": null
+}

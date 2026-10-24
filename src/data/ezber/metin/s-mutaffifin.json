@@ -1,0 +1,954 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "s-mutaffifin",
+ "kuran": {
+  "sure": 83,
+  "ayetler": [
+   1,
+   36
+  ]
+ },
+ "sureAdi": "الْمُطَفِّف۪ينَ",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "وَیْلٌ لِلْمُطَفِّفٖینَۙ",
+   "sayfa": 587
+  },
+  {
+   "no": 2,
+   "ar": "اَلَّذٖینَ اِذَا ا‌كْتَالُوا عَلَى النَّاسِ یَسْتَوْفُونَؗ",
+   "sayfa": 587
+  },
+  {
+   "no": 3,
+   "ar": "وَاِذَا كَالُوهُمْ اَوْ وَزَنُوهُمْ یُخْسِرُونَؕ",
+   "sayfa": 587
+  },
+  {
+   "no": 4,
+   "ar": "اَلَا یَظُنُّ اُو𐻾لٰٓئِكَ اَنَّهُمْ مَبْعُوثُونَۙ",
+   "sayfa": 587
+  },
+  {
+   "no": 5,
+   "ar": "لِیَوْمٍ عَظٖیمٍۙ",
+   "sayfa": 587
+  },
+  {
+   "no": 6,
+   "ar": "یَوْمَ یَقُومُ النَّاسُ لِرَبِّ الْعَالَمٖینَۚ",
+   "sayfa": 587
+  },
+  {
+   "no": 7,
+   "ar": "كَلَّٓا اِنَّ كِتَابَ الْفُجَّارِ لَفٖی سِجّٖینٍؕ",
+   "sayfa": 587
+  },
+  {
+   "no": 8,
+   "ar": "وَمَٓا اَدْرٰیكَ مَا سِجّٖینٌؕ",
+   "sayfa": 587
+  },
+  {
+   "no": 9,
+   "ar": "كِتَابٌ مَرْقُومٌؕ",
+   "sayfa": 587
+  },
+  {
+   "no": 10,
+   "ar": "وَیْلٌ یَوْمَئِذٍ لِلْمُكَذِّبٖینَۙ",
+   "sayfa": 587
+  },
+  {
+   "no": 11,
+   "ar": "اَلَّذٖینَ یُكَذِّبُونَ بِیَوْمِ الدّٖینِؕ",
+   "sayfa": 587
+  },
+  {
+   "no": 12,
+   "ar": "وَمَا یُكَذِّبُ بِهٖٓ اِلَّا كُلُّ مُعْتَدٍ اَثٖیمٍۙ",
+   "sayfa": 587
+  },
+  {
+   "no": 13,
+   "ar": "اِذَا تُتْلٰى عَلَیْهِ اٰیَاتُنَا قَالَ اَسَاطٖیرُ الْاَوَّلٖینَؕ",
+   "sayfa": 587
+  },
+  {
+   "no": 14,
+   "ar": "كَلَّا بَلْ𐻽 رَانَ عَلٰى قُلُوبِهِمْ مَا كَانُوا یَكْسِبُونَ",
+   "sayfa": 587
+  },
+  {
+   "no": 15,
+   "ar": "كَلَّٓا اِنَّهُمْ عَنْ رَبِّهِمْ یَوْمَئِذٍ لَمَحْجُوبُونَؕ",
+   "sayfa": 587
+  },
+  {
+   "no": 16,
+   "ar": "ثُمَّ اِنَّهُمْ لَصَالُوا الْجَحٖیمِؕ",
+   "sayfa": 587
+  },
+  {
+   "no": 17,
+   "ar": "ثُمَّ یُقَالُ هٰذَا الَّذٖی كُنْتُمْ بِهٖ تُكَذِّبُونَؕ",
+   "sayfa": 587
+  },
+  {
+   "no": 18,
+   "ar": "كَلَّٓا اِنَّ كِتَابَ الْاَبْرَارِ لَفٖی عِلِّیّٖینَؕ",
+   "sayfa": 587
+  },
+  {
+   "no": 19,
+   "ar": "وَمَٓا اَدْرٰیكَ مَا عِلِّیُّونَؕ",
+   "sayfa": 587
+  },
+  {
+   "no": 20,
+   "ar": "كِتَابٌ مَرْقُومٌۙ",
+   "sayfa": 587
+  },
+  {
+   "no": 21,
+   "ar": "یَشْهَدُهُ الْمُقَرَّبُونَؕ",
+   "sayfa": 587
+  },
+  {
+   "no": 22,
+   "ar": "اِنَّ الْاَبْرَارَ لَفٖی نَعٖیمٍۙ",
+   "sayfa": 587
+  },
+  {
+   "no": 23,
+   "ar": "عَلَى الْاَرَٓائِكِ یَنْظُرُونَۙ",
+   "sayfa": 587
+  },
+  {
+   "no": 24,
+   "ar": "تَعْرِفُ فٖی وُجُوهِهِمْ نَضْرَةَ النَّعٖیمِۚ",
+   "sayfa": 587
+  },
+  {
+   "no": 25,
+   "ar": "یُسْقَوْنَ مِنْ رَحٖیقٍ مَخْتُومٍۙ",
+   "sayfa": 587
+  },
+  {
+   "no": 26,
+   "ar": "خِتَامُهُ مِسْكٌؕ وَفٖی ذٰلِكَ فَلْیَتَنَافَسِ الْمُتَنَافِسُونَؕ",
+   "sayfa": 587
+  },
+  {
+   "no": 27,
+   "ar": "وَمِزَاجُهُ مِنْ تَسْنٖیمٍۙ",
+   "sayfa": 588
+  },
+  {
+   "no": 28,
+   "ar": "عَیْنًا یَشْرَبُ بِهَا الْمُقَرَّبُونَؕ",
+   "sayfa": 588
+  },
+  {
+   "no": 29,
+   "ar": "اِنَّ الَّذٖینَ اَجْرَمُوا كَانُوا مِنَ الَّذٖینَ اٰمَنُوا یَضْحَكُونَؗ",
+   "sayfa": 588
+  },
+  {
+   "no": 30,
+   "ar": "وَاِذَا مَرُّوا بِهِمْ یَتَغَامَزُونَؗ",
+   "sayfa": 588
+  },
+  {
+   "no": 31,
+   "ar": "وَاِذَا انْقَلَبُٓوا اِلٰٓى اَهْلِهِمُ انْقَلَبُوا فَكِهٖینَؗ",
+   "sayfa": 588
+  },
+  {
+   "no": 32,
+   "ar": "وَاِذَا رَاَوْهُمْ قَالُٓوا اِنَّ هٰٓؤُ𐻾لَٓاءِ لَضَٓالُّونَۙ",
+   "sayfa": 588
+  },
+  {
+   "no": 33,
+   "ar": "وَمَٓا اُرْسِلُوا عَلَیْهِمْ حَافِظٖینَؕ",
+   "sayfa": 588
+  },
+  {
+   "no": 34,
+   "ar": "فَالْیَوْمَ الَّذٖینَ اٰمَنُوا مِنَ الْكُفَّارِ یَضْحَكُونَۙ",
+   "sayfa": 588
+  },
+  {
+   "no": 35,
+   "ar": "عَلَى الْاَرَٓائِكِۙ یَنْظُرُونَؕ",
+   "sayfa": 588
+  },
+  {
+   "no": 36,
+   "ar": "هَلْ ثُوِّبَ الْكُفَّارُ مَا كَانُوا یَفْعَلُونَ",
+   "sayfa": 588
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı Meâli (kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Ölçüde ve tartıda hile yapanların vay haline!"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "Onlar insanlardan (bir şey) ölçüp aldıkları zaman, tam ölçerler."
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "Fakat, kendileri onlara bir şey ölçüp, yahut tartıp verdikleri zaman eksik ölçüp tartarlar."
+    },
+    {
+     "ayetler": [
+      4,
+      6
+     ],
+     "metin": "Onlar, büyük bir gün; insanların, âlemlerin Rabbinin huzurunda duracakları gün için diriltileceklerini sanmıyorlar mı?"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "Hayır, günahkârların yazısı, muhakkak \"Siccîn\"dedir."
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "\"Siccîn\"in ne olduğunu sen ne bileceksin."
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "O, yazılmış bir kitaptır."
+    },
+    {
+     "ayetler": [
+      10,
+      11
+     ],
+     "metin": "O gün yalanlayanların; hesap ve ceza gününü yalanlayanların vay haline!"
+    },
+    {
+     "ayetler": [
+      12,
+      12
+     ],
+     "metin": "Onu, ancak her azgın, günahkâr kimse inkar eder."
+    },
+    {
+     "ayetler": [
+      13,
+      13
+     ],
+     "metin": "Ona âyetlerimiz okununca, \"Eskilerin masalları\" der."
+    },
+    {
+     "ayetler": [
+      14,
+      14
+     ],
+     "metin": "Hayır hayır! Doğrusu onların kazanmakta oldukları kalplerini paslandırmıştır."
+    },
+    {
+     "ayetler": [
+      15,
+      15
+     ],
+     "metin": "Hayır, şüphesiz onlar, kıyamet günü Rablerini görmekten mahrum bırakılacaklardır."
+    },
+    {
+     "ayetler": [
+      16,
+      16
+     ],
+     "metin": "Sonra onlar muhakkak cehenneme gireceklerdir."
+    },
+    {
+     "ayetler": [
+      17,
+      17
+     ],
+     "metin": "Sonra da onlara, \"Yalanlamakta olduğunuz işte budur\" denecektir."
+    },
+    {
+     "ayetler": [
+      18,
+      18
+     ],
+     "metin": "Hayır (sandıkları gibi değil!) iyilerin yazısı \"İlliyyûn\"dadır."
+    },
+    {
+     "ayetler": [
+      19,
+      19
+     ],
+     "metin": "\"İlliyyûn\"un ne olduğunu sen ne bileceksin."
+    },
+    {
+     "ayetler": [
+      20,
+      20
+     ],
+     "metin": "O yazılmış bir kitaptır."
+    },
+    {
+     "ayetler": [
+      21,
+      21
+     ],
+     "metin": "Ona, Allah'a yakın olanlar şâhit olur."
+    },
+    {
+     "ayetler": [
+      22,
+      22
+     ],
+     "metin": "Şüphesiz iyi kimseler, Naîm cennetindedirler."
+    },
+    {
+     "ayetler": [
+      23,
+      23
+     ],
+     "metin": "Koltuklar üzerinde, (etrafı) seyrederler."
+    },
+    {
+     "ayetler": [
+      24,
+      24
+     ],
+     "metin": "Onların yüzlerinde, nimetlerin sevincini görürsün."
+    },
+    {
+     "ayetler": [
+      25,
+      25
+     ],
+     "metin": "Onlara, mühürlü (el değmemiş) saf bir içecekten içirilir."
+    },
+    {
+     "ayetler": [
+      26,
+      26
+     ],
+     "metin": "Onun (içiminin) sonu bir misktir (ağızda misk gibi koku bırakır) İşte yarışanlar, bunun için yarışsınlar."
+    },
+    {
+     "ayetler": [
+      27,
+      27
+     ],
+     "metin": "O içeceğin katkısı tesnimdir."
+    },
+    {
+     "ayetler": [
+      28,
+      28
+     ],
+     "metin": "Bir pınar ki, Allah'a yakın olanlar ondan içerler."
+    },
+    {
+     "ayetler": [
+      29,
+      29
+     ],
+     "metin": "Şüphesiz günahkârlar, (dünyada) iman edenlere gülüyorlardı."
+    },
+    {
+     "ayetler": [
+      30,
+      30
+     ],
+     "metin": "Mü'minler yanlarından geçtiğinde birbirlerine kaş göz ederek onlarla alay ediyorlardı."
+    },
+    {
+     "ayetler": [
+      31,
+      31
+     ],
+     "metin": "Ailelerine dönerken zevk ve neşe içinde gülüşe gülüşe dönüyorlardı."
+    },
+    {
+     "ayetler": [
+      32,
+      32
+     ],
+     "metin": "Mü'minleri gördükleri vakit, \"Hiç şüphe yok, şunlar sapık kimselerdir\" diyorlardı."
+    },
+    {
+     "ayetler": [
+      33,
+      33
+     ],
+     "metin": "Halbuki onlar, mü'minlerin başına bekçi olarak gönderilmemişlerdi."
+    },
+    {
+     "ayetler": [
+      34,
+      34
+     ],
+     "metin": "İşte bugün de mü'minler kâfirlere gülerler."
+    },
+    {
+     "ayetler": [
+      35,
+      35
+     ],
+     "metin": "Koltuklar üzerinde (etrafı) seyrederler."
+    },
+    {
+     "ayetler": [
+      36,
+      36
+     ],
+     "metin": "Nasıl, kâfirler yapmakta olduklarının karşılığını buldular mı!?"
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "The Holy Quran with English Translation (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Woe to the defrauders!"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "Those who take full measure ˹when they buy˺ from people,"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "but give less when they measure or weigh for buyers."
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Do such people not think that they will be resurrected"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "for a tremendous Day—"
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "the Day ˹all˺ people will stand before the Lord of all worlds?"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "But no! The wicked are certainly bound for Sijjîn ˹in the depths of Hell˺—"
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "and what will make you realize what Sijjîn is?—"
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "a fate ˹already˺ sealed."
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "Woe on that Day to the deniers—"
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "those who deny Judgment Day!"
+    },
+    {
+     "ayetler": [
+      12,
+      12
+     ],
+     "metin": "None would deny it except every evildoing transgressor."
+    },
+    {
+     "ayetler": [
+      13,
+      13
+     ],
+     "metin": "Whenever Our revelations are recited to them, they say, “Ancient fables!”"
+    },
+    {
+     "ayetler": [
+      14,
+      14
+     ],
+     "metin": "But no! In fact, their hearts have been stained by all ˹the evil˺ they used to commit!"
+    },
+    {
+     "ayetler": [
+      15,
+      15
+     ],
+     "metin": "Undoubtedly, they will be sealed off from their Lord on that Day."
+    },
+    {
+     "ayetler": [
+      16,
+      16
+     ],
+     "metin": "Moreover, they will surely burn in Hell,"
+    },
+    {
+     "ayetler": [
+      17,
+      17
+     ],
+     "metin": "and then be told, “This is what you used to deny.”"
+    },
+    {
+     "ayetler": [
+      18,
+      18
+     ],
+     "metin": "But no! The virtuous are certainly bound for ’Illiyûn ˹in elevated Gardens˺—"
+    },
+    {
+     "ayetler": [
+      19,
+      19
+     ],
+     "metin": "and what will make you realize what ’Illiyûn is?—"
+    },
+    {
+     "ayetler": [
+      20,
+      20
+     ],
+     "metin": "a fate ˹already˺ sealed,"
+    },
+    {
+     "ayetler": [
+      21,
+      21
+     ],
+     "metin": "witnessed by those nearest ˹to Allah˺."
+    },
+    {
+     "ayetler": [
+      22,
+      22
+     ],
+     "metin": "Surely the virtuous will be in bliss,"
+    },
+    {
+     "ayetler": [
+      23,
+      23
+     ],
+     "metin": "˹seated˺ on ˹canopied˺ couches, gazing around."
+    },
+    {
+     "ayetler": [
+      24,
+      24
+     ],
+     "metin": "You will recognize on their faces the glow of delight."
+    },
+    {
+     "ayetler": [
+      25,
+      25
+     ],
+     "metin": "They will be given a drink of sealed, pure wine,"
+    },
+    {
+     "ayetler": [
+      26,
+      26
+     ],
+     "metin": "whose last sip will smell like musk. So let whoever aspires to this strive ˹diligently˺."
+    },
+    {
+     "ayetler": [
+      27,
+      27
+     ],
+     "metin": "And this drink’s flavour will come from Tasnîm—"
+    },
+    {
+     "ayetler": [
+      28,
+      28
+     ],
+     "metin": "a spring from which those nearest ˹to Allah˺ will drink."
+    },
+    {
+     "ayetler": [
+      29,
+      29
+     ],
+     "metin": "Indeed, the wicked used to laugh at the believers,"
+    },
+    {
+     "ayetler": [
+      30,
+      30
+     ],
+     "metin": "wink to one another whenever they passed by,"
+    },
+    {
+     "ayetler": [
+      31,
+      31
+     ],
+     "metin": "and muse ˹over these exploits˺ upon returning to their own people."
+    },
+    {
+     "ayetler": [
+      32,
+      32
+     ],
+     "metin": "And when they saw the faithful, they would say, “These ˹people˺ are truly astray,”"
+    },
+    {
+     "ayetler": [
+      33,
+      33
+     ],
+     "metin": "even though they were not sent as keepers over the believers."
+    },
+    {
+     "ayetler": [
+      34,
+      34
+     ],
+     "metin": "But on that Day the believers will be laughing at the disbelievers,"
+    },
+    {
+     "ayetler": [
+      35,
+      35
+     ],
+     "metin": "as they sit on ˹canopied˺ couches, looking on."
+    },
+    {
+     "ayetler": [
+      36,
+      36
+     ],
+     "metin": "˹The believers will be asked,˺ “Have the disbelievers ˹not˺ been paid back for what they used to do?”"
+    }
+   ]
+  },
+  "de": {
+   "kaynak": "Der Heilige Koran – Deutsche Übersetzung (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Wehe denen, die das Maß verkürzen,"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "die, wenn sie sich von den Leuten zumessen lassen, volles Maß verlangen,"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "wenn sie ihnen jedoch zumessen oder wiegen, weniger geben."
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Glauben jene etwa nicht erweckt zu werden"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "an einem gewaltigen Tag,"
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "dem Tag, an dem die Leute vor dem Herrn der Welten stehen?"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "Fürwahr, das Buch der Frevler ist in Siddschîn."
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "Und was lehrt dich wissen, was Siddschîn ist?"
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "Ein geschriebenes Buch!"
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "Wehe an jenem Tag den Leugnern,"
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "die den Tag des Gerichts für Lüge erklären!"
+    },
+    {
+     "ayetler": [
+      12,
+      12
+     ],
+     "metin": "Doch leugnen ihn nur alle Übertreter und Sünder,"
+    },
+    {
+     "ayetler": [
+      13,
+      13
+     ],
+     "metin": "die, wenn ihnen unsere Zeichen verlesen werden, sagen: „Fabeln der Früheren!“"
+    },
+    {
+     "ayetler": [
+      14,
+      14
+     ],
+     "metin": "Keineswegs; doch über ihre Herzen herrscht, was sie an schlechten Werken geschafft haben."
+    },
+    {
+     "ayetler": [
+      15,
+      15
+     ],
+     "metin": "Fürwahr; doch werden sie wahrlich an jenem Tage von ihrem Herrn ausgeschlossen sein."
+    },
+    {
+     "ayetler": [
+      16,
+      16
+     ],
+     "metin": "Sodann werden sie brennen im Höllenfeuer"
+    },
+    {
+     "ayetler": [
+      17,
+      17
+     ],
+     "metin": "und dann wird gesprochen: „Dies ist es, was ihr leugnetet.“"
+    },
+    {
+     "ayetler": [
+      18,
+      18
+     ],
+     "metin": "Fürwahr; doch das Buch der Gerechten ist wahrlich in Illiyyûn."
+    },
+    {
+     "ayetler": [
+      19,
+      19
+     ],
+     "metin": "Und was lehrt dich wissen, was Illiyyûn ist?"
+    },
+    {
+     "ayetler": [
+      20,
+      20
+     ],
+     "metin": "Ein geschriebenes Buch!"
+    },
+    {
+     "ayetler": [
+      21,
+      21
+     ],
+     "metin": "Bezeugen werden es die Allah nahestehenden Engel."
+    },
+    {
+     "ayetler": [
+      22,
+      22
+     ],
+     "metin": "Die Gerechten werden wahrlich in Wonne sein;"
+    },
+    {
+     "ayetler": [
+      23,
+      23
+     ],
+     "metin": "auf Ruhebetten werden sie ausschauen;"
+    },
+    {
+     "ayetler": [
+      24,
+      24
+     ],
+     "metin": "erkennen kannst du auf ihren Angesichtern den Glanz der Wonne;"
+    },
+    {
+     "ayetler": [
+      25,
+      25
+     ],
+     "metin": "geschenkt wird ihnen von versiegeltem Getränk,"
+    },
+    {
+     "ayetler": [
+      26,
+      26
+     ],
+     "metin": "dessen Siegel Moschus ist – und hiernach mögen die Begehrenden begehren –,"
+    },
+    {
+     "ayetler": [
+      27,
+      27
+     ],
+     "metin": "und seine Mischung ist Wasser von Tesnim,"
+    },
+    {
+     "ayetler": [
+      28,
+      28
+     ],
+     "metin": "einer Quelle, aus der die Allah Nahestehenden trinken."
+    },
+    {
+     "ayetler": [
+      29,
+      29
+     ],
+     "metin": "Die Sünder lachen über die Gläubigen,"
+    },
+    {
+     "ayetler": [
+      30,
+      30
+     ],
+     "metin": "und wenn sie an ihnen vorübergehen, winken sie einander zu,"
+    },
+    {
+     "ayetler": [
+      31,
+      31
+     ],
+     "metin": "und wenn sie zu ihren Angehörigen zurückkehren, kehren sie spottend zurück;"
+    },
+    {
+     "ayetler": [
+      32,
+      32
+     ],
+     "metin": "und wenn sie sie sehen, sagen sie: „Diese sind wahrlich Irrende.“"
+    },
+    {
+     "ayetler": [
+      33,
+      33
+     ],
+     "metin": "Aber nicht sind sie als Wächter über sie gesandt."
+    },
+    {
+     "ayetler": [
+      34,
+      34
+     ],
+     "metin": "Doch an jenem Tage werden die Gläubigen die Ungläubigen verlachen,"
+    },
+    {
+     "ayetler": [
+      35,
+      35
+     ],
+     "metin": "wenn sie auf Ruhebetten ausschauen."
+    },
+    {
+     "ayetler": [
+      36,
+      36
+     ],
+     "metin": "Sollten die Ungläubigen für ihre Taten nicht belohnt werden?"
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Kur'an-ı Kerim (kuran.diyanet.gov.tr, «Amasya Abay» metni)",
+  "url": "https://kuran.diyanet.gov.tr",
+  "alindi": "2026-10-19"
+ },
+ "ozet": "367b629b42c27d6ed092505d70565dd08ec770880dfe6e3e67ab6f090ae9474c",
+ "zor": [],
+ "onay": null
+}

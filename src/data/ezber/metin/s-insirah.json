@@ -1,0 +1,240 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "s-insirah",
+ "kuran": {
+  "sure": 94,
+  "ayetler": [
+   1,
+   8
+  ]
+ },
+ "sureAdi": "الْاِنْشِرَاحِ",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "اَلَمْ نَشْرَحْ لَكَ صَدْرَكَۙ",
+   "sayfa": 596
+  },
+  {
+   "no": 2,
+   "ar": "وَوَضَعْنَا عَنْكَ وِزْرَكَۙ",
+   "sayfa": 596
+  },
+  {
+   "no": 3,
+   "ar": "اَلَّذٖٓی اَنْقَضَ ظَهْرَكَۙ",
+   "sayfa": 596
+  },
+  {
+   "no": 4,
+   "ar": "وَرَفَعْنَا لَكَ ذِكْرَكَؕ",
+   "sayfa": 596
+  },
+  {
+   "no": 5,
+   "ar": "فَاِنَّ مَعَ الْعُسْرِ یُسْرًاۙ",
+   "sayfa": 596
+  },
+  {
+   "no": 6,
+   "ar": "اِنَّ مَعَ الْعُسْرِ یُسْرًاؕ",
+   "sayfa": 596
+  },
+  {
+   "no": 7,
+   "ar": "فَاِذَا فَرَغْتَ فَانْصَبْۙ",
+   "sayfa": 596
+  },
+  {
+   "no": 8,
+   "ar": "وَاِلٰى رَبِّكَ فَارْغَبْ",
+   "sayfa": 596
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı Meâli (kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "(Ey Muhammed!) Senin göğsünü açıp genişletmedik mi?"
+    },
+    {
+     "ayetler": [
+      2,
+      3
+     ],
+     "metin": "Belini büken yükünü üzerinden kaldırmadık mı?"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Senin şânını yükseltmedik mi?"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "Şüphesiz güçlükle beraber bir kolaylık vardır."
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "Gerçekten, güçlükle beraber bir kolaylık vardır."
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "Öyleyse, bir işi bitirince diğerine koyul."
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "Ancak Rabbine yönel ve yalvar."
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "The Holy Quran with English Translation (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Have We not uplifted your heart for you ˹O Prophet˺,"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "relieved you of the burden"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "which weighed so heavily on your back,"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "and elevated your renown for you?"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "So, surely with hardship comes ease."
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "Surely with ˹that˺ hardship comes ˹more˺ ease."
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "So once you have fulfilled ˹your duty˺, strive ˹in devotion˺,"
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "turning to your Lord ˹alone˺ with hope."
+    }
+   ]
+  },
+  "de": {
+   "kaynak": "Der Heilige Koran – Deutsche Übersetzung (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Weiteten wir nicht deine Brust aus"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "und nahmen von dir deine Last ab,"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "die deinen Rücken bedrückte,"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "und erhöhten für dich deinen Namen?"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "Gewiss, mit dem Schweren kommt das Leichte."
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "Ja, mit dem Schweren kommt das ­Leichte!"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "Und wenn du frei bist, dann mühe dich"
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "und trachte nach deinem Herrn."
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Kur'an-ı Kerim (kuran.diyanet.gov.tr, «Amasya Abay» metni)",
+  "url": "https://kuran.diyanet.gov.tr",
+  "alindi": "2026-10-19"
+ },
+ "ozet": "1263390b4f6ee220b892f9560dc1fa7aecc48bab07b26d253a71f4c69ada2ed0",
+ "zor": [],
+ "onay": null
+}

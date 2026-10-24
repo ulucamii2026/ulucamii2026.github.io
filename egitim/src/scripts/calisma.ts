@@ -21,6 +21,8 @@ if (kok) {
   let kuyruk: number[] = [];
   const metin = (ad: string) => kok.dataset[ad] ?? '';
   const arayiSil = () => { clearTimeout(zamanlayici); zamanlayici = undefined; };
+  // Madde sayfası (madde.ts) çalan bölümü metinde işaretler: -1 = çalma bitti.
+  const duyur = (parca: number) => kok.dispatchEvent(new CustomEvent('calisma:parca', { detail: parca }));
   const sayac = () => `${metin('parca')} ${kuyruk[sira] + 1} / ${parcalar.length} · ${tur} / ${tekrar.value}`;
   const temizle = () => {
     oturum++;
@@ -32,6 +34,7 @@ if (kok) {
   const sifirla = (mesaj = metin('hazir')) => {
     temizle(); caliyor = false; ara = false; basladi = false; sira = 0; tur = 1;
     oynat.textContent = metin('baslat'); durdur.disabled = true; durum.textContent = mesaj;
+    duyur(-1);
   };
   const hata = (o: number) => { if (o === oturum) sifirla(metin('hata')); };
   const cal = () => {
@@ -60,7 +63,7 @@ if (kok) {
         zamanlayici = setTimeout(ilerle, 3000);
       } else ilerle();
     });
-    durum.textContent = sayac(); cal();
+    durum.textContent = sayac(); duyur(kuyruk[sira]); cal();
   };
   const ilerle = () => {
     if (!caliyor) return;
@@ -97,6 +100,14 @@ if (kok) {
     if (!bekle.checked && ara && caliyor) ilerle();
   });
   window.addEventListener('pagehide', () => sifirla());
+  // Metindeki âyet düğmesi o bölümü baştan çalar (madde.ts).
+  kok.addEventListener('calisma:cal', (e) => {
+    const deger = String((e as CustomEvent<number>).detail);
+    if (![...bolum.options].some((o) => o.value === deger)) return;
+    bolum.value = deger;
+    sifirla();
+    oynat.click();
+  });
   kok.querySelector<HTMLFieldSetElement>('[data-ayarlar]')!.disabled = false;
   oynat.disabled = false;
 }

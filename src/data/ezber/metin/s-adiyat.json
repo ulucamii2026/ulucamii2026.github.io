@@ -1,0 +1,276 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "s-adiyat",
+ "kuran": {
+  "sure": 100,
+  "ayetler": [
+   1,
+   11
+  ]
+ },
+ "sureAdi": "الْعَادِيَاتِ",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "وَالْعَادِیَاتِ ضَبْحًاۙ",
+   "sayfa": 599
+  },
+  {
+   "no": 2,
+   "ar": "فَالْمُورِیَاتِ قَدْحًاۙ",
+   "sayfa": 599
+  },
+  {
+   "no": 3,
+   "ar": "فَالْمُغٖیرَاتِ صُبْحًاۙ",
+   "sayfa": 599
+  },
+  {
+   "no": 4,
+   "ar": "فَاَثَرْنَ بِهٖ نَقْعًاۙ",
+   "sayfa": 599
+  },
+  {
+   "no": 5,
+   "ar": "فَوَسَطْنَ بِهٖ جَمْعًاۙ",
+   "sayfa": 599
+  },
+  {
+   "no": 6,
+   "ar": "اِنَّ الْاِنْسَانَ لِرَبِّهٖ لَكَنُودٌۚ",
+   "sayfa": 599
+  },
+  {
+   "no": 7,
+   "ar": "وَاِنَّهُ عَلٰى ذٰلِكَ لَشَهٖیدٌۚ",
+   "sayfa": 599
+  },
+  {
+   "no": 8,
+   "ar": "وَاِنَّهُ لِحُبِّ الْخَیْرِ لَشَدٖیدٌؕ",
+   "sayfa": 599
+  },
+  {
+   "no": 9,
+   "ar": "اَفَلَا یَعْلَمُ اِذَا بُعْثِرَ مَا فِی الْقُبُورِۙ",
+   "sayfa": 599
+  },
+  {
+   "no": 10,
+   "ar": "وَحُصِّلَ مَا فِی الصُّدُورِۙ",
+   "sayfa": 599
+  },
+  {
+   "no": 11,
+   "ar": "اِنَّ رَبَّهُمْ بِهِمْ یَوْمَئِذٍ لَخَبٖیرٌ",
+   "sayfa": 599
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı Meâli (kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      6
+     ],
+     "metin": "Soluk soluğa süratle koşan, (koşarken ayaklarını) vurarak ateş çıkaran, sabah erkenden baskın yapan, orada tozu dumana katan ve düşman topluluğunun ortasına dalan atlara andolsun ki, insan gerçekten Rabbine karşı pek nankördür."
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "Hiç şüphesiz buna kendisi de şahittir."
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "Hiç şüphesiz o, mal sevgisi sebebiyle çok katıdır."
+    },
+    {
+     "ayetler": [
+      9,
+      11
+     ],
+     "metin": "Acaba o bilmiyor mu ki, kabirlerde bulunanlar çıkarıldığı ve kalplerdeki ortaya konulduğu zaman, işte o gün onların Rabbi kendilerinin her halinden mutlaka haberdardır."
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "The Holy Quran with English Translation (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "By the galloping, panting horses,"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "striking sparks of fire ˹with their hoofs˺,"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "launching raids at dawn,"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "stirring up ˹clouds of˺ dust,"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "and penetrating into the heart of enemy lines!"
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "Surely humankind is ungrateful to their Lord—"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "and they certainly attest to this—"
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "and they are truly extreme in their love of ˹worldly˺ gains."
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "Do they not know that when the contents of the graves will be spilled out,"
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "and the secrets of the hearts will be laid bare—"
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "surely their Lord is All-Aware of them on that Day."
+    }
+   ]
+  },
+  "de": {
+   "kaynak": "Der Heilige Koran – Deutsche Übersetzung (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Bei den schnaubenden Rennern"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "und den Funken stampfenden"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "und den am Morgen anstürmenden"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "und darin den Staub aufjagenden"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "und darin die Schar durchbrechenden!"
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "Gewiss, der Mensch ist wahrlich gegen seinen Herrn undankbar,"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "und hierfür ist er selbst ein Zeuge."
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "Und stark ist seine Liebe zum irdischen Guten."
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "Weiß er denn nicht, wenn das, was in den Gräbern, herausgerissen wird,"
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "und an den Tag kommt, was in der Brust der Menschen ist –"
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "dass ihr Herr sie wahrlich an jenem Tage kennt?"
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Kur'an-ı Kerim (kuran.diyanet.gov.tr, «Amasya Abay» metni)",
+  "url": "https://kuran.diyanet.gov.tr",
+  "alindi": "2026-10-19"
+ },
+ "ozet": "b51cdaa1322173fb0f88450aa9dd92de7502f9d749d86cc5634fd9bc98939c58",
+ "zor": [],
+ "onay": null
+}

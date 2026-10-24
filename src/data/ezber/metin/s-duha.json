@@ -1,0 +1,325 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "s-duha",
+ "kuran": {
+  "sure": 93,
+  "ayetler": [
+   1,
+   11
+  ]
+ },
+ "sureAdi": "الضُّحٰى",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "وَالضُّحٰىۙ",
+   "sayfa": 595
+  },
+  {
+   "no": 2,
+   "ar": "وَالَّیْلِ اِذَا سَجٰىۙ",
+   "sayfa": 595
+  },
+  {
+   "no": 3,
+   "ar": "مَا وَدَّعَكَ رَبُّكَ وَمَا قَلٰىؕ",
+   "sayfa": 595
+  },
+  {
+   "no": 4,
+   "ar": "وَلَلْاٰخِرَةُ خَیْرٌ لَكَ مِنَ الْاُو𐻿لٰىؕ",
+   "sayfa": 596
+  },
+  {
+   "no": 5,
+   "ar": "وَلَسَوْفَ یُعْطٖیكَ رَبُّكَ فَتَرْضٰىؕ",
+   "sayfa": 596
+  },
+  {
+   "no": 6,
+   "ar": "اَلَمْ یَجِدْكَ یَتٖیمًا فَاٰوٰىࣕ",
+   "sayfa": 596
+  },
+  {
+   "no": 7,
+   "ar": "وَوَجَدَكَ ضَٓالًّا فَهَدٰىࣕ",
+   "sayfa": 596
+  },
+  {
+   "no": 8,
+   "ar": "وَوَجَدَكَ عَٓائِلًا فَاَغْنٰىؕ",
+   "sayfa": 596
+  },
+  {
+   "no": 9,
+   "ar": "فَاَمَّا الْیَتٖیمَ فَلَا تَقْهَرْؕ",
+   "sayfa": 596
+  },
+  {
+   "no": 10,
+   "ar": "وَاَمَّا السَّٓائِلَ فَلَا تَنْهَرْؕ",
+   "sayfa": 596
+  },
+  {
+   "no": 11,
+   "ar": "وَاَمَّا بِنِعْمَةِ رَبِّكَ فَحَدِّثْ",
+   "sayfa": 596
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı Meâli (kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Kuşluk vaktine andolsun,"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "Karanlığı çöktüğü vakit geceye andolsun ki,"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "Rabbin seni terk etmedi, sana darılmadı da."
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Muhakkak ki âhiret senin için dünyadan daha hayırlıdır."
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "Şüphesiz, Rabbin sana verecek ve sen de hoşnut olacaksın."
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "Seni yetim bulup da barındırmadı mı?"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "Seni yolunu kaybetmiş olarak bulup da yola iletmedi mi?"
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "Seni ihtiyaç içinde bulup da zengin etmedi mi?"
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "Öyleyse sakın yetimi ezme!"
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "Sakın isteyeni azarlama!"
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "Rabbinin nimetine gelince; işte onu anlat."
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "The Holy Quran with English Translation (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "By the morning sunlight,"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "and the night when it falls still!"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "Your Lord ˹O Prophet˺ has not abandoned you, nor has He become hateful ˹of you˺."
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "And the next life is certainly far better for you than this one."
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "And ˹surely˺ your Lord will give so much to you that you will be pleased."
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "Did He not find you as an orphan then sheltered you?"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "Did He not find you unguided then guided you?"
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "And did He not find you needy then satisfied your needs?"
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "So do not oppress the orphan,"
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "nor repulse the beggar."
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "And proclaim the blessings of your Lord."
+    }
+   ]
+  },
+  "de": {
+   "kaynak": "Der Heilige Koran – Deutsche Übersetzung (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Bei der Morgenstunde"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "und der Nacht, wenn sie dunkelt!"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "Dein Herr hat dich nicht verlassen und nicht gehasst!"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Und wahrlich, das Jenseits ist besser für dich als das Diesseits,"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "und wahrlich, geben wird dir dein Herr, und du wirst zufrieden sein."
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "Fand er dich nicht als Waise und nahm dich auf?"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "Und fand dich irrend und leitete dich?"
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "Und fand dich arm und machte dich reich?"
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "Sodann, was die Waise betrifft, unterdrücke sie nicht,"
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "und was den Bettler betrifft, verstoß ihn nicht,"
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "und was deines Herrn Gnade betrifft, erwähne sie dankend."
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Kur'an-ı Kerim (kuran.diyanet.gov.tr, «Amasya Abay» metni)",
+  "url": "https://kuran.diyanet.gov.tr",
+  "alindi": "2026-10-19"
+ },
+ "ozet": "b4f13b041162fe3949a79d403f5d96cd4e710d99825736d12ac0ce3ff9dbcb94",
+ "zor": [],
+ "onay": null
+}

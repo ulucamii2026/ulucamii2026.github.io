@@ -1,0 +1,203 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "s-fatiha",
+ "kuran": {
+  "sure": 1,
+  "ayetler": [
+   1,
+   7
+  ]
+ },
+ "sureAdi": "الْفَاتِحَةِ",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحٖیمِ",
+   "sayfa": 0
+  },
+  {
+   "no": 2,
+   "ar": "اَلْحَمْدُ لِلّٰهِ رَبِّ الْعَالَمٖینَۙ",
+   "sayfa": 0
+  },
+  {
+   "no": 3,
+   "ar": "اَلرَّحْمٰنِ الرَّحٖیمِۙ",
+   "sayfa": 0
+  },
+  {
+   "no": 4,
+   "ar": "مَالِكِ یَوْمِ الدّٖینِؕ",
+   "sayfa": 0
+  },
+  {
+   "no": 5,
+   "ar": "اِیَّاكَ نَعْبُدُ وَاِیَّاكَ نَسْتَعٖینُؕ",
+   "sayfa": 0
+  },
+  {
+   "no": 6,
+   "ar": "اِهْدِنَا الصِّرَاطَ الْمُسْتَقٖیمَۙ",
+   "sayfa": 0
+  },
+  {
+   "no": 7,
+   "ar": "صِرَاطَ الَّذٖینَ اَنْعَمْتَ عَلَیْهِمْۙ غَیْرِ الْمَغْضُوبِ عَلَیْهِمْ وَلَا الضَّٓالّٖینَ",
+   "sayfa": 0
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı Meâli (kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Bismillahirrahmânirrahîm",
+     "duzeltme": "Kaynakta 1. âyetin meâl kaydı yok. Kaynak: https://kuran.diyanet.gov.tr/mushaf/kuran-meal-2/fatiha-suresi-1/ayet-1/diyanet-isleri-baskanligi-meali-1 (27 Eylül 2026 kopyası: egitim/docs/taslaklar/uretim/fatiha-diyanet.json)"
+    },
+    {
+     "ayetler": [
+      2,
+      4
+     ],
+     "metin": "Hamd, Âlemlerin Rabbi, Rahmân, Rahîm, hesap ve ceza gününün (ahiret gününün) maliki Allah'a mahsustur.",
+     "duzeltme": "Kaynakta «Hamd, Âlemlerin Rabbi, Rahmân, Rahîm, hesap ve ceza gününün… maliki Allah'a mahsustur.» kaydı 3–4'e bağlı; metin 2–4. âyetlerin meâlidir. Eski kuran.diyanet.gov.tr sayfasında gruplama 1 · 2–4 · 5 · 6–7 idi (27 Eylül 2026 kopyası: egitim/docs/taslaklar/uretim/fatiha-diyanet.json)."
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "(Allahım!) Yalnız sana ibadet ederiz ve yalnız senden yardım dileriz."
+    },
+    {
+     "ayetler": [
+      6,
+      7
+     ],
+     "metin": "Bizi doğru yola, kendilerine nimet verdiklerinin yoluna ilet; gazaba uğrayanlarınkine ve sapıklarınkine değil."
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "The Holy Quran with English Translation (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "In the Name of Allah—the Most Compassionate, Most Merciful."
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "All praise is for Allah—Lord of all worlds,"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "the Most Compassionate, Most Merciful,"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Master of the Day of Judgment."
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "You ˹alone˺ we worship and You ˹alone˺ we ask for help."
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "Guide us along the Straight Path,"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "the Path of those You have blessed—not those You are displeased with, or those who are astray."
+    }
+   ]
+  },
+  "de": {
+   "kaynak": "Der Heilige Koran – Deutsche Übersetzung (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Im Namen Allahs, des Erbarmers, des Barmherzigen!"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "Lob sei Allah, dem Herrn der Welten,"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "dem Erbarmer, dem Barmherzigen,"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "dem Herrscher am Tag des Gerichts!"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "Dir dienen wir und dich bitten wir um Hilfe."
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "Leite uns den geraden Weg,"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "den Weg derer, denen du gnädig bist, nicht derer, denen gezürnt wurde, und nicht der Irregehenden.",
+     "duzeltme": "Kaynakta 7. âyetin Almanca kaydı yok. Kaynak: Der Heilige Koran – Deutsche Übersetzung, Diyanet İşleri Başkanlığı (dijital.diyanet.gov.tr, kitap 5684, PDF s. 4); 1–6. âyetler API kaydıyla birebir aynı"
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Kur'an-ı Kerim (kuran.diyanet.gov.tr, «Amasya Abay» metni)",
+  "url": "https://kuran.diyanet.gov.tr",
+  "alindi": "2026-10-19"
+ },
+ "ozet": "fade36cedb963ecf10e75705cf7fec85da9a6b45e0245aae5c2569acaad33a8a",
+ "zor": [],
+ "onay": null
+}

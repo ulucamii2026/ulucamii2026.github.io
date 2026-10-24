@@ -1,0 +1,136 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "d-rabbisrahli",
+ "kuran": {
+  "sure": 20,
+  "ayetler": [
+   25,
+   28
+  ]
+ },
+ "sureAdi": "طٰهٰ",
+ "bolumler": [
+  {
+   "no": 25,
+   "ar": "قَالَ رَبِّ اشْرَحْ لٖی صَدْرٖیۙ",
+   "sayfa": 312
+  },
+  {
+   "no": 26,
+   "ar": "وَیَسِّرْ لٖٓی اَمْرٖیۙ",
+   "sayfa": 312
+  },
+  {
+   "no": 27,
+   "ar": "وَاحْلُلْ عُقْدَةً مِنْ لِسَانٖیۙ",
+   "sayfa": 312
+  },
+  {
+   "no": 28,
+   "ar": "یَفْقَهُوا قَوْلٖیࣕ",
+   "sayfa": 312
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı Meâli (kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      25,
+      25
+     ],
+     "metin": "Mûsâ dedi ki: \"Rabbim! Gönlüme ferahlık ver.\""
+    },
+    {
+     "ayetler": [
+      26,
+      26
+     ],
+     "metin": "\"İşimi bana kolaylaştır.\""
+    },
+    {
+     "ayetler": [
+      27,
+      28
+     ],
+     "metin": "\"Dilimdeki tutukluğu çöz ki sözümü anlasınlar.\""
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "The Holy Quran with English Translation (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      25,
+      25
+     ],
+     "metin": "Moses prayed, “My Lord! Uplift my heart for me,"
+    },
+    {
+     "ayetler": [
+      26,
+      26
+     ],
+     "metin": "and make my task easy,"
+    },
+    {
+     "ayetler": [
+      27,
+      27
+     ],
+     "metin": "and remove the impediment from my tongue"
+    },
+    {
+     "ayetler": [
+      28,
+      28
+     ],
+     "metin": "so people may understand my speech,"
+    }
+   ]
+  },
+  "de": {
+   "kaynak": "Der Heilige Koran – Deutsche Übersetzung (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      25,
+      25
+     ],
+     "metin": "Er sagte: „Mein Herr, weite mir meine Brust"
+    },
+    {
+     "ayetler": [
+      26,
+      26
+     ],
+     "metin": "und mache mir mein Geschäft leicht"
+    },
+    {
+     "ayetler": [
+      27,
+      27
+     ],
+     "metin": "und löse den Knoten meiner Zunge,"
+    },
+    {
+     "ayetler": [
+      28,
+      28
+     ],
+     "metin": "damit sie mein Wort verstehen."
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Kur'an-ı Kerim (kuran.diyanet.gov.tr, «Amasya Abay» metni)",
+  "url": "https://kuran.diyanet.gov.tr",
+  "alindi": "2026-10-19"
+ },
+ "ozet": "f9f322fe09763faa43aea3efd8e4086f8bb4f49a6cb49c7d61a276422f6510c9",
+ "zor": [],
+ "onay": null
+}

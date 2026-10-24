@@ -1,0 +1,195 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "s-kafirun",
+ "kuran": {
+  "sure": 109,
+  "ayetler": [
+   1,
+   6
+  ]
+ },
+ "sureAdi": "الْكَافِرُونَ",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "قُلْ یَٓا اَیُّهَا الْكَافِرُونَۙ",
+   "sayfa": 603
+  },
+  {
+   "no": 2,
+   "ar": "لَٓا اَعْبُدُ مَا تَعْبُدُونَۙ",
+   "sayfa": 603
+  },
+  {
+   "no": 3,
+   "ar": "وَلَٓا اَنْتُمْ عَابِدُونَ مَٓا اَعْبُدُۚ",
+   "sayfa": 603
+  },
+  {
+   "no": 4,
+   "ar": "وَلَٓا اَنَا𐻾 عَابِدٌ مَا عَبَدْتُمْۙ",
+   "sayfa": 603
+  },
+  {
+   "no": 5,
+   "ar": "وَلَٓا اَنْتُمْ عَابِدُونَ مَٓا اَعْبُدُؕ",
+   "sayfa": 603
+  },
+  {
+   "no": 6,
+   "ar": "لَكُمْ دٖینُكُمْ وَلِیَ دٖینِ",
+   "sayfa": 603
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı Meâli (kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "De ki: \"Ey Kâfirler!\""
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "\"Ben sizin kulluk ettiklerinize kulluk etmem.\""
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "\"Siz de benim kulluk ettiğime kulluk edecek değilsiniz.\""
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "\"Ben sizin kulluk ettiklerinize kulluk edecek değilim.\""
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "\"Siz de benim kulluk ettiğime kulluk edecek değilsiniz.\""
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "\"Sizin dininiz size, benim dinim de banadır.\""
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "The Holy Quran with English Translation (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Say, ˹O Prophet,˺ “O you disbelievers!"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "I do not worship what you worship,"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "nor do you worship what I worship."
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "I will never worship what you worship,"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "nor will you ever worship what I worship."
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "You have your way, and I have my Way.”"
+    }
+   ]
+  },
+  "de": {
+   "kaynak": "Der Heilige Koran – Deutsche Übersetzung (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Sag: Ungläubige!,"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "ich diene nicht dem, dem ihr dient,"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "und ihr seid nicht Diener dessen, dem ich diene."
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Und ich bin nicht Diener dessen, dem ihr dientet,"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "und ihr seid nicht Diener dessen, dem ich diene."
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "Euch eure Religion und mir meine Religion."
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Kur'an-ı Kerim (kuran.diyanet.gov.tr, «Amasya Abay» metni)",
+  "url": "https://kuran.diyanet.gov.tr",
+  "alindi": "2026-10-19"
+ },
+ "ozet": "4b57a154ea824968e00197826f96ebca07c222cce3f656f91030becaf50ee195",
+ "zor": [],
+ "onay": null
+}

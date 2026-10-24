@@ -1,0 +1,777 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "s-fecr",
+ "kuran": {
+  "sure": 89,
+  "ayetler": [
+   1,
+   30
+  ]
+ },
+ "sureAdi": "الْفَجْرِ",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "وَالْفَجْرِۙ",
+   "sayfa": 592
+  },
+  {
+   "no": 2,
+   "ar": "وَلَیَالٍ عَشْرٍۙ",
+   "sayfa": 592
+  },
+  {
+   "no": 3,
+   "ar": "وَالشَّفْعِ وَالْوَتْرِۙ",
+   "sayfa": 592
+  },
+  {
+   "no": 4,
+   "ar": "وَالَّیْلِ اِذَا یَسْرِۚ",
+   "sayfa": 592
+  },
+  {
+   "no": 5,
+   "ar": "هَلْ فٖی ذٰلِكَ قَسَمٌ لِذٖی حِجْرٍؕ",
+   "sayfa": 592
+  },
+  {
+   "no": 6,
+   "ar": "اَلَمْ تَرَ كَیْفَ فَعَلَ رَبُّكَ بِعَادٍࣕۙ",
+   "sayfa": 592
+  },
+  {
+   "no": 7,
+   "ar": "اِرَمَ ذَاتِ الْعِمَادِࣕۙ",
+   "sayfa": 592
+  },
+  {
+   "no": 8,
+   "ar": "اَلَّتٖی لَمْ یُخْلَقْ مِثْلُهَا فِی الْبِلَادِࣕۙ",
+   "sayfa": 592
+  },
+  {
+   "no": 9,
+   "ar": "وَثَمُودَ الَّذٖینَ جَابُوا الصَّخْرَ بِالْوَادِࣕۙ",
+   "sayfa": 592
+  },
+  {
+   "no": 10,
+   "ar": "وَفِرْعَوْنَ ذِی الْاَوْتَادِࣕۙ",
+   "sayfa": 592
+  },
+  {
+   "no": 11,
+   "ar": "اَلَّذٖینَ طَغَوْا فِی الْبِلَادِࣕۙ",
+   "sayfa": 592
+  },
+  {
+   "no": 12,
+   "ar": "فَاَكْثَرُوا فٖیهَا الْفَسَادَࣕۙ",
+   "sayfa": 592
+  },
+  {
+   "no": 13,
+   "ar": "فَصَبَّ عَلَیْهِمْ رَبُّكَ سَوْطَ عَذَابٍࣕۙ",
+   "sayfa": 592
+  },
+  {
+   "no": 14,
+   "ar": "اِنَّ رَبَّكَ لَبِالْمِرْصَادِؕ",
+   "sayfa": 592
+  },
+  {
+   "no": 15,
+   "ar": "فَاَمَّا الْاِنْسَانُ اِذَا مَا ابْتَلٰیهُ رَبُّهُ فَاَكْرَمَهُ وَنَعَّمَهُ فَیَقُولُ رَبّٖٓی اَكْرَمَنِؕ",
+   "sayfa": 593
+  },
+  {
+   "no": 16,
+   "ar": "وَاَمَّٓا اِذَا مَا ابْتَلٰیهُ فَقَدَرَ عَلَیْهِ رِزْقَهُ فَیَقُولُ رَبّٖٓی اَهَانَنِۚ",
+   "sayfa": 593
+  },
+  {
+   "no": 17,
+   "ar": "كَلَّا بَلْ لَا تُكْرِمُونَ الْیَتٖیمَۙ",
+   "sayfa": 593
+  },
+  {
+   "no": 18,
+   "ar": "وَلَا تَحَٓاضُّونَ عَلٰى طَعَامِ الْمِسْكٖینِۙ",
+   "sayfa": 593
+  },
+  {
+   "no": 19,
+   "ar": "وَتَاْكُلُونَ التُّرَاثَ اَكْلًا لَمًّاۙ",
+   "sayfa": 593
+  },
+  {
+   "no": 20,
+   "ar": "وَتُحِبُّونَ الْمَالَ حُبًّا جَمًّاؕ",
+   "sayfa": 593
+  },
+  {
+   "no": 21,
+   "ar": "كَلَّٓا اِذَا دُكَّتِ الْاَرْضُ دَكًّا دَكًّاۙ",
+   "sayfa": 593
+  },
+  {
+   "no": 22,
+   "ar": "وَجَٓاءَ رَبُّكَ وَالْمَلَكُ صَفًّا صَفًّاۚ",
+   "sayfa": 593
+  },
+  {
+   "no": 23,
+   "ar": "وَجٖٓیءَ یَوْمَئِذٍ بِجَهَنَّمَ یَوْمَئِذٍ یَتَذَكَّرُ الْاِنْسَانُ وَاَنّٰى لَهُ الذِّكْرٰىؕ",
+   "sayfa": 593
+  },
+  {
+   "no": 24,
+   "ar": "یَقُولُ یَا لَیْتَنٖی قَدَّمْتُ لِحَیَاتٖیۚ",
+   "sayfa": 593
+  },
+  {
+   "no": 25,
+   "ar": "فَیَوْمَئِذٍ لَا یُعَذِّبُ عَذَابَهُٓ اَحَدٌۙ",
+   "sayfa": 593
+  },
+  {
+   "no": 26,
+   "ar": "وَلَا یُوثِقُ وَثَاقَهُٓ اَحَدٌؕ",
+   "sayfa": 593
+  },
+  {
+   "no": 27,
+   "ar": "یَٓا اَیَّتُهَا النَّفْسُ الْمُطْمَئِنَّةُࣗ",
+   "sayfa": 593
+  },
+  {
+   "no": 28,
+   "ar": "اِرْجِعٖٓی اِلٰى رَبِّكِ رَاضِیَةً مَرْضِیَّةًۚ",
+   "sayfa": 593
+  },
+  {
+   "no": 29,
+   "ar": "فَادْخُلٖی فٖی عِبَادٖیۙ",
+   "sayfa": 593
+  },
+  {
+   "no": 30,
+   "ar": "وَادْخُلٖی جَنَّتٖی",
+   "sayfa": 593
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı Meâli (kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Tan yerinin ağarmasına andolsun,"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "On geceye andolsun,"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "Çifte ve teke andolsun,"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Geçip giden geceye andolsun (ki, müşrikler azaba uğrayacaklardır)."
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "Şüphesiz bunlarda, akıl sahibi bir kimse için üzerine yemin edilmeye değer bir özellik vardır."
+    },
+    {
+     "ayetler": [
+      6,
+      10
+     ],
+     "metin": "(Ey Muhammed!) Rabbinin, (Hûd'un kavmi) Ad'e, şehirler içinde benzeri kurulmamış olan, sütunlarla dolu İrem'e, vadide kayaları oyan (Salih'in kavmi) Semûd'a, kazıklar sahibi Firavun'a ne yaptığını görmedin mi?"
+    },
+    {
+     "ayetler": [
+      11,
+      12
+     ],
+     "metin": "Bunlar şehirlerde azgınlık eden ve oralarda pek çok bozgunculuk çıkaran kimselerdi."
+    },
+    {
+     "ayetler": [
+      13,
+      13
+     ],
+     "metin": "Bu yüzden Rabbin onların üzerine azap kamçısı yağdırdı."
+    },
+    {
+     "ayetler": [
+      14,
+      14
+     ],
+     "metin": "Şüphesiz Rabbin, gözetlemededir."
+    },
+    {
+     "ayetler": [
+      15,
+      15
+     ],
+     "metin": "İnsan ise; Rabbi onu deneyip de kendisine ikramda bulunduğunda, ona bol bol nimetler verdiğinde, \"Rabbim bana ikram etti\" der."
+    },
+    {
+     "ayetler": [
+      16,
+      16
+     ],
+     "metin": "Ama onu deneyip rızkını daraltınca da, \"Rabbim beni aşağıladı\" der."
+    },
+    {
+     "ayetler": [
+      17,
+      17
+     ],
+     "metin": "Hayır, hayır! Yetime ikram etmiyorsunuz."
+    },
+    {
+     "ayetler": [
+      18,
+      18
+     ],
+     "metin": "Yoksulu yedirmek konusunda birbirinizi teşvik etmiyorsunuz."
+    },
+    {
+     "ayetler": [
+      19,
+      19
+     ],
+     "metin": "Haram helâl demeden mirası alabildiğine yiyorsunuz."
+    },
+    {
+     "ayetler": [
+      20,
+      20
+     ],
+     "metin": "Malı da pek çok seviyorsunuz."
+    },
+    {
+     "ayetler": [
+      21,
+      21
+     ],
+     "metin": "Hayır, yeryüzü (kıyamet sarsıntısıyla) parça parça olup dağıldığı zaman,"
+    },
+    {
+     "ayetler": [
+      22,
+      23
+     ],
+     "metin": "Rabbinin buyruğu ve saf saf dizilmiş olarak melekler geldiği ve o gün cehennem getirildiği zaman, işte o gün insan (yaptıklarını birer birer) hatırlar. Fakat bu hatırlamanın ona nasıl faydası olacak!?"
+    },
+    {
+     "ayetler": [
+      24,
+      24
+     ],
+     "metin": "\"Keşke bu hayatım için önceden bir şey yapsaydım\" der."
+    },
+    {
+     "ayetler": [
+      25,
+      25
+     ],
+     "metin": "Artık o gün, Allah'ın edeceği azabı kimse edemez."
+    },
+    {
+     "ayetler": [
+      26,
+      26
+     ],
+     "metin": "Onun vuracağı bağı kimse vuramaz."
+    },
+    {
+     "ayetler": [
+      27,
+      27
+     ],
+     "metin": "(Allah şöyle der:) \"Ey huzur içinde olan nefis!\""
+    },
+    {
+     "ayetler": [
+      28,
+      28
+     ],
+     "metin": "\"Sen O'ndan razı, O da senden razı olarak Rabbine dön!\""
+    },
+    {
+     "ayetler": [
+      29,
+      29
+     ],
+     "metin": "\"(İyi) kullarımın arasına gir.\""
+    },
+    {
+     "ayetler": [
+      30,
+      30
+     ],
+     "metin": "\"Cennetime gir.\""
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "The Holy Quran with English Translation (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "By the dawn,"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "and the ten nights,"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "and the even and the odd,"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "and the night when it passes!"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "Is all this ˹not˺ a sufficient oath for those who have sense?"
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "Did you not see how your Lord dealt with ’Ȃd—"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "˹the people˺ of Iram—with ˹their˺ great stature,"
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "unmatched in any other land;"
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "and Thamûd who carved ˹their homes into˺ the rocks in the ˹Stone˺ Valley;"
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "and the Pharaoh of mighty structures?"
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "They all transgressed throughout the land,"
+    },
+    {
+     "ayetler": [
+      12,
+      12
+     ],
+     "metin": "spreading much corruption there."
+    },
+    {
+     "ayetler": [
+      13,
+      13
+     ],
+     "metin": "So your Lord unleashed on them a scourge of punishment."
+    },
+    {
+     "ayetler": [
+      14,
+      14
+     ],
+     "metin": "˹For˺ your Lord is truly vigilant."
+    },
+    {
+     "ayetler": [
+      15,
+      15
+     ],
+     "metin": "Now, whenever a human being is tested by their Lord through ˹His˺ generosity and blessings, they boast, “My Lord has ˹deservedly˺ honoured me!”"
+    },
+    {
+     "ayetler": [
+      16,
+      16
+     ],
+     "metin": "But when He tests them by limiting their provision, they protest, “My Lord has ˹undeservedly˺ humiliated me!”"
+    },
+    {
+     "ayetler": [
+      17,
+      17
+     ],
+     "metin": "Absolutely not! In fact, you are not ˹even˺ gracious to the orphan,"
+    },
+    {
+     "ayetler": [
+      18,
+      18
+     ],
+     "metin": "nor do you urge one another to feed the poor."
+    },
+    {
+     "ayetler": [
+      19,
+      19
+     ],
+     "metin": "And you devour ˹others’˺ inheritance greedily,"
+    },
+    {
+     "ayetler": [
+      20,
+      20
+     ],
+     "metin": "and love wealth fervently."
+    },
+    {
+     "ayetler": [
+      21,
+      21
+     ],
+     "metin": "Enough! When the earth is entirely crushed over and over,"
+    },
+    {
+     "ayetler": [
+      22,
+      22
+     ],
+     "metin": "and your Lord comes ˹to judge˺ with angels, rank upon rank,"
+    },
+    {
+     "ayetler": [
+      23,
+      23
+     ],
+     "metin": "and Hell is brought forth on that Day—this is when every ˹disbelieving˺ person will remember ˹their own sins˺. But what is the use of remembering then?"
+    },
+    {
+     "ayetler": [
+      24,
+      24
+     ],
+     "metin": "They will cry, “I wish I had sent forth ˹something good˺ for my ˹true˺ life.”"
+    },
+    {
+     "ayetler": [
+      25,
+      25
+     ],
+     "metin": "On that Day He will punish ˹them˺ severely, like no other,"
+    },
+    {
+     "ayetler": [
+      26,
+      26
+     ],
+     "metin": "and bind ˹them˺ tightly, like no other."
+    },
+    {
+     "ayetler": [
+      27,
+      27
+     ],
+     "metin": "˹Allah will say to the righteous,˺ “O tranquil soul!"
+    },
+    {
+     "ayetler": [
+      28,
+      28
+     ],
+     "metin": "Return to your Lord, well pleased ˹with Him˺ and well pleasing ˹to Him˺."
+    },
+    {
+     "ayetler": [
+      29,
+      29
+     ],
+     "metin": "So join My servants,"
+    },
+    {
+     "ayetler": [
+      30,
+      30
+     ],
+     "metin": "and enter My Paradise.”"
+    }
+   ]
+  },
+  "de": {
+   "kaynak": "Der Heilige Koran – Deutsche Übersetzung (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Bei der Morgenröte"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "und den zehn Nächten,"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "und dem Geraden und Ungeraden an Zahl,"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "und der Nacht, wenn sie vergeht!"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "Ist hierin ein Schwur für den Einsichtsvollen?"
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "Sahst du nicht, wie dein Herr mit den Ad verfuhr?"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "Mit Iram der Säulenreichen,"
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "dergleichen wurde nirgendswo erschaffen?"
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "Und mit Semud, die im Tal Felsen aushöhlten?"
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "Und mit Pharao, dem Herrn der Pfeiler,"
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "mit all denen, die im Lande frevelten"
+    },
+    {
+     "ayetler": [
+      12,
+      12
+     ],
+     "metin": "und des Verderbens viel in ihm anrichteten?"
+    },
+    {
+     "ayetler": [
+      13,
+      13
+     ],
+     "metin": "Und dein Herr schüttete über sie die Geißel der Strafe aus."
+    },
+    {
+     "ayetler": [
+      14,
+      14
+     ],
+     "metin": "Dein Herr ist wahrlich auf der Wacht."
+    },
+    {
+     "ayetler": [
+      15,
+      15
+     ],
+     "metin": "Und was den Menschen betrifft – wenn sein Herr ihn ehrt und begnadet, um zu prüfen, dann sagt er: „Mein Herr hat mich geehrt.“"
+    },
+    {
+     "ayetler": [
+      16,
+      16
+     ],
+     "metin": "Wenn er ihn aber prüft und ihm seine Versorgung kürzt, dann sagt er: „Mein Herr verachtet mich.“"
+    },
+    {
+     "ayetler": [
+      17,
+      17
+     ],
+     "metin": "Keineswegs; doch ihr bewirtet die Waise nicht"
+    },
+    {
+     "ayetler": [
+      18,
+      18
+     ],
+     "metin": "und eifert einander zur Speisung des Armen nicht an"
+    },
+    {
+     "ayetler": [
+      19,
+      19
+     ],
+     "metin": "und verzehrt das Erbe des Unmündigen allzumal"
+    },
+    {
+     "ayetler": [
+      20,
+      20
+     ],
+     "metin": "und liebt das Hab und Gut in übermäßiger Liebe."
+    },
+    {
+     "ayetler": [
+      21,
+      21
+     ],
+     "metin": "Keineswegs. Doch wenn die Erde kurz und klein zermalmt wird"
+    },
+    {
+     "ayetler": [
+      22,
+      22
+     ],
+     "metin": "und dein Herr und die Engel in Reihen auf Reihen kommen"
+    },
+    {
+     "ayetler": [
+      23,
+      23
+     ],
+     "metin": "und die Hölle an jenem Tage gebracht wird, an jenem Tage möchte der Mensch Ermahnung annehmen. Woher aber wäre ihm die Ermahnung?"
+    },
+    {
+     "ayetler": [
+      24,
+      24
+     ],
+     "metin": "Er wird dann sagen: „O dass ich doch für mein jenseitiges Leben etwas vorausgeschickt hätte!“"
+    },
+    {
+     "ayetler": [
+      25,
+      25
+     ],
+     "metin": "Und an jenem Tage wird keiner strafen wie Er,"
+    },
+    {
+     "ayetler": [
+      26,
+      26
+     ],
+     "metin": "und keiner wird binden wie Er."
+    },
+    {
+     "ayetler": [
+      27,
+      27
+     ],
+     "metin": "O du beruhigte Seele,"
+    },
+    {
+     "ayetler": [
+      28,
+      28
+     ],
+     "metin": "kehre zurück zu deinem Herrn zufrieden, befriedigt,"
+    },
+    {
+     "ayetler": [
+      29,
+      29
+     ],
+     "metin": "und tritt unter meine Diener ein,"
+    },
+    {
+     "ayetler": [
+      30,
+      30
+     ],
+     "metin": "und tritt in mein Paradies ein!"
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Kur'an-ı Kerim (kuran.diyanet.gov.tr, «Amasya Abay» metni)",
+  "url": "https://kuran.diyanet.gov.tr",
+  "alindi": "2026-10-19"
+ },
+ "ozet": "d01577e0e3c21c60c946d406fc0c7b42383fc2ea11ae39a2092efc0b527b91e7",
+ "zor": [],
+ "onay": null
+}

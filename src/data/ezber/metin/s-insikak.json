@@ -1,0 +1,668 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "s-insikak",
+ "kuran": {
+  "sure": 84,
+  "ayetler": [
+   1,
+   25
+  ]
+ },
+ "sureAdi": "الْاِنْشِقَاقِ",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "اِذَا السَّمَٓاءُ انْشَقَّتْۙ",
+   "sayfa": 588
+  },
+  {
+   "no": 2,
+   "ar": "وَاَذِنَتْ لِرَبِّهَا وَحُقَّتْۙ",
+   "sayfa": 588
+  },
+  {
+   "no": 3,
+   "ar": "وَاِذَا الْاَرْضُ مُدَّتْۙ",
+   "sayfa": 588
+  },
+  {
+   "no": 4,
+   "ar": "وَاَلْقَتْ مَا فٖیهَا وَتَخَلَّتْۙ",
+   "sayfa": 588
+  },
+  {
+   "no": 5,
+   "ar": "وَاَذِنَتْ لِرَبِّهَا وَحُقَّتْؕ",
+   "sayfa": 588
+  },
+  {
+   "no": 6,
+   "ar": "یَٓا اَیُّهَا الْاِنْسَانُ اِنَّكَ كَادِحٌ اِلٰى رَبِّكَ كَدْحًا فَمُلَاقٖیهِۚ",
+   "sayfa": 588
+  },
+  {
+   "no": 7,
+   "ar": "فَاَمَّا مَنْ اُو𐻿تِیَ كِتَابَهُ بِیَمٖینِهٖۙ",
+   "sayfa": 588
+  },
+  {
+   "no": 8,
+   "ar": "فَسَوْفَ یُحَاسَبُ حِسَابًا یَسٖیرًاۙ",
+   "sayfa": 588
+  },
+  {
+   "no": 9,
+   "ar": "وَیَنْقَلِبُ اِلٰٓى اَهْلِهٖ مَسْرُورًاؕ",
+   "sayfa": 588
+  },
+  {
+   "no": 10,
+   "ar": "وَاَمَّا مَنْ اُو𐻿تِیَ كِتَابَهُ وَرَٓاءَ ظَهْرِهٖۙ",
+   "sayfa": 588
+  },
+  {
+   "no": 11,
+   "ar": "فَسَوْفَ یَدْعُوا ثُبُورًاۙ",
+   "sayfa": 588
+  },
+  {
+   "no": 12,
+   "ar": "وَیَصْلٰى سَعٖیرًاؕ",
+   "sayfa": 588
+  },
+  {
+   "no": 13,
+   "ar": "اِنَّهُ كَانَ فٖٓی اَهْلِهٖ مَسْرُورًا",
+   "sayfa": 588
+  },
+  {
+   "no": 14,
+   "ar": "اِنَّهُ ظَنَّ اَنْ لَنْ یَحُورَۚۛ",
+   "sayfa": 589
+  },
+  {
+   "no": 15,
+   "ar": "بَلٰىۚۛ اِنَّ رَبَّهُ كَانَ بِهٖ بَصٖیرًاؕ",
+   "sayfa": 589
+  },
+  {
+   "no": 16,
+   "ar": "فَلَٓا اُقْسِمُ بِالشَّفَقِۙ",
+   "sayfa": 589
+  },
+  {
+   "no": 17,
+   "ar": "وَالَّیْلِ وَمَا وَسَقَۙ",
+   "sayfa": 589
+  },
+  {
+   "no": 18,
+   "ar": "وَالْقَمَرِ اِذَا اتَّسَقَۙ",
+   "sayfa": 589
+  },
+  {
+   "no": 19,
+   "ar": "لَتَرْكَبُنَّ طَبَقًا عَنْ طَبَقٍؕ",
+   "sayfa": 589
+  },
+  {
+   "no": 20,
+   "ar": "فَمَا لَهُمْ لَا یُؤْمِنُونَۙ",
+   "sayfa": 589
+  },
+  {
+   "no": 21,
+   "ar": "وَاِذَا قُرِئَ عَلَیْهِمُ الْقُرْاٰنُ لَا یَسْجُدُونَؕ",
+   "sayfa": 589
+  },
+  {
+   "no": 22,
+   "ar": "بَلِ الَّذٖینَ كَفَرُوا یُكَذِّبُونَؗ",
+   "sayfa": 589
+  },
+  {
+   "no": 23,
+   "ar": "وَاللّٰهُ اَعْلَمُ بِمَا یُوعُونَؗ",
+   "sayfa": 589
+  },
+  {
+   "no": 24,
+   "ar": "فَبَشِّرْهُمْ بِعَذَابٍ اَلٖیمٍۙ",
+   "sayfa": 589
+  },
+  {
+   "no": 25,
+   "ar": "اِلَّا الَّذٖینَ اٰمَنُوا وَعَمِلُوا الصَّالِحَاتِ لَهُمْ اَجْرٌ غَیْرُ مَمْنُونٍ",
+   "sayfa": 589
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı Meâli (kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      2
+     ],
+     "metin": "Gök yarıldığı ve Rabbine boyun eğdiği zaman -ki ona yaraşan budur-,"
+    },
+    {
+     "ayetler": [
+      3,
+      4
+     ],
+     "metin": "Yer uzatılıp dümdüz edildiği ve içindekileri atıp boşaldığı zaman,"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "Rabbini dinlediği zaman -ki ona yaraşan da budur- (insan yaptıklarını karşısında bulur!)"
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "Ey insan! Şüphesiz, sen Rabbine (kavuşuncaya kadar) didinip duracak ve sonunda didinmenin karşılığına kavuşacaksın."
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "Kime kitabı sağından verilirse,"
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "Hesabı çok kolay bir şekilde görülecek,"
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "Sevinçli olarak ailesine dönecektir."
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "Fakat kime kitabı arkasından verilirse,"
+    },
+    {
+     "ayetler": [
+      11,
+      12
+     ],
+     "metin": "\"Helâk!\" diye bağıracak ve alevli ateşe girecektir."
+    },
+    {
+     "ayetler": [
+      13,
+      13
+     ],
+     "metin": "Çünkü o, (dünyada iken) ailesi içinde sevinçli idi."
+    },
+    {
+     "ayetler": [
+      14,
+      14
+     ],
+     "metin": "Çünkü o hiçbir zaman Rabbine dönmeyeceğini sanırdı."
+    },
+    {
+     "ayetler": [
+      15,
+      15
+     ],
+     "metin": "Hayır! Sandığı gibi değil! Şüphesiz Rabbi onu görüyordu."
+    },
+    {
+     "ayetler": [
+      16,
+      16
+     ],
+     "metin": "Yemin ederim şafağa,"
+    },
+    {
+     "ayetler": [
+      17,
+      17
+     ],
+     "metin": "Geceye ve içinde topladıklarına,"
+    },
+    {
+     "ayetler": [
+      18,
+      18
+     ],
+     "metin": "Dolunay halindeki aya ki,"
+    },
+    {
+     "ayetler": [
+      19,
+      19
+     ],
+     "metin": "Şüphesiz siz halden hale geçeceksiniz."
+    },
+    {
+     "ayetler": [
+      20,
+      20
+     ],
+     "metin": "Böyleyken onlara ne oluyor da iman etmiyorlar?"
+    },
+    {
+     "ayetler": [
+      21,
+      21
+     ],
+     "metin": "Onlara Kur'an okunduğu zaman secde etmiyorlar."
+    },
+    {
+     "ayetler": [
+      22,
+      22
+     ],
+     "metin": "Daha doğrusu, inkar edenler (Kur'an'ı) yalanlıyorlar."
+    },
+    {
+     "ayetler": [
+      23,
+      23
+     ],
+     "metin": "Halbuki Allah, içlerinde ne sakladıklarını çok iyi bilir."
+    },
+    {
+     "ayetler": [
+      24,
+      24
+     ],
+     "metin": "Öyle ise sen onlara elem dolu bir azabı müjdele!"
+    },
+    {
+     "ayetler": [
+      25,
+      25
+     ],
+     "metin": "Ancak iman edip de sâlih ameller işleyenler başka. Onlar için, bitmez tükenmez bir mükafat vardır."
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "The Holy Quran with English Translation (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "When the sky bursts open,"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "obeying its Lord as it must,"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "and when the earth is flattened out,"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "and ejects ˹all˺ its contents and becomes empty,"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "obeying its Lord as it must, ˹surely you will all be judged˺."
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "O humanity! Indeed, you are labouring restlessly towards your Lord, and will ˹eventually˺ meet the consequences."
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "As for those who are given their record in their right hand,"
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "they will have an easy reckoning,"
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "and will return to their people joyfully."
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "And as for those who are given their record ˹in their left hand˺ from behind their backs,"
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "they will cry for ˹instant˺ destruction,"
+    },
+    {
+     "ayetler": [
+      12,
+      12
+     ],
+     "metin": "and will burn in the blazing Fire."
+    },
+    {
+     "ayetler": [
+      13,
+      13
+     ],
+     "metin": "For they used to be prideful among their people,"
+    },
+    {
+     "ayetler": [
+      14,
+      14
+     ],
+     "metin": "thinking they would never return ˹to Allah˺."
+    },
+    {
+     "ayetler": [
+      15,
+      15
+     ],
+     "metin": "Yes ˹they would˺! Surely their Lord has always been All-Seeing of them."
+    },
+    {
+     "ayetler": [
+      16,
+      16
+     ],
+     "metin": "So, I do swear by the twilight!"
+    },
+    {
+     "ayetler": [
+      17,
+      17
+     ],
+     "metin": "And by the night and whatever it envelops!"
+    },
+    {
+     "ayetler": [
+      18,
+      18
+     ],
+     "metin": "And by the moon when it waxes full!"
+    },
+    {
+     "ayetler": [
+      19,
+      19
+     ],
+     "metin": "You will certainly pass from one state to another."
+    },
+    {
+     "ayetler": [
+      20,
+      20
+     ],
+     "metin": "So what is the matter with them that they do not believe,"
+    },
+    {
+     "ayetler": [
+      21,
+      21
+     ],
+     "metin": "and when the Quran is recited to them, they do not bow down ˹in submission˺?"
+    },
+    {
+     "ayetler": [
+      22,
+      22
+     ],
+     "metin": "In fact, the disbelievers persist in denial."
+    },
+    {
+     "ayetler": [
+      23,
+      23
+     ],
+     "metin": "But Allah knows best whatever they hide."
+    },
+    {
+     "ayetler": [
+      24,
+      24
+     ],
+     "metin": "So give them good news of a painful punishment."
+    },
+    {
+     "ayetler": [
+      25,
+      25
+     ],
+     "metin": "But those who believe and do good will have a never-ending reward."
+    }
+   ]
+  },
+  "de": {
+   "kaynak": "Der Heilige Koran – Deutsche Übersetzung (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Wenn der Himmel zerreißt"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "und seinem Herrn pflichtschuldigst gehorcht;"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "und wenn die Erde sich streckt"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "und herauswirft, was sie birgt, und sich leert"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "und ihrem Herrn pflichtschuldigst gehorcht."
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "O Mensch, du bemühtest dich in Mühe um deinen Herrn und sollst ihm ­begegnen."
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "Und was den betrifft, dem sein Buch in seine Rechte gegeben wird,"
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "mit dem wird leichte Abrechnung gehalten,"
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "und fröhlich wird er zu seinen Angehörigen heimkehren."
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "Was aber den betrifft, dem sein Buch hinter seinem Rücken gegeben wird,"
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "der wird nach Vernichtung rufen,"
+    },
+    {
+     "ayetler": [
+      12,
+      12
+     ],
+     "metin": "doch in der Flamme wird er brennen."
+    },
+    {
+     "ayetler": [
+      13,
+      13
+     ],
+     "metin": "Er lebte fröhlich unter seinen Angehörigen;"
+    },
+    {
+     "ayetler": [
+      14,
+      14
+     ],
+     "metin": "er dachte nimmer, zu Allah zurückzukehren;"
+    },
+    {
+     "ayetler": [
+      15,
+      15
+     ],
+     "metin": "doch fürwahr, sein Herr sah auf ihn."
+    },
+    {
+     "ayetler": [
+      16,
+      16
+     ],
+     "metin": "Und ich schwöre beim Abendrot"
+    },
+    {
+     "ayetler": [
+      17,
+      17
+     ],
+     "metin": "und in der Nacht und was sie zusammentreibt,"
+    },
+    {
+     "ayetler": [
+      18,
+      18
+     ],
+     "metin": "und dem Mond, wenn er sich füllt!"
+    },
+    {
+     "ayetler": [
+      19,
+      19
+     ],
+     "metin": "Wahrlich, ihr werdet von einem Zustand in den anderen versetzt."
+    },
+    {
+     "ayetler": [
+      20,
+      20
+     ],
+     "metin": "Und was ist ihnen, dass sie nicht glauben,"
+    },
+    {
+     "ayetler": [
+      21,
+      21
+     ],
+     "metin": "und wenn ihnen der Koran verlesen wird, sich nicht niederwerfen?"
+    },
+    {
+     "ayetler": [
+      22,
+      22
+     ],
+     "metin": "Ja, die Ungläubigen erklären ihn für eine Lüge,"
+    },
+    {
+     "ayetler": [
+      23,
+      23
+     ],
+     "metin": "doch Allah weiß am besten, was sie an Bosheit verbergen."
+    },
+    {
+     "ayetler": [
+      24,
+      24
+     ],
+     "metin": "Darum verkündige ihnen schmerzliche Strafe,"
+    },
+    {
+     "ayetler": [
+      25,
+      25
+     ],
+     "metin": "außer denen, welche glauben und das Rechte tun; ihnen wird unverkürzter Lohn zuteil."
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Kur'an-ı Kerim (kuran.diyanet.gov.tr, «Amasya Abay» metni)",
+  "url": "https://kuran.diyanet.gov.tr",
+  "alindi": "2026-10-19"
+ },
+ "ozet": "b6157465a806772394c2d3ddfc2f802d98fb0b67219ca49be859cccab2d5ebca",
+ "zor": [],
+ "onay": null
+}

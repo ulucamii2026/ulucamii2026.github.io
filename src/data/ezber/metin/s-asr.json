@@ -1,0 +1,110 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "s-asr",
+ "kuran": {
+  "sure": 103,
+  "ayetler": [
+   1,
+   3
+  ]
+ },
+ "sureAdi": "الْعَصْرِ",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "وَالْعَصْرِۙ",
+   "sayfa": 601
+  },
+  {
+   "no": 2,
+   "ar": "اِنَّ الْاِنْسَانَ لَفٖی خُسْرٍۙ",
+   "sayfa": 601
+  },
+  {
+   "no": 3,
+   "ar": "اِلَّا الَّذٖینَ اٰمَنُوا وَعَمِلُوا الصَّالِحَاتِ وَتَوَاصَوْا بِالْحَقِّ وَتَوَاصَوْا بِالصَّبْرِ",
+   "sayfa": 601
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı Meâli (kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      2
+     ],
+     "metin": "Andolsun zamana ki, insan gerçekten ziyan içindedir."
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "Ancak, iman edip de sâlih ameller işleyenler, birbirlerine hakkı tavsiye edenler, birbirlerine sabrı tavsiye edenler başka (Onlar ziyanda değillerdir)."
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "The Holy Quran with English Translation (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "By the ˹passage of˺ time!"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "Surely humanity is in ˹grave˺ loss,"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "except those who have faith, do good, and urge each other to the truth, and urge each other to perseverance."
+    }
+   ]
+  },
+  "de": {
+   "kaynak": "Der Heilige Koran – Deutsche Übersetzung (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Bei dem Nachmittag!"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "Der Mensch ist wahrlich verloren,"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "außer denen, welche glauben und das Rechte tun und einander zur Wahrheit mahnen und zur Geduld."
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Kur'an-ı Kerim (kuran.diyanet.gov.tr, «Amasya Abay» metni)",
+  "url": "https://kuran.diyanet.gov.tr",
+  "alindi": "2026-10-19"
+ },
+ "ozet": "0d594e592682a2aec3d0e4e9856650d09ab722c9cff0876fb2cdef2f56feafdb",
+ "zor": [],
+ "onay": null
+}

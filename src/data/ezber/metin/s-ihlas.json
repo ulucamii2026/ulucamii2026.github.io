@@ -1,0 +1,143 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "s-ihlas",
+ "kuran": {
+  "sure": 112,
+  "ayetler": [
+   1,
+   4
+  ]
+ },
+ "sureAdi": "الْاِخْلَاصِ",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "قُلْ هُوَ اللّٰهُ اَحَدٌۚ",
+   "sayfa": 604
+  },
+  {
+   "no": 2,
+   "ar": "اَللّٰهُ الصَّمَدُۚ",
+   "sayfa": 604
+  },
+  {
+   "no": 3,
+   "ar": "لَمْ یَلِدْ وَلَمْ یُولَدْۙ",
+   "sayfa": 604
+  },
+  {
+   "no": 4,
+   "ar": "وَلَمْ یَكُنْ لَهُ كُفُوًا اَحَدٌ",
+   "sayfa": 604
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı Meâli (kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "De ki: \"O, Allah'tır, bir tektir.\""
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "\"Allah Samed'dir. (Her şey O'na muhtaçtır, o, hiçbir şeye muhtaç değildir.)\""
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "Ondan çocuk olmamıştır (Kimsenin babası değildir). Kendisi de doğmamıştır (kimsenin çocuğu değildir).\""
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "\"Hiçbir şey O'na denk ve benzer değildir.\""
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "The Holy Quran with English Translation (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Say, ˹O Prophet,˺ “He is Allah—One ˹and Indivisible˺;"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "Allah—the Sustainer ˹needed by all˺."
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "He has never had offspring, nor was He born."
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "And there is none comparable to Him.”"
+    }
+   ]
+  },
+  "de": {
+   "kaynak": "Der Heilige Koran – Deutsche Übersetzung (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Sag: Er ist der eine Gott,"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "Allah, der Absolute,"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "Er zeugt nicht und wurde nicht gezeugt,"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "und keiner ist ihm gleich."
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Kur'an-ı Kerim (kuran.diyanet.gov.tr, «Amasya Abay» metni)",
+  "url": "https://kuran.diyanet.gov.tr",
+  "alindi": "2026-10-19"
+ },
+ "ozet": "142d1bc6d22678dc4be1aad5405bcc54bfe013c7b2fa01e91502ca4419ca163a",
+ "zor": [],
+ "onay": null
+}

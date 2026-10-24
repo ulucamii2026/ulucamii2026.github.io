@@ -1,0 +1,141 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "s-felak",
+ "kuran": {
+  "sure": 113,
+  "ayetler": [
+   1,
+   5
+  ]
+ },
+ "sureAdi": "الْفَلَقِ",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "قُلْ اَعُوذُ بِرَبِّ الْفَلَقِۙ",
+   "sayfa": 604
+  },
+  {
+   "no": 2,
+   "ar": "مِنْ شَرِّ مَا خَلَقَۙ",
+   "sayfa": 604
+  },
+  {
+   "no": 3,
+   "ar": "وَمِنْ شَرِّ غَاسِقٍ اِذَا وَقَبَۙ",
+   "sayfa": 604
+  },
+  {
+   "no": 4,
+   "ar": "وَمِنْ شَرِّ النَّفَّاثَاتِ فِی الْعُقَدِۙ",
+   "sayfa": 604
+  },
+  {
+   "no": 5,
+   "ar": "وَمِنْ شَرِّ حَاسِدٍ اِذَا حَسَدَ",
+   "sayfa": 604
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı Meâli (kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      5
+     ],
+     "metin": "De ki: \"Yarattığı şeylerin kötülüğünden, karanlığı çöktüğü zaman gecenin kötülüğünden, düğümlere üfleyenlerin kötülüğünden, haset ettiği zaman hasetçinin kötülüğünden, sabah aydınlığının Rabbine sığınırım.\""
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "The Holy Quran with English Translation (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Say, ˹O Prophet,˺ “I seek refuge in the Lord of the daybreak"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "from the evil of whatever He has created,"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "and from the evil of the night when it grows dark,"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "and from the evil of those ˹witches casting spells by˺ blowing onto knots,"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "and from the evil of an envier when they envy.”"
+    }
+   ]
+  },
+  "de": {
+   "kaynak": "Der Heilige Koran – Deutsche Übersetzung (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Sag: Ich nehme meine Zuflucht zum Herrn des Morgengrauens,"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "vor dem Übel dessen, was er erschaffen,"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "und vor dem Übel der Dunkelheit, wenn sie einbricht,"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "und vor dem Übel der in die Knoten Pustenden"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "und vor dem Übel des Neiders, wenn er neidet."
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Kur'an-ı Kerim (kuran.diyanet.gov.tr, «Amasya Abay» metni)",
+  "url": "https://kuran.diyanet.gov.tr",
+  "alindi": "2026-10-19"
+ },
+ "ozet": "18ec8e9847ee52cc28c6eb51c71a00c2f2deec3120baa13514fbc5e3df3867e2",
+ "zor": [],
+ "onay": null
+}

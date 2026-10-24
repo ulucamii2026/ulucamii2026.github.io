@@ -1,0 +1,214 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "s-maun",
+ "kuran": {
+  "sure": 107,
+  "ayetler": [
+   1,
+   7
+  ]
+ },
+ "sureAdi": "الْمَاعُونِ",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "اَرَاَیْتَ الَّذٖی یُكَذِّبُ بِالدّٖینِؕ",
+   "sayfa": 602
+  },
+  {
+   "no": 2,
+   "ar": "فَذٰلِكَ الَّذٖی یَدُعُّ الْیَتٖیمَۙ",
+   "sayfa": 602
+  },
+  {
+   "no": 3,
+   "ar": "وَلَا یَحُضُّ عَلٰى طَعَامِ الْمِسْكٖینِؕ",
+   "sayfa": 602
+  },
+  {
+   "no": 4,
+   "ar": "فَوَیْلٌ لِلْمُصَلّٖینَۙ",
+   "sayfa": 602
+  },
+  {
+   "no": 5,
+   "ar": "اَلَّذٖینَ هُمْ عَنْ صَلَاتِهِمْ سَاهُونَۙ",
+   "sayfa": 602
+  },
+  {
+   "no": 6,
+   "ar": "اَلَّذٖینَ هُمْ یُرَٓاؤُ𐻿نَۙ",
+   "sayfa": 602
+  },
+  {
+   "no": 7,
+   "ar": "وَیَمْنَعُونَ الْمَاعُونَ",
+   "sayfa": 602
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı Meâli (kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Gördün mü, o hesap ve ceza gününü yalanlayanı!"
+    },
+    {
+     "ayetler": [
+      2,
+      3
+     ],
+     "metin": "İşte o, yetimi itip kakan, yoksula yedirmeyi özendirmeyen kimsedir."
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Yazıklar olsun o namaz kılanlara ki,"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "Onlar namazlarını ciddiye almazlar."
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "Onlar (namazlarıyla) gösteriş yaparlar."
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "Ufacık bir yardıma bile engel olurlar."
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "The Holy Quran with English Translation (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Have you seen the one who denies the ˹final˺ Judgment?"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "That is the one who repulses the orphan,"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "and does not encourage the feeding of the poor."
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "So woe to those ˹hypocrites˺ who pray"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "yet are unmindful of their prayers;"
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "those who ˹only˺ show off,"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "and refuse to give ˹even the simplest˺ aid."
+    }
+   ]
+  },
+  "de": {
+   "kaynak": "Der Heilige Koran – Deutsche Übersetzung (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Hast du den gesehen, der das Gericht leugnet?"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "Er ist es, der die Waise verstößt"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "und zur Speisung des Armen nicht antreibt."
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Wehe den Betenden,"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "die nachlässig in ihren Gebeten sind,"
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "die nur gesehen werden wollen"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "und den Beistand verwehren."
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Kur'an-ı Kerim (kuran.diyanet.gov.tr, «Amasya Abay» metni)",
+  "url": "https://kuran.diyanet.gov.tr",
+  "alindi": "2026-10-19"
+ },
+ "ozet": "7fc7050705c0e8949c1ebece1c5ea817fafee3329c04c74b7c1bea25b273c9a0",
+ "zor": [],
+ "onay": null
+}

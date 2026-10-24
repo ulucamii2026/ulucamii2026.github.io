@@ -1,0 +1,103 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "s-nasr",
+ "kuran": {
+  "sure": 110,
+  "ayetler": [
+   1,
+   3
+  ]
+ },
+ "sureAdi": "النَّصْرِ",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "اِذَا جَٓاءَ نَصْرُ اللّٰهِ وَالْفَتْحُۙ",
+   "sayfa": 603
+  },
+  {
+   "no": 2,
+   "ar": "وَرَاَیْتَ النَّاسَ یَدْخُلُونَ فٖی دٖینِ اللّٰهِ اَفْوَاجًاۙ",
+   "sayfa": 603
+  },
+  {
+   "no": 3,
+   "ar": "فَسَبِّحْ بِحَمْدِ رَبِّكَ وَاسْتَغْفِرْهُؕ اِنَّهُ كَانَ تَوَّابًا",
+   "sayfa": 603
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı Meâli (kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      3
+     ],
+     "metin": "Allah'ın yardımı ve fetih (Mekke fethi) geldiğinde ve insanların bölük bölük Allah'ın dinine girdiğini gördüğünde, Rabbine hamd ederek tespihte bulun ve O'ndan bağışlama dile. Çünkü O tövbeleri çok kabul edendir."
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "The Holy Quran with English Translation (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "When Allah’s ˹ultimate˺ help comes and the victory ˹over Mecca is achieved˺,"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "and you ˹O Prophet˺ see the people embracing Allah’s Way in crowds,"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "then glorify the praises of your Lord and seek His forgiveness, for certainly He is ever Accepting of Repentance."
+    }
+   ]
+  },
+  "de": {
+   "kaynak": "Der Heilige Koran – Deutsche Übersetzung (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Wenn Allahs Hilfe kommt und der Sieg"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "und du die Menschen in Allahs Religion in Scharen eintreten siehst,"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "dann lobpreise deinen Herrn und bitte ihn um Verzeihung; gewiss, er ist vergebend."
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Kur'an-ı Kerim (kuran.diyanet.gov.tr, «Amasya Abay» metni)",
+  "url": "https://kuran.diyanet.gov.tr",
+  "alindi": "2026-10-19"
+ },
+ "ozet": "071c04a4a4f0e7401ee3a9e72d4eef604182940944cf8c1fb242234b4c58d97c",
+ "zor": [],
+ "onay": null
+}

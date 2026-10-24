@@ -1,0 +1,160 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "s-nas",
+ "kuran": {
+  "sure": 114,
+  "ayetler": [
+   1,
+   6
+  ]
+ },
+ "sureAdi": "النَّاسِ",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "قُلْ اَعُوذُ بِرَبِّ النَّاسِۙ",
+   "sayfa": 604
+  },
+  {
+   "no": 2,
+   "ar": "مَلِكِ النَّاسِۙ",
+   "sayfa": 604
+  },
+  {
+   "no": 3,
+   "ar": "اِلٰهِ النَّاسِۙ",
+   "sayfa": 604
+  },
+  {
+   "no": 4,
+   "ar": "مِنْ شَرِّ الْوَسْوَاسِ الْخَنَّاسِۙ",
+   "sayfa": 604
+  },
+  {
+   "no": 5,
+   "ar": "اَلَّذٖی یُوَسْوِسُ فٖی صُدُورِ النَّاسِۙ",
+   "sayfa": 604
+  },
+  {
+   "no": 6,
+   "ar": "مِنَ الْجِنَّةِ وَالنَّاسِ",
+   "sayfa": 604
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı Meâli (kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      6
+     ],
+     "metin": "De ki: \"Cinlerden ve insanlardan; insanların kalplerine vesvese veren sinsi vesvesecinin kötülüğünden, insanların Rabbine, insanların Melik'ine, insanların İlah'ına sığınırım.\""
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "The Holy Quran with English Translation (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Say, ˹O Prophet,˺ “I seek refuge in the Lord of humankind,"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "the Master of humankind,"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "the God of humankind,"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "from the evil of the lurking whisperer—"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "who whispers into the hearts of humankind—"
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "from among jinn and humankind.”"
+    }
+   ]
+  },
+  "de": {
+   "kaynak": "Der Heilige Koran – Deutsche Übersetzung (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Sag: Ich nehme meine Zuflucht zum Herrn der Menschen,"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "dem König der Menschen,"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "dem Gott der Menschen,"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "vor dem Übel des Einflüsterers, des Entweichers,"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "der da einflüstert in die Brust der Menschen –"
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "vor den Dschinn und den Menschen."
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Kur'an-ı Kerim (kuran.diyanet.gov.tr, «Amasya Abay» metni)",
+  "url": "https://kuran.diyanet.gov.tr",
+  "alindi": "2026-10-19"
+ },
+ "ozet": "65866a4cc59bc22f90e5c77714170fd948e86cc70c803bc4a686cf4755742200",
+ "zor": [],
+ "onay": null
+}

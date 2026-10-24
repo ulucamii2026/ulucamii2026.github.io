@@ -1,0 +1,512 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "s-infitar",
+ "kuran": {
+  "sure": 82,
+  "ayetler": [
+   1,
+   19
+  ]
+ },
+ "sureAdi": "الْاِنْفِطَارِ",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "اِذَا السَّمَٓاءُ انْفَطَرَتْۙ",
+   "sayfa": 586
+  },
+  {
+   "no": 2,
+   "ar": "وَاِذَا الْكَوَاكِبُ انْتَثَرَتْۙ",
+   "sayfa": 586
+  },
+  {
+   "no": 3,
+   "ar": "وَاِذَا الْبِحَارُ فُجِّرَتْۙ",
+   "sayfa": 586
+  },
+  {
+   "no": 4,
+   "ar": "وَاِذَا الْقُبُورُ بُعْثِرَتْۙ",
+   "sayfa": 586
+  },
+  {
+   "no": 5,
+   "ar": "عَلِمَتْ نَفْسٌ مَا قَدَّمَتْ وَاَخَّرَتْؕ",
+   "sayfa": 586
+  },
+  {
+   "no": 6,
+   "ar": "یَٓا اَیُّهَا الْاِنْسَانُ مَا غَرَّكَ بِرَبِّكَ الْكَرٖیمِۙ",
+   "sayfa": 586
+  },
+  {
+   "no": 7,
+   "ar": "اَلَّذٖی خَلَقَكَ فَسَوّٰیكَ فَعَدَلَكَۙ",
+   "sayfa": 586
+  },
+  {
+   "no": 8,
+   "ar": "فٖٓی اَیِّ صُورَةٍ مَا شَٓاءَ رَكَّبَكَؕ",
+   "sayfa": 586
+  },
+  {
+   "no": 9,
+   "ar": "كَلَّا بَلْ تُكَذِّبُونَ بِالدّٖینِۙ",
+   "sayfa": 586
+  },
+  {
+   "no": 10,
+   "ar": "وَاِنَّ عَلَیْكُمْ لَحَافِظٖینَۙ",
+   "sayfa": 586
+  },
+  {
+   "no": 11,
+   "ar": "كِرَامًا كَاتِبٖینَۙ",
+   "sayfa": 586
+  },
+  {
+   "no": 12,
+   "ar": "یَعْلَمُونَ مَا تَفْعَلُونَ",
+   "sayfa": 586
+  },
+  {
+   "no": 13,
+   "ar": "اِنَّ الْاَبْرَارَ لَفٖی نَعٖیمٍۚ",
+   "sayfa": 586
+  },
+  {
+   "no": 14,
+   "ar": "وَاِنَّ الْفُجَّارَ لَفٖی جَحٖیمٍۚ",
+   "sayfa": 586
+  },
+  {
+   "no": 15,
+   "ar": "یَصْلَوْنَهَا یَوْمَ الدّٖینِ",
+   "sayfa": 586
+  },
+  {
+   "no": 16,
+   "ar": "وَمَا هُمْ عَنْهَا بِغَٓائِبٖینَؕ",
+   "sayfa": 586
+  },
+  {
+   "no": 17,
+   "ar": "وَمَٓا اَدْرٰیكَ مَا یَوْمُ الدّٖینِۙ",
+   "sayfa": 586
+  },
+  {
+   "no": 18,
+   "ar": "ثُمَّ مَٓا اَدْرٰیكَ مَا یَوْمُ الدّٖینِؕ",
+   "sayfa": 586
+  },
+  {
+   "no": 19,
+   "ar": "یَوْمَ لَا تَمْلِكُ نَفْسٌ لِنَفْسٍ شَیْـًٔاؕ وَالْاَمْرُ یَوْمَئِذٍ لِلّٰهِ",
+   "sayfa": 586
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı Meâli (kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Gök yarıldığı zaman,"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "Yıldızlar saçıldığı zaman,"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "Denizler kaynayıp fışkırtıldığı zaman,"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Kabirlerin içindekiler dışarı çıkarıldığı zaman,"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "Herkes yaptığı ve yapmadığı şeyleri bilecek."
+    },
+    {
+     "ayetler": [
+      6,
+      8
+     ],
+     "metin": "Ey insan! Seni yaratan, şekillendirip ölçülü yapan, dilediği bir biçimde seni oluşturan cömert Rabbine karşı seni ne aldattı?"
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "Hayır, hayır! Siz hesap ve cezayı yalanlıyorsunuz."
+    },
+    {
+     "ayetler": [
+      10,
+      11
+     ],
+     "metin": "Halbuki üzerinizde muhakkak bekçiler, değerli yazıcılar vardır."
+    },
+    {
+     "ayetler": [
+      12,
+      12
+     ],
+     "metin": "Onlar yapmakta olduklarınızı bilirler."
+    },
+    {
+     "ayetler": [
+      13,
+      13
+     ],
+     "metin": "Şüphesiz, iyiler Naîm cennetindedirler."
+    },
+    {
+     "ayetler": [
+      14,
+      14
+     ],
+     "metin": "Şüphesiz, günahkârlar da cehennemdedirler."
+    },
+    {
+     "ayetler": [
+      15,
+      15
+     ],
+     "metin": "Hesap ve ceza günü oraya gireceklerdir."
+    },
+    {
+     "ayetler": [
+      16,
+      16
+     ],
+     "metin": "Onlar oradan kaybolup kurtulacak da değillerdir."
+    },
+    {
+     "ayetler": [
+      17,
+      17
+     ],
+     "metin": "Hesap ve ceza gününün ne olduğunu sen ne bileceksin?"
+    },
+    {
+     "ayetler": [
+      18,
+      18
+     ],
+     "metin": "Evet, hesap ve ceza gününün ne olduğunu sen ne bileceksin?"
+    },
+    {
+     "ayetler": [
+      19,
+      19
+     ],
+     "metin": "O gün kimse kimseye hiçbir fayda sağlayamayacaktır. O gün buyruk, yalnız Allah'ındır."
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "The Holy Quran with English Translation (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "When the sky splits open,"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "and when the stars fall away,"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "and when the seas burst forth,"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "and when the graves spill out,"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "˹then˺ each soul will know what it has sent forth or left behind."
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "O humanity! What has emboldened you against your Lord, the Most Generous,"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "Who created you, fashioned you, and perfected your design,"
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "moulding you in whatever form He willed?"
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "But no! In fact, you deny the ˹final˺ Judgment,"
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "while you are certainly observed by vigilant,"
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "honourable angels, recording ˹everything˺."
+    },
+    {
+     "ayetler": [
+      12,
+      12
+     ],
+     "metin": "They know whatever you do."
+    },
+    {
+     "ayetler": [
+      13,
+      13
+     ],
+     "metin": "Indeed, the virtuous will be in bliss,"
+    },
+    {
+     "ayetler": [
+      14,
+      14
+     ],
+     "metin": "and the wicked will be in Hell,"
+    },
+    {
+     "ayetler": [
+      15,
+      15
+     ],
+     "metin": "burning in it on Judgment Day,"
+    },
+    {
+     "ayetler": [
+      16,
+      16
+     ],
+     "metin": "and they will have no escape from it."
+    },
+    {
+     "ayetler": [
+      17,
+      17
+     ],
+     "metin": "What will make you realize what Judgment Day is?"
+    },
+    {
+     "ayetler": [
+      18,
+      18
+     ],
+     "metin": "Again, what will make you realize what Judgment Day is?"
+    },
+    {
+     "ayetler": [
+      19,
+      19
+     ],
+     "metin": "˹It is˺ the Day no soul will be of ˹any˺ benefit to another whatsoever, for all authority on that Day belongs to Allah ˹entirely˺."
+    }
+   ]
+  },
+  "de": {
+   "kaynak": "Der Heilige Koran – Deutsche Übersetzung (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Wenn der Himmel sich spaltet"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "und wenn sich die Sterne zerstreuen"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "und wenn die Meere aufgewühlt werden"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "und wenn die Gräber umgekehrt werden,"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "dann weiß die Seele, was sie getan und unterlassen hat."
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "Mensch! Was hat dich von deinem hochsinnigen Herrn abwendig gemacht,"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "der dich erschaffen, gebildet und wohlgestaltet hat,"
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "in eine Form, die ihm beliebte, dich gefügt hat?"
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "Fürwahr, und doch leugnet ihr das Gericht."
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "Aber über euch sind wahrlich Hüter,"
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "edle, schreibende,"
+    },
+    {
+     "ayetler": [
+      12,
+      12
+     ],
+     "metin": "welche wissen, was ihr tut."
+    },
+    {
+     "ayetler": [
+      13,
+      13
+     ],
+     "metin": "Die Rechtschaffenen werden in Wonne wohnen,"
+    },
+    {
+     "ayetler": [
+      14,
+      14
+     ],
+     "metin": "und die Missetäter in der Hölle."
+    },
+    {
+     "ayetler": [
+      15,
+      15
+     ],
+     "metin": "Sie werden am Tag des Gerichts dort hin eintreten"
+    },
+    {
+     "ayetler": [
+      16,
+      16
+     ],
+     "metin": "und sollen nimmer aus ihm heraus."
+    },
+    {
+     "ayetler": [
+      17,
+      17
+     ],
+     "metin": "Und was lehrt dich wissen, was der Tag des Gerichts ist?"
+    },
+    {
+     "ayetler": [
+      18,
+      18
+     ],
+     "metin": "Wiederum, was lehrt dich wissen, was der Tag des Gerichts ist?"
+    },
+    {
+     "ayetler": [
+      19,
+      19
+     ],
+     "metin": "An jenem Tage wird ein jeder für den anderen nichts vermögen, und der Befehl ist an jenem Tage Allahs."
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Kur'an-ı Kerim (kuran.diyanet.gov.tr, «Amasya Abay» metni)",
+  "url": "https://kuran.diyanet.gov.tr",
+  "alindi": "2026-10-19"
+ },
+ "ozet": "b19ce6c7d18e477fee617ba24cad5f45b73b89356c448c6bf777229acc173424",
+ "zor": [],
+ "onay": null
+}

@@ -7,7 +7,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { existsSync, mkdirSync, readFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, readdirSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { build } from 'esbuild';
@@ -269,6 +269,33 @@ test('katalog salt okunur: paylaşılan veri dışarıdan değiştirilemez', () 
   const s1 = m.seviyeOgeleri(1);
   s1.reverse();
   assert.equal(m.seviyeOgeleri(1)[0].sira, 1, 'seviyeOgeleri kopya döndürmeli');
+});
+
+test('dinlemeSirasi: birleşik kayıt varsa o; yalnız parçalı sûrede önce eûzü ve besmele; sûre ortası ve dua parçalarıyla', () => {
+  const a = (s, n) => `/media/ses/ayet/${s}-${n}.mp3`;
+  assert.deepEqual(m.dinlemeSirasi(m.ezberBul('s-fatiha')), ['/media/ses/sureler/fatiha.mp3']);
+  assert.deepEqual(m.dinlemeSirasi({ tur: 'sure', kuran: { sure: 99, ayetler: [1, 2] }, ses: { parcalar: [a(99, 1), a(99, 2)] } }),
+    [a(1, 0), a(1, 1), a(99, 1), a(99, 2)]);
+  assert.deepEqual(m.dinlemeSirasi({ tur: 'sure', kuran: { sure: 1, ayetler: [1, 2] }, ses: { parcalar: [a(1, 1), a(1, 2)] } }),
+    [a(1, 0), a(1, 1), a(1, 2)], 'Fâtiha\'da besmele 1. âyettir, iki kez çalmaz');
+  assert.deepEqual(m.dinlemeSirasi({ tur: 'sure', kuran: { sure: 2, ayetler: [285, 286] }, ses: { parcalar: [a(2, 285), a(2, 286)] } }),
+    [a(2, 285), a(2, 286)]);
+  assert.deepEqual(m.dinlemeSirasi(m.ezberBul('d-euzu-besmele')), [a(1, 0), a(1, 1)]);
+  assert.deepEqual(m.dinlemeSirasi({ tur: 'bilgi' }), []);
+  for (const o of katalog.ogeler) {
+    const sira = m.dinlemeSirasi(m.ezberBul(o.id));
+    assert.equal(new Set(sira).size, sira.length, `${o.id}: aynı parça iki kez çalmamalı`);
+  }
+});
+
+test('calismaSayfasiVar: sesi ya da metni olan her maddenin çalışma sayfası var; bilgi maddesinde yok', () => {
+  assert.equal(m.calismaSayfasiVar({ tur: 'bilgi' }), false);
+  assert.equal(m.calismaSayfasiVar({ tur: 'dua', ses: { parcalar: [] } }), false);
+  assert.equal(m.calismaSayfasiVar({ tur: 'sure', kuran: { sure: 99, ayetler: [1, 8] } }), true);
+  // Metin dosyası olup sayfa koşulunu karşılamayan madde, metni yayımlanmadan kalırdı (koşul genişletilmeli).
+  for (const d of readdirSync('src/data/ezber/metin').filter((x) => /^[sdb]-.*\.json$/.test(x))) {
+    assert.ok(m.calismaSayfasiVar(m.ezberBul(d.slice(0, -5))), `${d}: metni var ama çalışma sayfası çıkmıyor`);
+  }
 });
 
 test('ezber:tablo: --dil yalnız beş site dilini kabul eder; bilinmeyen seçenekte çıkış kodu 1', () => {

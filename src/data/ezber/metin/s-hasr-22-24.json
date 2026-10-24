@@ -1,0 +1,117 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "s-hasr-22-24",
+ "kuran": {
+  "sure": 59,
+  "ayetler": [
+   22,
+   24
+  ]
+ },
+ "sureAdi": "الْحَشْرِ",
+ "bolumler": [
+  {
+   "no": 22,
+   "ar": "هُوَ اللّٰهُ الَّذٖی لَٓا اِلٰهَ اِلَّا هُوَۚ عَالِمُ الْغَیْبِ وَالشَّهَادَةِۚ هُوَ الرَّحْمٰنُ الرَّحٖیمُ",
+   "sayfa": 547
+  },
+  {
+   "no": 23,
+   "ar": "هُوَ اللّٰهُ الَّذٖی لَٓا اِلٰهَ اِلَّا هُوَۚ اَلْمَلِكُ الْقُدُّوسُ السَّلَامُ الْمُؤْمِنُ الْمُهَیْمِنُ الْعَزٖیزُ الْجَبَّارُ الْمُتَكَبِّرُؕ سُبْحَانَ اللّٰهِ عَمَّا یُشْرِكُونَ",
+   "sayfa": 547
+  },
+  {
+   "no": 24,
+   "ar": "هُوَ اللّٰهُ الْخَالِقُ الْبَارِئُ الْمُصَوِّرُ لَهُ الْاَسْمَٓاءُ الْحُسْنٰىؕ یُسَبِّحُ لَهُ مَا فِی السَّمٰوَاتِ وَالْاَرْضِۚ وَهُوَ الْعَزٖیزُ الْحَكٖیمُ",
+   "sayfa": 547
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı Meâli (kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      22,
+      22
+     ],
+     "metin": "O, kendisinden başka hiçbir ilah olmayan Allah'tır. Gaybı da, görünen âlemi de bilendir. O, Rahmân'dır, Rahîm'dir."
+    },
+    {
+     "ayetler": [
+      23,
+      23
+     ],
+     "metin": "O, kendisinden başka hiçbir ilah bulunmayan Allah'tır. O, mülkün gerçek sahibi, kutsal (her türlü eksiklikten uzak), barış ve esenliğin kaynağı, güvenlik veren, gözetip koruyan, mutlak güç sahibi, düzeltip ıslah eden ve dilediğini yaptıran ve büyüklükte eşsiz olan Allah'tır. Allah, onların ortak koştuklarından uzaktır."
+    },
+    {
+     "ayetler": [
+      24,
+      24
+     ],
+     "metin": "O, yaratan, yoktan var eden, şekil veren Allah'tır. Güzel isimler O'nundur. Göklerdeki ve yerdeki her şey O'nu tesbih eder. O, mutlak güç sahibidir, hüküm ve hikmet sahibidir."
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "The Holy Quran with English Translation (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      22,
+      22
+     ],
+     "metin": "He is Allah—there is no god ˹worthy of worship˺ except Him: Knower of the seen and unseen. He is the Most Compassionate, Most Merciful."
+    },
+    {
+     "ayetler": [
+      23,
+      23
+     ],
+     "metin": "He is Allah—there is no god except Him: the King, the Most Holy, the All-Perfect, the Source of Serenity, the Watcher ˹of all˺, the Almighty, the Supreme in Might, the Majestic. Glorified is Allah far above what they associate with Him ˹in worship˺!"
+    },
+    {
+     "ayetler": [
+      24,
+      24
+     ],
+     "metin": "He is Allah: the Creator, the Inventor, the Shaper. He ˹alone˺ has the Most Beautiful Names. Whatever is in the heavens and the earth ˹constantly˺ glorifies Him. And He is the Almighty, All-Wise."
+    }
+   ]
+  },
+  "de": {
+   "kaynak": "Der Heilige Koran – Deutsche Übersetzung (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      22,
+      22
+     ],
+     "metin": "Er ist Allah, außer dem es keinen Gott gibt. Er kennt das Verborgene und das Sichtbare. Er ist der Erbarmer, der Barmherzige."
+    },
+    {
+     "ayetler": [
+      23,
+      23
+     ],
+     "metin": "Er ist Allah, außer dem es keinen Gott gibt; der Herrscher, der Heilige, der Friedenstifter, der Getreue, der Beschützer, der Mächtige, der Starke, der Hocherhabene. Preis sei Allah, der erhaben ist von dem, was sie ihm beigesellen."
+    },
+    {
+     "ayetler": [
+      24,
+      24
+     ],
+     "metin": "Er ist Allah, der Schöpfer, der Erschaffer, der Bildner. Sein sind die schönsten Namen. Ihn preist, was in den Himmeln und auf Erden ist, denn er ist der Mächtige, der Weise."
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Kur'an-ı Kerim (kuran.diyanet.gov.tr, «Amasya Abay» metni)",
+  "url": "https://kuran.diyanet.gov.tr",
+  "alindi": "2026-10-19"
+ },
+ "ozet": "cc9c5386d9598ae2ef076ed81665280d5c5532e4da4f2e5f85521fbe2f012638",
+ "zor": [],
+ "onay": null
+}

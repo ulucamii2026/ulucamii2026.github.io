@@ -1,0 +1,122 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "s-kureys",
+ "kuran": {
+  "sure": 106,
+  "ayetler": [
+   1,
+   4
+  ]
+ },
+ "sureAdi": "قُرَيْشٍ",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "لِاٖیلَافِ قُرَیْشٍۙ",
+   "sayfa": 602
+  },
+  {
+   "no": 2,
+   "ar": "اٖیلَافِهِمْ رِحْلَةَ الشِّتَٓاءِ وَالصَّیْفِۚ",
+   "sayfa": 602
+  },
+  {
+   "no": 3,
+   "ar": "فَلْیَعْبُدُوا رَبَّ هٰذَا الْبَیْتِۙ",
+   "sayfa": 602
+  },
+  {
+   "no": 4,
+   "ar": "اَلَّذٖٓی اَطْعَمَهُمْ مِنْ جُوعٍ وَاٰمَنَهُمْ مِنْ خَوْفٍ",
+   "sayfa": 602
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı Meâli (kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      4
+     ],
+     "metin": "Kureyş'i ısındırıp alıştırdığı; onları kışın (Yemen'e) ve yazın (Şam'a) yaptıkları yolculuğa ısındırıp alıştırdığı için, Kureyş de, kendilerini besleyip açlıklarını gideren ve onları korkudan emin kılan bu evin (Kâbe'nin) Rabbine kulluk etsin."
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "The Holy Quran with English Translation (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "˹At least˺ for ˹the favour of˺ making Quraysh habitually secure—"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "secure in their trading caravan ˹to Yemen˺ in the winter and ˹Syria˺ in the summer—"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "let them worship the Lord of this ˹Sacred˺ House,"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Who has fed them against hunger and made them secure against fear."
+    }
+   ]
+  },
+  "de": {
+   "kaynak": "Der Heilige Koran – Deutsche Übersetzung (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Für die Vereinigung der Qureysch,"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "für ihre Vereinigung zur Winter- und Sommerkarawane."
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "So mögen sie dem Herrn dieses Hauses dienen,"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "der sie mit Speise gegen den Hunger versorgt und sicher macht vor Furcht."
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Kur'an-ı Kerim (kuran.diyanet.gov.tr, «Amasya Abay» metni)",
+  "url": "https://kuran.diyanet.gov.tr",
+  "alindi": "2026-10-19"
+ },
+ "ozet": "fbd33950aaa2294ac19af6976eb49074f98ddecec8794afb7be7035a6bc8eafa",
+ "zor": [],
+ "onay": null
+}

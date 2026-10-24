@@ -1,0 +1,491 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "s-alak",
+ "kuran": {
+  "sure": 96,
+  "ayetler": [
+   1,
+   19
+  ]
+ },
+ "sureAdi": "الْعَلَقِ",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "اِقْرَاْ بِاسْمِ رَبِّكَ الَّذٖی خَلَقَۚ",
+   "sayfa": 597
+  },
+  {
+   "no": 2,
+   "ar": "خَلَقَ الْاِنْسَانَ مِنْ عَلَقٍۚ",
+   "sayfa": 597
+  },
+  {
+   "no": 3,
+   "ar": "اِقْرَاْ وَرَبُّكَ الْاَكْرَمُۙ",
+   "sayfa": 597
+  },
+  {
+   "no": 4,
+   "ar": "اَلَّذٖی عَلَّمَ بِالْقَلَمِۙ",
+   "sayfa": 597
+  },
+  {
+   "no": 5,
+   "ar": "عَلَّمَ الْاِنْسَانَ مَا لَمْ یَعْلَمْؕ",
+   "sayfa": 597
+  },
+  {
+   "no": 6,
+   "ar": "كَلَّٓا اِنَّ الْاِنْسَانَ لَیَطْغٰىۙ",
+   "sayfa": 597
+  },
+  {
+   "no": 7,
+   "ar": "اَنْ رَاٰهُ اسْتَغْنٰىؕ",
+   "sayfa": 597
+  },
+  {
+   "no": 8,
+   "ar": "اِنَّ اِلٰى رَبِّكَ الرُّجْعٰىؕ",
+   "sayfa": 597
+  },
+  {
+   "no": 9,
+   "ar": "اَرَاَیْتَ الَّذٖی یَنْهٰىۙ",
+   "sayfa": 597
+  },
+  {
+   "no": 10,
+   "ar": "عَبْدًا اِذَا صَلّٰىؕ",
+   "sayfa": 597
+  },
+  {
+   "no": 11,
+   "ar": "اَرَاَیْتَ اِنْ كَانَ عَلَى الْهُدٰىۙ",
+   "sayfa": 597
+  },
+  {
+   "no": 12,
+   "ar": "اَوْ اَمَرَ بِالتَّقْوٰىؕ",
+   "sayfa": 597
+  },
+  {
+   "no": 13,
+   "ar": "اَرَاَیْتَ اِنْ كَذَّبَ وَتَوَلّٰىؕ",
+   "sayfa": 597
+  },
+  {
+   "no": 14,
+   "ar": "اَلَمْ یَعْلَمْ بِاَنَّ اللّٰهَ یَرٰىؕ",
+   "sayfa": 597
+  },
+  {
+   "no": 15,
+   "ar": "كَلَّا لَئِنْ لَمْ یَنْتَهِ𐻾 لَنَسْفَعًا بِالنَّاصِیَةِۙ",
+   "sayfa": 597
+  },
+  {
+   "no": 16,
+   "ar": "نَاصِیَةٍ كَاذِبَةٍ خَاطِئَةٍۚ",
+   "sayfa": 597
+  },
+  {
+   "no": 17,
+   "ar": "فَلْیَدْعُ نَادِیَهُۙ",
+   "sayfa": 597
+  },
+  {
+   "no": 18,
+   "ar": "سَنَدْعُ الزَّبَانِیَةَۙ",
+   "sayfa": 597
+  },
+  {
+   "no": 19,
+   "ar": "كَلَّاؕ لَا تُطِعْهُ وَاسْجُدْ وَاقْتَرِبْ",
+   "sayfa": 597
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı Meâli (kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      2
+     ],
+     "metin": "Yaratan Rabbinin adıyla oku! O, insanı \"alak\" dan yarattı."
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "Oku! Senin Rabbin en cömert olandır."
+    },
+    {
+     "ayetler": [
+      4,
+      5
+     ],
+     "metin": "O, kalemle yazmayı öğretendir, insana bilmediğini öğretendir."
+    },
+    {
+     "ayetler": [
+      6,
+      7
+     ],
+     "metin": "Hayır, insan kendini yeterli gördüğü için mutlaka azgınlık eder."
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "Şüphesiz dönüş ancak Rabbinedir."
+    },
+    {
+     "ayetler": [
+      9,
+      10
+     ],
+     "metin": "Sen, namaz kıldığında kulu (bundan) engelleyeni gördün mü?"
+    },
+    {
+     "ayetler": [
+      11,
+      12
+     ],
+     "metin": "Ne dersin, ya o (engellenen kul) hidâyet üzere ise; ya da takvayı (Allah'a karşı gelmekten sakınmayı) emrediyorsa!?"
+    },
+    {
+     "ayetler": [
+      13,
+      13
+     ],
+     "metin": "Ne dersin engelleyen, Peygamberi yalanlamış ve yüz çevirmişse!?"
+    },
+    {
+     "ayetler": [
+      14,
+      14
+     ],
+     "metin": "O Allah'ın, her şeyi gördüğünü bilmiyor mu?"
+    },
+    {
+     "ayetler": [
+      15,
+      16
+     ],
+     "metin": "Hayır! Andolsun, eğer vazgeçmezse, muhakkak onu perçeminden; o yalancı, günahkâr perçeminden yakalarız."
+    },
+    {
+     "ayetler": [
+      17,
+      17
+     ],
+     "metin": "Haydi, taraftarlarını çağırsın."
+    },
+    {
+     "ayetler": [
+      18,
+      18
+     ],
+     "metin": "Biz de zebânileri çağıracağız."
+    },
+    {
+     "ayetler": [
+      19,
+      19
+     ],
+     "metin": "Hayır! Sakın sen ona uyma; secde et ve Rabbine yaklaş."
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "The Holy Quran with English Translation (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Read, ˹O Prophet,˺ in the Name of your Lord Who created—"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "created humans from a clinging clot."
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "Read! And your Lord is the Most Generous,"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Who taught by the pen—"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "taught humanity what they knew not."
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "Most certainly, one exceeds all bounds"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "once they think they are self-sufficient."
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "˹But˺ surely to your Lord is the return ˹of all˺."
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "Have you seen the man who prevents"
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "a servant ˹of Ours˺ from praying?"
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "What if this ˹servant˺ is ˹rightly˺ guided,"
+    },
+    {
+     "ayetler": [
+      12,
+      12
+     ],
+     "metin": "or encourages righteousness?"
+    },
+    {
+     "ayetler": [
+      13,
+      13
+     ],
+     "metin": "What if that ˹man˺ persists in denial and turns away?"
+    },
+    {
+     "ayetler": [
+      14,
+      14
+     ],
+     "metin": "Does he not know that Allah sees ˹all˺?"
+    },
+    {
+     "ayetler": [
+      15,
+      15
+     ],
+     "metin": "But no! If he does not desist, We will certainly drag him by the forelock—"
+    },
+    {
+     "ayetler": [
+      16,
+      16
+     ],
+     "metin": "a lying, sinful forelock."
+    },
+    {
+     "ayetler": [
+      17,
+      17
+     ],
+     "metin": "So let him call his associates."
+    },
+    {
+     "ayetler": [
+      18,
+      18
+     ],
+     "metin": "We will call the wardens of Hell."
+    },
+    {
+     "ayetler": [
+      19,
+      19
+     ],
+     "metin": "Again, no! Never obey him ˹O Prophet˺! Rather, ˹continue to˺ prostrate and draw near ˹to Allah˺."
+    }
+   ]
+  },
+  "de": {
+   "kaynak": "Der Heilige Koran – Deutsche Übersetzung (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Lies im Namen deines Herrn, der erschuf,"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "erschuf den Menschen aus geronnenem Blut."
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "Lies, denn dein Herr ist allgütig,"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "der mit dem Schreibstift lehrte,"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "den Menschen lehrte er, was er nicht wusste."
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "Fürwahr! Der Mensch ist wahrlich frevelhaft,"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "wenn er sich nicht bedürftig sieht."
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "Gewiss, zu deinem Herrn ist die Rückkehr."
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "Hast du den gesehen, der es verbietet"
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "einem Knecht Allahs, zu beten?"
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "Hast du gesehen, was ist, wenn er rechtgeleitet ist?"
+    },
+    {
+     "ayetler": [
+      12,
+      12
+     ],
+     "metin": "oder Gottesfurcht gebietet?"
+    },
+    {
+     "ayetler": [
+      13,
+      13
+     ],
+     "metin": "Hast du gesehen, ob er leugnete und sich abkehrte?"
+    },
+    {
+     "ayetler": [
+      14,
+      14
+     ],
+     "metin": "Wusste er etwa nicht, dass Allah sieht?"
+    },
+    {
+     "ayetler": [
+      15,
+      15
+     ],
+     "metin": "Fürwahr, wahrlich, wenn er nicht ablässt, so ergreifen wir ihn bei der Stirnlocke,"
+    },
+    {
+     "ayetler": [
+      16,
+      16
+     ],
+     "metin": "der lügenden, sündigen Stirnlocke."
+    },
+    {
+     "ayetler": [
+      17,
+      17
+     ],
+     "metin": "So rufe er seine Schar;"
+    },
+    {
+     "ayetler": [
+      18,
+      18
+     ],
+     "metin": "wir werden die Höllenwache rufen."
+    },
+    {
+     "ayetler": [
+      19,
+      19
+     ],
+     "metin": "Fürwahr, gehorche ihm nicht, sondern wirf dich nieder und nahe dich Allah."
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Kur'an-ı Kerim (kuran.diyanet.gov.tr, «Amasya Abay» metni)",
+  "url": "https://kuran.diyanet.gov.tr",
+  "alindi": "2026-10-19"
+ },
+ "ozet": "9cca21f8c7a31588c644422512ab2678d43648f8799d4cc501d26f7c96e2a20a",
+ "zor": [],
+ "onay": null
+}

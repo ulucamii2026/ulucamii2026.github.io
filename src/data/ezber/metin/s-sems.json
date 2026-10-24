@@ -1,0 +1,415 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "s-sems",
+ "kuran": {
+  "sure": 91,
+  "ayetler": [
+   1,
+   15
+  ]
+ },
+ "sureAdi": "الشَّمْسِ",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "وَالشَّمْسِ وَضُحٰیهَاࣕۙ",
+   "sayfa": 594
+  },
+  {
+   "no": 2,
+   "ar": "وَالْقَمَرِ اِذَا تَلٰیهَاࣕۙ",
+   "sayfa": 594
+  },
+  {
+   "no": 3,
+   "ar": "وَالنَّهَارِ اِذَا جَلّٰیهَاࣕۙ",
+   "sayfa": 594
+  },
+  {
+   "no": 4,
+   "ar": "وَالَّیْلِ اِذَا یَغْشٰیهَاࣕۙ",
+   "sayfa": 594
+  },
+  {
+   "no": 5,
+   "ar": "وَالسَّمَٓاءِ وَمَا بَنٰیهَاࣕۙ",
+   "sayfa": 594
+  },
+  {
+   "no": 6,
+   "ar": "وَالْاَرْضِ وَمَا طَحٰیهَاࣕۙ",
+   "sayfa": 594
+  },
+  {
+   "no": 7,
+   "ar": "وَنَفْسٍ وَمَا سَوّٰیهَاࣕۙ",
+   "sayfa": 594
+  },
+  {
+   "no": 8,
+   "ar": "فَاَلْهَمَهَا فُجُورَهَا وَتَقْوٰیهَاࣕۙ",
+   "sayfa": 594
+  },
+  {
+   "no": 9,
+   "ar": "قَدْ اَفْلَحَ مَنْ زَكّٰیهَاࣕۙ",
+   "sayfa": 594
+  },
+  {
+   "no": 10,
+   "ar": "وَقَدْ خَابَ مَنْ دَسّٰیهَاؕ",
+   "sayfa": 594
+  },
+  {
+   "no": 11,
+   "ar": "كَذَّبَتْ ثَمُودُ بِطَغْوٰیهَاࣕۙ",
+   "sayfa": 594
+  },
+  {
+   "no": 12,
+   "ar": "اِذِ انْبَعَثَ اَشْقٰیهَاࣕۙ",
+   "sayfa": 594
+  },
+  {
+   "no": 13,
+   "ar": "فَقَالَ لَهُمْ رَسُولُ اللّٰهِ نَاقَةَ اللّٰهِ وَسُقْیٰیهَاࣞ",
+   "sayfa": 594
+  },
+  {
+   "no": 14,
+   "ar": "فَكَذَّبُوهُ فَعَقَرُوهَاࣕۙ فَدَمْدَمَ عَلَیْهِمْ رَبُّهُمْ بِذَنْبِهِمْ فَسَوّٰیهَاࣕۙ",
+   "sayfa": 594
+  },
+  {
+   "no": 15,
+   "ar": "وَلَا یَخَافُ عُقْبٰیهَا",
+   "sayfa": 594
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı Meâli (kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Güneşe ve onun aydınlığına andolsun,"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "Onu izlediğinde Ay'a andolsun,"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "Onu ortaya çıkardığında gündüze andolsun,"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Onu bürüdüğünde geceye andolsun,"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "Göğe ve onu bina edene andolsun,"
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "Yere ve onu yayıp döşeyene andolsun,"
+    },
+    {
+     "ayetler": [
+      7,
+      9
+     ],
+     "metin": "Nefse ve onu düzgün bir biçimde şekillendirip ona kötülük duygusunu ve takvasını (kötülükten sakınma yeteneğini) ilham edene andolsun ki, nefsini arındıran kurtuluşa ermiştir."
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "Onu kötülüklere gömüp kirleten kimse de ziyana uğramıştır."
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "Semûd kavmi, azgınlığı sebebiyle yalanladı."
+    },
+    {
+     "ayetler": [
+      12,
+      12
+     ],
+     "metin": "Hani onların en bedbaht olanı (fesat çıkarmak için) ileri atılmıştı."
+    },
+    {
+     "ayetler": [
+      13,
+      13
+     ],
+     "metin": "Allah'ın Resülü de onlara şöyle demişti: \"Allah'ın devesini ve onun su içme hakkını koruyun.\""
+    },
+    {
+     "ayetler": [
+      14,
+      14
+     ],
+     "metin": "Fakat onlar, onu yalanladılar ve deveyi boğazladılar. Bunun üzerine Rableri, suçlarından dolayı onları helak etti ve kendilerini yerle bir etti."
+    },
+    {
+     "ayetler": [
+      15,
+      15
+     ],
+     "metin": "Allah, bunun sonucundan çekinmez de!"
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "The Holy Quran with English Translation (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "By the sun and its brightness,"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "and the moon as it follows it,"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "and the day as it unveils it,"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "and the night as it conceals it!"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "And by heaven and ˹the One˺ Who built it,"
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "and the earth and ˹the One˺ Who spread it!"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "And by the soul and ˹the One˺ Who fashioned it,"
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "then with ˹the knowledge of˺ right and wrong inspired it!"
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "Successful indeed is the one who purifies their soul,"
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "and doomed is the one who corrupts it!"
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "Thamûd rejected ˹the truth˺ out of arrogance,"
+    },
+    {
+     "ayetler": [
+      12,
+      12
+     ],
+     "metin": "when the most wicked of them was roused ˹to kill the she-camel˺."
+    },
+    {
+     "ayetler": [
+      13,
+      13
+     ],
+     "metin": "But the messenger of Allah warned them, “˹Do not disturb˺ Allah’s camel and her ˹turn to˺ drink!”"
+    },
+    {
+     "ayetler": [
+      14,
+      14
+     ],
+     "metin": "Still they defied him and slaughtered her. So their Lord crushed them for their crime, levelling all to the ground."
+    },
+    {
+     "ayetler": [
+      15,
+      15
+     ],
+     "metin": "He has no fear of consequences."
+    }
+   ]
+  },
+  "de": {
+   "kaynak": "Der Heilige Koran – Deutsche Übersetzung (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Bei der Sonne und ihrem morgendlichen Glanz"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "und dem Mond, wenn er ihr folgt,"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "und dem Tag, wenn er die Sonne enthüllt,"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "und der Nacht, wenn sie sie bedeckt!"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "Und bei dem Himmel, und was ihn erbaute,"
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "und der Erde, und was sie ausbreitete,"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "und der Seele, und was sie bildete"
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "und ihr ihre Schlechtigkeit und Frömmigkeit ermöglichte!"
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "Wohl ergeht es dem, der sie reinigt,"
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "und zuschanden geht der, der sie verdirbt."
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "Für Lügner erklärte Semud ihren Gesandten in ihrem Frevelmut,"
+    },
+    {
+     "ayetler": [
+      12,
+      12
+     ],
+     "metin": "als sich der Elendste unter ihnen erhob"
+    },
+    {
+     "ayetler": [
+      13,
+      13
+     ],
+     "metin": "und der Gesandte Allahs zu ihnen sprach: „Dies ist die Kamelstute Allahs und sie ist an der Reihe mit ­Trinken.“"
+    },
+    {
+     "ayetler": [
+      14,
+      14
+     ],
+     "metin": "Sie aber bezichtigten ihn der Lüge und töteten sie, und so vernichtete sie ihr Herr wegen ihrer Sünde und machte sie dem Erdboden gleich,"
+    },
+    {
+     "ayetler": [
+      15,
+      15
+     ],
+     "metin": "Er fürchtet nicht die Folge davon."
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Kur'an-ı Kerim (kuran.diyanet.gov.tr, «Amasya Abay» metni)",
+  "url": "https://kuran.diyanet.gov.tr",
+  "alindi": "2026-10-19"
+ },
+ "ozet": "e8abcdf6450f564e9064739fbff83c15d76869d57271d0bef43c9201b7e0e366",
+ "zor": [],
+ "onay": null
+}

@@ -1,0 +1,135 @@
+/* Madde sayfası (Faz 2b, 19 Ekim 2026): onaylı taslak egitim/docs/taslaklar/cini.css «Madde sayfası» bölümünden.
+   Dört Ses: Kur'an Ulu Nesih (büyük, sağa, satır aralığı ~2), okunuş italik, meâl düz, kaynak küçük. Derz ayırır, gölge
+   yok. Firuze ve altın yalnız basamak işaretinde (Ayrılmış Sır); çalan âyetin sırrı kurs yeşilidir. */
+.madde { padding-bottom: 4rem; }
+.yol { font-size: 0.92rem; color: var(--kontur-2); padding-top: 1.5rem; }
+.yol ol { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.35rem; align-items: center; }
+.yol li + li::before { content: "/"; margin-right: 0.35rem; color: var(--derz-koyu); }
+.yol a { color: var(--kontur-2); }
+
+/* Serlevha: telefonda karo + Arapça ad bir satırda, ad altta; geniş ekranda üçü tek satır. */
+.madde-bas { display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-areas: "madalyon ar" "baslik baslik";
+  gap: 1rem 1.25rem; align-items: center; padding-block: 1.25rem 2.25rem; }
+@media (min-width: 56rem) {
+  .madde-bas { grid-template-columns: auto minmax(0, 1fr) auto; grid-template-areas: "madalyon baslik ar"; gap: 1.5rem 2rem; }
+}
+.madde-bas .madalyon { grid-area: madalyon; position: relative; display: grid; place-items: center; width: clamp(4.25rem, 3.5rem + 2.5vw, 6rem);
+  aspect-ratio: 1; border-radius: var(--r); background: var(--karo); color: var(--motif); box-shadow: inset 0 0 0 1px var(--derz-koyu); }
+.madde-bas .madalyon svg { width: 72%; height: 72%; fill: currentColor; stroke: var(--kontur); stroke-width: 2.5; stroke-linejoin: round; }
+.madde-bas .baslik-blok { grid-area: baslik; min-width: 0; }
+.madde-bas .ar-ad { grid-area: ar; justify-self: end; font-size: clamp(2.1rem, 1.5rem + 2.4vw, 3.5rem); line-height: 1.6; color: var(--yesil-bag); }
+.madde-bas h1 { font-size: clamp(2.3rem, 1.5rem + 3.4vw, 4.25rem); letter-spacing: -0.025em; font-weight: 800; line-height: 1.05;
+  overflow-wrap: anywhere; }
+.madde-bas .bilgi { margin-top: 0.9rem; color: var(--kontur-2); font-size: 1.05rem; display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; }
+
+/* Düzen: telefonda çalar → metin → hoca kutusu ve namazda; geniş ekranda metin solda, yan panel sağda. Komşu maddeler en altta. */
+.madde-duzen { display: grid; gap: 2.5rem 3.5rem; align-items: start; grid-template-areas: "ust" "metin" "alt"; }
+.madde-duzen .yan-ust { grid-area: ust; }
+.madde-duzen .metin-alani { grid-area: metin; min-width: 0; }
+.madde-duzen .yan-alt { grid-area: alt; }
+@media (min-width: 64rem) {
+  .madde-duzen { grid-template-columns: minmax(0, 1fr) 24rem; grid-template-areas: "metin ust" "metin alt"; grid-template-rows: auto 1fr; }
+}
+.yan-panel { display: grid; gap: 1.25rem; min-width: 0; }
+
+/* Çalar yan panelde: dinle–tekrarla düzeni (calisma.css) karo yüzünde, derzle. */
+.madde .calisma-calar { padding: 1.25rem; border: 1px solid var(--derz); border-radius: var(--r); }
+.madde .calisma-calar h2 { font-size: 1.35rem; margin-bottom: 0.5rem; }
+.madde .calisma-calar fieldset { margin: 1.2rem 0; grid-template-columns: 1fr; gap: 0.9rem; }
+.madde .calisma-calar .calisma-durum { min-height: 3rem; }
+.madde .calisma-not { margin-top: 0.75rem; color: var(--kontur-2); font-size: 0.9rem; }
+
+/* Hazır olunca hocana oku: dört basamak işaretiyle (renkler yalnız basamağın kendisi). */
+.hoca-kutu { background: var(--karo); border: 1px solid var(--derz); border-radius: var(--r); padding: 1.1rem 1.25rem; display: grid; gap: 0.75rem; }
+.hoca-kutu h2 { font-size: 1.15rem; }
+.hoca-kutu p { font-size: 0.98rem; line-height: 1.5; }
+.basamak-sirasi { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.35rem; font-size: 0.95rem; font-weight: 650;
+  --kl-cozgu: var(--derz-koyu); --kl-b1: var(--kontur-2); --kl-b2: var(--firuze); --kl-b3: var(--yesil-bag); --kl-b4: var(--altin); }
+.basamak-sirasi li { display: flex; align-items: center; gap: 0.6rem; }
+.basamak-sirasi svg { width: 1.5rem; height: 1.5rem; flex: none; }
+.basamak-sirasi .kl-m { fill: none; stroke: none; stroke-linejoin: miter; }
+.basamak-sirasi .kl-b1 { stroke: var(--kl-b1); stroke-width: 8; }
+.basamak-sirasi .kl-b2 { fill: var(--kl-b2); fill-opacity: 0.3; stroke: var(--kl-b2); stroke-width: 8; }
+.basamak-sirasi .kl-b3 { fill: var(--kl-b3); }
+.basamak-sirasi .kl-b4 { fill: var(--kl-b4); }
+.basamak-sirasi .kl-b4-cerceve { fill: none; stroke: var(--kl-b4); stroke-width: 1.5; }
+
+/* Metin. */
+.metin-ust { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.75rem 1rem; align-items: center; margin-bottom: 0.5rem; }
+.metin-ust h2 { font-size: 1.35rem; }
+.metin-ipucu { color: var(--kontur-2); font-size: 0.95rem; margin-bottom: 0.75rem; }
+.secim { display: inline-flex; align-items: center; gap: 0.4rem; min-height: 2.75rem; padding: 0.3rem 0.8rem; border: 1px solid var(--derz-koyu);
+  border-radius: var(--r); background: var(--karo); color: var(--kontur); font: inherit; font-weight: 650; font-size: 0.92rem; cursor: pointer; }
+.secim[aria-pressed="true"] { background: var(--yesil-soluk); border-color: var(--yesil-bag); }
+.secim .ikon { width: 1.05rem; height: 1.05rem; }
+.metin { display: grid; }
+.ayet-grubu { display: grid; gap: 0.9rem; padding: 1.75rem 0; border-bottom: 1px solid var(--derz); }
+.ayet-grubu:first-child { border-top: 1px solid var(--derz); }
+.ayet-grubu .ar { font-size: clamp(1.9rem, 1.35rem + 1.9vw, 2.6rem); line-height: 2.05; text-align: right; color: var(--kontur); }
+.ayet-grubu .ayet { border-radius: var(--r); transition: background-color 300ms var(--yayil); box-decoration-break: clone;
+  -webkit-box-decoration-break: clone; }
+.ayet-grubu .ayet[data-calan] { background: var(--yesil-soluk); }
+.ayet-son { white-space: nowrap; }
+/* Âyet sonu işareti; dokununca o âyet çalar. En az 44 px dokunma hedefi; çalarken kurs yeşili sır. */
+.ayet-no { font: inherit; font-size: 0.9em; line-height: 1; color: var(--yesil-bag); background: none; border: 0; padding: 0.15em 0.1em;
+  min-width: 2.75rem; min-height: 2.75rem; border-radius: var(--r); vertical-align: middle; }
+button.ayet-no:not(:disabled) { cursor: pointer; }
+button.ayet-no:not(:disabled):hover { background: var(--yesil-soluk); }
+button.ayet-no[data-calan] { background: var(--yesil); color: #fff; }
+.okunuslar { display: grid; gap: 0.2rem; }
+.okunus { font-style: italic; font-size: 1.12rem; line-height: 1.55; }
+.okunus .no { font-style: normal; font-weight: 700; color: var(--kontur-2); font-size: 0.82rem; margin-right: 0.45rem; font-variant-numeric: tabular-nums; }
+.metin[data-okunus="gizli"] .okunuslar { display: none; }
+.meal { font-size: 1.12rem; line-height: 1.6; max-width: 42em; }
+.meal .no { font-weight: 750; color: var(--yesil-bag); margin-right: 0.4rem; font-variant-numeric: tabular-nums; }
+.meal-yok { margin-bottom: 1rem; }
+.meal-yok, .metin-yok { padding: 0.9rem 1.1rem; background: var(--yesil-soluk); border-radius: var(--r); max-width: 42em; }
+.kaynak-satiri { color: var(--kontur-2); font-size: 0.9rem; line-height: 1.5; margin-top: 1rem; max-width: 45em; }
+
+/* Çalışma yolu: Diyanet usulünün beş adımı; hazır olmayanlar «Yakında». */
+.yollar-bolumu { padding-top: 3rem; }
+.yollar-bolumu h2 { font-size: 1.5rem; margin-bottom: 1.1rem; }
+.yollar { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; background: var(--derz); border: 2px solid var(--derz);
+  border-radius: calc(var(--r) + 2px); }
+@media (min-width: 40rem) { .yollar { grid-template-columns: repeat(2, 1fr); } .yollar li:first-child { grid-column: 1 / -1; } }
+.yollar li { background: var(--karo); padding: 1rem 1.1rem 1.15rem; display: grid; grid-template-columns: auto 1fr; gap: 0.2rem 0.75rem;
+  align-content: start; }
+.yollar .sira { grid-row: span 3; display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: var(--r);
+  background: var(--yesil); color: #fff; font-weight: 800; font-variant-numeric: tabular-nums; }
+.yollar li.sonra .sira { background: var(--yesil-soluk); color: var(--kontur-2); }
+.yollar h3 { font-size: 1.1rem; }
+.yollar p { color: var(--kontur-2); font-size: 0.95rem; }
+.yollar .yakinda { justify-self: start; font-size: 0.78rem; font-weight: 700; color: var(--kontur-2); background: var(--yesil-soluk);
+  border-radius: var(--r); padding: 0.1rem 0.5rem; }
+
+/* Namazda nerede okunur: dört duruş, burada olan sırlı. */
+.namazda { background: var(--karo); border: 1px solid var(--derz); border-radius: var(--r); padding: 1.25rem; display: grid; gap: 1rem; }
+.namazda h2 { font-size: 1.2rem; }
+/* Dört duruş 320 px'te de tek sırada: sütunlar içerik genişliğine itilmez, uzun ad («Niederwerfung») hecelenir. */
+.durus-sirasi { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2px; background: var(--derz); padding: 2px; border-radius: 2px; }
+.durus-sirasi figure { margin: 0; background: var(--karo); display: grid; justify-items: center; gap: 0.3rem; padding: 0.6rem 0.25rem 0.5rem;
+  color: var(--kontur-2); }
+.durus-sirasi .cizim { width: 100%; max-width: 4.2rem; opacity: 0.45; }
+.durus-sirasi figcaption { font-size: 0.82rem; font-weight: 650; text-align: center; max-width: 100%; hyphens: auto; overflow-wrap: anywhere; }
+.durus-sirasi figure.burada { background: var(--yesil-soluk); color: var(--kontur); }
+.durus-sirasi figure.burada .cizim { opacity: 1; }
+.durus-sirasi figure.burada figcaption { font-weight: 800; }
+.namazda p { font-size: 1rem; line-height: 1.5; }
+.namazda .kaynak-satiri { margin-top: 0; }
+
+/* Komşu maddeler ve şeride dönüş. */
+.komsu { display: grid; gap: 2px; background: var(--derz); border: 2px solid var(--derz); border-radius: calc(var(--r) + 2px); margin-top: 2.5rem; }
+@media (min-width: 40rem) { .komsu { grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); } }
+.komsu a { background: var(--karo); padding: 1rem 1.2rem; text-decoration: none; color: var(--kontur); display: grid; gap: 0.15rem; align-content: start; }
+.komsu a:hover { background: var(--yesil-soluk); }
+.komsu a span { color: var(--kontur-2); font-size: 0.86rem; font-weight: 650; display: inline-flex; align-items: center; gap: 0.35rem; }
+.komsu a span .ikon { width: 1rem; height: 1rem; }
+.komsu a b { font-size: 1.05rem; }
+.komsu a.sonraki { text-align: right; }
+.komsu a.sonraki span { justify-content: flex-end; }
+
+@media (forced-colors: active) {
+  .madde-bas .madalyon { forced-color-adjust: none; background: Canvas; color: Canvas; outline: 1px solid CanvasText; outline-offset: -1px; }
+  .madde-bas .madalyon svg { stroke: CanvasText; }
+  .ayet-grubu .ayet[data-calan], button.ayet-no[data-calan] { outline: 2px solid Highlight; }
+}

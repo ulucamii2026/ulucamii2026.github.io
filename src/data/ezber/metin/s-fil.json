@@ -1,0 +1,155 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "s-fil",
+ "kuran": {
+  "sure": 105,
+  "ayetler": [
+   1,
+   5
+  ]
+ },
+ "sureAdi": "الْف۪يلِ",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "اَلَمْ تَرَ كَیْفَ فَعَلَ رَبُّكَ بِاَصْحَابِ الْفٖیلِؕ",
+   "sayfa": 601
+  },
+  {
+   "no": 2,
+   "ar": "اَلَمْ یَجْعَلْ كَیْدَهُمْ فٖی تَضْلٖیلٍۙ",
+   "sayfa": 601
+  },
+  {
+   "no": 3,
+   "ar": "وَاَرْسَلَ عَلَیْهِمْ طَیْرًا اَبَابٖیلَۙ",
+   "sayfa": 601
+  },
+  {
+   "no": 4,
+   "ar": "تَرْمٖیهِمْ بِحِجَارَةٍ مِنْ سِجّٖیلٍࣕۙ",
+   "sayfa": 601
+  },
+  {
+   "no": 5,
+   "ar": "فَجَعَلَهُمْ كَعَصْفٍ مَاْكُولٍ",
+   "sayfa": 601
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı Meâli (kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Rabbinin, fil sahiplerine ne yaptığını görmedin mi?"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "Onların tuzaklarını boşa çıkarmadı mı?"
+    },
+    {
+     "ayetler": [
+      3,
+      5
+     ],
+     "metin": "Üzerlerine balçıktan pişirilmiş taşlar atan sürü sürü kuşlar gönderdi. Nihayet onları yenilmiş ekin yaprakları haline getirdi."
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "The Holy Quran with English Translation (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Have you not seen ˹O Prophet˺ how your Lord dealt with the Army of the Elephant?"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "Did He not frustrate their scheme?"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "For He sent against them flocks of birds,"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "that pelted them with stones of baked clay,"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "leaving them like chewed up straw."
+    }
+   ]
+  },
+  "de": {
+   "kaynak": "Der Heilige Koran – Deutsche Übersetzung (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Hast du nicht gesehen, wie dein Herr mit den Elefantengefährten verfuhr?"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "Führte er ihre List nicht irre"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "und schickte über sie Vögel in Scharen,"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "die sie mit Steinen aus gebranntem Ton bewarfen,"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "und machte er sie wie abgefressene Saat?"
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Kur'an-ı Kerim (kuran.diyanet.gov.tr, «Amasya Abay» metni)",
+  "url": "https://kuran.diyanet.gov.tr",
+  "alindi": "2026-10-19"
+ },
+ "ozet": "ede6babd226c7d5bcac70b3552b141088ba120a09ce3bac4e24d63a8251882da",
+ "zor": [],
+ "onay": null
+}

@@ -8,8 +8,8 @@
  },
  "cikti": {
   "dosya": "egitim/public/fonts/ulu-nesih.woff2",
-  "bayt": 36200,
-  "sha256": "c0cad0c07b26631edda402c3714dca807bf126e0d3139d46a267bd41449ba499"
+  "bayt": 37236,
+  "sha256": "88c00389b580f7342bd1e9c75f5af0e0bc68fef7d2e89409453e7a292b0d7488"
  },
  "css": {
   "font-feature-settings": "\"cv62\" 1",
@@ -106,6 +106,7 @@
   "U+066D",
   "U+0670",
   "U+0671",
+  "U+06CC",
   "U+06D6",
   "U+06D7",
   "U+06D8",
@@ -180,6 +181,9 @@
   "U+25CC",
   "U+FD3E",
   "U+FD3F",
-  "U+FDF2"
+  "U+FDF2",
+  "U+10EFD",
+  "U+10EFE",
+  "U+10EFF"
  ]
 }

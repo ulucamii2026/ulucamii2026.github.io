@@ -105,6 +105,27 @@ export function eskiEzberGecisi(eski: Record<string, unknown>): EskiEzberGecisi 
   return sonuc;
 }
 
+/**
+ * egitim.ulucamii.be'de çalışma sayfası olan madde: Diyanet sesi ya da kaynaklı metni var. Kur'an maddelerinin metni
+ * scripts/ezber-metin-cek.mjs ile hepsine yazılır (tests/ezber-madde-metni.test.mjs denetler). Kur'an dışı bir maddeye
+ * sessiz metin eklenirse bu koşul genişletilir; aynı test onu yakalar. Ana site (veli kilimi) de bu koşulla bağlar.
+ */
+export function calismaSayfasiVar(oge: KatalogOgesi): boolean {
+  return Boolean(oge.ses?.tam || oge.ses?.parcalar?.length || oge.kuran);
+}
+
+/**
+ * Maddeyi baştan sona dinleme sırası (ses yolları). Birleşik kayıt varsa o çalar. Yoksa sûrenin başından başlayan
+ * maddede âyet parçalarının önüne eûzü (1-0) ve besmele (1-1) gelir; Fâtiha'da besmele zaten 1. âyettir. Sûre ortasından
+ * başlayan ve Kur'an dışı maddeler parçalarıyla çalar. Birleşik kayıt bilerek üretilmeyen maddeler içindir (19 Ekim 2026).
+ */
+export function dinlemeSirasi(oge: KatalogOgesi): string[] {
+  if (oge.ses?.tam) return [oge.ses.tam];
+  const parcalar = [...(oge.ses?.parcalar ?? [])];
+  if (!parcalar.length || oge.tur !== 'sure' || oge.kuran?.ayetler[0] !== 1) return parcalar;
+  return [...(oge.kuran.sure === 1 ? ['/media/ses/ayet/1-0.mp3'] : ['/media/ses/ayet/1-0.mp3', '/media/ses/ayet/1-1.mp3']), ...parcalar];
+}
+
 /** Katalog kimliği → yıllık planda ilk geçtiği tarih («sınıf hedefi»). Aynı madde birden çok yazımla geçebilir. */
 export function sinifHedefleri(plan: { gunler: PlanGunu[] }): Record<string, string> {
   const hedef: Record<string, string> = {};

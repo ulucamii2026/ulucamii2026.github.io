@@ -1,0 +1,1027 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "s-abese",
+ "kuran": {
+  "sure": 80,
+  "ayetler": [
+   1,
+   42
+  ]
+ },
+ "sureAdi": "عَبَسَ",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "عَبَسَ وَتَوَلّٰىۙ",
+   "sayfa": 584
+  },
+  {
+   "no": 2,
+   "ar": "اَنْ جَٓاءَهُ الْاَعْمٰىؕ",
+   "sayfa": 584
+  },
+  {
+   "no": 3,
+   "ar": "وَمَا یُدْرٖیكَ لَعَلَّهُ یَزَّكّٰىۙ",
+   "sayfa": 584
+  },
+  {
+   "no": 4,
+   "ar": "اَوْ یَذَّكَّرُ فَتَنْفَعَهُ الذِّكْرٰىؕ",
+   "sayfa": 584
+  },
+  {
+   "no": 5,
+   "ar": "اَمَّا مَنِ اسْتَغْنٰىۙ",
+   "sayfa": 584
+  },
+  {
+   "no": 6,
+   "ar": "فَاَنْتَ لَهُ تَصَدّٰىؕ",
+   "sayfa": 584
+  },
+  {
+   "no": 7,
+   "ar": "وَمَا عَلَیْكَ اَلَّا یَزَّكّٰىؕ",
+   "sayfa": 584
+  },
+  {
+   "no": 8,
+   "ar": "وَاَمَّا مَنْ جَٓاءَكَ یَسْعٰىۙ",
+   "sayfa": 584
+  },
+  {
+   "no": 9,
+   "ar": "وَهُوَ یَخْشٰىۙ",
+   "sayfa": 584
+  },
+  {
+   "no": 10,
+   "ar": "فَاَنْتَ عَنْهُ تَلَهّٰىۚ",
+   "sayfa": 584
+  },
+  {
+   "no": 11,
+   "ar": "كَلَّٓا اِنَّهَا تَذْكِرَةٌۚ",
+   "sayfa": 584
+  },
+  {
+   "no": 12,
+   "ar": "فَمَنْ شَٓاءَ ذَكَرَهُۘ",
+   "sayfa": 584
+  },
+  {
+   "no": 13,
+   "ar": "فٖی صُحُفٍ مُكَرَّمَةٍۙ",
+   "sayfa": 584
+  },
+  {
+   "no": 14,
+   "ar": "مَرْفُوعَةٍ مُطَهَّرَةٍۙ",
+   "sayfa": 584
+  },
+  {
+   "no": 15,
+   "ar": "بِاَیْدٖی سَفَرَةٍۙ",
+   "sayfa": 584
+  },
+  {
+   "no": 16,
+   "ar": "كِرَامٍ بَرَرَةٍؕ",
+   "sayfa": 584
+  },
+  {
+   "no": 17,
+   "ar": "قُتِلَ الْاِنْسَانُ مَٓا اَكْفَرَهُؕ",
+   "sayfa": 584
+  },
+  {
+   "no": 18,
+   "ar": "مِنْ اَیِّ شَیْءٍ خَلَقَهُؕ",
+   "sayfa": 584
+  },
+  {
+   "no": 19,
+   "ar": "مِنْ نُطْفَةٍؕ خَلَقَهُ فَقَدَّرَهُۙ",
+   "sayfa": 584
+  },
+  {
+   "no": 20,
+   "ar": "ثُمَّ السَّبٖیلَ یَسَّرَهُۙ",
+   "sayfa": 584
+  },
+  {
+   "no": 21,
+   "ar": "ثُمَّ اَمَاتَهُ فَاَقْبَرَهُۙ",
+   "sayfa": 584
+  },
+  {
+   "no": 22,
+   "ar": "ثُمَّ اِذَا شَٓاءَ اَنْشَرَهُؕ",
+   "sayfa": 584
+  },
+  {
+   "no": 23,
+   "ar": "كَلَّا لَمَّا یَقْضِ مَٓا اَمَرَهُؕ",
+   "sayfa": 584
+  },
+  {
+   "no": 24,
+   "ar": "فَلْیَنْظُرِ الْاِنْسَانُ اِلٰى طَعَامِهٖۙ",
+   "sayfa": 584
+  },
+  {
+   "no": 25,
+   "ar": "اَنَّا صَبَبْنَا الْمَٓاءَ صَبًّاۙ",
+   "sayfa": 584
+  },
+  {
+   "no": 26,
+   "ar": "ثُمَّ شَقَقْنَا الْاَرْضَ شَقًّاۙ",
+   "sayfa": 584
+  },
+  {
+   "no": 27,
+   "ar": "فَاَنْبَتْنَا فٖیهَا حَبًّاۙ",
+   "sayfa": 584
+  },
+  {
+   "no": 28,
+   "ar": "وَعِنَبًا وَقَضْبًاۙ",
+   "sayfa": 584
+  },
+  {
+   "no": 29,
+   "ar": "وَزَیْتُونًا وَنَخْلًاۙ",
+   "sayfa": 584
+  },
+  {
+   "no": 30,
+   "ar": "وَحَدَٓائِقَ غُلْبًاۙ",
+   "sayfa": 584
+  },
+  {
+   "no": 31,
+   "ar": "وَفَاكِهَةً وَاَبًّاۙ",
+   "sayfa": 584
+  },
+  {
+   "no": 32,
+   "ar": "مَتَاعًا لَكُمْ وَلِاَنْعَامِكُمْؕ",
+   "sayfa": 584
+  },
+  {
+   "no": 33,
+   "ar": "فَاِذَا جَٓاءَتِ الصَّٓاخَّةُؗ",
+   "sayfa": 584
+  },
+  {
+   "no": 34,
+   "ar": "یَوْمَ یَفِرُّ الْمَرْءُ مِنْ اَخٖیهِۙ",
+   "sayfa": 585
+  },
+  {
+   "no": 35,
+   "ar": "وَاُمِّهٖ وَاَبٖیهِۙ",
+   "sayfa": 585
+  },
+  {
+   "no": 36,
+   "ar": "وَصَاحِبَتِهٖ وَبَنٖیهِؕ",
+   "sayfa": 585
+  },
+  {
+   "no": 37,
+   "ar": "لِكُلِّ امْرِئٍ مِنْهُمْ یَوْمَئِذٍ شَاْنٌ یُغْنٖیهِؕ",
+   "sayfa": 585
+  },
+  {
+   "no": 38,
+   "ar": "وُجُوهٌ یَوْمَئِذٍ مُسْفِرَةٌۙ",
+   "sayfa": 585
+  },
+  {
+   "no": 39,
+   "ar": "ضَاحِكَةٌ مُسْتَبْشِرَةٌۚ",
+   "sayfa": 585
+  },
+  {
+   "no": 40,
+   "ar": "وَوُجُوهٌ یَوْمَئِذٍ عَلَیْهَا غَبَرَةٌۙ",
+   "sayfa": 585
+  },
+  {
+   "no": 41,
+   "ar": "تَرْهَقُهَا قَتَرَةٌؕ",
+   "sayfa": 585
+  },
+  {
+   "no": 42,
+   "ar": "اُو𐻾لٰٓئِكَ هُمُ الْكَفَرَةُ الْفَجَرَةُ",
+   "sayfa": 585
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı Meâli (kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      2
+     ],
+     "metin": "Kendisine o âmâ geldi diye Peygamber yüzünü ekşitti ve öteye döndü."
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "(Ey Muhammed!) Ne bilirsin, belki de o arınacak,"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Yahut öğüt alacak da bu öğüt kendisine fayda verecek."
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "Kendini muhtaç hissetmeyene gelince;"
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "Sen, ona yöneliyorsun."
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "(İstemiyorsa) onun arınmamasından sana ne!"
+    },
+    {
+     "ayetler": [
+      8,
+      10
+     ],
+     "metin": "Allah'a karşı derin bir saygıyla korku içinde koşarak sana geleni ise bırakıp, ona aldırmıyorsun."
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "Hayır, böyle yapma! Çünkü bu (Kur'an) bir öğüttür."
+    },
+    {
+     "ayetler": [
+      12,
+      12
+     ],
+     "metin": "Dileyen ondan öğüt alır."
+    },
+    {
+     "ayetler": [
+      13,
+      16
+     ],
+     "metin": "O, şerefli ve sâdık yazıcı meleklerin elindeki yüksek, tertemiz ve çok değerli sahifelerdedir."
+    },
+    {
+     "ayetler": [
+      17,
+      17
+     ],
+     "metin": "Kahrolası (inkarcı) insan! Ne nankördür o!"
+    },
+    {
+     "ayetler": [
+      18,
+      18
+     ],
+     "metin": "Allah onu hangi şeyden yarattı?"
+    },
+    {
+     "ayetler": [
+      19,
+      19
+     ],
+     "metin": "Az bir sudan (meniden). Onu yarattı ve ona ölçülü bir şekil verdi."
+    },
+    {
+     "ayetler": [
+      20,
+      20
+     ],
+     "metin": "Sonra ona yolu kolaylaştırdı."
+    },
+    {
+     "ayetler": [
+      21,
+      21
+     ],
+     "metin": "Sonra onu öldürdü ve kabre koydu."
+    },
+    {
+     "ayetler": [
+      22,
+      22
+     ],
+     "metin": "Sonra, dilediği vakit onu diriltir."
+    },
+    {
+     "ayetler": [
+      23,
+      23
+     ],
+     "metin": "Hayır hayır o, Allah'ın kendisine emrettiğini yerine getirmedi. (İman etmedi.)"
+    },
+    {
+     "ayetler": [
+      24,
+      24
+     ],
+     "metin": "Herşeyden önce insan, yediği yemeğine bir baksın!"
+    },
+    {
+     "ayetler": [
+      25,
+      25
+     ],
+     "metin": "Gerçekten biz, yağmuru bol bol yağdırdık."
+    },
+    {
+     "ayetler": [
+      26,
+      26
+     ],
+     "metin": "Sonra toprağı, iyiden iyiye yardık!"
+    },
+    {
+     "ayetler": [
+      27,
+      32
+     ],
+     "metin": "Böylece sizin ve hayvanlarınızın yararlanması için orada taneler, üzümler, yoncalar, zeytinler, hurmalıklar, sık ağaçlı bahçeler, meyveler ve otlaklar ortaya çıkardık."
+    },
+    {
+     "ayetler": [
+      33,
+      37
+     ],
+     "metin": "Kişinin kardeşinden, annesinden, babasından, eşinden ve çocuklarından kaçacağı gün kulakları sağır edercesine şiddetli ses geldiği vakit, işte o gün onlardan herkesin kendini meşgul edecek bir işi vardır."
+    },
+    {
+     "ayetler": [
+      38,
+      38
+     ],
+     "metin": "O gün birtakım yüzler vardır ki pırıl pırıl parlarlar,"
+    },
+    {
+     "ayetler": [
+      39,
+      39
+     ],
+     "metin": "Gülerler, sevinirler."
+    },
+    {
+     "ayetler": [
+      40,
+      40
+     ],
+     "metin": "O gün nice yüzler de vardır ki, toz toprak içindedirler."
+    },
+    {
+     "ayetler": [
+      41,
+      41
+     ],
+     "metin": "Onları bir siyahlık bürür."
+    },
+    {
+     "ayetler": [
+      42,
+      42
+     ],
+     "metin": "İşte onlar, kâfirlerdir, günaha dalanlardır."
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "The Holy Quran with English Translation (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "He frowned and turned ˹his attention˺ away,"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "˹simply˺ because the blind man came to him ˹interrupting˺."
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "You never know ˹O Prophet˺, perhaps he may be purified,"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "or he may be mindful, benefitting from the reminder."
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "As for the one who was indifferent,"
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "you gave him your ˹undivided˺ attention,"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "even though you are not to blame if he would not be purified."
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "But as for the one who came to you, eager ˹to learn˺,"
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "being in awe ˹of Allah˺,"
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "you were inattentive to him."
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "But no! This ˹revelation˺ is truly a reminder."
+    },
+    {
+     "ayetler": [
+      12,
+      12
+     ],
+     "metin": "So let whoever wills be mindful of it."
+    },
+    {
+     "ayetler": [
+      13,
+      13
+     ],
+     "metin": "It is ˹written˺ on pages held in honour—"
+    },
+    {
+     "ayetler": [
+      14,
+      14
+     ],
+     "metin": "highly esteemed, purified—"
+    },
+    {
+     "ayetler": [
+      15,
+      15
+     ],
+     "metin": "by the hands of angel-scribes,"
+    },
+    {
+     "ayetler": [
+      16,
+      16
+     ],
+     "metin": "honourable and virtuous."
+    },
+    {
+     "ayetler": [
+      17,
+      17
+     ],
+     "metin": "Condemned are ˹disbelieving˺ humans! How ungrateful they are ˹to Allah˺!"
+    },
+    {
+     "ayetler": [
+      18,
+      18
+     ],
+     "metin": "From what substance did He create them?"
+    },
+    {
+     "ayetler": [
+      19,
+      19
+     ],
+     "metin": "He created them from a sperm-drop, and ordained their development."
+    },
+    {
+     "ayetler": [
+      20,
+      20
+     ],
+     "metin": "Then He makes the way easy for them,"
+    },
+    {
+     "ayetler": [
+      21,
+      21
+     ],
+     "metin": "then causes them to die and be buried."
+    },
+    {
+     "ayetler": [
+      22,
+      22
+     ],
+     "metin": "Then when He wills, He will resurrect them."
+    },
+    {
+     "ayetler": [
+      23,
+      23
+     ],
+     "metin": "But no! They have failed to comply with what He ordered."
+    },
+    {
+     "ayetler": [
+      24,
+      24
+     ],
+     "metin": "Let people then consider their food:"
+    },
+    {
+     "ayetler": [
+      25,
+      25
+     ],
+     "metin": "how We pour down rain in abundance"
+    },
+    {
+     "ayetler": [
+      26,
+      26
+     ],
+     "metin": "and meticulously split the earth open ˹for sprouts˺,"
+    },
+    {
+     "ayetler": [
+      27,
+      27
+     ],
+     "metin": "causing grain to grow in it,"
+    },
+    {
+     "ayetler": [
+      28,
+      28
+     ],
+     "metin": "as well as grapes and greens,"
+    },
+    {
+     "ayetler": [
+      29,
+      29
+     ],
+     "metin": "and olives and palm trees,"
+    },
+    {
+     "ayetler": [
+      30,
+      30
+     ],
+     "metin": "and dense orchards,"
+    },
+    {
+     "ayetler": [
+      31,
+      31
+     ],
+     "metin": "and fruit and fodder—"
+    },
+    {
+     "ayetler": [
+      32,
+      32
+     ],
+     "metin": "all as ˹a means of˺ sustenance for you and your animals."
+    },
+    {
+     "ayetler": [
+      33,
+      33
+     ],
+     "metin": "Then, when the Deafening Blast comes to pass—"
+    },
+    {
+     "ayetler": [
+      34,
+      34
+     ],
+     "metin": "on that Day every person will flee from their own siblings,"
+    },
+    {
+     "ayetler": [
+      35,
+      35
+     ],
+     "metin": "and ˹even˺ their mother and father,"
+    },
+    {
+     "ayetler": [
+      36,
+      36
+     ],
+     "metin": "and ˹even˺ their spouse and children."
+    },
+    {
+     "ayetler": [
+      37,
+      37
+     ],
+     "metin": "For then everyone will have enough concern of their own."
+    },
+    {
+     "ayetler": [
+      38,
+      38
+     ],
+     "metin": "On that Day ˹some˺ faces will be bright,"
+    },
+    {
+     "ayetler": [
+      39,
+      39
+     ],
+     "metin": "laughing and rejoicing,"
+    },
+    {
+     "ayetler": [
+      40,
+      40
+     ],
+     "metin": "while ˹other˺ faces will be dusty,"
+    },
+    {
+     "ayetler": [
+      41,
+      41
+     ],
+     "metin": "cast in gloom—"
+    },
+    {
+     "ayetler": [
+      42,
+      42
+     ],
+     "metin": "those are the disbelievers, the ˹wicked˺ sinners."
+    }
+   ]
+  },
+  "de": {
+   "kaynak": "Der Heilige Koran – Deutsche Übersetzung (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Er runzelte die Stirn und wendete sich ab,"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "weil der Blinde zu ihm kam."
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "Was aber ließ dich wissen, dass er sich nicht reinigen wollte"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "oder Ermahnung suchte und die Ermahnung ihm genützt hätte?"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "Was aber den Reichen betrifft,"
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "den empfingst du,"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "und du bist nicht dafür verantwortlich, dass er sich nicht reinigen will."
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "Was aber den anlangt, der in Eifer zu dir kommt"
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "und voll Ehrfurcht vor Gott ist,"
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "um den kümmerst du dich nicht."
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "Nicht so. Er ist eine Ermahnung –"
+    },
+    {
+     "ayetler": [
+      12,
+      12
+     ],
+     "metin": "und wer will, wird sich ermahnen lassen"
+    },
+    {
+     "ayetler": [
+      13,
+      13
+     ],
+     "metin": "auf geehrten Seiten,"
+    },
+    {
+     "ayetler": [
+      14,
+      14
+     ],
+     "metin": "erhöhten, gereinigten,"
+    },
+    {
+     "ayetler": [
+      15,
+      15
+     ],
+     "metin": "durch edle Hände,"
+    },
+    {
+     "ayetler": [
+      16,
+      16
+     ],
+     "metin": "rechtschaffener Schreiber."
+    },
+    {
+     "ayetler": [
+      17,
+      17
+     ],
+     "metin": "Tod dem Menschen! Wie undankbar er doch ist!"
+    },
+    {
+     "ayetler": [
+      18,
+      18
+     ],
+     "metin": "Woraus erschuf er ihn?"
+    },
+    {
+     "ayetler": [
+      19,
+      19
+     ],
+     "metin": "Aus einem Samentropfen schuf er ihn und bildete ihn sodann,"
+    },
+    {
+     "ayetler": [
+      20,
+      20
+     ],
+     "metin": "dann machte er ihm den Weg leicht,"
+    },
+    {
+     "ayetler": [
+      21,
+      21
+     ],
+     "metin": "dann lässt er ihn sterben und begraben,"
+    },
+    {
+     "ayetler": [
+      22,
+      22
+     ],
+     "metin": "dann erweckt er ihn, wann er will."
+    },
+    {
+     "ayetler": [
+      23,
+      23
+     ],
+     "metin": "Fürwahr, er hat sein Gebot nicht erfüllt."
+    },
+    {
+     "ayetler": [
+      24,
+      24
+     ],
+     "metin": "So schaue der Mensch nach seiner Speise!"
+    },
+    {
+     "ayetler": [
+      25,
+      25
+     ],
+     "metin": "Wir gossen das Wasser in Güssen aus,"
+    },
+    {
+     "ayetler": [
+      26,
+      26
+     ],
+     "metin": "dann spalteten wir die Erde in Spalten"
+    },
+    {
+     "ayetler": [
+      27,
+      27
+     ],
+     "metin": "und ließen Korn in ihr sprießen"
+    },
+    {
+     "ayetler": [
+      28,
+      28
+     ],
+     "metin": "und Reben und frisches Grün"
+    },
+    {
+     "ayetler": [
+      29,
+      29
+     ],
+     "metin": "und Ölbäume und Palmen"
+    },
+    {
+     "ayetler": [
+      30,
+      30
+     ],
+     "metin": "und dicht bepflanzte Gartengehege"
+    },
+    {
+     "ayetler": [
+      31,
+      31
+     ],
+     "metin": "und Früchte und Gras –"
+    },
+    {
+     "ayetler": [
+      32,
+      32
+     ],
+     "metin": "eine Versorgung für euch und euer Vieh."
+    },
+    {
+     "ayetler": [
+      33,
+      33
+     ],
+     "metin": "Und wenn die Dröhnende gehört wird,"
+    },
+    {
+     "ayetler": [
+      34,
+      34
+     ],
+     "metin": "an jenem Tage flieht der Mann von seinem Bruder"
+    },
+    {
+     "ayetler": [
+      35,
+      35
+     ],
+     "metin": "und seiner Mutter und seinem Vater"
+    },
+    {
+     "ayetler": [
+      36,
+      36
+     ],
+     "metin": "und seiner Frau und seinen Kindern;"
+    },
+    {
+     "ayetler": [
+      37,
+      37
+     ],
+     "metin": "Jedermann hat an jenem Tag für sich eine Beschäftigung."
+    },
+    {
+     "ayetler": [
+      38,
+      38
+     ],
+     "metin": "An jenem Tage wird es strahlende Gesichter geben,"
+    },
+    {
+     "ayetler": [
+      39,
+      39
+     ],
+     "metin": "lachende und fröhliche;"
+    },
+    {
+     "ayetler": [
+      40,
+      40
+     ],
+     "metin": "und an jenem Tag wird es staubbedeckte Gesichter geben,",
+     "duzeltme": "Kaynakta 40. âyet kaydı 40–42 diye işaretli, ama 41 ve 42'nin kendi kayıtları var; Almanca meâl kitabı (kitap 5684, PDF s. 399) 40'ı tek âyet verir."
+    },
+    {
+     "ayetler": [
+      41,
+      41
+     ],
+     "metin": "bedeckt von Schwärze:"
+    },
+    {
+     "ayetler": [
+      42,
+      42
+     ],
+     "metin": "Das sind die Ungläubigen, die Frevler."
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Kur'an-ı Kerim (kuran.diyanet.gov.tr, «Amasya Abay» metni)",
+  "url": "https://kuran.diyanet.gov.tr",
+  "alindi": "2026-10-19"
+ },
+ "ozet": "13e908cfa2b1da891188a1d3deea414034dd5386c0d427dddc4b4c8506cec955",
+ "zor": [],
+ "onay": null
+}

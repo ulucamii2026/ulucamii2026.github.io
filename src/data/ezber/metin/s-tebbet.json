@@ -1,0 +1,162 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "s-tebbet",
+ "kuran": {
+  "sure": 111,
+  "ayetler": [
+   1,
+   5
+  ]
+ },
+ "sureAdi": "الْمَسَدِ",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "تَبَّتْ یَدَٓا اَبٖی لَهَبٍ وَتَبَّؕ",
+   "sayfa": 603
+  },
+  {
+   "no": 2,
+   "ar": "مَٓا اَغْنٰى عَنْهُ مَالُهُ وَمَا كَسَبَؕ",
+   "sayfa": 603
+  },
+  {
+   "no": 3,
+   "ar": "سَیَصْلٰى نَارًا ذَاتَ لَهَبٍۚ",
+   "sayfa": 603
+  },
+  {
+   "no": 4,
+   "ar": "وَامْرَاَتُهُؕ حَمَّالَةَ الْحَطَبِۚ",
+   "sayfa": 603
+  },
+  {
+   "no": 5,
+   "ar": "فٖی جٖیدِهَا حَبْلٌ مِنْ مَسَدٍ",
+   "sayfa": 603
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı Meâli (kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Ebû Leheb'in elleri kurusun. Zaten kurudu."
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "Ona ne malı fayda verdi, ne de kazandığı."
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "O, bir alevli ateşe girecektir,"
+    },
+    {
+     "ayetler": [
+      4,
+      5
+     ],
+     "metin": "Boynunda bükülmüş hurma liflerinden bir ip olduğu halde sırtında odun taşıyarak karısı da (o ateşe girecektir)."
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "The Holy Quran with English Translation (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "May the hands of Abu Lahab perish, and he ˹himself˺ perish!"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "Neither his wealth nor ˹worldly˺ gains will benefit him."
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "He will burn in a flaming Fire,"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "and ˹so will˺ his wife, the carrier of ˹thorny˺ kindling,"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "around her neck will be a rope of palm-fibre."
+    }
+   ]
+  },
+  "de": {
+   "kaynak": "Der Heilige Koran – Deutsche Übersetzung (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Verderben über die Hände Ebu Lehebs und Verderben über ihn!"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "Ihm nützten sein Vermögen und sein Gewinn nicht."
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "Brennen wird er im Feuer, dem lohenden,"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "und seine Frau, die Holzträgerin,"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "mit einem Strick von Palmenfasern um ihren Hals."
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Kur'an-ı Kerim (kuran.diyanet.gov.tr, «Amasya Abay» metni)",
+  "url": "https://kuran.diyanet.gov.tr",
+  "alindi": "2026-10-19"
+ },
+ "ozet": "b9caaf68840437a418f3507847d96ad466f71b18f41b41bb100c4ca18ccc80b2",
+ "zor": [],
+ "onay": null
+}

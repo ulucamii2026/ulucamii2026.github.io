@@ -1,0 +1,481 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "s-tarik",
+ "kuran": {
+  "sure": 86,
+  "ayetler": [
+   1,
+   17
+  ]
+ },
+ "sureAdi": "الطَّارِقِ",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "وَالسَّمَٓاءِ وَالطَّارِقِۙ",
+   "sayfa": 590
+  },
+  {
+   "no": 2,
+   "ar": "وَمَٓا اَدْرٰیكَ مَا الطَّارِقُۙ",
+   "sayfa": 590
+  },
+  {
+   "no": 3,
+   "ar": "اَلنَّجْمُ الثَّاقِبُۙ",
+   "sayfa": 590
+  },
+  {
+   "no": 4,
+   "ar": "اِنْ كُلُّ نَفْسٍ لَمَّا عَلَیْهَا حَافِظٌؕ",
+   "sayfa": 590
+  },
+  {
+   "no": 5,
+   "ar": "فَلْیَنْظُرِ الْاِنْسَانُ مِمَّ خُلِقَؕ",
+   "sayfa": 590
+  },
+  {
+   "no": 6,
+   "ar": "خُلِقَ مِنْ مَٓاءٍ دَافِقٍۙ",
+   "sayfa": 590
+  },
+  {
+   "no": 7,
+   "ar": "یَخْرُجُ مِنْ بَیْنِ الصُّلْبِ وَالتَّرَٓائِبِؕ",
+   "sayfa": 590
+  },
+  {
+   "no": 8,
+   "ar": "اِنَّهُ عَلٰى رَجْعِهٖ لَقَادِرٌؕ",
+   "sayfa": 590
+  },
+  {
+   "no": 9,
+   "ar": "یَوْمَ تُبْلَى السَّرَٓائِرُۙ",
+   "sayfa": 590
+  },
+  {
+   "no": 10,
+   "ar": "فَمَا لَهُ مِنْ قُوَّةٍ وَلَا نَاصِرٍؕ",
+   "sayfa": 590
+  },
+  {
+   "no": 11,
+   "ar": "وَالسَّمَٓاءِ ذَاتِ الرَّجْعِۙ",
+   "sayfa": 590
+  },
+  {
+   "no": 12,
+   "ar": "وَالْاَرْضِ ذَاتِ الصَّدْعِۙ",
+   "sayfa": 590
+  },
+  {
+   "no": 13,
+   "ar": "اِنَّهُ لَقَوْلٌ فَصْلٌۙ",
+   "sayfa": 590
+  },
+  {
+   "no": 14,
+   "ar": "وَمَا هُوَ بِالْهَزْلِؕ",
+   "sayfa": 590
+  },
+  {
+   "no": 15,
+   "ar": "اِنَّهُمْ یَكٖیدُونَ كَیْدًاۙ",
+   "sayfa": 590
+  },
+  {
+   "no": 16,
+   "ar": "وَاَ‌كٖیدُ كَیْدًاۚ",
+   "sayfa": 590
+  },
+  {
+   "no": 17,
+   "ar": "فَمَهِّلِ الْكَافِرٖینَ اَمْهِلْهُمْ رُوَیْدًا",
+   "sayfa": 590
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı Meâli (kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Göğe ve târıka andolsun."
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "Târıkın ne olduğunu sen ne bileceksin?"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "O, (ışığıyla karanlığı) delen yıldızdır."
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Hiçbir kimse yoktur ki, üzerinde koruyucu bulunmasın."
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "Öyleyse insan neden yaratıldığına bir baksın."
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "Fışkırıp çıkan bir sudan yaratıldı."
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "Bu su, bel ile kaburga kemikleri arasından çıkar."
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "Şüphesiz Allah'ın onu, öldükten sonra tekrar diriltmeye de gücü yeter."
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "Bütün sırların yoklanacağı günü hatırla!"
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "(O gün) artık insan için ne bir kuvvet vardır, ne de bir yardımcı."
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "Yağmurlu göğe andolsun,"
+    },
+    {
+     "ayetler": [
+      12,
+      12
+     ],
+     "metin": "Yarık yarık çatlamış yere andolsun."
+    },
+    {
+     "ayetler": [
+      13,
+      13
+     ],
+     "metin": "Şüphesiz o Kur'an, hak ile bâtılı ayırd eden bir sözdür."
+    },
+    {
+     "ayetler": [
+      14,
+      14
+     ],
+     "metin": "O, boş bir söz değildir."
+    },
+    {
+     "ayetler": [
+      15,
+      15
+     ],
+     "metin": "Şüphesiz onlar bir tuzak kurarlar,"
+    },
+    {
+     "ayetler": [
+      16,
+      16
+     ],
+     "metin": "Ben de bir tuzak kurarım."
+    },
+    {
+     "ayetler": [
+      17,
+      17
+     ],
+     "metin": "Artık sen inkârcılara mühlet ver; onlara biraz zaman tanı!"
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "The Holy Quran with English Translation (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "By the sky and the nightly star!"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "And what will make you realize what the nightly star is?"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "˹It is˺ the star of piercing brightness."
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "There is no soul without a vigilant angel ˹recording everything˺."
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "Let people then consider what they were created from!"
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "˹They were˺ created from a spurting fluid,"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "stemming from between the backbone and the ribcage."
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "Surely He is fully capable of bringing them back ˹to life˺"
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "on the Day all secrets will be disclosed."
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "Then one will have neither power nor ˹any˺ helper."
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "By the sky with its recurring cycles,"
+    },
+    {
+     "ayetler": [
+      12,
+      12
+     ],
+     "metin": "and the earth with its sprouting plants!"
+    },
+    {
+     "ayetler": [
+      13,
+      13
+     ],
+     "metin": "Surely this ˹Quran˺ is a decisive word,"
+    },
+    {
+     "ayetler": [
+      14,
+      14
+     ],
+     "metin": "and is not to be taken lightly."
+    },
+    {
+     "ayetler": [
+      15,
+      15
+     ],
+     "metin": "They are certainly devising ˹evil˺ plans,"
+    },
+    {
+     "ayetler": [
+      16,
+      16
+     ],
+     "metin": "but I too am planning."
+    },
+    {
+     "ayetler": [
+      17,
+      17
+     ],
+     "metin": "So bear with the disbelievers ˹O Prophet˺. Let them be for ˹just˺ a little while."
+    }
+   ]
+  },
+  "de": {
+   "kaynak": "Der Heilige Koran – Deutsche Übersetzung (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Bei dem Himmel und dem Nachtstern!"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "Und was lehrt dich wissen, was der Nachtstern ist?"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "Er ist das durchbohrende Gestirn."
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Jede Seele hat über sich einen Hüter;"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "darum schaue der Mensch, woraus er erschaffen ist."
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "Erschaffen wurde er aus fließendem ­Wasser,"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "das herauskommt zwischen den Lenden und dem Brustbein."
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "Er hat Macht, ihn wiederkehren zu lassen"
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "an jenem Tage, da die Geheimnisse geprüft werden,"
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "und dann wird er ohne Kraft und ohne Helfer sein."
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "Und bei dem Himmel mit seiner Wiederkehr"
+    },
+    {
+     "ayetler": [
+      12,
+      12
+     ],
+     "metin": "und der Erde mit ihren Rissen!"
+    },
+    {
+     "ayetler": [
+      13,
+      13
+     ],
+     "metin": "Wahrlich, es ist ein unterscheidendes Wort,"
+    },
+    {
+     "ayetler": [
+      14,
+      14
+     ],
+     "metin": "in dem kein Scherz ist."
+    },
+    {
+     "ayetler": [
+      15,
+      15
+     ],
+     "metin": "sie schmieden Pläne,"
+    },
+    {
+     "ayetler": [
+      16,
+      16
+     ],
+     "metin": "und ich schmiede Pläne."
+    },
+    {
+     "ayetler": [
+      17,
+      17
+     ],
+     "metin": "Darum gewähre den Ungläubigen Aufschub, lass ihnen ein wenig Zeit."
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Kur'an-ı Kerim (kuran.diyanet.gov.tr, «Amasya Abay» metni)",
+  "url": "https://kuran.diyanet.gov.tr",
+  "alindi": "2026-10-19"
+ },
+ "ozet": "4fc6dcf24d75c838440408818547fc7ac1e2650b46cce7dd6e3879b0867ca829",
+ "zor": [],
+ "onay": null
+}

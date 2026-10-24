@@ -1,0 +1,65 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "d-rabbenagfirli",
+ "kuran": {
+  "sure": 14,
+  "ayetler": [
+   41,
+   41
+  ]
+ },
+ "sureAdi": "اِبْرٰه۪يمَ",
+ "bolumler": [
+  {
+   "no": 41,
+   "ar": "رَبَّنَا اغْفِرْ لٖی وَلِوَالِدَیَّ وَلِلْمُؤْمِنٖینَ یَوْمَ یَقُومُ الْحِسَابُࣖ",
+   "sayfa": 259
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı Meâli (kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      41,
+      41
+     ],
+     "metin": "\"Rabbimiz! Hesap görülecek günde, beni, ana-babamı ve inananları bağışla.\""
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "The Holy Quran with English Translation (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      41,
+      41
+     ],
+     "metin": "Our Lord! Forgive me, my parents, and the believers on the Day when the judgment will come to pass.”"
+    }
+   ]
+  },
+  "de": {
+   "kaynak": "Der Heilige Koran – Deutsche Übersetzung (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      41,
+      41
+     ],
+     "metin": "Unser Herr, vergib mir und meinen Eltern und den Gläubigen am Tag der Rechenschaft.“"
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Kur'an-ı Kerim (kuran.diyanet.gov.tr, «Amasya Abay» metni)",
+  "url": "https://kuran.diyanet.gov.tr",
+  "alindi": "2026-10-19"
+ },
+ "ozet": "c9e06ee180858138e42801a3f83d9602b6eb6206d120e3cb887afe907d9fad57",
+ "zor": [],
+ "onay": null
+}

@@ -128,13 +128,35 @@ test('Ses hatası kurtarılabilir; eski play reddi yeni bölümü durduramaz', a
   await expect(page.locator('[data-durum]')).toContainText('Bölüm 2');
 });
 
-test('Katalogda yalnız sesi hazır olan maddeler çalışmaya bağlanır; tek kayıt ve ezan notu', async ({ page }) => {
+test('Katalogda sesi ya da metni olan maddeler çalışmaya bağlanır; tek kayıt ve ezan notu', async ({ page }) => {
   await page.goto('/tr/');
   const baglar = await page.locator('.maddeler a[href*="/calis/"]').evaluateAll((a) => a.map((x) => x.pathname).sort());
-  expect(baglar).toEqual(katalog.ogeler.filter((o) => o.ses).map((o) => `/tr/calis/${o.id}/`).sort());
+  // calismaSayfasiVar (src/lib/ezber/katalog.ts) ile aynı koşul: Diyanet sesi ya da Kur'an metni.
+  expect(baglar).toEqual(katalog.ogeler.filter((o) => o.ses || o.kuran).map((o) => `/tr/calis/${o.id}/`).sort());
   await page.goto('/tr/calis/d-ezan/');
-  await expect(page.locator('.calisma-kaynak')).toContainText('sabah ezanıdır');
+  await expect(page.locator('.calisma-not')).toContainText('sabah ezanıdır');
   await expect(page.locator('[data-bolum] option')).toHaveCount(1);
+});
+
+test('Metinde âyet numarasına dokununca o âyet çalar ve vurgulanır; başka âyete dokununca vurgu ona geçer', async ({ page }) => {
+  await page.goto('/tr/calis/s-fatiha/');
+  await expect(page.locator('[data-dokun-ipucu]')).toBeVisible();
+  const ucuncu = page.locator('button.ayet-no').nth(2);
+  await expect(ucuncu).toBeEnabled();
+  await page.locator('[data-bekle]').uncheck();
+  await ucuncu.click();
+  await expect(page.locator('[data-oynat]')).toHaveText('Duraklat');
+  expect(await page.evaluate(() => window.__sesler.at(-1).src)).toMatch(/\/media\/ses\/ayet\/1-3\.mp3$/);
+  await expect(ucuncu).toHaveAttribute('data-calan', '');
+  await expect(page.locator('.ayet[data-no="3"]')).toHaveAttribute('data-calan', '');
+  await expect(page.locator('[data-calan]')).toHaveCount(2);
+  // Tek bölüm seçildi: üç tekrar bitince çalar durur; başka âyete dokunmak onu çalar, vurgu ona geçer.
+  for (let i = 0; i < 3; i++) await bitir(page);
+  await expect(page.locator('[data-oynat]')).not.toHaveText('Duraklat');
+  await page.locator('button.ayet-no').nth(6).click();
+  expect(await page.evaluate(() => window.__sesler.at(-1).src)).toMatch(/\/1-7\.mp3$/);
+  await expect(page.locator('.ayet[data-no="7"]')).toHaveAttribute('data-calan', '');
+  await expect(page.locator('.ayet[data-no="3"]')).not.toHaveAttribute('data-calan', '');
 });
 
 test('Duraklatılan play isteğinin gecikmiş reddi devam eden aynı kaydı kesmez', async ({ page }) => {

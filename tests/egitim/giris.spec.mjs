@@ -1,7 +1,7 @@
 /**
  * egitim.ulucamii.be Faz 1f (27 Eyl 2026) — Ezber Kilimi girişi beş dilde. Dış ağ kesik (ses ulucamii.be'den gelir;
  * oynatma sahte `play` ile sınanır). Neden: panonun 81 maddesi listeye bağlanmalı, telefonda katlı liste bağlantıyla
- * açılmalı, klavye tek sekme durağıyla gezebilmeli; çal düğmesi yalnız sesi olan 27 maddede olmalı ve aynı anda tek ses
+ * açılmalı, klavye tek sekme durağıyla gezebilmeli; çal düğmesi yalnız sesi olan maddelerde (19 Eki 2026: 57) olmalı ve aynı anda tek ses
  * çalmalı; iletişimde yalnız cami hattı; açık/koyu temada erişilebilirlik ve telefon genişliğinde yatay taşma yok.
  * Önizleme sunucusu Hosting'in güvenlik başlıklarını (firebase.json: CSP…) da gönderir: bütün testler gerçek CSP
  * altında koşar; ihlal canlıda sayfayı sessizce bozacağından ayrıca sayılır.

@@ -5,7 +5,7 @@
  * taşıma) listelenmez. Kurallar: docs/EZBER-KILIMI.md.
  */
 import type { Dil } from '../../i18n/ui';
-import { KATALOG, ezberBul } from './katalog';
+import { KATALOG, calismaSayfasiVar, ezberBul } from './katalog';
 import { bolumOzetleri, gorunenBasamak, type Basamak, type EzberOlayi, type Kalite, type OgeDurumu } from './durum';
 import { BASAMAK_ADLARI, KALITE_VELI, KILIM_METINLERI, durakAdi, notMetni } from './metinler';
 import { SERIT_MOTIFI, kilimSeritleri } from './kilim';
@@ -50,7 +50,7 @@ export interface VeliSeridi {
   readonly altin: boolean;
   /** Kaydı olan (≥ Çalışıyor) madde sayısı. */
   readonly baslanan: number;
-  readonly maddeler: readonly { readonly id: string; readonly ad: string; readonly basamak: Basamak; readonly basamakAdi: string }[];
+  readonly maddeler: readonly { readonly id: string; readonly ad: string; readonly basamak: Basamak; readonly basamakAdi: string; readonly sayfa: boolean }[];
 }
 
 /** Kilimin şeritleri (1–7, Amme durakları) ve en sonda kenar suyu; madde sırası katalog sırası. */
@@ -65,7 +65,7 @@ export function veliSeritleri(ogeler: Readonly<Record<string, OgeDurumu>>, dil: 
       const m = ezberBul(id);
       if (!m) return [];
       const basamak = gorunenBasamak(ogeler, id);
-      return [{ id, ad: m.ad[dil], basamak, basamakAdi: BASAMAK_ADLARI[basamak][dil] }];
+      return [{ id, ad: m.ad[dil], basamak, basamakAdi: BASAMAK_ADLARI[basamak][dil], sayfa: calismaSayfasiVar(m) }];
     });
     return { anahtar: b.anahtar, ad, motif: SERIT_MOTIFI[b.seviye], odullu: b.odullu, rozet: oz.rozet, muhur: oz.sertifika, altin: oz.altin,
       baslanan: maddeler.filter((x) => x.basamak > 0).length, maddeler };

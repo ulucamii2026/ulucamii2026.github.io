@@ -1,0 +1,28 @@
+{
+ "aciklama": "kuran.diyanet.gov.tr meâl kayıtlarındaki bilinen veri hataları (19 Ekim 2026). Her düzeltme tek bir Diyanet kaydına uygulanır ve kaynağıyla gerekçelidir; metin değiştirilmez, yalnız âyet bağı düzeltilir ya da eksik kayıt Diyanet'in başka bir yayınından eklenir. Diyanet verisini düzeltirse betik düzeltmenin artık gereksiz olduğunu söyler ve durur.",
+ "duzeltmeler": [
+  {
+   "dil": "tr", "sure": 1, "ayet": 3, "yeniAyet": 2,
+   "neden": "Kaynakta «Hamd, Âlemlerin Rabbi, Rahmân, Rahîm, hesap ve ceza gününün… maliki Allah'a mahsustur.» kaydı 3–4'e bağlı; metin 2–4. âyetlerin meâlidir. Eski kuran.diyanet.gov.tr sayfasında gruplama 1 · 2–4 · 5 · 6–7 idi (27 Eylül 2026 kopyası: egitim/docs/taslaklar/uretim/fatiha-diyanet.json)."
+  },
+  {
+   "dil": "tr", "sure": 1, "ayet": 1, "ekle": "Bismillahirrahmânirrahîm",
+   "kaynak": "https://kuran.diyanet.gov.tr/mushaf/kuran-meal-2/fatiha-suresi-1/ayet-1/diyanet-isleri-baskanligi-meali-1 (27 Eylül 2026 kopyası: egitim/docs/taslaklar/uretim/fatiha-diyanet.json)",
+   "neden": "Kaynakta 1. âyetin meâl kaydı yok."
+  },
+  {
+   "dil": "de", "sure": 1, "ayet": 7,
+   "ekle": "den Weg derer, denen du gnädig bist, nicht derer, denen gezürnt wurde, und nicht der Irregehenden.",
+   "kaynak": "Der Heilige Koran – Deutsche Übersetzung, Diyanet İşleri Başkanlığı (dijital.diyanet.gov.tr, kitap 5684, PDF s. 4); 1–6. âyetler API kaydıyla birebir aynı",
+   "neden": "Kaynakta 7. âyetin Almanca kaydı yok."
+  },
+  {
+   "dil": "en", "sure": 95, "ayet": 7, "bitis": null,
+   "neden": "Kaynakta 7. âyet kaydı 7–8 diye işaretli, ama 8. âyetin kendi kaydı da var («Is Allah not the most just of all judges?»); 7. kaydın metni yalnız 7. âyetin çevirisidir."
+  },
+  {
+   "dil": "de", "sure": 80, "ayet": 40, "bitis": null,
+   "neden": "Kaynakta 40. âyet kaydı 40–42 diye işaretli, ama 41 ve 42'nin kendi kayıtları var; Almanca meâl kitabı (kitap 5684, PDF s. 399) 40'ı tek âyet verir."
+  }
+ ]
+}

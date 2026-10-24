@@ -1,0 +1,687 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "s-gasiye",
+ "kuran": {
+  "sure": 88,
+  "ayetler": [
+   1,
+   26
+  ]
+ },
+ "sureAdi": "الْغَاشِيَةِ",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "هَلْ اَتٰیكَ حَدٖیثُ الْغَاشِیَةِؕ",
+   "sayfa": 591
+  },
+  {
+   "no": 2,
+   "ar": "وُجُوهٌ یَوْمَئِذٍ خَاشِعَةٌۙ",
+   "sayfa": 591
+  },
+  {
+   "no": 3,
+   "ar": "عَامِلَةٌ نَاصِبَةٌۙ",
+   "sayfa": 591
+  },
+  {
+   "no": 4,
+   "ar": "تَصْلٰى نَارًا حَامِیَةًۙ",
+   "sayfa": 591
+  },
+  {
+   "no": 5,
+   "ar": "تُسْقٰى مِنْ عَیْنٍ اٰنِیَةٍؕ",
+   "sayfa": 591
+  },
+  {
+   "no": 6,
+   "ar": "لَیْسَ لَهُمْ طَعَامٌ اِلَّا مِنْ ضَرٖیعٍۙ",
+   "sayfa": 591
+  },
+  {
+   "no": 7,
+   "ar": "لَا یُسْمِنُ وَلَا یُغْنٖی مِنْ جُوعٍؕ",
+   "sayfa": 591
+  },
+  {
+   "no": 8,
+   "ar": "وُجُوهٌ یَوْمَئِذٍ نَاعِمَةٌۙ",
+   "sayfa": 591
+  },
+  {
+   "no": 9,
+   "ar": "لِسَعْیِهَا رَاضِیَةٌۙ",
+   "sayfa": 591
+  },
+  {
+   "no": 10,
+   "ar": "فٖی جَنَّةٍ عَالِیَةٍۙ",
+   "sayfa": 591
+  },
+  {
+   "no": 11,
+   "ar": "لَا تَسْمَعُ فٖیهَا لَاغِیَةًؕ",
+   "sayfa": 591
+  },
+  {
+   "no": 12,
+   "ar": "فٖیهَا عَیْنٌ جَارِیَةٌۘ",
+   "sayfa": 592
+  },
+  {
+   "no": 13,
+   "ar": "فٖیهَا سُرُرٌ مَرْفُوعَةٌۙ",
+   "sayfa": 592
+  },
+  {
+   "no": 14,
+   "ar": "وَاَكْوَابٌ مَوْضُوعَةٌۙ",
+   "sayfa": 592
+  },
+  {
+   "no": 15,
+   "ar": "وَنَمَارِقُ مَصْفُوفَةٌۙ",
+   "sayfa": 592
+  },
+  {
+   "no": 16,
+   "ar": "وَزَرَابِیُّ مَبْثُوثَةٌؕ",
+   "sayfa": 592
+  },
+  {
+   "no": 17,
+   "ar": "اَفَلَا یَنْظُرُونَ اِلَى الْاِبِلِ كَیْفَ خُلِقَتْࣞ",
+   "sayfa": 592
+  },
+  {
+   "no": 18,
+   "ar": "وَاِلَى السَّمَٓاءِ كَیْفَ رُفِعَتْࣞ",
+   "sayfa": 592
+  },
+  {
+   "no": 19,
+   "ar": "وَاِلَى الْجِبَالِ كَیْفَ نُصِبَتْࣞ",
+   "sayfa": 592
+  },
+  {
+   "no": 20,
+   "ar": "وَاِلَى الْاَرْضِ كَیْفَ سُطِحَتْࣞ",
+   "sayfa": 592
+  },
+  {
+   "no": 21,
+   "ar": "فَذَكِّرْ اِنَّمَٓا اَنْتَ مُذَكِّرٌؕ",
+   "sayfa": 592
+  },
+  {
+   "no": 22,
+   "ar": "لَسْتَ عَلَیْهِمْ بِمُصَیْطِرٍۙ",
+   "sayfa": 592
+  },
+  {
+   "no": 23,
+   "ar": "اِلَّا مَنْ تَوَلّٰى وَكَفَرَۙ",
+   "sayfa": 592
+  },
+  {
+   "no": 24,
+   "ar": "فَیُعَذِّبُهُ اللّٰهُ الْعَذَابَ الْاَكْبَرَؕ",
+   "sayfa": 592
+  },
+  {
+   "no": 25,
+   "ar": "اِنَّ اِلَیْنَٓا اِیَابَهُمْۙ",
+   "sayfa": 592
+  },
+  {
+   "no": 26,
+   "ar": "ثُمَّ اِنَّ عَلَیْنَا حِسَابَهُمْ",
+   "sayfa": 592
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı Meâli (kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Dehşeti her şeyi kaplayan felaketin haberi sana geldi mi?"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "O gün birtakım yüzler vardır ki zillete bürünmüşlerdir."
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "Çalışmış, (boşa) yorulmuşlardır."
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Kızgın ateşe girerler."
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "Son derece kızgın bir kaynaktan içirilirler."
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "Onlara, acı ve kötü kokulu bir dikenli bitkiden başka yiyecek yoktur."
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "O, ne besler ne de açlıktan kurtarır."
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "O gün birtakım yüzler vardır ki, nimet içinde mutludurlar."
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "Yaptıklarından dolayı hoşnutturlar."
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "Yüksek bir cennettedirler."
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "Orada hiçbir boş söz işitmezler."
+    },
+    {
+     "ayetler": [
+      12,
+      12
+     ],
+     "metin": "Orada akan bir kaynak vardır."
+    },
+    {
+     "ayetler": [
+      13,
+      16
+     ],
+     "metin": "Orada yüksek tahtlar, konulmuş kadehler, sıra sıra yastıklar, serilmiş gösterişli yaygılar vardır."
+    },
+    {
+     "ayetler": [
+      17,
+      17
+     ],
+     "metin": "Deveye bakmıyorlar mı, nasıl yaratılmıştır!"
+    },
+    {
+     "ayetler": [
+      18,
+      18
+     ],
+     "metin": "Göğe bakmıyorlar mı, nasıl yükseltilmiştir!"
+    },
+    {
+     "ayetler": [
+      19,
+      19
+     ],
+     "metin": "Dağlara bakmıyorlar mı, nasıl dikilmişlerdir!"
+    },
+    {
+     "ayetler": [
+      20,
+      20
+     ],
+     "metin": "Yeryüzüne bakmıyorlar mı, nasıl yayılmıştır!"
+    },
+    {
+     "ayetler": [
+      21,
+      21
+     ],
+     "metin": "Artık sen öğüt ver! Sen ancak bir öğüt vericisin."
+    },
+    {
+     "ayetler": [
+      22,
+      22
+     ],
+     "metin": "Sen, onlar üzerinde bir zorba değilsin."
+    },
+    {
+     "ayetler": [
+      23,
+      24
+     ],
+     "metin": "Ancak, kim yüz çevirir, inkâr ederse, Allah onu en büyük azaba uğratır."
+    },
+    {
+     "ayetler": [
+      25,
+      25
+     ],
+     "metin": "Şüphesiz onların dönüşü ancak bizedir."
+    },
+    {
+     "ayetler": [
+      26,
+      26
+     ],
+     "metin": "Sonra onların sorguya çekilmesi de sadece bize aittir."
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "The Holy Quran with English Translation (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Has the news of the Overwhelming Event reached you ˹O Prophet˺?"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "On that Day ˹some˺ faces will be downcast,"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "˹totally˺ overburdened, exhausted,"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "burning in a scorching Fire,"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "left to drink from a scalding spring."
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "They will have no food except a foul, thorny shrub,"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "neither nourishing nor satisfying hunger."
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "On that Day ˹other˺ faces will be glowing with bliss,"
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "˹fully˺ pleased with their striving,"
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "in an elevated Garden,"
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "where no idle talk will be heard."
+    },
+    {
+     "ayetler": [
+      12,
+      12
+     ],
+     "metin": "In it will be a running spring,"
+    },
+    {
+     "ayetler": [
+      13,
+      13
+     ],
+     "metin": "along with thrones raised high,"
+    },
+    {
+     "ayetler": [
+      14,
+      14
+     ],
+     "metin": "and cups set at hand,"
+    },
+    {
+     "ayetler": [
+      15,
+      15
+     ],
+     "metin": "and ˹fine˺ cushions lined up,"
+    },
+    {
+     "ayetler": [
+      16,
+      16
+     ],
+     "metin": "and ˹splendid˺ carpets spread out."
+    },
+    {
+     "ayetler": [
+      17,
+      17
+     ],
+     "metin": "Do they not ever reflect on camels—how they were ˹masterfully˺ created;"
+    },
+    {
+     "ayetler": [
+      18,
+      18
+     ],
+     "metin": "and the sky—how it was raised ˹high˺;"
+    },
+    {
+     "ayetler": [
+      19,
+      19
+     ],
+     "metin": "and the mountains—how they were firmly set up;"
+    },
+    {
+     "ayetler": [
+      20,
+      20
+     ],
+     "metin": "and the earth—how it was levelled out?"
+    },
+    {
+     "ayetler": [
+      21,
+      21
+     ],
+     "metin": "So, ˹continue to˺ remind ˹all, O Prophet˺, for your duty is only to remind."
+    },
+    {
+     "ayetler": [
+      22,
+      22
+     ],
+     "metin": "You are not ˹there˺ to compel them ˹to believe˺."
+    },
+    {
+     "ayetler": [
+      23,
+      23
+     ],
+     "metin": "But whoever turns away, persisting in disbelief,"
+    },
+    {
+     "ayetler": [
+      24,
+      24
+     ],
+     "metin": "then Allah will inflict upon them the major punishment."
+    },
+    {
+     "ayetler": [
+      25,
+      25
+     ],
+     "metin": "Surely to Us is their return,"
+    },
+    {
+     "ayetler": [
+      26,
+      26
+     ],
+     "metin": "then surely with Us is their reckoning."
+    }
+   ]
+  },
+  "de": {
+   "kaynak": "Der Heilige Koran – Deutsche Übersetzung (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Kam die Geschichte der Bedeckenden zu dir?"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "Die einen Gesichter werden an jenem Tage niedergeschlagen sein,"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "sich abarbeitend und plagend,"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "brennend an glühendem Feuer,"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "getränkt aus einer siedenden Quelle."
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "Keine Speise sollen sie erhalten außer vom Dornenstrauch,"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "der nicht nährt und den Hunger nicht stillt."
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "Die andern Gesichter werden an jenem Tage fröhlich sein,"
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "zufrieden mit ihrer Mühe auf der Erde"
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "in hohem Garten,"
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "in dem sie kein Geschwätz hören."
+    },
+    {
+     "ayetler": [
+      12,
+      12
+     ],
+     "metin": "In ihm ist eine strömende Quelle,"
+    },
+    {
+     "ayetler": [
+      13,
+      13
+     ],
+     "metin": "in ihm sind erhöhte Polster"
+    },
+    {
+     "ayetler": [
+      14,
+      14
+     ],
+     "metin": "und hingestellte Becher"
+    },
+    {
+     "ayetler": [
+      15,
+      15
+     ],
+     "metin": "und aufgereihte Kissen"
+    },
+    {
+     "ayetler": [
+      16,
+      16
+     ],
+     "metin": "und ausgebreitete Teppiche. –"
+    },
+    {
+     "ayetler": [
+      17,
+      17
+     ],
+     "metin": "Schauen sie denn nicht zu den Wolken, wie sie erschaffen sind,"
+    },
+    {
+     "ayetler": [
+      18,
+      18
+     ],
+     "metin": "und zum Himmel, wie er erhöht wurde,"
+    },
+    {
+     "ayetler": [
+      19,
+      19
+     ],
+     "metin": "und zu den Bergen, wie sie aufgestellt worden sind,"
+    },
+    {
+     "ayetler": [
+      20,
+      20
+     ],
+     "metin": "und zur Erde, wie sie ausgebreitet wurde?"
+    },
+    {
+     "ayetler": [
+      21,
+      21
+     ],
+     "metin": "So ermahne; du bist nur ein Ermahner,"
+    },
+    {
+     "ayetler": [
+      22,
+      22
+     ],
+     "metin": "du hast keine Macht über sie."
+    },
+    {
+     "ayetler": [
+      23,
+      23
+     ],
+     "metin": "Den, der sich abkehrt und ungläubig ist,"
+    },
+    {
+     "ayetler": [
+      24,
+      24
+     ],
+     "metin": "ihn wird Allah mit der größten Strafe strafen."
+    },
+    {
+     "ayetler": [
+      25,
+      25
+     ],
+     "metin": "Zu uns ist ja ihre Heimkehr,"
+    },
+    {
+     "ayetler": [
+      26,
+      26
+     ],
+     "metin": "dann obliegt uns ihre Rechenschaft."
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Kur'an-ı Kerim (kuran.diyanet.gov.tr, «Amasya Abay» metni)",
+  "url": "https://kuran.diyanet.gov.tr",
+  "alindi": "2026-10-19"
+ },
+ "ozet": "29fdd1de1f7f9bf99317d91dee77f55d612073ef0a76e064dbe1c617118b1f6d",
+ "zor": [],
+ "onay": null
+}

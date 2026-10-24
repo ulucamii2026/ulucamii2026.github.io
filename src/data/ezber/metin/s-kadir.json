@@ -1,0 +1,169 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "s-kadir",
+ "kuran": {
+  "sure": 97,
+  "ayetler": [
+   1,
+   5
+  ]
+ },
+ "sureAdi": "الْقَدْرِ",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "اِنَّٓا اَنْزَلْنَاهُ فٖی لَیْلَةِ الْقَدْرِۚ",
+   "sayfa": 598
+  },
+  {
+   "no": 2,
+   "ar": "وَمَٓا اَدْرٰیكَ مَا لَیْلَةُ الْقَدْرِؕ",
+   "sayfa": 598
+  },
+  {
+   "no": 3,
+   "ar": "لَیْلَةُ الْقَدْرِ خَیْرٌ مِنْ اَلْفِ شَهْرٍؕ",
+   "sayfa": 598
+  },
+  {
+   "no": 4,
+   "ar": "تَنَزَّلُ الْمَلٰٓئِكَةُ وَالرُّوحُ فٖیهَا بِاِذْنِ رَبِّهِمْۚ مِنْ كُلِّ اَمْرٍۙۛ",
+   "sayfa": 598
+  },
+  {
+   "no": 5,
+   "ar": "سَلَامٌࣞۛ هِیَ حَتّٰى مَطْلَعِ الْفَجْرِ",
+   "sayfa": 598
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı Meâli (kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Şüphesiz, biz onu (Kur'an'ı) Kadir gecesinde indirdik."
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "Kadir gecesinin ne olduğunu sen ne bileceksin!"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "Kadir gecesi bin aydan daha hayırlıdır."
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Melekler ve Ruh (Cebrail) o gecede, Rablerinin izniyle her türlü iş için iner de iner."
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "O gece, tan yerinin ağarmasına kadar bir esenliktir."
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "The Holy Quran with English Translation (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Indeed, ˹it is˺ We ˹Who˺ sent this ˹Quran˺ down on the Night of Glory."
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "And what will make you realize what the Night of Glory is?"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "The Night of Glory is better than a thousand months."
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "That night the angels and the ˹holy˺ spirit descend, by the permission of their Lord, for every ˹decreed˺ matter."
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "It is all peace until the break of dawn."
+    }
+   ]
+  },
+  "de": {
+   "kaynak": "Der Heilige Koran – Deutsche Übersetzung (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Wir haben ihn in der Nacht El-Qadr offenbart."
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "Und was lehrt dich wissen, was die Nacht El-Qadr ist?"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "Die Nacht El-Qadr ist besser als tausend Monate."
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Hinab steigen die Engel und der Geist in ihr mit der Erlaubnis ihres Herrn zu jeglicher Angelegenheit."
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "Frieden ist sie bis zum Aufgang der Morgenröte."
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Kur'an-ı Kerim (kuran.diyanet.gov.tr, «Amasya Abay» metni)",
+  "url": "https://kuran.diyanet.gov.tr",
+  "alindi": "2026-10-19"
+ },
+ "ozet": "0b6794d7078c512b6073606c6c1c7bfc556c3e59ffce240cccd596ceb9c9703a",
+ "zor": [],
+ "onay": null
+}

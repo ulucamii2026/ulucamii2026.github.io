@@ -13,7 +13,7 @@ Kaynak: SIL Global «Scheherazade New» 4.500 (egitim/fontlar/kaynak/, SIL Open 
 OFL SSS 2.6: webfont için alt küme almak değişikliktir; değiştirilmiş sürüm ayrılmış adı taşıyamaz. Bu yüzden alt küme
 «Ulu Nesih» adını alır; telif satırı ve lisans korunur, OFL.txt yazı tipinin yanında yayımlanır.
 
-Küme: Kur'an ve dua metinlerinin bütün Arapça harf ve işaretleri (165 kod noktası; Farsça/Urduca harfler yok). İçerik
+Küme: Kur'an ve dua metinlerinin bütün Arapça harf ve işaretleri (169 kod noktası; Türk mushaf imlâsının yâ'sı U+06CC dışında Farsça/Urduca harf yok). İçerik
 büyüse de yeniden üretim gerekmez; yeni bir kod noktası gerekirse KUME'ye eklenip betik yeniden çalıştırılır.
 
 Çalıştırma (depo kökünden):  py -3.14 egitim/scripts/ulu-nesih-uret.py
@@ -48,6 +48,8 @@ KUME = sorted(set(
     + [0x0670, 0x0671]          # üst elif (çeker üstün), vasl elifi
     + aralik(0x06D6, 0x06ED)    # Kur'an işaretleri (vakıf, secde, halkalar)
     + aralik(0x08D3, 0x08FF)    # genişletilmiş Kur'an işaretleri: ع (U+08D6), ق (U+08D7), sekte (U+08DD), قف (U+08DE)
+    + [0x06CC]                  # Türk mushaf imlâsının yâ'sı: kuran.diyanet.gov.tr metni (19 Ekim 2026)
+    + aralik(0x10EFD, 0x10EFF)  # aynı metnin alçak sekte, kasr ve medd işaretleri (Unicode 15)
     + [0x060C, 0x061B, 0x061F, 0x06DD, 0x06DE, 0x06E9, 0xFD3E, 0xFD3F, 0xFDF2, 0x25CC, 0x200C, 0x200D, 0x0020, 0x00A0]
 ))
 

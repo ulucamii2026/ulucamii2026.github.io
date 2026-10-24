@@ -1,0 +1,155 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "s-alak-1-5",
+ "kuran": {
+  "sure": 96,
+  "ayetler": [
+   1,
+   5
+  ]
+ },
+ "sureAdi": "الْعَلَقِ",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "اِقْرَاْ بِاسْمِ رَبِّكَ الَّذٖی خَلَقَۚ",
+   "sayfa": 597
+  },
+  {
+   "no": 2,
+   "ar": "خَلَقَ الْاِنْسَانَ مِنْ عَلَقٍۚ",
+   "sayfa": 597
+  },
+  {
+   "no": 3,
+   "ar": "اِقْرَاْ وَرَبُّكَ الْاَكْرَمُۙ",
+   "sayfa": 597
+  },
+  {
+   "no": 4,
+   "ar": "اَلَّذٖی عَلَّمَ بِالْقَلَمِۙ",
+   "sayfa": 597
+  },
+  {
+   "no": 5,
+   "ar": "عَلَّمَ الْاِنْسَانَ مَا لَمْ یَعْلَمْؕ",
+   "sayfa": 597
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı Meâli (kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      2
+     ],
+     "metin": "Yaratan Rabbinin adıyla oku! O, insanı \"alak\" dan yarattı."
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "Oku! Senin Rabbin en cömert olandır."
+    },
+    {
+     "ayetler": [
+      4,
+      5
+     ],
+     "metin": "O, kalemle yazmayı öğretendir, insana bilmediğini öğretendir."
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "The Holy Quran with English Translation (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Read, ˹O Prophet,˺ in the Name of your Lord Who created—"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "created humans from a clinging clot."
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "Read! And your Lord is the Most Generous,"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Who taught by the pen—"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "taught humanity what they knew not."
+    }
+   ]
+  },
+  "de": {
+   "kaynak": "Der Heilige Koran – Deutsche Übersetzung (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Lies im Namen deines Herrn, der erschuf,"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "erschuf den Menschen aus geronnenem Blut."
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "Lies, denn dein Herr ist allgütig,"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "der mit dem Schreibstift lehrte,"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "den Menschen lehrte er, was er nicht wusste."
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Kur'an-ı Kerim (kuran.diyanet.gov.tr, «Amasya Abay» metni)",
+  "url": "https://kuran.diyanet.gov.tr",
+  "alindi": "2026-10-19"
+ },
+ "ozet": "a5f2d8fcc489902e4a1424379c7ffaa7c4ed0e3592f8aa2c2c2dcd488654aee9",
+ "zor": [],
+ "onay": null
+}

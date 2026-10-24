@@ -1,0 +1,576 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "s-buruc",
+ "kuran": {
+  "sure": 85,
+  "ayetler": [
+   1,
+   22
+  ]
+ },
+ "sureAdi": "الْبُرُوجِ",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "وَالسَّمَٓاءِ ذَاتِ الْبُرُوجِۙ",
+   "sayfa": 589
+  },
+  {
+   "no": 2,
+   "ar": "وَالْیَوْمِ الْمَوْعُودِۙ",
+   "sayfa": 589
+  },
+  {
+   "no": 3,
+   "ar": "وَشَاهِدٍ وَمَشْهُودٍؕ",
+   "sayfa": 589
+  },
+  {
+   "no": 4,
+   "ar": "قُتِلَ اَصْحَابُ الْاُخْدُودِۙ",
+   "sayfa": 589
+  },
+  {
+   "no": 5,
+   "ar": "اَلنَّارِ ذَاتِ الْوَقُودِۙ",
+   "sayfa": 589
+  },
+  {
+   "no": 6,
+   "ar": "اِذْ هُمْ عَلَیْهَا قُعُودٌۙ",
+   "sayfa": 589
+  },
+  {
+   "no": 7,
+   "ar": "وَهُمْ عَلٰى مَا یَفْعَلُونَ بِالْمُؤْمِنٖینَ شُهُودٌؕ",
+   "sayfa": 589
+  },
+  {
+   "no": 8,
+   "ar": "وَمَا نَقَمُوا مِنْهُمْ اِلَّٓا اَنْ یُؤْمِنُوا بِاللّٰهِ الْعَزٖیزِ الْحَمٖیدِۙ",
+   "sayfa": 589
+  },
+  {
+   "no": 9,
+   "ar": "اَلَّذٖی لَهُ مُلْكُ السَّمٰوَاتِ وَالْاَرْضِؕ وَاللّٰهُ عَلٰى كُلِّ شَیْءٍ شَهٖیدٌؕ",
+   "sayfa": 589
+  },
+  {
+   "no": 10,
+   "ar": "اِنَّ الَّذٖینَ فَتَنُوا الْمُؤْمِنٖینَ وَالْمُؤْمِنَاتِ ثُمَّ لَمْ یَتُوبُوا فَلَهُمْ عَذَابُ جَهَنَّمَ وَلَهُمْ عَذَابُ الْحَرٖیقِؕ",
+   "sayfa": 589
+  },
+  {
+   "no": 11,
+   "ar": "اِنَّ الَّذٖینَ اٰمَنُوا وَعَمِلُوا الصَّالِحَاتِ لَهُمْ جَنَّاتٌ تَجْرٖی مِنْ تَحْتِهَا الْاَنْهَارُؕ ذٰلِكَ الْفَوْزُ الْكَبٖیرُؕ",
+   "sayfa": 589
+  },
+  {
+   "no": 12,
+   "ar": "اِنَّ بَطْشَ رَبِّكَ لَشَدٖیدٌؕ",
+   "sayfa": 590
+  },
+  {
+   "no": 13,
+   "ar": "اِنَّهُ هُوَ یُبْدِئُ وَیُعٖیدُۚ",
+   "sayfa": 590
+  },
+  {
+   "no": 14,
+   "ar": "وَهُوَ الْغَفُورُ الْوَدُودُۙ",
+   "sayfa": 590
+  },
+  {
+   "no": 15,
+   "ar": "ذُوالْعَرْشِ الْمَجٖیدُۙ",
+   "sayfa": 590
+  },
+  {
+   "no": 16,
+   "ar": "فَعَّالٌ لِمَا یُرٖیدُؕ",
+   "sayfa": 590
+  },
+  {
+   "no": 17,
+   "ar": "هَلْ اَتٰیكَ حَدٖیثُ الْجُنُودِۙ",
+   "sayfa": 590
+  },
+  {
+   "no": 18,
+   "ar": "فِرْعَوْنَ وَثَمُودَؕ",
+   "sayfa": 590
+  },
+  {
+   "no": 19,
+   "ar": "بَلِ الَّذٖینَ كَفَرُوا فٖی تَكْذٖیبٍۙ",
+   "sayfa": 590
+  },
+  {
+   "no": 20,
+   "ar": "وَاللّٰهُ مِنْ وَرَٓائِهِمْ مُحٖیطٌۚ",
+   "sayfa": 590
+  },
+  {
+   "no": 21,
+   "ar": "بَلْ هُوَ قُرْاٰنٌ مَجٖیدٌۙ",
+   "sayfa": 590
+  },
+  {
+   "no": 22,
+   "ar": "فٖی لَوْحٍ مَحْفُوظٍ",
+   "sayfa": 590
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı Meâli (kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Burçlarla dolu göğe andolsun,"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "Va'dedilmiş güne (kıyamete) andolsun,"
+    },
+    {
+     "ayetler": [
+      3,
+      5
+     ],
+     "metin": "Şâhitlik edene ve şahitlik edilene andolsun ki, (mü'minleri yakmak için) hendek kazıp (içinde) alevli ateş yakanlar lanetlenmiştir."
+    },
+    {
+     "ayetler": [
+      6,
+      7
+     ],
+     "metin": "O vakit, ateşin etrafında oturmuş, mü'minlere yaptıklarını seyrediyorlardı."
+    },
+    {
+     "ayetler": [
+      8,
+      9
+     ],
+     "metin": "Onlar mü'minlere ancak; göklerin ve yerin hükümranlığı kendisine ait olan mutlak güç sahibi ve övülmeye layık Allah'a iman ettikleri için kızıyorlardı. Allah her şeye şahittir."
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "Şüphesiz mü'min erkeklerle mü'min kadınlara işkence edip, sonra da tövbe etmeyenlere; cehennem azabı ve yangın azabı vardır."
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "İman edip salih ameller işleyenlere gelince; onlara içinden ırmaklar akan, cennetler vardır. İşte bu büyük başarıdır."
+    },
+    {
+     "ayetler": [
+      12,
+      12
+     ],
+     "metin": "Şüphesiz, Rabbinin yakalaması çok çetindir."
+    },
+    {
+     "ayetler": [
+      13,
+      13
+     ],
+     "metin": "Şüphesiz O, başlangıçta yaratmayı yapar, sonra onu tekrarlar."
+    },
+    {
+     "ayetler": [
+      14,
+      14
+     ],
+     "metin": "O, çok bağışlayandır, çok sevendir."
+    },
+    {
+     "ayetler": [
+      15,
+      15
+     ],
+     "metin": "Arş'ın sahibidir, şanı yüce olandır."
+    },
+    {
+     "ayetler": [
+      16,
+      16
+     ],
+     "metin": "Dilediğini mutlaka yapandır."
+    },
+    {
+     "ayetler": [
+      17,
+      18
+     ],
+     "metin": "Orduların, Firavun ve Semûd'un haberi sana geldi mi?"
+    },
+    {
+     "ayetler": [
+      19,
+      19
+     ],
+     "metin": "Hayır, inkar edenler, hâlâ yalanlamaktadırlar."
+    },
+    {
+     "ayetler": [
+      20,
+      20
+     ],
+     "metin": "Oysa Allah, onları arkalarından kuşatmıştır."
+    },
+    {
+     "ayetler": [
+      21,
+      21
+     ],
+     "metin": "Hayır o (yalanlamakta oldukları kitap) şanı yüce bir Kur'an'dır."
+    },
+    {
+     "ayetler": [
+      22,
+      22
+     ],
+     "metin": "O korunmuş bir levhada (Levh-i Mahfuz'da)dır."
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "The Holy Quran with English Translation (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "By the sky full of constellations,"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "and the promised Day ˹of Judgment˺,"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "and the witness and what is witnessed!"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Condemned are the makers of the ditch—"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "the fire ˹pit˺, filled with fuel—"
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "when they sat around it,"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "watching what they had ˹ordered to be˺ done to the believers,"
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "who they resented for no reason other than belief in Allah—the Almighty, the Praiseworthy—"
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "˹the One˺ to Whom belongs the kingdom of the heavens and earth. And Allah is a Witness over all things."
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "Those who persecute the believing men and women and then do not repent will certainly suffer the punishment of Hell and the torment of burning."
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "Surely those who believe and do good will have Gardens under which rivers flow. That is the greatest triumph."
+    },
+    {
+     "ayetler": [
+      12,
+      12
+     ],
+     "metin": "Indeed, the ˹crushing˺ grip of your Lord is severe."
+    },
+    {
+     "ayetler": [
+      13,
+      13
+     ],
+     "metin": "˹For˺ He is certainly the One Who originates and resurrects ˹all˺."
+    },
+    {
+     "ayetler": [
+      14,
+      14
+     ],
+     "metin": "And He is the All-Forgiving, All-Loving—"
+    },
+    {
+     "ayetler": [
+      15,
+      15
+     ],
+     "metin": "Lord of the Throne, the All-Glorious,"
+    },
+    {
+     "ayetler": [
+      16,
+      16
+     ],
+     "metin": "Doer of whatever He wills."
+    },
+    {
+     "ayetler": [
+      17,
+      17
+     ],
+     "metin": "Has the story of the ˹destroyed˺ forces reached you ˹O Prophet˺—"
+    },
+    {
+     "ayetler": [
+      18,
+      18
+     ],
+     "metin": "˹the forces of˺ Pharaoh and Thamûd?"
+    },
+    {
+     "ayetler": [
+      19,
+      19
+     ],
+     "metin": "Yet the disbelievers ˹still˺ persist in denial."
+    },
+    {
+     "ayetler": [
+      20,
+      20
+     ],
+     "metin": "But Allah encompasses them from all sides."
+    },
+    {
+     "ayetler": [
+      21,
+      21
+     ],
+     "metin": "In fact, this is a glorious Quran,"
+    },
+    {
+     "ayetler": [
+      22,
+      22
+     ],
+     "metin": "˹recorded˺ in a Preserved Tablet."
+    }
+   ]
+  },
+  "de": {
+   "kaynak": "Der Heilige Koran – Deutsche Übersetzung (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Bei dem Himmel mit seinen Sternbildern"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "und dem verheißenen Tag,"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "bei einem Zeugen und einem Bezeugten!"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Getötet werden die Gefährten des Grabens,"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "des brennstoffreichen Feuers,"
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "sobald sie an ihm sitzen"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "und Zeugen sind für das, was sie den Gläubigen antaten."
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "Und sie rächten sich an ihnen allein darum, dass sie an Allah glaubten, den Mächtigen, Rühmenswerten,"
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "dessen das Reich ist der Himmel und der Erde. Allah ist Zeuge aller ­Dinge."
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "Diejenigen, welche die Gläubigen, Männer und Frauen, heimsuchen und danach nicht bereuen, ihnen wird die Strafe der Hölle und die Strafe des Verbrennens."
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "Diejenigen, welche glauben und das Rechte tun, für sie sind Gärten, durcheilt von Bächen; das ist die große Glückseligkeit."
+    },
+    {
+     "ayetler": [
+      12,
+      12
+     ],
+     "metin": "Die Vergeltung deines Herrn ist wahrlich streng."
+    },
+    {
+     "ayetler": [
+      13,
+      13
+     ],
+     "metin": "Er bringt hervor und lässt zurückkehren,"
+    },
+    {
+     "ayetler": [
+      14,
+      14
+     ],
+     "metin": "und er ist der Verzeihende, der Liebende,"
+    },
+    {
+     "ayetler": [
+      15,
+      15
+     ],
+     "metin": "der Herr des ruhmvollen Thrones,"
+    },
+    {
+     "ayetler": [
+      16,
+      16
+     ],
+     "metin": "der da tut, was er will."
+    },
+    {
+     "ayetler": [
+      17,
+      17
+     ],
+     "metin": "Kam zu dir nicht die Geschichte der Heerscharen"
+    },
+    {
+     "ayetler": [
+      18,
+      18
+     ],
+     "metin": "Pharaos und des Volkes Semud?"
+    },
+    {
+     "ayetler": [
+      19,
+      19
+     ],
+     "metin": "Doch die Ungläubigen erklären sie für Lüge;"
+    },
+    {
+     "ayetler": [
+      20,
+      20
+     ],
+     "metin": "aber Allah umgibt sie von hinten."
+    },
+    {
+     "ayetler": [
+      21,
+      21
+     ],
+     "metin": "Ja, es ist ein ruhmvoller Koran"
+    },
+    {
+     "ayetler": [
+      22,
+      22
+     ],
+     "metin": "auf verwahrter Tafel."
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Kur'an-ı Kerim (kuran.diyanet.gov.tr, «Amasya Abay» metni)",
+  "url": "https://kuran.diyanet.gov.tr",
+  "alindi": "2026-10-19"
+ },
+ "ozet": "e8c2b245756d5ea764efe1a9d53908cb3122897785abafbf9225886a7c22ab0d",
+ "zor": [],
+ "onay": null
+}

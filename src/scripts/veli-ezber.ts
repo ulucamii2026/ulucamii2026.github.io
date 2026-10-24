@@ -5,6 +5,7 @@
  * Veli hocanın düğme adını değil yumuşak karşılığını, kalıp notları kendi dilinde okur. Kurallar: docs/EZBER-KILIMI.md.
  */
 import type { Dil } from '../i18n/ui';
+import { egitimBaglantisi } from '../i18n/utils';
 import { ezberDurumuOku, gorunenBasamak, olayOku, type Basamak, type EzberOlayi, type OgeDurumu } from '../lib/ezber/durum';
 import { basamakIsareti } from '../lib/ezber/isaret';
 import { eskiKimliktenYeni } from '../lib/ezber/katalog';
@@ -69,7 +70,7 @@ function seritHtml(s: VeliSeridi, onek: string, dil: Dil): string {
   return `<div class="kl-serit-kutu" data-serit="${esc(s.anahtar)}">
     <h4><span>${esc(s.ad)}</span><span class="kl-sayac">${s.baslanan}/${s.maddeler.length} ${esc(K.madde[dil])}</span></h4>
     ${oduller.length ? `<p class="kl-oduller">${oduller.map((x) => `<span class="rozet kl-odul-rozet">${esc(x)}</span>`).join('')}</p>` : ''}
-    <ul class="kl-maddeler">${s.maddeler.map((x) => `<li data-id="${esc(x.id)}" data-basamak="${x.basamak}">${motifIsareti(onek, s.motif, x.basamak)}<span class="kl-madde-ad">${esc(x.ad)}</span><span class="kl-basamak kl-t${x.basamak}">${esc(x.basamakAdi)}</span></li>`).join('')}</ul>
+    <ul class="kl-maddeler">${s.maddeler.map((x) => `<li data-id="${esc(x.id)}" data-basamak="${x.basamak}">${motifIsareti(onek, s.motif, x.basamak)}${x.sayfa ? `<a class="kl-madde-ad" href="${esc(`${egitimBaglantisi(dil)}calis/${x.id}/`)}">${esc(x.ad)}</a>` : `<span class="kl-madde-ad">${esc(x.ad)}</span>`}<span class="kl-basamak kl-t${x.basamak}">${esc(x.basamakAdi)}</span></li>`).join('')}</ul>
   </div>`;
 }
 

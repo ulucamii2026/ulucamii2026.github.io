@@ -1,0 +1,240 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "s-tekasur",
+ "kuran": {
+  "sure": 102,
+  "ayetler": [
+   1,
+   8
+  ]
+ },
+ "sureAdi": "التَّكَاثُرِ",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "اَلْهٰیكُمُ التَّكَاثُرُۙ",
+   "sayfa": 600
+  },
+  {
+   "no": 2,
+   "ar": "حَتّٰى زُرْتُمُ الْمَقَابِرَؕ",
+   "sayfa": 600
+  },
+  {
+   "no": 3,
+   "ar": "كَلَّا سَوْفَ تَعْلَمُونَۙ",
+   "sayfa": 600
+  },
+  {
+   "no": 4,
+   "ar": "ثُمَّ كَلَّا سَوْفَ تَعْلَمُونَؕ",
+   "sayfa": 600
+  },
+  {
+   "no": 5,
+   "ar": "كَلَّا لَوْ تَعْلَمُونَ عِلْمَ الْیَقٖینِؕ",
+   "sayfa": 600
+  },
+  {
+   "no": 6,
+   "ar": "لَتَرَوُنَّ الْجَحٖیمَۙ",
+   "sayfa": 600
+  },
+  {
+   "no": 7,
+   "ar": "ثُمَّ لَتَرَوُنَّهَا عَیْنَ الْیَقٖینِۙ",
+   "sayfa": 600
+  },
+  {
+   "no": 8,
+   "ar": "ثُمَّ لَتُسْـَٔلُنَّ یَوْمَئِذٍ عَنِ النَّعٖیمِ",
+   "sayfa": 600
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı Meâli (kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      2
+     ],
+     "metin": "Çoklukla övünmek sizi, kabirlere varıncaya (ölünceye) kadar oyaladı."
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "Hayır; ileride bileceksiniz!"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Hayır, Hayır! İleride bileceksiniz!"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "Hayır, kesin olarak bir bilseniz..."
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "Andolsun, o cehennemi muhakkak göreceksiniz."
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "Yine andolsun, onu gözünüzle kesin olarak göreceksiniz"
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "Sonra o gün, nimetlerden mutlaka hesaba çekileceksiniz?"
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "The Holy Quran with English Translation (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Competition for more ˹gains˺ diverts you ˹from Allah˺,"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "until you end up in ˹your˺ graves."
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "But no! You will soon come to know."
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Again, no! You will soon come to know."
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "Indeed, if you were to know ˹your fate˺ with certainty, ˹you would have acted differently˺."
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "˹But˺ you will surely see the Hellfire."
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "Again, you will surely see it with the eye of certainty."
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "Then, on that Day, you will definitely be questioned about ˹your worldly˺ pleasures."
+    }
+   ]
+  },
+  "de": {
+   "kaynak": "Der Heilige Koran – Deutsche Übersetzung (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Es beherrscht euch das Streben nach Mehr,"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "bis ihr die Gräber besucht habt."
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "Fürwahr, ihr werdet wissen."
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Wiederum, fürwahr, ihr werdet wissen."
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "Fürwahr, wüsstet ihr es doch mit Gewissheit!"
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "Wahrlich, ihr werdet das Höllenfeuer sehen."
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "Wiederum: Wahrlich, ihr werdet ihn mit dem Auge der Gewissheit sehen."
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "Alsdann werdet ihr wahrlich an jenem Tage nach der Wonne gefragt."
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Kur'an-ı Kerim (kuran.diyanet.gov.tr, «Amasya Abay» metni)",
+  "url": "https://kuran.diyanet.gov.tr",
+  "alindi": "2026-10-19"
+ },
+ "ozet": "9cf3fb1e46c5f9aef5fbda5bd6818444404470444300446d78bbb4e6118c46bd",
+ "zor": [],
+ "onay": null
+}

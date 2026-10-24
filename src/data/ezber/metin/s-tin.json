@@ -1,0 +1,248 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "s-tin",
+ "kuran": {
+  "sure": 95,
+  "ayetler": [
+   1,
+   8
+  ]
+ },
+ "sureAdi": "التّ۪ينِ",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "وَالتّٖینِ وَالزَّیْتُونِۙ",
+   "sayfa": 596
+  },
+  {
+   "no": 2,
+   "ar": "وَطُورِ سٖینٖینَۙ",
+   "sayfa": 596
+  },
+  {
+   "no": 3,
+   "ar": "وَهٰذَا الْبَلَدِ الْاَمٖینِۙ",
+   "sayfa": 596
+  },
+  {
+   "no": 4,
+   "ar": "لَقَدْ خَلَقْنَا الْاِنْسَانَ فٖٓی اَحْسَنِ تَقْوٖیمٍؗ",
+   "sayfa": 596
+  },
+  {
+   "no": 5,
+   "ar": "ثُمَّ رَدَدْنَاهُ اَسْفَلَ سَافِلٖینَۙ",
+   "sayfa": 596
+  },
+  {
+   "no": 6,
+   "ar": "اِلَّا الَّذٖینَ اٰمَنُوا وَعَمِلُوا الصَّالِحَاتِ فَلَهُمْ اَجْرٌ غَیْرُ مَمْنُونٍؕ",
+   "sayfa": 597
+  },
+  {
+   "no": 7,
+   "ar": "فَمَا یُكَذِّبُكَ بَعْدُ بِالدّٖینِؕ",
+   "sayfa": 597
+  },
+  {
+   "no": 8,
+   "ar": "اَلَیْسَ اللّٰهُ بِاَحْكَمِ الْحَاكِمٖینَ",
+   "sayfa": 597
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı Meâli (kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Tîn'e ve zeytûn'a andolsun."
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "Sinâ Dağına andolsun,"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "Bu güvenli şehre (Mekke'ye) andolsun ki,"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Biz, gerçekten insanı en güzel bir biçimde yarattık."
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "Sonra onu, aşağıların aşağısına indirdik."
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "Ancak, iman edip salih ameller işleyenler başka. Onlar için devamlı bir mükafat vardır."
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "(Ey insan!) Böyle iken, hangi şey sana hesap ve cezayı yalanlatıyor?"
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "Allah, hükmedenlerin en iyi hükmedeni değil midir?"
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "The Holy Quran with English Translation (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "By the fig and the olive ˹of Jerusalem˺,"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "and Mount Sinai,"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "and this secure city ˹of Mecca˺!"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Indeed, We created humans in the best form."
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "But We will reduce them to the lowest of the low ˹in Hell˺,"
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "except those who believe and do good—they will have a never-ending reward."
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "Now, what makes you deny the ˹final˺ Judgment?",
+     "duzeltme": "Kaynakta 7. âyet kaydı 7–8 diye işaretli, ama 8. âyetin kendi kaydı da var («Is Allah not the most just of all judges?»); 7. kaydın metni yalnız 7. âyetin çevirisidir."
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "Is Allah not the most just of all judges?"
+    }
+   ]
+  },
+  "de": {
+   "kaynak": "Der Heilige Koran – Deutsche Übersetzung (Diyanet İşleri Başkanlığı, kuran.diyanet.gov.tr)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Bei der Feige und dem Ölbaum"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "und dem Berge Sinai"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "und diesem sichern Land!"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Wahrlich, wir erschufen den Menschen in schönster Gestalt."
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "Dann machten wir ihn wieder zum Niedrigsten der Niedrigen:"
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "Außer denen, die glauben und das Rechte tun; ihnen wird ein unverkürzter Lohn zuteil."
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "Und was führt dich dazu, das Gericht zu leugnen?"
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "Ist nicht Allah der gerechteste Richter?"
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Kur'an-ı Kerim (kuran.diyanet.gov.tr, «Amasya Abay» metni)",
+  "url": "https://kuran.diyanet.gov.tr",
+  "alindi": "2026-10-19"
+ },
+ "ozet": "f2056700e2b42bb1cf7496da127c92753853cb958c6a3ee240d11f757b94d24e",
+ "zor": [],
+ "onay": null
+}
