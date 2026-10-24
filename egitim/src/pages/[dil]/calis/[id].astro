@@ -41,6 +41,9 @@ const seritCapasi = oge.seviye === 'kenar' ? 'kenar-suyu' : `serit-${oge.seviye}
 const mt = MADDE_METINLERI.get(oge.id);
 const bloklar = mt ? metinBloklari(mt, dil) : [];
 const meal = mt && sayfaMeali(mt, dil);
+// Gruplama cümlesi yalnız birden çok âyeti kapsayan meâl grubu varsa basılır: âyet âyet çeviride (FR Hamidullah) Diyanet
+// gruplaması yoktur, «1 · 2 · 3…» de bilgi vermez.
+const gruplu = Boolean(meal?.gruplar.some((g) => g.ayetler[0] !== g.ayetler[1]));
 // Kur'an dışı maddeler (dualar): künye, başlık ve «meâl yok» iletisi Kur'an'a özgü sözleri taşımaz; hoca onayı yoksa not düşülür.
 const dua = Boolean(mt && !mt.kuran);
 const duaNotlari = dua && dil === 'tr' ? mt?.zor ?? [] : [];
@@ -173,7 +176,7 @@ const sonraki = serit[sira + 1];
             <p class="kaynak-satiri">
               {dua
                 ? mm.kunyeKaynak(mt.kaynak.ar, meal?.kaynak)
-                : <>{mm.kunyeAr}{meal && ` ${mm.kunyeMeal} ${mm.gruplama(meal.gruplar.map((g) => aralikYaz(g.ayetler)).join(' · '))}`}</>}
+                : <>{mm.kunyeAr}{meal && ` ${mm.kunyeMeal}${gruplu ? ` ${mm.gruplama(meal.gruplar.map((g) => aralikYaz(g.ayetler)).join(' · '))}` : ''}`}</>}
               {meal?.inceleme && ` ${mm.mealInceleme}`}{okunus && ` ${mm.okunusUsulu}`}
             </p>
           </section>

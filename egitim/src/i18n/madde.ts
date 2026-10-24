@@ -51,10 +51,12 @@ const METINLER: Record<Dil, MaddeMetinleri> = {
   fr: {
     yol: 'Vous êtes ici', ayet: (n) => `${n} versets`, metinBaslik: 'Texte et traduction du sens', metinBaslikYalniz: 'Texte', okunusGoster: 'Afficher la translittération',
     ayetiDinle: (n) => `Écouter le verset ${n}`, dokun: 'Touchez un verset pour l’écouter.',
-    mealYok: 'La traduction française du sens (Le Noble Coran, Diyanet) sera bientôt ajoutée.',
+    mealYok: 'La traduction française du sens sera bientôt ajoutée.',
     metinYok: 'Le texte de ce contenu est en préparation. Vous pouvez déjà l’apprendre à l’écoute.',
     kunyeAr: 'Texte arabe : Présidence des Affaires religieuses de Turquie (Diyanet), kuran.diyanet.gov.tr.',
-    kunyeMeal: 'Traduction du sens : Mohammed Chiadmi, « Le Noble Coran », Diyanet, 2022.',
+    // 24 Eki 2026: Diyanet'in Fransızca meâli (Chiadmi) dijitalde yok; meâl Hamidullah'ındır (scripts/ezber-meal-fr.mjs).
+    // Chiadmi gelince bu künye de değişir; tests/ezber-madde-metni.test.mjs ikisinin aynı çevirmeni andığını denetler.
+    kunyeMeal: 'Traduction du sens : Muhammad Hamidullah.',
     gruplama: (g) => `La traduction suit le regroupement des versets de la Diyanet (${g}).`,
     mealInceleme: 'Cette traduction sera relue.', okunusUsulu: 'Translittération française, relue par l’enseignant.',
     yolBaslik: 'Comment apprendre',

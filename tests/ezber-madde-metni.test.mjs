@@ -124,9 +124,13 @@ test('Meâl grupları her dilde maddenin bütün âyetlerini boşluksuz ve ört�
   }
 });
 
-test('Fransızca meâl yalnız Diyanet\'in Chiadmi çevirisiyle; okunuş bölümlerle eşleşir', () => {
+test('Fransızca meâl: Chiadmi (Diyanet) ya da Hamidullah, künyeyle aynı çevirmen; Kur\'an maddelerinin hepsinde; okunuş bölümlerle eşleşir', () => {
+  // 24 Eki 2026: Diyanet'in Fransızca meâli dijitalde yok, Hamidullah çevirisi kullanılır (scripts/ezber-meal-fr.mjs).
+  const kunye = readFileSync('egitim/src/i18n/madde.ts', 'utf8').match(/kunyeMeal: '(Traduction du sens[^']*)'/)[1];
+  const cevirmen = /Chiadmi/.test(kunye) ? /Chiadmi/ : /Hamidullah/;
   for (const [id, m] of metinler) {
-    if (m.meal.fr) assert.match(m.meal.fr.kaynak, /Chiadmi/, `${id}: FR meâl yalnız «Le Noble Coran» (DİB 2022)`);
+    if (m.kuran) assert.ok(m.meal.fr, `${id}: FR meâl yok (node scripts/ezber-meal-fr.mjs)`);
+    if (m.meal.fr) assert.match(m.meal.fr.kaynak, cevirmen, `${id}: FR meâl sayfadaki künyeyle aynı çevirmenden olmalı (${kunye})`);
     for (const [dil, satirlar] of Object.entries(m.okunus ?? {})) {
       assert.deepEqual(satirlar.map((x) => x.no), m.bolumler.map((b) => b.no), `${id}/okunus-${dil}`);
     }
@@ -148,14 +152,17 @@ test('Âyet sesleri bölümlerle bire bir; Arapça metnin her harfi Ulu Nesih ya
   assert.deepEqual([...eksik], [], 'egitim/scripts/ulu-nesih-uret.py KUME listesine ekleyip yazı tipini yeniden üretin');
 });
 
-test('Sayfa blokları: meâl grubuyla; meâlsiz dilde tek blok; FR yalnız Chiadmi; okunuş yalnız onaylı usulde', () => {
+test('Sayfa blokları: meâl grubuyla; meâlsiz dilde tek blok; FR yalnız Chiadmi ya da Hamidullah; okunuş yalnız onaylı usulde', () => {
   const fatiha = metinler.get('s-fatiha');
   assert.deepEqual(mm.metinBloklari(fatiha, 'tr').map((b) => b.ayetler), [[1, 1], [2, 4], [5, 5], [6, 7]]);
   assert.equal(mm.metinBloklari(fatiha, 'tr')[1].bolumler.length, 3);
   const fr = mm.metinBloklari(fatiha, 'fr');
-  assert.deepEqual(fr.map((b) => [b.ayetler, b.bolumler.length, 'meal' in b]), [[[1, 7], 7, false]]);
+  assert.deepEqual(fr.map((b) => [b.ayetler, b.bolumler.length, 'meal' in b]), Array.from({ length: 7 }, (_, i) => [[i + 1, i + 1], 1, true]));
+  assert.equal(fr[0].meal, 'Au nom d\'Allah, le Tout Miséricordieux, le Très Miséricordieux.');
+  const meâlsiz = { ...fatiha, meal: { tr: fatiha.meal.tr } };
+  assert.deepEqual(mm.metinBloklari(meâlsiz, 'fr').map((b) => [b.ayetler, b.bolumler.length, 'meal' in b]), [[[1, 7], 7, false]]);
   const sahteFr = { ...fatiha, meal: { ...fatiha.meal, fr: { kaynak: 'Başka bir çeviri', gruplar: fatiha.meal.tr.gruplar } } };
-  assert.equal(mm.sayfaMeali(sahteFr, 'fr'), undefined, 'Chiadmi dışı FR meâl gösterilmez');
+  assert.equal(mm.sayfaMeali(sahteFr, 'fr'), undefined, 'Chiadmi ya da Hamidullah dışı FR meâl gösterilmez');
   const okunus = { tr: fatiha.bolumler.map((b) => ({ no: b.no, metin: `okunuş ${b.no}` })) };
   assert.equal(mm.onayliOkunus({ ...fatiha, okunus, onay: null }, 'tr'), undefined);
   assert.equal(mm.onayliOkunus({ ...fatiha, okunus, onay: { tarih: '2026-10-19', kapsam: ['okunus-fr'] } }, 'tr'), undefined);

@@ -45,7 +45,7 @@ Proje sıfırdan (mimari yol); onaydan sonra `superpowers:writing-plans` ile uyg
 | Ekran hedefleme | Ortak akış + ekrana özel duyuru |
 | Yönetim | İmam: sitenin paneli (Sveltia CMS). Başkan, kadınlar kolu, gençlik/kurs: **telefondan basit form, doğrudan yayın** |
 | Uzaktan | Arıza e-postası, sessiz güncelleme, anlık ekran görüntüsü, uzaktan yeniden başlatma |
-| FR meal | Diyanet İşleri Başkanlığı'nın Fransızca meali: **Mohammed Chiadmi, «Le Noble Coran»** (DİB, 2022, ISBN 978-625-435-299-7). *İmam kararı: 27 Eylül 2026. Cami Diyanet'e bağlı olduğundan Diyanet yayınlarının kullanımında izin sorunu yok; kaynak her ayetin altında belirtilir. TDV'nin Hamidullah baskısı (ISBN 9789753897334) incelendi, seçilmedi.* |
+| FR meal | Diyanet İşleri Başkanlığı'nın Fransızca meali: **Mohammed Chiadmi, «Le Noble Coran»** (DİB, 2022, ISBN 978-625-435-299-7). *İmam kararı: 27 Eylül 2026. Cami Diyanet'e bağlı olduğundan Diyanet yayınlarının kullanımında izin sorunu yok; kaynak her ayetin altında belirtilir. TDV'nin Hamidullah baskısı (ISBN 9789753897334) incelendi, seçilmedi. 24 Ekim 2026: Chiadmi dijitalde bulunamadığı için Ezber Kilimi FR meâli Hamidullah oldu (docs/EGITIM-FAZ2-DINLEME.md); ekran bu kararla değişmedi.* |
 | Devreye alma | Önce tek ekran pilot (LED'in yanında), sonra 3 ekran; **mümkün olan en kısa sürede** |
 | Kapsam | Şimdilik yalnız Ulu Camii (ad/logo/ilçe kodu tek ayar dosyasında) |
 

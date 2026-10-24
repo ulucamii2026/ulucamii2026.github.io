@@ -215,7 +215,7 @@ for (const o of maddeler) {
     if (eski?.ozet !== ozet) farklar.push(o.id);
     continue;
   }
-  // Başka kaynaktan eklenen meâller (fr Chiadmi, nl çeviri) ve hoca alanları (zor kelimeler, onay, okunuş) yeniden
+  // Başka kaynaktan eklenen meâller (fr Hamidullah ya da Chiadmi, nl çeviri) ve hoca alanları (zor kelimeler, onay, okunuş) yeniden
   // çekimde korunur; kaynak değişmediyse dosya aynı kalır.
   const kayit = {
     $schema: './metin.schema.json', id: o.id, ...icerik,

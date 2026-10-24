@@ -197,6 +197,46 @@
      "metin": "Die nacht is vrede, tot het gloren van de dageraad."
     }
    ]
+  },
+  "fr": {
+   "kaynak": "Muhammad Hamidullah, traduction française du sens (texte : Tanzil, fr.hamidullah)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Nous l'avons certes, fait descendre (le Coran) pendant la nuit d'Al-Qadr."
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "Et qui te dira ce qu'est la nuit d'Al-Qadr?"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "La nuit d'Al-Qadr est meilleure que mille mois."
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Durant celle-ci descendent les Anges ainsi que l'Esprit, par permission de leur Seigneur pour tout ordre."
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "Elle est paix et salut jusqu'à l'apparition de l'aube."
+    }
+   ]
   }
  },
  "kaynak": {

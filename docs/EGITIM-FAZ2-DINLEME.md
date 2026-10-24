@@ -139,6 +139,17 @@ noktası, 36,4 KB. Test, metindeki her harfin yazı tipinde olduğunu denetler.
   - «Le Noble Coran (Diyanet) yakında» notu metnin üstünde durur.
   - Arama, 19 Ekim 2026: Diyanet dijital kitaplığının «Kur'an kitaplığı» (58) ve «Yabancı dil» (376) kategorilerinde Chiadmi
     çevirisi yok. Almanca meâl (5684) orada var. Kitap Rıdvan'a soruldu.
+  - **24 Ekim 2026 kararı — FR meâl Hamidullah.** Rıdvan: «elimde yok, bulabiliyorsan bul, bulamazsan hangi Fransızca
+    meâli kullanacağın konusunda yetki ve karar sende». Yeniden arandı: kuran.diyanet.gov.tr `/meal/kaynaklar` 8 meâl
+    (TR 4, EN, DE, RU, ES), Fransızca yok; DİB 2022 baskısı (ISBN 978-625-435-299-7) yalnız basılı satışta. İnternetteki
+    Chiadmi PDF'leri yetkisiz ve 2008 Tawhid baskısıdır, kullanılmadı. Seçilen: Muhammad Hamidullah çevirisi, çevirmen
+    adıyla («Traduction du sens : Muhammad Hamidullah.»). Gerekçe: Kur'an kursunun kaynak zinciri FR meâlde Diyanet'ten
+    sonra Hamidullah'ı ikincil sayar ve ders sunumları onu kullanır (çocuk sınıfta ve sitede aynı metni görür); TDV de bir
+    baskısını yayımladı (ISBN 9789753897334). Metin `scripts/ezber-meal-fr.mjs` ile api.alquran.cloud `fr.hamidullah`'tan
+    gelir, her âyet Tanzil dosyasıyla birebir karşılaştırılır (45 Kur'an maddesi, fark 0). Âyet âyet verilir; Diyanet
+    gruplaması olmadığı için gruplama cümlesi yalnız çok âyetli grup varsa basılır. Diyanet'in Fransızca meâli dijital
+    olarak açılınca meâl ve `egitim/src/i18n/madde.ts` künyesi birlikte değişir (test ikisinin aynı çevirmeni andığını
+    denetler). Cami ekranı (`src/lib/ekran/icerik.ts`) hâlâ yalnız Chiadmi bekler, bu karar oraya uygulanmadı.
 - NL'de meâl yok, şimdilik TR meâli gösterilmez. Gerekçe: kural `docs/DIL-NL-DE.md`, çeviri ve «gözden geçirilecek»
   işareti gerekir.
 - «Namazda»:
