@@ -554,6 +554,10 @@ bunu notla söyler (ör. «Kitapta dokuz hadis vardır; öğrenci üçünü seç
 - Hadislerin Arapça metni bu dilimde yoktur (sonraki dilimin işi); Arapça yalnız
   Âmentü'den alınan altı kısa terimdedir ve `ar` rolüyle kaynağı gösterilir.
 
+### Yayın
+
+- **24 Ekim 2026 23:17 (CEST) YAYINDA.** Commit `17f91411`, Hosting `ulucamii-egitim` (383 dosya), Pages run 40133866103 success, `egitim:canli` 41/41. Kayıt: `docs/YAYIN-KAYITLARI.md` «24 Ekim 2026 (8)».
+
 ### Hoca incelemesi (onay bekliyor)
 
 - **İnceleme sayfası:** `docs/ezber-bilgi-inceleme/ezber-bilgi-inceleme.html` ve `.pdf` (`npm run ezber:bilgi`; dua incelemesiyle

@@ -4,6 +4,41 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 24 Ekim 2026 (8) — Ezber Kilimi: on bilgi maddesi için kaynaklı liste sayfaları (hoca onayı bekliyor)
+
+- **Zaman (Europe/Brussels, CEST):** egitim Hosting yayını 23:17–23:18 (sürüm 383 dosya, 354 yeni), push 23:21:36, Pages run
+  23:21:38–23:24:04, canlı denetim 23:22:02. **Yayımlandı ve canlı doğrulandı.** Dayanak: Rıdvan, 24 Ekim «ezber kilimi yayını konusunda
+  herşeyi onaylıyorum, bütün yetki ve karar sende» ve bilgi maddeleri için verilen görev.
+- **Kapsam:** imanın şartları, İslâm'ın şartları, abdestin / gusül / teyemmümün farzları, namazın farzları, Ülü'l-azm, dört halife, seçme
+  hadisler, Kur'an okumanın fazileti hadisleri: 10 madde × 5 dil = 50 yeni sayfa (`/<dil>/calis/b-…/`). Ses ve Arapça âyet yok. Her satır
+  Camiye Gidiyorum 1-2 / Temel Dinî Bilgiler / Dînî Kavramlar Sözlüğü'nden alındı, ikinci bir Diyanet kaynağıyla karşılaştırıldı; Fransızca yalnız
+  resmî baskıdan (iki hadiste çalışma çevirisi rozeti); en/nl/de Türkçeden çevrilmiş taslak ve sayfada öyle yazılı. Kitaptaki sekiz hadis
+  Diyanet hadis yayınlarında doğrulanamadığı için sayfaya alınmadı (gerekçeler `alinmayan` alanında).
+- **Değişen dosyalar (33):** `src/data/ezber/bilgi/` (10 veri + şema), `src/lib/ezber/bilgi-metni.ts`, `katalog.json` / `katalog.schema.json` /
+  `katalog.ts` (`bilgiMetni` bayrağı, `calismaSayfasiVar`), `egitim/src/components/BilgiBolumu.astro`, `egitim/src/scripts/bilgi.ts`,
+  `egitim/src/styles/bilgi.css`, `egitim/src/i18n/bilgi.ts`, `egitim/src/lib/bilgi-metinleri.ts`, `egitim/src/pages/[dil]/calis/[id].astro`,
+  `scripts/ezber-bilgi.mjs` (inceleme sayfası + `--onayla`), `docs/ezber-bilgi-inceleme/` (HTML + PDF), `scripts/egitim-canli-denetim.mjs`,
+  testler, `docs/EGITIM-FAZ2-DINLEME.md` («Bilgi maddeleri»), `docs/EZBER-KILIMI.md`.
+- **İçerik commit'i:** `17f91411` (temiz ayrık çalışma ağacı `D:/tmp/ulucamii-egitim4`, taban `f1a7e3ec`; rebase gerekmedi).
+- **Paylaşılan kod uyarısı:** `calismaSayfasiVar` ana sitede de kullanılır; ana sitedeki veli kilim kartı bu on maddeyi artık egitim sayfasına bağlar.
+  Bu yüzden ana site kapıları da çalıştırıldı.
+- **Kapılar (`npm run dogrula:codex`, yerel taban):** design:check, `check` (457 dosya, 0 hata / 0 uyarı), `dogrula` (ana site derlemesi),
+  `test:ezber` **141/141**, `egitim:build`, `test:kurallar`, `test:veli-eposta`, `test:oto-kaydet`, `test:ogrenme` geçti. `test:web`: 839 geçti /
+  120 atlama / **1 zaman aşımı** (`ana-sayfa-akisi`, mobil, bağlam kapatma 30 sn; tek başına 9/9 geçti, yük altında kapanış). İlk `test:egitim`
+  koşusunda iki kopya katalog beklentisi (`barindirma.test.mjs` site haritası, `calisma.spec.mjs` ana sayfa bağlantıları) yeni sayfaları saymıyordu;
+  beklenti `calismaSayfasiVar` koşuluna getirildi. `egitim:yayinla` (yayın kapısı): `egitim:build`, node birimleri 15/15, Playwright **322 geçti /
+  8 atlama / 0 başarısız**. Yeni testler: `tests/ezber-bilgi.test.mjs` 14, `tests/egitim/bilgi.spec.mjs` 29 senaryo × masaüstü + telefon.
+- **Deploy:** `npm run egitim:yayinla` → Hosting `ulucamii-egitim`; Pages run [40133866103](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/40133866103) success.
+- **Canlı:** `npm run egitim:canli -- https://egitim.ulucamii.be` **41/41** (350 adresli site haritası, bilgi sayfası liste/kaynak/«Göster»/CSP,
+  Fransızca künyede bölünmez boşluk, gerçek ses 206). `/tr/calis/b-imanin-sartlari/` ve `/fr/calis/b-imanin-sartlari/` 200, içerik doğru.
+  Görsel inceleme: 360 px TR iman şartları (liste, «Sırala»), FR seçme hadisler, açık ve koyu temada axe 0.
+- **Hoca incelemesi:** `docs/ezber-bilgi-inceleme/ezber-bilgi-inceleme.html` / `.pdf` (`npm run ezber:bilgi`). Onay: `node scripts/ezber-bilgi.mjs
+  --onayla hepsi [--kapsam tr,fr]`, ardından `npm run egitim:yayinla`. **Hiçbir madde onaylı değil; sayfalar «hoca incelemesi bekleniyor» der.**
+- **Açık sınırlar:** hoca onayı bekleniyor (tr, fr); en/nl/de taslak, ana dilli onay yok; sekiz hadis doğrulanamadığı için sayfada yok
+  (seçme hadisler 5/9, Kur'an fazileti 3/7 — plan öğrencinin üç / beş hadis seçmesini ister); hadislerin Arapçası yok; hadis #6 künyesinde kitap ile
+  Diyanet ayrışıyor (sayfada Diyanet künyesi, karar hocanın); fiziksel telefon/Safari ve ekran okuyucu denenmedi (axe otomatik denetimi
+  sertifika değildir); duyuru yapılmadı.
+
 ## 24 Ekim 2026 (7) — duyuru: «Ezber Kilimi yayında» (TR + FR)
 
 - **Zaman:** 24.10.2026 16:48–16:51 (Europe/Brussels, CEST). İstek: Rıdvan, «ezber kilimi yayını konusunda herşeyi
