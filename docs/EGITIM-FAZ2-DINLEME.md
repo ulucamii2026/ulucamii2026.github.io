@@ -380,6 +380,104 @@ sayfa «gözden geçirilecek» notunu göstermeye devam eder. Hiçbir tr, en, de
   - Çevrilmeden bırakılan adlar: «at-Tariq», «al-Hoetama», «al-Kauthar», «Hawiya» (Türkçe kaynak da çevirmiyor).
 - **Doğrulama:** `node --test tests/ezber-madde-metni.test.mjs`; her dosya HEAD ile JSON düzeyinde karşılaştırıldı, NL metni dışındaki alanlar ve biçim aynı.
 
+## Dilim 2e — «Anlamla eşleştir», Adım 1 «senin sıran», basılı ezber kartı ve görsel cila (24 Ekim 2026)
+
+**Yayın (24 Ekim 2026):** commit'ler `bcfe05bd` (kütüphaneler), `0b1e4eb2` (arayüz), `87a487e7` (giriş başlığı cilası), `059179fe` (yapay-ses.spec uyarlaması); origin/main taban `501bc5c4`. Ayrıntılı kanıt ve canlı denetim: `docs/YAYIN-KAYITLARI.md` «24 Ekim 2026 (5)».
+Dayanak: Rıdvan, 24 Ekim 2026: «ezber kilimi yayını konusunda herşeyi onaylıyorum, bütün yetki ve karar sende».
+
+### 1. «Anlamla eşleştir» (Adım 5, dördüncü oyun)
+
+- **Ne yapar:** seçili bölümden en çok üç Arapça parça ile sayfa dilindeki meâl blokları karışık sırayla dizilir; çocuk bir
+  parça, sonra anlamını seçer. Doğru çift kilitlenir, iki yanda **aynı numara** ve ✓ (ekran okuyucuya «eşleşti» yazısı) belirir;
+  yanlış çiftte yalnız nazik bir yazı çıkar («Bu ikisi eşleşmedi; başka bir anlam deneyin»), kırmızı durum, ses, puan ve sıralama
+  yoktur. «Eşleşmeleri göster» kalanları açar (o gün «çalıştım» sayılmaz); «Yeni tur» yeni üçlü kurar. Üç çift bitince
+  «çalıştım» işlenir ve «Nasıl geçti?» sorulur. Klavye: Tab ile gezinti, Enter/Boşluk ile seçim; odak eşleşince sıradaki
+  Arapça parçaya geçer.
+- **Hangi sayfada çıkar (karar):** yalnız sayfa dilinin **gözden geçirilmiş** meâli varsa ve bölümde en az iki dolu meâl bloğu
+  varsa (`anlamBloklari` → `anlamAdaylari`). Sonuçlar:
+  - **TR:** Diyanet meâli, 45 Kur'an maddesi; bir bloklu sûrelerde (Felak, Nâs, Nasr, Kureyş) düğme çıkmaz. Dualarda yalnız TR
+    meâl vardır (3–8 blok): TR dua sayfalarında çıkar, diğer dillerde çıkmaz.
+  - **FR:** Hamidullah (çevirmen adıyla künyede; `sayfaMeali` yalnız Chiadmi/Hamidullah kaynağını kabul eder).
+  - **EN / DE:** mevcut meâl.
+  - **NL: çıkmaz.** NL meâl `inceleme: true` taslaktır (Rıdvan henüz gözden geçirmedi); taslak bir çeviriyi «doğru cevap anahtarı»
+    yapmak yanlış bir şeyi öğretme riskidir. NL sayfada dört oyun kalır. NL meâl gözden geçirilince `inceleme` kalkar ve oyun
+    kendiliğinden açılır, kod değişmez (`tests/ezber-tekrar-oyun.test.mjs` bunu NL taslak durumuyla sabitler).
+- **Doğru çiftler veriden gelir:** meâl grupları (`gruplar[{ayetler, metin}]`) bölüm aralıklarına eşlenir; aynı metinli bloklar
+  ayrıştırılır (belirsiz eşleşme sunulmaz); sağ sütun `farkliSira` ile karışık gelir (asla sırayla değil).
+- Kütüphane: `src/lib/ezber/oyun.ts` (`anlamAdaylari`, `eslestirmeTuru`), `src/lib/ezber/madde-metni.ts` (`anlamBloklari`).
+  Ekran: `egitim/src/scripts/kip-sina.ts` (`anlamKur`), CSS `egitim/src/styles/madde.css`, metinler `egitim/src/i18n/sina.ts`
+  (beş dil). Dar ekranda iki sütun alt alta dizilir; yüksek karşıtlık ve zorunlu renk kipinde kenarlıklar korunur.
+
+### 2. Adım 1 «senin sıran» (ertelenen kısım)
+
+- Dinleme sonrası bekleme artık dört seçenekli bir seçimdir: **Yok · Dinleme süresi kadar (varsayılan) · 1,5× · 2×**. Süre,
+  bölümün gerçek kayıt süresinden ve seçili hızdan hesaplanır (`siraSuresiMs`: süre ÷ hız × katsayı; 0,75× hızda daha uzun);
+  süre bilinmiyorsa 3 sn; alt sınır 2 sn, üst sınır 90 sn. Bekleme sırasında durum satırı «Senin sıran: sûreyi sen oku»
+  der (`data-senin-siran`) ve ilerleme çubuğu (`<progress aria-hidden>`, 100 ms) dolar; çubuk yalnız görsel yardımdır, anlam
+  yazıda ve durum satırındadır. Durdurma, bölüm/tekrar/hız değişimi ve sayfadan ayrılma çubuğu ve zamanlayıcıyı temizler.
+- **Karar:** eski kullanıcı seçeneği «3 sn bekle» onay kutusuydu ve varsayılan kapalıydı. «Senin sıran»ın anlamı çocuğun
+  sesli tekrar etmesidir; sabit 3 sn bir sûre için fazla kısa olduğundan bekleme **dinleme süresi kadar** olur ve varsayılan
+  budur. **Seçim saklanmaz** (her ziyaret varsayılanla başlar; cihaz hafızasına yeni alan eklenmedi, gizlilik bölümü
+  değişmedi). Eski `[data-bekle]` onay kutusu kaldırıldı (testler uyarlandı).
+- Kütüphane: `src/lib/ezber/sira.ts`; ekran `egitim/src/scripts/calisma.ts`; metinler `egitim/src/i18n/calisma.ts`.
+
+### 3. Basılı ezber kartı (A4)
+
+- **Teslim kararı:** kart, madde sayfasının **yazdırma görünümüdür**. Her madde sayfasında «Kartı yazdır» düğmesi (JavaScript
+  varsa) tarayıcının yazdırma penceresini açar; telefonda «PDF olarak kaydet / paylaş» aynı yoldan çalışır. Sayfa her zaman
+  güncel veriden basıldığı için kart **eskimez**. Toplu hâli için `npm run ezber:kart` (`scripts/ezber-kart-pdf.mjs`)
+  derlenmiş siteyi yerelde sunar, Chromium'la her sayfayı PDF'e yazar. PDF'ler **depoya ve Hosting'e konmaz** (280 dosya,
+  yaklaşık 37 MB; veri değişince eskir). Güncel paket bu çalışmada `D:\tmp\ezber-kartlar-2026-10-24\` altında üretildi.
+- **İçerik:** başlık satırı (kurs adı, «Ezber kartı»), madalyon (madde motifi), madde adı ve Arapça adı, tür/âyet sayısı/sınıf
+  hedefi, **kare kod**, âyet gruplarında Arapça metin + sayfa dilinin meâli, «Dikkat edilecek yerler», kaynak künyesi, alt
+  bilgi ve sayfa numarası. Kişisel veri, ilerleme ya da hesap bilgisi yoktur; kare kod yalnız kamuya açık sayfa adresini
+  kodlar (`https://egitim.ulucamii.be/<dil>/calis/<madde>/`).
+- **Arapça ve okunuş:** Arapça metin yalnız mevcut doğrulanmış veriden gelir, yeni metin üretilmedi. **Latin okunuş varsayılan
+  olarak basılmaz** (sayfada da gizli başlar); hocanın onayladığı okunuş (11 dua, `okunus-tr` onayı) ancak çocuk/hoca sayfada
+  «okunuşu göster» dediyse basılır. Toplu pakette bu seçenek ayrı klasördedir: `okunuslu\` (`--okunus`). Onaysız maddede
+  okunuş hiç yoktur. Meâli olmayan/taslak (NL) maddelerde sayfadaki uyarı kartta da çıkar.
+- **Vektör kural:** kare kod `qrcode` paketinin matrisinden **saf SVG yoluna** yazılır (`src/lib/ezber/kare-kod.ts`; art arda
+  karanlık modüller tek dikdörtgen, dört modül sessiz bölge, hata düzeltme M); piksel yoktur. Motifler ve madalyon SVG'dir.
+- **Düzen:** `@page` A4 dikey, kenar boşlukları 16/15/18 mm (ev yazıcısı sınırı ≥ 15 mm), tam sayfa zemin yok, koyu tema
+  yazdırmada açık jetonlara döner (siyah yazı beyaz kâğıtta), gezinme/araçlar/hoca kutusu basılmaz, her âyet grubu sayfada
+  bölünmez, sayfa numarası `@page @bottom-right`. Kısa maddelerde sayfanın altı boş kalır (kabul edildi); uzun sûreler çok sayfa olur (Nebe 40 âyet: TR 5, FR 6; en uzun kart 7 sayfa).
+- **Doğrulama (`scripts/ezber-kart-dogrula.py`, PyMuPDF + OpenCV + poppler):** her PDF'te piksel görsel 0 (`get_images` ve
+  `pdfimages`), tüm yazı tipleri gömülü (`pdffonts`), kare kod ilk sayfadan **çözülür ve kanonik adresle eşit** çıkar, metin
+  katmanı var. Tam paket (5 dil × 56 kartlı madde = **280 PDF, 585 sayfa, ≈ 37 MB**) ve okunuşlu paket (**44 PDF, 55 sayfa**): **hatalı 0**. Aynı denetim canlı siteden (`https://egitim.ulucamii.be`, tr/fr/nl `s-ihlas`) Chromium'la yazdırılan PDF'lerde de 0 hata verdi. Kartı olmayan madde: Arapça metni hazır olmayanlar (Kelime-i Tevhid ve Şehâdet, Euzü-Besmele gibi); onlarda düğme de kare kod da yoktur.
+
+### 4. Görsel cila turu
+
+- Ekranlar 320 / 360 / 390 / 768 / 1280 px × açık/koyu: giriş sayfası, sûre sayfası (Nebe), dua sayfası; Sına sekmesi ve yeni
+  oyun açık; «senin sıran» seçici ve ilerleme çubuğu bekleme durumunda; yazdır düğmesi. Odak halkası (3 px, açık ve koyu
+  tema) yeni öğelerde görünür; karşıtlık axe ile açık ve koyu temada sınandı.
+- **Bulunan ve düzeltilen gerçek kusur:** giriş sayfası başlığı bölünemeyen tek sözcükle taşıyordu. NL «Memorisatiekelim»
+  (3 rem tabanı) 440 px'e kadar sayfayı yatay taşırıyordu (Pixel 7 genişliğinde 28 px, 360'ta 80 px); FR/EN «mémorisation»
+  320 px'te 20 px taşıyordu (WCAG 1.4.10 yeniden akış ölçüsü). `egitim/src/styles/cini.css`: `.giris h1` boyutu içerik
+  genişliğine bağlandı (`min(özgün clamp, (100vw − 2,4 rem) / 7,2)`; NL için 9,1). Geniş ekranda görünüm değişmez.
+  870 sayfa (5 dil × 58 sayfa × 320/360/768 px) taşmasız; yeni `tests/egitim/yeniden-akis.spec.mjs` masaüstü Chromium'da
+  dar pencereyle sabitler (telefon projesi taşan içeriği kendi görünümüne kattığı için orada yakalanmaz).
+- **Bilinçli bırakılanlar:** 360 px genişlikteki telefonlarda giriş panosunun 13 sütunlu karoları 23 px (WCAG 2.5.8'in 24 px
+  asgarisinin 1 px altı; 372 px ve üstünde 24 px+); düzeltmek pano kenar boşluğunu daraltmayı gerektirir, yeniden tasarım
+  sayıldı. Gezinme kırıntısı ve alt bilgi bağlantıları 20–22 px yüksekliktedir (aralık istisnası kapsamında).
+
+### Testler
+
+- `tests/ezber-tekrar-oyun.test.mjs` (22 test: `anlamBloklari`, taslak NL, `anlamAdaylari`, `eslestirmeTuru` 300 tohumla, tur,
+  `siraSuresiMs`, `siraKatsayisi`), `tests/ezber-kare-kod.test.mjs` (4 test: yoldan geri kurulan matris `qrcode` matrisiyle
+  birebir, 280+ adres; görsel/bağlantı yok; sessiz bölge).
+- `tests/egitim/anlam.spec.mjs` (beş dil, doğru çiftler veriden, numaralı kilit, yanlış çift, klavye, çok bölümlü Nebe FR,
+  TR Felak/FR Felak, TR/EN dua, axe açık/koyu, CSP 0), `tests/egitim/kart.spec.mjs` (ekranda gizli, düğme `window.print`,
+  kare kod kanonik adres ve saf vektör, yazdırma ortamı açık/koyu, `page.pdf()` A4/görsel yok/yazı tipi/çok sayfa),
+  `tests/egitim/yeniden-akis.spec.mjs`; `calisma.spec.mjs` «senin sıran» (süre ölçeği ×1/×2/0,75×/Yok/bilinmeyen süre
+  için sahte saat) ve beş dil; `kip`, `sina`, `sina-mikrofon` yeni seçici ve düğme sırasına uyarlandı.
+
+**Doğrulama:** `npm run dogrula:codex` rebase öncesi tabanda **9/10 GEÇTİ**: `check` 0 hata (453 dosya); `test:ezber` 126/126 (rebase sonrası 127/127); ana site 1947 sayfa; `test:web` 839 geçti / 120 atlama / **1 zaman aşımı** (`tests/web/ders-defteri.spec.mjs:88` mobil, 30 sn; makine yüklüyken düştü, tek başına 7 sn'de geçti, dosyanın tamamı 32/32 — egitim koduyla ilgisiz, geçici yük kaynaklı); `egitim:build` astro check 0 hata; `test:egitim` 15/15 birim + 222 geçti / 8 bilinçli atlama; `test:kurallar` 54, `test:veli-eposta` 58, `test:oto-kaydet` 14, `test:ogrenme` 13. Bilinen aralıklı `tests/web/ekran.spec.mjs:1143` (Open-Meteo) bu koşuda düşmedi. Rebase (yapay sesli dualar, ekran FR meâl, NL gözden geçirme geldi) sonrası: `test:ezber` 127/127, `egitim:build` 0 hata / 302 sayfa, `test:egitim` ilk koşuda **20 hata**: hepsi yeni gelen `yapay-ses.spec.mjs` (kaldırılan `[data-bekle]` onay kutusunu işaretini kaldırıyordu) — `[data-sira]` «Yok» seçimine uyarlandı, 42/42; yayın sırasında temiz ağaçta `test:egitim` **264 geçti / 8 atlama**. Elle: ekranlar 320–1280 px açık/koyu, odak halkası, taşma taraması (870 sayfa), canlı tr/fr/nl kontrolü.
+
+**Sınırlar:** NL meâl gözden geçirilmedi (oyun NL'de kapalı); kart PDF'leri Chromium'un yazdırma çıktısıyla üretildi ve
+doğrulandı, fiziksel yazıcı ya da Safari/Firefox yazdırma önizlemesi denenmedi; kare kodun gerçek telefon kamerasıyla
+okunması denenmedi (OpenCV çözücüsüyle PDF'ten okundu); «senin sıran» sesli tekrarı dinlemez (çocuğun tekrarı doğrulanmaz);
+fiziksel iPhone/Safari ve gerçek mikrofon yine denenmedi; duyuru yapılmadı.
+
 ## Canlı durum ve bu çalışmanın sınırı
 
 - **9 Ekim 2026 09:19 (CEST) YAYINDA.** Kullanıcının 9 Ekim «Eğitim Faz 2 yayını» seçimiyle güncel `origin/main`
@@ -441,5 +539,5 @@ sayfa «gözden geçirilecek» notunu göstermeye devam eder. Hiçbir tr, en, de
 1. Bu bölümün yayın onayı, temiz çalışma ağacından yayın ve yayın kaydı; mevcut ana site ses adresleri değişmedi.
 2. Diyanet'ten eksik sesler ve metinlerin kaynaklı hazırlanması. Arapça harf karşılaştırması, meâl kaynakları ve hoca
    okunuş kontrolü tamamlanmadan metinleri çalışma sayfalarına ekleme.
-3. ~~Kademeli gizleme, sıralama/eşleştirme/eksik kelime ve cihazda ilerleme.~~ 24 Ekim 2026'da yayımlandı (2c, 2d). Kalan: «Anlamla eşleştir», Adım 1'de «senin sıran», baskı kartı (2e).
+3. ~~Kademeli gizleme, sıralama/eşleştirme/eksik kelime ve cihazda ilerleme.~~ 24 Ekim 2026'da yayımlandı (2c, 2d, 2e: «Anlamla eşleştir», Adım 1 «senin sıran», basılı kart). Kalan: NL meâl ana dilli/hoca onayı (onaylanınca NL'de «Anlamla eşleştir» kendiliğinden açılır), basılı kartın fiziksel yazıcıda ve Safari/Firefox'ta denenmesi, duyuru.
 4. Faz 2'nin asıl madde içerikleri tamamlanınca duyuru; hesaplar/belgeler Faz 3, diğer bölümlerin taşınması Faz 4.

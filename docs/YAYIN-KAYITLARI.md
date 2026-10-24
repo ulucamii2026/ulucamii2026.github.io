@@ -4,6 +4,56 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 24 Ekim 2026 (5) — Ezber Kilimi 2e: «Anlamla eşleştir», «senin sıran», basılı ezber kartı, görsel cila
+
+- Zaman (Europe/Brussels, CEST): egitim Hosting yayını 16:32:02 (sürüm 333 dosya, 305 yeni), push 16:33:11, Pages
+  16:33:12–16:35:33, canlı denetim 16:36:10, elle canlı kontrol 16:37–16:38. **Yayımlandı ve canlı doğrulandı.** Dayanak: Rıdvan,
+  24 Ekim: «ezber kilimi yayını konusunda herşeyi onaylıyorum, bütün yetki ve karar sende». Not: numara (5) bu çalışmaya
+  ayrılmıştı; (6) yayını (yapay sesli dualar, ekran FR meâl) ondan önce çıktı, kayıtlar bu yüzden sıra dışıdır.
+- Kapsam:
+  1. **«Anlamla eşleştir»** (Kendini sına, dördüncü oyun): üç Arapça parça ↔ sayfa dilindeki meâl blokları; eşleşen çift aynı
+     numara ve ✓; puan, ses, kırmızı durum yok. Yalnız sayfa dilinin gözden geçirilmiş meâli varsa çıkar: TR, FR (Hamidullah),
+     EN, DE; **NL'de çıkmaz** (NL meâl `inceleme: true` taslak); bir bloklu sûrelerde ve yalnız TR meâli olan dualarda diğer
+     dillerde çıkmaz.
+  2. **Adım 1 «senin sıran»:** 3 sn onay kutusu yerine seçim (Yok · dinleme süresi kadar [varsayılan] · 1,5× · 2×) ve ilerleme
+     çubuğu; süre bölüm kaydından ve hızdan hesaplanır; seçim saklanmaz.
+  3. **Basılı ezber kartı (A4):** madde sayfasının yazdırma görünümü; «Kartı yazdır» düğmesi; vektör kare kod (sayfanın kanonik
+     adresi); koyu temada da açık kâğıt; Latin okunuş yalnız sayfada açıksa basılır. PDF'ler depoya ve Hosting'e konmadı;
+     `npm run ezber:kart` toplu paketi üretir, `scripts/ezber-kart-dogrula.py` denetler.
+  4. **Görsel cila:** giriş sayfası başlığı dar ekranda yatay taşıyordu (NL 440 px'e kadar, FR/EN 320 px'te) — düzeltildi.
+  Ayrıntı ve kararlar: `docs/EGITIM-FAZ2-DINLEME.md` «Dilim 2e».
+- Commit'ler: `bcfe05bd` (kütüphaneler: oyun, sıra süresi, kare kod), `0b1e4eb2` (arayüz: oyun, seçici, kart, betikler),
+  `87a487e7` (giriş başlığı + yeniden akış testi), `059179fe` (rebase ile gelen yapay-ses.spec'in yeni seçiciye uyarlanması).
+  Temiz çalışma ağacından (`D:/tmp/ulucamii-ezber-2e-yayin`, yayın sonrası kaldırıldı); origin/main taban: `501bc5c4`.
+  Önce dağıtım, hemen ardından push; push reddedilmedi.
+- Dağıtım: Pages [40103011014](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/40103011014) **success**;
+  `npm run egitim:yayinla` → Hosting `ulucamii-egitim`, 333 dosya (305 yeni yüklendi), release complete.
+- Kalite: `npm run dogrula:codex` rebase öncesi tabanda 9/10 — `check` 0 hata; `test:ezber` 126/126; ana site 1947 sayfa;
+  `test:web` 839 geçti / 120 atlama / 1 zaman aşımı (`ders-defteri.spec.mjs:88` mobil, makine yüklüyken 30 sn'yi aştı; tek
+  başına 7 sn'de geçti, dosyanın tamamı 32/32; egitim koduyla ilgisiz); `egitim:build` 0 hata; `test:egitim` 15/15 birim + 222
+  geçti / 8 atlama; `test:kurallar` 54, `test:veli-eposta` 58, `test:oto-kaydet` 14, `test:ogrenme` 13. Bilinen aralıklı
+  `ekran.spec.mjs:1143` (Open-Meteo) düşmedi. Rebase sonrası: `test:ezber` 127/127, `egitim:build` 0 hata / 302 sayfa;
+  `test:egitim` ilk koşuda **20 hata** — hepsi rebase ile gelen `yapay-ses.spec.mjs` (kaldırılan `[data-bekle]` kutusunu
+  kullanıyordu), `[data-sira]` seçimine uyarlandı (42/42); yayın sırasında temiz ağaçta `test:egitim` 264 geçti / 8 atlama.
+  Rebase yapay sesli dualar (egitim), cami ekranı FR meâl (ana site, `src/lib/ekran`) ve NL meâl düzeltmelerini getirdi; ana site
+  testleri (`test:web`) rebase sonrası yeniden koşulmadı — o commit'ler (6) kaydındaki 10/10 kapıdan geçmişti, bu işin ana site
+  tarafındaki tek değişikliği ortak kütüphaneye (`src/lib/ezber`) eklenen yeni işlevlerdir ve rebase öncesi kapıda geçti.
+- Canlı: `npm run egitim:canli` **37/37** (2026-10-24T14:36:10Z). Elle (Playwright, 390 ve 1280 px, tr/fr/nl, gerçek canlı
+  adres): giriş ve madde sayfalarında yatay taşma 0; «senin sıran» seçici dört seçenekle, eski onay kutusu yok; Sına
+  sekmesinde tr ve fr'de beş düğme (sırala, eksik, hangi, **anlam**, kayıt), nl'de dört (anlam yok); tr/fr'de üç Arapça ↔ üç
+  anlam, doğru çift seçilince kilitleniyor; «Kartı yazdır» görünür ve `window.print` bir kez çağrılıyor; kare kod ekranda
+  görünmez; CSP ihlali 0, konsol hatası 0. Canlı sayfadan Chromium'la yazdırılan tr/fr/nl `s-ihlas` PDF'lerinde piksel görsel
+  yok, yazı tipleri gömülü, kare kod `https://egitim.ulucamii.be/<dil>/calis/s-ihlas/` adresine çözülüyor.
+- Basılı kart paketi (depoda değil): `D:\tmp\ezber-kartlar-2026-10-24\` — 280 PDF / 585 sayfa; `okunuslu\` altında 44 PDF /
+  55 sayfa (onaylı okunuşu açık basar). Hepsi `ezber-kart-dogrula.py`'den **hatasız** geçti (görsel 0, yazı tipi gömülü, kare
+  kod çözüldü ve adresle eşit, metin katmanı var).
+- Açık sınırlar: NL meâl hoca/ana dilli onayı bekliyor (onaylanınca NL'de oyun kendiliğinden açılır); kart yalnız Chromium'un
+  yazdırma çıktısıyla üretildi ve doğrulandı, fiziksel yazıcı ile Safari/Firefox yazdırma önizlemesi denenmedi; kare kod gerçek
+  telefon kamerasıyla okunmadı (OpenCV çözücüsü); 360 px telefonlarda giriş panosu karoları 23 px (WCAG 2.5.8'in 24 px asgarisinin
+  1 px altı, düzeltmek pano boşluklarını yeniden tasarlamayı gerektirir); fiziksel iPhone/Safari ve gerçek mikrofon yine
+  denenmedi; duyuru yapılmadı; PDF paketi `D:\tmp` altında geçicidir, kalıcı konuma Rıdvan karar verir.
+- Bu kayıt için belge commit'i içerik yayını değildir.
+
 ## 24 Ekim 2026 (öğle) — ders materyalleri: 24, 25 ve 26 Ekim 2026 (Cumartesi, Pazar, Pazartesi)
 
 - Zaman: Release yüklemesi ≈10:20–10:50, commit/push 10:52:37, Pages derleme+dağıtım 10:52:39–10:54:53, canlı doğrulama
