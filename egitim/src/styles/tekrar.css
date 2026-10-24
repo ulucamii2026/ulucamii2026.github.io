@@ -1,0 +1,14 @@
+/* «Bugün tekrar» bandı (Faz 2d, 24 Ekim 2026): giriş sayfasında, yalnız bu cihazda tekrar kaydı varsa görünür. Derz çizgili karo
+   kutu; seri, puan ve renkli ilerleme yok. Bağlantılar sade düğme biçimli (en az 44 px yükseklik). */
+.tekrar-bandi { padding-block: 1.5rem 0; }
+.tekrar-bandi[hidden] { display: none; }
+.tekrar-kutu { display: grid; gap: 0.7rem; padding: 1.25rem 1.5rem; border: 2px solid var(--derz); border-radius: var(--r); background: var(--karo); }
+.tekrar-kutu h2 { font-size: 1.3rem; letter-spacing: -0.01em; }
+.tekrar-ozet { font-weight: 750; }
+.tekrar-liste { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.tekrar-liste[hidden], .tekrar-hafta[hidden] { display: none; }
+.tekrar-liste a { display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0.35rem 0.95rem; border: 1px solid var(--derz-koyu);
+  border-radius: var(--r); background: var(--astar); color: var(--kontur); font-weight: 650; text-decoration: none; }
+.tekrar-liste a:hover { background: var(--yesil-soluk); border-color: var(--yesil-bag); }
+.tekrar-hafta { color: var(--kontur-2); font-weight: 600; }
+.tekrar-not { color: var(--kontur-2); font-size: 0.92rem; max-width: 42em; }

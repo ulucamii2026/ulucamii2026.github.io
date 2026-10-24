@@ -1,10 +1,12 @@
 /**
- * Madde sayfasındaki çalışma kipleri (Faz 2c, 24 Ekim 2026): Arapça yazı boyutu ve «Bağlayarak ezberle» / «Kademeli gizle»
- * sekmeleri. Kip ekranları ilk açılışta ayrı parça olarak yüklenir (sayfa açılışı hafif kalır); JavaScript yoksa çalışma
- * bölümü gizli kalır, metin ve meâl okunur. Tercihler yalnız bu tarayıcıda (src/lib/ezber/cihaz.ts) tutulur ve hocanın
- * verdiği basamağı değiştirmez. Veri (Arapça metin, bölüm sesleri, metinler) sayfadan `data-veri` ile gelir.
+ * Madde sayfasındaki çalışma kipleri (Faz 2c, 24 Ekim 2026; 2d'de üçüncü sekme eklendi): Arapça yazı boyutu ve «Bağlayarak
+ * ezberle» / «Kademeli gizle» / «Kendini sına» sekmeleri. Kip ekranları ilk açılışta ayrı parça olarak yüklenir (sayfa
+ * açılışı hafif kalır); JavaScript yoksa çalışma bölümü gizli kalır, metin ve meâl okunur. Tercihler yalnız bu tarayıcıda
+ * (src/lib/ezber/cihaz.ts) tutulur ve hocanın verdiği basamağı değiştirmez. Veri (Arapça metin, bölüm sesleri, metinler)
+ * sayfadan `data-veri` ile gelir.
  */
-import { AR_ENAZ, AR_ENCOK, arBoyutuAyarla, maddeAyari, maddeyiGuncelle, oku, yaz, type CihazDurumu, type Depo } from '@ortak/lib/ezber/cihaz';
+import { AR_ENAZ, AR_ENCOK, arBoyutuAyarla, calismaGunuIsle, maddeAyari, maddeyiGuncelle, oku, yaz, type CihazDurumu, type Depo } from '@ortak/lib/ezber/cihaz';
+import { yerelGun } from '@ortak/lib/ezber/tekrar';
 import { sesSahibiKur, type Baglam, type Kip, type KipVeri } from './kip-ortak';
 
 const depo = (): Depo | null => {
@@ -60,18 +62,26 @@ function basla(kok: HTMLElement, veri: KipVeri) {
   const ses = sesSahibiKur(() => { hata.textContent = m.sesHata; hata.hidden = false; });
   ses.dinle(() => { if (ses.caliyor) hata.hidden = true; });
 
+  // Her sekmenin bırakıcıları (örneğin açık mikrofon): sekme gizlenirken çağrılır. Paneller bir kez kurulup gizlenerek
+  // saklandığı için, sekme değişince arkada çalışan bir şey kalmamalı.
+  const birakanlar: Record<Kip, (() => void)[]> = { zincir: [], gizle: [], sina: [] };
   const baglam: Baglam = {
     veri,
     ses,
     ayar: () => maddeAyari(cihaz, veri.id),
     kaydet: (kismi) => { cihaz = maddeyiGuncelle(cihaz, veri.id, kismi, Date.now()); kaydetCihaz(); },
     gec: (kip) => { void ac(kip, true); },
+    calistim: () => { cihaz = calismaGunuIsle(cihaz, yerelGun(new Date())); kaydetCihaz(); },
+    birak: () => {}, // kur() çağrısında sekmeye özel olanı verilir
   };
 
   const yuklendi = new Set<Kip>();
+  let aktif: Kip | null = null;
   async function ac(kip: Kip, odak = false, hatirla = true) {
     ses.durdur();
     hata.hidden = true;
+    if (aktif && aktif !== kip) for (const f of birakanlar[aktif]) f();
+    aktif = kip;
     for (const s of sekmeler) {
       const bu = s.dataset.kipSekme === kip;
       s.setAttribute('aria-selected', String(bu));
@@ -85,8 +95,8 @@ function basla(kok: HTMLElement, veri: KipVeri) {
     if (!panel || yuklendi.has(kip)) return;
     yuklendi.add(kip);
     try {
-      const mod = kip === 'zincir' ? await import('./kip-zincir') : await import('./kip-gizle');
-      mod.kur(panel, baglam);
+      const mod = kip === 'zincir' ? await import('./kip-zincir') : kip === 'gizle' ? await import('./kip-gizle') : await import('./kip-sina');
+      mod.kur(panel, { ...baglam, birak: (f) => { birakanlar[kip].push(f); } });
     } catch {
       yuklendi.delete(kip);
       panel.textContent = m.yuklenemedi;
@@ -96,8 +106,8 @@ function basla(kok: HTMLElement, veri: KipVeri) {
   sekmeler.forEach((s, i) => {
     s.addEventListener('click', () => { void ac(s.dataset.kipSekme as Kip); });
     s.addEventListener('keydown', (e) => {
-      const git = e.key === 'ArrowRight' || e.key === 'ArrowDown' ? i + 1 : e.key === 'ArrowLeft' || e.key === 'ArrowUp' ? i - 1 : e.key === 'Home' ? 0 : e.key === 'End' ? sekmeler.length - 1 : -1;
-      if (git < 0) return;
+      const git = e.key === 'ArrowRight' || e.key === 'ArrowDown' ? i + 1 : e.key === 'ArrowLeft' || e.key === 'ArrowUp' ? i - 1 : e.key === 'Home' ? 0 : e.key === 'End' ? sekmeler.length - 1 : null;
+      if (git === null) return; // ok/Home/End dışındaki tuşlar; ilk sekmede sol ok sona sarar (ARIA sekme düzeni)
       e.preventDefault();
       const hedef = sekmeler[(git + sekmeler.length) % sekmeler.length];
       void ac(hedef.dataset.kipSekme as Kip, true);

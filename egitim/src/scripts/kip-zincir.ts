@@ -118,7 +118,9 @@ export function kur(panel: HTMLElement, b: Baglam): void {
       grup.setAttribute('aria-label', m.nasil);
       grup.append(el('p', 'kip-soru', m.nasil));
       const dugmeler = el('div', 'kip-dugmeler');
-      dugmeler.append(dugme(m.tam, 'dugme birincil', () => git('tam')), dugme(m.az, 'dugme ikincil', () => git('az')), dugme(m.tekrar, 'dugme ikincil', () => git('tekrar')));
+      // Çocuk kontrol evresinde sonuç seçti: bir tur çalışma tamamlandı (bu hafta kaç gün çalışıldığı için).
+      const sonuc = (o: Olay) => { b.calistim(); git(o); };
+      dugmeler.append(dugme(m.tam, 'dugme birincil', () => sonuc('tam')), dugme(m.az, 'dugme ikincil', () => sonuc('az')), dugme(m.tekrar, 'dugme ikincil', () => sonuc('tekrar')));
       grup.append(dugmeler);
       satir.push(grup);
     } else {

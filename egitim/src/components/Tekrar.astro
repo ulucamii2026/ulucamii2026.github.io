@@ -1,0 +1,26 @@
+---
+/**
+ * «Bugün tekrar» bandı (Faz 2d, 24 Ekim 2026): bu cihazdaki «Kendini sına» kayıtlarına göre bugün tekrar edilecek maddeler.
+ * JavaScript yoksa ya da bu cihazda tekrar kaydı yoksa gizli kalır (hidden). Liste ve özet scripts/bugun-tekrar.ts ile
+ * dolar; madde adları ve metinler `data-veri` ile gelir. Hocanın verdiği basamağı değiştirmez; seri ya da puan yoktur.
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import { KATALOG, calismaSayfasiVar } from '@ortak/lib/ezber/katalog';
+import { tekrarMetinleri } from '../i18n/sina';
+
+interface Props { dil: Dil }
+const { dil } = Astro.props;
+const t = tekrarMetinleri(dil);
+const adlar = Object.fromEntries(KATALOG.ogeler.filter(calismaSayfasiVar).map((o) => [o.id, o.ad[dil]]));
+---
+<section class="bolum tekrar-bandi" aria-labelledby="tekrar-baslik" data-tekrar data-veri={JSON.stringify({ dil, adlar, m: t })} hidden>
+  <div class="icerik">
+    <div class="tekrar-kutu">
+      <h2 id="tekrar-baslik">{t.baslik}</h2>
+      <p class="tekrar-ozet" data-tekrar-ozet role="status"></p>
+      <ul class="tekrar-liste" data-tekrar-liste aria-label={t.liste}></ul>
+      <p class="tekrar-hafta" data-tekrar-hafta></p>
+      <p class="tekrar-not">{t.not}</p>
+    </div>
+  </div>
+</section>

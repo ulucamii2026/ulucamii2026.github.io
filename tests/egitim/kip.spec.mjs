@@ -85,7 +85,15 @@ test('Klavye: sekmeler oklarla gezilir; düğmeler Enter ile çalışır; İpucu
   await expect(page.locator('#kip-sekme-zincir')).toHaveAttribute('tabindex', '-1');
   await page.keyboard.press('Home');
   await expect(page.locator('#kip-sekme-zincir')).toBeFocused();
+  // 2d: üçüncü sekme «Kendini sına»; End son sekmeye gider, sağ ok başa sarar, sol ok geri getirir.
   await page.keyboard.press('End');
+  await expect(page.locator('#kip-sekme-sina')).toBeFocused();
+  await expect(page.locator('#kip-sekme-sina')).toHaveAttribute('aria-selected', 'true');
+  await page.keyboard.press('ArrowRight');
+  await expect(page.locator('#kip-sekme-zincir')).toBeFocused();
+  await page.keyboard.press('ArrowLeft');
+  await expect(page.locator('#kip-sekme-sina')).toBeFocused();
+  await page.keyboard.press('ArrowLeft');
   await expect(page.locator('#kip-sekme-gizle')).toBeFocused();
 
   // 3. düzey: tamamı boş. Klavyeyle «İpucu» boş kelimeyi ilk harfe, «Kelimeyi aç» tam kelimeye çıkarır.

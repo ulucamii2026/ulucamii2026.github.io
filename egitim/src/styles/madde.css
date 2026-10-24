@@ -202,3 +202,37 @@ button.ayet-no[data-calan] { background: var(--yesil); color: #fff; }
   .madde-bas .madalyon svg { stroke: CanvasText; }
   .ayet-grubu .ayet[data-calan], button.ayet-no[data-calan] { outline: 2px solid Highlight; }
 }
+
+
+/* Kendini sına (Faz 2d, 24 Ekim 2026): oyun düğmeleri, sıralama listesi, çoktan seçmeli sorular ve ses kaydı. Doğru yanıt yalnız
+   renkle değil, ✓ işaretiyle ve yazıyla da bildirilir; yanlış yanıta kırmızı ya da ses yok. */
+.sina-oyunlar { margin-top: 0.25rem; }
+.sina-alan { display: grid; gap: 0.9rem; align-content: start; }
+.sina-alan:empty { display: none; }
+.sina-baslik { font-size: 1.1rem; }
+.sina-sira { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; }
+.sina-oge { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.75rem; padding: 0.5rem 0.75rem; border: 1px solid var(--derz-koyu);
+  border-radius: var(--r); background: var(--astar); }
+.sina-oge.dogru { background: var(--yesil-soluk); box-shadow: inset 4px 0 0 var(--yesil-bag); }
+.sina-no { flex: none; display: grid; place-items: center; width: 1.75rem; height: 1.75rem; border-radius: var(--r); background: var(--yesil-soluk);
+  font-weight: 800; font-variant-numeric: tabular-nums; }
+.sina-parca { flex: 1 1 14rem; min-width: 0; text-align: right; line-height: 2;
+  font-size: calc(clamp(1.45rem, 1.1rem + 1.4vw, 2rem) * var(--ar-olcek)); }
+.sina-isaret { color: var(--yesil-bag); font-weight: 700; font-size: 0.95rem; }
+.sina-tasi { display: flex; gap: 0.4rem; margin-left: auto; }
+.sina-tasi .secim { min-width: 2.75rem; justify-content: center; font-weight: 800; }
+.sina-soru { display: grid; gap: 0.85rem; }
+.sina-soru > p[tabindex="-1"]:focus { outline: none; }
+.sina-cumle { margin: 0; text-align: right; line-height: 2.1; font-size: calc(clamp(1.7rem, 1.25rem + 1.7vw, 2.3rem) * var(--ar-olcek)); }
+.sina-bos { display: inline-block; min-width: 3em; text-align: center; }
+.sina-dogru-kelime { color: var(--yesil-bag); font-weight: 700; text-decoration: underline; text-decoration-thickness: 0.08em; text-underline-offset: 0.2em; }
+.sina-secenekler { display: grid; gap: 0.5rem; }
+.sina-secenek { width: 100%; min-height: 3.25rem; justify-content: flex-start; line-height: 2; text-align: right;
+  font-size: calc(clamp(1.3rem, 1.05rem + 1vw, 1.7rem) * var(--ar-olcek)); }
+.sina-secenek:disabled { opacity: 1; color: var(--kontur); }
+.sina-secenek.dogru { background: var(--yesil-soluk); border-color: var(--yesil-bag); box-shadow: inset 0 0 0 1px var(--yesil-bag); }
+.sina-secenek .sina-isaret { font-size: 1rem; }
+
+@media (forced-colors: active) {
+  .sina-oge.dogru, .sina-secenek.dogru { outline: 2px solid Highlight; }
+}

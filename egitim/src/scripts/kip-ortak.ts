@@ -5,10 +5,18 @@
  */
 import type { MaddeAyari } from '@ortak/lib/ezber/cihaz';
 import type { KipMetinleri } from '../i18n/kip';
+import type { SinaMetinleri } from '../i18n/sina';
 
-export type Kip = 'zincir' | 'gizle';
+export type Kip = 'zincir' | 'gizle' | 'sina';
 export interface Bolum { readonly no: number; readonly ar: string; readonly etiket: string; readonly ses: string | null }
-export interface KipVeri { readonly id: string; readonly kuran: boolean; readonly bolumler: readonly Bolum[]; readonly m: KipMetinleri }
+export interface KipVeri {
+  readonly id: string;
+  readonly kuran: boolean;
+  readonly bolumler: readonly Bolum[];
+  /** Maddenin bütün dinleme sırası (hafız kaydı; sûre başındaysa eûzü ve besmele önde): «Kendini sına»da kendi sesini onunla karşılaştırmak içindir. Boş olabilir. */
+  readonly hafiz: readonly string[];
+  readonly m: KipMetinleri & SinaMetinleri;
+}
 
 export interface SesSahibi {
   /** Adresleri sırayla çalar; bitince `bitince` çağrılır. Önceki çalan kesilir. */
@@ -26,6 +34,10 @@ export interface Baglam {
   kaydet(kismi: Partial<Omit<MaddeAyari, 'son'>>): void;
   /** Öbür kipin sekmesine geçer (zincir bitince «Kademeli gizleye geç»). */
   gec(kip: Kip): void;
+  /** Çocuk bir tur çalışmayı bitirdi (sonuç seçti, soruları bitirdi): bugün «çalışılan gün» olarak işlenir. */
+  calistim(): void;
+  /** Panel gizlenirken (başka sekmeye geçilince) çağrılacak temizleyici; örneğin açık mikrofonu bırakır. */
+  birak(f: () => void): void;
 }
 
 /** `{ad}` yer tutucularını doldurur. */

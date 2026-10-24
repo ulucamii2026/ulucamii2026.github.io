@@ -39,14 +39,19 @@ test('Hosting: bütün yanıtlarda sıkı CSP ve güvenlik başlıkları', () =>
   assert.deepEqual(yonerge['default-src'], ["'none'"]);
   for (const ad of ['script-src', 'style-src', 'img-src', 'font-src', 'connect-src']) assert.deepEqual(yonerge[ad], ["'self'"], ad);
   for (const ad of ['base-uri', 'form-action', 'frame-ancestors', 'object-src']) assert.deepEqual(yonerge[ad], ["'none'"], ad);
-  // Sesler ana siteden gelir (Diyanet kayıtları; egitim/src/lib/kimlik.ts ANA_SITE).
+  // Sesler ana siteden gelir (Diyanet kayıtları; egitim/src/lib/kimlik.ts ANA_SITE). `blob:` yalnız «Kendini sına»da çocuğun
+  // kendi kaydını sayfa belleğinden çalmak içindir (2d); ağdan bir şey getirmez, başka köken eklenmedi.
   const anaSite = oku('egitim/src/lib/kimlik.ts').match(/ANA_SITE = '([^']+)'/)[1];
-  assert.deepEqual(yonerge['media-src'], [anaSite]);
+  assert.deepEqual(yonerge['media-src'], [anaSite, 'blob:']);
   assert.doesNotMatch(csp, /unsafe-|\*|data:|http:/);
   assert.equal(deger(genel, 'X-Content-Type-Options'), 'nosniff');
   assert.equal(deger(genel, 'Referrer-Policy'), 'strict-origin-when-cross-origin');
   assert.equal(deger(genel, 'X-Frame-Options'), 'DENY');
-  assert.match(deger(genel, 'Permissions-Policy'), /camera=\(\).*microphone=\(\)/);
+  // Mikrofon yalnız sayfanın kendisine açıktır (2d: kendi sesini kaydet; izin yine kullanıcı dokunuşu ve tarayıcı penceresiyle);
+  // kamera, konum, ödeme ve USB kapalı kalır.
+  const izinler = deger(genel, 'Permissions-Policy');
+  assert.match(izinler, /camera=\(\).*microphone=\(self\)/);
+  for (const kapali of ['geolocation', 'payment', 'usb']) assert.match(izinler, new RegExp(`${kapali}=\\(\\)`), kapali);
   // HSTS'yi Firebase Hosting kendisi ekler (özel alan adında max-age=31556926; web.app'te ayrıca includeSubDomains;
   // preload) — ikinci kez yazılmaz.
   assert.equal(deger(genel, 'Strict-Transport-Security'), undefined);

@@ -81,7 +81,7 @@ export function kur(panel: HTMLElement, b: Baglam): void {
       : seviye < once ? doldur(m.seviyeDustu, { d: seviye, ad: m.seviyeler[seviye] })
       : s !== 'tam' ? m.seviyeAyni
       : tamamlandi(yeni) ? m.tamamlandi : doldur(m.seriArtti, { s: seri });
-    sifirlaAcilma(); kaydet(); ciz(); mesaj(ileti);
+    sifirlaAcilma(); kaydet(); b.calistim(); ciz(); mesaj(ileti);
   };
   sonucDugmeleri.append(dugme(m.tam, 'dugme birincil', () => sonuc('tam')), dugme(m.az, 'dugme ikincil', () => sonuc('az')), dugme(m.tekrar, 'dugme ikincil', () => sonuc('tekrar')));
   sonucKutu.append(el('p', 'kip-soru', m.nasil), sonucDugmeleri);
