@@ -4,6 +4,29 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 25 Ekim 2026 (10) — Ezber Kilimi: hadis maddelerinde Diyanet çevirisi (Türkçe sayfa)
+
+- **Zaman (Europe/Brussels, CEST):** egitim Hosting yayını 25 Ekim ≈00:25 (sürüm 418 dosya), push 00:26:13, Pages run 00:26:15 →
+  00:28:37 success, canlı denetim 00:26:35 (41/41). **Yayımlandı ve canlı doğrulandı.** Dayanak: Rıdvan, 24 Ekim gece «ne gerekiyorsa yap… full otonom
+  ilerle, bütün yetki ve karar sende… işleri tamamla».
+- **Kapsam:** (8) numaralı bilgi maddeleri yayınında hadis cümleleri öğrencinin kitabındaki sözlerle (Camiye Gidiyorum 2 s. 238; Temel Dinî Bilgiler
+  s. 47) duruyordu; Diyanet hadis yayınındaki çeviri yalnız hoca inceleme sayfasındaydı. Kaynak zinciri hadis meâlini Hadislerle İslam /
+  Riyâzü's-Sâlihîn'den istediği için **Türkçe sayfada**, kitabın cümlesi Diyanet çevirisinden farklıysa altında «Diyanet çevirisi: «…» (cilt, başlık,
+  hadis no)» satırı çizilir. Ezber cümlesi kitabın cümlesi olarak kalır (çocuğun elindeki kitapla aynı). Yalnız noktalama farkı olan cümlede satır
+  çizilmez; diğer dillerde Türkçe çeviri gösterilmez. Canlı: `/tr/calis/b-secme-hadisler/` 4 satır (şükür, haset, kolaylaştırın, kötülük-iyilik),
+  `b-kuran-fazileti-hadisleri` 2 satır, `/fr/…` 0. Veri (`src/data/ezber/bilgi/*.json`) değişmedi; onay durumu değişmedi (`onay: null`).
+- **Değişen dosyalar (10):** `src/lib/ezber/bilgi-metni.ts` (`diyanetCevirisi()`, `GosterimMaddesi.diyanet`), `egitim/src/components/BilgiBolumu.astro`,
+  `egitim/src/i18n/bilgi.ts` (`diyanet` etiketi, beş dil), `egitim/src/styles/bilgi.css`, `scripts/ezber-bilgi.mjs` (inceleme notu),
+  `docs/ezber-bilgi-inceleme/` (HTML + PDF yeniden üretildi), `docs/EGITIM-FAZ2-DINLEME.md` («Bilgi maddeleri» not (c)), `tests/ezber-bilgi.test.mjs`
+  (+1 test), `tests/egitim/bilgi.spec.mjs` (sayfa başına satır sayısı).
+- **İçerik commit'i:** `0886cfa1` (temiz ayrık çalışma ağacı `D:/tmp/ulucamii-egitim5`, `2f543ad9` üzerine).
+- **Kapılar:** `check` 0 hata · `test:ezber` 160/160 · `egitim:yayinla` kapısı (derleme + 15/15 birim + Playwright **347 geçti**, 0 başarısız) ·
+  `tests/egitim/bilgi.spec.mjs` ayrıca 58/58 · `egitim:canli` 41/41.
+- **Deploy:** `npm run egitim:yayinla` (Hosting `ulucamii-egitim`, proje `ulucamii-portal`, dernek hesabı); Pages run
+  [40138550264](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/40138550264) **success**.
+- **Açık:** hadislerin Arapçası yok; «Kolaylaştırın…» künyesi (kitap Müslim, Diyanet Buhârî) hoca kararı; `d-tesrik-tekbiri` Türkçe anlamındaki
+  «Allah' içindir» kaynakta (Dînî Kavramlar Sözlüğü) da böyle, yerel Diyanet arşivinde başka anlam metni yok → hoca kararı.
+
 ## 24 Ekim 2026 (9) — Ezber Kilimi: portalda olmayan on dua için metin sayfası ve 360 px pano karoları (hoca onayı bekliyor)
 
 - **Zaman (Europe/Brussels, CEST; saat 25 Ekim 00:xx):** egitim Hosting yayını 00:13–00:14 (sürüm 418 dosya, 388 yeni), push 00:14:21, Pages run
