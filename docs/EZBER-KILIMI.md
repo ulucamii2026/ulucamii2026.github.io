@@ -28,7 +28,7 @@ Güncel kapsam ve kalan işler: [Faz 2 dinleme çalışması](EGITIM-FAZ2-DINLEM
 | Karşılaştırma | Öğrenciler arasında sıralama yok |
 | Eşikler (onaylı öneri) | Rozet: seviyedeki tümü ≥ Hocaya okudu · Sertifika: tümü ≥ Pekişti · Altın kenar: tümü Kalıcı · «Tekrar gelsin» bir basamak düşürür (en az 1), 7 gün sonra yeniden kontrol |
 | Görsel dil | Metafor «Ezber Kilimi / Ezber Kilimim»; Anadolu kilim motifleri + İslâmî geometrik desen. Canlı figür ve hayvan yok; tek istisna yüzsüz küçük insan siluetleri. Peygamber ve sahabe çizilmez; çizimlerde Arapça yazı yok. Çizimler saf vektör (Codex), `npm run denetim:svg` |
-| Ses | Sûreler **yalnız Diyanet**; dualar namaz.diyanet.gov.tr. Diyanet kaydı olmayan **Kur'an dışı** metinde yapay ses yalnız hoca onayıyla ve arayüzde notla |
+| Ses | Sûreler **yalnız Diyanet**; dualar namaz.diyanet.gov.tr. Diyanet kaydı olmayan **Kur'an dışı** metinde yapay ses yalnız hoca onayıyla ve arayüzde notla (24 Ekim 2026: Kelime-i Tevhid ve Kelime-i Şehâdet, görünür «Yapay ses» etiketiyle) |
 | Genel cemaat | İsteğe bağlı hesap (e-posta bağlantısı + Google); yaş sorulmaz; ilerleme öz sınavla; «Hesabımı sil»; 24 ay hareketsiz hesap silinir; hesapsızsa ilerleme cihazda |
 | Takvim | Faz 1 sınıf (17 Ekim 2026 canlı; ilk plan ezberi 18 Ekim) → Faz 2 herkese açık bölüm (Kasım) → Faz 3 hesaplar/belgeler/e-posta (Aralık) → Faz 4 taşıma (Ocak–Mart 2027) |
 
@@ -377,7 +377,8 @@ kümesinin bayt karşılaştırması) `docs/YAYIN-KAYITLARI.md` «27 Eylül 2026
 - 54 maddenin Diyanet sesi henüz yok (Amme'nin çoğu, iman cümleleri, tesbihler, tekbir, selâm, kenar suyu); Faz 2 ses işi.
   **19 Ekim 2026 (dilim 2a):** 30'u eklendi. Kalan 24 maddenin 10'u bilgi maddesidir (Faz 2'de ses yok). 14 duanın Kelime-i Şehâdet'i ve
   «Rabbenâ leke'l-hamd» bölümü Diyanet kaydından kesilecek, tekbiri hoca seçecek; Diyanet kaydı olmayanlar için karar
-  «yapay ses + hoca onayı» (Kur'an metninde yapay ses asla). Ayrıntı: [Faz 2 dinleme çalışması](EGITIM-FAZ2-DINLEME.md).
+  «yapay ses + hoca onayı» (Kur'an metninde yapay ses asla). **24 Ekim 2026:** kurs kütüphanesinde doğrulanmış sesi bulunan Kelime-i Tevhid ve Kelime-i Şehâdet
+  `ses.yapay: true` ile eklendi (sesli madde sayısı 57 Diyanet kayıtlı + 2 yapay = 59 / 81); Amentü, Selâm ve Teşrik tekbiri metin uyuşmadığı için atlandı. Ayrıntı: [Faz 2 dinleme çalışması](EGITIM-FAZ2-DINLEME.md).
 - Yeni maddelerin FR/EN/NL/DE adları ilk taslaktır; ana dili konuşan okuması Faz 2'de.
 - `npm run test:ezber` 27 Eylül 2026'dan beri `.github/workflows/deploy.yml` yayın kapısında da koşuyor (kimlikler
   Firestore anahtarı oldu). Dal `main`'e birleşince etkinleşir.

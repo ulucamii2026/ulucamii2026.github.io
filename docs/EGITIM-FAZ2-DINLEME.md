@@ -56,6 +56,8 @@ ezber ve gizleme, 2d oyunlar ve tekrar takvimi, 2e baskı kartı ve duyuru.
 - Tekbir: hoca seçer (kamet kesiti ya da yapay ses).
 - Ezan: beş vaktin kaydı var, vakit seçimi eklenecek.
 - Diyanet kaydı olmayan dualar: yapay ses ve hoca onayı. Kur'an metninde yapay ses kullanılmaz.
+  **24 Ekim 2026:** kurs kütüphanesinde doğrulanmış sesi bulunan iki dua (Kelime-i Tevhid, Kelime-i Şehâdet) görünür «Yapay ses»
+  etiketiyle eklendi; ayrıntı aşağıdaki «Yapay sesli dualar, cami ekranı FR meâl ve NL gözden geçirme (24 Ekim 2026)».
 
 **Doğrulama:** aşağıdaki «Dilim 2a doğrulaması».
 
@@ -149,7 +151,7 @@ noktası, 36,4 KB. Test, metindeki her harfin yazı tipinde olduğunu denetler.
     gelir, her âyet Tanzil dosyasıyla birebir karşılaştırılır (45 Kur'an maddesi, fark 0). Âyet âyet verilir; Diyanet
     gruplaması olmadığı için gruplama cümlesi yalnız çok âyetli grup varsa basılır. Diyanet'in Fransızca meâli dijital
     olarak açılınca meâl ve `egitim/src/i18n/madde.ts` künyesi birlikte değişir (test ikisinin aynı çevirmeni andığını
-    denetler). Cami ekranı (`src/lib/ekran/icerik.ts`) hâlâ yalnız Chiadmi bekler, bu karar oraya uygulanmadı.
+    denetler). Cami ekranına aynı gün uygulandı (`scripts/ekran-meal-fr.mjs`, aşağıdaki «Yapay sesli dualar, cami ekranı FR meâl…» bölümü).
 - NL'de meâl yok, şimdilik TR meâli gösterilmez. Gerekçe: kural `docs/DIL-NL-DE.md`, çeviri ve «gözden geçirilecek»
   işareti gerekir.
 - «Namazda»:
@@ -227,6 +229,7 @@ meal, okunus-tr; commit `249d5da3`):** `d-subhaneke`, `d-ruku-tesbihi`, `d-secde
 Başkanlığı Türkçe meâlinden Flemenkçeye taslak çeviri…». Sayfa «gözden geçirilecek» notu gösterir. En belirsiz yerler
 (Nebe 31–34, Âyetü'l-Kürsî «kayyûm/kürsî», Alak, İnşikâk, Kureyş): çevirmenin notları 24 Ekim oturum kaydındadır; NL
 okuyucudan görüş istenir. Kural: `docs/DIL-NL-DE.md`.
+**24 Ekim 2026 gözden geçirmesi:** 45 maddenin tamamı Diyanet TR meâliyle yeniden karşılaştırıldı; sonuç aşağıdaki bölümde.
 
 **Veri düzeltmesi:** Zilzâl 99:7 TR meâlinin başında Diyanet'ten gelen görünmez U+FFA0 vardı.
 `scripts/ezber-metin-cek.mjs` metin uçlarındaki görünmez kod noktalarını (`kenarTemizle`) atar; yalnız `s-zilzal.json` değişti.
@@ -316,6 +319,66 @@ mikrofonun ne zaman açıldığı, kaydın yalnız bellekte kaldığı ve silind
 fiziksel iPhone/Safari (Safari `audio/mp4` üretir, `MediaRecorder` desteği sürüme bağlıdır) ve Firefox izin penceresi
 davranışı denenmedi. Tekrar takvimi yalnız o cihazdadır: telefon ve bilgisayar birbirini görmez; velinin portalında
 görünmez (karar). Hoca basamağı değişmez.
+
+## Yapay sesli dualar, cami ekranı FR meâl ve NL gözden geçirme (24 Ekim 2026)
+
+Dayanak: Rıdvan'ın 24 Ekim 2026 «kalan işleri tamamla… ezber kilimi yayını konusunda herşeyi onaylıyorum, bütün yetki ve
+karar sende» talimatı. Üç iş, aynı yayın.
+
+### 1. Yapay sesli iki dua (Kur'an dışı)
+
+- **Kural:** Diyanet kaydı her zaman önceliklidir; Kur'an metninde yapay ses asla kullanılmaz; **yeni TTS üretilmedi.** Yalnız
+  kursun kütüphanesinde zaten bulunan, yazıya dökümle doğrulanmış iki ses alındı: `D:/ulu-camii-kuran-kursu/sesler/dua/kelime-i-tevhid-ar.mp3`
+  ve `kelime-i-sehadet-ar.mp3` (Gemini TTS `gemini-3.1-flash-tts-preview`, ses Charon, 5 Eylül 2026). Yazıya dökümde okunan metin maddenin
+  metniyle aynı çıktı (benzerlik 1,00 ve 0,99; metin Temel Dinî Bilgiler s. 25–26 ile aynı).
+- **Diyanet kaydı yok:** namaz portalının 28 kaydında ve e-Elifbâ'da bu iki metin yoktur. Şehâdet'in Tahiyyât kesiti ayrı iştir
+  (kulakla teyit bekler); Diyanet kaydı gelirse kataloğa `ses.tam` olarak yazılır, `yapay` bayrağı ve yapay dosya kalkar.
+- **Dosyalar:** `public/media/ses/yapay/kelime-i-tevhid.mp3` (10,08 sn, sha256 `8252fa70…`) ve `kelime-i-sehadet.mp3` (13,92 sn, sha256 `9481775f…`).
+  Kurs kütüphanesinin seviyeli kopyasıdır (`sesler/.seviye/`); yeniden işlenmedi: çalma yüksekliği −16 LUFS (çift mono −16,45 ve −16,44),
+  gerçek tepe −4,26 ve −2,27 dBTP. Kayıt `docs/dinleme-ses-kaynaklari.json` içinde: `yapay: true`, kaynak dizisi «Yapay ses (Gemini TTS, …); Diyanet kaydı
+  yoktur», `kursKaynakSha256` (kurs kütüphanesindeki ham dosya), `dogrulama`, `seviye`, `sure`.
+- **Katalog:** iki maddede `ses: { tam, yapay: true }`. Şema `yapay` için yalnız `true` kabul eder; `yapaySesMi()` (`src/lib/ezber/katalog.ts`)
+  etiketin tek kaynağıdır.
+- **Görünür etiket** (çalışma sayfasında çalar bölümünün başında, liste satırında rozet olarak, çal düğmesinin erişilebilir adında):
+  TR «Yapay ses», FR «Voix de synthèse», EN «Synthetic voice», NL «Synthetische stem», DE «Synthetische Stimme». Sayfa «Bu madde için
+  Diyanet'in ses kaydı yoktur…» notu taşır ve o sayfada Diyanet kaydı olduğunu söyleyen cümle yer almaz. Çal düğmesi etikete `aria-describedby` ile bağlıdır.
+- **Atlananlar:** Amentü, Selâm ve Teşrik tekbiri. Kurs kütüphanesindeki seslerin okuduğu metin maddenin metniyle birebir aynı olmadığı için
+  alınmadı; bunlar için ya Diyanet kaydı ya da onaylı yeni üretim gerekir (yeni üretim bu işte yasaktı).
+- **Metin sayfası yok:** dua metni hattı (`ezber-dua-cek.mjs`) Diyanet portalı kaynağı ve ikinci kaynak ister; bu iki madde için yalnız Camiye
+  Gidiyorum ve Temel Dinî Bilgiler anılıyor. Sayfa çalar, etiket ve «metin hazırlanıyor» notundan oluşur; «Yüzünden oku» adımı «Yakında» kalır.
+- **Testler:** `tests/ezber-katalog.test.mjs` (yalnız bu iki madde yapay olabilir; Diyanet kaydı bulunan dua yapay sese bırakılmaz; kayıtla birebir;
+  `public/media/ses/yapay/` yalnız yapay ses içindir), `tests/egitim/yapay-ses.spec.mjs` (beş dil, iki proje: 42 test).
+- **Geri alma:** hoca dinleyip beğenmezse iki maddenin `ses` alanı katalogdan, dosya ve defter kaydı birlikte silinir (testler birini diğersiz bırakmaz).
+
+### 2. Cami ekranı FR âyet meâli
+
+`scripts/ekran-meal-fr.mjs` 97 Kur'an kaydından 72'sine Hamidullah çevirisini (`fr` ve `kaynakFr: "Hamidullah"`) ekledi; 25 kayıt ekrana
+sığmadığı için AR + TR kaldı. Her âyet iki kaynakla (api.alquran.cloud `fr.hamidullah` ve Tanzil) birebir doğrulandı. Sayılar, sığmayan kayıtların listesi,
+kaynak satırı kararı ve tipografi: [EKRAN-YOL-HARITASI.md](EKRAN-YOL-HARITASI.md) «Ekran FR âyet meâli (24 Ekim 2026)».
+
+### 3. NL meâl gözden geçirme
+
+45 maddenin 461 grubu Diyanet TR meâliyle yeniden karşılaştırıldı; 59 grup düzeltildi (61 işlem: terim tutarlılığı 26, akıcılık 17, çeviri hatası 14,
+imlâ ve noktalama 3, eksik ya da fazla 1). 25 dosya değişti; yalnız `meal.nl.gruplar[*].metin`. `inceleme: true` ve «taslak çeviri» kaynak etiketi korundu,
+sayfa «gözden geçirilecek» notunu göstermeye devam eder. Hiçbir tr, en, de ya da fr meâline dokunulmadı.
+
+- **Standartlaşan terimler:** azap «straf»; gün adları «de Dag van de Afrekening en Vergelding», «de Dag van de Opstanding», «de Dag van het Oordeel en de Scheiding»;
+  takva «godsvrees (zich hoeden voor ongehoorzaamheid aan Allah)», muttaki «godvrezend»; bedbaht «rampzaligste»; yalanlamak: nesne gün, âyet ya da Kur'an ise
+  «loochenen», nesne kişi ise «voor leugenaar uitmaken»; Kur'an için zamir «Het» (büyük harfli «Hij» yalnız Allah için); dönüş «terugkeer naar».
+- **Anlam düzelten yerler:** Nebe 36–38 (özne ve nesne karışmıştı), Bakara 286 («Belast ons niet met wat wij niet kunnen dragen!», «Pardonneer ons»),
+  Nâzi'ât 19 (teklif, koşul değil), Nâzi'ât 43, Tekvîr 8–9 (soru kime soruluyor), Kureyş 1–2 (belirsiz öbek), Mâ'ûn 1 (soru işareti), Târık 4 ve 13, Burûc 21,
+  Abese 23.
+- **Hâlâ belirsiz (NL ana dilli okuyucu ve hoca görüşü gerekir):**
+  - Âdiyât 8 «çok katıdır»: «zeer hardvochtig»; alternatif «zeer gierig» ya da «zeer gehecht» (EN ve DE sevginin yoğunluğu olarak okuyor).
+  - Âyetü'l-Kürsî: «kayyûm» için «de Zelfbestaande» (alternatif «de Onderhouder van alles»); «Kürsî» için «Zijn Zetel» (alternatif «Zijn Voetenbank»); «Troon» Arş için ayrıldı.
+  - Alak 2 «alak»: çevrilmeden «alaq»; alternatif «aanklevende klont».
+  - Nebe 39 «hak olan gün»: «de dag van de waarheid»; alternatif «de waarachtige dag». Nebe 33: «jonge vrouwen… volgroeide boezem»; alternatif «jonge meisjes».
+  - İnşikâk 24 «müjdele» ironisi: «Breng hun… het bericht»; alternatif «Geef hun de ‘blijde boodschap’ van een pijnlijke straf».
+  - Tîn 5 «aşağıların aşağısına»: «de laagste der lagen»; alternatif «het allerlaagste van het lage».
+  - Bakara 286 «Mevlâ»: «Beschermer» (alternatif «Beschermheer»); «affet» için «Pardonneer» (alternatif «Wis onze fouten uit»).
+  - Kureyş 2 «ısındırıp alıştırmak»: «vertrouwd en gewend maken» (FR ve DE bunu «pakt» okuyor).
+  - Çevrilmeden bırakılan adlar: «at-Tariq», «al-Hoetama», «al-Kauthar», «Hawiya» (Türkçe kaynak da çevirmiyor).
+- **Doğrulama:** `node --test tests/ezber-madde-metni.test.mjs`; her dosya HEAD ile JSON düzeyinde karşılaştırıldı, NL metni dışındaki alanlar ve biçim aynı.
 
 ## Canlı durum ve bu çalışmanın sınırı
 

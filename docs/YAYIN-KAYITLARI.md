@@ -204,6 +204,39 @@ Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI
   - Alıcılar yalnız dernek kutularıydı. `test-temizle` 1 satır sildi; defterde 3 ihtida satırı kaldı.
   - Deneme e-postaları kutularda duruyor (önceki teamül).
 
+## 24 Ekim 2026 (6) — Ezber Kilimi: yapay sesli dualar, cami ekranı FR meâl, NL meâl gözden geçirme
+
+- Zaman: egitim Hosting yayını 15:58:29, push 15:58:33, Pages 15:58:42–16:00:42, canlı denetim 16:14:01, Europe/Brussels (CEST).
+  **Yayımlandı ve canlı doğrulandı.** Dayanak: Rıdvan, 24 Ekim: «kalan işleri tamamla… ezber kilimi yayını konusunda herşeyi
+  onaylıyorum, bütün yetki ve karar sende».
+- Kapsam, üç iş:
+  1. **Yapay sesli iki dua (Kur'an dışı):** Kelime-i Tevhid ve Kelime-i Şehâdet; kurs kütüphanesindeki yazıya dökümle doğrulanmış sesler, **yeni TTS
+     üretilmedi**; katalogda `ses.yapay`, beş dilde görünür «Yapay ses» etiketi (çalışma sayfası, liste rozeti, çal düğmesi adı). Amentü, Selâm ve Teşrik
+     tekbiri metin uyuşmadığı için alınmadı. Kur'an metninde yapay ses yok. Rıdvan'ın dinleme onayı bu yayında alınmadı: iki ses önce kurs
+     kütüphanesinde zaten kullanılan ve yazıya dökümle doğrulanan dosyalardır; beğenmezse kaldırılır (geri alma: `docs/EGITIM-FAZ2-DINLEME.md`).
+  2. **Cami ekranı FR âyet meâli:** 97 Kur'an kaydından 72'sine Hamidullah (ayetler 32/40, Kur'an duaları 12/18, tema kartı âyetleri 28/39); 25 kayıt
+     ekrana sığmadığı için AR + TR kaldı (11'inde yalnız 70 karakterlik kaynak satırı aşılıyor, 14'ünde FR metni 104 karakteri aşıyor; liste
+     `docs/EKRAN-YOL-HARITASI.md`). Her âyet api.alquran.cloud ↔ Tanzil birebir, kaydın Arapçası âyet aralığıyla aynı.
+  3. **NL meâl gözden geçirme:** 45 madde, 461 grup, 59 grup düzeltildi (25 dosya; yalnız `meal.nl.gruplar[*].metin`); `inceleme: true` ve taslak etiketi
+     duruyor. Belirsiz kalan yerler `docs/EGITIM-FAZ2-DINLEME.md`.
+- Commit'ler: `3944e3a6` (yapay ses), `55076b66` (ekran FR meâl), `de436136` (NL meâl). Temiz çalışma ağacından
+  (`D:/tmp/ulucamii-ezber-veri-yayin`), `origin/main` `687e486e` üzerine; rebase gerekmedi.
+- Dağıtım: Pages [40100444580](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/40100444580) **success** (build + deploy);
+  egitim `npm run egitim:yayinla` → Hosting `ulucamii-egitim`, 333 dosya (304 yeni).
+- Kalite (`npm run dogrula:codex` 10/10): `check` 0 hata / 0 uyarı; `test:ezber` 116/116 (bu işin testleriyle); ana site derlemesi 1947 sayfa;
+  `test:web` 840 geçti / 120 atlanan; `egitim:build` (astro check 0 hata, 302 sayfa); `test:egitim` 200 geçti / 2 bilinçli atlama (yeni
+  `tests/egitim/yapay-ses.spec.mjs`: 42 test); `test:kurallar`, `test:veli-eposta`, `test:oto-kaydet`, `test:ogrenme` geçti. Ekran
+  belirtimi (`tests/web/ekran.spec.mjs`, taban kapısı dâhil) geçti. `scripts/ekran-meal-fr.mjs --denetle` kaynakla fark 0.
+- Canlı: `npm run egitim:canli -- https://egitim.ulucamii.be` **37/37**; `tr` ve `fr` (ayrıca `en`, `nl`, `de`) `d-kelime-i-tevhid` ve
+  `d-kelime-i-sehadet` çalışma sayfalarında «Yapay ses» / «Voix de synthèse» etiketi ve `aria-describedby` bağlantısı var;
+  `https://ulucamii.be/media/ses/yapay/kelime-i-tevhid.mp3` ve `kelime-i-sehadet.mp3` 200 (aralık isteği 206), SHA-256 kayıtla aynı
+  (`8252fa70…`, `9481775f…`); `https://ulucamii.be/ekran/icerik.json` 200, Fransızca âyetler yayında (ayetler 32/40, Kur'an duaları 12/18, tema kartı âyetleri 28/39 =
+  72), hepsinin kaynağı Hamidullah, «Diyanet» iddiası yok.
+- Açık sınırlar: ekranda FR'siz kalan 25 kayıt için kaynak satırı ya da metin sınırı kararı gerekir (kod değişmedi); iki yapay sesi Rıdvan dinleyip
+  onaylamalı; NL meâl için ana dilli okuyucu görüşü hâlâ gerekli; Diyanet'in Fransızca meâli dijital açılınca Hamidullah onun yerine geçer;
+  duyuru yapılmadı.
+- Bu kayıt için belge commit'i içerik yayını değildir.
+
 ## 24 Ekim 2026 (4) — Ezber Kilimi Faz 2 dilim 2d: Kendini sına, tekrar takvimi, «Bugün tekrar», mikrofon izni
 
 - Zaman (Europe/Brussels, CEST): push 14:33:29, Pages 14:33:34–14:35:57, egitim Hosting yayını 14:39:57 (sürüm 323 dosya),
