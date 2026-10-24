@@ -4,6 +4,26 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 24 Ekim 2026 (öğle) — ders materyalleri: 24, 25 ve 26 Ekim 2026 (Cumartesi, Pazar, Pazartesi)
+
+- Zaman: Release yüklemesi ≈10:20–10:50, commit/push 10:52:37, Pages derleme+dağıtım 10:52:39–10:54:53, canlı doğrulama
+  ≈10:56, Europe/Brussels (CEST). **Yayımlandı ve canlı doğrulandı.** Dayanak: Rıdvan'ın 24 Ekim «materyalleri siteye
+  yayımla lütfen… bütün yetki ve karar sende» talimatı.
+- Kapsam: üç ders günü; her gün ders planı PDF'i, üç öğrenci sunumu (pptx + sessiz PDF), üç öğretici sunumu (pptx + PDF) ve
+  «Derse hızlı başlangıç» eki = 14 dosya. 26 Ekim'den itibaren kış saati (10:00 / 11:00 / 12:00).
+- Commit: `d0411fde` (yalnız `src/data/ders-materyalleri.json`, 18 gün); temiz çalışma ağacından
+  (`D:/tmp/ulucamii-kurs-20261024-26`, `origin/main` `0eb7e343` üzerine). Release'ler `ders-2026-10-24`, `ders-2026-10-25`,
+  `ders-2026-10-26`, her biri 14 dosya (0 zaten vardı), tarihli indirme adları (`yayin_adi()`).
+- Dağıtım: Pages [40079743543](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/40079743543) **success**.
+- Kalite: kaynak projede `denetim.py --sert` temiz, COM yerleşim 0, oyun denetimi (86 gömülü oyun) geçti, öğretici denetimi 0
+  ihlal, 9/9 sunum PowerPoint'te açıldı; yayın betiği oyun/tetik/PDF/öğretici eşleşmesi kapısını geçti; PDF'lerde kişisel veri
+  taraması (telefon, e-posta, hoca adı, 🙏) boş. Sitede `npm run check` 0 hata / 0 uyarı, `npm run build` 1947 sayfa.
+- Canlı: `/tr/ders-materyalleri/`, `/fr/supports-de-cours/`, `/en/lesson-materials/` üç günü gösteriyor; 42/42 indirme
+  bağlantısı indirildi, SHA-256 arşivdeki dosyalarla aynı. OneDrive kopyası üretim sırasında SHA eşit doğrulandı.
+- Açık sınırlar: herkese açık kurs günlüğü (`ders-ilerleme.json`) bu yayında tazelenmedi (hoca defteri 24–26 Ekim için henüz
+  girilmedi).
+- Bu kayıt için belge commit'i içerik yayını değildir.
+
 ## 23 Ekim 2026 (akşam) — ihtida paketi: şahit imzaları (Ercan MOLA, Rıdvan KAYAHAN otomatik; mühtedinin kendi şahidi formda isteğe bağlı imza atar)
 
 - Zaman: iki commit (`0fc0202` kayıtlı şahit imzaları, `8e92c88` formdaki şahit imzası) 17:23 Europe/Brussels (CEST) tarihinde `main`e
