@@ -1,0 +1,70 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "d-barik",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "اَللّٰهُمَّ بَارِكْ عَلٰى مُحَمَّدٍ وَعَلٰى اٰلِ مُحَمَّدٍ"
+  },
+  {
+   "no": 2,
+   "ar": "كَمَا بَارَكْتَ عَلٰى اِبْرَاهِيمَ وَعَلٰى اٰلِ اِبْرَاهِيمَ"
+  },
+  {
+   "no": 3,
+   "ar": "اِنَّكَ حَمِيدٌ مَجِيدٌ"
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı, Namaz İlmihali, «Namaz İçinde Okunacak Dualar» (Namaz İlmihali, II. bölüm)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Allah’ım! Muhammed’e ve Muhammed’in ümmetine hayır ve bereket ver."
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "İbrahim’e ve İbrahim’in ümmetine verdiğin gibi."
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "Şüphesiz övülmeye lâyık yalnız sensin, şan ve şeref sahibi de sensin."
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Namaz Vakitleri sitesi (namaz.diyanet.gov.tr)",
+  "url": "https://namaz.diyanet.gov.tr/namaz/html/sureler-dualar.html",
+  "alindi": "2026-10-24"
+ },
+ "ozet": "26921d8be81b72e52d3023ed03d533082dfe8b83f99dd5026af3a2df27cd8131",
+ "okunus": {
+  "tr": [
+   {
+    "no": 1,
+    "metin": "Allâhümme bârik ‘alâ Muhammedin ve ‘alâ âli Muhammed."
+   },
+   {
+    "no": 2,
+    "metin": "Kemâ bârakte ‘alâ İbrahîme ve ‘alâ âli İbrahim."
+   },
+   {
+    "no": 3,
+    "metin": "İnneke hamidün mecîd."
+   }
+  ]
+ },
+ "zor": [],
+ "onay": null
+}

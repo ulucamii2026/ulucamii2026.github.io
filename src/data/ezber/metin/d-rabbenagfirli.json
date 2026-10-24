@@ -52,6 +52,19 @@
      "metin": "Unser Herr, vergib mir und meinen Eltern und den Gläubigen am Tag der Rechenschaft.“"
     }
    ]
+  },
+  "nl": {
+   "kaynak": "Diyanet İşleri Başkanlığı Türkçe meâlinden Flemenkçeye taslak çeviri (yayımlanmış bir Flemenkçe meâlden alınmamıştır; gözden geçirilecek)",
+   "inceleme": true,
+   "gruplar": [
+    {
+     "ayetler": [
+      41,
+      41
+     ],
+     "metin": "“Onze Heer! Vergeef mij, mijn ouders en de gelovigen op de dag waarop de afrekening plaatsvindt.”"
+    }
+   ]
   }
  },
  "kaynak": {

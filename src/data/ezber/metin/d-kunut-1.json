@@ -1,0 +1,97 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "d-kunut-1",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "اَللَّهُمَّ إِنَّا نَسْتَعِينُكَ وَنَسْتَغْفِرُكَ وَنَسْتَهْدِيكَ"
+  },
+  {
+   "no": 2,
+   "ar": "وَنُؤْمِنُ بِكَ وَنَتُوبُ اِلَيْكَ"
+  },
+  {
+   "no": 3,
+   "ar": "وَنَتَوَكَّلُ عَلَيْكَ وَنُثْنِى عَلَيْكَ الْخَيْرَ كُلَّهُ نَشْكُرُكَ وَلاَ نَكْفُرُكَ"
+  },
+  {
+   "no": 4,
+   "ar": "وَنَخْلَعُ وَنَتْرُكُ مَنْ يَفْجُرُكَ"
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı, Namaz İlmihali, «Namaz İçinde Okunacak Dualar» (Namaz İlmihali, II. bölüm)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Allah’ım! Senden yardım isteriz, günahlarımızı bağışlamanı isteriz, razı olduğun şeylere hidayet etmeni isteriz."
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "Sana inanırız, sana tövbe ederiz."
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "Sana güveniriz. Bize verdiğin bütün nimetleri bilerek seni hayır ile överiz. Sana şükrederiz. Hiçbir nimetini inkâr etmeyiz ve onları başkasından bilmeyiz."
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Nimetlerini inkâr eden ve sana karşı geleni bırakırız."
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Namaz Vakitleri sitesi (namaz.diyanet.gov.tr)",
+  "url": "https://namaz.diyanet.gov.tr/namaz/html/sureler-dualar.html",
+  "alindi": "2026-10-24"
+ },
+ "duzeltmeler": [
+  {
+   "bul": "وَنُثْنِى عَلَيْك ",
+   "yerine": "وَنُثْنِى عَلَيْكَ ",
+   "neden": "Portalda kâf harfinin fethası düşmüş; aynı kelime bir önceki cümlede ve ikinci kaynakta (Tecrid-i Sarih) fethalıdır."
+  },
+  {
+   "bul": "اْلخَيْرَ",
+   "yerine": "الْخَيْرَ",
+   "neden": "Portalda elif üzerine sükûn, lâm üzerine harekesizlik yazılmış (basım hatası); ال takısı lâm sükûnuyla yazılır."
+  }
+ ],
+ "ozet": "aaa4cb7337c478908a939f90bd22a6fcc2d46dde9f301bc6f744f3ce0f887b96",
+ "okunus": {
+  "tr": [
+   {
+    "no": 1,
+    "metin": "Allâhümme innâ neste’înüke ve nesteğfiruke ve nestehdîke"
+   },
+   {
+    "no": 2,
+    "metin": "ve nü’minü bike ve netûbü ileyke"
+   },
+   {
+    "no": 3,
+    "metin": "ve netevekkelü aleyke ve nüsnî ‘aleyke’l-hayra küllehû neşküruke velâ nekfürüke"
+   },
+   {
+    "no": 4,
+    "metin": "ve nahle’u ve netrukü men yefcürük."
+   }
+  ]
+ },
+ "zor": [],
+ "onay": null
+}

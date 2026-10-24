@@ -1,0 +1,40 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "d-ruku-tesbihi",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "سُبْحَانَ رَبِّيَ الْعَظِيمِ"
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı, Namaz İlmihali, «Namaz İçinde Okunacak Dualar» (Namaz İlmihali, II. bölüm)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Ulu Rabbim, her türlü kusurdan münezzehtir."
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Namaz Vakitleri sitesi (namaz.diyanet.gov.tr)",
+  "url": "https://namaz.diyanet.gov.tr/namaz/html/sureler-dualar.html",
+  "alindi": "2026-10-24"
+ },
+ "ozet": "1e6be84e984b1486fb15939127b3dcabd81d870f91cfd395f5054eac410cf504",
+ "okunus": {
+  "tr": [
+   {
+    "no": 1,
+    "metin": "Sübhâne rabbiye’l-‘azîm"
+   }
+  ]
+ },
+ "zor": [],
+ "onay": null
+}

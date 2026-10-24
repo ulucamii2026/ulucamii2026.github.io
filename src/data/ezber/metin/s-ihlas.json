@@ -130,6 +130,40 @@
      "metin": "und keiner ist ihm gleich."
     }
    ]
+  },
+  "nl": {
+   "kaynak": "Diyanet İşleri Başkanlığı Türkçe meâlinden Flemenkçeye taslak çeviri (yayımlanmış bir Flemenkçe meâlden alınmamıştır; gözden geçirilecek)",
+   "inceleme": true,
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Zeg: “Hij is Allah, Hij is één en enig.”"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "“Allah is as-Samad. (Alles heeft Hem nodig; Hij heeft niets nodig.)”"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "“Uit Hem is geen kind voortgekomen (Hij is van niemand de vader). En Hij is zelf niet geboren (Hij is van niemand het kind).”"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "“Niets is aan Hem gelijk of met Hem te vergelijken.”"
+    }
+   ]
   }
  },
  "kaynak": {

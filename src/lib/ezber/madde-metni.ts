@@ -18,6 +18,8 @@ export interface MaddeMetni {
   readonly kaynak: { readonly ar: string; readonly url: string; readonly alindi: string };
   readonly okunus?: Partial<Record<OkunusUsulu, readonly { readonly no: number; readonly metin: string }[]>>;
   readonly zor: readonly { readonly bolum: number; readonly kelime: string; readonly not?: string }[];
+  /** Dua metinleri: Diyanet portalındaki kusurlu harekeleme/yazımın düzeltmeleri (scripts/ezber-dua-tanim.mjs). */
+  readonly duzeltmeler?: readonly { readonly bul: string; readonly yerine: string; readonly neden: string }[];
   readonly onay: null | { readonly tarih: string; readonly kapsam: readonly string[] };
 }
 
@@ -51,12 +53,13 @@ export function onayliOkunus(m: MaddeMetni, dil: Dil) {
 
 /**
  * Metni gösterim bloklarına böler: sayfa dilinin meâl gruplarıyla. O dilde meâl yoksa metin mushaftaki gibi tek blokta
- * kesintisiz akar (meâlsiz ayraç bir şey ayırmaz; 40 âyetlik sûre telefonda gereksiz uzar).
+ * kesintisiz akar (meâlsiz ayraç bir şey ayırmaz; 40 âyetlik sûre telefonda gereksiz uzar). Dualarda her bölüm ayrı blok.
  */
 export function metinBloklari(m: MaddeMetni, dil: Dil): MetinBlogu[] {
   const meal = sayfaMeali(m, dil);
   const ilk = m.bolumler[0].no, son = m.bolumler[m.bolumler.length - 1].no;
-  const gruplar = meal?.gruplar ?? [{ ayetler: [ilk, son] as const, metin: '' }];
+  // Kur'an: meâlsiz dilde metin kesintisiz akar. Dualar: her bölüm kendi satırında kalır (bölüm sınırları ezberin sınırlarıdır).
+  const gruplar = meal?.gruplar ?? (m.kuran ? [{ ayetler: [ilk, son] as const, metin: '' }] : m.bolumler.map((b) => ({ ayetler: [b.no, b.no] as const, metin: '' })));
   const okunus = onayliOkunus(m, dil);
   return gruplar.map((g) => {
     const icinde = (no: number) => no >= g.ayetler[0] && no <= g.ayetler[1];

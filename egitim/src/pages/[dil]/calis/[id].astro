@@ -40,6 +40,10 @@ const seritCapasi = oge.seviye === 'kenar' ? 'kenar-suyu' : `serit-${oge.seviye}
 const mt = MADDE_METINLERI.get(oge.id);
 const bloklar = mt ? metinBloklari(mt, dil) : [];
 const meal = mt && sayfaMeali(mt, dil);
+// Kur'an dışı maddeler (dualar): künye, başlık ve «meâl yok» iletisi Kur'an'a özgü sözleri taşımaz; hoca onayı yoksa not düşülür.
+const dua = Boolean(mt && !mt.kuran);
+const duaNotlari = dua && dil === 'tr' ? mt?.zor ?? [] : [];
+const arapcaMi = (s: string) => /[؀-ۿ]/.test(s);
 const okunus = mt && onayliOkunus(mt, dil);
 // Âyet → çalar bölümü: âyet parçaları bölümlerle bire bir olduğunda (tests/ezber-madde-metni.test.mjs) âyete dokunulur.
 const parcaSirasi = new Map(
@@ -107,10 +111,11 @@ const sonraki = serit[sira + 1];
         {mt ? (
           <section aria-labelledby="metin-baslik">
             <div class="metin-ust">
-              <h2 id="metin-baslik">{meal ? mm.metinBaslik : mm.metinBaslikYalniz}</h2>
+              <h2 id="metin-baslik">{meal ? (dua ? mm.metinBaslikDua : mm.metinBaslik) : mm.metinBaslikYalniz}</h2>
               {okunus && <button class="secim" type="button" aria-pressed="false" data-okunus-dugme hidden><Ikon ad="goz" />{mm.okunusGoster}</button>}
             </div>
-            {!meal && <p class="meal-yok">{mm.mealYok}</p>}
+            {!meal && <p class="meal-yok">{dua ? mm.anlamYok : mm.mealYok}</p>}
+            {dua && !mt.onay && <p class="onay-bekliyor">{mm.onayBekliyor}</p>}
             {parcaSirasi.size > 0 && <p class="metin-ipucu" data-dokun-ipucu hidden>{mm.dokun}</p>}
             <div class="metin" data-metin data-okunus="gizli">
               {bloklar.map((b) => (
@@ -125,12 +130,22 @@ const sonraki = serit[sira + 1];
                     </>
                   ))}</p>
                   {b.okunus && <div class="okunuslar">{b.okunus.map((o) => <p class="okunus" lang={dil === 'fr' ? 'fr' : 'tr'}><span class="no">{o.no}</span>{o.metin}</p>)}</div>}
-                  {b.meal !== undefined && <p class="meal"><span class="no">{aralikYaz(b.ayetler)}</span>{b.meal}</p>}
+                  {b.meal !== undefined && <p class="meal">{(!dua || mt.bolumler.length > 1) && <span class="no">{aralikYaz(b.ayetler)}</span>}{b.meal}</p>}
                 </div>
               ))}
             </div>
+            {duaNotlari.length > 0 && (
+              <section class="zor-yerler" aria-labelledby="zor-baslik">
+                <h3 id="zor-baslik">{mm.zorBaslik}</h3>
+                <ul>{duaNotlari.map((z) => (
+                  <li><b lang={arapcaMi(z.kelime) ? 'ar' : undefined} dir={arapcaMi(z.kelime) ? 'rtl' : undefined}>{z.kelime}</b>{z.not && ` — ${z.not}`}</li>
+                ))}</ul>
+              </section>
+            )}
             <p class="kaynak-satiri">
-              {mm.kunyeAr}{meal && ` ${mm.kunyeMeal} ${mm.gruplama(meal.gruplar.map((g) => aralikYaz(g.ayetler)).join(' · '))}`}
+              {dua
+                ? mm.kunyeKaynak(mt.kaynak.ar, meal?.kaynak)
+                : <>{mm.kunyeAr}{meal && ` ${mm.kunyeMeal} ${mm.gruplama(meal.gruplar.map((g) => aralikYaz(g.ayetler)).join(' · '))}`}</>}
               {meal?.inceleme && ` ${mm.mealInceleme}`}{okunus && ` ${mm.okunusUsulu}`}
             </p>
           </section>

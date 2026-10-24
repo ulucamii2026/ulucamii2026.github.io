@@ -182,6 +182,54 @@
      "metin": "Euch eure Religion und mir meine Religion."
     }
    ]
+  },
+  "nl": {
+   "kaynak": "Diyanet İşleri Başkanlığı Türkçe meâlinden Flemenkçeye taslak çeviri (yayımlanmış bir Flemenkçe meâlden alınmamıştır; gözden geçirilecek)",
+   "inceleme": true,
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Zeg: “O ongelovigen!”"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "“Ik aanbid niet wat jullie aanbidden.”"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "“En jullie zullen niet aanbidden wat ik aanbid.”"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "“En ik zal niet aanbidden wat jullie aanbidden.”"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "“En jullie zullen niet aanbidden wat ik aanbid.”"
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "“Voor jullie is jullie godsdienst, en voor mij is mijn godsdienst.”"
+    }
+   ]
   }
  },
  "kaynak": {

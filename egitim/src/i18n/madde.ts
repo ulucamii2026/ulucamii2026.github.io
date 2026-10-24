@@ -17,6 +17,8 @@ interface MaddeMetinleri {
   hocaBaslik: string; hocaMetin: string; veliBag: string;
   namazBaslik: string; durus: Record<Durus, string>; namazKaynak: string;
   onceki: string; sonraki: string; seriteDon: string;
+  /** Kur'an dışı maddeler (dualar): başlık, künye, anlamsız dil, hoca onayı bekleniyor, dikkat edilecek yerler. */
+  metinBaslikDua: string; kunyeKaynak: (ar: string, anlam?: string) => string; anlamYok: string; onayBekliyor: string; zorBaslik: string;
 }
 
 const METINLER: Record<Dil, MaddeMetinleri> = {
@@ -43,6 +45,8 @@ const METINLER: Record<Dil, MaddeMetinleri> = {
     namazBaslik: 'Namazda nerede okunur', durus: { kiyam: 'Kıyam', ruku: 'Rükû', secde: 'Secde', kade: 'Oturuş' },
     namazKaynak: 'Kaynak: Diyanet İlmihali I, «Namazın Kılınışı».',
     onceki: 'Önceki madde', sonraki: 'Sonraki madde', seriteDon: 'Şeride dön',
+    metinBaslikDua: 'Metin ve anlam', kunyeKaynak: (ar, an) => `Arapça metin: ${ar}.${an ? ` Türkçe anlam: ${an}.` : ""}`,
+    anlamYok: 'Bu dilde anlam yakında eklenecek.', onayBekliyor: 'Metin Diyanet kaynaklarından alınmıştır. Hoca incelemesi bekleniyor.', zorBaslik: 'Dikkat edilecek yerler',
   },
   fr: {
     yol: 'Vous êtes ici', ayet: (n) => `${n} versets`, metinBaslik: 'Texte et traduction du sens', metinBaslikYalniz: 'Texte', okunusGoster: 'Afficher la translittération',
@@ -68,6 +72,8 @@ const METINLER: Record<Dil, MaddeMetinleri> = {
     namazBaslik: 'Dans la prière', durus: { kiyam: 'Debout', ruku: 'Inclinaison', secde: 'Prosternation', kade: 'Assis' },
     namazKaynak: 'Source : Diyanet İlmihali I, « La manière d’accomplir la prière ».',
     onceki: 'Contenu précédent', sonraki: 'Contenu suivant', seriteDon: 'Revenir à la bande',
+    metinBaslikDua: 'Texte et sens', kunyeKaynak: (ar, an) => `Texte arabe : ${ar}.${an ? ` Sens en turc : ${an}.` : ""}`,
+    anlamYok: 'Le sens dans cette langue sera bientôt ajouté.', onayBekliyor: 'Texte repris des sources de la Diyanet ; relecture par l’enseignant en attente.', zorBaslik: 'Points d’attention',
   },
   en: {
     yol: 'You are here', ayet: (n) => `${n} verses`, metinBaslik: 'Text and translation', metinBaslikYalniz: 'Text', okunusGoster: 'Show transliteration',
@@ -92,6 +98,8 @@ const METINLER: Record<Dil, MaddeMetinleri> = {
     namazBaslik: 'Where it is recited in the prayer', durus: { kiyam: 'Standing', ruku: 'Bowing', secde: 'Prostration', kade: 'Sitting' },
     namazKaynak: 'Source: Diyanet İlmihali I, “How the prayer is performed”.',
     onceki: 'Previous item', sonraki: 'Next item', seriteDon: 'Back to the band',
+    metinBaslikDua: 'Text and meaning', kunyeKaynak: (ar, an) => `Arabic text: ${ar}.${an ? ` Turkish meaning: ${an}.` : ""}`,
+    anlamYok: 'The meaning in this language will be added soon.', onayBekliyor: 'Text taken from Diyanet sources; teacher review pending.', zorBaslik: 'Things to watch for',
   },
   nl: {
     yol: 'U bent hier', ayet: (n) => `${n} verzen`, metinBaslik: 'Tekst en vertaling', metinBaslikYalniz: 'Tekst', okunusGoster: 'Transliteratie tonen',
@@ -116,6 +124,8 @@ const METINLER: Record<Dil, MaddeMetinleri> = {
     namazBaslik: 'Waar het in het gebed wordt gereciteerd', durus: { kiyam: 'Staand', ruku: 'Buiging', secde: 'Prosternatie', kade: 'Zittend' },
     namazKaynak: 'Bron: Diyanet İlmihali I, „Hoe het gebed wordt verricht”.',
     onceki: 'Vorig onderdeel', sonraki: 'Volgend onderdeel', seriteDon: 'Terug naar de band',
+    metinBaslikDua: 'Tekst en betekenis', kunyeKaynak: (ar, an) => `Arabische tekst: ${ar}.${an ? ` Betekenis in het Turks: ${an}.` : ""}`,
+    anlamYok: 'De betekenis in deze taal volgt binnenkort.', onayBekliyor: 'Tekst overgenomen uit Diyanet-bronnen; nalezing door de leerkracht volgt.', zorBaslik: 'Let hierop',
   },
   de: {
     yol: 'Sie sind hier', ayet: (n) => `${n} Verse`, metinBaslik: 'Text und Übersetzung', metinBaslikYalniz: 'Text', okunusGoster: 'Umschrift zeigen',
@@ -140,6 +150,8 @@ const METINLER: Record<Dil, MaddeMetinleri> = {
     namazBaslik: 'Wo es im Gebet rezitiert wird', durus: { kiyam: 'Stehen', ruku: 'Verbeugung', secde: 'Niederwerfung', kade: 'Sitzen' },
     namazKaynak: 'Quelle: Diyanet İlmihali I, „Wie das Gebet verrichtet wird“.',
     onceki: 'Vorheriger Inhalt', sonraki: 'Nächster Inhalt', seriteDon: 'Zurück zum Band',
+    metinBaslikDua: 'Text und Bedeutung', kunyeKaynak: (ar, an) => `Arabischer Text: ${ar}.${an ? ` Bedeutung auf Türkisch: ${an}.` : ""}`,
+    anlamYok: 'Die Bedeutung in dieser Sprache folgt bald.', onayBekliyor: 'Text aus Diyanet-Quellen übernommen; Durchsicht durch die Lehrkraft steht aus.', zorBaslik: 'Worauf zu achten ist',
   },
 };
 

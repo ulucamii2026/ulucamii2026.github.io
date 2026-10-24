@@ -97,6 +97,26 @@
      "metin": "außer denen, welche glauben und das Rechte tun und einander zur Wahrheit mahnen und zur Geduld."
     }
    ]
+  },
+  "nl": {
+   "kaynak": "Diyanet İşleri Başkanlığı Türkçe meâlinden Flemenkçeye taslak çeviri (yayımlanmış bir Flemenkçe meâlden alınmamıştır; gözden geçirilecek)",
+   "inceleme": true,
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      2
+     ],
+     "metin": "Bij de tijd, de mens is werkelijk in verlies."
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "Behalve zij die geloven en goede daden verrichten, die elkaar de waarheid aanbevelen en die elkaar geduld aanbevelen (zij zijn niet in verlies)."
+    }
+   ]
   }
  },
  "kaynak": {

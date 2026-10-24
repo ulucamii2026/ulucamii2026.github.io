@@ -1,0 +1,100 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "d-ettehiyyatu",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "اَلتَّحِيَّاتُ لِلّٰهِ وَالصَّلَوَاتُ وَالطَّيِّبَاتُ"
+  },
+  {
+   "no": 2,
+   "ar": "اَلسَّلاَمُ عَلَيْكَ اَيُّهَا النَّبِىُّ وَرَحْمَةُ اللّٰهِ وَبَرَكَاتُهُ"
+  },
+  {
+   "no": 3,
+   "ar": "اَلسَّلاَمُ عَلَيْنَا وَعَلٰى عِبَادِ اللّٰهِ الصَّالِحِينَ"
+  },
+  {
+   "no": 4,
+   "ar": "اَشْهَدُ اَنْ لاَ اِلٰهَ اِلاَّ اللّٰهُ"
+  },
+  {
+   "no": 5,
+   "ar": "وَاَشْهَدُ اَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ"
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı, Namaz İlmihali, «Namaz İçinde Okunacak Dualar» (Namaz İlmihali, II. bölüm)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Selam, rahmet ve bütün güzellikler, her türlü dil, beden ve mal ile yapılan ibadet Allah’a mahsustur."
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "Ey Peygamber! Allah’ın rahmeti ve bereketleri senin üzerine olsun."
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "Selâm bizlere ve Allah’ın sâlih kullarına olsun."
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Ben şahadet ederim (kesinlikle bilirim) ki, Allah’tan başka hiçbir ilâh yoktur."
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "Ve şahadet ederim ki Hazret-i Muhammed Allah’ın kulu ve Resûlüdür."
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Namaz Vakitleri sitesi (namaz.diyanet.gov.tr)",
+  "url": "https://namaz.diyanet.gov.tr/namaz/html/sureler-dualar.html",
+  "alindi": "2026-10-24"
+ },
+ "ozet": "48a8ea24abb7ebbfbb5a854247200194e303baa42d720109cfcc0a92ac6cee34",
+ "okunus": {
+  "tr": [
+   {
+    "no": 1,
+    "metin": "Ettehıyyâtü lillâhi ve’s-salevâtü ve’t-tayyibâtü"
+   },
+   {
+    "no": 2,
+    "metin": "esselâmü ‘aleyke eyyühe’n-nebiyyü ve rahmetüllâhi ve berakâtühû"
+   },
+   {
+    "no": 3,
+    "metin": "esselâmü ‘aleynâ ve ‘alâ ‘ıbâdillâhi’s-salihîn."
+   },
+   {
+    "no": 4,
+    "metin": "Eşhedü en lâ ilâhe illallâh"
+   },
+   {
+    "no": 5,
+    "metin": "ve eşhedü enne Muhammeden ‘abdühû ve rasûlüh."
+   }
+  ]
+ },
+ "zor": [],
+ "onay": null
+}

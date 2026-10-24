@@ -156,6 +156,47 @@
      "metin": "Frieden ist sie bis zum Aufgang der Morgenröte."
     }
    ]
+  },
+  "nl": {
+   "kaynak": "Diyanet İşleri Başkanlığı Türkçe meâlinden Flemenkçeye taslak çeviri (yayımlanmış bir Flemenkçe meâlden alınmamıştır; gözden geçirilecek)",
+   "inceleme": true,
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Zeker, Wij hebben hem (de Koran) neergezonden in de Nacht van al-Qadr."
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "Hoe zou jij kunnen weten wat de Nacht van al-Qadr is!"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "De Nacht van al-Qadr is beter dan duizend maanden."
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "De engelen en de Geest (Djibriel) dalen in die nacht met toestemming van hun Heer neer voor elke zaak, telkens weer."
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "Die nacht is vrede, tot het gloren van de dageraad."
+    }
+   ]
   }
  },
  "kaynak": {

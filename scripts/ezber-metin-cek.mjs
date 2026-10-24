@@ -28,6 +28,18 @@ const denetle = process.argv.includes('--denetle');
 const bugun = new Date().toISOString().slice(0, 10);
 
 const bekle = (ms) => new Promise((r) => setTimeout(r, ms));
+// Kaynak kayıtlarının başında/sonunda görünmez dolgu karakteri çıkabiliyor: Zilzâl 99:7'nin Türkçe meâli U+FFA0 (Hangul dolgu
+// karakteri) ile başlıyordu (24 Ekim 2026). `trim()` bunu boşluk saymaz; ekranda boş bir kare ya da boşluk görünür.
+// Kod noktaları sayıyla yazılır (görünmez karakter kaynağa konmaz): Hangul dolguları, sıfır genişlikli karakterler, BOM.
+const GORUNMEZ = String.fromCodePoint(0xFFA0, 0x3164, 0x115F, 0x1160, 0x200B, 0x200C, 0x200D, 0x200E, 0x200F, 0x2060, 0xFEFF);
+function kenarTemizle(t) {
+  const gor = (c) => /\s/.test(c) || GORUNMEZ.includes(c);
+  let a = 0;
+  let b = t.length;
+  while (a < b && gor(t[a])) a++;
+  while (b > a && gor(t[b - 1])) b--;
+  return t.slice(a, b);
+}
 
 async function anahtarBul() {
   const html = await (await fetch(`${KOK}/`, { headers: UA })).text();
@@ -146,7 +158,7 @@ async function gruplar(o, dil) {
   let kayitlar = [];
   for (const s of sayfalar) for (const m of await sayfaMeali(s, MEALLER[dil])) {
     if (m.sure_id !== sure || kayitlar.some((x) => x.ayetler[0] === m.ayet_no)) continue;
-    kayitlar.push({ ayetler: [m.ayet_no, m.ayet_bitis ?? m.ayet_no], metin: m.metin.trim() });
+    kayitlar.push({ ayetler: [m.ayet_no, m.ayet_bitis ?? m.ayet_no], metin: kenarTemizle(m.metin) });
   }
   // Düzeltmeler tek tek Diyanet kaydına uygulanır: önce âyet bağları (yeniAyet, bitis), sonra eksik kayıt (ekle).
   // Uygulanamayan ya da artık gereksiz düzeltme (Diyanet verisini düzeltmiş) hata sayılır.

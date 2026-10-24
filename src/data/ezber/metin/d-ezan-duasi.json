@@ -1,0 +1,98 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "d-ezan-duasi",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "اَللّٰهُمَّ رَبَّ هٰذِهِ الدَّعْوَةِ التَّآمَّةِ وَالصَّلاَةِ الْقَآئِمَةِ"
+  },
+  {
+   "no": 2,
+   "ar": "اٰتِ مُحَمَّدًا الْوَسِيلَةَ وَالْفَضِيلَةَ"
+  },
+  {
+   "no": 3,
+   "ar": "وَابْعَثْهُ مَقَامًا مَحْمُودًا الَّذِى وَعَدْتَهُ"
+  },
+  {
+   "no": 4,
+   "ar": "اِنَّكَ لاَ تُخْلِفُ الْمِيعَادَ"
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı, Diyanet İlmihali, I. cilt, «Ezan ve Kamet» (s. 269–270)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Ey şu eksiksiz mesajın ve kılınacak namazın Rabbi olan Allahım!"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "Muhammed’e vesileyi ve fazileti (ve yüksek dereceyi) ver!"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "Vaad ettiğin övülmüş makama yükselt"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "(Sen vaadine muhalefet etmezsin)"
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Namaz Vakitleri sitesi (namaz.diyanet.gov.tr); son bölüm: Diyanet İşleri Başkanlığı, İslam İlmihali, VIII. Namaz",
+  "url": "https://namaz.diyanet.gov.tr/namaz/html/sureler-dualar.html",
+  "alindi": "2026-10-24"
+ },
+ "duzeltmeler": [
+  {
+   "bul": "مَحْمُودًانِ الَّذ۪ى",
+   "yerine": "مَحْمُودًا الَّذِى",
+   "neden": "Portalda «mahmûden» kelimesine fazladan نِ eklenmiş (basım hatası; ikinci kaynaklar Tecrid-i Sarih ve İslam İlmihali مَحْمُودًا الَّذِى yazar); ayrıca ذ۪ى içindeki U+06EA işareti kesreye (U+0650) çevrilmiştir."
+  }
+ ],
+ "ozet": "fa1234f3fdf225fa3a3aca71a4712124510018afe88f72567df24e8a2f80be71",
+ "okunus": {
+  "tr": [
+   {
+    "no": 1,
+    "metin": "Allâhümme rabbe hâzihi’d-da‘veti’t-tâmme ve’s-salâti’l-kaime"
+   },
+   {
+    "no": 2,
+    "metin": "âti Muhammeden el-vesîlete ve’l-fazîleh"
+   },
+   {
+    "no": 3,
+    "metin": "Veb‘ashü makamen mahmûdeni’llezî va‘adteh"
+   },
+   {
+    "no": 4,
+    "metin": "İnneke lâ tuhlifü’l-mîâd"
+   }
+  ]
+ },
+ "zor": [
+  {
+   "bolum": 2,
+   "kelime": "ve’d-derecete’r-refîah",
+   "not": "Diyanet İlmihali’ne göre bu kısa ek isteğe bağlıdır («ve yüksek dereceyi»). Diyanet kaydında okunur, Diyanet’in yazılı Arapça metninde yer almaz."
+  }
+ ],
+ "onay": null
+}

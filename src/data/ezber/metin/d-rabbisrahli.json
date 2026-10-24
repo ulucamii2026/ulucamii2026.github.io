@@ -123,6 +123,33 @@
      "metin": "damit sie mein Wort verstehen."
     }
    ]
+  },
+  "nl": {
+   "kaynak": "Diyanet İşleri Başkanlığı Türkçe meâlinden Flemenkçeye taslak çeviri (yayımlanmış bir Flemenkçe meâlden alınmamıştır; gözden geçirilecek)",
+   "inceleme": true,
+   "gruplar": [
+    {
+     "ayetler": [
+      25,
+      25
+     ],
+     "metin": "Moesa zei: “Mijn Heer! Geef mijn hart ruimte.”"
+    },
+    {
+     "ayetler": [
+      26,
+      26
+     ],
+     "metin": "“Maak mijn taak voor mij gemakkelijk.”"
+    },
+    {
+     "ayetler": [
+      27,
+      28
+     ],
+     "metin": "“Neem de stroefheid van mijn tong weg, zodat zij begrijpen wat ik zeg.”"
+    }
+   ]
   }
  },
  "kaynak": {

@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Ezber maddesinin metni",
-  "description": "Madde başına bir dosya (Faz 2b, 19 Ekim 2026). Kur'an maddeleri scripts/ezber-metin-cek.mjs ile kuran.diyanet.gov.tr'den birebir gelir; elle düzenlenmez. Hoca alanları (okunus, zor, onay) yeniden çekimde korunur. Çapraz kurallar: tests/ezber-madde-metni.test.mjs.",
+  "description": "Madde başına bir dosya (Faz 2b, 19 Ekim 2026). Kur'an maddeleri scripts/ezber-metin-cek.mjs ile kuran.diyanet.gov.tr'den birebir gelir; elle düzenlenmez. Hoca alanları (okunus, zor, onay) yeniden çekimde korunur. Dua maddeleri (d-) scripts/ezber-dua-cek.mjs ile namaz.diyanet.gov.tr kaydından ve scripts/ezber-dua-tanim.mjs tablosundan üretilir; orada yalnız `onay` hoca alanıdır. Çapraz kurallar: tests/ezber-madde-metni.test.mjs.",
   "type": "object",
   "additionalProperties": false,
   "required": ["id", "bolumler", "meal", "kaynak", "ozet", "zor", "onay"],
@@ -51,6 +51,21 @@
         "ar": { "type": "string", "minLength": 1 },
         "url": { "type": "string", "pattern": "^https://[a-z.]+\\.diyanet\\.gov\\.tr(/.*)?$" },
         "alindi": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" }
+      }
+    },
+    "duzeltmeler": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Dua metinlerinde: Diyanet portalındaki harekeleme/yazım kusurları ve yapılan düzeltme (scripts/ezber-dua-tanim.mjs). Kur'an maddelerinde yok (orada düzeltme yalnız meâl kaydına ve duzeltmeler.json'a işlenir).",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["bul", "yerine", "neden"],
+        "properties": {
+          "bul": { "type": "string", "minLength": 1 },
+          "yerine": { "type": "string", "minLength": 1 },
+          "neden": { "type": "string", "minLength": 1 }
+        }
       }
     },
     "ozet": { "type": "string", "pattern": "^[0-9a-f]{64}$" },

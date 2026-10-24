@@ -1,0 +1,139 @@
+{
+ "kunye": "Diyanet İşleri Başkanlığı yayınları (Tecrid-i Sarih, İslam İlmihali) — yalnız gevşek iskeletlerin SHA-256 özetinin ilk 16 hanesi; metnin kendisi yok.",
+ "uretim": "node scripts/ezber-dua-iskelet.mjs --uret [arşiv-kökü]",
+ "kayitlar": [
+  {
+   "id": "d-subhaneke",
+   "bolumler": [
+    1,
+    2,
+    3
+   ],
+   "kaynak": "Tecrid-i Sarih Tercemesi ve Şerhi, 4. cilt, Cenâiz (DİB)",
+   "not": "cenaze namazındaki «ve celle senâüke» eklemesi hariç",
+   "iskelet": "3c0c435f64c396bc"
+  },
+  {
+   "id": "d-ruku-tesbihi",
+   "bolumler": [
+    1
+   ],
+   "kaynak": "Tecrid-i Sarih Tercemesi ve Şerhi, 2. cilt, Kitâbü’l-Ezân (DİB)",
+   "iskelet": "606a2f71306f313b"
+  },
+  {
+   "id": "d-secde-tesbihi",
+   "bolumler": [
+    1
+   ],
+   "kaynak": "Tecrid-i Sarih Tercemesi ve Şerhi, 2. cilt, Kitâbü’l-Ezân (DİB)",
+   "iskelet": "51754d85228b615a"
+  },
+  {
+   "id": "d-ettehiyyatu",
+   "bolumler": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "kaynak": "Tecrid-i Sarih Tercemesi ve Şerhi, 2. cilt, Kitâbü’l-Ezân (DİB)",
+   "iskelet": "3da45a808f414e35"
+  },
+  {
+   "id": "d-salli",
+   "bolumler": [
+    1,
+    2,
+    3
+   ],
+   "kaynak": "Tecrid-i Sarih Tercemesi ve Şerhi, 4. cilt, Cenâiz (DİB)",
+   "iskelet": "bf578e5234df7ea3"
+  },
+  {
+   "id": "d-barik",
+   "bolumler": [
+    1,
+    2,
+    3
+   ],
+   "kaynak": "Tecrid-i Sarih Tercemesi ve Şerhi, 4. cilt, Cenâiz (DİB)",
+   "iskelet": "34f104dda18874c6"
+  },
+  {
+   "id": "d-kunut-1",
+   "bolumler": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "kaynak": "Tecrid-i Sarih Tercemesi ve Şerhi, 4. cilt, Cenâiz (DİB)",
+   "iskelet": "bfa7904fd4575855"
+  },
+  {
+   "id": "d-kunut-2",
+   "bolumler": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "kaynak": "Tecrid-i Sarih Tercemesi ve Şerhi, 4. cilt, Cenâiz (DİB)",
+   "iskelet": "63043c020eaf641c"
+  },
+  {
+   "id": "d-ezan-duasi",
+   "bolumler": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "kaynak": "İslam İlmihali, VIII. Namaz (DİB)",
+   "iskelet": "e89d8bb4e4bceba6"
+  },
+  {
+   "id": "d-kamet",
+   "bolumler": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "kaynak": "İslam İlmihali, VIII. Namaz (DİB)",
+   "iskelet": "701fdc9e566a0e9c",
+   "bizim": "9998a3f9448a47e0",
+   "fark": "İslam İlmihali’nde «kad kâmeti’s-salâh» ibaresi قَامَةِ (te yerine hâ) basılmıştır; portal قَامَتِ yazar ve Diyanet’in Türkçe okunuşu «kâmeti» der (Diyanet İlmihali I, s. 268)."
+  },
+  {
+   "id": "d-ezan",
+   "bolumler": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    7,
+    8
+   ],
+   "kaynak": "İslam İlmihali, VIII. Namaz (DİB)",
+   "not": "portalda olmayan sabah bölümü ayrı satırda",
+   "iskelet": "9656cb8afd154c53"
+  },
+  {
+   "id": "d-ezan",
+   "bolumler": [
+    6
+   ],
+   "kaynak": "İslam İlmihali, VIII. Namaz (DİB)",
+   "not": "sabah ezanı bölümü: kaynakta bir kez yazılır, «iki defa» denir",
+   "iskelet": "c7a1ff518212dd83"
+  }
+ ]
+}

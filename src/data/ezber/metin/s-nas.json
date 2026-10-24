@@ -147,6 +147,19 @@
      "metin": "vor den Dschinn und den Menschen."
     }
    ]
+  },
+  "nl": {
+   "kaynak": "Diyanet İşleri Başkanlığı Türkçe meâlinden Flemenkçeye taslak çeviri (yayımlanmış bir Flemenkçe meâlden alınmamıştır; gözden geçirilecek)",
+   "inceleme": true,
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      6
+     ],
+     "metin": "Zeg: “Ik zoek mijn toevlucht bij de Heer van de mensen, de Koning van de mensen, de God van de mensen, tegen het kwaad van de sluipende influisteraar, die in de harten van de mensen influistert, uit de djinn en uit de mensen.”"
+    }
+   ]
   }
  },
  "kaynak": {

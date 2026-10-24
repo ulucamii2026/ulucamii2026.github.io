@@ -12,6 +12,8 @@ import { pathToFileURL } from 'node:url';
 import { build } from 'esbuild';
 import { Validator } from '@cfworker/json-schema';
 import { iskelet, katalogAyetleri, ozet } from '../scripts/ezber-iskelet.mjs';
+import { duaOzeti } from '../scripts/ezber-dua-tanim.mjs';
+import { bolumIskeleti } from '../scripts/ezber-dua-iskelet.mjs';
 
 const json = (yol) => JSON.parse(readFileSync(yol, 'utf8'));
 mkdirSync('node_modules/.cache', { recursive: true });
@@ -22,6 +24,7 @@ const KLASOR = 'src/data/ezber/metin';
 const katalog = json('src/data/ezber/katalog.json');
 const sema = new Validator(json(`${KLASOR}/metin.schema.json`), '7', false);
 const tanzil = json('tests/fixtures/ezber-tanzil-iskelet.json');
+const duaKaynagi = json('tests/fixtures/ezber-dua-ikinci-kaynak.json');
 const font = new Set(json('egitim/public/fonts/ulu-nesih.json').kume.map((u) => Number.parseInt(u.slice(2), 16)));
 const dosyalar = readdirSync(KLASOR).filter((d) => /^[sdb]-.*\.json$/.test(d));
 const metinler = new Map(dosyalar.map((d) => [d.slice(0, -5), json(`${KLASOR}/${d}`)]));
@@ -56,6 +59,8 @@ test('Diyanet\'ten gelen kısım elle değişmemiş (özet), Arapça alanda Arap
       const meal = { tr: m.meal.tr, en: m.meal.en, de: m.meal.de };
       const beklenen = createHash('sha256').update(JSON.stringify({ kuran: m.kuran, sureAdi: m.sureAdi, bolumler: m.bolumler, meal })).digest('hex');
       assert.equal(m.ozet, beklenen, `${id}: Diyanet içeriği elle değişmiş; scripts/ezber-metin-cek.mjs ile yeniden çekin`);
+    } else {
+      assert.equal(m.ozet, duaOzeti(m), `${id}: dua metni elle değişmiş; scripts/ezber-dua-tanim.mjs'i düzeltip scripts/ezber-dua-cek.mjs'i çalıştırın`);
     }
     for (const b of m.bolumler) assert.match(b.ar, ARAPCA, `${id}/${b.no}`);
   }
@@ -75,6 +80,32 @@ test('Harf iskeleti Tanzil Uthmani ile aynı; bilinen imlâ farkları gerekçeli
     assert.ok(fark, `${s}:${a} iskeleti Tanzil'den farklı: ${d}`);
     assert.equal(fark.diyanet, ozet(d), `${k}: gözden geçirilmiş Diyanet metni değişmiş`);
     assert.ok(fark.neden && fark.neden !== 'GÖZDEN GEÇİR', `${k}: farkın gerekçesi yazılmamış`);
+  }
+});
+
+test('Dua metinlerinin harf iskeleti ikinci Diyanet kaynağıyla aynı; bilinen farklar gerekçeli ve sabit', () => {
+  const duaIdleri = [...metinler].filter(([, m]) => !m.kuran).map(([id]) => id);
+  assert.ok(duaIdleri.length >= 11, 'dua metinleri üretilmemiş (scripts/ezber-dua-cek.mjs)');
+  for (const id of duaIdleri) {
+    const m = metinler.get(id);
+    assert.ok(m.kaynak.url.startsWith('https://namaz.diyanet.gov.tr/'), id);
+    assert.deepEqual(m.bolumler.map((b) => b.no), m.bolumler.map((_, i) => i + 1), `${id}: bölüm numaraları 1'den ardışık olmalı`);
+    const kapsanan = duaKaynagi.kayitlar.filter((k) => k.id === id).flatMap((k) => k.bolumler).sort((a, b) => a - b);
+    assert.deepEqual(kapsanan, m.bolumler.map((b) => b.no), `${id}: ikinci kaynak karşılaştırması her bölümü kapsamalı`);
+  }
+  for (const k of duaKaynagi.kayitlar) {
+    const bizim = ozet(bolumIskeleti(metinler.get(k.id), k.bolumler));
+    if (k.fark) {
+      assert.notEqual(k.bizim, k.iskelet, `${k.id}: fark kaydı artık gereksiz`);
+      assert.equal(bizim, k.bizim, `${k.id} [${k.bolumler}]: gözden geçirilmiş Diyanet metni değişmiş`);
+    } else {
+      assert.equal(bizim, k.iskelet, `${k.id} [${k.bolumler}]: harf iskeleti ${k.kaynak} ile aynı değil`);
+    }
+  }
+  // Düzeltmeler yalnız Diyanet kaydının kusurunu giderir: harf iskeleti düzeltmeden önce de sonra da aynı kalmalı ya da farkı gerekçelenmeli.
+  for (const id of duaIdleri) for (const d of metinler.get(id).duzeltmeler ?? []) {
+    assert.ok(d.neden.length > 20, `${id}: düzeltme gerekçesi yazılmamış`);
+    assert.ok(metinler.get(id).bolumler.some((b) => b.ar.includes(d.yerine)), `${id}: düzeltme metinde yok (${d.yerine})`);
   }
 });
 
@@ -131,6 +162,11 @@ test('Sayfa blokları: meâl grubuyla; meâlsiz dilde tek blok; FR yalnız Chiad
   const onayli = { ...fatiha, okunus, onay: { tarih: '2026-10-19', kapsam: ['okunus-tr'] } };
   assert.deepEqual(mm.metinBloklari(onayli, 'tr')[1].okunus.map((o) => o.no), [2, 3, 4]);
   assert.equal(mm.metinBloklari(onayli, 'fr')[0].okunus, undefined, 'FR sayfası FR usulünün onayını ister');
+  // Dualar: meâlsiz dilde de her bölüm ayrı blok (Kur'an'daki kesintisiz akış duada ezber sınırlarını silerdi).
+  const salli = metinler.get('d-salli');
+  assert.deepEqual(mm.metinBloklari(salli, 'fr').map((b) => b.ayetler), [[1, 1], [2, 2], [3, 3]]);
+  assert.ok(!('meal' in mm.metinBloklari(salli, 'fr')[0]));
+  assert.equal(mm.metinBloklari(salli, 'tr')[1].meal, 'İbrahim’e ve İbrahim’in ümmetine rahmet ettiğin gibi.');
   assert.equal(mm.arapcaRakam(40), '٤٠');
   assert.equal(mm.aralikYaz([2, 4]), '2–4');
   assert.deepEqual(mm.sonKelimeyiAyir('ثُمَّ كَلَّا سَيَعْلَمُونَ '), ['ثُمَّ كَلَّا ', 'سَيَعْلَمُونَ']);

@@ -104,6 +104,33 @@
      "metin": "Gewiss, dein Hasser wird kinderlos sein."
     }
    ]
+  },
+  "nl": {
+   "kaynak": "Diyanet İşleri Başkanlığı Türkçe meâlinden Flemenkçeye taslak çeviri (yayımlanmış bir Flemenkçe meâlden alınmamıştır; gözden geçirilecek)",
+   "inceleme": true,
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Zeker, Wij hebben jou al-Kauthar gegeven."
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "Verricht daarom het gebed voor je Heer en slacht een offerdier."
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "Voorwaar, wie jou haat, is zelf degene wiens nageslacht afgesneden is."
+    }
+   ]
   }
  },
  "kaynak": {

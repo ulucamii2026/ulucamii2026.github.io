@@ -1,0 +1,145 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "d-kamet",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "اَللّٰهُ اَكْبَرُ اَللّٰهُ اَكْبَرُ اَللّٰهُ اَكْبَرُ اَللّٰهُ اَكْبَرُ"
+  },
+  {
+   "no": 2,
+   "ar": "اَشْهَدُ اَنْ لاَ اِلٰهَ اِلاَّ اللّٰهُ اَشْهَدُ اَنْ لاَ اِلٰهَ اِلاَّ اللّٰهُ"
+  },
+  {
+   "no": 3,
+   "ar": "اَشْهَدُ اَنَّ مُحَمَّدًا رَسُولُ اللّٰهِ اَشْهَدُ اَنَّ مُحَمَّدًا رَسُولُ اللّٰهِ"
+  },
+  {
+   "no": 4,
+   "ar": "حَىَّ عَلَى الصَّلاَةِ حَىَّ عَلَى الصَّلاَةِ"
+  },
+  {
+   "no": 5,
+   "ar": "حَىَّ عَلَى الْفَلاَحِ حَىَّ عَلَى الْفَلاَحِ"
+  },
+  {
+   "no": 6,
+   "ar": "قَدْ قَامَتِ الصَّلاَةُ قَدْ قَامَتِ الصَّلاَةُ"
+  },
+  {
+   "no": 7,
+   "ar": "اَللّٰهُ اَكْبَرُ اَللّٰهُ اَكْبَرُ"
+  },
+  {
+   "no": 8,
+   "ar": "لاَ اِلٰهَ اِلاَّ اللّٰهُ"
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı, Dînî Kavramlar Sözlüğü, «Ezan» maddesi; «Kad kâmeti’s-salâh» anlamı: Diyanet İşleri Başkanlığı, Diyanet İlmihali, I. cilt, «Ezan ve Kamet» (s. 267–268)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Allah uludur. (4 kere)"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "Şüphesiz bilirim ve bildiririm ki Allâh’tan başka ilah yoktur. (2 kere)"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "Şüphesiz bilirim ve bildiririm ki Muhammed Allâh’ın elçisidir. (2 kere)"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Haydin namaza. (2 kere)"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "Haydin kurtuluşa. (2 kere)"
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "Namaz başladı. (2 kere)"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "Allah uludur. (2 kere)"
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "Allâh’tan başka tanrı yoktur. (1 kere)"
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Namaz Vakitleri sitesi (namaz.diyanet.gov.tr)",
+  "url": "https://namaz.diyanet.gov.tr/namaz/html/sureler-dualar.html",
+  "alindi": "2026-10-24"
+ },
+ "ozet": "21af78bce5d6070ca5b54b1140cc7bbdccba18885311a6c46eb3903e82abeb39",
+ "okunus": {
+  "tr": [
+   {
+    "no": 1,
+    "metin": "Allâhu Ekber, Allâhu Ekber, Allâhu Ekber, Allâhu Ekber"
+   },
+   {
+    "no": 2,
+    "metin": "Eşhedü en lâ ilâhe illellah, Eşhedü en lâ ilâhe illellah"
+   },
+   {
+    "no": 3,
+    "metin": "Eşhedü enne Muhammeden Resulüllah, Eşhedü enne Muhammeden Resulüllah"
+   },
+   {
+    "no": 4,
+    "metin": "Hayye ale’s-salâh, Hayye ale’s-salâh"
+   },
+   {
+    "no": 5,
+    "metin": "Hayye ale’l-felâh, Hayye ale’l-felâh"
+   },
+   {
+    "no": 6,
+    "metin": "Kad kâmeti’s-salâh, Kad kâmeti’s-salâh"
+   },
+   {
+    "no": 7,
+    "metin": "Allâhu Ekber, Allâhu Ekber"
+   },
+   {
+    "no": 8,
+    "metin": "Lâ ilâhe illellah"
+   }
+  ]
+ },
+ "zor": [],
+ "onay": null
+}

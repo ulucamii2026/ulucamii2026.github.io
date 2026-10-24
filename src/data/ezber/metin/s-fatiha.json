@@ -190,6 +190,40 @@
      "duzeltme": "Kaynakta 7. âyetin Almanca kaydı yok. Kaynak: Der Heilige Koran – Deutsche Übersetzung, Diyanet İşleri Başkanlığı (dijital.diyanet.gov.tr, kitap 5684, PDF s. 4); 1–6. âyetler API kaydıyla birebir aynı"
     }
    ]
+  },
+  "nl": {
+   "kaynak": "Diyanet İşleri Başkanlığı Türkçe meâlinden Flemenkçeye taslak çeviri (yayımlanmış bir Flemenkçe meâlden alınmamıştır; gözden geçirilecek)",
+   "inceleme": true,
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "In de naam van Allah, de Erbarmer, de Barmhartige."
+    },
+    {
+     "ayetler": [
+      2,
+      4
+     ],
+     "metin": "Alle lof komt Allah toe, de Heer van de werelden, de Erbarmer, de Barmhartige, de Heerser over de Dag der Afrekening en Vergelding (de dag van het hiernamaals)."
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "(O Allah!) U alleen aanbidden wij en U alleen vragen wij om hulp."
+    },
+    {
+     "ayetler": [
+      6,
+      7
+     ],
+     "metin": "Leid ons op het rechte pad, het pad van hen aan wie U gunsten hebt geschonken; niet dat van hen op wie toorn rust, en niet dat van de dwalenden."
+    }
+   ]
   }
  },
  "kaynak": {

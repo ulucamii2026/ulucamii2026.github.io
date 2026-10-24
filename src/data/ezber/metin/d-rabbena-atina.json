@@ -52,6 +52,19 @@
      "metin": "Andere unter ihnen sprechen: „Unser Herr, gib uns im Diesseits Gutes und im Jenseits Gutes und hüte uns vor der Strafe des Feuers.“"
     }
    ]
+  },
+  "nl": {
+   "kaynak": "Diyanet İşleri Başkanlığı Türkçe meâlinden Flemenkçeye taslak çeviri (yayımlanmış bir Flemenkçe meâlden alınmamıştır; gözden geçirilecek)",
+   "inceleme": true,
+   "gruplar": [
+    {
+     "ayetler": [
+      201,
+      201
+     ],
+     "metin": "Onder hen zijn er ook die zeggen: “Onze Heer! Geef ons het goede in deze wereld en geef ons het goede in het hiernamaals, en bescherm ons tegen de bestraffing van het vuur.”"
+    }
+   ]
   }
  },
  "kaynak": {

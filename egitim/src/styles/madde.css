@@ -85,6 +85,13 @@ button.ayet-no[data-calan] { background: var(--yesil); color: #fff; }
 .meal-yok { margin-bottom: 1rem; }
 .meal-yok, .metin-yok { padding: 0.9rem 1.1rem; background: var(--yesil-soluk); border-radius: var(--r); max-width: 42em; }
 .kaynak-satiri { color: var(--kontur-2); font-size: 0.9rem; line-height: 1.5; margin-top: 1rem; max-width: 45em; }
+/* Dua metinleri: Diyanet kaynaklarından alınmış, hoca incelemesi bekleyen metin notu ve «dikkat edilecek yerler». */
+.onay-bekliyor { margin-bottom: 1rem; padding: 0.6rem 1rem; border-left: 4px solid var(--altin, var(--yesil-bag)); background: var(--yesil-soluk); border-radius: var(--r); max-width: 42em; font-size: 0.95rem; }
+.zor-yerler { margin-top: 1.5rem; max-width: 42em; }
+.zor-yerler h3 { font-size: 1.05rem; margin-bottom: 0.4rem; }
+.zor-yerler ul { margin: 0; padding-left: 1.2rem; display: grid; gap: 0.4rem; }
+.zor-yerler li { line-height: 1.55; }
+.zor-yerler b[lang="ar"] { font-size: 1.25rem; }
 
 /* Çalışma yolu: Diyanet usulünün beş adımı; hazır olmayanlar «Yakında». */
 .yollar-bolumu { padding-top: 3rem; }

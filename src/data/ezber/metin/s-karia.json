@@ -312,6 +312,89 @@
      "metin": "Ein glühendes Feuer!"
     }
    ]
+  },
+  "nl": {
+   "kaynak": "Diyanet İşleri Başkanlığı Türkçe meâlinden Flemenkçeye taslak çeviri (yayımlanmış bir Flemenkçe meâlden alınmamıştır; gözden geçirilecek)",
+   "inceleme": true,
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "De grote ramp die de harten doet opschrikken!"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "Wat is die grote ramp die de harten doet opschrikken?"
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "Hoe zou jij kunnen weten wat de grote ramp is die de harten doet opschrikken?"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Op die dag zullen de mensen zijn als kleine vlinders die alle kanten op fladderen."
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "En de bergen zullen zijn als uitgeplozen gekleurde wol."
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "Wiens weegschalen dan zwaar wegen,"
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "Die zal een leven leiden waarmee hij tevreden is."
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "Maar wiens weegschalen licht wegen,"
+    },
+    {
+     "ayetler": [
+      9,
+      9
+     ],
+     "metin": "Diens moeder (de plaats waar hij terechtkomt) is Hawiya."
+    },
+    {
+     "ayetler": [
+      10,
+      10
+     ],
+     "metin": "En hoe zou jij kunnen weten wat Hawiya is?"
+    },
+    {
+     "ayetler": [
+      11,
+      11
+     ],
+     "metin": "Het is een gloeiend vuur."
+    }
+   ]
   }
  },
  "kaynak": {

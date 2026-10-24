@@ -201,6 +201,54 @@
      "metin": "und den Beistand verwehren."
     }
    ]
+  },
+  "nl": {
+   "kaynak": "Diyanet İşleri Başkanlığı Türkçe meâlinden Flemenkçeye taslak çeviri (yayımlanmış bir Flemenkçe meâlden alınmamıştır; gözden geçirilecek)",
+   "inceleme": true,
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Heb je hem gezien die de Dag der Afrekening en Vergelding loochent!"
+    },
+    {
+     "ayetler": [
+      2,
+      3
+     ],
+     "metin": "Dat is degene die de wees wegduwt en die er niet toe aanspoort de arme te eten te geven."
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Wee dan hen die het gebed verrichten,"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "Die hun gebed niet serieus nemen."
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "Die (met hun gebed) willen pronken."
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "En die zelfs de kleinste hulp tegenhouden."
+    }
+   ]
   }
  },
  "kaynak": {

@@ -88,7 +88,7 @@
       7,
       7
      ],
-     "metin": "ﾠArtık kim zerre ağırlığınca bir hayır işlerse onun mükafatını görecektir."
+     "metin": "Artık kim zerre ağırlığınca bir hayır işlerse onun mükafatını görecektir."
     },
     {
      "ayetler": [
@@ -220,14 +220,62 @@
      "metin": "Und wer Böses im Gewicht eines Stäubchens getan hat, wird es sehen."
     }
    ]
+  },
+  "nl": {
+   "kaynak": "Diyanet İşleri Başkanlığı Türkçe meâlinden Flemenkçeye taslak çeviri (yayımlanmış bir Flemenkçe meâlden alınmamıştır; gözden geçirilecek)",
+   "inceleme": true,
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      3
+     ],
+     "metin": "Wanneer de aarde door haar eigen beving wordt geschud, wanneer zij uitwerpt wat in haar is, en de mens zegt: “Wat is er met haar?”,"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Op die dag zal de aarde haar nieuws vertellen."
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "Want je Heer heeft haar dat (zo) ingegeven."
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "Op die dag zullen de mensen in groepen uit hun graven komen, opdat hun daden hun getoond worden."
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "Wie dan ook maar het gewicht van een stofje aan goed doet, zal de beloning ervan zien."
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "En wie het gewicht van een stofje aan kwaad doet, zal de straf ervan zien."
+    }
+   ]
   }
  },
  "kaynak": {
   "ar": "Diyanet İşleri Başkanlığı, Kur'an-ı Kerim (kuran.diyanet.gov.tr, «Amasya Abay» metni)",
   "url": "https://kuran.diyanet.gov.tr",
-  "alindi": "2026-10-19"
+  "alindi": "2026-10-24"
  },
- "ozet": "812e1ed31dbec4cf59bc27b465c2c5fcf2c432985191bcff183dfd6eeb8f2789",
+ "ozet": "5cae97ca0d032fec0919b136f39de8902753f60fc286ed2d1decfc3dd1936c15",
  "zor": [],
  "onay": null
 }

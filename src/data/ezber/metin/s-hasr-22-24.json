@@ -104,6 +104,33 @@
      "metin": "Er ist Allah, der Schöpfer, der Erschaffer, der Bildner. Sein sind die schönsten Namen. Ihn preist, was in den Himmeln und auf Erden ist, denn er ist der Mächtige, der Weise."
     }
    ]
+  },
+  "nl": {
+   "kaynak": "Diyanet İşleri Başkanlığı Türkçe meâlinden Flemenkçeye taslak çeviri (yayımlanmış bir Flemenkçe meâlden alınmamıştır; gözden geçirilecek)",
+   "inceleme": true,
+   "gruplar": [
+    {
+     "ayetler": [
+      22,
+      22
+     ],
+     "metin": "Hij is Allah, naast Wie er geen enkele god is. Hij kent het verborgene en de zichtbare wereld. Hij is de Erbarmer, de Barmhartige."
+    },
+    {
+     "ayetler": [
+      23,
+      23
+     ],
+     "metin": "Hij is Allah, naast Wie er geen enkele god is. Hij is de ware Eigenaar van alle heerschappij, de Heilige (vrij van elk tekort), de Bron van vrede en welzijn, de Gever van veiligheid, de Waker en Beschermer, de Almachtige, Die herstelt en rechtzet en Die laat gebeuren wat Hij wil, en Die in grootheid zonder weerga is: dat is Allah. Allah is ver verheven boven wat zij Hem als deelgenoot toekennen."
+    },
+    {
+     "ayetler": [
+      24,
+      24
+     ],
+     "metin": "Hij is Allah, de Schepper, Die uit het niets voortbrengt, de Vormgever. Hem behoren de mooiste namen toe. Alles wat in de hemelen en op de aarde is, verheerlijkt Hem. Hij is de Almachtige, de Bezitter van oordeel en wijsheid."
+    }
+   ]
   }
  },
  "kaynak": {

@@ -227,6 +227,61 @@
      "metin": "Alsdann werdet ihr wahrlich an jenem Tage nach der Wonne gefragt."
     }
    ]
+  },
+  "nl": {
+   "kaynak": "Diyanet İşleri Başkanlığı Türkçe meâlinden Flemenkçeye taslak çeviri (yayımlanmış bir Flemenkçe meâlden alınmamıştır; gözden geçirilecek)",
+   "inceleme": true,
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      2
+     ],
+     "metin": "Het pochen op veelheid heeft jullie beziggehouden, totdat jullie de graven bereikten (totdat jullie stierven)."
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "Nee; jullie zullen het binnenkort weten!"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Nee, nee! Jullie zullen het binnenkort weten!"
+    },
+    {
+     "ayetler": [
+      5,
+      5
+     ],
+     "metin": "Nee, als jullie het maar met zekerheid wisten…"
+    },
+    {
+     "ayetler": [
+      6,
+      6
+     ],
+     "metin": "Waarlijk, jullie zullen die hel zeker zien."
+    },
+    {
+     "ayetler": [
+      7,
+      7
+     ],
+     "metin": "En nogmaals waarlijk, jullie zullen haar met eigen ogen, met zekerheid zien."
+    },
+    {
+     "ayetler": [
+      8,
+      8
+     ],
+     "metin": "Daarna zullen jullie op die dag zeker ter verantwoording geroepen worden over de gunsten."
+    }
+   ]
   }
  },
  "kaynak": {

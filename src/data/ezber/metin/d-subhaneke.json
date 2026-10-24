@@ -1,0 +1,76 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "d-subhaneke",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "سُبْحَانَكَ اَللّٰهُمَّ وَبِحَمْدِكَ"
+  },
+  {
+   "no": 2,
+   "ar": "وَتَبَارَكَ اسْمُكَ وَتَعَالٰى جَدُّكَ"
+  },
+  {
+   "no": 3,
+   "ar": "وَلاَ اِلٰهَ غَيْرُكَ"
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı, Namaz İlmihali, «Namaz İçinde Okunacak Dualar» (Namaz İlmihali, II. bölüm)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Allah’ım! Sen eksik sıfatlardan pak ve uzaksın. Seni daima böyle tenzih eder ve överim."
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "Senin adın mübarektir. Varlığın her şeyden üstündür, şanın yücedir."
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "Senden başka ilâh yoktur."
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Namaz Vakitleri sitesi (namaz.diyanet.gov.tr)",
+  "url": "https://namaz.diyanet.gov.tr/namaz/html/sureler-dualar.html",
+  "alindi": "2026-10-24"
+ },
+ "ozet": "4371ff31db8a1afda0ec8abe18951efafd0a9c9a3d85639541ec1c52eefaf0da",
+ "okunus": {
+  "tr": [
+   {
+    "no": 1,
+    "metin": "Sübhâneke’l-lâhümme ve bi-hamdik"
+   },
+   {
+    "no": 2,
+    "metin": "ve tebâra kesmük. Ve te’âlâ ceddük"
+   },
+   {
+    "no": 3,
+    "metin": "Velâ ilâhe ğayruk."
+   }
+  ]
+ },
+ "zor": [
+  {
+   "bolum": 2,
+   "kelime": "وَجَلَّ ثَنَآئُكَ",
+   "not": "«Ve celle senâüke» cümlesi yalnız cenaze namazında okunur; diğer namazlarda okunmaz, Diyanet kaydında da yoktur."
+  }
+ ],
+ "onay": null
+}

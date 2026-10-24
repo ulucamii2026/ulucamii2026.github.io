@@ -1,0 +1,102 @@
+{
+ "$schema": "./metin.schema.json",
+ "id": "d-kunut-2",
+ "bolumler": [
+  {
+   "no": 1,
+   "ar": "اَللَّهُمَّ اِيَّاكَ نَعْبُدُ وَلَكَ نُصَلِّى وَنَسْجُدُ"
+  },
+  {
+   "no": 2,
+   "ar": "وَاِلَيْكَ نَسْعَى وَنَحْفِدُ"
+  },
+  {
+   "no": 3,
+   "ar": "نَرْجُو رَحْمَتَكَ وَنَخْشَى عَذَابَكَ"
+  },
+  {
+   "no": 4,
+   "ar": "اِنَّ عَذَابَكَ بِالْكُفَّارِ مُلْحِقٌ"
+  }
+ ],
+ "meal": {
+  "tr": {
+   "kaynak": "Diyanet İşleri Başkanlığı, Namaz İlmihali, «Namaz İçinde Okunacak Dualar» (Namaz İlmihali, II. bölüm)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Allah’ım! Biz yalnız sana kulluk ederiz. Namazı yalnız senin için kılarız, ancak sana secde ederiz."
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "Yalnız sana koşar ve sana yaklaştıracak şeyleri kazanmaya çalışırız. İbadetlerini sevinçle yaparız."
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "Rahmetinin devamını ve çoğalmasını dileriz. Azabından korkarız,"
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "şüphesiz senin azabın kâfirlere ve inançsızlara ulaşır."
+    }
+   ]
+  }
+ },
+ "kaynak": {
+  "ar": "Diyanet İşleri Başkanlığı, Namaz Vakitleri sitesi (namaz.diyanet.gov.tr)",
+  "url": "https://namaz.diyanet.gov.tr/namaz/html/sureler-dualar.html",
+  "alindi": "2026-10-24"
+ },
+ "duzeltmeler": [
+  {
+   "bul": "نَسعْىَ",
+   "yerine": "نَسْعَى",
+   "neden": "Portalda sin harfinin sükûnu eksik, ayn harfine sükûn konmuş; kelime نَسْعَى (nes‘â) olarak yazılır. İkinci kaynak (Tecrid-i Sarih) نَسْعَى yazar."
+  },
+  {
+   "bul": "بِاْلكُفَّارِ",
+   "yerine": "بِالْكُفَّارِ",
+   "neden": "Portalda elif üzerine sükûn, lâm üzerine harekesizlik yazılmış (basım hatası); ال takısı lâm sükûnuyla yazılır."
+  },
+  {
+   "bul": "عَذَابَك ",
+   "yerine": "عَذَابَكَ ",
+   "neden": "Portalda kâf harfinin fethası düşmüş; aynı kelime ikinci kaynakta (Tecrid-i Sarih) fethalıdır."
+  }
+ ],
+ "ozet": "78538102d5e8cca4f914a8315ae4ad24eba7d5349a435dca52d43aab2b6999e1",
+ "okunus": {
+  "tr": [
+   {
+    "no": 1,
+    "metin": "Allâhümme iyyâke na’büdü ve leke nüsalli ve nescüdü"
+   },
+   {
+    "no": 2,
+    "metin": "ve ileyke nes’â ve nahfidü"
+   },
+   {
+    "no": 3,
+    "metin": "nercû rahmeteke ve nahşâ ‘azâbek."
+   },
+   {
+    "no": 4,
+    "metin": "İnne ‘azâbeke bi’l-küffâri mülhık."
+   }
+  ]
+ },
+ "zor": [],
+ "onay": null
+}

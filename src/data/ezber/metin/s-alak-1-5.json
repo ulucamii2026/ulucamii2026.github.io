@@ -142,6 +142,33 @@
      "metin": "den Menschen lehrte er, was er nicht wusste."
     }
    ]
+  },
+  "nl": {
+   "kaynak": "Diyanet İşleri Başkanlığı Türkçe meâlinden Flemenkçeye taslak çeviri (yayımlanmış bir Flemenkçe meâlden alınmamıştır; gözden geçirilecek)",
+   "inceleme": true,
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      2
+     ],
+     "metin": "Lees in de naam van je Heer, Die schept! Hij schiep de mens uit een “alaq”."
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "Lees! Jouw Heer is de Meest Vrijgevige."
+    },
+    {
+     "ayetler": [
+      4,
+      5
+     ],
+     "metin": "Hij is het Die het schrijven met de pen heeft onderwezen, Die de mens heeft geleerd wat hij niet wist."
+    }
+   ]
   }
  },
  "kaynak": {
