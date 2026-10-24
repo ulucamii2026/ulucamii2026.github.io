@@ -4,6 +4,25 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 24 Ekim 2026 (7) — duyuru: «Ezber Kilimi yayında» (TR + FR)
+
+- **Zaman:** 24.10.2026 16:48–16:51 (Europe/Brussels, CEST). İstek: Rıdvan, «ezber kilimi yayını konusunda herşeyi
+  onaylıyorum, bütün yetki ve karar sende» + «kalan işleri tamamla».
+- **Kapsam:** `src/content/duyurular/tr/ezber-kilimi-yayinda-2026.md`, `src/content/duyurular/fr/ezber-kilimi-yayinda-2026.md`
+  (yeni). egitim.ulucamii.be tanıtımı: 81 ezber, evde çalışma adımları, hoca basamakları, kaynaklar (Diyanet; FR meâl
+  Hamidullah; «Yapay ses» etiketi; NL taslak). `oneCikan: true`, `oneCikanSon: 2026-11-30`; ekranda değil. Kapak görseli yok.
+- **İçerik commit'i:** `c7de6a00` (temiz ayrık çalışma ağacı `D:/tmp/ulucamii-duyuru`, taban `8b5a7486`; rebase gerekmedi).
+- **Kapılar:** `npm run check` 0 hata / 0 uyarı; `npm run build` 1952 sayfa; derlenen sayfada din görevlisi telefonu yok
+  (yalnız `wa.me`). FR düğme adı egitim sözlüğüyle eşlendi («Imprimer la fiche», «Associer au sens»).
+- **Deploy:** Pages run [40104150388](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/40104150388)
+  success (14:48:35Z–14:50:48Z).
+- **Canlı:** `/tr/duyurular/ezber-kilimi-yayinda-2026/` 200, `/fr/annonces/ezber-kilimi-yayinda-2026/` 200 (FR sayfada
+  «Imprimer la fiche» ve «Hamidullah» var); ana sayfa TR ve FR duyuruya bağlantı veriyor. EN/DE/NL sayfaları
+  çeviri yedeğiyle derlendi.
+- **Not:** 2e kart paketi `D:\tmp\ezber-kartlar-2026-10-24\` → `D:\ulu-camii-kuran-kursu\belgeler\ezber-kartlari\2026-10-24\`
+  taşındı (324 PDF; depoya ve Hosting'e girmez).
+- **Açık sınırlar:** iki yapay sesin Rıdvan tarafından dinlenip onaylanması; duyuru Facebook/WhatsApp'ta paylaşılmadı.
+
 ## 24 Ekim 2026 (5) — Ezber Kilimi 2e: «Anlamla eşleştir», «senin sıran», basılı ezber kartı, görsel cila
 
 - Zaman (Europe/Brussels, CEST): egitim Hosting yayını 16:32:02 (sürüm 333 dosya, 305 yeni), push 16:33:11, Pages
