@@ -13,6 +13,8 @@
 .bilgi-ad { font-size: clamp(1.3rem, 1.1rem + 1vw, 1.75rem); font-weight: 650; line-height: 1.35; overflow-wrap: anywhere; hyphens: auto; max-width: 40em; }
 .bilgi-ar { font-size: calc(clamp(1.6rem, 1.3rem + 1.4vw, 2.2rem) * var(--ar-olcek, 1)); line-height: 2; text-align: right; color: var(--yesil-bag); }
 .bilgi-kunye { color: var(--kontur-2); font-size: 0.92rem; line-height: 1.45; overflow-wrap: anywhere; }
+.bilgi-diyanet { margin-top: 0.3rem; max-width: 42em; padding-left: 0.6rem; border-left: 3px solid var(--yesil-soluk); color: var(--kontur-2); font-size: 0.95rem; line-height: 1.5; }
+.bilgi-diyanet .bilgi-kunye { font-size: inherit; }
 .bilgi-rozet { display: inline-block; vertical-align: middle; padding: 0.05rem 0.5rem; border-radius: var(--r); background: var(--yesil-soluk); color: var(--kontur-2);
   font-size: 0.78rem; font-weight: 700; letter-spacing: 0.01em; }
 .bilgi-not { margin-top: 1rem; max-width: 42em; color: var(--kontur-2); font-size: 0.98rem; line-height: 1.55; }

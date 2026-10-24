@@ -77,6 +77,7 @@ const kipVeri = {
               <p class="bilgi-ad">{x.metin}{x.taslak && durum !== 'taslak' && <Fragment>{' '}<span class="bilgi-rozet">{t.taslakRozet}</span></Fragment>}</p>
               {x.ar && <p class="bilgi-ar" lang="ar" dir="rtl">{x.ar}</p>}
               {x.kunye && <p class="bilgi-kunye">{t.kunye}{t.ik} {x.kunye}</p>}
+              {x.diyanet && <p class="bilgi-diyanet" data-bilgi-diyanet><span class="bilgi-rol">{t.diyanet}{t.ik}</span> «{x.diyanet.metin}» <span class="bilgi-kunye">({x.diyanet.kaynak})</span></p>}
             </div>
           </li>
         ))}

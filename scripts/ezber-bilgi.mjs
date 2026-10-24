@@ -134,7 +134,7 @@ ul { margin: .2rem 0 0 1.1rem; padding: 0; } li { margin-bottom: .2rem; font-siz
 <h1>Ezber Kilimi — bilgi maddeleri incelemesi</h1>
 <div class="giris"><p><b>Ne yapılacak?</b> Her listeyi Camiye Gidiyorum / Temel Dinî Bilgiler kitabındaki sayfayla karşılaştırın: sıra, sayı, yazım. Metin kitaptan alındı ve
 bir ikinci Diyanet kaynağıyla (Temel Dinî Bilgiler, İlmihal, Dînî Kavramlar Sözlüğü, Hadislerle İslam, Riyâzü’s-Sâlihîn) karşılaştırıldı; ikisi uyuşmayan satır alınmadı ve nedeni
-«ALINMAYANLAR» tablosunda yazılıdır. Hadislerde kitaptaki cümle ile Diyanet yayınındaki cümle arasındaki fark gösterilir (anlam aynıysa sayfada kitabın cümlesi durur).
+«ALINMAYANLAR» tablosunda yazılıdır. Hadislerde kitaptaki cümle ile Diyanet yayınındaki cümle arasındaki fark gösterilir (anlam aynıysa sayfada kitabın cümlesi durur; Türkçe sayfada altında Diyanet çevirisi ve kaynağı gösterilir).
 Fransızca resmî baskıdan alındı; baskıda tam karşılığı olmayan satırlar «çalışma çevirisi» diye işaretlidir. English, Nederlands ve Deutsch Türkçeden çevrilmiş TASLAKTIR; sayfada öyle yazılıdır ve resmî diye sunulmaz.
 Onaydan önce her sayfa «hoca incelemesi bekleniyor» der.</p>
 <p>Hazırlanma: ${e(bugun)} · ${veriler.length} madde · Onay komutu (hoca onayladıktan sonra): <code>node scripts/ezber-bilgi.mjs --onayla hepsi</code> (yalnız Türkçe),

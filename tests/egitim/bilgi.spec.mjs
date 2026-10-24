@@ -50,6 +50,11 @@ for (const dil of DILLER) {
       await expect(page.locator('audio')).toHaveCount(0);
       // Onay ve taslak notu: hoca onayı yokken her dilde «bekliyor»; en/nl/de ayrıca resmî olmayan taslak uyarısı alır.
       await expect(page.locator('.onay-bekliyor')).toHaveCount(1);
+      // Diyanet çevirisi yalnız Türkçe sayfada, kitabın cümlesinden farklı hadislerde (seçme hadislerde dört).
+      const sade = (s) => s.toLocaleLowerCase('tr').replace(/[^\p{L}]/gu, '');
+      const farkli = d.maddeler.filter((x) => x.dogrulama?.metin && sade(x.dogrulama.metin) !== sade(x.ad.tr)).length;
+      await expect(page.locator('[data-bilgi-diyanet]')).toHaveCount(dil === 'tr' ? farkli : 0);
+      if (dil === 'tr' && id === 'b-secme-hadisler') expect(farkli).toBe(4);
       // Çalışma bölümü JavaScript ile açılır.
       await expect(page.locator('[data-bilgi-kip]')).toBeVisible();
 

@@ -533,7 +533,11 @@ karşılaştırıldı; ikisi uyuşmayan satır sayfaya alınmadı. Fransızca ya
 Notlar: (a) Teyemmümün farzı Camiye Gidiyorum'da iki, İlmihalde üç sayılabilir; sayfa notu bunu söyler. (b) İslâm'ın şartlarında kitap
 sırası (kelime-i şehâdet, namaz, oruç, zekât, hac) korundu; İlmihal Müslim hadisinin sırasını izler, sayfa notu bunu belirtir.
 (c) Hadiste kitabın cümlesi ile Diyanet yayınındaki cümle arasındaki ifade farkı (anlam aynı) `dogrulama.fark` alanında ve hoca inceleme
-sayfasında yazılıdır; çocuğun sayfasında kitabın cümlesi durur. (d) Hadis #6 («kolaylaştırın…») sayfada «Buhârî, İlim, 11» künyesiyle
+sayfasında yazılıdır; çocuğun sayfasında kitabın cümlesi (ezber cümlesi) durur. Kaynak zinciri hadis meâlini Hadislerle İslam /
+Riyâzü's-Sâlihîn'den istediği için Türkçe sayfada, cümle Diyanet çevirisinden farklıysa altında «Diyanet çevirisi: «…» (cilt, başlık,
+hadis no)» satırı çizilir (`diyanetCevirisi()`, `src/lib/ezber/bilgi-metni.ts`; yalnız noktalama farkı olan cümlede çizilmez; diğer
+dillerde Türkçe çeviri gösterilmez). Karar 24 Ekim 2026 gece, Rıdvan'ın verdiği tam yetkiyle; test `tests/ezber-bilgi.test.mjs` ve
+`tests/egitim/bilgi.spec.mjs`. (d) Hadis #6 («kolaylaştırın…») sayfada «Buhârî, İlim, 11» künyesiyle
 yazılır: Diyanet bu Enes rivayetini Buhârî'ye bağlar; kitap Müslim'i de anar, inceleme sayfası bunu işaretler.
 
 ### Sayfaya alınmayanlar (doğrulanamadı) ve gerekçeleri

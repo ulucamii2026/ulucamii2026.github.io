@@ -209,3 +209,23 @@ test('ezber:bilgi --onayla: bilinmeyen madde ve geçersiz kapsam reddedilir, dos
   assert.equal(b.status, 1);
   assert.deepEqual(dosyalar.map((d) => readFileSync(`${KLASOR}/${d}`, 'utf8')), once);
 });
+
+test('Hadislerde Diyanet çevirisi: yalnız Türkçe sayfada ve kitabın cümlesinden farklıysa, kaynağıyla', () => {
+  const tr = m.gosterimGruplari(veriler.get('b-secme-hadisler'), 'tr').flatMap((g) => g.maddeler);
+  const sukur = tr.find((x) => x.metin.startsWith('İnsanlara teşekkür'));
+  assert.equal(sukur.diyanet?.metin, 'İnsanlara teşekkür etmeyen, Allah’a da şükretmez.');
+  assert.match(sukur.diyanet.kaynak, /^Hadislerle İslam c\. 2, .*Tirmizî, Birr, 35\)$/);
+  // Yalnız virgül farkı olan cümle tekrar gösterilmez.
+  assert.equal(tr.find((x) => x.metin.startsWith('İnsanlara merhamet')).diyanet, undefined);
+  for (const dil of ['fr', 'en', 'nl', 'de']) {
+    assert.ok(m.gosterimGruplari(veriler.get('b-secme-hadisler'), dil).every((g) => g.maddeler.every((x) => !x.diyanet)), dil);
+  }
+  const kuran = m.gosterimGruplari(veriler.get('b-kuran-fazileti-hadisleri'), 'tr').flatMap((g) => g.maddeler);
+  assert.equal(kuran.find((x) => x.metin.startsWith('Sizin en hayırlınız')).diyanet, undefined);
+  // Doğrulama metni olan ve kitaptan farklı her hadis Diyanet çevirisini taşır.
+  for (const [id, b] of veriler) {
+    for (const x of m.gosterimGruplari(b, 'tr').flatMap((g) => g.maddeler)) {
+      if (x.diyanet) assert.ok(x.diyanet.kaynak.length > 0 && !x.diyanet.kaynak.includes('; '), id);
+    }
+  }
+});

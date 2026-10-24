@@ -70,8 +70,24 @@ export interface GosterimMaddesi {
   readonly ar?: string;
   readonly kunye?: string;
   readonly taslak: boolean;
+  /** Hadisin Diyanet yayınındaki çevirisi: yalnız Türkçe sayfada ve kitabın cümlesinden farklıysa (bkz. diyanetCevirisi). */
+  readonly diyanet?: { readonly metin: string; readonly kaynak: string };
 }
 export interface GosterimGrubu { readonly kimlik: string; readonly ad?: string; readonly maddeler: readonly GosterimMaddesi[] }
+
+/** Karşılaştırma için sade biçim: küçük harf, yalnız harfler (noktalama, boşluk ve tırnak farkı «farklı» sayılmaz). */
+const sade = (s: string): string => s.toLocaleLowerCase('tr').replace(/[^\p{L}]/gu, '');
+
+/**
+ * Kaynak zinciri (hadis meâli Hadislerle İslam / Riyâzü's-Sâlihîn'den): ezber cümlesi öğrencinin elindeki kitabın cümlesidir;
+ * Diyanet hadis yayınındaki çeviri ondan farklıysa Türkçe sayfada altında kaynağıyla gösterilir (24 Ekim 2026). Kaynak, doğrulama
+ * künyesinin ilk parçasıdır («; » öncesi: cilt + başlık + hadis numarası).
+ */
+export function diyanetCevirisi(m: BilgiMaddesi): { metin: string; kaynak: string } | undefined {
+  const d = m.dogrulama;
+  if (!d?.metin || sade(d.metin) === sade(m.ad.tr)) return undefined;
+  return { metin: d.metin, kaynak: d.kaynak.split('; ')[0] };
+}
 
 /**
  * Sayfada çizilecek gruplar. Grupsuz listede tek, adsız grup döner. Her grup kendi içinde 1'den numaralanır (kitapta
@@ -95,6 +111,7 @@ export function gosterimGruplari(b: BilgiMetni, dil: Dil): GosterimGrubu[] {
       ar: m.ar,
       kunye: m.kunye,
       taslak: maddeTaslakMi(b, m, dil),
+      diyanet: dil === 'tr' ? diyanetCevirisi(m) : undefined,
     })),
   })).filter((g) => g.maddeler.length > 0);
 }
