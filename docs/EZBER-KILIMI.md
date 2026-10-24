@@ -3,6 +3,11 @@
 Karar tarihi: 26 Eylül 2026 (Rıdvan, 11 turluk planlama). Durum: **Faz 1a–1f tamam ve 27 Eylül 2026'da yayımlandı**
 (yayın sırası ve kanıtları aşağıda). 2 Ekim 2026: canlı eğitim sitesi 33/33 denetimden geçti;
 **Faz 2'nin dinle–tekrarla bölümü 9 Ekim 2026'da yayımlandı** (135 çalışma sayfası; duyuru yok).
+**19 Ekim 2026 (yerel, yayın bekliyor):** Faz 2 dilim 2a, eksik Diyanet sesleri: 28 Kur'an maddesi (Amme'nin 24 sûresi,
+Rabbi'şrah lî, Alak 1–5, Bakara 285–286, Haşr 22–24) âyet âyet Osman Şahin kaydından, rükû ve secde tesbihi namaz.diyanet.gov.tr'den;
+sesli madde 27 → 57. Plan ve Rıdvan'ın 19 Ekim kararları: [Faz 2 dinleme çalışması](EGITIM-FAZ2-DINLEME.md) «Dilim 2a».
+Aynı gün dilim 2b'nin metin katmanı (yerel): 45 Kur'an maddesinin Diyanet metni ve TR/EN/DE meâli `src/data/ezber/metin/`,
+madde sayfası v1 ve veli kilim kartından madde sayfasına bağlantı; ayrıntı aynı belgede «Dilim 2b».
 Güncel kapsam ve kalan işler: [Faz 2 dinleme çalışması](EGITIM-FAZ2-DINLEME.md). Ana plan:
 [2026-09-26-ezber-kilimi-ana-plan.md](superpowers/plans/2026-09-26-ezber-kilimi-ana-plan.md); Faz 1a planı:
 [2026-09-27-ezber-kilimi-faz-1a-katalog.md](superpowers/plans/2026-09-27-ezber-kilimi-faz-1a-katalog.md); Faz 1b planı:
@@ -369,6 +374,9 @@ kümesinin bayt karşılaştırması) `docs/YAYIN-KAYITLARI.md` «27 Eylül 2026
 - `public/media/ses/dualar/ezan.mp3` Diyanet'in **sabah ezanıdır**; katalogda `not` ile belirtildi. Diğer vakitlerin
   ezanı Faz 2'de Diyanet'ten eklenir.
 - 54 maddenin Diyanet sesi henüz yok (Amme'nin çoğu, iman cümleleri, tesbihler, tekbir, selâm, kenar suyu); Faz 2 ses işi.
+  **19 Ekim 2026 (dilim 2a):** 30'u eklendi. Kalan 24 maddenin 10'u bilgi maddesidir (Faz 2'de ses yok). 14 duanın Kelime-i Şehâdet'i ve
+  «Rabbenâ leke'l-hamd» bölümü Diyanet kaydından kesilecek, tekbiri hoca seçecek; Diyanet kaydı olmayanlar için karar
+  «yapay ses + hoca onayı» (Kur'an metninde yapay ses asla). Ayrıntı: [Faz 2 dinleme çalışması](EGITIM-FAZ2-DINLEME.md).
 - Yeni maddelerin FR/EN/NL/DE adları ilk taslaktır; ana dili konuşan okuması Faz 2'de.
 - `npm run test:ezber` 27 Eylül 2026'dan beri `.github/workflows/deploy.yml` yayın kapısında da koşuyor (kimlikler
   Firestore anahtarı oldu). Dal `main`'e birleşince etkinleşir.
