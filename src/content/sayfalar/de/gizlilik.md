@@ -2,7 +2,7 @@
 baslik: Datenschutzerklärung
 altBaslik: Informationen darüber, wie personenbezogene Daten auf dieser Website verarbeitet werden.
 aciklama: DSGVO-konforme Informationen dazu, wie personenbezogene Daten auf der Website der Ulu Camii Marche-en-Famenne und im Elternportal der Koranschule verarbeitet werden.
-guncelleme: 2026-10-13
+guncelleme: 2026-10-24
 ---
 
 *Im Zweifel gelten die türkische und die französische Fassung.*
@@ -110,6 +110,16 @@ Das **Elternportal** der Koranschule ist seit dem 6. September 2026 in Betrieb: 
 - **Daten über die Religionszugehörigkeit:** Die Mitgliedschaft in einem Moscheeverein und die Anmeldung zur Koranschule sind ihrer Natur nach Angaben, die auf eine Religionszugehörigkeit hinweisen, und gelten nach der DSGVO als „besondere Kategorien personenbezogener Daten“. Diese Daten werden im Rahmen der in Art. 9 Abs. 2 lit. d DSGVO festgelegten Vereinsausnahme verarbeitet: Sie bleiben auf die Mitglieder, die ehemaligen Mitglieder und die Personen beschränkt, die regelmäßigen Kontakt zu den Tätigkeiten des Vereins haben, und werden ohne die ausdrückliche Einwilligung der betroffenen Person **niemals außerhalb des Vereins offengelegt**.
 - **Datenminimierung — Register und Portal sind nicht dasselbe:** Das Anmelderegister und das Mitgliederregister des Vereins können die in den vorstehenden Abschnitten aufgeführten Angaben enthalten; **im Portal ist davon nicht alles vorhanden.** Daten wie die Nationalregisternummer und die Wohnanschrift werden nicht in das Portal übertragen; im Portal befinden sich nur die für die Nachverfolgung und die Kommunikation erforderlichen Mindestangaben.
 - **Speicherdauern:** Die Mitgliedsdaten werden höchstens 2 Jahre ab dem Ausscheiden aus der Mitgliedschaft aufbewahrt; die Daten der Lernenden der Koranschule und die Portaleinträge höchstens 2 Jahre ab dem Ende des betreffenden Unterrichtszeitraums. Das Konto eines Elternteils wird auf Antrag (info@ulucamii.be) früher gelöscht. Die gesetzlich vorgeschriebenen Buchhaltungsunterlagen werden gesondert und entsprechend der allgemeinen Aufbewahrungsfrist des belgischen Rechts länger aufbewahrt (etwa 7 Jahre).
+
+<span id="ezber-kilimi"></span>
+
+## Memorier-Kelim (egitim.ulucamii.be)
+
+Die Auswendiglern-Plattform der Koranschule verwendet weder Konto noch Cookies oder Tracking. Die Übungseinstellungen des Kindes und die Ergebnisse von „Sich prüfen“ — die gewählte Sprache der Seite, die gewählte Übungsart und Stufe, die Größe der arabischen Schrift, die vorgeschlagenen Wiederholungstermine je Inhalt und die in dieser Woche geübten Tage — werden **ausschließlich im Browser-Speicher des eigenen Geräts (localStorage)** abgelegt. Diese Angaben werden weder an uns noch an Google oder sonstige Dritte gesendet, erscheinen nicht im Elternportal und ändern die von der Lehrkraft vergebene Auswendiglern-Stufe nicht. Löschen Sie die Browserdaten, verschwinden auch sie.
+
+- **Die eigene Stimme aufnehmen (freiwillig):** Im Spiel „Meine Stimme“ wird das Mikrofon nur eingeschaltet, wenn Sie „Aufnahme starten“ drücken und die Berechtigungsabfrage des Browsers bestätigen. Die Aufnahme bleibt nur im Speicher dieser Seite; sie wird weder an einen Server gesendet noch gespeichert. Das Mikrofon wird sofort ausgeschaltet, sobald Sie die Aufnahme beenden; die Aufnahme wird mit „Aufnahme löschen“ oder beim Verlassen der Seite gelöscht. Eine Aufnahme dauert höchstens 3 Minuten.
+- **Die Hörtöne** werden vom Server von ulucamii.be (Aufnahme des Mushafs der Diyanet) abgespielt; wir speichern keine Angaben über die zuhörende Person. Zu den technischen Standardprotokollen dieses Servers siehe oben den Abschnitt „Wenn Sie diese Website besuchen“.
+- Die technischen Standard-Serverprotokolle des Hosting-Anbieters (Google Firebase Hosting) liegen außerhalb unserer Kontrolle.
 
 ## Ihre Rechte
 

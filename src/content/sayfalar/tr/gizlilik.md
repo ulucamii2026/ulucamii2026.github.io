@@ -2,7 +2,7 @@
 baslik: Gizlilik Politikası
 altBaslik: Bu sitede kişisel verilerin nasıl ele alındığına dair bilgilendirme.
 aciklama: Ulu Camii Marche-en-Famenne web sitesinde ve Kur’an kursu veli portalında kişisel verilerin nasıl işlendiğine dair GDPR uyumlu bilgilendirme.
-guncelleme: 2026-10-13
+guncelleme: 2026-10-24
 ---
 
 <p class="bilgi"><strong>Kısaca:</strong> Bu site çerez kullanmaz. Ziyaretler yalnızca çerezsiz ve anonim bir sayaçla toplu olarak sayılır; sizi kişi olarak tanımlayan hiçbir veri tutulmaz. Kişisel veriler yalnızca sizin başlattığınız işlemlerde (ör. Kur’an kursu kaydı, e-posta göndermeniz) işlenir.</p>
@@ -108,6 +108,16 @@ Kur’an kursu **veli portalı** 6 Eylül 2026’dan itibaren canlıdır: [/tr/v
 - **Dinî bağlılık verisi:** Cami derneğine üyelik ve Kur’an kursuna kayıt, doğası gereği dinî bağlılığa işaret eden bir bilgidir ve GDPR’da "özel kategori veri" sayılır. Bu veri, GDPR md. 9(2)(d)’de tanımlanan dernek istisnası kapsamında işlenir: yalnızca üyeler, eski üyeler ve derneğin faaliyetleriyle düzenli teması olan kişilerle sınırlı kalır ve ilgili kişinin açık rızası olmadan **derneğin dışına asla açıklanmaz**.
 - **Veri minimizasyonu — defter ile portal aynı şey değildir:** Kayıt defteri ve dernek üye defteri yukarıdaki bölümlerde sayılan bilgileri içerebilir; **portalda bunların tamamı bulunmaz.** Millî sicil numarası ve ev adresi gibi veriler portala aktarılmaz; portalda yalnızca takip ve iletişim için gereken asgari bilgi bulunur.
 - **Saklama süreleri:** Üyelik verisi, üyelikten ayrılıştan itibaren en fazla 2 yıl; Kur’an kursu öğrenci verisi ve portal kayıtları, ilgili eğitim döneminin bitiminden itibaren en fazla 2 yıl saklanır. Veli hesabı, talep üzerine (info@ulucamii.be) daha erken silinir. Yasal muhasebe kayıtları, Belçika mevzuatındaki genel saklama süresine uygun olarak ayrıca ve daha uzun tutulur (yaklaşık 7 yıl).
+
+<span id="ezber-kilimi"></span>
+
+## Ezber Kilimi (egitim.ulucamii.be)
+
+Kur’an kursunun ezber platformu hesap, çerez ve izleme kullanmaz. Çocuğun çalışma tercihleri ve «Kendini sına» sonuçları — seçtiği site dili, çalışma kipi ve düzeyi, Arapça yazı boyutu, maddeler için önerilen sonraki tekrar tarihleri ve bu hafta hangi günlerde çalışıldığı — **yalnızca kendi cihazının tarayıcı hafızasında (localStorage)** saklanır. Bu bilgiler bize, Google’a ya da başka bir üçüncü tarafa gönderilmez, veli portalında görünmez ve hocanın verdiği ezber basamağını değiştirmez. Tarayıcı verilerini sildiğinizde bu bilgiler de silinir.
+
+- **Kendi sesini kaydetme (isteğe bağlı):** «Kendi sesim» oyununda mikrofon yalnız «Kaydı başlat» düğmesine bastığınızda ve tarayıcının izin penceresini onayladığınızda açılır. Kayıt yalnız o sayfanın belleğinde durur; bir sunucuya gönderilmez ve saklanmaz. Kaydı durdurduğunuzda mikrofon hemen kapatılır; kayıt, «Kaydı sil» düğmesiyle ya da sayfadan çıkınca silinir. Bir kayıt en çok 3 dakika sürer.
+- **Dinleme sesleri** ulucamii.be sunucusundan (Diyanet mushaf kaydı) çalınır; biz dinleyen kişi hakkında bilgi tutmayız. O sunucunun standart teknik günlükleri için yukarıdaki «Bu Siteyi Ziyaret Ettiğinizde» başlığına bakın.
+- Barındırma sağlayıcısının (Google Firebase Hosting) standart teknik sunucu günlükleri bizim kontrolümüz dışındadır.
 
 ## Haklarınız
 

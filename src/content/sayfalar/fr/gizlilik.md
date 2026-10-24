@@ -2,7 +2,7 @@
 baslik: Politique de confidentialité
 altBaslik: Comment vos données personnelles sont traitées sur ce site.
 aciklama: Comment les données personnelles sont traitées sur le site d’Ulu Camii Marche-en-Famenne et dans le portail des parents de l’école coranique, conformément au RGPD.
-guncelleme: 2026-10-13
+guncelleme: 2026-10-24
 ---
 
 <p class="bilgi"><strong>En bref :</strong> ce site n’utilise aucun cookie. Les visites ne sont comptées que de manière agrégée, par un compteur anonyme et sans cookies ; aucune donnée permettant de vous identifier n’est conservée. Des données personnelles ne sont traitées que lorsque vous en prenez l’initiative (p. ex. inscription au cours de Coran, envoi d’un e-mail).</p>
@@ -108,6 +108,16 @@ Le **portail des parents** de l’école coranique est en service depuis le 6 se
 - **Données relatives à l’appartenance religieuse :** l’adhésion à une association cultuelle et l’inscription à l’école coranique constituent par nature une indication d’appartenance religieuse et relèvent des « catégories particulières de données » au sens du RGPD. Ces données sont traitées dans le cadre de l’exception associative prévue à l’article 9(2)(d) du RGPD : leur traitement reste limité aux membres, anciens membres et personnes en contact régulier avec l’association, et elles ne sont **jamais communiquées en dehors de l’association** sans le consentement explicite de la personne concernée.
 - **Minimisation des données — le registre et le portail ne se confondent pas :** le registre des inscriptions et le registre des membres peuvent contenir les informations décrites dans les sections précédentes ; **le portail n’en contient pas la totalité.** Le numéro de registre national et l’adresse du domicile n’y sont pas transférés ; seules les informations strictement nécessaires au suivi et à la communication y figurent.
 - **Durées de conservation :** les données des membres sont conservées au maximum 2 ans après la fin de l’adhésion ; les données des élèves de l’école coranique et les enregistrements du portail, au maximum 2 ans après la fin de l’année scolaire concernée. Le compte d’un parent est supprimé plus tôt sur demande (info@ulucamii.be). Les pièces comptables légales sont conservées séparément, sur une durée plus longue, conformément à la durée générale prévue par la législation belge (environ 7 ans).
+
+<span id="ezber-kilimi"></span>
+
+## Kilim de mémorisation (egitim.ulucamii.be)
+
+La plateforme de mémorisation de l’école coranique n’utilise ni compte, ni cookie, ni suivi. Les préférences de travail de l’enfant et les résultats de « Se tester » — la langue du site, le mode et le niveau choisis, la taille de l’écriture arabe, les dates de révision conseillées pour chaque contenu et les jours travaillés cette semaine — sont conservés **uniquement dans la mémoire du navigateur de son appareil (localStorage)**. Ces informations ne nous sont pas envoyées, pas plus qu’à Google ou à un autre tiers ; elles n’apparaissent pas dans le portail des parents et ne modifient pas l’étape de mémorisation donnée par l’enseignant. Si vous effacez les données du navigateur, elles disparaissent aussi.
+
+- **Enregistrer sa propre voix (facultatif) :** dans le jeu « Ma voix », le microphone ne s’active que lorsque vous appuyez sur « Commencer l’enregistrement » et que vous acceptez la demande d’autorisation du navigateur. L’enregistrement reste uniquement dans la mémoire de la page ; il n’est ni envoyé à un serveur ni conservé. Le microphone est coupé dès que vous arrêtez l’enregistrement ; l’enregistrement disparaît avec « Supprimer l’enregistrement » ou quand vous quittez la page. Un enregistrement dure 3 minutes au maximum.
+- **Les sons d’écoute** sont lus depuis le serveur d’ulucamii.be (enregistrement du mushaf de la Diyanet) ; nous ne conservons aucune information sur la personne qui écoute. Pour les journaux techniques standard de ce serveur, voir la section « Lors de votre visite sur ce site » ci-dessus.
+- Les journaux techniques standard du fournisseur d’hébergement (Google Firebase Hosting) échappent à notre contrôle.
 
 ## Vos droits
 

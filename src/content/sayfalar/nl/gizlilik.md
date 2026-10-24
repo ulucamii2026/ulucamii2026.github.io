@@ -2,7 +2,7 @@
 baslik: Privacybeleid
 altBaslik: Informatie over de manier waarop persoonsgegevens op deze website worden verwerkt.
 aciklama: AVG-conforme informatie over de verwerking van persoonsgegevens op de website van Ulu Camii Marche-en-Famenne en in het ouderportaal van de koranschool.
-guncelleme: 2026-10-13
+guncelleme: 2026-10-24
 ---
 
 *Bij twijfel gelden de Turkse en de Franse versie.*
@@ -110,6 +110,16 @@ Het **ouderportaal** van de koranschool is sinds 6 september 2026 in gebruik: [/
 - **Gegevens over religieuze overtuiging:** Het lidmaatschap van een moskeevereniging en de inschrijving voor de koranschool wijzen naar hun aard op een religieuze overtuiging en gelden in de AVG als “bijzondere categorie van persoonsgegevens”. Deze gegevens worden verwerkt binnen de uitzondering voor verenigingen die in art. 9, lid 2, d AVG is omschreven: de verwerking blijft beperkt tot de leden, de oud-leden en de personen die regelmatig contact hebben met de activiteiten van de vereniging, en de gegevens worden zonder de uitdrukkelijke toestemming van de betrokkene **nooit buiten de vereniging bekendgemaakt**.
 - **Minimale gegevensverwerking — het register en het portaal zijn niet hetzelfde:** Het inschrijvingsregister en het ledenregister van de vereniging kunnen de gegevens bevatten die in de vorige onderdelen zijn opgesomd; **het portaal bevat die niet allemaal.** Gegevens zoals het rijksregisternummer en het thuisadres worden niet naar het portaal overgebracht; het portaal bevat alleen de gegevens die minimaal nodig zijn voor de opvolging en de communicatie.
 - **Bewaartermijnen:** De ledengegevens worden hoogstens 2 jaar na het einde van het lidmaatschap bewaard; de gegevens van de leerlingen van de koranschool en de portaalregistraties hoogstens 2 jaar na het einde van het betrokken schooljaar. Een ouderaccount wordt op verzoek vroeger verwijderd (info@ulucamii.be). De wettelijke boekhoudkundige stukken worden afzonderlijk en langer bewaard, overeenkomstig de algemene bewaartermijn in de Belgische wetgeving (ongeveer 7 jaar).
+
+<span id="ezber-kilimi"></span>
+
+## Memorisatiekelim (egitim.ulucamii.be)
+
+Het memoriseerplatform van de koranschool gebruikt geen account, cookies of tracking. De oefeninstellingen van het kind en de resultaten van “Uzelf toetsen” — de gekozen taal van de site, de gekozen oefenwijze en het gekozen niveau, de grootte van de Arabische tekst, de voorgestelde herhaaldata per onderdeel en de dagen waarop deze week is geoefend — worden **alleen in het browsergeheugen van het eigen apparaat (localStorage)** bewaard. Deze gegevens worden niet naar ons, naar Google of naar een andere derde verzonden, verschijnen niet in het ouderportaal en wijzigen de door de leerkracht gegeven memoriseerstap niet. Wist u de browsergegevens, dan verdwijnen ze ook.
+
+- **Uw eigen stem opnemen (optioneel):** in het spel “Mijn stem” gaat de microfoon pas aan als u op “Opname starten” drukt en de toestemmingsvraag van de browser accepteert. De opname blijft alleen in het geheugen van die pagina; ze wordt niet naar een server verzonden en niet bewaard. De microfoon gaat meteen uit zodra u de opname stopt; de opname wordt gewist met “Opname verwijderen” of wanneer u de pagina verlaat. Een opname duurt maximaal 3 minuten.
+- **De luistergeluiden** worden afgespeeld vanaf de server van ulucamii.be (opname van de mushaf van de Diyanet); wij bewaren geen informatie over de luisteraar. Voor de standaard technische logboeken van die server, zie hierboven het deel “Wanneer u deze website bezoekt”.
+- De standaard technische serverlogboeken van de hostingprovider (Google Firebase Hosting) vallen buiten onze controle.
 
 ## Uw rechten
 

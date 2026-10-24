@@ -2,7 +2,7 @@
 baslik: Privacy Policy
 altBaslik: Information on how personal data is handled on this website.
 aciklama: GDPR-compliant information on how personal data is processed on the Ulu Camii Marche-en-Famenne website and in the Qur’an school parents’ portal.
-guncelleme: 2026-10-13
+guncelleme: 2026-10-24
 ---
 
 <p class="bilgi"><strong>In short:</strong> this site uses no cookies. Visits are counted only in aggregate, by an anonymous cookie-free counter; no data that could identify you is kept. Personal data is processed only when you initiate it (e.g. Qur’an course registration, sending an e-mail).</p>
@@ -108,6 +108,16 @@ The Qur’an school **parents’ portal** has been live since 6 September 2026: 
 - **Data on religious affiliation:** membership of a mosque association and enrolment in the Qur’an school are, by their nature, information indicating religious affiliation, and are classified as “special category data” under the GDPR. This data is processed under the association exemption defined in GDPR Art. 9(2)(d): it is limited strictly to members, former members, and persons who maintain regular contact with the association’s activities, and it is **never disclosed outside the association** without the explicit consent of the data subject.
 - **Data minimisation — the register and the portal are not the same thing:** the registration register and the member register may contain the information described in the previous sections; **the portal does not contain all of it.** National register numbers and home addresses are not transferred to the portal; it holds only the minimum needed for tracking and communication.
 - **Retention periods:** membership data is kept for at most 2 years from the end of membership; Qur’an school student data and portal records are kept for at most 2 years from the end of the relevant academic period. A parent’s account is deleted earlier on request (info@ulucamii.be). Legal accounting records are kept separately and for longer, in line with the general retention period under Belgian law (approximately 7 years).
+
+<span id="ezber-kilimi"></span>
+
+## Memorisation kilim (egitim.ulucamii.be)
+
+The Qur’an school’s memorisation platform uses no account, cookies or tracking. A child’s practice settings and “Test yourself” results — the chosen site language, practice mode and level, the Arabic text size, the suggested review dates for each item and the days practised this week — are stored **only in the browser memory of their own device (localStorage)**. This information is not sent to us, to Google or to any other third party, does not appear in the parents’ portal and does not change the memorisation stage given by the teacher. Clearing the browser data also clears it.
+
+- **Recording your own voice (optional):** in the “My voice” game, the microphone is switched on only when you press “Start recording” and accept the browser’s permission prompt. The recording stays only in the memory of that page; it is not sent to any server and not stored. The microphone is switched off as soon as you stop recording; the recording is deleted with “Delete the recording” or when you leave the page. A recording lasts 3 minutes at most.
+- **The listening audio** is played from the ulucamii.be server (the Diyanet mushaf recording); we keep no information about the listener. For that server’s standard technical logs, see the section “When You Visit This Site” above.
+- The standard technical server logs of the hosting provider (Google Firebase Hosting) are outside our control.
 
 ## Your Rights
 
