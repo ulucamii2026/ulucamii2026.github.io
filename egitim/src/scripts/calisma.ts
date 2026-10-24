@@ -43,6 +43,8 @@ if (kok) {
     const o = oturum;
     const komut = ++oynatmaKomutu;
     simdiki.playbackRate = Number(hiz.value);
+    // Sayfada tek ses: çalışma kipleri (kip-ortak.ts) bu olayı duyunca kendi kaydını keser.
+    document.dispatchEvent(new CustomEvent('ezber:ses-basladi', { detail: 'calisma' }));
     simdiki.play().then(() => {
       // Geç tamamlanan play() duraklatılmış ya da değiştirilmiş kaydı yeniden başlatmasın.
       if (o !== oturum || !caliyor) simdiki.pause();
@@ -100,6 +102,10 @@ if (kok) {
     if (!bekle.checked && ara && caliyor) ilerle();
   });
   window.addEventListener('pagehide', () => sifirla());
+  // Çalışma kiplerinden biri ses başlatırsa bu çalar durur (calisma zamanlaması değişmez).
+  document.addEventListener('ezber:ses-basladi', (e) => {
+    if ((e as CustomEvent<string>).detail !== 'calisma' && (caliyor || basladi)) sifirla();
+  });
   // Metindeki âyet düğmesi o bölümü baştan çalar (madde.ts).
   kok.addEventListener('calisma:cal', (e) => {
     const deger = String((e as CustomEvent<number>).detail);

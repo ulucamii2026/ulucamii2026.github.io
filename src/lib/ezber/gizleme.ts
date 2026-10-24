@@ -47,19 +47,31 @@ function kumeler(kelime: string): string[] {
 }
 const temel = (k: string) => [...k][0];
 
+// Tanımlık «ال» ayrımı için işaret kümeleri (kod noktasıyla: görünmez/okunaksız karakter kaynağa konmaz).
+const isaretKumesi = (...kodlar: number[]) => new RegExp(`[${kodlar.map((c) => String.fromCodePoint(c)).join('')}]`, 'u');
+/** Tanımlığın elifi kesre, damme, tenvin ya da alt elif taşımaz: اِلٰهَ ve اِلاَّ takı değildir. */
+const ELIF_DISI = isaretKumesi(0x064b, 0x064c, 0x064d, 0x064f, 0x0650, 0x0656);
+/** Tanımlığın lâmı kısa ünlü taşımaz (sükûnlu ya da işaretsiz) ya da şeddelidir (اَلَّذِى): اَلَمْ takı değildir. */
+const KISA_UNLU = isaretKumesi(0x064b, 0x064c, 0x064d, 0x064e, 0x064f, 0x0650);
+const SEDDE = String.fromCodePoint(0x0651);
+
+function tanimlikMi(k: readonly string[], a: number): boolean {
+  if (k[a + 2] === undefined) return false;
+  if (!ELIFLER.has(temel(k[a])) || ELIF_DISI.test(k[a])) return false;
+  return temel(k[a + 1]) === 'ل' && (k[a + 1].includes(SEDDE) || !KISA_UNLU.test(k[a + 1]));
+}
+
 /**
  * İlk harf ipucu: ilk harf ve harekesi. Kelime «ال» takısıyla başlıyorsa (ekli olsa da: وَالْ، بِالْ) ipucu, takıdan sonraki ilk
- * harfi de verir; yoksa her «ال…» kelimesi aynı tek elifle görünür ve ipucu işe yaramaz. Sonuna ZWJ eklenir: harf
- * kelimenin başındaki biçimiyle (bitişik) çizilir.
+ * harfi de verir; yoksa her «ال…» kelimesi aynı tek elifle görünür ve ipucu işe yaramaz. Takı sayılan yalnız gerçek tanımlıktır
+ * (elif ve lâm işaretleri yukarıdaki kurala uyar); اِلٰهَ gibi kök harfleriyle başlayan kelimede ipucu yine tek harftir. Sonuna ZWJ
+ * eklenir: harf kelimenin başındaki biçimiyle (bitişik) çizilir.
  */
 export function ilkHarf(kelime: string): string {
   const k = kumeler(kelime);
   if (!k.length) return '';
-  let ek = 0;
-  if (k.length > 3 && EKLER.has(temel(k[0])) && ELIFLER.has(temel(k[1])) && temel(k[2]) === 'ل') ek = 1;
-  const a = ek ? 1 : 0;
-  const tanimlik = ELIFLER.has(temel(k[a])) && k[a + 1] !== undefined && temel(k[a + 1]) === 'ل' && k[a + 2] !== undefined;
-  const bit = tanimlik ? a + 3 : 1;
+  const ek = k.length > 3 && EKLER.has(temel(k[0])) && tanimlikMi(k, 1) ? 1 : 0;
+  const bit = tanimlikMi(k, ek) ? ek + 3 : 1;
   return k.slice(0, bit).join('') + '\u200d';
 }
 

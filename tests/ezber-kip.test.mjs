@@ -58,6 +58,27 @@ test('ilkHarf: ilk harf ve hareke; «ال» takısında (ekli de olsa) takıdan 
   assert.equal(g.ilkHarf(''), '');
 });
 
+test('ilkHarf: tanımlık ayrımı — kök harfleriyle başlayan «اِلٰهَ», «اِلاَّ», «اَلَمْ» tek harf verir; gerçek tanımlıkta takıdan sonraki harf de gelir', () => {
+  assert.equal(g.ilkHarf('اِلٰهَ'), `اِ${ZWJ}`);
+  assert.equal(g.ilkHarf('اِلاَّ'), `اِ${ZWJ}`);
+  assert.equal(g.ilkHarf('اَلَمْ'), `اَ${ZWJ}`);
+  assert.equal(g.ilkHarf('اَلسَّلاَمُ'), `اَلسَّ${ZWJ}`);
+  assert.equal(g.ilkHarf('الرَّحْمٰنِ'), `الرَّ${ZWJ}`);
+});
+
+test('ilkHarf: gerçek metinde ipucu kelimenin tamamını vermez (yalnız çok kısa kelimelerde tamamı olabilir)', () => {
+  let sizan = 0;
+  let toplam = 0;
+  for (const m of metinler) for (const b of m.bolumler) for (const k of g.kelimeler(b.ar)) {
+    toplam++;
+    const ip = g.ilkHarf(k).slice(0, -1);
+    const harfler = (x) => (x.match(/\p{L}/gu) ?? []).length;
+    if (harfler(k) >= 4 && harfler(ip) >= harfler(k)) sizan++;
+  }
+  assert.ok(toplam > 500);
+  assert.ok(sizan / toplam < 0.01, `ipucu ${sizan}/${toplam} kelimede kelimenin tamamını veriyor`);
+});
+
 test('ilkHarf: gerçek metinde her kelime için boş değil ve kelimenin başıdır', () => {
   for (const m of metinler) {
     for (const b of m.bolumler) {

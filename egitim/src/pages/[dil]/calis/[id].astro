@@ -19,6 +19,7 @@ import { MADDE_METINLERI } from '../../../lib/madde-metinleri';
 import { metin, tarihYaz } from '../../../i18n/metinler';
 import { calismaMetinleri } from '../../../i18n/calisma';
 import { DURUSLAR, maddeMetinleri, namazda } from '../../../i18n/madde';
+import { kipMetinleri } from '../../../i18n/kip';
 import '../../../styles/calisma.css';
 import '../../../styles/madde.css';
 
@@ -53,6 +54,25 @@ const tamSure = mt?.kuran && oge.tur === 'sure' && mt.kuran.ayetler[0] === 1 && 
 const arAd = tamSure && mt?.sureAdi ? `سُورَةُ ${mt.sureAdi}` : undefined;
 const ayetSayisi = mt?.kuran ? mt.kuran.ayetler[1] - mt.kuran.ayetler[0] + 1 : undefined;
 const yer = namazda(oge.id, oge.tur);
+
+// Çalışma kipleri (Faz 2c): Arapça metni olan her maddede «Bağlayarak ezberle» ve «Kademeli gizle». Veri sayfadan istemciye
+// `data-veri` ile gider (satır içi betik yok: CSP). Bölüm sesi yalnız âyet parçaları bölümlerle bire bir olduğunda vardır.
+const kt = kipMetinleri(dil);
+const kipVeri = mt && mt.bolumler.length
+  ? {
+      id: oge.id,
+      kuran: Boolean(mt.kuran),
+      bolumler: mt.bolumler.map((x, i) => ({
+        no: x.no,
+        ar: x.ar,
+        etiket: mt.kuran ? `۝${arapcaRakam(x.no)}` : mt.bolumler.length > 1 ? String(x.no) : '',
+        ses: mt.kuran && oge.ses?.parcalar?.length === mt.bolumler.length ? `${ANA_SITE}${oge.ses.parcalar[i]}` : null,
+      })),
+      m: kt,
+    }
+  : null;
+// Adım 3 ve 4 yalnız metni olan maddede hazırdır.
+const adimHazir = (a: { hazir: boolean }, i: number) => a.hazir && (i < 2 || Boolean(kipVeri));
 
 const serit = seviyeOgeleri(oge.seviye).filter(calismaSayfasiVar);
 const sira = serit.findIndex((o) => o.id === oge.id);
@@ -112,7 +132,15 @@ const sonraki = serit[sira + 1];
           <section aria-labelledby="metin-baslik">
             <div class="metin-ust">
               <h2 id="metin-baslik">{meal ? (dua ? mm.metinBaslikDua : mm.metinBaslik) : mm.metinBaslikYalniz}</h2>
-              {okunus && <button class="secim" type="button" aria-pressed="false" data-okunus-dugme hidden><Ikon ad="goz" />{mm.okunusGoster}</button>}
+              <div class="metin-araclar">
+                {kipVeri && (
+                  <div class="ar-boyut" role="group" aria-label={kt.arBoyutu} data-ar-boyut hidden>
+                    <button class="secim" type="button" data-ar-azalt aria-label={kt.arKucult}><span aria-hidden="true">A−</span></button>
+                    <button class="secim" type="button" data-ar-arttir aria-label={kt.arBuyut}><span aria-hidden="true">A+</span></button>
+                  </div>
+                )}
+                {okunus && <button class="secim" type="button" aria-pressed="false" data-okunus-dugme hidden><Ikon ad="goz" />{mm.okunusGoster}</button>}
+              </div>
             </div>
             {!meal && <p class="meal-yok">{dua ? mm.anlamYok : mm.mealYok}</p>}
             {dua && !mt.onay && <p class="onay-bekliyor">{mm.onayBekliyor}</p>}
@@ -155,13 +183,24 @@ const sonraki = serit[sira + 1];
           <h2 id="yol-baslik">{mm.yolBaslik}</h2>
           <ol class="yollar">
             {mm.adimlar.map((a, i) => (
-              <li class={a.hazir ? undefined : 'sonra'}>
+              <li class={adimHazir(a, i) ? undefined : 'sonra'}>
                 <span class="sira" aria-hidden="true">{i + 1}</span>
                 <h3>{a.ad}</h3><p>{a.metin}</p>
-                {!a.hazir && <span class="yakinda">{mm.yakinda}</span>}
+                {!adimHazir(a, i) && <span class="yakinda">{mm.yakinda}</span>}
               </li>
             ))}
           </ol>
+          {kipVeri && (
+            <section class="kip" data-kip data-veri={JSON.stringify(kipVeri)} aria-labelledby="kip-baslik" hidden>
+              <h3 id="kip-baslik">{kt.baslik}</h3>
+              <div class="kip-sekmeler" role="tablist" aria-label={kt.sekmeler}>
+                <button type="button" role="tab" id="kip-sekme-zincir" data-kip-sekme="zincir" aria-selected="true" aria-controls="kip-panel-zincir" tabindex="0"><span class="sira" aria-hidden="true">3</span>{mm.adimlar[2].ad}</button>
+                <button type="button" role="tab" id="kip-sekme-gizle" data-kip-sekme="gizle" aria-selected="false" aria-controls="kip-panel-gizle" tabindex="-1"><span class="sira" aria-hidden="true">4</span>{mm.adimlar[3].ad}</button>
+              </div>
+              <div role="tabpanel" id="kip-panel-zincir" class="kip-panel" data-kip-panel="zincir" aria-labelledby="kip-sekme-zincir" tabindex="0"></div>
+              <div role="tabpanel" id="kip-panel-gizle" class="kip-panel" data-kip-panel="gizle" aria-labelledby="kip-sekme-gizle" tabindex="0" hidden></div>
+            </section>
+          )}
         </section>
       </div>
 
@@ -204,4 +243,5 @@ const sonraki = serit[sira + 1];
   import '../../../scripts/dil';
   import '../../../scripts/calisma';
   import '../../../scripts/madde';
+  import '../../../scripts/kip';
 </script>
