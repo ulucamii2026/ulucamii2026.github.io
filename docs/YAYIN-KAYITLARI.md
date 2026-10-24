@@ -4,6 +4,56 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 24 Ekim 2026 (9) — Ezber Kilimi: portalda olmayan on dua için metin sayfası ve 360 px pano karoları (hoca onayı bekliyor)
+
+- **Zaman (Europe/Brussels, CEST; saat 25 Ekim 00:xx):** egitim Hosting yayını 00:13–00:14 (sürüm 418 dosya, 388 yeni), push 00:14:21, Pages run
+  00:14:23–00:16:29, canlı denetim 00:14:46. **Yayımlandı ve canlı doğrulandı.** Dayanak: Rıdvan, 24 Ekim «ezber kilimi yayını konusunda herşeyi
+  onaylıyorum, bütün yetki ve karar sende» ve ana oturumun görevi (metni olmayan dualar için ikinci kaynak yolu + 360 px karo boyu).
+- **Kapsam, iki iş:**
+  1. **On dua için kaynaklı metin sayfası** (beş dilde 50 sayfa): Eûzü–Besmele, Kelime-i Tevhid, Kelime-i Şehâdet, Tekbir, Tesmî–Tahmîd, Selâm, Âmentü,
+     Teşrik tekbiri, Telbiye, Yemek duası. Arapça, Diyanet'in basılı kitaplarından/mushafından; her bölümün harf iskeleti en az bir ikinci Diyanet
+     kaynağıyla **birebir** aynı; Türkçe/Fransızca anlam ve okunuş kitaptan sözcüğü sözcüğüne alınır ve her çalıştırmada kaynakta aranır. Fransızca anlam
+     yalnız DİTİB'in resmî Fransızcasında (Âmentü, Kelime-i Tevhid, Kelime-i Şehâdet); Temel Dinî Bilgiler'in Fransızcası resmî olmadığı için kullanılmadı.
+     Hepsi `onay: null`: «hoca incelemesi bekleniyor», okunuş gizli. `--onayla` çalıştırılmadı. Ses, yapay ses ve `ses` alanları değişmedi; yeni TTS yok.
+     Diyanet kaydı olmayan yedi madde için katalogda `metinli: true`; sayfa «Henüz dinleme kaydı yok» der, kart yönergesi dinleme sözü vermez.
+     **Atlanan beş dua:** Kadir gecesi duası (iskelet ayrışıyor: Tecrid-i Sarih ve İbn Mâce'de «كَرِيمٌ» yok), Tesbihat (bağımsız ikinci Diyanet metni
+     doğrulanamadı), Abdest / Namaz / Oruç niyeti (yerel Diyanet arşivinde Arapça niyet metni yok). Ayrıntı: `docs/EGITIM-FAZ2-DINLEME.md`
+     «Kitap kaynaklı dua metinleri ve giriş panosu dokunma hedefi».
+  2. **Giriş panosu karoları 24 px (WCAG 2.5.8):** 360 px'te 22,9 px idi; dar ekranda pano kenar boşluğunun yarısına yayılır (`cqw` kapsayıcı birimi) →
+     360 px'te 24,3 · 375 px'te 25,5 · 390 px'te 26,6 · 412 px'te 28,3 px, yatay taşma yok. 356 px altında 13 sütun 24 px'e sığmaz (320 px'te 21 px); her karo
+     listede bir maddeye de bağlıdır (eşdeğer bağlantı). Test eski CSS ile **düşüyor** (22,92), yeni CSS ile geçiyor.
+- **Değişen dosyalar (39):** yeni `scripts/ezber-dua-kitap.mjs`, `scripts/ezber-dua-tanim.mjs` (10 `kitap` tanımı), `scripts/ezber-dua-cek.mjs`,
+  `scripts/ezber-dua-iskelet.mjs`, `scripts/ezber-metin-cek.mjs` (`--yalniz-ayet`), `scripts/ezber-inceleme.mjs`, `scripts/ezber-seviye-tablosu.mjs`,
+  `scripts/egitim-canli-denetim.mjs`, `src/data/ezber/metin/d-{…}.json` (10), `katalog.json` / `katalog.schema.json` / `katalog.ts` (`metinli`), `madde-metni.ts`
+  (resmî Fransızca kabulü), `egitim/src/i18n/madde.ts`, `egitim/src/i18n/kart.ts`, `egitim/src/pages/[dil]/calis/[id].astro`, `egitim/src/styles/cini.css`,
+  `docs/ezber-metin-inceleme/` (HTML + PDF, 21 dua), `tests/fixtures/ezber-dua-ikinci-kaynak.json`, testler (yeni `tests/ezber-dua-kitap.test.mjs`,
+  `tests/egitim/sessiz-metin.spec.mjs`, `tests/egitim/pano-hedef.spec.mjs`; uyarlanan `kart`, `kip`, `calisma`, `barindirma`, `ezber-madde-metni`,
+  `ezber-katalog`), `docs/EGITIM-FAZ2-DINLEME.md`.
+- **İçerik commit'i:** `fe1ba765` (temiz ayrık çalışma ağacı `D:/tmp/ulucamii-egitim3`). Bilgi oturumunun `17f91411` + `a63c02bd` commit'leri üzerine **rebase
+  edildi**; beş dosyada çakışma iki tarafı koruyarak çözüldü (`package.json` `test:ezber`, `egitim-canli-denetim.mjs`, `katalog.ts` `calismaSayfasiVar`,
+  `barindirma.test.mjs`, `calisma.spec.mjs`: koşul artık `ses || kuran || bilgiMetni || metinli`), docs'ta iki bölüm yan yana. Rebase sonrası kapılar baştan koşuldu.
+- **Kapılar (`npm run dogrula:codex`, rebase sonrası taban):** design:check, `check` (463 dosya, 0 hata / 0 uyarı), `dogrula` (ana site 1952 sayfa), `test:ezber`
+  **159/159**, `egitim:build` (astro check 0 hata, 387 sayfa), `test:kurallar` 54, `test:veli-eposta` 58, `test:oto-kaydet` 14, `test:ogrenme` 13 geçti.
+  Başarısız görünenler ve karşılığı: (a) `test:web` **839 geçti / 120 atlama / 1 başarısız**: `tests/web/seviye-testi.spec.mjs:729` konfeti animasyonu (24 parçacık
+  5 sn içinde sayılamadı); bu işle ilgisiz, yük altında zamanlama; tek başına 3 tekrarda iki projede 12/12 geçti; rebase öncesi aynı kodla tam koşu 840/0 idi;
+  (b) `test:egitim` ilk koşuda 2 başarısız: yeni `sessiz-metin.spec.mjs` A−/A+ senaryosu yük altında Arapça puntoyu tıklamadan hemen sonra ölçüyordu → ölçek özniteliği
+  ve punto `expect.poll` ile beklenir hâle getirildi (izole 12/12, tam koşu **347 geçti / 13 atlama / 0 başarısız**). `egitim:yayinla` kapısı (derleme + 15/15 birim +
+  347 geçti / 13 atlama). İlk (rebase öncesi) koşuda `d-euzu-besmele`yi «metni olmayan madde» örneği sayan 4 senaryo (`kart`, `kip`) ve `[data-durum]` seçicisinin
+  artık 3 öğeye çözülmesi (6 senaryo × 2 proje) gerçek veri değişiminden kaynaklanıyordu; testler gevşetilmeden yeni gerçeğe uyarlandı (metinsiz sayfa kümesi veriden
+  hesaplanır ve bugün boştur; Eûzü ve Tekbir'de kart/kip/A± VAR olduğu doğrulanır; durum satırı `.calisma-durum`).
+- **Basılı kart:** 10 madde × 5 dil = 50 PDF üretildi, `scripts/ezber-kart-dogrula.py` 50 PDF, hatalı 0 (piksel görsel yok, yazı tipleri gömülü, kare kod kanonik adrese gidiyor).
+  324 PDF'lik yerel paket yeniden üretilmedi.
+- **Deploy:** `npm run egitim:yayinla` (Hosting `ulucamii-egitim`, proje `ulucamii-portal`, dernek hesabı); Pages run
+  [40137688909](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/40137688909) **success**.
+- **Canlı:** `npm run egitim:canli -- https://egitim.ulucamii.be` **41/41** (385 adresli site haritası, CSP/konsol temiz, gerçek ses 206, bilgi sayfaları). Yeni sayfalar
+  200 ve içerik doğru: `/tr/calis/d-amentu/`, `/fr/calis/d-amentu/` (Arapça var, `<audio>` yok, «ses yok» bölümü var, «Je vais à la mosquée» künyesi var, «hoca incelemesi
+  bekleniyor» notu var), `/tr/` ve `/fr/calis/d-tekbir/` (aynı, Fransızca anlam yok → «bientôt ajouté»).
+- **Açık sınırlar:** on metnin hepsi hoca onayı bekliyor (Arapça, anlam, okunuş); `d-tesrik-tekbiri` Türkçe anlamında kaynaktaki olası yazım kusuru («Allah' içindir»,
+  Dinî Kavramlar Sözlüğü s. 643) aynen bırakıldı; `d-euzu-besmele` Arapçası mushaftan üç âyetten sözcük sözcük birleştirildi; Fransızca anlamı olmayan yedi dua
+  «yakında» der (çeviri uydurulmadı); beş dua atlandı (yukarıda); en/nl/de sayfalarında anlam yok; sınıfta ses olmayan dualar için hocadan okuma beklenir;
+  fiziksel yazıcı, iPhone/Safari ve ekran okuyucu denenmedi; duyuru yapılmadı.
+- Bu kayıt için belge commit'i içerik yayını değildir.
+
 ## 24 Ekim 2026 (8) — Ezber Kilimi: on bilgi maddesi için kaynaklı liste sayfaları (hoca onayı bekliyor)
 
 - **Zaman (Europe/Brussels, CEST):** egitim Hosting yayını 23:17–23:18 (sürüm 383 dosya, 354 yeni), push 23:21:36, Pages run

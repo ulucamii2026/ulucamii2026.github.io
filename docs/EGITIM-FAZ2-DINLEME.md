@@ -346,7 +346,7 @@ karar sende» talimatı. Üç iş, aynı yayın.
 - **Atlananlar:** Amentü, Selâm ve Teşrik tekbiri. Kurs kütüphanesindeki seslerin okuduğu metin maddenin metniyle birebir aynı olmadığı için
   alınmadı; bunlar için ya Diyanet kaydı ya da onaylı yeni üretim gerekir (yeni üretim bu işte yasaktı).
 - **Metin sayfası yok:** dua metni hattı (`ezber-dua-cek.mjs`) Diyanet portalı kaynağı ve ikinci kaynak ister; bu iki madde için yalnız Camiye
-  Gidiyorum ve Temel Dinî Bilgiler anılıyor. Sayfa çalar, etiket ve «metin hazırlanıyor» notundan oluşur; «Yüzünden oku» adımı «Yakında» kalır.
+  Gidiyorum ve Temel Dinî Bilgiler anılıyor. Sayfa çalar, etiket ve «metin hazırlanıyor» notundan oluşur; «Yüzünden oku» adımı «Yakında» kalır. (Güncelleme, 24 Ekim 2026 akşamı: iki maddenin metni de artık Diyanet kitaplarından hazırlandı, bkz. «Kitap kaynaklı dua metinleri…».)
 - **Testler:** `tests/ezber-katalog.test.mjs` (yalnız bu iki madde yapay olabilir; Diyanet kaydı bulunan dua yapay sese bırakılmaz; kayıtla birebir;
   `public/media/ses/yapay/` yalnız yapay ses içindir), `tests/egitim/yapay-ses.spec.mjs` (beş dil, iki proje: 42 test).
 - **Geri alma:** hoca dinleyip beğenmezse iki maddenin `ses` alanı katalogdan, dosya ve defter kaydı birlikte silinir (testler birini diğersiz bırakmaz).
@@ -444,7 +444,7 @@ Dayanak: Rıdvan, 24 Ekim 2026: «ezber kilimi yayını konusunda herşeyi onayl
   bölünmez, sayfa numarası `@page @bottom-right`. Kısa maddelerde sayfanın altı boş kalır (kabul edildi); uzun sûreler çok sayfa olur (Nebe 40 âyet: TR 5, FR 6; en uzun kart 7 sayfa).
 - **Doğrulama (`scripts/ezber-kart-dogrula.py`, PyMuPDF + OpenCV + poppler):** her PDF'te piksel görsel 0 (`get_images` ve
   `pdfimages`), tüm yazı tipleri gömülü (`pdffonts`), kare kod ilk sayfadan **çözülür ve kanonik adresle eşit** çıkar, metin
-  katmanı var. Tam paket (5 dil × 56 kartlı madde = **280 PDF, 585 sayfa, ≈ 37 MB**) ve okunuşlu paket (**44 PDF, 55 sayfa**): **hatalı 0**. Aynı denetim canlı siteden (`https://egitim.ulucamii.be`, tr/fr/nl `s-ihlas`) Chromium'la yazdırılan PDF'lerde de 0 hata verdi. Kartı olmayan madde: Arapça metni hazır olmayanlar (Kelime-i Tevhid ve Şehâdet, Euzü-Besmele gibi); onlarda düğme de kare kod da yoktur.
+  katmanı var. Tam paket (5 dil × 56 kartlı madde = **280 PDF, 585 sayfa, ≈ 37 MB**) ve okunuşlu paket (**44 PDF, 55 sayfa**): **hatalı 0**. Aynı denetim canlı siteden (`https://egitim.ulucamii.be`, tr/fr/nl `s-ihlas`) Chromium'la yazdırılan PDF'lerde de 0 hata verdi. Kartı olmayan madde: Arapça metni hazır olmayanlar; onlarda düğme de kare kod da yoktur. (24 Ekim 2026 akşamı: Kelime-i Tevhid ve Şehâdet, Euzü-Besmele dâhil on dua için metin hazırlandı ve kartları var; bkz. «Kitap kaynaklı dua metinleri…».)
 
 ### 4. Görsel cila turu
 
@@ -457,9 +457,9 @@ Dayanak: Rıdvan, 24 Ekim 2026: «ezber kilimi yayını konusunda herşeyi onayl
   genişliğine bağlandı (`min(özgün clamp, (100vw − 2,4 rem) / 7,2)`; NL için 9,1). Geniş ekranda görünüm değişmez.
   870 sayfa (5 dil × 58 sayfa × 320/360/768 px) taşmasız; yeni `tests/egitim/yeniden-akis.spec.mjs` masaüstü Chromium'da
   dar pencereyle sabitler (telefon projesi taşan içeriği kendi görünümüne kattığı için orada yakalanmaz).
-- **Bilinçli bırakılanlar:** 360 px genişlikteki telefonlarda giriş panosunun 13 sütunlu karoları 23 px (WCAG 2.5.8'in 24 px
-  asgarisinin 1 px altı; 372 px ve üstünde 24 px+); düzeltmek pano kenar boşluğunu daraltmayı gerektirir, yeniden tasarım
-  sayıldı. Gezinme kırıntısı ve alt bilgi bağlantıları 20–22 px yüksekliktedir (aralık istisnası kapsamında).
+- **Bilinçli bırakılanlar:** Gezinme kırıntısı ve alt bilgi bağlantıları 20–22 px yüksekliktedir (aralık istisnası kapsamında).
+  Giriş panosunun 360 px'te 23 px kalan karoları 24 Ekim 2026'da düzeltildi (aşağıda «Giriş panosu karoları 24 px»); 356 px'in
+  altında 13 sütun 24 px'e sığmaz, orada her karonun gittiği liste bağlantısı «eşdeğer bağlantı» sayılır.
 
 ### Testler
 
@@ -579,6 +579,112 @@ bunu notla söyler (ör. «Kitapta dokuz hadis vardır; öğrenci üçünü seç
 - `scripts/egitim-canli-denetim.mjs` bilgi maddelerini de site haritasında bekler ve bir bilgi sayfasını (liste, kaynak, çalışma
   bölümü, «Göster», CSP ve konsol temiz) ile Fransızca künyede bölünmez boşluğu denetler.
 
+## Kitap kaynaklı dua metinleri ve giriş panosu dokunma hedefi (24 Ekim 2026)
+
+Dayanak: Rıdvan'ın 24 Ekim 2026 «ezber kilimi yayını konusunda herşeyi onaylıyorum, bütün yetki ve karar sende» talimatı; iş, ana
+oturumun «metni olmayan dua maddeleri için ikinci kaynak yolu + 360 px karo boyu» görevidir. İki iş, aynı yayın.
+
+### 1. Portalda olmayan on dua için metin sayfası (Diyanet'in basılı kitaplarından)
+
+- **Neden yeni yol:** `namaz.diyanet.gov.tr` portalı yalnız namaz dualarını taşır (`scripts/ezber-dua-cek.mjs`); Kelime-i Tevhid ve Şehâdet,
+  Eûzü–Besmele, tekbir, tesmî–tahmîd, selâm, âmentü, teşrik tekbiri, telbiye ve yemek duası portalda yoktur. Bunların metni, yerelde
+  Markdown olarak duran Diyanet (DİB/DİTİB/TDV) kitaplarından alınır (`scripts/ezber-dua-kitap.mjs`, tanımlar `scripts/ezber-dua-tanim.mjs`
+  içinde `kitap` alanı). Telifli kitap metni depoya girmez: depoya yalnız maddenin kendi metni, künyesi ve iskelet özetleri girer.
+- **Kural (değişmedi, sertleştirildi): iki bağımsız Diyanet kaynağı.** Arapça birincil kaynaktan harekeli alınır; her bölümün harf iskeleti
+  (`ezber-iskelet.mjs`: hareke ve işaretler atılır, elif ve hemze atılır) en az bir ikinci Diyanet kaynağındaki iskeletle **birebir** aynı olmalıdır.
+  Fark varsa ya giderilir ya da gerekçesiyle `fark` alanına yazılır; ama gerekçeli fark tek başına doğrulama sayılmaz: her bölümü iskeleti
+  aynı çıkan bir ikinci kaynak da doğrulamalıdır. İkinci kaynağı olmayan ya da iskeleti ayrışan madde **yazılmaz** (aşağıda atlananlar).
+- **Anlam ve okunuş ezberden yazılmaz:** Türkçe anlam, Fransızca anlam ve okunuş kaynak kitaptan sözcüğü sözcüğüne alınır; tabloya yazılan her
+  dize, her çalıştırmada kaynakta (tırnak türü, `*`, dipnot imi ve sayfa yorumu farkı yok sayılarak) aynen aranır, bulunamazsa betik durur.
+  Künyedeki sayfa numarası kaynaktaki sayfa işaretinden gelir. Okunuş yalnız Diyanet kaynağında varsa yazılır (hoca onaylayana kadar sayfada hiç görünmez).
+- **Fransızca anlam:** yalnız DİTİB'in resmî Fransızca yayını (*Camiye Gidiyorum 1 – Je vais à la mosquée 1*) karşılığı olan üç maddede var
+  (Kelime-i Tevhid, Kelime-i Şehâdet, Âmentü); Temel Dinî Bilgiler'in Fransızcası resmî değil («çalışma çevirisi») olduğu için hiçbir yerde
+  kullanılmadı. Resmî Fransızcası olmayan maddede Fransızca sayfa «Le sens dans cette langue sera bientôt ajouté» der; çevirisi uydurulmadı.
+  `sayfaMeali` (`src/lib/ezber/madde-metni.ts`) FR meâl kabulüne «Je vais à la mosquée» künyesini ekledi (Chiadmi / Hamidullah önceki gibi).
+- **Hepsi `onay: null`:** metin sayfada «Diyanet kaynaklarından alınmıştır. Hoca incelemesi bekleniyor» notuyla görünür, okunuş gizlidir.
+  `--onayla` çalıştırılmadı. Hoca inceleme sayfası yenilendi (`npm run ezber:inceleme` → `docs/ezber-metin-inceleme/`, 21 dua).
+- **Ses:** hiçbir ses eklenmedi, `ses` alanı değişmedi, yeni TTS üretilmedi. Kelime-i Tevhid ve Şehâdet'in iki «Yapay ses» etiketi aynen duruyor;
+  Eûzü–Besmele'nin Diyanet âyet sesi duruyor. Diyanet kaydı olmayan yedi madde için katalogda yeni `metinli: true` işareti var
+  (`calismaSayfasiVar` bunu da sayar; şema yalnız `true` kabul eder; test işaret ⇔ metin dosyası eşleşmesini ve sesli/Kur'anlı maddede işaret
+  olmamasını sınar). Bu sayfalarda ses oynatıcısı yoktur: «Henüz dinleme kaydı yok» bölümü ve «Dinle» adımı «Yakında» durur; kartın kare kod
+  yönergesi «Çalışmak için…» (dinleme sözü verilmez).
+
+**Maddeler ve kaynakları** (Arapça birincil → harf iskeleti karşılaştırılan ikinci kaynaklar; anlam/okunuş):
+
+| Madde | Arapça (birincil) | İkinci kaynak(lar) | Anlam / okunuş / FR |
+|---|---|---|---|
+| Eûzü–Besmele (`d-euzu-besmele`) | Diyanet mushafı (`kuran.diyanet.gov.tr/mushaf`): Bakara 2/67 (15–16. kelime) + Nahl 16/98 (6–8. kelime) + Fâtiha 1/1 | Tecrid-i Sarih 8. cilt, Kitâbü'l-Edeb · TDB s. 325 · CG1 s. 20 | TR: Riyâzü's-Sâlihîn 1. cilt «Sabır» 46. hadis + CG1 s. 20; okunuş: TDV İslâm Ansiklopedisi «İstiâze», «Besmele»; FR yok |
+| Kelime-i Tevhid (`d-kelime-i-tevhid`) | TDB s. 25 | CG2 s. 6 · İslam İlmihali IV. İman «Kelime-i Tevhid» | TR+okunuş: TDB s. 25; FR: CG1 (Je vais à la mosquée 1) s. 15 |
+| Kelime-i Şehâdet (`d-kelime-i-sehadet`) | TDB s. 25–26 | CG2 s. 6 · Elif-Bâ s. 39 «Âmentü Duâsı» | TR: TDB s. 26; okunuş: TDB s. 25; FR: CG1 s. 18 |
+| Tekbir (`d-tekbir`) | Elif-Bâ s. 38 «Namaz içindeki tesbihat» | TDB s. 127 «Namaz sonrası tesbihat» | TR: Elif-Bâ s. 38; okunuş: TDB s. 127; FR yok |
+| Tesmî–Tahmîd (`d-tesmi-tahmid`) | Elif-Bâ s. 38 | Hadislerle İslam 2. cilt «İmamlık: Cemaate Kılavuz Olmak» | TR: Elif-Bâ s. 38; okunuş ve FR yok |
+| Selâm (`d-selam`) | Elif-Bâ s. 38 | Tecrid-i Sarih 2. cilt, Kitâbü'l-Ezân | TR: Elif-Bâ s. 38; okunuş ve FR yok |
+| Âmentü (`d-amentu`) | Elif-Bâ s. 39 «Âmentü Duâsı» | TDB s. 27 «Âmentü» · CG1 s. 124 | TR: Elif-Bâ s. 39; FR: CG1 s. 124; okunuş yok |
+| Teşrik tekbiri (`d-tesrik-tekbiri`) | İslam İlmihali VIII. Namaz «Teşrik Tekbirleri» | Hac İlmihali s. 238 · İslam İlmihali XII. Kurban | TR: Dinî Kavramlar Sözlüğü «Tekbir» s. 643; okunuş: İslam İlmihali VIII; FR yok |
+| Telbiye (`d-telbiye`) | Hac İlmihali s. 51 | İslam İlmihali XI. Hac «Telbiye» | TR: Hac İlmihali s. 51; okunuş: İslam İlmihali XI; FR yok |
+| Yemek duası (`d-yemek-duasi`) | Hadislerle İslam 6. cilt «Hz. Peygamber'in Yemek Âdâbı…» (Ebû Saîd el-Hudrî; Ebû Dâvûd Et'ıme 52, Tirmizî Deavât 55) | Tecrid-i Sarih 8. cilt, Kitâbü'l-Et'ime | TR: Hadislerle İslam 6; okunuş ve FR yok |
+
+(TDB = Temel Dinî Bilgiler, S. Yazıcı, DİB Yay. 301; CG1/CG2 = Camiye Gidiyorum 1/2, DİTİB; yerel arşiv `D:/ulu-camii-kuran-kursu/veri/kitaplar`,
+`D:/ihtisas`.) Her maddenin künyesi (kitap, bölüm, sayfa) `kaynak.ar` ve `meal.tr.kaynak` alanlarında ve sayfada görünür.
+
+**Atlananlar (5) ve gerekçeleri** (kural: ikinci kaynakta iskelet eşit değilse ya da ikinci kaynak yoksa yazılmaz):
+
+- **Kadir gecesi duası (`d-kadir-gecesi-duasi`):** ilmihaldeki metin «كَرِيمٌ» sözcüğünü taşıyor; Tecrid-i Sarih 5. cilt ve İbn Mâce'deki rivayette bu sözcük
+  yok → harf iskeletleri ayrışıyor. İki Diyanet yayınından hangisinin metninin esas alınacağı kaynak/hoca kararıdır; tahminle seçilmedi.
+- **Tesbihat (`d-tesbihat`):** namaz sonrası tesbihatın Elif-Bâ'daki kısa dizisi için bağımsız ikinci bir Diyanet metni doğrulanamadı.
+- **Abdest, namaz ve oruç niyeti (`d-abdest-niyeti`, `d-namaz-niyeti`, `d-oruc-niyeti`):** yerel Diyanet arşivinde Arapça yazılı niyet metni
+  bulunamadı. Arapça uydurulmadı.
+
+**Dikkat edilecekler (hoca onayı için):**
+
+- `d-tesrik-tekbiri` Türkçe anlamı kaynakta «…her türlü övgü Allah' içindir» diye basılmıştır (Dinî Kavramlar Sözlüğü s. 643; olası yazım kusuru).
+  Aynen alındı; onay öncesi karar hocanındır (inceleme sayfasında not var).
+- `d-euzu-besmele` Arapçası tek bir yerde bu sırayla geçmez: Diyanet mushafından üç âyetten sözcük sözcük birleştirildi (kaynak satırında âyet ve
+  kelime numaraları yazılı); harf iskeleti üç ayrı Diyanet kitabıyla birebir.
+- `d-yemek-duasi` Arapçası Hadislerle İslam'daki rivayetten alındı: «الَّذِى» yazımı Diyanet'in yazımıdır (kaynak yazımı korundu).
+- Motor düzeltmesi (yazım sırasında bulundu): kelime sonundaki elif iskelette atıldığı için bir aralığın son sözcüğü «دَرْسًا» gibi biterken elifini
+  kaybediyordu; aralık artık bitişik harf ve işaretleri de alır (`arapcaAralik`). Gerçek on madde bu düzeltmeden etkilenmedi (dosyalar karşılaştırıldı).
+
+**Dosyalar:** `scripts/ezber-dua-kitap.mjs` (yeni motor), `scripts/ezber-dua-tanim.mjs` (10 `kitap` tanımı), `scripts/ezber-dua-cek.mjs`,
+`scripts/ezber-dua-iskelet.mjs` (ikinci kaynak fixtürü, önceki dualar dâhil toplam 28 kayıt), `scripts/ezber-metin-cek.mjs` (`--yalniz-ayet`), `scripts/ezber-inceleme.mjs`,
+`scripts/ezber-seviye-tablosu.mjs`, `scripts/egitim-canli-denetim.mjs`, `src/data/ezber/metin/d-{…}.json` (10), `src/data/ezber/katalog.json` ve
+`katalog.schema.json` (`metinli`), `src/lib/ezber/katalog.ts`, `src/lib/ezber/madde-metni.ts`, `egitim/src/i18n/madde.ts`, `egitim/src/i18n/kart.ts`,
+`egitim/src/pages/[dil]/calis/[id].astro`, `tests/fixtures/ezber-dua-ikinci-kaynak.json`.
+**Testler:** yeni `tests/ezber-dua-kitap.test.mjs` (17 test; sentetik, dinî içeriği olmayan kaynaklarla: baştaki hemze, kelime ortasından kesme,
+sayfa aralığı, sözcüğü sözcüğüne doğrulama, ikinci kaynak yokluğu/ayrışması); `tests/ezber-madde-metni.test.mjs` (kitap duasında Diyanet adresi, her bölüm
+iskeleti eşit ikinci kaynakla doğrulanmış, FR yalnız resmî Fransızca), `tests/ezber-katalog.test.mjs` (`metinli`), `tests/egitim/calisma.spec.mjs`,
+`tests/egitim/barindirma.test.mjs` (yeni sayfalar CSP denetiminde).
+**Basılı kart:** otomatik; yazdırma düğmesi Arapça metni olan her sayfada çıkar. 10 madde × 5 dil = 50 kart üretildi, `ezber-kart-dogrula.py` 50 PDF,
+hatalı 0 (piksel görsel yok, yazı tipleri gömülü, kare kod kanonik adrese gidiyor). Önceki «Arapça metni olmayan maddede kart yok» notu bu on madde için
+geçersizdir (kartı olmayan maddeler artık bilgi maddeleri ve yukarıdaki beş atlanan duadır). 324 PDF'lik yerel paket yeniden üretilmedi.
+
+### 2. Giriş panosu karoları 24 px (WCAG 2.5.8)
+
+- **Bulgu:** sayfa kenar boşluğu 1 rem iken 13 sütunlu panonun karoları 360 px'te 22,9 px (372 px'ten itibaren 24 px+) idi.
+- **Çözüm** (`egitim/src/styles/cini.css`, `@media (max-width: 29.99rem)`): dar ekranda pano kenar boşluğunun yarısına (0,5 rem) kadar yayılır;
+  karo = (içerik genişliği + 1 rem − 28 px) / 13 → 360 px'te 24,3 · 375 px'te 25,5 · 390 px'te 26,6 · 412 px'te 28,3 px. İçerik genişliği `100vw`
+  değil kapsayıcı birimiyle (`cqw`, `.giris .icerik` kapsayıcı) alınır: kaydırma çubuklu dar masaüstü penceresinde `100vw` sayfayı yatay
+  taşırırdı; `cqw` yoksa önceki ölçü geçerli kalır (`@supports`). Geniş ekranda görünüm değişmedi.
+- **Sınır:** 356 px'in altında 13 sütun 24 px'e sığmaz (320 px'te 21 px); her karo alttaki listedeki bir maddeye gider (WCAG 2.5.8 «eşdeğer
+  bağlantı» istisnası).
+- **Test:** yeni `tests/egitim/pano-hedef.spec.mjs`: 360/375/390/412 px × beş dilde her madde karosu ≥ 24 × 24 px, pano görünümde, yatay taşma yok;
+  320 px'te taşma yok ve her karo bir liste maddesine gider. Kural gerçekten sınıyor: eski CSS ile 360 px sınaması 22,92 ile **düşüyor**, yeni
+  CSS ile geçiyor. `yeniden-akis.spec.mjs` (320/360/390, beş dil) geçti. Daha önceki «bilinçli bırakılanlar» notu güncellendi.
+
+### Doğrulama ve yayın (25 Ekim 2026 00:14 CEST)
+
+- **Rebase:** bilgi oturumunun `17f91411` + `a63c02bd` commit'lerinin üzerine; `package.json` (`test:ezber`), `egitim-canli-denetim.mjs`, `katalog.ts`,
+  `barindirma.test.mjs`, `calisma.spec.mjs` çakışmaları iki taraf korunarak çözüldü; sayfa koşulu artık `ses || kuran || bilgiMetni || metinli`.
+- **Kapılar (rebase sonrası):** `check` 0 hata / 0 uyarı (463 dosya); `test:ezber` 159/159; ana site 1952 sayfa; `egitim:build` 387 sayfa, 0 hata; `test:egitim`
+  15/15 birim + **347 geçti / 13 atlama / 0 başarısız**; `test:kurallar` 54, `test:veli-eposta` 58, `test:oto-kaydet` 14, `test:ogrenme` 13. `test:web` 839 geçti /
+  120 atlama / 1 başarısız: `seviye-testi.spec.mjs:729` konfeti animasyonu, yük altında zamanlama (tek başına iki projede 12/12 geçti; rebase öncesi tam koşu 840/0).
+- **Test bakımı (gevşetme yok):** `d-euzu-besmele` artık metinli olduğu için «Arapça metni olmayan sayfada kart/kip yok» senaryoları (`kart.spec`, `kip.spec`) sayfası olan
+  ama metin dosyası olmayan maddeleri veriden hesaplar (bugün küme boş) ve Eûzü–Besmele ile Tekbir'de kart, kip ve A−/A+'nın VAR olduğunu doğrular;
+  `calisma.spec` durum satırı `.calisma-durum` ile seçilir (kip noktaları da `data-durum` taşır); `sessiz-metin.spec` A−/A+ ölçümü `expect.poll` ile bekler.
+- **Yayın:** commit `fe1ba765`; egitim Hosting 418 dosya (388 yeni); Pages run 40137688909 success; `egitim:canli` 41/41; `/tr` ve `/fr/calis/d-amentu/`, `d-tekbir/` 200.
+  Kayıt: `docs/YAYIN-KAYITLARI.md` «24 Ekim 2026 (9)».
+- **Hoca onayı bekleyen on metin:** `docs/ezber-metin-inceleme/ezber-metin-inceleme.pdf` (21 dua). Onay: `node scripts/ezber-dua-cek.mjs --onayla <id|hepsi>`, sonra `npm run egitim:yayinla`.
+
 ## Canlı durum ve bu çalışmanın sınırı
 
 - **9 Ekim 2026 09:19 (CEST) YAYINDA.** Kullanıcının 9 Ekim «Eğitim Faz 2 yayını» seçimiyle güncel `origin/main`
@@ -639,6 +745,7 @@ bunu notla söyler (ör. «Kitapta dokuz hadis vardır; öğrenci üçünü seç
 
 1. Bu bölümün yayın onayı, temiz çalışma ağacından yayın ve yayın kaydı; mevcut ana site ses adresleri değişmedi.
 2. Diyanet'ten eksik sesler ve metinlerin kaynaklı hazırlanması. Arapça harf karşılaştırması, meâl kaynakları ve hoca
-   okunuş kontrolü tamamlanmadan metinleri çalışma sayfalarına ekleme.
+   okunuş kontrolü tamamlanmadan metinleri çalışma sayfalarına ekleme. (25 Ekim 2026: portalda olmayan on dua metni kitaplardan eklendi; kalan: Kadir gecesi duası, Tesbihat,
+   üç niyet için kaynak kararı, on metnin hoca onayı, Diyanet ses kayıtları.)
 3. ~~Kademeli gizleme, sıralama/eşleştirme/eksik kelime ve cihazda ilerleme.~~ 24 Ekim 2026'da yayımlandı (2c, 2d, 2e: «Anlamla eşleştir», Adım 1 «senin sıran», basılı kart). Kalan: NL meâl ana dilli/hoca onayı (onaylanınca NL'de «Anlamla eşleştir» kendiliğinden açılır), basılı kartın fiziksel yazıcıda ve Safari/Firefox'ta denenmesi, duyuru.
 4. Faz 2'nin asıl madde içerikleri tamamlanınca duyuru; hesaplar/belgeler Faz 3, diğer bölümlerin taşınması Faz 4.
