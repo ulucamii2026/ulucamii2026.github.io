@@ -4,6 +4,27 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 25 Ekim 2026 (12) — Ezber Kilimi: Ezan için beş vakit seçimi (Diyanet kayıtları)
+
+- Zaman: commit/push 07:08:18, Pages 40168039816 başarılı (≈07:10:53), egitim Hosting yayını ≈07:16 (418 dosya), canlı
+  denetim 07:17:24, Europe/Brussels (CET). **Yayımlandı ve canlı doğrulandı.** Dayanak: Rıdvan'ın 25 Ekim «egitim.ulucamii.be
+  platformu geliştirmeye devam et… full otonom ilerle, bütün yetki ve karar sende» talimatı. Yayın sırası: önce ana site
+  (sesler ulucamii.be'den sunulur), sonra egitim.
+- Kapsam: `/<dil>/calis/d-ezan/` beş dilde vakit seçimi — Sabah · Sabâ (varsayılan, mevcut `ezan.mp3`), Öğle · Uşşak, İkindi ·
+  Rast, Akşam · Segâh, Yatsı · Hicaz. Dört yeni kayıt `public/media/ses/dualar/ezan-{ogle,ikindi,aksam,yatsi}.mp3`
+  (namaz.diyanet.gov.tr `…/audio/ezanlar/*.mp3`, işlenmeden; kaynak + sha256 `docs/dinleme-ses-kaynaklari.json`; toplam ≈8,6 MiB).
+  Katalogda `ses.secenekler` (şema + tip + test). Sabah notu: Diyanet İlmihali I, s. 267 cümlesi (TR birebir, diğer dillerde çeviri).
+  «Kendini sına», hâfız ve giriş listesi Sabah kaydıyla aynı kalır. CSP değişmedi.
+- Commit: `74e6e692`. Ayrıntı: `docs/EGITIM-FAZ2-DINLEME.md` «Ezan vakit seçimi (25 Ekim 2026)».
+- Kalite: `test:ezber` 162/162, `test:dinleme` 7/7, kök `check` 0 hata, ana site `build` 1952 sayfa, `egitim:build` 387 sayfa,
+  `test:egitim` 15/15 birim + 389 geçti / 15 bilinçli atlama / 0 hata (yeni `ezan-vakit.spec.mjs`). Görsel: TR 1440 px, FR 390 px
+  koyu, DE 320 px.
+- Canlı: dört mp3 `ulucamii.be`'de 200 ve beklenen boyutta; `egitim:canli` 41/41; canlı d-ezan sayfası dört kaydı çağırıyor.
+- Açık: dört yeni kaydı henüz insan kulağı dinlemedi (vakit–makam eşlemesi Diyanet dosya adlarından); TR dışı makam yazımları
+  (FR Ouchchak/Hijaz, EN/NL Ussak/Hijaz, DE Ussak/Hidschaz) hoca onayı bekler; İlmihal cümlesi «hayrün» derken onaylı okunuş
+  «hayrun» yazar (alıntı aynen bırakıldı).
+- Bu kayıt için belge commit'i içerik yayını değildir.
+
 ## 25 Ekim 2026 (11) — ders materyalleri: 31 Ekim ve 1 Kasım 2026 (Cumartesi, Pazar; 9. hafta)
 
 - Zaman: Release yüklemesi ≈03:33, commit/push 03:34:48, Pages derleme+dağıtım 03:34:50–03:37:02, canlı doğrulama ≈03:39,
