@@ -4,6 +4,35 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+
+## 25 Ekim 2026 (19) — egitim: «Derste bu hafta» bandı ve ezber takvimi
+
+- Zaman: commit/push 17:37:20 (`69a34e48`), ana site Pages run `40212561156` başarılı 17:39:46, egitim Hosting yayını 17:51:09,
+  canlı denetim 17:51:35, Europe/Brussels (CET). **Yayımlandı ve canlı doğrulandı.** Dayanak: Rıdvan'ın 25 Ekim «egitim.ulucamii.be
+  platformu geliştirmeye devam et… full otonom ilerle, bütün yetki ve karar sende» talimatı.
+- Kapsam:
+  - Giriş sayfasında «Derste bu hafta» bandı (beş dil): gün Brüksel saatine göre seçilir (cihaz saat diliminden bağımsız). Ders hafta
+    sonu içindeyse o hafta sonunun günleri («Bu haftanın dersleri: 24 – 26 Ekim», bugünün kartı «Bugün»), değilse sıradaki hafta sonu;
+    dönem bitince kısa not. JavaScript kapalıyken band gizli kalır, yerine takvime bağlantılı sabit paragraf görünür.
+  - `/<dil>/takvim/`: 77 ders günü, 35 hafta sonu (10 Ekim 2026 → 6 Haziran 2027), ay → hafta sonu → gün, tamamen sunucuda çizilir;
+    yazdırma düzeni A4. Her ezber kendi çalışma sayfasına bağlanır; Ettehiyyâtü/Âyetü'l-Kürsî gibi bölünen maddelerde «1. bölüm».
+  - Çalışma sayfasında «Derste: <sıradaki tarih> (yeni ezber / pekiştirme …)» satırı; takvimde hiç geçmeyen ya da geçip bitmiş maddede çizilmez.
+  - Alt bilgi ve «Kendi çalışmanız için» bloğunda takvim bağlantısı.
+  - Veri: kurs projesindeki `veri/ezber-kosesi-2026-2027.json` (sha256 `b10f62ca3ccc…`) → `scripts/ezber-ders-takvimi.mjs` →
+    `src/data/ezber/ders-takvimi-2026-2027.json` (yalnız tarih, gün, kip, madde kimlikleri; `not`, `plan_konusu`, `bireysel`, `karar`,
+    `ayarlar`, `maddeler`, `katalog`, `kose_disi` kopyalanmaz). Öteki derslerin ezberi `src/data/yillik-plan-2026-2027.json`'dan.
+    `npm run ezber:takvim` yeniden üretir, `npm run ezber:takvim:denetle` kaynak değiştiyse 1 döner (kaynak yalnız bu makinede; CI'da atlanır).
+  - Belge: `docs/EGITIM-PLATFORMU.md` «Derste bu hafta ve ezber takvimi (25 Ekim 2026)». Yeni dinî metin, okunuş ya da ses yok;
+    cihaza yazma ve yeni ağ isteği yok.
+- Kalite: kök `check` 0 hata, `test:ezber` 218/218 (22 yeni), `egitim:build` 412 sayfa, `test:egitim` 33/33 + 779 geçti / 31 bilinçli
+  atlama / 0 hata (yeni `takvim.spec.mjs` 82 test, saat `page.clock.setFixedTime` ile sabitlenerek); yayın içi tam test yine 779 geçti.
+  Testte bulunup yayından önce düzeltilenler: Felemenkçe başlık 320 px'te yatay taşıyordu, madde bağlantısı dokunma hedefi 42,5 → 44 px.
+  Canlı: `egitim:canli` **74/74**, beş dil `/takvim/` 200, canlı giriş sayfasında band, takvimde 35 hafta sonu ve son gün 6 Haziran;
+  sayfada kişi adı yok.
+- Sınırlar: kurs planı değişirse türev dosya yeniden üretilip yayımlanmadıkça site eski planı gösterir. İhlâs gibi maddelerde çalışma
+  sayfasında hem yıllık planın «Sınıf hedefi» (ör. 24 Nisan 2027) hem ezber köşesinin «Derste: 31 Ekim» tarihi görünür; ikisi farklı
+  kaynaktır (plan dersi / köşe), bilerek ikisi de gösterildi. Hoca ekranındaki bireysel dinleme sonuçları takvime girmez (öğretici verisi).
+- Bu kayıt için belge commit'i içerik yayını değildir.
 ## 25 Ekim 2026 (18) — egitim: Çevrim dışı çalışma ve ana ekrana ekleme (service worker + uygulama bildirimi)
 
 - Zaman: commit/push 16:25:42 (`7aaa1170`), ana site Pages run `40206884388` başarılı 16:28:48 (gizlilik sayfası), egitim Hosting
