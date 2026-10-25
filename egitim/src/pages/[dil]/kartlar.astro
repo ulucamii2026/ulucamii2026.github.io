@@ -1,0 +1,182 @@
+---
+/**
+ * Ezber kartları · 8'li baskı (25 Ekim 2026): çalışma sayfası olan ezberlerden seçilenler A4 kâğıda 2 × 4 kart olarak yazdırılır; ön
+ * yüzde ezberin adı ve Arapça başlığı, arka yüzde sayfaya götüren VEKTÖR kare kod. Çift taraflı (uzun kenar) baskıda arka sayfa her
+ * satırı ters çevrilmiş dizilir (src/lib/ezber/kartlar.ts). Hesap, sunucu ve ağ yok: seçim yalnız tarayıcıdaki cihaz hafızasından
+ * (çalışma kaydı) ve `?sec=` bağlantısından başlar, hiçbir şey yazılmaz. Bütün kartlar derleme anında bir havuza yazılır (kare
+ * kod `qrcode` ile vektör, Arapça yazı madde sayfasıyla aynı doğrulanmış veriden); betik seçilenleri havuzdan çoğaltıp sayfalara
+ * dizer (scripts/kartlar.ts). Yol beş dilde aynıdır (`kartlar`; `calisma-belgesi` ve `kilimim` gibi çevrilmez).
+ * CSP: satır içi betik ve stil yok; metinler `data-veri` ile gelir.
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import { dilListesi } from '@ortak/i18n/utils';
+import { KATALOG, SEVIYE_SIRASI, calismaSayfasiVar, sesSecenekleri } from '@ortak/lib/ezber/katalog';
+import { SERIT_MOTIFI } from '@ortak/lib/ezber/kilim';
+import { arapcaKartYazisi, kartKodu } from '@ortak/lib/ezber/kartlar';
+import Ikon from '../../components/Ikon.astro';
+import { kartlarMetinleri } from '../../i18n/kartlar';
+import { ilkHarfBuyuk, metin } from '../../i18n/metinler';
+import Taban from '../../layouts/Taban.astro';
+import { maddeKareKodu } from '../../lib/kare-kod';
+import { kursAdi } from '../../lib/kimlik';
+import { MADDE_METINLERI } from '../../lib/madde-metinleri';
+import '../../styles/kartlar.css';
+
+export function getStaticPaths() {
+  return dilListesi.map((dil) => ({ params: { dil } }));
+}
+
+const dil = Astro.params.dil as Dil;
+const k = kartlarMetinleri(dil);
+const m = metin(dil);
+const ogeler = KATALOG.ogeler.filter(calismaSayfasiVar);
+
+// Şerit etiketi: 1–7 «1. şerit», Amme ve kenar suyu kendi adlarıyla. Açıklama şeridin amacından ayrı tutulur (liste başlığı).
+const seritKisa = (sv: (typeof SEVIYE_SIRASI)[number]) =>
+  typeof sv === 'number' && sv <= 7 ? ilkHarfBuyuk(m.seritAdi(sv), dil) : KATALOG.seviyeler.find((s) => s.kimlik === sv)!.ad[dil];
+const gruplar = SEVIYE_SIRASI.map((sv) => ({
+  sv,
+  kisa: seritKisa(sv),
+  baslik: typeof sv === 'number' && sv <= 7 ? `${seritKisa(sv)} · ${KATALOG.seviyeler.find((s) => s.kimlik === sv)!.ad[dil]}` : seritKisa(sv),
+  ogeler: ogeler.filter((o) => o.seviye === sv).sort((a, b) => a.sira - b.sira),
+})).filter((g) => g.ogeler.length > 0);
+
+// Her kart: ön yüz verisi (Arapça başlık yalnız madde metnindeki doğrulanmış yazıdan) ve arka yüzün vektör kare kodu.
+const kartlar = gruplar.flatMap((g) => g.ogeler.map((oge) => {
+  const adres = new URL(`/${dil}/calis/${oge.id}/`, Astro.site).toString();
+  const sesli = Boolean(oge.ses?.tam || oge.ses?.parcalar?.length || sesSecenekleri(oge).length);
+  return {
+    oge,
+    kod: kartKodu(oge.seviye, oge.sira),
+    seritEtiketi: g.kisa,
+    ar: arapcaKartYazisi(MADDE_METINLERI.get(oge.id), oge.id, oge.tur),
+    adres,
+    gosterAdres: adres.replace('https://', ''),
+    sesli,
+    kare: maddeKareKodu(adres),
+  };
+}));
+
+const veri = {
+  dil,
+  sira: kartlar.map((x) => x.oge.id),
+  m: {
+    yonergeKayitli: k.yonergeKayitli, yonergeKayitsiz: k.yonergeKayitsiz, sayac: k.sayac, ozet: k.ozet, sayfaOn: k.sayfaOn, sayfaArka: k.sayfaArka,
+  },
+};
+---
+<Taban dil={dil} baslik={k.baslik} aciklama={k.aciklama} yol="kartlar">
+  <div class="kk-sayfa-kok">
+    <section class="kk-giris" aria-labelledby="kk-baslik">
+      <div class="icerik">
+        <div class="kk-giris-metin">
+          <h1 id="kk-baslik">{k.baslik}</h1>
+          <p class="kk-lead">{k.lead}</p>
+          <p class="kk-gizlilik">{k.gizlilik}</p>
+          <noscript><p class="kk-js">{k.jsGerek}</p></noscript>
+        </div>
+      </div>
+    </section>
+
+    <section class="kk-alan" data-kartlar data-veri={JSON.stringify(veri)} aria-label={k.baslik} hidden>
+      <div class="icerik">
+        <div class="kk-duzen">
+          <div class="kk-panel">
+            <fieldset class="kk-secim">
+              <legend>{k.secimBaslik}</legend>
+              <p class="kk-ipucu" data-kk-yonerge></p>
+              <div class="kk-araclar">
+                <button type="button" data-kk-tumu>{k.tumu}</button>
+                <button type="button" data-kk-hicbiri>{k.hicbiri}</button>
+              </div>
+              <div class="kk-gruplar">
+                {gruplar.map((g) => (
+                  <fieldset class="kk-grup" data-kk-grup={String(g.sv)}>
+                    <legend>{g.baslik}</legend>
+                    <label class="kk-grup-sec"><input type="checkbox" data-kk-grup-kutu /> <span>{k.seritTumu.replace('{s}', g.kisa)}</span></label>
+                    <ul>
+                      {g.ogeler.map((o) => {
+                        const x = kartlar.find((c) => c.oge.id === o.id)!;
+                        return (
+                          <li>
+                            <label>
+                              <input type="checkbox" value={o.id} data-kk-kutu />
+                              <span class="ad">{o.ad[dil]}</span>
+                              <span class="kod">{x.kod}</span>
+                            </label>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </fieldset>
+                ))}
+              </div>
+              <p class="kk-sayac" data-kk-sayac role="status"></p>
+            </fieldset>
+          </div>
+
+          <div class="kk-yan">
+            <fieldset class="kk-yuzler">
+              <legend>{k.yuzBaslik}</legend>
+              <label><input type="radio" name="yuz" value="cift" checked data-kk-yuz /> <span>{k.yuzCift}</span></label>
+              <label><input type="radio" name="yuz" value="on" data-kk-yuz /> <span>{k.yuzOn}</span></label>
+              <label><input type="radio" name="yuz" value="arka" data-kk-yuz /> <span>{k.yuzArka}</span></label>
+            </fieldset>
+            <div class="kk-eylem">
+              <button type="button" class="dugme birincil" data-kk-yazdir><Ikon ad="yazici" /> {k.yazdir}</button>
+              <p class="kk-seciliyok" data-kk-seciliyok role="status" hidden>{k.seciliYok}</p>
+              <p class="kk-ozet" data-kk-ozet role="status"></p>
+            </div>
+            <section class="kk-yardim" aria-labelledby="kk-yardim-baslik">
+              <h2 id="kk-yardim-baslik">{k.yardimBaslik}</h2>
+              <ol>{k.yardim.map((s) => <li>{s}</li>)}</ol>
+            </section>
+          </div>
+        </div>
+
+        <section class="kk-onizleme" aria-labelledby="kk-onizleme-baslik">
+          <h2 id="kk-onizleme-baslik">{k.onizleme}</h2>
+          <div class="kk-sayfalar" data-kk-sayfalar aria-hidden="true"></div>
+        </section>
+
+        <!-- Kart havuzu: bütün kartların ön ve arka yüzü; betik seçilenleri çoğaltıp sayfalara dizer. -->
+        <div class="kk-havuz" data-kk-havuz hidden>
+          {kartlar.map((c) => (
+            <>
+              <div class="kk-kart kk-on" data-id={c.oge.id} data-yuz="on">
+                <div class="kk-ust">
+                  <span class="kk-madalyon"><svg viewBox="0 0 120 120" focusable="false"><use href={`#mt-${SERIT_MOTIFI[c.oge.seviye]}`} /></svg></span>
+                  <span class="kk-etiket">{c.seritEtiketi}<br /><b>{m.tur[c.oge.tur]}</b></span>
+                  <span class="kk-kod">{c.kod}</span>
+                </div>
+                <div class="kk-orta">
+                  <p class="kk-ad">{c.oge.ad[dil]}</p>
+                  {c.ar && <p class="kk-ar" lang="ar" dir="rtl">{c.ar.metin}{c.ar.kesik && <span class="kk-kesik" lang="und">{' …'}</span>}</p>}
+                </div>
+                <div class="kk-alt">
+                  <img class="kk-logo" src="/logo/kuran-kursu-yatay.svg" alt="" width="1640" height="400" />
+                  <span class="kk-kurum">{kursAdi(dil)}</span>
+                </div>
+              </div>
+              <div class="kk-kart kk-arka" data-id={c.oge.id} data-yuz="arka">
+                <div class="kk-ust">
+                  <span class="kk-kod">{c.kod}</span>
+                  <span class="kk-etiket kk-sag">{c.seritEtiketi} · <b>{m.tur[c.oge.tur]}</b></span>
+                </div>
+                <div class="kk-kare" set:html={c.kare} />
+                <p class="kk-okut">{c.sesli ? k.okut : k.okutSessiz}</p>
+                <p class="kk-ad kk-ad-kucuk">{c.oge.ad[dil]}</p>
+                <p class="kk-adres">{c.gosterAdres}</p>
+              </div>
+            </>
+          ))}
+        </div>
+      </div>
+    </section>
+  </div>
+</Taban>
+
+<script>
+  import '../../scripts/dil';
+  import '../../scripts/kartlar';
+</script>

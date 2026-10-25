@@ -133,4 +133,7 @@ test('Diyanet insan sesi dua kesitleri (25 Ekim 2026): kaynak, kesim aralığı,
     assert.equal(r.arsivKopyasi,'https://web.archive.org/web/20250508id_/'+r.kaynak,ad);
     assert.match(r.not,/Internet Archive/,ad);
   }
+  // 25 Eki 2026: yenilenen sitede Telbiye aynı baytla duruyor (özet eşleşti); Tekbir yeni sayfada yok.
+  assert.match(kaynaklar['/media/ses/dualar/telbiye.mp3'].resmiGuncelAdres,/^https:\/\/hacumreegitim\.hac\.gov\.tr\/uploads\/prayers\//);
+  assert.equal(kaynaklar['/media/ses/dualar/tesrik-tekbiri.mp3'].resmiGuncelAdres,undefined);
 });

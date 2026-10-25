@@ -1,0 +1,40 @@
+---
+/**
+ * «Kendi çalışmanız için» (25 Ekim 2026): giriş sayfasında, ana içeriğin (şeritler ve örnek kilim) altında küçük bir bağlantı sırası.
+ * Üç araç da bu cihazdaki çalışma kaydından hazırlanır; hiçbiri veri göndermez: Kilimim, Çalışma Belgesi ve ezber kartları.
+ * Büyük başlık ya da hero değil, üç sade karo (Çini Panosu'nun derz çizgili karo dili).
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import { belgeMetinleri } from '../i18n/belge';
+import { kartlarMetinleri } from '../i18n/kartlar';
+import { kilimimMetinleri } from '../i18n/kilimim';
+import Ikon from './Ikon.astro';
+
+interface Props { dil: Dil }
+const { dil } = Astro.props;
+const k = kartlarMetinleri(dil);
+const araclar = [
+  { yol: 'kilimim', ikon: 'kilim', ad: kilimimMetinleri(dil).baglanti, ac: k.kilimimAciklama },
+  { yol: 'calisma-belgesi', ikon: 'belge', ad: belgeMetinleri(dil).baglanti, ac: k.belgeAciklama },
+  { yol: 'kartlar', ikon: 'kart', ad: k.kartlarAd, ac: k.kartlarAciklama },
+] as const;
+---
+<section class="bolum araclar" aria-labelledby="araclar-baslik" data-araclar>
+  <div class="icerik">
+    <div class="araclar-bas">
+      <h2 id="araclar-baslik">{k.araclarBaslik}</h2>
+      <p>{k.araclarGiris}</p>
+    </div>
+    <ul class="araclar-liste">
+      {araclar.map((a) => (
+        <li>
+          <a class="arac" href={`/${dil}/${a.yol}/`}>
+            <span class="arac-ikon"><Ikon ad={a.ikon} /></span>
+            <span class="arac-ad">{a.ad}</span>
+            <span class="arac-ac">{a.ac}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

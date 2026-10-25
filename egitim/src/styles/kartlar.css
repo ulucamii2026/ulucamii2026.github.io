@@ -1,0 +1,115 @@
+/* Ezber kartları · 8'li baskı (25 Ekim 2026). Ekranda: açıklama, ezber seçimi, yüz seçimi, yardım ve A4 sayfa önizlemeleri. Yazdırmada yalnız
+   sayfalar kalır (ön 1, arka 1, ön 2, arka 2 …). Sayfa (`.kk-sayfa`) bir A4'ün birebir küçültülmüşüdür: bütün ölçüler `em`, 1 em = 4 mm
+   (Çalışma Belgesi ile aynı yöntem); ekranda `font-size` kâğıdın genişliğinden (kapsayıcı birimi `cqw`) türer, yazdırmada 4 mm sabittir.
+   ÖLÇÜLER (ev yazıcısı için): sayfa kenarı ile kart ızgarası arasında sol/sağ 12 mm, üst/alt 18 mm boşluk (yazıcının basamadığı ≤ 5 mm
+   bandın çok içinde); kart 93 × 65 mm (2 × 4 = 8 kart, ızgara 186 × 260 mm). Izgara ve kenar boşlukları SİMETRİKTİR: uzun kenardan
+   çevrilen kâğıtta ön ve arka kesim çizgileri üst üste gelir. Kesim çizgileri ince kesik çizgidir. Piksel yok: kare kod, motif ve logo vektör. */
+
+/* ——— Ekran: sayfa ——— */
+.kk-sayfa-kok { padding-block: 2rem 4rem; }
+.kk-giris-metin { display: grid; gap: 0.9rem; max-width: 46rem; }
+.kk-giris-metin h1 { font-size: clamp(2rem, 1.4rem + 2.2vw, 3rem); letter-spacing: -0.02em; line-height: 1.08; }
+.kk-lead { font-size: 1.12rem; line-height: 1.5; }
+.kk-gizlilik, .kk-js { color: var(--kontur-2); font-size: 0.95rem; max-width: 42em; }
+.kk-js { color: var(--kontur); font-weight: 650; }
+
+.kk-alan { padding-top: 2rem; }
+.kk-alan[hidden] { display: none; }
+.kk-duzen { display: grid; gap: 2rem; }
+@media (min-width: 64rem) { .kk-duzen { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: start; gap: 3rem; } }
+.kk-panel, .kk-yan { display: grid; gap: 1.4rem; align-content: start; min-width: 0; }
+
+.kk-secim, .kk-yuzler { margin: 0; padding: 0; border: 0; min-width: 0; display: grid; gap: 0.7rem; }
+.kk-secim > legend, .kk-yuzler > legend { padding: 0; font-weight: 750; font-size: 1.15rem; }
+.kk-ipucu { color: var(--kontur-2); font-size: 0.95rem; }
+.kk-araclar { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.kk-araclar button { min-height: 2.75rem; padding: 0.3rem 1.1rem; border: 1px solid var(--kontur); border-radius: var(--r); background: var(--karo); font-weight: 650; cursor: pointer; }
+.kk-araclar button:hover { background: var(--yesil-soluk); }
+.kk-gruplar { display: grid; gap: 0.9rem; max-height: 34rem; overflow: auto; padding: 0.2rem; border: 2px solid var(--derz); border-radius: var(--r); background: var(--karo); }
+.kk-grup { margin: 0; padding: 0.4rem 0.9rem 0.6rem; border: 0; border-bottom: 1px solid var(--derz); min-width: 0; }
+.kk-grup:last-child { border-bottom: 0; }
+.kk-grup > legend { padding: 0; font-weight: 750; font-size: 1rem; color: var(--kontur); }
+.kk-grup-sec { display: flex; align-items: center; gap: 0.6rem; min-height: 2.75rem; font-weight: 650; color: var(--yesil-bag); cursor: pointer; }
+.kk-grup ul { list-style: none; margin: 0; padding: 0; display: grid; }
+.kk-grup li + li { border-top: 1px solid var(--derz); }
+.kk-grup li label { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 0.1rem 0.8rem; align-items: center; min-height: 2.75rem; padding: 0.3rem 0.2rem; cursor: pointer; }
+.kk-grup li label:hover { background: var(--yesil-soluk); }
+.kk-grup input[type="checkbox"], .kk-yuzler input[type="radio"] { width: 1.4rem; height: 1.4rem; margin: 0; accent-color: var(--yesil-bag); }
+.kk-grup .ad { font-weight: 650; overflow-wrap: anywhere; }
+.kk-grup .kod { color: var(--kontur-2); font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+.kk-sayac { color: var(--kontur-2); font-weight: 650; }
+
+.kk-yuzler label { display: flex; align-items: center; gap: 0.7rem; min-height: 2.75rem; cursor: pointer; }
+.kk-eylem { display: grid; gap: 0.6rem; justify-items: start; }
+.kk-eylem .dugme[disabled] { opacity: 0.55; cursor: not-allowed; }
+.kk-seciliyok { font-weight: 650; }
+.kk-ozet { color: var(--kontur-2); font-weight: 650; font-variant-numeric: tabular-nums; }
+.kk-yardim { display: grid; gap: 0.6rem; padding: 1rem 1.2rem; border: 2px solid var(--derz); border-radius: var(--r); background: var(--karo); }
+.kk-yardim h2 { font-size: 1.15rem; }
+.kk-yardim ol { margin: 0; padding-left: 1.3rem; display: grid; gap: 0.5rem; color: var(--kontur); font-size: 0.95rem; line-height: 1.5; }
+
+.kk-onizleme { padding-top: 2.5rem; min-width: 0; }
+.kk-onizleme > h2 { font-size: 1.25rem; margin-bottom: 1rem; }
+.kk-sayfalar { display: grid; gap: 1.6rem; grid-template-columns: minmax(0, 1fr); align-items: start; }
+@media (min-width: 48rem) { .kk-sayfalar { grid-template-columns: repeat(2, minmax(0, 30rem)); } }
+.kk-sayfa-kutu { container-type: inline-size; min-width: 0; display: grid; gap: 0.4rem; }
+.kk-sayfa-etiket { font-size: 0.9rem; font-weight: 650; color: var(--kontur-2); }
+
+/* ——— Sayfa: A4, 2 × 4 kart ——— */
+.kk-sayfa {
+  /* Kâğıt jetonları sabit: sayfa koyu temada da beyazdır. */
+  --kontur: #0E2217; --kontur-2: #3F5246; --derz-koyu: #B5C5B9; --karo: #fff; --yesil: #134420; --yesil-bag: #1D5E33;
+  --motif: color-mix(in oklab, #1D5E33 58%, #fff); --kesim: #7B8780;
+  box-sizing: border-box; width: 52.5em; height: 74em; font-size: min(4mm, calc(100cqw / 52.5));
+  display: grid; grid-template-columns: repeat(2, 23.25em); grid-template-rows: repeat(4, 16.25em); justify-content: center; align-content: center;
+  background: #fff; color: var(--kontur); font-family: var(--font); line-height: 1.3; border: 1px solid var(--derz-koyu);
+}
+/* Kesim çizgileri: her hücrenin üst ve sol kenarı, ızgaranın sağ ve alt kenarı (çift çizgi olmasın). */
+.kk-hucre { box-sizing: border-box; min-width: 0; border-top: 0.3pt dashed var(--kesim); border-left: 0.3pt dashed var(--kesim); overflow: hidden; }
+.kk-hucre:nth-child(2n) { border-right: 0.3pt dashed var(--kesim); }
+.kk-hucre:nth-child(n+7) { border-bottom: 0.3pt dashed var(--kesim); }
+
+.kk-kart { box-sizing: border-box; width: 100%; height: 100%; padding: 1em 1.1em; display: flex; flex-direction: column; overflow: hidden; }
+.kk-ust { display: flex; align-items: center; gap: 0.7em; }
+.kk-madalyon { position: relative; flex: none; display: grid; place-items: center; width: 2.5em; aspect-ratio: 1; border: 0.5pt solid var(--derz-koyu); border-radius: 0.25em; background: #fff; color: var(--motif); }
+.kk-madalyon svg { width: 72%; height: 72%; fill: currentColor; stroke: var(--kontur); stroke-width: 2.5; stroke-linejoin: round; }
+.kk-etiket { font-size: 0.72em; line-height: 1.3; font-weight: 650; color: var(--kontur-2); min-width: 0; }
+.kk-etiket b { color: var(--kontur); font-weight: 750; letter-spacing: 0.04em; text-transform: uppercase; }
+.kk-kod { margin-left: auto; padding: 0.1em 0.5em; border: 0.5pt solid var(--kontur-2); border-radius: 0.3em; font-size: 0.78em; font-weight: 750; font-variant-numeric: tabular-nums; letter-spacing: 0.04em; color: var(--kontur); white-space: nowrap; }
+
+/* Ön yüz */
+.kk-on .kk-orta { flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 0.35em; text-align: center; }
+.kk-ad { font-size: 1.4em; font-weight: 800; line-height: 1.12; letter-spacing: -0.01em; color: var(--yesil); text-wrap: balance; overflow-wrap: anywhere; }
+.kk-ar { font-size: 1.9em; line-height: 1.6; color: var(--kontur); }
+.kk-kesik { font-family: var(--font); font-size: 0.7em; color: var(--kontur-2); }
+.kk-alt { display: flex; align-items: center; justify-content: space-between; gap: 0.6em; padding-top: 0.45em; border-top: 0.5pt solid var(--derz-koyu); font-size: 0.75em; color: var(--kontur-2); }
+/* Logonun yalnız mührü (sol 400 birim; yazısı yanda metin olarak basılır): 1640 × 400 tuvalde object-fit kırpar, vektör kalır. */
+.kk-logo { height: 2.3em; width: 2.3em; object-fit: cover; object-position: 0 50%; flex: none; }
+.kk-kurum { font-weight: 700; letter-spacing: 0.02em; text-align: right; min-width: 0; }
+
+/* Arka yüz */
+.kk-arka { align-items: center; gap: 0.25em; }
+.kk-arka .kk-ust { width: 100%; justify-content: space-between; }
+.kk-arka .kk-kod { margin-left: 0; }
+.kk-sag { text-align: right; }
+.kk-kare { flex: none; margin-top: 0.1em; }
+.kk-kare svg { width: 7.7em; height: 7.7em; }
+.kk-okut { font-size: 1.02em; font-weight: 750; line-height: 1.2; text-align: center; color: var(--yesil); }
+.kk-ad-kucuk { font-size: 0.86em; font-weight: 700; text-align: center; color: var(--kontur); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.kk-adres { font-size: 0.6em; line-height: 1.25; text-align: center; color: var(--kontur-2); overflow-wrap: anywhere; }
+
+/* Koyu tema: sayfa jetonları sabit olduğu için kâğıt değişmez; yalnız önizleme çerçevesi sayfanın kenarlığını izler. */
+
+/* ——— Yazdırma: yalnız sayfalar; her sayfa bir kâğıt ——— */
+@media print {
+  @page { size: A4 portrait; margin: 0; }
+  :root, :root[data-theme="dark"], :root:not([data-theme="light"]) { color-scheme: light; }
+  html { background: #fff; color: #000; font-size: 11.5pt; }
+  body { display: block; min-height: 0; background: #fff; }
+  main { display: block; }
+  .ust, .alt, .bordur, .kk-giris, .kk-panel, .kk-yan, .kk-onizleme > h2, .kk-sayfa-etiket, .kk-havuz, noscript, a.gorunmez { display: none !important; }
+  .kk-sayfa-kok, .kk-alan, .kk-alan .icerik, .kk-duzen, .kk-onizleme, .kk-sayfalar { display: block; width: 100%; max-width: none; margin: 0; padding: 0; }
+  .kk-sayfa-kutu { display: block; container-type: normal; break-after: page; break-inside: avoid; }
+  .kk-sayfa-kutu:last-child { break-after: auto; }
+  .kk-sayfa { font-size: 4mm; width: 210mm; height: 296mm; border: 0; margin: 0; }
+}

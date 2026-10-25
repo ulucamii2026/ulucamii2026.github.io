@@ -61,11 +61,25 @@ a.km-madde-ad:hover { text-decoration-color: currentColor; }
 }
 .ezber-kilim.kl-kendi .kl-tarama { fill: none; stroke: var(--kl-kendi); stroke-width: 6.5; }
 :where(.ezber-kilim, .kilim-lejant, .km-isaret) .kl-m { fill: none; stroke: none; stroke-linejoin: miter; }
-:where(.ezber-kilim, .kilim-lejant, .km-isaret) .kl-k0 { stroke: var(--kl-cozgu, var(--derz-koyu)); stroke-width: 5; stroke-dasharray: 7 9; }
+:where(.ezber-kilim, .kilim-lejant, .km-isaret) .kl-k0 { stroke: var(--kl-kendi-k0, var(--kl-cozgu, var(--derz-koyu))); stroke-width: 5; stroke-dasharray: 7 9; }
 :where(.ezber-kilim, .kilim-lejant, .km-isaret) .kl-k1 { stroke: var(--kl-kendi-2); stroke-width: 8; stroke-dasharray: 1 10; stroke-linecap: round; }
 :where(.ezber-kilim, .kilim-lejant, .km-isaret) .kl-k2 { fill: url(#kl-tarama-1); stroke: var(--kl-kendi-2); stroke-width: 6; }
 :where(.ezber-kilim, .kilim-lejant, .km-isaret) .kl-k3 { fill: url(#kl-tarama-2); stroke: var(--kl-kendi); stroke-width: 9; }
 .km-isaret { --kl-cozgu: var(--derz-koyu); }
+/* Koyu tema (25 Ekim 2026): «çalışılmadı» çizgisi (`.kl-k0`, çözgü rengi) derz rengindeydi (#2D463A), kilim zemininde (#0F1D16) 1,6:1 ile neredeyse
+   görünmüyordu. Yalnız KENDİ kipinde (ezber-kilim.kl-kendi, lejant ve metin karşılığındaki işaretler) ikincil mürekkebe yaklaştırılır:
+   kontur-2'nin %60'ı + zemin ≥ 3:1 (WCAG 1.4.11). Dört doku ayrı kalır: çalışılmadı çizgili, başladım noktalı (kl-k1), kalanlar dolu.
+   Öğretmenin kilimi (cini.css `.ezber-kilim`, `.basamaklar`) değişmez. Yalnız ekranda: yazdırma açık kâğıt jetonlarıyla çizilir. */
+@media screen and (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .ezber-kilim.kl-kendi, :root:not([data-theme="light"]) .kilim-lejant-kendi, :root:not([data-theme="light"]) .km-isaret {
+    --kl-kendi-k0: color-mix(in oklab, var(--kontur-2) 60%, var(--karo));
+  }
+}
+@media screen {
+  :root[data-theme="dark"] .ezber-kilim.kl-kendi, :root[data-theme="dark"] .kilim-lejant-kendi, :root[data-theme="dark"] .km-isaret {
+    --kl-kendi-k0: color-mix(in oklab, var(--kontur-2) 60%, var(--karo));
+  }
+}
 .kl-kendi g.kl-oge[data-href] { cursor: pointer; }
 .kl-kendi .kl-hedef { fill: transparent; stroke: none; }   /* boş motif içi de tıklanır (use yalnız boyalı pikselde yakalar) */
 .kl-kendi g.kl-oge[data-href]:hover .kl-m { filter: drop-shadow(0 0 1.5px var(--kontur)); }

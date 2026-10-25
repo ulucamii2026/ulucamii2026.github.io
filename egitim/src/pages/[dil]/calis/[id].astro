@@ -27,6 +27,7 @@ import { DURUSLAR, maddeMetinleri, namazda } from '../../../i18n/madde';
 import { kipMetinleri } from '../../../i18n/kip';
 import { sinaMetinleri } from '../../../i18n/sina';
 import { kartMetinleri } from '../../../i18n/kart';
+import { kartlarMetinleri } from '../../../i18n/kartlar';
 import { belgeMetinleri } from '../../../i18n/belge';
 import { kilimimMetinleri } from '../../../i18n/kilimim';
 import { bilgiYazilari } from '../../../i18n/bilgi';
@@ -219,6 +220,7 @@ const sonraki = serit[sira + 1];
                 )}
                 {okunus && <button class="secim" type="button" aria-pressed="false" data-okunus-dugme hidden><Ikon ad="goz" />{mm.okunusGoster}</button>}
                 <button class="secim" type="button" data-yazdir hidden><Ikon ad="yazici" />{k.yazdir}</button>
+                <a class="secim secim-bag" href={`/${dil}/kartlar/?sec=${oge.id}`} data-kartlar-bag><Ikon ad="kart" />{kartlarMetinleri(dil).cokluBas}</a>
               </div>
             </div>
             {!meal && <p class="meal-yok">{dua ? mm.anlamYok : mm.mealYok}</p>}
@@ -285,7 +287,7 @@ const sonraki = serit[sira + 1];
           )}
         </section>
         )}
-        <p class="belge-bag"><a href={`/${dil}/calisma-belgesi/`}>{belgeMetinleri(dil).baglanti}</a> · <a href={`/${dil}/kilimim/`}>{kilimimMetinleri(dil).baglanti}</a></p>
+        <p class="belge-bag"><a href={`/${dil}/calisma-belgesi/`}>{belgeMetinleri(dil).baglanti}</a> · <a href={`/${dil}/kilimim/`}>{kilimimMetinleri(dil).baglanti}</a> · <a href={`/${dil}/kartlar/`}>{kartlarMetinleri(dil).baglanti}</a></p>
       </div>
 
       <div class="yan-panel yan-alt">

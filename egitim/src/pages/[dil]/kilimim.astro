@@ -17,6 +17,7 @@ import { veliSeritleri } from '@ortak/lib/ezber/veli';
 import BelgeCercevesi from '../../components/BelgeCercevesi.astro';
 import Ikon from '../../components/Ikon.astro';
 import { belgeMetinleri } from '../../i18n/belge';
+import { kartlarMetinleri } from '../../i18n/kartlar';
 import { kilimimMetinleri } from '../../i18n/kilimim';
 import { metin } from '../../i18n/metinler';
 import Taban from '../../layouts/Taban.astro';
@@ -149,7 +150,7 @@ const veri = {
           </details>
         </div>
 
-        <p class="km-bag"><a href={`/${dil}/calisma-belgesi/`}>{b.baglanti}</a></p>
+        <p class="km-bag"><a href={`/${dil}/calisma-belgesi/`}>{b.baglanti}</a> · <a href={`/${dil}/kartlar/`}>{kartlarMetinleri(dil).baglanti}</a></p>
       </div>
     </section>
   </div>

@@ -5879,7 +5879,8 @@
   ],
   "ozgunSha256": "e5982f873627078043e53855104f1cd0c6acbb17b6ac8ad530cc57ec71597fcf",
   "arsivKopyasi": "https://web.archive.org/web/20250508id_/https://hacumreegitim.hac.gov.tr/Resimler/6/WebSiteSayfalar/202103/arapca-dua-1311.mp3",
-  "not": "Diyanet Hac ve Umre Hizmetleri Genel Müdürlüğü, Hac Genel Duaları sayfası (hacumreegitim.hac.gov.tr), «Telbiye (Arapça)». Dosyanın başındaki konuşulan «Telbiye» etiketi (0–2,8 sn) kesite girmedi. Resmî sunucu Belçika’dan bağlantıyı sıfırlıyor (curl 35, 25 Ekim 2026, kayıt başına 3 deneme); bayt bayt aynı dosya Internet Archive’in 8 Mayıs 2025 ham kopyasından alındı ve özeti raporlanan özetle aynı çıktı. Kaynak adresi resmî adrestir; arşiv adresi yalnız bu bayt kaynağını belgeler. Resmî sunucudan özet karşılaştırması, Türkiye’den bağlanılabildiğinde yapılmalıdır."
+  "not": "Diyanet Hac ve Umre Hizmetleri Genel Müdürlüğü, Hac Genel Duaları sayfası (hacumreegitim.hac.gov.tr), «Telbiye (Arapça)». Dosyanın başındaki konuşulan «Telbiye» etiketi (0–2,8 sn) kesite girmedi. Bayt kaynağı Internet Archive’in 8 Mayıs 2025 ham kopyasıdır (eski resmî adres). 25 Ekim 2026: site yenilenmiş, eski adres artık ana sayfayı döndürüyor; yeni «Dualar» sayfasındaki «Telbiye» Arapça ses dosyası (resmiGuncelAdres) indirildi ve sha256’sı ozgunSha256 ile BAYT BAYT AYNI çıktı — kaynak resmî sunucuda doğrulandı.",
+  "resmiGuncelAdres": "https://hacumreegitim.hac.gov.tr/uploads/prayers/prayer_arabic_6a719f996d755.mp3"
  },
  "/media/ses/dualar/tesrik-tekbiri.mp3": {
   "kaynak": "https://hacumreegitim.hac.gov.tr/Resimler/6/WebSiteSayfalar/202103/tekbir-arapca-1307.mp3",
@@ -5890,6 +5891,6 @@
   ],
   "ozgunSha256": "e8301bcbc87a51c0870ddeea050c588dfd82b6f5a5935bacba9b68298ee07882",
   "arsivKopyasi": "https://web.archive.org/web/20250508id_/https://hacumreegitim.hac.gov.tr/Resimler/6/WebSiteSayfalar/202103/tekbir-arapca-1307.mp3",
-  "not": "Diyanet Hac ve Umre Hizmetleri Genel Müdürlüğü, Hac Genel Duaları sayfası (hacumreegitim.hac.gov.tr), «Tekbir (Arapça)»; sayfada «Teşrik» adı geçmez ama metin Teşrik tekbiriyle kelimesi kelimesine aynıdır. Dosyanın başındaki konuşulan etiket (0–3,0 sn) kesite girmedi. Resmî sunucu Belçika’dan bağlantıyı sıfırlıyor (curl 35, 25 Ekim 2026, kayıt başına 3 deneme); bayt bayt aynı dosya Internet Archive’in 8 Mayıs 2025 ham kopyasından alındı ve özeti raporlanan özetle aynı çıktı. Kaynak adresi resmî adrestir; arşiv adresi yalnız bu bayt kaynağını belgeler. Resmî sunucudan özet karşılaştırması, Türkiye’den bağlanılabildiğinde yapılmalıdır."
+  "not": "Diyanet Hac ve Umre Hizmetleri Genel Müdürlüğü, Hac Genel Duaları sayfası (hacumreegitim.hac.gov.tr), «Tekbir (Arapça)»; sayfada «Teşrik» adı geçmez ama metin Teşrik tekbiriyle kelimesi kelimesine aynıdır. Dosyanın başındaki konuşulan etiket (0–3,0 sn) kesite girmedi. Bayt kaynağı Internet Archive’in 8 Mayıs 2025 ham kopyasıdır (eski resmî adres; özet raporlanan özetle aynı). 25 Ekim 2026: site yenilenmiş, eski adres artık ana sayfayı döndürüyor; yeni «Dualar» sayfasının 17 Arapça ses dosyasında «Tekbir» yok, aynı bayt bulunamadı. Resmî kaynak eski sayfadır; doğrulama arşiv kopyasına dayanır."
  }
 }

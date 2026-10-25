@@ -276,6 +276,8 @@ test.describe('yazdırma', () => {
     const arka = await page.evaluate(() => [...document.querySelectorAll('.km-kagit, .km-kagit *')].map((e) => getComputedStyle(e).backgroundImage).filter((b) => b !== 'none'));
     expect(arka).toEqual([]);
     await page.emulateMedia({ media: 'print', colorScheme: 'dark' });
+    // Azaltılmış harekette her değişim 1 ms'lik geçişle yapılır (cini.css); başsız tarayıcıda kare üretilmediği için geçişi bitirip değeri oku.
+    await page.evaluate(() => document.getAnimations().forEach((g) => g.finish()));
     expect(await page.locator('.km-kagit').evaluate((e) => getComputedStyle(e).backgroundColor)).toBe('rgb(255, 255, 255)');
   });
 
@@ -323,6 +325,58 @@ test.describe('yazdırma', () => {
     expect(sayfaSayisi(de)).toBe(1);
     expect(piksel(de)).toBe(0);
     await baglam.close();
+  });
+});
+
+test.describe('koyu tema: «çalışılmadı» dokusu (25 Ekim 2026)', () => {
+  // Hesaplanan renk (color-mix dâhil) → sRGB; WCAG göreli parlaklık ve karşıtlık oranı.
+  // Azaltılmış harekette tema değişimi 1 ms'lik geçiştir (cini.css); başsız tarayıcıda kare olmadığından önce geçişler bitirilir.
+  const olc = (page, secici) => page.evaluate((s) => {
+    document.getAnimations().forEach((g) => g.finish());
+    const rgb = (deger) => {
+      const k = document.createElement('canvas'); k.width = k.height = 1;
+      const g = k.getContext('2d'); g.fillStyle = '#000'; g.fillStyle = deger; g.fillRect(0, 0, 1, 1);
+      return [...g.getImageData(0, 0, 1, 1).data].slice(0, 3);
+    };
+    const lum = ([r, g, b]) => { const f = (v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; }; return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b); };
+    const oran = (a, b) => { const [x, y] = [lum(a), lum(b)].sort((p, q) => q - p); return (x + 0.05) / (y + 0.05); };
+    const cizgi = rgb(getComputedStyle(document.querySelector(s.cizgi)).stroke);
+    const zeminler = [...document.querySelectorAll(s.zemin)].map((e) => rgb(getComputedStyle(e).fill));
+    return { cizgi, zeminler, enAz: Math.min(...zeminler.map((z) => oran(cizgi, z))) };
+  }, secici);
+  const KILIM = { cizgi: 'svg.kl-kendi use.kl-k0', zemin: 'svg.kl-kendi .kl-zemin-0, svg.kl-kendi .kl-zemin-1' };
+
+  test('koyu temada (sistem tercihi ve elle seçim) çalışılmamış motif çizgisi kilim zemininde en az 3:1; çalışılan dokular yine ayrışır', async ({ page }) => {
+    await tohumla(page, durumKur());
+    for (const mod of ['sistem', 'elle']) {
+      await page.emulateMedia({ colorScheme: mod === 'sistem' ? 'dark' : 'light' });
+      await page.goto('/tr/kilimim/');
+      if (mod === 'elle') await page.evaluate(() => { document.documentElement.dataset.theme = 'dark'; });
+      const r = await olc(page, KILIM);
+      expect(r.enAz, `${mod}: ${JSON.stringify(r)}`).toBeGreaterThanOrEqual(3);
+      // «Başladım» noktaları (kl-k1) ve dolu dokular yine ikincil mürekkepte: ayrım doku biçiminden, renkten değil.
+      expect(await page.locator('svg.kl-kendi use.kl-k1').count()).toBeGreaterThan(0);
+      expect(await page.locator('svg.kl-kendi use.kl-k0').count()).toBeGreaterThan(0);
+    }
+  });
+
+  test('açık temada «çalışılmadı» çizgisi değişmedi (derz-koyu); hocanın kilimi (giriş sayfası örnek kilim, koyu tema) da değişmedi', async ({ page }) => {
+    await tohumla(page, durumKur());
+    await page.emulateMedia({ colorScheme: 'light' });
+    await page.goto('/tr/kilimim/');
+    const acik = await olc(page, KILIM);
+    expect(acik.cizgi).toEqual([181, 197, 185]);
+    await page.emulateMedia({ colorScheme: 'dark' });
+    await page.goto('/tr/');
+    // Öğretmenin kilimi `.kl-b0` kullanır ve çözgü rengi derz-koyu (#2D463A) kalır.
+    const hoca = await page.evaluate(() => {
+      const e = document.querySelector('svg.ezber-kilim:not(.kl-kendi) .kl-b0, svg.ezber-kilim:not(.kl-kendi) .kl-ara');
+      const k = document.createElement('canvas'); k.width = k.height = 1;
+      const g = k.getContext('2d'); g.fillStyle = e ? (getComputedStyle(e).stroke !== 'none' ? getComputedStyle(e).stroke : getComputedStyle(e).fill) : '#000'; g.fillRect(0, 0, 1, 1);
+      return { var: !!e, rgb: [...g.getImageData(0, 0, 1, 1).data].slice(0, 3) };
+    });
+    expect(hoca.var).toBe(true);
+    expect(hoca.rgb).toEqual([45, 70, 58]);
   });
 });
 

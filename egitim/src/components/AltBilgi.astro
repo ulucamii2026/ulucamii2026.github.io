@@ -7,6 +7,7 @@
 import type { Dil } from '@ortak/i18n/ui';
 import { ceviri, yol } from '@ortak/i18n/utils';
 import { belgeMetinleri } from '../i18n/belge';
+import { kartlarMetinleri } from '../i18n/kartlar';
 import { kilimimMetinleri } from '../i18n/kilimim';
 import { metin } from '../i18n/metinler';
 import { ANA_SITE, ILETISIM, hukukiSatir, kursAdi } from '../lib/kimlik';
@@ -17,6 +18,7 @@ const { dil } = Astro.props;
 const m = metin(dil);
 const belge = belgeMetinleri(dil);
 const kilimim = kilimimMetinleri(dil);
+const kartlar = kartlarMetinleri(dil);
 ---
 <footer class="alt">
   <Bordur desen="bordur-koyu" />
@@ -27,6 +29,7 @@ const kilimim = kilimimMetinleri(dil);
       <p class="don"><a href={`${ANA_SITE}/${dil}/`}>{m.anaSiteyeDon}</a></p>
       <p class="don"><a href={`/${dil}/calisma-belgesi/`}>{belge.baglanti}</a></p>
       <p class="don"><a href={`/${dil}/kilimim/`}>{kilimim.baglanti}</a></p>
+      <p class="don"><a href={`/${dil}/kartlar/`}>{kartlar.baglanti}</a></p>
     </div>
     <div>
       <h2>{m.iletisim}</h2>

@@ -551,5 +551,61 @@ Kalıcı) gösterir. Bu sayfa cihaz verisini o basamaklara ÇEVİRMEZ. Aynı geo
   yazılmaz, ad hiçbir istekte geçmez, yazdırma + PDF A4 tek sayfa + piksel yok, axe açık/koyu, 320 px, klavye, bağlantılar). `barindirma.test.mjs` ve
   `egitim-canli-denetim.mjs` site haritası beklentisine yeni sayfa eklendi (5 dil × 1).
 - **Sınır / açık kalemler:** yalnız bu cihazdaki kayıt (başka cihaz görünmez; hesap Faz 3'te). Kilim hocanın onayı değildir; Ezber Sertifikası ve
-  dönem karnesi hoca/veli tarafında kalır. Koyu temada boş hücreler (doku 0) çok soluktur (hoca kilimiyle aynı değer); telefonda kilim ~230 px olduğundan
+  dönem karnesi hoca/veli tarafında kalır. Koyu temada boş hücrelerin (doku 0) çizgisi 25 Ekim 2026'da güçlendirildi (aşağıda «Kilimim: koyu tema»); telefonda kilim ~230 px olduğundan
   asıl okuma «Şerit şerit» listesindedir.
+
+## Ezber kartları — 8'li baskı (25 Ekim 2026)
+
+Ana planın «basılı materyal» kararı (§ ezber kartları: bir sayfada 8 kart, arkasında ses için kare kod): çalışma sayfası olan her ezberin kartı seçilir ve
+**A4 kâğıda 2 × 4 kart**, çift taraflı basılır. Yol `/<dil>/kartlar/` (beş dilde aynı, `calisma-belgesi` ve `kilimim` gibi çevrilmez); sayfa
+`egitim/src/pages/[dil]/kartlar.astro`, betik `egitim/src/scripts/kartlar.ts`, metinler `egitim/src/i18n/kartlar.ts`, stil `egitim/src/styles/kartlar.css`,
+saf kütüphane `src/lib/ezber/kartlar.ts` (sayfalama, aynalama, basım sırası, katalog kodu, Arapça kart yazısı, açılış seçimi). Sitemap ve hreflang
+kümesinde (5 dil × 1 adres). Tek kartlık «Kartı yazdır» (Faz 2e, `kart.css`) olduğu gibi duruyor; bu sayfa onun toplu baskısıdır.
+
+- **Seçim:** çalışma sayfası olan 76 madde (katalogdaki 81'in 5'inin sayfası yok), şerit şerit (1–7, Amme, kenar suyu) onay kutularıyla. Açılışta işaretli gelenler,
+  Çalışma Belgesi ile aynı ölçütle, **bu cihazda çalışma kaydı olanlardır** (salt okunur: `belgeSatirlari`) ve `?sec=<id>,<id>` ile istenenlerdir
+  (yalnız katalogdaki kimlikler; sayfa hiçbir şey yazmaz). Kayıt ve `?sec` yoksa **hiçbir şey seçili gelmez**. Hızlı düğmeler: Tümü, Hiçbiri; her
+  şeridin «tümünü seç» kutusu (bir kısmı seçiliyse belirsiz durum). Yüz seçimi: **Ön ve arka (çift taraflı)** · Yalnız ön · Yalnız arka (tek taraflı yazıcıda iki geçiş).
+- **Kâğıt düzeni (karar):** `@page` A4 dikey, kenar boşluğu 0; kart ızgarası 186 × 260 mm, **kart 93 × 65 mm**, sol/sağ 12 mm, üst/alt 18 mm boşluk. Ev
+  yazıcılarının basamadığı bant (≤ 5 mm) ızgaradan çok uzaktır; kesim çizgisi her kartın çevresinde 0,3 pt kesik çizgidir. Sayfa ve ızgara **simetriktir**:
+  uzun kenardan çevrilen kâğıtta ön ve arka çizgiler ve kartlar üst üste gelir. Bütün ölçüler `em` (1 em = 4 mm), ekranda önizleme aynı sayfadır
+  (Çalışma Belgesi ile aynı kapsayıcı birimi yöntemi). Üst bilgi/alt bilgi basılmaz (kenar 0).
+- **Çift taraflı aynalama (bağlayıcı):** kâğıt uzun kenardan çevrilince dikey eksen etrafında döner; ön yüzde (satır r, sütun c) kartın arkası aynı satırda ters sütundadır.
+  Arka sayfa, ön sayfanın **her satırı ters çevrilmiş** diziliminin (`aynala`); kartların içeriği aynalanmaz. Basım sırası: ön 1, arka 1, ön 2, arka 2 …
+  10 ezber = 2 yaprak = **4 sayfa**. Sondaki boş hücreler iki yüzde de boş kalır (kesim çizgileri durur). Ekranda önizleme çift taraflı kipte
+  ön | arka yan yana (bir satır = bir yaprak). Yazı: «Sayfa n · arka yüz (kartlar yan yana aynalıdır)». Kâğıttaki doğrulama: PDF metin katmanında arka sayfanın kod sırası
+  ön sayfadaki satır çiftlerinin tersidir (test); 76 maddelik PDF'te her QR çözülüp kendi kartıyla eşleştirildi (OpenCV, hata 0).
+- **Ön yüz:** şerit motifi (sayfadaki madalyonla aynı `#mt-…`), şerit etiketi ve tür, katalog kodu (`3-02`, Amme `8-14`, kenar `K-04`), **ezberin adı sayfa
+  dilinde**, **Arapça başlık** (Ulu Nesih), altta kurs mührü ve «Ulu Camii Kur'an Kursu». Arapça yalnız maddenin kendi sayfasındaki doğrulanmış metinden
+  (`src/data/ezber/metin/<id>.json`): tam sûrede sayfa serlevhasındaki «سُورَةُ …»; öbür maddelerde ilk bölümün ilk 6 kelimesi, kesildiyse «…» (Arapça yazı tipinde değil).
+  **Okunuş ve meâl kartta yoktur** (DİYK 2021 Karar 15 ve 23; Latin harfli okunuş yalnız hocanın onayladığı usulde madde sayfasında). Metni olmayan 10 bilgi
+  maddesinde (iman şartları, farzlar…) Arapça satır çizilmez; kart yine ad + kare kod taşır. Yazı tipi kümesi: kart Arapçasının her kod noktası
+  `ulu-nesih.json` kümesinde (test, 66 maddenin tamamı).
+- **Arka yüz:** **vektör kare kod** `https://egitim.ulucamii.be/<dil>/calis/<id>/` (tek kartla aynı `maddeKareKodu`, `qrcode` hata düzeltme M; 32 mm), kısa yönerge
+  «Dinlemek için okutun» (ses kaydı olan madde) / «Çalışmak için okutun» (sessiz madde), ad, adres ve katalog kodu. Kod ön ve arka yüzde aynıdır:
+  kesilmiş yüzler elle eşleştirilebilir.
+- **Baskı yardımı (sayfada):** A4, %100, üstbilgi/altbilgi kapalı; çift taraflı yazıcıda «uzun kenardan çevir»; tek taraflı yazıcıda önce «Yalnız ön yüzler», kâğıtları
+  uzun kenardan çevirip aynı sırayla geri koy, sonra «Yalnız arka yüzler»; ya da iki yüzü ayrı basıp kestikten sonra arkalı önlü yapıştır; kesim.
+- **Piksel yok:** kare kod, motif, çerçeve ve logo vektör; Chromium PDF'inde `pdfimages -list` = 0, yazı tipleri gömülü. Boyut: 10 madde ≈ 0,5 MB, 76 madde ≈ 3 MB
+  (kurs logosu her kartta vektör yol olarak yinelenir, ≈ 30 KB/kart; logo kimlik kaynağı olduğu için sadeleştirilmedi).
+- **Giriş noktaları:** giriş sayfasında «Kendi çalışmanız için» bloğu (Kilimim · Çalışma Belgesi · Ezber kartları, üç sade karo; şeritler ve örnek kilimden sonra,
+  kaynaklardan önce), alt bilgi, madde sayfasındaki «Birden çok kart bas» (`?sec=<id>`; basılı kartta görünmez) ve altındaki bağlantı satırı, Çalışma Belgesi
+  ve Kilimim sayfalarındaki bağlantı satırı.
+- **Gizlilik / CSP:** hesap, sunucu, ağ yok; yalnız `ulucamii:ezber:cihaz:v1` OKUNUR (bayt bayt aynı kalır, yeni anahtar yok); `innerHTML` yok; CSP ve
+  Hosting başlıkları değişmedi; satır içi betik/stil yok (kartlar derleme anında havuza yazılır, betik havuzdan çoğaltır; sayfa ≈ 0,4 MB HTML, gz ≈ 60 KB).
+- **Testler:** `tests/ezber-kartlar.test.mjs` (12; `npm run test:ezber`'e eklendi) ve `tests/egitim/kartlar.spec.mjs` (beş dil, seçim ve aynalama, yüz kipi,
+  cihaz ön seçimi ve `?sec`, 76 × 5 × 2 kartın taşmaması, kare kod matrisi = beklenen adres, gizlilik, yazdırma + Chromium PDF: 10 ezber = 4 sayfa A4, piksel 0,
+  pdftotext ile kod sırası aynalı, axe açık/koyu, 320 px, klavye, giriş noktaları). `barindirma.test.mjs` ve `egitim-canli-denetim.mjs` site haritası beklentisine
+  yeni sayfa eklendi (5 dil × 1).
+- **Sınır / açık kalemler:** «tek taraflı yazıcıda katla» seçeneği bu düzende yoktur (kartlar 2 × 4 ayrı, ön ve arka farklı hücrede); onun yerine iki geçiş ya da
+  yapıştırma anlatılır. Sayfa sınırı yoktur: 76 madde 10 yaprak/20 sayfadır. Sondaki yarım yaprakta boş hücrelerin kesim çizgileri de basılır. Kart Arapçası
+  uzun dualarda ilk kelimelerdir (tam metin kartta yok, sayfada var). Fransızca ve Hamidullah meâli kartta kullanılmadığı için kaynak künyesi kartta yoktur.
+
+### Kilimim: koyu tema «çalışılmadı» dokusu (25 Ekim 2026)
+
+Koyu temada «çalışılmadı» çizgisi (`.kl-k0`) derz renginde (`#2D463A`) kilim zemininde (`#0F1D16`) ≈ 1,6:1 idi. Yalnız `kendi` kipinde (kilim, lejant ve metin
+karşılığındaki işaretler) ve yalnız ekranda çizgi `kontur-2`'nin %60'ı + zemin karışımına alındı (`--kl-kendi-k0`, ≈ 3,8:1; WCAG 1.4.11 ≥ 3:1). Aynı doku
+biçimi (kesik çizgi) korunur; «başladım» noktaları, dolgu dokuları, **hocanın kilimi (`.kl-b0`, `.basamaklar`) ve açık tema değişmedi**; yazdırma açık
+kâğıt jetonlarıyla çizildiğinden etkilenmez. Test: `tests/egitim/kilimim.spec.mjs` «koyu tema» (sistem tercihi ve elle `data-theme="dark"`, ≥ 3:1; açık tema
+`#B5C5B9`; giriş sayfasındaki hoca kilimi `#2D463A`). Aynı dosyada yazdırma testine `getAnimations().finish()` eklendi: azaltılmış harekette (`cini.css`) her
+değişim 1 ms'lik geçiş olduğundan başsız tarayıcı arka plan rengini geçişin başlangıcında (şeffaf) okuyabiliyordu; test baz commit'te de kırmızıydı.

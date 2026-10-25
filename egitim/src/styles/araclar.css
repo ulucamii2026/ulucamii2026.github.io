@@ -1,0 +1,16 @@
+/* «Kendi çalışmanız için» (25 Ekim 2026): giriş sayfasında üç küçük bağlantı karosu. Hero değil, ana içeriğin altında sade bir sıra:
+   derz çizgili karolar (Çini Panosu dili), en az 44 px dokunma alanı, renk tek başına bilgi taşımaz (ikon + yazı). */
+.araclar { padding-block: clamp(2.5rem, 2rem + 2vw, 3.5rem) 0; }
+.araclar-bas { display: grid; gap: 0.5rem; max-width: 46rem; margin-bottom: 1.25rem; }
+.araclar-bas h2 { font-size: clamp(1.35rem, 1.15rem + 0.9vw, 1.75rem); letter-spacing: -0.015em; }
+.araclar-bas p { color: var(--kontur-2); max-width: 40em; }
+.araclar-liste { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; background: var(--derz); border: 2px solid var(--derz); border-radius: calc(var(--r) + 2px); }
+@media (min-width: 56rem) { .araclar-liste { grid-template-columns: repeat(3, 1fr); } }
+.arac { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.15rem 0.9rem; align-items: center; min-height: 100%; padding: 1.1rem 1.25rem;
+  background: var(--karo); color: var(--kontur); text-decoration: none; }
+.arac:hover { background: var(--yesil-soluk); }
+.arac:hover .arac-ad { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.22em; }
+.arac-ikon { grid-row: span 2; display: grid; place-items: center; width: 2.75rem; height: 2.75rem; border: 1px solid var(--derz-koyu); border-radius: var(--r); color: var(--yesil-bag); }
+.arac-ikon .ikon { width: 1.5rem; height: 1.5rem; }
+.arac-ad { font-weight: 750; font-size: 1.05rem; line-height: 1.25; }
+.arac-ac { color: var(--kontur-2); font-size: 0.93rem; line-height: 1.4; }
