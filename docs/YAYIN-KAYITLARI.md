@@ -4,6 +4,30 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 25 Ekim 2026 (11) — ders materyalleri: 31 Ekim ve 1 Kasım 2026 (Cumartesi, Pazar; 9. hafta)
+
+- Zaman: Release yüklemesi ≈03:33, commit/push 03:34:48, Pages derleme+dağıtım 03:34:50–03:37:02, canlı doğrulama ≈03:39,
+  Europe/Brussels (CET, UTC+1 — yaz saati bu gece 03:00'te bitti). **Yayımlandı ve canlı doğrulandı.** Dayanak: Rıdvan'ın
+  25 Ekim «bütün yetki ve karar sende, full otonom ilerle… ne gerekiyorsa yap» talimatı (24 Ekim yayınıyla aynı yol).
+- Kapsam: iki ders günü; her gün ders planı PDF'i, üç öğrenci sunumu (pptx + sessiz PDF), üç öğretici sunumu (pptx + PDF) ve
+  «Derse hızlı başlangıç» eki = 14 dosya. Kış saati (10:00 / 11:00 / 12:00).
+  31 Ekim: Kur'an (hareke pekiştirmesi + ezber köşesi YENİ İhlâs) · İtikat (ahirete iman) · İbadet (ibadet yerleri).
+  1 Kasım: Kur'an (cezm + İhlâs pekiştirme, bireysel dinleme) · Siyer (erdemli bir genç) · Ahlak (ailem ve görevlerim).
+- Commit: `726308ae` (yalnız `src/data/ders-materyalleri.json`, 20 gün); temiz çalışma ağacından
+  (`D:/tmp/ulucamii-kurs-20261031-01`, `origin/main` `60f7b327` üzerine). Release'ler `ders-2026-10-31` ve `ders-2026-11-01`,
+  her biri 14 dosya (0 zaten vardı), tarihli indirme adları (`yayin_adi()`).
+- Dağıtım: Pages [40154984098](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/40154984098) **success**.
+- Kalite: kaynak projede `denetim.py --sert` 0 ihlal (2 × 78 slayt), `sunum-denetle` öğrenci sunumlarında 0 bulgu, COM yerleşim
+  12/12 sunumda 0, oyun denetimi 27 + 25 gömülü oyun geçti, öğretici denetimi 0 ihlal, 12/12 sunum PowerPoint'te açıldı (tetik
+  sayıları oyun + ses + video ile birebir); yayın betiği 52 oyunluk kapıyı geçirdi; PDF'lerde kişisel veri taraması boş. Üç
+  hadis yerel Diyanet arşivinde birebir doğrulandı (Hadislerle İslam c. 1 no. 398; DİB Riyâzü's-Sâlihîn «İzin İsteme Âdâbı»;
+  DİYK fetvası, Ebû Dâvûd Edeb 128 [5140]). Sitede `npm run check` 0 hata / 0 uyarı, `npm run build` 1952 sayfa.
+- Canlı: `/tr/ders-materyalleri/`, `/fr/supports-de-cours/`, `/en/lesson-materials/` iki günü gösteriyor; 28/28 indirme
+  bağlantısı indirildi, SHA-256 arşivdeki dosyalarla aynı. OneDrive kopyası 12 + 12 dosya SHA eşit.
+- Açık sınırlar: herkese açık kurs günlüğü (`ders-ilerleme.json`) tazelenmedi (24–26 Ekim hoca defteri henüz girilmedi).
+  Kaynak proje raporu: `D:/ulu-camii-kuran-kursu/belgeler/YAYIN-RAPORU-2026-10-31-11-01.md`.
+- Bu kayıt için belge commit'i içerik yayını değildir.
+
 ## 25 Ekim 2026 (10) — Ezber Kilimi: hadis maddelerinde Diyanet çevirisi (Türkçe sayfa)
 
 - **Zaman (Europe/Brussels, CEST):** egitim Hosting yayını 25 Ekim ≈00:25 (sürüm 418 dosya), push 00:26:13, Pages run 00:26:15 →
