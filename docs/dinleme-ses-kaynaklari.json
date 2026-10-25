@@ -5839,5 +5839,57 @@
   "dogrulama": "Yazıya dökümle metne uygunluğu doğrulandı (kurs kütüphanesi sesler/dua/dogrulama.log, benzerlik 0,99); okunan metin Diyanet’in Temel Dinî Bilgiler kitabındaki (DİB Yay. 301, s. 25–26) Kelime-i Şehâdet ile aynıdır",
   "seviye": "−16 LUFS çalma yüksekliği (mono dosya çift mono ölçülür: −16,44), gerçek tepe −2,27 dBTP (kurs ses_seviye.py, ayar v1, 7 Ekim 2026)",
   "sure": 13.92
+ },
+ "/media/ses/dualar/tekbir.mp3": {
+  "kaynak": "https://namaz.diyanet.gov.tr/namaz/assets/video/namaz/4_Aksam_Namazi_Kilinisi_E.mp4",
+  "sha256": "a9b08299c7ef74e00639c4fa67dfbf4f06e863df30d8978a93e24512cee11fee",
+  "kesim": [
+   62.45,
+   64.65
+  ],
+  "ozgunSha256": "5d2c8ed73c608020a327f043e233efd21acb70bc3ee8e995fd58454132cceb4b",
+  "not": "Tek «Allâhü ekber» (iftitah tekbiri); öncesindeki Türkçe niyet ve sonrasındaki sessizlik kesite girmedi. Akşam Namazı Kılınışı (Erkek) videosunun 0:1 numaralı ses akışından (imam sesi) ses olarak ayıklandı; video 8 ses akışı taşır, yalnız 1 ve 2 doludur. Kesit sınırları sessizliğe oturtuldu."
+ },
+ "/media/ses/dualar/tesmi-tahmid.mp3": {
+  "kaynak": "https://namaz.diyanet.gov.tr/namaz/assets/video/namaz/4_Aksam_Namazi_Kilinisi_E.mp4",
+  "sha256": "7bb9c77b4e831ea5ead4dd42b38a46280c8ca63d11543defd920b6ba7c54e6e0",
+  "kesim": [
+   220.15,
+   226.55
+  ],
+  "ozgunSha256": "5d2c8ed73c608020a327f043e233efd21acb70bc3ee8e995fd58454132cceb4b",
+  "not": "«Semiallâhü limen hamideh» + «Rabbenâ leke’l-hamd» (vavsız); iki cümle arasındaki sessizlik kesilmeden tek kesitte. Akşam Namazı Kılınışı (Erkek) videosunun 0:1 numaralı ses akışından (imam sesi) ses olarak ayıklandı; video 8 ses akışı taşır, yalnız 1 ve 2 doludur. Kesit sınırları sessizliğe oturtuldu."
+ },
+ "/media/ses/dualar/selam.mp3": {
+  "kaynak": "https://namaz.diyanet.gov.tr/namaz/assets/video/namaz/4_Aksam_Namazi_Kilinisi_E.mp4",
+  "sha256": "bd6f10f73f722d16ba299e83610300487fe5e7b401cec5156ac28bcaae4ca515",
+  "kesim": [
+   426.0,
+   429.8
+  ],
+  "ozgunSha256": "5d2c8ed73c608020a327f043e233efd21acb70bc3ee8e995fd58454132cceb4b",
+  "not": "Farzın sonundaki sağa selam «Es-selâmü aleyküm ve rahmetullah»; «ve berakâtüh» yoktur. Akşam Namazı Kılınışı (Erkek) videosunun 0:1 numaralı ses akışından (imam sesi) ses olarak ayıklandı; video 8 ses akışı taşır, yalnız 1 ve 2 doludur. Kesit sınırları sessizliğe oturtuldu."
+ },
+ "/media/ses/dualar/telbiye.mp3": {
+  "kaynak": "https://hacumreegitim.hac.gov.tr/Resimler/6/WebSiteSayfalar/202103/arapca-dua-1311.mp3",
+  "sha256": "7979c76fca03cf0ac28372518ae4a7985c736e80d8005d90e85c4d3ae2ac539f",
+  "kesim": [
+   2.8,
+   17.7
+  ],
+  "ozgunSha256": "e5982f873627078043e53855104f1cd0c6acbb17b6ac8ad530cc57ec71597fcf",
+  "arsivKopyasi": "https://web.archive.org/web/20250508id_/https://hacumreegitim.hac.gov.tr/Resimler/6/WebSiteSayfalar/202103/arapca-dua-1311.mp3",
+  "not": "Diyanet Hac ve Umre Hizmetleri Genel Müdürlüğü, Hac Genel Duaları sayfası (hacumreegitim.hac.gov.tr), «Telbiye (Arapça)». Dosyanın başındaki konuşulan «Telbiye» etiketi (0–2,8 sn) kesite girmedi. Resmî sunucu Belçika’dan bağlantıyı sıfırlıyor (curl 35, 25 Ekim 2026, kayıt başına 3 deneme); bayt bayt aynı dosya Internet Archive’in 8 Mayıs 2025 ham kopyasından alındı ve özeti raporlanan özetle aynı çıktı. Kaynak adresi resmî adrestir; arşiv adresi yalnız bu bayt kaynağını belgeler. Resmî sunucudan özet karşılaştırması, Türkiye’den bağlanılabildiğinde yapılmalıdır."
+ },
+ "/media/ses/dualar/tesrik-tekbiri.mp3": {
+  "kaynak": "https://hacumreegitim.hac.gov.tr/Resimler/6/WebSiteSayfalar/202103/tekbir-arapca-1307.mp3",
+  "sha256": "725219c71ec53ac4cd7bc97f91e63e275be7a1565efa2186bbce66d74bf57c6f",
+  "kesim": [
+   3.0,
+   15.8
+  ],
+  "ozgunSha256": "e8301bcbc87a51c0870ddeea050c588dfd82b6f5a5935bacba9b68298ee07882",
+  "arsivKopyasi": "https://web.archive.org/web/20250508id_/https://hacumreegitim.hac.gov.tr/Resimler/6/WebSiteSayfalar/202103/tekbir-arapca-1307.mp3",
+  "not": "Diyanet Hac ve Umre Hizmetleri Genel Müdürlüğü, Hac Genel Duaları sayfası (hacumreegitim.hac.gov.tr), «Tekbir (Arapça)»; sayfada «Teşrik» adı geçmez ama metin Teşrik tekbiriyle kelimesi kelimesine aynıdır. Dosyanın başındaki konuşulan etiket (0–3,0 sn) kesite girmedi. Resmî sunucu Belçika’dan bağlantıyı sıfırlıyor (curl 35, 25 Ekim 2026, kayıt başına 3 deneme); bayt bayt aynı dosya Internet Archive’in 8 Mayıs 2025 ham kopyasından alındı ve özeti raporlanan özetle aynı çıktı. Kaynak adresi resmî adrestir; arşiv adresi yalnız bu bayt kaynağını belgeler. Resmî sunucudan özet karşılaştırması, Türkiye’den bağlanılabildiğinde yapılmalıdır."
  }
 }

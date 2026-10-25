@@ -1,6 +1,7 @@
 /**
  * Diyanet ses kaydı olmayan, yalnız metni olan dualar (24 Ekim 2026) — gerçek tarayıcıda, derlenmiş çıktıya karşı.
- * Kitap kaynaklı yedi dua (Tekbir, Tesmî–Tahmîd, Selâm, Âmentü, Teşrik tekbiri, Telbiye, Yemek duası) katalogda `metinli: true` taşır:
+ * Kitap kaynaklı iki dua (Âmentü, Yemek duası) katalogda `metinli: true` taşır (25 Ekim 2026: Tekbir, Tesmî–Tahmîd, Selâm, Teşrik tekbiri
+ * ve Telbiye'ye Diyanet insan sesi eklendi; artık sesli sayfa sayılırlar, sınama `calisma.spec.mjs` ve `kart.spec.mjs` altındadır):
  * ses yoktur, sayfa metni, anlamı ve kaynak künyesini gösterir. Burada sabitlenenler:
  *  - ses oynatıcısı ve çal düğmesi yoktur; «Henüz dinleme kaydı yok» notu beş dilde görünür; «Dinle» adımı «Yakında» kalır;
  *  - her bölümün Arapçası sayfada vardır; Türkçe anlam veriyle aynıdır; Fransızca anlam yalnız DİTİB'in resmî Fransızca yayınında (Âmentü)
@@ -15,7 +16,7 @@ import { readFileSync } from 'node:fs';
 
 const KOK = 'http://127.0.0.1:4402';
 const DILLER = ['tr', 'fr', 'en', 'nl', 'de'];
-const SESSIZ = ['d-tekbir', 'd-tesmi-tahmid', 'd-selam', 'd-amentu', 'd-tesrik-tekbiri', 'd-telbiye', 'd-yemek-duasi'];
+const SESSIZ = ['d-amentu', 'd-yemek-duasi'];
 const metin = (id) => JSON.parse(readFileSync(new URL(`../../src/data/ezber/metin/${id}.json`, import.meta.url), 'utf8'));
 const katalog = JSON.parse(readFileSync(new URL('../../src/data/ezber/katalog.json', import.meta.url), 'utf8'));
 
@@ -36,14 +37,14 @@ test.beforeEach(async ({ context }) => {
   });
 });
 
-test('Katalog: bu yedi madde sessiz ve metinlidir; sesli madde metinli işareti taşımaz', () => {
+test('Katalog: bu iki madde sessiz ve metinlidir; sesli madde metinli işareti taşımaz', () => {
   const sessizler = katalog.ogeler.filter((o) => o.metinli).map((o) => o.id);
   expect(sessizler.sort()).toEqual([...SESSIZ].sort());
   for (const o of katalog.ogeler.filter((x) => x.metinli)) expect(o.ses, o.id).toBeUndefined();
 });
 
 for (const dil of DILLER) {
-  test(`${dil}: yedi sessiz dua — ses yok, metin ve künye var, okunuş gizli, kip ve A−/A+ çalışır`, async ({ page }) => {
+  test(`${dil}: iki sessiz dua — ses yok, metin ve künye var, okunuş gizli, kip ve A−/A+ çalışır`, async ({ page }) => {
     const hatalar = [];
     page.on('pageerror', (e) => hatalar.push(e.message));
     page.on('console', (m) => { if (m.type() === 'error') hatalar.push(m.text()); });
@@ -103,7 +104,7 @@ test('Erişilebilirlik: sessiz dua sayfaları açık ve koyu temada ihlalsiz, ya
   // 5 dil × 2 madde × 2 tema axe taraması tek başına ~23 sn; yüklü makinede 30 sn sınırını aşıyordu (25 Eki 2026).
   test.setTimeout(90_000);
   for (const dil of DILLER) {
-    for (const id of ['d-tekbir', 'd-amentu']) {
+    for (const id of ['d-yemek-duasi', 'd-amentu']) {
       await page.goto(`/${dil}/calis/${id}/`);
       for (const colorScheme of ['light', 'dark']) {
         await page.emulateMedia({ colorScheme, reducedMotion: 'reduce' });

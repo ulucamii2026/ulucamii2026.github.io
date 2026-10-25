@@ -52,8 +52,9 @@ ezber ve gizleme, 2d oyunlar ve tekrar takvimi, 2e baskı kartı ve duyuru.
 
 **Kalan sesler (dilim 2d)**
 - Kelime-i Şehâdet: Tahiyyât kaydından kesit alınacak; kulakla teyit gerekir ve `kesit` testi yeniden tanımlanacak.
-- «Rabbenâ leke'l-hamd»: Diyanet'in `2_KIYAM.mp3` kaydından.
-- Tekbir: hoca seçer (kamet kesiti ya da yapay ses).
+- «Rabbenâ leke'l-hamd»: **Yapıldı (25 Ekim 2026, yerel):** Akşam Namazı videosundan (vavsız «Rabbenâ leke'l-hamd»), Tesmî ile birlikte `d-tesmi-tahmid`; `2_KIYAM.mp3` bırakıldı
+  çünkü yalnız «Rabbenâ ve leke'l-hamd» (vavlı) söylüyor ve «Semiallâhü limen hamideh» içermiyor. Ayrıntı: «Diyanet insan sesi kesitleri: Tekbir, Tesmî-Tahmîd, Selâm, Telbiye, Teşrik tekbiri (25 Ekim 2026)».
+- Tekbir: **Yapıldı (25 Ekim 2026, yerel):** hoca seçimi gerekmedi; Akşam Namazı videosunda tek «Allâhü ekber» kesiti (insan sesi) bulundu (aynı bölüm).
 - Ezan: beş vaktin kaydı var, vakit seçimi eklenecek. **Yapıldı (25 Ekim 2026, yerel):** aşağıdaki «Ezan vakit seçimi (25 Ekim 2026)».
 - Diyanet kaydı olmayan dualar: yapay ses ve hoca onayı. Kur'an metninde yapay ses kullanılmaz.
   **24 Ekim 2026:** kurs kütüphanesinde doğrulanmış sesi bulunan iki dua (Kelime-i Tevhid, Kelime-i Şehâdet) görünür «Yapay ses»
@@ -752,6 +753,82 @@ gözden geçirmesi bekler.
   dosya kadar etkiler, ana site bu alanı okumaz); fiziksel telefon/Safari ve yeni dosyaların canlı `ulucamii.be`'den oynatılması denenmedi (dosyalar yayından önce sitede yoktur).
 - Kullanıcı ya da hoca kararı bekleyenler: FR/EN/NL/DE makam yazımları (yukarıda); sabah cümlesindeki «hayrün» (İlmihal) ile aynı sayfadaki hoca onaylı okunuşun «hayrun» yazımı
   (`src/data/ezber/metin/d-ezan.json`) arasındaki fark; yeni dört kaydı henüz bir insan kulağı dinlemedi (Diyanet'in resmî dosyaları; dördü de ffmpeg ile baştan sona hatasız çözüldü; vakit–makam eşleşmesi Diyanet dosya adından).
+
+## Diyanet insan sesi kesitleri: Tekbir, Tesmî-Tahmîd, Selâm, Telbiye, Teşrik tekbiri (25 Ekim 2026)
+
+Metinli ama sessiz yedi duadan beşine Diyanet'in insan sesi eklendi; «Henüz dinleme kaydı yok» sayfası bu beşinde çalışma çaları oldu. **Yayın bekliyor**
+(yayın kaydı `docs/YAYIN-KAYITLARI.md`'ye yayından sonra yazılır). Kesitler yapay ses değildir: `ses.yapay` yok, kayıtta `yapay` yok; hepsi Diyanet
+kurumlarının yayımladığı kayıtlardan **yalnız zaman kesimiyle** alınmıştır (yeniden söyletme, hız ya da ton değişikliği, seviye işlemi yok).
+
+**Kaynaklar.**
+- **Akşam Namazı Kılınışı (Erkek) videosu**, `namaz.diyanet.gov.tr/namaz/assets/video/namaz/4_Aksam_Namazi_Kilinisi_E.mp4` (52.226.677 B, 888,52 sn,
+  sha256 `5d2c8ed7…eb4b`; 25 Ekim 2026'da yeniden indirilip özeti doğrulandı). Dosya sekiz ses akışı taşır, yalnız 1. ve 2. doludur; kesitler `0:1`
+  akışından, tek imam sesinden alındı (sayfada okuyan olarak İshak Daniş / Ramazan Pakdil anılıyor, hangisi olduğu dosyadan anlaşılmıyor). Zaman çizelgesi: farz 0–470 sn,
+  sünnet 470–756 sn, tesbihat 756 sn sonrası.
+- **Diyanet Hac ve Umre Hizmetleri Genel Müdürlüğü eğitim sitesi** (`hacumreegitim.hac.gov.tr`, «Hac Genel Duaları» sayfası): `arapca-dua-1311.mp3` (Telbiye, 19,06 sn, 305.572 B)
+  ve `tekbir-arapca-1307.mp3` (Tekbir, 16,05 sn, 257.506 B).
+
+**Üretilen dosyalar** (hepsi `public/media/ses/dualar/`, mono, 44,1 kHz, 64 kb/s MP3 — `rabbena-atina.mp3` ile aynı kodlama; kesim ve kodlama ffmpeg ile, başta/sonda yumuşatma yok):
+
+| Madde | Dosya | Kaynak ve kesim (sn) | Boyut | Süre | Dosya sha256 |
+|---|---|---|---|---|---|
+| `d-tekbir` | `tekbir.mp3` | Akşam videosu, 62,45–64,65 | 18.224 B | 2,2 sn | `a9b08299…1fee` |
+| `d-tesmi-tahmid` | `tesmi-tahmid.mp3` | Akşam videosu, 220,15–226,55 | 51.660 B | 6,4 sn | `7bb9c77b…e6e0` |
+| `d-selam` | `selam.mp3` | Akşam videosu, 426,0–429,8 (sağa selam) | 30.972 B | 3,8 sn | `bd6f10f7…a515` |
+| `d-telbiye` | `telbiye.mp3` | `arapca-dua-1311.mp3`, 2,8–17,7 | 119.788 B | 14,9 sn | `7979c76f…539f` |
+| `d-tesrik-tekbiri` | `tesrik-tekbiri.mp3` | `tekbir-arapca-1307.mp3`, 3,0–15,8 | 102.860 B | 12,8 sn | `725219c7…7c6f` |
+
+Toplam 323.504 B (≈ 316 KiB). Tam özetler, kesim aralıkları ve `ozgunSha256` (kaynak dosyanın özeti) `docs/dinleme-ses-kaynaklari.json` içinde mevcut `kesim`/`ozgunSha256` biçimindedir.
+Hac dosyaları Diyanet'in ayrı bir birimine (Hac ve Umre Hizmetleri Genel Müdürlüğü) aittir; `tests/ezber-katalog.test.mjs` içindeki Diyanet adres kalıbına `hacumreegitim.hac.gov.tr` eklendi.
+
+**Sınırlar seçilirken.**
+- Telbiye dosyasının başındaki konuşulan «Telbiye» etiketi (0–2,8 sn) ve Tekbir dosyasının başındaki etiket (0–3,0 sn) kesite girmedi.
+- Tekbir: Türkçe niyetten sonra gelen tek «Allâhü ekber» (iftitah); öncesindeki niyet en geç 60,35 sn'de biter, sonrasında 2 sn sessizlik vardır.
+- Selâm: farzın sonundaki sağa selam; «ve berakâtüh» yoktur (maddenin metniyle aynı). Aynı videoda sola selam (430,0–433,8) ve ikinci bir kayıt (724,7–728,5) da bulundu, kullanılmadı.
+- Tesmî–Tahmîd: video ikisini art arda okur («Semiallâhü limen hamideh» 220,15–223,55; «Rabbenâ leke'l-hamd» 223,70–226,55). Sayfa, Kur'an dışı maddede bölümleri ayrı sese bağlamaz;
+  bu yüzden iki cümle aralarındaki sessizlik kesilmeden **tek kesit** (`ses.tam`) olarak konuldu.
+  **Metin uyumu:** videodaki imam «Rabbenâ leke'l-hamd» der (vavsız); `src/data/ezber/metin/d-tesmi-tahmid.json` 2. bölümü de «رَبَّنَا لَكَ الْحَمْدُ» (vavsız). Diyanet'in `2_KIYAM.mp3`
+  kaydı «Rabbenâ **ve** leke'l-hamd» (vavlı) söyler ve «Semiallâhü» içermez; metinle uyuşmadığı için kullanılmadı.
+
+**Resmî sunucu ve arşiv uyarısı (Telbiye, Teşrik tekbiri).** `hacumreegitim.hac.gov.tr` Belçika'dan bağlantıyı sıfırlıyor (curl 35 `Connection was reset`; 25 Ekim 2026'da her dosya için üç deneme, hepsi başarısız).
+Aynı iki dosya **Internet Archive'in 8 Mayıs 2025 ham kopyasından** (`https://web.archive.org/web/20250508id_/<resmî adres>`) alındı; indirilen baytların özeti araştırma raporundakiyle birebir
+aynı çıktı (`e5982f87…7fcf` ve `e8301bcb…7882`). Kayıtta `kaynak` resmî adrestir, `arsivKopyasi` arşiv adresidir ve `not` bunu açıkça yazar. **Açık sınır:** resmî sunucudan özet karşılaştırması
+yapılmadı; Türkiye'den bağlanılabildiğinde `curl` ile iki dosyanın sha256'sı bu iki değerle karşılaştırılmalıdır. Arşiv kopyası Diyanet'in yayınının bir görüntüsüdür; kaydı kurumdan başka biri üretmemiştir.
+
+**Metin eşleşmesi.** Her kesit tek başına yeniden yazıldı (yerel Whisper large-v3, CPU, Arapça, kelime zamanlı); sonuçlar maddelerin Arapça bölümleriyle harf harf aynıdır (harekeler hariç):
+- Tekbir: «الله أكبر».
+- Tesmî–Tahmîd: «سمع الله لمن حمده ربنا لك الحمد».
+- Selâm: «السلام عليكم ورحمة الله».
+- Telbiye: «لبيك اللهم لبيك لبيك لا شريك لك لبيك إن الحمد والنعمة لك والملك لا شريك لك» = maddenin dört bölümü (1: لبيك اللهم لبيك · 2: لبيك لا شريك لك لبيك · 3: إن الحمد والنعمة لك والملك · 4: لا شريك لك).
+- Teşrik tekbiri: «الله أكبر الله أكبر لا إله إلا الله والله أكبر الله أكبر ولله الحمد» = maddenin üç bölümü (الله أكبر الله أكبر / لا إله إلا الله / والله أكبر الله أكبر ولله الحمد), kelime kelime aynı.
+  Hac sayfasında dosya «Tekbir» adıyla geçer, «Teşrik» demez; metin Teşrik tekbiriyle aynı olduğu için bu maddeye bağlandı. Hangi namazlardan sonra okunacağı bilgisi kaynaktan değil, maddenin metin dosyasından gelir.
+- Kesit uçları: başta ve sonda ilk/son 150 ms'lik RMS düzeyi: Tekbir −54,4 / −57,6 dB; Tesmî–Tahmîd −52,2 / −54,9 dB; Selâm dijital sessizlik (−∞); Telbiye −77 / −71 dB; Teşrik tekbiri −102 / −80 dB;
+  dosya ortalaması −13,5…−15,9 dB. Yani her uç dosya ortalamasının en az 36 dB altındadır: kesilmiş ya da yarım kalmış hece yok, komşu söz de girmedi.
+- **Dinlenmedi:** kesitleri bir insan kulağı henüz dinlemedi (makine yazıya dökümü + enerji ölçümü). Hoca onayı bekler.
+
+**Katalog ve sayfalar.** Beş maddeden `metinli: true` kalktı (sesli madde metinli işareti taşımaz; `tests/ezber-katalog.test.mjs`) ve `ses: { tam: … }` eklendi; `kuranMetni` false kaldı, `yapay` yok.
+Çalışma sayfası (`/<dil>/calis/<id>/`) artık «Henüz dinleme kaydı yok» yerine «Dinle ve tekrarla» çaları çizer; giriş listesinde çal düğmesi çıkar; Kur'an dışı olduğu için tek kayıt olarak çalar
+(`dinlemeSirasi` = `[ses.tam]`). Sesli madde sayısı 59 → **64** (ikisi yapay ses). Ana site (`src/scripts/veli-ezber.ts`, `hoca-ekrani.ts`, `hoca-ezber.ts`) katalog yardımcılarını kullanır, değişiklik gerektirmedi.
+Yeni dosyalar yaklaşık 0,3 MB; derlenmiş ana site sınırının (1 GB) yanında önemsiz.
+
+**Bulunamayanlar ve bilinçli eklenmeyenler.**
+- **Âmentü, Yemek duası, Kadir Gecesi duası:** Diyanet'in indirilebilir insan sesi kaydı bulunamadı. Taranan yerler: `namaz.diyanet.gov.tr` (HTML/JS/XML, `output.min.js`, `videoData.xml`, `multimedyaData.xml`;
+  hanefi 1–10, şafii 1–5, abdest 1–12 ve ezan duası dosyaları), `kuran.diyanet.gov.tr/elifba` (yalnız harf/hece dersleri), `dijital.diyanet.gov.tr` dua sayfaları (gömülü YouTube videosu, dosya yok), `diyanet.tv`
+  (yalnız video; kullanıcı kararıyla kabul edilmez), Hac sitesi dua dosyaları (yemek duası yok), Kadir Gecesi duası için yalnız metin (`dinhizmetleri.diyanet.gov.tr/Documents/Kadir Gecesi Dua.pdf`). Üçü sessiz kalır
+  (Âmentü ve Yemek duası `metinli`; Kadir Gecesi duası çalışma sayfasız).
+- **Abdest niyeti, oruç niyeti:** `namaz.diyanet.gov.tr/namaz/assets/video/abdest/Abdest01_Niyet.mp4` ve `TeyemmumNIYET.mp4` sayfada tanımlı ama sunucuda 404 (`.webm/.ogv/.flv/.mp3` de 404); oruç niyetinin ses kaydı hiçbir Diyanet sayfasında bulunamadı.
+- **Tesbihat (`d-tesbihat`) eklenmedi.** Akşam videosunun tesbihat bölümü (733,3–844,2 sn; Allâhümme entesselâm, Subhânallâh vel-hamdülillâh…, lâ havle, Âyetü'l-Kürsî, tesbih–tahmîd–tekbir, «Lâ ilâhe illallâhü vahdehû…»)
+  33'lük tesbihleri **birer kez** söyler. Maddenin metni 33 kez okumayı içerir; bu kayıt metinle uyuşmaz, çalışma sayfası yanlış bir örnek verirdi.
+- **Akşam farzı niyeti** (55,55–60,55 sn, Türkçe «Niyet ettim Allah rızası için akşam namazının farzını kılmaya») kullanılmadı: `d-namaz-niyeti` genel bir niyet maddesidir, kayıt ise akşam farzına özgüdür.
+- Videoda başka kayıtlar da var (geçiş tekbiri 226,9–229,1 sn; ikinci sağa selam 724,7–728,5 sn); katalogda karşılıkları olmadığından alınmadı.
+
+**Doğrulama (25 Ekim 2026, yerel; temiz çalışma ağacı, yayın yok).**
+- `npm run test:ezber` 162/162; `npm run test:dinleme` 8/8 (yeni test: beş kesitin kaynak, kesim, özgün özeti, dosya özeti ve arşiv notu).
+- `npm run check` (kök) 0 hata / 0 uyarı; `npm run build` (kök) 1952 sayfa, çıkış 0; `npm run egitim:build` `astro check` 0 hata / 0 uyarı, 387 sayfa.
+- `npm run test:egitim`: 15/15 birim + **394 geçti / 16 atlama / 0 başarısız**. Sessiz dua testleri (`sessiz-metin`, `kip`, `kart`) hâlâ sessiz kalan maddelere (`d-amentu`, `d-yemek-duasi`) taşındı:
+  `SESSIZ` yedi maddeden ikiye indi, kart ve kip örneği `d-tekbir` yerine `d-amentu`. `giris.spec.mjs` çal düğmesi sayısını katalogdan türetir (64).
+- Görsel inceleme (Playwright, gerçek CSP başlıklarıyla önizleme): TR 390 px'te `/tr/calis/d-tekbir/` ve `/tr/calis/d-telbiye/`: «Dinle ve tekrarla» çaları var, «sessiz» bölümü yok, `data-oynat` düğmesi 1.
+- Yapılmayanlar: yeni dosyaların canlı `ulucamii.be`'den oynatılması (dosyalar yayından önce sitede yoktur), fiziksel telefon/Safari, resmî Hac sunucusundan özet karşılaştırması (yukarıdaki uyarı).
 
 ## Canlı durum ve bu çalışmanın sınırı
 

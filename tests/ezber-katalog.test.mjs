@@ -37,7 +37,8 @@ const plan = json('src/data/yillik-plan-2026-2027.json');
 const sesKaynaklari = json('docs/dinleme-ses-kaynaklari.json');
 const DILLER = ['tr', 'fr', 'en', 'nl', 'de'];
 const SEVIYELER = [1, 2, 3, 4, 5, 6, 7, 8, 'kenar'];
-const DIYANET = /^https:\/\/(webdosya\.diyanet\.gov\.tr|namaz\.diyanet\.gov\.tr|kuran\.diyanet\.gov\.tr)\//;
+// hacumreegitim.hac.gov.tr: Diyanet Hac ve Umre Hizmetleri Genel Müdürlüğü'nün eğitim sitesi (Telbiye, Teşrik tekbiri; 25 Ekim 2026).
+const DIYANET = /^https:\/\/(webdosya\.diyanet\.gov\.tr|namaz\.diyanet\.gov\.tr|kuran\.diyanet\.gov\.tr|hacumreegitim\.hac\.gov\.tr)\//;
 const KURAN_SESI = /^https:\/\/(webdosya\.diyanet\.gov\.tr\/kuran\/|kuran\.diyanet\.gov\.tr\/)/;
 const kimlikler = new Set(katalog.ogeler.map((o) => o.id));
 const planDizeleri = [...new Set(plan.gunler.flatMap((g) => (g.dersler ?? []).flatMap((d) => d.ezber ?? [])))];

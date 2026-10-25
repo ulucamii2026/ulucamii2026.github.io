@@ -91,7 +91,7 @@ test.describe('ekranda', () => {
     await expect(page.locator('[data-kart-kare] svg.kare-kod')).toHaveCount(1);
     await expect(page.locator('.kart-okut')).toHaveText(/Dinlemek ve çalışmak/);
     for (const [dil, sesli, sessiz] of [['tr', 'Dinlemek ve çalışmak', 'Çalışmak için'], ['fr', 'écouter et travailler', 'pour travailler'], ['en', 'listen and practise', 'to practise'], ['nl', 'luisteren en te oefenen', 'om te oefenen'], ['de', 'zuzuhören und zu üben', 'um zu üben']]) {
-      await page.goto(`/${dil}/calis/d-tekbir/`);
+      await page.goto(`/${dil}/calis/d-amentu/`);
       await expect(page.locator('[data-yazdir]'), dil).toBeVisible();
       await expect(page.locator('[data-kart-kare] svg.kare-kod'), dil).toHaveCount(1);
       await expect(page.locator('.kart-okut'), dil).toContainText(sessiz);

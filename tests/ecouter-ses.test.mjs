@@ -99,3 +99,38 @@ test('Kunut sınırı son cümleyi korur; sabah ezanı ve uzun ezan duası metin
   const ar=veri.kodlar['ezan-duasi'].satirlar.map(s=>s.ar).join(' ').normalize('NFD').replace(/[\u064B-\u065F\u0670]/g,'');
   assert.match(ar,/والدرجة الرفيعة/);assert.match(ar,/لا تخلف الميعاد/);
 });
+
+test('Diyanet insan sesi dua kesitleri (25 Ekim 2026): kaynak, kesim aralığı, özgün özeti ve arşiv notu belgelenir',()=>{
+  const katalog=json('src/data/ezber/katalog.json');
+  const VIDEO='https://namaz.diyanet.gov.tr/namaz/assets/video/namaz/4_Aksam_Namazi_Kilinisi_E.mp4';
+  const HAC='https://hacumreegitim.hac.gov.tr/Resimler/6/WebSiteSayfalar/202103/';
+  const beklenen={
+    'd-tekbir':['tekbir',VIDEO,[62.45,64.65]],
+    'd-tesmi-tahmid':['tesmi-tahmid',VIDEO,[220.15,226.55]],
+    'd-selam':['selam',VIDEO,[426,429.8]],
+    'd-telbiye':['telbiye',HAC+'arapca-dua-1311.mp3',[2.8,17.7]],
+    'd-tesrik-tekbiri':['tesrik-tekbiri',HAC+'tekbir-arapca-1307.mp3',[3,15.8]],
+  };
+  for(const [id,[ad,kaynak,kesim]] of Object.entries(beklenen)){
+    const yol=`/media/ses/dualar/${ad}.mp3`;
+    const oge=katalog.ogeler.find(o=>o.id===id);
+    assert.deepEqual(oge.ses,{tam:yol},id);
+    assert.ok(!oge.metinli&&!oge.kuran&&!oge.kuranMetni,`${id}: sesli madde; Kur'an metni değil, metinli işareti yok`);
+    const r=kaynaklar[yol];
+    assert.ok(!r.yapay,id);
+    assert.equal(r.kaynak,kaynak,id);
+    assert.deepEqual(r.kesim,kesim,id);
+    assert.match(r.ozgunSha256,/^[a-f0-9]{64}$/,id);
+    assert.equal(hash(yol),r.sha256,id);
+  }
+  // Üç kesit aynı videodan: özgün özeti aynı, aralıklar çakışmaz; video akşam namazı (Hanefî) kaydıdır.
+  const video=['d-tekbir','d-tesmi-tahmid','d-selam'].map(id=>kaynaklar[katalog.ogeler.find(o=>o.id===id).ses.tam]);
+  assert.equal(new Set(video.map(r=>r.ozgunSha256)).size,1);
+  assert.equal(video[0].ozgunSha256,'5d2c8ed73c608020a327f043e233efd21acb70bc3ee8e995fd58454132cceb4b');
+  // Hac sitesi dosyaları resmî sunucudan Belçika'dan alınamadı: bayt kaynağı arşiv kopyasıdır ve kayıtta açıkça yazılır.
+  for(const ad of ['telbiye','tesrik-tekbiri']){
+    const r=kaynaklar[`/media/ses/dualar/${ad}.mp3`];
+    assert.equal(r.arsivKopyasi,'https://web.archive.org/web/20250508id_/'+r.kaynak,ad);
+    assert.match(r.not,/Internet Archive/,ad);
+  }
+});

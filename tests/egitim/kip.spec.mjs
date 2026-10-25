@@ -259,13 +259,13 @@ const katalog = JSON.parse(readFileSync(new URL('../../src/data/ezber/katalog.js
 const metinDosyalari = new Set(readdirSync(new URL('../../src/data/ezber/metin/', import.meta.url)).filter((d) => d.endsWith('.json') && d !== 'metin.schema.json').map((d) => d.slice(0, -5)));
 const METINSIZ = katalog.ogeler.filter((o) => (o.ses?.tam || o.ses?.parcalar?.length || o.kuran || o.metinli) && !metinDosyalari.has(o.id)).map((o) => o.id);
 
-test('Metni olmayan sayfada (varsa) kip bölümü ve A−/A+ yoktur; metni olan Eûzü–Besmele ve sessiz Tekbir sayfasında vardır', async ({ page }) => {
+test('Metni olmayan sayfada (varsa) kip bölümü ve A−/A+ yoktur; metni olan Eûzü–Besmele ve sessiz Âmentü sayfasında vardır', async ({ page }) => {
   for (const id of METINSIZ) {
     await page.goto(`/tr/calis/${id}/`);
     await expect(page.locator('[data-kip]'), id).toHaveCount(0);
     await expect(page.locator('[data-ar-boyut]'), id).toHaveCount(0);
   }
-  for (const id of ['d-euzu-besmele', 'd-tekbir']) {
+  for (const id of ['d-euzu-besmele', 'd-amentu']) {
     await page.goto(`/tr/calis/${id}/`);
     await expect(page.locator('[data-kip]'), id).toHaveCount(1);
     await expect(page.locator('[data-ar-boyut]'), id).toHaveCount(1);
