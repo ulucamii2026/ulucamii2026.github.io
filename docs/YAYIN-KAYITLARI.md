@@ -4,6 +4,33 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 25 Ekim 2026 (18) — egitim: Çevrim dışı çalışma ve ana ekrana ekleme (service worker + uygulama bildirimi)
+
+- Zaman: commit/push 16:25:42 (`7aaa1170`), ana site Pages run `40206884388` başarılı 16:28:48 (gizlilik sayfası), egitim Hosting
+  yayını 16:39:35, canlı denetim 16:40:02, Europe/Brussels (CET). **Yayımlandı ve canlı doğrulandı.** Dayanak: Rıdvan'ın 25 Ekim
+  «egitim.ulucamii.be platformu geliştirmeye devam et… full otonom ilerle» talimatı (iş, kota yüzünden kapanan oturumdan sonra ikinci
+  hesapta tamamlandı).
+- Kapsam:
+  - Madde sayfasında «İnternetsiz çalışmak için kaydet» kutusu (beş dil): sayfa ve maddenin bütün Diyanet kayıtları (tam, âyet
+    parçaları, Ezan vakit seçenekleri) yalnız bu tarayıcının önbelleğine alınır; ilerleme, toplam boyut, «Vazgeç», «Sil».
+  - `/<dil>/cevrimdisi/`: kayıtlı maddeler boyutlarıyla, tek tek ve onaylı «Hepsini sil»; ağ yokken önbellekte olmayan adresin yedek sayfası.
+  - Service worker `/sw.js` (`egitim/src/sw/sw.ts`, derlemede `scripts/egitim-sw.mjs` damgalar): HTML ağ önce (önbellekte kopya varsa 4 sn
+    zaman aşımı), `_astro`/font/simge önbellek önce (sürümlü kabuk, eski sürüm silinir); ses YALNIZ kayıt akışıyla kalıcı `ezber-ses-v1`'e
+    girer ve oradan `Range` → 206 ile verilir (iOS Safari). **Kaydedilmemiş ses SW'ye takılmadan ağdan akar, hiçbir yere yazılmaz**
+    (ilk taslakta ses tam inmeden çalmıyordu; yayından önce değiştirildi). Başka kayıtlı maddenin kullandığı ortak ses dosyası silinmez.
+  - `manifest.webmanifest` + 192/512/maskable simge (ana SVG'den `scripts/egitim-simge-uret.mjs`); ana sayfa «Kendi çalışmanız için» ve alt bilgide bağlantı.
+  - CSP: `connect-src 'self' https://ulucamii.be; worker-src 'self'; manifest-src 'self'` eklendi, başka yönerge değişmedi; `/sw.js` `no-cache`.
+  - Ana site `src/content/sayfalar/{tr,fr,en,nl,de}/gizlilik.md`: «İnternetsiz çalışmak için kaydetme (isteğe bağlı)» maddesi, `guncelleme: 2026-10-25`.
+  - `docs/EGITIM-FAZ2-DINLEME.md`: (12)/(14) «yayın bekliyor» satırları yayımlandı olarak, Hac açık sınırı (17) sonucuyla güncellendi.
+  - Yeni dinî metin, okunuş ya da ses yok.
+- Kalite: kök `check` 0 hata, `test:ezber` 196/196, `egitim:build` 407 sayfa, `test:egitim` 33/33 + 698 geçti / 30 bilinçli atlama / 0 hata
+  (yeni `cevrimdisi.spec.mjs`, `cevrimdisi.test.mjs`, `ezber-cevrimdisi.test.mjs`); yayın içi tam test yine 698 geçti. Canlı: `egitim:canli`
+  **73/73** (gerçek ulucamii.be ses sunucusuyla kaydet → çevrim dışı 206 → sil, CSP ihlali 0), beş dil `/cevrimdisi/` 200, `/sw.js` `no-cache`,
+  canlı CSP yeni yönergelerle, ana site gizlilik sayfasında yeni madde.
+- Sınırlar: ilk ziyaret internet ister; tarayıcı (özellikle iPhone/iPad Safari) kayıtları yer darlığında silebilir (`storage.persist()` istenir,
+  garanti değil); kaydedilmemiş ses internetsiz çalmaz. Fiziksel iPhone'da deneme yapılmadı.
+- Bu kayıt için belge commit'i içerik yayını değildir.
+
 ## 25 Ekim 2026 — ihtida paketi: EK-9 iki dilli (sebebin Türkçesi) + ön yüzde cinsiyete göre zamir çizikleri
 
 - Dayanak: Rıdvan KAYAHAN, 25 Ekim 2026: «ihtida belgesinin arka sayfasına fransızca açıklama bölümünün altına uygun bi yere türkçe
