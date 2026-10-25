@@ -61,6 +61,7 @@ export function ihtidaFormuBaslat() {
           acikRiza: onay.acikRiza === true, ek10: onay.ek10 === true, gizlilik: onay.gizlilik === true,
           ek10Surumu: '2026-10', imzaAktarimIzni: v.imzaYok !== true && onay.imzaAktarimIzni === true,
           gorselRiza: onay.gorselRiza === true, beyan: onay.beyan,
+          sartlar: onay.sartlar === true,   // 25 Eki 2026: «okudum, anladım» + Komisyonun düzenleme hakkı
         },
       };
     },

@@ -86,11 +86,11 @@ function ihtidaRefIzleriniCopeAt(klasor, ref) {
   try { is = ihtidaPaketIsiOku(ref); } catch (_) { is = null; }
   // 23 Eki 2026: son nüshada yeni revizyon eskisinin dosya numarasını iş kaydından düşürürdü (eskiPdfler tutulur); ön
   // başvurunun başvuran nüshası (şahit imzasız) da ayrı dosyadır. Hepsi ad denetimiyle çöpe gider.
-  var pdfler = is ? [is.pdfId, is.basvuranPdfId].concat(is.eskiPdfler || []).filter(function (id, i, h) { return id && h.indexOf(id) === i; }) : [];
+  var pdfler = is ? [is.pdfId, is.basvuranPdfId].concat(is.eskiPdfler || [], ihtidaParcaIdleri(is)).filter(function (id, i, h) { return id && h.indexOf(id) === i; }) : [];
   pdfler.forEach(function (id) {
     try {
       var pdf = DriveApp.getFileById(id);
-      if (/^IH-\d{4}-\d{4} - Ihtida Belge Paketi - r\d+( - basvuran)?\.pdf$/.test(pdf.getName()) && pdf.getName().indexOf(ref + " - ") === 0 && !pdf.isTrashed()) { pdf.setTrashed(true); silinen++; }
+      if ((/^IH-\d{4}-\d{4} - Ihtida Belge Paketi - r\d+( - basvuran)?\.pdf$/.test(pdf.getName()) || ihtidaParcaAdiMi(pdf.getName())) && pdf.getName().indexOf(ref + " - ") === 0 && !pdf.isTrashed()) { pdf.setTrashed(true); silinen++; }
     } catch (_) { /* paket PDF'i yoksa satır temizliği sürer */ }
   });
   IHTIDA_GORSEL_ADLARI.map(function (t) { return ref + t.sonEk; }).concat([ref + " - paket-islem.json"]).forEach(function (ad) {
@@ -124,6 +124,10 @@ function ihtidaPaketOzet(is) {
   return { ref: is.ref, revizyon: is.revizyon, asama: is.asama, durum: is.durum, hata: is.hata || "", pdfId: is.pdfId || "", sha256: is.sha256 || "", sayfa: is.sayfa || 0,
     // 23 Eki 2026: hangi şahit imzaları basıldı (ercan/ridvan) ve ön başvuruda başvuranın şahit imzasız nüshasının durumu.
     sahitImzasi: is.sahitImzasi || [], basvuranKopya: is.basvuranKopya || "", basvuranPdfId: is.basvuranPdfId || "", basvuranSha256: is.basvuranSha256 || "",
+    // 25 Eki 2026: DHYS'ye ayrı yüklenecek dört parça (sirada / hazir / hata) ve arşivdeki dosyaları.
+    // 25 Eki 2026: yedek şahit (Ercan MOLA · Rıdvan KAYAHAN) mühtedinin yazılı/sözlü rızasıyla mı kullanıldı.
+    yedekSahitRizasi: is.yedekSahitRizasi || "",
+    parcalar: is.parcalar || "", parcaPdfler: (is.parcaPdfler || []).map(function (p) { return { no: p.no, anahtar: p.anahtar, id: p.id, sayfa: p.sayfa }; }),
     alicilar: (is.alicilar || []).map(function (a) { return { eposta: a.eposta, durum: a.durum, messageId: a.messageId || "", zaman: a.zaman || "", basvuran: a.basvuran === true }; }) };
 }
 function ihtidaPaketDurumIsle(e) {
@@ -167,8 +171,8 @@ function ihtidaPaketGuvenliDosya(is, dosyaId, ozet) {
   if (ihtidaPaketSha(f.getBlob().getBytes()) !== (ozet || is.sha256)) throw new Error("paket-arsiv-degismis");
   return f;
 }
-/** E-postadaki ek adı her alıcıda aynıdır (arşivdeki dosya adından bağımsız). */
-function ihtidaPaketEkAdi(is) { return is.ref + " - Ihtida Belge Paketi - r" + is.revizyon + ".pdf"; }
+/** E-postadaki ek adı dernek içi alıcılarda aynıdır (arşivdeki dosya adından bağımsız); başvurana giden filigranlı nüsha «Sureti» adını taşır. */
+function ihtidaPaketEkAdi(is, a) { return is.ref + (a && a.basvuran && is.basvuranKopya ? " - Ihtida Belgesi Sureti - r" : " - Ihtida Belge Paketi - r") + is.revizyon + ".pdf"; }
 /** 23 Eki 2026: PDF baytlarını arşive yazar. GAS Byte[] işaretli byte bekler. */
 function ihtidaPaketPdfKaydet(bytes, ad) {
   var signed = Array.from(bytes, function (n) { return n > 127 ? n - 256 : n; });
@@ -195,12 +199,96 @@ function ihtidaSebebiTurkcesi(k, d) {
     return tr && tr.toLocaleLowerCase("tr") !== metin.toLocaleLowerCase("tr") ? tr : "";
   } catch (_) { console.error("ihtida-sebep-ceviri-hatasi"); return ""; }
 }
-/** 23 Eki 2026: ön başvuruda başvuranın e-posta nüshası — kayıtlı şahit imzaları OLMADAN (secenek verilmez). Herkese açık formdan
- *  otomatik gelen başvuruda başvurana yalnız kendi imzası giden nüsha gider; dernek içi nüsha ve arşiv şahit imzalıdır. */
+/* 25 Eki 2026 (Rıdvan KAYAHAN: «… bu dosyadakileri dhys sistemine yükleyecek, belge bir parça, dilekçe bi parça,
+   aydınlatma metni ve açık rıza metni bir parça, kimlik bir parça … online başvuru formunu doldurduktan sonra bunların herbiri
+   parça parça yani ayrı ayrı kaydedilsin»): ana paket arşive yazıldıktan sonra DHYS'ye ayrı ayrı yüklenecek dört parçası
+   (EK-9 · dilekçe · EK-10 · kimlik) aynı klasöre ayrı PDF olarak kaydedilir. Bölme planı üretim sırasında yalnız sayfa sıra
+   numaralarıyla iş kaydına yazılır; parçalar arşivdeki (SHA-256 doğrulanmış) ana PDF'ten kesilir, yeniden üretilmez.
+   E-postalar tek PDF'le sürer; parçalar yalnız arşiv ve panel içindir. Parça hatası paketi ve e-postaları durdurmaz. */
+var IHTIDA_DHYS_SUTUN = "DHYS parçaları";
+function ihtidaParcaAdi(is, p, uzanti) { return is.ref + " - r" + is.revizyon + " - " + p.no + " - " + p.baslik + "." + (uzanti || "pdf"); }
+/** 1–4: PDF parçaları; 5: EK-9 ön yüzündeki vesikalık (JPG ya da PNG, yüklendiği biçimde). */
+function ihtidaParcaAdiMi(ad) {
+  var m = String(ad).match(/^IH-\d{4}-\d{4} - r\d+ - ([1-5]) - (.+)\.(pdf|jpg|png)$/);
+  if (!m) return false;
+  if (m[1] === "5") return m[3] !== "pdf" && m[2] === IhtidaPdf.DHYS_VESIKALIK.baslik;
+  return m[3] === "pdf" && IhtidaPdf.DHYS_PARCALARI.some(function (p) { return String(p.no) === m[1] && p.baslik === m[2]; });
+}
+function ihtidaParcaIdleri(is) { return ((is && is.parcaPdfler) || []).map(function (p) { return p.id; }).filter(Boolean); }
+/** Yarım kalmış bir denemenin parçalarını çöpe atar (aynı adla ikinci kopya kalmasın). Yalnız parça adına uyan dosyalar. */
+function ihtidaParcalariCopeAt(is) {
+  ihtidaParcaIdleri(is).forEach(function (id) {
+    try { var f = DriveApp.getFileById(id); if (ihtidaParcaAdiMi(f.getName()) && f.getName().indexOf(is.ref + " - ") === 0 && !f.isTrashed()) f.setTrashed(true); }
+    catch (_) { /* dosya zaten yoksa sürer */ }
+  });
+  is.parcaPdfler = [];
+}
+/** Başvurunun çöpte olmayan vesikalık yüklemesi (ihtidaGorselleriOku ile aynı ad). */
+function ihtidaVesikalikDosyasi(ref) {
+  var ad = ref + " - vesikalik.jpg", it = ihtidaKlasorGetir().getFilesByName(ad);
+  while (it.hasNext()) { var f = it.next(); if (f.getName() === ad && !f.isTrashed()) return f; }
+  return null;
+}
+async function ihtidaPaketParcalariKaydet(is) {
+  if (!is.parcaPlani) throw new Error("parca-plani-yok");
+  ihtidaParcalariCopeAt(is);
+  var ana = ihtidaPaketGuvenliDosya(is);
+  var bytes = Uint8Array.from(ana.getBlob().getBytes(), function (b) { return b & 255; });
+  var parcalar = await IhtidaPdf.parcala(PDFLib, bytes, is.parcaPlani, is.ref), urller = [];
+  parcalar.forEach(function (p) {
+    var kayit = ihtidaPaketPdfKaydet(p.bytes, ihtidaParcaAdi(is, p));
+    is.parcaPdfler.push({ no: p.no, anahtar: p.anahtar, id: kayit.dosya.getId(), sha256: kayit.sha256, sayfa: p.sayfa });
+    urller.push(kayit.dosya.getUrl());
+    ihtidaPaketIsiYaz(is);   // kimlik hemen yazılır: çalışma kesilirse sonraki deneme bu dosyaları çöpe atar
+  });
+  // 25 Eki 2026 (Rıdvan KAYAHAN: «vesikalık fotoğraf ihtida belgesinin önyüzüne yerleştirdiğimiz fotoğraf olacak»): EK-9'a
+  // gömülen yükleme dosyasının bayt bayt kopyası (form görseli tuvalden yeniden kodlar; üst veri yoktur). DHYS fotoğraf alanına
+  // ayrı yüklenir. EK-9 fotoğrafı en/boy 0,72–0,86 kutusuna kırparak gösterir (public/admin/ek9.js); form 25.10'dan beri
+  // vesikalığı bu orana kırparak yükler. Daha eski ve oranı dışında kalan yüklemede hücreye not düşülür.
+  // Paket vesikalıksız üretilemediği için dosya olağan durumda vardır; sonradan silindiyse dört PDF yine kaydedilir, hücreye not düşülür.
+  var v = ihtidaVesikalikDosyasi(is.ref);
+  if (v) {
+    var vBayt = v.getBlob().getBytes(), png = (vBayt[0] & 255) === 0x89;
+    var vKopya = ihtidaKlasorGetir().createFile(Utilities.newBlob(vBayt, png ? "image/png" : "image/jpeg", ihtidaParcaAdi(is, IhtidaPdf.DHYS_VESIKALIK, png ? "png" : "jpg")));
+    is.parcaPdfler.push({ no: IhtidaPdf.DHYS_VESIKALIK.no, anahtar: IhtidaPdf.DHYS_VESIKALIK.anahtar, id: vKopya.getId(), sha256: ihtidaPaketSha(vBayt), sayfa: 0 });
+    var boyut = ihtidaGorselBoyutu(vBayt), oran = boyut && boyut.boy ? boyut.en / boyut.boy : 0;
+    urller.push(vKopya.getUrl() + (oran && (oran < 0.715 || oran > 0.865)
+      ? " (not: fotoğraf yüklendiği gibidir, en/boy " + oran.toFixed(2) + "; EK-9'da kırpılmış görünür, DHYS'ye yüklemeden önce bakın)" : ""));
+    ihtidaPaketIsiYaz(is);
+  } else urller.push("Vesikalık dosyası bulunamadı; EK-9 parçasındaki fotoğraf kullanılabilir.");
+  is.parcalar = "hazir";
+  // Dosyalar hazır: hücre yazılamazsa (satır yok, kota) parçalar yine «hazır» kalır, paket durmaz.
+  try { ihtidaPaketHucre(is.ref, IHTIDA_DHYS_SUTUN, urller.join("\n")); }
+  catch (_) { console.error("ihtida-dhys-hucre-hatasi " + is.ref); }
+}
+/** JPEG (SOFn) ya da PNG (IHDR) baytlarından {en, boy}; okunamazsa null. */
+function ihtidaGorselBoyutu(b) {
+  var u = function (i) { return b[i] & 255; };
+  if (b.length > 24 && u(0) === 0x89 && u(1) === 0x50) return { en: (u(16) << 24 | u(17) << 16 | u(18) << 8 | u(19)) >>> 0, boy: (u(20) << 24 | u(21) << 16 | u(22) << 8 | u(23)) >>> 0 };
+  if (b.length < 4 || u(0) !== 0xFF || u(1) !== 0xD8) return null;
+  for (var i = 2; i + 8 < b.length;) {
+    if (u(i) !== 0xFF) return null;
+    var m = u(i + 1);
+    if (m === 0xFF) { i++; continue; }                                        // dolgu baytı
+    if (m === 0x01 || (m >= 0xD0 && m <= 0xD8)) { i += 2; continue; }         // uzunluksuz işaretler
+    if (m >= 0xC0 && m <= 0xCF && m !== 0xC4 && m !== 0xC8 && m !== 0xCC) return { boy: u(i + 5) << 8 | u(i + 6), en: u(i + 7) << 8 | u(i + 8) };
+    i += 2 + (u(i + 2) << 8 | u(i + 3));
+  }
+  return null;
+}
+/** Başvuranın e-posta nüshası. 23 Eki 2026: ön başvuruda kayıtlı şahit imzaları basıldıysa nüsha onlar OLMADAN yeniden üretilir
+ *  (herkese açık formdan otomatik gelen başvuruda başvurana yalnız kendi imzası giden nüsha gider; dernek içi nüsha ve arşiv şahit
+ *  imzalıdır). Öbür durumlarda arşivdeki (SHA-256 doğrulanmış) ana nüsha kullanılır.
+ *  25 Eki 2026 (Rıdvan KAYAHAN: «ihtida başvurusu yapan kardeşimizin mailine ihtida belgesinin sureti filigran gibi bir şey ile
+ *  gitsin, bu belge bilgi amaçlıdır»): her aşamada başvurana giden nüshanın her sayfası «SURET · bilgi amaçlıdır» filigranlıdır. */
 async function ihtidaPaketBasvuranKopyasiUret(is, k) {
-  var hatalar = [], g = ihtidaGorselleriOku(ihtidaKlasorGetir(), is.ref, hatalar);
-  if (hatalar.length) throw new Error("gorsel-okunamadi");
-  var bytes = await IhtidaPdf.uret(k, g, null, ihtidaPaketKaynaklari(), PDFLib, fontkit, { ihtidaSebebiTr: ihtidaSebebiTurkcesi(k, null) });
+  var bytes;
+  if (is.asama === "on-basvuru" && (is.sahitImzasi || []).length) {
+    var hatalar = [], g = ihtidaGorselleriOku(ihtidaKlasorGetir(), is.ref, hatalar);
+    if (hatalar.length) throw new Error("gorsel-okunamadi");
+    bytes = await IhtidaPdf.uret(k, g, null, ihtidaPaketKaynaklari(), PDFLib, fontkit, { ihtidaSebebiTr: ihtidaSebebiTurkcesi(k, null) });
+  } else bytes = Uint8Array.from(ihtidaPaketGuvenliDosya(is).getBlob().getBytes(), function (b) { return b & 255; });
+  bytes = await IhtidaPdf.suret(bytes, ihtidaPaketKaynaklari(), PDFLib, fontkit);
   var pdf = await PDFLib.PDFDocument.load(bytes, { parseSpeed: Infinity });
   if (pdf.getPageCount() < 6) throw new Error("paket-sayfa-eksik");
   var kayit = ihtidaPaketPdfKaydet(bytes, is.ref + " - Ihtida Belge Paketi - r" + is.revizyon + " - basvuran.pdf");
@@ -225,14 +313,15 @@ async function ihtidaPaketIsle(ref) {
       if (hatalar.length) throw new Error("gorsel-okunamadi");
       // 23 Eki 2026: kayıtlı şahit imzaları (Rıdvan KAYAHAN, Ercan MOLA) özel depodan okunur; yalnız eşleşen şahide basılır.
       var imzalar = ihtidaSahitImzalariOku();
-      var plan = IhtidaPdf.sahitImzaPlani(k, is.duzenleme || null, imzalar, g);
-      var bytes = await IhtidaPdf.uret(k, g, is.duzenleme || null, ihtidaPaketKaynaklari(), PDFLib, fontkit, { sahitImzalari: imzalar, ihtidaSebebiTr: ihtidaSebebiTurkcesi(k, is.duzenleme || null) });
+      var plan = IhtidaPdf.sahitImzaPlani(k, is.duzenleme || null, imzalar, g), parcaPlani = {};
+      var bytes = await IhtidaPdf.uret(k, g, is.duzenleme || null, ihtidaPaketKaynaklari(), PDFLib, fontkit, { sahitImzalari: imzalar, ihtidaSebebiTr: ihtidaSebebiTurkcesi(k, is.duzenleme || null), parcaPlani: parcaPlani });
       var pdf = await PDFLib.PDFDocument.load(bytes, { parseSpeed: Infinity });
       if (pdf.getPageCount() < 6) throw new Error("paket-sayfa-eksik");
       // Arşiv ve ek aynı blob'dur.
       var kayit = ihtidaPaketPdfKaydet(bytes, ref + " - Ihtida Belge Paketi - r" + is.revizyon + ".pdf"), f = kayit.dosya;
       is.pdfId = f.getId(); is.sha256 = kayit.sha256; is.sayfa = pdf.getPageCount();
       is.sahitImzasi = plan.uygulanan; is.uretimSuresiMs = Date.now() - bas;
+      is.parcaPlani = parcaPlani.toplam === is.sayfa ? parcaPlani : null; is.parcalar = "sirada"; is.parcaDeneme = 0; is.parcaPdfler = [];
       is.durum = "hazir"; is.hata = "";
       // Şahit imzalarını iş dosyasında çoğaltma; yalnız özel son PDF'de kalır.
       delete is.duzenleme;
@@ -241,14 +330,17 @@ async function ihtidaPaketIsle(ref) {
       is.alicilar = alicilar.filter(function (a, i) { return alicilar.indexOf(a) === i; }).map(function (a) {
         return { eposta: a, durum: "sirada", anahtar: Utilities.getUuid(), deneme: 0, basvuran: a === basvuran && IHTIDA_PAKET_ALICILARI.indexOf(a) < 0 };
       });
-      // Ön başvuru herkese açık formdan otomatik gelir: dernek içi alıcılar ve arşiv şahit imzalı nüshayı alır, başvuran
-      // yalnız kendi imzasının olduğu nüshayı (şahit imzaları basılmadan üretilen ikinci PDF).
-      is.basvuranKopya = is.asama === "on-basvuru" && plan.uygulanan.length && is.alicilar.some(function (a) { return a.basvuran; }) ? "sirada" : "";
+      // 25 Eki 2026: başvurana her aşamada filigranlı suret gider (ayrı PDF). Ön başvuruda kayıtlı şahit imzası basıldıysa suret,
+      // şahit imzaları basılmadan üretilen nüshadan yapılır (ihtidaPaketBasvuranKopyasiUret).
+      is.basvuranKopya = is.alicilar.some(function (a) { return a.basvuran; }) ? "sirada" : "";
       is.kopyaDeneme = 0;
       ihtidaPaketIsiYaz(is);
       ihtidaPaketHucre(ref, "Tam paket PDF", f.getUrl());
       ihtidaPaketHucre(ref, "Paket durumu", is.asama === "on-basvuru" ? "Ön başvuru paketi hazır · tören teyidi bekliyor" : "Müşavirlik paketi hazır");
     }
+    // 25 Eki 2026: dağıtımdan önce kuyruğa girmiş işte başvurana henüz gitmemiş nüsha da filigranlı surete çevrilir
+    // (eski kayıtta basvuranKopya boş kalır; başvurana filigransız ana nüsha gitmesin).
+    if (!is.basvuranKopya && is.alicilar.some(function (a) { return a.basvuran && (a.durum === "sirada" || a.durum === "gonderim-hatasi"); })) is.basvuranKopya = "sirada";
     // 6 dakikalık sınır: ikinci PDF aynı çalışmada yetişmezse sonraki dakikalık çalışmaya kalır; bu arada dernek içi alıcılara gönderim sürer.
     if (is.basvuranKopya === "sirada" && Date.now() - bas < 150000) {
       is.kopyaDeneme = (is.kopyaDeneme || 0) + 1;
@@ -274,7 +366,21 @@ async function ihtidaPaketIsle(ref) {
       if (a.durum === "belirsiz" && !a.messageId) ihtidaPaketBelirsizYokla(is, a);
       if (a.messageId && a.durum !== "teslim-edildi" && a.durum !== "teslim-edilemedi") ihtidaPaketTeslimYokla(a);
     }
-    is.durum = is.alicilar.every(function (a) { return a.durum === "teslim-edildi"; }) ? "tamam" : "teslim-takibi";
+    // DHYS parçaları e-postalardan sonra: süre yetmezse 45 sn sonraki çalışmaya kalır; üç denemede olmazsa «hata» (paket sürer).
+    if (is.parcalar === "sirada" && Date.now() - bas < 150000) {
+      is.parcaDeneme = (is.parcaDeneme || 0) + 1;
+      try { await ihtidaPaketParcalariKaydet(is); }
+      catch (_) {
+        console.error("ihtida-dhys-parca-hatasi " + ref);
+        if (is.parcaDeneme >= 3) {
+          is.parcalar = "hata";
+          try { ihtidaPaketHucre(ref, IHTIDA_DHYS_SUTUN, "DHYS parçaları hazırlanamadı; tam paket PDF'i geçerlidir."); }
+          catch (_) { /* hücre yazılamasa da paket sürer; durum iş kaydında */ }
+        }
+      }
+      ihtidaPaketIsiYaz(is);
+    }
+    is.durum = is.alicilar.every(function (a) { return a.durum === "teslim-edildi"; }) && is.parcalar !== "sirada" ? "tamam" : "teslim-takibi";
     ihtidaPaketHucre(ref, "E-posta durumu", is.alicilar.map(function (a) { return a.eposta + ": " + ihtidaPaketDurumMetni(a.durum); }).join(" | "));
   } catch (hata) {
     is.durum = "hata"; is.hata = "PDF veya arşiv işlemi tamamlanamadı; yönetici kontrolü gerekiyor.";
@@ -282,7 +388,7 @@ async function ihtidaPaketIsle(ref) {
     console.error("ihtida-paket-hatasi " + ref); // Görsel, kimlik, e-posta veya sağlayıcı cevabı loglanmaz.
   } finally {
     // Başvuran nüshası henüz hazır değilse bir sonraki dakikalık çalışma onu üretir (teslim yoklaması 5 dakikada bir).
-    is.kilit = 0; is.sonraki = Date.now() + (is.basvuranKopya === "sirada" && is.durum !== "hata" ? 45 * 1000 : 5 * 60 * 1000); ihtidaPaketIsiYaz(is);
+    is.kilit = 0; is.sonraki = Date.now() + ((is.basvuranKopya === "sirada" || is.parcalar === "sirada") && is.durum !== "hata" ? 45 * 1000 : 5 * 60 * 1000); ihtidaPaketIsiYaz(is);
     if (is.durum === "tamam") PropertiesService.getScriptProperties().deleteProperty(IHTIDA_PAKET_ON_EK + ref);
   }
 }
@@ -292,9 +398,10 @@ function ihtidaPaketDurumMetni(d) {
 function ihtidaPaketEpostaGonder(is, a, blob, k) {
   var key = brevoAnahtari();
   if (!key || !epostaGecerli(a.eposta)) { a.durum = "gonderim-hatasi"; return; }
-  var on = is.asama === "on-basvuru";
-  var konu = (on ? "İhtida ön başvuru belge paketi / Dossier de pré-demande" : "İhtida belge paketi / Dossier de conversion") + " — " + is.ref + " — r" + is.revizyon;
-  var metin = [
+  var on = is.asama === "on-basvuru", suret = a.basvuran && is.basvuranKopya;
+  var konu = (suret ? "İhtida belgesi sureti (bilgi amaçlı) / Copie du dossier de conversion (à titre d’information)"
+    : on ? "İhtida ön başvuru belge paketi / Dossier de pré-demande" : "İhtida belge paketi / Dossier de conversion") + " — " + is.ref + " — r" + is.revizyon;
+  var metin = suret ? ihtidaPaketBasvuranMetni(is, k) : [
     "Esselâmü aleyküm / Bonjour / Hello,", "",
     "EK-9, EK-10, dilekçe ve kimlik belgesi örneği tek PDF olarak ektedir. Adresinizi ve diğer bilgilerinizi kontrol ediniz.",
     "Le dossier PDF joint contient l’EK-9, l’EK-10, la demande et la copie du document d’identité. Merci de vérifier votre adresse et vos informations.",
@@ -307,7 +414,7 @@ function ihtidaPaketEpostaGonder(is, a, blob, k) {
     "Marche-en-Famenne Ulu Camii", "info@ulucamii.be · imam@ulucamii.be"
   ].filter(function (x) { return x !== null; }).join("\n");
   var payload = { sender: BREVO_GONDEREN, to: [{ email: a.eposta }], replyTo: { email: "imam@ulucamii.be" }, subject: konu, textContent: metin,
-    headers: { idempotencyKey: a.anahtar }, tags: [is.ref + "-r" + is.revizyon], attachment: [{ name: ihtidaPaketEkAdi(is), content: Utilities.base64Encode(blob.getBytes()) }] };
+    headers: { idempotencyKey: a.anahtar }, tags: [is.ref + "-r" + is.revizyon], attachment: [{ name: ihtidaPaketEkAdi(is, a), content: Utilities.base64Encode(blob.getBytes()) }] };
   try {
     var r = UrlFetchApp.fetch(BREVO_UC, { method: "post", contentType: "application/json", headers: { "api-key": key, accept: "application/json" }, payload: JSON.stringify(payload), muteHttpExceptions: true });
     var code = r.getResponseCode();
@@ -317,6 +424,35 @@ function ihtidaPaketEpostaGonder(is, a, blob, k) {
       a.durum = a.messageId ? "saglayici-kabul" : "belirsiz";
     } else a.durum = (code >= 500 || String(r.getContentText()).indexOf("duplicate_parameter") >= 0) ? "belirsiz" : "gonderim-hatasi";
   } catch (_) { a.durum = "belirsiz"; }
+}
+/* 25 Eki 2026 (Rıdvan KAYAHAN): başvurana giden suretin metni — «bu belge bilgi amaçlıdır, asıl nüsha resmi imza süreçlerinden
+   sonra iletişim tercihinize göre size hem dijital olarak (… belge tarihi ve numarasını ve … imzasını da burda ekledikten sonra)
+   hem de fiziki baskı ve ıslak imzaları tamamlanmış versiyonu size ulaştırılacaktır». Genel yayın kuralı (koordinatörlük
+   CLAUDE.md §4): kurum adı yazılmaz, yetkili imzası nötr anılır. Kendi şahidini getiren başvurana, ön başvuruda şahit imzaları
+   eksikse belgenin WhatsApp'tan gönderileceği bildirilir. */
+function ihtidaPaketBasvuranMetni(is, k) {
+  var on = is.asama === "on-basvuru", kendiSahit = String(k["Şahit 1"] || "").trim() !== "";
+  var satirlar = [
+    "Esselâmü aleyküm / Bonjour / Hello,", "",
+    "İhtida belgesi dosyanızın sureti ektedir (EK-9, dilekçe, EK-10 ve kimlik belgesi örneği). Bu suret bilgi amaçlıdır, resmî belge yerine geçmez. Lütfen adınızı, adresinizi ve diğer bilgilerinizi kontrol ediniz; düzeltilmesi gereken bir bilgi varsa bu e-postaya cevap veriniz.",
+    "Asıl nüsha resmî imza süreçleri tamamlandıktan sonra iletişim tercihinize göre size ulaştırılacaktır: belge tarihi, sayısı ve yetkili imzası eklenmiş PDF olarak e-postayla; ıslak imzaları tamamlanmış basılı nüsha olarak da dilekçenizde belirttiğiniz teslim yerine.",
+    on ? "Bu ön başvuru suretidir. Tören tarihi ve şahitler teyit edildikten sonra son nüsha hazırlanır." : null,
+    on && kendiSahit ? "Şahitlerinizin imzaları belgede eksikse, imzalatmanız için belge size WhatsApp üzerinden gönderilecektir." : null,
+    "",
+    "Vous trouverez ci-joint une copie de votre dossier de conversion (EK-9, demande, EK-10 et copie du document d’identité). Cette copie est fournie à titre d’information et ne remplace pas le document officiel. Merci de vérifier votre nom, votre adresse et vos autres informations ; si une correction est nécessaire, répondez à cet e-mail.",
+    "Après les signatures officielles, l’original vous sera transmis selon votre choix de contact : en PDF par e-mail, avec la date, le numéro et la signature de l’autorité compétente, ainsi qu’en version imprimée avec les signatures manuscrites, au lieu de remise indiqué dans votre demande.",
+    on ? "Il s’agit d’une copie de pré-demande. Le dossier sera finalisé après confirmation de la date de la cérémonie et des témoins." : null,
+    on && kendiSahit ? "Si les signatures de vos témoins manquent, le document vous sera envoyé par WhatsApp pour les faire signer." : null,
+    "",
+    "Attached is a copy of your conversion file (EK-9, request letter, EK-10 and a copy of your identity document). This copy is for information only and does not replace the official document. Please check your name, address and other details; if anything needs correcting, reply to this e-mail.",
+    "Once the official signatures are complete, the original will be sent to you according to your contact preference: as a PDF by e-mail, with the date, number and signature of the competent authority, and as a printed copy with handwritten signatures, to the delivery place given in your request.",
+    on ? "This is a pre-application copy. The final copy is prepared once the ceremony date and the witnesses are confirmed." : null,
+    on && kendiSahit ? "If your witnesses’ signatures are missing, the document will be sent to you via WhatsApp so that they can sign it." : null,
+    "",
+    "Referans / Référence / Reference: " + is.ref,
+    "Marche-en-Famenne Ulu Camii", "info@ulucamii.be · imam@ulucamii.be"
+  ];
+  return satirlar.filter(function (x) { return x !== null; }).join("\n");   // koşulu tutmayan satır (null) atlanır
 }
 function ihtidaPaketBelirsizYokla(is, a) {
   try {
@@ -345,6 +481,8 @@ function ihtidaPaketOnayDogrula(d, camiId) {
   if (!metinDolu(d.adSoyad) || !uzunlukTamam(d.adSoyad, 120) || !metinDolu(d.adres) || !uzunlukTamam(d.adres, 400) || !uzunlukTamam(d.ihtidaSebebi, 600)) return false;
   // 25 Eki 2026: sebebin Türkçesi (isteğe bağlı; boşsa sunucu çevirir).
   if (d.ihtidaSebebiTr !== undefined && (typeof d.ihtidaSebebiTr !== "string" || !uzunlukTamam(d.ihtidaSebebiTr, 600))) return false;
+  // 25 Eki 2026: yedek şahit rızası (isteğe bağlı): boş, «yazili» ya da «sozlu».
+  if (d.yedekSahitRizasi !== undefined && ["", "yazili", "sozlu"].indexOf(d.yedekSahitRizasi) < 0) return false;
   if (["kimlik", "pasaport"].indexOf(d.belgeTuru) < 0 || !Array.isArray(d.sahitler) || d.sahitler.length !== 2) return false;
   // 21 Eki 2026: son nüsha ekranında düzeltilen EK-9 arka yüz değerleri (isteğe bağlı; yalnız bilinen alanlar, ≤120).
   if (d.alanlar !== undefined && !IhtidaPdf.ek9AlanlariGecerli(d.alanlar)) return false;
@@ -364,11 +502,13 @@ function ihtidaPaketOnayIsle(v) {
     if (is && is.islemAnahtari === v.islemAnahtari) return json({ ok: true, paket: ihtidaPaketOzet(is) });
     if (is && is.kilit > Date.now()) return json({ ok: false, hata: "paket-isleniyor" });
     // Önceki nüshanın arşiv dosyaları (ana ve başvuran nüshası) yeni iş kaydında unutulmaz: test temizliği hepsini bulur.
-    var eskiPdfler = is ? (is.eskiPdfler || []).concat([is.pdfId, is.basvuranPdfId]).filter(function (id, i, h) { return id && h.indexOf(id) === i; }) : [];
-    is = { ref: v.ref, revizyon: (is ? is.revizyon : 0) + 1, asama: "musavirlik", durum: "sirada", deneme: 0, duzenleme: v.hazirlik, islemAnahtari: v.islemAnahtari, alicilar: [], eskiPdfler: eskiPdfler };
+    var eskiPdfler = is ? (is.eskiPdfler || []).concat([is.pdfId, is.basvuranPdfId], ihtidaParcaIdleri(is)).filter(function (id, i, h) { return id && h.indexOf(id) === i; }) : [];
+    is = { ref: v.ref, revizyon: (is ? is.revizyon : 0) + 1, asama: "musavirlik", durum: "sirada", deneme: 0, duzenleme: v.hazirlik, islemAnahtari: v.islemAnahtari, alicilar: [], eskiPdfler: eskiPdfler,
+      yedekSahitRizasi: v.hazirlik.yedekSahitRizasi || "" };   // düzenleme üretimden sonra silinir; rıza kaydı kalır
     ihtidaPaketIsiYaz(is);
     ihtidaPaketHucre(v.ref, "Paket durumu", "Onaylanan son nüsha hazırlanıyor");
     ihtidaPaketHucre(v.ref, "Tam paket PDF", "");
+    ihtidaPaketHucre(v.ref, IHTIDA_DHYS_SUTUN, "");
     ihtidaPaketHucre(v.ref, "E-posta durumu", "Sırada");
     if (typeof ihtidaDefteriKirlet === "function") ihtidaDefteriKirlet(v.ref);
   } catch (_) { return json({ ok: false, hata: "paket-onay-hatasi" }); }
@@ -383,6 +523,8 @@ function ihtidaPaketTekrarIsle(v) {
     if (!is) return json({ ok: false, hata: "paket-yok" });
     if (is.kilit > Date.now()) return json({ ok: false, hata: "paket-isleniyor" });
     is.sonraki = 0; is.deneme = 0; is.kopyaDeneme = 0; if (is.durum === "hata") is.durum = "sirada";
+    // 25 Eki 2026: hazırlanamamış DHYS parçaları yeniden denenir (paket teslim edilmiş olsa bile).
+    if (is.parcalar === "hata" && is.parcaPlani) { is.parcalar = "sirada"; is.parcaDeneme = 0; if (is.durum === "tamam") is.durum = "teslim-takibi"; }
     is.alicilar.forEach(function (a) { if (a.durum === "gonderim-hatasi") { a.deneme = 0; a.durum = "sirada"; } });
     ihtidaPaketIsiYaz(is);
   } finally { lock.releaseLock(); }

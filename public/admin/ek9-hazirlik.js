@@ -94,15 +94,21 @@ export const sahitImzaAnahtari = ad => imzaAnahtari(String(ad || ''));
    şekilde düzelt»): Ulu Camii Marche'de «Rıdvan KAYAHAN» ve «Ercan MOLA» adlı şahidin kayıtlı vektör imzası, görevli
    işareti kaldırmadıkça (imzaKullan: false) belgeye kendiliğinden basılır. İmzaların kendisi herkese açık depoda DURMAZ:
    dernek Google hesabındaki özel depodan sunucuda ya da panelin yetkili isteğiyle gelir (imzalar = {ridvan, ercan}).
-   Dönüş: {sahitler: imzası bağlanmış liste, uygulanan: ['ercan', 'ridvan']}. Başka camide hiçbir yerel imza bağlanmaz. */
-export function sahitImzalariniBagla(sahitler, camiId, imzalar, kendi = []) {
+   Dönüş: {sahitler: imzası bağlanmış liste, uygulanan: ['ercan', 'ridvan']}. Başka camide yerel imza yalnız yedek şahit
+   rızasıyla bağlanır.
+   25 Eki 2026 (Rıdvan KAYAHAN: «zorluk olursa mühtedinin yazılı ya da sözlü rızasıyla şahit ve imzaları marche-en-famenne ulu
+   camii dernek başkanı ercan mola ile din görevlisi rıdvan kayahan'ın dijital vektörel imzaları şahitler kısmına basılacaktır»):
+   secenek.yedekSahitRizasi 'yazili' ya da 'sozlu' ise (görevli son nüsha ekranında seçer) başka camide de bağlanır. */
+export const YEDEK_SAHIT_RIZALARI = ['yazili', 'sozlu'];
+export function sahitImzalariniBagla(sahitler, camiId, imzalar, kendi = [], secenek = {}) {
+  const yedek = YEDEK_SAHIT_RIZALARI.includes(secenek?.yedekSahitRizasi);
   const uygulanan = [];
   const liste = (Array.isArray(sahitler) ? sahitler : []).map((s, i) => {
     if (s?.imzaKullan === false) return s;
     // 23 Eki 2026: şahit başvuru sırasında formda kendi imzasını attıysa (rızasıyla) o imza basılır; kayıtlı imzanın önüne geçer.
     const k = Array.isArray(kendi) ? kendi[i] : null;
     if (k && k.imza && !s?.imza && sahitAdiNormal(k.ad) === sahitAdiNormal(s?.ad)) return { ...s, imza: k.imza, kendiImza: true };
-    const anahtar = camiId === 'ulucamii-marche' ? imzaAnahtari(String(s?.ad || '')) : '';
+    const anahtar = camiId === 'ulucamii-marche' || yedek ? imzaAnahtari(String(s?.ad || '')) : '';
     const imza = anahtar && imzalar && typeof imzalar[anahtar] === 'string' ? imzalar[anahtar] : '';
     if (!imza || uygulanan.includes(anahtar)) return s;
     uygulanan.push(anahtar);
@@ -154,6 +160,12 @@ export function ek9HazirlikAc(kayit, imzalar = {}, secenekler = {}) {
       <select id="ek9-alan-yazisi" name="alanYazisi"><option value="el-yazisi">Mavi dolma kalem (kalıcı kural)</option><option value="sade">Sade siyah yazı (yalnız açık talimatla)</option></select>
       <p>Şahit adlarını kontrol edin. «Ercan MOLA» ve «Rıdvan KAYAHAN» adlı şahitlerin kayıtlı imzası kendiliğinden eklenir (işaretli gelir). O kişi bu törende şahit değilse işareti kaldırın; imza alanı boş kalır ve kalemle imzalanır. Kayıtlı imzası olmayan şahidin adı basılır, imza alanı boş bırakılır.</p>
       <div data-sahitler></div>
+      <fieldset data-yedek-sahit><legend>Yedek şahitler: Ercan MOLA · Rıdvan KAYAHAN</legend>
+        <p class="not">Mühtedinin kendi şahitlerine imza attırmak mümkün olmazsa, mühtedinin yazılı ya da sözlü rızasıyla şahit olarak Marche-en-Famenne Ulu Camii Dernek Başkanı Ercan MOLA ile din görevlisi Rıdvan KAYAHAN yazılır ve kayıtlı vektör imzaları basılır (25 Ekim 2026 kuralı). Rıza alınmadan seçmeyin. Mümkünse kelime-i şehadet bu iki şahidin huzurunda (yüz yüze ya da görüntülü görüşmede) tekrarlanır.</p>
+        <label for="ek9-yedek-riza">Mühtedinin rızası</label>
+        <select id="ek9-yedek-riza" name="yedekRiza"><option value="">Yok: yedek şahit kullanılmaz</option><option value="yazili">Yazılı rıza alındı (WhatsApp ya da e-posta)</option><option value="sozlu">Sözlü rıza alındı</option></select>
+        <button type="button" class="dugme" data-yedek-doldur disabled>Şahitleri Ercan MOLA ve Rıdvan KAYAHAN yap</button>
+      </fieldset>
       <label for="ek9-gercek-tarih">Gerçek ihtida tarihi (biliniyorsa)</label>
       <input id="ek9-gercek-tarih" name="tarih" type="date" />
       <p class="not">Tören henüz yapılmadıysa boş bırakın. Tarih tercihi bu alana aktarılmaz. Belge numarası, belge tarihi ve yetkili imzası Müşavirlik için boş bırakılır; düzenleyen birim «T.C. Brüksel Büyükelçiliği Sosyal İşler Müşavirliği» olarak yazılır. T.C. kimlik numarası gerekiyorsa basılı belgede elle tamamlanır.</p>
@@ -239,6 +251,9 @@ export function ek9HazirlikAc(kayit, imzalar = {}, secenekler = {}) {
     // 23 Eki 2026: şahidin başvuru sırasında formda kendi attığı imza (sahitKendiImzalari çıktısı; rızası kayıtlı). Ad eşleşirse kullanılabilir.
     const kendiImzalar = Array.isArray(secenekler.kendiImzalar) ? secenekler.kendiImzalar : [];
     const kendiImza = (i, ad) => (kendiImzalar[i] && kendiImzalar[i].imza && sahitAdiNormal(kendiImzalar[i].ad) === sahitAdiNormal(ad) ? kendiImzalar[i] : null);
+    // 25 Eki 2026: yedek şahit rızası seçilirse başka camide de kayıtlı imza kullanılabilir.
+    const yedekRiza = form.elements.namedItem('yedekRiza');
+    const yerelImzaSerbest = () => !digerCami || YEDEK_SAHIT_RIZALARI.includes(yedekRiza.value);
     const alanlar = sahitOnerileri(kayit).map((ad, i) => {
       const kap = document.createElement('fieldset');
       kap.innerHTML = `<legend>${i + 1}. şahit</legend><label for="ek9-sahit-${i}">Adı soyadı</label><input id="ek9-sahit-${i}" type="text" maxlength="120" required autocomplete="off" />
@@ -254,18 +269,25 @@ export function ek9HazirlikAc(kayit, imzalar = {}, secenekler = {}) {
         // Kayıtlı imza ya da şahidin başvuruda attığı kendi imzası varsa işaretli gelir (varsayılan: eklenir); görevli şahit değilse işareti kaldırır.
         const anahtar = imzaAnahtari(isim.value);
         const kendi = kendiImza(i, isim.value);
-        onay.disabled = !(kendi || (!digerCami && anahtar && (sunucuImzasi || imzalar[anahtar])));
+        onay.disabled = !(kendi || (yerelImzaSerbest() && anahtar && (sunucuImzasi || imzalar[anahtar])));
         onay.checked = !onay.disabled;
         kap.querySelector('[data-imza-not]').textContent = kendi ? 'Şahit imzasını başvuru sırasında kendisi attı (rızasıyla); belgeye otomatik eklenir. Şahit değilse işareti kaldırın.'
           : !onay.disabled
-          ? 'Kayıtlı imza var; belgeye otomatik eklenir. Şahit değilse işareti kaldırın.'
+          ? (digerCami ? 'Yedek şahit: mühtedinin rızasıyla kayıtlı imza belgeye eklenir. Şahit değilse işareti kaldırın.' : 'Kayıtlı imza var; belgeye otomatik eklenir. Şahit değilse işareti kaldırın.')
+          : digerCami && anahtar ? 'Başka camide kayıtlı imza yalnız mühtedinin rızasıyla (yedek şahit) kullanılır; aşağıdan rızayı seçin.'
           : digerCami ? 'Başka cami seçildiği için kayıtlı yerel imza kullanılmaz; şahit belgeyi kalemle imzalayacak.'
           : anahtar && secenekler.imzaHata ? 'Kayıtlı imzalar şu anda alınamadı; şahit belgeyi kalemle imzalayacak. Sayfayı yenileyip yeniden deneyin.'
           : 'Bu ad için kayıtlı imza yok; şahit belgeyi kalemle imzalayacak.';
       };
       isim.addEventListener('input', yenile); yenile();
       pencere.querySelector('[data-sahitler]').append(kap);
-      return { isim, onay };
+      return { isim, onay, yenile };
+    });
+    const yedekDoldur = pencere.querySelector('[data-yedek-doldur]');
+    yedekRiza.addEventListener('change', () => { yedekDoldur.disabled = !yedekRiza.value; alanlar.forEach(a => a.yenile()); });
+    yedekDoldur.addEventListener('click', () => {
+      ['Ercan MOLA', 'Rıdvan KAYAHAN'].forEach((ad, i) => { if (alanlar[i]) alanlar[i].isim.value = ad; });
+      alanlar.forEach(a => a.yenile());
     });
     let sonuc = null;
     form.addEventListener('submit', olay => {
@@ -285,6 +307,7 @@ export function ek9HazirlikAc(kayit, imzalar = {}, secenekler = {}) {
         alanYazisi: form.elements.namedItem('alanYazisi').value,
         alanlar: Object.fromEntries(ek9Girdiler.map(g => [g.dataset.ek9Alan, g.value.trim().replace(/\s+/g, ' ')])),
         ihtidaSebebiTr: form.elements.namedItem('sebepTr').value.trim().replace(/\s+/g, ' '),
+        yedekSahitRizasi: yedekRiza.value,
       };
       if (secenekler.paket) Object.assign(sonuc, {
         adres: form.elements.namedItem('tamAdres').value.trim(),

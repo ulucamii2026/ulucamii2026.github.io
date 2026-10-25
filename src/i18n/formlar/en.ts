@@ -248,6 +248,7 @@ export const en: FormMetinleri = {
       sahitImzaYardim: "If this witness is present, they can sign here.",
       sahitRiza: "I am a witness to this conversion and I agree that my signature appears on the certificate.",
       sahitImzaNot: "If your witnesses are not with you right now, leave these boxes empty: your application goes ahead as usual and they can also sign later.",
+      sahitSonraNot: "If the witnesses’ signatures are left for later, we will send you the document via WhatsApp; you have your witnesses sign it and send it back to us. If that is not possible, with your written or verbal consent, the names and digital signatures of Ercan MOLA, President of the Marche-en-Famenne Ulu Camii association, and Rıdvan KAYAHAN, imam, will be placed in the witness fields.",
       sahitImzaRizaHata: "A witness signature also needs the witness’s consent box ticked (or clear the signature).",
       sahitImzaAdHata: "Enter above the full name of the witness who signs.",
       sahitImzali: "signed",
@@ -282,6 +283,8 @@ export const en: FormMetinleri = {
       gorselRiza: 'I expressly consent to the processing of my passport photo, of the front and back of my identity document and of my signature, in order to issue the conversion certificate (EK-9) and to build the official file. I understand that this information and these documents are kept both by the Ulu Camii association of Marche-en-Famenne and by the competent unit of the Presidency of Religious Affairs (Diyanet) in Belgium.',
       gorselRizaYardim: 'The images stay in a closed folder of the association, are never published and are seen only by authorised officials. You may withdraw your consent at any time.',
       fotoAciklama: 'Optional. Images are shared only with your separate consent; answering “no” does not affect the application.',
+      sartlar: 'I have read and understood the application conditions. I declare that the information I have provided is accurate. The Belgian Support Commission for New Muslims reserves the right to make any amendment to the application documents needed to bring them in line with official procedures (including spelling, translation, formatting, missing information and witness procedures).',
+      sartlarYardim: 'If an amendment affecting the substance of your information is needed, you will be contacted first. The copy sent to your email address is for information only; after the official signatures, the original will be delivered to you both digitally and as a printed copy with handwritten signatures.',
       beyanBaslik: 'Declaration',
       beyanMetin: 'Of my own free will, I wish to embrace the religion of Islam. I respectfully request that a conversion certificate be issued in my name.',
       beyanEtiket: 'Confirm the declaration by entering your full name',
@@ -289,7 +292,7 @@ export const en: FormMetinleri = {
     },
     ozet: { belgeler: 'Documents and signature', kisi: 'Full name', dogum: 'Birth', uyruk: 'Nationality', aile: 'Parents’ first names', durum: 'Marital status · education · occupation', iletisim: 'Contact', din: 'Previous religion', toren: 'Ceremony language · preferred date', sahitler: 'Witnesses' },
     basari: {
-      sonrakiAdimlar: "Our imam will contact you about the meeting and ceremony. Once your certificate has been signed, it will be posted to your chosen destination; you will be told the delivery times separately.",
+      sonrakiAdimlar: "Our imam will contact you about the meeting and ceremony. The document you receive by email is a copy for information only. After the official signatures, the original will be posted to your chosen destination and its digital version will be sent to you by email; you will be told the delivery times separately.",
     },
   },
 };

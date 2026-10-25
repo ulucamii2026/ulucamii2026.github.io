@@ -99,11 +99,21 @@ async function kaynakAc(dosya: File): Promise<CanvasImageSource & { width: numbe
   }
 }
 
+/** 25 Eki 2026: vesikalık, EK-9 ön yüzündeki fotoğraf kutusunun oranına (en/boy 0,72–0,86; public/admin/ek9.js) kırpılır.
+    Fazla yükseklik yüzü korumak için üstten %30, alttan %70 oranında kesilir (ek9.js ile aynı kural). Böylece arşivdeki,
+    belgede görünen ve DHYS'ye ayrıca yüklenen vesikalık aynı fotoğraftır. */
+const VESIKALIK_ORANI = { en: 0.72, boy: 0.86, ust: 0.3 };
+
 /** En uzun kenarı UZUN_KENAR'a indirir, JPEG'e çevirir, hedef boyuta inene dek kaliteyi düşürür. */
-async function gorseliKucult(dosya: File | HTMLCanvasElement): Promise<string> {
+async function gorseliKucult(dosya: File | HTMLCanvasElement, oranSiniri?: typeof VESIKALIK_ORANI): Promise<string> {
   const kaynak = dosya instanceof HTMLCanvasElement ? dosya : await kaynakAc(dosya);
-  const gEn = kaynak.width, gBoy = kaynak.height;
-  if (!gEn || !gBoy) throw new Error('okunamadi');
+  if (!kaynak.width || !kaynak.height) throw new Error('okunamadi');
+  let kx = 0, ky = 0, gEn = kaynak.width, gBoy = kaynak.height;
+  if (oranSiniri) {
+    const oran = gEn / gBoy, kutu = Math.min(oranSiniri.boy, Math.max(oranSiniri.en, oran));
+    if (oran > kutu) { const yeni = Math.round(gBoy * kutu); kx = Math.round((gEn - yeni) / 2); gEn = yeni; }
+    else if (oran < kutu) { const yeni = Math.round(gEn / kutu); ky = Math.round((gBoy - yeni) * oranSiniri.ust); gBoy = yeni; }
+  }
   let olcek = Math.min(1, UZUN_KENAR / Math.max(gEn, gBoy));
   let veri = '';
   for (const kalite of [0.82, 0.72, 0.62, 0.52]) {
@@ -115,7 +125,7 @@ async function gorseliKucult(dosya: File | HTMLCanvasElement): Promise<string> {
     if (!c) throw new Error('okunamadi');
     c.fillStyle = '#ffffff';
     c.fillRect(0, 0, en, boy);                    // saydam PNG'ler beyaz zemine otursun
-    c.drawImage(kaynak, 0, 0, en, boy);
+    c.drawImage(kaynak, kx, ky, gEn, gBoy, 0, 0, en, boy);
     veri = tuval.toDataURL('image/jpeg', kalite);
     if (veriBoyutu(veri) <= HEDEF_BAYT) break;
     if (kalite <= 0.62) olcek *= 0.8;             // kalite düşürmek yetmiyorsa boyutu küçült
@@ -231,7 +241,7 @@ function kutuKur(kap: HTMLElement, m: BelgeMetinleri, degisti: () => void, ozelO
         if (sira !== islem) return;
         if (!uygulandi) { kutu.veri = oncekiVeri; kirpim = oncekiKirpim; }
       } else {
-        const veri = await gorseliKucult(dosya);
+        const veri = await gorseliKucult(dosya, anahtar === 'vesikalik' ? VESIKALIK_ORANI : undefined);
         if (sira !== islem) return;
         kutu.veri = veri;
       }

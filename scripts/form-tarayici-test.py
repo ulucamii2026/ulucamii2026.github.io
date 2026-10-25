@@ -286,7 +286,9 @@ with sync_playwright() as p:
     pg.fill("#i-uyruk", "Belçika"); pg.fill("#i-anne", "Marie"); pg.fill("#i-baba", "Pierre"); pg.select_option("#i-medeni", "bekar")
     pg.fill("#i-ogrenim", "Lisans"); pg.fill("#i-meslek", "Öğretmen"); pg.fill("#i-eposta", "jean@example.test"); pg.fill("#i-telefon", "+32 471 00 00 00")
     pg.fill("#i-adres", "Rue Haute 3"); pg.fill("#i-posta-kodu", "6900"); pg.fill("#i-sehir", "Marche-en-Famenne"); pg.fill("#i-ulke", "Belçika"); pg.fill("#i-onceki-din", "Katolik"); pg.select_option("#i-toren-dili", "fr")
-    pg.check("#i-onay-riza"); pg.check("#i-onay-ek10"); pg.check("#i-onay-gizlilik"); pg.check("#i-onay-gorsel")
+    # 25 Eki 2026: «okudum, anladım» + Komisyonun düzenleme hakkı: zorunlu, önceden işaretsiz (GDPR md. 4/11, 7).
+    kontrol("şartlar kutusu önceden işaretsiz", not pg.locator("#i-onay-sartlar").is_checked())
+    pg.check("#i-onay-riza"); pg.check("#i-onay-ek10"); pg.check("#i-onay-gizlilik"); pg.check("#i-onay-gorsel"); pg.check("#i-onay-sartlar")
     pg.fill("#i-beyan", "JEAN TESTOGLU")
 
     # --- 5. bölüm: belgeler ve imza (8 Eylül 2026) ---------------------------------
@@ -332,6 +334,7 @@ with sync_playwright() as p:
     kontrol("imza PNG olarak gönderildi", gors.get("imza", "").startswith("data:image/png;base64,") and len(gors["imza"]) > 500)
     kontrol("belge türü ve imza bayrağı", g.get("belgeTuru") == "kimlik" and g.get("imzaYok") is False)
     kontrol("görsel açık rızası", g["onay"].get("gorselRiza") is True)
+    kontrol("başvuru koşulları kabulü (onay.sartlar)", g["onay"].get("sartlar") is True)
     kontrol("ihtida konsol temiz", not konsol)
     pg.screenshot(path=f"{OUT}/ihtida-mobil-basari.png", full_page=True)
     # EK-9 zincirinin sonraki halkası bu gövdeyi kullanır: scripts/ek9-imza-zinciri.mjs
@@ -351,7 +354,7 @@ with sync_playwright() as p:
     pg.set_input_files("#i-g-vesikalik", vesikalikYol); pg.wait_for_selector('[data-gorsel="vesikalik"][data-dolu="1"]', timeout=8000)
     pg.set_input_files("#i-g-kimlik-on", onYol); pg.wait_for_selector('[data-gorsel="kimlikOn"][data-dolu="1"]', timeout=8000)
     pg.check("#i-imza-yok")
-    pg.check("#i-onay-riza"); pg.check("#i-onay-ek10"); pg.check("#i-onay-gizlilik"); pg.check("#i-onay-gorsel")
+    pg.check("#i-onay-riza"); pg.check("#i-onay-ek10"); pg.check("#i-onay-gizlilik"); pg.check("#i-onay-gorsel"); pg.check("#i-onay-sartlar")
     pg.fill("#i-beyan", "ANNA TESTOGLU")
     pg.click("button[type=submit]")
     pg.wait_for_selector("[data-basari]:not([hidden])", timeout=15000)

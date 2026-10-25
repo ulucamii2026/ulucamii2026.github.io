@@ -176,6 +176,11 @@ function doGet(e) {
     // 25 Eki 2026: EK-9 iki dilli (sebebin Türkçesi altına, Google Çeviri ya da görevli) ve ön yüzde cinsiyete göre zamir çizikleri.
     ihtidaSebepTurkcesi: typeof IhtidaPdf !== "undefined" && IhtidaPdf.sebepIkiDilli === true && typeof ihtidaSebebiTurkcesi === "function",
     ihtidaZamirCizigi: typeof IhtidaPdf !== "undefined" && IhtidaPdf.zamirCizigi === true,
+    // 25 Eki 2026: paket DHYS için dört ayrı PDF + vesikalık olarak da arşivlenir (EK-9 · dilekçe · EK-10 · kimlik · fotoğraf); defterde «DHYS parçaları».
+    ihtidaDhysParcalari: typeof IhtidaPdf !== "undefined" && IhtidaPdf.dhysParcalari === true && typeof ihtidaPaketParcalariKaydet === "function" && typeof ihtidaVesikalikDosyasi === "function",
+    // 25 Eki 2026: başvurana her aşamada filigranlı SURET (bilgi amaçlı) gider; yedek şahit rızası son nüshada seçilebilir.
+    ihtidaSuret: typeof IhtidaPdf !== "undefined" && IhtidaPdf.suretFiligranli === true && typeof ihtidaPaketBasvuranMetni === "function",
+    ihtidaYedekSahit: typeof IhtidaPdf !== "undefined" && typeof IhtidaPdf.sahitImzaPlani === "function" && typeof ihtidaPaketOnayDogrula === "function",
     referansSayaci: typeof referansMaxBul === "function" && typeof REFERANS_SON_EK === "string",
     seviyeTesti: typeof SeviyeTesti !== "undefined" && typeof seviyePostIsle === "function",
     seviyeBankaSurumu: (typeof SeviyeTesti !== "undefined" ? SeviyeTesti.SORU_BANKASI_SURUMU : null),
@@ -926,6 +931,7 @@ function pdfHtmlIhtida(veri, meta) {
   var beyanBlok = '<section class="blok"><h2>Beyan / Déclaration</h2>'
     + "<p>" + kacis(beyanTr) + "<br>" + kacis(beyanFr) + "</p>"
     + '<div class="onay">Elektronik beyan / Déclaration électronique: <b>' + kacis(onay.beyan || "") + "</b> — " + kacis(zaman) + "</div>"
+    + (onay.sartlar === true ? '<div class="onay">Başvuru koşulları / Conditions de la demande: <b>okundu, anlaşıldı / lues et comprises</b></div>' : "")
     + "<p>Belge görselleri açık rızayla başvuruda alınır. Şahitlik ve imzalar törende teyit edilir. "
     + "Dosya onay için Diyanet İşleri Başkanlığının yetkili birimine gönderilir; imzalanan belge seçilen teslim yerine postalanır. / "
     + "Les documents sont recueillis avec votre consentement. Les témoins et les signatures sont confirmés lors de la cérémonie. "
@@ -1158,6 +1164,9 @@ function ihtidaDogrulaV2(v) {
   if (yeniEk10 && !v.imzaYok && onay.imzaAktarimIzni !== true) return h("onay-imza-aktarim-izni-eksik");
   if (yeniEk10 && v.imzaYok && onay.imzaAktarimIzni !== false) return h("onay-imza-aktarim-izni-gecersiz");
   if (onay.gizlilik !== true) return h("onay-gizlilik-eksik");
+  // 25 Eki 2026: «okudum, anladım» + Belçika Mühtedi Destek Komisyonunun düzenleme hakkı. Yeni form gönderir (zorunlu kutu);
+  // alanı hiç göndermeyen eski sayfa reddedilmez (yayın sırası), gönderilmişse true olmalıdır.
+  if (onay.sartlar !== undefined && onay.sartlar !== true) return h("onay-sartlar-gecersiz");
   if (!metinDolu(onay.beyan)) return h("onay-beyan-eksik");
   if (!adSadelestirEsit(onay.beyan, b.adSoyad)) return h("onay-beyan-eslesmiyor");
 
@@ -1783,7 +1792,7 @@ var BASLIKLAR2_IHTIDA = [
   "Fotoğraf izni", "Şahit 1", "Şahit 2", "Açık rıza", "Elektronik beyan", "Form dili", "PDF bağlantısı", "Durum", "Gönderim anahtarı", "Belge teslim yeri", "Şahit seçimi", "EK-10 rızası",
   "Adres sokak", "Posta kodu", "Şehir", "Ülke", "Kimlik belgesi türü", "Tam paket PDF", "Paket durumu", "E-posta durumu",
   "Cami kimliği", "Başvuru camisi", "Cami şehri", "Cami posta kodu", "Cami adresi", "Cami kurumu",
-  "EK-10 sürümü", "İmza aktarım izni"
+  "EK-10 sürümü", "İmza aktarım izni", "DHYS parçaları", "Başvuru koşulları kabulü"
 ];
 var SUTUN2_IHTIDA = { referans: 2, durum: 30, anahtar: 31 };
 
@@ -2195,6 +2204,13 @@ function ihtidaGorselSilIsle(e) {
       }
       if (!buldu) kalan.push(ad);
     }
+    // 25 Eki 2026: DHYS için arşivlenen vesikalık kopyası (5. parça, «<ref> - rN - 5 - Vesikalık Fotoğraf.jpg») da bir
+    // görüntüdür; yüklemelerle birlikte çöpe gider. PDF parçaları resmî dosyanın parçasıdır, ana paket gibi kalır.
+    var parca5 = klasor.searchFiles('title contains "' + ref + ' - r"');
+    while (parca5.hasNext()) {
+      var p5 = parca5.next(), ad5 = p5.getName();
+      if (ad5.indexOf(ref + " - r") === 0 && / - 5 - /.test(ad5) && ihtidaParcaAdiMi(ad5) && !p5.isTrashed()) { p5.setTrashed(true); silinen.push(ad5); }
+    }
     return json({ ok: true, surum: SURUM, ref: ref, silinen: silinen, bulunamayan: kalan });
   } catch (hata) {
     console.error(hata);
@@ -2261,7 +2277,8 @@ function ihtidaPostIsleV2(v) {
         (v.teslimat && v.teslimat.yontem) || "", v.sahitSecimi || "", onay.ek10 ? "Evet" : "Hayır",
         b.adresSokak || "", b.postaKodu || "", b.sehir || "", b.ulke || "", v.belgeTuru || "", "", "Otomatik PDF hazırlanıyor", "Sırada",
         cami.id, cami.ad, cami.sehir, cami.postaKodu, cami.adres, cami.kurum || "",
-        onay.ek10Surumu ? "'" + onay.ek10Surumu : "", onay.imzaAktarimIzni ? "Evet" : "Hayır"
+        onay.ek10Surumu ? "'" + onay.ek10Surumu : "", onay.imzaAktarimIzni ? "Evet" : "Hayır",
+        "", onay.sartlar === true ? "Evet" : ""   // DHYS parçaları (paket işi doldurur) · başvuru koşulları kabulü
       ]);
       SpreadsheetApp.flush();
       ihtidaPaketKuyrugaAl(ref);
@@ -2452,10 +2469,13 @@ function panelPdfIsle(e) {
       if (izinli.indexOf(ebeveynler.next().getId()) !== -1) { klasorde = true; break; }
     }
     if (!klasorde) return json({ ok: false, hata: "bulunamadi" });
-    if (dosya.getMimeType() !== MimeType.PDF) return json({ ok: false, hata: "pdf-degil" });
+    // 25 Eki 2026: DHYS parçalarının 5.si (vesikalık) görseldir; yalnız o ada uyan JPG/PNG verilir.
+    var tur = dosya.getMimeType();
+    var dhysGorsel = /^IH-\d{4}-\d{4} - r\d+ - 5 - .+\.(jpg|png)$/.test(dosya.getName()) && (tur === "image/jpeg" || tur === "image/png");
+    if (tur !== MimeType.PDF && !dhysGorsel) return json({ ok: false, hata: "pdf-degil" });
 
     var bayt = dosya.getBlob().getBytes();
-    return json({ ok: true, surum: SURUM, ad: dosya.getName(), boyut: bayt.length, pdfB64: Utilities.base64Encode(bayt) });
+    return json({ ok: true, surum: SURUM, ad: dosya.getName(), boyut: bayt.length, tur: tur, pdfB64: Utilities.base64Encode(bayt) });
   } catch (hata) {
     console.error(hata);
     return json({ ok: false, hata: "pdf-hatasi", ayrinti: String(hata).slice(0, 160) });

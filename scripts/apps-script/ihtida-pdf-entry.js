@@ -1,4 +1,4 @@
-import { ihtidaPaketiUret, TEK_IMZA } from '../../public/admin/ihtida-paket.js';
+import { ihtidaPaketiUret, ihtidaPaketParcalari, suretFiligrani, DHYS_PARCALARI, DHYS_VESIKALIK, TEK_IMZA } from '../../public/admin/ihtida-paket.js';
 import { camiCoz } from '../../public/admin/cami-secimi.js';
 import { sahitOnerileri, ek9Degerleri, ek9AlanlariUygula, ek9AlanlariGecerli, sahitImzalariniBagla, sahitKendiImzalari } from '../../public/admin/ek9-hazirlik.js';
 import { imzaVektorCoz, sahitImzaCoz } from '../../public/admin/imza-ciz.js';
@@ -16,23 +16,28 @@ const tarih = v => String(v || '').replace(/^(\d{4})-(\d{2})-(\d{2}).*$/, '$3/$2
 export function sahitImzaPlani(k, duzenleme, imzalar, gorseller) {
   const camiId = k['Cami kimliği'] || 'ulucamii-marche';
   const sahitler = (duzenleme && duzenleme.sahitler) || sahitOnerileri({ ...k, 'Cami kimliği': camiId }).map(ad => ({ ad }));
-  return sahitImzalariniBagla(sahitler, camiId, imzalar, sahitKendiImzalari(gorseller));
+  // 25 Eki 2026: yedek şahit rızası (son nüsha ekranı) varsa başka camide de kayıtlı imza bağlanır.
+  return sahitImzalariniBagla(sahitler, camiId, imzalar, sahitKendiImzalari(gorseller), { yedekSahitRizasi: duzenleme && duzenleme.yedekSahitRizasi });
 }
 
-/** secenek.sahitImzalari: özel depodan gelen {ridvan, ercan} vektör imza metinleri; verilmezse yerel şahit imzası basılmaz
- *  (başvuranın e-posta nüshası böyle üretilir). */
-export async function uret(k, gorseller, duzenleme, kaynaklar, pdfLib, fontkit, secenek = {}) {
-  // fontkit altküme yazıcısı Node akışı/timer ister. GAS'ta tam font gömülür;
-  // sayfa düzeni ve glifler değişmez, tarayıcıda altküme kullanımı sürer.
+/** fontkit altküme yazıcısı Node akışı/timer ister. GAS'ta tam font gömülür;
+ *  sayfa düzeni ve glifler değişmez, tarayıcıda altküme kullanımı sürer. */
+function gasPdfLibOlustur(pdfLib) {
   const hazirla = belge => {
     const embedFont = belge.embedFont.bind(belge);
     belge.embedFont = (font, options) => embedFont(font, { ...options, subset: false });
     return belge;
   };
-  const gasPdfLib = { ...pdfLib, PDFDocument: {
+  return { ...pdfLib, PDFDocument: {
     create: async options => hazirla(await pdfLib.PDFDocument.create(options)),
     load: async (bytes, options) => hazirla(await pdfLib.PDFDocument.load(bytes, { ...options, parseSpeed: Infinity })),
   } };
+}
+
+/** secenek.sahitImzalari: özel depodan gelen {ridvan, ercan} vektör imza metinleri; verilmezse yerel şahit imzası basılmaz
+ *  (başvuranın e-posta nüshası böyle üretilir). */
+export async function uret(k, gorseller, duzenleme, kaynaklar, pdfLib, fontkit, secenek = {}) {
+  const gasPdfLib = gasPdfLibOlustur(pdfLib);
   const d = duzenleme || {};
   const cami = camiCoz({
     id: k['Cami kimliği'] || 'ulucamii-marche', ad: k['Başvuru camisi'], sehir: k['Cami şehri'],
@@ -41,7 +46,7 @@ export async function uret(k, gorseller, duzenleme, kaynaklar, pdfLib, fontkit, 
   if (!cami) throw new Error('Başvuru camisi eksik veya geçersiz.');
   const teslimatYontemi = k['Belge teslim yeri'] === 'adres' ? 'adres' : 'cami'; // Eski satırlar cami teslimi varsayılır.
   // Şahidin başvuruda kendi attığı imza (rızası kayıtlıysa) her nüshada basılır; kayıtlı (Ercan MOLA / Rıdvan KAYAHAN) imzalar yalnız secenek.sahitImzalari ile.
-  const sahitler = sahitImzalariniBagla(d.sahitler || sahitOnerileri({ ...k, 'Cami kimliği': cami.id }).map(ad => ({ ad })), cami.id, secenek.sahitImzalari, sahitKendiImzalari(gorseller)).sahitler;
+  const sahitler = sahitImzalariniBagla(d.sahitler || sahitOnerileri({ ...k, 'Cami kimliği': cami.id }).map(ad => ({ ad })), cami.id, secenek.sahitImzalari, sahitKendiImzalari(gorseller), { yedekSahitRizasi: d.yedekSahitRizasi }).sahitler;
   const imza = gorseller.imza || '';
   // Vektör imza yalnız aynı başvurunun PNG imzasıyla birlikte geçerlidir (ikisi aynı çizimden çıkar).
   const imzaVektor = imza && imzaVektorCoz(gorseller.imzaVektor) ? gorseller.imzaVektor : '';
@@ -72,6 +77,8 @@ export async function uret(k, gorseller, duzenleme, kaynaklar, pdfLib, fontkit, 
     belgeTuru: d.belgeTuru || k['Kimlik belgesi türü'], kimlikOn: gorseller.kimlikOn, kimlikArka: gorseller.kimlikArka,
     cami, sahitler,
     yedekImzalar: [],
+    // 25 Eki 2026: verilirse üretici DHYS parça planını (sayfa sıraları) bu nesneye yazar.
+    parcaPlani: secenek.parcaPlani,
   });
 }
 
@@ -81,3 +88,11 @@ export const sahitKendiImzasi = true;   // sağlık cevabı: ihtidaSahitKendiImz
 export const sahitImzasi = true;   // sağlık cevabı: ihtidaSahitImzasi (kayıtlı şahit imzaları özel depodan otomatik basılır)
 export const sebepIkiDilli = true;   // sağlık cevabı: ihtidaSebepTurkcesi (25 Eki 2026: EK-9 arka yüzünde sebebin Türkçesi altına yazılır)
 export const zamirCizigi = true;     // sağlık cevabı: ihtidaZamirCizigi (25 Eki 2026: ön yüzde cinsiyete göre he/she, his/her çizilir)
+/** 25 Eki 2026: paketi DHYS'ye ayrı yüklenecek dört PDF'e böler (EK-9 · dilekçe · EK-10 · kimlik). */
+export const parcala = (pdfLib, bytes, plan, ref) => ihtidaPaketParcalari(pdfLib, bytes, plan, ref);
+export { DHYS_PARCALARI, DHYS_VESIKALIK };
+/** 25 Eki 2026: başvurana giden nüsha «SURET · bilgi amaçlıdır» filigranıyla (her sayfa). GAS'ta yazı tipi tam gömülür. */
+export const suret = (bytes, kaynaklar, pdfLib, fontkit) =>
+  suretFiligrani(gasPdfLibOlustur(pdfLib), bytes, kaynaklar.fontBytes, kaynaklar.fontKalinBytes, fontkit);
+export const suretFiligranli = true;   // sağlık cevabı: ihtidaSuret
+export const dhysParcalari = true;   // sağlık cevabı: ihtidaDhysParcalari

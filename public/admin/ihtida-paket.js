@@ -15,6 +15,95 @@ import { kimlikSayfasiEkle } from './kimlik-sayfa.js';
 /** 23 Eki 2026: tek imza kuralı derlenmiş pakette varsa sağlık cevabı bunu gösterir (ihtidaTekImza). */
 export const TEK_IMZA = true;
 
+/** 25 Eki 2026 (Rıdvan KAYAHAN: «… bu dosyadakileri dhys sistemine yükleyecek, belge bir parça, dilekçe bi parça,
+ *  aydınlatma metni ve açık rıza metni bir parça, kimlik bir parça … online başvuru formunu doldurduktan sonra bunların
+ *  herbiri parça parça yani ayrı ayrı kaydedilsin»): paket DHYS'ye ayrı ayrı yüklenecek dört PDF'e bölünür. Başlıklar
+ *  Mühtedi Koordinatörlüğünün dhys-parcala.py aracıyla aynıdır; EK-9 açıklama eki sayfaları EK-9 parçasına girer. */
+export const DHYS_PARCALARI = [
+  { no: 1, anahtar: 'ek9', baslik: 'İhtida Belgesi (EK-9)', kisa: 'EK-9' },
+  { no: 2, anahtar: 'dilekce', baslik: 'İhtida Belgesi Talep Dilekçesi', kisa: 'Dilekçe' },
+  { no: 3, anahtar: 'ek10', baslik: 'Aydınlatma ve Açık Rıza Metni (EK-10)', kisa: 'EK-10' },
+  { no: 4, anahtar: 'kimlik', baslik: 'Kimlik Belgesi Fotokopisi', kisa: 'Kimlik' },
+];
+/** 25 Eki 2026 (Rıdvan KAYAHAN: «vesikalık fotoğraf ihtida belgesinin önyüzüne yerleştirdiğimiz fotoğraf olacak»): DHYS'ye
+ *  fotoğraf yüklenirken kullanılsın diye vesikalık da arşive ayrı dosya olarak konur (PDF değil, görsel). */
+export const DHYS_VESIKALIK = { no: 5, anahtar: 'vesikalik', baslik: 'Vesikalık Fotoğraf', kisa: 'Vesikalık' };
+const aralik = (bas, son) => Array.from({ length: son - bas }, (_, i) => bas + i);
+
+/** 25 Eki 2026 (Rıdvan KAYAHAN: «ihtida başvurusu yapan kardeşimizin mailine ihtida belgesinin sureti filigran gibi bir şey ile
+ *  gitsin, bu belge bilgi amaçlıdır»): başvurana giden nüshanın her sayfasına çapraz «SURET · COPIE · COPY» filigranı ve üstte
+ *  ince bir «bilgi amaçlıdır» şeridi basılır. Belgenin kendisine dokunulmaz; yalnız üstüne yarı saydam yazı eklenir. */
+export const SURET_METNI = {
+  buyuk: 'SURET · COPIE · COPY',
+  kucuk: 'Bilgi amaçlıdır · À titre d’information · For information only',
+  // Rıdvan KAYAHAN: «asıl nüsha resmi imza süreçlerinden sonra … size ulaştırılacaktır». Ayrıntı e-posta metnindedir.
+  serit: [
+    'SURET — bilgi amaçlıdır, resmî belge yerine geçmez. Asıl nüsha resmî imzalardan sonra size ulaştırılacaktır.',
+    'COPIE — à titre d’information ; l’original vous sera remis après les signatures officielles · COPY — for information only; the original will be sent to you after the official signatures.',
+  ],
+};
+export async function suretFiligrani(pdfLib, bytes, fontBytes, fontKalinBytes, fontkit) {
+  const { PDFDocument, rgb, degrees } = pdfLib;
+  const belge = await PDFDocument.load(bytes, { parseSpeed: Infinity });
+  if (fontkit) belge.registerFontkit(fontkit);
+  const kalin = await belge.embedFont(fontKalinBytes || fontBytes, { subset: true });
+  const ince = await belge.embedFont(fontBytes, { subset: true });
+  const gri = rgb(0.55, 0.12, 0.12);
+  for (const sayfa of belge.getPages()) {
+    const W = sayfa.getWidth(), H = sayfa.getHeight(), aci = Math.atan2(H, W), kos = Math.cos(aci), sin = Math.sin(aci);
+    const kosegen = Math.hypot(W, H);
+    // Büyük satır köşegenin ~%70'ini kaplar; küçük satır onun altında (köşegene dik yönde) durur.
+    const buyukBoy = Math.min(72, (kosegen * 0.7) / kalin.widthOfTextAtSize(SURET_METNI.buyuk, 1));
+    const kucukBoy = Math.min(16, (kosegen * 0.62) / ince.widthOfTextAtSize(SURET_METNI.kucuk, 1));
+    const ciz = (metin, font, boy, kayma) => {
+      const w = font.widthOfTextAtSize(metin, boy);
+      // Metnin ortası sayfanın ortasına gelsin; «kayma» köşegene dik yönde (aşağı) öteler.
+      const x = W / 2 - (w / 2) * kos + kayma * sin, y = H / 2 - (w / 2) * sin - kayma * kos - boy * 0.35 * kos;
+      sayfa.drawText(metin, { x, y, size: boy, font, color: gri, opacity: 0.16, rotate: degrees((aci * 180) / Math.PI) });
+    };
+    ciz(SURET_METNI.buyuk, kalin, buyukBoy, 0);
+    ciz(SURET_METNI.kucuk, ince, kucukBoy, buyukBoy * 0.9);
+    // Üst şerit iki satır: aynı boyda (uzun satıra göre), sayfanın üst kenarında.
+    const seritBoy = Math.min(6.5, ...SURET_METNI.serit.map(t => (W - 40) / ince.widthOfTextAtSize(t, 1)));
+    SURET_METNI.serit.forEach((t, i) => {
+      const sw = ince.widthOfTextAtSize(t, seritBoy);
+      sayfa.drawText(t, { x: (W - sw) / 2, y: H - 10 - i * seritBoy * 1.3, size: seritBoy, font: ince, color: gri, opacity: 0.85 });
+    });
+  }
+  belge.setSubject('SURET — bilgi amaçlıdır / COPIE — à titre d’information / COPY — for information only');
+  return belge.save({ useObjectStreams: false, objectsPerTick: Infinity });
+}
+
+/** Paketi plandaki sayfalarla dört PDF'e böler. Plan paketle birebir uyuşmazsa (sayfa sayısı, eksik/tekrarlı sayfa) hata verir. */
+export async function ihtidaPaketParcalari(pdfLib, paketBytes, plan, ref = '') {
+  const { PDFDocument } = pdfLib;
+  const kaynak = await PDFDocument.load(paketBytes, { parseSpeed: Infinity });
+  const toplam = kaynak.getPageCount();
+  if (!plan || plan.toplam !== toplam) throw new Error('DHYS parça planı paketle uyuşmuyor.');
+  // Önce bütün plan doğrulanır (boş parça, geçersiz/tekrarlı sayfa, kapsam); sonra kesilir. Dizi bu alanda yeniden kurulur
+  // (pdf-lib copyPages instanceof Array ile bakar; plan başka bir JS alanından gelebilir).
+  const gorulen = new Set(), sirala = {};
+  for (const p of DHYS_PARCALARI) {
+    const sayfalar = plan[p.anahtar];
+    if (!Array.isArray(sayfalar) || !sayfalar.length) throw new Error(`DHYS parçası boş: ${p.baslik}.`);
+    for (const i of sayfalar) {
+      if (!Number.isInteger(i) || i < 0 || i >= toplam || gorulen.has(i)) throw new Error('DHYS parça planında geçersiz sayfa.');
+      gorulen.add(i);
+    }
+    sirala[p.anahtar] = Array.from(sayfalar);
+  }
+  if (gorulen.size !== toplam) throw new Error('DHYS parçaları paketin bütün sayfalarını kapsamıyor.');
+  const sonuc = [];
+  for (const p of DHYS_PARCALARI) {
+    const belge = await PDFDocument.create();
+    for (const sayfa of await belge.copyPages(kaynak, sirala[p.anahtar])) belge.addPage(sayfa);
+    belge.setTitle(`${p.baslik} — ${ref}`.replace(/ — $/, ''));
+    belge.setCreator('Marche-en-Famenne Ulu Camii — yönetim paneli');
+    sonuc.push({ ...p, sayfa: sirala[p.anahtar].length, bytes: await belge.save({ useObjectStreams: false, objectsPerTick: Infinity }) });
+  }
+  return sonuc;
+}
+
 export async function ihtidaPaketiUret(g) {
   const { PDFDocument, rgb } = g.pdfLib;
   for (const [ad, bytes] of [['Kalem yazı tipi (Allura)', g.kalemFontBytes], ['EK-9 şablonu', g.sablonBytes], ['EK-10 şablonu', g.ek10SablonBytes], ['Dilekçe şablonu', g.dilekceSablonBytes]]) {
@@ -103,6 +192,7 @@ export async function ihtidaPaketiUret(g) {
   const ek9Sayfa = await ekle(ek9);
   const dilekceSayfa = await ekle(dilekce);
   await ekle(ek10);
+  const kimlikBas = paket.getPageCount();
   if (g.kimlikPdfBytes) await ekle(g.kimlikPdfBytes);
   else {
     await kimlikSayfasiEkle(g.pdfLib, paket, {
@@ -110,6 +200,7 @@ export async function ihtidaPaketiUret(g) {
       adSoyad: v.adSoyad, dogumTarihi: v.dogumTarihi, fontBytes: g.fontBytes, fontKalinBytes: g.fontKalinBytes,
     });
   }
+  const ekBas = paket.getPageCount();
   // Formdaki uzun açıklamalar kesilmez; aynı PDF'nin açıklama ekinde tam olarak korunur.
   if (uzunAlanlar.length) {
     const font = await paket.embedFont(g.fontBytes, { subset: true });
@@ -146,6 +237,14 @@ export async function ihtidaPaketiUret(g) {
     };
     yeniSayfa(); satirYaz(v.adSoyad); satirYaz(`${v.ref || ''} — ${v.beyanTarihi}`);
     for (const [ad, deger] of uzunAlanlar) { y -= 10; satirYaz(basliklar[ad] || ad, 11); satirYaz(deger); }
+  }
+  // DHYS parça planı (yalnız sayfa sıra numaraları; kişisel veri yok): açıklama eki EK-9'un devamıdır.
+  if (g.parcaPlani) {
+    const ilk = ek9Sayfa + dilekceSayfa;
+    Object.assign(g.parcaPlani, {
+      ek9: aralik(0, ek9Sayfa).concat(aralik(ekBas, paket.getPageCount())), dilekce: aralik(ek9Sayfa, ilk),
+      ek10: aralik(ilk, kimlikBas), kimlik: aralik(kimlikBas, ekBas), toplam: paket.getPageCount(),
+    });
   }
   if (g.onBasvuru) {
     // Ön başvuru damgası EK-9 ile dilekçede; EK-10 rızası formda verildiği için geçerlidir.

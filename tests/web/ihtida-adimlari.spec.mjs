@@ -171,7 +171,7 @@ test('Varsayılan sihirbaz, belgeler-imza-rıza ile eksiksiz başvuruyu tek akı
   // Belgeler adımı gizlenince tuval yeniden küçük bir boyutta kurulup PDF imzasını kırpmamalıdır.
   await expect.poll(() => imzaVeriUrlBoyutu(page)).toEqual(imzaGorunurken);
 
-  for (const id of ['riza', 'ek10', 'gizlilik', 'gorsel']) await page.locator(`#i-onay-${id}`).check();
+  for (const id of ['riza', 'ek10', 'gizlilik', 'gorsel', 'sartlar']) await page.locator(`#i-onay-${id}`).check();
   await page.locator('#i-beyan').fill('Deniz Örnek');
   await ileriGit(page, 6);
 

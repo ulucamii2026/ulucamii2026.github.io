@@ -77,14 +77,21 @@ async function paketDurumAc(ref) {
       const durumlar = { sirada: 'Hazırlanmayı bekliyor', hazirlaniyor: 'PDF hazırlanıyor', hazir: 'PDF hazır', 'teslim-takibi': 'PDF hazır · e-postalar izleniyor', tamam: 'PDF hazır · bütün alıcı sunucularına teslim edildi', hata: 'İşlem tamamlanamadı' };
       const teslim = { sirada: 'Sırada', gonderiliyor: 'Gönderiliyor', 'saglayici-kabul': 'Gönderildi · teslim teyidi bekleniyor', 'teslim-edildi': 'Alıcı sunucusuna teslim edildi', 'teslim-edilemedi': 'Teslim edilemedi', 'gonderim-hatasi': 'Gönderim başarısız', belirsiz: 'Sonuç belirsiz · tekrar göndermeden önce kontrol gerekli' };
       ozet.textContent = `${ref} · ${durumlar[p.durum] || p.durum}${p.sayfa ? ` · ${p.sayfa} sayfa` : ''}${p.hata ? ' · ' + p.hata : ''}`;
-      pencere.querySelector('[data-paket-alicilar]').innerHTML = (p.alicilar || []).map(a => `<p><strong>${kacir(a.eposta)}</strong>${a.basvuran && p.basvuranKopya ? ' · başvuran nüshası (şahit imzasız)' : ''}<br>${kacir(teslim[a.durum] || a.durum)}</p>`).join('');
+      pencere.querySelector('[data-paket-alicilar]').innerHTML = (p.alicilar || []).map(a => `<p><strong>${kacir(a.eposta)}</strong>${a.basvuran && p.basvuranKopya ? ' · başvuran: filigranlı suret («bilgi amaçlıdır»)' : ''}<br>${kacir(teslim[a.durum] || a.durum)}</p>`).join('');
       // 23 Eki 2026: kayıtlı şahit imzaları (Rıdvan KAYAHAN, Ercan MOLA) pakete otomatik basılır; ön başvuruda başvurana şahit imzasız ikinci nüsha gider.
       const sahitAdlari = { ercan: 'Ercan MOLA', ridvan: 'Rıdvan KAYAHAN' };
-      pencere.querySelector('[data-paket-sahit]').textContent = (p.sahitImzasi || []).length
-        ? `Basılan kayıtlı şahit imzaları: ${p.sahitImzasi.map(a => sahitAdlari[a] || a).join(', ')}.${p.basvuranKopya === 'hazir' ? ' Başvurana şahit imzasız ayrı nüsha gönderildi.' : p.basvuranKopya === 'sirada' ? ' Başvuranın şahit imzasız nüshası hazırlanıyor.' : ''}`
-        : 'Bu pakete kayıtlı şahit imzası basılmadı (şahit adı eşleşmedi, işaret kaldırıldı ya da imza kaydı yok).';
+      const yedekRiza = { yazili: 'yazılı', sozlu: 'sözlü' }[p.yedekSahitRizasi];
+      const suretDurumu = p.basvuranKopya === 'hazir' ? ' Başvurana filigranlı suret hazırlandı.' : p.basvuranKopya === 'sirada' ? ' Başvuranın filigranlı sureti hazırlanıyor.' : '';
+      pencere.querySelector('[data-paket-sahit]').textContent = ((p.sahitImzasi || []).length
+        ? `Basılan kayıtlı şahit imzaları: ${p.sahitImzasi.map(a => sahitAdlari[a] || a).join(', ')}.`
+        : 'Bu pakete kayıtlı şahit imzası basılmadı (şahit adı eşleşmedi, işaret kaldırıldı ya da imza kaydı yok).')
+        + (yedekRiza ? ` Yedek şahit: mühtedinin ${yedekRiza} rızasıyla.` : '') + suretDurumu;
+      // 25 Eki 2026: DHYS'ye ayrı yüklenecek parçalar (1–4 PDF, 5 vesikalık görseli).
+      const parcaAdi = { 1: 'EK-9', 2: 'Dilekçe', 3: 'EK-10', 4: 'Kimlik', 5: 'Vesikalık' };
+      const parcalar = (p.parcaPdfler || []).filter(x => x && x.id).map(x => ` <button type="button" class="dugme" data-pdf="${kacir(x.id)}" data-pdf-ad="${kacir(ref)} DHYS ${kacir(String(x.no))}">DHYS ${kacir(String(x.no))} · ${kacir(parcaAdi[x.no] || x.anahtar || '')}</button>`).join('');
       pencere.querySelector('[data-paket-pdf]').innerHTML = (p.pdfId ? `<button type="button" class="dugme birincil" data-pdf="${kacir(p.pdfId)}" data-pdf-ad="Ihtida Paketi ${kacir(ref)}.pdf">Arşivdeki tam PDF’yi aç</button>` : '')
-        + (p.basvuranPdfId ? ` <button type="button" class="dugme" data-pdf="${kacir(p.basvuranPdfId)}" data-pdf-ad="Ihtida Paketi ${kacir(ref)} basvuran nushasi.pdf">Başvuran nüshasını aç (şahit imzasız)</button>` : '');
+        + (p.basvuranPdfId ? ` <button type="button" class="dugme" data-pdf="${kacir(p.basvuranPdfId)}" data-pdf-ad="Ihtida Paketi ${kacir(ref)} basvuran sureti.pdf">Başvuran suretini aç (filigranlı)</button>` : '')
+        + (parcalar ? `<br>${parcalar}` : p.parcalar === 'sirada' ? '<br>DHYS parçaları hazırlanıyor…' : p.parcalar === 'hata' ? '<br>DHYS parçaları hazırlanamadı; «Başarısız işlemleri yeniden dene» ile tekrar denenir.' : '');
       pencere.querySelectorAll('[data-pdf]').forEach(b => b.addEventListener('click', e => formPdfAc(e.currentTarget)));
     } catch (h) { ozet.textContent = 'Kontrol edilemedi: ' + h.message; }
   };
@@ -929,7 +936,8 @@ async function formPdfAc(dugme) {
     const bayt = new Uint8Array(ikili.length);
     for (let i = 0; i < ikili.length; i++) bayt[i] = ikili.charCodeAt(i);
     const ad = j.ad || ad0;
-    const url = URL.createObjectURL(new File([bayt], ad, { type: 'application/pdf' }));
+    // 25 Eki 2026: DHYS vesikalık parçası görseldir (sunucu türünü bildirir).
+    const url = URL.createObjectURL(new File([bayt], ad, { type: /^image\/(jpeg|png)$/.test(j.tur || '') ? j.tur : 'application/pdf' }));
     onbellegeKoy(id, { url, ad });
     if (engellendi) window.location.assign(url);              // sekme hiç açılamadı: aynı sekmede; geri tuşu panele döner
     else if (!pencere.closed) pdfSekmesiniDoldur(pencere, url, ad);

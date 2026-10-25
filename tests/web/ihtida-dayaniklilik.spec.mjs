@@ -25,7 +25,7 @@ async function doldur(page) {
     await expect(page.locator(`[data-gorsel="${key}"]`)).toHaveAttribute('data-dolu', '1');
   }
   await page.locator('#i-imza-yok').check();
-  for (const id of ['riza', 'ek10', 'gizlilik', 'gorsel']) await page.locator(`#i-onay-${id}`).check();
+  for (const id of ['riza', 'ek10', 'gizlilik', 'gorsel', 'sartlar']) await page.locator(`#i-onay-${id}`).check();
 }
 
 test('Geç biten fotoğraf işlemi kaldırılan veya daha yeni seçilen görseli geri getiremez', async ({ page }) => {

@@ -484,6 +484,10 @@ test('Kayıtlı şahit imzası yalnız Ulu Camii Marche içinde ve ad eşleşirs
   assert.deepEqual(r.uygulanan, ['ridvan']);
   assert.deepEqual(sahitImzalariniBagla([{ ad: 'Ercan MOLA' }], 'ulucamii-marche', { ridvan: SAHTE_CIZGI }).uygulanan, [], 'kayıtlı imza yoksa bağlanmaz');
   assert.deepEqual(sahitImzalariniBagla([{ ad: 'Ercan MOLA' }, { ad: 'Rıdvan KAYAHAN' }], 'namur-camii-namur', imzalar).uygulanan, [], 'başka camide yerel imza kullanılmaz');
+  // 25 Eki 2026: yedek şahit — başka camide yalnız mühtedinin yazılı/sözlü rızasıyla; işaret kaldırılırsa yine basılmaz.
+  assert.deepEqual(sahitImzalariniBagla([{ ad: 'Ercan MOLA' }, { ad: 'Rıdvan KAYAHAN' }], 'namur-camii-namur', imzalar, [], { yedekSahitRizasi: 'yazili' }).uygulanan, ['ercan', 'ridvan']);
+  assert.deepEqual(sahitImzalariniBagla([{ ad: 'Ercan MOLA' }, { ad: 'Rıdvan KAYAHAN', imzaKullan: false }], 'namur-camii-namur', imzalar, [], { yedekSahitRizasi: 'sozlu' }).uygulanan, ['ercan']);
+  assert.deepEqual(sahitImzalariniBagla([{ ad: 'Ercan MOLA' }, { ad: 'Rıdvan KAYAHAN' }], 'namur-camii-namur', imzalar, [], { yedekSahitRizasi: 'evet' }).uygulanan, [], 'bilinmeyen rıza değeri sayılmaz');
   assert.deepEqual(sahitImzalariniBagla([{ ad: 'Ercan MOLA' }, { ad: 'ercan mola' }], 'ulucamii-marche', imzalar).uygulanan, ['ercan'], 'aynı kişi iki kez imzalamaz');
   assert.deepEqual(sahitImzalariniBagla([{ ad: 'Ercan MOLA' }], 'ulucamii-marche', undefined).uygulanan, []);
   const eski = sahitImzalariniBagla([{ ad: 'Ercan MOLA', imza: 'data:eski-raster' }], 'ulucamii-marche', {});

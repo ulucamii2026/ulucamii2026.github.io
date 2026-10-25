@@ -250,6 +250,7 @@ export const de: FormMetinleri = {
       sahitImzaYardim: "Ist dieser Zeuge anwesend, kann er hier unterschreiben.",
       sahitRiza: "Ich bin Zeuge dieser Konversion und bin damit einverstanden, dass meine Unterschrift auf der Konversionsbescheinigung erscheint.",
       sahitImzaNot: "Sind Ihre Zeugen gerade nicht bei Ihnen, lassen Sie diese Felder leer: Ihr Antrag läuft normal weiter, und die Zeugen können auch später unterschreiben.",
+      sahitSonraNot: "Werden die Unterschriften der Zeugen später nachgeholt, schicken wir Ihnen das Dokument per WhatsApp; Sie lassen es von Ihren Zeugen unterschreiben und senden es uns zurück. Ist das nicht möglich, werden mit Ihrer schriftlichen oder mündlichen Zustimmung die Namen und digitalen Unterschriften von Ercan MOLA, Vorsitzender des Vereins Marche-en-Famenne Ulu Camii, und Rıdvan KAYAHAN, Imam, in die Zeugenfelder gesetzt.",
       sahitImzaRizaHata: "Für eine Zeugenunterschrift muss auch das Einverständnisfeld angekreuzt sein (oder löschen Sie die Unterschrift).",
       sahitImzaAdHata: "Tragen Sie oben Vor- und Nachnamen des unterschreibenden Zeugen ein.",
       sahitImzali: "unterschrieben",
@@ -284,6 +285,8 @@ export const de: FormMetinleri = {
       fotoAciklama: 'Optional. Aufnahmen werden nur mit Ihrer gesonderten Zustimmung geteilt; ein „Nein“ hat keinen Einfluss auf den Antrag.',
       gorselRiza: 'Ich willige ausdrücklich ein, dass mein Passbild, die Vorder- und die Rückseite meines Ausweisdokuments und meine Unterschrift verarbeitet werden, um die Konversionsbescheinigung (EK-9) auszustellen und die amtliche Akte anzulegen. Mir ist bekannt, dass diese Angaben und Unterlagen sowohl beim Verein Marche-en-Famenne Ulu Camii als auch bei der zuständigen Stelle des Präsidiums für Religionsangelegenheiten (Diyanet) in Belgien aufbewahrt werden.',
       gorselRizaYardim: 'Die Bilder bleiben in einem geschlossenen Ordner des Vereins, werden nie veröffentlicht und nur von befugten Mitarbeitenden eingesehen. Sie können Ihre Einwilligung jederzeit widerrufen.',
+      sartlar: 'Ich habe die Antragsbedingungen gelesen und verstanden. Ich erkläre, dass meine Angaben richtig sind. Die Belgische Kommission zur Unterstützung neuer Muslime behält sich das Recht vor, an den Antragsunterlagen alle Änderungen vorzunehmen, die nötig sind, um sie mit den amtlichen Verfahren in Einklang zu bringen (einschließlich Rechtschreibung, Übersetzung, Form, Ergänzung fehlender Angaben und Zeugenverfahren).',
+      sartlarYardim: 'Ist eine Änderung nötig, die den Inhalt Ihrer Angaben betrifft, werden Sie vorher kontaktiert. Das Exemplar, das Sie per E-Mail erhalten, ist eine Kopie nur zur Information; nach den amtlichen Unterschriften erhalten Sie das Original sowohl digital als auch als gedrucktes, handschriftlich unterschriebenes Exemplar.',
       beyanBaslik: 'Erklärung',
       beyanMetin: 'Aus eigenem freien Willen möchte ich die Religion des Islam annehmen. Ich bitte Sie höflich, mir eine Konversionsbescheinigung auszustellen.',
       beyanEtiket: 'Bestätigen Sie die Erklärung, indem Sie Ihren Vor- und Nachnamen eingeben',
@@ -291,7 +294,7 @@ export const de: FormMetinleri = {
     },
     ozet: { kisi: 'Vor- und Nachname', dogum: 'Geburt', uyruk: 'Staatsangehörigkeit', aile: 'Vornamen der Eltern', durum: 'Familienstand · Bildung · Beruf', iletisim: 'Kontakt', din: 'Bisherige Religion', toren: 'Sprache der Feier · Wunschtermin', sahitler: 'Zeugen', belgeler: 'Dokumente und Unterschrift' },
     basari: {
-      sonrakiAdimlar: 'Unser Imam meldet sich bei Ihnen für das Gespräch und die Feier. Nach der Unterschrift wird Ihre Bescheinigung an den gewählten Ort geschickt; die Dauer teilen wir Ihnen gesondert mit.',
+      sonrakiAdimlar: 'Unser Imam meldet sich bei Ihnen für das Gespräch und die Feier. Das Dokument, das Sie per E-Mail erhalten, ist eine Kopie nur zur Information. Nach den amtlichen Unterschriften wird das Original an den gewählten Ort geschickt und Ihnen die digitale Fassung per E-Mail zugesandt; die Dauer teilen wir Ihnen gesondert mit.',
     },
   },
 };

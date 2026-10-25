@@ -249,6 +249,7 @@ export const fr: FormMetinleri = {
       sahitImzaYardim: "Si ce témoin est présent, il peut signer ici.",
       sahitRiza: "Je suis témoin de cette conversion et j’accepte que ma signature figure sur l’attestation.",
       sahitImzaNot: "Si vos témoins ne sont pas avec vous en ce moment, laissez ces cases vides : votre demande suit son cours et ils pourront aussi signer plus tard.",
+      sahitSonraNot: "Si les signatures des témoins sont remises à plus tard, nous vous enverrons le document par WhatsApp ; vous le ferez signer par vos témoins et nous le renverrez. Si ce n’est pas possible, avec votre accord écrit ou oral, les noms et les signatures numériques d’Ercan MOLA, président de l’association de la mosquée Ulu Camii de Marche-en-Famenne, et de Rıdvan KAYAHAN, imam, seront apposés dans les cases des témoins.",
       sahitImzaRizaHata: "Pour une signature de témoin, la case de consentement doit aussi être cochée (ou effacez la signature).",
       sahitImzaAdHata: "Indiquez ci-dessus le nom et le prénom du témoin qui signe.",
       sahitImzali: "signature jointe",
@@ -283,6 +284,8 @@ export const fr: FormMetinleri = {
       gorselRiza: 'Je consens expressément au traitement de ma photo d’identité, du recto et du verso de ma pièce d’identité et de ma signature, aux fins d’établir l’attestation de conversion (EK-9) et de constituer le dossier officiel. Je sais que ces informations et pièces sont conservées à la fois par l’association Ulu Camii de Marche-en-Famenne et par le service compétent de la Présidence des Affaires religieuses (Diyanet) en Belgique.',
       gorselRizaYardim: 'Les images restent dans un dossier fermé de l’association, ne sont jamais publiées et ne sont vues que par les responsables habilités. Vous pouvez retirer votre consentement à tout moment.',
       fotoAciklama: 'Facultatif. Les images ne sont partagées qu’avec votre accord distinct ; répondre « non » n’a aucune incidence sur la demande.',
+      sartlar: 'J’ai lu et compris les conditions de la demande. Je déclare que les informations fournies sont exactes. La Commission belge de soutien aux nouveaux musulmans se réserve le droit d’apporter aux documents de la demande toute modification nécessaire pour les rendre conformes aux procédures officielles (orthographe, traduction, mise en forme, informations manquantes et démarches relatives aux témoins comprises).',
+      sartlarYardim: 'Si une modification touchant au fond de vos informations est nécessaire, vous serez d’abord contacté(e). L’exemplaire envoyé à votre adresse e-mail est une copie à titre d’information ; après les signatures officielles, l’original vous sera remis en version numérique et en version imprimée signée à la main.',
       beyanBaslik: 'Déclaration',
       beyanMetin: 'De ma propre et libre volonté, je souhaite embrasser la religion musulmane. Je vous prie de bien vouloir établir en ma faveur l’attestation de conversion, avec mes salutations respectueuses.',
       beyanEtiket: 'Confirmez la déclaration en indiquant votre nom et prénom',
@@ -290,7 +293,7 @@ export const fr: FormMetinleri = {
     },
     ozet: { belgeler: 'Documents et signature', kisi: 'Nom et prénom', dogum: 'Naissance', uyruk: 'Nationalité', aile: 'Prénoms des parents', durum: 'État civil · études · profession', iletisim: 'Contact', din: 'Religion précédente', toren: 'Langue de la cérémonie · date souhaitée', sahitler: 'Témoins' },
     basari: {
-      sonrakiAdimlar: "Notre imam vous contactera pour l’entretien et la cérémonie. Une fois votre attestation signée, elle sera envoyée au lieu choisi ; le délai vous sera communiqué séparément.",
+      sonrakiAdimlar: "Notre imam vous contactera pour l’entretien et la cérémonie. Le document reçu par e-mail est une copie à titre d’information. Après les signatures officielles, l’original sera envoyé au lieu choisi et sa version numérique vous sera transmise par e-mail ; le délai vous sera communiqué séparément.",
     },
   },
 };

@@ -191,6 +191,8 @@ export interface IhtidaMetinler {
     sahitler: string; sahitlerYardim: string; sahitEkle: string; sahitCami: string; sahit1: string; sahit2: string;
     /** 23 Ekim 2026: mühtedinin kendi şahidi yanındaysa formda isteğe bağlı imza atabilir ({no} = 1 | 2). */
     sahitImzaBaslik: string; sahitImzaYardim: string; sahitRiza: string; sahitImzaNot: string;
+    /** 25 Ekim 2026: şahit imzaları sonraya kalırsa WhatsApp ile imzalatma; olmazsa rızayla Ercan MOLA + Rıdvan KAYAHAN. */
+    sahitSonraNot: string;
     sahitImzaRizaHata: string; sahitImzaAdHata: string; sahitImzali: string;
     nasilHaberdar: string; ekNot: string; ekNotYardim: string;
   };
@@ -218,6 +220,8 @@ export interface IhtidaMetinler {
   riza: {
     acikRiza: string; ek10: string; ek10Baglanti: string; gizlilik: string; fotoIzni: string; fotoAciklama: string;
     gorselRiza: string; gorselRizaYardim: string;
+    /** 25 Ekim 2026: «okudum, anladım» + Belçika Mühtedi Destek Komisyonunun düzenleme hakkı (zorunlu, önceden işaretli değil). */
+    sartlar: string; sartlarYardim: string;
     beyanBaslik: string; beyanMetin: string; beyanEtiket: string; beyanYardim: string;
   };
   ozet: { kisi: string; dogum: string; uyruk: string; aile: string; durum: string; iletisim: string; din: string; toren: string; sahitler: string; belgeler: string };

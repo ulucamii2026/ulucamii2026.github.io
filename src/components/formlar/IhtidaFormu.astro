@@ -270,6 +270,7 @@ const gorselKutulari = [
             <IhtidaSahitImza no={2} baslik={h.ihtida.sahitImzaBaslik.replace('{no}', '2')} yardim={h.ihtida.sahitImzaYardim} riza={h.ihtida.sahitRiza} temizle={b.imzaTemizle} />
           </div>
           <p class="yardim tam" data-sahit-imza-not>{h.ihtida.sahitImzaNot}</p>
+          <p class="yardim tam" data-sahit-sonra-not>{h.ihtida.sahitSonraNot}</p>
         </div>
       </fieldset>
       <div data-alan>
@@ -384,6 +385,16 @@ const gorselKutulari = [
           <label for="i-foto-izni">{h.riza.fotoIzni}</label>
         </div>
         <p class="yardim">{h.riza.fotoAciklama}</p>
+      </div>
+      {/* 25 Eki 2026: «okudum, anladım» ve Komisyonun düzenleme hakkı. Zorunlu; bilerek önceden işaretli DEĞİL: işaretli gelen
+          kutu okunduğunu kanıtlamaz (rıza kutuları için GDPR md. 4/11 ve 7, AB Adalet Divanı C-673/17 Planet49). */}
+      <div data-alan class="tam">
+        <div class="onay-kutu">
+          <input id="i-onay-sartlar" type="checkbox" name="onay.sartlar" required aria-describedby="i-onay-sartlar-yardim" />
+          <label for="i-onay-sartlar">{h.riza.sartlar}</label>
+        </div>
+        <p class="yardim" id="i-onay-sartlar-yardim">{h.riza.sartlarYardim}</p>
+        <p class="hata" aria-live="polite" hidden></p>
       </div>
       <div class="tam">
         <h3 class="font-serif text-lg mt-2 mb-1">{h.riza.beyanBaslik}</h3>

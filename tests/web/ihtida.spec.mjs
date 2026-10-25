@@ -71,7 +71,7 @@ async function doldur(page) {
   }
   await expect(page.locator('[data-gorsel="kimlikOn"]')).toHaveAttribute('data-dolu', '1');
   await page.locator('input[name="imzaYok"]').check();
-  for (const id of ['riza', 'ek10', 'gizlilik', 'gorsel']) await page.locator(`#i-onay-${id}`).check();
+  for (const id of ['riza', 'ek10', 'gizlilik', 'gorsel', 'sartlar']) await page.locator(`#i-onay-${id}`).check();
 }
 
 for (const [dil, yol] of Object.entries(yollar)) {
@@ -133,6 +133,7 @@ for (const [dil, yol] of Object.entries(yollar)) {
     expect(v.gorseller.vesikalik).toMatch(/^data:image\/(jpeg|png);base64,/);
     expect(v.gorseller.kimlikOn).toMatch(/^data:image\/jpeg;base64,/);
     expect(v.onay.ek10Surumu).toBe('2026-10');
+    expect(v.onay.sartlar).toBe(true);   // 25 Eki 2026: başvuru koşulları kutusu
     expect(v.gorseller.imzaVektor).toBe('');
     expect(Object.keys(v.basvuran).some(k => /kimlik|national|registry|tcno|pasaport/i.test(k))).toBe(false);
   });
@@ -178,7 +179,7 @@ test('Panelde şahit adları korunur; kayıtlı imza işaretli gelir, işaret ka
   await expect(page.locator('#ek9-gercek-tarih')).toHaveValue('');
   await page.getByRole('dialog', { name: 'EK-9 belgesini hazırlayın' }).screenshot({ path: info.outputPath('ek9-hazirlik.png') });
   await page.getByRole('button', { name: 'PDF’yi hazırla' }).click();
-  await expect.poll(() => page.evaluate(() => window.sonuc)).toEqual({ adSoyad: 'Deniz Örnek', sahitler: [{ ad: 'Birinci Örnek Şahit', imza: '' }, { ad: 'Ercan MOLA', imza: '' }], ihtidaTarihi: '', isimYazisi: 'kaligrafik', alanYazisi: 'el-yazisi', alanlar: { dogumYeri: '', uyruk: '', anneAdi: '', babaAdi: '', medeniHali: '', ogrenim: '', meslek: '', oncekiDin: '' } });
+  await expect.poll(() => page.evaluate(() => window.sonuc)).toEqual({ adSoyad: 'Deniz Örnek', sahitler: [{ ad: 'Birinci Örnek Şahit', imza: '' }, { ad: 'Ercan MOLA', imza: '' }], ihtidaTarihi: '', isimYazisi: 'kaligrafik', alanYazisi: 'el-yazisi', alanlar: { dogumYeri: '', uyruk: '', anneAdi: '', babaAdi: '', medeniHali: '', ogrenim: '', meslek: '', oncekiDin: '' }, ihtidaSebebiTr: '', yedekSahitRizasi: '' });
   await page.evaluate(async () => {
     const { ek9HazirlikAc } = await import('/admin/ek9-hazirlik.js');
     ek9HazirlikAc({ 'Adı Soyadı': 'Deniz Örnek' }, { ridvan: 'TEST_R', ercan: 'TEST_E', yeliz: 'TEST_Y' }).then(s => window.sonuc = s);
@@ -192,7 +193,7 @@ test('Panelde şahit adları korunur; kayıtlı imza işaretli gelir, işaret ka
   await page.locator('#ek9-sahit-1').fill('Başka Örnek Şahit');
   await expect(page.locator('.ek9-hazirlik input[type=checkbox]').nth(1)).not.toBeChecked();
   await page.getByRole('button', { name: 'PDF’yi hazırla' }).click();
-  await expect.poll(() => page.evaluate(() => window.sonuc)).toEqual({ adSoyad: 'Deniz Élodie Örnek', sahitler: [{ ad: 'Ercan MOLA', imza: 'TEST_E' }, { ad: 'Başka Örnek Şahit', imza: '' }], ihtidaTarihi: '', isimYazisi: 'sade', alanYazisi: 'sade', alanlar: { dogumYeri: '', uyruk: '', anneAdi: '', babaAdi: '', medeniHali: '', ogrenim: '', meslek: '', oncekiDin: '' } });
+  await expect.poll(() => page.evaluate(() => window.sonuc)).toEqual({ adSoyad: 'Deniz Élodie Örnek', sahitler: [{ ad: 'Ercan MOLA', imza: 'TEST_E' }, { ad: 'Başka Örnek Şahit', imza: '' }], ihtidaTarihi: '', isimYazisi: 'sade', alanYazisi: 'sade', alanlar: { dogumYeri: '', uyruk: '', anneAdi: '', babaAdi: '', medeniHali: '', ogrenim: '', meslek: '', oncekiDin: '' }, ihtidaSebebiTr: '', yedekSahitRizasi: '' });
 });
 
 test('Şahit imzası işaretli gelir; işaret kaldırılırsa imza gitmez; başka camide kutu kapalı', async ({ page }) => {
@@ -596,4 +597,19 @@ test('Şahit imzası: dar ekranda taşma yok, iki kutu alt alta akar; axe ciddi 
   const b1 = await page.locator('[data-sahit-imza="1"]').boundingBox(), b2 = await page.locator('[data-sahit-imza="2"]').boundingBox();
   expect(b2.y).toBeGreaterThan(b1.y + b1.height - 1);
   await page.locator('#i-sahit-alanlari').screenshot({ path: info.outputPath('sahit-imza-dar.png') });
+});
+
+// 25 Eki 2026: vesikalık EK-9 ön yüzündeki kutunun oranına (en/boy 0,72–0,86) kırpılarak yüklenir; DHYS'ye giden fotoğraf
+// belgede görünenle aynı olur (src/scripts/ihtida-gorseller.ts VESIKALIK_ORANI, public/admin/ek9.js).
+test('Vesikalık EK-9 kutusunun oranına kırpılır; uygun orandaki fotoğraf olduğu gibi kalır', async ({ page }) => {
+  await formSayfasiniAc(page, `/tr/${yollar.tr}/`);
+  for (const [en, boy, beklenen] of [[400, 300, 0.86], [200, 400, 0.72], [300, 400, 0.75]]) {
+    const resim = await sharp({ create: { width: en, height: boy, channels: 3, background: '#827868' } }).png().toBuffer();
+    await page.locator('#i-g-vesikalik').setInputFiles({ name: 'v.png', mimeType: 'image/png', buffer: resim });
+    await expect(page.locator('[data-gorsel="vesikalik"]')).toHaveAttribute('data-dolu', '1');
+    await expect.poll(() => page.locator('[data-gorsel="vesikalik"] img[data-onizleme]').evaluate(async i => {
+      await i.decode().catch(() => {});
+      return Math.round(i.naturalWidth / i.naturalHeight * 100) / 100;
+    })).toBe(beklenen);
+  }
 });

@@ -248,6 +248,7 @@ export const tr: FormMetinleri = {
       sahitImzaYardim: "Bu şahit şu anda yanınızdaysa buraya imza atabilir.",
       sahitRiza: "Bu ihtidaya şahitlik ediyorum ve imzamın belgede yer almasını kabul ediyorum.",
       sahitImzaNot: "Şahitleriniz şu anda yanınızda değilse imza alanlarını boş bırakın: başvurunuz aynen devam eder, şahitler imzalarını daha sonra da atabilir.",
+      sahitSonraNot: "Şahit imzaları sonraya kalırsa belgeyi size WhatsApp üzerinden göndeririz; şahitlerinize imzalatıp bize geri gönderirsiniz. Bu mümkün olmazsa, yazılı ya da sözlü onayınızla belgedeki şahit alanlarına Marche-en-Famenne Ulu Camii Dernek Başkanı Ercan MOLA ile Din Görevlisi Rıdvan KAYAHAN’ın adları ve dijital imzaları konur.",
       sahitImzaRizaHata: "Şahit imzası için şahidin onay kutusunu da işaretlemesi gerekir (ya da imzayı temizleyin).",
       sahitImzaAdHata: "İmza atan şahidin adını ve soyadını yukarıya yazın.",
       sahitImzali: "imzalı",
@@ -282,6 +283,8 @@ export const tr: FormMetinleri = {
       fotoAciklama: 'İsteğe bağlı. Görüntüler ancak ayrıca onayınızla paylaşılır; “hayır” demeniz başvuruyu etkilemez.',
       gorselRiza: 'Vesikalık fotoğrafımın, kimlik belgemin ön ve arka yüzünün ve imzamın; İhtida Belgesi’nin (EK-9) düzenlenmesi ve resmî dosyanın oluşturulması amacıyla işlenmesine açık rıza veriyorum. Bu bilgi ve belgelerin hem Marche-en-Famenne Ulu Camii derneğinde hem de Diyanet İşleri Başkanlığı’nın Belçika’daki yetkili biriminde saklanacağını biliyorum.',
       gorselRizaYardim: 'Görseller derneğin herkese kapalı klasöründe tutulur, hiçbir zaman yayımlanmaz ve yalnız yetkili görevliler görür. Rızanızı istediğiniz zaman geri alabilirsiniz.',
+      sartlar: 'Başvuru koşullarını okudum ve anladım. Verdiğim bilgilerin doğru olduğunu beyan ederim. Belçika Mühtedi Destek Komisyonu, başvuru evrakının resmî işlemlere uygun hâle getirilmesi için evrak üzerinde her türlü düzenleme hakkını saklı tutar (yazım ve imla, çeviri, biçim, eksik bilgilerin tamamlanması ve şahit işlemleri dâhil).',
+      sartlarYardim: 'Bilgilerinizin esasını değiştiren bir düzenleme gerekirse önce sizinle iletişime geçilir. E-postanıza gönderilen nüsha bilgi amaçlı bir surettir; asıl belge resmî imzalardan sonra size hem dijital olarak hem de ıslak imzalı basılı nüsha olarak ulaştırılır.',
       beyanBaslik: 'Beyan',
       beyanMetin: 'Kendi hür irademle İslam dinine girmek istiyorum. Şahsıma ihtida belgesi düzenlenmesi hususunda gereğini saygılarımla arz ederim.',
       beyanEtiket: 'Adınızı soyadınızı yazarak beyanı onaylayın',
@@ -289,7 +292,7 @@ export const tr: FormMetinleri = {
     },
     ozet: { kisi: 'Ad soyad', dogum: 'Doğum', uyruk: 'Uyruk', aile: 'Anne / baba adı', durum: 'Medeni hâl · öğrenim · meslek', iletisim: 'İletişim', din: 'Önceki din', toren: 'Tören dili · tarih tercihi', sahitler: 'Şahitler', belgeler: 'Belgeler ve imza' },
     basari: {
-      sonrakiAdimlar: "Din görevlimiz görüşme ve tören için sizinle iletişime geçecek. Belgeniz imzalandıktan sonra seçtiğiniz teslim yerine postalanacak; teslim süresi ayrıca bildirilecek.",
+      sonrakiAdimlar: "Din görevlimiz görüşme ve tören için sizinle iletişime geçecek. E-postanıza gelen belge bilgi amaçlı bir surettir. Asıl belge resmî imzalardan sonra seçtiğiniz teslim yerine postalanacak, dijital nüshası da size e-postayla gönderilecek; teslim süresi ayrıca bildirilecek.",
     },
   },
 };

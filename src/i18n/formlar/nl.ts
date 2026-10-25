@@ -250,6 +250,7 @@ export const nl: FormMetinleri = {
       sahitImzaYardim: "Als deze getuige aanwezig is, kan hij of zij hier tekenen.",
       sahitRiza: "Ik ben getuige van deze bekering en ga ermee akkoord dat mijn handtekening op het bekeringsattest komt.",
       sahitImzaNot: "Zijn uw getuigen nu niet bij u, laat deze vakken dan leeg: uw aanvraag loopt gewoon door en ze kunnen later ook nog tekenen.",
+      sahitSonraNot: "Worden de handtekeningen van de getuigen later gezet, dan sturen wij u het document via WhatsApp; u laat het door uw getuigen ondertekenen en stuurt het ons terug. Lukt dat niet, dan worden met uw schriftelijke of mondelinge toestemming de namen en digitale handtekeningen van Ercan MOLA, voorzitter van de vereniging Marche-en-Famenne Ulu Camii, en Rıdvan KAYAHAN, imam, in de getuigenvakken geplaatst.",
       sahitImzaRizaHata: "Voor een getuigenhandtekening moet ook het toestemmingsvakje worden aangevinkt (of wis de handtekening).",
       sahitImzaAdHata: "Vul hierboven de naam en voornaam in van de getuige die tekent.",
       sahitImzali: "ondertekend",
@@ -284,6 +285,8 @@ export const nl: FormMetinleri = {
       fotoAciklama: 'Optioneel. Beelden worden alleen met uw afzonderlijke toestemming gedeeld; “nee” antwoorden heeft geen invloed op de aanvraag.',
       gorselRiza: 'Ik geef mijn uitdrukkelijke toestemming om mijn pasfoto, de voor- en achterkant van mijn identiteitsbewijs en mijn handtekening te laten verwerken met het oog op het opmaken van het bekeringsattest (EK-9) en het samenstellen van het officiële dossier. Ik weet dat deze gegevens en documenten zowel bij de vereniging Marche-en-Famenne Ulu Camii als bij de bevoegde dienst van het Presidium voor Godsdienstzaken (Diyanet) in België bewaard worden.',
       gorselRizaYardim: 'De afbeeldingen blijven in een afgesloten map van de vereniging, worden nooit gepubliceerd en worden alleen door bevoegde medewerkers bekeken. U kunt uw toestemming op elk moment intrekken.',
+      sartlar: 'Ik heb de aanvraagvoorwaarden gelezen en begrepen. Ik verklaar dat de gegevens die ik heb verstrekt juist zijn. De Belgische Commissie voor de Ondersteuning van Nieuwe Moslims behoudt zich het recht voor om in de aanvraagdocumenten alle wijzigingen aan te brengen die nodig zijn om ze in overeenstemming te brengen met de officiële procedures (met inbegrip van spelling, vertaling, opmaak, aanvulling van ontbrekende gegevens en de procedure met de getuigen).',
+      sartlarYardim: 'Is er een wijziging nodig die de inhoud van uw gegevens raakt, dan wordt eerst contact met u opgenomen. Het exemplaar dat u per e-mail ontvangt, is een kopie ter informatie; na de officiële handtekeningen ontvangt u het origineel zowel digitaal als op papier, met handgeschreven handtekeningen.',
       beyanBaslik: 'Verklaring',
       beyanMetin: 'Uit eigen vrije wil wens ik de islam aan te nemen. Ik verzoek u met respect het bekeringsattest op mijn naam op te maken.',
       beyanEtiket: 'Bevestig de verklaring door uw naam en voornaam in te vullen',
@@ -291,7 +294,7 @@ export const nl: FormMetinleri = {
     },
     ozet: { kisi: 'Naam en voornaam', dogum: 'Geboorte', uyruk: 'Nationaliteit', aile: 'Voornamen van de ouders', durum: 'Burgerlijke staat · opleiding · beroep', iletisim: 'Contactgegevens', din: 'Vorige godsdienst', toren: 'Taal van de plechtigheid · gewenste datum', sahitler: 'Getuigen', belgeler: 'Documenten en handtekening' },
     basari: {
-      sonrakiAdimlar: 'Onze imam neemt contact met u op voor het gesprek en de plechtigheid. Zodra uw attest is ondertekend, wordt het naar de gekozen plaats opgestuurd; de termijn wordt u apart meegedeeld.',
+      sonrakiAdimlar: 'Onze imam neemt contact met u op voor het gesprek en de plechtigheid. Het document dat u per e-mail ontvangt, is een kopie ter informatie. Na de officiële handtekeningen wordt het origineel naar de gekozen plaats opgestuurd en ontvangt u de digitale versie per e-mail; de termijn wordt u apart meegedeeld.',
     },
   },
 };

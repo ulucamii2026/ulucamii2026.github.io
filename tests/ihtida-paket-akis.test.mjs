@@ -41,6 +41,8 @@ function ortam() {
   ctx.ihtidaPaketHucre = (ref, name, value) => cells.set(name, value);
   ctx.gercekGorselleriOku = ctx.ihtidaGorselleriOku;
   ctx.ihtidaGorselleriOku = () => ({ vesikalik: image, kimlikOn: image, kimlikArka: image, imza: image });
+  // Başvurunun yüklenen vesikalığı (DHYS 5. parçası bundan kopyalanır).
+  createFile(blob(png, 'image/png', k.Referans + ' - vesikalik.jpg'));
   ctx.UrlFetchApp = { fetch: (url, options) => {
     if (options.method === 'post') {
       const p = JSON.parse(options.payload); sent.push(p);
@@ -66,8 +68,10 @@ test('GAS ortamı tarayıcı/Node/timer olmadan gerçek yedi sayfalık imzalı p
   assert.equal(is.sayfa, 7, 'EK-9 ×2, dilekçe ×2, EK-10 ×2, kimlik');
   assert.deepEqual(sent.map(p => p.to[0].email), ['info@ulucamii.be', 'imam@ulucamii.be', 'deniz@example.test']);
   const bytes = Buffer.from(files.get(is.pdfId).getBlob().getBytes());
+  // Dernek içi alıcılar arşivdeki nüshayı, başvuran filigranlı sureti alır (25 Eki 2026). Buffer.equals: büyük PDF farkı döküm üretmesin.
+  const suret = Buffer.from(files.get(is.basvuranPdfId).getBlob().getBytes());
   for (const p of sent) {
-    assert.deepEqual(Buffer.from(p.attachment[0].content, 'base64'), bytes);
+    assert.ok(Buffer.from(p.attachment[0].content, 'base64').equals(p.to[0].email === k['E-posta'] ? suret : bytes), p.to[0].email);
     assert.equal(p.to.length, 1); assert.equal(p.cc, undefined);
   }
   assert.ok(cells.get('Tam paket PDF').includes(is.pdfId));
@@ -490,7 +494,15 @@ test('Ön başvuruda arşiv ve dernek içi alıcılar şahit imzalı, başvuran 
   assert.deepEqual(Buffer.from(sent[0].attachment[0].content, 'base64'), ana);
   assert.deepEqual(Buffer.from(sent[1].attachment[0].content, 'base64'), ana);
   assert.deepEqual(Buffer.from(sent[2].attachment[0].content, 'base64'), basvuran, 'başvurana yalnız şahit imzasız nüsha gider');
-  for (const p of sent) assert.equal(p.attachment[0].name, k.Referans + ' - Ihtida Belge Paketi - r1.pdf', 'ek adı her alıcıda aynı');
+  assert.deepEqual(sent.map(p => p.attachment[0].name), [k.Referans + ' - Ihtida Belge Paketi - r1.pdf', k.Referans + ' - Ihtida Belge Paketi - r1.pdf', k.Referans + ' - Ihtida Belgesi Sureti - r1.pdf'], 'dernek içi ek adı aynı; başvurana «Sureti»');
+  // 25 Eki 2026: başvurana giden nüsha filigranlı SURET; metni bilgi amaçlı olduğunu söyler, kurum adı geçmez.
+  writeFileSync('.codex/cikti/ihtida/gas-basvuran-suret.pdf', basvuran);
+  const suretMetni = pdfMetni('.codex/cikti/ihtida/gas-basvuran-suret.pdf');
+  assert.match(suretMetni, /SURET — bilgi amaçlıdır, resmî belge yerine geçmez/); assert.match(suretMetni, /COPIE — à titre d’information/);
+  assert.match((await PDFDocument.load(basvuran)).getSubject() || '', /^SURET — bilgi amaçlıdır/, 'suret künyesi');
+  assert.match(sent[2].subject, /sureti/); assert.match(sent[2].textContent, /Bu suret bilgi amaçlıdır/); assert.match(sent[2].textContent, /yetkili imzası/);
+  assert.doesNotMatch(sent[2].textContent, /[Mm]üşavir|Conseiller|Counsellor/);
+  assert.doesNotMatch(sent[0].textContent, /Bu suret/); assert.doesNotMatch(sent[0].subject, /sureti/);
   // Bütünlük: iki ayrı özet, iki ayrı arşiv dosyası.
   assert.equal(is.sha256, createHash('sha256').update(ana).digest('hex'));
   assert.equal(is.basvuranSha256, createHash('sha256').update(basvuran).digest('hex'));
@@ -563,12 +575,17 @@ test('Son nüshada işaretli şahidin imzası basılır, ikinci PDF üretilmez; 
   const r2 = ctx.ihtidaPaketIsiOku(k.Referans);
   assert.equal(r2.asama, 'musavirlik'); assert.equal(r2.durum, 'tamam', JSON.stringify(r2));
   assert.deepEqual(Array.from(r2.sahitImzasi), ['ercan'], 'işareti kaldırılan şahidin imzası basılmaz');
-  assert.ok(!r2.basvuranKopya, 'son nüshada ikinci PDF yok: aynı nüsha başvurana da gider');
+  assert.equal(r2.basvuranKopya, 'hazir', 'son nüshada da başvurana filigranlı suret gider (25 Eki 2026)');
   assert.equal(sent.length, 6);
-  const son = dosyaBayt(files, r2.pdfId);
-  for (const p of sent.slice(3)) assert.deepEqual(Buffer.from(p.attachment[0].content, 'base64'), son);
+  const son = dosyaBayt(files, r2.pdfId), suret = dosyaBayt(files, r2.basvuranPdfId);
+  for (const p of sent.slice(3)) assert.deepEqual(Buffer.from(p.attachment[0].content, 'base64'), p.to[0].email === k['E-posta'] ? suret : son);
   assert.equal(await sahitImzaSayisi(son), 1);
-  assert.deepEqual(Array.from(r2.eskiPdfler).sort(), [r1.pdfId, r1.basvuranPdfId].sort(), 'önceki revizyonun iki dosyası iş kaydında kalır');
+  assert.equal(await sahitImzaSayisi(suret), 1, 'son nüshanın sureti aynı belgedir (imzalar dahil), üstüne filigran basılır');
+  const r1Parcalar = Array.from(r1.parcaPdfler, p => p.id);
+  assert.equal(r1Parcalar.length, 5, 'ön başvuru paketinin DHYS parçaları (4 PDF + vesikalık)');
+  assert.deepEqual(Array.from(r2.eskiPdfler).sort(), [r1.pdfId, r1.basvuranPdfId, ...r1Parcalar].sort(), 'önceki revizyonun paket, başvuran nüshası ve parça dosyaları iş kaydında kalır');
+  assert.equal(r2.parcalar, 'hazir');
+  assert.ok(Array.from(r2.parcaPdfler).every(p => files.get(p.id).getName().startsWith(k.Referans + ' - r2 - ')), 'son nüshanın parçaları r2 adını taşır');
   // Test temizliği (yalnız TESTOGLU satırı): üç PDF'in hepsi çöpe gider, başka başvurunun dosyası kalır.
   const klasor = ctx.ihtidaKlasorGetir(), diger = 'IH-2099-0005';
   const digerPdf = klasor.createFile(ctx.Utilities.newBlob('x', 'application/pdf', diger + ' - Ihtida Belge Paketi - r1.pdf'));
@@ -577,7 +594,7 @@ test('Son nüshada işaretli şahidin imzası basılır, ikinci PDF üretilmez; 
   const sheet = { getLastRow: () => satirlar.length + 1, getLastColumn: () => baslik.length, deleteRow: n => satirlar.splice(n - 2, 1),
     getRange: (r, c, nr) => ({ getValues: () => r === 1 ? [baslik] : satirlar.slice(r - 2, r - 2 + nr) }) };
   assert.equal(ctx.testTemizleSayfa(sheet, klasor, ['Adı Soyadı']), 1);
-  for (const id of [r1.pdfId, r1.basvuranPdfId, r2.pdfId]) assert.equal(files.get(id).isTrashed(), true, files.get(id).getName());
+  for (const id of [r1.pdfId, r1.basvuranPdfId, r2.pdfId, ...r1Parcalar, ...Array.from(r2.parcaPdfler, p => p.id)]) assert.equal(files.get(id).isTrashed(), true, files.get(id).getName());
   assert.equal(digerPdf.isTrashed(), false, 'TESTOGLU olmayan başvuruya dokunulmaz');
   assert.deepEqual(satirlar.map(r => r[1]), [diger]);
 });
@@ -596,12 +613,12 @@ test('Kayıtlı imza dosyası bozuksa paket hata verir, imzasız belge e-postala
   ctx.ihtidaPaketKuyrugaAl(k.Referans);
   await ctx.ihtidaPaketIsle(k.Referans);
   const is = ctx.ihtidaPaketIsiOku(k.Referans);
-  assert.equal(is.durum, 'tamam'); assert.deepEqual(Array.from(is.sahitImzasi), []); assert.ok(!is.basvuranKopya);
+  assert.equal(is.durum, 'tamam'); assert.deepEqual(Array.from(is.sahitImzasi), []); assert.equal(is.basvuranKopya, 'hazir');
   assert.equal(await sahitImzaSayisi(dosyaBayt(files, is.pdfId)), 0);
   assert.equal(sent.length, 3);
 });
 
-test('Başka camide kayıtlı yerel imza basılmaz ve başvuran nüshası ayrılmaz', async () => {
+test('Başka camide kayıtlı yerel imza (yedek şahit rızası olmadan) basılmaz; başvurana filigranlı suret gider', async () => {
   const { ctx, sent, files } = ortam();
   imzalariKaydet(ctx);
   const namur = { ...k, 'Cami kimliği': 'namur-camii-namur', 'Başvuru camisi': 'Namur Camii', 'Cami şehri': 'Namur', 'Cami posta kodu': '5000', 'Cami adresi': 'Rue Denis Georges Bayar 13', 'Şahit 1': 'Rıdvan KAYAHAN', 'Şahit 2': 'Ercan MOLA' };
@@ -610,9 +627,38 @@ test('Başka camide kayıtlı yerel imza basılmaz ve başvuran nüshası ayrıl
   await ctx.ihtidaPaketIsle(namur.Referans);
   const is = ctx.ihtidaPaketIsiOku(namur.Referans);
   assert.equal(is.durum, 'tamam', JSON.stringify(is));
-  assert.deepEqual(Array.from(is.sahitImzasi), []); assert.ok(!is.basvuranKopya);
+  assert.deepEqual(Array.from(is.sahitImzasi), []); assert.equal(is.basvuranKopya, 'hazir');
   assert.equal(await sahitImzaSayisi(dosyaBayt(files, is.pdfId)), 0);
+  assert.equal(await sahitImzaSayisi(dosyaBayt(files, is.basvuranPdfId)), 0);
   assert.equal(sent.length, 3);
+});
+
+test('Yedek şahit: başka camide Ercan MOLA ve Rıdvan KAYAHAN imzaları yalnız mühtedinin yazılı/sözlü rızasıyla basılır', async () => {
+  const { ctx, files } = ortam();
+  imzalariKaydet(ctx);
+  const namur = { ...k, 'Cami kimliği': 'namur-camii-namur', 'Başvuru camisi': 'Namur Camii', 'Cami şehri': 'Namur', 'Cami posta kodu': '5000', 'Cami adresi': 'Rue Denis Georges Bayar 13', 'Şahit 1': 'Ali Örnek', 'Şahit 2': 'Veli Örnek' };
+  ctx.ihtidaPaketKayit = () => ({ kayit: { ...namur } });
+  ctx.ihtidaPaketKuyrugaAl(namur.Referans);
+  await ctx.ihtidaPaketIsle(namur.Referans);
+  const hazirlik = { adSoyad: namur['Adı Soyadı'], adres: namur.Adres, ihtidaTarihi: '2026-09-08', beyanTarihi: '2026-09-09', belgeTuru: 'kimlik',
+    sahitler: [{ ad: 'Ercan MOLA', imza: '', imzaKullan: true }, { ad: 'Rıdvan KAYAHAN', imza: '', imzaKullan: true }] };
+  assert.equal(ctx.ihtidaPaketOnayDogrula({ ...hazirlik, yedekSahitRizasi: 'evet' }, 'namur-camii-namur'), false, 'yalnız boş, yazili ya da sozlu');
+  assert.equal(ctx.ihtidaPaketOnayDogrula({ ...hazirlik, yedekSahitRizasi: 'sozlu' }, 'namur-camii-namur'), true);
+  const onayla = async (ek, anahtar) => {
+    assert.equal(ctx.ihtidaPaketOnayIsle({ anahtar: PANEL, ref: namur.Referans, hazirlik: { ...hazirlik, ...ek }, islemAnahtari: anahtar }).ok, true);
+    await ctx.ihtidaPaketIsle(namur.Referans);
+    const is = ctx.ihtidaPaketIsiOku(namur.Referans);
+    assert.equal(is.durum, 'tamam', JSON.stringify(is));
+    return is;
+  };
+  let is = await onayla({}, 'approval-yedek-0-2099');
+  assert.deepEqual(Array.from(is.sahitImzasi), [], 'rıza yok: başka camide kayıtlı imza basılmaz');
+  assert.equal(await sahitImzaSayisi(dosyaBayt(files, is.pdfId)), 0);
+  is = await onayla({ yedekSahitRizasi: 'yazili' }, 'approval-yedek-1-2099');
+  assert.deepEqual(Array.from(is.sahitImzasi).sort(), ['ercan', 'ridvan'], 'yazılı rıza: ikisi de basılır');
+  assert.equal(await sahitImzaSayisi(dosyaBayt(files, is.pdfId)), 2);
+  assert.equal(is.yedekSahitRizasi, 'yazili'); assert.equal(ctx.ihtidaPaketOzet(is).yedekSahitRizasi, 'yazili');
+  assert.equal(is.duzenleme, undefined, 'düzenleme silinir, rıza kaydı kalır');
 });
 
 test('Sağlık cevabı şahit imzası özelliğini bildirir; derleme ve herkese açık dosyalar imza içermez', () => {
@@ -686,13 +732,16 @@ test('Şahidin kendi imzası: kayıtlı imza yoksa ikinci PDF ayrılmaz; iki şa
   a.ctx.ihtidaPaketKuyrugaAl(k.Referans);
   await a.ctx.ihtidaPaketIsle(k.Referans);
   const isA = a.ctx.ihtidaPaketIsiOku(k.Referans);
-  assert.equal(isA.durum, 'tamam', JSON.stringify(isA)); assert.ok(!isA.basvuranKopya); assert.equal(isA.basvuranPdfId, undefined);
+  assert.equal(isA.durum, 'tamam', JSON.stringify(isA)); assert.equal(isA.basvuranKopya, 'hazir');
   assert.equal(await sahitImzaSayisi(dosyaBayt(a.files, isA.pdfId)), 1, 'yalnız vektör sayılır (PNG görsel olarak gömülür): Veli Örnek');
   const doc = await PDFDocument.load(dosyaBayt(a.files, isA.pdfId));
   const x = doc.getPage(0).node.Resources().lookup(PDFName.of('XObject'));
   const gorsel = x ? x.keys().filter(n => doc.context.lookup(x.get(n))?.dict?.get(PDFName.of('Subtype'))?.toString() === '/Image').length : 0;
   assert.ok(gorsel >= 1, 'Ali Örnek\'in PNG imzası (vesikalıkla birlikte) gömülü');
-  assert.equal(a.sent.length, 3); for (const p of a.sent) assert.deepEqual(Buffer.from(p.attachment[0].content, 'base64'), dosyaBayt(a.files, isA.pdfId));
+  // Kayıtlı imza yokken suret arşivdeki nüshadan yapılır: şahitlerin kendi imzaları başvuranın suretinde de vardır.
+  assert.equal(a.sent.length, 3);
+  for (const p of a.sent) assert.deepEqual(Buffer.from(p.attachment[0].content, 'base64'), dosyaBayt(a.files, p.to[0].email === k['E-posta'] ? isA.basvuranPdfId : isA.pdfId));
+  assert.equal(await sahitImzaSayisi(dosyaBayt(a.files, isA.basvuranPdfId)), 1, 'suret: aynı şahit imzası');
   // Rıza kaydı yoksa (silinmiş) ya da kayıttaki ad değiştiyse şahit imzası basılmaz.
   const durumlar = [
     ['rıza kaydı yok', o => { for (const f of o.files.values()) if (f.getName().endsWith(' - sahit-imza-riza.json')) f.setTrashed(true); }],
@@ -723,7 +772,7 @@ test('Son nüshada şahidin kendi imzası: işaretli gelir ve basılır; görevl
     await ctx.ihtidaPaketIsle(k.Referans);
     const is = ctx.ihtidaPaketIsiOku(k.Referans);
     assert.equal(is.durum, 'tamam', JSON.stringify(is));
-    assert.ok(!is.basvuranKopya, 'son nüshada ikinci PDF yok');
+    assert.equal(is.basvuranKopya, 'hazir', 'son nüshada başvurana filigranlı suret');
     return sahitImzaSayisi(dosyaBayt(files, is.pdfId));
   };
   assert.equal(await onay([{ ad: 'Ali Örnek', imza: '', imzaKullan: true }, { ad: 'Veli Örnek', imza: '', imzaKullan: true }], 'approval-kendi-1-2099'), 1, 'varsayılan: işaretli, kendi imza basılır');
@@ -731,4 +780,134 @@ test('Son nüshada şahidin kendi imzası: işaretli gelir ve basılır; görevl
   assert.equal(await onay([{ ad: 'Ali Örnek Jr.', imza: '', imzaKullan: true }, { ad: 'Veli Örnek', imza: '', imzaKullan: true }], 'approval-kendi-3-2099'), 0, 'ad değişti: başkasına basılmaz');
   assert.equal(await onay([{ ad: 'ali  ÖRNEK', imza: '', imzaKullan: true }, { ad: 'Veli Örnek', imza: '', imzaKullan: true }], 'approval-kendi-4-2099'), 1, 'yazım farkı (büyük/küçük harf, boşluk) eşleşmeyi bozmaz');
   assert.equal(sent.length, 3 * 5, 'her nüsha üç alıcıya gitti');
+});
+
+// 25 Eki 2026 (Rıdvan KAYAHAN): EK-9, dilekçe, EK-10 ve kimlik DHYS'ye ayrı ayrı yüklenir; başvuru paketi bu yüzden
+// arşive ayrıca dört parça olarak kaydedilir. Açıklama eki (uzun alan) EK-9'un devamıdır.
+test('DHYS parçaları: paket dört ayrı PDF olarak arşivlenir, açıklama eki EK-9 parçasına girer, e-postalar tek PDF kalır', async () => {
+  const { ctx, sent, files, cells } = ortam();
+  const uzun = 'Kendi araştırmam sonucunda karar verdim. '.repeat(12);
+  ctx.ihtidaPaketKayit = () => ({ kayit: { ...k, 'İhtida sebebi': uzun } });
+  ctx.ihtidaPaketKuyrugaAl(k.Referans);
+  await ctx.ihtidaPaketIsle(k.Referans);
+  const is = ctx.ihtidaPaketIsiOku(k.Referans);
+  assert.equal(is.durum, 'tamam', JSON.stringify(is));
+  assert.equal(is.sayfa, 8, 'uzun gerekçe açıklama ekine taşınır');
+  assert.deepEqual(JSON.parse(JSON.stringify(is.parcaPlani)), { ek9: [0, 1, 7], dilekce: [2, 3], ek10: [4, 5], kimlik: [6], toplam: 8 });
+  assert.equal(is.parcalar, 'hazir');
+  const basliklar = ['İhtida Belgesi (EK-9)', 'İhtida Belgesi Talep Dilekçesi', 'Aydınlatma ve Açık Rıza Metni (EK-10)', 'Kimlik Belgesi Fotokopisi'];
+  const vesikalikAdi = `${k.Referans} - r1 - 5 - Vesikalık Fotoğraf.png`;
+  assert.deepEqual(Array.from(is.parcaPdfler, p => files.get(p.id).getName()), [...basliklar.map((b, i) => `${k.Referans} - r1 - ${i + 1} - ${b}.pdf`), vesikalikAdi]);
+  assert.deepEqual(Array.from(is.parcaPdfler, p => p.sayfa), [3, 2, 2, 1, 0]);
+  // 5. parça: EK-9 ön yüzüne gömülen yüklemenin bayt bayt kopyası (PNG yüklendiyse .png).
+  const vesikalik = is.parcaPdfler[4];
+  assert.deepEqual(dosyaBayt(files, vesikalik.id), png); assert.equal(files.get(vesikalik.id).getMimeType(), 'image/png');
+  assert.equal(createHash('sha256').update(png).digest('hex'), vesikalik.sha256);
+  const ana = dosyaBayt(files, is.pdfId);
+  const anaYol = '.codex/cikti/ihtida/gas-dhys-ana.pdf'; writeFileSync(anaYol, ana);
+  const beklenen = { 1: [/EK-9 açıklama eki/], 2: [/İhtida Belgesi Talep Dilekçesi/], 3: [/EK-10/, /Açık rıza beyanı/], 4: [/PHOTOCOPIE DE LA CARTE D'IDENTITÉ/] };
+  for (const p of is.parcaPdfler.filter(x => x.no <= 4)) {
+    const bytes = dosyaBayt(files, p.id), yol = `.codex/cikti/ihtida/gas-dhys-${p.no}.pdf`;
+    writeFileSync(yol, bytes);
+    assert.equal((await PDFDocument.load(bytes)).getPageCount(), p.sayfa);
+    assert.equal(createHash('sha256').update(bytes).digest('hex'), p.sha256, 'iş kaydındaki özet dosyayla aynı');
+    const metin = pdfMetni(yol);
+    for (const desen of beklenen[p.no]) assert.match(metin, desen, `${p.no}. parça`);
+    // Her parça sayfası ana paketteki karşılığıyla aynı metni taşır (yeniden üretim değil, kesim).
+    const sira = is.parcaPlani[p.anahtar];
+    sira.forEach((kaynakSayfa, i) => assert.equal(pdfMetni(yol, ['-f', String(i + 1), '-l', String(i + 1)]), pdfMetni(anaYol, ['-f', String(kaynakSayfa + 1), '-l', String(kaynakSayfa + 1)])));
+  }
+  assert.doesNotMatch(pdfMetni(`.codex/cikti/ihtida/gas-dhys-2.pdf`), /EK-9 açıklama eki/);
+  const hucre = cells.get('DHYS parçaları').split('\n');
+  assert.equal(hucre.length, 5);
+  is.parcaPdfler.forEach((p, i) => assert.ok(hucre[i].includes(p.id)));
+  assert.equal(sent.length, 3);
+  // Dernek içi alıcılar ana paketi, başvuran filigranlı sureti alır (25 Eki 2026); hiçbir e-postaya parça eklenmez.
+  for (const p of sent) {
+    assert.equal(p.attachment.length, 1);
+    const ek = Buffer.from(p.attachment[0].content, 'base64');
+    if (p.to[0].email === k['E-posta']) { assert.notDeepEqual(ek, ana); assert.match(p.attachment[0].name, /Ihtida Belgesi Sureti - r1\.pdf$/); }
+    else assert.deepEqual(ek, ana);
+  }
+  const ozet = ctx.ihtidaPaketOzet(is);
+  assert.equal(ozet.parcalar, 'hazir');
+  assert.deepEqual(Object.keys(ozet.parcaPdfler[0]).sort(), ['anahtar', 'id', 'no', 'sayfa']);
+  // Plan paketle uyuşmazsa bölme reddedilir (bayt dizisi vm alanının Uint8Array'i olmalı: pdf-lib instanceof ile bakar).
+  const anaVm = vm.runInContext('Uint8Array', ctx).from(ana);
+  await assert.rejects(() => ctx.IhtidaPdf.parcala(ctx.PDFLib, anaVm, { ...is.parcaPlani, toplam: 9 }, k.Referans), /uyuşmuyor/);
+  await assert.rejects(() => ctx.IhtidaPdf.parcala(ctx.PDFLib, anaVm, { ...is.parcaPlani, kimlik: [5] }, k.Referans), /geçersiz sayfa/);
+  await assert.rejects(() => ctx.IhtidaPdf.parcala(ctx.PDFLib, anaVm, { ...is.parcaPlani, ek9: [0, 1] }, k.Referans), /kapsamıyor/);
+  // Kuyruk yeniden çalışınca ikinci kopya oluşmaz; parçaları yeniden kaydetmek eskilerini çöpe atar.
+  const sayi = files.size;
+  await ctx.ihtidaPaketIsle(k.Referans);
+  assert.equal(files.size, sayi);
+  const eskiler = Array.from(is.parcaPdfler, p => p.id);
+  await ctx.ihtidaPaketParcalariKaydet(is);
+  for (const id of eskiler) assert.equal(files.get(id).isTrashed(), true);
+  for (const b of basliklar) assert.equal([...files.values()].filter(f => f.getName() === `${k.Referans} - r1 - ${basliklar.indexOf(b) + 1} - ${b}.pdf` && !f.isTrashed()).length, 1, b);
+  assert.equal([...files.values()].filter(f => f.getName() === vesikalikAdi && !f.isTrashed()).length, 1, 'vesikalık');
+});
+
+test('Vesikalık boyutu JPEG/PNG başlığından okunur; EK-9 oranı dışındaki eski yükleme DHYS hücresinde not alır', async () => {
+  const { ctx, cells } = ortam();
+  const imzali = b => Array.from(b, x => (x > 127 ? x - 256 : x));   // Apps Script getBytes() işaretli bayt verir
+  const yatay = await sharp({ create: { width: 400, height: 300, channels: 3, background: '#cccccc' } }).jpeg().toBuffer();
+  const ilerici = await sharp({ create: { width: 300, height: 410, channels: 3, background: '#cccccc' } }).withMetadata({ exif: { IFD0: { Copyright: 'x' } } }).jpeg({ progressive: true }).toBuffer();
+  assert.deepEqual({ ...ctx.ihtidaGorselBoyutu(imzali(yatay)) }, { en: 400, boy: 300 });
+  assert.deepEqual({ ...ctx.ihtidaGorselBoyutu(ilerici) }, { en: 300, boy: 410 }, 'EXIF önce gelir, SOF2 (ilerici) okunur');
+  assert.deepEqual({ ...ctx.ihtidaGorselBoyutu(png) }, { en: 180, boy: 220 });
+  assert.equal(ctx.ihtidaGorselBoyutu([1, 2, 3]), null);
+  ctx.ihtidaVesikalikDosyasi = () => ({ getBlob: () => ({ getBytes: () => imzali(yatay) }) });
+  ctx.ihtidaPaketKuyrugaAl(k.Referans);
+  await ctx.ihtidaPaketIsle(k.Referans);
+  const satirlar = cells.get('DHYS parçaları').split('\n');
+  assert.equal(satirlar.length, 5);
+  assert.match(satirlar[4], /en\/boy 1\.33; EK-9'da kırpılmış görünür/);
+  assert.ok(satirlar.slice(0, 4).every(s => !/not:/.test(s)));
+});
+
+test('Dağıtımdan önce kuyruğa girmiş işte başvurana henüz gitmemiş nüsha filigranlı surete çevrilir', async () => {
+  const { ctx, sent } = ortam();
+  ctx.ihtidaPaketKuyrugaAl(k.Referans);
+  await ctx.ihtidaPaketIsle(k.Referans);
+  let is = ctx.ihtidaPaketIsiOku(k.Referans);
+  // Eski kayıt biçimi: başvuran nüshası alanı boş ve başvurana henüz gönderilmemiş.
+  Object.assign(is.alicilar.find(a => a.basvuran), { durum: 'sirada', deneme: 0, messageId: '' });
+  Object.assign(is, { basvuranKopya: '', basvuranPdfId: '', basvuranSha256: '', durum: 'teslim-takibi', sonraki: 0, kilit: 0 });
+  ctx.ihtidaPaketIsiYaz(is);
+  sent.length = 0;
+  await ctx.ihtidaPaketIsle(k.Referans);
+  is = ctx.ihtidaPaketIsiOku(k.Referans);
+  assert.equal(is.basvuranKopya, 'hazir', JSON.stringify(is));
+  const giden = sent.filter(p => p.to[0].email === k['E-posta']);
+  assert.equal(giden.length, 1);
+  assert.match(giden[0].attachment[0].name, /Ihtida Belgesi Sureti - r1\.pdf$/);
+  assert.match(giden[0].subject, /sureti \(bilgi amaçlı\)/);
+});
+
+test('DHYS parçaları hazırlanamazsa paket ve e-postalar sürer; üç denemeden sonra «hata», panelden yeniden denenir', async () => {
+  const { ctx, sent, files, cells } = ortam();
+  const asil = ctx.ihtidaPaketParcalariKaydet;
+  let cagri = 0;
+  ctx.ihtidaPaketParcalariKaydet = async () => { cagri++; throw new Error('test-parca-hatasi'); };
+  ctx.ihtidaPaketKuyrugaAl(k.Referans);
+  await ctx.ihtidaPaketIsle(k.Referans);
+  let is = ctx.ihtidaPaketIsiOku(k.Referans);
+  assert.equal(is.parcalar, 'sirada'); assert.equal(is.durum, 'teslim-takibi', 'parçalar beklerken iş kapanmaz');
+  assert.equal(sent.length, 3, 'e-postalar parça hatasını beklemez');
+  assert.ok(is.sonraki - Date.now() < 60 * 1000, 'parça denemesi 45 sn sonra');
+  for (let i = 0; i < 2; i++) { is.sonraki = 0; ctx.ihtidaPaketIsiYaz(is); await ctx.ihtidaPaketIsle(k.Referans); is = ctx.ihtidaPaketIsiOku(k.Referans); }
+  assert.equal(cagri, 3); assert.equal(is.parcalar, 'hata'); assert.equal(is.durum, 'tamam');
+  assert.match(cells.get('DHYS parçaları'), /hazırlanamadı/);
+  assert.equal(sent.length, 3);
+  ctx.ihtidaPaketParcalariKaydet = asil;
+  assert.equal(ctx.ihtidaPaketTekrarIsle({ anahtar: PANEL, ref: k.Referans }).ok, true);
+  is = ctx.ihtidaPaketIsiOku(k.Referans);
+  assert.equal(is.parcalar, 'sirada'); assert.equal(is.durum, 'teslim-takibi');
+  await ctx.ihtidaPaketIsle(k.Referans);
+  is = ctx.ihtidaPaketIsiOku(k.Referans);
+  assert.equal(is.parcalar, 'hazir'); assert.equal(is.durum, 'tamam');
+  assert.equal(is.parcaPdfler.length, 5);
+  assert.equal(sent.length, 3, 'yeniden deneme e-postaları tekrarlamaz');
+  assert.ok(is.parcaPdfler.every(p => !files.get(p.id).isTrashed()));
 });
