@@ -4,6 +4,23 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 25 Ekim 2026 (16) — egitim: Kilimim · kendi çalışmam (cihazdaki çalışmadan kilim, A4 baskı)
+
+- Zaman: commit/push 13:01:08 (`4be448e9`), ana site Pages başarılı (ortak `src/lib/ezber/kilim.ts` değişti; varsayılan çıktı
+  aynı), egitim Hosting yayını 13:08:20, canlı denetim 13:08:39, Europe/Brussels (CET). **Yayımlandı ve canlı doğrulandı.**
+  Dayanak: Rıdvan'ın 25 Ekim «egitim.ulucamii.be platformu geliştirmeye devam et… full otonom ilerle» talimatı. Ana plan §3.5
+  «platformdaki ‹Kilimim› sayfası» ve Faz 3 «kişisel kilim A4»ün hesapsız parçası.
+- Kapsam: `/<dil>/kilimim/` (beş dil). Ortak kilim çizicisinin yeni `kendi` kipi; yalnız cihazdaki `son`/`kutu` kaydından dört doku:
+  çalışılmadı · çalışmaya başladım · tekrar takvimine girdi (1–4/5) · son tekrar basamağında (5/5). Hocanın basamak adları ve
+  renkleri, rozet/mühür/altın kenar YOK (birim ve tarayıcı testi); sayfada ve kâğıtta «Hocanın dinlediği ezberler veli portalındaki
+  kilimde görünür.» Sayfa cihaza yazmaz, ağa gitmez; ad yalnız sayfa belleğinde. Hücreye tıklayınca çalışma sayfası; klavye/ekran
+  okuyucu için «Şerit şerit» listesi. A4 dikey tek sayfa, vektör (piksel görsel 0). Bağlantılar: alt bilgi, «Bugün tekrar»,
+  çalışma sayfası altı, Çalışma Belgesi ↔ Kilimim. Site haritası +5 adres.
+- Kalite: kök `check` 0 hata, `test:ezber` 177/177, `egitim:build` 397 sayfa, `test:egitim` 15/15 + 535 geçti / 25 bilinçli atlama /
+  0 hata (yeni `kilimim.spec.mjs`, `ezber-kilimim.test.mjs`). Canlı: `egitim:canli` 41/41, beş dil 200.
+- Açık: koyu temada «çalışılmadı» dokusu soluk (hoca kilimindeki değerle aynı); başka cihazdaki çalışma ancak hesaplı Faz 3'te görünür.
+- Bu kayıt için belge commit'i içerik yayını değildir.
+
 ## 25 Ekim 2026 (15) — egitim: Çalışma Belgesi (kendi çalışmasıyla, hoca dinlemeden; Faz 3'ün hesapsız parçası)
 
 - Zaman: commit/push 10:25:53 (`cd7df481`), egitim Hosting yayını 10:34:06, canlı denetim 10:34:26, Europe/Brussels (CET).
