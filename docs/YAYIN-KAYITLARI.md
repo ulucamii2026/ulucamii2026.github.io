@@ -4,6 +4,29 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 25 Ekim 2026 (17) — egitim: Ezber kartları (A4'te 8 kart, çift taraflı, kare kodlu) + Hac kaynak doğrulaması
+
+- Zaman: commit/push 14:31:24 (`4cca2e4b`), egitim Hosting yayını 14:45:35, canlı denetim 14:45:54, Europe/Brussels (CET).
+  **Yayımlandı ve canlı doğrulandı.** Dayanak: Rıdvan'ın 25 Ekim «egitim.ulucamii.be platformu geliştirmeye devam et… full otonom
+  ilerle» talimatı. Ana plan §3.5 «basılı ezber kartı + kare kod» çizgisinin çoklu baskı hâli.
+- Kapsam: `/<dil>/kartlar/` (beş dil). 76 çalışma sayfalı maddeden seçim; cihazdaki çalışma kaydı olanlar ve `?sec=<id>` ile gelen
+  önceden işaretli, ikisi de yoksa boş. A4 dikey, 2×4 kart (93×65 mm), 0,3 pt kesik kesim çizgisi. Ön yüz: şerit motifi, katalog
+  kodu, ad, Arapça başlık yalnız maddenin doğrulanmış metninden (tam sûrede «سُورَةُ …», diğerlerinde ilk 6 kelime + «…»); okunuş ve
+  meâl YOK. Arka yüz: vektör kare kod → `https://egitim.ulucamii.be/<dil>/calis/<id>/`, uzun kenardan çevirmeye göre satır içi aynalı;
+  «Yalnız ön / Yalnız arka» ile tek taraflı yazıcı yolu. Sayfa cihaza yazmaz, ağa gitmez. Ana sayfada «Kendi çalışmanız için» bloğu
+  (Kilimim · Çalışma Belgesi · Kartlar), alt bilgi ve madde/belge/Kilimim sayfalarında bağlantı. Kilimim koyu temada «çalışılmadı»
+  çizgisi yalnız `kendi` kipinde ≈1,6:1 → ≈3,8:1 (hoca kilimi değişmedi). Site haritası +5 adres.
+- Hac kaynakları (`docs/dinleme-ses-kaynaklari.json`): hacumreegitim.hac.gov.tr yenilenmiş, eski `Resimler/…` adresleri ana sayfayı
+  döndürüyor. Yeni «Dualar» sayfasının 17 Arapça sesi indirildi: **Telbiye** `uploads/prayers/prayer_arabic_6a719f996d755.mp3`
+  `ozgunSha256` ile bayt bayt aynı (`resmiGuncelAdres`); **Tekbir** yeni sayfada yok, arşiv kopyası esas kalır (notlara yazıldı, testle).
+- Kalite: kök `check` 0 hata, `test:ezber` 189/189, `egitim:build` 402 sayfa, `test:egitim` 15/15 + 622 geçti / 30 bilinçli atlama / 0 hata (yeni `kartlar.spec.mjs`, `ezber-kartlar.test.mjs`); ana site Pages run `40197996988` başarılı. PDF: 10 madde 4 sayfa A4,
+  piksel görsel 0, fontlar gömülü; 76 maddelik PDF'te 76 kare kodun 76'sı çözüldü ve doğru adrese gidiyor; 760 kart yüzünde taşma 0.
+  Canlı: `egitim:canli` 41/41, beş dil `/kartlar/` 200.
+- Kararlar: bilgi maddeleri (Arapça satırı olmayan 10 madde) kartta kalır — kare kod çalışma sayfasına götürür; katlamalı ayrı biçim
+  yapılmadı (iki geçişli baskı + yapıştırma anlatıldı); yarım yaprakta boş hücrelerin kesik çizgisi kalır (komşu kartla ortak kenar).
+- Açık: FR/EN/NL/DE sayfa ve kart metinleri hoca gözden geçirmesi bekler.
+- Bu kayıt için belge commit'i içerik yayını değildir.
+
 ## 25 Ekim 2026 (16) — egitim: Kilimim · kendi çalışmam (cihazdaki çalışmadan kilim, A4 baskı)
 
 - Zaman: commit/push 13:01:08 (`4be448e9`), ana site Pages başarılı (ortak `src/lib/ezber/kilim.ts` değişti; varsayılan çıktı
