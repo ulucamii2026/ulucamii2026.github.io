@@ -13,7 +13,10 @@
  */
 import { test, expect } from '@playwright/test';
 import QRCode from 'qrcode';
-import { readFileSync, readdirSync } from 'node:fs';
+import { readFileSync, readdirSync, writeFileSync, rmSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 
 const KOK = 'http://127.0.0.1:4402';
 const SITE = 'https://egitim.ulucamii.be';
@@ -176,6 +179,27 @@ test.describe('PDF çıktısı', () => {
     const { metin } = await pdfAl(page, '/fr/calis/s-nebe/');
     expect(sayfaSayisi(metin)).toBeGreaterThanOrEqual(2);
     expect(metin).not.toMatch(/\/Subtype\s*\/Image/);
+  });
+
+  test('sayfa sayıları sabit ve künye tek başına son sayfaya düşmez (Fâtiha 1, Ezan 2, Nebe 5)', async ({ page }) => {
+    const beklenen = { 's-fatiha': 1, 'd-ezan': 2, 's-nebe': 5 };
+    for (const [id, adet] of Object.entries(beklenen)) {
+      const { veri, metin } = await pdfAl(page, `/tr/calis/${id}/`);
+      expect(sayfaSayisi(metin), id).toBe(adet);
+      if (adet === 1) continue;
+      // Metin katmanı pdftotext ile okunabiliyorsa son sayfa yalnız künye + alt bilgiden oluşmamalı: önce bir âyet/madde numarası gelir.
+      const dosya = join(tmpdir(), `kart-${id}-${process.pid}.pdf`);
+      writeFileSync(dosya, veri);
+      try {
+        const son = execFileSync('pdftotext', ['-f', String(adet), '-l', String(adet), '-layout', dosya, '-'], { encoding: 'utf8' });
+        expect(son, `${id}: son sayfa künyeyle başlamamalı`).not.toMatch(/^\s*(Arapça metin|Arapça metin:|gruplamasıyla|Evdeki)/);
+        expect(son, `${id}: son sayfada içerik öbeği olmalı`).toMatch(/(^|\n)\s*\d+(-\d+)?\s+\S/);
+      } catch (e) {
+        if (e?.code !== 'ENOENT') throw e;
+      } finally {
+        rmSync(dosya, { force: true });
+      }
+    }
   });
 
   test('koyu temada da çıktı aynı: görsel yok, sayfa sayısı değişmez', async ({ page }) => {

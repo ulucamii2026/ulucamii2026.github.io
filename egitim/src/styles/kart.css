@@ -29,14 +29,18 @@
 
   .icerik { width: 100%; margin: 0; }
   .madde { padding: 0; }
-  .madde-duzen, .metin-alani, .metin { display: block; }
+  .madde-duzen, .metin-alani { display: block; }
+  /* `.metin` yazdırmada kutu üretmez: Chromium, son grubun `break-after: avoid` değerini sarmalayıcı kutudan künye satırına taşıyamıyor
+     (künye bölünüp son sayfaya tek başına düşüyordu); gruplar künyenin doğrudan kardeşi olunca «künye son grupla kalır» kuralı işler. */
+  .metin { display: contents; }
 
   /* Başlık şeridi: küçük kimlik satırı, çizgi, sonra madalyon + ad + bilgi ve sağda kare kod. */
   .kart-ust { margin: 0 0 4mm; padding-bottom: 2mm; border-bottom: 0.5pt solid var(--derz-koyu); font-size: 8.5pt; font-weight: 700;
     letter-spacing: 0.08em; text-transform: uppercase; color: var(--kontur-2); }
   .madde-bas { display: grid; grid-template-columns: 17mm minmax(0, 1fr) 38mm; grid-template-areas: "madalyon baslik kare" "madalyon ar kare";
     gap: 2mm 6mm; align-items: start; padding: 0 0 5mm; border-bottom: 1.2pt solid var(--kontur); break-inside: avoid; }
-  .madde-bas .madalyon { width: 17mm; border-radius: 1.5mm; box-shadow: inset 0 0 0 0.6pt var(--derz-koyu); }
+  .madde-bas .madalyon { width: 17mm; border-radius: 1.5mm; }
+  .madde-bas .madalyon::before { border-width: 0.6pt; }
   .madde-bas h1 { font-size: 24pt; line-height: 1.1; letter-spacing: -0.01em; }
   .madde-bas .bilgi { margin-top: 2mm; font-size: 9.5pt; gap: 0 4mm; }
   .madde-bas .ar-ad { grid-area: ar; justify-self: start; font-size: 22pt; line-height: 1.7; }
@@ -61,6 +65,9 @@
   .zor-yerler li, .zor-yerler h3 { font-size: 10pt; }
   .kaynak-satiri { font-size: 8.5pt; line-height: 1.4; max-width: none; margin-top: 3mm; color: var(--kontur-2); break-inside: avoid; }
 
+  /* Künye satırı ve alt bilgi, son içerik öbeğinden kopup tek başına sayfaya düşmesin: son grup/hoca notu künyeyle, künye alt bilgiyle birlikte kalır. */
+  .ayet-grubu:last-child, .zor-yerler { break-after: avoid; }
+  .kaynak-satiri { break-before: avoid; break-after: avoid; }
   .kart-alt { margin: 6mm 0 0; padding-top: 2.5mm; border-top: 0.5pt solid var(--derz-koyu); font-size: 8.5pt; line-height: 1.4; color: var(--kontur-2); break-inside: avoid; }
 
   /* Sayfa numarası (yalnız sayfa kenarı kutularını destekleyen tarayıcılarda; yoksa yok sayılır). */

@@ -15,7 +15,7 @@ export interface SinaMetinleri {
   oyunAnlam: string; anlamYonerge: string; anlamArapca: string; anlamMeal: string; anlamEsti: string; anlamEsmedi: string; anlamHepsi: string;
   anlamGoster: string; anlamGosterildi: string; anlamEslendi: string; anlamEsleti: string; anlamNot: string;
   kayitBaslik: string; kayitAciklama: string; kayitBasla: string; kayitDur: string; kayitSuruyor: string; kayitHazir: string;
-  kayitDinle: string; kayitHafiz: string; kayitSil: string; kayitYok: string; kayitIzin: string; kayitHata: string;
+  kayitDinle: string; kayitHafiz: string; kayitSil: string; kayitYok: string; kayitIzin: string; kayitBekle: string; kayitHata: string;
   sinaNasil: string; yanitTam: string; yanitAz: string; yanitTekrar: string; oneri: string; oneriNot: string; tekrarGunu: string; kayitliOneri: string;
 }
 
@@ -39,7 +39,7 @@ const SINA: Record<Dil, SinaMetinleri> = {
     kayitAciklama: 'Ezberden okuyun, kaydınızı dinleyin, sonra hafızın okuyuşuyla karşılaştırın. Kayıt yalnız bu sayfada kalır; hiçbir yere gönderilmez ve sayfayı kapatınca silinir.',
     kayitBasla: 'Kaydı başlat', kayitDur: 'Kaydı durdur', kayitSuruyor: 'Kayıt sürüyor… (en çok 3 dakika)', kayitHazir: 'Kayıt hazır.',
     kayitDinle: 'Kaydımı dinle', kayitHafiz: 'Hafızın okuyuşunu dinle', kayitSil: 'Kaydı sil',
-    kayitYok: 'Bu tarayıcı ses kaydını desteklemiyor.', kayitIzin: 'Mikrofon izni verilmedi. Tarayıcının adres çubuğundan izin verebilirsiniz.', kayitHata: 'Kayıt başlatılamadı.',
+    kayitYok: 'Bu tarayıcı ses kaydını desteklemiyor.', kayitBekle: 'Mikrofon izni bekleniyor… Tarayıcıdaki izin penceresine bakın.', kayitIzin: 'Mikrofon izni verilmedi. Tarayıcının adres çubuğundan izin verebilirsiniz.', kayitHata: 'Kayıt başlatılamadı.',
     sinaNasil: 'Ezberden okuduktan sonra: nasıl geçti?', yanitTam: 'Güzel.', yanitAz: 'Olur.', yanitTekrar: 'Sorun değil.',
     oneri: 'Sonraki tekrar önerisi: {ne} ({tarih}).',
     oneriNot: 'Bu yalnız bir öneridir; hocanın verdiği basamak değişmez. Hazır olunca hocana oku.',
@@ -64,7 +64,7 @@ const SINA: Record<Dil, SinaMetinleri> = {
     kayitAciklama: 'Récitez de mémoire, écoutez votre enregistrement, puis comparez-le avec celui du récitant. L’enregistrement reste sur cette page : il n’est envoyé nulle part et disparaît quand vous fermez la page.',
     kayitBasla: 'Commencer l’enregistrement', kayitDur: 'Arrêter l’enregistrement', kayitSuruyor: 'Enregistrement en cours… (3 minutes au maximum)', kayitHazir: 'Enregistrement prêt.',
     kayitDinle: 'Écouter mon enregistrement', kayitHafiz: 'Écouter le récitant', kayitSil: 'Supprimer l’enregistrement',
-    kayitYok: 'Ce navigateur ne permet pas d’enregistrer le son.', kayitIzin: 'L’accès au microphone n’a pas été autorisé. Vous pouvez l’autoriser depuis la barre d’adresse du navigateur.', kayitHata: 'L’enregistrement n’a pas pu démarrer.',
+    kayitYok: 'Ce navigateur ne permet pas d’enregistrer le son.', kayitBekle: 'En attente de l’autorisation du microphone… Consultez la fenêtre d’autorisation du navigateur.', kayitIzin: 'L’accès au microphone n’a pas été autorisé. Vous pouvez l’autoriser depuis la barre d’adresse du navigateur.', kayitHata: 'L’enregistrement n’a pas pu démarrer.',
     sinaNasil: 'Après avoir récité de mémoire : comment cela s’est-il passé ?', yanitTam: 'Très bien.', yanitAz: 'D’accord.', yanitTekrar: 'Pas de souci.',
     oneri: 'Révision conseillée : {ne} ({tarih}).',
     oneriNot: 'Ce n’est qu’un conseil : l’étape donnée par l’enseignant ne change pas. Récitez-lui quand vous êtes prêt.',
@@ -89,7 +89,7 @@ const SINA: Record<Dil, SinaMetinleri> = {
     kayitAciklama: 'Recite from memory, listen to your recording, then compare it with the reciter. The recording stays on this page: it is sent nowhere and disappears when you close the page.',
     kayitBasla: 'Start recording', kayitDur: 'Stop recording', kayitSuruyor: 'Recording… (3 minutes at most)', kayitHazir: 'Recording ready.',
     kayitDinle: 'Listen to my recording', kayitHafiz: 'Listen to the reciter', kayitSil: 'Delete the recording',
-    kayitYok: 'This browser cannot record sound.', kayitIzin: 'Microphone access was not allowed. You can allow it from the browser’s address bar.', kayitHata: 'Recording could not start.',
+    kayitYok: 'This browser cannot record sound.', kayitBekle: 'Waiting for microphone permission… Check the browser’s permission prompt.', kayitIzin: 'Microphone access was not allowed. You can allow it from the browser’s address bar.', kayitHata: 'Recording could not start.',
     sinaNasil: 'After reciting from memory: how did it go?', yanitTam: 'Well done.', yanitAz: 'All right.', yanitTekrar: 'No problem.',
     oneri: 'Suggested review: {ne} ({tarih}).',
     oneriNot: 'This is only a suggestion: the stage your teacher gave does not change. Recite to your teacher when you are ready.',
@@ -114,7 +114,7 @@ const SINA: Record<Dil, SinaMetinleri> = {
     kayitAciklama: 'Reciteer uit het hoofd, luister naar uw opname en vergelijk die met de reciteur. De opname blijft op deze pagina: ze wordt nergens naartoe gestuurd en verdwijnt als u de pagina sluit.',
     kayitBasla: 'Opname starten', kayitDur: 'Opname stoppen', kayitSuruyor: 'Opname loopt… (maximaal 3 minuten)', kayitHazir: 'Opname klaar.',
     kayitDinle: 'Mijn opname beluisteren', kayitHafiz: 'De reciteur beluisteren', kayitSil: 'Opname verwijderen',
-    kayitYok: 'Deze browser kan geen geluid opnemen.', kayitIzin: 'Toegang tot de microfoon is niet toegestaan. U kunt dit toestaan via de adresbalk van de browser.', kayitHata: 'De opname kon niet starten.',
+    kayitYok: 'Deze browser kan geen geluid opnemen.', kayitBekle: 'Wachten op toestemming voor de microfoon… Kijk naar het toestemmingsvenster van de browser.', kayitIzin: 'Toegang tot de microfoon is niet toegestaan. U kunt dit toestaan via de adresbalk van de browser.', kayitHata: 'De opname kon niet starten.',
     sinaNasil: 'Na het reciteren uit het hoofd: hoe ging het?', yanitTam: 'Mooi.', yanitAz: 'Prima.', yanitTekrar: 'Geen probleem.',
     oneri: 'Voorgestelde herhaling: {ne} ({tarih}).',
     oneriNot: 'Dit is slechts een voorstel: de stap die de leerkracht heeft gegeven verandert niet. Draag voor aan de leerkracht als u klaar bent.',
@@ -139,7 +139,7 @@ const SINA: Record<Dil, SinaMetinleri> = {
     kayitAciklama: 'Rezitieren Sie auswendig, hören Sie Ihre Aufnahme an und vergleichen Sie sie mit dem Rezitator. Die Aufnahme bleibt auf dieser Seite: Sie wird nirgendwohin gesendet und verschwindet, wenn Sie die Seite schließen.',
     kayitBasla: 'Aufnahme starten', kayitDur: 'Aufnahme beenden', kayitSuruyor: 'Aufnahme läuft… (höchstens 3 Minuten)', kayitHazir: 'Aufnahme bereit.',
     kayitDinle: 'Meine Aufnahme anhören', kayitHafiz: 'Den Rezitator anhören', kayitSil: 'Aufnahme löschen',
-    kayitYok: 'Dieser Browser kann keinen Ton aufnehmen.', kayitIzin: 'Der Zugriff auf das Mikrofon wurde nicht erlaubt. Sie können ihn in der Adressleiste des Browsers erlauben.', kayitHata: 'Die Aufnahme konnte nicht gestartet werden.',
+    kayitYok: 'Dieser Browser kann keinen Ton aufnehmen.', kayitBekle: 'Warte auf die Mikrofonfreigabe… Beachten Sie die Anfrage des Browsers.', kayitIzin: 'Der Zugriff auf das Mikrofon wurde nicht erlaubt. Sie können ihn in der Adressleiste des Browsers erlauben.', kayitHata: 'Die Aufnahme konnte nicht gestartet werden.',
     sinaNasil: 'Nach dem Auswendig-Rezitieren: Wie ist es gelaufen?', yanitTam: 'Sehr gut.', yanitAz: 'In Ordnung.', yanitTekrar: 'Kein Problem.',
     oneri: 'Vorgeschlagene Wiederholung: {ne} ({tarih}).',
     oneriNot: 'Das ist nur ein Vorschlag: Die von der Lehrkraft vergebene Stufe ändert sich nicht. Tragen Sie vor, wenn Sie bereit sind.',

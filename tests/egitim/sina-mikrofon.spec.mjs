@@ -73,3 +73,44 @@ test('Sekme değişince kayıt durur ve silinir', async ({ page, context }) => {
   await expect(page.getByRole('button', { name: 'Kaydı başlat' })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Kaydı durdur' })).toBeHidden();
 });
+
+// Tarayıcı izin penceresi açıkken (getUserMedia bekliyor) ekranda bir açıklama olmalı; verilince ya da reddedilince bu satır değişir.
+const izinBeklet = async (page, sonuc) => {
+  await page.addInitScript((s) => {
+    const gum = navigator.mediaDevices.getUserMedia.bind(navigator.mediaDevices);
+    navigator.mediaDevices.getUserMedia = (c) => new Promise((coz, reddet) => {
+      window.__izinSonuc = () => (s === 'ver' ? gum(c).then(coz, reddet) : reddet(new DOMException('izin yok', 'NotAllowedError')));
+    });
+  }, sonuc);
+};
+const kayitaGir = async (page) => {
+  await page.goto('/tr/calis/s-ihlas/');
+  await page.locator('#kip-sekme-sina').click();
+  await page.locator('#kip-panel-sina .sina-oyunlar [data-oyun="kayit"]').click();
+  await page.getByRole('button', { name: 'Kaydı başlat' }).click();
+};
+const durumSatiri = (page) => page.locator('#kip-panel-sina .sina-alan + .kip-durum');
+
+test('İzin penceresi beklerken durum satırı «Mikrofon izni bekleniyor» der; izin verilince kayıt satırına döner', async ({ page, context }) => {
+  await context.route('**/*', (r) => (new URL(r.request().url()).origin === KOK ? r.continue() : r.abort()));
+  await context.routeWebSocket(/.*/, (s) => s.close());
+  await izinBeklet(page, 'ver');
+  await kayitaGir(page);
+  await expect(durumSatiri(page)).toContainText('Mikrofon izni bekleniyor');
+  await page.evaluate(() => window.__izinSonuc());
+  await expect(page.getByRole('button', { name: 'Kaydı durdur' })).toBeVisible();
+  await expect(durumSatiri(page)).toContainText('Kayıt sürüyor');
+  await expect(durumSatiri(page)).not.toContainText('bekleniyor');
+});
+
+test('İzin reddedilince bekleme satırı kalkar, red iletisi görünür', async ({ page, context }) => {
+  await context.route('**/*', (r) => (new URL(r.request().url()).origin === KOK ? r.continue() : r.abort()));
+  await context.routeWebSocket(/.*/, (s) => s.close());
+  await izinBeklet(page, 'reddet');
+  await kayitaGir(page);
+  await expect(durumSatiri(page)).toContainText('Mikrofon izni bekleniyor');
+  await page.evaluate(() => window.__izinSonuc());
+  await expect(durumSatiri(page)).toContainText('Mikrofon izni verilmedi');
+  await expect(durumSatiri(page)).not.toContainText('bekleniyor');
+  await expect(page.getByRole('button', { name: 'Kaydı başlat' })).toBeVisible();
+});

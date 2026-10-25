@@ -471,8 +471,10 @@ export function kur(panel: HTMLElement, b: Baglam): void {
       ses.durdur();
       document.dispatchEvent(new CustomEvent('ezber:ses-basladi', { detail: 'kayit' }));
       temizle();
+      mesaj(m.kayitBekle);
       try {
         akim = await navigator.mediaDevices.getUserMedia({ audio: true });
+        mesaj('');
       } catch (e) {
         const ad = (e as { name?: string })?.name;
         mesaj(ad === 'NotAllowedError' || ad === 'SecurityError' ? m.kayitIzin : m.kayitHata);

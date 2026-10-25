@@ -19,7 +19,9 @@
   .madde-bas { grid-template-columns: auto minmax(0, 1fr) auto; grid-template-areas: "madalyon baslik ar"; gap: 1.5rem 2rem; }
 }
 .madde-bas .madalyon { grid-area: madalyon; position: relative; display: grid; place-items: center; width: clamp(4.25rem, 3.5rem + 2.5vw, 6rem);
-  aspect-ratio: 1; border-radius: var(--r); background: var(--karo); color: var(--motif); box-shadow: inset 0 0 0 1px var(--derz-koyu); }
+  aspect-ratio: 1; border-radius: var(--r); background: var(--karo); color: var(--motif); }
+/* İç çerçeve: box-shadow inset değil (Firefox yazdırmada gölgeyi basmaz); çerçeve kenarlıktır, yazdırmada da çıkar. */
+.madde-bas .madalyon::before { content: ""; position: absolute; inset: 0; border: 1px solid var(--derz-koyu); border-radius: inherit; pointer-events: none; }
 .madde-bas .madalyon svg { width: 72%; height: 72%; fill: currentColor; stroke: var(--kontur); stroke-width: 2.5; stroke-linejoin: round; }
 .madde-bas .baslik-blok { grid-area: baslik; min-width: 0; }
 .madde-bas .ar-ad { grid-area: ar; justify-self: end; font-size: clamp(2.1rem, 1.5rem + 2.4vw, 3.5rem); line-height: 1.6; color: var(--yesil-bag); }
