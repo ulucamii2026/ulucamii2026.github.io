@@ -12,6 +12,7 @@
 .belge-fark { font-weight: 650; border-left: 4px solid var(--altin); padding-left: 0.9rem; }
 .belge-gizlilik, .belge-js { color: var(--kontur-2); font-size: 0.95rem; max-width: 42em; }
 .belge-js { color: var(--kontur); font-weight: 650; }
+.belge-kilimim { font-weight: 650; }
 
 .belge-alan { padding-top: 2rem; }
 .belge-alan[hidden] { display: none; }

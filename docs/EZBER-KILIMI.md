@@ -507,3 +507,49 @@ Ana plandaki kararın hesapsız ilk parçası: genel cemaat, **kendi çalışmas
 - **Sınır / açık kalemler:** Belge yalnız bu cihazdaki kaydı gösterir (başka cihazdaki çalışma görünmez; hesap Faz 3'te). Çalışma günü sayısı cihazda
   son 21 günle sınırlıdır. Belgeyi kimsenin doğrulaması yoktur: kendi beyanıdır, ifade de bunu söyler. Hocanın onayladığı **Ezber Sertifikası** ve
   **dönem karnesi** hoca/veli tarafında (Faz 3) kalır.
+
+## Kilimim — kendi çalışmam (25 Ekim 2026)
+
+Ana planın §3.5 «Kilim çizici» kararının hesapsız parçası: genel cemaat ve çocuklar, **bu cihazda kendi başlarına çalıştıkları** ezberleri kilim olarak görür ve
+A4'e basar. Yol `/<dil>/kilimim/` (beş dilde aynı, `calisma-belgesi` gibi çevrilmez); sayfa `egitim/src/pages/[dil]/kilimim.astro`, betik
+`egitim/src/scripts/kilimim.ts`, metinler `egitim/src/i18n/kilimim.ts`, stil `egitim/src/styles/kilimim.css` (kâğıt ve çerçeve `belge.css` +
+`BelgeCercevesi.astro`), eşleme kütüphanesi `src/lib/ezber/kilimim.ts`, çizici `src/lib/ezber/kilim.ts` (yeni `kendi` kipi). Sitemap ve hreflang
+kümesinde (5 dil × 1 adres).
+
+**Bağlayıcı ayrım: kendi çalışma ≠ hocanın değerlendirmesi.** Veli portalındaki kilim, hocanın dinleyip verdiği basamağı (Çalışıyor · Hocaya okudu · Pekişti ·
+Kalıcı) gösterir. Bu sayfa cihaz verisini o basamaklara ÇEVİRMEZ. Aynı geometri (çocuk kilimi tanısın) ama ayrı bir ölçek ve ayrı bir görünüm:
+
+| Doku | Cihazdaki koşul | Çizim (tek mürekkep, kurşun kalem) | Açıklama (tr) |
+|---|---|---|---|
+| 0 | kayıt yok ya da geçerli `son` yok | kesik çözgü | Çalışılmadı |
+| 1 | `son > 0` ve `kutu = −1` (hiç «Kendini sına» yapılmadı) | noktalı kontur | Çalışmaya başladım |
+| 2 | `kutu` 0…3 (tekrar takvimine girdi; 1·3·7·14 gün) | kontur + seyrek çapraz tarama | Tekrar takvimine girdi (1–4 / 5) |
+| 3 | `kutu = 4` (son, 30 günlük tekrar basamağı) | kalın kontur + sık çapraz tarama | Son tekrar basamağında (5 / 5) |
+
+- **Yalnız iki alan okunur:** `son` (son çalışma anı) ve `kutu` (tekrar basamağı, `KUTU_GUN` = 1·3·7·14·30). Maddenin tam «n / 5» basamağı kilimin
+  başlığında ve «Şerit şerit» listesinde yazılır; doku dört kademedir. Hocanın firuze · yeşil · altın renkleri, **rozet, mühür, altın kenar yoktur**
+  (`kilimSvg` `kendi` kipinde ödül yuvalarını ve `bolumOzetleri`'ni hiç kullanmaz; hocanın durumu verilse bile çizim aynıdır, test). Kenar suyu nötr
+  kurşun tonundadır. Hiçbir dilde hocanın basamak adları, «rozet», «mühür», «sertifika» geçmez (test, beş dil).
+- **Zorunlu cümle** (sayfada tek satır, kâğıtta ayrım paragrafı): «Hocanın dinlediği ezberler veli portalındaki kilimde görünür.» Başlık: Kilimim · kendi
+  çalışmam · Mon kilim · mon travail personnel · My kilim · my own practice · Mijn kelim · mijn eigen oefening · Mein Kelim · mein eigenes Üben.
+- **Veri ve gizlilik:** yalnız cihaz hafızası (`ulucamii:ezber:cihaz:v1`), **yalnız okunur**; hesap, sunucu, ağ yok. Ad alanı yalnız kâğıttaki metin
+  düğümünde durur (depoya, çereze, adrese, başlığa yazılmaz, hiçbir istekte geçmez, yenilemede silinir; `belge`deki gibi). Ana sitenin gizlilik sayfası
+  değişmedi (yeni alan yok). Betik `innerHTML`, `setItem`, `fetch` vb. içermez (kaynak taraması testi).
+- **Çizici:** kilim sunucuda boş (hepsi doku 0) çizilir, betik cihazdan sınıf ve başlık yazar; `kilimSvg(…, { kendi })` ve `kendiLejanti`. Tarama desenleri
+  `kl-tarama-1/2` (sabit kimlik: kendi kipinde sayfada tek kilim). Hücreye fare/dokunmayla tıklayınca çalışma sayfasına gidilir (`data-href` + saydam
+  `kl-hedef` dikdörtgeni); **gerçek `<a>` yoktur** çünkü `role="img"` içindeki odaklanabilir öğe axe `nested-interactive` hatasıdır. Klavye ve ekran okuyucu için
+  metin karşılığı: katlanır «Şerit şerit» listesi (12 şerit + kenar suyu, her madde kendi durumu, son çalışma tarihi ve çalışma sayfası bağlantısıyla).
+- **Özet:** çalışmaya başlanan / çalışma sayfası olan madde, tekrar takvimindeki madde, son üç haftada çalışılan gün (`ucHaftaGunu`; seri ya da puan yok).
+  Kayıt yoksa boş durum («Fâtiha ile başla / Şeritleri gez»). Çalışma sayfası olmayan 5 madde kilimde durur, başlığı «çalışma sayfası yok».
+- **A4 baskı:** dikey, `@page` 14 mm, tek sayfa; çerçeve ve logo `Çalışma Belgesi` ile aynı vektör; üstte logo, başlık, ad satırı ve ayrım cümlesi, ortada
+  kilim + açıklama + özet (boşluğa dikey ortalanır, üstte sıkışmaz), altta tarih ve «Marche-en-Famenne Ulu Camii Kur'an Kursu · egitim.ulucamii.be».
+  Kâğıt jetonları sabittir (koyu temada da beyaz). Piksel yok (`pdfimages -list` = 0).
+- **Giriş noktaları:** alt bilgi (Çalışma Belgesi'nin yanında), «Bugün tekrar» bandı, madde sayfasının altı ve Çalışma Belgesi sayfası; Kilimim'den de
+  Çalışma Belgesi'ne bağlantı.
+- **Testler:** `tests/ezber-kilimim.test.mjs` (10; eşleme tablosu, özet, çizici kendi kipi, lejant, metinlerde yasak terim yok, betik yalnız okur;
+  `npm run test:ezber`'e eklendi) ve `tests/egitim/kilimim.spec.mjs` (beş dil, boş durum, tohumlu kayıtla hücre dokuları ve özet, liste, depolama
+  yazılmaz, ad hiçbir istekte geçmez, yazdırma + PDF A4 tek sayfa + piksel yok, axe açık/koyu, 320 px, klavye, bağlantılar). `barindirma.test.mjs` ve
+  `egitim-canli-denetim.mjs` site haritası beklentisine yeni sayfa eklendi (5 dil × 1).
+- **Sınır / açık kalemler:** yalnız bu cihazdaki kayıt (başka cihaz görünmez; hesap Faz 3'te). Kilim hocanın onayı değildir; Ezber Sertifikası ve
+  dönem karnesi hoca/veli tarafında kalır. Koyu temada boş hücreler (doku 0) çok soluktur (hoca kilimiyle aynı değer); telefonda kilim ~230 px olduğundan
+  asıl okuma «Şerit şerit» listesindedir.

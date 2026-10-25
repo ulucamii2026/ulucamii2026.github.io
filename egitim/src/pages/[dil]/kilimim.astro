@@ -1,0 +1,161 @@
+---
+/**
+ * Kilimim · kendi çalışmam (25 Ekim 2026, Faz 3, hesapsız): bu cihazdaki çalışma kaydından (src/lib/ezber/cihaz.ts) dokunan kilim. Hesap yok,
+ * sunucu yok, ağ yok; sayfa kayıt YAZMAZ, yalnız okur; isteğe bağlı ad yalnız sayfa belleğinde durur.
+ *
+ * BAĞLAYICI AYRIM: bu, hocanın dinleyip verdiği basamağı gösteren veli portalındaki kilim DEĞİLDİR. Aynı kilim çizicisi ve aynı geometri
+ * (src/lib/ezber/kilim.ts), ama `kendi` kipinde: ayrı dört doku (kurşun kalem gibi tek mürekkep), rozet/mühür/altın kenar yok, kendi
+ * açıklaması. Cihaz verisi hocanın basamak adlarına ya da renklerine çevrilmez (src/lib/ezber/kilimim.ts). Kilim sunucuda boş çizilir;
+ * dokuları scripts/kilimim.ts cihazdan doldurur. Yol beş dilde aynıdır (`kilimim`, `calisma-belgesi` gibi çevrilmez).
+ * CSP: satır içi betik ve stil yok; adlar ve metinler `data-veri` ile gelir.
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import { dilListesi, yerelKodu } from '@ortak/i18n/utils';
+import { KATALOG, calismaSayfasiVar } from '@ortak/lib/ezber/katalog';
+import { kendiLejanti, kilimSvg } from '@ortak/lib/ezber/kilim';
+import { veliSeritleri } from '@ortak/lib/ezber/veli';
+import BelgeCercevesi from '../../components/BelgeCercevesi.astro';
+import Ikon from '../../components/Ikon.astro';
+import { belgeMetinleri } from '../../i18n/belge';
+import { kilimimMetinleri } from '../../i18n/kilimim';
+import { metin } from '../../i18n/metinler';
+import Taban from '../../layouts/Taban.astro';
+import { kursTamAdi } from '../../lib/kimlik';
+import '../../styles/belge.css';
+import '../../styles/kilimim.css';
+
+export function getStaticPaths() {
+  return dilListesi.map((dil) => ({ params: { dil } }));
+}
+
+const dil = Astro.params.dil as Dil;
+const k = kilimimMetinleri(dil);
+const b = belgeMetinleri(dil);
+const m = metin(dil);
+const tum = KATALOG.ogeler;
+const sayfali = new Set(tum.filter(calismaSayfasiVar).map((o) => o.id));
+const sira = tum.filter(calismaSayfasiVar).map((o) => o.id);
+const doldur = (s: string, d: Record<string, string | number>) => s.replace(/\{(\w+)\}/g, (_, x: string) => String(d[x] ?? ''));
+const ozetSatirlari = (n: number, takvim: number, gun: number) => [
+  doldur(k.ozetBasladi, { n, m: sira.length }), doldur(k.ozetTakvim, { n: takvim }), doldur(k.ozetGun, { k: gun }),
+];
+const madde = (ad: string, id: string, d: 0 | 1 | 2 | 3) => `${ad}, ${sayfali.has(id) ? k.dokuMadde[d] : k.sayfasiz}`;
+const secenek = {
+  onek: 'kl-kendi', dil, baslik: k.baslik,
+  kendi: {
+    etiket: (id: string, ad: string, d: 0 | 1 | 2 | 3) => madde(ad, id, d),
+    ozet: ozetSatirlari(0, 0, 0).join(' · '),
+    baglanti: (id: string) => (sayfali.has(id) ? `/${dil}/calis/${id}/` : null),
+  },
+};
+const seritler = veliSeritleri({}, dil);
+const veri = {
+  dil,
+  yerel: yerelKodu[dil],
+  sira,
+  adlar: Object.fromEntries(tum.map((o) => [o.id, o.ad[dil]])),
+  m: { doku: k.dokuMadde, ozetBasladi: k.ozetBasladi, ozetTakvim: k.ozetTakvim, ozetGun: k.ozetGun, sayfasiz: k.sayfasiz, sonCalisma: k.sonCalisma, duzenleme: b.duzenleme },
+};
+---
+<Taban dil={dil} baslik={k.baslik} aciklama={k.aciklama} yol="kilimim">
+  <div class="km-sayfa">
+    <section class="km-giris" aria-labelledby="km-baslik">
+      <div class="icerik">
+        <div class="km-giris-metin">
+          <h1 id="km-baslik">{k.baslik}</h1>
+          <p class="km-lead">{k.lead}</p>
+          <p class="km-fark">{k.fark}</p>
+          <p class="km-gizlilik">{k.gizlilik}</p>
+          <noscript><p class="km-js">{k.jsGerek}</p></noscript>
+        </div>
+      </div>
+    </section>
+
+    <section class="km-alan" data-kilimim data-veri={JSON.stringify(veri)} aria-label={k.baslik} hidden>
+      <div class="icerik">
+        <div class="km-bos" data-km-bos hidden>
+          <h2>{k.bosBaslik}</h2>
+          <p>{k.bosMetin}</p>
+          <div class="eylem">
+            <a class="dugme birincil" href={`/${dil}/calis/s-fatiha/`}>{m.baslaDugme} <Ikon ad="ok" /></a>
+            <a class="dugme ikincil" href={`/${dil}/#seritler`}>{m.seritleriGez}</a>
+          </div>
+        </div>
+
+        <div class="km-dolu" data-km-dolu hidden>
+          <article class="km-kagit" aria-label={k.baslik}>
+            <BelgeCercevesi />
+            <div class="km-baski-ust">
+              <img class="belge-logo" src="/logo/kuran-kursu-yatay.svg" alt={kursTamAdi(dil)} width="1640" height="400" />
+              <div class="belge-ayrac" aria-hidden="true"><svg viewBox="0 0 100 100" focusable="false"><use href="#belge-yildiz" width="100" height="100" /></svg></div>
+              <p class="belge-baslik">{k.baslik}</p>
+              <p class="belge-alt">{b.altBaslik}</p>
+              <div class="belge-adsatir">
+                <span class="etiket">{b.adSatiri}</span>
+                <span class="deger" data-km-ad-yaz></span>
+              </div>
+              <p class="km-ayrim">{k.ayrim}</p>
+            </div>
+
+            <div class="km-orta">
+              <div class="km-kilim-kutu" set:html={kilimSvg({}, secenek)} />
+              <div class="km-yan">
+                <h2 class="km-lejant-baslik">{k.lejantBaslik}</h2>
+                <Fragment set:html={kendiLejanti(secenek, k.doku)} />
+                <ul class="km-ozet" data-km-ozet>
+                  {ozetSatirlari(0, 0, 0).map((s) => <li>{s}</li>)}
+                </ul>
+              </div>
+            </div>
+
+            <div class="belge-alt-satir km-baski-alt">
+              <div>
+                <span data-km-tarih></span>
+                <span class="kurum">{kursTamAdi(dil)} · egitim.ulucamii.be</span>
+              </div>
+            </div>
+          </article>
+
+          <div class="km-panel">
+            <div class="belge-ad">
+              <label for="km-ad">{b.adEtiket}</label>
+              <input id="km-ad" type="text" name="ad" maxlength="60" autocomplete="name" data-km-ad />
+              <p class="belge-ipucu">{k.adIpucu}</p>
+            </div>
+            <div class="belge-eylem">
+              <button type="button" class="dugme birincil" data-km-yazdir><Ikon ad="yazici" /> {b.yazdir}</button>
+              <p>{b.yazdirNot}</p>
+            </div>
+          </div>
+
+          <details class="km-seritler">
+            <summary><h2>{k.liste}</h2></summary>
+            <div class="km-govde">
+              {seritler.map((s) => (
+                <section class="km-serit-kutu" aria-label={s.ad}>
+                  <h3>{s.ad} <span class="km-sayac" data-km-sayac data-serit={s.anahtar}>0 / {s.maddeler.length}</span></h3>
+                  <ul class="km-maddeler">
+                    {s.maddeler.map((x) => (
+                      <li data-id={x.id} data-doku="0">
+                        <svg class="km-isaret" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><use href={`#kl-kendi-m-${s.motif}`} x="4" y="4" width="24" height="24" class="kl-m kl-k0" /></svg>
+                        {x.sayfa ? <a class="km-madde-ad" href={`/${dil}/calis/${x.id}/`}>{x.ad}</a> : <span class="km-madde-ad">{x.ad}</span>}
+                        <span class="km-durum">{x.sayfa ? k.dokuMadde[0] : k.sayfasiz}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              ))}
+            </div>
+          </details>
+        </div>
+
+        <p class="km-bag"><a href={`/${dil}/calisma-belgesi/`}>{b.baglanti}</a></p>
+      </div>
+    </section>
+  </div>
+</Taban>
+
+<script>
+  import '../../scripts/dil';
+  import '../../scripts/kilimim';
+</script>

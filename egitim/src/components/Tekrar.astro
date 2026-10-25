@@ -7,12 +7,14 @@
 import type { Dil } from '@ortak/i18n/ui';
 import { KATALOG, calismaSayfasiVar } from '@ortak/lib/ezber/katalog';
 import { belgeMetinleri } from '../i18n/belge';
+import { kilimimMetinleri } from '../i18n/kilimim';
 import { tekrarMetinleri } from '../i18n/sina';
 
 interface Props { dil: Dil }
 const { dil } = Astro.props;
 const t = tekrarMetinleri(dil);
 const belge = belgeMetinleri(dil);
+const kilimim = kilimimMetinleri(dil);
 const adlar = Object.fromEntries(KATALOG.ogeler.filter(calismaSayfasiVar).map((o) => [o.id, o.ad[dil]]));
 ---
 <section class="bolum tekrar-bandi" aria-labelledby="tekrar-baslik" data-tekrar data-veri={JSON.stringify({ dil, adlar, m: t })} hidden>
@@ -23,7 +25,7 @@ const adlar = Object.fromEntries(KATALOG.ogeler.filter(calismaSayfasiVar).map((o
       <ul class="tekrar-liste" data-tekrar-liste aria-label={t.liste}></ul>
       <p class="tekrar-hafta" data-tekrar-hafta></p>
       <p class="tekrar-not">{t.not}</p>
-      <p class="tekrar-belge"><a href={`/${dil}/calisma-belgesi/`}>{belge.baglanti}</a></p>
+      <p class="tekrar-belge"><a href={`/${dil}/calisma-belgesi/`}>{belge.baglanti}</a> · <a href={`/${dil}/kilimim/`}>{kilimim.baglanti}</a></p>
     </div>
   </div>
 </section>

@@ -12,6 +12,7 @@ import { KATALOG, calismaSayfasiVar } from '@ortak/lib/ezber/katalog';
 import BelgeCercevesi from '../../components/BelgeCercevesi.astro';
 import Ikon from '../../components/Ikon.astro';
 import { belgeMetinleri } from '../../i18n/belge';
+import { kilimimMetinleri } from '../../i18n/kilimim';
 import { metin } from '../../i18n/metinler';
 import Taban from '../../layouts/Taban.astro';
 import { kursTamAdi } from '../../lib/kimlik';
@@ -42,6 +43,7 @@ const veri = {
           <p class="belge-lead">{b.lead}</p>
           <p class="belge-fark">{b.fark}</p>
           <p class="belge-gizlilik">{b.gizlilik}</p>
+          <p class="belge-kilimim"><a href={`/${dil}/kilimim/`}>{kilimimMetinleri(dil).baglanti}</a></p>
           <noscript><p class="belge-js">{b.jsGerek}</p></noscript>
         </div>
       </div>

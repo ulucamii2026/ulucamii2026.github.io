@@ -1,0 +1,106 @@
+/* Kilimim · kendi çalışmam (25 Ekim 2026). Ekranda: açıklama, kilim + açıklaması, ad alanı, metin karşılığı. Yazdırmada yalnız A4 dikey kâğıt kalır.
+   Kilim aynı çizicidir (src/lib/ezber/kilim.ts) ve aynı geometridir, ama HOCANIN DEĞERLENDİRMESİNE BENZEMEZ: tek mürekkep (kurşun kalem) ve
+   dört ayrı doku; hocanın firuze/yeşil/altın basamakları, rozet, mühür ve altın kenar bu sayfada yoktur. Çerçeve ve kâğıt jetonları belge.css'ten
+   gelir (Çalışma Belgesi ile aynı kâğıt); bu dosya yalnız Kilimim'e özgü kuralları taşır. Piksel yok: kilim, çerçeve ve logo vektör. */
+
+/* ——— Ekran: sayfa ——— */
+.km-sayfa { padding-block: 2rem 4rem; }
+.km-giris-metin { display: grid; gap: 0.9rem; max-width: 46rem; }
+.km-giris-metin h1 { font-size: clamp(2rem, 1.4rem + 2.2vw, 3rem); letter-spacing: -0.02em; line-height: 1.08; }
+.km-lead { font-size: 1.12rem; line-height: 1.5; }
+.km-fark { font-weight: 650; border-left: 4px solid var(--kontur-2); padding-left: 0.9rem; }
+.km-gizlilik, .km-js { color: var(--kontur-2); font-size: 0.95rem; max-width: 42em; }
+.km-js { color: var(--kontur); font-weight: 650; }
+
+.km-alan { padding-top: 2rem; }
+.km-alan[hidden] { display: none; }
+.km-bos { display: grid; gap: 0.8rem; max-width: 40rem; padding: 1.5rem; border: 2px solid var(--derz); border-radius: var(--r); background: var(--karo); }
+.km-bos h2 { font-size: 1.35rem; }
+.km-bos p { color: var(--kontur-2); }
+.km-bos .eylem { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 0.4rem; }
+
+.km-dolu { display: grid; gap: 2rem; }
+.km-dolu[hidden], .km-bos[hidden] { display: none; }
+/* Kâğıt ekranda düz bir blok: çerçeve, logo, başlık satırı, ad çizgisi ve alt satır yalnız yazdırmada görünür. */
+.km-kagit .belge-cerceve, .km-baski-ust, .km-baski-alt { display: none; }
+.km-orta { display: grid; gap: 1.5rem 3rem; align-items: start; }
+@media (min-width: 60rem) { .km-orta { grid-template-columns: minmax(0, 30rem) minmax(0, 1fr); } }
+.km-kilim-kutu { min-width: 0; background: var(--karo); border: 1px solid var(--derz); border-radius: var(--r); padding: 1.25rem; }
+.km-yan { display: grid; gap: 1.1rem; align-content: start; max-width: 36rem; }
+.km-lejant-baslik { font-size: 1.25rem; letter-spacing: -0.01em; }
+.km-ozet { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.3rem; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1.45; }
+.km-panel { display: grid; gap: 1.4rem; max-width: 34rem; }
+.km-bag { font-weight: 650; margin-top: 1.5rem; }
+
+/* Metin karşılığı: şerit şerit (kilimin ekran okuyucu ve klavye karşılığı; her madde kendi çalışma sayfasına bağlanır). */
+.km-seritler { border: 2px solid var(--derz); border-radius: var(--r); background: var(--karo); }
+.km-seritler > summary { display: flex; align-items: center; min-height: 3.25rem; padding: 0.4rem 1.1rem; cursor: pointer; }
+.km-seritler > summary:hover { background: var(--yesil-soluk); }
+.km-seritler > summary h2 { font-size: 1.15rem; margin: 0; }
+.km-seritler[open] > summary { border-bottom: 1px solid var(--derz); }
+.km-govde { display: grid; gap: 0.8rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr)); align-items: start; padding: 1rem; }
+.km-serit-kutu { padding: 0.75rem 0.85rem 0.55rem; border: 1px solid var(--derz); border-radius: var(--r); }
+.km-serit-kutu h3 { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.15rem 0.7rem; margin: 0 0 0.5rem; font-size: 0.98rem; line-height: 1.35; }
+.km-sayac { font-size: 0.8rem; font-weight: 600; color: var(--kontur-2); font-variant-numeric: tabular-nums; }
+.km-maddeler { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.1rem; }
+.km-maddeler li { display: flex; flex-wrap: wrap; align-items: center; gap: 0.05rem 0.6rem; min-height: 2.5rem; padding-block: 0.15rem; font-size: 0.92rem; line-height: 1.35; }
+.km-isaret { flex: none; width: 1.6rem; height: 1.6rem; }
+.km-madde-ad { flex: 1 1 9rem; min-width: 0; font-weight: 650; overflow-wrap: anywhere; }
+a.km-madde-ad { color: var(--kontur); text-decoration-color: color-mix(in oklab, currentColor 40%, transparent); text-underline-offset: 0.2em; }
+a.km-madde-ad:hover { text-decoration-color: currentColor; }
+.km-durum { flex-basis: 100%; padding-left: 2.2rem; font-size: 0.84rem; color: var(--kontur-2); }
+
+/* ——— Kilim: kendi çalışma kipi ———
+   Tek mürekkep, dört doku (renk tek başına bilgi taşımaz). Hocanın firuze · yeşil · altın basamak renkleri bilerek KULLANILMAZ ve kenar suyu
+   nötr kurşun tonundadır: bu kilim bir değerlendirme değil, çocuğun kendi çalışma çizimidir. Tarama desenleri kilim.ts'te (`kl-tarama-1/2`). */
+.ezber-kilim.kl-kendi, .kilim-lejant-kendi, .km-isaret { --kl-kendi: var(--kontur); --kl-kendi-2: var(--kontur-2); }
+.ezber-kilim.kl-kendi {
+  --kl-kenar: color-mix(in oklab, var(--kontur) 6%, var(--karo));
+  --kl-bordur: color-mix(in oklab, var(--kontur-2) 58%, var(--karo));
+  --kl-zemin-1: color-mix(in oklab, var(--kontur) 3%, var(--karo));
+}
+.ezber-kilim.kl-kendi .kl-tarama { fill: none; stroke: var(--kl-kendi); stroke-width: 6.5; }
+:where(.ezber-kilim, .kilim-lejant, .km-isaret) .kl-m { fill: none; stroke: none; stroke-linejoin: miter; }
+:where(.ezber-kilim, .kilim-lejant, .km-isaret) .kl-k0 { stroke: var(--kl-cozgu, var(--derz-koyu)); stroke-width: 5; stroke-dasharray: 7 9; }
+:where(.ezber-kilim, .kilim-lejant, .km-isaret) .kl-k1 { stroke: var(--kl-kendi-2); stroke-width: 8; stroke-dasharray: 1 10; stroke-linecap: round; }
+:where(.ezber-kilim, .kilim-lejant, .km-isaret) .kl-k2 { fill: url(#kl-tarama-1); stroke: var(--kl-kendi-2); stroke-width: 6; }
+:where(.ezber-kilim, .kilim-lejant, .km-isaret) .kl-k3 { fill: url(#kl-tarama-2); stroke: var(--kl-kendi); stroke-width: 9; }
+.km-isaret { --kl-cozgu: var(--derz-koyu); }
+.kl-kendi g.kl-oge[data-href] { cursor: pointer; }
+.kl-kendi .kl-hedef { fill: transparent; stroke: none; }   /* boş motif içi de tıklanır (use yalnız boyalı pikselde yakalar) */
+.kl-kendi g.kl-oge[data-href]:hover .kl-m { filter: drop-shadow(0 0 1.5px var(--kontur)); }
+.kilim-lejant-kendi { font-size: 0.95rem; }
+
+/* ——— Yazdırma ——— */
+@media print {
+  @page { size: A4 portrait; margin: 14mm; }
+  .ust, .alt, .bordur, .km-giris, .km-panel, .km-seritler, .km-bos, .km-bag, .km-js, noscript, a.gorunmez { display: none !important; }
+  .km-sayfa, .km-alan, .km-dolu, .km-alan .icerik { display: block; width: 100%; max-width: none; margin: 0; padding: 0; }
+  /* Kâğıt jetonları sabittir: koyu temada da kâğıt beyaz, kilim kâğıt renklerinde (belge.css `.belge` ile aynı değerler). */
+  .km-kagit {
+    --b-murekkep: #0E2217; --b-ikincil: #3F5246; --b-yesil: #134420; --b-altin: #B8902F; --b-ince: #C4CEC7;
+    --karo: #FFFFFF; --astar: #FFFFFF; --derz: #D3DDD5; --derz-koyu: #B5C5B9; --kontur: #0E2217; --kontur-2: #475B4E; --yesil: #134420; --yesil-bag: #1D5E33;
+    position: relative; box-sizing: border-box; display: flex; flex-direction: column; width: 100%; height: 267mm; padding: 13mm 12mm 11mm;
+    font-size: 4mm; line-height: 1.4; font-family: var(--font); background: #fff; color: var(--b-murekkep); break-inside: avoid; overflow: hidden;
+  }
+  .km-kagit > :not(.belge-cerceve):not(.belge-tanim) { position: relative; }
+  .km-kagit .belge-cerceve { display: block; }
+  .km-baski-ust { display: block; }
+  .km-baski-alt { display: block; }
+  .km-kagit .belge-logo { width: 15em; }
+  .km-kagit .belge-ayrac { margin-top: 0.9em; }
+  .km-kagit .belge-baslik { font-size: 2.3em; margin-top: 0.55em; }
+  .km-kagit .belge-alt { margin-top: 0.5em; }
+  .km-kagit .belge-adsatir { margin-top: 1.5em; }
+  .km-ayrim { margin: 1.2em 0 0; text-align: center; font-size: 0.9em; line-height: 1.5; text-wrap: pretty; }
+  .km-orta { display: grid; grid-template-columns: 26em minmax(0, 1fr); gap: 1.4em; align-items: start; margin-block: auto; padding-block: 1.4em; }
+  .km-kilim-kutu { padding: 0; border: 0; background: transparent; }
+  .km-kagit svg.ezber-kilim { width: 100%; max-width: none; }
+  .km-yan { gap: 0.8em; max-width: none; font-size: 0.82em; }
+  .km-lejant-baslik { font-size: 1.2em; color: var(--b-yesil); }
+  .km-kagit .kilim-lejant { font-size: 1em; gap: 0.5em; }
+  .km-kagit .kilim-lejant li { align-items: flex-start; gap: 0.6em; line-height: 1.3; }
+  .km-kagit .kilim-lejant .kl-lejant-isaret { width: 2.2em; height: 2.2em; }
+  .km-ozet { gap: 0.35em; font-weight: 650; border-top: 0.5pt solid var(--b-ince); padding-top: 0.8em; }
+  .km-kagit .belge-alt-satir { padding-top: 1.2em; }
+}

@@ -28,6 +28,7 @@ import { kipMetinleri } from '../../../i18n/kip';
 import { sinaMetinleri } from '../../../i18n/sina';
 import { kartMetinleri } from '../../../i18n/kart';
 import { belgeMetinleri } from '../../../i18n/belge';
+import { kilimimMetinleri } from '../../../i18n/kilimim';
 import { bilgiYazilari } from '../../../i18n/bilgi';
 import '../../../styles/calisma.css';
 import '../../../styles/madde.css';
@@ -284,7 +285,7 @@ const sonraki = serit[sira + 1];
           )}
         </section>
         )}
-        <p class="belge-bag"><a href={`/${dil}/calisma-belgesi/`}>{belgeMetinleri(dil).baglanti}</a></p>
+        <p class="belge-bag"><a href={`/${dil}/calisma-belgesi/`}>{belgeMetinleri(dil).baglanti}</a> · <a href={`/${dil}/kilimim/`}>{kilimimMetinleri(dil).baglanti}</a></p>
       </div>
 
       <div class="yan-panel yan-alt">
