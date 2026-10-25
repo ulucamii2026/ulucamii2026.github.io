@@ -4,6 +4,53 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 25 Ekim 2026 (20) — ihtida paketi: DHYS parçaları, başvurana filigranlı suret, yedek şahit, başvuru koşulları kutusu
+
+- Zaman: Apps Script yeni Web App sürümü 20.09–20.11, commit/push 20:12:36 (`f81d7981`), Pages run `40224936502` başarılı,
+  canlı denetim ≈20.35, Europe/Brussels (CET). **Yayımlandı ve canlı doğrulandı.**
+- Dayanak: Rıdvan KAYAHAN, 25 Ekim 2026. İstekleri:
+  - DHYS'ye EK-9, dilekçe, EK-10 ve kimlik ayrı ayrı yüklenecek; «online başvuru formunu doldurduktan sonra bunların her biri
+    parça parça … ayrı ayrı kaydedilsin»;
+  - başvuranın e-postasına «ihtida belgesinin sureti filigran gibi bir şey ile gitsin, bu belge bilgi amaçlıdır»;
+  - şahit imzası sonraya kalırsa WhatsApp, olmazsa yazılı ya da sözlü rızayla Ercan MOLA ve Rıdvan KAYAHAN'ın imzaları;
+  - formda «okudum anladım» kutusu ve Belçika Mühtedi Destek Komisyonunun düzenleme hakkı;
+  - «hata avı başlat … bütün yetki ve karar sendedir».
+- Kapsam:
+  - **DHYS parçaları:** paket arşive yazıldıktan sonra aynı klasöre dört PDF kaydedilir. Parçalar EK-9 (açıklama eki dâhil),
+    dilekçe, EK-10 ve kimliktir; arşivdeki SHA-256 doğrulanmış ana PDF'ten kesilir. Beşinci parça EK-9'daki vesikalıktır.
+    - Defterde «DHYS parçaları» sütunu; panelin «PDF ve e-posta durumu» penceresinde 1–5 düğmeleri.
+    - Parça hatası paketi ve e-postaları durdurmaz: üç denemede «hata», panelden yeniden denenir.
+    - Sağlık bayrağı `ihtidaDhysParcalari`.
+  - **Suret:** başvurana her aşamada her sayfası «SURET · bilgi amaçlıdır» filigranlı ayrı PDF gider.
+    - Konu «İhtida belgesi sureti (bilgi amaçlı)»; metin TR/FR/EN; kurum adı yazılmaz.
+    - Kendi şahidini getirenlere ön başvuruda WhatsApp notu.
+    - Dağıtımdan önce kuyruğa girmiş işte de surete çevrilir. Sağlık `ihtidaSuret`.
+  - **Yedek şahit:** formda şahit imzası notu `sahitSonraNot` (5 dil). Panelin EK-9 penceresinde «Yedek şahitler» bölümü var:
+    rıza yazılı ya da sözlü seçilmeden düğme çalışmaz. Rıza iş kaydında `yedekSahitRizasi` olarak kalır; sunucu başka camide
+    rızasız kayıtlı imza basmaz. Sağlık `ihtidaYedekSahit`.
+  - **Başvuru koşulları:** zorunlu, önceden işaretsiz `#i-onay-sartlar` kutusu (5 dil). Defterde «Başvuru koşulları kabulü»
+    sütunu var. Alanı göndermeyen eski sayfa reddedilmez; gönderilmişse `true` olmalıdır.
+  - **Vesikalık:** form vesikalığı EK-9 kutusunun oranına (en/boy 0,72–0,86, fazlanın %30'u üstten) kırparak yükler. Böylece
+    belgede görünen ve DHYS'ye giden fotoğraf aynıdır. Daha eski, oran dışı yüklemede DHYS hücresine not düşülür
+    (`ihtidaGorselBoyutu`).
+  - Panelin «görselleri sil» ucu vesikalık kopyasını (5. parça) da çöpe atar.
+- Hata avı (bağımsız ajan): 7 bulgu; 6'sı yayından önce düzeltildi.
+  - DE/NL metinleri eksikti: zorunlu kutu boş etiketle çıkıyordu.
+  - Parça hücresi yazılamazsa iş duruyordu.
+  - Eski kuyruk kaydı başvurana filigransız nüsha gönderebilirdi.
+  - Vesikalık kırpım farkı ve silme ucu kapsamı da düzeltildi.
+  - Bilerek bırakılan, düşük riskli: suret iki yazı tipini alt kümesiz yeniden gömer. 14 MB sınırına çok yakın bir pakette
+    suret kaydı düşebilir.
+- Kalite: `npm run build` 1952 sayfa; `astro check` 0 hata; `test:ihtida` 76/76; Playwright ihtida + panel 106/106; `test:ek9`
+  ve `test:imza` geçti.
+  - Yeni testler: vesikalık boyutu ve oran notu, dağıtım öncesi kuyruk kaydı, tarayıcıda vesikalık kırpımı.
+  - Apps Script: canlı kod önce 14.44'te yeniden okunanla birebir karşılaştırıldı; yazımdan sonra yeniden açılan kod paketle
+    aynıydı.
+  - Canlı sağlık: `surum: 43`, üç yeni bayrak `true`.
+  - Canlı sayfalar (tr/fr/en/de/nl): kutu ve Komisyon metni var, din görevlisi telefonu yok. Canlı `ihtida-gorseller` betiğinde
+    oran sabiti var.
+- Bu kayıt için belge commit'i içerik yayını değildir.
+
 
 ## 25 Ekim 2026 (19) — egitim: «Derste bu hafta» bandı ve ezber takvimi
 
