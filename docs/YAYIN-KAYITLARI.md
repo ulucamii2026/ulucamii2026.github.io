@@ -4,6 +4,25 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 25 Ekim 2026 (15) — egitim: Çalışma Belgesi (kendi çalışmasıyla, hoca dinlemeden; Faz 3'ün hesapsız parçası)
+
+- Zaman: commit/push 10:25:53 (`cd7df481`), egitim Hosting yayını 10:34:06, canlı denetim 10:34:26, Europe/Brussels (CET).
+  **Yayımlandı ve canlı doğrulandı.** Dayanak: Rıdvan'ın 25 Ekim «egitim.ulucamii.be platformu geliştirmeye devam et… full otonom
+  ilerle» talimatı. Ana plan Faz 3: «Genel cemaat ‹kendi çalışmasıyla, hoca dinlemeden› ibareli Çalışma Belgesi alır.»
+- Kapsam: `/<dil>/calisma-belgesi/` (beş dil). Veri yalnız cihazdaki çalışma kaydı (`cihaz.ts`: son çalışma, tekrar basamağı,
+  son 21 günün çalışma günleri); veri uydurulmaz. Ad alanı yalnız sayfa belleğinde (depo/çerez/adres/istek yok; testle doğrulandı),
+  bu yüzden gizlilik sayfası değişmedi. A4 baskı: saf SVG sekiz köşeli yıldız çerçeve, vektör logo, zorunlu ibare «Ezber
+  Sertifikası yalnız hocanın dinlediği ezberlere verilir.», tablo; ≤ 12 ezber tek sayfa, uzun listede çerçeve ve tablo başlığı her
+  sayfada. PDF'te piksel görsel 0. Bağlantılar: alt bilgi, «Bugün tekrar» bandı, çalışma sayfası altı. Site haritası +5 adres.
+- Kararlar: yazı tipi platformun Atkinson Hyperlegible Next'i (Work Sans egitim'de servis edilmiyor; yeni font dosyası ve önbellek
+  kuralı gerektirirdi); slug beş dilde aynı (uygulama yolları çevirmiyor).
+- Kalite: kök `check` 0 hata, `test:ezber` 167/167, `egitim:build` 392 sayfa, `test:egitim` 15/15 + 465 geçti / 19 bilinçli atlama /
+  0 hata (yeni `calisma-belgesi.spec.mjs` 74 test). Canlı: `egitim:canli` 41/41, beş dil sayfası 200.
+- Açık: FR/EN/NL/DE belge başlıkları («Attestation de travail personnel», «Self-Study Certificate», «Bewijs van zelfstudie»,
+  «Nachweis des Selbststudiums») gözden geçirilmeli; Ezber Sertifikası (hoca onaylı) ve dönem karnesi hoca/veli tarafında, hesaplı
+  Faz 3'e kaldı.
+- Bu kayıt için belge commit'i içerik yayını değildir.
+
 ## 25 Ekim 2026 (14) — Ezber Kilimi: Tekbir, Tesmî-Tahmîd, Selâm, Telbiye ve Teşrik tekbirine Diyanet insan sesi
 
 - Zaman: commit/push 09:34:23 (`9ca0ac62`), Pages 40177156561 başarılı (09:36:31), egitim Hosting yayını 09:42:08, canlı denetim
