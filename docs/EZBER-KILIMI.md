@@ -80,6 +80,10 @@ Tam rapor ve kaynakça: [EZBER-SEVIYE-KAYNAK-ARASTIRMASI.md](EZBER-SEVIYE-KAYNAK
   aralığıyla birebir aynıdır (test). **`1-0` eûzü (istiâze) kaydıdır; `1-1` besmeledir = Fâtiha'nın 1. âyeti** (Kûfe
   sayımı). Birleşik sûre kayıtları (`sureler/*.mp3`) `1-0` + `1-1` ile başlar (Fâtiha'da yalnız `1-0`); `1-0` hiçbir
   sûrenin âyet parçalarına girmez, yalnız `d-euzu-besmele`'de `1-1` ile birlikte durur.
+- **`ses.secenekler`:** Kur'an dışı maddenin birden çok Diyanet kaydı (25 Ekim 2026; bugün yalnız `d-ezan`: beş vakit). Her seçenek
+  `{ id, ad (beş dil), yol }` taşır; `ses.tam` seçeneklerin ilkidir ve varsayılandır. Çalışma sayfası bir radyo grubu çizer; giriş
+  listesi, hâfız sesi ve «Kendini sına» yalnız `tam` ile çalışır. Her `yol` dosya olarak vardır, `docs/dinleme-ses-kaynaklari.json`'da
+  kaydıyla durur ve işlenmemiş Diyanet kaydıdır (testler denetler). Ayrıntı: `docs/EGITIM-FAZ2-DINLEME.md` «Ezan vakit seçimi».
 - **Âyet sayıları:** Diyanet mushafı (Kûfe sayımı); katalogda geçen 41 sûrenin sayısı testte tablo olarak durur ve
   27 Eylül 2026'da Diyanet'in âyet ses dosyalarıyla doğrulandı (`{sûre}_{n}.mp3` var, `{sûre}_{n+1}.mp3` yok).
 - **Adlar:** beş dilde zorunlu. Tek karşılığı olan 17 eski maddenin adları `src/lib/ezber-verisi.ts` ile birebir
@@ -375,8 +379,9 @@ kümesinin bayt karşılaştırması) `docs/YAYIN-KAYITLARI.md` «27 Eylül 2026
   ses değişmedi. Faz 1a'daki «özgünle aynı değil» ölçümü doğruydu (başka bir Diyanet kaydı), «kaynaksız» yargısı
   ise yalnız kaydın eksikliğiydi. `rabbena.mp3` ve iki namaz kaydının birleşimi `sallibarik.mp3` yalnız Ezber
   Odası'nda (`ezber-verisi.ts`) kullanılır; katalog maddelerine bağlanmaz (test yasaklar).
-- `public/media/ses/dualar/ezan.mp3` Diyanet'in **sabah ezanıdır**; katalogda `not` ile belirtildi. Diğer vakitlerin
-  ezanı Faz 2'de Diyanet'ten eklenir.
+- `public/media/ses/dualar/ezan.mp3` Diyanet'in **sabah ezanıdır** (varsayılan kayıt, `ses.tam`). Öğle, ikindi, akşam ve yatsı
+  ezanı 25 Ekim 2026'da Diyanet'ten eklendi (`ezan-ogle/-ikindi/-aksam/-yatsi.mp3`); katalogda `ses.secenekler` ile beş vakit,
+  çalışma sayfasında vakit seçimi olarak sunulur: `docs/EGITIM-FAZ2-DINLEME.md` «Ezan vakit seçimi (25 Ekim 2026)».
 - 54 maddenin Diyanet sesi henüz yok (Amme'nin çoğu, iman cümleleri, tesbihler, tekbir, selâm, kenar suyu); Faz 2 ses işi.
   **19 Ekim 2026 (dilim 2a):** 30'u eklendi. Kalan 24 maddenin 10'u bilgi maddesidir (Faz 2'de ses yok). 14 duanın Kelime-i Şehâdet'i ve
   «Rabbenâ leke'l-hamd» bölümü Diyanet kaydından kesilecek, tekbiri hoca seçecek; Diyanet kaydı olmayanlar için karar

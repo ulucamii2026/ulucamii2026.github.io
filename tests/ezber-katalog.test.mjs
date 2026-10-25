@@ -91,7 +91,7 @@ test('kuranMetni: sûre ⇒ Kur\'an + âyet aralığı; bilgi ⇒ Kur\'an değil
 
 test('ses: dosya var, kaynak kaydı ve sha256 tutuyor; kaynak Diyanet; Kur\'an sesi Kur\'an sunucusundan', () => {
   for (const o of katalog.ogeler) {
-    const yollar = [o.ses?.tam, ...(o.ses?.parcalar ?? [])].filter(Boolean);
+    const yollar = [o.ses?.tam, ...(o.ses?.parcalar ?? []), ...(o.ses?.secenekler ?? []).map((s) => s.yol)].filter(Boolean);
     for (const yol of yollar) {
       assert.ok(existsSync(`public${yol}`), `${o.id}: dosya yok ${yol}`);
       const kayit = sesKaynaklari[yol];
@@ -127,13 +127,69 @@ test('yapay ses: yalnız Kur’an dışı tek dosya; kayıtla birebir; Diyanet k
   for (const [yol, kayit] of Object.entries(sesKaynaklari)) if (kayit.yapay) assert.ok(yollar.has(yol), `${yol}: katalogda yok`);
   // Hiçbir Kur'an maddesinin (kuranMetni) sesi yapay değildir; /media/ses/yapay/ yalnız yapay sese ayrılmıştır.
   for (const o of katalog.ogeler) {
-    const kendi = [o.ses?.tam, ...(o.ses?.parcalar ?? [])].filter(Boolean);
+    const kendi = [o.ses?.tam, ...(o.ses?.parcalar ?? []), ...(o.ses?.secenekler ?? []).map((s) => s.yol)].filter(Boolean);
     if (o.kuranMetni) assert.ok(!o.ses?.yapay && kendi.every((y) => !y.startsWith('/media/ses/yapay/')), o.id);
     else if (!o.ses?.yapay) assert.ok(kendi.every((y) => !y.startsWith('/media/ses/yapay/')), o.id);
   }
   assert.equal(m.yapaySesMi(m.ezberBul('d-kelime-i-tevhid')), true);
   assert.equal(m.yapaySesMi(m.ezberBul('d-subhaneke')), false);
   assert.equal(m.yapaySesMi({}), false);
+});
+
+const VAKITLER = {
+  sabah: 'Sabah_Ezani_Saba', ogle: 'Ogle_Ezani_Ussak', ikindi: 'Ikindi_Ezani_Rast', aksam: 'Aksam_Ezani_Segah', yatsi: 'Yatsi_Ezani_Hicaz',
+};
+const EZAN_KAYNAGI = 'https://namaz.diyanet.gov.tr/namaz/assets/audio/ezanlar/';
+
+test('ses.secenekler: yalnız Kur’an dışı, parçasız ve yapaysız madde; tam varsayılan ve ilk seçenek; kimlik ve yol benzersiz; beş dil dolu', () => {
+  const secenekliler = katalog.ogeler.filter((o) => o.ses?.secenekler);
+  assert.deepEqual(secenekliler.map((o) => o.id), ['d-ezan'], 'seçenekli madde eklenirse çalışma sayfası ve bu test birlikte genişletilmeli');
+  for (const o of secenekliler) {
+    const { tam, parcalar, yapay, secenekler } = o.ses;
+    assert.equal(o.kuranMetni, false, `${o.id}: Kur'an maddesinde kayıt seçimi yok (hâfız sesi tek kayıttır)`);
+    assert.ok(tam && !parcalar && !yapay, `${o.id}: seçenekli madde tek (tam) ve Diyanet kayıtlı olmalı`);
+    assert.ok(secenekler.length >= 2, o.id);
+    assert.equal(secenekler[0].yol, tam, `${o.id}: varsayılan (tam) ilk seçenektir`);
+    assert.equal(new Set(secenekler.map((s) => s.id)).size, secenekler.length, `${o.id}: seçenek kimliği benzersiz`);
+    assert.equal(new Set(secenekler.map((s) => s.yol)).size, secenekler.length, `${o.id}: seçenek yolu benzersiz`);
+    assert.equal(new Set(secenekler.map((s) => sesKaynaklari[s.yol].sha256)).size, secenekler.length, `${o.id}: iki seçenek aynı kaydı göstermemeli`);
+    for (const s of secenekler) {
+      for (const d of DILLER) assert.ok(s.ad[d]?.trim(), `${o.id}.${s.id}.${d}`);
+      const kayit = sesKaynaklari[s.yol];
+      assert.ok(kayit && existsSync(`public${s.yol}`), `${o.id}.${s.id}: dosya ya da kaynak kaydı yok`);
+      assert.equal(ozet(s.yol), kayit.sha256, `${o.id}.${s.id}: sha256`);
+      assert.ok(!kayit.yapay && !kayit.kesim && !kayit.ozgunSha256, `${o.id}.${s.id}: seçenek Diyanet'in işlenmemiş kaydı olmalı`);
+      assert.match(kayit.kaynak, DIYANET, `${o.id}.${s.id}`);
+    }
+  }
+  assert.deepEqual(m.sesSecenekleri(m.ezberBul('d-ezan')).map((s) => s.id), Object.keys(VAKITLER));
+  assert.deepEqual(m.sesSecenekleri(m.ezberBul('d-kamet')), []);
+  assert.deepEqual(m.sesSecenekleri({}), []);
+  assert.ok(Object.isFrozen(m.sesSecenekleri(m.ezberBul('d-ezan'))), 'seçenekler salt okunur');
+  // Şema bozuk seçenekleri reddeder: tek seçenek, geçersiz yol, eksik dil, bilinmeyen alan.
+  const bozulmus = (degistir) => { const k = structuredClone(katalog); degistir(k.ogeler.find((o) => o.id === 'd-ezan').ses.secenekler); return new Validator(sema, '7', false).validate(k).valid; };
+  assert.equal(bozulmus(() => {}), true);
+  assert.equal(bozulmus((s) => s.splice(1)), false, 'tek seçenek seçim değildir');
+  assert.equal(bozulmus((s) => { s[1].yol = '/media/ses/dualar/Ezan Ogle.mp3'; }), false);
+  assert.equal(bozulmus((s) => { delete s[1].ad.de; }), false);
+  assert.equal(bozulmus((s) => { s[1].url = 'x'; }), false);
+});
+
+test('Ezan: beş vaktin Diyanet kaydı (sabah varsayılan); etiket vakit + makam; giriş listesi ve hâfız sesi sabahta kalır', () => {
+  const ezan = katalog.ogeler.find((o) => o.id === 'd-ezan');
+  assert.equal(ezan.ses.tam, '/media/ses/dualar/ezan.mp3', 'ezan.mp3 yolu değişmez (ana siteyi Écouter sayfası da kullanır)');
+  assert.deepEqual(ezan.ses.secenekler.map((s) => s.id), Object.keys(VAKITLER));
+  for (const s of ezan.ses.secenekler) {
+    assert.equal(sesKaynaklari[s.yol].kaynak, `${EZAN_KAYNAGI}${VAKITLER[s.id]}.mp3`, s.id);
+    assert.equal(s.yol, s.id === 'sabah' ? '/media/ses/dualar/ezan.mp3' : `/media/ses/dualar/ezan-${s.id}.mp3`, s.id);
+  }
+  // Etiket «vakit · makam» biçiminde: Diyanet dosya adındaki makam her dilde (yazım dile göre) etikette bulunur.
+  const makam = { sabah: /Sab[âa]$/, ogle: /(U[şs]+ak|Ouchchak)$/, ikindi: /Rast$/, aksam: /Seg[âa]h$/, yatsi: /(Hicaz|Hijaz|Hidschaz)$/ };
+  for (const s of ezan.ses.secenekler) for (const d of DILLER) assert.match(s.ad[d], makam[s.id], `${s.id}.${d}`);
+  assert.deepEqual(m.dinlemeSirasi(m.ezberBul('d-ezan')), ['/media/ses/dualar/ezan.mp3']);
+  // Çalışma kipleri ve tekrar takvimi yalnız ses.tam'ı bilir; ek kayıtlar hiçbir başka maddenin sesi olamaz.
+  const baskalari = new Set(katalog.ogeler.filter((o) => o.id !== 'd-ezan').flatMap((o) => [o.ses?.tam, ...(o.ses?.parcalar ?? [])]).filter(Boolean));
+  for (const s of ezan.ses.secenekler) assert.ok(!baskalari.has(s.yol), s.yol);
 });
 
 test('plan eşlemesi: plandaki her ezber dizesi eşli, fazlalık yok, kimlikler katalogda', () => {

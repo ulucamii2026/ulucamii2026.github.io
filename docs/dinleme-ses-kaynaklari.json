@@ -339,6 +339,22 @@
   "kaynak": "https://namaz.diyanet.gov.tr/namaz/assets/audio/ezanlar/Sabah_Ezani_Saba.mp3",
   "sha256": "72949aba919cf774db89f71212ee772c074dd806cc2c393e933e1b8813e9c155"
  },
+ "/media/ses/dualar/ezan-ogle.mp3": {
+  "kaynak": "https://namaz.diyanet.gov.tr/namaz/assets/audio/ezanlar/Ogle_Ezani_Ussak.mp3",
+  "sha256": "1d7d783e4d996d1870f469e6eb70df9de7eff4a7c642fb91e2090650898dc211"
+ },
+ "/media/ses/dualar/ezan-ikindi.mp3": {
+  "kaynak": "https://namaz.diyanet.gov.tr/namaz/assets/audio/ezanlar/Ikindi_Ezani_Rast.mp3",
+  "sha256": "c779652e3c935e04a95c2941ae120dd7c23677f2a21081463b37d646af2697a8"
+ },
+ "/media/ses/dualar/ezan-aksam.mp3": {
+  "kaynak": "https://namaz.diyanet.gov.tr/namaz/assets/audio/ezanlar/Aksam_Ezani_Segah.mp3",
+  "sha256": "40614f34912fdd3139981e897c291c3deaf3beb6baa02d4ded522072f9eb1ac0"
+ },
+ "/media/ses/dualar/ezan-yatsi.mp3": {
+  "kaynak": "https://namaz.diyanet.gov.tr/namaz/assets/audio/ezanlar/Yatsi_Ezani_Hicaz.mp3",
+  "sha256": "fed350fb03025998d67049b4c8ce7d325b142e66a6c1b738574b3dd0ed174571"
+ },
  "/media/ses/dualar/kamet.mp3": {
   "kaynak": "https://namaz.diyanet.gov.tr/namaz/assets/audio/dualar/hanefi/1_HANEFI_KAMET.mp3",
   "sha256": "cb2b711140516317b6b521ec91710b98d355db2950b389ae7c691f8591d3be91"

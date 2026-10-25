@@ -159,8 +159,14 @@
       "not": "Kursun Elif-Bâ’sı s. 38’deki kısa dizi; Kur’an metni içermez. Âyetü’l-Kürsî ayrı maddedir; uzun dizideki Eûzü-Besmele ve Âyetü’l-Kürsî buraya eklenmez." },
     { "id": "d-ezan", "tur": "dua", "seviye": 7, "sira": 5, "kuranMetni": false,
       "ad": {"tr":"Ezan","fr":"Adhan (appel à la prière)","en":"Adhan (call to prayer)","nl":"Adhan (gebedsoproep)","de":"Adhan (Gebetsruf)"},
-      "ses": {"tam":"/media/ses/dualar/ezan.mp3"},
-      "not": "Ses kaydı Diyanet’in sabah ezanıdır; «es-salâtü hayrun mine’n-nevm» cümlesi yalnız sabah ezanında okunur." },
+      "ses": {"tam":"/media/ses/dualar/ezan.mp3","secenekler":[
+        {"id":"sabah","ad":{"tr":"Sabah · Sabâ","fr":"Aube (Fajr) · Saba","en":"Dawn (Fajr) · Saba","nl":"Ochtend (Fajr) · Saba","de":"Morgen (Fadschr) · Saba"},"yol":"/media/ses/dualar/ezan.mp3"},
+        {"id":"ogle","ad":{"tr":"Öğle · Uşşak","fr":"Midi (Dhuhr) · Ouchchak","en":"Noon (Dhuhr) · Ussak","nl":"Middag (Dhuhr) · Ussak","de":"Mittag (Dhuhr) · Ussak"},"yol":"/media/ses/dualar/ezan-ogle.mp3"},
+        {"id":"ikindi","ad":{"tr":"İkindi · Rast","fr":"Après-midi (Asr) · Rast","en":"Afternoon (Asr) · Rast","nl":"Namiddag (Asr) · Rast","de":"Nachmittag (Asr) · Rast"},"yol":"/media/ses/dualar/ezan-ikindi.mp3"},
+        {"id":"aksam","ad":{"tr":"Akşam · Segâh","fr":"Coucher du soleil (Maghrib) · Segah","en":"Sunset (Maghrib) · Segah","nl":"Avond (Maghrib) · Segah","de":"Abend (Maghrib) · Segah"},"yol":"/media/ses/dualar/ezan-aksam.mp3"},
+        {"id":"yatsi","ad":{"tr":"Yatsı · Hicaz","fr":"Nuit (Isha) · Hijaz","en":"Night (Isha) · Hijaz","nl":"Nacht (Isha) · Hijaz","de":"Nacht (Ischa) · Hidschaz"},"yol":"/media/ses/dualar/ezan-yatsi.mp3"}
+      ]},
+      "not": "Varsayılan ses kaydı Diyanet’in sabah ezanıdır; öğle, ikindi, akşam ve yatsı ezanı kayıtları çalışma sayfasındaki vakit seçimiyle dinlenir (ses.secenekler). «es-salâtü hayrun mine’n-nevm» cümlesi yalnız sabah ezanında okunur." },
     { "id": "d-kamet", "tur": "dua", "seviye": 7, "sira": 6, "kuranMetni": false,
       "ad": {"tr":"Kāmet","fr":"Iqama","en":"Iqamah","nl":"Iqama","de":"Iqama"},
       "ses": {"tam":"/media/ses/dualar/kamet.mp3"} },

@@ -1,12 +1,17 @@
 import type { Dil } from '@ortak/i18n/ui';
 
+type VakitMetinleri = Readonly<Record<string, string>>;
+
 interface CalismaMetinleri {
   baslik: string; giris: string; ac: string; geri: string; bolum: string;
   tumu: string; parca: string; tekrar: string; bir: string; uc: string;
   hiz: string; normal: string; yavas: string; sira: string; siraYok: string; sira1: string; sira15: string; sira2: string; baslat: string;
   duraklat: string; surdur: string; durdur: string; hazir: string; bitti: string;
   bekliyor: string; hata: string; kaynak: string; kaynakAciklama: string;
-  parcasiz: string; ilerleme: string; js: string; ezan: string;
+  parcasiz: string; ilerleme: string; js: string;
+  /** Ezan vakit seçimi (25 Ekim 2026; katalog `ses.secenekler`): grup başlığı, vakit başına not ve yalnız sabah ezanı için kaynaklı cümle.
+   *  Anahtarlar seçenek kimlikleridir (sabah, ogle, ikindi, aksam, yatsi); kimliği olmayan seçenek not almaz. */
+  vakitBaslik: string; vakitNotu: VakitMetinleri; vakitEk: Readonly<Record<string, { metin: string; kunye: string }>>;
   /** Yapay ses (katalogda `ses.yapay`, 24 Ekim 2026): görünür etiket ve açıklama. Diyanet kaydı olmayan Kur'an dışı metinlerde çalarken zorunlu. */
   yapayAd: string; yapayNot: string;
 }
@@ -21,7 +26,9 @@ const METINLER: Record<Dil, CalismaMetinleri> = {
     bekliyor: 'Şimdi siz tekrarlayın.', hata: 'Ses çalınamadı. Bağlantınızı kontrol edip yeniden başlatın.',
     kaynak: 'Diyanet ses kaynağı', kaynakAciklama: 'Bu çalışmada Diyanet İşleri Başkanlığı’nın kayıtlarını dinlersiniz.',
     parcasiz: 'Bu madde tek kayıt olarak dinlenir.', ilerleme: 'Evdeki bu çalışma, hocanın verdiği ezber basamağını değiştirmez.',
-    js: 'Çalışma düğmeleri için JavaScript’i etkinleştirin. Kaydı doğrudan da açabilirsiniz.', ezan: 'Bu kayıt sabah ezanıdır.',
+    js: 'Çalışma düğmeleri için JavaScript’i etkinleştirin. Kaydı doğrudan da açabilirsiniz.', vakitBaslik: 'Ezanın vakti',
+    vakitNotu: { sabah: 'Bu kayıt sabah ezanıdır.', ogle: 'Bu kayıt öğle ezanıdır.', ikindi: 'Bu kayıt ikindi ezanıdır.', aksam: 'Bu kayıt akşam ezanıdır.', yatsi: 'Bu kayıt yatsı ezanıdır.' },
+    vakitEk: { sabah: { metin: 'Sabah ezanında “Hayye ale’l-felâh” denildikten sonra iki defa “es-salâtü hayrün mine’n-nevm” (Namaz uykudan hayırlıdır) denilir.', kunye: 'Kaynak: Diyanet İlmihali I, s. 267.' } },
     yapayAd: 'Yapay ses',
     yapayNot: 'Bu madde için Diyanet’in ses kaydı yoktur. Dinlediğiniz ses bilgisayarla üretilmiştir; okunuşu hocanızdan da dinleyin.',
   },
@@ -34,7 +41,13 @@ const METINLER: Record<Dil, CalismaMetinleri> = {
     bekliyor: 'À vous de répéter.', hata: 'Le son ne peut pas être lu. Vérifiez votre connexion et recommencez.',
     kaynak: 'Source audio de la Diyanet', kaynakAciklama: 'Vous écoutez des enregistrements de la Présidence des Affaires religieuses (Diyanet).',
     parcasiz: 'Ce texte est proposé en un seul enregistrement.', ilerleme: 'Ce travail à la maison ne change pas l’étape validée par l’enseignant.',
-    js: 'Activez JavaScript pour les commandes. Vous pouvez aussi ouvrir directement l’enregistrement.', ezan: 'Cet enregistrement est l’appel à la prière de l’aube.',
+    js: 'Activez JavaScript pour les commandes. Vous pouvez aussi ouvrir directement l’enregistrement.', vakitBaslik: 'Heure de prière de l’adhan',
+    vakitNotu: {
+      sabah: 'Cet enregistrement est l’appel à la prière de l’aube.', ogle: 'Cet enregistrement est l’appel à la prière de midi.',
+      ikindi: 'Cet enregistrement est l’appel à la prière de l’après-midi.', aksam: 'Cet enregistrement est l’appel à la prière du coucher du soleil.',
+      yatsi: 'Cet enregistrement est l’appel à la prière de la nuit.',
+    },
+    vakitEk: { sabah: { metin: 'Dans l’adhan de l’aube, après « Hayye ale’l-felâh », on dit deux fois « es-salâtü hayrün mine’n-nevm » (La prière est meilleure que le sommeil).', kunye: 'Source : Diyanet İlmihali I, p. 267.' } },
     yapayAd: 'Voix de synthèse',
     yapayNot: 'La Diyanet ne propose pas d’enregistrement pour ce texte. La voix que vous entendez est générée par ordinateur ; écoutez aussi la récitation de votre enseignant.',
   },
@@ -47,7 +60,12 @@ const METINLER: Record<Dil, CalismaMetinleri> = {
     bekliyor: 'Your turn to repeat.', hata: 'The audio could not be played. Check your connection and start again.',
     kaynak: 'Diyanet audio source', kaynakAciklama: 'These recordings come from the Presidency of Religious Affairs (Diyanet).',
     parcasiz: 'This item is available as one recording.', ilerleme: 'This practice at home does not change the stage confirmed by your teacher.',
-    js: 'Enable JavaScript to use the controls. You can also open the recording directly.', ezan: 'This recording is the dawn call to prayer.',
+    js: 'Enable JavaScript to use the controls. You can also open the recording directly.', vakitBaslik: 'Prayer time of the adhan',
+    vakitNotu: {
+      sabah: 'This recording is the dawn call to prayer.', ogle: 'This recording is the noon call to prayer.', ikindi: 'This recording is the afternoon call to prayer.',
+      aksam: 'This recording is the sunset call to prayer.', yatsi: 'This recording is the night call to prayer.',
+    },
+    vakitEk: { sabah: { metin: 'In the dawn adhan, after “Hayye ale’l-felâh” is said, “es-salâtü hayrün mine’n-nevm” (Prayer is better than sleep) is said twice.', kunye: 'Source: Diyanet İlmihali I, p. 267.' } },
     yapayAd: 'Synthetic voice',
     yapayNot: 'The Diyanet has no recording of this text. The voice you hear is computer-generated; listen to your teacher’s recitation as well.',
   },
@@ -60,7 +78,12 @@ const METINLER: Record<Dil, CalismaMetinleri> = {
     bekliyor: 'Nu is het uw beurt om te herhalen.', hata: 'Het geluid kan niet worden afgespeeld. Controleer uw verbinding en begin opnieuw.',
     kaynak: 'Audiobron van Diyanet', kaynakAciklama: 'U luistert naar opnamen van het Presidium voor Religieuze Zaken (Diyanet).',
     parcasiz: 'Dit onderdeel is beschikbaar als één opname.', ilerleme: 'Thuis oefenen verandert de door de leerkracht bevestigde stap niet.',
-    js: 'Schakel JavaScript in voor de bediening. U kunt de opname ook rechtstreeks openen.', ezan: 'Dit is de oproep tot het ochtendgebed.',
+    js: 'Schakel JavaScript in voor de bediening. U kunt de opname ook rechtstreeks openen.', vakitBaslik: 'Gebedstijd van de adhan',
+    vakitNotu: {
+      sabah: 'Dit is de oproep tot het ochtendgebed.', ogle: 'Dit is de oproep tot het middaggebed.', ikindi: 'Dit is de oproep tot het namiddaggebed.',
+      aksam: 'Dit is de oproep tot het avondgebed.', yatsi: 'Dit is de oproep tot het nachtgebed.',
+    },
+    vakitEk: { sabah: { metin: 'In de adhan van het ochtendgebed wordt, nadat „Hayye ale’l-felâh” is gezegd, tweemaal „es-salâtü hayrün mine’n-nevm” (Het gebed is beter dan slaap) gezegd.', kunye: 'Bron: Diyanet İlmihali I, p. 267.' } },
     yapayAd: 'Synthetische stem',
     yapayNot: 'Van Diyanet bestaat geen opname van deze tekst. De stem die u hoort is door een computer gegenereerd; luister ook naar de voordracht van uw leerkracht.',
   },
@@ -73,7 +96,12 @@ const METINLER: Record<Dil, CalismaMetinleri> = {
     bekliyor: 'Jetzt sind Sie mit dem Wiederholen dran.', hata: 'Die Aufnahme konnte nicht abgespielt werden. Prüfen Sie Ihre Verbindung und starten Sie erneut.',
     kaynak: 'Diyanet-Audioquelle', kaynakAciklama: 'Sie hören Aufnahmen des Präsidiums für Religionsangelegenheiten (Diyanet).',
     parcasiz: 'Dieser Inhalt ist als eine Aufnahme verfügbar.', ilerleme: 'Das Üben zu Hause ändert die von der Lehrkraft bestätigte Stufe nicht.',
-    js: 'Aktivieren Sie JavaScript für die Steuerung. Sie können die Aufnahme auch direkt öffnen.', ezan: 'Diese Aufnahme ist der Gebetsruf zum Morgengebet.',
+    js: 'Aktivieren Sie JavaScript für die Steuerung. Sie können die Aufnahme auch direkt öffnen.', vakitBaslik: 'Gebetszeit des Adhan',
+    vakitNotu: {
+      sabah: 'Diese Aufnahme ist der Gebetsruf zum Morgengebet.', ogle: 'Diese Aufnahme ist der Gebetsruf zum Mittagsgebet.', ikindi: 'Diese Aufnahme ist der Gebetsruf zum Nachmittagsgebet.',
+      aksam: 'Diese Aufnahme ist der Gebetsruf zum Abendgebet.', yatsi: 'Diese Aufnahme ist der Gebetsruf zum Nachtgebet.',
+    },
+    vakitEk: { sabah: { metin: 'Beim Adhan zum Morgengebet wird, nachdem „Hayye ale’l-felâh“ gesprochen wurde, zweimal „es-salâtü hayrün mine’n-nevm“ (Das Gebet ist besser als der Schlaf) gesprochen.', kunye: 'Quelle: Diyanet İlmihali I, S. 267.' } },
     yapayAd: 'Synthetische Stimme',
     yapayNot: 'Von der Diyanet gibt es keine Aufnahme dieses Textes. Die Stimme, die Sie hören, wurde vom Computer erzeugt; hören Sie auch den Vortrag Ihrer Lehrkraft.',
   },

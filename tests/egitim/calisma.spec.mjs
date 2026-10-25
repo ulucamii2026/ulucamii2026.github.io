@@ -213,13 +213,16 @@ test('Ses hatası kurtarılabilir; eski play reddi yeni bölümü durduramaz', a
   await expect(page.locator('.calisma-durum')).toContainText('Bölüm 2');
 });
 
-test('Katalogda sesi ya da metni olan maddeler çalışmaya bağlanır; tek kayıt ve ezan notu', async ({ page }) => {
+test('Katalogda sesi ya da metni olan maddeler çalışmaya bağlanır; tek kayıt ve ezan vakit notu', async ({ page }) => {
   await page.goto('/tr/');
   const baglar = await page.locator('.maddeler a[href*="/calis/"]').evaluateAll((a) => a.map((x) => x.pathname).sort());
   // calismaSayfasiVar (src/lib/ezber/katalog.ts) ile aynı koşul: Diyanet sesi, Kur'an metni, bilgi metni ya da (sessiz dualarda) metinli işareti.
   expect(baglar).toEqual(katalog.ogeler.filter((o) => o.ses || o.kuran || o.bilgiMetni || o.metinli).map((o) => `/tr/calis/${o.id}/`).sort());
   await page.goto('/tr/calis/d-ezan/');
-  await expect(page.locator('.calisma-not')).toContainText('sabah ezanıdır');
+  // Ezan: varsayılan sabah kaydı; vakit seçimi ve beş vaktin ayrıntısı tests/egitim/ezan-vakit.spec.mjs'te.
+  await expect(page.locator('.calisma-not')).toContainText('Diyanet');
+  await expect(page.locator('.calisma-not')).not.toContainText('tek kayıt'); // beş vaktin kaydı var: «tek kayıt» denmez
+  await expect(page.locator('.vakit-notu:visible')).toHaveText('Bu kayıt sabah ezanıdır.');
   await expect(page.locator('[data-bolum] option')).toHaveCount(1);
 });
 

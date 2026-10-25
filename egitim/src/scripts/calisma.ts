@@ -3,6 +3,7 @@
  * «Senin sıran» arası (Faz 2e): hâfız bir bölümü bitirince çocuk tekrar eder; bekleme sabit 3 sn değil, kaydın süresinin
  * katıdır (×1 / ×1,5 / ×2 ya da hiç), hesap src/lib/ezber/sira.ts'te. Bekleme sürerken ince bir çubuk dolar (ekran okuyucudan
  * gizli; durum yazısı zaten «Şimdi siz tekrarlayın» der). Seçim kutusunu «Yok» yapmak beklemeyi hemen geçer.
+ * Ezan vakit seçimi (25 Ekim 2026, dosyanın sonunda): radyo grubu çalınacak kaydı ve notu değiştirir, çalmayı durdurur.
  */
 import { siraKatsayisi, siraSuresiMs } from '@ortak/lib/ezber/sira';
 
@@ -148,6 +149,32 @@ if (kok) {
     sifirla();
     oynat.click();
   });
+  // Ezan vakit seçimi (25 Ekim 2026; katalog `ses.secenekler`): seçim yalnız çalınacak kaydı ve notu değiştirir. Çalan kayıt hemen
+  // durur (yeni kayıt, kullanıcı başlatana dek sessiz kalır); tekrar, hız ve «senin sıran» ayarları aynen sürer. Grup JavaScript
+  // olmadan gizlidir (sayfa o durumda beş kaydı doğrudan bağlantı olarak verir). Tarayıcı form durumunu geri yüklerse (autocomplete
+  // kapalı olsa da) açılışta işaretli seçenek esas alınır.
+  const vakitGrubu = kok.querySelector<HTMLElement>('[data-vakit]');
+  const vakitler = [...kok.querySelectorAll<HTMLInputElement>('[data-vakit-secenek]')];
+  if (vakitGrubu && vakitler.length && parcalar.length === 1) {
+    const notlar = [...kok.querySelectorAll<HTMLElement>('[data-vakit-not]')];
+    const kayitOpsiyonu = [...bolum.options].find((o) => o.dataset.adres);
+    const vakitUygula = (secenek: HTMLInputElement) => {
+      parcalar[0] = secenek.dataset.adres!;
+      if (kayitOpsiyonu) kayitOpsiyonu.dataset.adres = secenek.dataset.adres!;
+      for (const not of notlar) not.hidden = not.dataset.vakitNot !== secenek.value;
+    };
+    for (const secenek of vakitler) {
+      secenek.addEventListener('change', () => {
+        if (!secenek.checked) return;
+        sifirla(`${secenek.dataset.ad}. ${metin('hazir')}`);
+        vakitUygula(secenek);
+      });
+    }
+    const secili = vakitler.find((r) => r.checked) ?? vakitler[0];
+    secili.checked = true;
+    vakitUygula(secili);
+    vakitGrubu.hidden = false;
+  }
   kok.querySelector<HTMLFieldSetElement>('[data-ayarlar]')!.disabled = false;
   oynat.disabled = false;
 }

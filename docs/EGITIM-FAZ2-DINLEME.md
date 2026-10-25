@@ -54,7 +54,7 @@ ezber ve gizleme, 2d oyunlar ve tekrar takvimi, 2e baskı kartı ve duyuru.
 - Kelime-i Şehâdet: Tahiyyât kaydından kesit alınacak; kulakla teyit gerekir ve `kesit` testi yeniden tanımlanacak.
 - «Rabbenâ leke'l-hamd»: Diyanet'in `2_KIYAM.mp3` kaydından.
 - Tekbir: hoca seçer (kamet kesiti ya da yapay ses).
-- Ezan: beş vaktin kaydı var, vakit seçimi eklenecek.
+- Ezan: beş vaktin kaydı var, vakit seçimi eklenecek. **Yapıldı (25 Ekim 2026, yerel):** aşağıdaki «Ezan vakit seçimi (25 Ekim 2026)».
 - Diyanet kaydı olmayan dualar: yapay ses ve hoca onayı. Kur'an metninde yapay ses kullanılmaz.
   **24 Ekim 2026:** kurs kütüphanesinde doğrulanmış sesi bulunan iki dua (Kelime-i Tevhid, Kelime-i Şehâdet) görünür «Yapay ses»
   etiketiyle eklendi; ayrıntı aşağıdaki «Yapay sesli dualar, cami ekranı FR meâl ve NL gözden geçirme (24 Ekim 2026)».
@@ -688,6 +688,70 @@ geçersizdir (kartı olmayan maddeler artık bilgi maddeleri ve yukarıdaki beş
 - **Yayın:** commit `fe1ba765`; egitim Hosting 418 dosya (388 yeni); Pages run 40137688909 success; `egitim:canli` 41/41; `/tr` ve `/fr/calis/d-amentu/`, `d-tekbir/` 200.
   Kayıt: `docs/YAYIN-KAYITLARI.md` «24 Ekim 2026 (9)».
 - **Hoca onayı bekleyen on metin:** `docs/ezber-metin-inceleme/ezber-metin-inceleme.pdf` (21 dua). Onay: `node scripts/ezber-dua-cek.mjs --onayla <id|hepsi>`, sonra `npm run egitim:yayinla`.
+
+## Ezan vakit seçimi (25 Ekim 2026)
+
+«Kalan sesler (dilim 2d)» listesindeki «Ezan: beş vaktin kaydı var, vakit seçimi eklenecek» işi yerelde tamamlandı. **Yayın bekliyor** (ana site Pages
+sonra egitim Hosting; yayın kaydı `docs/YAYIN-KAYITLARI.md`'ye yayından sonra yazılır).
+
+**Ses dosyaları.** Diyanet Namaz Vakitleri sitesinin dört kaydı eklendi; `ezan.mp3` (sabah) yolu ve içeriği aynı kaldı. Hepsi **işlenmemiş** Diyanet
+dosyasıdır: `ezan.mp3`'ün sha256'sı Sabah_Ezani_Saba.mp3'ün o gün yeniden indirilmiş kopyasıyla bayt bayt aynı çıktı ve kayıtta `ozgunSha256`/`kesim` yoktu
+(yeniden kodlama ya da seviye işlemi görmemiş); yeni dört dosya da aynı biçimde, indirildiği gibi konuldu (mono, 44,1 kHz, ~64 kb/s MP3).
+
+| Vakit (makam) | Dosya | Kaynak (`namaz.diyanet.gov.tr/namaz/assets/audio/ezanlar/…`) | Boyut | Süre | sha256 |
+|---|---|---|---|---|---|
+| Sabah (Sabâ) | `public/media/ses/dualar/ezan.mp3` (değişmedi) | `Sabah_Ezani_Saba.mp3` | 2.824.776 B | 5:53 | `72949aba…c155` |
+| Öğle (Uşşak) | `ezan-ogle.mp3` | `Ogle_Ezani_Ussak.mp3` | 2.333.047 B (2,2 MiB) | 4:52 | `1d7d783e…c211` |
+| İkindi (Rast) | `ezan-ikindi.mp3` | `Ikindi_Ezani_Rast.mp3` | 3.049.429 B (2,9 MiB) | 6:21 | `c779652e…97a8` |
+| Akşam (Segâh) | `ezan-aksam.mp3` | `Aksam_Ezani_Segah.mp3` | 1.129.324 B (1,1 MiB) | 2:21 | `40614f34…1ac0` |
+| Yatsı (Hicaz) | `ezan-yatsi.mp3` | `Yatsi_Ezani_Hicaz.mp3` | 2.532.413 B (2,4 MiB) | 5:16 | `fed350fb…4571` |
+
+Yeni dört dosya toplam 9.044.213 B (≈ 8,6 MiB); derlenmiş ana site 827 MB iken sınır 1 GB (Pages), yeni boyut ≈ 836 MB. Tam sha256 değerleri ve kaynak adresleri
+`docs/dinleme-ses-kaynaklari.json` içinde (dört yeni kayıt, mevcut biçimde: `kaynak` + `sha256`). İndirme: tarayıcı User-Agent'lı `curl`, 200 / `audio/mpeg`.
+
+**Veri modeli.** Katalogda Kur'an dışı bir maddenin `ses` nesnesine isteğe bağlı genel alan: `secenekler: [{ id, ad (beş dil), yol }]` (şema `sesSecenegi`,
+tip `SesSecenegi`, yardımcı `sesSecenekleri(oge)` — `src/lib/ezber/katalog.ts`). Kurallar: en az iki seçenek; yalnız `kuranMetni: false`, `tam` kaydı olan,
+parçasız ve yapaysız madde; `tam` seçeneklerin ilkidir ve varsayılandır; kimlik ve yol benzersiz; her yol dosya olarak vardır, kayıtta özetiyle durur ve Diyanet'in
+işlenmemiş kaydıdır. Bugün tek kullanıcı `d-ezan`: `sabah`, `ogle`, `ikindi`, `aksam`, `yatsi`. Etiketler «vakit · makam»:
+TR «Sabah · Sabâ», «Öğle · Uşşak», «İkindi · Rast», «Akşam · Segâh», «Yatsı · Hicaz»; FR «Aube (Fajr) · Saba», «Midi (Dhuhr) · Ouchchak», «Après-midi (Asr) · Rast»,
+«Coucher du soleil (Maghrib) · Segah», «Nuit (Isha) · Hijaz»; EN/NL/DE vakit adları sitenin namaz vakti çevirileriyle ve `DIL-NL-DE.md` sözlüğüyle
+(Fajr/Dhuhr/Asr/Maghrib/Isha; DE Fadschr/Ischa). Makamların FR/EN/NL/DE yazımı (Ouchchak, Ussak, Segah, Hijaz, DE Hidschaz) bu işte seçilmiş çeviri yazımıdır; hoca
+gözden geçirmesi bekler.
+
+**Çalışma sayfası (`/<dil>/calis/d-ezan/`).**
+- Çalar bölümünün başında «Ezanın vakti» (TR; FR «Heure de prière de l’adhan», EN «Prayer time of the adhan», NL «Gebedstijd van de adhan», DE «Gebetszeit des Adhan») adlı
+  `<fieldset>` + `<legend>` içinde beş **radyo** düğmesi, Çini Panosu çipleri olarak (`calisma.css` «Ezan vakit seçimi»): gerçek `input[type=radio]` karonun üstünde
+  saydam durur; işaretli çip kurs yeşili, ayrıca noktalı halka; odak halkası çipte; 24 px'ten büyük hedef (2,75 rem); auto-fit ızgara, 320 px'te tek sütun, uzun
+  FR/DE adlar çipin içinde alt satıra kırılır. Açık ve koyu tema jetonlarıyla.
+- Varsayılan sabah (`ses.tam`). Seçim değişince `calisma.ts`: çalan kayıt susar, çalar başa döner (bekleyen «senin sıran» zamanlayıcısı da iptal), durum satırı
+  «Öğle · Uşşak. Hazır…» der, kaynak adresi (`parcalar[0]`) değişir; yeni kayıt kullanıcı başlatana dek yüklenmez. Tekrar, hız ve «senin sıran» ayarları aynen sürer.
+  Form durumu geri yüklenirse (autocomplete kapalı) açılışta işaretli seçenek esas alınır. Sesler `https://ulucamii.be` kökünden gelir; CSP `media-src https://ulucamii.be blob:` değişmedi.
+- Not: eski sabit «Bu kayıt sabah ezanıdır» (`ezan`) kalktı; yerine seçili vaktin notu (`vakitNotu`: «Bu kayıt öğle ezanıdır.» …). Yalnız **sabah** seçiliyken ek olarak Diyanet İlmihali I s. 267'den
+  kaynaklı cümle ve künye: «Sabah ezanında “Hayye ale’l-felâh” denildikten sonra iki defa “es-salâtü hayrün mine’n-nevm” (Namaz uykudan hayırlıdır) denilir.» — «Kaynak: Diyanet İlmihali I, s. 267.»
+  (FR/EN/NL/DE sadık çeviri, künye `p.`/`S.` ile aynı). Cümle yerel arşivde (`diyanet-ilmihal`, cilt 1, s. 267, «VIII. EZAN ve KAMET») kelimesi kelimesine doğrulandı; başka dinî metin eklenmedi.
+  Kesme işaretleri sitenin yazımına uyarlandı (’). «Bu madde tek kayıt olarak dinlenir» notu seçenekli maddede gösterilmez.
+- JavaScript kapalıyken grup gizlidir, çal düğmeleri kapalı kalır; `<noscript>` altında beş kayıt «Dinle: Ezan · <vakit · makam>» bağlantısıdır (ana site adresleri). Tek kayıtlı maddelerde eski tek bağlantı durur.
+- **Giriş listesi, hâfız sesi ve «Kendini sına» sabah kaydında kalır** (`dinlemeSirasi` = `[ses.tam]`; `data-veri.hafiz` değişmedi); vakit seçimi yalnız çalışma sayfasının çalarındadır. Giriş satırının çal düğmesi hızlı dinleme içindir; vakit seçmek isteyen sayfaya gider.
+
+**Testler.**
+- `tests/ezber-katalog.test.mjs`: `ses.secenekler` kuralları (yalnız `d-ezan`, Kur'an dışı, tam ilk seçenek, benzersizlik, dosya + kayıt + sha256 + Diyanet kaynağı + işlenmemiş, şema bozuk seçeneği reddeder) ve Ezan'a özgü test
+  (kaynak dosya adları, etiketlerde makam, `dinlemeSirasi` sabah); mevcut ses/yapay testleri seçenekleri de kapsar.
+- `tests/egitim/ezan-vakit.spec.mjs` (yeni; iki cihaz profilinde): seçim yalnız d-ezan'da, beş çip beş dilde katalog etiketiyle ve adlı grup içinde, sabah notu + kaynaklı cümle, öbür vakitlerde yalnız kendi notu,
+  iki temada axe, seçimle `audio.src` değişimi ve çalmanın durması (ağ/ses başlamaz, eski `ended` yeni seçimi başlatmaz, bekleme zamanlayıcısı iptal), tekrar/hız korunur, klavye okları ve odak halkası,
+  320 px (TR/FR/DE) taşma ve hedef boyutu, giriş/hâfız sesi sabahta, JavaScript'siz bağlantılar, CSP (`media-src` ihlali yok, yabancı köken engellenir). Testlerde ses ağı kapalı ve `play()` taklit edilir:
+  yeni dört dosyanın canlı sitede bulunmasına dayanılmaz. `calisma.spec.mjs` ezan notu satırı vakit notuna uyarlandı.
+
+**Doğrulama (25 Ekim 2026, yerel; temiz çalışma ağacı `origin/main` `3039c805` üzerinde, yayın yok).**
+- `npm run test:ezber` 162/162; `npm run test:dinleme` 7/7 (yeni kayıtların özetleri dahil: her kayıt dosyasıyla aynı).
+- `npm run check` (kök) 0 hata / 0 uyarı; `npm run egitim:build` `astro check` 0 hata / 0 uyarı, 387 sayfa.
+- `npm run test:egitim`: 15/15 birim + **389 geçti / 15 atlama / 0 başarısız** (önceki taban 347 / 13; fark: yeni spec 42 geçti, 2 bilinçli atlama = klavye ve CSP
+  senaryolarının mobil tekrarları). Hata ve CSP ihlali yok.
+- Görsel inceleme (Playwright, gerçek CSP başlıklarıyla önizleme): TR 1440 px açık tema (sabah ve öğle seçili), FR 390 px koyu tema (akşam ve sabah seçili), DE 320 px açık tema (yatsı
+  seçili). Çipler okunaklı, işaretli çip yeşil + noktalı halka, uzun FR/DE etiketler çipin içinde kırılır, yatay taşma yok.
+- Yapılmayanlar: ana site `npm run build` / `test:web` ve `dogrula:codex` koşulmadı (kök `check` ve katalog testleri geçti; değişiklik ana siteyi yalnız `ses.secenekler` alanı ve dört yeni
+  dosya kadar etkiler, ana site bu alanı okumaz); fiziksel telefon/Safari ve yeni dosyaların canlı `ulucamii.be`'den oynatılması denenmedi (dosyalar yayından önce sitede yoktur).
+- Kullanıcı ya da hoca kararı bekleyenler: FR/EN/NL/DE makam yazımları (yukarıda); sabah cümlesindeki «hayrün» (İlmihal) ile aynı sayfadaki hoca onaylı okunuşun «hayrun» yazımı
+  (`src/data/ezber/metin/d-ezan.json`) arasındaki fark; yeni dört kaydı henüz bir insan kulağı dinlemedi (Diyanet'in resmî dosyaları; dördü de ffmpeg ile baştan sona hatasız çözüldü; vakit–makam eşleşmesi Diyanet dosya adından).
 
 ## Canlı durum ve bu çalışmanın sınırı
 

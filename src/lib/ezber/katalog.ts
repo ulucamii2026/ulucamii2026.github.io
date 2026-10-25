@@ -14,6 +14,8 @@ export type Seviye = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 'kenar';
 export type EzberTuru = 'sure' | 'dua' | 'bilgi';
 export type BesDil = Readonly<Record<Dil, string>>;
 /** Katalog maddesi (eski Ezber Odası'nın `EzberOgesi` tipinden ayrı). */
+/** Aynı maddenin seçilebilir kayıtlarından biri (bugün yalnız Ezan: beş vaktin Diyanet kaydı). `ad` seçimde görünen etiket. */
+export interface SesSecenegi { readonly id: string; readonly ad: BesDil; readonly yol: string }
 export interface KatalogOgesi {
   readonly id: string;
   readonly tur: EzberTuru;
@@ -29,7 +31,12 @@ export interface KatalogOgesi {
   readonly kuran?: { readonly sure: number; readonly ayetler: readonly [number, number] };
   /** `yapay`: Diyanet kaydı olmayan Kur'an dışı metin için yapay ses (24 Ekim 2026). Sayfalar sesin yanına görünür
    *  «Yapay ses» etiketini bu bayraktan çizer; Kur'an maddesinde asla true olamaz (tests/ezber-katalog.test.mjs). */
-  readonly ses?: { readonly tam?: string; readonly parcalar?: readonly string[]; readonly yapay?: true };
+  readonly ses?: {
+    readonly tam?: string; readonly parcalar?: readonly string[]; readonly yapay?: true;
+    /** Kur'an dışı maddede birden çok kayıt (25 Ekim 2026, Ezan vakitleri): çalışma sayfası seçim grubu çizer. `tam` varsayılandır
+     *  ve seçeneklerin ilkidir; giriş listesi ve çalışma kipleri (Kendini sına, hâfız sesi) hep `tam` ile çalışır. */
+    readonly secenekler?: readonly SesSecenegi[];
+  };
   readonly not?: string;
   /** Kaynaklı liste metni var (src/data/ezber/bilgi/<id>.json, 24 Ekim 2026): bilgi maddesinin çalışma sayfası vardır. */
   readonly bilgiMetni?: true;
@@ -126,6 +133,11 @@ export function calismaSayfasiVar(oge: KatalogOgesi): boolean {
 /** Maddenin sesi yapay mı (Diyanet kaydı yok): çalarken etiket zorunludur. Tek yer: etiketin çizildiği her sayfa bunu sorar. */
 export function yapaySesMi(oge: Pick<KatalogOgesi, 'ses'>): boolean {
   return oge.ses?.yapay === true;
+}
+
+/** Çalışma sayfasında seçilebilen kayıtlar (Ezan: beş vakit); seçeneği olmayan maddede boş dizi. */
+export function sesSecenekleri(oge: Pick<KatalogOgesi, 'ses'>): readonly SesSecenegi[] {
+  return oge.ses?.secenekler ?? [];
 }
 
 /**
