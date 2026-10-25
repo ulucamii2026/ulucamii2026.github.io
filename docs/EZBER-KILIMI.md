@@ -450,3 +450,60 @@ kümesinin bayt karşılaştırması) `docs/YAYIN-KAYITLARI.md` «27 Eylül 2026
   Muhammad Hamidullah çevirisi çevirmen adıyla kullanılır (`scripts/ezber-meal-fr.mjs`; gerekçe
   `docs/EGITIM-FAZ2-DINLEME.md`). Yukarıdaki 1–2. maddelerin (Sübhâneke «ve celle senâük», ezan duası ziyadesi) çözümü
   dua tablosundaki notlardır (`scripts/ezber-dua-tanim.mjs`); onay bunları da kapsar.
+
+## Çalışma Belgesi (25 Ekim 2026)
+
+Ana plandaki kararın hesapsız ilk parçası: genel cemaat, **kendi çalışmasıyla, hoca dinlemeden** çalıştığı ezberler için yazdırılabilir bir
+**Çalışma Belgesi** alır. Hesap, sunucu ve ağ yoktur. Kod: `/<dil>/calisma-belgesi/` (beş dilde aynı yol; uygulamadaki öteki yollar gibi
+çevrilmez), `egitim/src/pages/[dil]/calisma-belgesi.astro`, `egitim/src/scripts/calisma-belgesi.ts`, saf kütüphane
+`src/lib/ezber/belge.ts`, metinler `egitim/src/i18n/belge.ts`, çerçeve `egitim/src/components/BelgeCercevesi.astro`, stil
+`egitim/src/styles/belge.css`. Sayfa site haritasında ve hreflang kümesindedir (5 dil × 1 adres).
+
+- **Ayrım (bağlayıcı):** *Ezber Sertifikası* yalnız hocanın dinlediği ezberlere verilir ve hoca/veli tarafında kalır (hoca ekranı, veli
+  portalı); *dönem karnesi* de oradadır. Çalışma Belgesi onların yerini tutmaz. Kâğıttaki ifade (TR): «Bu belge, aşağıdaki ezberlerin
+  kendi çalışmasıyla, hoca dinlemeden çalışıldığını gösterir. Ezber Sertifikası yalnız hocanın dinlediği ezberlere verilir.» FR/EN/NL/DE
+  karşılıkları sadık çeviridir; ezber sertifikasının adı sitenin öteki yerlerindeki karşılıklarla aynıdır (certificat de mémorisation ·
+  Memorisation Certificate · memorisatiecertificaat · Memorier-Zertifikat). Sayfanın başlığı beş dilde: Çalışma Belgesi · Attestation de
+  travail personnel · Self-Study Certificate · Bewijs van zelfstudie · Nachweis des Selbststudiums.
+- **Veri kaynağı (uydurma yok):** yalnız cihaz hafızası (`ulucamii:ezber:cihaz:v1`, `src/lib/ezber/cihaz.ts`), **yalnız okunur**. Cihazda
+  madde başına tutulanlar kullanılır: `son` (son çalışma anı → belgede yerel gün olarak «son çalışma») ve `kutu` (tekrar basamağı, belgede
+  «n / 5»; «Kendini sına» yapılmamışsa «—»). «Çalıştım günü sayısı» maddeye değil cihaza aittir (`gunler`, son 21 çalışma günü): belgenin özetinde
+  «son üç haftada N gün çalışıldı» olarak yazılır (bugün dâhil 21 takvim günü; `ucHaftaGunu`). Madde başına «çalıştım tarihleri» listesi
+  cihazda **tutulmaz**, bu yüzden belgede de yoktur. Listeye girmenin ölçütü, maddenin cihazda geçerli bir `son` anıyla kaydının
+  olmasıdır; çalışma kipi/seçenek değişikliği de `son`u yeniler, yani ölçüt «bu maddede çalışma araçlarını kullandı»dır, hocanın ya da
+  sayfanın doğruladığı bir başarı değil (belge zaten kendi beyanıdır). Katalogda/çalışma sayfası listesinde olmayan madde atlanır; liste
+  katalog sırasındadır.
+- **Seçim ve ad:** ziyaretçi hangi ezberlerin belgeye gireceğini işaretler (varsayılan hepsi; «Hepsini seç / Hiçbirini seçme»). Hiçbiri
+  seçili değilse «Yazdır» kapanır. Ad alanı isteğe bağlıdır: **yalnız sayfa belleğinde** (kâğıttaki metin düğümünde) durur; cihaz
+  hafızasına, oturum hafızasına, çereze, adrese ya da başlığa yazılmaz, hiçbir istekte geçmez, sayfa yenilenince silinir. Boş bırakılırsa
+  kâğıtta elle yazmak için bir çizgi kalır. Sayfada tek satır gizlilik notu vardır. Cihaz hafızasına yeni alan eklenmediği ve sayfa hafızaya
+  yazmadığı için ana sitedeki gizlilik sayfasının «Ezber Kilimi» bölümü **değişmedi**.
+- **Giriş noktaları:** alt bilgi (her sayfada), giriş sayfasındaki «Bugün tekrar» bandı (yalnız cihazda kayıt varsa görünür) ve çalışma
+  sayfalarının altı (basılı kartta basılmaz). Kayıt yokken sayfa kısa bir açıklama ve «Fâtiha ile başla / Şeritleri gez» bağlantılarıyla boş durum
+  gösterir; JavaScript kapalıysa açıklama ve uyarı kalır.
+- **Basılı düzen:** A4 dikey, `@page` 14 mm. Çerçeve saf vektör SVG: dış çizgi, sekiz köşeli yıldız zinciri şeridi (girih ailesi; canlı figür
+  yok, kalp yok), ince altın süs çizgisi, dört köşede sekiz köşeli yıldız madalyonu; renkler kurs yeşili `#134420` ve platformun altını (yalnız
+  süs çizgisi ve yıldız merkezleri). Logo: `egitim/public/logo/kuran-kursu-yatay.svg` (kimlik paketinden üretilmiş vektör). Çerçeve
+  `position: fixed` olduğu için her basılı sayfada yinelenir; Chromium kenar boşluğuna taşan kısmı kırptığından çerçeve baskı alanıdır
+  ve içerik çerçeveden kopmasın diye ilk/son sayfada `.belge` dolgusu, aradaki sayfalarda tablonun yinelenen boşluk satırları kullanılır.
+  Kâğıt ekranda da aynı sayfadır (bütün ölçüler `em`, 1 em = 4 mm; boyut `cqw` ile kâğıt genişliğinden türer): önizleme her genişlikte
+  birebir sayfadır. Koyu temada da kâğıt beyazdır. Başlık, alt başlık, ad satırı, zorunlu ifade, ezber tablosu (No · Ezber · Son çalışma · Tekrar
+  basamağı), özet, düzenlenme tarihi ve kurum satırı («Marche-en-Famenne Ulu Camii Kur’an Kursu · egitim.ulucamii.be»: `kimlik.json` kopyasından,
+  dil başına). Telefon numarası, kişi adı ve imza yoktur.
+- **Sayfaya yayma:** tek sayfalık belgede alt satır sayfanın dibine oturur. Satır sayısından başlanıp içeriğin (uzun ezber adları satır sardırır)
+  tek sayfaya sığıp sığmadığı em cinsinden ölçülür; sığmazsa düzen sırayla `az → orta → siki → cok` olarak sıkılaşır (`siki`: tek sayfaya 12 uzun
+  adlı satır bile sığar). `cok` düz akıştır: tablo başlığı her sayfada yinelenir, çerçeve her sayfadadır. Ölçüm 12 satırda Fransızca/Almanca/Hollandaca en
+  uzun adlarla ve 40 satırla yapıldı (12 satır → 1 sayfa, 40 satır → 2 sayfa).
+- **Yazı tipi kararı:** kimlik dosyası kurumsal yazışma için Work Sans der, ama platform Work Sans taşımaz. Yeni bir yazı tipi dosyası eklemek
+  (önbellek kuralı: alt küme değişirse dosya adı da değişir) ve kapsama denetimi gerektirirdi; platformun kendi Latin yazı tipi **Atkinson
+  Hyperlegible Next** hem Türkçe/Fransızca/Almanca/Hollandaca harfleri kapsar hem de platformun görünüşüyle birebirdir, bu yüzden belgede o
+  kullanıldı (Work Sans eklenmedi). Renk ve logo kimlik kaynağındandır. Atkinson'da U+202F (dar bölünmez boşluk) yok; Fransızca noktalama
+  öncesi boşluk yedek yazı tipinden gelir (mevcut `fransizTipografi` kuralı).
+- **Testler:** `tests/ezber-belge.test.mjs` (5; `npm run test:ezber`'e eklendi) ve `tests/egitim/calisma-belgesi.spec.mjs` (beş dil, boş durum, kayıtla
+  liste, işaret kaldırma, ad hiçbir istekte geçmez ve hafızaya yazılmaz, sayfa hafızayı bayt bayt değiştirmez, depolama kapalı, bozuk kayıt, betik kapalı,
+  yazdırma ortamı, Chromium PDF: A4, az ezberde tek sayfa, çok ezberde 2–3 sayfa, **piksel görsel yok** (`pdfimages -list`, yoksa PDF içinde
+  `/Subtype /Image`), axe açık/koyu, 320 px taşma, bağlantılar). `tests/egitim/barindirma.test.mjs` ve `scripts/egitim-canli-denetim.mjs` site
+  haritası beklentisine yeni sayfa eklendi (5 dil × 1).
+- **Sınır / açık kalemler:** Belge yalnız bu cihazdaki kaydı gösterir (başka cihazdaki çalışma görünmez; hesap Faz 3'te). Çalışma günü sayısı cihazda
+  son 21 günle sınırlıdır. Belgeyi kimsenin doğrulaması yoktur: kendi beyanıdır, ifade de bunu söyler. Hocanın onayladığı **Ezber Sertifikası** ve
+  **dönem karnesi** hoca/veli tarafında (Faz 3) kalır.

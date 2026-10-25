@@ -24,7 +24,7 @@
   main { display: block; }
 
   /* Çalışma araçları, gezinme ve süs basılmaz. `.semboller` (motif sembolleri) gizlenmez: madalyon onları kullanır. */
-  .ust, .alt, .yol, .bordur, .yan-panel, .yollar-bolumu, .komsu, .metin-araclar, .metin-ipucu, .diller, noscript, a.gorunmez { display: none !important; }
+  .ust, .alt, .yol, .bordur, .yan-panel, .yollar-bolumu, .belge-bag, .komsu, .metin-araclar, .metin-ipucu, .diller, noscript, a.gorunmez { display: none !important; }
   .kart-yalniz { display: block; }
 
   .icerik { width: 100%; margin: 0; }

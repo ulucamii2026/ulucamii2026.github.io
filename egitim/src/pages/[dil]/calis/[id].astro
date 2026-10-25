@@ -27,6 +27,7 @@ import { DURUSLAR, maddeMetinleri, namazda } from '../../../i18n/madde';
 import { kipMetinleri } from '../../../i18n/kip';
 import { sinaMetinleri } from '../../../i18n/sina';
 import { kartMetinleri } from '../../../i18n/kart';
+import { belgeMetinleri } from '../../../i18n/belge';
 import { bilgiYazilari } from '../../../i18n/bilgi';
 import '../../../styles/calisma.css';
 import '../../../styles/madde.css';
@@ -283,6 +284,7 @@ const sonraki = serit[sira + 1];
           )}
         </section>
         )}
+        <p class="belge-bag"><a href={`/${dil}/calisma-belgesi/`}>{belgeMetinleri(dil).baglanti}</a></p>
       </div>
 
       <div class="yan-panel yan-alt">

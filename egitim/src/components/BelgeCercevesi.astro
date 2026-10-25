@@ -1,0 +1,59 @@
+---
+/**
+ * Çalışma Belgesi çerçevesi (25 Ekim 2026): saf vektör, yalnız geometri (girih ailesinden sekiz köşeli yıldız zinciri; canlı figür
+ * ve kalp yok). Kurs yeşili çizgiler ve köşelerde sekiz köşeli yıldız madalyonlar; altın yalnız ince süs çizgisinde ve yıldız
+ * merkezlerinde. Piksel yok: dört kenar şeridi `<pattern>` dolgulu SVG, köşeler `<symbol>`. Ekranda kâğıdın çevresine, yazdırmada
+ * her sayfanın baskı alanına oturur (belge.css: `position: fixed` yazdırmada her sayfada yinelenir). Süstür: ekran okuyucudan gizli.
+ * Renkler belgenin kâğıt jetonlarından gelir (koyu temada da kâğıt beyazdır); desen dolgusu desen içinde çözüldüğünden renk sabittir.
+ */
+const YESIL = '#134420';
+const ALTIN = '#B8902F';
+const KAGIT = '#FFFFFF';
+
+/** Sekiz köşeli yıldız ({8/2}: iki üst üste kare), merkez (cx, cy), dış yarıçap R; iç köşeler R·cos45°/cos22,5° uzaklıkta. */
+function yildiz(cx: number, cy: number, R: number): string {
+  const r = R * Math.SQRT1_2 / Math.cos(Math.PI / 8);
+  const nokta = Array.from({ length: 16 }, (_, i) => {
+    const a = (Math.PI / 8) * i - Math.PI / 2;
+    const y = i % 2 === 0 ? R : r;
+    return `${(cx + y * Math.cos(a)).toFixed(2)},${(cy + y * Math.sin(a)).toFixed(2)}`;
+  });
+  return nokta.join(' ');
+}
+// Şerit karosu: 20 × 20; yıldızlar uç uca değer (dış yarıçap = yarı kenar), merkezde altın nokta.
+const KARO = yildiz(10, 10, 9.4);
+// Köşe madalyonu: 100 × 100 kare hücre, içinde büyük yıldız, ince iç yıldız ve altın merkez.
+const BUYUK = yildiz(50, 50, 41);
+const ICERDE = yildiz(50, 50, 27);
+// Köşe madalyonu satır içi çizilir (`<use>` ile başvuru, Chromium'un yinelenen fixed öğesinde ikinci sayfadan sonra kayboluyordu).
+const KOSE = `<rect x="1.2" y="1.2" width="97.6" height="97.6" fill="${KAGIT}" stroke="${YESIL}" stroke-width="2.4"/>`
+  + `<rect x="7" y="7" width="86" height="86" fill="none" stroke="${ALTIN}" stroke-width="1.1"/>`
+  + `<polygon points="${BUYUK}" fill="${YESIL}"/>`
+  + `<polygon points="${ICERDE}" fill="none" stroke="${ALTIN}" stroke-width="2" stroke-linejoin="miter"/>`
+  + `<circle cx="50" cy="50" r="6.5" fill="${ALTIN}"/><circle cx="50" cy="50" r="2.6" fill="${YESIL}"/>`;
+---
+<svg class="belge-tanim" width="0" height="0" aria-hidden="true" focusable="false">
+  <defs>
+    <pattern id="belge-serit" width="4.6mm" height="4.6mm" viewBox="0 0 20 20" patternUnits="userSpaceOnUse">
+      <polygon points={KARO} fill="none" stroke={YESIL} stroke-width="1.5" stroke-linejoin="miter" />
+      <circle cx="10" cy="10" r="1.7" fill={ALTIN} />
+    </pattern>
+    <symbol id="belge-yildiz" viewBox="0 0 100 100">
+      <polygon points={BUYUK} fill={YESIL} />
+      <circle cx="50" cy="50" r="9" fill={ALTIN} />
+    </symbol>
+  </defs>
+</svg>
+<div class="belge-cerceve" aria-hidden="true">
+  <svg class="bc-serit bc-ust" focusable="false"><rect width="100%" height="100%" fill="url(#belge-serit)" /></svg>
+  <svg class="bc-serit bc-alt" focusable="false"><rect width="100%" height="100%" fill="url(#belge-serit)" /></svg>
+  <svg class="bc-serit bc-sol" focusable="false"><rect width="100%" height="100%" fill="url(#belge-serit)" /></svg>
+  <svg class="bc-serit bc-sag" focusable="false"><rect width="100%" height="100%" fill="url(#belge-serit)" /></svg>
+  <div class="bc-dis"></div>
+  <div class="bc-ara"></div>
+  <div class="bc-ic"></div>
+  <svg class="bc-kose bc-k1" focusable="false" viewBox="0 0 100 100"><Fragment set:html={KOSE} /></svg>
+  <svg class="bc-kose bc-k2" focusable="false" viewBox="0 0 100 100"><Fragment set:html={KOSE} /></svg>
+  <svg class="bc-kose bc-k3" focusable="false" viewBox="0 0 100 100"><Fragment set:html={KOSE} /></svg>
+  <svg class="bc-kose bc-k4" focusable="false" viewBox="0 0 100 100"><Fragment set:html={KOSE} /></svg>
+</div>

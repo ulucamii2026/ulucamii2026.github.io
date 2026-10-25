@@ -208,8 +208,8 @@ test.describe('Giriş sayfası: «Bugün tekrar» bandı', () => {
     const band = page.locator('[data-tekrar]');
     await expect(band).toBeVisible();
     await expect(band.locator('[data-tekrar-ozet]')).toHaveText('Bugün tekrar edilecek: 1 madde');
-    await expect(band.locator('a')).toHaveCount(1);
-    await expect(band.locator('a')).toHaveAttribute('href', '/tr/calis/s-ihlas/');
+    await expect(band.locator('[data-tekrar-liste] a')).toHaveCount(1);
+    await expect(band.locator('[data-tekrar-liste] a')).toHaveAttribute('href', '/tr/calis/s-ihlas/');
     await expect(band.locator('[data-tekrar-hafta]')).toHaveText('Bu hafta 2 gün çalıştınız.');
     // Seri ya da puan yok.
     await expect(band).not.toContainText(/seri|puan|rekor|streak/i);
@@ -230,7 +230,7 @@ test.describe('Giriş sayfası: «Bugün tekrar» bandı', () => {
       await page.goto(`/${dil}/`);
       const band = page.locator('[data-tekrar]');
       await expect(band).toBeVisible();
-      await expect(band.locator('a')).toHaveAttribute('href', `/${dil}/calis/s-ihlas/`);
+      await expect(band.locator('[data-tekrar-liste] a')).toHaveAttribute('href', `/${dil}/calis/s-ihlas/`);
       const sonuc = await new AxeBuilder({ page }).include('[data-tekrar]').withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
       expect(sonuc.violations.map((v) => ({ id: v.id, nodes: v.nodes.map((n) => n.target) }))).toEqual([]);
       expect(await page.evaluate(() => window.__csp)).toEqual([]);

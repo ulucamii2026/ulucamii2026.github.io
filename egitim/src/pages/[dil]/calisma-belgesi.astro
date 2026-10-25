@@ -1,0 +1,136 @@
+---
+/**
+ * Çalışma Belgesi (25 Ekim 2026): bu cihazdaki çalışma kaydından, hoca dinlemeden hazırlanan yazdırılabilir A4 belge. Hesap yok, sunucu
+ * yok, ağ yok: kayıt yalnız tarayıcıdaki cihaz hafızasından (src/lib/ezber/cihaz.ts) okunur ve hiçbir şey yazılmaz; isteğe bağlı ad
+ * yalnız sayfa belleğinde durur. Ezber Sertifikası hocanın dinlediği ezberlere verilir; bu belge onun yerini tutmaz. Yol beş dilde
+ * aynıdır (`calisma-belgesi`, uygulamadaki öteki yollar gibi çevrilmez). Liste ve kâğıt scripts/calisma-belgesi.ts ile dolar;
+ * adlar ve metinler `data-veri` ile gelir (CSP: satır içi betik yok).
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import { dilListesi, yerelKodu } from '@ortak/i18n/utils';
+import { KATALOG, calismaSayfasiVar } from '@ortak/lib/ezber/katalog';
+import BelgeCercevesi from '../../components/BelgeCercevesi.astro';
+import Ikon from '../../components/Ikon.astro';
+import { belgeMetinleri } from '../../i18n/belge';
+import { metin } from '../../i18n/metinler';
+import Taban from '../../layouts/Taban.astro';
+import { kursTamAdi } from '../../lib/kimlik';
+import '../../styles/belge.css';
+
+export function getStaticPaths() {
+  return dilListesi.map((dil) => ({ params: { dil } }));
+}
+
+const dil = Astro.params.dil as Dil;
+const b = belgeMetinleri(dil);
+const m = metin(dil);
+const ogeler = KATALOG.ogeler.filter(calismaSayfasiVar);
+const veri = {
+  dil,
+  yerel: yerelKodu[dil],
+  sira: ogeler.map((o) => o.id),
+  adlar: Object.fromEntries(ogeler.map((o) => [o.id, o.ad[dil]])),
+  m: b,
+};
+---
+<Taban dil={dil} baslik={b.baslik} aciklama={b.aciklama} yol="calisma-belgesi">
+  <div class="belge-sayfa">
+    <section class="belge-giris" aria-labelledby="belge-baslik">
+      <div class="icerik">
+        <div class="belge-giris-metin">
+          <h1 id="belge-baslik">{b.baslik}</h1>
+          <p class="belge-lead">{b.lead}</p>
+          <p class="belge-fark">{b.fark}</p>
+          <p class="belge-gizlilik">{b.gizlilik}</p>
+          <noscript><p class="belge-js">{b.jsGerek}</p></noscript>
+        </div>
+      </div>
+    </section>
+
+    <section class="belge-alan" data-belge data-veri={JSON.stringify(veri)} aria-label={b.baslik} hidden>
+      <div class="icerik">
+        <div class="belge-bos" data-belge-bos hidden>
+          <h2>{b.bosBaslik}</h2>
+          <p>{b.bosMetin}</p>
+          <div class="eylem">
+            <a class="dugme birincil" href={`/${dil}/calis/s-fatiha/`}>{m.baslaDugme} <Ikon ad="ok" /></a>
+            <a class="dugme ikincil" href={`/${dil}/#seritler`}>{m.seritleriGez}</a>
+          </div>
+        </div>
+
+        <div class="belge-dolu" data-belge-dolu hidden>
+          <div class="belge-panel">
+            <div class="belge-ad">
+              <label for="belge-ad">{b.adEtiket}</label>
+              <input id="belge-ad" type="text" name="ad" maxlength="60" autocomplete="name" data-belge-ad />
+              <p class="belge-ipucu">{b.adIpucu}</p>
+            </div>
+            <fieldset class="belge-secim">
+              <legend>{b.secimBaslik}</legend>
+              <p class="belge-ipucu">{b.secimYonerge}</p>
+              <div class="araclar">
+                <button type="button" data-belge-hepsi>{b.hepsiniSec}</button>
+                <button type="button" data-belge-hicbiri>{b.hicbiriniSecme}</button>
+              </div>
+              <ul class="belge-liste" data-belge-liste></ul>
+              <p class="belge-sayac" data-belge-sayac role="status"></p>
+            </fieldset>
+            <div class="belge-eylem">
+              <button type="button" class="dugme birincil" data-belge-yazdir><Ikon ad="yazici" /> {b.yazdir}</button>
+              <p class="belge-seciliyok" data-belge-seciliyok role="status" hidden>{b.seciliYok}</p>
+              <p>{b.yazdirNot}</p>
+            </div>
+          </div>
+
+          <div class="belge-onizleme">
+            <h2>{b.onizleme}</h2>
+            <article class="belge" data-belge-kagit data-yogunluk="az" aria-label={b.baslik}>
+              <BelgeCercevesi />
+              <div class="belge-sarmal">
+                <div class="belge-ic">
+                  <div class="belge-ic-kutu">
+                    <img class="belge-logo" src="/logo/kuran-kursu-yatay.svg" alt={kursTamAdi(dil)} width="1640" height="400" />
+                    <div class="belge-ayrac" aria-hidden="true"><svg viewBox="0 0 100 100" focusable="false"><use href="#belge-yildiz" width="100" height="100" /></svg></div>
+                    <p class="belge-baslik">{b.baslik}</p>
+                    <p class="belge-alt">{b.altBaslik}</p>
+                    <div class="belge-adsatir">
+                      <span class="etiket">{b.adSatiri}</span>
+                      <span class="deger" data-belge-ad-yaz></span>
+                    </div>
+                    <p class="belge-ifade">{b.ifade}</p>
+                    <table class="belge-tablo">
+                      <caption>{b.tabloAdi}</caption>
+                      <thead>
+                        <tr class="bosluk" aria-hidden="true"><td colspan="4"></td></tr>
+                        <tr>
+                          <th scope="col" class="no">{b.sutunNo}</th>
+                          <th scope="col">{b.sutunEzber}</th>
+                          <th scope="col">{b.sutunSon}</th>
+                          <th scope="col">{b.sutunBasamak}</th>
+                        </tr>
+                      </thead>
+                      <tbody data-belge-satirlar></tbody>
+                      <tfoot><tr class="bosluk" aria-hidden="true"><td colspan="4"></td></tr></tfoot>
+                    </table>
+                    <p class="belge-ozet" data-belge-ozet></p>
+                  </div>
+                </div>
+                <div class="belge-alt-satir">
+                  <div>
+                    <span data-belge-tarih></span>
+                    <span class="kurum">{kursTamAdi(dil)} · egitim.ulucamii.be</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</Taban>
+
+<script>
+  import '../../scripts/dil';
+  import '../../scripts/calisma-belgesi';
+</script>

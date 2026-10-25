@@ -12,3 +12,4 @@
 .tekrar-liste a:hover { background: var(--yesil-soluk); border-color: var(--yesil-bag); }
 .tekrar-hafta { color: var(--kontur-2); font-weight: 600; }
 .tekrar-not { color: var(--kontur-2); font-size: 0.92rem; max-width: 42em; }
+.tekrar-belge { font-weight: 650; }

@@ -1,0 +1,168 @@
+/* Çalışma Belgesi (25 Ekim 2026). Ekranda: açıklama, ad alanı, ezber seçimi ve A4 kâğıdın önizlemesi. Yazdırmada yalnız kâğıt kalır.
+   Kâğıt (`.belge`) bir A4 sayfanın birebir küçültülmüşüdür: bütün ölçüler `em`, 1 em = 4 mm. Ekranda `font-size` kâğıdın genişliğinden
+   (kapsayıcı birimi `cqw`) türetilir, böylece önizleme 320 px'te de 1440 px'te de aynı sayfadır; yazdırmada 1 em = 4 mm sabittir.
+   Koyu temada bile kâğıt beyazdır (jetonlar `.belge` içinde sabit). Piksel yok: çerçeve BelgeCercevesi.astro'daki vektör SVG,
+   logo SVG. Kenar boşlukları: yazdırmada @page 24 / 26 mm (ev yazıcısı sınırı ≥ 15 mm), çerçeve kâğıt kenarından 14 mm içeride. */
+
+/* ——— Ekran: sayfa ——— */
+.belge-sayfa { padding-block: 2rem 4rem; }
+.belge-giris-metin { display: grid; gap: 0.9rem; max-width: 46rem; }
+.belge-giris-metin h1 { font-size: clamp(2rem, 1.4rem + 2.2vw, 3rem); letter-spacing: -0.02em; line-height: 1.08; }
+.belge-lead { font-size: 1.12rem; line-height: 1.5; }
+.belge-fark { font-weight: 650; border-left: 4px solid var(--altin); padding-left: 0.9rem; }
+.belge-gizlilik, .belge-js { color: var(--kontur-2); font-size: 0.95rem; max-width: 42em; }
+.belge-js { color: var(--kontur); font-weight: 650; }
+
+.belge-alan { padding-top: 2rem; }
+.belge-alan[hidden] { display: none; }
+.belge-bos { display: grid; gap: 0.8rem; max-width: 40rem; padding: 1.5rem; border: 2px solid var(--derz); border-radius: var(--r); background: var(--karo); }
+.belge-bos h2 { font-size: 1.35rem; }
+.belge-bos p { color: var(--kontur-2); }
+.belge-bos .eylem { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 0.4rem; }
+
+.belge-dolu { display: grid; gap: 2rem; }
+@media (min-width: 64rem) { .belge-dolu { grid-template-columns: minmax(0, 26rem) minmax(0, 1fr); align-items: start; gap: 3rem; } }
+.belge-panel { display: grid; gap: 1.4rem; align-content: start; }
+.belge-ad { display: grid; gap: 0.35rem; }
+.belge-ad label { font-weight: 700; }
+.belge-ad input { font: inherit; min-height: 3rem; padding: 0.5rem 0.8rem; border: 2px solid var(--kontur-2); border-radius: var(--r); background: var(--karo); color: var(--kontur); width: 100%; }
+.belge-ad input:focus-visible { outline: 3px solid var(--kontur); outline-offset: 2px; }
+.belge-ipucu { color: var(--kontur-2); font-size: 0.92rem; }
+.belge-secim { margin: 0; padding: 0; border: 0; min-width: 0; display: grid; gap: 0.6rem; }
+.belge-secim legend { padding: 0; font-weight: 750; font-size: 1.15rem; }
+.belge-secim .araclar { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.belge-secim .araclar button { min-height: 2.75rem; padding: 0.3rem 0.9rem; border: 1px solid var(--kontur); border-radius: var(--r); background: var(--karo); font-weight: 650; cursor: pointer; }
+.belge-secim .araclar button:hover { background: var(--yesil-soluk); }
+.belge-liste { list-style: none; margin: 0; padding: 0; display: grid; border: 2px solid var(--derz); border-radius: var(--r); background: var(--karo); max-height: 24rem; overflow: auto; }
+.belge-liste li + li { border-top: 1px solid var(--derz); }
+.belge-liste label { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.1rem 0.8rem; align-items: center; min-height: 3rem; padding: 0.5rem 0.9rem; cursor: pointer; }
+.belge-liste label:hover { background: var(--yesil-soluk); }
+.belge-liste input { grid-row: span 2; width: 1.4rem; height: 1.4rem; margin: 0; accent-color: var(--yesil-bag); }
+.belge-liste .ad { font-weight: 650; overflow-wrap: anywhere; }
+.belge-liste .son { color: var(--kontur-2); font-size: 0.9rem; }
+.belge-sayac { color: var(--kontur-2); font-weight: 650; }
+.belge-eylem { display: grid; gap: 0.6rem; justify-items: start; }
+.belge-eylem .dugme[disabled] { opacity: 0.55; cursor: not-allowed; }
+.belge-eylem p { color: var(--kontur-2); font-size: 0.92rem; }
+.belge-seciliyok { color: var(--kontur); font-weight: 650; }
+
+.belge-onizleme { min-width: 0; container-type: inline-size; overflow: hidden; }
+.belge-onizleme > h2 { font-size: 1.15rem; margin-bottom: 0.8rem; }
+
+/* ——— Kâğıt ——— */
+.belge {
+  --b-murekkep: #0E2217; --b-ikincil: #3F5246; --b-yesil: #134420; --b-altin: #B8902F; --b-ince: #C4CEC7;
+  position: relative; box-sizing: border-box; margin-inline: auto;
+  width: 100%; max-width: 52.5em;       /* 210 mm */
+  font-size: min(4mm, calc(100cqw / 52.5));
+  min-height: 74.25em;                    /* 297 mm */
+  padding: 6.5em 6.5em 6.5em;
+  background: #fff; color: var(--b-murekkep);
+  border: 1px solid var(--derz-koyu);
+  font-family: var(--font); font-size-adjust: none; line-height: 1.4;
+  display: flex; flex-direction: column;
+}
+.belge > * { position: relative; }          /* çerçevenin üstünde */
+/* Sarmal: ekranda yalnız dikey akış; yazdırmada CSS tablosu (üst ve alt boşluk grupları her sayfada yinelenir, bkz. aşağıda). */
+.belge-sarmal, .belge-ic, .belge-ic-kutu { display: flex; flex-direction: column; }
+.belge-sarmal, .belge-ic { flex: 1; }
+.belge-tablo .bosluk { display: none; }
+.belge-tanim { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+/* Çerçeve */
+.belge-cerceve { position: absolute !important; inset: 3.5em; pointer-events: none; }
+.belge-cerceve .bc-dis { position: absolute; inset: 0; border: 1.4pt solid #134420; }
+.belge-cerceve .bc-ara { position: absolute; inset: 0.5em; border: 0.5pt solid #134420; }
+.belge-cerceve .bc-serit { position: absolute; overflow: hidden; }
+.belge-cerceve .bc-ust { top: 0.65em; left: 0; width: 100%; height: 4.6mm; }
+.belge-cerceve .bc-alt { bottom: 0.65em; left: 0; width: 100%; height: 4.6mm; }
+.belge-cerceve .bc-sol { left: 0.65em; top: 0; height: 100%; width: 4.6mm; }
+.belge-cerceve .bc-sag { right: 0.65em; top: 0; height: 100%; width: 4.6mm; }
+.belge-cerceve .bc-ic { position: absolute; inset: 1.95em; border: 0.6pt solid #B8902F; }
+.belge-cerceve .bc-kose { position: absolute; width: 4em; height: 4em; }
+.belge-cerceve .bc-k1 { top: 0; left: 0; }
+.belge-cerceve .bc-k2 { top: 0; right: 0; }
+.belge-cerceve .bc-k3 { bottom: 0; left: 0; }
+.belge-cerceve .bc-k4 { bottom: 0; right: 0; }
+
+.belge-logo { display: block; width: 19em; max-width: 100%; height: auto; margin: 0 auto; aspect-ratio: 1640 / 400; }
+.belge-ayrac { display: flex; align-items: center; gap: 0.8em; margin: 1.2em auto 0; width: 60%; color: var(--b-altin); }
+.belge-ayrac::before, .belge-ayrac::after { content: ""; flex: 1; border-top: 0.6pt solid var(--b-altin); }
+.belge-ayrac svg { width: 1.5em; height: 1.5em; flex: none; }
+.belge-baslik { margin: 0.9em 0 0; text-align: center; font-size: 2.7em; font-weight: 800; line-height: 1.04; letter-spacing: -0.02em; color: var(--b-yesil); text-wrap: balance; }
+.belge-alt { margin: 0.7em 0 0; text-align: center; font-size: 0.95em; font-weight: 650; letter-spacing: 0.05em; color: var(--b-ikincil); }
+
+.belge-adsatir { display: flex; align-items: baseline; gap: 0.9em; margin-top: 2.2em; }
+.belge-adsatir .etiket { flex: none; font-size: 0.82em; font-weight: 700; letter-spacing: 0.04em; color: var(--b-ikincil); }
+.belge-adsatir .deger { flex: 1; min-width: 0; min-height: 2.1em; padding: 0 0.3em 0.15em; border-bottom: 0.7pt solid var(--b-murekkep); font-size: 1.55em; font-weight: 650; line-height: 1.25; overflow-wrap: anywhere; }
+
+.belge-ifade { margin: 1.9em 0 0; text-align: center; font-size: 0.97em; line-height: 1.6; text-wrap: pretty; }
+
+.belge-tablo { width: 100%; margin-top: 1.8em; border-collapse: collapse; font-size: 0.98em; }
+.belge-tablo caption { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.belge-tablo th { padding: 0.45em 0.6em; text-align: left; font-size: 0.74em; font-weight: 750; letter-spacing: 0.04em; color: var(--b-ikincil); border-bottom: 1.2pt solid var(--b-yesil); vertical-align: bottom; }
+.belge-tablo td { padding: 0.5em 0.6em; border-bottom: 0.5pt solid var(--b-ince); vertical-align: middle; line-height: 1.25; }
+.belge-tablo .no { width: 2.6em; color: var(--b-ikincil); font-variant-numeric: tabular-nums; }
+.belge-tablo .ad { font-weight: 650; }
+.belge-tablo .son { white-space: nowrap; }
+.belge-tablo .basamak { width: 5.5em; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.belge-tablo td.bos { padding-block: 1.4em; text-align: center; color: var(--b-ikincil); }
+.belge[data-yogunluk="az"] .belge-tablo td { padding-block: 1.05em; font-size: 1.06em; }
+/* Orta ve çok satırda üst bölüm sıkılaşır: 12 satıra kadar belge tek sayfada kalır (Fransızca iki satırlık başlık ve uzun ifade dâhil). */
+.belge[data-yogunluk="orta"] .belge-tablo td { padding-block: 0.34em; }
+.belge[data-yogunluk="siki"] .belge-tablo td { padding-block: 0.2em; }
+.belge[data-yogunluk="cok"] .belge-tablo td { padding-block: 0.3em; }
+.belge[data-yogunluk="siki"] .belge-logo { width: 9.5em; }
+.belge[data-yogunluk="siki"] .belge-baslik { font-size: 2em; margin-top: 0.4em; }
+.belge[data-yogunluk="siki"] .belge-adsatir { margin-top: 0.9em; }
+.belge[data-yogunluk="siki"] .belge-ifade { margin-top: 0.6em; font-size: 0.86em; line-height: 1.4; }
+.belge[data-yogunluk="siki"] .belge-tablo { margin-top: 0.6em; font-size: 0.9em; }
+.belge[data-yogunluk="siki"] .belge-ayrac { margin-top: 0.5em; }
+.belge[data-yogunluk="siki"] .belge-adsatir { margin-top: 0.7em; }
+.belge:not([data-yogunluk="az"]) .belge-logo { width: 14em; }
+.belge:not([data-yogunluk="az"]) .belge-ayrac { margin-top: 0.8em; }
+.belge:not([data-yogunluk="az"]) .belge-baslik { font-size: 2.3em; margin-top: 0.6em; }
+.belge:not([data-yogunluk="az"]) .belge-alt { margin-top: 0.5em; }
+.belge:not([data-yogunluk="az"]) .belge-adsatir { margin-top: 1.3em; }
+.belge:not([data-yogunluk="az"]) .belge-ifade { margin-top: 1.1em; font-size: 0.92em; line-height: 1.5; }
+.belge:not([data-yogunluk="az"]) .belge-tablo { margin-top: 1.1em; font-size: 0.94em; }
+.belge:not([data-yogunluk="az"]) .belge-alt-satir { padding-top: 1.2em; }
+.belge-ozet { margin: 0.8em 0 0; text-align: right; font-size: 0.82em; color: var(--b-ikincil); }
+
+.belge-alt-satir { margin-top: auto; padding-top: 2.2em; text-align: center; }
+.belge-alt-satir > div { border-top: 0.5pt solid var(--b-ince); padding-top: 0.9em; display: grid; gap: 0.25em; font-size: 0.85em; color: var(--b-ikincil); }
+.belge-alt-satir .kurum { font-weight: 700; letter-spacing: 0.02em; color: var(--b-murekkep); }
+
+/* ——— Yazdırma ——— */
+@media print {
+  @page { size: A4 portrait; margin: 14mm; }
+  :root, :root[data-theme="dark"], :root:not([data-theme="light"]) { color-scheme: light; }
+  html { background: #fff; color: #000; font-size: 11.5pt; }
+  body { display: block; min-height: 0; background: #fff; }
+  main { display: block; }
+  .ust, .alt, .bordur, .belge-giris, .belge-panel, .belge-bos, .belge-onizleme > h2, .belge-js, noscript, a.gorunmez { display: none !important; }
+  .belge-sayfa, .belge-alan, .belge-dolu, .belge-onizleme { display: block; padding: 0; margin: 0; overflow: visible; container-type: normal; }
+  .belge-alan .icerik { width: 100%; margin: 0; }
+  .belge { display: block; font-size: 4mm; width: 100%; max-width: none; border: 0; margin: 0; }
+  /* Çerçeve her basılı sayfanın baskı alanına oturur (fixed öğe her sayfada yinelenir). Chromium sayfa kenar boşluğuna taşan kısmı
+     kırptığından çerçeve baskı alanının kendisidir (@page 14 mm). İçerik çerçeveden kopmasın diye: ilk sayfanın üstünde ve son
+     sayfanın altında `.belge` dolgusu, aradaki sayfalarda tablonun yinelenen başlık/altlık boşluk satırları (`.bosluk`). */
+  .belge { padding: 13mm 12mm; min-height: 0; }
+  .belge[data-yogunluk="cok"] { display: block; min-height: 0; }
+  .belge-cerceve { position: fixed !important; inset: 0; }
+  /* Alt satırı sayfanın dibine oturtmak için flex yerine CSS tablosu: Chromium taşan bir flex kutusunu bölemeyip bütün kâğıdı ikinci sayfaya
+     atıyordu (ilk sayfa boş kalıyordu); tablo satırı bölünebilir. Çok satırda (`cok`) düz akış. */
+  .belge:not([data-yogunluk="cok"]) .belge-sarmal { display: table; width: 100%; height: 242mm; }
+  .belge:not([data-yogunluk="cok"]) .belge-ic { display: table-row; height: 100%; }
+  .belge:not([data-yogunluk="cok"]) .belge-alt-satir { display: table-row; }
+  .belge[data-yogunluk="cok"] .belge-sarmal, .belge[data-yogunluk="cok"] .belge-ic { display: block; }
+  .belge-ic-kutu { display: block; }
+  .belge[data-yogunluk="cok"] .belge-tablo .bosluk { display: table-row; }
+  .belge-tablo .bosluk td { height: 11mm; padding: 0; border: 0; }
+  .belge-tablo tfoot { display: table-footer-group; }
+  .belge-ozet { break-before: avoid; }
+  .belge-tablo tr { break-inside: avoid; }
+  .belge-tablo thead { display: table-header-group; }
+  .belge-ozet, .belge-alt-satir { break-inside: avoid; }
+  .belge-baslik, .belge-adsatir, .belge-ifade { break-after: avoid; }
+}
