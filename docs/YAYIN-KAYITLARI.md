@@ -4,6 +4,29 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 25 Ekim 2026 (14) — Ezber Kilimi: Tekbir, Tesmî-Tahmîd, Selâm, Telbiye ve Teşrik tekbirine Diyanet insan sesi
+
+- Zaman: commit/push 09:34:23 (`9ca0ac62`), Pages 40177156561 başarılı (09:36:31), egitim Hosting yayını 09:42:08, canlı denetim
+  09:42:26, Europe/Brussels (CET). **Yayımlandı ve canlı doğrulandı.** Dayanak: Rıdvan'ın 25 Ekim «egitim.ulucamii.be platformu
+  geliştirmeye devam et… full otonom ilerle» talimatı. Sıra: önce ana site (sesler), sonra egitim.
+- Kapsam: beş sessiz dua maddesi sesli oldu (sesli madde 59 → 64). `public/media/ses/dualar/{tekbir,tesmi-tahmid,selam,telbiye,
+  tesrik-tekbiri}.mp3` (mono 44,1 kHz 64 kb/s, mevcut dua dosyalarıyla aynı kodlama). Kaynaklar:
+  - namaz.diyanet.gov.tr `assets/video/namaz/4_Aksam_Namazi_Kilinisi_E.mp4` (ses akışı 0:1, sha256 `5d2c8ed7…`): Tekbir 62,45–64,65 sn;
+    «Semiallâhü limen hamideh · Rabbenâ leke'l-hamd» (vavsız, madde metniyle aynı) 220,15–226,55 sn; sağ selam 426,0–429,8 sn.
+  - Diyanet Hac ve Umre eğitim sitesi `hacumreegitim.hac.gov.tr/…/arapca-dua-1311.mp3` (Telbiye, 2,8–17,7 sn) ve `tekbir-arapca-1307.mp3`
+    (sayfada «Hac Tekbir»; metin Teşrik tekbiriyle kelimesi kelimesine aynı, 3,0–15,8 sn). Resmî sunucu Belçika'dan bağlantıyı
+    kestiği için baytlar Internet Archive ham kopyasından (8 Mayıs 2025) alındı; kayıtta `kaynak` resmî adres + `arsivKopyasi` + `not`.
+  - Kaynak + sha256 + ozgunSha256 + kesim: `docs/dinleme-ses-kaynaklari.json`; ayrıntı `docs/EGITIM-FAZ2-DINLEME.md` yeni bölüm.
+- Doğrulama: her dosya tek başına Whisper large-v3 ile yazıya döküldü (yalnız hedef söz; komşu söz yok); uçlarda 150 ms sessizlik
+  ölçüldü (−52…−70 dB). Bulunamayan resmî kayıt: Âmentü, Yemek duası, Kadir gecesi duası, abdest/oruç niyeti. Tesbihat eklenmedi
+  (kayıt 33'lük tesbihleri birer kez söylüyor); akşam farzı niyeti genel niyet olmadığı için kullanılmadı.
+- Kalite: `test:ezber` 162/162, `test:dinleme` 8/8, kök `check` 0 hata, ana `build` 1952 sayfa, `egitim:build` 387 sayfa,
+  `test:egitim` 15/15 + 394 geçti / 0 hata. Canlı: beş mp3 `ulucamii.be`'de 200 ve yerel boyutla aynı; `egitim:canli` 41/41.
+  Sesli hâle gelen sayfalarda dua metni bölümü korunuyor (yerel ve canlı karşılaştırıldı).
+- Açık: kesitleri henüz insan kulağı dinlemedi (hoca dinleme onayı); Hac dosyalarının sha256'sı Türkiye IP'sinden resmî sunucuyla
+  karşılaştırılmalı.
+- Bu kayıt için belge commit'i içerik yayını değildir.
+
 ## 25 Ekim 2026 (13) — egitim: tarayıcı sınaması düzeltmeleri (basılı kart, Firefox madalyon, mikrofon izni)
 
 - Zaman: commit/push 08:01:51 (`26c9a007`) ve 08:13 (`57d76aae`), egitim Hosting yayını 08:23:09, canlı denetim 08:23:26,
