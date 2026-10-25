@@ -100,6 +100,8 @@ test('Kademeli gizle sekmesi sessiz sayfada açılır; A−/A+ Arapça boyutunu 
 });
 
 test('Erişilebilirlik: sessiz dua sayfaları açık ve koyu temada ihlalsiz, yatay taşma yok (beş dil)', async ({ page }) => {
+  // 5 dil × 2 madde × 2 tema axe taraması tek başına ~23 sn; yüklü makinede 30 sn sınırını aşıyordu (25 Eki 2026).
+  test.setTimeout(90_000);
   for (const dil of DILLER) {
     for (const id of ['d-tekbir', 'd-amentu']) {
       await page.goto(`/${dil}/calis/${id}/`);
