@@ -4,6 +4,23 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 25 Ekim 2026 (13) — egitim: tarayıcı sınaması düzeltmeleri (basılı kart, Firefox madalyon, mikrofon izni)
+
+- Zaman: commit/push 08:01:51 (`26c9a007`) ve 08:13 (`57d76aae`), egitim Hosting yayını 08:23:09, canlı denetim 08:23:26,
+  Europe/Brussels (CET). **Yayımlandı ve canlı doğrulandı.** Dayanak: Rıdvan'ın 25 Ekim «egitim.ulucamii.be platformu
+  geliştirmeye devam et… full otonom ilerle» talimatı. Ana siteye etki yok (yalnız `egitim/` ve testler).
+- Önce: Firefox 155 + WebKit 26.6 (iPhone 13 emülasyonu) ile tr/fr tam, nl/de örnek sınama — kritik/orta hata yok; üç küçük
+  bulgu. Düzeltilen: (1) basılı kartta künye satırı son sayfada yalnız kalıyordu (Nebe) → yazdırmada `.metin display:contents`,
+  son grup ve künye `break-after/before: avoid`; 76 maddenin sayfa sayısı değişmedi; (2) kart başlığı madalyonunun iç çerçevesi
+  `box-shadow: inset` olduğu için Firefox'ta basılmıyordu → `::before` kenarlığı; (3) «Kendi sesim»de izin penceresi beklenirken
+  «Mikrofon izni bekleniyor…» satırı (5 dil). WebKit'te paragraf satır kırılımı (`text-wrap: pretty` zaten var) bırakıldı.
+- İlk yayın denemesi (08:12) bir Playwright zaman aşımıyla dağıtımdan önce durdu (sessiz dua erişilebilirlik taraması, 5 dil ×
+  2 madde × 2 tema, yüklü makinede 30 sn'yi aştı) → bu teste 90 sn süre (`57d76aae`), ikinci deneme temiz.
+- Kalite: `egitim:build` 0 hata, `test:egitim` 15/15 birim + 394 geçti / 16 bilinçli atlama / 0 hata (yeni: kart sayfa sayısı
+  Fâtiha 1 · Ezan 2 · Nebe 5; mikrofon izni verildi/reddedildi). `egitim:canli` 41/41.
+- Açık: gerçek Safari'de mikrofon ve fiziksel yazıcıda kart denenmedi.
+- Bu kayıt için belge commit'i içerik yayını değildir.
+
 ## 25 Ekim 2026 (12) — Ezber Kilimi: Ezan için beş vakit seçimi (Diyanet kayıtları)
 
 - Zaman: commit/push 07:08:18, Pages 40168039816 başarılı (≈07:10:53), egitim Hosting yayını ≈07:16 (418 dosya), canlı
