@@ -2,7 +2,7 @@
 baslik: Gizlilik Politikası
 altBaslik: Bu sitede kişisel verilerin nasıl ele alındığına dair bilgilendirme.
 aciklama: Ulu Camii Marche-en-Famenne web sitesinde ve Kur’an kursu veli portalında kişisel verilerin nasıl işlendiğine dair GDPR uyumlu bilgilendirme.
-guncelleme: 2026-10-24
+guncelleme: 2026-10-25
 ---
 
 <p class="bilgi"><strong>Kısaca:</strong> Bu site çerez kullanmaz. Ziyaretler yalnızca çerezsiz ve anonim bir sayaçla toplu olarak sayılır; sizi kişi olarak tanımlayan hiçbir veri tutulmaz. Kişisel veriler yalnızca sizin başlattığınız işlemlerde (ör. Kur’an kursu kaydı, e-posta göndermeniz) işlenir.</p>
@@ -118,6 +118,7 @@ Kur’an kursunun ezber platformu hesap, çerez ve izleme kullanmaz. Çocuğun �
 
 - **Kendi sesini kaydetme (isteğe bağlı):** «Kendi sesim» oyununda mikrofon yalnız «Kaydı başlat» düğmesine bastığınızda ve tarayıcının izin penceresini onayladığınızda açılır. Kayıt yalnız o sayfanın belleğinde durur; bir sunucuya gönderilmez ve saklanmaz. Kaydı durdurduğunuzda mikrofon hemen kapatılır; kayıt, «Kaydı sil» düğmesiyle ya da sayfadan çıkınca silinir. Bir kayıt en çok 3 dakika sürer.
 - **Dinleme sesleri** ulucamii.be sunucusundan (Diyanet mushaf kaydı) çalınır; biz dinleyen kişi hakkında bilgi tutmayız. O sunucunun standart teknik günlükleri için yukarıdaki «Bu Siteyi Ziyaret Ettiğinizde» başlığına bakın.
+- **İnternetsiz çalışmak için kaydetme (isteğe bağlı):** Açtığınız sayfalar ve sitenin dosyaları, internetsiz açılabilsin diye **yalnızca bu tarayıcının önbelleğine (Cache API)** alınır. Bir madde sayfasında «İnternetsiz çalışmak için kaydet» düğmesine basarsanız o maddenin Diyanet ses kayıtları da aynı yerde saklanır; yalnızca dinlediğiniz sesler saklanmaz. Sesler, dinlerken olduğu gibi ulucamii.be sunucusundan indirilir. Bu kayıtlar kişisel veri içermez, bir sunucuya gönderilmez ve hangi maddeleri kaydettiğinizi bilmeyiz. Kayıtları «Çevrim dışı çalışma» sayfasından silebilir ya da tarayıcı verilerini temizleyebilirsiniz; tarayıcı yer daraldığında bunları kendiliğinden de silebilir.
 - Barındırma sağlayıcısının (Google Firebase Hosting) standart teknik sunucu günlükleri bizim kontrolümüz dışındadır.
 
 ## Haklarınız

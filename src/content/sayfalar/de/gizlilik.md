@@ -2,7 +2,7 @@
 baslik: Datenschutzerklärung
 altBaslik: Informationen darüber, wie personenbezogene Daten auf dieser Website verarbeitet werden.
 aciklama: DSGVO-konforme Informationen dazu, wie personenbezogene Daten auf der Website der Ulu Camii Marche-en-Famenne und im Elternportal der Koranschule verarbeitet werden.
-guncelleme: 2026-10-24
+guncelleme: 2026-10-25
 ---
 
 *Im Zweifel gelten die türkische und die französische Fassung.*
@@ -120,6 +120,7 @@ Die Auswendiglern-Plattform der Koranschule verwendet weder Konto noch Cookies o
 
 - **Die eigene Stimme aufnehmen (freiwillig):** Im Spiel „Meine Stimme“ wird das Mikrofon nur eingeschaltet, wenn Sie „Aufnahme starten“ drücken und die Berechtigungsabfrage des Browsers bestätigen. Die Aufnahme bleibt nur im Speicher dieser Seite; sie wird weder an einen Server gesendet noch gespeichert. Das Mikrofon wird sofort ausgeschaltet, sobald Sie die Aufnahme beenden; die Aufnahme wird mit „Aufnahme löschen“ oder beim Verlassen der Seite gelöscht. Eine Aufnahme dauert höchstens 3 Minuten.
 - **Die Hörtöne** werden vom Server von ulucamii.be (Aufnahme des Mushafs der Diyanet) abgespielt; wir speichern keine Angaben über die zuhörende Person. Zu den technischen Standardprotokollen dieses Servers siehe oben den Abschnitt „Wenn Sie diese Website besuchen“.
+- **Zum Offline-Üben speichern (freiwillig):** Die Seiten, die Sie öffnen, und die Dateien der Website werden **ausschließlich im Cache dieses Browsers (Cache API)** abgelegt, damit sie ohne Internet geöffnet werden können. Wenn Sie auf einer Textseite „Zum Offline-Üben speichern“ drücken, bleiben auch die Tonaufnahmen der Diyanet dieses Textes dort erhalten; Töne, die Sie nur anhören, werden nicht gespeichert. Die Aufnahmen werden wie beim Anhören vom Server von ulucamii.be heruntergeladen. Diese gespeicherten Kopien enthalten keine personenbezogenen Daten, werden an keinen Server gesendet, und wir wissen nicht, welche Texte Sie gespeichert haben. Sie können sie auf der Seite „Offline üben“ löschen oder indem Sie die Browserdaten löschen; der Browser kann sie auch von selbst löschen, wenn der Speicher knapp wird.
 - Die technischen Standard-Serverprotokolle des Hosting-Anbieters (Google Firebase Hosting) liegen außerhalb unserer Kontrolle.
 
 ## Ihre Rechte

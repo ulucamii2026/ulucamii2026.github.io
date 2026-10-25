@@ -2,7 +2,7 @@
 baslik: Privacybeleid
 altBaslik: Informatie over de manier waarop persoonsgegevens op deze website worden verwerkt.
 aciklama: AVG-conforme informatie over de verwerking van persoonsgegevens op de website van Ulu Camii Marche-en-Famenne en in het ouderportaal van de koranschool.
-guncelleme: 2026-10-24
+guncelleme: 2026-10-25
 ---
 
 *Bij twijfel gelden de Turkse en de Franse versie.*
@@ -120,6 +120,7 @@ Het memoriseerplatform van de koranschool gebruikt geen account, cookies of trac
 
 - **Uw eigen stem opnemen (optioneel):** in het spel “Mijn stem” gaat de microfoon pas aan als u op “Opname starten” drukt en de toestemmingsvraag van de browser accepteert. De opname blijft alleen in het geheugen van die pagina; ze wordt niet naar een server verzonden en niet bewaard. De microfoon gaat meteen uit zodra u de opname stopt; de opname wordt gewist met “Opname verwijderen” of wanneer u de pagina verlaat. Een opname duurt maximaal 3 minuten.
 - **De luistergeluiden** worden afgespeeld vanaf de server van ulucamii.be (opname van de mushaf van de Diyanet); wij bewaren geen informatie over de luisteraar. Voor de standaard technische logboeken van die server, zie hierboven het deel “Wanneer u deze website bezoekt”.
+- **Opslaan om offline te oefenen (optioneel):** de pagina’s die u opent en de bestanden van de site worden **alleen in de cache van deze browser (Cache API)** geplaatst, zodat ze zonder internet kunnen openen. Als u op een tekstpagina op “Opslaan om offline te oefenen” drukt, worden ook de geluidsopnamen van de Diyanet van die tekst daar bewaard; geluiden die u alleen beluistert, worden niet bewaard. De geluiden worden van de server van ulucamii.be gedownload, net als bij het luisteren. Deze opgeslagen kopieën bevatten geen persoonsgegevens, worden niet naar een server verzonden en wij weten niet welke teksten u hebt opgeslagen. U kunt ze verwijderen op de pagina “Offline oefenen” of door de browsergegevens te wissen; de browser kan ze ook zelf verwijderen als de opslagruimte krap wordt.
 - De standaard technische serverlogboeken van de hostingprovider (Google Firebase Hosting) vallen buiten onze controle.
 
 ## Uw rechten

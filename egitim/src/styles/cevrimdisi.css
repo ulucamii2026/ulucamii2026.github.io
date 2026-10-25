@@ -1,0 +1,71 @@
+/* Çevrim dışı çalışma (25 Ekim 2026): madde sayfasındaki «İnternetsiz çalışmak için kaydet» kutusu ve `/<dil>/cevrimdisi/` sayfası.
+   Çini Panosu dili: beyaz karo, derz çizgisi, gölge yok; yeşil yalnız birincil eylemde ve «kayıtlı» işaretinde (firuze/altın basamak sırrıdır, kullanılmaz).
+   Durum yalnız renkle söylenmez: işaret simgesi + yazı. Temalar jetonlardan (açık/koyu). 320 px'te yatay taşma yok. */
+
+/* ——— Madde sayfası kutusu ——— */
+.cd-kutu { display: grid; gap: 0.8rem; padding: 1.25rem; border: 1px solid var(--derz); border-radius: var(--r); background: var(--karo); min-width: 0; }
+.cd-kutu[hidden] { display: none; }
+.cd-kutu h2 { font-size: 1.35rem; }
+.cd-aciklama { color: var(--kontur-2); font-size: 0.95rem; line-height: 1.5; }
+.cd-cevrimdisi { padding: 0.6rem 0.8rem; border: 1px dashed var(--derz-koyu); border-radius: var(--r); font-size: 0.93rem; font-weight: 650; line-height: 1.45; }
+.cd-eylem { display: grid; gap: 0.6rem; }
+.cd-eylem .dugme { width: 100%; text-align: center; white-space: normal; line-height: 1.25; }
+.cd-eylem .dugme:disabled { opacity: 0.55; cursor: not-allowed; }
+.cd-kayitli { display: flex; align-items: center; gap: 0.5rem; font-weight: 750; color: var(--yesil-bag); line-height: 1.35; }
+.cd-kayitli .ikon { width: 1.4rem; height: 1.4rem; stroke-width: 2.6; }
+.cd-ilerleme-alan { display: grid; gap: 0.35rem; }
+.cd-ilerleme { display: block; width: 100%; height: 0.5rem; margin: 0; border: 0; border-radius: var(--r); overflow: hidden; background: var(--derz);
+  accent-color: var(--yesil-bag); -webkit-appearance: none; appearance: none; }
+.cd-ilerleme::-webkit-progress-bar { background: var(--derz); }
+.cd-ilerleme::-webkit-progress-value { background: var(--yesil-bag); }
+.cd-ilerleme::-moz-progress-bar { background: var(--yesil-bag); }
+@media (forced-colors: active) { .cd-ilerleme { forced-color-adjust: none; accent-color: Highlight; } }
+.cd-sayac { color: var(--kontur-2); font-size: 0.9rem; font-variant-numeric: tabular-nums; }
+.cd-durum { min-height: 1.5em; font-size: 0.95rem; font-weight: 650; line-height: 1.45; }
+.cd-durum:empty { min-height: 0; }
+.cd-bag { font-weight: 650; font-size: 0.95rem; }
+.cd-bag a { display: inline-flex; align-items: center; gap: 0.4rem; min-height: 2.5rem; }
+.cd-bag .ikon { width: 1.15rem; height: 1.15rem; }
+.cd-gizlilik { color: var(--kontur-2); font-size: 0.88rem; line-height: 1.5; }
+
+/* ——— /<dil>/cevrimdisi/ ——— */
+.cd-sayfa { padding-block: 2rem 4rem; }
+.cd-giris { display: grid; gap: 0.9rem; max-width: 46rem; }
+.cd-giris h1 { font-size: clamp(2rem, 1.4rem + 2.2vw, 3rem); letter-spacing: -0.02em; line-height: 1.08; }
+.cd-lead { font-size: 1.12rem; line-height: 1.5; }
+.cd-bag-durum { display: inline-flex; align-items: center; justify-self: start; min-height: 2.25rem; padding: 0.2rem 0.8rem; border: 1px solid var(--derz-koyu);
+  border-radius: var(--r); background: var(--karo); font-weight: 650; font-size: 0.95rem; }
+.cd-istenen { font-weight: 650; border-left: 4px solid var(--kontur-2); padding-left: 0.9rem; }
+.cd-js:empty { display: none; }
+.cd-js { font-weight: 650; }
+.cd-desteklenmiyor { padding: 0.8rem 1rem; border: 2px solid var(--derz-koyu); border-radius: var(--r); background: var(--karo); font-weight: 650; }
+
+.cd-bolum { display: grid; gap: 0.75rem; margin-top: 2rem; padding: 1.25rem; max-width: 46rem; border: 1px solid var(--derz); border-radius: var(--r); background: var(--karo); }
+.cd-bolum[hidden] { display: none; }
+.cd-bolum h2 { font-size: 1.3rem; }
+.cd-bolum h2:focus { outline: none; }
+.cd-bolum h2:focus-visible { outline: 3px solid var(--kontur); outline-offset: 3px; }
+.cd-baslik-satir { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.25rem 1rem; }
+.cd-ozet { color: var(--kontur-2); font-size: 0.93rem; font-weight: 650; font-variant-numeric: tabular-nums; }
+.cd-not, .cd-bos, .cd-bilgi p { color: var(--kontur-2); font-size: 0.95rem; line-height: 1.5; }
+.cd-kayitlar, .cd-acilanlar { list-style: none; margin: 0; padding: 0; display: grid; gap: 1px; background: var(--derz); border: 1px solid var(--derz); border-radius: var(--r); overflow: hidden; }
+.cd-kayitlar[hidden], .cd-acilanlar[hidden] { display: none; }
+.cd-satir { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem 0.9rem; padding: 0.35rem 0.8rem; min-height: 3.25rem; background: var(--karo); }
+.cd-satir > a { flex: 1 1 11rem; min-width: 0; padding-block: 0.35rem; font-weight: 700; overflow-wrap: anywhere; }
+.cd-dil { padding: 0.05rem 0.45rem; border: 1px solid var(--derz-koyu); border-radius: var(--r); color: var(--kontur-2); font-size: 0.78rem; font-weight: 750; letter-spacing: 0.04em; }
+.cd-boyut { color: var(--kontur-2); font-size: 0.9rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.cd-satir .secim { display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0.3rem 0.9rem; border: 1px solid var(--derz-koyu); border-radius: var(--r);
+  background: var(--karo); color: var(--kontur); font: inherit; font-weight: 650; font-size: 0.92rem; cursor: pointer; }
+.cd-satir .secim:hover:not(:disabled) { background: var(--yesil-soluk); }
+.cd-satir .secim:disabled { opacity: 0.55; cursor: default; }
+.cd-acilanlar li { padding: 0.2rem 0.8rem; background: var(--karo); }
+.cd-acilanlar a { display: inline-flex; align-items: center; min-height: 2.75rem; font-weight: 650; overflow-wrap: anywhere; }
+.cd-hepsi { display: grid; gap: 0.8rem; justify-items: start; margin-top: 1.25rem; max-width: 46rem; }
+.cd-onay { display: grid; gap: 0.7rem; padding: 1rem 1.1rem; border: 2px solid var(--kontur); border-radius: var(--r); background: var(--karo); }
+.cd-onay[hidden], .cd-hepsi [hidden] { display: none; }
+.cd-onay p { font-weight: 700; }
+.cd-onay-dugmeler { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.cd-durum-satiri, .cd-sayfa > .icerik > .cd-durum { margin-top: 1rem; }
+.cd-don { margin-top: 2rem; font-weight: 650; }
+.cd-don a { display: inline-flex; align-items: center; gap: 0.4rem; min-height: 2.75rem; }
+.cd-don .ikon { width: 1.15rem; height: 1.15rem; }

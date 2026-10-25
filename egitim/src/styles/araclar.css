@@ -14,3 +14,8 @@
 .arac-ikon .ikon { width: 1.5rem; height: 1.5rem; }
 .arac-ad { font-weight: 750; font-size: 1.05rem; line-height: 1.25; }
 .arac-ac { color: var(--kontur-2); font-size: 0.93rem; line-height: 1.4; }
+/* İnternetsiz çalışma satırı (25 Ekim 2026): üç karonun altında, karo olmayan tek satır; bağlantı ve açıklama. */
+.arac-cevrimdisi { display: flex; flex-wrap: wrap; align-items: center; gap: 0.15rem 1rem; margin-top: 1rem; }
+.arac-cevrimdisi a { display: inline-flex; align-items: center; gap: 0.5rem; min-height: 2.75rem; font-weight: 700; }
+.arac-cevrimdisi .ikon { width: 1.3rem; height: 1.3rem; }
+.arac-cd-ac { flex: 1 1 18rem; color: var(--kontur-2); font-size: 0.93rem; line-height: 1.4; }

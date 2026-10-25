@@ -692,8 +692,7 @@ geçersizdir (kartı olmayan maddeler artık bilgi maddeleri ve yukarıdaki beş
 
 ## Ezan vakit seçimi (25 Ekim 2026)
 
-«Kalan sesler (dilim 2d)» listesindeki «Ezan: beş vaktin kaydı var, vakit seçimi eklenecek» işi yerelde tamamlandı. **Yayın bekliyor** (ana site Pages
-sonra egitim Hosting; yayın kaydı `docs/YAYIN-KAYITLARI.md`'ye yayından sonra yazılır).
+«Kalan sesler (dilim 2d)» listesindeki «Ezan: beş vaktin kaydı var, vakit seçimi eklenecek» işi tamamlandı ve **yayımlandı** (25 Ekim 2026, commit `74e6e692`; yayın kaydı `docs/YAYIN-KAYITLARI.md` «25 Ekim 2026 (12)»).
 
 **Ses dosyaları.** Diyanet Namaz Vakitleri sitesinin dört kaydı eklendi; `ezan.mp3` (sabah) yolu ve içeriği aynı kaldı. Hepsi **işlenmemiş** Diyanet
 dosyasıdır: `ezan.mp3`'ün sha256'sı Sabah_Ezani_Saba.mp3'ün o gün yeniden indirilmiş kopyasıyla bayt bayt aynı çıktı ve kayıtta `ozgunSha256`/`kesim` yoktu
@@ -756,8 +755,8 @@ gözden geçirmesi bekler.
 
 ## Diyanet insan sesi kesitleri: Tekbir, Tesmî-Tahmîd, Selâm, Telbiye, Teşrik tekbiri (25 Ekim 2026)
 
-Metinli ama sessiz yedi duadan beşine Diyanet'in insan sesi eklendi; «Henüz dinleme kaydı yok» sayfası bu beşinde çalışma çaları oldu. **Yayın bekliyor**
-(yayın kaydı `docs/YAYIN-KAYITLARI.md`'ye yayından sonra yazılır). Kesitler yapay ses değildir: `ses.yapay` yok, kayıtta `yapay` yok; hepsi Diyanet
+Metinli ama sessiz yedi duadan beşine Diyanet'in insan sesi eklendi; «Henüz dinleme kaydı yok» sayfası bu beşinde çalışma çaları oldu. **Yayımlandı**
+(25 Ekim 2026, commit `9ca0ac62`; yayın kaydı `docs/YAYIN-KAYITLARI.md` «25 Ekim 2026 (14)»). Kesitler yapay ses değildir: `ses.yapay` yok, kayıtta `yapay` yok; hepsi Diyanet
 kurumlarının yayımladığı kayıtlardan **yalnız zaman kesimiyle** alınmıştır (yeniden söyletme, hız ya da ton değişikliği, seviye işlemi yok).
 
 **Kaynaklar.**
@@ -792,8 +791,9 @@ Hac dosyaları Diyanet'in ayrı bir birimine (Hac ve Umre Hizmetleri Genel Müd�
 
 **Resmî sunucu ve arşiv uyarısı (Telbiye, Teşrik tekbiri).** `hacumreegitim.hac.gov.tr` Belçika'dan bağlantıyı sıfırlıyor (curl 35 `Connection was reset`; 25 Ekim 2026'da her dosya için üç deneme, hepsi başarısız).
 Aynı iki dosya **Internet Archive'in 8 Mayıs 2025 ham kopyasından** (`https://web.archive.org/web/20250508id_/<resmî adres>`) alındı; indirilen baytların özeti araştırma raporundakiyle birebir
-aynı çıktı (`e5982f87…7fcf` ve `e8301bcb…7882`). Kayıtta `kaynak` resmî adrestir, `arsivKopyasi` arşiv adresidir ve `not` bunu açıkça yazar. **Açık sınır:** resmî sunucudan özet karşılaştırması
-yapılmadı; Türkiye'den bağlanılabildiğinde `curl` ile iki dosyanın sha256'sı bu iki değerle karşılaştırılmalıdır. Arşiv kopyası Diyanet'in yayınının bir görüntüsüdür; kaydı kurumdan başka biri üretmemiştir.
+aynı çıktı (`e5982f87…7fcf` ve `e8301bcb…7882`). Kayıtta `kaynak` resmî adrestir, `arsivKopyasi` arşiv adresidir ve `not` bunu açıkça yazar. **Resmî sunucu karşılaştırması (25 Ekim 2026 öğleden sonra):**
+site yenilenmiş, eski `Resimler/…` adresleri ana sayfayı döndürüyor. Yeni «Dualar» sayfasının 17 Arapça sesi indirildi: Telbiye
+`uploads/prayers/prayer_arabic_6a719f996d755.mp3` özetle bayt bayt aynı (kayıtta `resmiGuncelAdres`); «Tekbir» yeni sayfada yok, aynı bayt bulunamadı — arşiv kopyası esas kalır (yayın «25 Ekim 2026 (17)»). Arşiv kopyası Diyanet'in yayınının bir görüntüsüdür; kaydı kurumdan başka biri üretmemiştir.
 
 **Metin eşleşmesi.** Her kesit tek başına yeniden yazıldı (yerel Whisper large-v3, CPU, Arapça, kelime zamanlı); sonuçlar maddelerin Arapça bölümleriyle harf harf aynıdır (harekeler hariç):
 - Tekbir: «الله أكبر».
@@ -888,7 +888,7 @@ Yeni dosyalar yaklaşık 0,3 MB; derlenmiş ana site sınırının (1 GB) yanın
 
 ## Sonraki sıra
 
-1. Bu bölümün yayın onayı, temiz çalışma ağacından yayın ve yayın kaydı; mevcut ana site ses adresleri değişmedi.
+1. ~~Bu bölümün yayın onayı, temiz çalışma ağacından yayın ve yayın kaydı.~~ Yapıldı: 25 Ekim 2026 yayınları (12)–(17).
 2. Diyanet'ten eksik sesler ve metinlerin kaynaklı hazırlanması. Arapça harf karşılaştırması, meâl kaynakları ve hoca
    okunuş kontrolü tamamlanmadan metinleri çalışma sayfalarına ekleme. (25 Ekim 2026: portalda olmayan on dua metni kitaplardan eklendi; kalan: Kadir gecesi duası, Tesbihat,
    üç niyet için kaynak kararı, on metnin hoca onayı, Diyanet ses kayıtları.)

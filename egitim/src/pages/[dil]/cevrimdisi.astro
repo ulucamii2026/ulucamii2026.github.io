@@ -1,0 +1,86 @@
+---
+/**
+ * Çevrim dışı çalışma (25 Ekim 2026): hem çevrim dışı YEDEK sayfa hem kayıt yönetimi. Service worker (src/sw/sw.ts), önbellekte olmayan bir sayfa
+ * internetsiz açılmak istendiğinde bu sayfayı (sayfanın dilinde) verir; sayfa o zaman «istediğiniz sayfa kayıtlı değil» der ve kayıtlı maddeleri
+ * listeler. İnternet varken de açılır: kayıtlı maddeler boyutlarıyla, tek tek «Sil» ve «Hepsini sil», açılmış öteki sayfalar, gizlilik ve sınırlar, ana ekrana
+ * ekleme ipucu. Liste cihazın Cache API'sinden okunur (scripts/cevrimdisi-liste.ts); sayfa hiçbir şey göndermez. Sunucu yalnız sabit iskeleti yazar,
+ * liste boş ve gizli gelir. noindex: cihaza özgü bir araç sayfasıdır (site haritasında yok). Yol beş dilde aynıdır (`cevrimdisi`).
+ * Kurulumda önyüklenir (src/lib/cevrimdisi-ortak.ts ONYUKLEME_SAYFALARI): bu sayfanın dosyaları SW sürümünün damgasına girer.
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import { dilListesi, yerelKodu } from '@ortak/i18n/utils';
+import Ikon from '../../components/Ikon.astro';
+import { cevrimdisiMetinleri } from '../../i18n/cevrimdisi';
+import { metin } from '../../i18n/metinler';
+import Taban from '../../layouts/Taban.astro';
+import '../../styles/cevrimdisi.css';
+
+export function getStaticPaths() {
+  return dilListesi.map((dil) => ({ params: { dil } }));
+}
+
+const dil = Astro.params.dil as Dil;
+const c = cevrimdisiMetinleri(dil);
+const m = metin(dil);
+const veri = { dil, yerel: yerelKodu[dil], m: { kayitSilindi: c.kayitSilindi, sil: c.sil, silEtiket: c.silEtiket, ozet: c.ozet, hepsiSilindi: c.hepsiSilindi, bagVar: c.bagVar, bagYok: c.bagYok } };
+---
+<Taban dil={dil} baslik={c.sayfaBaslik} aciklama={c.sayfaAciklama} yol="cevrimdisi" noindex>
+  <div class="cd-sayfa" data-cd-sayfa data-veri={JSON.stringify(veri)}>
+    <div class="icerik">
+      <section class="cd-giris" aria-labelledby="cd-sayfa-baslik">
+        <h1 id="cd-sayfa-baslik">{c.sayfaBaslik}</h1>
+        <p class="cd-lead">{c.lead}</p>
+        <p class="cd-bag-durum" role="status" aria-live="polite" data-cd-bag>{c.bagVar}</p>
+        <p class="cd-istenen" data-cd-istenen hidden>{c.istenenYok}</p>
+        <p class="cd-js"><noscript>{c.jsGerek}</noscript></p>
+        <p class="cd-desteklenmiyor" data-cd-desteklenmiyor hidden>{c.desteklenmiyor}</p>
+      </section>
+
+      <section class="cd-bolum" aria-labelledby="cd-kayitlar-baslik" data-cd-alan hidden>
+        <div class="cd-baslik-satir">
+          <h2 id="cd-kayitlar-baslik" tabindex="-1" data-cd-kayitlar-baslik>{c.kayitlarBaslik}</h2>
+          <p class="cd-ozet" data-cd-ozet></p>
+        </div>
+        <ul class="cd-kayitlar" data-cd-kayitlar hidden></ul>
+        <p class="cd-bos" data-cd-bos hidden>{c.bos}</p>
+      </section>
+
+      <section class="cd-bolum" aria-labelledby="cd-acilan-baslik" data-cd-acilan-alan hidden>
+        <h2 id="cd-acilan-baslik">{c.acilanBaslik}</h2>
+        <p class="cd-not">{c.acilanNot}</p>
+        <ul class="cd-acilanlar" data-cd-acilanlar hidden></ul>
+        <p class="cd-bos" data-cd-acilan-yok hidden>{c.acilanYok}</p>
+      </section>
+
+      <div class="cd-hepsi">
+        <button class="dugme ikincil" type="button" data-cd-hepsi hidden>{c.hepsiniSil}</button>
+        <div class="cd-onay" data-cd-onay role="group" aria-labelledby="cd-onay-soru" hidden>
+          <p id="cd-onay-soru">{c.hepsiOnay}</p>
+          <div class="cd-onay-dugmeler">
+            <button class="dugme birincil" type="button" data-cd-evet>{c.hepsiEvet}</button>
+            <button class="dugme ikincil" type="button" data-cd-vazgec>{c.hepsiVazgec}</button>
+          </div>
+        </div>
+      </div>
+
+      <p class="cd-durum" role="status" aria-live="polite" aria-atomic="true" data-cd-durum></p>
+
+      <section class="cd-bolum cd-bilgi" aria-labelledby="cd-gizlilik-baslik">
+        <h2 id="cd-gizlilik-baslik">{c.gizlilikBaslik}</h2>
+        <p>{c.gizlilikMetni}</p>
+      </section>
+
+      <section class="cd-bolum cd-bilgi" aria-labelledby="cd-ana-ekran-baslik">
+        <h2 id="cd-ana-ekran-baslik">{c.anaEkranBaslik}</h2>
+        <p>{c.anaEkran}</p>
+      </section>
+
+      <p class="cd-don"><a href={`/${dil}/`}><Ikon ad="geri" />{m.giriseDon}</a></p>
+    </div>
+  </div>
+</Taban>
+
+<script>
+  import '../../scripts/dil';
+  import '../../scripts/cevrimdisi-liste';
+</script>

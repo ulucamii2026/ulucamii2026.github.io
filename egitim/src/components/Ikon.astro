@@ -14,6 +14,8 @@ const IKONLAR = {
   kilim: '<rect x="4" y="3" width="16" height="18" rx="1"/><path d="M12 6.5l4 5.5-4 5.5-4-5.5z"/><path d="M4 8h2M4 16h2M18 8h2M18 16h2"/>',
   belge: '<path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M9.5 12h5M9.5 16h5"/>',
   kart: '<rect x="3" y="7" width="14" height="11" rx="1"/><path d="M7 7V4.5a.5.5 0 0 1 .5-.5H20a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1h-3"/><path d="M6.5 12.5h7"/>',
+  onay: '<path d="M5 12.5l4.5 4.5L19 7.5"/>',
+  indir: '<path d="M12 4v10M7.5 10l4.5 4.5 4.5-4.5M5 19h14"/>',
 } as const;
 export type IkonAdi = keyof typeof IKONLAR;
 interface Props { ad: IkonAdi; sinif?: string }

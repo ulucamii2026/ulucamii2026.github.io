@@ -21,6 +21,7 @@ import { cizim } from '../../../lib/cizim';
 import { MADDE_METINLERI } from '../../../lib/madde-metinleri';
 import { BILGI_METINLERI } from '../../../lib/bilgi-metinleri';
 import BilgiBolumu from '../../../components/BilgiBolumu.astro';
+import CevrimdisiKutu from '../../../components/CevrimdisiKutu.astro';
 import { metin, tarihYaz } from '../../../i18n/metinler';
 import { calismaMetinleri } from '../../../i18n/calisma';
 import { DURUSLAR, maddeMetinleri, namazda } from '../../../i18n/madde';
@@ -34,6 +35,7 @@ import { bilgiYazilari } from '../../../i18n/bilgi';
 import '../../../styles/calisma.css';
 import '../../../styles/madde.css';
 import '../../../styles/bilgi.css';
+import '../../../styles/cevrimdisi.css';
 import '../../../styles/kart.css'; // en sonda: yazdırma stili ekran kurallarını ezer
 
 export function getStaticPaths() {
@@ -204,6 +206,7 @@ const sonraki = serit[sira + 1];
             )}
           </section>
         )}
+        <CevrimdisiKutu dil={dil} oge={oge} />
       </div>
 
       <div class="metin-alani">
@@ -333,4 +336,5 @@ const sonraki = serit[sira + 1];
   import '../../../scripts/kip';
   import '../../../scripts/bilgi';
   import '../../../scripts/yazdir';
+  import '../../../scripts/cevrimdisi';
 </script>

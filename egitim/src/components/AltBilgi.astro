@@ -7,6 +7,7 @@
 import type { Dil } from '@ortak/i18n/ui';
 import { ceviri, yol } from '@ortak/i18n/utils';
 import { belgeMetinleri } from '../i18n/belge';
+import { cevrimdisiMetinleri } from '../i18n/cevrimdisi';
 import { kartlarMetinleri } from '../i18n/kartlar';
 import { kilimimMetinleri } from '../i18n/kilimim';
 import { metin } from '../i18n/metinler';
@@ -19,6 +20,7 @@ const m = metin(dil);
 const belge = belgeMetinleri(dil);
 const kilimim = kilimimMetinleri(dil);
 const kartlar = kartlarMetinleri(dil);
+const cevrimdisi = cevrimdisiMetinleri(dil);
 ---
 <footer class="alt">
   <Bordur desen="bordur-koyu" />
@@ -30,6 +32,7 @@ const kartlar = kartlarMetinleri(dil);
       <p class="don"><a href={`/${dil}/calisma-belgesi/`}>{belge.baglanti}</a></p>
       <p class="don"><a href={`/${dil}/kilimim/`}>{kilimim.baglanti}</a></p>
       <p class="don"><a href={`/${dil}/kartlar/`}>{kartlar.baglanti}</a></p>
+      <p class="don"><a href={`/${dil}/cevrimdisi/`}>{cevrimdisi.baglanti}</a></p>
     </div>
     <div>
       <h2>{m.iletisim}</h2>

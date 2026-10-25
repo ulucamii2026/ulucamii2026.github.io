@@ -2,10 +2,11 @@
 /**
  * «Kendi çalışmanız için» (25 Ekim 2026): giriş sayfasında, ana içeriğin (şeritler ve örnek kilim) altında küçük bir bağlantı sırası.
  * Üç araç da bu cihazdaki çalışma kaydından hazırlanır; hiçbiri veri göndermez: Kilimim, Çalışma Belgesi ve ezber kartları.
- * Büyük başlık ya da hero değil, üç sade karo (Çini Panosu'nun derz çizgili karo dili).
+ * Büyük başlık ya da hero değil, üç sade karo (Çini Panosu'nun derz çizgili karo dili). Altında tek satır: «İnternetsiz çalışma» (kayıtları yönetme sayfası).
  */
 import type { Dil } from '@ortak/i18n/ui';
 import { belgeMetinleri } from '../i18n/belge';
+import { cevrimdisiMetinleri } from '../i18n/cevrimdisi';
 import { kartlarMetinleri } from '../i18n/kartlar';
 import { kilimimMetinleri } from '../i18n/kilimim';
 import Ikon from './Ikon.astro';
@@ -13,6 +14,7 @@ import Ikon from './Ikon.astro';
 interface Props { dil: Dil }
 const { dil } = Astro.props;
 const k = kartlarMetinleri(dil);
+const cd = cevrimdisiMetinleri(dil);
 const araclar = [
   { yol: 'kilimim', ikon: 'kilim', ad: kilimimMetinleri(dil).baglanti, ac: k.kilimimAciklama },
   { yol: 'calisma-belgesi', ikon: 'belge', ad: belgeMetinleri(dil).baglanti, ac: k.belgeAciklama },
@@ -36,5 +38,11 @@ const araclar = [
         </li>
       ))}
     </ul>
+    <!-- İnternetsiz çalışma (25 Ekim 2026): üç araçtan biri değil (çalışma kaydından kâğıt üretmez; cihazdaki kayıtları yönetir), bu yüzden `a.arac` karosu
+         olarak sayılmaz; blokta ayrı, sade bir satırdır. -->
+    <p class="arac-cevrimdisi">
+      <a href={`/${dil}/cevrimdisi/`}><Ikon ad="indir" /><span class="arac-cd-ad">{cd.baglanti}</span></a>
+      <span class="arac-cd-ac">{cd.girisAciklama}</span>
+    </p>
   </div>
 </section>

@@ -2,7 +2,7 @@
 baslik: Politique de confidentialité
 altBaslik: Comment vos données personnelles sont traitées sur ce site.
 aciklama: Comment les données personnelles sont traitées sur le site d’Ulu Camii Marche-en-Famenne et dans le portail des parents de l’école coranique, conformément au RGPD.
-guncelleme: 2026-10-24
+guncelleme: 2026-10-25
 ---
 
 <p class="bilgi"><strong>En bref :</strong> ce site n’utilise aucun cookie. Les visites ne sont comptées que de manière agrégée, par un compteur anonyme et sans cookies ; aucune donnée permettant de vous identifier n’est conservée. Des données personnelles ne sont traitées que lorsque vous en prenez l’initiative (p. ex. inscription au cours de Coran, envoi d’un e-mail).</p>
@@ -118,6 +118,7 @@ La plateforme de mémorisation de l’école coranique n’utilise ni compte, ni
 
 - **Enregistrer sa propre voix (facultatif) :** dans le jeu « Ma voix », le microphone ne s’active que lorsque vous appuyez sur « Commencer l’enregistrement » et que vous acceptez la demande d’autorisation du navigateur. L’enregistrement reste uniquement dans la mémoire de la page ; il n’est ni envoyé à un serveur ni conservé. Le microphone est coupé dès que vous arrêtez l’enregistrement ; l’enregistrement disparaît avec « Supprimer l’enregistrement » ou quand vous quittez la page. Un enregistrement dure 3 minutes au maximum.
 - **Les sons d’écoute** sont lus depuis le serveur d’ulucamii.be (enregistrement du mushaf de la Diyanet) ; nous ne conservons aucune information sur la personne qui écoute. Pour les journaux techniques standard de ce serveur, voir la section « Lors de votre visite sur ce site » ci-dessus.
+- **Enregistrement pour travailler hors ligne (facultatif) :** les pages que vous ouvrez et les fichiers du site sont placés **uniquement dans le cache de ce navigateur (Cache API)** pour pouvoir s’ouvrir sans internet. Si vous appuyez sur « Enregistrer pour travailler hors ligne » sur la page d’un texte, les enregistrements sonores de la Diyanet de ce texte y sont conservés aussi ; les sons que vous écoutez simplement ne sont pas conservés. Les sons sont téléchargés depuis le serveur d’ulucamii.be, comme pour l’écoute. Ces enregistrements ne contiennent aucune donnée personnelle, ne sont envoyés à aucun serveur et nous ne savons pas quels textes vous avez enregistrés. Vous pouvez les supprimer depuis la page « Travail hors ligne » ou en effaçant les données du navigateur ; le navigateur peut aussi les supprimer de lui-même quand l’espace manque.
 - Les journaux techniques standard du fournisseur d’hébergement (Google Firebase Hosting) échappent à notre contrôle.
 
 ## Vos droits

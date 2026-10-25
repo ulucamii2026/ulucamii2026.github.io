@@ -5,6 +5,8 @@
  * derlenmiş sayfada bir tane bile kalırsa canlıda sayfa bozulur (yerelde değil). Önbellekte HTML her açılışta
  * doğrulanmalı: eski HTML yayından sonra silinmiş `_astro` dosyalarını isterse sayfa stilsiz kalır. Site haritası,
  * simgeler ve paylaşım kartları da yayının parçasıdır.
+ * Çevrim dışı çalışma (25 Ekim 2026): service worker (/sw.js) kökten sunulur ve her açılışta doğrulanır (eski SW'nin sonsuza dek kalmaması için);
+ * CSP yalnız üç yönerge kazandı (worker-src, manifest-src, connect-src'e ana site: SW sesi oradan alıp önbelleğe koyar) — başka gevşeme yok.
  * Önce `npm run egitim:build` (test:egitim bu sırayla çalışır; npm run dogrula:codex de).
  */
 import test from 'node:test';
@@ -37,12 +39,17 @@ test('Hosting: bütün yanıtlarda sıkı CSP ve güvenlik başlıkları', () =>
   const csp = deger(genel, 'Content-Security-Policy');
   const yonerge = Object.fromEntries(csp.split(';').map((y) => y.trim().split(/\s+/)).map(([ad, ...d]) => [ad, d]));
   assert.deepEqual(yonerge['default-src'], ["'none'"]);
-  for (const ad of ['script-src', 'style-src', 'img-src', 'font-src', 'connect-src']) assert.deepEqual(yonerge[ad], ["'self'"], ad);
+  for (const ad of ['script-src', 'style-src', 'img-src', 'font-src', 'worker-src', 'manifest-src']) assert.deepEqual(yonerge[ad], ["'self'"], ad);
   for (const ad of ['base-uri', 'form-action', 'frame-ancestors', 'object-src']) assert.deepEqual(yonerge[ad], ["'none'"], ad);
   // Sesler ana siteden gelir (Diyanet kayıtları; egitim/src/lib/kimlik.ts ANA_SITE). `blob:` yalnız «Kendini sına»da çocuğun
   // kendi kaydını sayfa belleğinden çalmak içindir (2d); ağdan bir şey getirmez, başka köken eklenmedi.
   const anaSite = oku('egitim/src/lib/kimlik.ts').match(/ANA_SITE = '([^']+)'/)[1];
   assert.deepEqual(yonerge['media-src'], [anaSite, 'blob:']);
+  // connect-src: sayfa ve service worker yalnız kendi kökeninden ve ana siteden (ses) okur; «İnternetsiz çalışmak için kaydet» sesi fetch ile
+  // indirip önbelleğe koyar (service worker aynı isteği kendisi de yapar). Başka köken, joker ve ws/wss yok.
+  assert.deepEqual(yonerge['connect-src'], ["'self'", anaSite]);
+  // Çevrim dışı çalışma: service worker yalnız aynı kökenden (/sw.js), uygulama bildirimi yalnız aynı kökenden. Üçü dışında CSP değişmedi.
+  assert.deepEqual(Object.keys(yonerge).sort(), ['base-uri', 'connect-src', 'default-src', 'font-src', 'form-action', 'frame-ancestors', 'img-src', 'manifest-src', 'media-src', 'object-src', 'script-src', 'style-src', 'worker-src']);
   assert.doesNotMatch(csp, /unsafe-|\*|data:|http:/);
   assert.equal(deger(genel, 'X-Content-Type-Options'), 'nosniff');
   assert.equal(deger(genel, 'Referrer-Policy'), 'strict-origin-when-cross-origin');
@@ -61,10 +68,13 @@ test('Hosting: önbellek — HTML her açılışta doğrulanır, özetli dosyala
   const kurallar = egitim.headers.filter((k) => deger(k, 'Cache-Control'));
   const beklenen = {
     '/': 'no-cache', '/tr/': 'no-cache', '/de/': 'no-cache', '/404.html': 'no-cache',
+    // Service worker her açılışta sunucudan doğrulanır: tarayıcı 24 saatten uzun önbelleğe almasa da HTTP önbelleği yeni sürümü geciktirmesin.
+    '/sw.js': 'no-cache',
     '/_astro/Taban.ABC123.css': 'public, max-age=31536000, immutable',
     '/_astro/index.astro_astro_type_script_index_0_lang.ABC.js': 'public, max-age=31536000, immutable',
     '/fonts/atkinson-next.woff2': 'public, max-age=604800',
     '/favicon.ico': undefined, '/og/ezber-kilimi-tr.png': undefined, '/robots.txt': undefined, // Hosting varsayılanı (1 saat)
+    '/manifest.webmanifest': undefined, '/icon-192.png': undefined, '/icon-maskable-512.png': undefined,
   };
   for (const [yol, sure] of Object.entries(beklenen)) {
     const eslesen = kurallar.filter((k) => uyar(k, yol));
@@ -79,7 +89,9 @@ const derlendi = existsSync(dist('index.html'));
 const sesliler = JSON.parse(oku('src/data/ezber/katalog.json')).ogeler.filter((o) => o.ses?.tam || o.ses?.parcalar?.length || o.kuran || o.bilgiMetni || o.metinli);
 // Giriş, Çalışma Belgesi, Kilimim ve ezber kartları (25 Ekim 2026) ve her çalışma sayfası.
 const dilYollari = DILLER.flatMap((d) => [`${d}/`, `${d}/calisma-belgesi/`, `${d}/kilimim/`, `${d}/kartlar/`, ...sesliler.map((o) => `${d}/calis/${o.id}/`)]);
-const SAYFALAR = ['index.html', '404.html', ...dilYollari.map((y) => `${y}index.html`)];
+// Çevrim dışı çalışma sayfaları (noindex, site haritasında yok) satır içi betik denetimine girer: service worker bunları önyükler.
+const cevrimdisiYollari = DILLER.map((d) => `${d}/cevrimdisi/`);
+const SAYFALAR = ['index.html', '404.html', ...[...dilYollari, ...cevrimdisiYollari].map((y) => `${y}index.html`)];
 
 test('Derlenmiş sayfalarda satır içi betik, stil ve olay özniteliği yok (CSP)', { skip: !derlendi && 'önce npm run egitim:build' }, () => {
   for (const sayfa of SAYFALAR) {

@@ -1,0 +1,48 @@
+---
+/**
+ * «İnternetsiz çalışmak için kaydet» kutusu (25 Ekim 2026): madde sayfasında çalar bölümünün altında. Kutu `hidden` gelir; scripts/cevrimdisi.ts
+ * service worker etkinleşince ve tarayıcı Cache API'yi sunuyorsa açar (engelli ya da eski tarayıcıda hiç görünmez, sayfa olduğu gibi çalışır;
+ * JavaScript kapalıysa da gizli kalır: kaydetme betiksiz yapılamaz). Metinler ve ses yolları `data-veri` ile gider (CSP: satır içi betik yok).
+ * Basılı karta girmez (yan panel kart.css’te yazdırmada gizlidir). Yeni ses ya da dinî metin yoktur; yalnız kataloğun var olan ses yolları.
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import { yerelKodu } from '@ortak/i18n/utils';
+import type { KatalogOgesi } from '@ortak/lib/ezber/katalog';
+import { sesYollari } from '@ortak/lib/ezber/cevrimdisi';
+import { cevrimdisiMetinleri } from '../i18n/cevrimdisi';
+import { ANA_SITE } from '../lib/kimlik';
+import Ikon from './Ikon.astro';
+
+interface Props { dil: Dil; oge: KatalogOgesi }
+const { dil, oge } = Astro.props;
+const c = cevrimdisiMetinleri(dil);
+const veri = {
+  id: oge.id,
+  dil,
+  ad: oge.ad[dil],
+  yol: `/${dil}/calis/${oge.id}/`,
+  sesler: sesYollari(oge).map((y) => `${ANA_SITE}${y}`),
+  yerel: yerelKodu[dil],
+  m: {
+    kaydet: c.kaydet, vazgec: c.vazgec, sil: c.sil, silEtiket: c.silEtiket, baslangic: c.baslangic, baslangicSessiz: c.baslangicSessiz,
+    ilerleme: c.ilerleme, bitti: c.bitti, bittiSessiz: c.bittiSessiz, kayitli: c.kayitli, silindi: c.silindi, vazgecildi: c.vazgecildi,
+    hata: c.hata, hataKota: c.hataKota,
+  },
+};
+---
+<section class="cd-kutu" aria-labelledby="cd-baslik" data-cd data-veri={JSON.stringify(veri)} hidden>
+  <h2 id="cd-baslik">{c.baslik}</h2>
+  <p class="cd-aciklama">{c.aciklama}</p>
+  <p class="cd-cevrimdisi" id="cd-cevrimdisi-not" data-cd-cevrimdisi hidden>{c.cevrimdisiNot}</p>
+  <div class="cd-eylem">
+    <p class="cd-kayitli" data-cd-kayitli hidden><Ikon ad="onay" /><span data-cd-kayitli-metin>{c.kayitli}</span></p>
+    <button class="dugme birincil" type="button" data-cd-dugme data-mod="kaydet" aria-describedby="cd-cevrimdisi-not">{c.kaydet}</button>
+  </div>
+  <div class="cd-ilerleme-alan" data-cd-ilerleme-alan hidden aria-hidden="true">
+    <progress class="cd-ilerleme" max="1" value="0" data-cd-ilerleme></progress>
+    <p class="cd-sayac" data-cd-sayac></p>
+  </div>
+  <p class="cd-durum" role="status" aria-live="polite" aria-atomic="true" data-cd-durum></p>
+  <p class="cd-bag"><a href={`/${dil}/cevrimdisi/`}><Ikon ad="indir" />{c.liste}</a></p>
+  <p class="cd-gizlilik">{c.gizlilik}</p>
+</section>

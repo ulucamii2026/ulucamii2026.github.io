@@ -6,6 +6,7 @@ import { defineConfig } from 'astro/config';
 import { existsSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import sitemap from '@astrojs/sitemap';
+import { swDamgala } from '../scripts/egitim-sw.mjs';
 
 const SITE = 'https://egitim.ulucamii.be';
 // Derlenmiş sayfanın dosyası (site haritası derleme sonunda yazılır, egitim/dist hazırdır).
@@ -39,6 +40,16 @@ export default defineConfig({
         return item;
       },
     }),
+    // Çevrim dışı çalışma (25 Ekim 2026): dist/sw.js, src/sw/sw.ts'ten derlenir; damga yedek sayfaların ve SW kodunun içerik özetidir
+    // (scripts/egitim-sw.mjs). Derleme çıktısı hazır olunca çalışır: sayfaların özetli dosya adları ancak o zaman bellidir.
+    {
+      name: 'egitim-sw',
+      hooks: {
+        'astro:build:done': async ({ dir, logger }) => {
+          logger.info(`çevrim dışı SW damgası ${await swDamgala(fileURLToPath(dir))}`);
+        },
+      },
+    },
   ],
   vite: {
     resolve: { alias: { '@ortak': fileURLToPath(new URL('../src', import.meta.url)) } },

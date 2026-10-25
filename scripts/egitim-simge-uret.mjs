@@ -5,11 +5,15 @@
  *  çalışmaz). Logo yeniden çizilmez: yazı halkası katmanları çıkarılır, görünüm kutusu iç halkaya kırpılır — tam
  *  madalyon 16–32 px'te yazı halkası yüzünden okunmaz (ana sitenin public/favicon.svg'si de cami ambleminin iç
  *  diskidir). Raster dosyalar bu vektörden Playwright ile hedef boyutta çizilir («vektör önce» kuralının bilinen
- *  istisnaları: favicon.ico ve apple-touch-icon).
+ *  istisnaları: favicon.ico, apple-touch-icon ve uygulama simgeleri). Uygulama simgeleri (25 Ekim 2026, egitim/public/manifest.webmanifest)
+ *  aynı Playwright/Chromium çizimiyle üretilir; vektör sürümü manifestte `favicon.svg` olarak da durur.
  *
  *    egitim/public/favicon.svg           vektör (tarayıcı sekmesi)
  *    egitim/public/favicon.ico           16/32/48 px, PNG gövdeli ICO (WhatsApp, eski tarayıcılar, yer imi araçları)
  *    egitim/public/apple-touch-icon.png  180 × 180 opak, kurs yeşili zemin (iOS saydamı siyaha çevirir)
+ *    egitim/public/icon-192.png          uygulama simgesi (manifest, purpose any), 192 × 192 opak, kurs yeşili zemin
+ *    egitim/public/icon-512.png          uygulama simgesi (manifest, purpose any), 512 × 512
+ *    egitim/public/icon-maskable-512.png uygulama simgesi (manifest, purpose maskable): zemin tam kare, amblem çapın %70'i (güvenli alan %80)
  *
  *  Çalıştırma (depo kökünden): node scripts/egitim-simge-uret.mjs   — logo değişirse yeniden çalıştırılır.
  */
@@ -91,7 +95,11 @@ try {
   for (const boyut of [16, 32, 48]) kucukler.push({ boyut, png: await ciz(boyut) });
   writeFileSync(new URL('favicon.ico', HEDEF), ico(kucukler));
   writeFileSync(new URL('apple-touch-icon.png', HEDEF), await ciz(180, { zemin: KURS_YESILI, oran: 0.86 }));
+  writeFileSync(new URL('icon-192.png', HEDEF), await ciz(192, { zemin: KURS_YESILI, oran: 0.86 }));
+  writeFileSync(new URL('icon-512.png', HEDEF), await ciz(512, { zemin: KURS_YESILI, oran: 0.86 }));
+  // Maskable: platform simgeyi daire/squircle/kare maskeler; amblem (daire) çapın %80'i olan güvenli alanın içinde kalmalı.
+  writeFileSync(new URL('icon-maskable-512.png', HEDEF), await ciz(512, { zemin: KURS_YESILI, oran: 0.7 }));
 } finally {
   await tarayici.close();
 }
-console.log(`✓ favicon.svg (görünüm kutusu ${kutu}), favicon.ico (16/32/48), apple-touch-icon.png (180) → egitim/public/`);
+console.log(`✓ favicon.svg (görünüm kutusu ${kutu}), favicon.ico (16/32/48), apple-touch-icon.png (180), icon-192/512 ve icon-maskable-512 → egitim/public/`);

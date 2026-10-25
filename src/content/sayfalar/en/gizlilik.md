@@ -2,7 +2,7 @@
 baslik: Privacy Policy
 altBaslik: Information on how personal data is handled on this website.
 aciklama: GDPR-compliant information on how personal data is processed on the Ulu Camii Marche-en-Famenne website and in the Qur’an school parents’ portal.
-guncelleme: 2026-10-24
+guncelleme: 2026-10-25
 ---
 
 <p class="bilgi"><strong>In short:</strong> this site uses no cookies. Visits are counted only in aggregate, by an anonymous cookie-free counter; no data that could identify you is kept. Personal data is processed only when you initiate it (e.g. Qur’an course registration, sending an e-mail).</p>
@@ -118,6 +118,7 @@ The Qur’an school’s memorisation platform uses no account, cookies or tracki
 
 - **Recording your own voice (optional):** in the “My voice” game, the microphone is switched on only when you press “Start recording” and accept the browser’s permission prompt. The recording stays only in the memory of that page; it is not sent to any server and not stored. The microphone is switched off as soon as you stop recording; the recording is deleted with “Delete the recording” or when you leave the page. A recording lasts 3 minutes at most.
 - **The listening audio** is played from the ulucamii.be server (the Diyanet mushaf recording); we keep no information about the listener. For that server’s standard technical logs, see the section “When You Visit This Site” above.
+- **Saving for offline study (optional):** the pages you open and the site’s files are placed **only in this browser’s cache (Cache API)** so that they can open without internet. If you press “Save for offline study” on a text page, that text’s Diyanet audio recordings are kept there too; sounds you merely listen to are not kept. The audio is downloaded from the ulucamii.be server, as when listening. These saved copies contain no personal data, are not sent to any server, and we do not know which texts you saved. You can delete them on the “Offline study” page or by clearing the browser data; the browser may also delete them by itself when storage runs low.
 - The standard technical server logs of the hosting provider (Google Firebase Hosting) are outside our control.
 
 ## Your Rights
