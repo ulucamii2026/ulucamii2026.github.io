@@ -49,6 +49,16 @@ Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI
   - Canlı sağlık: `surum: 43`, üç yeni bayrak `true`.
   - Canlı sayfalar (tr/fr/en/de/nl): kutu ve Komisyon metni var, din görevlisi telefonu yok. Canlı `ihtida-gorseller` betiğinde
     oran sabiti var.
+- Canlı uçtan uca sınama (≈20.25–20.45, gerçek TR formu, kurgusal «TESTOGLU» başvuruları):
+  - IH-2026-0013: vesikalık formda 0,86 oranına kırpıldı; şahit notu görünür; `onay.sartlar` `true` gitti. Paket 7 sayfa; beş
+    parça hazır (EK-9 2 s. yatay, dilekçe 2, EK-10 2, kimlik 1, vesikalık JPG 516 × 600, EXIF yok). Defter 51 sütun, iki yeni
+    başlık kendiliğinden eklendi, «Başvuru koşulları kabulü = Evet». EK-9 ön yüzünde kadın başvuranda «he/» ve «his/» çizili.
+  - IH-2026-0014 (başvuran ayrı bir Gmail adresi): suretin 7 sayfasının hepsinde «SURET» filigranı ve üst şerit var; ek
+    «IH-2026-0014 - Ihtida Belgesi Sureti - r1.pdf»; metin TR/FR/EN, kurum adı yok.
+  - Başvuranın adresi iç alıcıyla aynıysa (info@) suret ayrıca gitmez, iç alıcının iletisiyle birleşir; bu beklenen davranıştır.
+  - Temizlik: `test-temizle` iki satırı ve Drive izlerini (görseller, paket, suret, parçalar, iş dosyası) sildi. info@ ve
+    imam@'daki dört test bildirimi UID ile kalıcı silindi, Gmail'deki suret iletisi çöpe atıldı. Numara sayacı geri sarmaz:
+    sonraki gerçek başvuru IH-2026-0015.
 - Bu kayıt için belge commit'i içerik yayını değildir.
 
 
