@@ -16,6 +16,7 @@ const IKONLAR = {
   kart: '<rect x="3" y="7" width="14" height="11" rx="1"/><path d="M7 7V4.5a.5.5 0 0 1 .5-.5H20a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1h-3"/><path d="M6.5 12.5h7"/>',
   onay: '<path d="M5 12.5l4.5 4.5L19 7.5"/>',
   indir: '<path d="M12 4v10M7.5 10l4.5 4.5 4.5-4.5M5 19h14"/>',
+  takvim: '<rect x="4" y="5" width="16" height="15" rx="1"/><path d="M4 10h16M9 3v4M15 3v4M8 14h2M14 14h2M8 17h2"/>',
 } as const;
 export type IkonAdi = keyof typeof IKONLAR;
 interface Props { ad: IkonAdi; sinif?: string }

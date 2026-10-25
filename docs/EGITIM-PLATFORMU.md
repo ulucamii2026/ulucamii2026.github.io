@@ -166,3 +166,96 @@ Yeni: `egitim/src/sw/sw.ts`, `egitim/src/lib/cevrimdisi-ortak.ts`, `egitim/src/l
 `scripts/egitim-sw.mjs`, `src/lib/ezber/cevrimdisi.ts`, üç test dosyası (yukarıda).
 Değişen: `firebase.json`, `egitim/astro.config.mjs`, `egitim/src/layouts/Taban.astro`, `egitim/src/pages/[dil]/calis/[id].astro`, `egitim/src/components/{Araclar,AltBilgi,Ikon}.astro`,
 `egitim/src/styles/araclar.css`, `scripts/egitim-simge-uret.mjs`, `scripts/egitim-canli-denetim.mjs`, `tests/egitim/barindirma.test.mjs`, `package.json` (test listeleri), beş dilde `gizlilik.md`.
+
+## Derste bu hafta ve ezber takvimi (25 Ekim 2026)
+
+Veli çocuğuyla evde çalışırken «bu hafta derste hangi ezber var?» sorusunun cevabını arar. Kurs projesindeki **ezber köşesi planı** (her Kur'an dersinin son
+dakikalarındaki köşe; 77 ders günü, 10 Ekim 2026 → 6 Haziran 2027) ve yıllık plandaki öteki derslerin ezberleri tek takvimde birleşti: giriş sayfasında
+«Derste bu hafta» bandı, `/<dil>/takvim/` sayfası (bütün yıl) ve her çalışma sayfasında «Derste: 31 Ekim Cumartesi (yeni ezber)» satırı. **Yeni dinî metin,
+okunuş ya da ses yoktur**: yalnız katalogdaki madde adları ve var olan çalışma sayfalarına bağlantılar. Hesap, sunucu, ağ isteği ve cihaza yazma yoktur.
+
+### Veri akışı (tek yön)
+
+```
+D:\ulu-camii-kuran-kursu\veri\ezber-kosesi-2026-2027.json   (kurs projesi; tek kaynak, bu depoya KOPYALANMAZ)
+        │  node scripts/ezber-ders-takvimi.mjs        (üretici: beyaz liste + doğrulama)
+        ▼
+src/data/ezber/ders-takvimi-2026-2027.json                  (türev, ~10 KB, depoda; her gün tek satır)
+        │  + src/data/yillik-plan-2026-2027.json            (öteki derslerin ezberi; zaten depoda)
+        ▼
+src/lib/ezber/ders-takvimi.ts (saf kütüphane)  →  egitim/src/lib/ders-takvimi.ts (DERS_GUNLERI, HAFTA_SONLARI, SAYFALI)
+```
+
+- **Üretici** yalnız şunları alır: `tarih`, `gun`, `kip` (`kose` · `plan-ezber` · `tekrar` · `tam-ders`) ve boş olmayan `yeni` / `pekistir` / `dinleme`
+  (`{id, ayet?:[a,b], bolum?:n}`) ile `plan` / `kalici` (kimlik dizisi) listeleri. **Öğreticiye ait alanlar hiç kopyalanmaz**: `not`, `plan_konusu`, `bireysel`
+  (bireysel dinleme listesi), `karar`, `ayarlar`, `maddeler`, `katalog`, `kose_disi`. Üst kayda kaynağın adı (mutlak yol değil), SHA-256 özeti ve üretim günü yazılır.
+  Bilinmeyen bir alan uyarı verir ve alınmaz; hatalı kaynak reddedilir (tarih artan ve tekil olmalı, gün adı haftanın gününe uymalı, bilinen kip, ayet aralığı,
+  bölüm numarası, **her kimlik katalogda olmalı**).
+- **`bolum`** alanı (Ettehiyyâtü ve Âyetü'l-Kürsî'nin ilerleyen bölümleri) kaynakta vardır ve gösterilir: «1. bölüm / partie 1 / part 1 / deel 1 / Teil 1».
+- **«Diğer derslerin ezberi»** yıllık plandaki Kur'an dışı derslerin (`kod ≠ 'kuran'`) `ezber` metinlerinden katalog kimliğine (`planKimlikleri`) çevrilerek gelir.
+  Ezber köşesi listelerinde (yeni, pekiştirme, dinleme, plan, kalıcı) o gün zaten geçen kimlik burada **yinelenmez**; Kur'an dersinin plan ezberi köşedeki `plan`
+  grubuyla örtüştüğü için ayrıca sayılmaz.
+- **Gruplar** sabit sırayla: Yeni ezber · Pekiştirme · Dinleme · Tekrar ve kalıcı tur · Dersin ezberi (plan) · Diğer derslerin ezberi.
+- Çalışma sayfası olmayan ezber (ör. oruç niyeti, tesbihat) bağlantı değil, kesikli çerçeveli düz metindir.
+
+### Kurs planı değişince (güncelleme prosedürü)
+
+1. Kurs projesinde `veri/ezber-kosesi-2026-2027.json` güncellenir (kurs oturumunun işi).
+2. Bu depoda `npm run ezber:takvim` çalıştırılır (kaynak yolu: `--kaynak <yol>` ya da `EZBER_KOSESI_KAYNAK`; varsayılan `D:/ulu-camii-kuran-kursu/veri/…`).
+   İçerik değişmediyse dosyaya dokunmaz.
+3. `npm run test:ezber` (üretici + saf kütüphane + beş dil metinleri) ve `npm run egitim:build` geçmeden yayın yapılmaz.
+
+- **`npm run ezber:takvim:denetle`** (`test:ezber`'in ilk adımlarındandır): türev dosya kaynağın özetiyle ve içeriğiyle aynı mı? Kaynak bu makinede yoksa (CI) **atlar**
+  ve 0 döner; kaynak varsa ve fark varsa 1 döner. Kaynakta yalnız bir öğretici alanı değişse bile kaynak özeti değiştiği için dosya «eski» sayılır; yeniden üretmek
+  listeyi değiştirmez, yalnız özeti günceller.
+- Yıllık plan (`src/data/yillik-plan-2026-2027.json`) değişirse ayrıca bir şey gerekmez; birleştirme derleme sırasında yapılır.
+
+### Hangi hafta gösterilir (Brüksel günü)
+
+Sunucu bugünü bilmez (statik derleme); seçim **tarayıcıda** yapılır (`src/lib/ezber/ders-takvimi.ts` → `brukselGunu`, `haftaBul`). Bugün, **cihazın saat diliminden bağımsız**
+olarak Europe/Brussels takvim günüdür (yaz saati bitişi dâhil; Los Angeles'ta 25 Ekim 16.30, Brüksel'de 26 Ekim 00.30'dur). Ders günleri «hafta sonu»na toplanır:
+Cumartesi + Pazar + (tatilde) Pazartesi; ardışık ders günleri arasında en çok 2 gün boşluk olabilir (35 hafta sonu; 15 Mayıs 2027 tek günlüktür, 16 Mayıs Kurban
+Bayramı'nda ders yoktur). Seçim: bugünü kapsayan ya da bugünden sonra biten ilk hafta sonu. Cumartesi sabahı, Pazar ve tatil Pazartesisi **bu haftanın dersleri**
+(«Bu haftanın dersleri: 24 – 26 Ekim»), hafta içi ve tatil günleri **sıradaki ders** («Sıradaki ders: 31 Ekim Cumartesi»), ilk günden önce ilk hafta sonu; son günden
+(6 Haziran 2027) sonra kısa bir not. Tarihler `Intl` ile sayfa dilinde yazılır (öğlen UTC; gün kaymaz).
+
+### Sayfalar ve bileşenler
+
+| Yer | Ne |
+|---|---|
+| Giriş (`/<dil>/`) | Hero'dan sonra, «Tekrar» şeridinden önce `DersBandi.astro`: bütün yılın verisi `data-veri` içinde yoğun biçimde gelir (madde başına `id`, `id~a-b`, `id#n`; ~16 KB ham, ~2,7 KB gzip) — **ayrı istek ve satır içi betik yok (CSP)**. `scripts/ders-bu-hafta.ts` DOM'u kurar (`innerHTML` yok). **JavaScript kapalıyken yanlış hafta göstermek yerine** band gizli kalır, `<noscript>` içinde takvime tek bağlantılı sabit paragraf görünür. Bugünün kartı `aria-current="date"` + «Bugün» etiketi taşır |
+| Takvim (`/<dil>/takvim/`) | Tamamen sunucuda çizilir (81 KB, gzip 8,9 KB; 77 gün, 35 hafta sonu, ay → hafta sonu → gün). JS yalnız bugünün haftasını vurgular (`tk-simdi`, `data-simdi="bu-hafta"`), bugünün kartına «Bugün» ekler ve oraya kaydırır; **`#g-…` / `#h-…` ile gelindiyse ya da geri düğmesiyle dönüldüyse kaydırmaz**. Beş dilde aynı yol (`takvim`), indekslenir, site haritasında. Yazdır düğmesi (JS ister) ve A4 yazdırma düzeni var: üç sütun, bir hafta sonu bölünmez, band ve gezinti gizli |
+| Çalışma sayfası | `DersSatiri.astro`, başlık bloğunda: «Derste: 31 Ekim Cumartesi (yeni ezber)», takvimdeki o güne bağlanır (`#g-<tarih>`). Sıradaki gün tarayıcıda bugüne göre seçilir (bugün de sayılır); takvimde geçip bitmiş ezberde gizli kalır; **takvimde hiç geçmeyen ezberde hiç çizilmez**. Basılı kartta görünmez |
+| Giriş noktaları | Alt bilgide bağlantı; «Kendi çalışmanız için» bloğunda karo olmayan ayrı bir satır (`p.arac-takvim`; **karo sayısı üç kaldı**, çünkü takvim çalışma kaydından değil programdan gelir) |
+
+### Gizlilik, CSP, çevrim dışı
+
+- Cihaza hiçbir şey yazılmaz (localStorage, sessionStorage, çerez, IndexedDB; testle sabit — yalnız bütün sayfaların ortak dil tercihi vardır) ve dış ağ isteği atılmaz. Gizlilik metni değişmedi.
+- Satır içi betik/stil yok; veri `data-` özniteliğinde. Güvenlik başlıkları (CSP) değişmedi, testte ihlal sayacı sıfır.
+- Service worker'a dokunulmadı: takvim ağ önce gelen sıradan bir sayfadır, çevrim dışı önbelleğe özel bir kayıt gerekmez.
+
+### Testler
+
+- `tests/ezber-ders-takvimi.test.mjs` (düğüm, `test:ezber`, 22 test): türev dosyanın şeması, 77 gün, tüm kimlikler katalogda, tüm tarihler yıllık planın ders günü, öğreticiye ait alan ve kişi adı yok;
+  kaynak yerelde varsa dosyanın güncelliği; üretici birimleri ve komut satırı (`--denetle` çıkış kodları, kaynak yok → atla); `digerDersEzberi`/`dersGunleri` (Kur'an dersi sayılmaz, yineleme yok);
+  planın Kur'an dışı bütün ezberleri ekranda; hafta sonu gruplaması ve `haftaBul` sınırları (Cumartesi sabahı, Pazar, tatil Pazartesisi, hafta içi, tatil, ilk/son gün, bayram); Brüksel günü yaz saati bitişinde;
+  `maddeTarihleri`/`sonrakiGun`; yoğun kodlama gidiş dönüşü; tarih biçimleri; beş dil metin eşitliği, yer tutucular, Fransızca tipografi, yasak simge yok, «hoca» yalnız Türkçede.
+- `tests/egitim/takvim.spec.mjs` (Playwright, 82 test = 41 × masaüstü + mobil, `page.clock.setFixedTime`): band (28 Ekim, 24 Ekim sabahı, 25, 26, 27 Ekim, yıl bitişi, ilk günden önce), cihaz saat dilimi başka (Los Angeles),
+  JavaScript kapalı (band gizli + yedek paragraf; takvim eksiksiz), takvim sayfası beş dilde (77 gün, 35 hafta, adlar, bağlantılar), vurgulanan hafta, derin bağlantı, düz metin ezber, cihaza yazmama,
+  «Derste:» satırı (sıradaki gün, bugün de sayılır, gizli, hiç çizilmez, beş dil, axe), iki temada axe ve 320 px taşma yok (beş dil × giriş + takvim), dokunma hedefi ≥ 44 px, klavye, giriş sırası ve araç karoları,
+  yazdırmada band yok, PDF (A4, piksel görsel yok, yazı tipi gömülü).
+- Güncellenen: `tests/egitim/barindirma.test.mjs` (site haritasına `takvim` adresleri: +5) ve `scripts/egitim-canli-denetim.mjs` (beklenen adres listesi).
+
+### Bilinen sınırlar
+
+- Program kaynağı kurs projesidir: kurs planı kayarsa türev dosya **yeniden üretilmedikçe** site eski haftayı gösterir (`ezber:takvim:denetle` bunu yakalar, ama kaynak yalnız bu makinede bulunur).
+- Tarih biçimleri tarayıcının `Intl` verisine bağlıdır (ör. Fransızca «1 novembre», Almanca «Samstag, 24. Oktober»).
+- Takvim, hoca ekranında kaydedilen bireysel dinleme sonuçlarını göstermez (bilerek: öğretici verisi). «Sınıfın ilerleyişine göre program küçük kaydırmalar gösterebilir» notu sayfada yazılıdır.
+
+### Dosyalar
+
+Yeni: `scripts/ezber-ders-takvimi.mjs`, `src/data/ezber/ders-takvimi-2026-2027.json`, `src/lib/ezber/{ders-takvimi,ders-takvimi-veri}.ts`, `egitim/src/lib/ders-takvimi.ts`, `egitim/src/i18n/takvim.ts`,
+`egitim/src/components/{DersBandi,DersSatiri,TakvimGunu}.astro`, `egitim/src/pages/[dil]/takvim.astro`, `egitim/src/scripts/{ders-bu-hafta,takvim,ders-satiri}.ts`, `egitim/src/styles/takvim.css`,
+`tests/ezber-ders-takvimi.test.mjs`, `tests/egitim/takvim.spec.mjs`.
+Değişen: `egitim/src/pages/[dil]/index.astro`, `egitim/src/pages/[dil]/calis/[id].astro`, `egitim/src/components/{AltBilgi,Araclar,Ikon}.astro`, `egitim/src/styles/{araclar,madde,kart}.css`,
+`tests/egitim/barindirma.test.mjs`, `scripts/egitim-canli-denetim.mjs`, `package.json` (`test:ezber`, `ezber:takvim`, `ezber:takvim:denetle`), bu belge.

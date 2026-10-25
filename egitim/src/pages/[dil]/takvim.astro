@@ -1,0 +1,71 @@
+---
+/**
+ * Ders günü ezber takvimi (25 Ekim 2026): bütün yıl, ay → hafta sonu → ders günü. Kurs projesindeki ezber köşesi planı (tek kaynak,
+ * src/data/ezber/ders-takvimi-2026-2027.json; scripts/ezber-ders-takvimi.mjs) ile yıllık plandaki öteki derslerin ezberleri birleşir
+ * (egitim/src/lib/ders-takvimi.ts). Sayfa BAŞTAN SONA sunucuda çizilir: JavaScript yokken de çalışır ve yazdırılır. JavaScript yalnız bugünün
+ * hafta sonunu (Brüksel günü) vurgular, «Bugün» ekler ve oraya kaydırır (scripts/takvim.ts). Hesap, sunucu ve ağ yok; sayfa cihaza yazmaz.
+ * Dinî metin, okunuş ya da ses YOKTUR: yalnız katalogdaki madde adları ve çalışma sayfalarına bağlantılar. Yol beş dilde aynıdır (`takvim`).
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import { dilListesi, yerelKodu } from '@ortak/i18n/utils';
+import { ayAnahtari, ayYaz, aralikYaz, type HaftaSonu } from '@ortak/lib/ezber/ders-takvimi';
+import Ikon from '../../components/Ikon.astro';
+import TakvimGunu from '../../components/TakvimGunu.astro';
+import { takvimMetinleri } from '../../i18n/takvim';
+import Taban from '../../layouts/Taban.astro';
+import { HAFTA_SONLARI, SAYFALI, takvimAdlari } from '../../lib/ders-takvimi';
+import '../../styles/takvim.css';
+
+export function getStaticPaths() {
+  return dilListesi.map((dil) => ({ params: { dil } }));
+}
+
+const dil = Astro.params.dil as Dil;
+const yerel = yerelKodu[dil];
+const m = takvimMetinleri(dil);
+const adlar = takvimAdlari(dil);
+// Ay → hafta sonları: bir hafta sonu iki aya taşsa (31 Ekim – 1 Kasım) ilk gününün ayında kalır.
+const aylar: { anahtar: string; baslik: string; haftalar: HaftaSonu[] }[] = [];
+for (const h of HAFTA_SONLARI) {
+  const anahtar = ayAnahtari(h.ilk);
+  let ay = aylar.find((a) => a.anahtar === anahtar);
+  if (!ay) { ay = { anahtar, baslik: ayYaz(h.ilk, yerel), haftalar: [] }; aylar.push(ay); }
+  ay.haftalar.push(h);
+}
+---
+<Taban dil={dil} baslik={m.baslik} aciklama={m.aciklama} yol="takvim">
+  <div class="tk-sayfa" data-tk-sayfa data-bugun={m.bugun}>
+    <div class="icerik">
+      <section class="tk-giris" aria-labelledby="tk-baslik">
+        <h1 id="tk-baslik">{m.baslik}</h1>
+        <p class="tk-lead">{m.lead}</p>
+        <ul class="tk-notlar">{m.notlar.map((n) => <li>{n}</li>)}</ul>
+        <p class="tk-arac"><button class="dugme ikincil" type="button" data-yazdir hidden><Ikon ad="yazici" /> {m.yazdir}</button></p>
+      </section>
+
+      <nav class="tk-aylar" aria-label={m.aylarEtiket}>
+        <ul>{aylar.map((a) => <li><a href={`#ay-${a.anahtar}`}>{a.baslik}</a></li>)}</ul>
+      </nav>
+
+      {aylar.map((a) => (
+        <section class="tk-ay" id={`ay-${a.anahtar}`} aria-labelledby={`ay-b-${a.anahtar}`}>
+          <h2 id={`ay-b-${a.anahtar}`}>{a.baslik}</h2>
+          {a.haftalar.map((h) => (
+            <article class="tk-hafta" id={`h-${h.ilk}`} data-tk-hafta data-ilk={h.ilk} data-son={h.son} aria-labelledby={`hb-${h.ilk}`}>
+              <h3 id={`hb-${h.ilk}`}>{aralikYaz(h.ilk, h.son, yerel)}</h3>
+              <div class="tk-gunler">
+                {h.gunler.map((g) => <TakvimGunu dil={dil} gun={g} yerel={yerel} m={m} adlar={adlar} sayfali={SAYFALI} />)}
+              </div>
+            </article>
+          ))}
+        </section>
+      ))}
+    </div>
+  </div>
+</Taban>
+
+<script>
+  import '../../scripts/dil';
+  import '../../scripts/yazdir';
+  import '../../scripts/takvim';
+</script>

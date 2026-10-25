@@ -260,3 +260,8 @@ button.ayet-no[data-calan] { background: var(--yesil); color: #fff; }
   .sina-oge.dogru, .sina-secenek.dogru, .anlam-ogesi.dogru { outline: 2px solid Highlight; }
   .anlam-ogesi[aria-pressed="true"] { outline: 3px solid Highlight; outline-offset: -3px; }
 }
+
+/* «Derste:» satırı (25 Ekim 2026): ezber ders takviminde bugünden sonra geçiyorsa sıradaki gün; JavaScript açılışa kadar gizli (hidden). Basılı kartta yok (kart.css). */
+.ders-satiri { margin-top: 0.6rem; font-size: 1.05rem; color: var(--kontur-2); }
+.ders-satiri .ders-onek { font-weight: 750; color: var(--kontur); }
+.ders-satiri .ders-tarih { font-weight: 700; }

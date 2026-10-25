@@ -1,0 +1,57 @@
+---
+/**
+ * «Derste bu hafta» bandı (25 Ekim 2026): giriş sayfasında hero'nun hemen altında, bu ders hafta sonunda (ya da sıradaki) hangi ezberlerin çalışıldığını
+ * gün gün gösterir; her ezber çalışma sayfasına bağlıdır. Hangi hafta sonunun gösterileceği TARAYICIDA bugünün Brüksel gününe göre seçilir
+ * (scripts/ders-bu-hafta.ts; sunucu bugünü bilmez, statik derleme). Bütün yılın verisi `data-veri` içinde yoğun biçimde gelir (madde başına kısa dize,
+ * ~10 KB) — ayrı bir istek ya da satır içi betik yok (CSP). JavaScript yokken band açılmaz; yerine takvime tek bağlantı veren sabit bir paragraf gösterilir
+ * (yanlış bir hafta göstermek yerine). Veri kaynağı ve birleştirme: egitim/src/lib/ders-takvimi.ts, docs/EGITIM-PLATFORMU.md.
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import { yerelKodu } from '@ortak/i18n/utils';
+import { kodla } from '@ortak/lib/ezber/ders-takvimi';
+import { takvimMetinleri } from '../i18n/takvim';
+import { DERS_GUNLERI, SAYFALI, takvimAdlari } from '../lib/ders-takvimi';
+import Ikon from './Ikon.astro';
+
+interface Props { dil: Dil }
+const { dil } = Astro.props;
+const m = takvimMetinleri(dil);
+const adlar = takvimAdlari(dil);
+const veri = {
+  dil,
+  yerel: yerelKodu[dil],
+  // Gün: [tarih, kip, {grup: [madde, …]}]; madde «id», «id~a-b», «id#n» (src/lib/ezber/ders-takvimi.ts `kodla`).
+  g: DERS_GUNLERI.map((g) => [g.tarih, g.kip, Object.fromEntries(Object.entries(g.gruplar).map(([k, l]) => [k, l.map(kodla)]))]),
+  ad: adlar,
+  duz: Object.keys(adlar).filter((id) => !SAYFALI.has(id)),
+  m: {
+    bandBu: m.bandBu, bandSiradaki: m.bandSiradaki, bandBitti: m.bandBitti, bugun: m.bugun, gunKipi: m.gunKipi, grup: m.grup, gunBos: m.gunBos,
+    ayetTek: m.ayetTek, ayetAralik: m.ayetAralik, bolum: m.bolum,
+  },
+};
+---
+<section class="bolum ders-bandi" aria-labelledby="ders-baslik" data-ders-bandi data-veri={JSON.stringify(veri)} hidden>
+  <div class="icerik">
+    <div class="ders-kutu">
+      <div class="ders-bas">
+        <h2 id="ders-baslik">{m.bandBaslik}</h2>
+        <a class="ders-tumu" href={`/${dil}/takvim/`}>{m.bandTumu} <Ikon ad="ok" /></a>
+      </div>
+      <p class="ders-alt" data-ders-alt></p>
+      <div class="tk-gunler" data-ders-gunler></div>
+    </div>
+  </div>
+</section>
+<noscript>
+  <section class="bolum ders-bandi" aria-labelledby="ders-baslik-js-yok">
+    <div class="icerik">
+      <div class="ders-kutu">
+        <div class="ders-bas">
+          <h2 id="ders-baslik-js-yok">{m.bandBaslik}</h2>
+          <a class="ders-tumu" href={`/${dil}/takvim/`}>{m.bandTumu} <Ikon ad="ok" /></a>
+        </div>
+        <p class="ders-alt">{m.bandNoJs}</p>
+      </div>
+    </div>
+  </section>
+</noscript>

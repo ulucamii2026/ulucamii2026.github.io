@@ -1,0 +1,23 @@
+---
+/**
+ * Çalışma sayfasındaki «Derste: <tarih> (yeni ezber)» satırı (25 Ekim 2026): bu ezber ders takviminde bugünden sonra geçiyorsa sıradaki günü söyler ve
+ * takvimdeki o güne bağlanır. Hangi günün «sıradaki» olduğu TARAYICIDA bugünün Brüksel gününe göre seçilir (scripts/ders-satiri.ts); takvimde hiç geçmeyen
+ * ezberde satır hiç çizilmez, geçip bitenlerde gizli kalır. Basılı kartta görünmez (styles/kart.css).
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import { yerelKodu } from '@ortak/i18n/utils';
+import { maddeTarihleri } from '@ortak/lib/ezber/ders-takvimi';
+import { takvimMetinleri } from '../i18n/takvim';
+import { DERS_GUNLERI } from '../lib/ders-takvimi';
+
+interface Props { dil: Dil; id: string }
+const { dil, id } = Astro.props;
+const m = takvimMetinleri(dil);
+const tarihler = maddeTarihleri(DERS_GUNLERI, id);
+const veri = { yerel: yerelKodu[dil], yol: `/${dil}/takvim/`, t: tarihler.map((x) => [x.tarih, ...x.gruplar]), k: m.grupKisa };
+---
+{tarihler.length > 0 && (
+  <p class="ders-satiri" data-ders-satiri data-veri={JSON.stringify(veri)} hidden>
+    <span class="ders-onek">{m.dersOnek}</span> <a class="ders-tarih" href={`/${dil}/takvim/`} data-ders-tarih></a> <span class="ders-gruplar" data-ders-gruplar></span>
+  </p>
+)}

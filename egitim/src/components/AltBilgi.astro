@@ -11,6 +11,7 @@ import { cevrimdisiMetinleri } from '../i18n/cevrimdisi';
 import { kartlarMetinleri } from '../i18n/kartlar';
 import { kilimimMetinleri } from '../i18n/kilimim';
 import { metin } from '../i18n/metinler';
+import { takvimMetinleri } from '../i18n/takvim';
 import { ANA_SITE, ILETISIM, hukukiSatir, kursAdi } from '../lib/kimlik';
 import Bordur from './Bordur.astro';
 
@@ -21,6 +22,7 @@ const belge = belgeMetinleri(dil);
 const kilimim = kilimimMetinleri(dil);
 const kartlar = kartlarMetinleri(dil);
 const cevrimdisi = cevrimdisiMetinleri(dil);
+const takvim = takvimMetinleri(dil);
 ---
 <footer class="alt">
   <Bordur desen="bordur-koyu" />
@@ -31,6 +33,7 @@ const cevrimdisi = cevrimdisiMetinleri(dil);
       <p class="don"><a href={`${ANA_SITE}/${dil}/`}>{m.anaSiteyeDon}</a></p>
       <p class="don"><a href={`/${dil}/calisma-belgesi/`}>{belge.baglanti}</a></p>
       <p class="don"><a href={`/${dil}/kilimim/`}>{kilimim.baglanti}</a></p>
+      <p class="don"><a href={`/${dil}/takvim/`}>{takvim.baglanti}</a></p>
       <p class="don"><a href={`/${dil}/kartlar/`}>{kartlar.baglanti}</a></p>
       <p class="don"><a href={`/${dil}/cevrimdisi/`}>{cevrimdisi.baglanti}</a></p>
     </div>

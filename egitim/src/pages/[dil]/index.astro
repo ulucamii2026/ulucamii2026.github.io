@@ -3,7 +3,8 @@
  * Ezber Kilimi girişi (Faz 1f, 27 Eylül 2026): başlık + çini pano, dört basamak, şeritler (ses varsa «Dinle»), örnek
  * kilim ve kaynaklar. Beş dil (tr, fr, en, nl, de). Onaylı taslak: egitim/docs/taslaklar/giris.html; görünüm
  * egitim/DESIGN.md. «Fâtiha ile başla» Faz 2'nin dinle-tekrarla sayfasına götürür. 2d: bu cihazda tekrar kaydı varsa
- * «Bugün tekrar» bandı (components/Tekrar.astro, scripts/bugun-tekrar.ts) hero'nun altında görünür.
+ * «Bugün tekrar» bandı (components/Tekrar.astro, scripts/bugun-tekrar.ts) hero'nun altında görünür. 25 Ekim 2026: hero'nun hemen altında, herkese açık
+ * «Derste bu hafta» bandı (components/DersBandi.astro, scripts/ders-bu-hafta.ts): bu ders hafta sonunda hangi ezberler çalışılıyor.
  */
 import type { Dil } from '@ortak/i18n/ui';
 import { dilListesi } from '@ortak/i18n/utils';
@@ -11,6 +12,7 @@ import { KATALOG } from '@ortak/lib/ezber/katalog';
 import { KILIM_METINLERI } from '@ortak/lib/ezber/metinler';
 import Araclar from '../../components/Araclar.astro';
 import Basamaklar from '../../components/Basamaklar.astro';
+import DersBandi from '../../components/DersBandi.astro';
 import Ikon from '../../components/Ikon.astro';
 import Kaynaklar from '../../components/Kaynaklar.astro';
 import Kilimim from '../../components/Kilimim.astro';
@@ -21,6 +23,7 @@ import { metin } from '../../i18n/metinler';
 import Taban from '../../layouts/Taban.astro';
 import { cizim } from '../../lib/cizim';
 import '../../styles/tekrar.css';
+import '../../styles/takvim.css';
 import '../../styles/araclar.css';
 
 export function getStaticPaths() {
@@ -46,6 +49,7 @@ const n = KATALOG.ogeler.length;
       <p class="guven"><Fragment set:html={cizim('serit-6-mushaf', 'muhur')} /><span>{m.guven}</span></p>
     </div>
   </section>
+  <DersBandi dil={dil} />
   <Tekrar dil={dil} />
   <Basamaklar dil={dil} />
   <Seritler dil={dil} />
@@ -61,4 +65,5 @@ const n = KATALOG.ogeler.length;
   import '../../scripts/seritler';
   import '../../scripts/calar';
   import '../../scripts/bugun-tekrar';
+  import '../../scripts/ders-bu-hafta';
 </script>

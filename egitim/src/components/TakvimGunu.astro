@@ -1,0 +1,49 @@
+---
+/**
+ * Takvimde bir ders günü (25 Ekim 2026): gün adı, ders kipi ve gruplar. Yalnız sunucuda çizilir (/<dil>/takvim/); giriş sayfasındaki band aynı sınıf adlarıyla
+ * tarayıcıda kurulur (scripts/ders-bu-hafta.ts), ikisi aynı stili paylaşır (styles/takvim.css). Çalışma sayfası olan madde bağlantıdır, olmayanlar düz metin.
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import { GRUP_SIRASI, gunYaz, maddeEki, type DersGunu } from '@ortak/lib/ezber/ders-takvimi';
+import type { TakvimMetinleri } from '../i18n/takvim';
+
+interface Props {
+  dil: Dil;
+  gun: DersGunu;
+  yerel: string;
+  m: TakvimMetinleri;
+  adlar: Readonly<Record<string, string>>;
+  sayfali: ReadonlySet<string>;
+}
+const { dil, gun, yerel, m, adlar, sayfali } = Astro.props;
+const gruplar = GRUP_SIRASI.filter((k) => gun.gruplar[k]?.length);
+---
+<div class="tk-gun" id={`g-${gun.tarih}`} data-tk-gun data-tarih={gun.tarih}>
+  <header class="tk-gun-bas">
+    <h4 class="tk-gun-ad" id={`gb-${gun.tarih}`}>{gunYaz(gun.tarih, yerel)}</h4>
+  </header>
+  <p class="tk-kip">{m.gunKipi[gun.kip]}</p>
+  {gruplar.length === 0 ? <p class="tk-bos">{m.gunBos}</p> : (
+    <dl class="tk-gruplar">
+      {gruplar.map((k) => (
+        <div class="tk-grup" data-grup={k}>
+          <dt>{m.grup[k]}</dt>
+          <dd>
+            <ul class="tk-maddeler">
+              {gun.gruplar[k]!.map((x) => {
+                const ek = maddeEki(x, m);
+                return (
+                  <li class="tk-madde">
+                    {sayfali.has(x.id)
+                      ? <a href={`/${dil}/calis/${x.id}/`}><span class="tk-ad">{adlar[x.id]}</span>{ek && <>{" "}<span class="tk-ek">{ek}</span></>}</a>
+                      : <span class="tk-duz"><span class="tk-ad">{adlar[x.id]}</span>{ek && <>{" "}<span class="tk-ek">{ek}</span></>}</span>}
+                  </li>
+                );
+              })}
+            </ul>
+          </dd>
+        </div>
+      ))}
+    </dl>
+  )}
+</div>

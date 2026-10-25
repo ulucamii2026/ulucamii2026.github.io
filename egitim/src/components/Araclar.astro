@@ -9,12 +9,14 @@ import { belgeMetinleri } from '../i18n/belge';
 import { cevrimdisiMetinleri } from '../i18n/cevrimdisi';
 import { kartlarMetinleri } from '../i18n/kartlar';
 import { kilimimMetinleri } from '../i18n/kilimim';
+import { takvimMetinleri } from '../i18n/takvim';
 import Ikon from './Ikon.astro';
 
 interface Props { dil: Dil }
 const { dil } = Astro.props;
 const k = kartlarMetinleri(dil);
 const cd = cevrimdisiMetinleri(dil);
+const tk = takvimMetinleri(dil);
 const araclar = [
   { yol: 'kilimim', ikon: 'kilim', ad: kilimimMetinleri(dil).baglanti, ac: k.kilimimAciklama },
   { yol: 'calisma-belgesi', ikon: 'belge', ad: belgeMetinleri(dil).baglanti, ac: k.belgeAciklama },
@@ -38,11 +40,18 @@ const araclar = [
         </li>
       ))}
     </ul>
+    <div class="arac-satirlar">
+    <!-- Ders günü ezber takvimi (25 Ekim 2026): çalışma kaydından üretilmez (herkese aynı, programdan), bu yüzden karo değil; karo sayısı üç kaldı. -->
+    <p class="arac-takvim">
+      <a href={`/${dil}/takvim/`}><Ikon ad="takvim" /><span class="arac-cd-ad">{tk.baglanti}</span></a>
+      <span class="arac-cd-ac">{tk.araclarAciklama}</span>
+    </p>
     <!-- İnternetsiz çalışma (25 Ekim 2026): üç araçtan biri değil (çalışma kaydından kâğıt üretmez; cihazdaki kayıtları yönetir), bu yüzden `a.arac` karosu
          olarak sayılmaz; blokta ayrı, sade bir satırdır. -->
     <p class="arac-cevrimdisi">
       <a href={`/${dil}/cevrimdisi/`}><Ikon ad="indir" /><span class="arac-cd-ad">{cd.baglanti}</span></a>
       <span class="arac-cd-ac">{cd.girisAciklama}</span>
     </p>
+    </div>
   </div>
 </section>

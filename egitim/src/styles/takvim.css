@@ -1,0 +1,100 @@
+/* Ders günü ezber takvimi (25 Ekim 2026): giriş sayfasındaki «Derste bu hafta» bandı ve /<dil>/takvim/ sayfası aynı gün kartlarını paylaşır
+   (tarayıcıda kurulan band ile sunucuda çizilen takvim aynı sınıf adlarıyla). Çini Panosu dili: derz çizgili karolar, gölge yok, renk tek başına
+   bilgi taşımaz (grup adı yazıyla). Firuze ve altın BU SAYFADA YOK (yalnız ezber basamağının sırrı); vurgu soluk yeşil ve bağlantı yeşili. Satır içi stil yok. */
+
+/* ——— Gün kartları (band ve takvim) ——— */
+.tk-gunler { display: grid; gap: 2px; background: var(--derz); border: 2px solid var(--derz); border-radius: calc(var(--r) + 2px); overflow: hidden;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16.5rem), 1fr)); }
+.tk-gun { display: grid; gap: 0.6rem; align-content: start; padding: 1rem 1.1rem 1.15rem; background: var(--karo); min-width: 0; }
+.tk-gun[aria-current="date"] { background: var(--yesil-soluk); }
+.tk-gun-bas { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem 0.7rem; }
+.tk-gun-ad { font-size: 1.15rem; letter-spacing: -0.01em; display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem 0.6rem; }
+.tk-bugun { display: inline-block; padding: 0.05rem 0.6rem; border-radius: var(--r); background: var(--yesil); color: #fff; font-size: 0.82rem; font-weight: 750; line-height: 1.6; }
+.tk-kip { color: var(--kontur-2); font-size: 0.88rem; line-height: 1.4; margin-top: -0.25rem; }
+.tk-bos { color: var(--kontur-2); }
+.tk-gruplar { display: grid; gap: 0.8rem; margin: 0; }
+.tk-grup { display: grid; gap: 0.35rem; }
+.tk-grup dt { font-size: 0.84rem; font-weight: 750; letter-spacing: 0.02em; color: var(--kontur-2); }
+.tk-grup dd { margin: 0; }
+.tk-maddeler { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.tk-madde a, .tk-madde .tk-duz { display: inline-flex; flex-wrap: wrap; align-items: baseline; column-gap: 0.5rem; min-height: 2.75rem; padding: 0.4rem 0.85rem;
+  border: 1px solid var(--derz-koyu); border-radius: var(--r); background: var(--astar); color: var(--kontur); font-weight: 650; line-height: 1.3; }
+.tk-madde a { align-items: center; text-decoration: none; }
+.tk-madde a:hover { background: var(--yesil-soluk); border-color: var(--yesil-bag); }
+/* Çalışma sayfası olmayan ezber: bağlantı değil, düz yazı (kesikli çerçeve bağlantıdan ayırır). */
+.tk-madde .tk-duz { border-style: dashed; background: transparent; font-weight: 600; }
+.tk-ek { color: var(--kontur-2); font-size: 0.86rem; font-weight: 500; }
+
+/* ——— Giriş sayfasındaki band ——— */
+.ders-bandi { padding-block: 1.5rem 0; }
+.ders-bandi[hidden] { display: none; }
+.ders-kutu { display: grid; gap: 0.8rem; padding: 1.25rem 1.5rem 1.5rem; border: 2px solid var(--derz); border-radius: var(--r); background: var(--karo); }
+.ders-bas { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.3rem 1.5rem; }
+.ders-bas h2 { font-size: 1.3rem; letter-spacing: -0.01em; }
+.ders-tumu { display: inline-flex; align-items: center; gap: 0.4rem; min-height: 2.75rem; font-weight: 700; }
+.ders-tumu .ikon { width: 1.1em; height: 1.1em; }
+.ders-alt { font-weight: 750; }
+.tk-bolunmez { white-space: nowrap; }
+
+/* ——— Takvim sayfası ——— */
+.tk-sayfa { padding-block: 2rem 4rem; }
+.tk-giris { display: grid; gap: 0.9rem; max-width: 46rem; }
+.tk-giris h1 { font-size: clamp(2rem, 1.4rem + 2.2vw, 3rem); letter-spacing: -0.02em; line-height: 1.08; overflow-wrap: anywhere; }
+.tk-lead { font-size: 1.12rem; line-height: 1.5; }
+.tk-notlar { margin: 0; padding-left: 1.2rem; display: grid; gap: 0.35rem; color: var(--kontur-2); font-size: 0.95rem; max-width: 42em; }
+.tk-arac { margin-top: 0.4rem; }
+.tk-aylar ul { list-style: none; margin: 1.5rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.tk-aylar a { display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0.3rem 0.9rem; border: 1px solid var(--derz-koyu); border-radius: var(--r);
+  background: var(--karo); color: var(--kontur); font-weight: 650; text-decoration: none; }
+.tk-aylar a:hover { background: var(--yesil-soluk); border-color: var(--yesil-bag); }
+.tk-ay { padding-top: 2.75rem; scroll-margin-top: 1rem; }
+.tk-ay > h2 { font-size: clamp(1.5rem, 1.2rem + 1.1vw, 2.1rem); letter-spacing: -0.015em; margin-bottom: 0.4rem; }
+.tk-hafta { margin-top: 1.1rem; scroll-margin-top: 1rem; }
+.tk-hafta > h3 { font-size: 1.1rem; color: var(--kontur-2); margin-bottom: 0.45rem; }
+/* Bugünü kapsayan (yoksa sıradaki) hafta sonu: yeşil çerçeve + soluk yeşil başlık; renk tek başına bilgi değil, «Bugün» etiketi ve aria-current gün kartındadır. */
+.tk-hafta.tk-simdi > h3 { color: var(--kontur); }
+.tk-hafta.tk-simdi .tk-gunler { border-color: var(--yesil-bag); background: var(--yesil-bag); }
+.tk-gun, .tk-hafta { scroll-margin-top: 1rem; }
+.tk-gun:target { outline: 3px solid var(--yesil-bag); outline-offset: -3px; }
+
+@media (max-width: 29.99rem) {
+  .ders-kutu { padding: 1rem 1rem 1.25rem; }
+  .tk-gun { padding-inline: 0.9rem; }
+  /* Felemenkçe «Memoriseerkalender» 2 rem’de 320 px’i aşıyordu. */
+  .tk-giris h1 { font-size: 1.7rem; }
+}
+
+/* ——— Yazdırma (yalnız takvim sayfası): A4 dikey, bir hafta sonu bölünmez, gün kartları üç sütun ——— */
+@media print {
+  @page { size: A4 portrait; margin: 14mm 13mm 16mm; }
+  :root, :root[data-theme="dark"], :root:not([data-theme="light"]) {
+    color-scheme: light;
+    --astar: #fff; --karo: #fff; --derz: #c4cec7; --derz-koyu: #98a99d; --kontur: #000; --kontur-2: #2b382f;
+    --yesil: #134420; --yesil-bag: #134420; --yesil-soluk: #fff;
+  }
+  html { background: #fff; color: #000; font-size: 10pt; line-height: 1.4; }
+  body { display: block; min-height: 0; background: #fff; }
+  main { display: block; }
+  .ust, .alt, .bordur, .tk-aylar, .tk-arac, .ders-bandi, noscript, a.gorunmez { display: none !important; }
+  .icerik { width: 100%; margin: 0; }
+  .tk-sayfa { padding: 0; }
+  .tk-giris { max-width: none; gap: 2mm; }
+  .tk-giris h1 { font-size: 20pt; }
+  .tk-lead { font-size: 10pt; }
+  .tk-notlar { font-size: 8.5pt; }
+  .tk-ay { padding-top: 6mm; break-before: auto; }
+  .tk-ay > h2 { font-size: 14pt; break-after: avoid; }
+  .tk-hafta { margin-top: 3mm; break-inside: avoid; }
+  .tk-hafta > h3 { font-size: 10.5pt; color: #000; margin-bottom: 1mm; break-after: avoid; }
+  .tk-gunler { grid-template-columns: repeat(3, minmax(0, 1fr)); border-width: 0.6pt; border-radius: 0; background: var(--derz); gap: 0.6pt; }
+  .tk-gun { padding: 2.5mm; gap: 1.5mm; }
+  .tk-gun-ad { font-size: 10pt; }
+  .tk-bugun { display: none; }
+  .tk-kip { font-size: 7.5pt; margin-top: 0; }
+  .tk-grup dt { font-size: 7.5pt; }
+  .tk-maddeler { gap: 1mm; }
+  .tk-madde a, .tk-madde .tk-duz { min-height: 0; padding: 0.6mm 1.6mm; border-width: 0.5pt; background: #fff; color: #000; font-size: 8.5pt; }
+  .tk-ek { font-size: 7.5pt; color: #222; }
+  .tk-gun[aria-current="date"] { background: #fff; }
+  .tk-gun:target { outline: 0; }
+}

@@ -22,6 +22,7 @@ import { MADDE_METINLERI } from '../../../lib/madde-metinleri';
 import { BILGI_METINLERI } from '../../../lib/bilgi-metinleri';
 import BilgiBolumu from '../../../components/BilgiBolumu.astro';
 import CevrimdisiKutu from '../../../components/CevrimdisiKutu.astro';
+import DersSatiri from '../../../components/DersSatiri.astro';
 import { metin, tarihYaz } from '../../../i18n/metinler';
 import { calismaMetinleri } from '../../../i18n/calisma';
 import { DURUSLAR, maddeMetinleri, namazda } from '../../../i18n/madde';
@@ -136,6 +137,7 @@ const sonraki = serit[sira + 1];
           <span>{seviye.ad[dil]}</span>
           {hedef && <span>{m.sinifHedefi(tarihYaz(hedef, dil))}</span>}
         </p>
+        <DersSatiri dil={dil} id={oge.id} />
       </div>
       {arAd && <p class="ar-ad" lang="ar" dir="rtl">{arAd}</p>}
       {mt && (
@@ -337,4 +339,5 @@ const sonraki = serit[sira + 1];
   import '../../../scripts/bilgi';
   import '../../../scripts/yazdir';
   import '../../../scripts/cevrimdisi';
+  import '../../../scripts/ders-satiri';
 </script>
