@@ -41,6 +41,42 @@ const S2_SAG = {
 const S2_ALT = { tarihTaban: 430.3, x0: 700, x1: 780, isimTaban: 453, isimEn: 110 };
 const S2_SAG_SINIR = 795;   // sağ sütun metinlerinin taşamayacağı x
 
+/* 25 Eki 2026 (Rıdvan KAYAHAN: «başvuru sahibinin cinsiyetine göre burda diğer cinsiyetin üstünü çizmek lazım»): ön yüzün
+   İngilizce metnindeki «he/she» ve «his/her» zamirlerinden başvurana uymayanın üstü çizilir. Erkekse «/she» ve «/her»,
+   kadınsa «he/» ve «his/» (şablondaki kurum çizikleri gibi eğik çizgi de çizgiye girer). Ölçüler şablonun metin
+   katmanındaki harf kutularından (PyMuPDF rawdict): [x0, x1, y üstten]; y = taban − 2,56 pt, kurum çizikleriyle aynı yükseklik
+   ve 0,8 pt kalınlık. Cinsiyet bilinmiyorsa hiçbir zamir çizilmez. Mühtedi Koordinatörlüğü hattı (ek9-tamamla.py) aynı ölçüleri
+   kullanır. */
+export const EK9_ZAMIR_CIZIKLERI = {
+  erkek: [[578.3, 599.2, 350.9], [304.0, 324.4, 386.29]],
+  kadin: [[565.5, 581.2, 350.9], [288.1, 307.0, 386.29]],
+};
+const ZAMIR_KALINLIK = 0.8;
+export function ek9CinsiyetKodu(deger) {
+  const d = String(deger ?? '').trim().toLocaleLowerCase('tr');
+  if (/^(erkek|homme|male|man|männlich)/.test(d)) return 'erkek';
+  if (/^(kad[ıi]n|femme|female|woman|vrouw|weiblich)/.test(d)) return 'kadin';
+  return '';
+}
+function zamirleriCiz(sayfa, cinsiyet, renk) {
+  const H = sayfa.getHeight();
+  for (const [x0, x1, y] of EK9_ZAMIR_CIZIKLERI[cinsiyet] || []) {
+    sayfa.drawLine({ start: { x: x0, y: H - y }, end: { x: x1, y: H - y }, thickness: ZAMIR_KALINLIK, color: renk });
+  }
+}
+
+/* 25 Eki 2026 (Rıdvan KAYAHAN: «bu belgeyi diyanet veriyor, diyanetin resmi olarak konuştuğu dil türkçe, bu belgede dolayısıyla iki
+   dilli olmalı»): ihtida sebebi başvuranın dilinde yazılır, Türkçesi altına eklenir (veri.ihtidaSebebiTr). Özgün metin etiketin
+   sağındaki satırda biraz yukarıda, Türkçesi «Reason of Conversion» etiketinin sağında; ikisi aynı boyda. Biri sığmazsa ikisi de
+   açıklama ekine gider. Türkçesi yoksa ya da özgün metnin aynısıysa eski tek satır düzeni sürer. */
+export const EK9_SEBEP_IKI_SATIR = { ustTaban: 132.6, altTaban: 150.6, altX: 553.0, boy: 13.5, sadeBoy: 8.2 };
+const sebepNormal = s => String(s ?? '').trim().replace(/\s+/g, ' ');
+export function ek9SebepTurkcesi(sebep, turkcesi) {
+  const s = sebepNormal(sebep), t = sebepNormal(turkcesi);
+  if (!s || !t || s === EK9_BOS_ALAN) return '';
+  return s.toLocaleLowerCase('tr') === t.toLocaleLowerCase('tr') ? '' : t;
+}
+
 /** Adı verilmiş şahit, imzası olmasa da korunur. Yedek yalnız boş şahit yuvasına girer.
  * Kayıtlı imzayı kullanma teyidi panelde alınır; bu fonksiyon isim değiştirmez. */
 export function sahitleriCoz(sahitler, yedekler) {
@@ -195,6 +231,8 @@ export async function ek9Uret(girdi) {
   // Vesikalik verildigi halde gomulemediyse cagirana bildirilir; belge sessizce
   // fotografsiz cikmasin (panel bunu kullaniciya uyari olarak gosterir).
   else if (girdi.foto && typeof girdi.uyar === 'function') girdi.uyar('vesikalik-gomulemedi');
+  // Zamir çizikleri şablondaki kurum çizikleriyle aynı renkte (sade kipte şablon mavisi, el yazısında kalem mavisi).
+  zamirleriCiz(s1, ek9CinsiyetKodu(v?.cinsiyetKodu || v?.cinsiyet), MAVI);
 
   // Not: büyük harfe çevrilmez — `toLocaleUpperCase('tr')` yabancı isimlerde "i"yi "İ" yapıp
   // POUİLLON gibi hatalı yazıma yol açıyor. İsim kimlikteki gibi, girildiği hâliyle basılır.
@@ -296,7 +334,23 @@ export async function ek9Uret(girdi) {
     satirlar.forEach((s, i) => yaz(s2, s, i === 0 ? x + 7 : 448, taban + (i === 0 ? 0 : 11 + i * 12), boyut, ust2));
   };
   sagYaz('oncekiDin', v.oncekiDin);
-  sagYaz('ihtidaSebebi', v.ihtidaSebebi, 1, elYazisi ? 13 : 8.6);   // alanın altında EN etiketi var: tek satır
+  const sebepTr = ek9SebepTurkcesi(v.ihtidaSebebi, v.ihtidaSebebiTr);
+  if (!sebepTr) sagYaz('ihtidaSebebi', v.ihtidaSebebi, 1, elYazisi ? 13 : 8.6);   // alanın altında EN etiketi var: tek satır
+  else {
+    // İki dilli sebep: özgün metin etiketin sağında, Türkçesi «Reason of Conversion» etiketinin sağında (EK9_SEBEP_IKI_SATIR).
+    const [x] = S2_SAG.ihtidaSebebi, I = EK9_SEBEP_IKI_SATIR;
+    const boyut = elYazisi ? 11 : I.sadeBoy, ozgun = sebepNormal(v.ihtidaSebebi);
+    const en1 = S2_SAG_SINIR - (x + 7), en2 = S2_SAG_SINIR - I.altX;
+    const b = Math.min(siganBoyut(ozgun, boyut, en1), siganBoyut(sebepTr, boyut, en2));
+    if (b < 7 && girdi.uzunAlan) {
+      girdi.uzunAlan('ihtidaSebebi', ozgun); girdi.uzunAlan('ihtidaSebebiTr', sebepTr);
+      yaz(s2, 'Ek açıklama sayfasında / See supplement', x + 7, S2_SAG.ihtidaSebebi[1], elYazisi ? 11 : 8, ust2);
+    } else {
+      if (b < 7) girdi.uyar?.('yazi-kucuk');
+      yaz(s2, ozgun, x + 7, I.ustTaban, b, ust2);
+      yaz(s2, sebepTr, I.altX, I.altTaban, b, ust2);
+    }
+  }
   sagYaz('ihtidaTarihi', v.ihtidaTarihi);
   sagYaz('eposta', v.eposta, 1, elYazisi ? 13.5 : 9);
   sagYaz('telefon', v.telefon);
@@ -411,6 +465,7 @@ async function ek9KalemUret(girdi) {
 
   // ---- Ön yüz ------------------------------------------------------------------------------------------------
   cizikleriBoya(L, belge, s1);
+  zamirleriCiz(s1, ek9CinsiyetKodu(v.cinsiyetKodu || v.cinsiyet), rgb(...MUREKKEP));
   const foto = await gorselGomKalem(belge, girdi.foto);
   if (foto) {
     // Vesikalık 80 pt yüksekliğinde, çerçeveyi örterek; oranı uymayan fotoğraf kutuya kırpılır (yüz üstte kalır).
@@ -532,6 +587,20 @@ async function ek9KalemUret(girdi) {
       continue;
     }
     const en = K.sagSinir - (x + 7) - 2;
+    const sebepTr = anahtar === 'ihtidaSebebi' ? ek9SebepTurkcesi(metin, v.ihtidaSebebiTr) : '';
+    if (sebepTr) {
+      // İki dilli sebep (25.10.2026): özgün metin üst satırda, Türkçesi «Reason of Conversion» etiketinin sağında, aynı boyda.
+      const I = EK9_SEBEP_IKI_SATIR, en2 = K.sagSinir - I.altX - 2;
+      const b = Math.min(kalem.sigdir(metin, I.boy, en, OKUNUR_EN_KUCUK), kalem.sigdir(sebepTr, I.boy, en2, OKUNUR_EN_KUCUK));
+      if ((kalem.en(metin, b) > en || kalem.en(sebepTr, b) > en2) && ekSayfaya(anahtar, metin)) {
+        ekSayfaya('ihtidaSebebiTr', sebepTr);
+        kalem.yaz(s2, x + 7, taban - K.yukari, 'Ek sayfada / See supplement', 13);
+        continue;
+      }
+      kalem.yaz(s2, x + 7, I.ustTaban, metin, b);
+      kalem.yaz(s2, I.altX, I.altTaban, sebepTr, b);
+      continue;
+    }
     const b = kalem.sigdir(metin, anahtar === 'ihtidaSebebi' ? K.boySebep : K.boy, en, OKUNUR_EN_KUCUK);
     if (kalem.en(metin, b) > en && ekSayfaya(anahtar, metin)) { kalem.yaz(s2, x + 7, taban - K.yukari, 'Ek sayfada / See supplement', 13); continue; }
     kalem.yaz(s2, x + 7, taban - K.yukari, metin, b);

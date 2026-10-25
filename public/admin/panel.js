@@ -1091,8 +1091,8 @@ async function ek9Uretimi(dugme) {
     const kendiImzalar = sahitKendiImzalari(j.gorseller);
     const hazirlik = await ek9HazirlikAc(k, imzalar, paketMi ? {
       paket: true, gonder: true, imzali: Boolean(basvuranImza), beyanTarihi: isoTarih ? `${isoTarih[3]}-${isoTarih[2]}-${isoTarih[1]}` : '',
-      belgeTuru: j.gorseller?.kimlikArka ? 'kimlik' : '', kendiImzalar,
-    } : { imzaHata, kendiImzalar });
+      belgeTuru: j.gorseller?.kimlikArka ? 'kimlik' : '', kendiImzalar, sebepTr: j.ihtidaSebebiTr || '',
+    } : { imzaHata, kendiImzalar, sebepTr: j.ihtidaSebebiTr || '' });
     if (!hazirlik) { durumYaz(eskiMetin); dugme.disabled = false; return; }
     if (paketMi) {
       durumYaz('Paket arşive ve gönderim sırasına alınıyor…');
@@ -1134,6 +1134,9 @@ async function ek9Uretimi(dugme) {
         dogumTarihi: ek9Tarih(k['Doğum tarihi']),
         tcKimlik: '',                                  // yalnız basılı belgede elle tamamlanır
         ihtidaSebebi: hazirlik.ihtidaSebebi ?? k['İhtida sebebi'] ?? '',
+        // 25 Eki 2026: sebebin Türkçesi altına (iki dilli EK-9) ve ön yüzde cinsiyete göre zamir çizikleri.
+        ihtidaSebebiTr: hazirlik.ihtidaSebebiTr || '',
+        cinsiyetKodu: k['Cinsiyet'] || '',
         ihtidaTarihi: ek9Tarih(hazirlik.ihtidaTarihi),
         eposta: k['E-posta'] || '',
         telefon: telefonBicim(k['Telefon']),

@@ -176,12 +176,31 @@ function ihtidaPaketPdfKaydet(bytes, ad) {
   if (blob.getBytes().length > 14 * 1024 * 1024) throw new Error("paket-eposta-icin-buyuk");
   return { dosya: ihtidaKlasorGetir().createFile(blob), sha256: ihtidaPaketSha(blob.getBytes()) };
 }
+/* 25 Eki 2026 (Rıdvan KAYAHAN: «bu belgeyi diyanet veriyor, diyanetin resmi olarak konuştuğu dil türkçe, bu belgede dolayısıyla iki
+   dilli olmalı … web sitemizden başvuru alma süreçlerinde bunu otomatik yapacak süreci de buna göre yaz ve uygula»): EK-9 arka
+   yüzündeki ihtida sebebi başvuranın dilinde kalır, Türkçesi altına yazılır. Görevli son nüsha ekranında Türkçesini yazdıysa
+   (duzenleme.ihtidaSebebiTr) o kullanılır; yoksa metin Apps Script'in kendi Google Çeviri servisiyle (LanguageApp; kaynak dil
+   kendiliğinden bulunur) çevrilir. Gemini kullanılmaz: sebep özel nitelikli veridir, ücretsiz API katmanına gönderilmez.
+   Form dili Türkçeyse, çeviri metnin aynısıysa ya da çeviri alınamazsa ikinci satır yazılmaz; paket her durumda üretilir.
+   Günlüğe metin yazılmaz. */
+function ihtidaSebebiTurkcesi(k, d) {
+  var sade = function (s) { return String(s == null ? "" : s).replace(/\s+/g, " ").trim(); };
+  var elle = d && typeof d.ihtidaSebebiTr === "string" ? sade(d.ihtidaSebebiTr) : "";
+  if (elle) return elle;
+  var metin = sade(IhtidaPdf.sebepKaynagi(k || {}, d || null));
+  if (!metin || String((k || {})["Form dili"] || "").trim().toLowerCase() === "tr" || typeof LanguageApp === "undefined") return "";
+  try {
+    // Türkçe tipografi: noktalama işaretinden önce boşluk olmaz (motor bazen «buldum .» yazıyor).
+    var tr = sade(LanguageApp.translate(metin, "", "tr")).replace(/\s+([,.;:!?])/g, "$1");
+    return tr && tr.toLocaleLowerCase("tr") !== metin.toLocaleLowerCase("tr") ? tr : "";
+  } catch (_) { console.error("ihtida-sebep-ceviri-hatasi"); return ""; }
+}
 /** 23 Eki 2026: ön başvuruda başvuranın e-posta nüshası — kayıtlı şahit imzaları OLMADAN (secenek verilmez). Herkese açık formdan
  *  otomatik gelen başvuruda başvurana yalnız kendi imzası giden nüsha gider; dernek içi nüsha ve arşiv şahit imzalıdır. */
 async function ihtidaPaketBasvuranKopyasiUret(is, k) {
   var hatalar = [], g = ihtidaGorselleriOku(ihtidaKlasorGetir(), is.ref, hatalar);
   if (hatalar.length) throw new Error("gorsel-okunamadi");
-  var bytes = await IhtidaPdf.uret(k, g, null, ihtidaPaketKaynaklari(), PDFLib, fontkit);
+  var bytes = await IhtidaPdf.uret(k, g, null, ihtidaPaketKaynaklari(), PDFLib, fontkit, { ihtidaSebebiTr: ihtidaSebebiTurkcesi(k, null) });
   var pdf = await PDFLib.PDFDocument.load(bytes, { parseSpeed: Infinity });
   if (pdf.getPageCount() < 6) throw new Error("paket-sayfa-eksik");
   var kayit = ihtidaPaketPdfKaydet(bytes, is.ref + " - Ihtida Belge Paketi - r" + is.revizyon + " - basvuran.pdf");
@@ -207,7 +226,7 @@ async function ihtidaPaketIsle(ref) {
       // 23 Eki 2026: kayıtlı şahit imzaları (Rıdvan KAYAHAN, Ercan MOLA) özel depodan okunur; yalnız eşleşen şahide basılır.
       var imzalar = ihtidaSahitImzalariOku();
       var plan = IhtidaPdf.sahitImzaPlani(k, is.duzenleme || null, imzalar, g);
-      var bytes = await IhtidaPdf.uret(k, g, is.duzenleme || null, ihtidaPaketKaynaklari(), PDFLib, fontkit, { sahitImzalari: imzalar });
+      var bytes = await IhtidaPdf.uret(k, g, is.duzenleme || null, ihtidaPaketKaynaklari(), PDFLib, fontkit, { sahitImzalari: imzalar, ihtidaSebebiTr: ihtidaSebebiTurkcesi(k, is.duzenleme || null) });
       var pdf = await PDFLib.PDFDocument.load(bytes, { parseSpeed: Infinity });
       if (pdf.getPageCount() < 6) throw new Error("paket-sayfa-eksik");
       // Arşiv ve ek aynı blob'dur.
@@ -324,6 +343,8 @@ function ihtidaPaketOnayDogrula(d, camiId) {
   if (!d || !tarihGecerliMi(d.ihtidaTarihi) || !tarihGecerliMi(d.beyanTarihi)) return false;
   if (d.ihtidaTarihi > Utilities.formatDate(new Date(), "Europe/Brussels", "yyyy-MM-dd")) return false;
   if (!metinDolu(d.adSoyad) || !uzunlukTamam(d.adSoyad, 120) || !metinDolu(d.adres) || !uzunlukTamam(d.adres, 400) || !uzunlukTamam(d.ihtidaSebebi, 600)) return false;
+  // 25 Eki 2026: sebebin Türkçesi (isteğe bağlı; boşsa sunucu çevirir).
+  if (d.ihtidaSebebiTr !== undefined && (typeof d.ihtidaSebebiTr !== "string" || !uzunlukTamam(d.ihtidaSebebiTr, 600))) return false;
   if (["kimlik", "pasaport"].indexOf(d.belgeTuru) < 0 || !Array.isArray(d.sahitler) || d.sahitler.length !== 2) return false;
   // 21 Eki 2026: son nüsha ekranında düzeltilen EK-9 arka yüz değerleri (isteğe bağlı; yalnız bilinen alanlar, ≤120).
   if (d.alanlar !== undefined && !IhtidaPdf.ek9AlanlariGecerli(d.alanlar)) return false;

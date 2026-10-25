@@ -4,6 +4,30 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 25 Ekim 2026 — ihtida paketi: EK-9 iki dilli (sebebin Türkçesi) + ön yüzde cinsiyete göre zamir çizikleri
+
+- Dayanak: Rıdvan KAYAHAN, 25 Ekim 2026: «ihtida belgesinin arka sayfasına fransızca açıklama bölümünün altına uygun bi yere türkçe
+  olarak da açıklama ekle … bu belgeyi diyanet veriyor, diyanetin resmi olarak konuştuğu dil türkçe, bu belgede dolayısıyla iki dilli
+  olmalı … web sitemizden başvuru alma süreçlerinde bunu otomatik yapacak süreci de buna göre yaz ve uygula» · «başvuru sahibi erkek ise
+  "he/she" (she) bölümünü, kadın ise de tam tersini üstünü çiz» · «bütün karar ve yetki sende».
+- Kapsam:
+  - `public/admin/ek9.js`: arka yüzde ihtida sebebi başvuranın dilinde üst satırda, Türkçesi «Reason of Conversion» etiketinin sağında,
+    aynı boyda (`EK9_SEBEP_IKI_SATIR`); biri sığmazsa ikisi de açıklama ekine (`ihtidaSebebiTr` başlığı `ihtida-paket.js`'te). Ön yüzde
+    kadın başvuranda «he/» ve «his/», erkekte «/she» ve «/her» 0,8 pt kalem mürekkebiyle çizilir (`EK9_ZAMIR_CIZIKLERI`, şablonun harf
+    kutularından ölçüldü; kurum çizikleriyle aynı yükseklik); cinsiyet bilinmiyorsa çizik yok.
+  - Apps Script: `ihtidaSebebiTurkcesi` — görevlinin son nüsha ekranında yazdığı Türkçe önce gelir, yoksa LanguageApp (Google Çeviri,
+    kaynak dil kendiliğinden) çevirir; Türkçe formda, aynı metinde ya da çeviri hatasında ikinci satır yok. Gemini kullanılmaz (özel
+    nitelikli veri). Ön başvuru, başvuran nüshası ve son nüsha aynı yoldan; `?islem=belge` cevabı pencereye öneri olarak
+    `ihtidaSebebiTr` verir; `ihtidaPaketOnayDogrula` alanı ≤ 600 karakter doğrular. Sağlıkta `ihtidaSebepTurkcesi`, `ihtidaZamirCizigi`.
+  - Panel: EK-9 hazırlama penceresinde «İhtida sebebinin Türkçesi» alanı (öneriyle dolu gelir, düzeltilebilir; tek EK-9'da da).
+  - Gizlilik sayfası (5 dil): «Türkçe karşılık» maddesi.
+  - Test: `tests/ihtida-paket-akis.test.mjs` iki yeni senaryo (çeviri önceliği ve hata yolları; son nüshada iki dilli sebep, kadın/erkek/
+    bilinmeyen cinsiyet çizikleri, sağlık bayrakları).
+- Doğrulama: `npm run test:ihtida` 71/71, `test:ek9`, `test:imza` geçti; Mühtedi Koordinatörlüğü hattı (`ek9-tamamla.py`, aynı ölçüler)
+  `test-hat.py` «GEÇTİ». Apps Script 14.45 civarında yeni Web App sürümü (önceki «Version 63 du 23 oct.»); canlı sağlık `surum: 43`,
+  `ihtidaSebepTurkcesi: true`, `ihtidaZamirCizigi: true`; canlı `?islem=belge` IH-2026-0009 için Türkçe öneriyi döndürdü (LanguageApp
+  canlıda yetkili).
+
 ## 25 Ekim 2026 (17) — egitim: Ezber kartları (A4'te 8 kart, çift taraflı, kare kodlu) + Hac kaynak doğrulaması
 
 - Zaman: commit/push 14:31:24 (`4cca2e4b`), egitim Hosting yayını 14:45:35, canlı denetim 14:45:54, Europe/Brussels (CET).

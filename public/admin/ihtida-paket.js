@@ -113,7 +113,7 @@ export async function ihtidaPaketiUret(g) {
   // Formdaki uzun açıklamalar kesilmez; aynı PDF'nin açıklama ekinde tam olarak korunur.
   if (uzunAlanlar.length) {
     const font = await paket.embedFont(g.fontBytes, { subset: true });
-    const basliklar = { oncekiDin: 'Önceki din / Previous religion', ihtidaSebebi: 'İhtida sebebi / Reason for conversion', ihtidaTarihi: 'İhtida tarihi', eposta: 'E-posta / Email', telefon: 'Telefon / Phone', adres: 'Adres / Address' };
+    const basliklar = { oncekiDin: 'Önceki din / Previous religion', ihtidaSebebi: 'İhtida sebebi / Reason for conversion', ihtidaSebebiTr: 'İhtida sebebi (Türkçesi) / Reason for conversion (Turkish)', ihtidaTarihi: 'İhtida tarihi', eposta: 'E-posta / Email', telefon: 'Telefon / Phone', adres: 'Adres / Address' };
     let sayfa, y;
     const yeniSayfa = () => {
       sayfa = paket.addPage([595.28, 841.89]); y = 790;

@@ -4,6 +4,9 @@ import { sahitOnerileri, ek9Degerleri, ek9AlanlariUygula, ek9AlanlariGecerli, sa
 import { imzaVektorCoz, sahitImzaCoz } from '../../public/admin/imza-ciz.js';
 import { ek10SurumuCoz } from '../../public/admin/ek10.js';
 
+/** EK-9'a yazılacak ihtida sebebi: son nüsha ekranında düzeltildiyse o, yoksa başvuru kaydındaki. Sunucu Türkçesini bu metinden çevirir. */
+export const sebepKaynagi = (k, d) => (d && d.ihtidaSebebi != null ? d.ihtidaSebebi : k['İhtida sebebi']) || '';
+
 const tarih = v => String(v || '').replace(/^(\d{4})-(\d{2})-(\d{2}).*$/, '$3/$2/$1').replace(/^(\d{2})\.(\d{2})\.(\d{4}).*$/, '$1/$2/$3');
 
 /* 23 Eki 2026 (Rıdvan KAYAHAN): Marche Ulu Camii'nde şahit «Rıdvan KAYAHAN» ve «Ercan MOLA» ise kayıtlı vektör imzaları
@@ -58,7 +61,9 @@ export async function uret(k, gorseller, duzenleme, kaynaklar, pdfLib, fontkit, 
       cinsiyet: e9.cinsiyet, ogrenim: e9.ogrenim,
       anneAdi: e9.anneAdi, babaAdi: e9.babaAdi, dogumYeri: e9.dogumYeri, dogumTarihi: tarih(k['Doğum tarihi']),
       medeniHali: e9.medeniHali, meslek: e9.meslek, uyruk: e9.uyruk, dilekce: { dogumYeri: e9Kayit.dogumYeri },
-      oncekiDin: e9.oncekiDin, ihtidaSebebi: d.ihtidaSebebi ?? k['İhtida sebebi'],
+      // 25 Eki 2026: sebebin Türkçesi (sunucu çevirisi ya da görevlinin yazdığı) altına yazılır; cinsiyet ön yüzdeki zamirleri çizer.
+      oncekiDin: e9.oncekiDin, ihtidaSebebi: sebepKaynagi(k, d), ihtidaSebebiTr: String(secenek.ihtidaSebebiTr || ''),
+      cinsiyetKodu: k['Cinsiyet'] || '',
       eposta: k['E-posta'], telefon: k['Telefon'], cami,
       teslimat: { yontem: teslimatYontemi },
     },
@@ -74,3 +79,5 @@ export { camiCoz, imzaVektorCoz, sahitImzaCoz, ek9AlanlariGecerli };
 export const tekImza = TEK_IMZA;   // sağlık cevabı: ihtidaTekImza
 export const sahitKendiImzasi = true;   // sağlık cevabı: ihtidaSahitKendiImzasi (mühtedinin kendi şahidinin formda attığı imza EK-9'a basılır)
 export const sahitImzasi = true;   // sağlık cevabı: ihtidaSahitImzasi (kayıtlı şahit imzaları özel depodan otomatik basılır)
+export const sebepIkiDilli = true;   // sağlık cevabı: ihtidaSebepTurkcesi (25 Eki 2026: EK-9 arka yüzünde sebebin Türkçesi altına yazılır)
+export const zamirCizigi = true;     // sağlık cevabı: ihtidaZamirCizigi (25 Eki 2026: ön yüzde cinsiyete göre he/she, his/her çizilir)

@@ -366,6 +366,67 @@ test('Sayaç özelliği okunamaz ya da yazılamazsa başvuru düşmez; defterdek
   assert.equal(ctx.referansMaxBul([referansSayfasi(['IH-2026-0007'])], 'IH', '2026'), 10);
 });
 
+// ---- 25 Ekim 2026: EK-9 iki dilli ve zamir çizikleri ------------------------------------------------------------------------------
+// Rıdvan KAYAHAN: «bu belgeyi diyanet veriyor, diyanetin resmi olarak konuştuğu dil türkçe, bu belgede dolayısıyla iki dilli olmalı» ·
+// «başvuru sahibi erkek ise "he/she" (she) bölümünü … kadın ise de tam tersini üstünü çiz».
+async function onYuzAkisi(bytes) {
+  const doc = await PDFDocument.load(bytes);
+  const c = doc.getPage(0).node.get(PDFName.of('Contents'));
+  return (c instanceof PDFArray ? c.asArray() : [c]).map(r => Buffer.from(decodePDFRawStream(doc.context.lookup(r)).decode()).toString('latin1')).join('\n');
+}
+const zamirCizgisi = (akis, x0, x1) => new RegExp(`${x0.replace('.', '\\.')} [\\d.]+ m\\s+${x1.replace('.', '\\.')} [\\d.]+ l`).test(akis);
+
+test('Sebebin Türkçesi: görevlinin yazdığı önce gelir, yoksa Google Çeviri; Türkçe formda ve hata hâlinde ikinci satır yok', () => {
+  const { ctx } = ortam();
+  const cagrilar = [];
+  ctx.LanguageApp = { translate: (metin, kaynak, hedef) => { cagrilar.push([kaynak, hedef]); return 'Huzuru  buldum .'; } };
+  const fr = { ...k, 'İhtida sebebi': 'J’ai trouvé la paix.' };
+  assert.equal(ctx.ihtidaSebebiTurkcesi(fr, null), 'Huzuru buldum.', 'boşluk ve noktalama önündeki boşluk temizlenir');
+  assert.deepEqual(cagrilar, [['', 'tr']], 'kaynak dil kendiliğinden bulunur, hedef Türkçe');
+  assert.equal(ctx.ihtidaSebebiTurkcesi(fr, { ihtidaSebebiTr: ' Görevlinin  çevirisi. ' }), 'Görevlinin çevirisi.');
+  assert.equal(ctx.ihtidaSebebiTurkcesi(fr, { ihtidaSebebi: '' }), '', 'görevli sebebi sildiyse çeviri yok');
+  assert.equal(ctx.ihtidaSebebiTurkcesi({ ...fr, 'Form dili': 'tr' }, null), '');
+  assert.equal(cagrilar.length, 1, 'Türkçe formda ve boş sebepte çeviri servisi çağrılmaz');
+  ctx.LanguageApp = { translate: () => 'J’ai trouvé la paix.' };
+  assert.equal(ctx.ihtidaSebebiTurkcesi(fr, null), '', 'çeviri metnin aynısıysa ikinci satır yazılmaz');
+  ctx.LanguageApp = { translate: () => { throw new Error('kota'); } };
+  assert.equal(ctx.ihtidaSebebiTurkcesi(fr, null), '', 'çeviri alınamazsa paket yine üretilir');
+  const temel = { adSoyad: k['Adı Soyadı'], adres: k.Adres, ihtidaTarihi: '2026-09-08', beyanTarihi: '2026-09-09', belgeTuru: 'kimlik', sahitler: [{ ad: 'Birinci Örnek' }, { ad: 'İkinci Örnek' }] };
+  assert.equal(ctx.ihtidaPaketOnayDogrula({ ...temel, ihtidaSebebiTr: 'Huzuru buldum.' }), true);
+  for (const ihtidaSebebiTr of [7, 'x'.repeat(601), null]) assert.equal(ctx.ihtidaPaketOnayDogrula({ ...temel, ihtidaSebebiTr }), false, String(ihtidaSebebiTr));
+});
+
+test('Son nüsha iki dilli: Fransızca sebebin altında Türkçesi; kadın başvuranda «he/» ve «his/», erkekte «/she» ve «/her» çizilir', async () => {
+  const { ctx, files } = ortam();
+  ctx.LanguageApp = { translate: () => 'Sunucu çevirisi kullanılmamalı.' };
+  const fr = { ...k, 'İhtida sebebi': 'J’ai trouvé la paix.' };
+  ctx.ihtidaPaketKayit = () => ({ kayit: { ...fr } });
+  const temel = { adSoyad: k['Adı Soyadı'], adres: k.Adres, ihtidaTarihi: '2026-09-08', beyanTarihi: '2026-09-09', belgeTuru: 'kimlik', sahitler: [{ ad: 'Birinci Örnek' }, { ad: 'İkinci Örnek' }] };
+  assert.equal(ctx.ihtidaPaketOnayIsle({ anahtar: 'test-panel-key', ref: k.Referans, hazirlik: { ...temel, ihtidaSebebiTr: 'Huzuru buldum.' }, islemAnahtari: 'approval-iki-dilli-2099' }).ok, true);
+  await ctx.ihtidaPaketIsle(k.Referans);
+  const is = ctx.ihtidaPaketIsiOku(k.Referans);
+  assert.equal(is.durum, 'tamam', JSON.stringify(is));
+  const bytes = Buffer.from(files.get(is.pdfId).getBlob().getBytes());
+  const yol = '.codex/cikti/ihtida/gas-son-nusha-iki-dilli.pdf';
+  writeFileSync(yol, bytes);
+  const arka = pdfMetni(yol, ['-f', '2', '-l', '2']).replace(/[ \t]+/g, '');
+  assert.ok(arka.includes('J’aitrouvélapaix.'), 'özgün sebep');
+  assert.ok(arka.includes('Huzurubuldum.'), 'görevlinin Türkçesi');
+  assert.doesNotMatch(arka, /Sunucuçevirisi/);
+  const kadin = await onYuzAkisi(bytes);
+  assert.ok(zamirCizgisi(kadin, '565.5', '581.2') && zamirCizgisi(kadin, '288.1', '307'), 'kadın: he/ ve his/ çizili');
+  assert.ok(!zamirCizgisi(kadin, '578.3', '599.2') && !zamirCizgisi(kadin, '304', '324.4'), 'kadın: she ve her çizilmez');
+  const erkekBytes = Buffer.from(await ctx.IhtidaPdf.uret({ ...k, Cinsiyet: 'erkek' }, ctx.ihtidaGorselleriOku(), null, ctx.ihtidaPaketKaynaklari(), ctx.PDFLib, ctx.fontkit));
+  const erkek = await onYuzAkisi(erkekBytes);
+  assert.ok(zamirCizgisi(erkek, '578.3', '599.2') && zamirCizgisi(erkek, '304', '324.4'), 'erkek: /she ve /her çizili');
+  assert.ok(!zamirCizgisi(erkek, '565.5', '581.2'), 'erkek: he çizilmez');
+  const belirsiz = await onYuzAkisi(Buffer.from(await ctx.IhtidaPdf.uret({ ...k, Cinsiyet: '' }, ctx.ihtidaGorselleriOku(), null, ctx.ihtidaPaketKaynaklari(), ctx.PDFLib, ctx.fontkit)));
+  assert.ok(!zamirCizgisi(belirsiz, '565.5', '581.2') && !zamirCizgisi(belirsiz, '578.3', '599.2'), 'cinsiyet bilinmiyorsa zamir çizilmez');
+  const saglik = ctx.doGet({ parameter: {} });
+  assert.equal(saglik.ihtidaSebepTurkcesi, true);
+  assert.equal(saglik.ihtidaZamirCizigi, true);
+});
+
 test('Sağlık cevabı tek imza kuralını ve azalmayan sayacı bildirir', () => {
   const { ctx } = ortam();
   const saglik = ctx.doGet({ parameter: {} });

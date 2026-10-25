@@ -173,6 +173,9 @@ function doGet(e) {
     // 23 Eki 2026 (kapsam genişletmesi): mühtedi kendi şahitlerini seçtiyse yanındaki şahidin formda attığı isteğe bağlı imza
     // (şahidin kendi onayıyla; ihtidaSahitImzalariDogrula) başvuru klasörüne yazılır ve EK-9 ön yüzündeki şahit yuvasına basılır.
     ihtidaSahitKendiImzasi: typeof IhtidaPdf !== "undefined" && IhtidaPdf.sahitKendiImzasi === true && typeof ihtidaSahitImzalariDogrula === "function" && typeof ihtidaSahitImzaGorselleri === "function",
+    // 25 Eki 2026: EK-9 iki dilli (sebebin Türkçesi altına, Google Çeviri ya da görevli) ve ön yüzde cinsiyete göre zamir çizikleri.
+    ihtidaSebepTurkcesi: typeof IhtidaPdf !== "undefined" && IhtidaPdf.sebepIkiDilli === true && typeof ihtidaSebebiTurkcesi === "function",
+    ihtidaZamirCizigi: typeof IhtidaPdf !== "undefined" && IhtidaPdf.zamirCizigi === true,
     referansSayaci: typeof referansMaxBul === "function" && typeof REFERANS_SON_EK === "string",
     seviyeTesti: typeof SeviyeTesti !== "undefined" && typeof seviyePostIsle === "function",
     seviyeBankaSurumu: (typeof SeviyeTesti !== "undefined" ? SeviyeTesti.SORU_BANKASI_SURUMU : null),
@@ -2404,9 +2407,13 @@ function panelBelgeIsle(e) {
        resmî dosya içindir, panel bunları yalnız GÖSTERİR/indirir. Şahit imzaları kâğıttadır. */
     var okunamayanlar = [];
     var gorseller = ihtidaGorselleriOku(ihtidaKlasorGetir(), ref, okunamayanlar);
+    // 25 Eki 2026: EK-9 hazırlama penceresi sebebin Türkçesini öneri olarak gösterir (ihtida-paket-isleri.gs → ihtidaSebebiTurkcesi).
+    var sebepTr = "";
+    try { if (typeof ihtidaSebebiTurkcesi === "function") sebepTr = ihtidaSebebiTurkcesi(kayit, null); } catch (_) { sebepTr = ""; }
 
     return json({
       ok: true, surum: SURUM, ref: ref, kayit: kayit,
+      ihtidaSebebiTr: sebepTr,
       gorseller: gorseller,
       vesikalik: gorseller.vesikalik,               // panel.js'in beklediği düz alanlar
       basvuranImza: gorseller.imza,

@@ -160,6 +160,9 @@ export function ek9HazirlikAc(kayit, imzalar = {}, secenekler = {}) {
       <fieldset data-ek9-alanlar><legend>EK-9 arka yüzündeki bilgiler</legend>
         <p class="not">Başvuranın formda yazdıkları gelir. Kodlu seçimler emsal belgelerdeki gibi «Türkçe / Fransızca» yazılır; serbest yazılanları isterseniz aynı biçime getirin (ör. «İtalya / Italie», «Emekli / Retraité»). Boş bıraktığınız alana «Bildirilmedi / Non communiqué» yazılır. Bu düzeltmeler yalnız EK-9’a girer; dilekçe başvuranın kendi beyanı olarak kalır, başvuru kaydı değişmez.</p>
       </fieldset>
+      <div data-sebep-tr><label for="ek9-sebep-tr">İhtida sebebinin Türkçesi (EK-9 arka yüzünde sebebin altına yazılır)</label>
+        <textarea id="ek9-sebep-tr" name="sebepTr" maxlength="600" rows="2"></textarea>
+        <p class="not">Belgeyi Diyanet verir; resmî dili Türkçe olduğu için sebep iki dilli yazılır (25 Ekim 2026 kuralı). Alan Google Çeviri ile doldurulmuş gelir; kontrol edip düzeltin. Boş bırakırsanız sunucu kendisi çevirir. Sebep zaten Türkçeyse ikinci satır yazılmaz.</p></div>
       <p data-teslimat></p>
       <div class="ek9-eylemler"><button type="button" class="dugme" data-vazgec>Vazgeç</button><button type="submit" class="dugme birincil">PDF’yi hazırla</button></div>
     </form>`;
@@ -189,7 +192,7 @@ export function ek9HazirlikAc(kayit, imzalar = {}, secenekler = {}) {
         <label for="ek9-kimlik-turu">Eklenen kimlik belgesi</label>
         <select id="ek9-kimlik-turu" name="belgeTuru" required><option value="">Seçin</option><option value="kimlik">Kimlik kartı (ön ve arka)</option><option value="pasaport">Pasaport bilgi sayfası</option></select>
         <p data-paket-not></p>`;
-      pencere.querySelector('[data-teslimat]').before(ek);
+      pencere.querySelector('[data-sebep-tr]').before(ek);
       form.elements.namedItem('tamAdres').value = String(kayit['Adres'] || '');
       form.elements.namedItem('sebep').value = String(kayit['İhtida sebebi'] || '');
       form.elements.namedItem('beyanTarihi').value = secenekler.beyanTarihi || '';
@@ -219,6 +222,9 @@ export function ek9HazirlikAc(kayit, imzalar = {}, secenekler = {}) {
       pencere.querySelector('[data-ek9-alanlar]').append(etiket, girdi);
       return girdi;
     });
+    // 25 Eki 2026: sebebin Türkçesi (sunucunun belge ucundan gelen Google Çeviri önerisi; görevli düzeltebilir).
+    form.elements.namedItem('sebepTr').value = String(secenekler.sebepTr || '');
+    if (!String(kayit['İhtida sebebi'] || '').trim() && !secenekler.paket) pencere.querySelector('[data-sebep-tr]').hidden = true;
     const teslim = kayit['Belge teslim yeri'];
     const camiAdres = [kayit['Cami adresi'], kayit['Cami posta kodu'], kayit['Cami şehri']].filter(Boolean).join(', ');
     const camiAdi = kayit['Başvuru camisi'] || 'Ulu Camii';
@@ -278,6 +284,7 @@ export function ek9HazirlikAc(kayit, imzalar = {}, secenekler = {}) {
         isimYazisi: form.elements.namedItem('isimYazisi').value,
         alanYazisi: form.elements.namedItem('alanYazisi').value,
         alanlar: Object.fromEntries(ek9Girdiler.map(g => [g.dataset.ek9Alan, g.value.trim().replace(/\s+/g, ' ')])),
+        ihtidaSebebiTr: form.elements.namedItem('sebepTr').value.trim().replace(/\s+/g, ' '),
       };
       if (secenekler.paket) Object.assign(sonuc, {
         adres: form.elements.namedItem('tamAdres').value.trim(),
