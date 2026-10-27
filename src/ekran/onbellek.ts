@@ -55,11 +55,14 @@ export function onbellekOnEki(kapsam: string): string {
 
 export const onbellekAdi = (kapsam: string, surum: string): string => onbellekOnEki(kapsam) + surum;
 
-/** Etkinleşmede silinecek eski önbellekler: bu kapsamın öneğiyle başlayıp güncel sürümün kendi adı olmayanlar. */
+/** Etkinleşmede silinecek eski önbellekler: bu kapsamın öneğiyle başlayıp güncel sürümün kendi adı olmayanlar. /ekran/'in
+ *  öneği (`ekran-`) platform kapsamlarının adlarını da kapsar; onlar `_` taşır, /ekran/ adları (damga, `yerel-…`) taşımaz:
+ *  aynı kökende /ekran/ SW'si /c/<kimlik>/ önbelleklerini silmez. */
 export function silinecekOnbellekler(adlar: readonly string[], kapsam: string, surum: string): string[] {
   const onEk = onbellekOnEki(kapsam);
   const guncel = onbellekAdi(kapsam, surum);
-  return adlar.filter((a) => a.indexOf(onEk) === 0 && a !== guncel);
+  const ekran = kapsam === EKRAN_KAPSAMI;
+  return adlar.filter((a) => a.indexOf(onEk) === 0 && a !== guncel && (!ekran || a.indexOf('_') < 0));
 }
 
 /** Kurulumda önbelleğe alınacak adresler (src/ekran/kabuk.json, Ulu Camii'nin /ekran/ listesi). /ekran/ kapsamında

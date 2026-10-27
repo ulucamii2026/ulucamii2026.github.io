@@ -74,6 +74,13 @@ test('platform kapsamı: ad cami kimliğini taşır; x ve x-y birbirinin önbell
   assert.equal(akisYolu('/c/x/'), '/c/x/akis.json');
 });
 
+test("/ekran/ kapsamı aynı kökendeki platform kapsamlarının önbelleklerini silmez (ayırıcı _ yalnız onlarda)", () => {
+  assert.deepEqual(
+    silinecekOnbellekler(['ekran-0123456789abcdef', 'ekran-yerel-k3x9', 'ekran-c-x_h1', 'ekran-c-x-y_h1', 'ekran-yeni'], '/ekran/', 'yeni'),
+    ['ekran-0123456789abcdef', 'ekran-yerel-k3x9'],
+  );
+});
+
 test('platform kabuk listesi: sayfa ve akışlar kapsama taşınır, /media/ düşer, paylaşılan /ekran/ kalır', () => {
   const k = kabukAdresleri(KABUK_TAM, '/c/x/');
   for (const u of ['/c/x/', '/c/x/vakitler.json', '/c/x/akis.json', '/c/x/icerik.json']) assert.ok(k.includes(u), u);
