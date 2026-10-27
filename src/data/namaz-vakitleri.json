@@ -4,28 +4,8 @@
  "kaynakUc": "https://namazvakitleri.diyanet.gov.tr/tr-TR/11890/mfamenne-namaz-vakitleri",
  "ilce": "11890",
  "ilceAdi": "M.FAMENNE",
- "guncelleme": "2026-10-25T07:49:25.768Z",
+ "guncelleme": "2026-10-27T08:22:58.556Z",
  "gunler": [
-  {
-   "tarih": "2026-10-24",
-   "hicri": "13 Cemaziyelevvel 1448",
-   "imsak": "06:26",
-   "gunes": "08:08",
-   "ogle": "13:28",
-   "ikindi": "16:05",
-   "aksam": "18:38",
-   "yatsi": "20:07"
-  },
-  {
-   "tarih": "2026-10-25",
-   "hicri": "14 Cemaziyelevvel 1448",
-   "imsak": "05:28",
-   "gunes": "07:10",
-   "ogle": "12:28",
-   "ikindi": "15:03",
-   "aksam": "17:36",
-   "yatsi": "19:05"
-  },
   {
    "tarih": "2026-10-26",
    "hicri": "15 Cemaziyelevvel 1448",
@@ -325,6 +305,26 @@
    "ikindi": "14:29",
    "aksam": "16:52",
    "yatsi": "18:28"
+  },
+  {
+   "tarih": "2026-11-25",
+   "hicri": "16 Cemaziyelahir 1448",
+   "imsak": "06:11",
+   "gunes": "08:00",
+   "ogle": "12:31",
+   "ikindi": "14:28",
+   "aksam": "16:51",
+   "yatsi": "18:27"
+  },
+  {
+   "tarih": "2026-11-26",
+   "hicri": "17 Cemaziyelahir 1448",
+   "imsak": "06:12",
+   "gunes": "08:02",
+   "ogle": "12:31",
+   "ikindi": "14:27",
+   "aksam": "16:50",
+   "yatsi": "18:26"
   },
   {
    "tarih": "2027-01-01",
