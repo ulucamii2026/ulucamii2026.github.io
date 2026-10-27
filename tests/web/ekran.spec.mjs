@@ -184,6 +184,32 @@ test('sayfa verisinde vakit adları eksikse geri sayım "undefined" yazmaz, adı
   await expect(page.locator('[data-alan="vakitler"]')).not.toContainText('undefined');
 });
 
+// Konumdan bağımsız sayfa (D2): vakit akışı sayfanın kendi ilçesiyle (#ekran-veri.ilce) kabul edilir. Platformdaki cami
+// sayfası kendi ilçesini yazar; başka caminin (ya da Ulu Camii'nin 11890) dosyası orada gösterilmez.
+const sayfaIlcesiYaz = (ilce) => sayfaVerisiDegistir((html) => html.replace(/(<script[^>]*id="ekran-veri"[^>]*>)([\s\S]*?)(<\/script>)/, (_, ac, json, kapa) => ac + JSON.stringify({ ...JSON.parse(json), ilce }) + kapa));
+
+test('11890 dışı ilçeli sayfa kendi ilçesinin akışını gösterir: altı vakit satırı, «güncellenemedi» yok', async ({ page }) => {
+  await page.route('**/ekran/', sayfaIlcesiYaz('12345'));
+  await page.route('**/ekran/vakitler.json', (r) => r.fulfill({ json: { ...vakitAkisi(), ilce: '12345', ilceAdi: 'ORNEK' } }));
+  await page.clock.install({ time: an(ornek, ornek.ogle, -30) });
+  await page.goto('/ekran/');
+  await expect(page.locator('.vakit')).toHaveCount(6);
+  await expect(page.locator('.vakit[data-vakit="ogle"] .deger')).toHaveText(ornek.ogle);
+  await expect(page.locator('.geri-sayim b')).toHaveText('Öğle vaktine 30 dk');
+  await expect(page.locator('.vakit-yok')).toHaveCount(0);
+  await expect(page.locator('[data-alan="vakitler"]')).not.toContainText('güncellenemedi');
+});
+
+test('11890 dışı ilçeli sayfada başka ilçenin (11890) akışı reddedilir: vakit satırı yerine güncellenemedi uyarısı', async ({ page }) => {
+  await page.route('**/ekran/', sayfaIlcesiYaz('12345'));
+  await page.route('**/ekran/vakitler.json', (r) => r.fulfill({ json: vakitAkisi() }));
+  await page.clock.install({ time: an(ornek, ornek.ogle, -30) });
+  await page.goto('/ekran/');
+  await expect(page.locator('.vakit-yok b')).toHaveText('Namaz vakitleri güncellenemedi');
+  await expect(page.locator('.vakit')).toHaveCount(0);
+  await expect(page.locator('.geri-sayim')).toHaveCount(0);
+});
+
 test.describe('yatay sinyalde döndürme', () => {
   test.use({ viewport: { width: 1920, height: 1080 } });
   test('?don=90 dikey tuvali yatay ekrana taşmadan tam sığdırır', async ({ page }) => {
