@@ -15,7 +15,7 @@ import { dokunmatikKipiOku, dokunmatikKur } from './dokunmatik.ts';
 import { vakitleriCiz } from './vakitler.ts';
 import { bosCiz, levhaSigdir, slaytCiz } from './slaytlar.ts';
 import { havaAdresi, havaCoz, havaSimgesi, havaTazeMi, SIMGE_YOLLARI, type HavaDurumu } from './hava.ts';
-import { akisTazele, AKIS_ARALIGI_MS, birlesikDuyurular, duyuruAnahtari, sonSunucuSaati, tazele, sonrakiTazelemeMs, type EkranVerisi } from './veri.ts';
+import { akisTazele, AKIS_ARALIGI_MS, birlesikDuyurular, duyuruAnahtari, sayfaIlcesi, sonSunucuSaati, tazele, sonrakiTazelemeMs, VARSAYILAN_ILCE, type EkranVerisi } from './veri.ts';
 import { kabukKur, type KabukDurumu } from './kabuk.ts';
 import { renderKur } from './render.ts';
 
@@ -26,6 +26,9 @@ interface SayfaVerisi {
   gps?: { enlem: number; boylam: number };
   /** Sitedeki sabit Cuma namazı saati (SS:DD) ya da boş; src/pages/ekran/index.astro doğrular. */
   cumaSaati?: string;
+  /** Caminin Diyanet ilçesi; vakit akışı yalnız bu ilçeyle kabul edilir (veri.ts → vakitGecerli). Alan yoksa ya da
+   *  bozuksa (önbellekteki eski iskelet) Ulu Camii'nin 11890'ı (veri.ts → sayfaIlcesi). */
+  ilce: string;
 }
 
 /** Sayfa verisi (#ekran-veri) eksik ya da bozuksa (ör. önbellekteki eski iskelet ile yeni paket) açılış çökmez,
@@ -33,7 +36,7 @@ interface SayfaVerisi {
  *  (metinler.ts → VAKIT_ADLARI), saat ve Diyanet vakitleri yine çalışır; konum yoksa hava gösterilmez (uydurma
  *  bir konumun havası yerine hiç). */
 function sayfaVerisiOku(): SayfaVerisi {
-  const bos: SayfaVerisi = { cami: { tr: '', fr: '' }, vakit: VAKIT_ADLARI, cumaSaati: '' };
+  const bos: SayfaVerisi = { cami: { tr: '', fr: '' }, vakit: VAKIT_ADLARI, cumaSaati: '', ilce: VARSAYILAN_ILCE };
   try {
     const x = JSON.parse(document.getElementById('ekran-veri')?.textContent || 'null') as Partial<SayfaVerisi> | null;
     if (!x || typeof x !== 'object') return bos;
@@ -43,6 +46,7 @@ function sayfaVerisiOku(): SayfaVerisi {
       vakit: x.vakit && x.vakit.tr && x.vakit.fr ? x.vakit : bos.vakit,
       gps: x.gps && typeof x.gps.enlem === 'number' && typeof x.gps.boylam === 'number' ? x.gps : undefined,
       cumaSaati: typeof x.cumaSaati === 'string' && /^\d{2}:\d{2}$/.test(x.cumaSaati) ? x.cumaSaati : '',
+      ilce: sayfaIlcesi(x.ilce),
     };
   } catch (hata) {
     console.error(hata);
@@ -175,7 +179,7 @@ function saniyelik(): void {
 
 async function veriDongusu(): Promise<void> {
   try {
-    await tazele(veri);
+    await tazele(veri, undefined, sayfa.ilce);
     ilkTazelemeBitti = true;
     dakikalik(new Date());
     if (!slaytBasladi) {
@@ -386,15 +390,17 @@ try {
     // eski paketi belleğinden çalıştırmaya devam eder (yeni SW eski önbelleği çoktan silmiş olsa bile).
     let denetciVardi = !!navigator.serviceWorker.controller;
     let yenileniyor = false; // en fazla bir kez yenile
+    // Betik ve kapsam sayfaya görelidir (./sw.js, ./): /ekran/ sayfası için /ekran/sw.js ve /ekran/, bir platform
+    // camisinin /c/<kimlik>/ sayfası için kendi sw.js'i ve kendi kapsamı. Kapsam sw.ts'te kayıttan türetilir.
     navigator.serviceWorker
-      .register('/ekran/sw.js', { scope: '/ekran/' })
+      .register('./sw.js', { scope: './' })
       .catch((hata) => console.error(hata));
     setInterval(() => {
       // register() zaten var olan kaydı yan etkisiz döner, silinmişse (depolama tahliyesi, başarısız ilk
       // kurulum) yeniden oluşturur — yalnız update() çağırmak kayıt kaybolduğunda sonsuza dek sessizce
       // reddederdi.
       navigator.serviceWorker
-        .register('/ekran/sw.js', { scope: '/ekran/' })
+        .register('./sw.js', { scope: './' })
         .then((kayit) => kayit.update())
         .catch((hata) => console.error(hata));
     }, 6 * 3_600_000);

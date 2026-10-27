@@ -11,6 +11,7 @@ import { ui } from '../../i18n/ui';
 import kimlik from '../../data/kurumsal-kimlik.json';
 import { siteAyarlari } from '../../lib/icerik';
 import { SIRA } from '../../lib/namaz';
+import { DIYANET_ILCE } from '../../lib/ekran/vakit-kapisi';
 
 const ayar = await siteAyarlari();
 const vakitAdlari = (dil: 'tr' | 'fr'): Record<string, string> => {
@@ -33,6 +34,8 @@ const sayfaVerisi = {
   vakit: { tr: vakitAdlari('tr'), fr: vakitAdlari('fr') },
   gps: { enlem: ayar.gps.enlem, boylam: ayar.gps.boylam },
   cumaSaati,
+  /* Vakit akışının kabul edileceği Diyanet ilçesi (veri.ts → vakitGecerli). Platformdaki cami sayfaları kendi ilçesini yazar. */
+  ilce: DIYANET_ILCE,
 };
 ---
 <!doctype html>

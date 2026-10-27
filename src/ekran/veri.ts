@@ -31,8 +31,20 @@ export interface EkranVerisi { vakit: EkranVakitleri | null; akis: AkisGovdesi |
 
 const nesne = (x: unknown): x is Record<string, unknown> => typeof x === 'object' && x !== null;
 
-export function vakitGecerli(x: unknown): x is EkranVakitleri {
-  return nesne(x) && x.kaynakTuru === 'diyanet' && x.ilce === '11890' && Array.isArray(x.gunler) && x.gunler.length > 0;
+/** Ulu Camii'nin Diyanet ilçesi (M.FAMENNE). Sayfada `ilce` alanı yoksa (önbellekteki eski iskelet) ya da bozuksa bu
+ *  geçerlidir: Ulu Camii'nin vakti hiçbir durumda düşmez. src/lib/ekran/vakit-kapisi.ts → DIYANET_ILCE ile aynı değerdir;
+ *  o dosya istemci paketine çekilmesin diye değer burada ayrıca yazılı, eşitliği tests/ekran-konum.test.mjs kilitler. */
+export const VARSAYILAN_ILCE = '11890';
+
+/** Vakit akışı Diyanet'ten gelmeli ve sayfanın ilçesine ait olmalı: başka caminin (ya da Ulu Camii'nin) dosyası
+ *  yanlış sayfada gösterilmez. `ilce` verilmezse Ulu Camii'nin ilçesi (11890) uygulanır. */
+export function vakitGecerli(x: unknown, ilce: string = VARSAYILAN_ILCE): x is EkranVakitleri {
+  return nesne(x) && x.kaynakTuru === 'diyanet' && x.ilce === ilce && Array.isArray(x.gunler) && x.gunler.length > 0;
+}
+/** Sayfa verisindeki (#ekran-veri) ilçe: 1–6 haneli rakamlardan oluşan METİN ise kendisi, aksi halde (alan yok, sayı,
+ *  boş, bozuk) VARSAYILAN_ILCE. */
+export function sayfaIlcesi(x: unknown): string {
+  return typeof x === 'string' && /^[0-9]{1,6}$/.test(x) ? x : VARSAYILAN_ILCE;
 }
 export function akisGecerli(x: unknown): x is AkisGovdesi {
   return nesne(x) && Array.isArray(x.duyurular) && nesne(x.ayar) && nesne(x.ayar.slayt);
@@ -120,11 +132,17 @@ async function getir<T>(yol: string, gecerli: (x: unknown) => x is T, zamanAsimi
   }
 }
 
-export async function tazele(v: EkranVerisi, zamanAsimiMs = 30_000): Promise<void> {
+/* Veri yolları sayfaya GÖRELİDİR: ekran /ekran/ altında da (Ulu Camii) bir platform camisinin kendi sayfasında da
+   (/c/<kimlik>/) aynı paketle çalışır, akışlar sayfanın yanındaki dosyalardır. Mutlak /ekran/ yolu yazılmaz. */
+export const VAKIT_YOLU = './vakitler.json';
+export const AKIS_YOLU = './akis.json';
+export const ICERIK_YOLU = './icerik.json';
+
+export async function tazele(v: EkranVerisi, zamanAsimiMs = 30_000, ilce: string = VARSAYILAN_ILCE): Promise<void> {
   const [vakit, akis, icerik] = await Promise.all([
-    getir('/ekran/vakitler.json', vakitGecerli, zamanAsimiMs),
-    getir('/ekran/akis.json', akisGecerli, zamanAsimiMs),
-    getir('/ekran/icerik.json', icerikGecerli, zamanAsimiMs),
+    getir(VAKIT_YOLU, (x): x is EkranVakitleri => vakitGecerli(x, ilce), zamanAsimiMs),
+    getir(AKIS_YOLU, akisGecerli, zamanAsimiMs),
+    getir(ICERIK_YOLU, icerikGecerli, zamanAsimiMs),
   ]);
   if (vakit) v.vakit = vakit;
   if (akis) v.akis = akis;
@@ -164,6 +182,6 @@ export function birlesikDuyurular(a: AkisGovdesi | null, kabuk: readonly EkranDu
 
 /** Yalnız duyuru akışını tazeler; hatalı ya da geçersiz yanıt son sağlam akışı silmez (tazele ile aynı kural). */
 export async function akisTazele(v: EkranVerisi, zamanAsimiMs = 30_000): Promise<void> {
-  const akis = await getir('/ekran/akis.json', akisGecerli, zamanAsimiMs);
+  const akis = await getir(AKIS_YOLU, akisGecerli, zamanAsimiMs);
   if (akis) v.akis = akis;
 }

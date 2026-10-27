@@ -90,7 +90,7 @@ test('akisTazele yalnız akis.json ister; bozuk yanıt son sağlam duyuru akış
   try {
     const v = { vakit: VAKIT, akis: AKIS, icerik: ICERIK };
     await akisTazele(v);
-    assert.deepEqual(istenen, ['/ekran/akis.json']);
+    assert.deepEqual(istenen, ['./akis.json']);
     assert.equal(v.akis.derleme, 'yeni');
     assert.equal(v.vakit, VAKIT);
     assert.equal(v.icerik, ICERIK);
