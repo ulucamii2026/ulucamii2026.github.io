@@ -4,7 +4,8 @@ import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { damgaHesapla, damgayaGirer, ekranDamgasi, KABUK, kabukDosyasi } from '../scripts/ekran-damga.mjs';
+import { build } from 'esbuild';
+import { damgaHesapla, damgayaGirer, ekranDamgasi, KABUK, kabukDosyasi, swAyari } from '../scripts/ekran-damga.mjs';
 
 /* Cami ekranı service worker'ının sürüm damgası yayımlanan ekran dosyalarının içerik özetidir
    (scripts/ekran-damga.mjs; astro.config.mjs → derleme sonu). Eski damga derleme anıydı (Date.now): sitenin her
@@ -78,4 +79,13 @@ test('dist/ekran/sw.js yayımlanan ekran dosyalarının içerik damgasını taş
   const damga = await damgaHesapla(DIST);
   assert.ok(readFileSync(join(DIST, 'ekran', 'sw.js'), 'utf8').includes(damga),
     `dist/ekran/sw.js ${damga} damgasını taşımıyor. Yerelde dist/ eski bir derlemeden kalmış olabilir (bir kabuk dosyası ya da sw.ts sonradan değişti): önce \`npm run build\` ile yeniden derleyin. Yeni derlemede de düşüyorsa derleme sonu adımı (astro.config.mjs → ekran-sw-damgasi) çalışmamıştır.`);
+});
+
+/* Platform sayfa derlemesi (D2) yayımlanan sw.js içindeki `@@EKRAN_SURUM@@` yer tutucusunu kendi sürümüyle değiştirir.
+   esbuild sabit katlamasıyla yer tutucu kaybolursa ya da çoğalırsa o adım sessizce bozulur: derlenmiş SW'de TAM BİR kez bulunmalı. */
+test('derlenmiş SW yer tutucu dizesini tam bir kez içerir (platform sürüm yazımı buna dayanır)', async () => {
+  const sw = await build(swAyari('yer-tutucu-damga', { write: false }));
+  const kod = Buffer.from(sw.outputFiles[0].contents).toString('utf8');
+  assert.equal(kod.split('@@EKRAN_SURUM@@').length - 1, 1);
+  assert.equal(kod.split('yer-tutucu-damga').length - 1, 1, 'damga varsayılan değer olarak bir kez gömülür');
 });

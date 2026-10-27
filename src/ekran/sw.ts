@@ -1,5 +1,6 @@
 /**
- * Cami ekranının service worker'ı — /ekran/sw.js (kapsam /ekran/). 27 Eylül 2026, düzeltme turu 1.
+ * Cami ekranının service worker'ı — /ekran/sw.js (kapsam /ekran/; platform camisinde sayfasının yanındaki sw.js ve
+ * kendi kapsamı, bkz. aşağıdaki KAPSAM). 27 Eylül 2026, düzeltme turu 1.
  * Ekran internetsiz de açılabilsin diye sayfa iskeleti, paket, fontlar, logolar ve üç veri akışı
  * önbellekte tutulur. Sayfa ve JSON'lar AĞ ÖNCE (taze veri), diğerleri ÖNBELLEK ÖNCE gelir. Sürüm damgası
  * yayımlanan ekran dosyalarının içerik özetidir (scripts/ekran-damga.mjs): yalnız ekran dosyaları değişen bir yayın
@@ -8,14 +9,22 @@
 /* Önbelleğe alınacak dosyaların TEK listesi (esbuild JSON'u pakete gömer). Site denetimi (scripts/site-denetim.mjs)
    aynı dosyayı okur ve her yolun dist/ altında gerçekten üretildiğini `kritik` olarak denetler: tek bir eksik dosya
    (ör. yeniden adlandırılmış bir logo) kurulumu reddettirir, bundan sonraki hiçbir SW sürümü kurulamaz. */
-import KABUK from './kabuk.json';
-import { budanacaklar, surumluAdres } from './onbellek.ts';
+import KABUK_LISTESI from './kabuk.json';
+import { agOnceMi, akisYolu, budanacaklar, kabukAdresleri, kapsamdaMi, kapsamYolu, onbellekAdi, silinecekOnbellekler, surumluAdres, surumSec } from './onbellek.ts';
 
 declare const __EKRAN_SURUM__: string;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const sw: any = self;
-const ONBELLEK = 'ekran-' + __EKRAN_SURUM__;
+/* Kapsam kayıttan türer (D2): Ulu Camii'nde /ekran/, bir platform camisinde /c/<kimlik>/. Önbellek adı kapsamı taşır
+   (onbellek.ts → onbellekAdi): aynı kökte iki caminin SW'si birbirinin önbelleğini silmez. Kabuk listesi Ulu Camii'nin
+   /ekran/ listesidir; başka kapsamda sayfa ve akışlar kapsama taşınır, /media/ düşer (onbellek.ts → kabukAdresleri).
+   `@@EKRAN_SURUM@@` yer tutucusunu platform derlemesi kendi sürümüyle değiştirir; Ulu Camii'nin derlemesinde olduğu gibi
+   kalır ve derleme damgası geçerli olur (onbellek.ts → surumSec). Yer tutucu pakette TAM BİR kez bulunmalı. */
+const KAPSAM = kapsamYolu(sw.registration.scope);
+const SURUM = surumSec('@@EKRAN_SURUM@@', __EKRAN_SURUM__);
+const ONBELLEK = onbellekAdi(KAPSAM, SURUM);
+const KABUK = kabukAdresleri(KABUK_LISTESI, KAPSAM);
 
 /* self/ExtendableEvent/FetchEvent için DOM tip tanımları (bu proje "webworker" lib'ini değil "dom" lib'ini
    kullanıyor, ikisi aynı anda olamaz) yok — olay parametreleri ihtiyaç duyulan iki üyeyle kendi arayüzümüzle
@@ -31,7 +40,7 @@ interface AgIstegiOlayi extends UzatilabilirOlay { request: Request; respondWith
    önbellek hiçbir zaman etkinleşmez (eski addAll'ın "ya hep ya hiç" kuralı). */
 sw.addEventListener('install', (e: UzatilabilirOlay) => {
   e.waitUntil(
-    Promise.all(KABUK.map((u) => fetch(new Request(surumluAdres(u, __EKRAN_SURUM__), { cache: 'reload' })).then((y) => {
+    Promise.all(KABUK.map((u) => fetch(new Request(surumluAdres(u, SURUM), { cache: 'reload' })).then((y) => {
       if (!y.ok) throw new Error('[ekran] kabuk dosyası alınamadı: ' + u + ' (' + y.status + ')');
       return { u, y };
     })))
@@ -43,7 +52,7 @@ sw.addEventListener('install', (e: UzatilabilirOlay) => {
 sw.addEventListener('activate', (e: UzatilabilirOlay) => {
   e.waitUntil(
     caches.keys()
-      .then((adlar) => Promise.all(adlar.filter((a) => a.indexOf('ekran-') === 0 && a !== ONBELLEK).map((a) => caches.delete(a))))
+      .then((adlar) => Promise.all(silinecekOnbellekler(adlar, KAPSAM, SURUM).map((a) => caches.delete(a))))
       .then(() => sw.clients.claim()),
   );
 });
@@ -67,7 +76,7 @@ async function sakla(istek: Request, yanit: Response): Promise<Response> {
    gorsel-surumu.ts). Duyuru akışı ağdan tam (200) her geldiğinde /media/ altında ne kabukta ne akışta olan kayıtlar
    (eski sürümler, süresi dolmuş duyuruların görselleri) silinir (onbellek.ts → budanacaklar). Hiçbir zaman
    reddetmez: budama başarısız olursa önbellek olduğu gibi kalır, akış yanıtı hiç etkilenmez. */
-const AKIS_YOLU = '/ekran/akis.json';
+const AKIS_YOLU = akisYolu(KAPSAM);
 async function medyaBuda(yanit: Response): Promise<void> {
   try {
     const akis: unknown = await yanit.json();
@@ -146,8 +155,8 @@ sw.addEventListener('fetch', (e: AgIstegiOlayi) => {
   const istek = e.request;
   const u = new URL(istek.url);
   if (istek.method !== 'GET' || u.origin !== sw.location.origin) return;
-  if (u.pathname === '/ekran/' || /^\/ekran\/[^/]+\.json$/.test(u.pathname)) e.respondWith(agOnce(istek, e));
-  else if (u.pathname.indexOf('/ekran/') === 0 || u.pathname.indexOf('/media/') === 0) e.respondWith(onbellekOnce(istek));
+  if (agOnceMi(u.pathname, KAPSAM)) e.respondWith(agOnce(istek, e));
+  else if (kapsamdaMi(u.pathname, KAPSAM)) e.respondWith(onbellekOnce(istek));
 });
 
 export {};
