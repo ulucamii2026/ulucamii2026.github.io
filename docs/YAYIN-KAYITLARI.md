@@ -4,6 +4,54 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 29 Ekim 2026 (akşam) — vaaz: «Kul Hakkı: Âhiret Yolculuğunun Ağır Sorumluluğu» (30 Ekim 2026 Cuma vaazı) beş dilde + duyuru
+
+- Zaman: 29 Ekim 2026 18:16 (Release), 18:40:06 (push), 18:43:15 (Pages), 18:44–18:47 (canlı doğrulama),
+  Europe/Brussels (CET). **Yayımlandı ve canlı doğrulandı.** Dayanak: kullanıcının «Önceki haftalarda web sitemizde
+  ne yaptıysan aynısını yap … daha iyisini yapabiliyorsan daha iyisini yap. Bütün yetki ve karar sende» isteği
+  (aynı oturumda yayın).
+- Kapsam:
+  - TR sayfa `src/content/vaazlar/kul-hakki-ahiret-yolculugu.md`: 19 temsilî sahne × 4 boy + `kapak-og.webp`, dört
+    ana fikir, 11 duraklı vaaz haritası, 28 nass kartı, 9 vektör şema ve «sorularla kul hakkı» rehberi, helâllik
+    sözleşmesi, yedi söz.
+  - FR/EN/NL/DE çevirileri `src/content/vaaz-cevirileri/<dil>/kul-hakki-ahiret-yolculugu.md`.
+  - Beş dilde Word/PDF `public/vaazlar/…`: 15 sayfa; PDF'ler emoji yazı tipi küçültmesiyle 0,97–1,12 MB.
+  - TR/FR duyuru `src/content/duyurular/{tr,fr}/cuma-vaazi-kul-hakki-ahiret-yolculugu.md` (EN/NL/DE FR duyuruyu
+    gösterir). Vitrin otomatik; CSS değişmedi.
+- Release `vaaz-kul-hakki-ahiret-yolculugu`: 10 dosya (5 dil × PowerPoint + sunum PDF, 84 slayt), boyutlar yerel
+  dosyalarla eşit. Latest yapılmadı; `ders-2026-10-19` Latest kaldı.
+- İçerik commit'i `94dc5f5` (push `bcd371f..94dc5f5`, 94 dosya), dernek kimliği.
+  [Pages dağıtımı](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/40923522364) **success**.
+- Kalite:
+  - `npm run dogrula` 25/25 aşama (derleme 1962 sayfa, `test:vaaz-pdf` dahil).
+  - `npm run test:web` 841 geçti, 120 atlandı, 1 düştü. Düşen test vaazla ilgisiz:
+    `tests/web/ekran.spec.mjs:1143` (Open-Meteo yeniden deneme; Playwright «Fetch response has been disposed»
+    yarışı). Tek başına `--repeat-each=3` ile 3/3 geçti.
+  - Çeviri denetimi fr/en/nl/de 1131 kayıt, HATA 0.
+  - Word 5 dil 15 sayfa, yazım 0.
+  - Sunum 5 dil 84 slayt, taşma 0, yazım 0, `cakisma_denetle.py` 0.
+  - Site kopyaları teslimlerle SHA-256 eşit (10 dosya); yasaklı ifade taraması 29 dosyada 0.
+  - Yerel `web_kontrol.mjs` 22 görünüm, axe 0, 87 dosya, 10 bağlantı.
+  - İlk yerel çalıştırma DE 390 px'te kamu hakkı kartında 20 px taşma yakaladı («Gemeinschaftsräume»). Çeviri
+    «gemeinsame Räume» oldu, yeniden derlendi.
+- **Yerel doğrulamada ezber kapısı:** `test:ezber` içindeki `ezber-ders-takvimi.mjs --denetle` bu makinede düşüyor.
+  - Hata: «src/data/ezber/ders-takvimi-2026-2027.json kaynakla aynı değil». Kurs kaynağı
+    `D:/ulu-camii-kuran-kursu/veri/ezber-kosesi-2026-2027.json` değişmiş, türev güncellenmemiş.
+  - Vaazla ilgisi yok; bu yayın türeve ve kurs verisine dokunmadı. CI'da kaynak olmadığından denetim atlanır.
+  - Zincir CI gibi çalıştırıldı: `EZBER_KOSESI_KAYNAK=D:/tmp/yok-ezber-kaynak.json npm run dogrula`.
+  - Türevi güncellemek (`node scripts/ezber-ders-takvimi.mjs`) kurs/site oturumunun işidir.
+- Canlı: `web_kontrol.mjs https://ulucamii.be` (5 dil) temiz geçti.
+  - 22 görünüm, axe 0, 87 indirme, 10 Release sunumu, 10 diğer bağlantı.
+  - 5 vaaz ve 5 duyuru yolu 200 döndü.
+  - Canlı TR PDF yerel teslimle SHA-256 eşit.
+- Üretim: çeviri, sunum ve figür işini Claude alt ajanları (Sonnet/Haiku) yaptı. Plan, denetim, düzeltme ve dışa dönük
+  adımlar Claude Opus'taydı.
+  - Kaynak `D:/hutbeler ve vaazlar/kaynak-kul-hakki-20261030/` (`YAYIN-VE-KALITE.md`, `DEVAM.md`).
+  - İslâmî görsel denetimi: 19 sahne, 8 yeniden üretim. Altısında arka planda kilise kulesi vardı; cemaat niyazı
+    sahnesinde kıble yönü ve avuç içleri düzeltildi.
+- Sınırlar: paylaşım mesajları (düz ve WhatsApp biçimli) hazır ama gönderilmedi; Facebook paylaşımı yapılmadı
+  (istenmedi). Bu kayıt için belge commit'i içerik yayını değildir.
+
 ## 25 Ekim 2026 (20) — ihtida paketi: DHYS parçaları, başvurana filigranlı suret, yedek şahit, başvuru koşulları kutusu
 
 - Zaman: Apps Script yeni Web App sürümü 20.09–20.11, commit/push 20:12:36 (`f81d7981`), Pages run `40224936502` başarılı,
