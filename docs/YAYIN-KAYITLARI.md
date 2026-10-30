@@ -4,6 +4,57 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 30 Ekim 2026 (sabah) — Apps Script v45: suret e-postasında NL/DE, alt kümeli suret yazı tipi, DHYS 5. parça, seviye test dili
+
+- Zaman: 30 Ekim 2026 ~08:59 (Apps Script yeni sürüm), 09:02 (commit), 09:03 (push), Europe/Brussels (CET).
+  **Yayımlandı.** Dayanak: Rıdvan'ın 30.10 sabahı mühtedi koordinatörlüğü oturumundaki «Site: üç küçük düzeltme»
+  kararı (27.10 notundaki üç açık nokta); seviye raporundaki test dili hatası aynı sürüme eklendi.
+- Kapsam:
+  - `scripts/apps-script/ihtida-paket-isleri.gs` → `ihtidaPaketBasvuranMetni`: form dili `nl`/`de` ise selam, gövde
+    ve referans satırı o dilde de yazılır; TR/FR/EN metni aynen kalır.
+  - Suret filigranı alt kümeli Lora ile: `public/fonts/suret/Lora-{Regular,Bold}-suret.ttf` (32 736 / 32 596 B),
+    üretici `scripts/suret-yazi-tipi.py` (fontTools; `recalcTimestamp=False`, bayt bayt tekrarlanır),
+    `ihtida-pdf-entry.js` + `ihtida-gas-derle.mjs`. GAS'ta fontkit alt küme yazıcısı çalışmadığı için hazır alt küme
+    gömülür. Sağlıkta yeni bayrak `ihtidaSuretAltKume`.
+  - `ulucamii-Kod-v45.gs` (v44'ten yeniden adlandırıldı) → `ihtidaGorselSilIsle`: DHYS 5. parça Drive araması ayrı
+    try/catch; hata `parca5Hata` olarak döner, görsel silme sonucu bozulmaz.
+  - `seviye-testi-isleri.gs` → `seviyeRaporVerisi`: `testDili` kayıttan gelir. Önceden raporun dili (`tr`) yazıldığı
+    için panelde her test «tr» görünüyordu; canlıda ST-0006 nl, 0004/0005/0008 fr, 0001/0007 tr.
+  - Testler: sürüm beklentileri 45; `ihtida-paket-akis` üç yeni sınama (NL/DE metni, alt küme kapsamı + boyut + sağlık
+    bayrağı, `parca5Hata`), `seviye-gas` test dili sınaması.
+- Doğrulama: test:ihtida 79/79, veli-eposta 62/62, kayıt 41/41, envanter 18/18, gas-ceviri 6/6, kimlik 31/31,
+  kayit-duzelt + seviye-gas + kurumsal-kimlik 59/59, test:seviye 52/52; `npm run build` 0; `astro check` 0 hata 0 uyarı;
+  Playwright ihtida + panel 130/130. Paket farkı yalnız amaçlanan satırlar; farkta `Vahi`/`Müşavirlik` 0.
+- Dağıtım: `dagit_v45.py --kuru` → salt okunan kopya son yeniden okunanla (v44) aynı → gerçek dağıtım; yedek
+  `D:/tmp/gas/v45-oncesi-20261030-085814-391619.gs`. Sağlık ucu `surum:45`, `ihtidaSuret`, `ihtidaSuretAltKume`,
+  `ihtidaDhysParcalari`, `ihtidaYedekSahit`, `veliCc`, `seviyeTesti` hepsi `true`. Commit `82eb45c2` (23 dosya,
+  dernek kimliği); başka oturumun `scripts/defter-yoklama-denetim.mjs` değişikliği ve izlenmeyen dosyalar dışarıda.
+  [Pages dağıtımı](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/41023934612) **success**
+  (09:06); canlı `/fonts/suret/Lora-Regular-suret.ttf` 200.
+
+## 30 Ekim 2026 (sabah) — Apps Script v44: veli e-postalarına Cc, Cuma bülteni düzeltmesi, gizlilik beş dilde
+
+- Zaman: 30 Ekim 2026 07:57 (Apps Script yeni sürüm), ~08:00 (Script Property `VELI_CC`), 08:04 (commit), ~08:05
+  (push), 08:06 (Pages), 08:10 (canlı doğrulama), Europe/Brussels (CET). **Yayımlandı ve canlı doğrulandı.**
+  Dayanak: Rıdvan'ın 30.10 sabahı mühtedi koordinatörlüğü oturumundaki «v44'ü bu oturumda hemen dağıt» kararı
+  (10.00 Cuma bülteninden önce).
+- Kapsam:
+  - `scripts/apps-script/ulucamii-Kod-v44.gs` (v43'ten yeniden adlandırıldı), `veli-cuma.gs`,
+    `veli-eposta-sablon.gs`: kayıt kopyası ve Cuma bülteni Script Property `VELI_CC` adresine Cc; bültende replyTo
+    ve FR başlık düzeltmesi. Adres depoda yok, yalnız Script Properties'te.
+  - Gizlilik sayfası beş dilde (`src/content/sayfalar/{tr,fr,nl,en,de}/gizlilik.md`, `guncelleme: 2026-10-29`): Cc
+    alıcısı rolüyle (yönetim kurulunun Kur'an kursundan sorumlu üyesi) yazıldı.
+  - Ezber ders takvimi türevi yeniden üretildi; `ihtida-gas-derle.mjs`, `pdf-onizleme.mjs` ve testler.
+- Dağıtım: `dagit_v44.py --kuru` → salt okunan kopya son yeniden okunanla aynı → gerçek dağıtım; sağlık ucu
+  `surum:44`, `veliCc:true`. Commit `efdd5507` (26 dosya, dernek kimliği); başka oturumun
+  `scripts/defter-yoklama-denetim.mjs` değişikliği ve izlenmeyen dosyalar dışarıda bırakıldı (`pull --rebase
+  --autostash`). [Pages dağıtımı](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/41017834931)
+  **success**.
+- Canlı: `/tr/gizlilik/` ve `/fr/confidentialite/` 200, Cc ibaresi ve «29 Ekim 2026 / 29 octobre 2026» görünüyor.
+- Cuma bülteni: 09:10 `veli-cuma-onizleme&dil=fr` sorunsuz (cuma 2026-10-30). 10:06 `islem=veli-cuma-durum`: `ok:true`,
+  cuma 2026-10-30, gönderim 10:05:43, alıcı 16, gönderildi 16, bekleyen 0, hata 0. 23 Ekim'deki `cuma-ceviri-eksik`
+  durması giderildi. (Sağlayıcı kabulüdür; okunduğu ya da kesin teslim edildiği anlamına gelmez.)
+
 ## 29 Ekim 2026 (akşam) — vaaz: «Kul Hakkı: Âhiret Yolculuğunun Ağır Sorumluluğu» (30 Ekim 2026 Cuma vaazı) beş dilde + duyuru
 
 - Zaman: 29 Ekim 2026 18:16 (Release), 18:40:06 (push), 18:43:15 (Pages), 18:44–18:47 (canlı doğrulama),
