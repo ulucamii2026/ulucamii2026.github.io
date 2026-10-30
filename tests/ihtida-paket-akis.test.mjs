@@ -9,7 +9,7 @@ import sharp from 'sharp';
 import { pdfMetni } from './yardim/pdf-metin.mjs';
 
 execFileSync(process.execPath, ['scripts/ihtida-gas-derle.mjs'], { stdio: 'pipe' });
-const source = readFileSync('.codex/cikti/gas/ulucamii-v44.gs', 'utf8');
+const source = readFileSync('.codex/cikti/gas/ulucamii-v45.gs', 'utf8');
 const png = await sharp(Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" width="180" height="220"><rect width="180" height="220" fill="#e0e6ee"/><circle cx="90" cy="72" r="35" fill="#596478"/><text x="35" y="170" font-size="30">TEST</text></svg>')).png().toBuffer();
 const image = 'data:image/png;base64,' + png.toString('base64');
 const k = { 'Referans': 'IH-2099-9999', 'Adı Soyadı': 'Deniz Örnek', 'Adres': 'Rue du Test 12, 6900, Marche-en-Famenne, Belgique', 'E-posta': 'deniz@example.test', 'Zaman damgası': '09.09.2026', 'Form dili': 'fr', 'Kimlik belgesi türü': 'kimlik', 'EK-10 rızası': 'Evet', 'EK-10 sürümü': '2026-09-09', 'İmza aktarım izni': 'Evet', 'Cinsiyet': 'kadin', 'Doğum tarihi': '1990-05-20', 'Doğum yeri': 'Namur', 'Uyruk': 'Belçika', 'Anne adı': 'Anne', 'Baba adı': 'Baba', 'Medeni hali': 'bekar', 'Öğrenim durumu': 'lisans', 'Mesleği': 'Öğretmen', 'Önceki din/mezhep': 'hristiyan-katolik', 'Telefon': '+32470000000', 'İhtida sebebi': 'Kendi araştırmam sonucunda.' };
@@ -910,4 +910,54 @@ test('DHYS parçaları hazırlanamazsa paket ve e-postalar sürer; üç denemede
   assert.equal(is.parcaPdfler.length, 5);
   assert.equal(sent.length, 3, 'yeniden deneme e-postaları tekrarlamaz');
   assert.ok(is.parcaPdfler.every(p => !files.get(p.id).isTrashed()));
+});
+
+test('v45: suret e-postası form dili nl/de ise o dilde de; fr/en/tr formda yalnız TR · FR · EN; kurum adı yok', () => {
+  const { ctx } = ortam();
+  const is = { asama: 'on-basvuru', ref: k.Referans };
+  const nl = ctx.ihtidaPaketBasvuranMetni(is, { ...k, 'Form dili': 'nl', 'Şahit 1': 'Ali Örnek' });
+  assert.match(nl, /^Esselâmü aleyküm \/ Goedendag \/ Bonjour \/ Hello,/);
+  assert.match(nl, /Als bijlage vindt u een kopie van uw bekeringsdossier/); assert.match(nl, /via WhatsApp toegestuurd/);
+  assert.match(nl, /Referans \/ Referentie \/ Référence \/ Reference: IH-2099-9999/);
+  assert.ok(nl.indexOf('Als bijlage') > nl.indexOf('İhtida belgesi dosyanızın') && nl.indexOf('Als bijlage') < nl.indexOf('Vous trouverez'), 'NL bloğu TR ile FR arasında');
+  const de = ctx.ihtidaPaketBasvuranMetni({ asama: 'son', ref: k.Referans }, { ...k, 'Form dili': 'DE' });
+  assert.match(de, /Guten Tag/); assert.match(de, /Im Anhang finden Sie eine Kopie/); assert.match(de, /Referenz/);
+  assert.doesNotMatch(de, /Vorantrags/, 'son nüshada ön başvuru cümlesi yok');
+  for (const dil of ['fr', 'en', 'tr', '']) {
+    const m = ctx.ihtidaPaketBasvuranMetni(is, { ...k, 'Form dili': dil });
+    assert.match(m, /^Esselâmü aleyküm \/ Bonjour \/ Hello,/); assert.doesNotMatch(m, /Als bijlage|Im Anhang/);
+  }
+  assert.doesNotMatch(nl + de, /Müşavir|Vahi|Diyanet|Vakf|null|undefined/);
+});
+
+test('v45: suret filigranı alt kümeli Lora ile; SURET_METNI harflerinin hepsi alt kümede, suret ~2 × 134 KB değil', async () => {
+  const fontkitNode = (await import('@pdf-lib/fontkit')).default;
+  const js = readFileSync('public/admin/ihtida-paket.js', 'utf8');
+  const metin = js.slice(js.indexOf('export const SURET_METNI = {'), js.indexOf('};', js.indexOf('export const SURET_METNI = {')));
+  for (const ad of ['Lora-Regular-suret.ttf', 'Lora-Bold-suret.ttf']) {
+    const f = fontkitNode.create(readFileSync('public/fonts/suret/' + ad));
+    const eksik = [...new Set(metin)].filter(c => c.trim() && !f.hasGlyphForCodePoint(c.codePointAt(0)));
+    assert.deepEqual(eksik, [], ad + ' SURET_METNI harflerini kapsamalı');
+    for (const c of 'ıİşŞğĞçÇöÖüÜâîû’—·éèàœÉëïĳäß€') assert.ok(f.hasGlyphForCodePoint(c.codePointAt(0)), ad + ': ' + c);
+    assert.ok(statSync('public/fonts/suret/' + ad).size < 45_000, ad + ' küçük kalmalı');
+  }
+  const { ctx } = ortam();
+  assert.ok(ctx.IHTIDA_PDF_KAYNAKLARI.suretFontBytes && ctx.IHTIDA_PDF_KAYNAKLARI.suretFontKalinBytes, 'derleme alt kümeyi pakete koyar');
+  const bytes = await ctx.IhtidaPdf.uret(k, ctx.ihtidaGorselleriOku(), null, ctx.ihtidaPaketKaynaklari(), ctx.PDFLib, ctx.fontkit);
+  const sur = await ctx.IhtidaPdf.suret(bytes, ctx.ihtidaPaketKaynaklari(), ctx.PDFLib, ctx.fontkit);
+  assert.ok(sur.length - bytes.length < 120_000, 'suret artışı ' + (sur.length - bytes.length) + ' bayt');
+  writeFileSync('.codex/cikti/ihtida/gas-suret-alt-kume.pdf', sur);
+  assert.match(pdfMetni('.codex/cikti/ihtida/gas-suret-alt-kume.pdf'), /SURET — bilgi amaçlıdır, resmî belge yerine geçmez/);
+  assert.equal(ctx.doGet({}).ihtidaSuretAltKume, true, 'sağlık bayrağı');
+});
+
+test('v45: görsel silmede DHYS 5. parça araması düşerse yüklemeler yine silinir, sonuç ok + parca5Hata', () => {
+  const { ctx, files } = ortam();
+  const gorseller = ['vesikalik', 'kimlik-on', 'kimlik-arka'].map(s => k.Referans + ' - ' + s + '.jpg');
+  for (const ad of gorseller.slice(1)) ctx.ihtidaKlasorGetir().createFile(ctx.Utilities.newBlob('x', 'image/jpeg', ad));
+  const r = ctx.ihtidaGorselSilIsle({ parameter: { ref: k.Referans, anahtar: 'test-panel-key' } });   // test klasöründe searchFiles yok → düşer
+  assert.equal(r.ok, true, JSON.stringify(r));
+  assert.match(r.parca5Hata, /searchFiles/);
+  for (const ad of gorseller) assert.ok(r.silinen.includes(ad), ad);
+  assert.ok([...files.values()].filter(f => gorseller.includes(f.getName())).every(f => f.isTrashed()));
 });

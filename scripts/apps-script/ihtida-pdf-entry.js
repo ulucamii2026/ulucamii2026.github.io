@@ -91,8 +91,12 @@ export const zamirCizigi = true;     // sağlık cevabı: ihtidaZamirCizigi (25 
 /** 25 Eki 2026: paketi DHYS'ye ayrı yüklenecek dört PDF'e böler (EK-9 · dilekçe · EK-10 · kimlik). */
 export const parcala = (pdfLib, bytes, plan, ref) => ihtidaPaketParcalari(pdfLib, bytes, plan, ref);
 export { DHYS_PARCALARI, DHYS_VESIKALIK };
-/** 25 Eki 2026: başvurana giden nüsha «SURET · bilgi amaçlıdır» filigranıyla (her sayfa). GAS'ta yazı tipi tam gömülür. */
+/** 25 Eki 2026: başvurana giden nüsha «SURET · bilgi amaçlıdır» filigranıyla (her sayfa). GAS'ta yazı tipi tam gömülür;
+ *  v45 (30 Eki 2026) bu yüzden filigrana derleme öncesinde alt kümesi alınmış Lora verilir (scripts/suret-yazi-tipi.py,
+ *  ~33 KB/kesim; tam Lora ~134 KB). Eski paketlerde alt küme yoksa tam yazı tipi kullanılır. */
 export const suret = (bytes, kaynaklar, pdfLib, fontkit) =>
-  suretFiligrani(gasPdfLibOlustur(pdfLib), bytes, kaynaklar.fontBytes, kaynaklar.fontKalinBytes, fontkit);
+  suretFiligrani(gasPdfLibOlustur(pdfLib), bytes, kaynaklar.suretFontBytes || kaynaklar.fontBytes,
+    kaynaklar.suretFontKalinBytes || kaynaklar.fontKalinBytes, fontkit);
+export const suretAltKume = true;   // sağlık cevabı: ihtidaSuretAltKume
 export const suretFiligranli = true;   // sağlık cevabı: ihtidaSuret
 export const dhysParcalari = true;   // sağlık cevabı: ihtidaDhysParcalari

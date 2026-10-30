@@ -6,7 +6,7 @@ import assert from 'node:assert/strict';
 import vm from 'node:vm';
 import { readFileSync } from 'node:fs';
 
-const kaynak = ['kimlik-sabitler.gs', 'veli-eposta-sablon.gs', 'ulucamii-Kod-v44.gs', 'seviye-testi-isleri.gs', 'envanter-isleri.gs']
+const kaynak = ['kimlik-sabitler.gs', 'veli-eposta-sablon.gs', 'ulucamii-Kod-v45.gs', 'seviye-testi-isleri.gs', 'envanter-isleri.gs']
   .map(ad => readFileSync(new URL('../scripts/apps-script/' + ad, import.meta.url), 'utf8')).join('\n;\n');
 
 function ortam({ hataSayisi = 0, kimlikler = {} } = {}) {
@@ -46,7 +46,7 @@ const ALICILAR = [
 ];
 
 test('Sürüm 44', () => {
-  assert.equal(ortam().ctx.SURUM, 44);
+  assert.equal(ortam().ctx.SURUM, 45);
 });
 
 for (const [islev, ozellik] of ALICILAR) {

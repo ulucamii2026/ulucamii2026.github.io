@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 import vm from 'node:vm';
 import { readFileSync } from 'node:fs';
 
-const source = ['kimlik-sabitler.gs', 'veli-eposta-sablon.gs', 'ulucamii-Kod-v44.gs']
+const source = ['kimlik-sabitler.gs', 'veli-eposta-sablon.gs', 'ulucamii-Kod-v45.gs']
   .map(ad => readFileSync(new URL('../scripts/apps-script/' + ad, import.meta.url), 'utf8')).join('\n');
 
 const ContentService = { createTextOutput: t => ({ setMimeType() { return this; }, getContent: () => t }), MimeType: { JSON: 'json' } };
@@ -111,5 +111,5 @@ test('Sağlık ucu v33 ve kayitDuzelt bayrağını bildirir', () => {
   const c = backend();
   c.VELI_PORTAL_SURUM = 'test';
   const h = JSON.parse(c.doGet({ parameter: {} }).getContent());
-  assert.equal(h.surum, 44); assert.equal(h.kayitDuzelt, true); assert.equal(h.kayitImza, true);
+  assert.equal(h.surum, 45); assert.equal(h.kayitDuzelt, true); assert.equal(h.kayitImza, true);
 });

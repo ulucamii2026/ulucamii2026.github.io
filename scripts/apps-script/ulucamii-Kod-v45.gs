@@ -105,7 +105,7 @@
  * bu KASITLI: PDF artık istemciden gelmez, eski gövde biçimi zaten geçersizdir.)
  */
 
-var SURUM = 44;
+var SURUM = 45;
 /* 21 Eyl 2026: Sitenin ve formların dilleri TEK listede. Gönderilen form dilinin («dil» alanı) ve
    ?islem=pdf-ornek önizlemesinin geçerli değerleri buradan okunur; ["tr","fr","en"] artık hiçbir yere yazılmaz.
    DİKKAT — bu liste FORM dilidir: velinin kalıcı İLETİŞİM dili (veli.iletisimDili) ve tören dili
@@ -183,6 +183,8 @@ function doGet(e) {
     ihtidaDhysParcalari: typeof IhtidaPdf !== "undefined" && IhtidaPdf.dhysParcalari === true && typeof ihtidaPaketParcalariKaydet === "function" && typeof ihtidaVesikalikDosyasi === "function",
     // 25 Eki 2026: başvurana her aşamada filigranlı SURET (bilgi amaçlı) gider; yedek şahit rızası son nüshada seçilebilir.
     ihtidaSuret: typeof IhtidaPdf !== "undefined" && IhtidaPdf.suretFiligranli === true && typeof ihtidaPaketBasvuranMetni === "function",
+    // v45 (30 Eki 2026): suret filigranı alt kümeli Lora ile; suret e-postası form dili nl/de ise o dilde de.
+    ihtidaSuretAltKume: typeof IhtidaPdf !== "undefined" && IhtidaPdf.suretAltKume === true && typeof IHTIDA_PDF_KAYNAKLARI !== "undefined" && !!IHTIDA_PDF_KAYNAKLARI.suretFontBytes,
     ihtidaYedekSahit: typeof IhtidaPdf !== "undefined" && typeof IhtidaPdf.sahitImzaPlani === "function" && typeof ihtidaPaketOnayDogrula === "function",
     referansSayaci: typeof referansMaxBul === "function" && typeof REFERANS_SON_EK === "string",
     seviyeTesti: typeof SeviyeTesti !== "undefined" && typeof seviyePostIsle === "function",
@@ -2213,12 +2215,22 @@ function ihtidaGorselSilIsle(e) {
     }
     // 25 Eki 2026: DHYS için arşivlenen vesikalık kopyası (5. parça, «<ref> - rN - 5 - Vesikalık Fotoğraf.jpg») da bir
     // görüntüdür; yüklemelerle birlikte çöpe gider. PDF parçaları resmî dosyanın parçasıdır, ana paket gibi kalır.
-    var parca5 = klasor.searchFiles('title contains "' + ref + ' - r"');
-    while (parca5.hasNext()) {
-      var p5 = parca5.next(), ad5 = p5.getName();
-      if (ad5.indexOf(ref + " - r") === 0 && / - 5 - /.test(ad5) && ihtidaParcaAdiMi(ad5) && !p5.isTrashed()) { p5.setTrashed(true); silinen.push(ad5); }
+    // v45 (30 Eki 2026): Drive araması geçici olarak düşerse yüklemeler zaten çöpe gitmiştir; sonuç yine döner, hata ayrıca
+    // bildirilir (önceden bütün istek «gorsel-sil-hatasi» dönüyor, panel silinen görselleri göremiyordu). Tekrar denemek güvenli.
+    var parca5Hata = "";
+    try {
+      var parca5 = klasor.searchFiles('title contains "' + ref + ' - r"');
+      while (parca5.hasNext()) {
+        var p5 = parca5.next(), ad5 = p5.getName();
+        if (ad5.indexOf(ref + " - r") === 0 && / - 5 - /.test(ad5) && ihtidaParcaAdiMi(ad5) && !p5.isTrashed()) { p5.setTrashed(true); silinen.push(ad5); }
+      }
+    } catch (hata5) {
+      console.error(hata5);
+      parca5Hata = String(hata5).slice(0, 160);
     }
-    return json({ ok: true, surum: SURUM, ref: ref, silinen: silinen, bulunamayan: kalan });
+    var sonuc = { ok: true, surum: SURUM, ref: ref, silinen: silinen, bulunamayan: kalan };
+    if (parca5Hata) sonuc.parca5Hata = parca5Hata;
+    return json(sonuc);
   } catch (hata) {
     console.error(hata);
     return json({ ok: false, hata: "gorsel-sil-hatasi", ayrinti: String(hata).slice(0, 160) });

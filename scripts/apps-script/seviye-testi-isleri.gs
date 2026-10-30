@@ -645,7 +645,8 @@ function seviyeRaporVerisi(kayit, sonuc) {
 
   return {
     ref: kayit.ref, zaman: seviyeGun(kayit.zaman), adSoyad: seviyeSerbest(kayit.adSoyad), eposta: kayit.eposta,
-    telefon: kayit.telefon, testDili: dil, sureDk: sureDk, bankaSurumu: kayit.bankaSurumu, rizaSurumu: kayit.rizaSurumu,
+    // v45 (30 Eki 2026): «dil» raporun dilidir (hep tr); test dili kayıttan gelir (önceden her testte «tr» görünüyordu).
+    telefon: kayit.telefon, testDili: kayit.dil || "tr", sureDk: sureDk, bankaSurumu: kayit.bankaSurumu, rizaSurumu: kayit.rizaSurumu,
     profil: profil, yerel: yerel,
     okuma: {
       duzey: sonuc.okuma.duzey, ad: SeviyeTesti.OKUMA_DUZEYLERI_TR[sonuc.okuma.duzey],

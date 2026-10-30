@@ -27,7 +27,7 @@ const seviyePaketi = buildSync({
 }).outputFiles[0].text;
 
 const kaynak = [
-  gs('kimlik-sabitler.gs'), gs('veli-eposta-sablon.gs'), gs('ulucamii-Kod-v44.gs'),
+  gs('kimlik-sabitler.gs'), gs('veli-eposta-sablon.gs'), gs('ulucamii-Kod-v45.gs'),
   gs('veli-mail-listesi.gs'), gs('seviye-testi-isleri.gs'), seviyePaketi,
 ].join('\n;\n');
 
@@ -498,7 +498,13 @@ test('seviye-detay: yetki ister, yan etkisizdir ve defter yokken defter YARATMAZ
   assert.ok(Array.isArray(d.rapor.profil) && d.rapor.profil.length >= 9);
   assert.ok(d.rapor.not.includes('x.test') && !d.rapor.not.includes('https://x.test'));
   assert.equal(JSON.stringify(o.seviyeSayfa()._satirlar), oncekiSatirlar, 'detay ucu defteri değiştirmez');
-  assert.equal(o.gonderilen.length, 2, 'detay ucu e-posta göndermez');
+  assert.equal(d.rapor.testDili, 'tr');
+  // v45 (30 Eki 2026): rapor Türkçedir ama «Test dili» kayıttaki dildir (önceden her testte «tr» görünüyordu).
+  const fr = o.post(govdeUret({ dil: 'fr', gonderimAnahtari: 'anahtar-0000000002', profil: { eposta: 'fr@example.test' } }));
+  const dfr = o.get({ islem: 'seviye-detay', anahtar: 'panel-gizli', ref: fr.ref });
+  assert.equal(dfr.rapor.testDili, 'fr', JSON.stringify(fr).slice(0, 160));
+  assert.match(dfr.rapor.program.ad || '', /\S/, 'rapor metinleri yine Türkçe üretilir');
+  assert.equal(o.gonderilen.length, 4, 'detay ucu e-posta göndermez (iki gönderim × 2 ileti)');
 });
 
 test('Panel listesi: seviyeler gelir; cevaplar, beyanlar, ezberler ve not sütunları gizlenir', () => {
@@ -552,7 +558,7 @@ test('Panel anahtarı tanımsızken gömülü yer tutucu seviye uçlarını AÇM
 test('Sağlık yanıtı seviye testini ve banka sürümünü bildirir; paket yoksa uç kapalıdır', () => {
   const o = ortam();
   const saglik = o.get({});
-  assert.equal(saglik.surum, 44);
+  assert.equal(saglik.surum, 45);
   assert.equal(saglik.seviyeTesti, true);
   assert.equal(saglik.seviyeBankaSurumu, SORU_BANKASI_SURUMU);
 
@@ -562,7 +568,7 @@ test('Sağlık yanıtı seviye testini ve banka sürümünü bildirir; paket yok
     ContentService: { createTextOutput: t => ({ setMimeType() { return this; }, getContent: () => t }), MimeType: { JSON: 'json' } },
     PropertiesService: { getScriptProperties: () => ({ getProperty: () => null }) },
   });
-  vm.runInContext([gs('kimlik-sabitler.gs'), gs('veli-eposta-sablon.gs'), gs('ulucamii-Kod-v44.gs')].join('\n;\n'), ctx);
+  vm.runInContext([gs('kimlik-sabitler.gs'), gs('veli-eposta-sablon.gs'), gs('ulucamii-Kod-v45.gs')].join('\n;\n'), ctx);
   const yanit = JSON.parse(ctx.doPost({ postData: { contents: JSON.stringify({ tur: 'seviye' }) } }).getContent());
   assert.deepEqual(yanit, { ok: false, hata: 'seviye-hazir-degil' });
   assert.equal(JSON.parse(ctx.doGet({ parameter: {} }).getContent()).seviyeTesti, false);
@@ -577,7 +583,7 @@ test('epostaGonder: yedeksiz:true Brevo düşünce MailApp\'e düşmez; seçenek
     MailApp: { sendEmail: m => gonderilen.push(m) },
     UrlFetchApp: { fetch: () => ({ getResponseCode: () => 500, getContentText: () => 'hata' }) },
   });
-  vm.runInContext([gs('kimlik-sabitler.gs'), gs('veli-eposta-sablon.gs'), gs('ulucamii-Kod-v44.gs')].join('\n;\n'), ctx);
+  vm.runInContext([gs('kimlik-sabitler.gs'), gs('veli-eposta-sablon.gs'), gs('ulucamii-Kod-v45.gs')].join('\n;\n'), ctx);
   const rapor = { to: 'imam@ulucamii.be', subject: 'Rapor', body: 'x', kurum: 'cami', yedeksiz: true };
   assert.throws(() => ctx.epostaGonder(rapor), /Brevo HTTP 500/);
   assert.equal(gonderilen.length, 0, 'yedeksiz ileti MailApp\'e düşmez');
@@ -593,7 +599,7 @@ test('epostaGonder: yedeksiz:true Brevo düşünce MailApp\'e düşmez; seçenek
     PropertiesService: { getScriptProperties: () => ({ getProperty: () => null }) },
     MailApp: { sendEmail: () => { throw new Error('MailApp cagrilmamaliydi'); } },
   });
-  vm.runInContext([gs('kimlik-sabitler.gs'), gs('veli-eposta-sablon.gs'), gs('ulucamii-Kod-v44.gs')].join('\n;\n'), ctx2);
+  vm.runInContext([gs('kimlik-sabitler.gs'), gs('veli-eposta-sablon.gs'), gs('ulucamii-Kod-v45.gs')].join('\n;\n'), ctx2);
   assert.throws(() => ctx2.epostaGonder({ to: 'imam@ulucamii.be', subject: 'x', body: 'x', kurum: 'cami', yedeksiz: true }), /brevo-anahtari-yok/);
 });
 
