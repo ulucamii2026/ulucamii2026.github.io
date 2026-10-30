@@ -17,7 +17,7 @@ galeri:
     alt: "Lokalimizdeki vakitmatik ekranı"
 etiketler: [cami, bağış, teşekkür]
 vitrin: goster
-vitrinSon: 2026-10-26
+vitrinSon: 2026-11-19
 oneCikan: false
 taslak: false
 ---

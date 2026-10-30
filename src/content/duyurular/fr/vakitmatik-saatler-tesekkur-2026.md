@@ -17,7 +17,7 @@ galeri:
     alt: "L’écran des horaires de prière dans le local de notre mosquée"
 etiketler: [mosquée, don, remerciements]
 vitrin: goster
-vitrinSon: 2026-10-26
+vitrinSon: 2026-11-19
 oneCikan: false
 taslak: false
 ---
