@@ -4,6 +4,24 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 30 Ekim 2026 (akşam) — Vakitmatik teşekkür duyurusu ana sayfa vitrininde 19 Kasım'a kadar
+
+- Zaman: 30 Ekim 2026 19:37 (commit ve push), 19:42 (Pages), 19:42 (canlı doğrulama), Europe/Brussels (CET).
+  **Yayımlandı ve canlı doğrulandı.** Dayanak: Mehmet Bey 19.10.2026'da WhatsApp'ta «en az bir ay yayında kalsın»
+  demişti; `vitrinSon: 2026-10-26` yazıldığı için duyuru 27 Ekim'de ana sayfadan düşmüştü. Rıdvan'ın 30.10 akşamı
+  verdiği tam yetkiyle düzeltildi.
+- Kapsam: `src/content/duyurular/tr/vakitmatik-saatler-tesekkur-2026.md` ve
+  `src/content/duyurular/fr/vakitmatik-saatler-tesekkur-2026.md` → `vitrinSon: 2026-11-19` (yalnız bu satır).
+  Duyurunun kendisi değişmedi. 20 Kasım'dan itibaren `vitrin-secimi.ts` kuralıyla vitrinden kendiliğinden çıkar,
+  duyuru sayfası yerinde kalır. Günlük 03.30 UTC yeniden derlemesi bu tarihi uygular.
+- Doğrulama: `npm run dogrula:codex` 10/10 GEÇTİ (design:check, check, dogrula, test:web, egitim:build, test:egitim,
+  test:kurallar, test:veli-eposta, test:oto-kaydet, test:ogrenme). İçerik commit'i `0e0b91c0` (2 dosya, dernek kimliği).
+  Başka oturumun `scripts/defter-yoklama-denetim.mjs` değişikliği ve izlenmeyen dosyalar dışarıda bırakıldı
+  (`pull --rebase --autostash`). [Pages dağıtımı](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/41108559133)
+  **success** (18:42:05Z). Yayından önce (19:39) canlı `/tr/` ve `/fr/` sayfasında duyuru bağlantısı yoktu; yayından
+  sonra ikisinde de ana sayfa vitrin galerisinde (`gv-main-embla`, 6 kart) `vakitmatik-saatler-tesekkur-2026/` var.
+- Açık sınır: ekran görüntüsüyle görsel denetim yapılmadı; içerik yalnız tarih satırı olduğu için gerekli görülmedi.
+
 ## 30 Ekim 2026 (sabah) — Apps Script v45: suret e-postasında NL/DE, alt kümeli suret yazı tipi, DHYS 5. parça, seviye test dili
 
 - Zaman: 30 Ekim 2026 ~08:59 (Apps Script yeni sürüm), 09:02 (commit), 09:03 (push), Europe/Brussels (CET).
