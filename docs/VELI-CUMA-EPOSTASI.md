@@ -112,7 +112,24 @@ sağlık kontrolleri çalışmaya devam ediyor.
 Son kalite zinciri `npm run dogrula:codex` geçti: web 86/86, Firestore 17/17,
 ihtida/belge 31/31, veli e-postası ve otomasyon 30/30.
 İlk gerçek cuma gönderimi henüz gerçekleşmedi; alıcıya teslim sonucu bu
-aşamada doğrulanmış değildir.
+aşamada doğrulanmış değildir. (9 Eylül notu; güncel durum aşağıdaki 29 Ekim bölümünde.)
+
+## Arıza ve v44 düzeltmesi — 29 Ekim 2026
+
+- **Boş yanıt adresi:** `veliCumaGonder` yanıt adresini `KIMLIK.iletisim.eposta.dinGorevlisi` alanından
+  okuyordu. Bu alan 13 Eylül'de (v31, `988e739`) kimlikten kaldırıldı ve Brevo'ya `replyTo` boş gitti.
+  `tests/kurumsal-kimlik.test.mjs` aynı yok alanla karşılaştırdığı için (`undefined === undefined`) hata
+  yakalanmadı. v44 `KIMLIK.iletisim.eposta.yanit` (info@) kullanır; test artık dolu adres ister.
+- **Çeviri durması:** 23 Ekim'de canlı durum `{"ok":false,"hata":"cuma-ceviri-eksik"}` döndü (`islem=veli-cuma-durum`,
+  29 Ekim'de okundu). LanguageApp bir ders başlığını değiştirmeden döndürünce kampanya, tasarım gereği hiç
+  başlamadı. v44'te Fransızca başlıklar önce sitenin elle yazılmış sözlüğünden gelir:
+  `src/data/konular-fr.json`, raw GitHub'dan okunur (`veliCumaSozluk`). Makine çevirisi yalnız sözlükte
+  olmayan başlıkta çalışır ve aynı güvenlik kuralı sürer.
+- **Cc:** `VELI_CC` Script Property'si doluysa bülten yönetim kurulunun kurstan sorumlu üyesine Cc'lenir.
+  Kayıt onayı kopyasında Cc yalnız ilk iletiye eklenir; adres depoda yok (`veliCc()`, `veli-eposta-sablon.gs`).
+  Gizlilik sayfası beş dilde güncellendi.
+- 13 Eylül–23 Ekim arasındaki cumaların gönderim sonucu Brevo olay kaydından ayrıca doğrulanmadı.
+  `gonderim-hatasi` kayıtları aynı cuma için yeniden denenmez; eski haftaların bülteni geriye dönük gönderilmez.
 # Kurumsal e-posta tasarımı — 9 Eylül 2026
 
 - Ortak kaynak: `scripts/apps-script/veli-eposta-sablon.gs`; Node kullanımı: `scripts/veli-eposta-render.mjs` (JSON stdin: metin, dil, baslik).

@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import vm from 'node:vm';
 import { readFileSync } from 'node:fs';
-const source=['kimlik-sabitler.gs','veli-eposta-sablon.gs','ulucamii-Kod-v43.gs'].map(ad=>readFileSync(new URL('../scripts/apps-script/'+ad,import.meta.url),'utf8')).join('\n');
+const source=['kimlik-sabitler.gs','veli-eposta-sablon.gs','ulucamii-Kod-v44.gs'].map(ad=>readFileSync(new URL('../scripts/apps-script/'+ad,import.meta.url),'utf8')).join('\n');
 function backend(){const sent=[];const c=vm.createContext({console,PropertiesService:{getScriptProperties:()=>({getProperty:k=>k==='PANEL_ANAHTARI'?'panel-test':null})}});vm.runInContext(source,c);c.epostaGonder=m=>sent.push(m);c.mufredatEki=()=>null;return {c,sent};}
 for(const dil of ['tr','fr'])test(`Kayıt onayı yalnız seçilen iletişim dilinde: ${dil}`,()=>{
  const {c,sent}=backend();const blob={name:'test.pdf'};
@@ -11,6 +11,12 @@ for(const dil of ['tr','fr'])test(`Kayıt onayı yalnız seçilen iletişim dili
  assert.match(sent[0].htmlBody,new RegExp('<html lang="'+dil+'">'));
  if(dil==='fr'){assert.match(sent[0].subject,/Confirmation d’inscription/);assert.match(sent[0].body,/Bonjour/);assert.doesNotMatch(sent[0].body,/Esselâmü|kaydı alınmıştır|Dersler /);}
  else{assert.match(sent[0].subject,/kayıt onayı/);assert.match(sent[0].body,/kaydı alınmıştır/);assert.doesNotMatch(sent[0].body,/Bonjour|L’inscription|Les cours/);}
+});
+test("v44: kayıt onayı kopyası VELI_CC'ye yalnız ilk iletide Cc'lenir; özellik boşsa Cc yok",()=>{
+ const {c,sent}=backend();c.PropertiesService={getScriptProperties:()=>({getProperty:k=>k==='VELI_CC'?'sorumlu@example.test':null})};
+ c.kopyaGonderV2({name:'test.pdf'},'UC-2099-TEST','Deniz Örnek',['anne@example.test','baba@example.test'],'tr');
+ assert.equal(sent.length,2);assert.equal(sent[0].cc,'sorumlu@example.test');assert.equal(sent[1].cc,undefined);
+ const bos=backend();bos.c.kopyaGonderV2({name:'test.pdf'},'UC-2099-TEST','Deniz Örnek',['veli@example.test'],'tr');assert.equal(bos.sent[0].cc,undefined);
 });
 test('Eksik ya da bilinmeyen iletişim dilinde Türkçe varsayılarak gönderim yapılmaz',()=>{
  for(const dil of [undefined,'','nl']){const {c,sent}=backend();assert.throws(()=>c.kopyaGonderV2({},'UC-2099-TEST','Örnek',['veli@example.test'],dil),/iletişim dili/i);assert.equal(sent.length,0);}
@@ -156,7 +162,7 @@ test('v29: yetkisiz/bozuk referanslı yeni uçlar Drive’a erişemez', () => {
   assert.equal(c.doGet({ parameter: { islem, ref: 'UC-2099-0001' } }).hata, 'yetki');
   for (const ref of ['IH-2099-0001', 'UC-2099-0001x', ' UC-2099-0001', 'UC-2099-0001\n', '../UC-2099-0001']) assert.equal(c.doGet({ parameter: { islem, ref, anahtar: c.PANEL.anahtar } }).hata, 'ref-gecersiz');
  }
- c.VELI_PORTAL_SURUM = 'test'; assert.equal(c.doGet({}).kayitKimlik, true); assert.equal(c.doGet({}).surum, 43);
+ c.VELI_PORTAL_SURUM = 'test'; assert.equal(c.doGet({}).kayitKimlik, true); assert.equal(c.doGet({}).surum, 44);
 });
 
 test('v29: belge okuma MIME ve toplam yanıt sınırı uygular, okunamayanları açık döner', () => {

@@ -1,3 +1,6 @@
+/* v44 (29 Eki 2026): veli e-postalarına Cc (Script Property VELI_CC; kayıt onayı kopyası + cuma bülteni; Rıdvan 18 Eki kararı).
+   Cuma bülteninin boş replyTo hatası (v31 silinen dinGorevlisi) ve LanguageApp'in değiştirmeden döndürdüğü başlıkta durması
+   (23 Eki «cuma-ceviri-eksik») düzeltildi: Fransızca ders başlıkları önce sitenin konular-fr.json sözlüğünden gelir (veli-cuma.gs). */
 /* v43 (23 Eki 2026, Rıdvan KAYAHAN kararı): ihtida paketinde Ulu Camii Marche şahitleri «Rıdvan KAYAHAN» ve «Ercan MOLA»nın kayıtlı
    vektör imzaları otomatik basılır. İmzalar YALNIZ dernek Google hesabındaki ihtida klasöründe (sahit-imzalari.json) durur — kodda,
    depoda, public/ klasöründe ve bu paketin içinde değil; ?islem=sahit-imzalari (GET) ve tur:'sahit-imza-yukle' (POST) panel anahtarı ister.
@@ -102,7 +105,7 @@
  * bu KASITLI: PDF artık istemciden gelmez, eski gövde biçimi zaten geçersizdir.)
  */
 
-var SURUM = 43;
+var SURUM = 44;
 /* 21 Eyl 2026: Sitenin ve formların dilleri TEK listede. Gönderilen form dilinin («dil» alanı) ve
    ?islem=pdf-ornek önizlemesinin geçerli değerleri buradan okunur; ["tr","fr","en"] artık hiçbir yere yazılmaz.
    DİKKAT — bu liste FORM dilidir: velinin kalıcı İLETİŞİM dili (veli.iletisimDili) ve tören dili
@@ -156,7 +159,7 @@ function doGet(e) {
     }
   }
   var paketSurumu = PropertiesService.getScriptProperties().getProperty("IHTIDA_PAKET_KURULU");
-  return json({ ok: true, servis: "ulucamii-alici", surum: SURUM, kayitKimlik: true, kayitImza: true, kayitBelgeleriZorunlu: true, kayitDuzelt: true, defterCeviri: true, basvuruSiniri: true, ceviriMotoru: ceviriMotoru(), veliEpostaDili: "kayit-tercihi-20260909",
+  return json({ ok: true, servis: "ulucamii-alici", surum: SURUM, kayitKimlik: true, kayitImza: true, kayitBelgeleriZorunlu: true, kayitDuzelt: true, defterCeviri: true, basvuruSiniri: true, ceviriMotoru: ceviriMotoru(), veliEpostaDili: "kayit-tercihi-20260909", veliCc: typeof veliCc === "function" && !!veliCc(),
     veliMailListesiOtomatik: typeof veliMailListesiZamanli === "function" && PropertiesService.getScriptProperties().getProperty("VELI_PORTAL_KURULU") === VELI_PORTAL_SURUM,
     ihtidaPaketHazir: typeof IhtidaPdf !== "undefined" && paketSurumu === "28",
     ihtidaDefteriHazir: typeof IhtidaDefteri !== "undefined" && PropertiesService.getScriptProperties().getProperty("IHTIDA_DEFTERI_KURULU") === "28",
@@ -1728,12 +1731,16 @@ function kopyaGonderV2(blob, ref, adSoyad, adresler, dil, kimlik, formDili, kiml
   if (mufredat) ekler.push(mufredat);
 
   var hepsiGitti = true;
-  gecerli.forEach(function (adres) {
+  // v44 (29 Eki 2026): veli Cc'si (VELI_CC) yalnız ilk iletiye; iki velili kayıtta aynı kopya iki kez gitmez.
+  var cc = veliCc();
+  gecerli.forEach(function (adres, i) {
     try {
-      epostaGonder({
+      var ileti = {
         to: adres, subject: konu, body: govde + "\n\n" + KIMLIK.yazisma.imza.kurs[dil].join("\n"), htmlBody: veliEpostaDuzMetin(govde, dil, konu, {kurum: "kurs"}),
         attachments: ekler, kurum: "kurs", name: KIMLIK.kurumlar.kurs.gonderenAdi, replyTo: EPOSTA.yanit
-      });
+      };
+      if (cc && i === 0 && cc.toLowerCase() !== adres.toLowerCase()) ileti.cc = cc;
+      epostaGonder(ileti);
     } catch (hata) {
       hepsiGitti = false;
       console.error("kopya basarisiz (" + adres + "): " + hata);

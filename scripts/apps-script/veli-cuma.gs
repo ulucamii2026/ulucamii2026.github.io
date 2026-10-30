@@ -89,9 +89,19 @@ function veliCumaPlanOku(){
   if(k.getResponseCode()!==200)throw new Error('cuma-kitap-kaynak-http');
   return veliCumaKaynakEkle(plan,JSON.parse(k.getContentText()));
 }
-function veliCumaCevir(metin){
+function veliCumaSozluk(){
+  // v44 (29 Eki 2026): sitenin elle yazılmış Fransızca ders başlıkları (src/data/konular-fr.json, plan konularının tamamı).
+  // 23 Eki bülteni LanguageApp'in değiştirmeden döndürdüğü bir başlıkta «cuma-ceviri-eksik» ile durmuştu. Sözlük
+  // alınamazsa boş döner; o zaman eski yol (onaylı liste + makine çevirisi) çalışır.
+  try{var r=UrlFetchApp.fetch('https://raw.githubusercontent.com/ulucamii2026/ulucamii2026.github.io/main/src/data/konular-fr.json',{muteHttpExceptions:true});
+    if(r.getResponseCode()!==200)return {};var s=JSON.parse(r.getContentText());return s&&typeof s==='object'&&!Array.isArray(s)?s:{};}catch(e){return {};}
+}
+function veliCumaCevir(metin,sozluk){
   // Yalnız herkese açık ders başlığı çevrilir. Veli/öğrenci/ödev verisi çeviri servisine gitmez.
-  // Cami sitesindeki onaylı Fransızca duyuru ve harf adları otomatik çeviriden önce gelir.
+  // Sitenin Fransızca konu sözlüğü (v44), onaylı duyuru başlıkları ve harf adları otomatik çeviriden önce gelir.
+  var bolum0=String(metin).match(/\s+(\(\d+\/\d+\))$/),temel0=bolum0?String(metin).slice(0,bolum0.index):String(metin);
+  if(sozluk&&typeof sozluk[metin]==='string'&&sozluk[metin])return sozluk[metin];
+  if(sozluk&&typeof sozluk[temel0]==='string'&&sozluk[temel0])return sozluk[temel0]+(bolum0?' '+bolum0[1]:'');
   var onayli={"Kutsal kitabımız Kur'an'dır":"Notre Livre saint est le Coran","Abdest alıyorum, temizleniyorum":"Je fais mes ablutions, je me purifie","Hz. Muhammed (s.a.s.) büyüyor":"Le prophète Muhammad (s.a.s.) grandit","Sevincimi paylaşıyorum":"Je partage ma joie"};
   var bolum=String(metin).match(/\s+(\(\d+\/\d+\))$/),temel=bolum?String(metin).slice(0,bolum.index):String(metin);
   if(onayli[temel])return onayli[temel]+(bolum?' '+bolum[1]:'');
@@ -110,12 +120,15 @@ function veliCumaHazirla(cuma,ayar){
   var model=veliCumaModel(cuma,plan,odevler,ayar),icerik={};
   var alicilar=veliCumaAlicilar(veliCumaKoleksiyon('aileler',['ogrenciler','iletisimDili','dil','haftalikEposta']),veliCumaKoleksiyon('ogrenciler',['durum']));
   // İki dilin içeriği de gönderimden önce hazırlanır; çeviri arızasında yarım kampanya başlamaz.
-  ['tr','fr'].forEach(function(dil){icerik[dil]=veliCumaIcerik(model,dil,veliCumaCevir);});
+  var sozluk=veliCumaSozluk(),cevir=function(metin){return veliCumaCevir(metin,sozluk);};
+  ['tr','fr'].forEach(function(dil){icerik[dil]=veliCumaIcerik(model,dil,cevir);});
   return {model:model,icerik:icerik,alicilar:alicilar};
 }
 function veliCumaGonder(alici,icerik,anahtar,tag){
   var key=brevoAnahtari();if(!key)throw new Error('cuma-eposta-yetkisi-yok');
-  var payload={sender:epostaKimligi('kurs'),to:[{email:alici.eposta}],replyTo:{email:KIMLIK.iletisim.eposta.dinGorevlisi},subject:icerik.subject,htmlContent:icerik.htmlBody,textContent:icerik.body,headers:{idempotencyKey:anahtar},tags:[tag]};
+  // v44 (29 Eki 2026): yanıt adresi KIMLIK.iletisim.eposta.yanit. 13 Eyl'de (v31) silinen dinGorevlisi alanı boş replyTo yolluyordu.
+  var payload={sender:epostaKimligi('kurs'),to:[{email:alici.eposta}],replyTo:{email:KIMLIK.iletisim.eposta.yanit},subject:icerik.subject,htmlContent:icerik.htmlBody,textContent:icerik.body,headers:{idempotencyKey:anahtar},tags:[tag]};
+  var cc=veliCc();if(cc&&cc.toLowerCase()!==String(alici.eposta).toLowerCase())payload.cc=[{email:cc}]; // v44: veli Cc'si, yalnız VELI_CC doluysa
   try{var r=UrlFetchApp.fetch(BREVO_UC,{method:'post',contentType:'application/json',headers:{'api-key':key,accept:'application/json'},payload:JSON.stringify(payload),muteHttpExceptions:true});var kod=r.getResponseCode();
     if(kod>=200&&kod<300){var j=JSON.parse(r.getContentText());return {durum:j.messageId?'saglayici-kabul':'belirsiz',messageId:j.messageId||''};}
     return {durum:kod===429?'yeniden-denenecek':kod>=500||r.getContentText().indexOf('duplicate_parameter')>=0?'belirsiz':'gonderim-hatasi',kod:kod};

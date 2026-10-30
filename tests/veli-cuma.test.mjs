@@ -66,3 +66,19 @@ test("v36: çeviri önbelleği CacheService'te (6 saat), Script Property yazılm
   vm.runInContext(source,x);x.veliPortalHash=s=>s;
   assert.equal(x.veliCumaCevir('Harfler'),'Les lettres');assert.equal(x.veliCumaCevir('Harfler'),'Les lettres');assert.equal(ceviri,1);assert.equal(cache._sure,21600);
 });
+function brevoYuku(props){const yukler=[];const x=vm.createContext({console,PropertiesService:{getScriptProperties:()=>({getProperty:k=>props[k]??null})},UrlFetchApp:{fetch:(u,o)=>{yukler.push(JSON.parse(o.payload));return {getResponseCode:()=>201,getContentText:()=>'{"messageId":"m"}'};}}});
+ vm.runInContext(source,x);Object.assign(x,{brevoAnahtari:()=>'fixture',BREVO_UC:'https://brevo.example.test',epostaKimligi:()=>({name:'Kurs',email:'info@ulucamii.be'})});
+ const s=x.veliCumaGonder({eposta:'veli@example.test'},{subject:'Konu',htmlBody:'<p>x</p>',body:'x'},'anahtar','veli-cuma-2026-10-30');return {s,yuk:yukler[0]};}
+test('v44: Brevo yükünde yanıt adresi dolu (info@); 13 Eyl–29 Eki boş replyTo hatası geri gelmez',()=>{
+ const {s,yuk}=brevoYuku({});assert.equal(s.durum,'saglayici-kabul');assert.equal(yuk.replyTo.email,c.KIMLIK.iletisim.eposta.yanit);assert.match(yuk.replyTo.email,/^[^@\s]+@[^@\s]+\.[a-z]+$/);assert.equal(yuk.cc,undefined);
+});
+test("v44: VELI_CC doluysa bülten Cc'lenir, geçersiz ya da alıcıyla aynıysa eklenmez",()=>{
+ assert.deepEqual(brevoYuku({VELI_CC:'sorumlu@example.test'}).yuk.cc,[{email:'sorumlu@example.test'}]);
+ assert.equal(brevoYuku({VELI_CC:'gecersiz'}).yuk.cc,undefined);assert.equal(brevoYuku({VELI_CC:'VELI@example.test'}).yuk.cc,undefined);
+});
+test('v44: Fransızca başlık önce sitenin konu sözlüğünden gelir; makine çevirisi yalnız sözlükte yoksa',()=>{
+ const fr=JSON.parse(readFileSync(new URL('../src/data/konular-fr.json',import.meta.url),'utf8'));let ceviri=0;
+ const x=vm.createContext({console,LanguageApp:{translate:t=>{ceviri++;return t;}}});vm.runInContext(source,x);x.veliPortalHash=s=>s;
+ assert.equal(x.veliCumaCevir("Benim dinim İslam'dır",fr),fr["Benim dinim İslam'dır"]);assert.equal(x.veliCumaCevir("Benim dinim İslam'dır (1/2)",fr),fr["Benim dinim İslam'dır"]+' (1/2)');assert.equal(ceviri,0);
+ assert.throws(()=>x.veliCumaCevir('Sözlükte olmayan başlık',fr),/cuma-ceviri-eksik/,'değişmeden dönen makine çevirisi yine yarım kampanya başlatmaz');
+});

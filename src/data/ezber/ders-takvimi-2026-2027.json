@@ -1,7 +1,7 @@
 {
   "kaynak": "ulu-camii-kuran-kursu/veri/ezber-kosesi-2026-2027.json",
-  "kaynakSha256": "b10f62ca3cccef5ecfcb57c8578a93a2ef682c35431dcdeef258c79da250f6e2",
-  "uretim": "2026-10-25",
+  "kaynakSha256": "a0d2cf8de9805ae4c60bb1b7f9178b1574555d6c268877a13180e775b4b1f60b",
+  "uretim": "2026-10-29",
   "gunler": [
     {"tarih":"2026-10-10","gun":"Cumartesi","kip":"tam-ders","yeni":[{"id":"d-euzu-besmele"},{"id":"d-kelime-i-tevhid"},{"id":"d-kelime-i-sehadet"},{"id":"s-fatiha","ayet":[1,4]}],"dinleme":[{"id":"s-fatiha","ayet":[5,7]}]},
     {"tarih":"2026-10-11","gun":"Pazar","kip":"kose","pekistir":[{"id":"s-fatiha","ayet":[1,4]},{"id":"d-euzu-besmele"},{"id":"d-kelime-i-tevhid"},{"id":"d-kelime-i-sehadet"}]},

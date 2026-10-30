@@ -159,3 +159,11 @@ function veliEpostaDuzMetin(metin, dil, baslik, secenekler) {
   var bloklar = String(metin == null ? '' : metin).split(/\n\s*\n/).map(function(p) { return {tur:'paragraf', metin:p}; });
   return veliEpostaZengin(bloklar, dil, baslik, secenekler);
 }
+// v44 (29 Eki 2026; Rıdvan, 18 Eki: «velilere gönderdiğimiz her mail'i ona da cc yapalım»): veli e-postalarının Cc'si.
+// Adres yalnız Script Property VELI_CC'de durur (depo herkese açık). Boş ya da geçersizse Cc eklenmez, gönderim sürer.
+function veliCc() {
+  try {
+    var adres = String(PropertiesService.getScriptProperties().getProperty('VELI_CC') || '').trim();
+    return /^[^\s@,;]+@[^\s@,;]+\.[^\s@,;]+$/.test(adres) ? adres : null;
+  } catch (e) { return null; }
+}

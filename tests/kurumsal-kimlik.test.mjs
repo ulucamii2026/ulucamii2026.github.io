@@ -11,7 +11,7 @@ import { kimlikKaynakOku, kimlikDosyalari, kimlikDenetle, kopyaYolu, sabitYolu, 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const oku = ad => readFileSync(new URL('../scripts/apps-script/' + ad, import.meta.url), 'utf8');
 const kaynak = await kimlikKaynakOku(), kimlik = kaynak.kimlik;
-const source = ['kimlik-sabitler.gs', 'veli-eposta-sablon.gs', 'ulucamii-Kod-v43.gs', 'veli-cuma.gs'].map(oku).join('\n');
+const source = ['kimlik-sabitler.gs', 'veli-eposta-sablon.gs', 'ulucamii-Kod-v44.gs', 'veli-cuma.gs'].map(oku).join('\n');
 function ortam() {
   const sent = [];
   const c = vm.createContext({ console: {error() {}, log() {}}, PropertiesService:{getScriptProperties:()=>({getProperty:()=>null})},
@@ -217,7 +217,7 @@ test('Brevo ve MailApp gönderenleri kurum parametresini izler; çağıranın ne
   assert.equal(c.BREVO_GONDEREN.name, kimlik.kurumlar.cami.gonderenAdi);
   assert.throws(() => c.epostaGonder({kurum:'yok'}), /veli-eposta-kurum/);
 });
-test('Cuma içeriği ve Brevo yükü kurs kimliğini, imam yanıt adresini ve içerik bloklarını taşır', () => {
+test('Cuma içeriği ve Brevo yükü kurs kimliğini, info@ yanıt adresini ve içerik bloklarını taşır', () => {
   const {c:x} = ortam(); let payload;
   const model = x.veliCumaModel('2026-09-11', {donem:'2026-2027', gunler:[{tarih:'2026-09-12', dersler:[{kod:'kuran', konu:'Harfler', kaynak:'Kitap s. 16'}]}]}, [], {});
   const icerik = x.veliCumaIcerik(model, 'tr', t => t);
@@ -227,7 +227,7 @@ test('Cuma içeriği ve Brevo yükü kurs kimliğini, imam yanıt adresini ve i�
   x.UrlFetchApp.fetch = (url, s) => {payload = JSON.parse(s.payload); return {getResponseCode:()=>201, getContentText:()=> '{"messageId":"test@example.test"}'};};
   assert.equal(x.veliCumaGonder({eposta:'veli@example.test'}, icerik, 'test-id', 'test-tag').durum, 'saglayici-kabul');
   assert.equal(payload.sender.name, kimlik.kurumlar.kurs.gonderenAdi);
-  assert.equal(payload.replyTo.email, kimlik.iletisim.eposta.dinGorevlisi);
+  assert.equal(payload.replyTo.email, kimlik.iletisim.eposta.yanit); assert.ok(payload.replyTo.email); // v44: dinGorevlisi alanı yoktu, undefined === undefined geçiyordu
   assert.equal(payload.headers.idempotencyKey, 'test-id');
 });
 test('Brevo sınaması da ortak çerçeve kullanır; yalnız sahte taşıyıcı çalışır', () => {
