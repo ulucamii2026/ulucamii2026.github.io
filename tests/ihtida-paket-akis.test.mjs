@@ -9,7 +9,7 @@ import sharp from 'sharp';
 import { pdfMetni } from './yardim/pdf-metin.mjs';
 
 execFileSync(process.execPath, ['scripts/ihtida-gas-derle.mjs'], { stdio: 'pipe' });
-const source = readFileSync('.codex/cikti/gas/ulucamii-v45.gs', 'utf8');
+const source = readFileSync('.codex/cikti/gas/ulucamii-v46.gs', 'utf8');
 const png = await sharp(Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" width="180" height="220"><rect width="180" height="220" fill="#e0e6ee"/><circle cx="90" cy="72" r="35" fill="#596478"/><text x="35" y="170" font-size="30">TEST</text></svg>')).png().toBuffer();
 const image = 'data:image/png;base64,' + png.toString('base64');
 const k = { 'Referans': 'IH-2099-9999', 'Adı Soyadı': 'Deniz Örnek', 'Adres': 'Rue du Test 12, 6900, Marche-en-Famenne, Belgique', 'E-posta': 'deniz@example.test', 'Zaman damgası': '09.09.2026', 'Form dili': 'fr', 'Kimlik belgesi türü': 'kimlik', 'EK-10 rızası': 'Evet', 'EK-10 sürümü': '2026-09-09', 'İmza aktarım izni': 'Evet', 'Cinsiyet': 'kadin', 'Doğum tarihi': '1990-05-20', 'Doğum yeri': 'Namur', 'Uyruk': 'Belçika', 'Anne adı': 'Anne', 'Baba adı': 'Baba', 'Medeni hali': 'bekar', 'Öğrenim durumu': 'lisans', 'Mesleği': 'Öğretmen', 'Önceki din/mezhep': 'hristiyan-katolik', 'Telefon': '+32470000000', 'İhtida sebebi': 'Kendi araştırmam sonucunda.' };
@@ -108,7 +108,7 @@ test('Otomatik PDF boş ikinci şahidi tamamlarken ilk şahidi tekrarlamaz', asy
   writeFileSync(file, Buffer.from(bytes));
   const metin = pdfMetni(file, ['-f', '1', '-l', '1']).replace(/[ \t]+/g, '');
   assert.equal((metin.match(/YelizKAYAHAN/g) || []).length, 1);
-  assert.match(metin, /ErcanMOLA/);
+  assert.match(metin, /RıdvanKAYAHAN/, '1 Kas 2026: boş 2. şahit her zaman din görevlisi');
 });
 
 test('Ekim 2026 EK-10 ve vektör imza: tarihe dönmüş sürüm hücresi tanınır, imza yol olarak çizilir', async () => {
@@ -618,7 +618,7 @@ test('Kayıtlı imza dosyası bozuksa paket hata verir, imzasız belge e-postala
   assert.equal(sent.length, 3);
 });
 
-test('Başka camide kayıtlı yerel imza (yedek şahit rızası olmadan) basılmaz; başvurana filigranlı suret gider', async () => {
+test('Başka camide yalnız din görevlisinin kayıtlı imzası basılır (Ercan MOLA yedek rızası olmadan basılmaz); başvurana filigranlı suret gider', async () => {
   const { ctx, sent, files } = ortam();
   imzalariKaydet(ctx);
   const namur = { ...k, 'Cami kimliği': 'namur-camii-namur', 'Başvuru camisi': 'Namur Camii', 'Cami şehri': 'Namur', 'Cami posta kodu': '5000', 'Cami adresi': 'Rue Denis Georges Bayar 13', 'Şahit 1': 'Rıdvan KAYAHAN', 'Şahit 2': 'Ercan MOLA' };
@@ -627,8 +627,8 @@ test('Başka camide kayıtlı yerel imza (yedek şahit rızası olmadan) basılm
   await ctx.ihtidaPaketIsle(namur.Referans);
   const is = ctx.ihtidaPaketIsiOku(namur.Referans);
   assert.equal(is.durum, 'tamam', JSON.stringify(is));
-  assert.deepEqual(Array.from(is.sahitImzasi), []); assert.equal(is.basvuranKopya, 'hazir');
-  assert.equal(await sahitImzaSayisi(dosyaBayt(files, is.pdfId)), 0);
+  assert.deepEqual(Array.from(is.sahitImzasi), ['ridvan']); assert.equal(is.basvuranKopya, 'hazir');
+  assert.equal(await sahitImzaSayisi(dosyaBayt(files, is.pdfId)), 1);
   assert.equal(await sahitImzaSayisi(dosyaBayt(files, is.basvuranPdfId)), 0);
   assert.equal(sent.length, 3);
 });
@@ -652,8 +652,8 @@ test('Yedek şahit: başka camide Ercan MOLA ve Rıdvan KAYAHAN imzaları yalnı
     return is;
   };
   let is = await onayla({}, 'approval-yedek-0-2099');
-  assert.deepEqual(Array.from(is.sahitImzasi), [], 'rıza yok: başka camide kayıtlı imza basılmaz');
-  assert.equal(await sahitImzaSayisi(dosyaBayt(files, is.pdfId)), 0);
+  assert.deepEqual(Array.from(is.sahitImzasi), ['ridvan'], 'rıza yok: başka camide yalnız din görevlisinin imzası basılır, Ercan MOLA basılmaz');
+  assert.equal(await sahitImzaSayisi(dosyaBayt(files, is.pdfId)), 1);
   is = await onayla({ yedekSahitRizasi: 'yazili' }, 'approval-yedek-1-2099');
   assert.deepEqual(Array.from(is.sahitImzasi).sort(), ['ercan', 'ridvan'], 'yazılı rıza: ikisi de basılır');
   assert.equal(await sahitImzaSayisi(dosyaBayt(files, is.pdfId)), 2);

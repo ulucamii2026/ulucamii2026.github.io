@@ -25,7 +25,7 @@ Görüşme **Türkçe veya Fransızca** yapılabilir. Kadın adaylar dilerse, g�
 
 - **Baskı var mı?** Hayır. Karar tamamen size aittir; görevlimiz törende bunu şahitler huzurunda size ayrıca sorar.
 - **Ailem/çevrem bilgilendirilir mi?** Hayır. Paylaştığınız bilgiler gizli tutulur ve yalnızca yetkili en az sayıda kişiyle (din görevlisi ve belgeyi onaylayan Diyanet yetkilisi) paylaşılır (bkz. [Gizlilik Politikamız](/tr/gizlilik/)).
-- **Yalnız mı gelmem gerekir?** Törende sizinle birlikte **2 şahit** bulunması gerekir; tanıdığınız kimse yoksa cami cemaatinden şahit bulmanıza yardımcı oluruz.
+- **Yalnız mı gelmem gerekir?** Törende **2 şahit** bulunur: bir şahidi siz getirebilirsiniz (isteğe bağlı; getirmezseniz cami cemaatinden birini biz ayarlarız), ikinci şahit her zaman din görevlimizdir.
 - **Bir şey ezberlemem gerekiyor mu?** Hayır. Kelime-i şehadet törende size hece hece söyletilerek öğretilir.
 
 ## Adım Adım Süreç
@@ -79,7 +79,7 @@ Başvuru formunu doldururken sisteme yükleyecekleriniz (formun 5. bölümü):
 Tören günü yanınızda bulundurmanız gerekenler:
 
 - **Kimlik kartınız veya pasaportunuz** — aslını görevliye gösterirsiniz.
-- **2 şahit** — yoksa camimiz sağlar.
+- **1 şahit** (isteğe bağlı) — yoksa camimiz sağlar; ikinci şahit her zaman din görevlimizdir.
 - **Dilekçe** — Onaya gidecek dosyada, İhtida Belgesi’ni talep eden imzalı bir dilekçe bulunur. Bunu sizin için biz hazırlarız: formda verdiğiniz bilgiler ve çizdiğiniz imzayla, iki dilli olarak basılır; imzalamadan önce okur, dilerseniz kendi elinizle de yazabilirsiniz.
 - **EK-10 Açık Rıza Metni** — tören günü kâğıt üzerinde imzalanır. Metnin tamamı Türkçe, İngilizce, **Fransızca** ve Felemenkçe olarak yandaki bağlantıdan okunabilir.
 
@@ -138,7 +138,7 @@ Hayır, süreç tamamen ücretsizdir.
 Bilinen ve doğrulanmış kullanım alanı Hac/Umre vizesi başvurusudur. Başka bir resmî işlem için gerekiyorsa, o kurumun kabul edip etmeyeceğini önceden teyit etmenizi öneririz.
 
 **Yalnız mı gelmem gerekiyor?**
-Törende 2 şahidin bulunması gerekir; tanıdığınız yoksa cami cemaatinden şahit bulmanıza yardımcı oluruz.
+Törende 2 şahit bulunur: birini siz getirebilirsiniz (isteğe bağlı; getirmezseniz cami cemaatinden birini biz ayarlarız), ikinci şahit her zaman din görevlimizdir.
 
 **Ne kadar sürer?**
 Tören ve size ait imzalar tamamlandıktan sonra dosya onaya gönderilir. Islak imzalı belgenin posta ile dönmesi birkaç hafta sürebilir.

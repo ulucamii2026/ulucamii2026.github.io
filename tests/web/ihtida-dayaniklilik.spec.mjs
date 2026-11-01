@@ -139,15 +139,14 @@ test('Ekran daraltıldığında çizilmiş imzanın tamamı PDF gövdesinde koru
   expect(meta.width / meta.height).toBeGreaterThan(7);
 });
 
-test('Ulu Camii için de iki aynı şahit adı belge adımına geçmeden açıklanır', async ({ page }) => {
+test('1. şahit din görevlisinin adı olamaz; Ulu Camii için de belge adımına geçmeden açıklanır', async ({ page }) => {
   await page.goto('/tr/ihtida-basvurusu/');
   await page.locator('[data-adim-sec="3"]').click();
   await page.locator('#i-onceki-din').fill('Belirtilen inanç');
   await page.locator('#i-sahit-ekle').check();
-  await page.locator('#i-sahit-1').fill('Birinci Örnek');
-  await page.locator('#i-sahit-2').fill('BİRİNCİ  ÖRNEK');
+  await page.locator('#i-sahit-1').fill('RIDVAN  KAYAHAN');
   await page.locator('[data-adim-ileri]').click();
-  await expect(page.locator('#i-sahit-2')).toHaveAttribute('aria-invalid', 'true');
+  await expect(page.locator('#i-sahit-1')).toHaveAttribute('aria-invalid', 'true');
   await expect(page.locator('#b-ihtida')).toBeVisible();
 });
 

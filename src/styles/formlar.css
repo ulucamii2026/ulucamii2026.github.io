@@ -43,7 +43,7 @@
 .ucf-cami-eylemler { display: flex; flex-wrap: wrap; gap: .6rem; }
 .ucf-cami-eylemler button { white-space: normal; }
 .ucf-cami-eylemler button:disabled { opacity: .6; cursor: not-allowed; }
-.ucf [data-sahit-secim][hidden], .ucf [data-sahit-istege][hidden], .ucf [data-sahit-2-zorunlu][hidden] { display: none; }
+.ucf [data-sahit-secim][hidden], .ucf [data-sahit-istege][hidden] { display: none; }
 .ucf-sure { display: inline-flex; align-items: center; gap: 0.45rem; margin-top: 0.9rem; font-size: 0.85rem; color: var(--metin-2); }
 .ucf-sure svg { flex-shrink: 0; }
 
@@ -281,6 +281,13 @@ dialog.kimlik-kirp::backdrop { background: rgb(0 0 0 / 0.55); }
 .ucf-imza.alan-hatali .imza-tuval { border-color: var(--form-hata-cizgi); }
 /* İhtida · şahit adının altındaki isteğe bağlı şahit imzası (23 Ekim 2026): başvuranın imza bileşeninin küçük kardeşi.
    Kolon: ad alanı + imza kutusu alt alta; dar ekranda iki şahit alt alta akar. */
+/* 1 Kasım 2026: tek şahit kuralı. Başvuran en çok bir şahit ekler (tek kolon); 2. şahit sabit satırdır: din görevlisi. */
+.ucf .ucf-tek-sahit { grid-template-columns: minmax(0, 1fr); max-width: 40rem; }
+.ucf-sahit-sabit { display: grid; gap: 0.25rem; margin-top: 1rem; padding: 0.8rem 1rem; min-width: 0;
+  border: 1px solid var(--cizgi-etkilesim); border-radius: calc(var(--radius-kose) * 0.6); background: color-mix(in srgb, currentColor 4%, transparent); }
+.ucf-sahit-sabit > .alan-baslik { font-weight: 600; font-size: 0.93rem; }
+.ucf-sahit-sabit .sabit-ad { margin: 0; font-size: 1.05rem; }
+.ucf-sahit-sabit .yardim { margin: 0; }
 .ucf-sahit-kolon { display: grid; gap: 1rem; align-content: start; min-width: 0; }
 .ucf-sahit-imza { display: grid; gap: 0.6rem; padding: 0.9rem 1rem 1rem; min-width: 0;
   border: 1px dashed var(--cizgi-etkilesim); border-radius: calc(var(--radius-kose) * 0.6); }

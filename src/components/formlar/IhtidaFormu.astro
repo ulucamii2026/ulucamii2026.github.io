@@ -252,7 +252,7 @@ const gorselKutulari = [
         </div>
         <p class="yardim" id="i-sahit-yardim">{h.ihtida.sahitlerYardim}</p>
         <p class="yardim" data-sahit-cami data-kosul="sahitEkle=false">{h.ihtida.sahitCami}</p>
-        <div id="i-sahit-alanlari" class="ucf-izgara mt-1" data-kosul="sahitEkle=true" hidden>
+        <div id="i-sahit-alanlari" class="ucf-izgara ucf-tek-sahit mt-1" data-kosul="sahitEkle=true" hidden>
           <div class="ucf-sahit-kolon">
             <div data-alan>
               <label for="i-sahit-1">{h.ihtida.sahit1} <span class="zorunlu" aria-hidden="true">*</span></label>
@@ -261,16 +261,13 @@ const gorselKutulari = [
             </div>
             <IhtidaSahitImza no={1} baslik={h.ihtida.sahitImzaBaslik.replace('{no}', '1')} yardim={h.ihtida.sahitImzaYardim} riza={h.ihtida.sahitRiza} temizle={b.imzaTemizle} />
           </div>
-          <div class="ucf-sahit-kolon">
-            <div data-alan>
-              <label for="i-sahit-2">{h.ihtida.sahit2} <span class="istege" data-sahit-istege>({o.istegeBagli})</span><span class="zorunlu" data-sahit-2-zorunlu aria-hidden="true" hidden>*</span></label>
-              <input id="i-sahit-2" name="sahit.2" type="text" disabled maxlength="80" autocomplete="off" autocapitalize="words" />
-              <p class="hata" aria-live="polite" hidden></p>
-            </div>
-            <IhtidaSahitImza no={2} baslik={h.ihtida.sahitImzaBaslik.replace('{no}', '2')} yardim={h.ihtida.sahitImzaYardim} riza={h.ihtida.sahitRiza} temizle={b.imzaTemizle} />
-          </div>
           <p class="yardim tam" data-sahit-imza-not>{h.ihtida.sahitImzaNot}</p>
           <p class="yardim tam" data-sahit-sonra-not>{h.ihtida.sahitSonraNot}</p>
+        </div>
+        <div class="ucf-sahit-sabit" data-sahit-sabit>
+          <span class="alan-baslik">{h.ihtida.sahit2}</span>
+          <p class="sabit-ad"><strong data-sahit-sabit-ad>Rıdvan KAYAHAN</strong> · <span data-sahit-sabit-unvan>{h.ihtida.sahitSabitUnvan}</span></p>
+          <p class="yardim">{h.ihtida.sahitSabitNot}</p>
         </div>
       </fieldset>
       <div data-alan>

@@ -189,6 +189,8 @@ export interface IhtidaMetinler {
     torenDili: string; dilTr: string; dilFr: string; dilEn: string; dilAr: string;
     torenTarihi: string; torenTarihiYardim: string;
     sahitler: string; sahitlerYardim: string; sahitEkle: string; sahitCami: string; sahit1: string; sahit2: string;
+    /** 1 Kas 2026: 2. şahit her başvuruda din görevlisi (sabit satır): unvan etiketi ve açıklama. */
+    sahitSabitUnvan: string; sahitSabitNot: string;
     /** 23 Ekim 2026: mühtedinin kendi şahidi yanındaysa formda isteğe bağlı imza atabilir ({no} = 1 | 2). */
     sahitImzaBaslik: string; sahitImzaYardim: string; sahitRiza: string; sahitImzaNot: string;
     /** 25 Ekim 2026: şahit imzaları sonraya kalırsa WhatsApp ile imzalatma; olmazsa rızayla Ercan MOLA + Rıdvan KAYAHAN. */

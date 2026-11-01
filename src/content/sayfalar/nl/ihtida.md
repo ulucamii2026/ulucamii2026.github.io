@@ -25,7 +25,7 @@ Moslim worden gebeurt door met heel uw hart te geloven dat God (Allah) één is 
 
 - **Is er enige druk?** Nee. De beslissing is volledig de uwe; tijdens de ceremonie stelt onze imam u die vraag nog eens uitdrukkelijk, in het bijzijn van de getuigen.
 - **Worden mijn familie en mijn omgeving op de hoogte gebracht?** Nee. Wat u deelt, blijft vertrouwelijk en wordt alleen doorgegeven aan het kleinst mogelijke aantal bevoegde personen (de imam en de Diyanet-functionaris die het attest goedkeurt) — zie ons [Privacybeleid](/nl/privacy/).
-- **Moet ik alleen komen?** Bij de ceremonie moeten **2 getuigen** aanwezig zijn; kent u niemand, dan helpen wij u getuigen te vinden binnen onze gemeenschap.
+- **Moet ik alleen komen?** Bij de ceremonie zijn **2 getuigen** aanwezig: u mag er één meebrengen (optioneel; anders zoeken wij er een binnen onze gemeenschap), de tweede is altijd onze imam.
 - **Moet ik iets uit het hoofd leren?** Nee. De geloofsgetuigenis wordt u tijdens de ceremonie lettergreep voor lettergreep voorgezegd.
 
 ## De procedure stap voor stap
@@ -79,7 +79,7 @@ Wat u bij het invullen van het aanvraagformulier oplaadt (deel 5 van het formuli
 Wat u op de dag van de ceremonie meebrengt:
 
 - **Uw identiteitskaart of paspoort** — u toont het origineel aan de imam.
-- **2 getuigen** — hebt u die niet, dan zorgt onze moskee ervoor.
+- **1 getuige** (optioneel) — hebt u er geen, dan zorgt onze moskee voor een getuige; de tweede getuige is altijd onze imam.
 - **Een schriftelijk verzoek** — het dossier dat ter goedkeuring wordt verstuurd, bevat een ondertekend verzoek om het bekeringsattest. Dat bereiden wij voor u voor: het wordt tweetalig afgedrukt met de gegevens die u in het formulier hebt opgegeven en met de handtekening die u daar hebt getekend; u leest het voordat u tekent en u mag het desgewenst ook met de hand schrijven.
 - **De EK-10-tekst over uitdrukkelijke toestemming** — die wordt op de dag zelf op papier ondertekend. De volledige tekst kunt u in het Turks, het Engels, het **Frans** en het Nederlands lezen via de link hiernaast.
 
@@ -138,7 +138,7 @@ Nee, de hele procedure is volledig gratis.
 Het bekende en bevestigde gebruik is de visumaanvraag voor de hadj of de umra. Hebt u het voor een andere officiële stap nodig, dan raden wij u aan vooraf bij die instelling na te vragen of zij het aanvaardt.
 
 **Moet ik alleen komen?**
-Bij de ceremonie moeten 2 getuigen aanwezig zijn; kent u niemand, dan helpen wij u getuigen te vinden binnen onze gemeenschap.
+Bij de ceremonie zijn 2 getuigen aanwezig: u mag er één meebrengen (optioneel; anders zoeken wij er een binnen onze gemeenschap), de tweede is altijd onze imam.
 
 **Hoe lang duurt het?**
 Zodra de ceremonie achter de rug is en de handtekeningen die u betreffen gezet zijn, wordt het dossier ter goedkeuring verstuurd. Het kan enkele weken duren voor het handgeschreven ondertekende attest per post terugkomt.

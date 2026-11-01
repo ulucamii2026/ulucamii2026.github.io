@@ -25,7 +25,7 @@ Becoming Muslim means believing in your heart that God is One and that Muhammad 
 
 - **Is there any pressure?** No. The decision is entirely yours; at the ceremony the imam asks you this explicitly, in front of witnesses.
 - **Will my family or others be told?** No. What you share stays confidential and is passed only to the smallest possible number of authorised people (the imam and the Diyanet official who approves the certificate) — see our [Privacy Policy](/en/privacy/).
-- **Do I have to come alone?** The ceremony requires **2 witnesses**; if you do not know anyone, we will help you find them within our congregation.
+- **Do I have to come alone?** The ceremony has **2 witnesses**: you may bring one (optional; if you do not, we will arrange one from our congregation), and the second is always our religious official.
 - **Do I need to memorise anything?** No. The declaration of faith is taught to you at the ceremony, syllable by syllable.
 
 ## The Process, Step by Step
@@ -79,7 +79,7 @@ To upload while filling in the form (section 5):
 To bring on the day of the ceremony:
 
 - **Your identity card or passport** — you show the original to the officer.
-- **2 witnesses** — our mosque provides them if needed.
+- **1 witness** (optional) — our mosque provides one if needed; the second witness is always our religious official.
 - **A written request** — the file sent for approval includes a signed request for the conversion certificate. We prepare it for you: it is printed in two languages from the information in the form and the signature you drew there; you read it before signing, and you may also write it out by hand.
 - **The EK-10 explicit consent form** — signed on paper on the day. The full text is available in Turkish, English, **French** and Dutch through the link in the sidebar.
 
@@ -138,7 +138,7 @@ No, the whole process is free of charge.
 Its confirmed use is the Hajj/Umrah visa application. For any other official purpose, we recommend checking with the institution concerned beforehand.
 
 **Do I have to come alone?**
-The ceremony requires 2 witnesses; if you do not know anyone, we will help you find them within our congregation.
+The ceremony has 2 witnesses: you may bring one (optional; if you do not, we will arrange one from our congregation), and the second is always our religious official.
 
 **How long does it take?**
 After the ceremony and your signatures, the file is sent for approval. The return of the certificate carrying the handwritten signature may take several weeks.

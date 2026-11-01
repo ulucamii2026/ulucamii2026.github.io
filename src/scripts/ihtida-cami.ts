@@ -1,6 +1,6 @@
 import { adNormalle } from './form-cekirdek';
 import type { CamiMetinleri } from '../i18n/cami-secimi';
-import { SAHIT_SIFIRLA_OLAYI } from './ihtida-sahit-imza';
+import { SAHIT_SIFIRLA_OLAYI, DIN_GOREVLISI_SAHIT } from './ihtida-sahit-imza';
 
 export interface CamiBilgisi { id: string; ad: string; sehir: string; postaKodu: string; adres: string; kurum: string }
 const VARSAYILAN = 'ulucamii-marche';
@@ -15,7 +15,7 @@ export function camiSeciminiBaslat(form: HTMLFormElement) {
   const detay = form.querySelector<HTMLDetailsElement>('[data-cami-degistir]')!;
   const dugme = form.querySelector<HTMLButtonElement>('[data-cami-sec]')!;
   const sahitSecim = form.querySelector<HTMLInputElement>('#i-sahit-ekle')!;
-  const sahitler = [1, 2].map(i => form.querySelector<HTMLInputElement>(`#i-sahit-${i}`)!);
+  const sahitler = [1].map(i => form.querySelector<HTMLInputElement>(`#i-sahit-${i}`)!);
   const yardim = form.querySelector<HTMLElement>('#i-sahit-yardim')!;
   const eskiYardim = yardim.textContent || '';
   const farkli = () => kimlik.value !== VARSAYILAN;
@@ -34,8 +34,6 @@ export function camiSeciminiBaslat(form: HTMLFormElement) {
     const diger = farkli();
     form.querySelector<HTMLElement>('[data-sahit-secim]')!.hidden = diger;
     form.querySelectorAll<HTMLElement>('[data-sahit-istege]').forEach(el => { el.hidden = diger; });
-    form.querySelector<HTMLElement>('[data-sahit-2-zorunlu]')!.hidden = !diger;
-    sahitler[1].required = diger;
     yardim.textContent = diger ? m.sahit : eskiYardim;
     if (diger && !sahitSecim.checked) {
       sahitSecim.checked = true;
@@ -92,10 +90,9 @@ export function camiSeciminiBaslat(form: HTMLFormElement) {
       const hatalar: Array<[string, string]> = [];
       if (!veri().ad && kimlik.value !== 'diger') { detay.open = true; hatalar.push(['camiId', m.secimHata]); }
       if (kimlik.value === 'diger' && !/^[1-9]\d{3}$/.test(alan('postaKodu'))) hatalar.push(['camiDiger.postaKodu', m.postaHata]);
-      if (farkli()) {
-        sahitler.forEach(input => { if (!input.value.trim()) hatalar.push([input.name, m.sahitEksik]); });
-      }
-      if (sahitSecim.checked && sahitler[0].value.trim() && adNormalle(sahitler[0].value) === adNormalle(sahitler[1].value)) hatalar.push(['sahit.2', m.sahitAyni]);
+      // 1 Kas 2026: başka camide 1. şahit zorunlu; 2. şahit her zaman din görevlisi olduğundan 1. şahit o olamaz.
+      if (farkli() && !sahitler[0].value.trim()) hatalar.push([sahitler[0].name, m.sahitEksik]);
+      if (sahitSecim.checked && sahitler[0].value.trim() && adNormalle(sahitler[0].value) === adNormalle(DIN_GOREVLISI_SAHIT)) hatalar.push(['sahit.1', m.sahitAyni]);
       return hatalar;
     },
     ozet: () => { const c = veri(); return [c.ad, c.adres, c.postaKodu, c.sehir].filter(Boolean).join(' · '); },

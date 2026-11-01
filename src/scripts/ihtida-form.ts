@@ -4,7 +4,7 @@
 import { formuBaslat, telefonNormalle, type Veriler } from './form-cekirdek';
 import { gorselleriBaslat, type BelgeMetinleri, type GorselYonetici } from './ihtida-gorseller';
 import { camiSeciminiBaslat } from './ihtida-cami';
-import { sahitImzalariniBaslat, type SahitImzaMetinleri } from './ihtida-sahit-imza';
+import { sahitImzalariniBaslat, DIN_GOREVLISI_SAHIT, type SahitImzaMetinleri } from './ihtida-sahit-imza';
 import { ihtidaAdimlariniBaslat } from './ihtida-adimlari';
 
 export function ihtidaFormuBaslat() {
@@ -38,6 +38,8 @@ export function ihtidaFormuBaslat() {
     govde(v) {
       const b = v.basvuran as Veriler, sahit = (v.sahit ?? {}) as Veriler, onay = v.onay as Veriler;
       const sahitImza = sahitImzalari.veri();     // imzasız şahit için null: satır yalnız { ad } kalır
+      const sahit1Ad = String(sahit['1'] ?? '').trim();
+      const kendiSahit = cami.farkli() || (v.sahitEkle === true && sahit1Ad !== '');
       const adres = [b.adres, b.postaKodu, b.sehir, b.ulke].map(x => String(x ?? '').trim()).filter(Boolean).join(', ');
       return {
         cami: cami.veri(),
@@ -51,8 +53,10 @@ export function ihtidaFormuBaslat() {
           torenDili: b.torenDili, torenTarihi: b.torenTarihi ?? '', nasilHaberdar: b.nasilHaberdar ?? '', ekNot: b.ekNot ?? '',
         },
         teslimat: { yontem: (v.teslimat as Veriler)?.yontem ?? 'cami' },
-        sahitSecimi: cami.farkli() || v.sahitEkle === true ? 'kendi' : 'cami',
-        sahitler: cami.farkli() || v.sahitEkle === true ? [{ ad: sahit['1'] ?? '', ...(sahitImza[0] ?? {}) }, { ad: sahit['2'] ?? '', ...(sahitImza[1] ?? {}) }] : [],
+        // 1 Kas 2026: tek şahit kuralı. Başvuran en çok bir şahit (1.) bildirir; 2. şahit her başvuruda din görevlisidir.
+        // Ulu Camii'nde şahit bildirilmezse 'cami' + boş liste gider (1. şahit sunucuda/panelde dernek başkanı olarak önerilir).
+        sahitSecimi: kendiSahit ? 'kendi' : 'cami',
+        sahitler: kendiSahit ? [{ ad: sahit1Ad, ...(sahitImza[0] ?? {}) }, { ad: DIN_GOREVLISI_SAHIT }] : [],
         fotografIzni: v.fotografIzni === true,
         belgeTuru: v.belgeTuru ?? 'kimlik',
         imzaYok: v.imzaYok === true,
@@ -86,9 +90,12 @@ export function ihtidaFormuBaslat() {
         sebep: String(b.ihtidaSebebi ?? ''),
         yeniIsim: String(b.yeniIsim ?? ''),
         toren: [secText('basvuran.torenDili'), b.torenTarihi].filter(Boolean).join(' · '),
-        sahitler: v.sahitEkle === true
-          ? [sahit['1'], sahit['2']].map((ad, i) => ad ? (sahitImzalari.imzaliMi(i + 1) ? `${ad} (${sahitImzalari.etiket})` : String(ad)) : '').filter(Boolean).join(', ')
-          : f.querySelector('[data-sahit-cami]')?.textContent?.trim() ?? '',
+        sahitler: [
+          sahit['1'] && (v.sahitEkle === true || cami.farkli())
+            ? (sahitImzalari.imzaliMi(1) ? `${sahit['1']} (${sahitImzalari.etiket})` : String(sahit['1']))
+            : (cami.farkli() ? '' : 'Ercan MOLA'),
+          `${DIN_GOREVLISI_SAHIT} (${f.querySelector('[data-sahit-sabit-unvan]')?.textContent?.trim() ?? ''})`,
+        ].filter(Boolean).join(', '),
         belgeler: gorseller?.ozet() ?? '',
       };
     },

@@ -25,7 +25,7 @@ Muslim wird man, indem man von Herzen daran glaubt, dass Gott (Allah) einer ist 
 
 - **Wird irgendein Druck ausgeübt?** Nein. Die Entscheidung liegt ganz bei Ihnen; bei der Zeremonie stellt Ihnen unser Imam diese Frage vor den Zeugen noch einmal ausdrücklich.
 - **Werden meine Familie oder mein Umfeld informiert?** Nein. Was Sie uns anvertrauen, bleibt vertraulich und wird nur an die kleinstmögliche Zahl befugter Personen weitergegeben (den Imam und die zuständige Person der Diyanet, die die Bescheinigung genehmigt) — siehe unsere [Datenschutzerklärung](/de/datenschutz/).
-- **Muss ich allein kommen?** Bei der Zeremonie müssen **2 Zeugen** anwesend sein; kennen Sie niemanden, helfen wir Ihnen, in unserer Gemeinde Zeugen zu finden.
+- **Muss ich allein kommen?** Bei der Zeremonie sind **2 Zeugen** anwesend: Einen können Sie mitbringen (freiwillig; sonst finden wir in unserer Gemeinde einen), der zweite ist immer unser Imam.
 - **Muss ich etwas auswendig lernen?** Nein. Das Glaubensbekenntnis wird Ihnen bei der Zeremonie Silbe für Silbe vorgesprochen.
 
 ## Der Ablauf Schritt für Schritt
@@ -79,7 +79,7 @@ Was Sie beim Ausfüllen des Antragsformulars hochladen (Abschnitt 5 des Formular
 Was Sie am Tag der Zeremonie mitbringen:
 
 - **Ihren Personalausweis oder Reisepass** — Sie zeigen dem Imam das Original.
-- **2 Zeugen** — haben Sie keine, stellt unsere Moschee sie.
+- **1 Zeuge** (freiwillig) — haben Sie keinen, stellt unsere Moschee einen; der zweite Zeuge ist immer unser Imam.
 - **Einen schriftlichen Antrag** — die Akte, die zur Genehmigung weitergeleitet wird, enthält einen unterschriebenen Antrag auf die Konversionsbescheinigung. Diesen bereiten wir für Sie vor: Er wird zweisprachig aus den Angaben Ihres Formulars und der dort gezeichneten Unterschrift gedruckt; Sie lesen ihn, bevor Sie unterschreiben, und können ihn auf Wunsch auch von Hand schreiben.
 - **Den EK-10-Text zur ausdrücklichen Einwilligung** — er wird am Tag der Zeremonie auf Papier unterschrieben. Der vollständige Text ist über den Link nebenan auf Türkisch, Englisch, **Französisch** und Niederländisch nachzulesen.
 
@@ -138,7 +138,7 @@ Nein, das Verfahren ist vollständig kostenlos.
 Der bekannte und bestätigte Verwendungszweck ist der Visumantrag für Hadsch und Umra. Brauchen Sie sie für einen anderen amtlichen Vorgang, empfehlen wir Ihnen, vorab bei der betreffenden Stelle nachzufragen, ob sie dort anerkannt wird.
 
 **Muss ich allein kommen?**
-Bei der Zeremonie müssen 2 Zeugen anwesend sein; kennen Sie niemanden, helfen wir Ihnen, in unserer Gemeinde Zeugen zu finden.
+Bei der Zeremonie sind 2 Zeugen anwesend: Einen können Sie mitbringen (freiwillig; sonst finden wir in unserer Gemeinde einen), der zweite ist immer unser Imam.
 
 **Wie lange dauert das?**
 Sobald die Zeremonie stattgefunden hat und die Unterschriften, die Sie betreffen, geleistet sind, wird die Akte zur Genehmigung weitergeleitet. Bis die handschriftlich unterzeichnete Bescheinigung per Post zurückkommt, kann es mehrere Wochen dauern.

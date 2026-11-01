@@ -70,18 +70,17 @@ export function ek9AlanlariUygula(degerler, alanlar) {
   return sonuc;
 }
 
+/* 1 Kas 2026 (Rıdvan KAYAHAN: «Sadece bir şahit eklenebilsin. Şahitlerden birisi her zaman din görevlisi, yani imam, yani ben
+   olayım»): 2. şahit HER başvuruda ve her camide «Rıdvan KAYAHAN» (Din Görevlisi); başvuran en çok bir şahit (1.) ekler. Ulu Camii'nde
+   1. şahit boşsa dernek başkanı «Ercan MOLA» önerilir. Başka camide 1. şahit zorunludur (boşsa boş kalır, görevli yazar). */
+export const DIN_GOREVLISI_SAHIT = 'Rıdvan KAYAHAN';
 export function sahitOnerileri(kayit) {
-  const adlar = [kayit['Şahit 1'], kayit['Şahit 2']].map(ad => String(ad || '').trim());
-  if ((kayit['Cami kimliği'] || 'ulucamii-marche') !== 'ulucamii-marche') return adlar;
-  const yedekler = ['Ercan MOLA', 'Rıdvan KAYAHAN'];
+  const [s1, s2] = [kayit['Şahit 1'], kayit['Şahit 2']].map(ad => String(ad || '').trim());
+  const marche = (kayit['Cami kimliği'] || 'ulucamii-marche') === 'ulucamii-marche';
   const normalle = ad => ad.trim().replace(/\s+/g, ' ').toLocaleLowerCase('tr');
-  const kullanilan = new Set(adlar.filter(Boolean).map(normalle));
-  return adlar.map(ad => {
-    if (ad) return ad;
-    const yedek = yedekler.find(isim => !kullanilan.has(normalle(isim))) || '';
-    kullanilan.add(normalle(yedek));
-    return yedek;
-  });
+  const ikinci = s2 || (normalle(s1) === normalle(DIN_GOREVLISI_SAHIT) ? 'Ercan MOLA' : DIN_GOREVLISI_SAHIT);
+  const birinci = s1 || (marche && normalle(ikinci) !== normalle('Ercan MOLA') ? 'Ercan MOLA' : '');
+  return [birinci, ikinci];
 }
 
 const imzaAnahtari = ad => {
@@ -108,7 +107,9 @@ export function sahitImzalariniBagla(sahitler, camiId, imzalar, kendi = [], sece
     // 23 Eki 2026: şahit başvuru sırasında formda kendi imzasını attıysa (rızasıyla) o imza basılır; kayıtlı imzanın önüne geçer.
     const k = Array.isArray(kendi) ? kendi[i] : null;
     if (k && k.imza && !s?.imza && sahitAdiNormal(k.ad) === sahitAdiNormal(s?.ad)) return { ...s, imza: k.imza, kendiImza: true };
-    const anahtar = camiId === 'ulucamii-marche' || yedek ? imzaAnahtari(String(s?.ad || '')) : '';
+    const adAnahtar = imzaAnahtari(String(s?.ad || ''));
+    // 1 Kas 2026: din görevlisinin kayıtlı imzası her camide basılır; Ercan MOLA'nınki yalnız Ulu Camii'nde ya da yedek şahit rızasıyla.
+    const anahtar = adAnahtar === 'ridvan' || camiId === 'ulucamii-marche' || yedek ? adAnahtar : '';
     const imza = anahtar && imzalar && typeof imzalar[anahtar] === 'string' ? imzalar[anahtar] : '';
     if (!imza || uygulanan.includes(anahtar)) return s;
     uygulanan.push(anahtar);
@@ -137,9 +138,9 @@ export function sahitKendiImzalari(gorseller) {
 }
 
 export function sahitUnvani(ad, camiId = 'ulucamii-marche') {
-  if (camiId !== 'ulucamii-marche') return '';
   const anahtar = imzaAnahtari(String(ad || ''));
-  return anahtar === 'ridvan' ? 'Din Görevlisi' : anahtar === 'ercan' ? 'Dernek Başkanı' : '';
+  if (anahtar === 'ridvan') return 'Din Görevlisi';     // 1 Kas 2026: her camide din görevlisi
+  return camiId === 'ulucamii-marche' && anahtar === 'ercan' ? 'Dernek Başkanı' : '';
 }
 
 export function ek9HazirlikAc(kayit, imzalar = {}, secenekler = {}) {
@@ -158,7 +159,7 @@ export function ek9HazirlikAc(kayit, imzalar = {}, secenekler = {}) {
       <select id="ek9-isim-yazisi" name="isimYazisi"><option value="kaligrafik">Mavi dolma kalem (kalıcı kural)</option><option value="sade">Sade siyah yazı (yalnız açık talimatla)</option></select>
       <label for="ek9-alan-yazisi">Diğer doldurulan alanlar</label>
       <select id="ek9-alan-yazisi" name="alanYazisi"><option value="el-yazisi">Mavi dolma kalem (kalıcı kural)</option><option value="sade">Sade siyah yazı (yalnız açık talimatla)</option></select>
-      <p>Şahit adlarını kontrol edin. «Ercan MOLA» ve «Rıdvan KAYAHAN» adlı şahitlerin kayıtlı imzası kendiliğinden eklenir (işaretli gelir). O kişi bu törende şahit değilse işareti kaldırın; imza alanı boş kalır ve kalemle imzalanır. Kayıtlı imzası olmayan şahidin adı basılır, imza alanı boş bırakılır.</p>
+      <p>Şahit adlarını kontrol edin. 2. şahit her başvuruda din görevlisi «Rıdvan KAYAHAN»dır (kayıtlı imzası her camide kendiliğinden eklenir); olağan dışı bir durumda adı değiştirebilirsiniz. Ulu Camii’nde 1. şahit boşsa «Ercan MOLA» önerilir ve kayıtlı imzası eklenir (işaretli gelir). O kişi bu törende şahit değilse işareti kaldırın; imza alanı boş kalır ve kalemle imzalanır. Kayıtlı imzası olmayan şahidin adı basılır, imza alanı boş bırakılır.</p>
       <div data-sahitler></div>
       <fieldset data-yedek-sahit><legend>Yedek şahitler: Ercan MOLA · Rıdvan KAYAHAN</legend>
         <p class="not">Mühtedinin kendi şahitlerine imza attırmak mümkün olmazsa, mühtedinin yazılı ya da sözlü rızasıyla şahit olarak Marche-en-Famenne Ulu Camii Dernek Başkanı Ercan MOLA ile din görevlisi Rıdvan KAYAHAN yazılır ve kayıtlı vektör imzaları basılır (25 Ekim 2026 kuralı). Rıza alınmadan seçmeyin. Mümkünse kelime-i şehadet bu iki şahidin huzurunda (yüz yüze ya da görüntülü görüşmede) tekrarlanır.</p>
@@ -256,7 +257,7 @@ export function ek9HazirlikAc(kayit, imzalar = {}, secenekler = {}) {
     const yerelImzaSerbest = () => !digerCami || YEDEK_SAHIT_RIZALARI.includes(yedekRiza.value);
     const alanlar = sahitOnerileri(kayit).map((ad, i) => {
       const kap = document.createElement('fieldset');
-      kap.innerHTML = `<legend>${i + 1}. şahit</legend><label for="ek9-sahit-${i}">Adı soyadı</label><input id="ek9-sahit-${i}" type="text" maxlength="120" required autocomplete="off" />
+      kap.innerHTML = `<legend>${i + 1}. şahit${i === 1 ? ' (din görevlisi; her başvuruda varsayılan)' : ''}</legend><label for="ek9-sahit-${i}">Adı soyadı</label><input id="ek9-sahit-${i}" type="text" maxlength="120" required autocomplete="off" />
         <p class="not" data-sahit-unvan></p><label class="ek9-onay"><input type="checkbox" disabled /> <span>Bu kişi törende şahitti; imzası belgeye eklensin (şahit değilse işareti kaldırın).</span></label><p class="not" data-imza-not></p>`;
       const isim = kap.querySelector('input[type=text]');
       const onay = kap.querySelector('input[type=checkbox]');
@@ -269,12 +270,12 @@ export function ek9HazirlikAc(kayit, imzalar = {}, secenekler = {}) {
         // Kayıtlı imza ya da şahidin başvuruda attığı kendi imzası varsa işaretli gelir (varsayılan: eklenir); görevli şahit değilse işareti kaldırır.
         const anahtar = imzaAnahtari(isim.value);
         const kendi = kendiImza(i, isim.value);
-        onay.disabled = !(kendi || (yerelImzaSerbest() && anahtar && (sunucuImzasi || imzalar[anahtar])));
+        onay.disabled = !(kendi || ((yerelImzaSerbest() || anahtar === 'ridvan') && anahtar && (sunucuImzasi || imzalar[anahtar])));
         onay.checked = !onay.disabled;
         kap.querySelector('[data-imza-not]').textContent = kendi ? 'Şahit imzasını başvuru sırasında kendisi attı (rızasıyla); belgeye otomatik eklenir. Şahit değilse işareti kaldırın.'
           : !onay.disabled
-          ? (digerCami ? 'Yedek şahit: mühtedinin rızasıyla kayıtlı imza belgeye eklenir. Şahit değilse işareti kaldırın.' : 'Kayıtlı imza var; belgeye otomatik eklenir. Şahit değilse işareti kaldırın.')
-          : digerCami && anahtar ? 'Başka camide kayıtlı imza yalnız mühtedinin rızasıyla (yedek şahit) kullanılır; aşağıdan rızayı seçin.'
+          ? (digerCami && anahtar !== 'ridvan' ? 'Yedek şahit: mühtedinin rızasıyla kayıtlı imza belgeye eklenir. Şahit değilse işareti kaldırın.' : 'Kayıtlı imza var; belgeye otomatik eklenir. Şahit değilse işareti kaldırın.')
+          : digerCami && anahtar === 'ercan' ? 'Başka camide kayıtlı imza yalnız mühtedinin rızasıyla (yedek şahit) kullanılır; aşağıdan rızayı seçin.'
           : digerCami ? 'Başka cami seçildiği için kayıtlı yerel imza kullanılmaz; şahit belgeyi kalemle imzalayacak.'
           : anahtar && secenekler.imzaHata ? 'Kayıtlı imzalar şu anda alınamadı; şahit belgeyi kalemle imzalayacak. Sayfayı yenileyip yeniden deneyin.'
           : 'Bu ad için kayıtlı imza yok; şahit belgeyi kalemle imzalayacak.';

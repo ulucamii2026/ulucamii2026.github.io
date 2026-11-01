@@ -2,7 +2,7 @@
 /** İhtida formu — şahit adının altındaki İSTEĞE BAĞLI şahit imzası (23 Ekim 2026).
     Tuval, başvuranın imza bileşeniyle aynıdır (src/scripts/ihtida-gorseller.ts → imzaBlokuKur);
     davranış src/scripts/ihtida-sahit-imza.ts. Alan boş bırakılırsa başvuru etkilenmez. */
-interface Props { no: 1 | 2; baslik: string; yardim: string; riza: string; temizle: string }
+interface Props { no: 1; baslik: string; yardim: string; riza: string; temizle: string }
 const { no, baslik, yardim, riza, temizle } = Astro.props;
 const kimlik = `i-sahit-${no}`;
 ---

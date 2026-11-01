@@ -105,7 +105,7 @@
  * bu KASITLI: PDF artık istemciden gelmez, eski gövde biçimi zaten geçersizdir.)
  */
 
-var SURUM = 45;
+var SURUM = 46;
 /* 21 Eyl 2026: Sitenin ve formların dilleri TEK listede. Gönderilen form dilinin («dil» alanı) ve
    ?islem=pdf-ornek önizlemesinin geçerli değerleri buradan okunur; ["tr","fr","en"] artık hiçbir yere yazılmaz.
    DİKKAT — bu liste FORM dilidir: velinin kalıcı İLETİŞİM dili (veli.iletisimDili) ve tören dili
@@ -688,7 +688,7 @@ var ETIKET_IHTIDA = {
   ekNot: { tr: "Ek not", fr: "Remarque complémentaire", en: "Additional note", nl: "Aanvullende opmerking", de: "Ergänzende Anmerkung" },
   fotografIzni: { tr: "Fotoğraf izni", fr: "Autorisation photo", en: "Photo consent", nl: "Fototoestemming", de: "Fotofreigabe" },
   sahit1: { tr: "1. şahit", fr: "1er témoin", en: "1st witness", nl: "1e getuige", de: "1. Zeuge" },
-  sahit2: { tr: "2. şahit", fr: "2e témoin", en: "2nd witness", nl: "2e getuige", de: "2. Zeuge" },
+  sahit2: { tr: "2. şahit (din görevlisi)", fr: "2e témoin (responsable religieux)", en: "2nd witness (religious official)", nl: "2e getuige (imam)", de: "2. Zeuge (Religionsbeauftragter)" },
   formDili: { tr: "Form dili", fr: "Langue du formulaire", en: "Form language", nl: "Taal van het formulier", de: "Sprache des Formulars" }
 };
 
@@ -1857,8 +1857,9 @@ var IHTIDA_TESLIM_METIN = {
   adres: { tr: "İkamet adresine posta: ", fr: "Envoi au domicile : ", en: "Post to home address: ", nl: "Verzending naar het thuisadres: ", de: "Versand an die Wohnadresse: " }
 };
 var IHTIDA_SAHIT_METIN = {
-  cami: { tr: "Şahitleri cami ayarlayacak", fr: "Témoins organisés par la mosquée", en: "Witnesses arranged by the mosque", nl: "De getuigen worden door de moskee geregeld", de: "Die Zeugen werden von der Moschee gestellt" },
-  kendi: { tr: "Başvuran kendi şahidini bildirdi", fr: "Témoin(s) indiqué(s) par le demandeur", en: "Witness(es) named by the applicant", nl: "Getuige(n) opgegeven door de aanvrager", de: "Zeugen von der antragstellenden Person benannt" },
+  // 1 Kas 2026: tek şahit kuralı. 2. şahit her başvuruda din görevlisidir; başvuran en çok 1. şahidi bildirir.
+  cami: { tr: "1. şahidi cami ayarlayacak; 2. şahit din görevlisi", fr: "1er témoin désigné par la mosquée ; 2e témoin : le responsable religieux (imam)", en: "1st witness arranged by the mosque; 2nd witness: the religious official (imam)", nl: "1e getuige wordt door de moskee geregeld; 2e getuige: de imam", de: "1. Zeuge wird von der Moschee gestellt; 2. Zeuge: der Religionsbeauftragte (Imam)" },
+  kendi: { tr: "1. şahidi başvuran bildirdi; 2. şahit din görevlisi", fr: "1er témoin indiqué par le demandeur ; 2e témoin : le responsable religieux (imam)", en: "1st witness named by the applicant; 2nd witness: the religious official (imam)", nl: "1e getuige opgegeven door de aanvrager; 2e getuige: de imam", de: "1. Zeuge von der antragstellenden Person benannt; 2. Zeuge: der Religionsbeauftragte (Imam)" },
   teyit: { tr: "Teyit edilecek", fr: "À confirmer", en: "To be confirmed", nl: "Nog te bevestigen", de: "Wird noch bestätigt" }
 };
 /** Beş dilli küçük sözlükten seçer; bilinmeyen dilde Türkçeye döner (eski davranışla aynı). */
@@ -1875,6 +1876,21 @@ function ihtidaTeslimMetni(v, dil) {
   }
   var b = v.basvuran || {};
   return ihtidaMetinSec(IHTIDA_TESLIM_METIN.adres, dil) + (b.adSoyad || "") + " — " + (b.adres || "");
+}
+/** 1 Kas 2026 (Rıdvan KAYAHAN: «Sadece bir şahit eklenebilsin. Şahitlerden birisi her zaman din görevlisi, yani imam, yani ben olayım»):
+ *  2. şahit HER başvuruda din görevlisi «Rıdvan KAYAHAN»dır; defter, PDF, e-posta ve panel aynı değeri görür. Yeni istemci 1. şahidi
+ *  (Ulu Camii'nde isteğe bağlı) gönderir; eski önbellekli istemci iki şahit gönderirse olduğu gibi saklanır, başvuru kaybolmaz.
+ *  Yalnız 2. şahit adı boşsa doldurulur; 1. şahit zaten din görevlisiyse (eski istemci) yinelenmesin diye dokunulmaz. */
+var IHTIDA_DIN_GOREVLISI_SAHIT = "Rıdvan KAYAHAN";
+function ihtidaSahitleriTamamla(v) {
+  var liste = Array.isArray(v.sahitler) ? v.sahitler.slice(0, 2) : [];
+  var ad = function(s) { return String(s && s.ad || "").trim().replace(/\s+/g, " "); };
+  if (ad(liste[1])) { v.sahitler = liste; return v; }
+  if (ad(liste[0]).toLocaleLowerCase("tr") === IHTIDA_DIN_GOREVLISI_SAHIT.toLocaleLowerCase("tr")) { v.sahitler = liste; return v; }
+  if (!liste[0]) liste[0] = { ad: "" };
+  liste[1] = { ad: IHTIDA_DIN_GOREVLISI_SAHIT };
+  v.sahitler = liste;
+  return v;
 }
 function ihtidaSahitMetni(v, dil) {
   if (v.sahitSecimi === "cami") return ihtidaMetinSec(IHTIDA_SAHIT_METIN.cami, dil);
@@ -2254,6 +2270,7 @@ function ihtidaPostIsleV2(v) {
     var cami = ihtidaCamiCoz(v.cami);
     if (!cami) return json({ ok: false, hata: "cami-gecersiz" });
     v.cami = cami;
+    ihtidaSahitleriTamamla(v);   // 1 Kas 2026: 2. şahit her başvuruda din görevlisi
     var sahitler = Array.isArray(v.sahitler) ? v.sahitler : [];
     var sahit1 = (sahitler[0] && sahitler[0].ad) || "";
     var sahit2 = (sahitler[1] && sahitler[1].ad) || "";

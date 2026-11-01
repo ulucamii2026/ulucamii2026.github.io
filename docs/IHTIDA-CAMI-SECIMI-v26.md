@@ -8,7 +8,7 @@
 - Formun başında cami adı, şehir veya posta koduyla arama; listede yoksa elle giriş vardır.
 - Varsayılan `ulucamii-marche` kaydıdır. Katalogdaki kimlik sunucuda çözülür; istemcinin değiştirdiği ad/adres kopyasına güvenilmez.
 - Katalog tek kaynaktır: `public/data/belcika-camileri.json`. Kapsam ve kaynaklar `BELCIKA-CAMI-KATALOGU.md` içindedir.
-- Başka cami seçimi iki farklı şahidin elle girilmesini gerektirir. Önceki caminin şahit adları yeni seçime taşınmaz; Rıdvan/Yeliz kayıtlı imzaları kullanılamaz.
+- Başka cami seçimi 1. şahidin elle girilmesini gerektirir (1 Kas 2026 tek şahit kuralı: 2. şahit her zaman din görevlisi Rıdvan KAYAHAN). Önceki caminin şahit adı yeni seçime taşınmaz; Yeliz kayıtlı imzası kullanılamaz, Rıdvan KAYAHAN imzası her camide basılır.
 - Eski kayıtta cami alanı yoksa Ulu Camii kabul edilir. Açıkça verilen geçersiz cami kimliği varsayılana çevrilmez.
 - Ulusal kimlik numarası formda istenmez. Başvuranın ikamet adresi ile belgenin postalanacağı adres farklı kavramlardır.
 - Kayıt sütunlarına cami kimliği, adı, şehri, posta kodu, adresi ve kurumu eklendi. Eski sütunların sırası korundu.

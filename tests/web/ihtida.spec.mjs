@@ -108,7 +108,10 @@ for (const [dil, yol] of Object.entries(yollar)) {
     await page.locator('#i-sahit-ekle').focus(); await page.keyboard.press('Space');
     await expect(page.locator('#i-sahit-1')).toBeEnabled();
     await page.locator('#i-sahit-1').fill('Birinci Örnek Şahit');
-    await page.locator('#i-sahit-2').fill('İkinci Örnek Şahit');
+    // 1 Kas 2026: tek şahit kuralı. 2. şahit girdisi yoktur; sabit satır din görevlisini gösterir.
+    await expect(page.locator('#i-sahit-2')).toHaveCount(0);
+    await expect(page.locator('[data-sahit-imza="2"]')).toHaveCount(0);
+    await expect(page.locator('[data-sahit-sabit]')).toContainText('Rıdvan KAYAHAN');
     await page.locator('#i-teslim-adres').check();
     await expect(page.locator('[data-ozet-alan="teslimat"]')).toContainText('6900');
     await page.locator('#b-iletisim').screenshot({ path: info.outputPath('posta.png') });
@@ -129,7 +132,7 @@ for (const [dil, yol] of Object.entries(yollar)) {
     expect(v.teslimat).toEqual({ yontem: 'adres' });
     expect(v.basvuran.adres).toBe('Rue du Test 12, boîte 3, 6900, Marche-en-Famenne, Belçika');
     expect(v.sahitSecimi).toBe(dil === 'tr' ? 'cami' : 'kendi');
-    expect(v.sahitler).toEqual(dil === 'tr' ? [] : [{ ad: 'Birinci Örnek Şahit' }, { ad: 'İkinci Örnek Şahit' }]);
+    expect(v.sahitler).toEqual(dil === 'tr' ? [] : [{ ad: 'Birinci Örnek Şahit' }, { ad: 'Rıdvan KAYAHAN' }]);
     expect(v.gorseller.vesikalik).toMatch(/^data:image\/(jpeg|png);base64,/);
     expect(v.gorseller.kimlikOn).toMatch(/^data:image\/jpeg;base64,/);
     expect(v.onay.ek10Surumu).toBe('2026-10');
@@ -173,13 +176,13 @@ test('Panelde şahit adları korunur; kayıtlı imza işaretli gelir, işaret ka
     ek9HazirlikAc({ 'Adı Soyadı': 'Deniz Örnek', 'Şahit 1': 'Birinci Örnek Şahit', 'Belge teslim yeri': 'cami' }, { ridvan: 'SAHTE_TEST_IMZASI', yeliz: 'SAHTE_TEST_IMZASI' }).then(s => window.sonuc = s);
   });
   await expect(page.locator('#ek9-sahit-0')).toHaveValue('Birinci Örnek Şahit');
-  await expect(page.locator('#ek9-sahit-1')).toHaveValue('Ercan MOLA');
+  await expect(page.locator('#ek9-sahit-1')).toHaveValue('Rıdvan KAYAHAN');   // 1 Kas 2026: 2. şahit her zaman din görevlisi
   await expect(page.locator('dialog input[type=checkbox]').nth(0)).toBeDisabled();
-  await expect(page.locator('dialog input[type=checkbox]').nth(1)).not.toBeChecked();
+  await expect(page.locator('dialog input[type=checkbox]').nth(1)).toBeChecked();
   await expect(page.locator('#ek9-gercek-tarih')).toHaveValue('');
   await page.getByRole('dialog', { name: 'EK-9 belgesini hazırlayın' }).screenshot({ path: info.outputPath('ek9-hazirlik.png') });
   await page.getByRole('button', { name: 'PDF’yi hazırla' }).click();
-  await expect.poll(() => page.evaluate(() => window.sonuc)).toEqual({ adSoyad: 'Deniz Örnek', sahitler: [{ ad: 'Birinci Örnek Şahit', imza: '' }, { ad: 'Ercan MOLA', imza: '' }], ihtidaTarihi: '', isimYazisi: 'kaligrafik', alanYazisi: 'el-yazisi', alanlar: { dogumYeri: '', uyruk: '', anneAdi: '', babaAdi: '', medeniHali: '', ogrenim: '', meslek: '', oncekiDin: '' }, ihtidaSebebiTr: '', yedekSahitRizasi: '' });
+  await expect.poll(() => page.evaluate(() => window.sonuc)).toEqual({ adSoyad: 'Deniz Örnek', sahitler: [{ ad: 'Birinci Örnek Şahit', imza: '' }, { ad: 'Rıdvan KAYAHAN', imza: 'SAHTE_TEST_IMZASI' }], ihtidaTarihi: '', isimYazisi: 'kaligrafik', alanYazisi: 'el-yazisi', alanlar: { dogumYeri: '', uyruk: '', anneAdi: '', babaAdi: '', medeniHali: '', ogrenim: '', meslek: '', oncekiDin: '' }, ihtidaSebebiTr: '', yedekSahitRizasi: '' });
   await page.evaluate(async () => {
     const { ek9HazirlikAc } = await import('/admin/ek9-hazirlik.js');
     ek9HazirlikAc({ 'Adı Soyadı': 'Deniz Örnek' }, { ridvan: 'TEST_R', ercan: 'TEST_E', yeliz: 'TEST_Y' }).then(s => window.sonuc = s);
@@ -229,9 +232,22 @@ test('Şahit imzası işaretli gelir; işaret kaldırılırsa imza gitmez; başk
     window.sonuc = undefined;
     ek9HazirlikAc({ 'Adı Soyadı': 'Deniz Örnek', 'Cami kimliği': 'namur-camii-namur', 'Şahit 1': 'Rıdvan KAYAHAN', 'Şahit 2': 'Ercan MOLA' }, { ridvan: 'SENTETIK_R', ercan: 'SENTETIK_E' }).then(s => window.sonuc = s);
   });
-  await expect(kutu(0)).toBeDisabled(); await expect(kutu(1)).toBeDisabled();
+  // 1 Kas 2026: din görevlisinin kayıtlı imzası her camide basılır; Ercan MOLA'nınki başka camide yalnız yedek şahit rızasıyla.
+  await expect(kutu(0)).toBeEnabled(); await expect(kutu(0)).toBeChecked(); await expect(kutu(1)).toBeDisabled();
   await page.getByRole('button', { name: 'PDF’yi hazırla' }).click();
-  await expect.poll(() => page.evaluate(() => window.sonuc?.sahitler)).toEqual([{ ad: 'Rıdvan KAYAHAN', imza: '' }, { ad: 'Ercan MOLA', imza: '' }]);
+  await expect.poll(() => page.evaluate(() => window.sonuc?.sahitler)).toEqual([{ ad: 'Rıdvan KAYAHAN', imza: 'SENTETIK_R' }, { ad: 'Ercan MOLA', imza: '' }]);
+  // Yeni başvuru biçimi: başka cami, 1. şahit başvuranın, 2. şahit sabit din görevlisi (boş kayıt da Rıdvan'la tamamlanır).
+  await page.evaluate(async () => {
+    const { ek9HazirlikAc } = await import('/admin/ek9-hazirlik.js');
+    window.sonuc = undefined;
+    ek9HazirlikAc({ 'Adı Soyadı': 'Deniz Örnek', 'Cami kimliği': 'namur-camii-namur', 'Şahit 1': 'Ali Örnek' }, { ridvan: 'SENTETIK_R', ercan: 'SENTETIK_E' }).then(s => window.sonuc = s);
+  });
+  await expect(page.locator('#ek9-sahit-0')).toHaveValue('Ali Örnek');
+  await expect(page.locator('#ek9-sahit-1')).toHaveValue('Rıdvan KAYAHAN');
+  await expect(page.locator('[data-sahit-unvan]').nth(1)).toHaveText('Din Görevlisi');
+  await expect(kutu(0)).toBeDisabled(); await expect(kutu(1)).toBeChecked();
+  await page.getByRole('button', { name: 'PDF’yi hazırla' }).click();
+  await expect.poll(() => page.evaluate(() => window.sonuc?.sahitler)).toEqual([{ ad: 'Ali Örnek', imza: '' }, { ad: 'Rıdvan KAYAHAN', imza: 'SENTETIK_R' }]);
 });
 
 test('Tek PDF paketinde imza tarayıcıya gelmez; kayıtlı şahit işaretli gelir, yalnız «imzaKullan» sunucuya gider', async ({ page }) => {
@@ -362,7 +378,7 @@ test('Tarayıcıdaki yerel fontlarla EK-9 ve imzalı tam paket üretilir', async
 
 
 for (const [dil, yol] of Object.entries(yollar)) {
-  test(`${dil}: başka cami seçimi iki elle girilmiş şahit gerektirir`, async ({ page }, info) => {
+  test(`${dil}: başka cami seçimi elle girilmiş 1. şahit gerektirir; 2. şahit sabit din görevlisidir`, async ({ page }, info) => {
     const gonderilen = [];
     await page.route('**/macros/**', route => {
       if (route.request().method() === 'POST') gonderilen.push(JSON.parse(route.request().postData()));
@@ -383,15 +399,16 @@ for (const [dil, yol] of Object.entries(yollar)) {
     await expect(kimlik).toHaveValue(hedef);
     await expect(page.locator('#i-sahit-ekle')).toBeHidden();
     await expect(page.locator('#i-sahit-1')).toHaveValue('');
-    await expect(page.locator('#i-sahit-2')).toHaveValue('');
-    await expect(page.locator('#i-sahit-2')).toHaveAttribute('required', '');
+    await expect(page.locator('#i-sahit-2')).toHaveCount(0);
+    await expect(page.locator('#i-sahit-1')).toHaveAttribute('required', '');
+    await expect(page.locator('[data-sahit-sabit]')).toContainText('Rıdvan KAYAHAN');
     const gonder = page.locator('form[data-form="ihtida"] button[type="submit"]');
     await gonder.click(); expect(gonderilen).toHaveLength(0);
+    // 1. şahit din görevlisinin adı olamaz (2. şahit zaten odur).
+    await page.locator('#i-sahit-1').fill(' rıdvan  KAYAHAN ');
+    await gonder.click(); expect(gonderilen).toHaveLength(0);
+    await expect(page.locator('#i-sahit-1')).toHaveAttribute('aria-invalid', 'true');
     await page.locator('#i-sahit-1').fill('Birinci Örnek Şahit');
-    await gonder.click(); expect(gonderilen).toHaveLength(0);
-    await page.locator('#i-sahit-2').fill('Birinci Örnek Şahit');
-    await gonder.click(); expect(gonderilen).toHaveLength(0);
-    await page.locator('#i-sahit-2').fill('İkinci Örnek Şahit');
     await page.locator('[data-cami-degistir] summary').click();
     await page.locator('#b-cami').screenshot({ path: info.outputPath('cami-secimi.png') });
     for (const tema of ['light', 'dark']) {
@@ -411,7 +428,7 @@ for (const [dil, yol] of Object.entries(yollar)) {
     expect(gonderilen[0].cami.sehir.toLowerCase()).toContain('li');
     expect(gonderilen[0].cami.adres).toBeTruthy();
     expect(gonderilen[0].sahitSecimi).toBe('kendi');
-    expect(gonderilen[0].sahitler).toEqual([{ ad: 'Birinci Örnek Şahit' }, { ad: 'İkinci Örnek Şahit' }]);
+    expect(gonderilen[0].sahitler).toEqual([{ ad: 'Birinci Örnek Şahit' }, { ad: 'Rıdvan KAYAHAN' }]);
   });
 }
 
@@ -424,20 +441,19 @@ test('Listede olmayan cami taslakta korunur; taslak silinince Ulu Camii geri gel
   await page.locator('[data-cami-elle]').click();
   for (const [id, value] of Object.entries({ ad: 'Örnek Test Camisi', sehir: 'Namur', postaKodu: '5000', adres: 'Rue du Test 42' })) await page.locator(`#i-cami-${id}`).fill(value);
   await page.locator('#i-sahit-1').fill('Birinci Örnek');
-  await page.locator('#i-sahit-2').fill('İkinci Örnek');
   await expect.poll(() => page.evaluate(() => JSON.parse(localStorage.getItem('ulucamii:ihtida:v2') || '{}').alanlar?.camiId)).toBe('diger');
   await page.reload();
   await page.locator('[data-adim-tumu]').click();
   await expect(page.locator('input[name="camiId"]')).toHaveValue('diger');
   await expect(page.locator('#i-cami-ad')).toHaveValue('Örnek Test Camisi');
   await expect(page.locator('#i-sahit-1')).toHaveValue('Birinci Örnek');
-  await expect(page.locator('#i-sahit-2')).toHaveAttribute('required', '');
+  await expect(page.locator('#i-sahit-1')).toHaveAttribute('required', '');
   await expect(page.locator('#i-sahit-ekle')).toBeHidden();
   await page.locator('[data-taslak-sil]').click();
   await expect(page.locator('input[name="camiId"]')).toHaveValue('ulucamii-marche');
   await expect(page.locator('#i-sahit-ekle')).toBeVisible();
   await expect(page.locator('#i-sahit-ekle')).not.toBeChecked();
-  await expect(page.locator('#i-sahit-2')).not.toHaveAttribute('required', '');
+  await expect(page.locator('#i-sahit-1')).toBeDisabled();
   await expect(page.locator('#i-cami-ad')).toBeDisabled();
 });
 
@@ -461,30 +477,30 @@ async function sahitliHazirla(page, gonderilen, dil = 'tr', yol = 'ihtida-basvur
   await page.locator('#i-sebep').fill('Kendi araştırmam sonucunda.');
   await page.locator('#i-sahit-ekle').check();
   await page.locator('#i-sahit-1').fill('Birinci Örnek Şahit');
-  await page.locator('#i-sahit-2').fill('İkinci Örnek Şahit');
 }
 
-test('Şahit imzası: alan isteğe bağlıdır; imza atılmazsa gövde eskisi gibi yalnız ad taşır ve hiçbir şey engellenmez', async ({ page }) => {
+test('Şahit imzası: alan isteğe bağlıdır; imza atılmazsa gövde yalnız ad taşır (2. şahit sabit din görevlisi) ve hiçbir şey engellenmez', async ({ page }) => {
   const gonderilen = [];
   await sahitliHazirla(page, gonderilen);
-  // Alanlar şahit adlarının altında, nötr not görünür; imza zorunlu değildir (yıldız yok).
-  for (const no of [1, 2]) {
-    await expect(page.locator(`[data-sahit-imza="${no}"] canvas`)).toBeVisible();
-    await expect(page.locator(`#i-sahit-${no}-riza`)).toBeEnabled();
-    await expect(page.locator(`[data-sahit-imza="${no}"] .zorunlu`)).toHaveCount(0);
-  }
+  // 1 Kas 2026: tek şahit kuralı. Yalnız 1. şahidin imza alanı vardır; 2. şahit sabit satırdır.
+  await expect(page.locator('[data-sahit-imza="1"] canvas')).toBeVisible();
+  await expect(page.locator('#i-sahit-1-riza')).toBeEnabled();
+  await expect(page.locator('[data-sahit-imza="1"] .zorunlu')).toHaveCount(0);
+  await expect(page.locator('[data-sahit-imza="2"]')).toHaveCount(0);
   await expect(page.locator('[data-sahit-imza="1"] .alan-baslik')).toHaveText('1. şahidin imzası (isteğe bağlı)');
   await expect(page.locator('[data-sahit-imza-not]')).toContainText('boş bırakın');
+  await expect(page.locator('[data-sahit-sabit]')).toContainText('Rıdvan KAYAHAN');
+  await expect(page.locator('[data-sahit-sabit]')).toContainText('Din Görevlisi');
   // Yalnız onay kutusu işaretli, çizim yok: imza yok demektir; engel ve uyarı da yoktur.
   await page.locator('#i-sahit-1-riza').check();
   await page.locator('form[data-form="ihtida"] button[type="submit"]').click();
   await expect(page.locator('[data-basari]')).toBeVisible();
   expect(gonderilen).toHaveLength(1);
   expect(gonderilen[0].sahitSecimi).toBe('kendi');
-  expect(gonderilen[0].sahitler).toEqual([{ ad: 'Birinci Örnek Şahit' }, { ad: 'İkinci Örnek Şahit' }]);
+  expect(gonderilen[0].sahitler).toEqual([{ ad: 'Birinci Örnek Şahit' }, { ad: 'Rıdvan KAYAHAN' }]);
 });
 
-test('Şahit imzası: çizim onay kutusu olmadan gönderilemez; onaylanınca yalnız imzalı şahidin satırına imza, vektör ve rıza eklenir', async ({ page }, info) => {
+test('Şahit imzası: çizim onay kutusu olmadan gönderilemez; onaylanınca yalnız 1. şahidin satırına imza, vektör ve rıza eklenir', async ({ page }, info) => {
   const gonderilen = [];
   await sahitliHazirla(page, gonderilen);
   await sahitImzaCiz(page, 1);
@@ -493,11 +509,10 @@ test('Şahit imzası: çizim onay kutusu olmadan gönderilemez; onaylanınca yal
   expect(gonderilen).toHaveLength(0);
   await expect(page.locator('[data-sahit-imza="1"] [data-alan] .hata')).toBeVisible();
   await expect(page.locator('[data-sahit-imza="1"] [data-alan] .hata')).toContainText('onay kutusunu');
-  await expect(page.locator('[data-sahit-imza="2"] [data-alan] .hata')).toBeHidden();
   await page.locator('#i-sahit-alanlari').screenshot({ path: info.outputPath('sahit-imzali.png') });
   await page.locator('#i-sahit-1-riza').check();
   await expect(page.locator('[data-ozet-alan="sahitler"]')).toContainText('Birinci Örnek Şahit (imzalı)');
-  await expect(page.locator('[data-ozet-alan="sahitler"]')).not.toContainText('İkinci Örnek Şahit (imzalı)');
+  await expect(page.locator('[data-ozet-alan="sahitler"]')).toContainText('Rıdvan KAYAHAN (Din Görevlisi)');
   await gonder.click();
   await expect(page.locator('[data-basari]')).toBeVisible();
   expect(gonderilen).toHaveLength(1);
@@ -509,24 +524,22 @@ test('Şahit imzası: çizim onay kutusu olmadan gönderilemez; onaylanınca yal
   expect(vektor).toMatchObject({ v: 1, k: 2.4 });
   expect(vektor.d).toMatch(/^M[\d. ]+L/);
   expect(s1.imzaVektor.length).toBeLessThan(100000);
-  expect(s2).toEqual({ ad: 'İkinci Örnek Şahit' });
+  expect(s2).toEqual({ ad: 'Rıdvan KAYAHAN' });
   // Başvuranın kendi imzası ayrıdır: bu testte «imza atamıyorum» işaretli olduğundan boştur.
   expect(gonderilen[0].gorseller.imza).toBe('');
 });
 
-test('Şahit imzası: iki şahit de imzalayabilir; ad boşsa gönderilmez; taslağa onay ya da çizim yazılmaz', async ({ page }) => {
+test('Şahit imzası: ad boşsa gönderilmez; taslağa onay ya da çizim yazılmaz', async ({ page }) => {
   const gonderilen = [];
   await sahitliHazirla(page, gonderilen);
-  await page.locator('#i-sahit-2').fill('');
-  await sahitImzaCiz(page, 2);
-  await page.locator('#i-sahit-2-riza').check();
+  await sahitImzaCiz(page, 1);
+  await page.locator('#i-sahit-1-riza').check();
+  await page.locator('#i-sahit-1').fill('');      // imza ve onay var ama şahidin adı silindi
   const gonder = page.locator('form[data-form="ihtida"] button[type="submit"]');
   await gonder.click();
   expect(gonderilen).toHaveLength(0);
-  await expect(page.locator('#i-sahit-2')).toHaveAttribute('aria-invalid', 'true');
-  await page.locator('#i-sahit-2').fill('İkinci Örnek Şahit');
-  await sahitImzaCiz(page, 1);
-  await page.locator('#i-sahit-1-riza').check();
+  await expect(page.locator('#i-sahit-1')).toHaveAttribute('aria-invalid', 'true');
+  await page.locator('#i-sahit-1').fill('Birinci Örnek Şahit');
   // Taslak: onay kutuları ve çizimler cihaza yazılmaz.
   const taslak = await page.evaluate(() => localStorage.getItem('ulucamii:ihtida:v2') || '');
   expect(taslak).not.toContain('sahitRiza');
@@ -534,27 +547,36 @@ test('Şahit imzası: iki şahit de imzalayabilir; ad boşsa gönderilmez; tasla
   await gonder.click();
   await expect(page.locator('[data-basari]')).toBeVisible();
   const [s1, s2] = gonderilen[0].sahitler;
-  for (const s of [s1, s2]) { expect(s.riza).toBe(true); expect(s.imza).toMatch(/^data:image\/png;base64,/); expect(JSON.parse(s.imzaVektor).v).toBe(1); }
-  expect(s1.imza).not.toBe('');
+  expect(s1.riza).toBe(true); expect(s1.imza).toMatch(/^data:image\/png;base64,/); expect(JSON.parse(s1.imzaVektor).v).toBe(1);
+  expect(s2).toEqual({ ad: 'Rıdvan KAYAHAN' });
 });
 
-test('Şahit imzası: şahitleri camiye bırakmak çizimleri siler; eski imza gönderime taşınmaz', async ({ page }) => {
+test('Şahit imzası: 1. şahit din görevlisinin adı olamaz (2. şahit zaten odur)', async ({ page }) => {
+  const gonderilen = [];
+  await sahitliHazirla(page, gonderilen);
+  await page.locator('#i-sahit-1').fill('Rıdvan Kayahan');
+  await page.locator('form[data-form="ihtida"] button[type="submit"]').click();
+  expect(gonderilen).toHaveLength(0);
+  await expect(page.locator('#i-sahit-1')).toHaveAttribute('aria-invalid', 'true');
+});
+
+test('Şahit imzası: şahidi camiye bırakmak çizimi siler; eski imza gönderime taşınmaz', async ({ page }) => {
   const gonderilen = [];
   await sahitliHazirla(page, gonderilen);
   await sahitImzaCiz(page, 1); await page.locator('#i-sahit-1-riza').check();
-  // Kendi şahitlerinden vazgeçince alan kapanır ve çizim silinir.
+  // Kendi şahidinden vazgeçince alan kapanır ve çizim silinir.
   await page.locator('#i-sahit-ekle').uncheck();
   await expect(page.locator('#i-sahit-alanlari')).toBeHidden();
   await page.locator('#i-sahit-ekle').check();
   await expect(page.locator('#i-sahit-1-riza')).not.toBeChecked();
-  await page.locator('#i-sahit-1').fill('Birinci Örnek Şahit'); await page.locator('#i-sahit-2').fill('İkinci Örnek Şahit');
+  await page.locator('#i-sahit-1').fill('Birinci Örnek Şahit');
   await page.locator('#i-sahit-1-riza').check();      // onay var, çizim yok: imza yok demektir
   await page.locator('form[data-form="ihtida"] button[type="submit"]').click();
   await expect(page.locator('[data-basari]')).toBeVisible();
-  expect(gonderilen[0].sahitler).toEqual([{ ad: 'Birinci Örnek Şahit' }, { ad: 'İkinci Örnek Şahit' }]);
+  expect(gonderilen[0].sahitler).toEqual([{ ad: 'Birinci Örnek Şahit' }, { ad: 'Rıdvan KAYAHAN' }]);
 });
 
-test('Şahit imzası: başka cami seçilince önceki çizim silinir; yeni şahitler yeniden imzalayabilir', async ({ page }) => {
+test('Şahit imzası: başka cami seçilince önceki çizim silinir; yeni şahit yeniden imzalayabilir', async ({ page }) => {
   const gonderilen = [];
   await sahitliHazirla(page, gonderilen);
   await sahitImzaCiz(page, 1); await page.locator('#i-sahit-1-riza').check();
@@ -562,13 +584,13 @@ test('Şahit imzası: başka cami seçilince önceki çizim silinir; yeni şahit
   await page.locator('#i-cami-ara').fill('liege');
   await page.locator('[data-cami-sec]').click();
   await expect(page.locator('#i-sahit-1-riza')).not.toBeChecked();
-  await page.locator('#i-sahit-1').fill('Yeni Camiden Birinci'); await page.locator('#i-sahit-2').fill('Yeni Camiden İkinci');
-  await sahitImzaCiz(page, 2); await page.locator('#i-sahit-2-riza').check();
+  await page.locator('#i-sahit-1').fill('Yeni Camiden Birinci');
+  await sahitImzaCiz(page, 1); await page.locator('#i-sahit-1-riza').check();
   await page.locator('form[data-form="ihtida"] button[type="submit"]').click();
   await expect(page.locator('[data-basari]')).toBeVisible();
   const [s1, s2] = gonderilen[0].sahitler;
-  expect(s1).toEqual({ ad: 'Yeni Camiden Birinci' });
-  expect(s2.ad).toBe('Yeni Camiden İkinci'); expect(s2.riza).toBe(true); expect(s2.imza).toMatch(/^data:image\/png;base64,/);
+  expect(s1.ad).toBe('Yeni Camiden Birinci'); expect(s1.riza).toBe(true); expect(s1.imza).toMatch(/^data:image\/png;base64,/);
+  expect(s2).toEqual({ ad: 'Rıdvan KAYAHAN' });
 });
 
 test('fr: şahit imzası metinleri ve gövde sözleşmesi', async ({ page }) => {
@@ -576,27 +598,29 @@ test('fr: şahit imzası metinleri ve gövde sözleşmesi', async ({ page }) => 
   await sahitliHazirla(page, gonderilen, 'fr', 'demande-de-conversion');
   await expect(page.locator('[data-sahit-imza="1"] .yardim')).toHaveText('Si ce témoin est présent, il peut signer ici.');
   await expect(page.locator('label[for="i-sahit-1-riza"]')).toContainText('Je suis témoin de cette conversion et j’accepte que ma signature figure sur l’attestation');
+  await expect(page.locator('[data-sahit-sabit]')).toContainText('Rıdvan KAYAHAN');
+  await expect(page.locator('[data-sahit-sabit]')).toContainText('2e témoin');
   await sahitImzaCiz(page, 1); await page.locator('#i-sahit-1-riza').check();
   await page.locator('form[data-form="ihtida"] button[type="submit"]').click();
   await expect(page.locator('[data-basari]')).toBeVisible();
   expect(gonderilen[0].sahitler[0].riza).toBe(true);
-  expect(gonderilen[0].sahitler[1]).toEqual({ ad: 'İkinci Örnek Şahit' });
+  expect(gonderilen[0].sahitler[1]).toEqual({ ad: 'Rıdvan KAYAHAN' });
 });
 
-test('Şahit imzası: dar ekranda taşma yok, iki kutu alt alta akar; axe ciddi ihlal bulmaz (açık ve koyu tema)', async ({ page }, info) => {
+test('Şahit imzası: dar ekranda taşma yok, sabit 2. şahit satırı imza kutusunun altında; axe ciddi ihlal bulmaz (açık ve koyu tema)', async ({ page }, info) => {
   const gonderilen = [];
   await sahitliHazirla(page, gonderilen);
   await page.setViewportSize({ width: 360, height: 800 });
   for (const tema of ['light', 'dark']) {
     if (tema === 'dark') await page.locator('#tema-dugme').click();
     await page.evaluate(async () => Promise.all(document.getAnimations().filter(a => a.effect?.getComputedTiming().iterations !== Infinity).map(a => a.finished.catch(() => {}))));
-    const axe = await new AxeBuilder({ page }).include('#i-sahit-alanlari').withTags(['wcag2a', 'wcag2aa']).analyze();
+    const axe = await new AxeBuilder({ page }).include('#i-sahit-alanlari').include('[data-sahit-sabit]').withTags(['wcag2a', 'wcag2aa']).analyze();
     expect(axe.violations.filter(v => ['serious', 'critical'].includes(v.impact)).map(v => ({ id: v.id, targets: v.nodes.map(n => n.target) }))).toEqual([]);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
   }
-  const b1 = await page.locator('[data-sahit-imza="1"]').boundingBox(), b2 = await page.locator('[data-sahit-imza="2"]').boundingBox();
+  const b1 = await page.locator('[data-sahit-imza="1"]').boundingBox(), b2 = await page.locator('[data-sahit-sabit]').boundingBox();
   expect(b2.y).toBeGreaterThan(b1.y + b1.height - 1);
-  await page.locator('#i-sahit-alanlari').screenshot({ path: info.outputPath('sahit-imza-dar.png') });
+  await page.locator('[data-sahit-sabit]').screenshot({ path: info.outputPath('sahit-sabit-dar.png') });
 });
 
 // 25 Eki 2026: vesikalık EK-9 ön yüzündeki kutunun oranına (en/boy 0,72–0,86) kırpılarak yüklenir; DHYS'ye giden fotoğraf

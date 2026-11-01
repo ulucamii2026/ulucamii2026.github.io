@@ -439,30 +439,30 @@ function ihtidaPaketBasvuranMetni(is, k) {
       "Als bijlage vindt u een kopie van uw bekeringsdossier (EK-9, aanvraag, EK-10 en een kopie van uw identiteitsbewijs). Deze kopie dient enkel ter informatie en vervangt het officiële document niet. Controleer uw naam, adres en andere gegevens; als er iets verbeterd moet worden, antwoord dan op deze e-mail.",
       "Na de officiële handtekeningen ontvangt u het origineel volgens uw contactvoorkeur: als pdf per e-mail, met de datum, het nummer en de handtekening van de bevoegde instantie, en als gedrukt exemplaar met de handgeschreven handtekeningen, op de afleverplaats die u in uw aanvraag hebt opgegeven.",
       on ? "Dit is een kopie van de voorlopige aanvraag. Het definitieve exemplaar wordt opgemaakt zodra de datum van de ceremonie en de getuigen bevestigd zijn." : null,
-      on && kendiSahit ? "Als de handtekeningen van uw getuigen ontbreken, wordt het document u via WhatsApp toegestuurd, zodat zij het kunnen ondertekenen." : null] },
+      on && kendiSahit ? "Als de handtekening van uw getuige ontbreekt, wordt het document u via WhatsApp toegestuurd, zodat hij of zij het kan ondertekenen." : null] },
     de: { selam: "Guten Tag", referans: "Referenz", satirlar: [
       "Im Anhang finden Sie eine Kopie Ihrer Unterlagen zum Übertritt zum Islam (EK-9, Antrag, EK-10 und eine Kopie Ihres Ausweisdokuments). Diese Kopie dient nur zur Information und ersetzt nicht das offizielle Dokument. Bitte prüfen Sie Ihren Namen, Ihre Adresse und Ihre übrigen Angaben; falls etwas berichtigt werden muss, antworten Sie bitte auf diese E-Mail.",
       "Nach den offiziellen Unterschriften erhalten Sie das Original entsprechend Ihrer Kontaktwahl: als PDF per E-Mail, mit Datum, Nummer und Unterschrift der zuständigen Stelle, sowie als gedrucktes Exemplar mit den handschriftlichen Unterschriften an dem Zustellort, den Sie in Ihrem Antrag angegeben haben.",
       on ? "Dies ist eine Kopie des Vorantrags. Die endgültige Fassung wird erstellt, sobald das Datum der Zeremonie und die Zeugen bestätigt sind." : null,
-      on && kendiSahit ? "Falls die Unterschriften Ihrer Zeugen fehlen, wird Ihnen das Dokument per WhatsApp zugeschickt, damit sie es unterschreiben können." : null] }
+      on && kendiSahit ? "Falls die Unterschrift Ihrer Zeugin oder Ihres Zeugen fehlt, wird Ihnen das Dokument per WhatsApp zugeschickt, damit die Unterschrift nachgeholt werden kann." : null] }
   }[dil] || null;
   var satirlar = [
     "Esselâmü aleyküm / " + (yerel ? yerel.selam + " / " : "") + "Bonjour / Hello,", "",
     "İhtida belgesi dosyanızın sureti ektedir (EK-9, dilekçe, EK-10 ve kimlik belgesi örneği). Bu suret bilgi amaçlıdır, resmî belge yerine geçmez. Lütfen adınızı, adresinizi ve diğer bilgilerinizi kontrol ediniz; düzeltilmesi gereken bir bilgi varsa bu e-postaya cevap veriniz.",
     "Asıl nüsha resmî imza süreçleri tamamlandıktan sonra iletişim tercihinize göre size ulaştırılacaktır: belge tarihi, sayısı ve yetkili imzası eklenmiş PDF olarak e-postayla; ıslak imzaları tamamlanmış basılı nüsha olarak da dilekçenizde belirttiğiniz teslim yerine.",
     on ? "Bu ön başvuru suretidir. Tören tarihi ve şahitler teyit edildikten sonra son nüsha hazırlanır." : null,
-    on && kendiSahit ? "Şahitlerinizin imzaları belgede eksikse, imzalatmanız için belge size WhatsApp üzerinden gönderilecektir." : null,
+    on && kendiSahit ? "Şahidinizin imzası belgede eksikse, imzalatmanız için belge size WhatsApp üzerinden gönderilecektir." : null,
     ""
   ].concat(yerel ? yerel.satirlar.concat([""]) : [], [
     "Vous trouverez ci-joint une copie de votre dossier de conversion (EK-9, demande, EK-10 et copie du document d’identité). Cette copie est fournie à titre d’information et ne remplace pas le document officiel. Merci de vérifier votre nom, votre adresse et vos autres informations ; si une correction est nécessaire, répondez à cet e-mail.",
     "Après les signatures officielles, l’original vous sera transmis selon votre choix de contact : en PDF par e-mail, avec la date, le numéro et la signature de l’autorité compétente, ainsi qu’en version imprimée avec les signatures manuscrites, au lieu de remise indiqué dans votre demande.",
     on ? "Il s’agit d’une copie de pré-demande. Le dossier sera finalisé après confirmation de la date de la cérémonie et des témoins." : null,
-    on && kendiSahit ? "Si les signatures de vos témoins manquent, le document vous sera envoyé par WhatsApp pour les faire signer." : null,
+    on && kendiSahit ? "Si la signature de votre témoin manque, le document vous sera envoyé par WhatsApp pour la faire apposer." : null,
     "",
     "Attached is a copy of your conversion file (EK-9, request letter, EK-10 and a copy of your identity document). This copy is for information only and does not replace the official document. Please check your name, address and other details; if anything needs correcting, reply to this e-mail.",
     "Once the official signatures are complete, the original will be sent to you according to your contact preference: as a PDF by e-mail, with the date, number and signature of the competent authority, and as a printed copy with handwritten signatures, to the delivery place given in your request.",
     on ? "This is a pre-application copy. The final copy is prepared once the ceremony date and the witnesses are confirmed." : null,
-    on && kendiSahit ? "If your witnesses’ signatures are missing, the document will be sent to you via WhatsApp so that they can sign it." : null,
+    on && kendiSahit ? "If your witness’s signature is missing, the document will be sent to you via WhatsApp so that they can sign it." : null,
     "",
     "Referans / " + (yerel ? yerel.referans + " / " : "") + "Référence / Reference: " + is.ref,
     "Marche-en-Famenne Ulu Camii", "info@ulucamii.be · imam@ulucamii.be"

@@ -302,9 +302,9 @@ with sync_playwright() as p:
 
     pg.set_input_files("#i-g-vesikalik", vesikalikYol)
     pg.wait_for_selector('[data-gorsel="vesikalik"][data-dolu="1"]', timeout=8000)
-    pg.set_input_files("#i-g-kimlik-on", onYol)
+    pg.set_input_files("#i-g-kimlik-on", onYol); pg.locator("dialog.kimlik-kirp [data-uygula]").click()
     pg.wait_for_selector('[data-gorsel="kimlikOn"][data-dolu="1"]', timeout=8000)
-    pg.set_input_files("#i-g-kimlik-arka", arkaYol)
+    pg.set_input_files("#i-g-kimlik-arka", arkaYol); pg.locator("dialog.kimlik-kirp [data-uygula]").click()
     pg.wait_for_selector('[data-gorsel="kimlikArka"][data-dolu="1"]', timeout=8000)
     kontrol("önizleme görünür", pg.locator('[data-gorsel="vesikalik"] img[data-onizleme]').is_visible())
 
@@ -352,14 +352,20 @@ with sync_playwright() as p:
     pg.fill("#i-adres", "Rue Basse 1"); pg.fill("#i-posta-kodu", "6900"); pg.fill("#i-sehir", "Marche-en-Famenne"); pg.fill("#i-ulke", "Belçika"); pg.fill("#i-onceki-din", "Protestan"); pg.select_option("#i-toren-dili", "fr")
     pg.check("#i-belge-pasaport")
     pg.set_input_files("#i-g-vesikalik", vesikalikYol); pg.wait_for_selector('[data-gorsel="vesikalik"][data-dolu="1"]', timeout=8000)
-    pg.set_input_files("#i-g-kimlik-on", onYol); pg.wait_for_selector('[data-gorsel="kimlikOn"][data-dolu="1"]', timeout=8000)
+    pg.set_input_files("#i-g-kimlik-on", onYol); pg.locator("dialog.kimlik-kirp [data-uygula]").click(); pg.wait_for_selector('[data-gorsel="kimlikOn"][data-dolu="1"]', timeout=8000)
     pg.check("#i-imza-yok")
     pg.check("#i-onay-riza"); pg.check("#i-onay-ek10"); pg.check("#i-onay-gizlilik"); pg.check("#i-onay-gorsel"); pg.check("#i-onay-sartlar")
     pg.fill("#i-beyan", "ANNA TESTOGLU")
+    # 1 Kas 2026: tek şahit kuralı. Formda yalnız 1. şahit girilir; 2. şahit sabit satırdır (Rıdvan KAYAHAN, Din Görevlisi).
+    kontrol("tek şahit: 2. şahit girdisi ve imza kutusu yok", pg.locator("#i-sahit-2").count() == 0 and pg.locator('[data-sahit-imza="2"]').count() == 0)
+    kontrol("tek şahit: sabit 2. şahit satırı görünür", pg.locator("[data-sahit-sabit]").is_visible() and "Rıdvan KAYAHAN" in pg.locator("[data-sahit-sabit]").inner_text() and "Din Görevlisi" in pg.locator("[data-sahit-sabit]").inner_text())
+    kontrol("tek şahit: Ulu Camii'nde 1. şahit alanı seçilmeden kapalı", not pg.locator("#i-sahit-1").is_visible())
+    pg.check("#i-sahit-ekle"); pg.fill("#i-sahit-1", "Ahmet Testoglu")
     pg.click("button[type=submit]")
     pg.wait_for_selector("[data-basari]:not([hidden])", timeout=15000)
     g2 = GONDERILEN[-1]
     kontrol("pasaportta arka yüz boş gider", (g2.get("gorseller") or {}).get("kimlikArka") == "")
+    kontrol("tek şahit: gövdede 1. şahit + Rıdvan KAYAHAN", g2.get("sahitSecimi") == "kendi" and [x.get("ad") for x in g2.get("sahitler", [])] == ["Ahmet Testoglu", "Rıdvan KAYAHAN"])
     kontrol("imzaYok işaretliyken imza boş", g2.get("imzaYok") is True and (g2.get("gorseller") or {}).get("imza") == "")
     kontrol("imzaYok akışı konsol temiz", not konsol)
     ctx.close(); tarayici.close()

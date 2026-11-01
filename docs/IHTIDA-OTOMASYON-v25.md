@@ -287,3 +287,7 @@ işini mühtedi halleder.»
 ## Bundan sonraki kullanım
 
 Form doldurulup imzalandığında ön başvuru paketi otomatik hazırlanır, admin panelinde açılır ve üç alıcıya gönderilir. Tören sonrasında **Başvurular → İhtida → Son nüshayı onayla ve gönder** ile gerçek tarih, adres, şahitler ve EK-9 arka yüzündeki bilgiler kontrol edilir. Bu son onay yeni ortak PDF nüshasını üretip arşivler ve aynı üç adrese gönderir. Müşavirin ıslak imzası basılı belgede tamamlanır.
+
+## 1 Kasım 2026 — tek şahit kuralı (yukarıdaki «yalnız Ulu Camii Marche'de» kuralını değiştirir)
+
+Din görevlisi «Rıdvan KAYAHAN» her başvuruda 2. şahittir ve kayıtlı imzası her camide basılır; «Ercan MOLA» imzası yalnız Ulu Camii Marche'de ya da yedek şahit rızasıyla basılır. Başvuran en çok bir şahit (1.) ekler. Ayrıntı: [IHTIDA-SAHITLER-2026-09-09.md](IHTIDA-SAHITLER-2026-09-09.md).

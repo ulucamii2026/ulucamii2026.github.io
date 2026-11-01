@@ -23,9 +23,12 @@ const PNG_ALT_SINIR = 500;
 
 export const SAHIT_SIFIRLA_OLAYI = 'ucf:sahit-imza-sifirla';
 
+/** 1 Kas 2026: 2. şahit her başvuruda din görevlisidir (sunucu, defter, PDF ve panel aynı adı kullanır). */
+export const DIN_GOREVLISI_SAHIT = 'Rıdvan KAYAHAN';
+
 export function sahitImzalariniBaslat(form: HTMLFormElement, m: SahitImzaMetinleri) {
   const degisti = () => form.dispatchEvent(new Event('change', { bubbles: true }));
-  const sahitler = [1, 2].map((no) => {
+  const sahitler = [1].map((no) => {   // 1 Kas 2026: başvuran en çok bir şahit ekler
     const kap = form.querySelector<HTMLElement>(`[data-sahit-imza="${no}"]`);
     const ad = form.querySelector<HTMLInputElement>(`#i-sahit-${no}`);
     const riza = form.querySelector<HTMLInputElement>(`#i-sahit-${no}-riza`);

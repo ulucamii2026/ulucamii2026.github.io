@@ -18,7 +18,7 @@ import { ek10SurumuCoz } from '../public/admin/ek10.js';
 import { adBicimleri } from '../public/admin/kalem.js';
 import { pdfMetni } from './yardim/pdf-metin.mjs';
 
-const source = ['kimlik-sabitler.gs', 'veli-eposta-sablon.gs', 'ulucamii-Kod-v45.gs'].map(ad => readFileSync(new URL('../scripts/apps-script/' + ad, import.meta.url), 'utf8')).join('\n');
+const source = ['kimlik-sabitler.gs', 'veli-eposta-sablon.gs', 'ulucamii-Kod-v46.gs'].map(ad => readFileSync(new URL('../scripts/apps-script/' + ad, import.meta.url), 'utf8')).join('\n');
 function backend() { const ctx = vm.createContext({ console, PropertiesService: { getScriptProperties: () => ({ getProperty: () => null }) } }); vm.runInContext(source, ctx); ctx.IhtidaPdf = { camiCoz, imzaVektorCoz }; return ctx; }
 const govde = () => ({
   sir: 'ULUCAMII-IHTIDA-2026', dil: 'tr', gonderimAnahtari: 'test-islem-2099-9999',
@@ -36,8 +36,13 @@ test('Şahit adı, imzası yokken de korunur; yalnız boş yer tamamlanır', () 
   assert.deepEqual(sahitOnerileri({ 'Şahit 1': 'Rıdvan KAYAHAN' }), ['Rıdvan KAYAHAN', 'Ercan MOLA']);
   assert.deepEqual(sahitOnerileri({ 'Şahit 1': 'Ercan MOLA' }), ['Ercan MOLA', 'Rıdvan KAYAHAN']);
   assert.deepEqual(sahitOnerileri({ 'Şahit 1': 'Yeliz KAYAHAN', 'Şahit 2': 'Önceki Şahit' }), ['Yeliz KAYAHAN', 'Önceki Şahit']);
-  assert.deepEqual(sahitOnerileri({ 'Cami kimliği': 'namur-camii-namur' }), ['', '']);
+  // 1 Kas 2026 (tek şahit kuralı): 2. şahit her başvuruda ve her camide din görevlisi; 1. şahit yalnız Ulu Camii'nde Ercan MOLA önerilir.
+  assert.deepEqual(sahitOnerileri({ 'Cami kimliği': 'namur-camii-namur' }), ['', 'Rıdvan KAYAHAN']);
+  assert.deepEqual(sahitOnerileri({ 'Şahit 1': 'Ali Örnek' }), ['Ali Örnek', 'Rıdvan KAYAHAN']);
+  assert.deepEqual(sahitOnerileri({ 'Cami kimliği': 'namur-camii-namur', 'Şahit 1': 'Ali Örnek' }), ['Ali Örnek', 'Rıdvan KAYAHAN']);
+  assert.deepEqual(sahitOnerileri({ 'Şahit 1': 'Ali Örnek', 'Şahit 2': 'Veli Örnek' }), ['Ali Örnek', 'Veli Örnek'], 'eski iki şahitli başvuru olduğu gibi kalır');
   assert.equal(sahitUnvani(' Rıdvan  KAYAHAN '), 'Din Görevlisi');
+  assert.equal(sahitUnvani('Rıdvan KAYAHAN', 'namur-camii-namur'), 'Din Görevlisi', 'din görevlisi her camide');
   assert.equal(sahitUnvani('Ercan MOLA'), 'Dernek Başkanı');
   assert.equal(sahitUnvani('Yeliz KAYAHAN'), '');
   assert.equal(sahitUnvani('Ercan MOLA', 'namur-camii-namur'), '');
@@ -149,7 +154,7 @@ test('Başka cami kanonikleşir, iki farklı şahit ister ve yerel imzaları yed
   assert.equal(c.ihtidaCamiCoz({ id: 'uydurma-cami' }), null);
   assert.equal(camiCoz({ id: 'diger', ad: 'Elle Girilen Cami', sehir: 'Namur', postaKodu: '0690', adres: 'Rue du Test 1' }), null, 'Belçika posta kodu dört haneli ve sıfırla başlamaz');
   assert.deepEqual(camiCoz({ id: 'diger', ad: 'Elle Girilen Cami', sehir: 'Namur', postaKodu: '5000', adres: 'Rue du Test 1' }), { id: 'diger', ad: 'Elle Girilen Cami', sehir: 'Namur', postaKodu: '5000', adres: 'Rue du Test 1', kurum: 'Diğer' });
-  assert.deepEqual(sahitOnerileri({ 'Cami kimliği': 'namur-camii-namur' }), ['', '']);
+  assert.deepEqual(sahitOnerileri({ 'Cami kimliği': 'namur-camii-namur' }), ['', 'Rıdvan KAYAHAN']);
 });
 
 test('PDF özeti üç dilde teslimi taşır, adres metnini HTML olarak çalıştırmaz', () => {
@@ -483,11 +488,12 @@ test('Kayıtlı şahit imzası yalnız Ulu Camii Marche içinde ve ad eşleşirs
   r = sahitImzalariniBagla([{ ad: 'Yeliz KAYAHAN' }, { ad: 'Rıdvan KAYAHAN' }], 'ulucamii-marche', { ridvan: SAHTE_CIZGI });
   assert.deepEqual(r.uygulanan, ['ridvan']);
   assert.deepEqual(sahitImzalariniBagla([{ ad: 'Ercan MOLA' }], 'ulucamii-marche', { ridvan: SAHTE_CIZGI }).uygulanan, [], 'kayıtlı imza yoksa bağlanmaz');
-  assert.deepEqual(sahitImzalariniBagla([{ ad: 'Ercan MOLA' }, { ad: 'Rıdvan KAYAHAN' }], 'namur-camii-namur', imzalar).uygulanan, [], 'başka camide yerel imza kullanılmaz');
+  assert.deepEqual(sahitImzalariniBagla([{ ad: 'Ercan MOLA' }, { ad: 'Rıdvan KAYAHAN' }], 'namur-camii-namur', imzalar).uygulanan, ['ridvan'], 'başka camide yalnız din görevlisinin kayıtlı imzası basılır (1 Kas 2026); Ercan MOLA yedek rızasız basılmaz');
+  assert.deepEqual(sahitImzalariniBagla([{ ad: 'Ali Örnek' }, { ad: 'Rıdvan KAYAHAN' }], 'namur-camii-namur', imzalar).uygulanan, ['ridvan'], 'yeni tek şahit kuralı: 2. şahit Rıdvan');
   // 25 Eki 2026: yedek şahit — başka camide yalnız mühtedinin yazılı/sözlü rızasıyla; işaret kaldırılırsa yine basılmaz.
   assert.deepEqual(sahitImzalariniBagla([{ ad: 'Ercan MOLA' }, { ad: 'Rıdvan KAYAHAN' }], 'namur-camii-namur', imzalar, [], { yedekSahitRizasi: 'yazili' }).uygulanan, ['ercan', 'ridvan']);
   assert.deepEqual(sahitImzalariniBagla([{ ad: 'Ercan MOLA' }, { ad: 'Rıdvan KAYAHAN', imzaKullan: false }], 'namur-camii-namur', imzalar, [], { yedekSahitRizasi: 'sozlu' }).uygulanan, ['ercan']);
-  assert.deepEqual(sahitImzalariniBagla([{ ad: 'Ercan MOLA' }, { ad: 'Rıdvan KAYAHAN' }], 'namur-camii-namur', imzalar, [], { yedekSahitRizasi: 'evet' }).uygulanan, [], 'bilinmeyen rıza değeri sayılmaz');
+  assert.deepEqual(sahitImzalariniBagla([{ ad: 'Ercan MOLA' }, { ad: 'Rıdvan KAYAHAN' }], 'namur-camii-namur', imzalar, [], { yedekSahitRizasi: 'evet' }).uygulanan, ['ridvan'], 'bilinmeyen rıza değeri Ercan MOLA için sayılmaz');
   assert.deepEqual(sahitImzalariniBagla([{ ad: 'Ercan MOLA' }, { ad: 'ercan mola' }], 'ulucamii-marche', imzalar).uygulanan, ['ercan'], 'aynı kişi iki kez imzalamaz');
   assert.deepEqual(sahitImzalariniBagla([{ ad: 'Ercan MOLA' }], 'ulucamii-marche', undefined).uygulanan, []);
   const eski = sahitImzalariniBagla([{ ad: 'Ercan MOLA', imza: 'data:eski-raster' }], 'ulucamii-marche', {});
@@ -542,7 +548,9 @@ test('Sunucu eşlemesi: ön başvuruda varsayılan şahitler eşleşirse imza ba
   // Plan: şahit adı yoksa varsayılan «Ercan MOLA», «Rıdvan KAYAHAN» önerilir ve ikisinin imzası bağlanır.
   assert.deepEqual(sahitImzaPlani(kayit, null, imzalar).uygulanan, ['ercan', 'ridvan']);
   assert.deepEqual(sahitImzaPlani({ ...kayit, 'Şahit 1': 'Yeliz KAYAHAN', 'Şahit 2': 'Ercan MOLA' }, null, imzalar).uygulanan, ['ercan']);
-  assert.deepEqual(sahitImzaPlani({ ...kayit, 'Cami kimliği': 'namur-camii-namur', 'Şahit 1': 'Rıdvan KAYAHAN', 'Şahit 2': 'Ercan MOLA' }, null, imzalar).uygulanan, []);
+  assert.deepEqual(sahitImzaPlani({ ...kayit, 'Cami kimliği': 'namur-camii-namur', 'Şahit 1': 'Rıdvan KAYAHAN', 'Şahit 2': 'Ercan MOLA' }, null, imzalar).uygulanan, ['ridvan']);
+  assert.deepEqual(sahitImzaPlani({ ...kayit, 'Cami kimliği': 'namur-camii-namur', 'Şahit 1': 'Ali Örnek', 'Şahit 2': 'Rıdvan KAYAHAN' }, null, imzalar).uygulanan, ['ridvan']);
+  assert.deepEqual(sahitImzaPlani({ ...kayit, 'Şahit 1': 'Ali Örnek', 'Şahit 2': '' }, null, imzalar).uygulanan, ['ridvan'], 'Şahit 2 boşsa din görevlisi tamamlanır');
   assert.deepEqual(sahitImzaPlani(kayit, { sahitler: [{ ad: 'Ercan MOLA', imzaKullan: false }, { ad: 'Rıdvan KAYAHAN', imzaKullan: true }] }, imzalar).uygulanan, ['ridvan']);
   const imzali = await pdfLib.PDFDocument.load(await uret(kayit, g, null, kaynaklar, pdfLib, fontkit, { sahitImzalari: imzalar }));
   const imzasiz = await pdfLib.PDFDocument.load(await uret(kayit, g, null, kaynaklar, pdfLib, fontkit));
@@ -694,4 +702,38 @@ test('Sunucu eşlemesi: şahidin kendi imzası her nüshada (başvuran nüshası
   const gErcan = { ...g, sahitRiza: sahitRizaKaydi('Ercan MOLA', 'Veli Örnek') };
   assert.deepEqual(sahitImzaPlani(ercan, null, { ercan: SAHTE_DOLGU }, gErcan).uygulanan, []);
   assert.deepEqual(sahitImzaPlani(ercan, null, { ercan: SAHTE_DOLGU }, temel).uygulanan, ['ercan'], 'kendi imza yoksa kayıtlı imza basılır');
+});
+
+test('Tek şahit kuralı (1 Kas 2026): yeni istemci tek şahit + Rıdvan KAYAHAN gönderir; sunucu 2. şahidi tamamlar; eski iki şahitli gövde aynen kabul edilir', () => {
+  const c = backend();
+  // Yeni istemci, Ulu Camii, şahit bildirmedi: 'cami' + boş liste geçerlidir; sunucu 2. şahidi din görevlisi yapar.
+  const bos = govde(); bos.sahitSecimi = 'cami'; bos.sahitler = [];
+  assert.equal(c.ihtidaDogrulaV2(bos).tamam, true);
+  assert.deepEqual(JSON.parse(JSON.stringify(c.ihtidaSahitleriTamamla(bos).sahitler)), [{ ad: '' }, { ad: 'Rıdvan KAYAHAN' }]);
+  // Yeni istemci, Ulu Camii, 1. şahit + sabit din görevlisi.
+  const tek = govde(); tek.sahitler = [{ ad: 'Ali Örnek' }, { ad: 'Rıdvan KAYAHAN' }];
+  assert.equal(c.ihtidaDogrulaV2(tek).tamam, true);
+  assert.deepEqual(JSON.parse(JSON.stringify(c.ihtidaSahitleriTamamla(tek).sahitler)), [{ ad: 'Ali Örnek' }, { ad: 'Rıdvan KAYAHAN' }]);
+  // Yalnız 1. şahit gelirse (ara sürüm) 2. şahit tamamlanır; din görevlisi 1. şahit ise yinelenmez.
+  const yalniz = govde(); yalniz.sahitler = [{ ad: 'Ali Örnek' }];
+  assert.equal(c.ihtidaDogrulaV2(yalniz).tamam, true);
+  assert.equal(c.ihtidaSahitleriTamamla(yalniz).sahitler[1].ad, 'Rıdvan KAYAHAN');
+  const ayni = govde(); ayni.sahitler = [{ ad: ' rıdvan  KAYAHAN ' }];
+  assert.equal(c.ihtidaSahitleriTamamla(ayni).sahitler.length, 1);
+  // Başka cami: 1. şahit zorunlu, 2. şahit din görevlisi; aynı kişi iki kez olamaz.
+  const yabanci = govde(); yabanci.cami = { id: 'namur-camii-namur' }; yabanci.sahitler = [{ ad: 'Ali Örnek' }, { ad: 'Rıdvan KAYAHAN' }];
+  assert.equal(c.ihtidaDogrulaV2(yabanci).tamam, true);
+  yabanci.sahitler = [{ ad: '' }, { ad: 'Rıdvan KAYAHAN' }];
+  assert.equal(c.ihtidaDogrulaV2(yabanci).kod, 'sahit-adi-eksik');
+  yabanci.sahitler = [{ ad: 'Rıdvan KAYAHAN' }, { ad: 'Rıdvan KAYAHAN' }];
+  assert.equal(c.ihtidaDogrulaV2(yabanci).kod, 'diger-cami-sahitler-farkli-olmali');
+  // Eski önbellekli istemci: iki kendi şahidi olduğu gibi kalır (başvuru kaybolmaz).
+  const eski = govde();
+  assert.deepEqual(JSON.parse(JSON.stringify(c.ihtidaSahitleriTamamla(eski).sahitler)), [{ ad: 'Birinci Örnek' }, { ad: 'İkinci Örnek' }]);
+  // PDF özeti ve e-posta metni 2. şahidi din görevlisi olarak gösterir (5 dil).
+  const tam = c.ihtidaSahitleriTamamla(Object.assign(govde(), { sahitSecimi: 'cami', sahitler: [] }));
+  for (const dil of ['tr', 'fr', 'en', 'nl', 'de']) {
+    const html = c.pdfHtmlIhtida(tam, { dil, ref: 'IH-2099-9999', zaman: '01.11.2026' });
+    assert.match(html, /Rıdvan KAYAHAN/); assert.match(html, dil === 'tr' ? /din görevlisi/ : dil === 'fr' ? /responsable religieux/ : dil === 'en' ? /religious official/ : dil === 'nl' ? /imam/ : /Religionsbeauftragter/);
+  }
 });

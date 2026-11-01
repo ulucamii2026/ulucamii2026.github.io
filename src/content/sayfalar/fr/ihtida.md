@@ -25,7 +25,7 @@ Devenir musulman consiste à croire de cœur en l’unicité de Dieu (Allah) et 
 
 - **Y a-t-il une quelconque pression ?** Non. La décision vous appartient entièrement ; lors de la cérémonie, notre imam vous posera d’ailleurs expressément cette question devant témoins.
 - **Ma famille ou mon entourage sera-t-il informé ?** Non. Les informations que vous partagez restent confidentielles et ne sont communiquées qu’au nombre minimal de personnes habilitées (l’imam et le responsable de la Diyanet qui valide l’attestation) — voir notre [Politique de confidentialité](/fr/confidentialite/).
-- **Dois-je venir seul(e) ?** La cérémonie nécessite la présence de **2 témoins** ; si vous n’en connaissez pas, nous pouvons vous aider à en trouver au sein de notre communauté.
+- **Dois-je venir seul(e) ?** La cérémonie se déroule devant **2 témoins** : vous pouvez en amener un (facultatif ; à défaut, nous en trouvons un au sein de notre communauté), le second est toujours notre imam.
 - **Dois-je apprendre quelque chose par cœur ?** Non. La profession de foi vous est enseignée sur place, syllabe par syllabe.
 
 ## La démarche, étape par étape
@@ -79,7 +79,7 @@ L’**attestation de conversion (EK-9)** est un document officiel bilingue (turc
 À apporter le jour de la cérémonie :
 
 - **Votre carte d’identité ou votre passeport** — vous présentez l’original à l’imam.
-- **2 témoins** — à défaut, la mosquée en fournit.
+- **1 témoin** (facultatif) — à défaut, la mosquée en fournit un ; le second témoin est toujours notre imam.
 - **Une requête écrite** — le dossier envoyé pour validation comporte une demande signée d’attestation de conversion. Nous la préparons pour vous : elle est imprimée en deux langues à partir des informations du formulaire et de la signature que vous y avez tracée ; vous la lisez avant de la signer et vous pouvez aussi la rédiger de votre main.
 - **Le formulaire de consentement EK-10** — signé sur papier le jour même. Le texte intégral est disponible en turc, anglais, **français** et néerlandais via le lien ci-contre.
 
@@ -138,7 +138,7 @@ Non, la démarche est entièrement gratuite.
 Son usage confirmé est la demande de visa Hajj/Omra. Pour toute autre démarche officielle, nous vous conseillons de vérifier au préalable auprès de l’organisme concerné.
 
 **Dois-je venir seul(e) ?**
-La cérémonie nécessite 2 témoins ; si vous n’en connaissez pas, nous pouvons vous aider à en trouver au sein de notre communauté.
+La cérémonie se déroule devant 2 témoins : vous pouvez en amener un (facultatif ; à défaut, nous en trouvons un au sein de notre communauté), le second est toujours notre imam.
 
 **Combien de temps cela prend-il ?**
 Après la cérémonie et vos signatures, le dossier est envoyé pour validation. Le retour de l’attestation portant la signature manuscrite peut prendre plusieurs semaines.
