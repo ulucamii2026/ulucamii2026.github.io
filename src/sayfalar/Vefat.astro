@@ -161,7 +161,7 @@ const m = M[dil];
                     {d.metin?.[icDil] && <p class="mt-3 text-(--metin-2)">{d.metin[icDil]}</p>}
                     {(d.cenazeNamazi?.tarih || d.cenazeNamazi?.yer || d.defin || d.taziye) && (
                       <dl class="mt-3 grid sm:grid-cols-2 gap-x-6 gap-y-2 text-sm bilgi">
-                        {(d.cenazeNamazi?.tarih || d.cenazeNamazi?.yer) && <div><dt class="etiket">{m.cenazeNamazi}</dt><dd>{d.cenazeNamazi?.tarih && tarihBicimle(d.cenazeNamazi.tarih, dil, { weekday: 'long', day: 'numeric', month: 'long' })}{d.cenazeNamazi?.saat && `, ${d.cenazeNamazi.saat}`}{d.cenazeNamazi?.yer && ` — ${d.cenazeNamazi.yer}`}</dd></div>}
+                        {(d.cenazeNamazi?.tarih || d.cenazeNamazi?.yer) && <div><dt class="etiket">{m.cenazeNamazi}</dt><dd>{d.cenazeNamazi?.tarih && tarihBicimle(d.cenazeNamazi.tarih, dil, { weekday: 'long', day: 'numeric', month: 'long' })}{d.cenazeNamazi?.saat && `, ${d.cenazeNamazi.saat}`}{d.cenazeNamazi?.yer && `${d.cenazeNamazi?.tarih || d.cenazeNamazi?.saat ? ' — ' : ''}${d.cenazeNamazi.yer}`}</dd></div>}
                         {d.defin && <div><dt class="etiket">{m.defin}</dt><dd>{d.defin}</dd></div>}
                         {d.taziye && <div class="sm:col-span-2"><dt class="etiket">{m.taziye}</dt><dd>{d.taziye}</dd></div>}
                       </dl>

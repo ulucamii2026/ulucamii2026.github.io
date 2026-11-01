@@ -4026,6 +4026,15 @@
       "format": "webp"
     },
     {
+      "path": "public/media/vefat/2019-agilonu-cenaze.webp",
+      "extension": ".webp",
+      "bytes": 22324,
+      "hash": "5f99aed3af71f4d1a899da2b80a142fd59cf733e170928862011b71ee2f5dabc",
+      "width": 640,
+      "height": 800,
+      "format": "webp"
+    },
+    {
       "path": "public/media/vefat/2020-mustafa-karali-vefat.webp",
       "extension": ".webp",
       "bytes": 35274,
@@ -4062,10 +4071,28 @@
       "format": "webp"
     },
     {
+      "path": "public/media/vefat/2024-recep-acikgoz-vefat.webp",
+      "extension": ".webp",
+      "bytes": 58934,
+      "hash": "3c3ee61f471a88d5cd0faa1880fafeb68e520b0c6841920d0fad290d058dc58a",
+      "width": 640,
+      "height": 800,
+      "format": "webp"
+    },
+    {
       "path": "public/media/vefat/2025-fevzi-karali-vefat.webp",
       "extension": ".webp",
       "bytes": 15710,
       "hash": "09545e063cc96cdb6d8680402f801236cff52d05ce42770d335ea8784903d11a",
+      "width": 640,
+      "height": 800,
+      "format": "webp"
+    },
+    {
+      "path": "public/media/vefat/2025-hasan-huseyin-yilmaz-vefat.webp",
+      "extension": ".webp",
+      "bytes": 24770,
+      "hash": "ee53aff17e1bf4488d2aae0b4dfdd56ba41719e4dcb5556bc1620227093a995b",
       "width": 640,
       "height": 800,
       "format": "webp"
