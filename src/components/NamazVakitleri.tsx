@@ -1,6 +1,6 @@
 import { useMemo } from 'preact/hooks';
 import { hicriCevir } from '../i18n/hicri';
-import { SIRA, TZ, durumHesapla, haftaGunu, sureMetni, type Gun, type Vakit } from '../lib/namaz';
+import { SIRA, TZ, cumaVakti, durumHesapla, haftaGunu, sureMetni, type Gun, type Vakit } from '../lib/namaz';
 import { useDakikaSaati } from '../lib/saat';
 import type { Dil } from '../i18n/ui';
 import { ilkHarfBuyuk, yerelKodu } from '../i18n/utils';
@@ -49,7 +49,7 @@ export default function NamazVakitleri({ gunler, dil, etiketler, kompakt = false
      ("Öğle vaktinde", site.yaml haftalikProgram). Uydurma bir saat asla yazılmaz. */
   const cumaMi = !eski && haftaGunu(gunOrtasi) === 5;
   const cumaGoster = cumaEtiket && (cumaSaati || cumaMi);
-  const cumaDegeri = cumaSaati || (cumaMi ? bugun.ogle : '');
+  const cumaDegeri = cumaVakti(cumaMi ? bugun : undefined, cumaSaati);
   // Rakam boyutu kutunun kendi genişliğine bağlı (container query): 5 karakterlik saat ~2,6em → 31cqw hiçbir genişlikte taşmaz
   const rakam = vurgulu ? 'text-[min(1.6rem,31cqw)] sm:text-[min(2.1rem,31cqw)] tracking-tight' : 'text-[min(1.7rem,31cqw)]';
   return (

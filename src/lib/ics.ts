@@ -18,7 +18,7 @@ function pad(n: number): string {
   return String(n).padStart(2, '0');
 }
 
-function damgaUtc(d: Date): string {
+export function damgaUtc(d: Date): string {
   return `${d.getUTCFullYear()}${pad(d.getUTCMonth() + 1)}${pad(d.getUTCDate())}T${pad(d.getUTCHours())}${pad(d.getUTCMinutes())}${pad(d.getUTCSeconds())}Z`;
 }
 
@@ -28,7 +28,7 @@ function tarihYerel(d: Date): string {
   return `${d.getUTCFullYear()}${pad(d.getUTCMonth() + 1)}${pad(d.getUTCDate())}`;
 }
 
-function kacisIcs(metin: string): string {
+export function kacisIcs(metin: string): string {
   return metin.replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\n/g, '\\n');
 }
 
@@ -64,7 +64,7 @@ export function brukselYerelSaatiUtcyeCevir(yil: number, ay: number, gun: number
 
 /** RFC 5545 §3.1: bir içerik satırı 75 oktetten uzunsa CRLF + tek boşlukla devam satırlarına
  *  katlanır. Çok baytlı UTF-8 karakterin ortasından bölünmez (sayfa-ozellik#5). */
-function katla(satir: string): string {
+export function katla(satir: string): string {
   const bytes = new TextEncoder().encode(satir);
   if (bytes.length <= 75) return satir;
   const parcalar: string[] = [];
@@ -81,6 +81,34 @@ function katla(satir: string): string {
     sinir = 74; // devam satırındaki tek boşluk da bir oktet sayılır
   }
   return parcalar.join('\r\n ');
+}
+
+/** Cuma namazı takvim aboneliği (/cuma.ics, 1 Kasım 2026): verideki her Cuma için bir etkinlik, başlangıç
+ *  Cuma vakti (sabit saat ya da Diyanet öğle), süre bir saat, 30 dk önce hatırlatma. Telefon takvimi aboneliği
+ *  günlük derlemeyle tazelenir; veri yoksa takvim boş kalır (saat uydurulmaz). */
+export function cumaTakvimiUret(cumalar: Array<{ tarih: string; saat: string }>, adres: string, simdi = new Date()): string {
+  const satirlar = [
+    'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Ulu Camii Marche-en-Famenne//ulucamii.be//CUMA', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH',
+    'X-WR-CALNAME:Cuma namazı · Prière du vendredi — Ulu Camii', 'X-WR-TIMEZONE:Europe/Brussels',
+    'REFRESH-INTERVAL;VALUE=DURATION:PT12H', 'X-PUBLISHED-TTL:PT12H',
+  ];
+  for (const c of cumalar) {
+    const z = saatAyristir(c.saat);
+    if (!z) continue;
+    const [y, a, g] = c.tarih.split('-').map(Number);
+    const bas = brukselYerelSaatiUtcyeCevir(y, a - 1, g, z.saat, z.dakika);
+    satirlar.push(
+      'BEGIN:VEVENT', `UID:cuma-${c.tarih}@ulucamii.be`, `DTSTAMP:${damgaUtc(simdi)}`,
+      `DTSTART:${damgaUtc(bas)}`, `DTEND:${damgaUtc(new Date(bas.getTime() + 3_600_000))}`,
+      `SUMMARY:${kacisIcs(`Cuma namazı · Prière du vendredi ${c.saat}`)}`,
+      `LOCATION:${kacisIcs(adres)}`,
+      `DESCRIPTION:${kacisIcs('Hutbe öğle vaktinde başlar; Türkçe hutbenin ardından Fransızca hutbe okunur.\nLe prêche commence à l’heure de Dhuhr ; un sermon en français suit le sermon en turc.\nhttps://ulucamii.be/')}`,
+      'BEGIN:VALARM', 'ACTION:DISPLAY', `DESCRIPTION:${kacisIcs('Cuma namazı · Prière du vendredi')}`, 'TRIGGER:-PT30M', 'END:VALARM',
+      'END:VEVENT',
+    );
+  }
+  satirlar.push('END:VCALENDAR');
+  return satirlar.map(katla).join('\r\n') + '\r\n';
 }
 
 export function etkinlikIcsUret(e: IcsEtkinlik, dil: 'tr' | 'fr' | 'en'): string {

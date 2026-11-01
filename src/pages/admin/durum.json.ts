@@ -15,6 +15,7 @@ import type { APIRoute } from 'astro';
 import { HAC_SON_GUN, HAC_KESIN_SON_GUN, UMRE_SON_GUN } from '../../lib/etkinlik-tarihleri';
 import { siteAyarlari, vefatlar } from '../../lib/icerik';
 import namaz from '../../data/namaz-vakitleri.json';
+import { cumaGunleri, cumaVakti, type Gun } from '../../lib/namaz';
 
 const GUN = 86_400_000;
 const gunStr = (d: Date) => d.toISOString().slice(0, 10);
@@ -51,6 +52,11 @@ export const GET: APIRoute = async () => {
     const son = new Date(Math.max(cenaze ? cenaze + GUN : 0, vefat.data.vefat.getTime() + 10 * GUN));
     bantlar.push({ ad: `Vefat bandı: ${vefat.data.ad}`, son: gunStr(son) });
   }
+
+  /* Cuma hatırlatma bandı (CumaHatirlatma.tsx): her hafta Perşembe bütün gün ve Cuma namazdan bir saat sonrasına
+     kadar, ziyaretçinin tarayıcısında açılır. Burada yalnız bu haftanın Cuma saati kaynağı görünür. */
+  const buCuma = cumaGunleri(namaz.gunler as Gun[]).find((c) => c.tarih >= bugun);
+  bantlar.push({ ad: 'Cuma hatırlatma bandı (Perşembe–Cuma, kendiliğinden)', not: buCuma ? `${buCuma.tarih}: ${cumaVakti(buCuma, ayar.cumaSaati)}${ayar.cumaSaati ? ' (sabit saat)' : ' (Diyanet öğle)'}` : 'Cuma kaydı yok: bant çıkmaz' });
 
   /* Hero şeridi: yalnız süreli (son tarihi olan) mesajlar ilgi çeker — kalıcılar zaten hep orada. */
   const heroMesajlar = ayar.heroMesajlar

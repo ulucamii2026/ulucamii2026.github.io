@@ -2,11 +2,12 @@
 import Base from '../layouts/Base.astro';
 import SayfaBasligi from '../components/SayfaBasligi.astro';
 import NamazVakitleri from '../components/NamazVakitleri';
+import CumaHatirlatma from '../components/CumaHatirlatma';
 import { ceviri, ilkHarfBuyuk, tarihBicimle } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
 import { namazVakitleri, siteAyarlari, bugunBrussels } from '../lib/icerik';
 import { hicriCevir } from '../i18n/hicri';
-import { SIRA } from '../lib/namaz';
+import { SIRA, cumaGunleri } from '../lib/namaz';
 import { yaklasanDiniGunler } from '../lib/dinigunler';
 interface Props { dil: Dil }
 const { dil } = Astro.props; const t = ceviri(dil);
@@ -40,6 +41,12 @@ const dg = DINI_GUN[dil];
   <SayfaBasligi etiket="Marche-en-Famenne" baslik={t('nav.namaz')} altBaslik={t('namaz.kaynak')} />
   <div class="kapsayici py-10">
     <NamazVakitleri client:load gunler={namaz.gunler} dil={dil} etiketler={etiketler} cumaEtiket={t('namaz.cuma')} cumaKisaEtiket={t('namaz.cumaKisa')} cumaSaati={site.cumaSaati} cumaAciklama={t('namaz.cumaAciklama')} />
+    <CumaHatirlatma client:load cumalar={cumaGunleri(namaz.gunler)} sabit={site.cumaSaati} metinler={{ yarin: t('namaz.cumaYarin'), bugun: t('namaz.cumaBugun'), hutbe: t('namaz.cumaHutbe') }} sinif="mt-6" />
+    <p class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm">
+      <a class="font-semibold" href={`webcal://${Astro.site?.host ?? 'ulucamii.be'}/cuma.ics`} data-cuma-takvim>{t('namaz.cumaTakvim')}</a>
+      <a class="text-(--metin-2)" href={`https://calendar.google.com/calendar/r?cid=${encodeURIComponent(`webcal://${Astro.site?.host ?? 'ulucamii.be'}/cuma.ics`)}`} rel="noopener">Google Calendar</a>
+    </p>
+    <p class="mt-1 text-sm text-(--metin-2) max-w-prose">{t('namaz.cumaTakvimAciklama')}</p>
     {site.cumaSaati && <p class="bilgi mt-6"><strong>{t('namaz.cuma')}:</strong> {site.cumaSaati}</p>}
     <p class="mt-6 text-(--metin-2) max-w-prose">{not}</p>
     <h2 class="mt-12 mb-4">{t('ana.tumvakitler')}</h2>

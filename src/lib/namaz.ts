@@ -88,3 +88,35 @@ export function haftaGunu(simdi: Date): number {
   const g = new Intl.DateTimeFormat('en-US', { timeZone: TZ, weekday: 'short' }).format(simdi);
   return { Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6, Sun: 7 }[g] ?? 1;
 }
+
+/** Cuma namazı saati: sitede sabit saat girilmişse (site.yaml → cumaSaati) o, yoksa o Cuma'nın Diyanet
+ *  ÖĞLE vakti — hutbe öğle vaktinde başlar. Kayıt da sabit saat de yoksa boş döner; saat uydurulmaz. */
+export function cumaVakti(gun: Pick<Gun, 'ogle'> | undefined, sabit?: string): string {
+  return sabit || (gun ? gun.ogle : '');
+}
+
+/** Verideki Cuma günleri (yalnız tarih + öğle): hatırlatma bandının adacığa giden küçük yükü. */
+export function cumaGunleri(gunler: Gun[]): Array<Pick<Gun, 'tarih' | 'ogle'>> {
+  return gunler.filter((g) => haftaGunu(new Date(g.tarih + 'T12:00:00Z')) === 5).map((g) => ({ tarih: g.tarih, ogle: g.ogle }));
+}
+
+/** Cuma günü bant, namazdan bu kadar dakika sonra kalkar (hutbe + namaz + çıkış). */
+export const CUMA_BANDI_SONRA_DK = 60;
+
+export interface CumaHatirlatmasi { tur: 'yarin' | 'bugun'; tarih: string; saat: string }
+
+/** Perşembe bütün gün ertesi günün, Cuma günü namazdan bir saat sonrasına kadar o günün Cuma saati.
+ *  Öbür günler ya da o Cuma'nın Diyanet kaydı (ve sabit saat) yoksa null: bant hiç görünmez. */
+export function cumaHatirlatmasi(cumalar: Array<Pick<Gun, 'tarih' | 'ogle'>>, simdi: Date, sabit?: string): CumaHatirlatmasi | null {
+  const gun = haftaGunu(simdi);
+  if (gun !== 4 && gun !== 5) return null;
+  let hedef = bugunTarih(simdi);
+  if (gun === 4) {
+    const [y, a, g] = hedef.split('-').map(Number);
+    hedef = new Date(Date.UTC(y, a - 1, g + 1)).toISOString().slice(0, 10);
+  }
+  const saat = cumaVakti(cumalar.find((c) => c.tarih === hedef), sabit);
+  if (!saat) return null;
+  if (gun === 5 && simdi.getTime() > brukselTarih(hedef, saat).getTime() + CUMA_BANDI_SONRA_DK * 60_000) return null;
+  return { tur: gun === 4 ? 'yarin' : 'bugun', tarih: hedef, saat };
+}
