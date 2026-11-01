@@ -635,6 +635,8 @@ test('dokunmatik: 200 yüzde temel yazı, kısa pencere ve afiş doğal yüksekl
   await page.route('**/media/duyurular/test-afis.svg', (r) => r.fulfill({ contentType: 'image/svg+xml', body: AFIS_SVG }));
   await page.evaluate(() => { document.documentElement.style.fontSize = '32px'; });
   await page.setViewportSize({ width: 321, height: 240 });
+  // resize olayı bir sonraki karede gelir; --u %200 tabana (7 × 32/16) geçmeden çizilen levha yarım boy kalır.
+  await expect.poll(() => page.locator('#ekran').evaluate((e) => e.style.getPropertyValue('--u'))).toBe('14px');
   await levhaOlcerYukle(page);
   await levhaOlc(page, [sinirAfis(16 / 9, 'dokun')]);
   await page.waitForFunction(() => document.querySelector('.afis img')?.complete);
@@ -642,6 +644,11 @@ test('dokunmatik: 200 yüzde temel yazı, kısa pencere ve afiş doğal yüksekl
   expect(afis.width / afis.height).toBeCloseTo(16 / 9, 1);
   await dokunmatikTasmaDenetle(page);
   expect(await page.locator('.levha .tr').evaluate((e) => parseFloat(getComputedStyle(e).fontSize))).toBeGreaterThan(40);
+  // Her temanın büyük harfli başlığı %200 yazıda da kırılır (1.11.2026: «RESPONSABILITÉ» 35 px yatay taşıyordu).
+  for (const tema of Object.keys(TEMA_BASLIGI)) {
+    await levhaOlc(page, [{ ...sinirSoz, tema, oge: { ...sinirSoz.oge, id: 'tema-' + tema } }]);
+    await dokunmatikTasmaDenetle(page);
+  }
 });
 
 test('dokunmatik: Diyanet günü eksikse kişisel kip de vakit hesaplamaz', async ({ page }) => {
@@ -654,7 +661,8 @@ test('dokunmatik: Diyanet günü eksikse kişisel kip de vakit hesaplamaz', asyn
   await expect(page.locator('.geri-sayim')).toHaveCount(0);
   await page.evaluate(() => { document.documentElement.style.fontSize = '32px'; });
   await page.setViewportSize({ width: 320, height: 240 });
-  expect(await page.locator('.sahne').evaluate((e) => e.scrollWidth - e.clientWidth)).toBeLessThanOrEqual(1);
+  // resize olayı bir sonraki karede gelir (dokunmatik.ts yenile); yük altında hemen ölçmek eski ölçüyü okur (1.11.2026).
+  await expect.poll(() => page.locator('.sahne').evaluate((e) => e.scrollWidth - e.clientWidth)).toBeLessThanOrEqual(1);
 });
 
 test('küçük TV penceresi kişisel kip açmaz; varsayılan TV araçları gizlidir', async ({ page }) => {

@@ -191,7 +191,7 @@ html, body { height: 100%; overflow: hidden; background: var(--siyah); }
 .ekran[data-kip='dokunmatik'] .slayt-alani { flex: none; height: auto; overflow: visible; padding: 28px 20px 36px; }
 .ekran[data-kip='dokunmatik'] .slayt { height: auto; min-height: 0; }
 .ekran[data-kip='dokunmatik'] .levha { margin: 12px 0 0; }
-.ekran[data-kip='dokunmatik'] .ust-baslik { letter-spacing: .04em; color: inherit; }
+.ekran[data-kip='dokunmatik'] .ust-baslik { letter-spacing: .04em; color: inherit; overflow-wrap: break-word; }
 .ekran[data-kip='dokunmatik'] .kaynak .bolunmez { white-space: normal; }
 .ekran[data-kip='dokunmatik'] .susleme { max-width: 100%; }
 .ekran[data-kip='dokunmatik'] .afisli { display: block; flex: none; min-height: 0; }
