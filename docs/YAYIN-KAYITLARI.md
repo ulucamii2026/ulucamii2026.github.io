@@ -4,6 +4,27 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 1 Kasım 2026 (akşam, 2) — Rahmetle Anıyoruz: Recep Açıkgöz ve Hacı Hasan Hüseyin Yılmaz eklendi, Hacı Mustafa Ağılönü fotoğraflı
+
+- Zaman: 1 Kasım 2026 17.46 push · Pages run 41328226397 başarılı (17.48–17.50) · canlı doğrulama 17.51, Europe/Brussels
+  (CET). **Yayımlandı ve canlı doğrulandı.** Dayanak: Rıdvan «… gelen fotoğrafları web sitemizin rahmetle anıyoruz
+  sayfasına eklemek lazım …» (1 Kasım öğleden sonra). Recep ve Hasan Hüseyin amca metinleri aileye gösterildi ve onaylandı
+  (Recep'in oğlu, Ali İhsan Bey aracılığıyla: «Çok iyi», «Olsun»). Mustafa Ağılönü metni yalnız oğlunun kendi sözünü taşır;
+  geniş metin onun cevabını bekliyor.
+- Kapsam (commit `f041ded8`): `src/content/vefat/2024-recep-acikgoz-vefat.md` ve `2025-hasan-huseyin-yilmaz-vefat.md`
+  (yeni, TR+FR), `2019-agilonu-cenaze.md` (fotoğraf, doğum yılı, memleket Dişli, «Hacı»), `public/media/vefat/` üç webp
+  (640×800), `docs/design/media-manifest.json` (yalnız üç girdi), `src/sayfalar/Vefat.astro` (tarihsiz cenaze namazında
+  yerin önündeki « — » kalktı). Ayrı commit `509605b3`: `tests/web/egitim-diller.spec.mjs` içine `test.slow()` (365 istekli
+  test paralel koşuda 37 sn sürüp 30 sn sınırına takılıyordu). Release 0, yeni indirilebilir dosya 0.
+- Dağıtım: ilk koşu 41327998410, başka oturumun hemen ardından gelen push'u (`ab70ed25`, ihtida) yüzünden iptal edildi; o
+  push'un koşusu 41328226397 iki commit'i de içerdi ve başarılı oldu.
+- Kalite: `npm run dogrula:codex` çıkış 0 (web 880 geçti, eğitim 779 geçti). Önceki koşudaki üç kırmızı vefatla ilgisizdi:
+  egitim-diller zaman aşımı (düzeltildi) ve eğitim yapay-ses iki testinde iz dosyası ENOENT (altyapı; yeniden koşuda geçti).
+- Canlı: `/tr/rahmetle-aniyoruz/`, `/fr/in-memoriam/` ve üç fotoğraf HTTP 200; üç ad ve onaylı cümleler TR/FR görünüyor; FR'de
+  «;» öncesi U+202F.
+- Açık: Mustafa amcanın defin yeri (Dişli) ve hayatı oğlunun cevabında; Hasan Hüseyin amcanın fotoğrafının aslı aranıyor.
+  Yaşayan aile üyelerinin adı ve telefonu yayımlanmadı. Bu kayıt için belge commit'i içerik yayını değildir.
+
 ## 1 Kasım 2026 (öğleden sonra) — İhtida başvurusunda tek şahit kuralı: 2. şahit her zaman din görevlisi (Apps Script v46)
 
 - Zaman: 1 Kasım 2026 ≈17.35 Apps Script v46 dağıtımı · ≈17.48 commit + push · 17.50 Pages başarılı · ≈17.55 canlı doğrulama,
