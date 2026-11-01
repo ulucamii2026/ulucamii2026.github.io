@@ -53,6 +53,8 @@ for(const dil of langs){
   });
 }
 test('Dil değiştirme aynı derste kalır; 73 dersin beş dilde adresi ve sesleri korunur',async({page,request})=>{
+  // 5 dil × 73 ders = 365 ardışık istek; paralel koşuda 30 sn yetmedi (1 Kasım 2026, 37 sn).
+  test.slow();
   await page.goto(dersYolu('en','fatiha'));
   for(const dil of langs){
     const target=dersYolu(dil,'fatiha');
