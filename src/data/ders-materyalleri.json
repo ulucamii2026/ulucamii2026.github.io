@@ -1,5 +1,5 @@
 {
-  "guncelleme": "2026-10-25",
+  "guncelleme": "2026-11-01",
   "depo": "ulucamii2026/ulucamii2026.github.io",
   "donem": "2026-2027",
   "gunler": [
@@ -2537,8 +2537,8 @@
       "etiket": "ders-2026-11-01",
       "plan": {
         "dosya": "2026-11-01-Ders-Plani.pdf",
-        "boyut": 848899,
-        "sayfa": 30,
+        "boyut": 884093,
+        "sayfa": 33,
         "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-11-01/2026-11-01-Ders-Plani.pdf"
       },
       "sunumlar": [
@@ -2554,12 +2554,12 @@
             "fr": "Le Saint Coran"
           },
           "dosya": "2026-11-01-Sunum-1-Kuran-i-Kerim.pptx",
-          "boyut": 8551663,
+          "boyut": 8583523,
           "slayt": 26,
           "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-11-01/2026-11-01-Sunum-1-Kuran-i-Kerim.pptx",
           "pdf": {
             "dosya": "2026-11-01-Sunum-1-Kuran-i-Kerim.pdf",
-            "boyut": 341215,
+            "boyut": 343143,
             "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-11-01/2026-11-01-Sunum-1-Kuran-i-Kerim.pdf"
           }
         },
@@ -2575,12 +2575,12 @@
             "fr": "Un jeune vertueux : sa jeunesse, son mariage et ses proches"
           },
           "dosya": "2026-11-01-Sunum-2-Siyer-Erdemli-Bir-Genc.pptx",
-          "boyut": 6081076,
+          "boyut": 5950720,
           "slayt": 26,
           "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-11-01/2026-11-01-Sunum-2-Siyer-Erdemli-Bir-Genc.pptx",
           "pdf": {
             "dosya": "2026-11-01-Sunum-2-Siyer-Erdemli-Bir-Genc.pdf",
-            "boyut": 1045067,
+            "boyut": 1044205,
             "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-11-01/2026-11-01-Sunum-2-Siyer-Erdemli-Bir-Genc.pdf"
           }
         },
@@ -2596,12 +2596,12 @@
             "fr": "Ma famille et mes devoirs"
           },
           "dosya": "2026-11-01-Sunum-3-Ahlak-Ailem-ve-Gorevlerim.pptx",
-          "boyut": 11029469,
+          "boyut": 10934761,
           "slayt": 26,
           "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-11-01/2026-11-01-Sunum-3-Ahlak-Ailem-ve-Gorevlerim.pptx",
           "pdf": {
             "dosya": "2026-11-01-Sunum-3-Ahlak-Ailem-ve-Gorevlerim.pdf",
-            "boyut": 773488,
+            "boyut": 772740,
             "url": "https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/ders-2026-11-01/2026-11-01-Sunum-3-Ahlak-Ailem-ve-Gorevlerim.pdf"
           }
         }
@@ -2619,7 +2619,7 @@
         },
         {
           "dosya": "2026-11-01-Ogretici-Sunum-1-Kuran-i-Kerim.pptx",
-          "boyut": 169945,
+          "boyut": 169914,
           "tur": "pptx",
           "baslik": {
             "tr": "Öğretici rehberi · 1. ders (PowerPoint)",
@@ -2629,7 +2629,7 @@
         },
         {
           "dosya": "2026-11-01-Ogretici-Sunum-1-Kuran-i-Kerim.pdf",
-          "boyut": 3470095,
+          "boyut": 3461283,
           "tur": "pdf",
           "baslik": {
             "tr": "Öğretici rehberi · 1. ders (PDF)",
@@ -2639,7 +2639,7 @@
         },
         {
           "dosya": "2026-11-01-Ogretici-Sunum-2-Siyer-Erdemli-Bir-Genc.pptx",
-          "boyut": 170944,
+          "boyut": 172119,
           "tur": "pptx",
           "baslik": {
             "tr": "Öğretici rehberi · 2. ders (PowerPoint)",
@@ -2649,7 +2649,7 @@
         },
         {
           "dosya": "2026-11-01-Ogretici-Sunum-2-Siyer-Erdemli-Bir-Genc.pdf",
-          "boyut": 3459458,
+          "boyut": 3540590,
           "tur": "pdf",
           "baslik": {
             "tr": "Öğretici rehberi · 2. ders (PDF)",
@@ -2659,7 +2659,7 @@
         },
         {
           "dosya": "2026-11-01-Ogretici-Sunum-3-Ahlak-Ailem-ve-Gorevlerim.pptx",
-          "boyut": 170168,
+          "boyut": 171090,
           "tur": "pptx",
           "baslik": {
             "tr": "Öğretici rehberi · 3. ders (PowerPoint)",
@@ -2669,7 +2669,7 @@
         },
         {
           "dosya": "2026-11-01-Ogretici-Sunum-3-Ahlak-Ailem-ve-Gorevlerim.pdf",
-          "boyut": 3434264,
+          "boyut": 3494577,
           "tur": "pdf",
           "baslik": {
             "tr": "Öğretici rehberi · 3. ders (PDF)",
