@@ -6,7 +6,7 @@ Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI
 
 ## 1 Kasım 2026 (akşam) — «Neler biliyorum?» bağlantısına veli «ev kipi»
 
-- Zaman: 1 Kasım 2026 17.08 commit + push · Pages başarılı · canlı doğrulama 16.11, Europe/Brussels (CET). **Yayımlandı ve
+- Zaman: 1 Kasım 2026 17.08 commit + push · Pages başarılı · canlı doğrulama 17.12, Europe/Brussels (CET). **Yayımlandı ve
   canlı doğrulandı.** Dayanak: Rıdvan «… için online form hazırla, her biri için form kişiye özel olsun, öğrenci velisine
   gönder …» (onaylı plan, kurs DEVAM.md 1 Kasım 17.20).
 - Kapsam (commit `7f294a1f`): `src/scripts/hoca-envanter.ts` (`ev` seçeneği, `EvKipi`), `src/scripts/envanter-baglanti.ts`
@@ -15,7 +15,7 @@ Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI
   alanları, Bugün/Öğrenciler, deneme öğrenci, grup seçimi, program ve kilit katmanı çizilmez; TR+FR yardım kartı; «Bitti» →
   `ogrenci-bitti`. Kural (`firestore.rules`) DEĞİŞMEDİ. Bağlantı belgesini kurs projesi `scripts/envanter_baglanti.py ev-ac` yazar.
 - Testler: `astro check` 0 hata; `npm run build` tamam; Playwright `neler-biliyorum-ev` + `hoca-envanter` 28/28 (iki proje).
-- Pages run 41324741124 başarılı. Canlı: `/neler-biliyorum/` betiği `kip===\` dalını, `hoca-envanter.ChUPbMhs.js` ev kipi
+- Pages run 41324741124 başarılı. Canlı: `/neler-biliyorum/` betiği ev kipi dalını (`kip` = `ev`), `hoca-envanter.ChUPbMhs.js` ev kipi
   metinlerini taşıyor. Gerçek bağlantıyla deneme 2 Kasım sabahı (Firestore günlük okuma kotası 1 Kasım 14.20'de dolmuştu).
 - Açık: gerçek telefonla ev bağlantısı denemesi (2 Kasım, TEST-ENVANTER); başka oturumun commit'lenmemiş dosyalarına dokunulmadı.
 
