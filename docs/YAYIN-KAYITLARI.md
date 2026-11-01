@@ -4,6 +4,36 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 1 Kasım 2026 (öğleden sonra) — İhtida başvurusunda tek şahit kuralı: 2. şahit her zaman din görevlisi (Apps Script v46)
+
+- Zaman: 1 Kasım 2026 ≈17.35 Apps Script v46 dağıtımı · ≈17.48 commit + push · 17.50 Pages başarılı · ≈17.55 canlı doğrulama,
+  Europe/Brussels (CET). **Yayımlandı ve canlı doğrulandı.** Dayanak: Rıdvan KAYAHAN, 1 Kasım 2026: «Sadece bir şahit eklenebilsin.
+  Şahitlerden birisi her zaman din görevlisi, yani imam, yani ben olayım.» («Bütün yetki ve karar sende».)
+- Kural: 2. şahit her başvuruda ve her camide «Rıdvan KAYAHAN» (Din Görevlisi), formda sabit satır (girdi ve imza kutusu yok).
+  Başvuran en çok bir şahit (1.) ekler: Ulu Camii'nde isteğe bağlı (boşsa «Ercan MOLA» önerilir), başka camide zorunlu; 1. şahit din
+  görevlisinin adı olamaz. Din görevlisinin kayıtlı imzası her camide basılır; Ercan MOLA imzası yalnız Ulu Camii'nde ya da yedek
+  şahit rızasıyla. Ayrıntı: `docs/IHTIDA-SAHITLER-2026-09-09.md` («1 Kasım 2026 — tek şahit kuralı»).
+- Sıra: önce Apps Script v46 (eski iki şahitli ve yeni tek şahitli gövdeyi birlikte kabul eder), sonra site.
+- Apps Script: `scripts/apps-script/ulucamii-Kod-v46.gs` (`git mv` v45 → v46; `SURUM = 46`). `ihtidaSahitleriTamamla(v)` doğrulamadan
+  sonra boş 2. şahit adını «Rıdvan KAYAHAN» yapar (defter Şahit 2, PDF, onay e-postası, panel aynı değer); eski önbellekli istemcinin
+  iki şahitli gövdesi olduğu gibi saklanır. Metinler 5 dilde: `IHTIDA_SAHIT_METIN`, `ETIKET_IHTIDA.sahit2`, suret e-postası
+  (`ihtida-paket-isleri.gs`). Dağıtım `D:/tmp/gas/dagit_v46.py` (`--kuru` canlı kaynak = son okuma; paket farkı yalnız bu satırlar):
+  «Version 68 du 1 nov. 2026, 17:35» (Gérer les déploiements); sağlık `surum:46`; paket SHA-256 `1676ad77…b4db9`.
+- Site (commit `ab70ed25`): `IhtidaFormu.astro` (2. şahit alanı ve imza kutusu kalktı, `data-sahit-sabit` satırı), `ihtida-form.ts`,
+  `ihtida-cami.ts`, `ihtida-sahit-imza.ts`, `formlar.css`, `src/i18n/formlar/*` ve `cami-secimi.ts` (5 dil), ihtida ve gizlilik
+  sayfaları (5 dil), `Ihtida.astro` özet maddesi, panel `public/admin/ek9-hazirlik.js` (`sahitOnerileri`, `sahitImzalariniBagla`,
+  `sahitUnvani`: 2. şahit varsayılan Rıdvan KAYAHAN, düzenlenebilir; yedek şahit akışı aynen).
+- Testler: `npm run check` 0 hata / 0 uyarı; `npm run dogrula` çıkış 0 (node 724 geçti / 0 kaldı, build + denetimler);
+  Playwright ihtida kümesi (`ihtida`, `ihtida-dayaniklilik`, `ihtida-adimlari`, `paket-onay`, `panel-dilekce-imza`, `ihtida-defteri`)
+  110/110; `scripts/form-tarayici-test.py` 123/123 (tek şahit adımları eklendi; kimlik kırpma penceresi adımı 17 Ekim'den beri eksikti,
+  eklendi); `tests/ihtida-contract.test.mjs` yeni «Tek şahit kuralı» testi. Örnek EK-9 (Ulu Camii şahitsiz / tek şahitli, başka cami)
+  110 dpi PNG'de gözle denetlendi: sol 1. şahit, sağ Rıdvan KAYAHAN + «Din Görevlisi» + imza.
+- Pages run 41328226397 başarılı. Canlı: `/tr/ihtida-basvurusu/`, `/fr/demande-de-conversion/`, `/en/conversion-application/`,
+  `/nl/aanvraag-bekering/`, `/de/antrag-konversion/` — sabit 2. şahit satırı var, yalnız `sahit.1` girdisi, `i-sahit-2` yok;
+  GAS `?islem=saglik` → `surum:46`.
+- Açık sınırlar: canlıda gerçek/sahte başvuru gönderilmedi (üretim defterine test kaydı yazılmaz; form sahte arka uçla, GAS vm testleriyle
+  denendi). Başka camide yerel imza (Ercan MOLA) kuralı değişmedi. Resmî son liste (`ihtidaPaketOnayDogrula`) hâlâ tam iki şahit ister.
+
 ## 1 Kasım 2026 (akşam) — «Neler biliyorum?» bağlantısına veli «ev kipi»
 
 - Zaman: 1 Kasım 2026 17.08 commit + push · Pages başarılı · canlı doğrulama 17.12, Europe/Brussels (CET). **Yayımlandı ve
