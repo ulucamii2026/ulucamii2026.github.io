@@ -4,6 +4,23 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 1 Kasım 2026 (gece) — Rahmetle Anıyoruz: Hasan Hüseyin Yılmaz metni ailenin isteğiyle düzeltildi, Recep Açıkgöz'ün yeni fotoğrafı
+
+- Zaman: 1 Kasım 2026 23.33 push · Pages run 41357747608 başarılı · canlı doğrulama 23.36, Europe/Brussels (CET).
+  **Yayımlandı ve canlı doğrulandı.** Dayanak: Rıdvan «Ali abi'den gelen mesajlara bak gereğini yap» (22.4x). Aile (Hasan
+  Hüseyin amcanın torunu ve kızı, Ali İhsan Bey aracılığıyla) 22.38'de 1987 cami borcuyla ilgili cümlenin yayımlanmasını
+  istemedi ve yerine güzel bir söz istedi; önerilen cümleyi 22.44'te «Olur böyle» diye onayladı. Recep'in üç fotoğrafından
+  hangisinin konacağını hocaya bıraktı.
+- Kapsam (commit `da8458f8`): `src/content/vefat/2025-hasan-huseyin-yilmaz-vefat.md` (TR+FR: borç cümlesi çıktı; «Camimize
+  gönül vermiş, cemaatimizin sevilen büyüklerindendi.» eklendi; açılış «Cemaatimizden …» oldu), `public/media/vefat/2024-recep-
+  acikgoz-vefat.webp` (gülümseyen portre, 640×800), `docs/design/media-manifest.json` (yalnız bu girdi). Release 0, yeni
+  indirilebilir dosya 0. Öncesinde yerel main origin'e hızlı ileri alındı (`d66c410c`); yerel üye-defteri taslakları commit dışı.
+- Kalite: `npm run dogrula:codex` çıkış 0 (web 882 geçti, eğitim 779 geçti); derlenmiş TR sayfada yeni cümle var, «borç» yok.
+- Canlı: `/tr/rahmetle-aniyoruz/` ve `/fr/in-memoriam/` HTTP 200; TR'de «gönül vermiş», FR'de «bien-aimés» görünüyor, borç/
+  «endettée» geçmiyor; canlı fotoğrafın SHA-256'sı yerel dosyayla aynı (`34031f99…`).
+- Açık: borç cümlesi önceki commit'lerin geçmişinde kalır (geçmiş yeniden yazılmaz). Hasan Hüseyin amcanın fotoğrafının aslı
+  aranıyor. Bu kayıt için belge commit'i içerik yayını değildir.
+
 ## 1 Kasım 2026 (akşam, 2) — Rahmetle Anıyoruz: Recep Açıkgöz ve Hacı Hasan Hüseyin Yılmaz eklendi, Hacı Mustafa Ağılönü fotoğraflı
 
 - Zaman: 1 Kasım 2026 17.46 push · Pages run 41328226397 başarılı (17.48–17.50) · canlı doğrulama 17.51, Europe/Brussels
