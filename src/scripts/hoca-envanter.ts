@@ -11,7 +11,7 @@ import { tamFirestore } from '../lib/firebase-tam';
 import { ENVANTER_CAKISMA, envanterDeposu, type DepoYollari, type Oturum } from '../lib/ogrenci-envanteri/depo';
 import {
   GRUPLAR, MADDELER, ROZET_ADI, TEST_REF, enYeni, grupAdi, ilerleme, rozet, sayfaSatirlari,
-  type Bolum, type Grup, type Kutu, type MetinAlani, type Program, type Sayfa, type Satir,
+  type Bolum, type Grup, type Ikili, type Kutu, type MetinAlani, type Program, type Sayfa, type Satir,
 } from '../lib/ogrenci-envanteri/model';
 
 export type EnvanterOgrencisi = { ref: string; ad: string; soyad: string; durum?: string };
@@ -23,7 +23,11 @@ export interface EnvanterPaneliSecenek {
   uid: () => string;
   /** Bağlantı sayfası (/neler-biliyorum/) için «envanterBaglanti/{k}/…» yolları; verilmezse hoca ekranı koleksiyonları. */
   yollar?: DepoYollari;
+  /** «Ev kipi» (1 Kasım 2026): velinin tek öğrencilik bağlantısı. Verilirse panel hoca arayüzü yerine tek sayfalık, hoca alanları
+   *  olmayan veli formunu çizer (Bugün/Öğrenciler/deneme öğrenci/grup seçimi/kilit katmanı yok). */
+  ev?: EvKipi;
 }
+export interface EvKipi { ref: string; ad: string; grup: Grup; dil: 'tr' | 'fr' }
 
 const esc = (s: unknown) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c] as string);
 const gunYaz = (iso: string, sec: Intl.DateTimeFormatOptions = { weekday: 'long', day: 'numeric', month: 'long' }) =>
@@ -48,6 +52,43 @@ const simge = (ad: string) => `<svg class="simge" width="1em" height="1em" viewB
 const IS_ADI: Record<string, string> = { form: 'Form', dogrulama: 'Doğrulama', hedef: 'Program konuşması', ezber: 'Ezber', not: 'Not' };
 const KAYDIRMA = (): ScrollBehavior => (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth');
 const CIZIM_SINIRI = 200_000; // veri adresi uzunluğu ≈ 150 kB PNG (kural 210 000)
+const EV_YARDIM_ANAHTARI = 'ulucamii-envanter-ev-yardim'; // yardım kartının açık/kapalı durumu (localStorage, isteğe bağlı)
+const NB = ' '; // Fransızca kesilmez boşluk (« » ve ; ? : ! öncesi)
+/** Ev kipi yardım kartı: grup başına TR + FR. Madde 2'deki «Bilmiyorum» etiketi ölçekten (bilgi) gelir. */
+const evYardim = (g: Grup) => {
+  const bil = MADDELER.olcekler.bilgi[0];
+  const trB = `«${bil.tr}»`;
+  const frB = `«${NB}${bil.fr}${NB}»`;
+  return g === '9-13'
+    ? {
+      tr: { baslik: 'Nasıl doldurulur?', maddeler: [
+        '1. Her satırı oku ve sana en uygun yüzü seç. Doğrusu yanlışı yok.',
+        `2. Bilmiyorsan ${trB}u seç; ezberlerini derste hocan dinleyecek.`,
+        '3. Cevapların kendiliğinden kaydedilir; ara verebilir, aynı bağlantıdan devam edebilirsin.',
+        '4. Bitirince en alttaki «Bitti» düğmesine bas.'] },
+      fr: { baslik: `Comment remplir${NB}?`, maddeler: [
+        '1. Lis chaque ligne et choisis le visage qui te correspond. Il n’y a pas de bonne ou de mauvaise réponse.',
+        `2. Si tu ne sais pas, choisis ${frB}${NB}; ton enseignant écoutera tes récitations en classe.`,
+        `3. Tes réponses sont enregistrées automatiquement${NB}; tu peux faire une pause et reprendre avec le même lien.`,
+        `4. À la fin, appuie sur «${NB}Terminé${NB}» tout en bas.`] },
+    }
+    : {
+      tr: { baslik: 'Nasıl doldurulur?', maddeler: [
+        '1. Her soruyu çocuğunuza okuyun ve onun cevabını işaretleyin. Doğrusu yanlışı yok.',
+        `2. Bilmediği bir şey varsa ${trB}u işaretleyin; ezberleri derste hocası dinleyecek.`,
+        '3. Cevaplar kendiliğinden kaydedilir; ara verip aynı bağlantıdan devam edebilirsiniz.',
+        '4. Sonunda çocuğunuz sevdiği bir şeyi çizebilir; ardından «Bitti» düğmesine basın.'] },
+      fr: { baslik: `Comment remplir${NB}?`, maddeler: [
+        '1. Lisez chaque question à votre enfant et cochez sa réponse. Il n’y a pas de bonne ou de mauvaise réponse.',
+        `2. S’il ne sait pas, cochez ${frB}${NB}; son enseignant écoutera ses récitations en classe.`,
+        `3. Les réponses sont enregistrées automatiquement${NB}; vous pouvez faire une pause et reprendre avec le même lien.`,
+        `4. À la fin, votre enfant peut dessiner ce qu’il aime${NB}; appuyez ensuite sur «${NB}Terminé${NB}».`] },
+    };
+};
+/** Ev kipinde hoca için yazılmış metin alanlarının veli sürümü (5–8 ilahi alanı «hocam yazar» diyordu). */
+const EV_METIN: Record<string, Ikili> = {
+  ilahi: { tr: 'Bildiği ilahiler (isterseniz yazın)', fr: 'Chants religieux qu’il connaît (facultatif)' },
+};
 
 type Gorunum = 'bugun' | 'liste';
 type FormDurumu = {
@@ -64,6 +105,15 @@ export function envanterPaneli(kok: HTMLElement, s: EnvanterPaneliSecenek): { te
   let bilgiTur = '';
   let kapali = false;
   let overlay: HTMLElement | null = null;
+  const ev = s.ev;
+  /** Ev kipinde sayfa dili Fransızca olabilir; Türkçe etiketler yine de tr diye işaretlenir (ekran okuyucu). Hoca ekranında boş. */
+  const trL = ev ? ' lang="tr"' : '';
+  let yardimAcik = true;
+  let evSonBekleniyor = false;
+  if (ev) {
+    kok.lang = ev.dil === 'fr' ? 'fr' : 'tr';
+    try { yardimAcik = localStorage.getItem(EV_YARDIM_ANAHTARI) !== 'kapali'; } catch { /* depolama yok: kart açık başlar */ }
+  }
 
   const ogrenciAdi = (ref: string) => {
     if (ref === TEST_REF) return 'Deneme öğrenci';
@@ -138,7 +188,7 @@ export function envanterPaneli(kok: HTMLElement, s: EnvanterPaneliSecenek): { te
     const sec = deger === i;
     const alan = sutun === 'ben' ? 'data-ben' : 'data-hoca-d';
     return `<button type="button" class="env-yuz ${sutun}${sec ? ' secili' : ''}" ${alan}="${esc(st.id)}" data-deger="${i}" aria-pressed="${sec}" aria-label="${esc(`${st.tr}: ${e.tr}`)}">
-      <span class="env-yuz-svg">${MADDELER.yuzler[i]}</span><span class="env-etiket"><b>${esc(e.tr)}</b>${ogrenciKipi ? `<i lang="fr">${fr(e.fr)}</i>` : ''}</span></button>`;
+      <span class="env-yuz-svg">${MADDELER.yuzler[i]}</span><span class="env-etiket"><b${trL}>${esc(e.tr)}</b>${ogrenciKipi ? `<i lang="fr">${fr(e.fr)}</i>` : ''}</span></button>`;
   };
   const satirHtml = (st: Satir, bolum: Bolum, ogrenciKipi: boolean) => {
     const b = form!.oturum.belge;
@@ -150,18 +200,18 @@ export function envanterPaneli(kok: HTMLElement, s: EnvanterPaneliSecenek): { te
       <p class="env-sutun">Öğrenci${form!.grup === '5-8' ? ' (çocuk adına işaretle)' : ''}</p><div class="env-yuzler" role="group" aria-label="${esc(st.tr)} — öğrenci">${benSira}</div>
       <p class="env-sutun hoca">Hoca (dinledim / gördüm)</p><div class="env-yuzler" role="group" aria-label="${esc(st.tr)} — hoca">${hocaSira}</div></section>`;
   };
-  const bolumHtml = (b: Bolum, ogrenciKipi: boolean) => `<div class="env-bolum"><h3 class="env-bolum-bas"><span>${esc(b.tr)}</span><span class="env-fr" lang="fr">${fr(b.fr)}</span></h3>${b.satirlar.map((st) => satirHtml(st, b, ogrenciKipi)).join('')}</div>`;
+  const bolumHtml = (b: Bolum, ogrenciKipi: boolean) => `<div class="env-bolum"><h3 class="env-bolum-bas"><span${trL}>${esc(b.tr)}</span><span class="env-fr" lang="fr">${fr(b.fr)}</span></h3>${b.satirlar.map((st) => satirHtml(st, b, ogrenciKipi)).join('')}</div>`;
 
   const kutuHtml = (k: Kutu) => {
     const secili = (form!.oturum.belge.kutular[k.anahtar] || []).map(String);
-    return `<fieldset class="env-kutu"><legend><span>${esc(k.tr)}</span><span class="env-fr" lang="fr">${fr(k.fr)}</span></legend><div class="env-secenekler">${k.secenekler.map((o) => {
+    return `<fieldset class="env-kutu"><legend><span${trL}>${esc(k.tr)}</span><span class="env-fr" lang="fr">${fr(k.fr)}</span></legend><div class="env-secenekler">${k.secenekler.map((o) => {
       const sec = secili.includes(String(o.anahtar));
-      return `<button type="button" class="env-secenek${sec ? ' secili' : ''}" data-kutu="${esc(k.anahtar)}" data-sec="${esc(o.anahtar)}" aria-pressed="${sec}"><span class="env-onay">${sec ? simge('onay') : ''}</span><span><b>${esc(o.tr)}</b>${o.fr !== o.tr ? `<i lang="fr">${fr(o.fr)}</i>` : ''}</span></button>`;
+      return `<button type="button" class="env-secenek${sec ? ' secili' : ''}" data-kutu="${esc(k.anahtar)}" data-sec="${esc(o.anahtar)}" aria-pressed="${sec}"><span class="env-onay">${sec ? simge('onay') : ''}</span><span><b${trL}>${esc(o.tr)}</b>${o.fr !== o.tr ? `<i lang="fr">${fr(o.fr)}</i>` : ''}</span></button>`;
     }).join('')}</div></fieldset>`;
   };
   const metinHtml = (m: MetinAlani) => {
     const v = form!.oturum.belge.metin[m.alan];
-    const etiket = `<span>${esc(m.tr)}</span><span class="env-fr" lang="fr">${fr(m.fr)}</span>`;
+    const etiket = `<span${trL}>${esc(m.tr)}</span><span class="env-fr" lang="fr">${fr(m.fr)}</span>`;
     if (m.liste) {
       const dizi = Array.isArray(v) ? v : [];
       return `<fieldset class="env-alan"><legend>${etiket}</legend>${Array.from({ length: m.satir }, (_, i) => `<input type="text" maxlength="160" data-metin="${esc(m.alan)}" data-idx="${i}" value="${esc(dizi[i] ?? '')}" aria-label="${esc(`${m.tr} ${i + 1}`)}">`).join('')}</fieldset>`;
@@ -208,9 +258,9 @@ export function envanterPaneli(kok: HTMLElement, s: EnvanterPaneliSecenek): { te
   const cizimHtml = (sy: Sayfa) => {
     if (!sy.cizim) return '';
     const b = form!.oturum.belge;
-    return `<section class="env-cizim"><h3 class="env-bolum-bas"><span>${esc(sy.cizim.tr)}</span><span class="env-fr" lang="fr">${fr(sy.cizim.fr)}</span></h3>
+    return `<section class="env-cizim"><h3 class="env-bolum-bas"><span${trL}>${esc(sy.cizim.tr)}</span><span class="env-fr" lang="fr">${fr(sy.cizim.fr)}</span></h3>
       <canvas class="env-tuval" width="640" height="360" data-env-tuval aria-label="Çocuğun çizimi (parmakla)"></canvas>
-      <div class="env-satir-dugmeler"><button type="button" class="env-dugme" data-env-cizim-sil>Çizimi sil</button></div>${b.cizim ? '' : ''}</section>`;
+      <div class="env-satir-dugmeler"><button type="button" class="env-dugme" data-env-cizim-sil><span>Çizimi sil</span>${ev ? `<span class="env-fr" lang="fr">Effacer le dessin</span>` : ''}</button></div>${b.cizim ? '' : ''}</section>`;
   };
 
   const sayfaHtml = (sy: Sayfa, g: Grup) => {
@@ -313,6 +363,63 @@ export function envanterPaneli(kok: HTMLElement, s: EnvanterPaneliSecenek): { te
     ciz();
   };
 
+  /* ───────────── ev kipi (veli bağlantısı, 1 Kasım 2026) ───────────── */
+  // Tek sayfa, tek öğrenci: öğrenci kipinin satır çizimi (yalnız «ben» sütunu, TR + FR etiket) yeniden kullanılır; hoca sütunu,
+  // okuma basamağı, hoca notları, doğrulama tarihi, «sayfayı dinledim» ve «formu tamamlandı say» hiç çizilmez.
+  const evYardimHtml = () => {
+    const y = evYardim(ev!.grup);
+    const sira: ('tr' | 'fr')[] = ev!.dil === 'fr' ? ['fr', 'tr'] : ['tr', 'fr'];
+    return `<details class="env-ev-yardim" data-env-yardim${yardimAcik ? ' open' : ''}>
+      <summary>${simge('form')}${sira.map((d) => `<span lang="${d}">${esc(y[d].baslik)}</span>`).join('<span class="env-ev-ayrac" aria-hidden="true"> / </span>')}</summary>
+      ${sira.map((d) => `<div class="env-ev-yardim-dil" lang="${d}" data-yardim-dil="${d}">${y[d].maddeler.map((m) => `<p>${esc(m)}</p>`).join('')}</div>`).join('')}</details>`;
+  };
+  const evIcerik = () => {
+    const f = form!;
+    const sayfalar = MADDELER.gruplar[f.grup].sayfalar;
+    const kutular = sayfalar.flatMap((x) => x.kutular);
+    const tanima = kutular.filter((k) => k.anahtar !== 'okuma' && k.anahtar !== 'alt');
+    const okuma = kutular.filter((k) => k.anahtar === 'okuma' || k.anahtar === 'alt');
+    // hoca için yazılmış metin alanı yalnız veli sürümü varsa gösterilir; yoksa hiç çizilmez
+    const metinler = sayfalar.flatMap((x) => x.metin).flatMap((m): MetinAlani[] => (m.hoca ? (EV_METIN[m.alan] ? [{ ...m, ...EV_METIN[m.alan] }] : []) : [m]));
+    const cizimli = sayfalar.find((x) => x.cizim);
+    const ek = `${tanima.map(kutuHtml).join('')}${metinler.map(metinHtml).join('')}${okuma.map(kutuHtml).join('')}${cizimli ? cizimHtml(cizimli) : ''}`;
+    return `${sayfalar.flatMap((x) => x.bolumler).map((b) => bolumHtml(b, true)).join('')}
+      <div class="env-ogr-ek env-ev-ek">${f.grup === '9-13' ? '<h3 class="env-bolum-bas"><span lang="tr">Kendimi tanıtıyorum</span><span class="env-fr" lang="fr">Je me présente</span></h3>' : ''}${ek}</div>
+      <div class="env-bitir"><button type="button" class="env-dugme birincil buyuk" data-env-ev-bitti>${simge('onay')}<span lang="tr">Bitti</span><span class="env-fr" lang="fr">Terminé</span></button></div>`;
+  };
+  const evSonHtml = () => {
+    const f = form!;
+    const bekliyor = depo.bekleyenVar() || f.oturum.bekliyor();
+    const yazi = bekliyor
+      ? { tr: 'Kayıtlar gönderiliyor… İnternet gelince kendiliğinden gider, sayfayı kapatmayın.', fr: `Envoi en cours… Les réponses partiront dès que la connexion revient${NB}; ne fermez pas la page.` }
+      : f.grup === '9-13'
+        ? { tr: 'Teşekkürler! Formun hocana ulaştı.', fr: `Merci${NB}! Ton formulaire est bien envoyé à ton enseignant.` }
+        : { tr: 'Teşekkürler! Form hocaya ulaştı.', fr: `Merci${NB}! Le formulaire est bien envoyé à l’enseignant.` };
+    return `<div class="env-ogr-son env-ev-son" role="status" aria-live="polite" data-env-ev-son="${bekliyor ? 'bekliyor' : 'tamam'}">
+      <p class="env-ogr-metin" lang="tr">${esc(yazi.tr)}</p><p class="env-ogr-metin env-fr" lang="fr">${esc(yazi.fr)}</p>
+      <button type="button" class="env-dugme buyuk" data-env-ev-geri>${simge('geri')}<span lang="tr">Geri dön, düzelt</span><span class="env-fr" lang="fr">Revenir et corriger</span></button></div>`;
+  };
+  const evHtml = () => {
+    const f = form;
+    if (!f) {
+      const hata = depo.durum().hata;
+      return `<p class="env-bos" role="${hata ? 'alert' : 'status'}">${simge(hata ? 'uyari' : 'saat')}<span>${hata ? 'Form açılamadı (bağlantı ya da yetki). Sayfayı yenileyin.' : 'Yükleniyor…'}</span></p>`;
+    }
+    return f.bitti ? evSonHtml() : `${evYardimHtml()}<div class="env-ev-form">${evIcerik()}</div>`;
+  };
+  /** Bitti'den sonra bekleyen yazım bitene kadar son ekranı tazeler (anlık görüntü ile yazım sayacı aynı anda dönmeyebilir). */
+  const evSonuBekle = () => {
+    if (evSonBekleniyor) return;
+    evSonBekleniyor = true;
+    const bak = () => {
+      if (kapali || !form?.bitti) { evSonBekleniyor = false; return; }
+      ciz();
+      if (depo.bekleyenVar() || form.oturum.bekliyor()) setTimeout(bak, 600);
+      else evSonBekleniyor = false;
+    };
+    setTimeout(bak, 300);
+  };
+
   /* ───────────── çizim (5–8, parmak) ───────────── */
   const tuvalBaglan = () => {
     const tuval = kok.querySelector<HTMLCanvasElement>('[data-env-tuval]');
@@ -348,6 +455,7 @@ export function envanterPaneli(kok: HTMLElement, s: EnvanterPaneliSecenek): { te
 
   /* ───────────── çizim ve olaylar ───────────── */
   const govdeHtml = () => {
+    if (ev) return evHtml();
     if (form) return formHtml();
     return `<div class="env-gorunum" role="group" aria-label="Görünüm">
         <button type="button" class="env-gorunum-dugme" data-env-gorunum="bugun" aria-pressed="${gorunum === 'bugun'}">Bugün</button>
@@ -357,14 +465,19 @@ export function envanterPaneli(kok: HTMLElement, s: EnvanterPaneliSecenek): { te
   const ciz = () => {
     if (kapali) return;
     const odak = document.activeElement instanceof HTMLElement && kok.contains(document.activeElement) ? document.activeElement.dataset : undefined;
+    const y = ev ? window.scrollY : 0; // ev kipinde tek uzun sayfa: yeniden çizim kaydırma konumunu bozmasın
     kok.querySelector<HTMLElement>('[data-env-govde]')!.innerHTML = govdeHtml();
+    if (ev && y) window.scrollTo?.({ top: y });
     if (form) tuvalBaglan();
     if (odak?.envSayfa) kok.querySelector<HTMLElement>(`[data-env-sayfa="${CSS.escape(odak.envSayfa)}"]`)?.focus({ preventScroll: true });
     bilgiYaz(bilgi, bilgiTur); durumGuncelle();
   };
   const metinFokusta = () => document.activeElement instanceof HTMLElement && /^(INPUT|TEXTAREA)$/.test(document.activeElement.tagName) && (kok.contains(document.activeElement) || Boolean(overlay?.contains(document.activeElement)));
 
-  kok.innerHTML = `<div class="env-ust"><h2>${simge('form')}Envanter <span class="kucuk env-gun">${esc(gunYaz(s.bugun))}</span></h2><p class="env-baglanti-kap" data-env-baglanti>${rozetHtml()}</p></div>
+  kok.innerHTML = ev
+    ? `<div class="env-ust"><h2 class="env-ev-baslik">${simge('form')}<span lang="tr">Neler biliyorum? · ${esc(ev.ad)}</span> <span class="env-ev-ayrac" aria-hidden="true">/</span> <span class="env-fr" lang="fr">Ce que je sais</span></h2><p class="env-baglanti-kap" data-env-baglanti>${rozetHtml()}</p></div>
+    <p class="env-bilgi" data-env-bilgi role="status" aria-live="polite" hidden></p><div class="env-govde" data-env-govde></div>`
+    : `<div class="env-ust"><h2>${simge('form')}Envanter <span class="kucuk env-gun">${esc(gunYaz(s.bugun))}</span></h2><p class="env-baglanti-kap" data-env-baglanti>${rozetHtml()}</p></div>
     <p class="env-bilgi" data-env-bilgi role="status" aria-live="polite" hidden></p><div class="env-govde" data-env-govde></div>`;
 
   const formAc = (ref: string, grup: Grup, hedefIs = '') => {
@@ -374,7 +487,8 @@ export function envanterPaneli(kok: HTMLElement, s: EnvanterPaneliSecenek): { te
     const f: FormDurumu = { ref, grup, oturum, sayfa: 1, program: undefined, programAcik: hedefIs === 'hedef', ogrenciKipi: false, bitti: false, hedefGoster: false };
     form = f;
     bilgiYaz('');
-    depo.program(ref).then((p) => { f.program = p; }, () => { f.program = null; }).finally(() => { if (form === f && !kapali) { if (overlay) ogrenciCiz(); else if (f.programAcik) ciz(); } });
+    if (ev) f.program = null; // ev kipinde kişisel program okunmaz/gösterilmez
+    else depo.program(ref).then((p) => { f.program = p; }, () => { f.program = null; }).finally(() => { if (form === f && !kapali) { if (overlay) ogrenciCiz(); else if (f.programAcik) ciz(); } });
     ciz();
     window.scrollTo?.({ top: 0 });
   };
@@ -384,13 +498,13 @@ export function envanterPaneli(kok: HTMLElement, s: EnvanterPaneliSecenek): { te
     if (!satir) return;
     const tum = [...kapsayici.querySelectorAll('.env-satir')];
     const sonraki = tum[tum.indexOf(satir) + 1];
-    (sonraki ?? kapsayici.querySelector('.env-bitir,.env-notlar,.env-dinledim,.dinledim'))?.scrollIntoView({ block: sonraki ? 'center' : 'end', behavior: KAYDIRMA() });
+    (sonraki ?? kapsayici.querySelector('.env-ev-ek,.env-bitir,.env-notlar,.env-dinledim,.dinledim'))?.scrollIntoView({ block: sonraki ? 'center' : 'end', behavior: KAYDIRMA() });
   };
   const satirYenile = (id: string, kapsayici: HTMLElement) => {
     const bilgi_ = satirBilgisi.get(id);
     const eski = kapsayici.querySelector<HTMLElement>(`[data-satir="${CSS.escape(id)}"]`);
     if (!bilgi_ || !eski || !form) return null;
-    eski.outerHTML = satirHtml(bilgi_.satir, bilgi_.bolum, Boolean(overlay?.contains(eski)));
+    eski.outerHTML = satirHtml(bilgi_.satir, bilgi_.bolum, Boolean(ev) || Boolean(overlay?.contains(eski)));
     return kapsayici.querySelector<HTMLElement>(`[data-satir="${CSS.escape(id)}"]`);
   };
   const kutuDegistir = (anahtar: string, sec: string) => {
@@ -407,7 +521,7 @@ export function envanterPaneli(kok: HTMLElement, s: EnvanterPaneliSecenek): { te
 
   async function isle(ev: Event) {
     const hedef = ev.target as HTMLElement;
-    const el = hedef.closest<HTMLElement>('[data-env-gorunum],[data-env-tik],[data-env-ac],[data-env-geri],[data-env-sayfa],[data-ben],[data-hoca-d],[data-kutu],[data-okuma-bas],[data-okuma-sonraki],[data-env-dinledim],[data-env-ogr-ac],[data-env-bitti],[data-env-hedef],[data-env-hedef-kapat],[data-env-program],[data-env-tamam],[data-env-dogrulama-bugun],[data-env-cizim-sil]');
+    const el = hedef.closest<HTMLElement>('[data-env-gorunum],[data-env-tik],[data-env-ac],[data-env-geri],[data-env-sayfa],[data-ben],[data-hoca-d],[data-kutu],[data-okuma-bas],[data-okuma-sonraki],[data-env-dinledim],[data-env-ogr-ac],[data-env-bitti],[data-env-hedef],[data-env-hedef-kapat],[data-env-program],[data-env-tamam],[data-env-dogrulama-bugun],[data-env-cizim-sil],[data-env-ev-bitti],[data-env-ev-geri]');
     if (!el) return;
     const kapsayici = (overlay && overlay.contains(el)) ? overlay : kok;
     const d = el.dataset;
@@ -431,7 +545,7 @@ export function envanterPaneli(kok: HTMLElement, s: EnvanterPaneliSecenek): { te
       const yeni = satirYenile(id, kapsayici);
       if (overlay && kapsayici === overlay) overlay.querySelector<HTMLElement>('[data-env-ilerleme]')!.innerHTML = ogrenciIlerlemeHtml();
       durumGuncelle();
-      const ilerle = mevcut !== deger && (sutun === 'hoca' || kapsayici === overlay || f.grup === '5-8');
+      const ilerle = mevcut !== deger && (sutun === 'hoca' || kapsayici === overlay || f.grup === '5-8' || Boolean(ev));
       if (ilerle) sonrakiSatir(yeni, kapsayici);
       yeni?.querySelector<HTMLElement>('[aria-pressed="true"]')?.focus({ preventScroll: true });
       return;
@@ -443,6 +557,8 @@ export function envanterPaneli(kok: HTMLElement, s: EnvanterPaneliSecenek): { te
     if (d.envProgram !== undefined) { f.programAcik = !f.programAcik; ciz(); return; }
     if (d.envOgrAc !== undefined) { ogrenciKipiAc(); return; }
     if (d.envBitti !== undefined) { f.oturum.ayarla(['durum'], 'ogrenci-bitti'); f.bitti = true; f.oturum.gonder(); ogrenciCiz(); overlay?.scrollTo?.({ top: 0 }); return; }
+    if (d.envEvBitti !== undefined) { f.oturum.ayarla(['durum'], 'ogrenci-bitti'); f.bitti = true; f.oturum.gonder(); ciz(); window.scrollTo?.({ top: 0 }); evSonuBekle(); return; }
+    if (d.envEvGeri !== undefined) { f.bitti = false; ciz(); return; }
     if (d.envHedef !== undefined) { f.hedefGoster = true; ogrenciCiz(); return; }
     if (d.envHedefKapat !== undefined) { f.hedefGoster = false; ogrenciCiz(); return; }
     if (d.envTamam !== undefined) { const yeni = f.oturum.belge.durum === 'tamam' ? 'ogrenci-bitti' : 'tamam'; f.oturum.ayarla(['durum'], yeni); ciz(); return; }
@@ -488,6 +604,10 @@ export function envanterPaneli(kok: HTMLElement, s: EnvanterPaneliSecenek): { te
   const birak = depo.abone(() => {
     if (kapali) return;
     durumGuncelle();
+    if (ev) { // ev kipi: ilk anlık görüntüde tek formu aç; son ekran açıksa bekleyen/gönderildi metnini tazele
+      if (!form) { if (depo.durum().hazir) formAc(ev.ref, ev.grup); else if (depo.durum().hata) ciz(); } else if (form.bitti) ciz();
+      return;
+    }
     if (form) return; // açık formu canlı güncelleme yeniden çizmez (yerel kopya iyimser)
     if (metinFokusta()) return;
     ciz();
@@ -495,6 +615,15 @@ export function envanterPaneli(kok: HTMLElement, s: EnvanterPaneliSecenek): { te
   const gorunurDegisti = () => { if (document.visibilityState === 'hidden') depo.hepsiniGonder(); };
   document.addEventListener('visibilitychange', gorunurDegisti, { signal: ac.signal });
   window.addEventListener('pagehide', () => depo.hepsiniGonder(), { signal: ac.signal });
+  if (ev) {
+    // yardım kartı açık/kapalı durumu (toggle kabarcıklanmaz → yakalama aşaması); depolama yoksa yalnız bellekte kalır
+    kok.addEventListener('toggle', (e) => {
+      const el = e.target as HTMLDetailsElement;
+      if (!el?.matches?.('[data-env-yardim]')) return;
+      yardimAcik = el.open;
+      try { localStorage.setItem(EV_YARDIM_ANAHTARI, el.open ? 'acik' : 'kapali'); } catch { /* yoksay */ }
+    }, { capture: true, signal: ac.signal });
+  }
   depo.baslat();
   ciz();
 
@@ -509,6 +638,7 @@ export function envanterPaneli(kok: HTMLElement, s: EnvanterPaneliSecenek): { te
       depo.kapat();
     },
     ayrilabilir() {
+      if (ev) { depo.hepsiniGonder(); return !(depo.bekleyenVar() || form?.oturum.bekliyor()); } // ev kipi: yalnız bekleyen yazım varken uyar
       if (overlay) return false; // öğrenci kipi kilitli: yalnız 2 saniyelik basılı tutma çıkarır
       depo.hepsiniGonder();
       return true;

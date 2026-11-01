@@ -81,7 +81,7 @@ export const runTransaction=async(_db,cb)=>{
    sunucuya gitmez, ekran hemen güncellenir, metadata bekleyen yazma gösterir); __ezberReddet = {kod, sunucu}
    (sıradaki yazım reddedilir; yerel değişiklik geri sarılır, sunucu durumu `sunucu` olur — iki telefon çakışması);
    __ezberDinlemeHatasi (dinleme yetki hatası). Her toplu yazım __ezberYazimlar'a düşer. */
-const firestoreTam = `
+export const firestoreTam = `
 const parca=(...p)=>p.flatMap(x=>String(x).split('/')).filter(Boolean);
 let oto=0;
 const tablo=col=>(window.__records[col]||=[]);

@@ -152,3 +152,15 @@ html.env-kilitli, html.env-kilitli body { overflow: hidden; }
 .env-ogr-son { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 1rem; padding: 1.5rem; text-align: center; overflow-y: auto; }
 .env-ogr-son h2 { font-size: 1.8rem; margin: 0; }
 .env-ogr-metin { margin: 0; font-size: 1.2rem; line-height: 1.5; }
+
+/* ── Ev kipi (veli bağlantısı): tek uzun sayfa, hoca alanı yok ── */
+.env-ev-baslik .env-fr, .env-ev-baslik .env-ev-ayrac { display: inline; font-size: 0.85em; }
+.env-ev-baslik .env-ev-ayrac { color: var(--metin-2); }
+.env-ev-yardim { margin: 0 0 1.2rem; padding: 0.2rem 0.9rem; border: 1px solid var(--cizgi); border-radius: 12px; background: var(--zemin-2); }
+.env-ev-yardim summary { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; min-height: 56px; font-weight: 700; cursor: pointer; }
+.env-ev-yardim summary .env-ev-ayrac { font-weight: 400; color: var(--metin-2); white-space: pre; }
+.env-ev-yardim-dil { margin: 0 0 0.8rem; }
+.env-ev-yardim-dil p { margin: 0 0 0.4rem; line-height: 1.5; }
+.env-ev-yardim-dil + .env-ev-yardim-dil { padding-top: 0.6rem; border-top: 1px dashed var(--cizgi); }
+.env-ev-form .env-satir { min-height: 0; }
+.env-ev-son { min-height: 50vh; }
