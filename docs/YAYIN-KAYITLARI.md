@@ -4,6 +4,31 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 1 Kasım 2026 (sabah, 2) — «Neler biliyorum?» bağlantı sayfası /neler-biliyorum/ (hoca girişi yok, gizli anahtar)
+
+- Zaman: 1 Kasım 2026 09.22 kurallar dağıtıldı · 09.27 commit + push · Pages run 41288611247, Europe/Brussels (CET).
+  Dayanak: Rıdvan 1.11.2026 08.40 «hoca portalının dışında bir sayfa olsun bu iş için; sadece bu bağlantıya sahip olanlar
+  girebilsin … iki hoca aynı anda farklı öğrenci kayıtlarını halledelim».
+- Kapsam (commit `4bef2762`):
+  - Yeni `src/pages/neler-biliyorum/index.astro` (noindex, site haritasında yok, sitede bağlantısı yok) ve
+    `src/scripts/envanter-baglanti.ts`.
+    - Anahtar adresin # kısmında durur (`#k=…`); sunucuya ve günlüğe gitmez.
+    - Hoca ekranının Envanter paneli olduğu gibi açılır.
+  - `src/lib/ogrenci-envanteri/depo.ts`: koleksiyon yolları parametreye çevrildi (`HOCA_YOLLARI` varsayılan; hoca ekranı
+    aynı kaldı).
+  - `firebase/firestore.rules`:
+    - `envVeri()` ortak doğrulama işlevi.
+    - `envanterBaglanti/{k}`: yalnız anahtarla `get`; liste yasak; `bitis` son kullanma tarihi. Üst belgeyi yalnız Python
+      (IAM) yazar.
+    - `kayitlar`: aynı şema, sürüm +1, öğrenci bağlantının listesinde olmalı, kaydeden `baglanti`.
+    - `gunSirasi` yalnız `yapildi` alanını günceller; `program` salt okunur.
+  - `tests/kurallar/firestore.test.mjs`: 2 yeni test (bağlantı kuralları; girişsiz depo yazımı) → 62/62.
+- Bağlantıyı kurs projesi açar, aktarır ve kapatır: `D:\ulu-camii-kuran-kursu\scripts\envanter_baglanti.py`
+  (ac · durum · aktar · kapat). Anahtar depoya girmez; yalnız kurs projesindeki yerel bir dosyada durur.
+- Doğrulama: `check` 0 hata · build 1963 sayfa · kural dry-run ve dağıtım başarılı · test:kurallar 62/62. **Pages run 41288611247 başarılı; canlı doğrulandı (09.27):** /neler-biliyorum/ 200 + noindex, site haritasında yok; anahtarsız ve yanlış anahtarla «geçersiz» uyarısı; doğru anahtarla gün sırası (24 adım), öğrenci listesi, kâğıttan aktarılmış form (0016) ve onaylı program okunuyor; deneme öğrencide oluşturma (sürüm 1) ve güncelleme (sürüm 2, kaydeden baglanti) Firestore'da; konsol hatası 0; deneme belgesi silindi (GET 404). Bilinen küçük eksik: aynı sekmede yalnız # değişirse sayfa kendini yeniden yüklemiyor (bağlantı ilk açılışta sorunsuz).
+- Başka oturuma ait şu dosyalar commit'e alınmadı: `scripts/defter-yoklama-denetim.mjs`, `CODEX-DEFTER-KOORDINASYON.md`,
+  `docs/afisler/2026-10-14-…`.
+
 ## 1 Kasım 2026 (sabah) — Namaz sayfası: sabah cemaati «güneş doğmadan yarım saat önce» + ekran dokunmatik kip taşma düzeltmesi
 
 - Zaman: 1 Kasım 2026 ≈09:11 (commit + push), ≈09:14 (Pages başarılı), 09:15 (canlı doğrulama), Europe/Brussels (CET).
