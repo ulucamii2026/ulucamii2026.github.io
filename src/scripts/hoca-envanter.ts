@@ -8,7 +8,7 @@
  */
 import type { FirebaseApp } from 'firebase/app';
 import { tamFirestore } from '../lib/firebase-tam';
-import { ENVANTER_CAKISMA, envanterDeposu, type Oturum } from '../lib/ogrenci-envanteri/depo';
+import { ENVANTER_CAKISMA, envanterDeposu, type DepoYollari, type Oturum } from '../lib/ogrenci-envanteri/depo';
 import {
   GRUPLAR, MADDELER, ROZET_ADI, TEST_REF, enYeni, grupAdi, ilerleme, rozet, sayfaSatirlari,
   type Bolum, type Grup, type Kutu, type MetinAlani, type Program, type Sayfa, type Satir,
@@ -21,6 +21,8 @@ export interface EnvanterPaneliSecenek {
   ogrenciler: () => readonly EnvanterOgrencisi[];
   bugun: string;
   uid: () => string;
+  /** Bağlantı sayfası (/neler-biliyorum/) için «envanterBaglanti/{k}/…» yolları; verilmezse hoca ekranı koleksiyonları. */
+  yollar?: DepoYollari;
 }
 
 const esc = (s: unknown) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c] as string);
@@ -54,7 +56,7 @@ type FormDurumu = {
 };
 
 export function envanterPaneli(kok: HTMLElement, s: EnvanterPaneliSecenek): { temizle(): void; ayrilabilir(): boolean } {
-  const depo = envanterDeposu(tamFirestore(s.app), s.bugun, s.uid);
+  const depo = envanterDeposu(tamFirestore(s.app), s.bugun, s.uid, s.yollar);
   const ac = new AbortController();
   let gorunum: Gorunum = 'bugun';
   let form: FormDurumu | null = null;

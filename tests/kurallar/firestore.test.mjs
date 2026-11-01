@@ -847,3 +847,58 @@ test('Envanter deposu: oturum yazımı kurallardan geçer (kimlik alanları yaln
     assert.equal(await depo1.program('ogrenci-a'), null);
   } finally { depo1.kapat(); depo2.kapat(); }
 });
+
+/* 1 Kasım 2026 sabahı — «Neler biliyorum?» bağlantı sayfası: envanterBaglanti/{anahtar} (hoca girişi yok, yetki = gizli anahtar). */
+const BAG = 'Kq3vT9xLm2Rz8NwYb5HcJd7P';                  // 24 karakter (deneme anahtarı)
+const bagKur = (ek = {}) => env.withSecurityRulesDisabled((c) => setDoc(doc(c.firestore(), 'envanterBaglanti', BAG),
+  { bitis: Timestamp.fromMillis(Date.now() + 3600e3), refler: ['ogrenci-a'], ogrenciler: [{ ref: 'ogrenci-a', ad: 'A', soyad: 'B.' }], ...ek }));
+const bagBelge = (ek = {}) => enBelge({ kaydeden: 'baglanti', ...ek });
+
+test('Bağlantı: anahtarı bilen ziyaretçi okur ve yazar; liste, başka anahtar, süresi dolmuş bağlantı reddedilir', async () => {
+  await bagKur();
+  const misafir = env.unauthenticatedContext().firestore();
+  await assertSucceeds(read(misafir, 'envanterBaglanti/' + BAG));
+  await assertFails(getDocs(collection(misafir, 'envanterBaglanti')));                                  // anahtarlar sayılamaz
+  await assertFails(read(misafir, 'envanterBaglanti/BASKAANAHTAR0000000000000'));
+  await assertFails(setDoc(doc(misafir, 'envanterBaglanti', BAG), { bitis: Timestamp.fromMillis(Date.now() + 9e9) }));
+  await assertSucceeds(setDoc(doc(misafir, `envanterBaglanti/${BAG}/kayitlar`, enId), bagBelge()));
+  await assertSucceeds(getDocs(collection(misafir, `envanterBaglanti/${BAG}/kayitlar`)));
+  await assertFails(setDoc(doc(misafir, `envanterBaglanti/${BAG}/kayitlar`, enId), bagBelge({ surum: 1 })));   // sürüm +1 değil
+  await assertSucceeds(setDoc(doc(misafir, `envanterBaglanti/${BAG}/kayitlar`, enId), bagBelge({ surum: 2 })));
+  await assertFails(setDoc(doc(misafir, `envanterBaglanti/${BAG}/kayitlar`, 'ogrenci-b_2026-11-01_9-13'), bagBelge({ ref: 'ogrenci-b' })));  // listede yok
+  await assertFails(setDoc(doc(misafir, `envanterBaglanti/${BAG}/kayitlar`, 'ogrenci-a_2026-11-01_5-8'), bagBelge({ grup: '5-8', kaydeden: 'hoca-a' })));
+  await assertFails(setDoc(doc(misafir, `envanterBaglanti/${BAG}/kayitlar`, 'ogrenci-a_2026-11-01_5-8'), bagBelge({ grup: '5-8', ekstra: 1 })));
+  await assertFails(deleteDoc(doc(misafir, `envanterBaglanti/${BAG}/kayitlar`, enId)));
+  await assertSucceeds(setDoc(doc(misafir, `envanterBaglanti/${BAG}/kayitlar`, 'TEST-ENVANTER_2026-11-01_9-13'), bagBelge({ ref: 'TEST-ENVANTER' })));
+  await assertSucceeds(deleteDoc(doc(misafir, `envanterBaglanti/${BAG}/kayitlar`, 'TEST-ENVANTER_2026-11-01_9-13')));
+  await assertFails(read(misafir, 'ogrenciEnvanteri/' + enId));                                           // ana koleksiyon kapalı
+  await env.withSecurityRulesDisabled(async (c) => {
+    await setDoc(doc(c.firestore(), `envanterBaglanti/${BAG}/gunSirasi/2026-11-01`), { tarih: '2026-11-01', adimlar: [], yapildi: {} });
+    await setDoc(doc(c.firestore(), `envanterBaglanti/${BAG}/program/ogrenci-a`), { ref: 'ogrenci-a', durum: 'onayli', hedefler: [] });
+  });
+  await assertSucceeds(setDoc(doc(misafir, `envanterBaglanti/${BAG}/gunSirasi/2026-11-01`), { yapildi: { a1: true } }, { merge: true }));
+  await assertFails(setDoc(doc(misafir, `envanterBaglanti/${BAG}/gunSirasi/2026-11-01`), { adimlar: [1] }, { merge: true }));
+  await assertSucceeds(read(misafir, `envanterBaglanti/${BAG}/program/ogrenci-a`));
+  await assertFails(setDoc(doc(misafir, `envanterBaglanti/${BAG}/program/ogrenci-a`), { durum: 'taslak' }));
+  // süresi dolunca her şey kapanır
+  await bagKur({ bitis: Timestamp.fromMillis(Date.now() - 1000) });
+  await assertFails(read(misafir, 'envanterBaglanti/' + BAG));
+  await assertFails(getDocs(collection(misafir, `envanterBaglanti/${BAG}/kayitlar`)));
+  await assertFails(setDoc(doc(misafir, `envanterBaglanti/${BAG}/kayitlar`, enId), bagBelge({ surum: 3 })));
+});
+
+test('Bağlantı deposu: girişsiz iki telefon aynı bağlantıda yazar; sürüm çakışması yakalanır', async () => {
+  await bagKur();
+  const yollar = { envanter: `envanterBaglanti/${BAG}/kayitlar`, gunSirasi: `envanterBaglanti/${BAG}/gunSirasi`, program: `envanterBaglanti/${BAG}/program` };
+  const depo1 = portal.envanterDeposu(env.unauthenticatedContext().firestore(), '2026-11-01', () => 'baglanti', yollar);
+  depo1.baslat();
+  try {
+    const o = depo1.oturumAc('ogrenci-a', '9-13');
+    o.hataDinle((e) => assert.fail(`beklenmeyen yazım hatası: ${e.message}`));
+    o.ayarla(['ben', 'd-euzu-besmele'], 2); o.gonder();
+    await bekle(() => !o.bekliyor(), 'bağlantı yazımı');
+    let s;
+    await env.withSecurityRulesDisabled(async (c) => { s = (await getDoc(doc(c.firestore(), `envanterBaglanti/${BAG}/kayitlar/ogrenci-a_2026-11-01_9-13`))).data(); });
+    assert.equal(s.surum, 1); assert.equal(s.kaydeden, 'baglanti'); assert.deepEqual(s.ben, { 'd-euzu-besmele': 2 });
+  } finally { depo1.kapat(); }
+});

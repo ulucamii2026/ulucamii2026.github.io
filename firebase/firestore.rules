@@ -310,16 +310,15 @@ service cloud.firestore {
        Belge kimliği {ref}_{tarih}_{grup}; yalnız hoca okur/yazar, veli görmez. Eşzamanlılık `surum`: yazım sunucudaki
        sürümden tam bir fazla olmalı (başka telefon araya girdiyse eski ekranın yazımı reddedilir). Madde değerleri 0–2.
        Sahte öğrenci TEST-ENVANTER yalnız deneme içindir; içe aktarıcılar onu yok sayar. Silme yalnız o deneme belgelerine. */
-    match /ogrenciEnvanteri/{id} {
-      function envGecerli() {
-        let d = request.resource.data;
+    /* Envanter belgesinin alan doğrulaması (kaydeden hariç) — hoca ekranı ve bağlantı sayfası aynı şartı kullanır. */
+    function envVeri(d, id) {
         return d.keys().hasOnly(['ref','tarih','grup','kaynak','ben','hoca','kutular','metin','okuma','okuma_notlari','cizim','sayfaDinlendi','durum','surum','guncelleme','kaydeden'])
           && d.keys().hasAll(['ref','tarih','grup','kaynak','durum','surum','guncelleme','kaydeden'])
           && d.ref is string && gunDizesi(d.tarih) && d.grup in ['5-8','9-13']
           && id == d.ref + '_' + d.tarih + '_' + d.grup
           && d.kaynak in ['online','kagit-2026-10-31']
           && d.durum in ['baslandi','ogrenci-bitti','tamam']
-          && d.surum is int && d.guncelleme == request.time && d.kaydeden == request.auth.uid
+          && d.surum is int && d.guncelleme == request.time && d.kaydeden is string
           && (!('ben' in d) || (d.ben is map && d.ben.size() <= 80 && d.ben.values().hasOnly([0,1,2])))
           && (!('hoca' in d) || (d.hoca is map && d.hoca.size() <= 80 && d.hoca.values().hasOnly([0,1,2])))
           && (!('kutular' in d) || (d.kutular is map && d.kutular.size() <= 20))
@@ -330,6 +329,10 @@ service cloud.firestore {
           && (!('okuma_notlari' in d) || (d.okuma_notlari is map && d.okuma_notlari.size() <= 10))
           && (!('sayfaDinlendi' in d) || (d.sayfaDinlendi is map && d.sayfaDinlendi.size() <= 6 && d.sayfaDinlendi.values().hasOnly([true,false])))
           && (!('cizim' in d) || (d.cizim is string && d.cizim.size() <= 210000 && d.grup == '5-8'));
+    }
+    match /ogrenciEnvanteri/{id} {
+      function envGecerli() {
+        return envVeri(request.resource.data, id) && request.resource.data.kaydeden == request.auth.uid;
       }
       function refTamam(ref) {
         return ref == 'TEST-ENVANTER' || exists(/databases/$(db)/documents/ogrenciler/$(ref));
@@ -355,6 +358,47 @@ service cloud.firestore {
         && request.resource.data.yapildi is map && request.resource.data.yapildi.size() <= 80
         && request.resource.data.yapildi.values().hasOnly([true, false]);
       allow create, delete: if false;
+    }
+    /* 1 Kasım 2026 sabahı — «Neler biliyorum?» BAĞLANTI SAYFASI (/neler-biliyorum/#k=<anahtar>), hoca girişi YOK.
+       Rıdvan: «hoca portalının dışında bir sayfa olsun; sadece bu bağlantıya sahip olanlar girebilsin». Yetki = belge
+       kimliğindeki gizli anahtar (≥ 24 karakter, Python `secrets` ile; adresin # kısmında). Üst belgeyi yalnız Python
+       (IAM) yazar: öğrenci listesi (ref, ad, soyadın baş harfi), `refler`, `bitis` (son kullanma). Liste sorgusu yasak
+       (anahtar tahmin edilemez, sayılamaz). Altındaki form belgeleri ogrenciEnvanteri ile AYNI doğrulamadan geçer
+       (envVeri + sürüm), kaydeden 'baglanti'. Bitiş geçince ya da belge silinince her şey kapanır. */
+    function baglantiAcik(k) {
+      return k.size() >= 24 && exists(/databases/$(db)/documents/envanterBaglanti/$(k))
+        && get(/databases/$(db)/documents/envanterBaglanti/$(k)).data.bitis > request.time;
+    }
+    match /envanterBaglanti/{k} {
+      allow get: if k.size() >= 24 && resource.data.bitis > request.time;
+      allow list, create, update, delete: if false;
+      match /kayitlar/{id} {
+        function refListede(ref) {
+          return ref == 'TEST-ENVANTER' || ref in get(/databases/$(db)/documents/envanterBaglanti/$(k)).data.refler;
+        }
+        function bagGecerli() {
+          return envVeri(request.resource.data, id) && request.resource.data.kaydeden == 'baglanti';
+        }
+        allow read: if baglantiAcik(k);
+        allow create: if baglantiAcik(k) && bagGecerli() && refListede(request.resource.data.ref)
+          && islemeAcik(request.resource.data.ref) && request.resource.data.surum == 1;
+        allow update: if baglantiAcik(k) && bagGecerli() && islemeAcik(resource.data.ref)
+          && request.resource.data.surum == resource.data.get('surum', 0) + 1
+          && request.resource.data.ref == resource.data.ref && request.resource.data.tarih == resource.data.tarih
+          && request.resource.data.grup == resource.data.grup && request.resource.data.kaynak == resource.data.kaynak;
+        allow delete: if baglantiAcik(k) && resource.data.ref == 'TEST-ENVANTER';
+      }
+      match /gunSirasi/{tarih} {
+        allow read: if baglantiAcik(k);
+        allow update: if baglantiAcik(k) && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['yapildi'])
+          && request.resource.data.yapildi is map && request.resource.data.yapildi.size() <= 80
+          && request.resource.data.yapildi.values().hasOnly([true, false]);
+        allow create, delete: if false;
+      }
+      match /program/{ref} {
+        allow read: if baglantiAcik(k);
+        allow write: if false;
+      }
     }
   }
 }

@@ -3,6 +3,7 @@
  * yansır, bağlantı gelince gönderilir. Her belge için bir `Oturum`: yerel kopya + birikmiş yama; yama en çok saniyede bir
  * tek toplu yazımla gider (`surum` her yazımda +1; kural eski ekranın yazımını reddeder → `ENVANTER_CAKISMA`).
  * Kurallar: firebase/firestore.rules «ogrenciEnvanteri», «ogrenciProgrami», «hocaGunSirasi».
+ * Bağlantı sayfası (/neler-biliyorum/#k=…, 1 Kasım 2026 sabahı): aynı depo, yollar «envanterBaglanti/{k}/…» altında.
  */
 import {
   collection, deleteField, doc, getDoc, getDocFromServer, onSnapshot, serverTimestamp, writeBatch, type Firestore,
@@ -14,6 +15,10 @@ import {
 export const ENVANTER_CAKISMA = 'ENVANTER_CAKISMA';
 const YAZIM_ARALIGI_MS = 1000;
 const kodu = (e: unknown) => (e as { code?: string } | null)?.code || '';
+
+/** Koleksiyon yolları: hoca ekranı varsayılanı ya da bağlantı sayfasının «envanterBaglanti/{k}/…» yolları. */
+export interface DepoYollari { envanter: string; gunSirasi: string; program: string }
+export const HOCA_YOLLARI: DepoYollari = { envanter: 'ogrenciEnvanteri', gunSirasi: 'hocaGunSirasi', program: 'ogrenciProgrami' };
 
 export interface DepoDurumu { hazir: boolean; hata: boolean; bekleyen: boolean; onbellekten: boolean }
 
@@ -35,7 +40,7 @@ export interface Oturum {
   kapat(): void;
 }
 
-export function envanterDeposu(db: Firestore, bugun: string, uid: () => string) {
+export function envanterDeposu(db: Firestore, bugun: string, uid: () => string, yollar: DepoYollari = HOCA_YOLLARI) {
   const belgeler = new Map<string, EnvanterBelgesi>();
   const dinleyiciler = new Set<() => void>();
   const oturumlar = new Set<{ snapshot(): void; kapat(): void; bekliyor(): boolean; gonder(): void }>();
@@ -51,7 +56,7 @@ export function envanterDeposu(db: Firestore, bugun: string, uid: () => string) 
 
   function baslat() {
     if (birakmalar.length) return;
-    birakmalar.push(onSnapshot(collection(db, 'ogrenciEnvanteri'), { includeMetadataChanges: true }, (s) => {
+    birakmalar.push(onSnapshot(collection(db, yollar.envanter), { includeMetadataChanges: true }, (s) => {
       belgeler.clear();
       for (const d of s.docs) {
         const b = belgeOku(d.id, d.data());
@@ -62,7 +67,7 @@ export function envanterDeposu(db: Firestore, bugun: string, uid: () => string) 
       for (const o of oturumlar) o.snapshot();
       duyur();
     }, () => { durum.hata = true; duyur(); }));
-    birakmalar.push(onSnapshot(doc(db, 'hocaGunSirasi', bugun), (s) => {
+    birakmalar.push(onSnapshot(doc(db, yollar.gunSirasi, bugun), (s) => {
       gunSirasi = s.exists() ? gunSirasiOku(s.data()) : null;
       duyur();
     }, () => { gunSirasi = null; duyur(); }));
@@ -81,7 +86,7 @@ export function envanterDeposu(db: Firestore, bugun: string, uid: () => string) 
     let bekleyenSayi = 0;
     let hataF: ((e: Error) => void) | undefined;
     let kapali = false;
-    const belgeRef = doc(db, 'ogrenciEnvanteri', kimlik);
+    const belgeRef = doc(db, yollar.envanter, kimlik);
 
     const yamaYaz = (yol: string[], deger: unknown) => {
       let k = yama;
@@ -148,14 +153,14 @@ export function envanterDeposu(db: Firestore, bugun: string, uid: () => string) 
   /** Günün sırasında bir adımı işaretler (kural yalnız `yapildi` alanına izin verir). */
   async function adimIsaretle(id: string, deger: boolean) {
     const toplu = writeBatch(db);
-    toplu.set(doc(db, 'hocaGunSirasi', bugun), { yapildi: { [id]: deger } }, { merge: true });
+    toplu.set(doc(db, yollar.gunSirasi, bugun), { yapildi: { [id]: deger } }, { merge: true });
     if (gunSirasi) gunSirasi = { ...gunSirasi, yapildi: { ...gunSirasi.yapildi, [id]: deger } };
     duyur();
     await toplu.commit();
   }
 
   async function program(ref: string): Promise<Program | null> {
-    const s = await getDoc(doc(db, 'ogrenciProgrami', ref));
+    const s = await getDoc(doc(db, yollar.program, ref));
     return s.exists() ? programOku(s.data()) : null;
   }
 

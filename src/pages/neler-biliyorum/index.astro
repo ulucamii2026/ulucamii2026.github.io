@@ -1,0 +1,28 @@
+---
+/**
+ * «Neler biliyorum?» bağlantı sayfası — /neler-biliyorum/#k=<anahtar> (1 Kasım 2026 sabahı, Rıdvan: «hoca portalının dışında
+ * bir sayfa olsun bu iş için; sadece bu bağlantıya sahip olanlar girebilsin … iki hoca aynı anda farklı öğrenci kayıtlarını
+ * halledelim»). Hoca girişi YOK: erişim yalnız adresteki gizli anahtarla (adresin # kısmı sunucuya, günlüğe ve yönlendirene
+ * gitmez). Veri Firestore «envanterBaglanti/{anahtar}» altında; anahtarı bilmeyen hiçbir şey okuyamaz/yazamaz, bağlantının
+ * son kullanma tarihi vardır (kural: firebase/firestore.rules «envanterBaglanti»). Arayüz hoca ekranının Envanter paneliyle
+ * aynıdır (src/scripts/hoca-envanter.ts). Bağlantıyı Python açar/kapatır: D:\ulu-camii-kuran-kursu\scripts\envanter_baglanti.py.
+ * noindex: site haritasına ve arama motorlarına girmez; sitede hiçbir yerden bağlantı verilmez. Kişisel veri koda girmez.
+ */
+import Base from '../../layouts/Base.astro';
+import '../../styles/hoca-envanter.css';
+---
+<Base baslik="Neler biliyorum?" dil="tr" aciklama="Kur’an kursu — öğrenci envanteri (yalnız bağlantıyla)." noindex dilHatirla={false}>
+  <div class="kapsayici py-6">
+    <div class="portal hoca">
+      <section class="bolum env-kok" id="baglanti-envanter" data-baglanti-envanter>
+        <p class="not" role="status">Yükleniyor…</p>
+        <noscript><p class="not">Bu sayfa JavaScript gerektirir.</p></noscript>
+      </section>
+    </div>
+  </div>
+</Base>
+
+<script>
+  import { baglantiEnvanteri } from '../../scripts/envanter-baglanti';
+  baglantiEnvanteri();
+</script>
