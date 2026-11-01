@@ -4,6 +4,34 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 1 Kasım 2026 (öğle) — Cuma hatırlatma bandı + Cuma takvim aboneliği (`/cuma.ics`)
+
+- Zaman: 1 Kasım 2026 ≈11.18 commit + push · 11.21 Pages başarılı · 11.25 canlı doğrulama, Europe/Brussels (CET).
+  **Yayımlandı ve canlı doğrulandı.** Dayanak: 1 Kasım 2026 sabah yönetim toplantısı (Rıdvan + Mehmet Sadık Gülkılık)
+  «Cuma namazı saati ile ilgili hatırlatmayı hem Facebook hem de web sitemiz üzerinden yapacağız»; Rıdvan «bütün yetki ve
+  karar sende».
+- Kapsam (commit `c63356a9`, önünde otomatik veri commit'i `6e88f9f9` ile yeniden temellendirildi):
+  - `src/components/CumaHatirlatma.tsx` (yeni Preact adacığı): Perşembe bütün gün «Yarın Cuma», Cuma günü namazdan 60 dk
+    sonrasına kadar «Bugün Cuma»; hilal SVG, `role="status"`. Saat `site.cumaSaati`, boşsa o Cuma'nın Diyanet öğle vakti;
+    veri yoksa bant görünmez (hesap yapılmaz).
+  - `src/lib/namaz.ts`: `cumaVakti`, `cumaGunleri`, `cumaHatirlatmasi`; `NamazVakitleri.tsx` aynı işlevi kullanır.
+  - Ana sayfa (`src/pages/[lang]/index.astro`) ve namaz sayfası (`src/sayfalar/Namaz.astro`); namaz sayfasında webcal ve
+    Google Takvim bağlantısı + açıklama. Metinler `src/i18n/ui.ts` (5 dil).
+  - `src/pages/cuma.ics.ts` + `src/lib/ics.ts` `cumaTakvimiUret`: gelecek Cumalar, 1 saatlik etkinlik, 30 dk önce alarm,
+    REFRESH-INTERVAL 12 saat.
+  - `src/pages/admin/durum.json.ts`: «Cuma hatırlatma bandı» satırı.
+  - `docs/SITE-TALEPLERI.md`: kurul taleplerinin e-postayla alınma akışı (`talep-tara.py`, depo dışı).
+- Testler: `npm run dogrula:codex` çıkış 0 — Playwright 868 geçti / 120 atlandı (site) ve 779 geçti / 31 atlandı
+  (eğitim), node test takımları 22/22 hatasız; `tests/cuma-hatirlatma.test.mjs` 6/6 (`test:ekran` içinde),
+  `tests/web/cuma-hatirlatma.spec.mjs` 10/10 (Perşembe, Cuma 12.00, Cuma 14.00, veri yok, saat dolu/boş, axe).
+- Pages run 41296925246 başarılı. Canlı: `https://ulucamii.be/cuma.ics` 200 `text/calendar`, 4 etkinlik, ilki
+  `DTSTART:20261106T112700Z` (12.27), `TRIGGER:-PT30M`; namaz sayfası 5 dilde `data-cuma-takvim` + webcal bağlantısı ve
+  adacık var (`/tr/namaz-vakitleri/`, `/fr/horaires-de-priere/`, `/en/prayer-times/`, `/nl/gebedstijden/`,
+  `/de/gebetszeiten/`); ana sayfada `CumaHatirlatma` adacığı yüklü.
+- Açık sınır: bant yalnız Perşembe/Cuma görünür; canlıda ilk gerçek görünüm Perşembe 5 Kasım (ekran görüntüsü o gün).
+- Başka oturuma ait şu dosyalar commit'e alınmadı: `scripts/defter-yoklama-denetim.mjs`, `CODEX-DEFTER-KOORDINASYON.md`,
+  `docs/afisler/2026-10-14-…`. Üye defteri dosyaları ve gizlilik metni (5 dil) bu yayına girmedi (ayrı yayın).
+
 ## 1 Kasım 2026 (sabah, 2) — «Neler biliyorum?» bağlantı sayfası /neler-biliyorum/ (hoca girişi yok, gizli anahtar)
 
 - Zaman: 1 Kasım 2026 09.22 kurallar dağıtıldı · 09.27 commit + push · Pages run 41288611247, Europe/Brussels (CET).
