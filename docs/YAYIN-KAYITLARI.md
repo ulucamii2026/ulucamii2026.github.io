@@ -4,6 +4,25 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 1 Kasım 2026 (gece) — Hoca ekranı «Envanter» sekmesi (online «Neler biliyorum?») + 1 Kasım materyallerinin yeniden yayını
+
+- Zaman: 1 Kasım 2026 01:22 (Firestore kuralları), 01:23 (commit + push), 01:26 (Pages başarılı, canlı doğrulama), Europe/Brussels (CET).
+  **Yayımlandı ve canlı doğrulandı.** Dayanak: Rıdvan 1 Kasım 00.40 «sabahı bekleme … bütün yetki ve karar sende»; onaylı plan
+  günün kökten yeniden planı, kâğıtsız envanter ve kişisel programlar. Site işi bu kez kurs oturumunda yapıldı (onaylı istisna).
+- Kapsam: `src/scripts/hoca-envanter.ts`, `src/lib/ogrenci-envanteri/{model,depo}.ts`, `src/styles/hoca-envanter.css`,
+  `src/data/ogrenci-envanteri/maddeler.json` (kurs `scripts/envanter_json.py`; kişisel veri yok), `src/scripts/hoca-ekrani.ts`
+  (sekme), `src/pages/hoca/index.astro`, `firebase/firestore.rules` (`ogrenciEnvanteri`, `ogrenciProgrami`, `hocaGunSirasi`),
+  testler; `src/data/ders-materyalleri.json` (1 Kasım, Release `ders-2026-11-01` 13 dosya yeniden yüklendi).
+- Commit: `a654f9d9` (modül), `23825eb1` (materyal verisi); namaz vakti bot commit'i `79499e5a` üstüne yeniden dizildi.
+  Pages run: https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/41256556839 — başarılı.
+- Doğrulama: `npm run check` 0 hata; build 1962 sayfa; `npm run test:kurallar` 60/60; Playwright hoca-envanter/ezber/yoklama 54/54;
+  `test:ezber` 218/218, `test:ekran` 214/214 (ajan); kural kuru dağıtımı derlendi; canlıda oturumsuz okuma üç koleksiyonda 403;
+  canlı `/_astro/hoca-envanter.*.js` 200; Release'ten indirilen 3 sunum + ders planı PDF'i yerelle SHA-256 eşit.
+- Açık sınır: kuralların hoca kimliğiyle canlı sınaması yapılmadı (kimlik bilgisine erişim izin denetimine takıldı); izinli durumlar
+  emülatörde aynı kural dosyasıyla 60/60. Başka oturumun `scripts/defter-yoklama-denetim.mjs`, `CODEX-DEFTER-KOORDINASYON.md`,
+  `docs/afisler/2026-10-14-…` dosyaları commit'e alınmadı.
+
+
 ## 30 Ekim 2026 (akşam) — Vakitmatik teşekkür duyurusu ana sayfa vitrininde 19 Kasım'a kadar
 
 - Zaman: 30 Ekim 2026 19:37 (commit ve push), 19:42 (Pages), 19:42 (canlı doğrulama), Europe/Brussels (CET).
