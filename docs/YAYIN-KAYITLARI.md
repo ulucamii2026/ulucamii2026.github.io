@@ -18,7 +18,7 @@ Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI
 - Doğrulama: `npm run check` 0 hata; build 1962 sayfa; `npm run test:kurallar` 60/60; Playwright hoca-envanter/ezber/yoklama 54/54;
   `test:ezber` 218/218, `test:ekran` 214/214 (ajan); kural kuru dağıtımı derlendi; canlıda oturumsuz okuma üç koleksiyonda 403;
   canlı `/_astro/hoca-envanter.*.js` 200; Release'ten indirilen 3 sunum + ders planı PDF'i yerelle SHA-256 eşit.
-- Açık sınır: kuralların hoca kimliğiyle canlı sınaması yapılmadı (kimlik bilgisine erişim izin denetimine takıldı); izinli durumlar
+- Canlı kural sınaması (01:45): yayımlanmış kural seti Firebase Rules test API'siyle 15/15 (hoca yazar/okur, hoca olmayan ve oturumsuz ret, surum +1 / eski telefon ret, kâğıt belgeye hoca sütunu, geçersiz değer ve izinsiz alan ret, yalnız deneme belgesi silinir, program salt okunur, gün sırasında yalnız tik); araç kurs `scripts/envanter_kural_canli.py`. Açık sınır: gerçek hoca hesabıyla tarayıcı denemesi sabaha (Rıdvan) kaldı; izinli durumlar
   emülatörde aynı kural dosyasıyla 60/60. Başka oturumun `scripts/defter-yoklama-denetim.mjs`, `CODEX-DEFTER-KOORDINASYON.md`,
   `docs/afisler/2026-10-14-…` dosyaları commit'e alınmadı.
 
