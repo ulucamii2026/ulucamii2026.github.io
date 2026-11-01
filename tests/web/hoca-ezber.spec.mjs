@@ -35,7 +35,8 @@ test('Sekme defterden sonra; eski ödev sekmesi «Haftalık ödev»; yoklama yok
   const sekmeler = await page.locator('[role=tab]').allTextContents();
   const i = sekmeler.findIndex((x) => x.trim() === 'Ezber');
   expect(sekmeler[i - 1].trim()).toBe('Ders Defteri');
-  expect(sekmeler[i + 1].trim()).toBe('Haftalık ödev');
+  expect(sekmeler[i + 1].trim()).toBe('Envanter'); // 1 Kasım 2026: online envanter sekmesi Ezber'in ardından
+  expect(sekmeler[i + 2].trim()).toBe('Haftalık ödev');
   await expect(kok.locator('.ez-bilgi').first()).toContainText('yoklaması henüz işaretlenmedi');
   await expect(kok.locator('[data-ez-ac]')).toHaveCount(2);
   await expect(kart(kok, 'TEST-3')).toHaveCount(0);

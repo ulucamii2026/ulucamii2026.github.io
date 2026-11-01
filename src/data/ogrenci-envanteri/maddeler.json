@@ -1,0 +1,970 @@
+{
+ "surum": 1,
+ "aciklama": "envanter_json.py tarafından üretildi; elle düzenlenmez. Kişisel veri yok.",
+ "olcekler": {
+  "bilgi": [
+   {
+    "tr": "Bilmiyorum",
+    "fr": "Je ne sais pas"
+   },
+   {
+    "tr": "Biraz / yardımla",
+    "fr": "Un peu / avec aide"
+   },
+   {
+    "tr": "Ezbere biliyorum",
+    "fr": "Je sais par cœur"
+   }
+  ],
+  "pratik": [
+   {
+    "tr": "Yapamıyorum",
+    "fr": "Je ne sais pas faire"
+   },
+   {
+    "tr": "Biraz / yardımla",
+    "fr": "Un peu / avec aide"
+   },
+   {
+    "tr": "Yapabiliyorum",
+    "fr": "Je sais faire"
+   }
+  ],
+  "bilgi-soru": [
+   {
+    "tr": "Bilmiyorum",
+    "fr": "Je ne sais pas"
+   },
+   {
+    "tr": "Biraz",
+    "fr": "Un peu"
+   },
+   {
+    "tr": "Biliyorum",
+    "fr": "Je sais"
+   }
+  ],
+  "aliskanlik": [
+   {
+    "tr": "Hiç",
+    "fr": "Jamais"
+   },
+   {
+    "tr": "Bazen",
+    "fr": "Parfois"
+   },
+   {
+    "tr": "Her zaman",
+    "fr": "Toujours"
+   }
+  ]
+ },
+ "yuzler": [
+  "<svg viewBox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"><circle cx=\"10\" cy=\"10\" r=\"8.6\" fill=\"#ebebeb\" stroke=\"#134420\" stroke-width=\"1.15\"/><circle cx=\"7.1\" cy=\"7.6\" r=\"1.1\" fill=\"#134420\"/><circle cx=\"12.9\" cy=\"7.6\" r=\"1.1\" fill=\"#134420\"/><path d=\"M6.4 13.9 L13.6 13.9\" fill=\"none\" stroke=\"#134420\" stroke-width=\"1.3\" stroke-linecap=\"round\"/></svg>",
+  "<svg viewBox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"><circle cx=\"10\" cy=\"10\" r=\"8.6\" fill=\"#f6ebc8\" stroke=\"#134420\" stroke-width=\"1.15\"/><circle cx=\"7.1\" cy=\"7.6\" r=\"1.1\" fill=\"#134420\"/><circle cx=\"12.9\" cy=\"7.6\" r=\"1.1\" fill=\"#134420\"/><path d=\"M6.3 12.7 Q10 16.4 13.7 12.7\" fill=\"none\" stroke=\"#134420\" stroke-width=\"1.3\" stroke-linecap=\"round\"/></svg>",
+  "<svg viewBox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"><circle cx=\"10\" cy=\"10\" r=\"8.6\" fill=\"#d5e9cd\" stroke=\"#134420\" stroke-width=\"1.15\"/><circle cx=\"7.1\" cy=\"7.6\" r=\"1.1\" fill=\"#134420\"/><circle cx=\"12.9\" cy=\"7.6\" r=\"1.1\" fill=\"#134420\"/><path d=\"M5.4 11.6 Q10 19.6 14.6 11.6 Z\" fill=\"#134420\" stroke=\"#134420\" stroke-width=\".9\" stroke-linejoin=\"round\"/></svg>"
+ ],
+ "okuma": {
+  "basamaklar": [
+   {
+    "no": 1,
+    "tr": "Harfleri tanırım",
+    "fr": "Je reconnais les lettres"
+   },
+   {
+    "no": 2,
+    "tr": "Harekeli hece okurum",
+    "fr": "Je lis les syllabes voyellées"
+   },
+   {
+    "no": 3,
+    "tr": "Cezm, şedde, tenvin",
+    "fr": "Soukoun, chadda, tanwin"
+   },
+   {
+    "no": 4,
+    "tr": "Kelime okurum",
+    "fr": "Je lis des mots"
+   },
+   {
+    "no": 5,
+    "tr": "Âyet satırı okurum",
+    "fr": "Je lis une ligne de verset"
+   },
+   {
+    "no": 6,
+    "tr": "Mushaftan sayfa okurum",
+    "fr": "Je lis une page du Mushaf"
+   }
+  ],
+  "alt": [
+   {
+    "anahtar": "hecelemeden",
+    "tr": "Hecelemeden",
+    "fr": "Sans épeler"
+   },
+   {
+    "anahtar": "akici",
+    "tr": "Akıcı",
+    "fr": "Couramment"
+   },
+   {
+    "anahtar": "tecvid",
+    "tr": "Tecvidle",
+    "fr": "Avec le tajwid"
+   }
+  ]
+ },
+ "gruplar": {
+  "5-8": {
+   "okuma_adet": 3,
+   "sayfalar": [
+    {
+     "no": 1,
+     "bolumler": [
+      {
+       "tr": "Ezberlerim",
+       "fr": "Ce que je sais par cœur",
+       "ikon": "kitap-acik",
+       "olcek": "bilgi",
+       "satirlar": [
+        {
+         "id": "d-euzu-besmele",
+         "tr": "Eûzü-Besmele",
+         "fr": "Ta’awwoudh et Basmala"
+        },
+        {
+         "id": "d-kelime-i-tevhid",
+         "tr": "Kelime-i Tevhid",
+         "fr": "Formule de l’unicité"
+        },
+        {
+         "id": "d-kelime-i-sehadet",
+         "tr": "Kelime-i Şehâdet",
+         "fr": "Chahada"
+        },
+        {
+         "id": "s-fatiha",
+         "tr": "Fâtiha Sûresi",
+         "fr": "Sourate Al-Fatiha",
+         "ar": "الفاتحة"
+        },
+        {
+         "id": "s-ihlas",
+         "tr": "İhlâs Sûresi",
+         "fr": "Sourate Al-Ikhlas",
+         "ar": "الإخلاص"
+        },
+        {
+         "id": "s-kevser",
+         "tr": "Kevser Sûresi",
+         "fr": "Sourate Al-Kawthar",
+         "ar": "الكوثر"
+        },
+        {
+         "id": "d-subhaneke",
+         "tr": "Sübhâneke Duası",
+         "fr": "Invocation Subhânaka"
+        },
+        {
+         "id": "d-rabbena-atina",
+         "tr": "Rabbenâ Âtinâ",
+         "fr": "Invocation Rabbana atina"
+        },
+        {
+         "id": "d-yemek-duasi",
+         "tr": "Yemek duası",
+         "fr": "Invocation du repas"
+        }
+       ]
+      },
+      {
+       "tr": "Yapabildiklerim",
+       "fr": "Ce que je sais faire",
+       "ikon": "ibrik",
+       "olcek": "pratik",
+       "satirlar": [
+        {
+         "id": "p-abdest",
+         "tr": "Abdest alırım (gösteririm)",
+         "fr": "Je fais les ablutions (je montre)"
+        },
+        {
+         "id": "p-namaz-hareket",
+         "tr": "Namazın hareketlerini gösteririm",
+         "fr": "Je montre les gestes de la prière"
+        }
+       ]
+      }
+     ],
+     "kutular": [
+      {
+       "anahtar": "okuma",
+       "tr": "Kur’an okuma",
+       "fr": "Lecture du Coran",
+       "coklu": true,
+       "secenekler": [
+        {
+         "anahtar": 1,
+         "tr": "Harfleri tanırım",
+         "fr": "Je reconnais les lettres"
+        },
+        {
+         "anahtar": 2,
+         "tr": "Harekeli hece okurum",
+         "fr": "Je lis les syllabes voyellées"
+        },
+        {
+         "anahtar": 3,
+         "tr": "Cezm, şedde, tenvin",
+         "fr": "Soukoun, chadda, tanwin"
+        }
+       ]
+      }
+     ],
+     "metin": []
+    },
+    {
+     "no": 2,
+     "bolumler": [
+      {
+       "tr": "Bunu biliyor musun?",
+       "fr": "Le sais-tu ?",
+       "ikon": "ampul",
+       "olcek": "bilgi-soru",
+       "satirlar": [
+        {
+         "id": "t-rabbim",
+         "tr": "Rabbim kimdir?",
+         "fr": "Qui est mon Seigneur ?"
+        },
+        {
+         "id": "t-dinim",
+         "tr": "Dinim nedir?",
+         "fr": "Quelle est ma religion ?"
+        },
+        {
+         "id": "t-kitabim",
+         "tr": "Kitabım hangisidir?",
+         "fr": "Quel est mon Livre ?"
+        },
+        {
+         "id": "t-peygamberim",
+         "tr": "Peygamberim kimdir?",
+         "fr": "Qui est mon Prophète ?"
+        }
+       ]
+      },
+      {
+       "tr": "Güzel sözler",
+       "fr": "Les belles paroles",
+       "ikon": "gunes",
+       "olcek": "aliskanlik",
+       "satirlar": [
+        {
+         "id": "g-besmele",
+         "tr": "Her işe besmeleyle başlarım",
+         "fr": "Je commence chaque chose par la basmala"
+        },
+        {
+         "id": "g-selam",
+         "tr": "Selâm veririm, selâm alırım",
+         "fr": "Je salue et je rends le salut"
+        },
+        {
+         "id": "g-elhamdulillah",
+         "tr": "«Elhamdülillah» derim",
+         "fr": "Je dis « Al-hamdou lillah »"
+        },
+        {
+         "id": "g-masallah-insallah",
+         "tr": "«Maşallah» ve «İnşallah» derim",
+         "fr": "Je dis « Machallah » et « Inchallah »"
+        }
+       ]
+      }
+     ],
+     "kutular": [
+      {
+       "anahtar": "dil",
+       "tr": "En iyi anladığım dil",
+       "fr": "La langue que je comprends le mieux",
+       "coklu": false,
+       "secenekler": [
+        {
+         "anahtar": "tr",
+         "tr": "Türkçe",
+         "fr": "turc"
+        },
+        {
+         "anahtar": "fr",
+         "tr": "Français",
+         "fr": "Français"
+        },
+        {
+         "anahtar": "ikisi",
+         "tr": "İkisi de",
+         "fr": "les deux"
+        },
+        {
+         "anahtar": "baska",
+         "tr": "Başka",
+         "fr": "autre"
+        }
+       ]
+      },
+      {
+       "anahtar": "evde_dua",
+       "tr": "Evde benimle dua çalışan biri var",
+       "fr": "Quelqu’un révise les invocations avec moi à la maison",
+       "coklu": false,
+       "secenekler": [
+        {
+         "anahtar": "evet",
+         "tr": "Evet",
+         "fr": "oui"
+        },
+        {
+         "anahtar": "bazen",
+         "tr": "Bazen",
+         "fr": "parfois"
+        },
+        {
+         "anahtar": "hayir",
+         "tr": "Hayır",
+         "fr": "non"
+        }
+       ]
+      }
+     ],
+     "metin": [
+      {
+       "alan": "ilahi",
+       "tr": "Bildiğim ilahi (hocam yazar)",
+       "fr": "Un chant religieux que je connais (l’enseignant écrit)",
+       "satir": 1,
+       "hoca": true
+      }
+     ],
+     "cizim": {
+      "tr": "En sevdiğim şeyi çiziyorum",
+      "fr": "Je dessine ce que j’aime le plus"
+     },
+     "hoca": {
+      "metin_alanlari": [
+       "hoca_basamak",
+       "hoca_okuma_notu",
+       "hoca_notu",
+       "hoca_notu_fr",
+       "dogrulama_tarihi"
+      ],
+      "tr": "Hocanın notu",
+      "fr": "Note de l’enseignant"
+     }
+    }
+   ]
+  },
+  "9-13": {
+   "okuma_adet": 6,
+   "sayfalar": [
+    {
+     "no": 1,
+     "bolumler": [],
+     "kutular": [
+      {
+       "anahtar": "okuma",
+       "tr": "Kur’an okuma",
+       "fr": "Lecture du Coran",
+       "coklu": true,
+       "secenekler": [
+        {
+         "anahtar": 1,
+         "tr": "Harfleri tanırım",
+         "fr": "Je reconnais les lettres"
+        },
+        {
+         "anahtar": 2,
+         "tr": "Harekeli hece okurum",
+         "fr": "Je lis les syllabes voyellées"
+        },
+        {
+         "anahtar": 3,
+         "tr": "Cezm, şedde, tenvin",
+         "fr": "Soukoun, chadda, tanwin"
+        },
+        {
+         "anahtar": 4,
+         "tr": "Kelime okurum",
+         "fr": "Je lis des mots"
+        },
+        {
+         "anahtar": 5,
+         "tr": "Âyet satırı okurum",
+         "fr": "Je lis une ligne de verset"
+        },
+        {
+         "anahtar": 6,
+         "tr": "Mushaftan sayfa okurum",
+         "fr": "Je lis une page du Mushaf"
+        }
+       ]
+      },
+      {
+       "anahtar": "dil",
+       "tr": "En iyi anladığım dil",
+       "fr": "La langue que je comprends le mieux",
+       "coklu": false,
+       "secenekler": [
+        {
+         "anahtar": "tr",
+         "tr": "Türkçe",
+         "fr": "turc"
+        },
+        {
+         "anahtar": "fr",
+         "tr": "Français",
+         "fr": "Français"
+        },
+        {
+         "anahtar": "ikisi",
+         "tr": "İkisi de",
+         "fr": "les deux"
+        },
+        {
+         "anahtar": "baska",
+         "tr": "Başka",
+         "fr": "autre"
+        }
+       ]
+      },
+      {
+       "anahtar": "evde",
+       "tr": "Evde Kur’an ve dua çalışırım",
+       "fr": "À la maison, je révise le Coran et les invocations",
+       "coklu": false,
+       "secenekler": [
+        {
+         "anahtar": "her_gun",
+         "tr": "Her gün",
+         "fr": "chaque jour"
+        },
+        {
+         "anahtar": "haftada",
+         "tr": "Haftada birkaç gün",
+         "fr": "quelques jours par semaine"
+        },
+        {
+         "anahtar": "pek_degil",
+         "tr": "Pek değil",
+         "fr": "pas vraiment"
+        }
+       ]
+      },
+      {
+       "anahtar": "yardim",
+       "tr": "Evde bana yardım eden",
+       "fr": "Qui m’aide à la maison",
+       "coklu": true,
+       "secenekler": [
+        {
+         "anahtar": "anne",
+         "tr": "Annem",
+         "fr": "maman"
+        },
+        {
+         "anahtar": "baba",
+         "tr": "Babam",
+         "fr": "papa"
+        },
+        {
+         "anahtar": "kardes",
+         "tr": "Kardeşim",
+         "fr": "frère / sœur"
+        },
+        {
+         "anahtar": "baska",
+         "tr": "Başka biri",
+         "fr": "quelqu’un d’autre"
+        },
+        {
+         "anahtar": "kimse",
+         "tr": "Kimse",
+         "fr": "personne"
+        }
+       ]
+      },
+      {
+       "anahtar": "onceki",
+       "tr": "Daha önce din eğitimi aldım",
+       "fr": "J’ai déjà suivi un enseignement religieux",
+       "coklu": true,
+       "secenekler": [
+        {
+         "anahtar": "baska_kurs",
+         "tr": "Başka bir kurs",
+         "fr": "un autre cours"
+        },
+        {
+         "anahtar": "okul",
+         "tr": "Okulda din dersi",
+         "fr": "cours de religion à l’école"
+        },
+        {
+         "anahtar": "turkiye",
+         "tr": "Türkiye’de yaz kursu",
+         "fr": "cours d’été en Turquie"
+        },
+        {
+         "anahtar": "hayir",
+         "tr": "Hayır",
+         "fr": "non"
+        }
+       ]
+      },
+      {
+       "anahtar": "namaz",
+       "tr": "Namaz",
+       "fr": "La prière",
+       "coklu": false,
+       "secenekler": [
+        {
+         "anahtar": "her_gun",
+         "tr": "Her gün kılarım",
+         "fr": "je prie chaque jour"
+        },
+        {
+         "anahtar": "bazen",
+         "tr": "Bazen kılarım",
+         "fr": "je prie parfois"
+        },
+        {
+         "anahtar": "ogrenmek",
+         "tr": "Öğrenmek istiyorum",
+         "fr": "je veux apprendre"
+        }
+       ]
+      },
+      {
+       "anahtar": "ogrenme",
+       "tr": "En iyi böyle öğrenirim",
+       "fr": "J’apprends le mieux en",
+       "coklu": false,
+       "secenekler": [
+        {
+         "anahtar": "dinleyerek",
+         "tr": "Dinleyerek",
+         "fr": "écoutant"
+        },
+        {
+         "anahtar": "gorerek",
+         "tr": "Görerek",
+         "fr": "regardant"
+        },
+        {
+         "anahtar": "yazarak",
+         "tr": "Yazarak",
+         "fr": "écrivant"
+        },
+        {
+         "anahtar": "yaparak",
+         "tr": "Yaparak",
+         "fr": "faisant"
+        }
+       ]
+      },
+      {
+       "anahtar": "alt",
+       "tr": "Mushaftan okuyorsan",
+       "fr": "Si tu lis le Mushaf",
+       "coklu": false,
+       "secenekler": [
+        {
+         "anahtar": "hecelemeden",
+         "tr": "Hecelemeden",
+         "fr": "Sans épeler"
+        },
+        {
+         "anahtar": "akici",
+         "tr": "Akıcı",
+         "fr": "Couramment"
+        },
+        {
+         "anahtar": "tecvid",
+         "tr": "Tecvidle",
+         "fr": "Avec le tajwid"
+        }
+       ]
+      }
+     ],
+     "metin": [
+      {
+       "alan": "sevdigi",
+       "tr": "Kursta en sevdiğim şey",
+       "fr": "Ce que j’aime le plus au cours",
+       "satir": 1
+      },
+      {
+       "alan": "zorlandigi",
+       "tr": "Zorlandığım şey",
+       "fr": "Ce qui est difficile pour moi",
+       "satir": 1
+      }
+     ]
+    },
+    {
+     "no": 2,
+     "bolumler": [
+      {
+       "tr": "Namaz duaları",
+       "fr": "Les invocations de la prière",
+       "ikon": "seccade",
+       "olcek": "bilgi",
+       "satirlar": [
+        {
+         "id": "d-euzu-besmele",
+         "tr": "Eûzü-Besmele",
+         "fr": "Ta’awwoudh et Basmala"
+        },
+        {
+         "id": "d-kelime-i-tevhid",
+         "tr": "Kelime-i Tevhid",
+         "fr": "Formule de l’unicité"
+        },
+        {
+         "id": "d-kelime-i-sehadet",
+         "tr": "Kelime-i Şehâdet",
+         "fr": "Chahada"
+        },
+        {
+         "id": "d-tekbir",
+         "tr": "Tekbir",
+         "fr": "Takbir"
+        },
+        {
+         "id": "d-subhaneke",
+         "tr": "Sübhâneke Duası",
+         "fr": "Invocation Subhânaka"
+        },
+        {
+         "id": "d-ruku-tesbihi",
+         "tr": "Rükû tesbihi",
+         "fr": "Glorification de l’inclinaison"
+        },
+        {
+         "id": "d-tesmi-tahmid",
+         "tr": "Tesmî ve tahmîd",
+         "fr": "Tasmi‘ et tahmid"
+        },
+        {
+         "id": "d-secde-tesbihi",
+         "tr": "Secde tesbihi",
+         "fr": "Glorification de la prosternation"
+        },
+        {
+         "id": "d-ettehiyyatu",
+         "tr": "Ettehiyyâtü",
+         "fr": "Invocation At-Tahiyyat"
+        },
+        {
+         "id": "d-salli",
+         "tr": "Allâhümme Salli",
+         "fr": "Salawat : Allahoumma salli"
+        },
+        {
+         "id": "d-barik",
+         "tr": "Allâhümme Bârik",
+         "fr": "Salawat : Allahoumma barik"
+        },
+        {
+         "id": "d-rabbena-atina",
+         "tr": "Rabbenâ Âtinâ",
+         "fr": "Invocation Rabbana atina"
+        },
+        {
+         "id": "d-rabbenagfirli",
+         "tr": "Rabbenağfirlî",
+         "fr": "Invocation Rabbana-ghfir li"
+        },
+        {
+         "id": "d-selam",
+         "tr": "Selâm",
+         "fr": "Salutation finale"
+        }
+       ]
+      },
+      {
+       "tr": "Güzel sözler",
+       "fr": "Les belles paroles",
+       "ikon": "gunes",
+       "olcek": "aliskanlik",
+       "satirlar": [
+        {
+         "id": "g-besmele",
+         "tr": "Her işe besmeleyle başlarım",
+         "fr": "Je commence chaque chose par la basmala"
+        },
+        {
+         "id": "g-selam",
+         "tr": "Selâm veririm, selâm alırım",
+         "fr": "Je salue et je rends le salut"
+        },
+        {
+         "id": "g-elhamdulillah",
+         "tr": "«Elhamdülillah» derim",
+         "fr": "Je dis « Al-hamdou lillah »"
+        },
+        {
+         "id": "g-masallah-insallah",
+         "tr": "«Maşallah» ve «İnşallah» derim",
+         "fr": "Je dis « Machallah » et « Inchallah »"
+        }
+       ]
+      }
+     ],
+     "kutular": [],
+     "metin": []
+    },
+    {
+     "no": 3,
+     "bolumler": [
+      {
+       "tr": "Sûreler",
+       "fr": "Les sourates",
+       "ikon": "rahle",
+       "olcek": "bilgi",
+       "satirlar": [
+        {
+         "id": "s-fatiha",
+         "tr": "Fâtiha Sûresi",
+         "fr": "Sourate Al-Fatiha",
+         "ar": "الفاتحة"
+        },
+        {
+         "id": "s-ihlas",
+         "tr": "İhlâs Sûresi",
+         "fr": "Sourate Al-Ikhlas",
+         "ar": "الإخلاص"
+        },
+        {
+         "id": "s-kevser",
+         "tr": "Kevser Sûresi",
+         "fr": "Sourate Al-Kawthar",
+         "ar": "الكوثر"
+        },
+        {
+         "id": "s-asr",
+         "tr": "Asr Sûresi",
+         "fr": "Sourate Al-Asr",
+         "ar": "العصر"
+        },
+        {
+         "id": "s-fil",
+         "tr": "Fîl Sûresi",
+         "fr": "Sourate Al-Fil",
+         "ar": "الفيل"
+        },
+        {
+         "id": "s-nasr",
+         "tr": "Nasr Sûresi",
+         "fr": "Sourate An-Nasr",
+         "ar": "النصر"
+        },
+        {
+         "id": "s-felak",
+         "tr": "Felak Sûresi",
+         "fr": "Sourate Al-Falaq",
+         "ar": "الفلق"
+        },
+        {
+         "id": "s-nas",
+         "tr": "Nâs Sûresi",
+         "fr": "Sourate An-Nas",
+         "ar": "الناس"
+        },
+        {
+         "id": "s-kureys",
+         "tr": "Kureyş Sûresi",
+         "fr": "Sourate Quraïsh",
+         "ar": "قريش"
+        },
+        {
+         "id": "s-maun",
+         "tr": "Mâûn Sûresi",
+         "fr": "Sourate Al-Ma’un",
+         "ar": "الماعون"
+        },
+        {
+         "id": "s-kafirun",
+         "tr": "Kâfirûn Sûresi",
+         "fr": "Sourate Al-Kafirun",
+         "ar": "الكافرون"
+        },
+        {
+         "id": "s-tebbet",
+         "tr": "Tebbet Sûresi",
+         "fr": "Sourate Al-Massad",
+         "ar": "المسد"
+        },
+        {
+         "id": "s-insirah",
+         "tr": "İnşirâh Sûresi",
+         "fr": "Sourate Al-Inshirah",
+         "ar": "الشرح"
+        },
+        {
+         "id": "s-ayetel-kursi",
+         "tr": "Âyetü’l-Kürsî",
+         "fr": "Ayat Al-Kursi"
+        }
+       ]
+      },
+      {
+       "tr": "Diğer dualar",
+       "fr": "Autres invocations",
+       "ikon": "tespih",
+       "olcek": "bilgi",
+       "satirlar": [
+        {
+         "id": "d-kunut-1",
+         "tr": "Kunut duası I",
+         "fr": "Invocation du qounout I"
+        },
+        {
+         "id": "d-kunut-2",
+         "tr": "Kunut duası II",
+         "fr": "Invocation du qounout II"
+        },
+        {
+         "id": "d-tesbihat",
+         "tr": "Tesbihat",
+         "fr": "Glorifications après la prière"
+        },
+        {
+         "id": "d-ezan",
+         "tr": "Ezan",
+         "fr": "Adhan"
+        },
+        {
+         "id": "d-amentu",
+         "tr": "Âmentü",
+         "fr": "Amantou"
+        },
+        {
+         "id": "d-yemek-duasi",
+         "tr": "Yemek duası",
+         "fr": "Invocation du repas"
+        }
+       ]
+      }
+     ],
+     "kutular": [],
+     "metin": []
+    },
+    {
+     "no": 4,
+     "bolumler": [
+      {
+       "tr": "Bilgilerim",
+       "fr": "Mes connaissances",
+       "ikon": "ampul",
+       "olcek": "bilgi-soru",
+       "satirlar": [
+        {
+         "id": "b-imanin-sartlari",
+         "tr": "İmanın şartları",
+         "fr": "Les piliers de la foi"
+        },
+        {
+         "id": "b-islamin-sartlari",
+         "tr": "İslâm’ın şartları",
+         "fr": "Les piliers de l’islam"
+        },
+        {
+         "id": "b-abdestin-farzlari",
+         "tr": "Abdestin farzları",
+         "fr": "Les obligations des ablutions"
+        },
+        {
+         "id": "b-namazin-farzlari",
+         "tr": "Namazın farzları",
+         "fr": "Les obligations de la prière"
+        },
+        {
+         "id": "b-guslun-farzlari",
+         "tr": "Guslün farzları",
+         "fr": "Les obligations des grandes ablutions"
+        },
+        {
+         "id": "b-dort-halife",
+         "tr": "Dört halifenin isimleri",
+         "fr": "Les noms des quatre califes"
+        }
+       ]
+      },
+      {
+       "tr": "Yapabildiklerim",
+       "fr": "Ce que je sais faire",
+       "ikon": "ibrik",
+       "olcek": "pratik",
+       "satirlar": [
+        {
+         "id": "p-abdest",
+         "tr": "Abdest alırım (gösteririm)",
+         "fr": "Je fais les ablutions (je montre)"
+        },
+        {
+         "id": "p-namaz-hareket",
+         "tr": "Namazın hareketlerini gösteririm",
+         "fr": "Je montre les gestes de la prière"
+        },
+        {
+         "id": "p-iki-rekat",
+         "tr": "İki rekât namazı baştan sona kılarım",
+         "fr": "J’accomplis une prière de deux rak‘a du début à la fin"
+        },
+        {
+         "id": "p-vakitler",
+         "tr": "Beş vakit namazın adlarını söylerim",
+         "fr": "Je cite les noms des cinq prières"
+        },
+        {
+         "id": "p-cuma-cami",
+         "tr": "Camide cemaatle namaz kılarım",
+         "fr": "Je prie en assemblée à la mosquée"
+        }
+       ]
+      }
+     ],
+     "kutular": [],
+     "metin": [
+      {
+       "alan": "ilahiler",
+       "tr": "Bildiğim ilahiler",
+       "fr": "Les chants religieux que je connais",
+       "satir": 2,
+       "liste": true
+      },
+      {
+       "alan": "hedefler",
+       "tr": "Bu yıl öğrenmek istediğim üç şey",
+       "fr": "Trois choses que je veux apprendre cette année",
+       "satir": 3,
+       "liste": true
+      }
+     ],
+     "hoca": {
+      "metin_alanlari": [
+       "hoca_basamak",
+       "hoca_okuma_notu",
+       "hoca_notu",
+       "hoca_notu_fr",
+       "dogrulama_tarihi"
+      ],
+      "tr": "Hocanın notu",
+      "fr": "Note de l’enseignant"
+     }
+    }
+   ]
+  }
+ }
+}

@@ -154,7 +154,8 @@ test('Günün özeti, okunmamış bildirim rozeti ve iş akışı sırasında se
   await expect(sekme.locator('.sekme-sayi')).toContainText('1');
   const sira = await kok.locator('[role=tab]').evaluateAll((els) => els.map((e) => e.dataset.sekme));
   // 27 Eyl 2026 (Ezber Kilimi): «Ezber» sekmesi defterden hemen sonra; sınıfta dinleme günün iş akışındadır.
-  expect(sira.slice(0, 6)).toEqual(['yoklama', 'defter', 'ezber', 'odev', 'kitaplar', 'bildirim']);
+  // 1 Kasım 2026: «Envanter» sekmesi Ezber'in hemen ardından (online envanter formu sınıfta aynı telefonla doldurulur).
+  expect(sira.slice(0, 7)).toEqual(['yoklama', 'defter', 'ezber', 'envanter', 'odev', 'kitaplar', 'bildirim']);
   // Özetteki bağlantı sekmeye götürür; okundu işaretlenince rozet düşer ve özet güncellenir.
   await gunOzeti.locator('[data-sekme=bildirim]').click();
   await expect(sekme).toHaveAttribute('aria-selected', 'true');

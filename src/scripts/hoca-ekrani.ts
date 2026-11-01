@@ -187,6 +187,12 @@ export async function hocaEkrani(): Promise<void> {
   let ezberYukleme = 0;
   let ezberOnSecim = ''; // öğrenci kartındaki «Ezber sekmesinde aç» ile gelen öğrenci
   const ezberKapat = () => { ezberYukleme++; ezberPanel?.temizle(); ezberPanel = undefined; };
+  /* 1 Kasım 2026 — Online envanter «Envanter» sekmesi (src/scripts/hoca-envanter.ts). Öğrenci kipi açıkken ayrilabilir() false:
+     sekme değişmez, çıkış ve arka plan yeniden çizimi katmanı kapatmaz (yalnız 2 saniyelik basılı tutma çıkarır). */
+  let envanterPanel: { ayrilabilir: () => boolean; temizle: () => void } | undefined;
+  let envanterYukleme = 0;
+  const envanterKapat = () => { envanterYukleme++; envanterPanel?.temizle(); envanterPanel = undefined; };
+  const envanterKilitli = () => Boolean(envanterPanel && !envanterPanel.ayrilabilir());
   let duzenlenenDuyuru: string | null = null; // hoca bir duyuruyu düzenliyorsa id'si (yeni duyuru formu düzenleme kipine geçer)
   const col = (ad: string) => fs.collection(db, ad);
   const kayitlar = async (ad: string, ...kosullar: ReturnType<typeof fs.where>[]) => (await fs.getDocs(kosullar.length ? fs.query(col(ad), ...kosullar) : col(ad))).docs.map((x) => ({ id: x.id, ...x.data() } as Kayit));
@@ -290,7 +296,7 @@ export async function hocaEkrani(): Promise<void> {
   /* Sıra = ders gününün iş akışı (14 Eyl 2026): yoklama → defter → haftalık ödev → veli bildirimleri (rozetli);
      sonra daha seyrek işler. */
   /* 27 Eyl 2026: «Ezber» sekmesi defterden hemen sonra (sınıfta dinleme); eski «Ezber · Ödev» haftalık ödevdir. */
-  const SEKMELER: Record<string, string> = { yoklama: 'Yoklama', defter: 'Ders Defteri', ezber: 'Ezber', odev: 'Haftalık ödev', kitaplar: 'Ders kitapları', bildirim: 'Veli bildirimleri', ogrenci: 'Öğrenciler', bulten: 'Bülten · İdare', duyuru: 'Duyurular', aile: 'Aileler · Davet', hesap: 'Hesap' };
+  const SEKMELER: Record<string, string> = { yoklama: 'Yoklama', defter: 'Ders Defteri', ezber: 'Ezber', envanter: 'Envanter', odev: 'Haftalık ödev', kitaplar: 'Ders kitapları', bildirim: 'Veli bildirimleri', ogrenci: 'Öğrenciler', bulten: 'Bülten · İdare', duyuru: 'Duyurular', aile: 'Aileler · Davet', hesap: 'Hesap' };
   /** Günün canlı yoklama özeti (14 Eyl 2026): kaç ders işaretli, dağılım, kaç ders boş. */
   const yoklamaOzeti = (gunDersler: Ders[]) => {
     if (!S || !gunDersler.length) return '';
@@ -302,12 +308,12 @@ export async function hocaEkrani(): Promise<void> {
     return `<span><b>${isaretli}/${toplam}</b> ders işaretli</span>${Object.entries(DURUMLAR).map(([k, v]) => `<span>${esc(v)} <b>${say[k] || 0}</b></span>`).join('')}${eksik ? `<span class="eksik">İşaretsiz <b>${eksik}</b></span>` : '<span class="tamam">Hepsi işaretli ✓</span>'}`;
   };
   const ciz = () => {
-    if (!S) return;
+    if (!S || envanterKilitli()) return; /* öğrenci kipi açıkken arka plan yeniden çizimi katmanı kapatmasın */
     bultenTemizle?.();
     kitaplariTemizle?.();
     odevKapat();
     defterKapat();
-    ezberKapat();
+    ezberKapat(); envanterKapat();
     const aktif = S.ogrenciler.filter((o) => o.durum !== 'pasif');
     let govde = '';
     if (S.sekme === 'yoklama') {
@@ -487,6 +493,8 @@ export async function hocaEkrani(): Promise<void> {
         <h3>Kayıt defteri</h3>
         <p class="kucuk">Online kayıt defterindeki güncel öğrencileri (ad, soyad, veli e-postası, dil) portala aktarır; başka veri aktarılmaz. Var olan kayıtlar korunur.</p>
         <div class="satir-dugmeler"><button type="button" class="dugme dugme-ikincil" data-eylem="iceAktar">Kayıt defterinden yenile</button></div></section>`;
+    } else if (S.sekme === 'envanter') {
+      govde = '<section class="bolum env-kok" data-hoca-envanter><p class="not" role="status">Envanter hazırlanıyor…</p></section>';
     } else if (S.sekme === 'ezber') {
       govde = '<section class="bolum ez-kok" data-hoca-ezber><p class="not" role="status">Ezber paneli hazırlanıyor…</p></section>';
     } else if (S.sekme === 'defter') {
@@ -501,7 +509,7 @@ export async function hocaEkrani(): Promise<void> {
         <div class="satir-dugmeler"><button type="submit" class="dugme dugme-ikincil">Şifreyi değiştir</button></div></form>
         <p class="kucuk" style="margin-top:1rem">Veli portalı: <a href="${esc(veri.veliYollari.tr)}">${esc(location.origin + veri.veliYollari.tr)}</a></p></section>`;
     }
-    const SEKME_IKON: Record<string, string> = { yoklama: 'takvim', defter: 'kitap', ezber: 'ezber', kitaplar: 'kitap', ogrenci: 'ogrenci', odev: 'kitap', duyuru: 'duyuru', bildirim: 'zarf', aile: 'aile', hesap: 'ayar' };
+    const SEKME_IKON: Record<string, string> = { yoklama: 'takvim', defter: 'kitap', ezber: 'ezber', envanter: 'kitap', kitaplar: 'kitap', ogrenci: 'ogrenci', odev: 'kitap', duyuru: 'duyuru', bildirim: 'zarf', aile: 'aile', hesap: 'ayar' };
     /* Günün özeti (14 Eyl 2026): büyük sayfa başlığı yerine, hocanın ilk bakışta gördüğü şey — bugün (ya da sıradaki)
        ders günü, hafta, üç ders, aktif öğrenci sayısı ve okunmamış veli bildirimi. */
     const gunBilgi = (() => {
@@ -563,6 +571,7 @@ export async function hocaEkrani(): Promise<void> {
         }
       };void ac();
     }
+    envanterMontaj();
     const ezberRoot = kok.querySelector<HTMLElement>('[data-hoca-ezber]');
     if (ezberRoot) {
       const durum = S, yukleme = ezberYukleme, baslangicRef = ezberOnSecim;
@@ -581,6 +590,24 @@ export async function hocaEkrani(): Promise<void> {
       void ac();
     }
   };
+  /** Envanter sekmesinin bağlanması: tam SDK'lı panel tembel yüklenir (Ezber ile aynı kalıp). */
+  const envanterMontaj = () => {
+    const envanterRoot = kok.querySelector<HTMLElement>('[data-hoca-envanter]');
+    if (!envanterRoot || !S) return;
+    const durum = S, yukleme = envanterYukleme;
+    const ac = async () => {
+      try {
+        const mod = await import('./hoca-envanter');
+        if (yukleme !== envanterYukleme || S !== durum || !envanterRoot.isConnected) return;
+        envanterPanel = mod.envanterPaneli(envanterRoot, { app, ogrenciler: () => durum.ogrenciler.filter((o) => o.durum !== 'pasif'), bugun: bugunISO(), uid: () => durum.uid });
+      } catch {
+        if (yukleme !== envanterYukleme || !envanterRoot.isConnected) return;
+        envanterRoot.innerHTML = '<p class="not hata" role="status">Envanter paneli yüklenemedi. Bağlantınızı kontrol edip yeniden deneyin.</p><button type="button" class="dugme dugme-ikincil" data-envanter-tekrar>Yeniden dene</button>';
+        envanterRoot.querySelector('[data-envanter-tekrar]')?.addEventListener('click', () => { void ac(); }, { once: true });
+      }
+    };
+    void ac();
+  };
   /** Ezber sekmesinin «Bugün» listesi: günün yoklaması (ekranda işaretli ama kaydedilmemiş olan da sayılır). */
   const gununYoklamasi = async (tarih: string): Promise<Record<string, string[]> | null> => {
     if (!S) return null;
@@ -598,14 +625,14 @@ export async function hocaEkrani(): Promise<void> {
     const h = await fs.getDoc(fs.doc(db, 'hocalar', kb.user.uid)).catch(() => null);
     if (h && h.exists() && !(h.data() as { sifreVar?: boolean }).sifreVar) sifreEkrani(); else await yukle(kb.user);
   };
-  const sekmeyeGec = async (ad: string, odevOnayli=false) => { if (!S || (!odevOnayli&&odevPanel&&!odevPanel.ayrilabilir()) || (defterPanel&&!defterPanel.ayrilabilir())) { kok.querySelector<HTMLElement>('#hoca-tab-' + S?.sekme)?.focus(); return false; } bultenTemizle?.(); kitaplariTemizle?.(); odevKapat(); defterKapat(); ezberKapat(); S.sekme = ad; duzenlenenDuyuru = null; kok.innerHTML = '<p class="not">Yükleniyor…</p>'; await sekmeYukle(ad); ciz(); return true; };
+  const sekmeyeGec = async (ad: string, odevOnayli=false) => { if (!S || (!odevOnayli&&odevPanel&&!odevPanel.ayrilabilir()) || (defterPanel&&!defterPanel.ayrilabilir()) || envanterKilitli()) { kok.querySelector<HTMLElement>('#hoca-tab-' + S?.sekme)?.focus(); return false; } bultenTemizle?.(); kitaplariTemizle?.(); odevKapat(); defterKapat(); ezberKapat(); envanterKapat(); S.sekme = ad; duzenlenenDuyuru = null; kok.innerHTML = '<p class="not">Yükleniyor…</p>'; await sekmeYukle(ad); ciz(); return true; };
 
   kok.addEventListener('mousedown', (ev) => { if ((ev.target as HTMLElement).closest('.za-arac')) ev.preventDefault(); });
   kok.addEventListener('click', async (ev) => {
     const el = (ev.target as HTMLElement).closest<HTMLElement>('[data-eylem],[data-sekme],[data-yok],[data-ogr],[data-sil],[data-yayin],[data-okundu],[data-yanitla],[data-duyuru-duzelt],[data-davet],[data-veli-sil],[data-zk],[data-mazeret-uygula],[data-defter-ac],[data-defter-eksik],[data-ezber-ac]');
     if (!el) return;
     try {
-      if (el.dataset.eylem === 'cikis') { if((odevPanel&&!odevPanel.ayrilabilir())||(defterPanel&&!defterPanel.ayrilabilir()))return; bultenTemizle?.(); kitaplariTemizle?.(); odevKapat(); defterKapat(); ezberKapat(); await auth.signOut(a); S = null; girisEkrani(); return; }
+      if (el.dataset.eylem === 'cikis') { if((odevPanel&&!odevPanel.ayrilabilir())||(defterPanel&&!defterPanel.ayrilabilir())||envanterKilitli())return; bultenTemizle?.(); kitaplariTemizle?.(); odevKapat(); defterKapat(); ezberKapat(); envanterKapat(); await auth.signOut(a); S = null; girisEkrani(); return; }
       if (el.dataset.eylem === 'atla' && a.currentUser) { await yukle(a.currentUser); return; }
       if (el.dataset.eylem === 'sifremiUnuttum') {
         const form = el.closest('form') as HTMLFormElement; const ep = (form.querySelector('input[name=eposta]') as HTMLInputElement).value.trim().toLowerCase();

@@ -26,7 +26,7 @@ const message = (extra = {}) => ({ eposta: 'veli-a@example.test', ref: 'ogrenci-
 before(async () => {
   mkdirSync('node_modules/.cache', {recursive:true});
   const outfile=resolve('node_modules/.cache/portal-idare-test.mjs');
-  await build({stdin:{contents:'export * from "./src/lib/portal-idare.ts"; export * from "./src/lib/haftalik-bulten.ts"; export * from "./src/lib/ders-defteri.ts"; export * from "./src/lib/ezber/depo.ts"; export * from "./src/lib/ezber/durum.ts"; export * from "./src/lib/ezber/gecis.ts";',resolveDir:process.cwd()},outfile,bundle:true,platform:'node',format:'esm',packages:'external',alias:{'firebase/firestore/lite':'firebase/firestore'}});
+  await build({stdin:{contents:'export * from "./src/lib/portal-idare.ts"; export * from "./src/lib/haftalik-bulten.ts"; export * from "./src/lib/ders-defteri.ts"; export * from "./src/lib/ezber/depo.ts"; export * from "./src/lib/ezber/durum.ts"; export * from "./src/lib/ezber/gecis.ts"; export * from "./src/lib/ogrenci-envanteri/depo.ts";',resolveDir:process.cwd()},outfile,bundle:true,platform:'node',format:'esm',packages:'external',alias:{'firebase/firestore/lite':'firebase/firestore'}});
   portal=await import(pathToFileURL(outfile).href);
   env = await initializeTestEnvironment({ projectId: 'demo-ulucamii', firestore: {
     host: '127.0.0.1', port: 8185,
@@ -722,4 +722,128 @@ test('Gerçek silme: ezber durumu ve olayları dökümde; «ev» kapsamı dokunm
   assert.equal((await getDocs(collection(teacher(), ezYol + '/olaylar'))).size, 0);
   assert.equal((await read(teacher(), 'ezberDurum/ogrenci-b')).exists(), true);
   assert.equal((await getDocs(collection(teacher(), 'ezberDurum/ogrenci-b/olaylar'))).size, 1);
+});
+
+/* 1 Kasım 2026 — Online envanter: ogrenciEnvanteri/{ref}_{tarih}_{grup}, ogrenciProgrami/{ref}, hocaGunSirasi/{tarih}.
+   Şartname: D:\ulu-camii-kuran-kursu\belgeler\bireysel-plan-2026-2027\ONLINE-ENVANTER-SPEC.md */
+const enId = 'ogrenci-a_2026-11-01_9-13';
+const enBelge = (ek = {}) => ({ ref: 'ogrenci-a', tarih: '2026-11-01', grup: '9-13', kaynak: 'online', ben: { 'd-euzu-besmele': 1 }, hoca: {},
+  kutular: { dil: ['fr'], okuma: [1, 2] }, metin: { sevdigi: 'Oyun', ilahiler: ['a', 'b'] }, okuma: { basamak: 2, sonraki: 3 }, okuma_notlari: { 2: 'iyi' },
+  sayfaDinlendi: { 2: true }, durum: 'baslandi', surum: 1, guncelleme: serverTimestamp(), kaydeden: 'hoca-a', ...ek });
+const enYaz = (db, veri, id = enId) => setDoc(doc(db, 'ogrenciEnvanteri', id), veri);
+
+test('Envanter: yalnız hoca okur ve yazar; veli ve ziyaretçi göremez', async () => {
+  await assertSucceeds(enYaz(teacher(), enBelge()));
+  await assertSucceeds(read(teacher(), 'ogrenciEnvanteri/' + enId));
+  await assertSucceeds(getDocs(collection(teacher(), 'ogrenciEnvanteri')));
+  for (const db of [parent(), env.unauthenticatedContext().firestore(), veli('yetkisiz', 'yetkisiz@example.test')]) {
+    await assertFails(read(db, 'ogrenciEnvanteri/' + enId));
+    await assertFails(getDocs(collection(db, 'ogrenciEnvanteri')));
+    await assertFails(enYaz(db, enBelge({ kaydeden: 'veli-a' })));
+  }
+});
+
+test('Envanter: yalnız izinli alanlar, belge kimliği ref önekiyle eşleşir, değerler 0–2, sunucu zamanı ve kaydeden', async () => {
+  for (const ek of [{ ekstra: 1 }, { grup: '14+' }, { grup: '5-8' }, { ref: 'ogrenci-b' }, { tarih: '2026-11-02' }, { kaynak: 'dis' }, { durum: 'bitti' },
+    { surum: 2 }, { guncelleme: Timestamp.fromMillis(0) }, { kaydeden: 'baskasi' }, { ben: { x: 3 } }, { hoca: { x: -1 } }, { ben: { x: 'iki' } },
+    { okuma: { basamak: 7, sonraki: 1 } }, { okuma: { basamak: 1, sonraki: 1, ekstra: 1 } }, { sayfaDinlendi: { 1: 'evet' } }, { cizim: 'data:image/png;base64,AAAA' }, { kutular: 'x' }])
+    await assertFails(enYaz(teacher(), enBelge(ek)));
+  await assertFails(enYaz(teacher(), enBelge({ ref: 'yok-ogrenci' }), 'yok-ogrenci_2026-11-01_9-13'));            // kayıtlı olmayan öğrenci
+  await assertFails(enYaz(teacher(), enBelge(), 'baska_2026-11-01_9-13'));                                         // kimlik öneki ref değil
+  await assertSucceeds(enYaz(teacher(), enBelge({ ref: 'TEST-ENVANTER' }), 'TEST-ENVANTER_2026-11-01_9-13'));       // deneme öğrencisi
+  await assertSucceeds(enYaz(teacher(), enBelge({ grup: '5-8', cizim: 'data:image/png;base64,AAAA' }), 'ogrenci-a_2026-11-01_5-8'));
+  await assertFails(enYaz(teacher(), enBelge({ cizim: 'data:image/png;base64,AAAA' })));                           // çizim yalnız 5-8
+  await assertFails(enYaz(teacher(), enBelge({ grup: '5-8', cizim: 'x'.repeat(210001) }), 'ogrenci-a_2026-11-01_5-8'));
+});
+
+test('Envanter: güncellemede sürüm tam bir artar (eski ekran reddedilir), kimlik alanları değişmez; işleme kilidi', async () => {
+  await assertSucceeds(enYaz(teacher(), enBelge()));
+  const guncel = (ek) => setDoc(doc(teacher(), 'ogrenciEnvanteri', enId), { ...ek, guncelleme: serverTimestamp(), kaydeden: 'hoca-a' }, { merge: true });
+  await assertSucceeds(guncel({ ben: { 'd-kelime-i-tevhid': 2 }, surum: 2 }));
+  await assertFails(guncel({ ben: { 'd-kelime-i-tevhid': 1 }, surum: 2 }));          // eski ekran: sunucu zaten 2
+  await assertFails(guncel({ ben: { x: 0 }, surum: 4 }));                              // atlama
+  await assertFails(guncel({ kaynak: 'kagit-2026-10-31', surum: 3 }));
+  await assertSucceeds(guncel({ hoca: { 'd-euzu-besmele': 0 }, durum: 'ogrenci-bitti', surum: 3 }));
+  const s = (await read(teacher(), 'ogrenciEnvanteri/' + enId)).data();
+  assert.equal(s.surum, 3); assert.deepEqual(s.ben, { 'd-euzu-besmele': 1, 'd-kelime-i-tevhid': 2 });
+  await env.withSecurityRulesDisabled(c => setDoc(doc(c.firestore(), 'portalSilme/ogrenci-a'), { islem: 'x', zaman: new Date() }));
+  await assertFails(guncel({ surum: 4 }));
+  await assertFails(enYaz(teacher(), enBelge(), 'ogrenci-a_2026-11-05_9-13'));
+});
+
+test('Envanter: kâğıttan aktarılan belge (surum yok) hocayla güncellenir; silme yalnız deneme belgesine', async () => {
+  const kagit = { ref: 'ogrenci-b', tarih: '2026-10-31', grup: '9-13', kaynak: 'kagit-2026-10-31', ben: { 'd-euzu-besmele': 2 }, hoca: { 'd-euzu-besmele': 2 }, durum: 'tamam', guncelleme: new Date(), kaydeden: 'python' };
+  await env.withSecurityRulesDisabled(c => setDoc(doc(c.firestore(), 'ogrenciEnvanteri/ogrenci-b_2026-10-31_9-13'), kagit));
+  await assertSucceeds(read(teacher(), 'ogrenciEnvanteri/ogrenci-b_2026-10-31_9-13'));
+  await assertSucceeds(setDoc(doc(teacher(), 'ogrenciEnvanteri/ogrenci-b_2026-10-31_9-13'),
+    { ref: 'ogrenci-b', tarih: '2026-10-31', grup: '9-13', kaynak: 'kagit-2026-10-31', ben: { 'd-kelime-i-tevhid': 1 }, durum: 'tamam', surum: 1, guncelleme: serverTimestamp(), kaydeden: 'hoca-a' }, { merge: true }));
+  await assertFails(deleteDoc(doc(teacher(), 'ogrenciEnvanteri/ogrenci-b_2026-10-31_9-13')));
+  await assertSucceeds(enYaz(teacher(), enBelge({ ref: 'TEST-ENVANTER' }), 'TEST-ENVANTER_2026-11-01_9-13'));
+  await assertSucceeds(deleteDoc(doc(teacher(), 'ogrenciEnvanteri/TEST-ENVANTER_2026-11-01_9-13')));
+});
+
+test('Kişisel program yalnız hocaya açık ve salt okunur; gün sırasında hoca yalnız «yapildi» günceller', async () => {
+  const prog = { ref: 'ogrenci-a', durum: 'onayli', hedefler: [], ogrenciye_tr: 'Merhaba', ogrenciye_fr: 'Salut' };
+  await env.withSecurityRulesDisabled(async c => {
+    await setDoc(doc(c.firestore(), 'ogrenciProgrami/ogrenci-a'), prog);
+    await setDoc(doc(c.firestore(), 'hocaGunSirasi/2026-11-01'), { tarih: '2026-11-01', adimlar: [{ id: 'a1', saat: '10:00', ders: 1, ref: 'ogrenci-a', is: 'form' }], yapildi: {} });
+  });
+  await assertSucceeds(read(teacher(), 'ogrenciProgrami/ogrenci-a'));
+  for (const db of [parent(), env.unauthenticatedContext().firestore()]) {
+    await assertFails(read(db, 'ogrenciProgrami/ogrenci-a'));
+    await assertFails(read(db, 'hocaGunSirasi/2026-11-01'));
+  }
+  await assertFails(setDoc(doc(teacher(), 'ogrenciProgrami/ogrenci-a'), { ...prog, durum: 'taslak' }));
+  await assertFails(deleteDoc(doc(teacher(), 'ogrenciProgrami/ogrenci-a')));
+  await assertSucceeds(read(teacher(), 'hocaGunSirasi/2026-11-01'));
+  await assertSucceeds(setDoc(doc(teacher(), 'hocaGunSirasi/2026-11-01'), { yapildi: { a1: true } }, { merge: true }));
+  await assertSucceeds(setDoc(doc(teacher(), 'hocaGunSirasi/2026-11-01'), { yapildi: { a1: false } }, { merge: true }));
+  await assertFails(setDoc(doc(teacher(), 'hocaGunSirasi/2026-11-01'), { yapildi: { a1: 'evet' } }, { merge: true }));
+  await assertFails(setDoc(doc(teacher(), 'hocaGunSirasi/2026-11-01'), { adimlar: [] }, { merge: true }));
+  await assertFails(setDoc(doc(teacher(), 'hocaGunSirasi/2026-11-01'), { yapildi: { a1: true }, tarih: '2026-11-02' }, { merge: true }));
+  await assertFails(setDoc(doc(teacher(), 'hocaGunSirasi/2026-11-02'), { yapildi: {} }));
+  await assertFails(deleteDoc(doc(teacher(), 'hocaGunSirasi/2026-11-01')));
+});
+
+/* Gerçek SDK + gerçek kurallar: online envanter deposu (src/lib/ogrenci-envanteri/depo.ts) kurallardan geçen yük üretir. */
+const bekle = async (kosul, ad) => { for (let i = 0; i < 100; i++) { if (await kosul()) return; await new Promise((r) => setTimeout(r, 50)); } assert.fail(`zaman aşımı: ${ad}`); };
+
+test('Envanter deposu: oturum yazımı kurallardan geçer (kimlik alanları yalnız ilk yazımda, sürüm +1, alan silme); eski ekran çakışma alır', async () => {
+  const db1 = teacher(), db2 = teacher();
+  const depo1 = portal.envanterDeposu(db1, '2026-11-01', () => 'hoca-a');
+  const depo2 = portal.envanterDeposu(db2, '2026-11-01', () => 'hoca-a');
+  depo1.baslat(); depo2.baslat();
+  try {
+    const o = depo1.oturumAc('ogrenci-a', '9-13');
+    o.hataDinle((e) => assert.fail(`beklenmeyen yazım hatası: ${e.message}`));
+    o.ayarla(['ben', 'd-euzu-besmele'], 1); o.ayarla(['kutular', 'dil'], ['fr']); o.ayarla(['metin', 'ilahiler'], ['a', 'b']); o.ayarla(['sayfaDinlendi', '2'], true);
+    o.gonder();
+    await bekle(() => !o.bekliyor(), 'ilk yazım');
+    let s = (await read(teacher(), 'ogrenciEnvanteri/ogrenci-a_2026-11-01_9-13')).data();
+    assert.equal(s.surum, 1); assert.equal(s.kaynak, 'online'); assert.deepEqual(s.ben, { 'd-euzu-besmele': 1 }); assert.deepEqual(s.metin.ilahiler, ['a', 'b']);
+    o.ayarla(['ben', 'd-euzu-besmele'], undefined); o.ayarla(['okuma', 'basamak'], 2); o.ayarla(['durum'], 'ogrenci-bitti');
+    o.gonder();
+    await bekle(() => !o.bekliyor(), 'ikinci yazım');
+    s = (await read(teacher(), 'ogrenciEnvanteri/ogrenci-a_2026-11-01_9-13')).data();
+    assert.equal(s.surum, 2); assert.deepEqual(s.ben, {}); assert.equal(s.okuma.basamak, 2); assert.equal(s.durum, 'ogrenci-bitti'); assert.deepEqual(s.kutular, { dil: ['fr'] });
+    // başka telefon: sunucudaki hâli görür, yazar; ilk telefon eski sürümle yazınca reddedilir ve sunucu hâli yüklenir
+    await bekle(() => depo2.belgeler().get('ogrenci-a_2026-11-01_9-13')?.surum === 2, 'ikinci telefon belgeyi görsün');
+    const eski = depo2.oturumAc('ogrenci-a', '9-13', depo2.belgeler().get('ogrenci-a_2026-11-01_9-13'));
+    let hata = null; eski.hataDinle((e) => { hata = e; });
+    eski.ayarla(['hoca', 'd-kelime-i-tevhid'], 2);                                      // henüz gönderilmedi: ekran eski sürümde
+    o.ayarla(['hoca', 'd-euzu-besmele'], 1); o.gonder();
+    await bekle(() => !o.bekliyor(), 'üçüncü yazım');
+    await new Promise((r) => setTimeout(r, 400));                                       // ikinci telefona canlı güncelleme ulaşsın; yerel kirli kopya korunur
+    eski.gonder();
+    await bekle(() => hata, 'çakışma bildirimi');
+    assert.equal(hata.message, portal.ENVANTER_CAKISMA);
+    s = (await read(teacher(), 'ogrenciEnvanteri/ogrenci-a_2026-11-01_9-13')).data();
+    assert.deepEqual(s.hoca, { 'd-euzu-besmele': 1 }); assert.equal(s.surum, 3);
+    assert.deepEqual(eski.belge.hoca, { 'd-euzu-besmele': 1 });                        // eski ekran sunucu hâline döndü
+    // günün sırası: yalnız `yapildi` yazılır
+    await env.withSecurityRulesDisabled((c) => setDoc(doc(c.firestore(), 'hocaGunSirasi/2026-11-01'), { tarih: '2026-11-01', adimlar: [{ id: 'a1', saat: '10:00', ders: 1, ref: null, is: 'not', aciklama_tr: 'x', sure_dk: 1 }], yapildi: {} }));
+    await depo1.adimIsaretle('a1', true);
+    assert.deepEqual((await read(teacher(), 'hocaGunSirasi/2026-11-01')).data().yapildi, { a1: true });
+    assert.equal(await depo1.program('ogrenci-a'), null);
+  } finally { depo1.kapat(); depo2.kapat(); }
 });

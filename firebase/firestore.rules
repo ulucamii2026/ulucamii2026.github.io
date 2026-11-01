@@ -304,5 +304,57 @@ service cloud.firestore {
           && request.resource.data.metin is string && request.resource.data.metin.size() <= 1000));
       allow delete: if hoca() || (dogrulanmis() && resource.data.eposta == eposta());
     }
+
+    /* 1 Kasım 2026 — Online envanter («Neler biliyorum?»): hoca telefonunda 9–13 öğrenci kendi dokunur, 5–8'i hoca sorar.
+       Kâğıt envanterle aynı madde kimlikleri (veri/envanter-maddeleri.json → src/data/ogrenci-envanteri/maddeler.json).
+       Belge kimliği {ref}_{tarih}_{grup}; yalnız hoca okur/yazar, veli görmez. Eşzamanlılık `surum`: yazım sunucudaki
+       sürümden tam bir fazla olmalı (başka telefon araya girdiyse eski ekranın yazımı reddedilir). Madde değerleri 0–2.
+       Sahte öğrenci TEST-ENVANTER yalnız deneme içindir; içe aktarıcılar onu yok sayar. Silme yalnız o deneme belgelerine. */
+    match /ogrenciEnvanteri/{id} {
+      function envGecerli() {
+        let d = request.resource.data;
+        return d.keys().hasOnly(['ref','tarih','grup','kaynak','ben','hoca','kutular','metin','okuma','okuma_notlari','cizim','sayfaDinlendi','durum','surum','guncelleme','kaydeden'])
+          && d.keys().hasAll(['ref','tarih','grup','kaynak','durum','surum','guncelleme','kaydeden'])
+          && d.ref is string && gunDizesi(d.tarih) && d.grup in ['5-8','9-13']
+          && id == d.ref + '_' + d.tarih + '_' + d.grup
+          && d.kaynak in ['online','kagit-2026-10-31']
+          && d.durum in ['baslandi','ogrenci-bitti','tamam']
+          && d.surum is int && d.guncelleme == request.time && d.kaydeden == request.auth.uid
+          && (!('ben' in d) || (d.ben is map && d.ben.size() <= 80 && d.ben.values().hasOnly([0,1,2])))
+          && (!('hoca' in d) || (d.hoca is map && d.hoca.size() <= 80 && d.hoca.values().hasOnly([0,1,2])))
+          && (!('kutular' in d) || (d.kutular is map && d.kutular.size() <= 20))
+          && (!('metin' in d) || (d.metin is map && d.metin.size() <= 30))
+          && (!('okuma' in d) || (d.okuma is map && d.okuma.keys().hasOnly(['basamak','sonraki'])
+              && d.okuma.get('basamak',0) is int && d.okuma.get('basamak',0) >= 0 && d.okuma.get('basamak',0) <= 6
+              && d.okuma.get('sonraki',0) is int && d.okuma.get('sonraki',0) >= 0 && d.okuma.get('sonraki',0) <= 6))
+          && (!('okuma_notlari' in d) || (d.okuma_notlari is map && d.okuma_notlari.size() <= 10))
+          && (!('sayfaDinlendi' in d) || (d.sayfaDinlendi is map && d.sayfaDinlendi.size() <= 6 && d.sayfaDinlendi.values().hasOnly([true,false])))
+          && (!('cizim' in d) || (d.cizim is string && d.cizim.size() <= 210000 && d.grup == '5-8'));
+      }
+      function refTamam(ref) {
+        return ref == 'TEST-ENVANTER' || exists(/databases/$(db)/documents/ogrenciler/$(ref));
+      }
+      allow read: if hoca();
+      allow create: if hoca() && islemeAcik(request.resource.data.ref) && refTamam(request.resource.data.ref)
+        && envGecerli() && request.resource.data.surum == 1;
+      allow update: if hoca() && islemeAcik(resource.data.ref) && envGecerli()
+        && request.resource.data.surum == resource.data.get('surum', 0) + 1
+        && request.resource.data.ref == resource.data.ref && request.resource.data.tarih == resource.data.tarih
+        && request.resource.data.grup == resource.data.grup && request.resource.data.kaynak == resource.data.kaynak;
+      allow delete: if hoca() && resource.data.ref == 'TEST-ENVANTER';
+    }
+    /* Kişisel program (Python yazar, IAM ile): hoca yalnız okur. Öğrenci kipinde yalnız durum 'onayli' ise gösterilir. */
+    match /ogrenciProgrami/{ref} {
+      allow read: if hoca();
+      allow write: if false;
+    }
+    /* Günün hoca sırası (Python yazar): hoca okur, yalnız `yapildi` işaretini günceller. */
+    match /hocaGunSirasi/{tarih} {
+      allow read: if hoca();
+      allow update: if hoca() && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['yapildi'])
+        && request.resource.data.yapildi is map && request.resource.data.yapildi.size() <= 80
+        && request.resource.data.yapildi.values().hasOnly([true, false]);
+      allow create, delete: if false;
+    }
   }
 }
