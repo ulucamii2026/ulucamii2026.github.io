@@ -4,6 +4,28 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 1 Kasım 2026 (sabah) — Namaz sayfası: sabah cemaati «güneş doğmadan yarım saat önce» + ekran dokunmatik kip taşma düzeltmesi
+
+- Zaman: 1 Kasım 2026 ≈09:11 (commit + push), ≈09:14 (Pages başarılı), 09:15 (canlı doğrulama), Europe/Brussels (CET).
+  **Yayımlandı ve canlı doğrulandı.** Dayanak: Rıdvan 1.11.2026 sabahı «sabah namazı camimizde gün doğumundan yarım saat
+  önce kılınmaktadır»; soru kutusunda «30 dk, siteyi de düzelt» kararı. Aynı kural cami Facebook'undaki yeni sabah namazı
+  story'sinde de kullanılıyor (`D:\ulu-camii-dernek\facebook\YAYIN-REHBERI.md` §8).
+- Kapsam:
+  - `src/sayfalar/Namaz.astro` 18–22: «yaklaşık 20 dakika» → «yarım saat» (TR, FR, EN, NL, DE). Commit `e52cb223`.
+  - Ayrı başlık, mevcut hata (kalite kapısında bulundu): `src/ekran/ekran.css` dokunmatik kipte `.ust-baslik` artık
+    `overflow-wrap: break-word` alıyor. «DISCIPLINE ET RESPONSABILITÉ» 320 px genişlik ve %200 yazıda 35 px yatay
+    taşıyordu (WCAG 1.4.10); tema her gün değiştiği için test yalnız o temanın gününde kalıyordu.
+    `tests/web/ekran.spec.mjs`: %200 testi artık bütün tema başlıklarını deniyor (düzeltmesiz 3/3 kalıyor); iki dokunmatik
+    testte `resize` olayının sonraki karede gelmesinden doğan yarış kapatıldı. Commit `1f22383b`.
+- Pages run: https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/41287819691 — başarılı.
+- Doğrulama: `npm run dogrula:codex` 9/10 GEÇTİ. test:web 857 geçti, 1 kaldı: yukarıdaki ekran taşması. Düzeltmeden sonra:
+  `ekran.spec.mjs` 114/114; iki dokunmatik test 4 işçiyle 5 tekrarda 10/10; `design:check` geçti; `check` 0 hata;
+  `test:ekran` 214/214. Tam kapı düzeltmeden sonra yeniden çalıştırılmadı.
+- Canlı: `/tr/namaz-vakitleri/`, `/fr/horaires-de-priere/`, `/en/prayer-times/`, `/nl/gebedstijden/`, `/de/gebetszeiten/`
+  yeni metni içeriyor, eski «20» metni hiçbirinde yok; `/ekran/ekran.css` yeni kuralı içeriyor.
+- Başka oturumun `scripts/defter-yoklama-denetim.mjs`, `CODEX-DEFTER-KOORDINASYON.md`, `docs/afisler/2026-10-14-…`
+  dosyaları commit'e alınmadı.
+
 ## 1 Kasım 2026 (gece) — Hoca ekranı «Envanter» sekmesi (online «Neler biliyorum?») + 1 Kasım materyallerinin yeniden yayını
 
 - Zaman: 1 Kasım 2026 01:22 (Firestore kuralları), 01:23 (commit + push), 01:26 (Pages başarılı, canlı doğrulama), Europe/Brussels (CET).
