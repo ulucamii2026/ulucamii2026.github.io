@@ -31,8 +31,8 @@ export const BILGI: Record<Dil, BilgiYazilari> = {
     onayBekliyor: 'Liste Diyanet kaynaklarından alınmıştır. Hoca incelemesi bekleniyor.',
     taslakNotu: '', taslakRozet: 'taslak',
     kaynak: 'Kaynak', roller: { metin: 'Metin', fr: 'Fransızca', ar: 'Arapça', dogrulama: 'Karşılaştırıldığı' }, sayfa: 's.', kunye: 'Künye', diyanet: 'Diyanet çevirisi', arapca: 'Arapça',
-    sekmeGizle: 'Gizle ve söyle', sekmeSirala: 'Sırala', gizleYonerge: 'Önce maddeyi kendiniz söyleyin, sonra “Göster” ile kontrol edin.',
-    goster: 'Göster', gizle: 'Gizle', maddeGoster: '{n}. maddeyi göster', maddeGizle: '{n}. maddeyi gizle', hepsiniGoster: 'Hepsini göster', hepsiniGizle: 'Hepsini gizle',
+    sekmeGizle: 'Gizleyin ve söyleyin', sekmeSirala: 'Sıralayın', gizleYonerge: 'Önce maddeyi kendiniz söyleyin, sonra “Gösterin” ile kontrol edin.',
+    goster: 'Gösterin', gizle: 'Gizleyin', maddeGoster: '{n}. maddeyi gösterin', maddeGizle: '{n}. maddeyi gizleyin', hepsiniGoster: 'Hepsini gösterin', hepsiniGizle: 'Hepsini gizleyin',
     gizliKalan: 'Gizli madde: {n}', hepsiAcik: 'Hepsi açık.', bolum: 'Bölüm',
   },
   fr: {

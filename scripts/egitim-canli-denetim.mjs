@@ -46,6 +46,12 @@ kontrol('/tr/ 200 ve HTML', sayfa.status === 200 && /text\/html/.test(sayfa.head
 for (const { key, value } of GUVENLIK) kontrol(`/tr/ ${key}`, sayfa.headers.get(key) === value, sayfa.headers.get(key) ?? 'yok');
 const hsts = sayfa.headers.get('strict-transport-security') ?? '';
 kontrol('/tr/ HSTS (Hosting ekler)', /max-age=\d{7,}/.test(hsts), hsts || 'yok');
+// İlim Yolu Dilim 0 (2 Kasım 2026): GUVENLIK artık firebase.json'dan gelen YENİ kümedir (SAMEORIGIN, frame-ancestors 'self', frame-src,
+// apis.google.com, Firestore/Auth/Apps Script connect-src). Canlı site bu başlıkları ve /api/saglik yönlendirmesini ANCAK Dilim 1 yayınlanınca alır;
+// ondan önce bu iki denetim canlıda düşer (beklenen). Önizleme kanalında önce sınanır.
+const saglik = await getir('/api/saglik');
+const saglikGovde = await saglik.json().catch(() => null);
+kontrol('/api/saglik JSON {ok:true} (Cloud Function)', saglik.status === 200 && saglikGovde?.ok === true, `${saglik.status} ${JSON.stringify(saglikGovde)}`);
 kontrol('/tr/ önbellek no-cache', sayfa.headers.get('cache-control') === 'no-cache', sayfa.headers.get('cache-control'));
 for (const varlik of [...new Set(html.match(/\/_astro\/[^"]+\.(css|js)/g) ?? [])]) {
   const y = await getir(varlik);
@@ -84,9 +90,15 @@ const robots = await getir('/robots.txt');
 kontrol('robots.txt site haritasını gösterir', robots.status === 200 && (await robots.text()).includes('Sitemap: https://egitim.ulucamii.be/sitemap-index.xml'), robots.status);
 const harita = await getir('/sitemap-0.xml');
 const locs = [...(await harita.text()).matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, a]) => a).sort();
-const beklenen = DILLER.flatMap((d) => [`https://egitim.ulucamii.be/${d}/`, `https://egitim.ulucamii.be/${d}/calisma-belgesi/`, `https://egitim.ulucamii.be/${d}/kilimim/`, `https://egitim.ulucamii.be/${d}/kartlar/`, `https://egitim.ulucamii.be/${d}/takvim/`,
+const beklenen = DILLER.flatMap((d) => [`https://egitim.ulucamii.be/${d}/`, `https://egitim.ulucamii.be/${d}/ezber/`, `https://egitim.ulucamii.be/${d}/calisma-belgesi/`, `https://egitim.ulucamii.be/${d}/kilimim/`, `https://egitim.ulucamii.be/${d}/kartlar/`, `https://egitim.ulucamii.be/${d}/takvim/`,
   ...sesliler.map((o) => `https://egitim.ulucamii.be/${d}/calis/${o.id}/`)]).sort();
 kontrol(`site haritası ${beklenen.length} adres`, harita.status === 200 && JSON.stringify(locs) === JSON.stringify(beklenen), `${harita.status}, ${locs.length} adres`);
+// Hesap sayfaları ve kart girişi (2 Kasım 2026): 200, noindex, önbelleksiz; site haritasında yok (yukarıdaki eşitlik).
+for (const yol of ['/tr/hesap/', '/tr/hesap/giris/', '/tr/hesap/kayit/', '/k/']) {
+  const y = await getir(yol);
+  const h = await y.text();
+  kontrol(`${yol} 200, noindex, no-cache`, y.status === 200 && /<meta name="robots" content="noindex, nofollow">/.test(h) && y.headers.get('cache-control') === 'no-cache', `${y.status} ${y.headers.get('cache-control')}`);
+}
 for (const [yol, tur] of [['/favicon.ico', /icon/], ['/favicon.svg', /svg/], ['/apple-touch-icon.png', /png/],
   ['/icon-192.png', /png/], ['/icon-512.png', /png/], ['/icon-maskable-512.png', /png/],
   ...DILLER.map((d) => [`/og/ezber-kilimi-${d}.png`, /png/])]) {
@@ -108,16 +120,21 @@ try {
   s.on('pageerror', (e) => hatalar.push(String(e)));
   for (const dil of DILLER) {
     hatalar.length = 0;
-    await s.goto(`${KOK}/${dil}/`, { waitUntil: 'networkidle' });
-    await s.evaluate(() => document.fonts.ready);
-    await s.locator('.pano .karo.madde').first().hover();
-    const ihlal = await s.evaluate(() => window.__ihlaller);
-    const baslik = await s.locator('main h1').textContent();
-    kontrol(`/${dil}/ tarayıcıda: CSP ihlali 0, konsol hatası 0`, ihlal.length === 0 && hatalar.length === 0 && baslik,
-      [baslik, ...ihlal, ...hatalar].join(' | '));
+    // İlim Yolu ana sayfası (2 Kasım 2026: /dil/), Ezber Kilimi girişi (/dil/ezber/) ve hesap sayfaları (noindex): CSP ihlali ve konsol hatası olmamalı.
+    for (const yol of ['', 'ezber/', 'hesap/giris/', 'hesap/kayit/', 'hesap/']) {
+      hatalar.length = 0;
+      await s.goto(`${KOK}/${dil}/${yol}`, { waitUntil: 'networkidle' });
+      await s.evaluate(() => document.fonts.ready);
+      if (yol === 'ezber/') await s.locator('.pano .karo.madde').first().hover();
+      const ihlal = await s.evaluate(() => window.__ihlaller);
+      const baslik = await s.locator('main h1').first().textContent();
+      const noindex = yol.startsWith('hesap') ? (await s.locator('meta[name="robots"]').getAttribute('content'))?.includes('noindex') : true;
+      kontrol(`/${dil}/${yol} tarayıcıda: CSP ihlali 0, konsol hatası 0${yol.startsWith('hesap') ? ', noindex' : ''}`, ihlal.length === 0 && hatalar.length === 0 && baslik && noindex,
+        [baslik, ...ihlal, ...hatalar].join(' | '));
+    }
   }
   // Gerçek ses: ilk çal düğmesi ulucamii.be'den sesi alır ve çalmaya başlar.
-  await s.goto(`${KOK}/tr/`);
+  await s.goto(`${KOK}/tr/ezber/`);
   const dugme = s.locator('button.dinle').first();
   const sesYaniti = s.waitForResponse((r) => r.url().startsWith('https://ulucamii.be/media/ses/'), { timeout: 20_000 }).catch(() => null);
   await dugme.click();

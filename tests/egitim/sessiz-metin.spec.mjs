@@ -118,7 +118,7 @@ test('Erişilebilirlik: sessiz dua sayfaları açık ve koyu temada ihlalsiz, ya
 });
 
 test('Giriş sayfası: sessiz dua listede bağlantıdır, çal düğmesi yoktur', async ({ page }) => {
-  await page.goto('/tr/');
+  await page.goto('/tr/ezber/');
   await page.evaluate(() => document.querySelectorAll('details.serit-liste').forEach((d) => { d.open = true; }));
   for (const id of SESSIZ) {
     await expect(page.locator(`#m-${id} a.ad`), id).toHaveAttribute('href', `/tr/calis/${id}/`);

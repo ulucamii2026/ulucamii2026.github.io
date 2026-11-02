@@ -123,11 +123,11 @@ test('seçim kaynağı değiştirir ve çalmayı durdurur; seçim tek başına a
   await radyo(page, 'sabah').check();
   await page.locator('[data-oynat]').click();
   expect(await sesler(page)).toEqual([ADRES.sabah]);
-  await expect(page.locator('[data-oynat]')).toHaveText('Duraklat');
+  await expect(page.locator('[data-oynat]')).toHaveText('Duraklatın');
   // Çalarken başka vakit: eski kayıt susar, çalar başa döner, yeni kayıt kullanıcı başlatana dek çalmaz.
   await radyo(page, 'ogle').check();
   expect(await page.evaluate(() => window.__kayitlar[0].__duraklatildi === true && window.__kayitlar[0].getAttribute('src') === null)).toBe(true);
-  await expect(page.locator('[data-oynat]')).toHaveText('Dinlemeye başla');
+  await expect(page.locator('[data-oynat]')).toHaveText('Dinlemeye başlayın');
   await expect(page.locator('[data-durdur]')).toBeDisabled();
   await expect(page.locator('.calisma-durum')).toContainText('Öğle · Uşşak');
   await expect(page.locator('.calisma-durum')).toContainText('Hazır');
@@ -166,9 +166,9 @@ test('duraklatılmış ya da «senin sıran» beklemesindeki çalma vakit deği�
   // Duraklatılmış çalma: «Devam et» yerine yeni seçim için «Dinlemeye başla».
   await page.locator('[data-oynat]').click();
   await page.locator('[data-oynat]').click();
-  await expect(page.locator('[data-oynat]')).toHaveText('Devam et');
+  await expect(page.locator('[data-oynat]')).toHaveText('Devam edin');
   await radyo(page, 'yatsi').check();
-  await expect(page.locator('[data-oynat]')).toHaveText('Dinlemeye başla');
+  await expect(page.locator('[data-oynat]')).toHaveText('Dinlemeye başlayın');
   await page.locator('[data-oynat]').click();
   expect((await sesler(page)).at(-1)).toBe(ADRES.yatsi);
 });
@@ -201,12 +201,12 @@ test('klavye: oklarla vakit seçilir, odak çipin yanında görünür; seçim ç
   await page.goto('/tr/calis/d-ezan/');
   await page.locator('[data-sira]').selectOption('0');
   await page.locator('[data-oynat]').click();
-  await expect(page.locator('[data-oynat]')).toHaveText('Duraklat');
+  await expect(page.locator('[data-oynat]')).toHaveText('Duraklatın');
   await radyo(page, 'sabah').focus();
   await page.keyboard.press('ArrowDown');
   await expect(radyo(page, 'ogle')).toBeChecked();
   await expect(radyo(page, 'ogle')).toBeFocused();
-  await expect(page.locator('[data-oynat]')).toHaveText('Dinlemeye başla');
+  await expect(page.locator('[data-oynat]')).toHaveText('Dinlemeye başlayın');
   expect(await gorunenNot(page)).toEqual(['ogle']);
   // Odak halkası görünür: çipin (kardeş span) dış çizgisi.
   const halka = await radyo(page, 'ogle').evaluate((r) => { const s = getComputedStyle(r.nextElementSibling); return { stil: s.outlineStyle, kalinlik: parseFloat(s.outlineWidth) }; });
@@ -250,7 +250,7 @@ for (const dil of ['tr', 'fr', 'de']) {
 }
 
 test('giriş listesi, hâfız sesi ve «Kendini sına» sabah kaydında kalır; çalışma kipi verisi vakit seçiminden etkilenmez', async ({ page }) => {
-  await page.goto('/tr/');
+  await page.goto('/tr/ezber/');
   expect(await page.locator('#m-d-ezan button.dinle').getAttribute('data-ses')).toBe(ADRES.sabah);
   expect(await page.locator('#m-d-ezan').locator('[data-vakit], input[type="radio"]').count()).toBe(0);
   await page.goto('/tr/calis/d-ezan/');

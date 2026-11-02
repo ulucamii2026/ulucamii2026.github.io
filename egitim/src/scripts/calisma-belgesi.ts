@@ -5,6 +5,7 @@
  * boş durum gösterilir. Metin ve ezber adları sayfadan `data-veri` ile gelir (CSP: satır içi betik yok); DOM elle kurulur, `innerHTML` yok.
  */
 import { oku, type Depo } from '@ortak/lib/ezber/cihaz';
+import { etkinAnahtar } from '../lib/hesap/isaret';
 import { basamakYazisi, belgeSatirlari, ucHaftaGunu, yogunluk, type BelgeSatiri } from '@ortak/lib/ezber/belge';
 import { yerelGun } from '@ortak/lib/ezber/tekrar';
 import type { BelgeMetinleri } from '../i18n/belge';
@@ -33,7 +34,7 @@ function kur(kok: HTMLElement, veri: Veri) {
 
   let depo: Depo | null = null;
   try { depo = window.localStorage; } catch { depo = null; }
-  const d = oku(depo);
+  const d = oku(depo, etkinAnahtar(depo));
   const bugun = yerelGun(new Date());
   const satirlar = belgeSatirlari(d, veri.sira).filter((s) => veri.adlar[s.id]);
 

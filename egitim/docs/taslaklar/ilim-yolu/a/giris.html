@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>İlim Yolu — Hesap aç / Giriş yap (Yön A · Tezhip)</title>
+<link rel="stylesheet" href="stil.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<pattern id="zencerek" width="20" height="10" patternUnits="userSpaceOnUse"><path d="M10 1.5 14.5 5 10 8.5 5.5 5Z" fill="#B8913A"/><circle cx="0" cy="5" r="1.5" fill="#1F2F63"/><circle cx="20" cy="5" r="1.5" fill="#1F2F63"/></pattern>
+<pattern id="zencerek-koyu" width="20" height="10" patternUnits="userSpaceOnUse"><path d="M10 1.5 14.5 5 10 8.5 5.5 5Z" fill="#B8913A"/><circle cx="0" cy="5" r="1.5" fill="#F3E7C6"/><circle cx="20" cy="5" r="1.5" fill="#F3E7C6"/></pattern>
+<symbol id="damga" viewBox="0 0 48 48"><g id="d-yaprak"><path d="M24 2.5C29 8.5 29 14 24 19 19 14 19 8.5 24 2.5Z" fill="#B8913A" stroke="#1F2F63" stroke-width="1.3" stroke-linejoin="round"/></g><use href="#d-yaprak" transform="rotate(45 24 24)"/><use href="#d-yaprak" transform="rotate(90 24 24)"/><use href="#d-yaprak" transform="rotate(135 24 24)"/><use href="#d-yaprak" transform="rotate(180 24 24)"/><use href="#d-yaprak" transform="rotate(225 24 24)"/><use href="#d-yaprak" transform="rotate(270 24 24)"/><use href="#d-yaprak" transform="rotate(315 24 24)"/><circle cx="24" cy="24" r="7.5" fill="#1F2F63"/><circle cx="24" cy="24" r="3" fill="#E9D9AE"/></symbol>
+<symbol id="semse-buyuk" viewBox="0 0 240 240"><circle cx="120" cy="120" r="117" fill="#F4ECD6" stroke="#B8913A" stroke-width="1.5"/><circle cx="120" cy="120" r="110.5" fill="none" stroke="#1F2F63" stroke-width="2.6" stroke-dasharray="0 7.23" stroke-linecap="round"/><circle cx="120" cy="120" r="104" fill="#FFFDF7" stroke="#B8913A" stroke-width="1"/><g id="sb-kucuk" transform="rotate(22.5 120 120)"><path d="M120 40C128 51 128 64 120 77 112 64 112 51 120 40Z" fill="#1F2F63"/><circle cx="120" cy="31" r="3" fill="#B8913A"/></g><use href="#sb-kucuk" transform="rotate(45 120 120)"/><use href="#sb-kucuk" transform="rotate(90 120 120)"/><use href="#sb-kucuk" transform="rotate(135 120 120)"/><use href="#sb-kucuk" transform="rotate(180 120 120)"/><use href="#sb-kucuk" transform="rotate(225 120 120)"/><use href="#sb-kucuk" transform="rotate(270 120 120)"/><use href="#sb-kucuk" transform="rotate(315 120 120)"/><g id="sb-yaprak"><path d="M120 18C137 38 135 62 120 80 105 62 103 38 120 18Z" fill="#E9D9AE" stroke="#1F2F63" stroke-width="1.6" stroke-linejoin="round"/><path d="M120 32C129 44 128 58 120 69 112 58 111 44 120 32Z" fill="#B8913A"/></g><use href="#sb-yaprak" transform="rotate(45 120 120)"/><use href="#sb-yaprak" transform="rotate(90 120 120)"/><use href="#sb-yaprak" transform="rotate(135 120 120)"/><use href="#sb-yaprak" transform="rotate(180 120 120)"/><use href="#sb-yaprak" transform="rotate(225 120 120)"/><use href="#sb-yaprak" transform="rotate(270 120 120)"/><use href="#sb-yaprak" transform="rotate(315 120 120)"/><circle cx="120" cy="120" r="40" fill="#1F2F63" stroke="#B8913A" stroke-width="2"/><path d="M120 90 128.8 98.8 141.2 98.8 141.2 111.2 150 120 141.2 128.8 141.2 141.2 128.8 141.2 120 150 111.2 141.2 98.8 141.2 98.8 128.8 90 120 98.8 111.2 98.8 98.8 111.2 98.8Z" fill="#B8913A"/><circle cx="120" cy="120" r="12" fill="#1F2F63"/><circle cx="120" cy="120" r="5" fill="#E9D9AE"/></symbol>
+<symbol id="kose" viewBox="0 0 40 40"><path d="M3 3h26M3 3v26" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M3 3C14 5 19 9 21 21 9 19 5 14 3 3Z" fill="currentColor"/><circle cx="33" cy="3" r="1.8" fill="currentColor"/><circle cx="3" cy="33" r="1.8" fill="currentColor"/></symbol>
+<symbol id="i-ok" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></g></symbol>
+<symbol id="i-google" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M20.5 12h-8M19.4 7.6A8.5 8.5 0 1 0 20.5 12"/></g></symbol>
+<symbol id="i-goz" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></g></symbol>
+<symbol id="i-tik" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></g></symbol>
+<symbol id="i-kilit" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="10" rx="1.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></g></symbol>
+<symbol id="i-asagi" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></g></symbol>
+<symbol id="i-kare-kod" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h2.5v2.5H14zM17.5 17.5H20V20h-2.5zM14 20h1M20 14v1"/></g></symbol>
+<symbol id="i-anahtar" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="15.5" cy="8.5" r="4.5"/><path d="M12.3 11.7 4 20M6.5 17.5l2 2M9 15l2 2"/></g></symbol>
+</defs></svg>
+<a class="atla" href="#ana">İçeriğe geç</a>
+
+<header class="ust">
+  <svg class="zencerek" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#zencerek)"/></svg>
+  <div class="kap ust-ic">
+    <a class="damga" href="ana-misafir.html" aria-label="İlim Yolu, ana sayfa">
+      <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><use href="#damga"/></svg>
+      <span><span class="damga-ad">İlim Yolu</span><span class="damga-alt">Ulu Camii · Marche-en-Famenne</span></span>
+    </a>
+    <div class="diller" role="group" aria-label="Dil">
+      <a href="#" lang="tr" aria-current="true">TR</a><a href="#" lang="fr">FR</a><a href="#" lang="en">EN</a><a href="#" lang="nl">NL</a><a href="#" lang="de">DE</a>
+    </div>
+    <div class="ust-eylem">
+      <a class="dugme ikincil kucuk" href="ana-misafir.html">Hesapsız devam et</a>
+    </div>
+  </div>
+  <div class="cetvel" aria-hidden="true"></div>
+</header>
+
+<main id="ana" class="kap">
+  <div class="giris-duzen">
+    <aside class="giris-pano koyu" aria-label="İlim Yolu hakkında">
+      <svg class="kose ust-sol" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><use href="#kose"/></svg>
+      <svg class="kose ust-sag" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><use href="#kose"/></svg>
+      <svg class="pano-semse" viewBox="0 0 240 240" aria-hidden="true" focusable="false"><use href="#semse-buyuk"/></svg>
+      <div>
+        <h1>İlim Yolu’na hoş geldin</h1>
+        <p class="pano-alt">Bir hesapla ilerlemen her cihazda seninle gelir.</p>
+      </div>
+      <ul>
+        <li><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#damga"/></svg>Ezber Kilimi, kurs bilgileri, seviye ve yeni Müslüman yolu</li>
+        <li><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#damga"/></svg>«Bugün tekrar» listesi ve kaldığın yer</li>
+        <li><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#damga"/></svg>Kendi çalışmanla rozet ve basılabilir belge</li>
+        <li><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#damga"/></svg>Hesapsız da çalışır; o zaman ilerlemen bu cihazda kalır</li>
+      </ul>
+    </aside>
+
+    <div class="form-yigin">
+      <ol class="adim-sirasi" aria-label="Hesap açma adımları">
+        <li aria-current="step"><b>1</b>Giriş bilgileri</li>
+        <li><b>2</b>Kullanıcı adı</li>
+        <li><b>3</b>İsteğe bağlı</li>
+      </ol>
+
+      <section class="levha form-levha" aria-labelledby="adim1">
+        <div class="sekmeler" role="tablist" aria-label="Hesap">
+          <button type="button" role="tab" aria-selected="true">Hesap aç</button>
+          <button type="button" role="tab" aria-selected="false" tabindex="-1">Giriş yap</button>
+        </div>
+        <h2 id="adim1" class="gorunmez">1. adım: giriş bilgileri</h2>
+        <a class="dugme google" href="#"><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-google"/></svg>Google ile devam et</a>
+        <p class="ya-da">ya da e-postayla</p>
+        <div class="alan">
+          <label for="eposta">E-posta</label>
+          <input class="girdi" id="eposta" type="email" autocomplete="email" value="ahmet.k@ornek.test">
+        </div>
+        <div class="alan">
+          <label for="sifre">Şifre</label>
+          <div class="sifre-kutu">
+            <input class="girdi" id="sifre" type="password" autocomplete="new-password" value="ornek-sifre" aria-describedby="sifre-ipucu">
+            <button type="button" aria-label="Şifreyi göster"><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-goz"/></svg></button>
+          </div>
+          <p class="ipucu" id="sifre-ipucu">En az 8 karakter.</p>
+        </div>
+        <a class="dugme birincil tam" href="#adim2">Devam et <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ok"/></svg></a>
+        <p class="form-alt"><a href="#">Şifremi unuttum</a></p>
+      </section>
+
+      <section class="hoca-kodu" aria-labelledby="hoca-kodu-baslik">
+        <svg class="buyuk" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-kare-kod"/></svg>
+        <h2 id="hoca-kodu-baslik">Hocadan kodun mu var?</h2>
+        <p>Kurs öğrencileri, hocanın verdiği kullanıcı adı ve kısa şifreyle ya da kare kodlu kartla girer.</p>
+        <div class="eylem">
+          <a class="dugme ikincil kucuk" href="#"><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-anahtar"/></svg>Kullanıcı adıyla gir</a>
+          <a class="dugme ikincil kucuk" href="#"><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-kare-kod"/></svg>Kartı okut</a>
+        </div>
+      </section>
+
+      <section class="levha form-levha" aria-labelledby="adim2">
+        <h2 id="adim2">2 · Kullanıcı adını seç</h2>
+        <p class="alt-baslik">Diğer kullanıcılar seni bu adla görür; gerçek adını yazman gerekmez.</p>
+        <div class="alan">
+          <label for="kad">Kullanıcı adı</label>
+          <div class="onek-kutu"><span aria-hidden="true">@</span><input class="girdi" id="kad" value="ahmet.k" autocomplete="username" spellcheck="false" aria-describedby="kad-durum kad-kural"></div>
+          <p class="uygun" id="kad-durum"><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-tik"/></svg>@ahmet.k kullanılabilir</p>
+          <div class="kural" id="kad-kural">
+            <span>3–24 karakter</span>
+            <span>a–z harfleri, rakamlar, nokta (.), alt çizgi (_) ve tire (-)</span>
+            <span>ç, ğ, ı, ö, ş, ü ve boşluk kullanılmaz</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="levha form-levha" aria-labelledby="adim3">
+        <h2 id="adim3">3 · İsteğe bağlı bilgiler</h2>
+        <p class="alt-baslik">İkisini de boş bırakabilirsin; sonra ayarlardan da ekleyebilirsin.</p>
+        <div class="alan">
+          <label for="cami">Şehir ve cami <span class="istege-bagli">(isteğe bağlı)</span></label>
+          <div class="secim-kutu">
+            <select class="girdi" id="cami" aria-describedby="cami-ipucu">
+              <option value="">Seç…</option>
+              <option selected>Marche-en-Famenne — Ulu Camii</option>
+              <option>Diğer (şehrini yaz)</option>
+            </select>
+            <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-asagi"/></svg>
+          </div>
+          <p class="ipucu" id="cami-ipucu">Belçika’daki Diyanet camileri listelenir. Camin listede yoksa «Diğer»i seçip şehrini yaz.</p>
+        </div>
+        <fieldset class="yeni">
+          <legend>Yeni Müslüman yolu <span class="istege-bagli">(isteğe bağlı)</span></legend>
+          <label class="kutu-secim"><input type="checkbox" checked><span>Yeni Müslümanım<small>Sana Yeni Müslüman yolunu öneririz.</small></span></label>
+          <div class="riza">
+            <p class="riza-bas"><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-kilit"/></svg>Ayrı açık rıza · hassas bilgi</p>
+            <p>Bu bilgi dinî inancınla ilgili hassas bir bilgidir. Yalnız sen görürsün; hocan ancak sen «hocamla paylaş» dersen görür. İstediğin zaman ayarlardan silebilirsin.</p>
+            <label class="kutu-secim"><input type="checkbox"><span>Bu bilginin hesabımda saklanmasına açık rıza veriyorum.<small>Rıza vermezsen bilgi saklanmaz; Yeni Müslüman yolunu yine de açabilirsin.</small></span></label>
+          </div>
+        </fieldset>
+        <a class="dugme birincil tam" href="ana-girisli.html">Hesabımı oluştur</a>
+        <p class="form-alt">Hesap açmadan önce <a href="#">gizlilik metnini</a> okuyabilirsin.</p>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer class="alt koyu">
+  <svg class="zencerek" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#zencerek-koyu)"/></svg>
+  <div class="kap alt-ic">
+    <div>
+      <p class="alt-damga">İlim Yolu</p>
+      <p>Marche-en-Famenne Ulu Camii’nin eğitim platformu</p>
+    </div>
+    <nav aria-label="Alt bilgi">
+      <a href="mailto:info@ulucamii.be">info@ulucamii.be</a>
+      <a href="#">Gizlilik</a>
+      <a href="https://www.ulucamii.be/tr/">ulucamii.be</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>

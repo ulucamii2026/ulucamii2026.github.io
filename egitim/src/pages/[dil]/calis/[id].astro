@@ -123,8 +123,8 @@ const sonraki = serit[sira + 1];
     {mt && <p class="kart-ust kart-yalniz">{k.kart} · {kursAdi(dil)}</p>}
     <nav class="yol" aria-label={mm.yol}>
       <ol>
-        <li><a href={`/${dil}/`}>{KILIM_METINLERI.baslik[dil]}</a></li>
-        <li><a href={`/${dil}/#${seritCapasi}`}>{seviye.ad[dil]}</a></li>
+        <li><a href={`/${dil}/ezber/`}>{KILIM_METINLERI.baslik[dil]}</a></li>
+        <li><a href={`/${dil}/ezber/#${seritCapasi}`}>{seviye.ad[dil]}</a></li>
         <li aria-current="page">{oge.ad[dil]}</li>
       </ol>
     </nav>
@@ -325,7 +325,7 @@ const sonraki = serit[sira + 1];
 
     <nav class="komsu" aria-label={seviye.ad[dil]}>
       {onceki && <a href={`/${dil}/calis/${onceki.id}/`}><span><Ikon ad="geri" />{mm.onceki}</span><b>{onceki.ad[dil]}</b></a>}
-      <a class="calisma-geri" href={`/${dil}/#m-${oge.id}`}><span>{mm.seriteDon}</span><b>{seviye.ad[dil]}</b></a>
+      <a class="calisma-geri" href={`/${dil}/ezber/#m-${oge.id}`}><span>{mm.seriteDon}</span><b>{seviye.ad[dil]}</b></a>
       {sonraki && <a class="sonraki" href={`/${dil}/calis/${sonraki.id}/`}><span>{mm.sonraki}<Ikon ad="ok" /></span><b>{sonraki.ad[dil]}</b></a>}
     </nav>
     {mt && <p class="kart-alt kart-yalniz">{c.ilerleme} · {kursAdi(dil)} · egitim.ulucamii.be</p>}

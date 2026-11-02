@@ -21,12 +21,18 @@
  * `kendi` kipi ÇOCUĞUN KENDİ ÇALIŞMASINI çizer ve hocanın değerlendirmesine benzemez: aynı geometri, ama dört ayrı doku (kurşun
  * kalem gibi tek mürekkep: 0 kesik çözgü · 1 noktalı kontur · 2 kontur + seyrek tarama · 3 kontur + sık çapraz tarama), ödül
  * yuvası ve altın kenar yok, kenar suyu nötr, başlıkta «basamak» değil kendi durumu yazar (src/lib/ezber/kilimim.ts).
+ *
+ * Birleşik kip (İlim Yolu Dilim 1, 2 Kasım 2026; docs/ILIM-YOLU.md «Birleşik kilim»): hesabı olan öğrencinin sayfasında hocanın
+ * basamağı ve kendi çalışması aynı kilimdedir. Dolgu, ödüller ve altın kenar hocanın kaydından gelir (varsayılan kip); kendi dokusu
+ * yalnız hocanın gösterilen basamağı ≤ 1 olan hücreye ikinci bir `<use class="kl-ust">` olarak biner (hocanın değerlendirmesi kendi
+ * çalışmasıyla örtülmez). Seçenek verilmezse çıktı bayt bayt eskisiyle aynıdır (tests/ezber-kilim-birlesik.test.mjs).
  */
 import type { Dil } from '../../i18n/ui';
+import type { CihazDurumu } from './cihaz';
 import { KATALOG, ezberBul, type Seviye } from './katalog';
 import { bolumOzetleri, gorunenBasamak, type Basamak, type Bolum, type BolumOzeti, type OgeDurumu } from './durum';
 import { BASAMAK_ADLARI, KILIM_METINLERI } from './metinler';
-import type { KendiDoku } from './kilimim';
+import { kendiDoku, type KendiDoku } from './kilimim';
 import { MOTIFLER, type MotifAdi } from './motifler';
 
 /** Şeridin motifi (Codex çizimleri, src/assets/cizim/ezber-kilim). */
@@ -58,6 +64,16 @@ export interface KilimKendi {
   readonly baglanti?: (id: string) => string | null;
 }
 
+/** Birleşik kip (bkz. başlıktaki not). Tarama desenleri kendi kipindeki gibi sabit kimliklidir: sayfada tek dokulu kilim olmalı. */
+export interface KilimBirlesik {
+  /** Öğrenenin kendi çalışma kaydı (cihazdaki ya da hesaptaki, `cihaz.ts temizle()`'den geçmiş); doku `kendiDoku` ile türer. */
+  readonly kendi: Pick<CihazDurumu, 'maddeler'>;
+  /** Kendi dokularının adları (0 çalışılmadı … 3 son tekrar basamağı): hücre başlığına ve açıklamaya girer. */
+  readonly dokuAdlari: readonly [string, string, string, string];
+  /** SVG açıklamasına hocanın özetinden sonra eklenen kısa kendi çalışma özeti. */
+  readonly ozet?: string;
+}
+
 export interface KilimSecenek {
   /** Kimlik öneki: küçük harfle başlar; harf, rakam, tire (ör. «kl-test-1»). */
   readonly onek: string;
@@ -66,6 +82,8 @@ export interface KilimSecenek {
   readonly baslik: string;
   /** Varsa kilim hocanın basamağını değil çocuğun kendi çalışmasını çizer. */
   readonly kendi?: KilimKendi;
+  /** Varsa hocanın basamağı ile kendi çalışma birlikte çizilir (`kendi` ile birlikte verilemez). */
+  readonly birlesik?: KilimBirlesik;
 }
 
 const esc = (s: unknown) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c] as string);
@@ -120,22 +138,30 @@ export function kilimLejanti(s: KilimSecenek): string {
     + satir(odul('rozet'), KILIM_METINLERI.rozet[d], KILIM_METINLERI.rozetAnlam[d])
     + satir(odul('muhur'), KILIM_METINLERI.muhur[d], KILIM_METINLERI.muhurAnlam[d])
     + satir(kucuk('<rect x="2" y="8" width="28" height="16" class="kl-altin"/>'), KILIM_METINLERI.altin[d], KILIM_METINLERI.altinAnlam[d])
-    + '</ul>';
+    + '</ul>'
+    // Birleşik kipte kendi çalışmanın üç dokusu da (0 «çalışılmadı» hocanın boş hücresiyle aynı görünür, listelenmez).
+    + (s.birlesik ? kendiListesi(on, s.birlesik.dokuAdlari, [1, 2, 3]) : '');
 }
+
+const kendiListesi = (onek: string, adlar: readonly string[], dokular: readonly KendiDoku[]) => {
+  const isaret = (d: KendiDoku) => kucukIsaret(`<use href="#${onek}-m-${SERIT_MOTIFI[1]}" x="4" y="4" width="24" height="24" class="kl-m kl-k${d}"/>`);
+  return `<ul class="kilim-lejant kilim-lejant-kendi">${dokular.map((d) => `<li data-doku="${d}">${isaret(d)}<span>${esc(adlar[d])}</span></li>`).join('')}</ul>`;
+};
 
 /**
  * «Kendi çalışmam» açıklaması: dört dokunun adı (çağıran metni verir; hocanın basamak adları ve ödüller yoktur). Aynı sayfadaki
  * kendi kipindeki kilimin sembollerine ve tarama desenlerine başvurur (aynı `onek`).
  */
 export function kendiLejanti(s: KilimSecenek, adlar: readonly [string, string, string, string]): string {
-  const isaret = (d: KendiDoku) => kucukIsaret(`<use href="#${s.onek}-m-${SERIT_MOTIFI[1]}" x="4" y="4" width="24" height="24" class="kl-m kl-k${d}"/>`);
-  return `<ul class="kilim-lejant kilim-lejant-kendi">${adlar.map((ad, d) => `<li data-doku="${d}">${isaret(d as KendiDoku)}<span>${esc(ad)}</span></li>`).join('')}</ul>`;
+  return kendiListesi(s.onek, adlar, [0, 1, 2, 3]);
 }
 
 export function kilimSvg(ogeler: Readonly<Record<string, OgeDurumu>>, s: KilimSecenek): string {
   if (!/^[a-z][a-z0-9-]{0,39}$/.test(s.onek)) throw new Error(`Geçersiz kilim öneki: ${String(s.onek)}.`);
   const on = s.onek;
   const kendi = s.kendi;
+  const birlesik = s.birlesik;
+  if (kendi && birlesik) throw new Error('Kilim: kendi ve birlesik kipleri birlikte verilemez.');
   // Kendi kipinde hocanın durumu hiç okunmaz: ödül, altın kenar ve basamak çıkmaz.
   const ozetler = bolumOzetleri(kendi ? {} : ogeler);
   const seritler = kilimSeritleri(ozetler);
@@ -147,7 +173,7 @@ export function kilimSvg(ogeler: Readonly<Record<string, OgeDurumu>>, s: KilimSe
   const y0 = S + K;
   const kullanilan = new Set<MotifAdi>(['kenar-kocboynuzu', 'kenar-kose', ...(kendi ? [] : ['rozet', 'muhur'] as const), ...Object.values(SERIT_MOTIFI)]);
   const defs = [...kullanilan].sort().map((ad) => `<symbol id="${on}-m-${ad}" viewBox="${MOTIFLER[ad].kutu}">${MOTIFLER[ad].icerik}</symbol>`).join('')
-    + (kendi ? TARAMA : '');
+    + (kendi || birlesik ? TARAMA : '');
   const use = (ad: MotifAdi, x: number, y: number, w: number, h: number, sinif: string, ek = '') =>
     `<use href="#${on}-m-${ad}" x="${n2(x)}" y="${n2(y)}" width="${n2(w)}" height="${n2(h)}" class="${sinif}"${ek}/>`;
   const oge = (id: string, cx: number, cy: number, motif: MotifAdi) => {
@@ -161,6 +187,10 @@ export function kilimSvg(ogeler: Readonly<Record<string, OgeDurumu>>, s: KilimSe
       return `<g class="kl-oge" data-id="${esc(id)}" data-doku="${d}"${href ? ` data-href="${esc(href)}"` : ''}><title>${esc(kendi.etiket(id, m.ad[s.dil], d))}</title>${href ? `<rect class="kl-hedef" x="${n2(cx - C / 2)}" y="${n2(cy - C / 2)}" width="${C}" height="${C}"/>` : ''}${use(motif, x, y, M, M, `kl-m kl-k${d}`)}</g>`;
     }
     const b: Basamak = gorunenBasamak(ogeler, id);
+    const kd: KendiDoku = birlesik && b <= 1 ? kendiDoku(birlesik.kendi.maddeler[id]) : 0;
+    if (birlesik && kd)
+      return `<g class="kl-oge" data-id="${esc(id)}" data-basamak="${b}" data-kendi="${kd}"><title>${esc(`${m.ad[s.dil]}, ${BASAMAK_ADLARI[b][s.dil]} · ${birlesik.dokuAdlari[kd]}`)}</title>`
+        + `${use(motif, x, y, M, M, `kl-m kl-b${b}`)}${use(motif, x, y, M, M, `kl-m kl-k${kd} kl-ust`)}</g>`;
     return `<g class="kl-oge" data-id="${esc(id)}" data-basamak="${b}"><title>${esc(`${m.ad[s.dil]}, ${BASAMAK_ADLARI[b][s.dil]}`)}</title>`
       + `${b === 4 ? `<rect x="${n2(x - 3)}" y="${n2(y - 3)}" width="${M + 6}" height="${M + 6}" class="kl-b4-cerceve"/>` : ''}`
       + `${use(motif, x, y, M, M, `kl-m kl-b${b}`)}</g>`;
@@ -233,7 +263,8 @@ export function kilimSvg(ogeler: Readonly<Record<string, OgeDurumu>>, s: KilimSe
   parcalar.push(`<rect class="kl-cerceve" x="${x0}" y="${y0}" width="${FW}" height="${FH}"/>`);
   parcalar.push(`<rect class="kl-cerceve kl-dis" x="0.75" y="${S + 0.75}" width="${W - 1.5}" height="${FH + 2 * K - 1.5}"/>`);
 
-  return `<svg class="ezber-kilim${kendi ? ' kl-kendi' : ''}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" role="img" aria-labelledby="${on}-b ${on}-a" data-onek="${on}">`
-    + `<title id="${on}-b">${esc(s.baslik)}</title><desc id="${on}-a">${esc(kendi ? kendi.ozet : kilimOzeti(ogeler, s.dil))}</desc>`
+  const aciklama = kendi ? kendi.ozet : kilimOzeti(ogeler, s.dil) + (birlesik?.ozet ? ` · ${birlesik.ozet}` : '');
+  return `<svg class="ezber-kilim${kendi ? ' kl-kendi' : ''}${birlesik ? ' kl-birlesik' : ''}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" role="img" aria-labelledby="${on}-b ${on}-a" data-onek="${on}">`
+    + `<title id="${on}-b">${esc(s.baslik)}</title><desc id="${on}-a">${esc(aciklama)}</desc>`
     + `<defs>${defs}</defs>${parcalar.join('')}</svg>`;
 }

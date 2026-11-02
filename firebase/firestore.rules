@@ -20,6 +20,13 @@ service cloud.firestore {
     function aileOgrencileri() { return get(/databases/$(db)/documents/aileler/$(eposta())).data.ogrenciler; }
     function veliOkur(ref) { return aile() && ref in aileOgrencileri(); }
     function islemeAcik(ref) { return !exists(/databases/$(db)/documents/portalSilme/$(ref)); }
+    /* 2 Kas 2026 — İlim Yolu (docs/ILIM-YOLU.md, Dilim 1). oturum(): e-postasız oturumlar da (çocuk hesabı: custom token,
+       {rol:'cocuk', ref}) dahil her giriş. Çocuk token'ında e-posta yoktur: girisli(), aile() ve hoca() onu hiçbir zaman
+       kabul etmez; çocuk yalnız aşağıdaki oturum()/sahip()/ogrenciOkur() yollarına girer. `ref` yetkisini yalnız sunucu verir
+       (cocukHesabiAc, hesabiBagla). */
+    function oturum() { return request.auth != null; }
+    function sahip(uid) { return oturum() && request.auth.uid == uid; }
+    function ogrenciOkur(ref) { return request.auth != null && request.auth.token.get('ref', '') == ref && ref != ''; }
     // Ezber Kilimi (27 Eyl 2026, Faz 1b): katalog kimliği, ders günü ve veliye giden kalıp notu biçimleri.
     function ezberKimligi(k) { return k is string && k.size() <= 40 && k.matches('^[sdb]-[a-z0-9]+(-[a-z0-9]+)*$'); }
     function gunDizesi(g) { return g is string && g.matches('^20[0-9]{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$'); }
@@ -221,7 +228,8 @@ service cloud.firestore {
         return (id in yeni && maddeGecerli(yeni[id], eski))
           || (!(id in yeni) && id in eski && request.resource.data.get('silinenSurum', 0) == eski[id].surum);
       }
-      allow read: if hoca() || veliOkur(ref);
+      // İlim Yolu (2 Kas 2026): öğrencinin kendisi (çocuk hesabı ya da bağlı yetişkin) yalnız kendi ref'ini okur; yazamaz.
+      allow read: if hoca() || veliOkur(ref) || ogrenciOkur(ref);
       allow create: if hoca() && islemeAcik(ref) && exists(/databases/$(db)/documents/ogrenciler/$(ref)) && belgeGecerli()
         && request.resource.data.degisen in request.resource.data.ogeler
         && request.resource.data.ogeler.keys().hasOnly([request.resource.data.degisen])
@@ -244,7 +252,7 @@ service cloud.firestore {
             && (d.tur != 'gecis' || (d.basamakOnce == 0 && d.basamakSonra in [1, 2]))
             && gunDizesi(d.tarih) && d.zaman == request.time;
         }
-        allow read: if hoca() || veliOkur(ref);
+        allow read: if hoca() || veliOkur(ref) || ogrenciOkur(ref);
         // Sahipsiz olay yok: durum belgesi (aynı toplu yazımda açılsa bile) yazım sonunda var olmalı.
         allow create: if hoca() && islemeAcik(ref) && existsAfter(/databases/$(db)/documents/ezberDurum/$(ref)) && olayGecerli();
         allow delete: if hoca();
@@ -399,6 +407,117 @@ service cloud.firestore {
         allow read: if baglantiAcik(k);
         allow write: if false;
       }
+    }
+
+    /* ───── İlim Yolu (2 Kas 2026, Dilim 1; docs/ILIM-YOLU.md) — hesaplar ─────
+       kullanicilar/{uid}: profil. İstemci yalnız dil/sehir/cami/tercihler/sonGiris alanlarını yazar (değişen alan listesiyle
+       denetlenir). ad (kullanıcı adı), tur (genel|cocuk|kursYetiskin), ref (kurs bağı) ve olusturma YALNIZ sunucuda yazılır
+       (kullaniciAdiAl, cocukHesabiAc, hesabiBagla); istemci bunları ne açar ne değiştirir ne siler. Hesap silme yalnız
+       hesabimiSil fonksiyonuyla (30 gün bekletme). Profili başkası okumaz; liste sorgusu yok. */
+    function tercihlerGecerli(t) {
+      return t is map && t.keys().hasOnly(['haftalik', 'gun', 'saat'])
+        && (!('haftalik' in t) || t.haftalik is bool)
+        && (!('gun' in t) || (t.gun is int && t.gun >= 0 && t.gun <= 6))
+        && (!('saat' in t) || (t.saat is int && t.saat >= 0 && t.saat <= 23));
+    }
+    // d: yazım sonrası belge; degisen: create'te bütün alanlar, update'te diff ile değişenler. Silinen isteğe bağlı alan serbest.
+    function profilGecerli(d, degisen) {
+      return degisen.hasOnly(['dil', 'sehir', 'cami', 'tercihler', 'sonGiris'])
+        && (!('dil' in degisen) || !('dil' in d) || d.dil in ['tr', 'fr', 'en', 'nl', 'de'])
+        && (!('sehir' in degisen) || !('sehir' in d) || (d.sehir is string && d.sehir.size() <= 80))
+        && (!('cami' in degisen) || !('cami' in d) || (d.cami is string && d.cami.size() <= 80))
+        && (!('tercihler' in degisen) || !('tercihler' in d) || tercihlerGecerli(d.tercihler))
+        && (!('sonGiris' in degisen) || !('sonGiris' in d) || d.sonGiris == request.time);
+    }
+    function uidDizesi(x) { return x is string && x.matches('^[A-Za-z0-9_-]{1,128}$'); }
+    match /kullanicilar/{uid} {
+      allow get: if sahip(uid);
+      allow create: if sahip(uid) && profilGecerli(request.resource.data, request.resource.data.keys());
+      allow update: if sahip(uid) && profilGecerli(request.resource.data, request.resource.data.diff(resource.data).affectedKeys());
+      allow list, delete: if false;
+
+      /* Çalışma ilerlemesi: belge adı yalnız ezber | bilgi | yol. Biçim cihaz durumunun (src/lib/ezber/cihaz.ts CihazDurumu)
+         karşılığı: ≤ 120 madde, ≤ 60 gün; her yazımda guncelleme = sunucu zamanı. Okuma: sahibi; kursa bağlı hesabı (sunucunun
+         yazdığı ref) hoca; `yol` belgesini ayrıca öğrenenin paylasimlar listesine koyduğu hoca (Dilim 3, «hocamla paylaş»). */
+      match /calisma/{ad} {
+        function calismaAdi() { return ad in ['ezber', 'bilgi', 'yol']; }
+        function kursaBagli() {
+          return exists(/databases/$(db)/documents/kullanicilar/$(uid))
+            && get(/databases/$(db)/documents/kullanicilar/$(uid)).data.get('ref', '') != '';
+        }
+        function paylasildi() {
+          return exists(/databases/$(db)/documents/paylasimlar/$(uid))
+            && request.auth.uid in get(/databases/$(db)/documents/paylasimlar/$(uid)).data.get('hocalar', []);
+        }
+        function calismaGecerli() {
+          let d = request.resource.data;
+          return d.keys().hasOnly(['v', 'ar', 'maddeler', 'gunler', 'guncelleme'])
+            && d.maddeler is map && d.maddeler.size() <= 120
+            && (!('gunler' in d) || (d.gunler is list && d.gunler.size() <= 60))
+            && (!('v' in d) || d.v is int)
+            && (!('ar' in d) || (d.ar is int && d.ar >= 0 && d.ar <= 4))
+            && d.guncelleme == request.time;
+        }
+        allow get: if calismaAdi() && (sahip(uid) || (hoca() && kursaBagli()) || (ad == 'yol' && hoca() && paylasildi()));
+        // Liste sorgusunda belge adı (ad) bağlı değildir; yazım üç adla sınırlı olduğundan sahibi ve kursun hocası listeleyebilir.
+        // Paylaşımla gelen hoca listeleyemez, yalnız `yol` belgesini get ile okur.
+        allow list: if sahip(uid) || (hoca() && kursaBagli());
+        allow create, update: if calismaAdi() && sahip(uid) && calismaGecerli();
+        allow delete: if calismaAdi() && sahip(uid);
+      }
+
+      /* Özel nitelikli veri (GVKT md. 9): «Yeni Müslümanım» işareti yalnız burada, Auth'a ya da token'a girmez. Yalnız sahibi
+         okur ve yazar; hoca dahil başka kimse okuyamaz. muhtedi == true her yazımda açık rıza ister: riza.zaman = sunucu zamanı,
+         riza.metinSurum = okunan rıza metninin sürümü. muhtedi == false iken rıza kaydı tutulmaz. Çocuk hesabı yazamaz (kayıt
+         akışı yetişkinler içindir). Silmek (rızayı geri almak) serbest. */
+      match /ozel/{belge} {
+        function hassasGecerli() {
+          let d = request.resource.data;
+          return d.keys().hasOnly(['muhtedi', 'riza']) && d.keys().hasAll(['muhtedi']) && d.muhtedi is bool
+            && ((d.muhtedi == true && ('riza' in d) && d.riza is map && d.riza.keys().hasOnly(['zaman', 'metinSurum'])
+                 && d.riza.zaman == request.time
+                 && d.riza.metinSurum is string && d.riza.metinSurum.size() >= 1 && d.riza.metinSurum.size() <= 40)
+              || (d.muhtedi == false && !('riza' in d)));
+        }
+        allow get, delete: if belge == 'hassas' && sahip(uid);
+        allow create, update: if belge == 'hassas' && sahip(uid) && request.auth.token.get('rol', '') != 'cocuk' && hassasGecerli();
+        allow list: if false;
+      }
+    }
+
+    /* Kullanıcı adı → uid eşlemesi: yalnız callable kullaniciAdiAl yazar (ayrılmış adlar sunucuda). Giriş yapan biri tek adı
+       sorabilir (müsait mi); liste (sayma, toplama) ve istemci yazımı yok. */
+    match /kullaniciAdlari/{ad} {
+      allow get: if oturum();
+      allow list, create, update, delete: if false;
+    }
+
+    /* «Hocamla paylaş» (Dilim 3): yalnız öğrenen yazar; en çok 3 hoca uid'si. Silince paylaşım (ve calisma/yol okuması) kapanır.
+       Listede adı geçen hoca (hocalar/{uid} kaydı olan) belgeyi okur; liste sorgusu array-contains ile kanıtlanabilir. */
+    match /paylasimlar/{uid} {
+      function paylasimGecerli() {
+        let d = request.resource.data;
+        return d.keys().hasOnly(['hocalar', 'zaman']) && d.keys().hasAll(['hocalar', 'zaman'])
+          && d.hocalar is list && d.hocalar.size() <= 3
+          && (d.hocalar.size() < 1 || uidDizesi(d.hocalar[0])) && (d.hocalar.size() < 2 || uidDizesi(d.hocalar[1]))
+          && (d.hocalar.size() < 3 || uidDizesi(d.hocalar[2]))
+          && d.zaman == request.time;
+      }
+      allow read: if sahip(uid) || (hoca() && request.auth.uid in resource.data.hocalar);
+      allow create, update: if sahip(uid) && paylasimGecerli();
+      allow delete: if sahip(uid);
+    }
+
+    /* İstemciye tamamen kapalı; yalnız fonksiyonlar (Admin SDK) erişir: gizli/** (çocuk şifre özetleri, kart sırrı özetleri,
+       giriş kilitleri), bagKodlari/** (tek kullanımlık bağlama kodları), ogrenciHesaplari/** (ref → hesap eşlemesi). */
+    match /gizli/{yol=**} {
+      allow read, write: if false;
+    }
+    match /bagKodlari/{yol=**} {
+      allow read, write: if false;
+    }
+    match /ogrenciHesaplari/{yol=**} {
+      allow read, write: if false;
     }
   }
 }

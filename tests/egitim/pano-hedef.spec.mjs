@@ -19,7 +19,7 @@ async function olc(browser, genislik, dil) {
   const baglam = await browser.newContext({ viewport: { width: genislik, height: 800 }, reducedMotion: 'reduce', baseURL: KOK });
   await baglam.route('**/*', (r) => (new URL(r.request().url()).origin === KOK ? r.continue() : r.abort()));
   const sayfa = await baglam.newPage();
-  await sayfa.goto(`/${dil}/`);
+  await sayfa.goto(`/${dil}/ezber/`);
   const sonuc = await sayfa.evaluate(() => {
     const kutular = [...document.querySelectorAll('.pano a.karo.madde')].map((a) => a.getBoundingClientRect());
     const cerceve = document.querySelector('.pano-cerceve').getBoundingClientRect();

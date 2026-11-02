@@ -134,17 +134,17 @@ test('Gizle ve söyle: madde noktalı çizgiyle gizlenir, düğme tek tek ve top
   await expect(satirlar.first().locator('.cizgi')).toBeVisible();
   await expect(page.locator(`${GIZLE} .kip-durum`)).toHaveText('Gizli madde: 5');
   const ac = satirlar.first().locator('.bilgi-ac');
-  await expect(ac).toHaveText('Göster');
-  await expect(ac).toHaveAttribute('aria-label', '1. maddeyi göster');
+  await expect(ac).toHaveText('Gösterin');
+  await expect(ac).toHaveAttribute('aria-label', '1. maddeyi gösterin');
   expect((await ac.boundingBox()).height).toBeGreaterThanOrEqual(44);
   await ac.click();
   await expect(satirlar.first().locator('.bilgi-ad')).toBeVisible();
   await expect(satirlar.first().locator('.cizgi')).toBeHidden();
-  await expect(ac).toHaveText('Gizle');
+  await expect(ac).toHaveText('Gizleyin');
   await expect(page.locator(`${GIZLE} .kip-durum`)).toHaveText('Gizli madde: 4');
-  await page.getByRole('button', { name: 'Hepsini göster' }).click();
+  await page.getByRole('button', { name: 'Hepsini gösterin' }).click();
   await expect(page.locator(`${GIZLE} .kip-durum`)).toHaveText('Hepsi açık.');
-  await page.getByRole('button', { name: 'Hepsini gizle' }).click();
+  await page.getByRole('button', { name: 'Hepsini gizleyin' }).click();
   await expect(page.locator(`${GIZLE} .kip-durum`)).toHaveText('Gizli madde: 5');
   expect(hatalar).toEqual([]);
 });
@@ -172,20 +172,20 @@ test('Sırala: ↑ ↓ ve Alt + ok ile taşınır; kontrol yerinde olanı sayar;
   await expect(parcalar).toHaveCount(6);
   const d = veri('b-imanin-sartlari').maddeler.map((x) => x.ad.tr);
 
-  await page.getByRole('button', { name: 'Doğru sırayı göster' }).click();
+  await page.getByRole('button', { name: 'Doğru sırayı gösterin' }).click();
   expect(await parcalar.allTextContents()).toEqual(d);
   await expect(page.locator(`${SIRALA} .sina-oge.dogru`)).toHaveCount(6);
 
   // İlk parçayı aşağı taşı: iki parça yer değiştirir, kontrol 4 / 6 der.
   await page.locator(`${SIRALA} li[data-i="0"] button[data-yon="1"]`).click();
   expect(await parcalar.allTextContents()).toEqual([d[1], d[0], ...d.slice(2)]);
-  await page.getByRole('button', { name: 'Kontrol et' }).click();
+  await page.getByRole('button', { name: 'Kontrol edin' }).click();
   await expect(page.locator(`${SIRALA} .kip-durum`)).toContainText('4 / 6');
   // Odak taşınan parçanın düğmesinde kalır; Alt + ↑ geri taşır.
   await page.locator(`${SIRALA} li[data-i="1"] button[data-yon="-1"]`).focus();
   await page.keyboard.press('Alt+ArrowUp');
   expect(await parcalar.allTextContents()).toEqual(d);
-  await page.getByRole('button', { name: 'Kontrol et' }).click();
+  await page.getByRole('button', { name: 'Kontrol edin' }).click();
   await expect(page.locator(`${SIRALA} .sina-oge.dogru`)).toHaveCount(6);
   await expect(page.getByText('Hepsi doğru sırada.')).toBeVisible();
   // İlk ve son satırda taşıma düğmesi yönünde devre dışıdır.
@@ -271,7 +271,7 @@ test('Çalışma kipi ve iki dilde sayfa: 360 px genişlikte iki kipte de yatay 
     await page.locator('#bilgi-sekme-sirala').click();
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
     await page.locator('#bilgi-sekme-gizle').click();
-    await page.getByRole('button', { name: /^(Hepsini göster|Tout montrer)$/ }).click();
+    await page.getByRole('button', { name: /^(Hepsini gösterin|Tout montrer)$/ }).click();
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   }
 });

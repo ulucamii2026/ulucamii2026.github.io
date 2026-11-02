@@ -18,11 +18,11 @@ interface CalismaMetinleri {
 
 const METINLER: Record<Dil, CalismaMetinleri> = {
   tr: {
-    baslik: 'Dinle ve tekrarla', giris: 'Bir bölümü dinleyin, ardından sesli tekrar edin. Hazır olduğunuzda sıradaki bölüme geçin.',
-    ac: 'Çalış', geri: 'Ezber Kilimi’ne dön', bolum: 'Dinlenecek bölüm', tumu: 'Bütün bölümler sırayla', parca: 'Bölüm',
+    baslik: 'Dinleyin ve tekrarlayın', giris: 'Bir bölümü dinleyin, ardından sesli tekrar edin. Hazır olduğunuzda sıradaki bölüme geçin.',
+    ac: 'Çalışın', geri: 'Ezber Kilimi’ne dönün', bolum: 'Dinlenecek bölüm', tumu: 'Bütün bölümler sırayla', parca: 'Bölüm',
     tekrar: 'Her bölümü dinleme sayısı', bir: '1 kez', uc: '3 kez', hiz: 'Dinleme hızı', normal: 'Normal · 1×', yavas: 'Yavaş · 0,75×',
-    sira: 'Senin sıran: her dinleyişten sonra tekrar için bekleme', siraYok: 'Bekleme yok', sira1: 'Dinleme süresi kadar', sira15: 'Dinleme süresinin 1,5 katı', sira2: 'Dinleme süresinin 2 katı', baslat: 'Dinlemeye başla', duraklat: 'Duraklat', surdur: 'Devam et',
-    durdur: 'Başa dön', hazir: 'Hazır. Dinlemeyi siz başlatırsınız.', bitti: 'Dinleme tamamlandı. Dilerseniz yeniden çalışabilirsiniz.',
+    sira: 'Sıra sizde: her dinleyişten sonra tekrar için bekleme', siraYok: 'Bekleme yok', sira1: 'Dinleme süresi kadar', sira15: 'Dinleme süresinin 1,5 katı', sira2: 'Dinleme süresinin 2 katı', baslat: 'Dinlemeye başlayın', duraklat: 'Duraklatın', surdur: 'Devam edin',
+    durdur: 'Başa dönün', hazir: 'Hazır. Dinlemeyi siz başlatırsınız.', bitti: 'Dinleme tamamlandı. Dilerseniz yeniden çalışabilirsiniz.',
     bekliyor: 'Şimdi siz tekrarlayın.', hata: 'Ses çalınamadı. Bağlantınızı kontrol edip yeniden başlatın.',
     kaynak: 'Diyanet ses kaynağı', kaynakAciklama: 'Bu çalışmada Diyanet İşleri Başkanlığı’nın kayıtlarını dinlersiniz.',
     parcasiz: 'Bu madde tek kayıt olarak dinlenir.', ilerleme: 'Evdeki bu çalışma, hocanın verdiği ezber basamağını değiştirmez.',

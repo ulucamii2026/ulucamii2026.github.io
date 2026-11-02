@@ -108,25 +108,59 @@ function budaYap(d: CihazDurumu): CihazDurumu {
   return { ...d, maddeler: Object.fromEntries(kalan.map((id) => [id, d.maddeler[id]])) };
 }
 
-/** Depodan oku; depo yok, kapalı ya da içerik bozuksa boş durum. */
-export function oku(depo: Depo | null | undefined): CihazDurumu {
+/**
+ * İlim Yolu (Dilim 1, 2 Kasım 2026): giriş yapmış kullanıcının bu cihazdaki kopyası ayrı anahtarda durur
+ * (`ulucamii:ezber:cihaz:v1:u:<uidOzeti>`); anonim anahtar (`ANAHTAR`) olduğu gibi kalır. Ham uid depoya yazılmaz: özeti
+ * çağıran üretir. Özet `[a-z0-9]{8,64}` değilse hata fırlatır (yanlış anahtara sessizce yazmaktansa).
+ */
+const UID_OZETI = /^[a-z0-9]{8,64}$/;
+export function kullaniciAnahtari(uidOzeti: string): string {
+  if (typeof uidOzeti !== 'string' || !UID_OZETI.test(uidOzeti)) throw new TypeError('uid özeti [a-z0-9]{8,64} olmalı');
+  return `${ANAHTAR}:u:${uidOzeti}`;
+}
+
+/** Depodan oku; depo yok, kapalı ya da içerik bozuksa boş durum. `anahtar` verilmezse anonim cihaz anahtarı. */
+export function oku(depo: Depo | null | undefined, anahtar: string = ANAHTAR): CihazDurumu {
   try {
-    const ham = depo?.getItem(ANAHTAR);
+    const ham = depo?.getItem(anahtar);
     return ham ? temizle(JSON.parse(ham)) : bos();
   } catch {
     return bos();
   }
 }
 
-/** Depoya yaz; başarısızsa (kapalı, dolu) `false` ve sayfa çalışmaya devam eder. */
-export function yaz(depo: Depo | null | undefined, d: CihazDurumu): boolean {
+/** Depoya yaz; başarısızsa (kapalı, dolu) `false` ve sayfa çalışmaya devam eder. `anahtar` verilmezse anonim cihaz anahtarı. */
+export function yaz(depo: Depo | null | undefined, d: CihazDurumu, anahtar: string = ANAHTAR): boolean {
   try {
     if (!depo) return false;
-    depo.setItem(ANAHTAR, JSON.stringify(d));
+    depo.setItem(anahtar, JSON.stringify(d));
     return true;
   } catch {
     return false;
   }
+}
+
+/**
+ * Cihazdaki ilerlemeyi hesaptakiyle (bulut) birleştirir (İlim Yolu Dilim 1). İki girdi de önce `temizle()`'den geçer: buluttan
+ * gelen veri güvenilmez sayılır. Madde başına `son`u daha yeni olan kayıt kazanır; eşitlikte cihazdaki. Çalışılan günler
+ * birleşir ve `gunleriTemizle` ile süzülür; madde sınırı (`AZAMI_MADDE`) `budaYap`'ın kuralıyla uygulanır (en eski çalışılan
+ * atılır). Arapça boyutu bu cihazın tercihidir: cihazdaki kalır. `simdi` (ms) verilirse ondan ileri `son` ona çekilir: saati
+ * ileri bir cihazın kaydı sonraki her çalışmayı ezmesin. Saf ve belirlenimci (içeride saat okunmaz; maddeler kimlik sırasıyla
+ * kurulur, eşit `son`da budama sırası anahtar sırasına bağlı kalmaz); `birlestir(a, birlestir(a, b))` = `birlestir(a, b)`.
+ */
+export function birlestir(yerel: unknown, bulut: unknown, simdi?: number): CihazDurumu {
+  const y = temizle(yerel);
+  const b = temizle(bulut);
+  const tavan = typeof simdi === 'number' && Number.isFinite(simdi) ? Math.max(0, Math.trunc(simdi)) : null;
+  const cek = (a: MaddeAyari | undefined): MaddeAyari | undefined => (a && tavan !== null && a.son > tavan ? { ...a, son: tavan } : a);
+  const maddeler: Record<string, MaddeAyari> = {};
+  for (const id of [...new Set([...Object.keys(y.maddeler), ...Object.keys(b.maddeler)])].sort()) {
+    const a = cek(y.maddeler[id]);
+    const c = cek(b.maddeler[id]);
+    const kazanan = !c ? a : !a ? c : c.son > a.son ? c : a;
+    if (kazanan) maddeler[id] = kazanan;
+  }
+  return budaYap({ v: 1, ar: y.ar, maddeler, gunler: gunleriTemizle([...y.gunler, ...b.gunler]) });
 }
 
 export const maddeAyari = (d: CihazDurumu, id: string): MaddeAyari => d.maddeler[id] ?? varsayilanAyar();

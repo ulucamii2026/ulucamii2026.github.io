@@ -44,10 +44,17 @@ test.beforeEach(async ({ context }) => {
     // saat» sayardı (src/lib/ekran/secim.ts → saatGecerliMi). Akışlarda Date başlığı ayıklanır; o kuralı sınayan
     // testler başlığı kendileri verir. Yönlendirme açıkken HTTP önbelleği zaten kapalıdır.
     if (!cevrimdisi && /^\/ekran\/[^/]+\.json$/.test(u.pathname)) {
-      const yanit = await route.fetch();
-      const basliklar = yanit.headers();
-      delete basliklar.date;
-      return route.fulfill({ response: yanit, headers: basliklar });
+      // Test biterken uçuştaki bir istek kapanan sayfayla düşer («Fetch response has been disposed»); yalnız o hata yutulur
+      // (2 Kas 2026, yüklü makinede kalite kapısında bir kez görüldü). Başka her hata testi düşürmeye devam eder.
+      try {
+        const yanit = await route.fetch();
+        const basliklar = yanit.headers();
+        delete basliklar.date;
+        return await route.fulfill({ response: yanit, headers: basliklar });
+      } catch (hata) {
+        if (!/disposed|has been closed/i.test(String(hata))) throw hata;
+        return;
+      }
     }
     return route.continue();
   });

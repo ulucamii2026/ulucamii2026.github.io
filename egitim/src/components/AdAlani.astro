@@ -1,0 +1,23 @@
+---
+/** Kullanıcı adı formu (kayıt 2. adım ve hesap sayfası); davranış scripts/hesap-ortak.ts `adAdimi`. Metinler beş dilde src/i18n/hesap.ts'den. */
+import type { HesapMetinleri } from '../i18n/hesap';
+interface Props { m: HesapMetinleri; kimlik: string; dugme?: string }
+const { m, kimlik, dugme } = Astro.props;
+---
+<form data-ad-form novalidate>
+  <div class="iy-alan">
+    <label for={`${kimlik}-girdi`}>{m.adEtiket}</label>
+    <div class="iy-onek-kutu">
+      <span aria-hidden="true">@</span>
+      <input class="iy-girdi" id={`${kimlik}-girdi`} data-ad-girdi autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" maxlength="40"
+        aria-describedby={`${kimlik}-durum ${kimlik}-kural`} />
+    </div>
+    <p class="iy-uygun" id={`${kimlik}-durum`} data-ad-durum aria-live="polite" hidden></p>
+    <button type="button" class="dugme ikincil kucuk" data-ad-oneri hidden></button>
+    <div class="iy-kural" id={`${kimlik}-kural`}>
+      {m.adKurallar.map((k) => <span>{k}</span>)}
+    </div>
+  </div>
+  <p class="iy-durum" role="alert" data-ad-hata></p>
+  <div class="iy-eylem"><button type="submit" class="dugme birincil" data-ad-kaydet>{dugme ?? m.adKaydet}</button></div>
+</form>

@@ -82,8 +82,17 @@ test('kaydedilebilirYolMu: yalnız beş dilin sayfaları; dosya, üst dizin, bü
     assert.equal(m.kaydedilebilirYolMu(y), false, y);
 });
 
+test('onbellekDisiYolMu: hesap sayfaları ve /k/ önbelleğe alınmaz ve kaydedilemez; öteki sayfalar etkilenmez', () => {
+  for (const y of ['/tr/hesap/', '/fr/hesap/giris/', '/en/hesap/kayit/', '/nl/hesap', '/de/hesap/giris/', '/k/', '/k', '/k/abc']) {
+    assert.equal(m.onbellekDisiYolMu(y), true, y);
+    assert.equal(m.kaydedilebilirYolMu(y), false, y);
+  }
+  for (const y of ['/', '/tr/', '/tr/ezber/', '/tr/kilimim/', '/tr/calis/s-ihlas/', '/tr/hesapla/', '/kk/', '/_astro/k/a.js']) assert.equal(m.onbellekDisiYolMu(y), false, y);
+  assert.equal(m.kaydedilebilirYolMu('/tr/ezber/'), true);
+});
+
 test('statikMi: yapı dosyaları, yazı tipleri, logo ve simgeler; sayfa, sw.js, manifest ve ses değil', () => {
-  for (const y of ['/_astro/Taban.abc.css', '/fonts/atkinson-next.woff2', '/logo/kuran-kursu-yatay.svg', '/favicon.svg', '/favicon.ico', '/apple-touch-icon.png', '/icon-192.png', '/icon-512.png', '/icon-maskable-512.png'])
+  for (const y of ['/_astro/Taban.abc.css', '/fonts/atkinson-next.woff2', '/logo/kuran-kursu-yatay.svg', '/favicon.svg', '/favicon.ico', '/apple-touch-icon.png', '/icon-192.png', '/icon-512.png', '/icon-maskable-512.png', '/oturum-isareti.js'])
     assert.equal(m.statikMi(y), true, y);
   for (const y of ['/', '/tr/', '/sw.js', '/manifest.webmanifest', '/og/ezber-kilimi-tr.png', '/robots.txt', '/media/ses/ayet/112-1.mp3', '/sitemap-0.xml'])
     assert.equal(m.statikMi(y), false, y);
@@ -124,7 +133,7 @@ const yerTutucular = (s) => [...s.matchAll(/\{(\w+)\}/g)].map(([, a]) => a).sort
 
 test('Metinler: beş dilde aynı anahtarlar, hepsi dolu; yer tutucular dillerde aynı; kayıt düğmesi istenen söz', () => {
   assert.ok(anahtarlar.length >= 40);
-  assert.equal(m.cevrimdisiMetinleri('tr').kaydet, 'İnternetsiz çalışmak için kaydet');
+  assert.equal(m.cevrimdisiMetinleri('tr').kaydet, 'İnternetsiz çalışmak için kaydedin');
   for (const dil of DILLER) {
     const t = m.cevrimdisiMetinleri(dil);
     assert.deepEqual(Object.keys(t), anahtarlar, dil);
@@ -205,8 +214,8 @@ test('Her sayfa manifest ve tema rengiyle bağlı; manifest alanları, kapsamı 
   assert.equal(manifest.start_url, '/');
   assert.equal(manifest.scope, '/');
   assert.equal(manifest.id, '/');
-  assert.equal(manifest.theme_color, '#134420');
-  assert.equal(manifest.background_color, '#134420');
+  assert.equal(manifest.theme_color, '#F6EEDF');
+  assert.equal(manifest.background_color, '#F6EEDF');
   assert.ok(manifest.name.length > manifest.short_name.length && manifest.short_name.length <= 12);
   assert.ok(manifest.lang && manifest.description);
   const png = (yol) => { const t = readFileSync(dosya(yol)); assert.equal(t.subarray(1, 4).toString('latin1'), 'PNG', yol); return [t.readUInt32BE(16), t.readUInt32BE(20)]; };
@@ -256,7 +265,7 @@ test('_astro dosyalarının atıfları çözülür: her sayfanın, CSS’in ve J
   // Örnek sayfa: yapı dosyaları, yazı tipi ve logo bulunur.
   const bulunan = m.varlikAdresleri('html', readFileSync(join(dosya('tr/calis/s-ihlas/'), 'index.html'), 'utf8'), '/tr/calis/s-ihlas/');
   assert.ok(bulunan.some((y) => y.endsWith('.css')) && bulunan.some((y) => y.endsWith('.js')));
-  assert.ok(bulunan.includes('/fonts/atkinson-next.woff2') && bulunan.includes('/logo/kuran-kursu-yatay.svg'));
+  assert.ok(bulunan.includes('/fonts/atkinson-next.woff2') && bulunan.includes('/fonts/work-sans-600.woff2'));
   assert.equal(bulunan.some((y) => y.startsWith('/media/') || y.endsWith('/')), false);
 });
 

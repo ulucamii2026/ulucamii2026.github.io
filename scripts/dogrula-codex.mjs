@@ -26,6 +26,9 @@ if (egitim === 0) await run('test:egitim');
 else { results.push({ task: 'test:egitim (egitim derlemesi yok; atlandı)', code: 1 }); }
 // Web hatası, bağımsız güvenlik testlerinin çalışmasını engellemez.
 await run('test:kurallar');
+// İlim Yolu: kullanıcı adı biçimi + Cloud Functions (Auth/Firestore/Functions emülatörü, demo-ulucamii).
+await run('test:ilim-yolu');
+await run('test:hesap');
 await run('test:veli-eposta');
 await run('test:oto-kaydet');
 await run('test:ogrenme');

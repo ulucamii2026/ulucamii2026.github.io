@@ -40,8 +40,11 @@ for (const port of [8185, 4485, 4585, 9150]) {
   });
 }
 console.log('Yalıtılmış Firestore testi: demo-ulucamii / 127.0.0.1:8185. Canlı veriye bağlantı yok.');
+// tests/kurallar altındaki bütün *.test.mjs dosyaları (İlim Yolu kuralları ayrı dosyada).
+const kuralTestleri = readdirSync(join(root, 'tests', 'kurallar')).filter(ad => ad.endsWith('.test.mjs')).sort()
+  .map(ad => `tests/kurallar/${ad}`).join(' ');
 const child = spawn(process.execPath, [firebase, 'emulators:exec', '--config', 'firebase.emulators.json',
-  '--project', 'demo-ulucamii', '--only', 'firestore', `"${process.execPath}" --test tests/kurallar/firestore.test.mjs`],
+  '--project', 'demo-ulucamii', '--only', 'firestore', `"${process.execPath}" --test --test-concurrency=1 ${kuralTestleri}`],
 { cwd: root, env, stdio: 'inherit', windowsHide: true });
 child.on('error', () => { console.error('Firebase emülatörü başlatılamadı.'); process.exitCode = 1; });
 child.on('exit', code => { process.exitCode = code ?? 1; });

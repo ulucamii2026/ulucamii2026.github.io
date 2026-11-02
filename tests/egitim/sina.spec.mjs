@@ -130,7 +130,7 @@ test('Hangi âyet?: Dinle bölüm kaydını çalar; seçenekler âyet metnidir; 
   await sinaAc(page);
   await oyun(page, 2).click();
   await expect(page.locator(`${SINA} .sina-secenek`)).toHaveCount(3);
-  await page.getByRole('button', { name: 'Dinle', exact: true }).click();
+  await page.getByRole('button', { name: 'Dinleyin', exact: true }).click();
   expect(await page.evaluate(() => window.__sesler)).toEqual([expect.stringMatching(/^\/media\/ses\/ayet\/112-[1-4]\.mp3$/)]);
   await page.locator(`${SINA} .sina-secenek`).nth(1).click();
   await expect(page.locator(`${SINA} .sina-secenek.dogru`)).toHaveCount(1);
@@ -188,17 +188,17 @@ test('Ses kaydı: mikrofon izni reddedilirse ileti çıkar ve kayıt başlamaz',
   });
   await sinaAc(page);
   await oyunAdi(page, 'kayit').click();
-  await page.getByRole('button', { name: 'Kaydı başlat' }).click();
+  await page.getByRole('button', { name: 'Kaydı başlatın' }).click();
   await expect(durum(page)).toContainText('Mikrofon izni verilmedi');
-  await expect(page.getByRole('button', { name: 'Kaydı durdur' })).toBeHidden();
-  await expect(page.getByRole('button', { name: 'Kaydı başlat' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Kaydı durdurun' })).toBeHidden();
+  await expect(page.getByRole('button', { name: 'Kaydı başlatın' })).toBeVisible();
 });
 
 test.describe('Giriş sayfası: «Bugün tekrar» bandı', () => {
   const tohumla = (page, durumu) => page.addInitScript(([k, d]) => localStorage.setItem(k, JSON.stringify(d)), [ANAHTAR, durumu]);
 
   test('kayıt yoksa gizli; tekrarı gelen madde bağlantıyla listelenir; haftalık çalışma yazıyla söylenir', async ({ page }) => {
-    await page.goto('/tr/');
+    await page.goto('/tr/ezber/');
     await expect(page.locator('[data-tekrar]')).toBeHidden();
     await page.evaluate((k) => localStorage.setItem(k, JSON.stringify({
       v: 1, ar: 1, gunler: ['2026-10-17', '2026-10-22', '2026-10-24'],
@@ -217,7 +217,7 @@ test.describe('Giriş sayfası: «Bugün tekrar» bandı', () => {
 
   test('tekrarı gelen madde yoksa söylenir; geçmişte kalan çalışma günü haftaya sayılmaz', async ({ page }) => {
     await tohumla(page, { v: 1, ar: 1, gunler: ['2026-10-10'], maddeler: { 's-ihlas': { kip: 'sina', kutu: 2, sonraki: '2026-11-05' } } });
-    await page.goto('/tr/');
+    await page.goto('/tr/ezber/');
     const band = page.locator('[data-tekrar]');
     await expect(band.locator('[data-tekrar-ozet]')).toHaveText('Bugün tekrar günü olan madde yok.');
     await expect(band.locator('[data-tekrar-liste]')).toBeHidden();
@@ -227,7 +227,7 @@ test.describe('Giriş sayfası: «Bugün tekrar» bandı', () => {
   for (const dil of DILLER) {
     test(`${dil}: bant beş dilde açılır, bağlantı o dilin madde sayfasına gider; erişilebilirlik`, async ({ page }) => {
       await tohumla(page, { v: 1, ar: 1, gunler: ['2026-10-24'], maddeler: { 's-ihlas': { kip: 'sina', kutu: 0, sonraki: '2026-10-24' } } });
-      await page.goto(`/${dil}/`);
+      await page.goto(`/${dil}/ezber/`);
       const band = page.locator('[data-tekrar]');
       await expect(band).toBeVisible();
       await expect(band.locator('[data-tekrar-liste] a')).toHaveAttribute('href', `/${dil}/calis/s-ihlas/`);
@@ -243,7 +243,7 @@ test.describe('Giriş sayfası: «Bugün tekrar» bandı', () => {
     await page.addInitScript(() => {
       Object.defineProperty(window, 'localStorage', { get() { throw new DOMException('kapalı', 'SecurityError'); } });
     });
-    await page.goto('/tr/');
+    await page.goto('/tr/ezber/');
     await expect(page.locator('[data-tekrar]')).toBeHidden();
     await expect(page.locator('h1')).toBeVisible();
     expect(hatalar).toEqual([]);
@@ -253,7 +253,7 @@ test.describe('Giriş sayfası: «Bugün tekrar» bandı', () => {
     const hatalar = [];
     page.on('pageerror', (e) => hatalar.push(e.message));
     await page.addInitScript((k) => localStorage.setItem(k, '{bozuk'), ANAHTAR);
-    await page.goto('/tr/');
+    await page.goto('/tr/ezber/');
     await expect(page.locator('[data-tekrar]')).toBeHidden();
     expect(hatalar).toEqual([]);
   });

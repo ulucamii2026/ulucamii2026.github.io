@@ -1,0 +1,41 @@
+---
+/**
+ * Kare kodlu kartla giriş (2 Kasım 2026): `https://egitim.ulucamii.be/k/#<kartId>.<sır>`. Dil bağımsız tek sayfa; dili cihazdan (son kullanılan dil, tarayıcı dili)
+ * seçer. Sır yalnız adres parçasındadır: scripts/kart.ts İLK iş olarak onu adresten siler, sonra giriş ucunu çağırır. Sayfa noindex, site haritasında ve önbellekte
+ * yok; Firebase yalnız kart varsa yüklenir. Beş dilin metni sayfa verisinde durur (satır içi betik yok).
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import { dilListesi, hreflangKodu } from '@ortak/i18n/utils';
+import SoruPaneli from '../../components/SoruPaneli.astro';
+import { hesapMetinleri } from '../../i18n/hesap';
+import { sablonlar } from '../../i18n/sablon';
+import Taban from '../../layouts/Taban.astro';
+import '../../styles/ilim.css';
+
+const secim = (d: Dil) => {
+  const m = hesapMetinleri(d);
+  return sablonlar({
+    kartBaslik: m.kartBaslik, kartGiriyor: m.kartGiriyor, kartTamam: m.kartTamam, kartGecersiz: m.kartGecersiz, kartYok: m.kartYok,
+    kartYanlis: m.kartYanlis, kartAnaSayfa: m.kartAnaSayfa, kartKodlaGir: m.kartKodlaGir, cocukHata: m.cocukHata, ag: m.ag,
+    esitleSor: m.esitleSor, esitleEvet: m.esitleEvet, esitleHayir: m.esitleHayir, esitleNot: m.esitleNot,
+  });
+};
+const veri = { diller: Object.fromEntries(dilListesi.map((d) => [d, secim(d)])), kodlar: Object.fromEntries(dilListesi.map((d) => [d, hreflangKodu(d)])) };
+const m = hesapMetinleri('tr');
+---
+<Taban dil="tr" baslik={m.kartBaslik} aciklama={m.kartAciklama} noindex oturum={false} sade>
+  <div class="icerik iy-kart-sayfa" data-veri={JSON.stringify(veri)}>
+    <h1 data-baslik>{m.kartBaslik}</h1>
+    <p class="iy-durum" role="status" data-durum><span class="iy-donen" aria-hidden="true"></span>{m.kartGiriyor}</p>
+    <p class="iy-durum hata" role="alert" data-hata></p>
+    <SoruPaneli kimlik="k-soru" />
+    <p class="iy-eylem" data-baglantilar hidden>
+      <a class="dugme birincil" data-ana href="/tr/">{m.kartAnaSayfa}</a>
+      <a class="dugme ikincil" data-kodla href="/tr/hesap/giris/?yontem=kurs">{m.kartKodlaGir}</a>
+    </p>
+  </div>
+</Taban>
+
+<script>
+  import '../../scripts/kart';
+</script>

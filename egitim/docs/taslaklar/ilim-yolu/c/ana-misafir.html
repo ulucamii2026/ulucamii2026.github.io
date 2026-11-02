@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>İlim Yolu — Hoş geldiniz (Yön C · Kilim)</title>
+<meta name="description" content="Kur’an’ı, namazı ve dinini adım adım öğren: Diyanet metni ve sesiyle, kendi hızında, beş dilde.">
+<link rel="stylesheet" href="stil.css">
+</head>
+<body>
+<!--SPRITE-->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<pattern id="serit" width="24" height="16" patternUnits="userSpaceOnUse"><rect width="24" height="16" fill="#FFFAF0"/><rect width="24" height="2.5" fill="#1E4D3B"/><rect y="13.5" width="24" height="2.5" fill="#1E4D3B"/><path d="M0 13.5 6 4.5 12 13.5ZM12 13.5 18 4.5 24 13.5Z" fill="#9B2C22"/><path d="M6 8.5 8 10.5 6 12.5 4 10.5ZM18 8.5 20 10.5 18 12.5 16 10.5Z" fill="#D7A23E"/></pattern>
+<pattern id="serit-koyu" width="24" height="16" patternUnits="userSpaceOnUse"><rect width="24" height="16" fill="#1E4D3B"/><rect width="24" height="2" fill="#D7A23E"/><rect y="14" width="24" height="2" fill="#D7A23E"/><path d="M0 14 6 4.5 12 14ZM12 14 18 4.5 24 14Z" fill="#9B2C22"/><path d="M6 8.5 8 10.5 6 12.5 4 10.5ZM18 8.5 20 10.5 18 12.5 16 10.5Z" fill="#D7A23E"/></pattern>
+<pattern id="baklava-desen" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M11.2 4 11.2 6.4 13.6 6.4 13.6 8.8 16 8.8 16 11.2 13.6 11.2 13.6 13.6 11.2 13.6 11.2 16 8.8 16 8.8 13.6 6.4 13.6 6.4 11.2 4 11.2 4 8.8 6.4 8.8 6.4 6.4 8.8 6.4 8.8 4Z" fill="#FFFAF0" fill-opacity=".2"/><path d="M0 0h2v2H0zM18 0h2v2h-2zM0 18h2v2H0zM18 18h2v2h-2z" fill="#FFFAF0" fill-opacity=".25"/></pattern>
+<symbol id="damga" viewBox="0 0 48 48"><path d="M26.2 4.2 26.2 8.6 30.6 8.6 30.6 13 35 13 35 17.4 39.4 17.4 39.4 21.8 43.8 21.8 43.8 26.2 39.4 26.2 39.4 30.6 35 30.6 35 35 30.6 35 30.6 39.4 26.2 39.4 26.2 43.8 21.8 43.8 21.8 39.4 17.4 39.4 17.4 35 13 35 13 30.6 8.6 30.6 8.6 26.2 4.2 26.2 4.2 21.8 8.6 21.8 8.6 17.4 13 17.4 13 13 17.4 13 17.4 8.6 21.8 8.6 21.8 4.2Z" fill="#9B2C22"/><path d="M26.2 13 26.2 17.4 30.6 17.4 30.6 21.8 35 21.8 35 26.2 30.6 26.2 30.6 30.6 26.2 30.6 26.2 35 21.8 35 21.8 30.6 17.4 30.6 17.4 26.2 13 26.2 13 21.8 17.4 21.8 17.4 17.4 21.8 17.4 21.8 13Z" fill="#FFFAF0"/><path d="M24 18.5 29.5 24 24 29.5 18.5 24Z" fill="#D7A23E"/></symbol>
+<symbol id="kisi-isaret" viewBox="0 0 24 24"><rect width="24" height="24" rx="3" fill="#1E4D3B"/><path d="M12.8 3.2 12.8 4.8 14.4 4.8 14.4 6.4 16 6.4 16 8 17.6 8 17.6 9.6 19.2 9.6 19.2 11.2 20.8 11.2 20.8 12.8 19.2 12.8 19.2 14.4 17.6 14.4 17.6 16 16 16 16 17.6 14.4 17.6 14.4 19.2 12.8 19.2 12.8 20.8 11.2 20.8 11.2 19.2 9.6 19.2 9.6 17.6 8 17.6 8 16 6.4 16 6.4 14.4 4.8 14.4 4.8 12.8 3.2 12.8 3.2 11.2 4.8 11.2 4.8 9.6 6.4 9.6 6.4 8 8 8 8 6.4 9.6 6.4 9.6 4.8 11.2 4.8 11.2 3.2Z" fill="#D7A23E"/><path d="M12 8.8 15.2 12 12 15.2 8.8 12Z" fill="#1E4D3B"/></symbol>
+<symbol id="b-calisiyor" viewBox="0 0 24 24"><path d="M12.97 1.27 12.97 3.23 14.93 3.23 14.93 5.17 16.88 5.18 16.88 7.12 18.82 7.12 18.82 9.07 20.77 9.08 20.77 11.03 22.73 11.03 22.73 12.97 20.77 12.97 20.77 14.92 18.82 14.93 18.82 16.88 16.88 16.88 16.88 18.83 14.93 18.82 14.93 20.78 12.97 20.77 12.97 22.73 11.03 22.73 11.03 20.77 9.07 20.78 9.07 18.82 7.12 18.83 7.12 16.88 5.18 16.88 5.18 14.93 3.22 14.92 3.22 12.97 1.28 12.97 1.28 11.03 3.22 11.03 3.22 9.08 5.18 9.07 5.18 7.12 7.12 7.12 7.12 5.18 9.07 5.17 9.07 3.23 11.03 3.23 11.03 1.27Z M12.97 5.18 12.97 7.12 14.93 7.12 14.93 9.07 16.88 9.08 16.88 11.03 18.82 11.03 18.82 12.97 16.88 12.97 16.88 14.92 14.93 14.93 14.93 16.88 12.97 16.88 12.97 18.83 11.03 18.83 11.03 16.88 9.07 16.88 9.07 14.93 7.12 14.92 7.12 12.97 5.18 12.97 5.18 11.03 7.12 11.03 7.12 9.08 9.07 9.07 9.07 7.12 11.03 7.12 11.03 5.18Z" fill="#9B2C22" fill-rule="evenodd"/></symbol>
+<symbol id="b-okudu" viewBox="0 0 24 24"><path d="M12.97 1.27 12.97 3.23 14.93 3.23 14.93 5.17 16.88 5.18 16.88 7.12 18.82 7.12 18.82 9.07 20.77 9.08 20.77 11.03 22.73 11.03 22.73 12.97 20.77 12.97 20.77 14.92 18.82 14.93 18.82 16.88 16.88 16.88 16.88 18.83 14.93 18.82 14.93 20.78 12.97 20.77 12.97 22.73 11.03 22.73 11.03 20.77 9.07 20.78 9.07 18.82 7.12 18.83 7.12 16.88 5.18 16.88 5.18 14.93 3.22 14.92 3.22 12.97 1.28 12.97 1.28 11.03 3.22 11.03 3.22 9.08 5.18 9.07 5.18 7.12 7.12 7.12 7.12 5.18 9.07 5.17 9.07 3.23 11.03 3.23 11.03 1.27Z M12.97 5.18 12.97 7.12 14.93 7.12 14.93 9.07 16.88 9.08 16.88 11.03 18.82 11.03 18.82 12.97 16.88 12.97 16.88 14.92 14.93 14.93 14.93 16.88 12.97 16.88 12.97 18.83 11.03 18.83 11.03 16.88 9.07 16.88 9.07 14.93 7.12 14.92 7.12 12.97 5.18 12.97 5.18 11.03 7.12 11.03 7.12 9.08 9.07 9.07 9.07 7.12 11.03 7.12 11.03 5.18Z" fill="#9B2C22" fill-rule="evenodd"/><path d="M12.97 5.18 12.97 7.12 14.93 7.12 14.93 9.07 16.88 9.08 16.88 11.03 18.82 11.03 18.82 12.97 16.88 12.97 16.88 14.92 14.93 14.93 14.93 16.88 12.97 16.88 12.97 18.83 11.03 18.83 11.03 16.88 9.07 16.88 9.07 14.93 7.12 14.92 7.12 12.97 5.18 12.97 5.18 11.03 7.12 11.03 7.12 9.08 9.07 9.07 9.07 7.12 11.03 7.12 11.03 5.18Z" fill="#D7A23E"/></symbol>
+<symbol id="b-pekisti" viewBox="0 0 24 24"><path d="M12.97 1.27 12.97 3.23 14.93 3.23 14.93 5.17 16.88 5.18 16.88 7.12 18.82 7.12 18.82 9.07 20.77 9.08 20.77 11.03 22.73 11.03 22.73 12.97 20.77 12.97 20.77 14.92 18.82 14.93 18.82 16.88 16.88 16.88 16.88 18.83 14.93 18.82 14.93 20.78 12.97 20.77 12.97 22.73 11.03 22.73 11.03 20.77 9.07 20.78 9.07 18.82 7.12 18.83 7.12 16.88 5.18 16.88 5.18 14.93 3.22 14.92 3.22 12.97 1.28 12.97 1.28 11.03 3.22 11.03 3.22 9.08 5.18 9.07 5.18 7.12 7.12 7.12 7.12 5.18 9.07 5.17 9.07 3.23 11.03 3.23 11.03 1.27Z" fill="#9B2C22"/><path d="M12 8.6 15.4 12 12 15.4 8.6 12Z" fill="#FFFAF0"/></symbol>
+<symbol id="b-kalici" viewBox="0 0 24 24"><path d="M12.97 1.27 12.97 3.23 14.93 3.23 14.93 5.17 16.88 5.18 16.88 7.12 18.82 7.12 18.82 9.07 20.77 9.08 20.77 11.03 22.73 11.03 22.73 12.97 20.77 12.97 20.77 14.92 18.82 14.93 18.82 16.88 16.88 16.88 16.88 18.83 14.93 18.82 14.93 20.78 12.97 20.77 12.97 22.73 11.03 22.73 11.03 20.77 9.07 20.78 9.07 18.82 7.12 18.83 7.12 16.88 5.18 16.88 5.18 14.93 3.22 14.92 3.22 12.97 1.28 12.97 1.28 11.03 3.22 11.03 3.22 9.08 5.18 9.07 5.18 7.12 7.12 7.12 7.12 5.18 9.07 5.17 9.07 3.23 11.03 3.23 11.03 1.27Z" fill="#1E4D3B"/><path d="M12.97 5.18 12.97 7.12 14.93 7.12 14.93 9.07 16.88 9.08 16.88 11.03 18.82 11.03 18.82 12.97 16.88 12.97 16.88 14.92 14.93 14.93 14.93 16.88 12.97 16.88 12.97 18.83 11.03 18.83 11.03 16.88 9.07 16.88 9.07 14.93 7.12 14.92 7.12 12.97 5.18 12.97 5.18 11.03 7.12 11.03 7.12 9.08 9.07 9.07 9.07 7.12 11.03 7.12 11.03 5.18Z" fill="#D7A23E"/><path d="M12 8.6 15.4 12 12 15.4 8.6 12Z" fill="#1E4D3B"/></symbol>
+<symbol id="m-goz" viewBox="0 0 100 100"><path d="M53.3 7.1 53.3 13.7 59.9 13.7 59.9 20.3 66.5 20.3 66.5 26.9 73.1 26.9 73.1 33.5 79.7 33.5 79.7 40.1 86.3 40.1 86.3 46.7 92.9 46.7 92.9 53.3 86.3 53.3 86.3 59.9 79.7 59.9 79.7 66.5 73.1 66.5 73.1 73.1 66.5 73.1 66.5 79.7 59.9 79.7 59.9 86.3 53.3 86.3 53.3 92.9 46.7 92.9 46.7 86.3 40.1 86.3 40.1 79.7 33.5 79.7 33.5 73.1 26.9 73.1 26.9 66.5 20.3 66.5 20.3 59.9 13.7 59.9 13.7 53.3 7.1 53.3 7.1 46.7 13.7 46.7 13.7 40.1 20.3 40.1 20.3 33.5 26.9 33.5 26.9 26.9 33.5 26.9 33.5 20.3 40.1 20.3 40.1 13.7 46.7 13.7 46.7 7.1Z" fill="#9B2C22"/><path d="M53.3 20.3 53.3 26.9 59.9 26.9 59.9 33.5 66.5 33.5 66.5 40.1 73.1 40.1 73.1 46.7 79.7 46.7 79.7 53.3 73.1 53.3 73.1 59.9 66.5 59.9 66.5 66.5 59.9 66.5 59.9 73.1 53.3 73.1 53.3 79.7 46.7 79.7 46.7 73.1 40.1 73.1 40.1 66.5 33.5 66.5 33.5 59.9 26.9 59.9 26.9 53.3 20.3 53.3 20.3 46.7 26.9 46.7 26.9 40.1 33.5 40.1 33.5 33.5 40.1 33.5 40.1 26.9 46.7 26.9 46.7 20.3Z" fill="#FFFAF0"/><path d="M53.3 26.9 53.3 33.5 59.9 33.5 59.9 40.1 66.5 40.1 66.5 46.7 73.1 46.7 73.1 53.3 66.5 53.3 66.5 59.9 59.9 59.9 59.9 66.5 53.3 66.5 53.3 73.1 46.7 73.1 46.7 66.5 40.1 66.5 40.1 59.9 33.5 59.9 33.5 53.3 26.9 53.3 26.9 46.7 33.5 46.7 33.5 40.1 40.1 40.1 40.1 33.5 46.7 33.5 46.7 26.9Z" fill="#1E4D3B"/><path d="M50 41 59 50 50 59 41 50Z" fill="#D7A23E"/></symbol>
+<symbol id="m-yildiz" viewBox="0 0 100 100"><path d="M24 24h52v52h-52Z" fill="#9B2C22"/><path d="M53.4 5.8 53.4 12.6 60.2 12.6 60.2 19.4 67 19.4 67 26.2 73.8 26.2 73.8 33 80.6 33 80.6 39.8 87.4 39.8 87.4 46.6 94.2 46.6 94.2 53.4 87.4 53.4 87.4 60.2 80.6 60.2 80.6 67 73.8 67 73.8 73.8 67 73.8 67 80.6 60.2 80.6 60.2 87.4 53.4 87.4 53.4 94.2 46.6 94.2 46.6 87.4 39.8 87.4 39.8 80.6 33 80.6 33 73.8 26.2 73.8 26.2 67 19.4 67 19.4 60.2 12.6 60.2 12.6 53.4 5.8 53.4 5.8 46.6 12.6 46.6 12.6 39.8 19.4 39.8 19.4 33 26.2 33 26.2 26.2 33 26.2 33 19.4 39.8 19.4 39.8 12.6 46.6 12.6 46.6 5.8Z" fill="#9B2C22"/><path d="M53.4 19.4 53.4 26.2 60.2 26.2 60.2 33 67 33 67 39.8 73.8 39.8 73.8 46.6 80.6 46.6 80.6 53.4 73.8 53.4 73.8 60.2 67 60.2 67 67 60.2 67 60.2 73.8 53.4 73.8 53.4 80.6 46.6 80.6 46.6 73.8 39.8 73.8 39.8 67 33 67 33 60.2 26.2 60.2 26.2 53.4 19.4 53.4 19.4 46.6 26.2 46.6 26.2 39.8 33 39.8 33 33 39.8 33 39.8 26.2 46.6 26.2 46.6 19.4Z" fill="#FFFAF0"/><path d="M38 38h24v24h-24Z" fill="#D7A23E"/><path d="M50 42 58 50 50 58 42 50Z" fill="#1E4D3B"/></symbol>
+<symbol id="m-sevron" viewBox="0 0 100 100"><path d="M47 8h6v10h-6ZM41 14h6v10h-6ZM53 14h6v10h-6ZM35 20h6v10h-6ZM59 20h6v10h-6ZM29 26h6v10h-6ZM65 26h6v10h-6ZM23 32h6v10h-6ZM71 32h6v10h-6ZM17 38h6v10h-6ZM77 38h6v10h-6Z" fill="#9B2C22"/><path d="M47 32h6v10h-6ZM41 38h6v10h-6ZM53 38h6v10h-6ZM35 44h6v10h-6ZM59 44h6v10h-6ZM29 50h6v10h-6ZM65 50h6v10h-6ZM23 56h6v10h-6ZM71 56h6v10h-6ZM17 62h6v10h-6ZM77 62h6v10h-6Z" fill="#1E4D3B"/><path d="M47 56h6v10h-6ZM41 62h6v10h-6ZM53 62h6v10h-6ZM35 68h6v10h-6ZM59 68h6v10h-6ZM29 74h6v10h-6ZM65 74h6v10h-6ZM23 80h6v10h-6ZM71 80h6v10h-6ZM17 86h6v10h-6ZM77 86h6v10h-6Z" fill="#9B2C22"/><path d="M50 22 54 26 50 30 46 26Z" fill="#D7A23E"/><path d="M50 46 54 50 50 54 46 50Z" fill="#D7A23E"/><path d="M50 70 54 74 50 78 46 74Z" fill="#D7A23E"/></symbol>
+<symbol id="m-mihrap" viewBox="0 0 100 100"><path d="M14 94 14 46 14 40 20 40 20 34 26 34 26 28 32 28 32 22 38 22 38 16 44 16 50 6 50 6 56 16 62 16 62 22 68 22 68 28 74 28 74 34 80 34 80 40 86 40 86 46 86 94Z" fill="#9B2C22"/><path d="M26 94 26 52 26 46 32 46 32 40 38 40 38 34 44 34 50 20 50 20 56 34 62 34 62 40 68 40 68 46 74 46 74 52 74 94Z" fill="#FFFAF0"/><path d="M50 48 60 58 50 68 40 58Z" fill="#D7A23E"/><path d="M50 54 54 58 50 62 46 58Z" fill="#9B2C22"/><path d="M26 88h48v6h-48Z" fill="#1E4D3B"/></symbol>
+<symbol id="rozet-var" viewBox="0 0 56 56"><path d="M4 4 8 0 12 4Z M4 52 8 56 12 52Z M4 4 0 8 4 12Z M52 4 56 8 52 12ZM12 4 16 0 20 4Z M12 52 16 56 20 52Z M4 12 0 16 4 20Z M52 12 56 16 52 20ZM20 4 24 0 28 4Z M20 52 24 56 28 52Z M4 20 0 24 4 28Z M52 20 56 24 52 28ZM28 4 32 0 36 4Z M28 52 32 56 36 52Z M4 28 0 32 4 36Z M52 28 56 32 52 36ZM36 4 40 0 44 4Z M36 52 40 56 44 52Z M4 36 0 40 4 44Z M52 36 56 40 52 44ZM44 4 48 0 52 4Z M44 52 48 56 52 52Z M4 44 0 48 4 52Z M52 44 56 48 52 52Z" fill="#1E4D3B"/><path d="M4 4h48v48h-48Z" fill="#9B2C22"/><path d="M9 9h38v38h-38Z" fill="#FFFAF0"/></symbol>
+<symbol id="rozet-yok" viewBox="0 0 56 56"><path d="M4 4h48v48h-48Z" fill="none" stroke="#9C8566" stroke-width="1.6" stroke-dasharray="4 3"/></symbol>
+<symbol id="kapak-kilim" viewBox="0 0 240 330"><path d="M14 0V18M14 312V330" stroke="#C9B28E" stroke-width="2"/><path d="M21 0V18M21 312V330" stroke="#C9B28E" stroke-width="2"/><path d="M28 0V18M28 312V330" stroke="#C9B28E" stroke-width="2"/><path d="M35 0V18M35 312V330" stroke="#C9B28E" stroke-width="2"/><path d="M42 0V18M42 312V330" stroke="#C9B28E" stroke-width="2"/><path d="M49 0V18M49 312V330" stroke="#C9B28E" stroke-width="2"/><path d="M56 0V18M56 312V330" stroke="#C9B28E" stroke-width="2"/><path d="M63 0V18M63 312V330" stroke="#C9B28E" stroke-width="2"/><path d="M70 0V18M70 312V330" stroke="#C9B28E" stroke-width="2"/><path d="M77 0V18M77 312V330" stroke="#C9B28E" stroke-width="2"/><path d="M84 0V18M84 312V330" stroke="#C9B28E" stroke-width="2"/><path d="M91 0V18M91 312V330" stroke="#C9B28E" stroke-width="2"/><path d="M98 0V18M98 312V330" stroke="#C9B28E" stroke-width="2"/><path d="M105 0V18M105 312V330" stroke="#C9B28E" stroke-width="2"/><path d="M112 0V18M112 312V330" stroke="#C9B28E" stroke-width="2"/><path d="M119 0V18M119 312V330" stroke="#C9B28E" stroke-width="2"/><path d="M126 0V18M126 312V330" stroke="#C9B28E" stroke-width="2"/><path d="M133 0V18M133 312V330" stroke="#C9B28E" stroke-width="2"/><path d="M140 0V18M140 312V330" stroke="#C9B28E" stroke-width="2"/><path d="M147 0V18M147 312V330" stroke="#C9B28E" stroke-width="2"/><path d="M154 0V18M154 312V330" stroke="#C9B28E" stroke-width="2"/><path d="M161 0V18M161 312V330" stroke="#C9B28E" stroke-width="2"/><path d="M168 0V18M168 312V330" stroke="#C9B28E" stroke-width="2"/><path d="M175 0V18M175 312V330" stroke="#C9B28E" stroke-width="2"/><path d="M182 0V18M182 312V330" stroke="#C9B28E" stroke-width="2"/><path d="M189 0V18M189 312V330" stroke="#C9B28E" stroke-width="2"/><path d="M196 0V18M196 312V330" stroke="#C9B28E" stroke-width="2"/><path d="M203 0V18M203 312V330" stroke="#C9B28E" stroke-width="2"/><path d="M210 0V18M210 312V330" stroke="#C9B28E" stroke-width="2"/><path d="M217 0V18M217 312V330" stroke="#C9B28E" stroke-width="2"/><path d="M224 0V18M224 312V330" stroke="#C9B28E" stroke-width="2"/><rect x="6" y="18" width="228" height="294" fill="#9B2C22"/><rect x="16" y="28" width="208" height="274" fill="#FFFAF0"/><path d="M16 28 24 38 32 28ZM16 302 24 292 32 302ZM32 28 40 38 48 28ZM32 302 40 292 48 302ZM48 28 56 38 64 28ZM48 302 56 292 64 302ZM64 28 72 38 80 28ZM64 302 72 292 80 302ZM80 28 88 38 96 28ZM80 302 88 292 96 302ZM96 28 104 38 112 28ZM96 302 104 292 112 302ZM112 28 120 38 128 28ZM112 302 120 292 128 302ZM128 28 136 38 144 28ZM128 302 136 292 144 302ZM144 28 152 38 160 28ZM144 302 152 292 160 302ZM160 28 168 38 176 28ZM160 302 168 292 176 302ZM176 28 184 38 192 28ZM176 302 184 292 192 302ZM192 28 200 38 208 28ZM192 302 200 292 208 302ZM208 28 216 38 224 28ZM208 302 216 292 224 302ZM16 28 26 36 16 44ZM224 28 214 36 224 44ZM16 44 26 52 16 60ZM224 44 214 52 224 60ZM16 60 26 68 16 76ZM224 60 214 68 224 76ZM16 76 26 84 16 92ZM224 76 214 84 224 92ZM16 92 26 100 16 108ZM224 92 214 100 224 108ZM16 108 26 116 16 124ZM224 108 214 116 224 124ZM16 124 26 132 16 140ZM224 124 214 132 224 140ZM16 140 26 148 16 156ZM224 140 214 148 224 156ZM16 156 26 164 16 172ZM224 156 214 164 224 172ZM16 172 26 180 16 188ZM224 172 214 180 224 188ZM16 188 26 196 16 204ZM224 188 214 196 224 204ZM16 204 26 212 16 220ZM224 204 214 212 224 220ZM16 220 26 228 16 236ZM224 220 214 228 224 236ZM16 236 26 244 16 252ZM224 236 214 244 224 252ZM16 252 26 260 16 268ZM224 252 214 260 224 268ZM16 268 26 276 16 284ZM224 268 214 276 224 284ZM16 284 26 292 16 300ZM224 284 214 292 224 300Z" fill="#1E4D3B"/><rect x="34" y="46" width="172" height="238" fill="#9B2C22"/><path d="M123.5 53.5 123.5 60.5 130.5 60.5 130.5 67.5 137.5 67.5 137.5 74.5 144.5 74.5 144.5 81.5 151.5 81.5 151.5 88.5 158.5 88.5 158.5 95.5 151.5 95.5 151.5 102.5 144.5 102.5 144.5 109.5 137.5 109.5 137.5 116.5 130.5 116.5 130.5 123.5 123.5 123.5 123.5 130.5 116.5 130.5 116.5 123.5 109.5 123.5 109.5 116.5 102.5 116.5 102.5 109.5 95.5 109.5 95.5 102.5 88.5 102.5 88.5 95.5 81.5 95.5 81.5 88.5 88.5 88.5 88.5 81.5 95.5 81.5 95.5 74.5 102.5 74.5 102.5 67.5 109.5 67.5 109.5 60.5 116.5 60.5 116.5 53.5Z" fill="#D7A23E"/><path d="M123.5 67.5 123.5 74.5 130.5 74.5 130.5 81.5 137.5 81.5 137.5 88.5 144.5 88.5 144.5 95.5 137.5 95.5 137.5 102.5 130.5 102.5 130.5 109.5 123.5 109.5 123.5 116.5 116.5 116.5 116.5 109.5 109.5 109.5 109.5 102.5 102.5 102.5 102.5 95.5 95.5 95.5 95.5 88.5 102.5 88.5 102.5 81.5 109.5 81.5 109.5 74.5 116.5 74.5 116.5 67.5Z" fill="#1E4D3B"/><path d="M120 84 128 92 120 100 112 92Z" fill="#FFFAF0"/><path d="M54 85 61 92 54 99 47 92Z" fill="#FFFAF0"/><path d="M186 85 193 92 186 99 179 92Z" fill="#FFFAF0"/><path d="M123.5 126.5 123.5 133.5 130.5 133.5 130.5 140.5 137.5 140.5 137.5 147.5 144.5 147.5 144.5 154.5 151.5 154.5 151.5 161.5 158.5 161.5 158.5 168.5 151.5 168.5 151.5 175.5 144.5 175.5 144.5 182.5 137.5 182.5 137.5 189.5 130.5 189.5 130.5 196.5 123.5 196.5 123.5 203.5 116.5 203.5 116.5 196.5 109.5 196.5 109.5 189.5 102.5 189.5 102.5 182.5 95.5 182.5 95.5 175.5 88.5 175.5 88.5 168.5 81.5 168.5 81.5 161.5 88.5 161.5 88.5 154.5 95.5 154.5 95.5 147.5 102.5 147.5 102.5 140.5 109.5 140.5 109.5 133.5 116.5 133.5 116.5 126.5Z" fill="#FFFAF0"/><path d="M123.5 140.5 123.5 147.5 130.5 147.5 130.5 154.5 137.5 154.5 137.5 161.5 144.5 161.5 144.5 168.5 137.5 168.5 137.5 175.5 130.5 175.5 130.5 182.5 123.5 182.5 123.5 189.5 116.5 189.5 116.5 182.5 109.5 182.5 109.5 175.5 102.5 175.5 102.5 168.5 95.5 168.5 95.5 161.5 102.5 161.5 102.5 154.5 109.5 154.5 109.5 147.5 116.5 147.5 116.5 140.5Z" fill="#9B2C22"/><path d="M120 157 128 165 120 173 112 165Z" fill="#D7A23E"/><path d="M54 158 61 165 54 172 47 165Z" fill="#FFFAF0"/><path d="M186 158 193 165 186 172 179 165Z" fill="#FFFAF0"/><path d="M123.5 199.5 123.5 206.5 130.5 206.5 130.5 213.5 137.5 213.5 137.5 220.5 144.5 220.5 144.5 227.5 151.5 227.5 151.5 234.5 158.5 234.5 158.5 241.5 151.5 241.5 151.5 248.5 144.5 248.5 144.5 255.5 137.5 255.5 137.5 262.5 130.5 262.5 130.5 269.5 123.5 269.5 123.5 276.5 116.5 276.5 116.5 269.5 109.5 269.5 109.5 262.5 102.5 262.5 102.5 255.5 95.5 255.5 95.5 248.5 88.5 248.5 88.5 241.5 81.5 241.5 81.5 234.5 88.5 234.5 88.5 227.5 95.5 227.5 95.5 220.5 102.5 220.5 102.5 213.5 109.5 213.5 109.5 206.5 116.5 206.5 116.5 199.5Z" fill="#D7A23E"/><path d="M123.5 213.5 123.5 220.5 130.5 220.5 130.5 227.5 137.5 227.5 137.5 234.5 144.5 234.5 144.5 241.5 137.5 241.5 137.5 248.5 130.5 248.5 130.5 255.5 123.5 255.5 123.5 262.5 116.5 262.5 116.5 255.5 109.5 255.5 109.5 248.5 102.5 248.5 102.5 241.5 95.5 241.5 95.5 234.5 102.5 234.5 102.5 227.5 109.5 227.5 109.5 220.5 116.5 220.5 116.5 213.5Z" fill="#1E4D3B"/><path d="M120 230 128 238 120 246 112 238Z" fill="#FFFAF0"/><path d="M54 231 61 238 54 245 47 238Z" fill="#FFFAF0"/><path d="M186 231 193 238 186 245 179 238Z" fill="#FFFAF0"/></symbol>
+<symbol id="i-ok" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></g></symbol>
+<symbol id="i-oynat" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></symbol>
+<symbol id="i-tekrar" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5A8 8 0 0 1 17.7 6L20 8.3M20 3.5v4.8h-4.8M20 12.5A8 8 0 0 1 6.3 18L4 15.7M4 20.5v-4.8h4.8"/></g></symbol>
+<symbol id="i-soru" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.3a2.5 2.5 0 1 1 3.4 2.3c-.6.3-1 .8-1 1.5v.7M12 17v.01"/></g></symbol>
+<symbol id="i-takvim" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16v14H4zM4 10h16M8 3.5v4M16 3.5v4"/></g></symbol>
+<symbol id="i-ses" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5h3.5L12 6v12l-4.5-3.5H4z"/><path d="M15.5 9a4.5 4.5 0 0 1 0 6M18 6.5a8 8 0 0 1 0 11"/></g></symbol>
+<symbol id="i-kitap" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4.5h11.5a2.5 2.5 0 0 1 2.5 2.5v13.5H7.5A2.5 2.5 0 0 1 5 18z"/><path d="M5 18a2.5 2.5 0 0 1 2.5-2.5H19M10 4.5v6l2-1.4 2 1.4v-6"/></g></symbol>
+<symbol id="i-cihaz" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="6.5" y="2.5" width="11" height="19" rx="2"/><path d="M10.5 18.5h3"/></g></symbol>
+<symbol id="i-dunya" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.8 3.2 2.8 14.8 0 18M12 3c-2.8 3.2-2.8 14.8 0 18"/></g></symbol>
+<symbol id="i-yol" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21c0-4 3-5 7-6.5S19 11 19 7"/><circle cx="19" cy="4.5" r="1.6"/><circle cx="5" cy="21" r=".6"/></g></symbol>
+<symbol id="i-kare-kod" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h2.5v2.5H14zM17.5 17.5H20V20h-2.5zM14 20h1M20 14v1"/></g></symbol>
+<symbol id="i-google" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 12h-8M19.4 7.6A8.5 8.5 0 1 0 20.5 12"/></g></symbol>
+<symbol id="i-goz" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></g></symbol>
+<symbol id="i-tik" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></g></symbol>
+<symbol id="i-kilit" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="10" rx="1.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></g></symbol>
+<symbol id="i-asagi" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></g></symbol>
+<symbol id="i-anahtar" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="15.5" cy="8.5" r="4.5"/><path d="M12.3 11.7 4 20M6.5 17.5l2 2M9 15l2 2"/></g></symbol>
+<symbol id="i-su" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3.6 4.6 6 7.8 6 11a6 6 0 0 1-12 0c0-3.2 2.4-6.4 6-11z"/></g></symbol>
+<symbol id="i-rahle" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.5c3.2-1.2 6.4-.8 9 1.2 2.6-2 5.8-2.4 9-1.2v7.2c-3.2-1.2-6.4-.8-9 1.2-2.6-2-5.8-2.4-9-1.2z"/><path d="M12 8.7v7.2M7 16.5l10 5M17 16.5l-10 5"/></g></symbol>
+<symbol id="i-hilal" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M11.38 4.01A8.5 8.5 0 1 0 18.8 15.88 7 7 0 0 1 11.38 4.01Z"/><circle cx="19" cy="5.5" r="1.2" fill="currentColor"/></g></symbol>
+</defs></svg>
+<!--/SPRITE-->
+<a class="atla" href="#ana">İçeriğe geç</a>
+
+<header class="ust">
+  <svg class="serit" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#serit)"/></svg>
+  <div class="kap ust-ic">
+    <a class="damga" href="ana-misafir.html" aria-label="İlim Yolu, ana sayfa">
+      <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><use href="#damga"/></svg>
+      <span><span class="damga-ad">İlim Yolu</span><span class="damga-alt">Ulu Camii · Marche-en-Famenne</span></span>
+    </a>
+    <nav class="ust-menu" aria-label="Ana menü">
+      <a href="#yollar">Yollar</a>
+      <a href="#nasil">Nasıl çalışır</a>
+      <a href="#kurs">Kurs öğrencileri</a>
+    </nav>
+    <div class="diller" role="group" aria-label="Dil">
+      <a href="#" lang="tr" aria-current="true">TR</a><a href="#" lang="fr">FR</a><a href="#" lang="en">EN</a><a href="#" lang="nl">NL</a><a href="#" lang="de">DE</a>
+    </div>
+    <div class="ust-eylem">
+      <a class="dugme ikincil kucuk" href="giris.html">Giriş yap</a>
+      <a class="dugme birincil kucuk" href="giris.html">Hesap aç</a>
+    </div>
+  </div>
+</header>
+
+<main id="ana" class="kap">
+  <section class="kapak" aria-labelledby="kapak-baslik">
+    <div class="kapak-metin">
+      <p class="ust-yazi">Marche-en-Famenne Ulu Camii’nin eğitim platformu</p>
+      <h1 id="kapak-baslik">İlim <span>Yolu</span></h1>
+      <p class="vaat">Kur’an’ı, namazı ve dinini adım adım öğren. Diyanet metni ve sesiyle, kendi hızında, beş dilde.</p>
+      <div class="eylem">
+        <a class="dugme birincil" href="giris.html">Hesap aç <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ok"/></svg></a>
+        <a class="dugme ikincil" href="giris.html">Giriş yap</a>
+      </div>
+      <p class="cihaz-notu"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cihaz"/></svg><span><b>Hesapsız da çalışır.</b> İlerlemen bu cihazda kalır. Hesap açarsan her cihazda seninle gelir. <a href="#yollar">Hesapsız başla</a></span></p>
+    </div>
+    <svg class="kapak-kilim" viewBox="0 0 240 330" aria-hidden="true" focusable="false"><use href="#kapak-kilim"/></svg>
+  </section>
+
+  <svg class="serit bant" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#serit)"/></svg>
+
+  <section class="bolum" id="yollar" aria-labelledby="yollar-baslik">
+    <div class="bolum-bas">
+      <p class="ust-yazi">Dört yol, tek hesap</p>
+      <h2 id="yollar-baslik">Her yol bir kilim gibi dokunur</h2>
+      <p>Çocuk da büyük de aynı yolda yürür. Nereden başlayacağını sen seçersin.</p>
+    </div>
+    <div class="yollar">
+      <article class="yol ezber">
+        <div class="yol-motif" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#m-goz"/></svg></div>
+        <div class="yol-metin">
+          <h3>Ezber Kilimi <small>81 madde</small></h3>
+          <p class="acik">Namaz sûrelerinden Amme cüzüne; Diyanet metni ve sesiyle dinle, tekrarla, hocana oku.</p>
+        </div>
+        <div class="yol-sag"><a class="dugme ikincil kucuk" href="#">Yola bak</a></div>
+      </article>
+      <article class="yol kurs">
+        <div class="yol-motif" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#m-yildiz"/></svg></div>
+        <div class="yol-metin">
+          <h3>Kurs bilgileri <small>Yıllık plan konuları</small></h3>
+          <p class="acik">Kur’an kursunun konuları; her biri bir kart ve kısa bir mini soru.</p>
+        </div>
+        <div class="yol-sag"><a class="dugme ikincil kucuk" href="#">Yola bak</a></div>
+      </article>
+      <article class="yol seviye">
+        <div class="yol-motif" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#m-sevron"/></svg></div>
+        <div class="yol-metin">
+          <h3>Seviye yolu <small>7 alan</small></h3>
+          <ul class="alanlar" aria-label="Alanlar"><li>Kur’an okuma</li><li>Kur’an bilgisi</li><li>İman</li><li>Namaz</li><li>Diğer ibadetler</li><li>Siyer</li><li>Ahlak</li></ul>
+        </div>
+        <div class="yol-sag"><a class="dugme ikincil kucuk" href="#">Yola bak</a></div>
+      </article>
+      <article class="yol yeni">
+        <div class="yol-motif" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#m-mihrap"/></svg></div>
+        <div class="yol-metin">
+          <h3>Yeni Müslüman yolu <small>8 adım · 12 hafta</small></h3>
+          <p class="acik">«İlk Adımlar»: iman, abdest ve namazla sakin, adım adım bir başlangıç.</p>
+        </div>
+        <div class="yol-sag"><a class="dugme ikincil kucuk" href="#">Yola bak</a></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="bolum" id="nasil" aria-labelledby="nasil-baslik">
+    <div class="bolum-bas">
+      <p class="ust-yazi">Üç adım</p>
+      <h2 id="nasil-baslik">Nasıl ilerlersin?</h2>
+    </div>
+    <ol class="adimlar">
+      <li class="adim"><span class="adim-no">1</span><h3>Yolunu seç</h3><p>Ezber, kurs konuları, seviye ya da yeni Müslüman yolu.</p></li>
+      <li class="adim"><span class="adim-no">2</span><h3>Dinle, tekrarla</h3><p>Öğrendiğinde «öğrendim» de; istersen mini sınavı çöz.</p></li>
+      <li class="adim"><span class="adim-no">3</span><h3>Rozetini al</h3><p>Kendi çalışmanla rozet ve basılabilir belge; ezberini hocana oku.</p></li>
+    </ol>
+  </section>
+
+  <section class="bolum" aria-label="Güvence">
+    <ul class="guven">
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-kitap"/></svg><span><b>Tek kaynak Diyanet</b><span>Kur’an metni, meâl ve sesler Diyanet İşleri Başkanlığı’ndan.</span></span></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-yol"/></svg><span><b>Herkes kendi yolunda</b><span>Sıralama, puan ya da yarış yok.</span></span></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-dunya"/></svg><span><b>Beş dil</b><span>Türkçe, Français, English, Nederlands, Deutsch.</span></span></li>
+    </ul>
+  </section>
+
+  <section class="bolum" id="kurs" aria-labelledby="kurs-baslik">
+    <div class="kurs-bant koyu">
+      <svg class="serit" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#serit-koyu)"/></svg>
+      <div class="kurs-bant-ic">
+        <svg class="buyuk" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-kare-kod"/></svg>
+        <div>
+          <h2 id="kurs-baslik">Kur’an kursu öğrencisi misin?</h2>
+          <p>Hocandan aldığın kullanıcı adı ve kısa şifreyle ya da kare kodlu kartınla gir.</p>
+        </div>
+        <a class="dugme safran" href="giris.html">Kodla gir</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="alt koyu">
+  <svg class="serit" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#serit-koyu)"/></svg>
+  <div class="kap alt-ic">
+    <div>
+      <p class="alt-damga">İlim Yolu</p>
+      <p>Marche-en-Famenne Ulu Camii’nin eğitim platformu</p>
+    </div>
+    <nav aria-label="Alt bilgi">
+      <a href="mailto:info@ulucamii.be">info@ulucamii.be</a>
+      <a href="#">Gizlilik</a>
+      <a href="https://www.ulucamii.be/tr/">ulucamii.be</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>

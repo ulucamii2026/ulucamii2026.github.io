@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>İlim Yolu — Üç tasarım yönü</title>
+<style>
+  @font-face { font-family: "Atkinson Next"; src: url("../../../public/fonts/atkinson-next.woff2") format("woff2"); font-weight: 200 800; font-display: swap; }
+  :root { --zemin: #F4F2EE; --yuz: #FFFFFF; --yazi: #1D1B18; --yazi-2: #57524A; --cizgi: #DCD7CE; }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { background: var(--zemin); color: var(--yazi); font: 400 1.0625rem/1.5 "Atkinson Next", "Segoe UI", system-ui, sans-serif; }
+  body { margin: 0; }
+  :focus-visible { outline: 3px solid var(--yazi); outline-offset: 3px; }
+  .kap { width: min(100% - 2rem, 96rem); margin-inline: auto; }
+  header { padding-block: 2rem 1.25rem; }
+  h1 { margin: 0; font-size: clamp(1.8rem, 1.4rem + 1.6vw, 2.6rem); line-height: 1.1; }
+  header p { margin: 0.5rem 0 0; color: var(--yazi-2); max-width: 46em; }
+  .yonler { display: grid; gap: 1.5rem; padding-bottom: 3rem; }
+  @media (min-width: 64rem) { .yonler { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .yon { background: var(--yuz); border: 1px solid var(--cizgi); border-radius: 10px; padding: 1.1rem; display: grid; gap: 0.9rem; align-content: start; }
+  .yon h2 { margin: 0; font-size: 1.5rem; line-height: 1.15; }
+  .yon h2 span { display: block; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--yazi-2); }
+  .yon .ozet { margin: 0; }
+  .renkler { display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0; padding: 0; list-style: none; }
+  .renkler li { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.8rem; font-variant-numeric: tabular-nums; color: var(--yazi-2);
+    border: 1px solid var(--cizgi); border-radius: 999px; padding: 0.1rem 0.55rem 0.1rem 0.15rem; }
+  .renkler i { width: 1.1rem; height: 1.1rem; border-radius: 50%; border: 1px solid rgb(0 0 0 / 0.15); }
+  figure { margin: 0; display: grid; gap: 0.35rem; }
+  figure a { display: block; border: 1px solid var(--cizgi); border-radius: 6px; overflow: hidden; }
+  figure img { display: block; width: 100%; height: auto; }
+  figcaption { font-size: 0.88rem; color: var(--yazi-2); }
+  .telefon { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+  .sayfalar { display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; font-size: 0.95rem; }
+  .sayfalar a { display: inline-flex; align-items: center; min-height: 2.75rem; color: var(--yazi); }
+</style>
+</head>
+<body>
+<header class="kap">
+  <h1>İlim Yolu — üç tasarım yönü</h1>
+  <p>Aynı içerik, üç ayrı kimlik. Her sütunda girişli ana sayfa, misafir sayfası ve giriş sayfası (1440 px), altta telefon görünümü (390 px). Görüntüye tıklayınca büyük hâli açılır; sayfa bağlantıları canlı taslağı açar.</p>
+</header>
+<main class="kap yonler">
+  <section class="yon" aria-labelledby="a-baslik">
+    <h2 id="a-baslik"><span>Yön A</span>Tezhip</h2>
+    <p class="ozet">Tezhipli yazma sayfası: fildişi kâğıt, lacivert mürekkep, altın şemse ve cetvel; en ağırbaşlı, en «kitap» hissi veren yön.</p>
+    <ul class="renkler" aria-label="Renkler">
+      <li><i style="background:#1F2F63"></i>#1F2F63</li><li><i style="background:#B8913A"></i>#B8913A</li><li><i style="background:#FAF6EC"></i>#FAF6EC</li><li><i style="background:#18213A"></i>#18213A</li>
+    </ul>
+    <figure><a href="ekran/a-ana-girisli-1440.png"><img src="ekran/a-ana-girisli-1440.png" alt="Yön A, girişli ana sayfa, geniş ekran" width="1440" height="900" loading="lazy"></a><figcaption>Girişli ana sayfa: yolun, bugün tekrar, kaldığın yer, ilerleme şemsesi.</figcaption></figure>
+    <figure><a href="ekran/a-ana-misafir-1440.png"><img src="ekran/a-ana-misafir-1440.png" alt="Yön A, misafir sayfası" width="1440" height="900" loading="lazy"></a><figcaption>Misafir: besmeleli serlevha ve büyük şemse.</figcaption></figure>
+    <figure><a href="ekran/a-giris-1440.png"><img src="ekran/a-giris-1440.png" alt="Yön A, giriş sayfası" width="1440" height="900" loading="lazy"></a><figcaption>Giriş: lacivert tezhip panosu yanında üç adım.</figcaption></figure>
+    <div class="telefon">
+      <figure><a href="ekran/a-ana-girisli-390.png"><img src="ekran/a-ana-girisli-390.png" alt="Yön A, girişli ana sayfa, telefon" width="390" height="844" loading="lazy"></a></figure>
+      <figure><a href="ekran/a-ana-misafir-390.png"><img src="ekran/a-ana-misafir-390.png" alt="Yön A, misafir sayfası, telefon" width="390" height="844" loading="lazy"></a></figure>
+    </div>
+    <p class="sayfalar"><a href="a/ana-girisli.html">Girişli</a><a href="a/ana-misafir.html">Misafir</a><a href="a/giris.html">Giriş</a></p>
+  </section>
+
+  <section class="yon" aria-labelledby="b-baslik">
+    <h2 id="b-baslik"><span>Yön B</span>İznik</h2>
+    <p class="ozet">İznik çinisi: beyaz sırlı karolar, kobalt, firuze ve mercan; lale, karanfil ve yıldız. En canlı, en çağdaş yön.</p>
+    <ul class="renkler" aria-label="Renkler">
+      <li><i style="background:#1B3F98"></i>#1B3F98</li><li><i style="background:#1FA3A0"></i>#1FA3A0</li><li><i style="background:#B23A28"></i>#B23A28</li><li><i style="background:#F5F7FB"></i>#F5F7FB</li>
+    </ul>
+    <figure><a href="ekran/b-ana-girisli-1440.png"><img src="ekran/b-ana-girisli-1440.png" alt="Yön B, girişli ana sayfa, geniş ekran" width="1440" height="900" loading="lazy"></a><figcaption>Girişli ana sayfa: üç sütun, 81 karoluk ilerleme panosu.</figcaption></figure>
+    <figure><a href="ekran/b-ana-misafir-1440.png"><img src="ekran/b-ana-misafir-1440.png" alt="Yön B, misafir sayfası" width="1440" height="900" loading="lazy"></a><figcaption>Misafir: dokuz karoluk çini panosu.</figcaption></figure>
+    <figure><a href="ekran/b-giris-1440.png"><img src="ekran/b-giris-1440.png" alt="Yön B, giriş sayfası" width="1440" height="900" loading="lazy"></a><figcaption>Giriş: iki sütun, desen bantlı karolar.</figcaption></figure>
+    <div class="telefon">
+      <figure><a href="ekran/b-ana-girisli-390.png"><img src="ekran/b-ana-girisli-390.png" alt="Yön B, girişli ana sayfa, telefon" width="390" height="844" loading="lazy"></a></figure>
+      <figure><a href="ekran/b-ana-misafir-390.png"><img src="ekran/b-ana-misafir-390.png" alt="Yön B, misafir sayfası, telefon" width="390" height="844" loading="lazy"></a></figure>
+    </div>
+    <p class="sayfalar"><a href="b/ana-girisli.html">Girişli</a><a href="b/ana-misafir.html">Misafir</a><a href="b/giris.html">Giriş</a></p>
+  </section>
+
+  <section class="yon" aria-labelledby="c-baslik">
+    <h2 id="c-baslik"><span>Yön C</span>Kilim</h2>
+    <p class="ozet">Anadolu kilimi: yün krem, kök boya kırmızısı, koyu yeşil ve safran; dik açılı, basamaklı motifler. İlerleme alttan yukarı dokunan bir kilimdir.</p>
+    <ul class="renkler" aria-label="Renkler">
+      <li><i style="background:#9B2C22"></i>#9B2C22</li><li><i style="background:#1E4D3B"></i>#1E4D3B</li><li><i style="background:#D7A23E"></i>#D7A23E</li><li><i style="background:#F6EEDF"></i>#F6EEDF</li>
+    </ul>
+    <figure><a href="ekran/c-ana-girisli-1440.png"><img src="ekran/c-ana-girisli-1440.png" alt="Yön C, girişli ana sayfa, geniş ekran" width="1440" height="900" loading="lazy"></a><figcaption>Girişli ana sayfa: yanda «Kilimin», 81 motifli dokuma.</figcaption></figure>
+    <figure><a href="ekran/c-ana-misafir-1440.png"><img src="ekran/c-ana-misafir-1440.png" alt="Yön C, misafir sayfası" width="1440" height="900" loading="lazy"></a><figcaption>Misafir: saçaklı kilim ve şerit bantları.</figcaption></figure>
+    <figure><a href="ekran/c-giris-1440.png"><img src="ekran/c-giris-1440.png" alt="Yön C, giriş sayfası" width="1440" height="900" loading="lazy"></a><figcaption>Giriş: solda dokuma tezgâhı gibi adım çizgisi.</figcaption></figure>
+    <div class="telefon">
+      <figure><a href="ekran/c-ana-girisli-390.png"><img src="ekran/c-ana-girisli-390.png" alt="Yön C, girişli ana sayfa, telefon" width="390" height="844" loading="lazy"></a></figure>
+      <figure><a href="ekran/c-ana-misafir-390.png"><img src="ekran/c-ana-misafir-390.png" alt="Yön C, misafir sayfası, telefon" width="390" height="844" loading="lazy"></a></figure>
+    </div>
+    <p class="sayfalar"><a href="c/ana-girisli.html">Girişli</a><a href="c/ana-misafir.html">Misafir</a><a href="c/giris.html">Giriş</a></p>
+  </section>
+</main>
+</body>
+</html>

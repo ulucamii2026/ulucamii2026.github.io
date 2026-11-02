@@ -1,0 +1,4534 @@
+{
+  "kod": "ibadet",
+  "kartlar": [
+    {
+      "id": "ib-001",
+      "kod": "ibadet",
+      "planKonu": "İslam'ın şartları",
+      "ilkDers": "2026-09-05",
+      "seviyeAlani": "ibadet",
+      "basamak": 1,
+      "baslik": {
+        "tr": "İslâm’ın şartları",
+        "fr": "Les piliers de l’islam",
+        "en": "The pillars of Islam",
+        "nl": "De pijlers van de islam",
+        "de": "Die Säulen des Islam"
+      },
+      "ozet": {
+        "tr": "İslâm’ın beş şartı vardır: kelime-i şehadet getirmek, namaz kılmak, oruç tutmak, zekât vermek ve gücü yetenin hacca gitmesi. Her işe besmeleyle başlarız. Namaz, dinin direğidir.",
+        "fr": "L’islam repose sur cinq piliers : la profession de foi, la prière, le jeûne, l’aumône légale (zakât) et le pèlerinage pour celui qui en a les moyens. On commence tout par la basmala. La prière est le pilier de la religion.",
+        "en": "Islam rests on five pillars: the declaration of faith, prayer, fasting, zakat, and pilgrimage for those who are able. We begin every task with the basmala. Prayer is the pillar of the religion.",
+        "nl": "De islam rust op vijf pijlers: het geloofsgetuigenis, het gebed, het vasten, de zakat en de bedevaart voor wie daartoe in staat is. We beginnen alles met de basmala. Het gebed is de pilaar van de godsdienst.",
+        "de": "Der Islam ruht auf fünf Säulen: dem Glaubensbekenntnis, dem Gebet, dem Fasten, der Zakat und der Pilgerfahrt für den, der dazu in der Lage ist. Wir beginnen alles mit der Basmala. Das Gebet ist die Säule der Religion."
+      },
+      "kitap": "Camiye Gidiyorum 1 s. 17–24",
+      "sorular": [
+        {
+          "id": "ib-001-1",
+          "soru": {
+            "tr": "İslâm’ın şartları kaç tanedir?",
+            "fr": "Combien y a-t-il de piliers de l’islam ?",
+            "en": "How many pillars does Islam have?",
+            "nl": "Hoeveel pijlers heeft de islam?",
+            "de": "Wie viele Säulen hat der Islam?"
+          },
+          "siklar": [
+            {
+              "tr": "3",
+              "fr": "3",
+              "en": "3",
+              "nl": "3",
+              "de": "3"
+            },
+            {
+              "tr": "4",
+              "fr": "4",
+              "en": "4",
+              "nl": "4",
+              "de": "4"
+            },
+            {
+              "tr": "5",
+              "fr": "5",
+              "en": "5",
+              "nl": "5",
+              "de": "5"
+            },
+            {
+              "tr": "6",
+              "fr": "6",
+              "en": "6",
+              "nl": "6",
+              "de": "6"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "Diyanet İlmihali I, İslâm Dini (İslâm’ın şartları)"
+        },
+        {
+          "id": "ib-001-2",
+          "soru": {
+            "tr": "Aşağıdakilerden hangisi İslâm’ın beş şartından biri değildir?",
+            "fr": "Lequel de ces actes n’est pas l’un des cinq piliers de l’islam ?",
+            "en": "Which of these is not one of the five pillars of Islam?",
+            "nl": "Welke van deze is geen van de vijf pijlers van de islam?",
+            "de": "Was gehört nicht zu den fünf Säulen des Islam?"
+          },
+          "siklar": [
+            {
+              "tr": "Kurban kesmek",
+              "fr": "Sacrifier un animal",
+              "en": "Offering a sacrifice",
+              "nl": "Een offerdier slachten",
+              "de": "Ein Opfertier schlachten"
+            },
+            {
+              "tr": "Hacca gitmek",
+              "fr": "Faire le pèlerinage",
+              "en": "Performing hajj",
+              "nl": "De bedevaart doen",
+              "de": "Die Pilgerfahrt unternehmen"
+            },
+            {
+              "tr": "Zekât vermek",
+              "fr": "Donner la zakât",
+              "en": "Paying zakat",
+              "nl": "Zakat geven",
+              "de": "Zakat geben"
+            },
+            {
+              "tr": "Oruç tutmak",
+              "fr": "Jeûner",
+              "en": "Fasting",
+              "nl": "Vasten",
+              "de": "Fasten"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "Diyanet İlmihali I, İslâm Dini (İslâm’ın şartları)"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ib-002",
+      "kod": "ibadet",
+      "planKonu": "Abdest alıyorum, temizleniyorum (1/2)",
+      "ilkDers": "2026-09-12",
+      "seviyeAlani": "namaz",
+      "basamak": 1,
+      "baslik": {
+        "tr": "Abdest alıyorum, temizleniyorum (1)",
+        "fr": "Je fais mes ablutions (1)",
+        "en": "I perform ablution (1)",
+        "nl": "Ik neem mijn wassing (1)",
+        "de": "Ich verrichte die Waschung (1)"
+      },
+      "ozet": {
+        "tr": "İslâm’da temizlik üç yönlüdür: beden, giysi ve kalp temizliği. Namazdan önce abdest almak Kur’an’ın emridir. Abdest, Mâide Sûresi’nin 6. âyetinde bildirilmiştir.",
+        "fr": "En islam, la propreté a trois dimensions : celle du corps, celle des vêtements et celle du cœur. Faire les ablutions avant la prière est un ordre du Coran, donné dans le verset 6 de la sourate al-Mâ’ida.",
+        "en": "Cleanliness in Islam has three sides: the body, the clothes and the heart. Performing ablution before prayer is commanded in the Qur’an, in verse 6 of Surah al-Ma’idah.",
+        "nl": "Reinheid in de islam heeft drie kanten: lichaam, kleding en hart. Wassing vóór het gebed is een gebod van de Koran, in vers 6 van de soera al-Ma’ida.",
+        "de": "Sauberkeit im Islam hat drei Seiten: Körper, Kleidung und Herz. Die Waschung vor dem Gebet ist ein Gebot des Korans, in Vers 6 der Sure al-Ma’ida."
+      },
+      "kitap": "Camiye Gidiyorum 1 s. 55–58",
+      "sorular": [
+        {
+          "id": "ib-002-1",
+          "soru": {
+            "tr": "Abdest emri Kur’an’da hangi sûrede geçer?",
+            "fr": "Dans quelle sourate le Coran ordonne-t-il les ablutions ?",
+            "en": "In which surah does the Qur’an command ablution?",
+            "nl": "In welke soera gebiedt de Koran de wassing?",
+            "de": "In welcher Sure gebietet der Koran die Waschung?"
+          },
+          "siklar": [
+            {
+              "tr": "Fâtiha Sûresi",
+              "fr": "La sourate al-Fâtiha",
+              "en": "Surah al-Fatiha",
+              "nl": "De soera al-Fatiha",
+              "de": "Sure al-Fatiha"
+            },
+            {
+              "tr": "İhlâs Sûresi",
+              "fr": "La sourate al-Ikhlâs",
+              "en": "Surah al-Ikhlas",
+              "nl": "De soera al-Ikhlas",
+              "de": "Sure al-Ikhlas"
+            },
+            {
+              "tr": "Mâide Sûresi",
+              "fr": "La sourate al-Mâ’ida",
+              "en": "Surah al-Ma’idah",
+              "nl": "De soera al-Ma’ida",
+              "de": "Sure al-Ma’ida"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "Diyanet İlmihali I, Abdestin farzları (el-Mâide 5/6)"
+        },
+        {
+          "id": "ib-002-2",
+          "soru": {
+            "tr": "İslâm’da temizliğin üç yönü hangileridir?",
+            "fr": "Quelles sont les trois dimensions de la propreté en islam ?",
+            "en": "What are the three sides of cleanliness in Islam?",
+            "nl": "Wat zijn de drie kanten van reinheid in de islam?",
+            "de": "Welche drei Seiten hat die Sauberkeit im Islam?"
+          },
+          "siklar": [
+            {
+              "tr": "Ev, bahçe, yol",
+              "fr": "Maison, jardin, rue",
+              "en": "Home, garden, street",
+              "nl": "Huis, tuin, straat",
+              "de": "Haus, Garten, Straße"
+            },
+            {
+              "tr": "Beden, kalp, süs",
+              "fr": "Corps, cœur, parure",
+              "en": "Body, heart, decoration",
+              "nl": "Lichaam, hart, sieraden",
+              "de": "Körper, Herz, Schmuck"
+            },
+            {
+              "tr": "Beden, giysi, kalp",
+              "fr": "Corps, vêtements, cœur",
+              "en": "Body, clothes, heart",
+              "nl": "Lichaam, kleding, hart",
+              "de": "Körper, Kleidung, Herz"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "Diyanet İlmihali I, Temizlik (Giriş); DİA, Tahâret"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ib-003",
+      "kod": "ibadet",
+      "planKonu": "Abdest alıyorum, temizleniyorum (2/2)",
+      "ilkDers": "2026-09-19",
+      "seviyeAlani": "namaz",
+      "basamak": 1,
+      "baslik": {
+        "tr": "Abdest alıyorum, temizleniyorum (2)",
+        "fr": "Je fais mes ablutions (2)",
+        "en": "I perform ablution (2)",
+        "nl": "Ik neem mijn wassing (2)",
+        "de": "Ich verrichte die Waschung (2)"
+      },
+      "ozet": {
+        "tr": "Kibir ve bencillik kalbi kirletir; güzel ahlâk kalbi temizler. Abdest, belirli sırayla yapılır: eller, ağız ve burun, yüz, kollar, baş ve ayaklar. Namazdan önce abdest almak şarttır.",
+        "fr": "L’orgueil et l’égoïsme salissent le cœur ; le bon caractère le purifie. Les ablutions suivent un ordre précis : mains, bouche et nez, visage, bras, tête et pieds. Elles sont une condition de la prière.",
+        "en": "Pride and selfishness stain the heart; good character cleans it. Ablution follows an order: hands, mouth and nose, face, arms, head and feet. It is a condition for prayer.",
+        "nl": "Hoogmoed en egoïsme bevuilen het hart; goed karakter reinigt het. De wassing volgt een volgorde: handen, mond en neus, gezicht, armen, hoofd en voeten. Ze is een voorwaarde voor het gebed.",
+        "de": "Hochmut und Selbstsucht verschmutzen das Herz; guter Charakter reinigt es. Die Waschung folgt einer Reihenfolge: Hände, Mund und Nase, Gesicht, Arme, Kopf und Füße. Sie ist Voraussetzung für das Gebet."
+      },
+      "kitap": "Camiye Gidiyorum 1 s. 55–58",
+      "sorular": [
+        {
+          "id": "ib-003-1",
+          "soru": {
+            "tr": "Hanefî mezhebine göre, abdestin farzı kaç tanedir?",
+            "fr": "Selon l’école hanafite, combien y a-t-il d’obligations (farz) dans les ablutions ?",
+            "en": "According to the Hanafi school, how many obligatory acts (fard) does ablution have?",
+            "nl": "Volgens de Hanafi-school, hoeveel verplichte onderdelen (fard) heeft de wassing?",
+            "de": "Nach der hanafitischen Rechtsschule, wie viele Pflichtteile (Fard) hat die Waschung?"
+          },
+          "siklar": [
+            {
+              "tr": "2",
+              "fr": "2",
+              "en": "2",
+              "nl": "2",
+              "de": "2"
+            },
+            {
+              "tr": "3",
+              "fr": "3",
+              "en": "3",
+              "nl": "3",
+              "de": "3"
+            },
+            {
+              "tr": "4",
+              "fr": "4",
+              "en": "4",
+              "nl": "4",
+              "de": "4"
+            },
+            {
+              "tr": "5",
+              "fr": "5",
+              "en": "5",
+              "nl": "5",
+              "de": "5"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "Diyanet İlmihali I, Abdestin farzları"
+        },
+        {
+          "id": "ib-003-2",
+          "soru": {
+            "tr": "Hangisi abdestin farzlarından biridir?",
+            "fr": "Lequel de ces actes est une obligation des ablutions ?",
+            "en": "Which of these is one of the obligatory acts of ablution?",
+            "nl": "Welke van deze is een verplicht onderdeel van de wassing?",
+            "de": "Welche dieser Handlungen ist ein Pflichtteil der Waschung?"
+          },
+          "siklar": [
+            {
+              "tr": "Saçları kısaltmak",
+              "fr": "Se couper les cheveux",
+              "en": "Cutting the hair",
+              "nl": "Het haar knippen",
+              "de": "Die Haare kürzen"
+            },
+            {
+              "tr": "Ayakları topuklarla birlikte yıkamak",
+              "fr": "Laver les pieds jusqu’aux chevilles incluses",
+              "en": "Washing the feet including the ankles",
+              "nl": "De voeten wassen, inclusief de enkels",
+              "de": "Die Füße samt den Knöcheln waschen"
+            },
+            {
+              "tr": "Dişleri fırçalamak",
+              "fr": "Se brosser les dents",
+              "en": "Brushing the teeth",
+              "nl": "De tanden poetsen",
+              "de": "Die Zähne putzen"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "Diyanet İlmihali I, Abdestin farzları"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ib-004",
+      "kod": "ibadet",
+      "planKonu": "Kur'an öğrenmek ve okumak ibadettir",
+      "ilkDers": "2026-09-26",
+      "seviyeAlani": "ibadet",
+      "basamak": 1,
+      "baslik": {
+        "tr": "Kur’an öğrenmek ve okumak ibadettir",
+        "fr": "Apprendre et lire le Coran est un acte d’adoration",
+        "en": "Learning and reading the Qur’an is worship",
+        "nl": "De Koran leren en lezen is aanbidding",
+        "de": "Den Koran zu lernen und zu lesen ist Gottesdienst"
+      },
+      "ozet": {
+        "tr": "Kur’an, insanlara yol göstermek için gönderildi. Onu okumak, öğrenmek, anlamak ve yaşamak ibadettir. Arapça asıl metni okur, meâlinden anlamını öğreniriz.",
+        "fr": "Le Coran a été envoyé pour guider les gens. Le lire, l’apprendre, le comprendre et le vivre est un acte d’adoration. On lit le texte arabe et on apprend le sens grâce à la traduction du sens.",
+        "en": "The Qur’an was sent to guide people. Reading it, learning it, understanding it and living by it is worship. We read the Arabic text and learn its meaning from the translation of its meaning.",
+        "nl": "De Koran is gezonden om mensen te leiden. Hem lezen, leren, begrijpen en naleven is aanbidding. We lezen de Arabische tekst en leren de betekenis uit de vertaling.",
+        "de": "Der Koran wurde gesandt, um die Menschen zu leiten. Ihn zu lesen, zu lernen, zu verstehen und zu leben ist Gottesdienst. Wir lesen den arabischen Text und lernen die Bedeutung aus der Übersetzung."
+      },
+      "kitap": "Camiye Gidiyorum 1 s. 65–70",
+      "sorular": [
+        {
+          "id": "ib-004-1",
+          "soru": {
+            "tr": "Mushaf ne demektir?",
+            "fr": "Que signifie « mushaf » ?",
+            "en": "What is a “mushaf”?",
+            "nl": "Wat is een “moesjaf”?",
+            "de": "Was ist ein „Mushaf“?"
+          },
+          "siklar": [
+            {
+              "tr": "Caminin minberi",
+              "fr": "La chaire de la mosquée",
+              "en": "The pulpit of the mosque",
+              "nl": "De kansel van de moskee",
+              "de": "Die Kanzel der Moschee"
+            },
+            {
+              "tr": "Kur’an’ın bütün sûre ve âyetlerinin bir araya toplanıp ciltlendiği kitap",
+              "fr": "Le livre qui rassemble toutes les sourates et versets du Coran",
+              "en": "The book that gathers all the surahs and verses of the Qur’an",
+              "nl": "Het boek dat alle soera’s en verzen van de Koran verzamelt",
+              "de": "Das Buch, das alle Suren und Verse des Korans vereint"
+            },
+            {
+              "tr": "Namazda okunan kısa bir dua",
+              "fr": "Une courte invocation de la prière",
+              "en": "A short prayer recited in salah",
+              "nl": "Een kort smeekgebed in het gebed",
+              "de": "Ein kurzes Gebet im Ritualgebet"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "Dînî Kavramlar Sözlüğü, Mushaf"
+        },
+        {
+          "id": "ib-004-2",
+          "soru": {
+            "tr": "Kur’an’da kaç sûre vardır?",
+            "fr": "Combien de sourates le Coran contient-il ?",
+            "en": "How many surahs does the Qur’an have?",
+            "nl": "Hoeveel soera’s heeft de Koran?",
+            "de": "Wie viele Suren hat der Koran?"
+          },
+          "siklar": [
+            {
+              "tr": "99",
+              "fr": "99",
+              "en": "99",
+              "nl": "99",
+              "de": "99"
+            },
+            {
+              "tr": "114",
+              "fr": "114",
+              "en": "114",
+              "nl": "114",
+              "de": "114"
+            },
+            {
+              "tr": "124",
+              "fr": "124",
+              "en": "124",
+              "nl": "124",
+              "de": "124"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "Dînî Kavramlar Sözlüğü, Sûre"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ib-005",
+      "kod": "ibadet",
+      "planKonu": "Namaz kılmayı öğreniyorum",
+      "ilkDers": "2026-10-03",
+      "seviyeAlani": "namaz",
+      "basamak": 1,
+      "baslik": {
+        "tr": "Namaz kılmayı öğreniyorum",
+        "fr": "J’apprends à prier",
+        "en": "I am learning to pray",
+        "nl": "Ik leer bidden",
+        "de": "Ich lerne beten"
+      },
+      "ozet": {
+        "tr": "Günde beş vakit namaz kılınır: sabah, öğle, ikindi, akşam ve yatsı. Namaza başlamadan önce altı şart gerekir: hadesten ve necasetten temizlik, avret yerlerinin örtülmesi, kıbleye dönmek, vaktin girmesi ve niyet.",
+        "fr": "On prie cinq fois par jour : le matin, à midi, l’après-midi, au coucher du soleil et la nuit. Six conditions précèdent la prière : pureté rituelle et propreté, couvrir l’awra, faire face à la qibla, l’entrée du temps et l’intention.",
+        "en": "Prayer is performed five times a day: dawn, noon, afternoon, sunset and night. Six conditions come first: ritual purity and cleanliness, covering the awra, facing the qibla, the time having come, and intention.",
+        "nl": "Er zijn vijf gebeden per dag: ochtend, middag, namiddag, zonsondergang en nacht. Zes voorwaarden gaan eraan vooraf: rituele reinheid en properheid, het bedekken van de awra, richting de qibla, het gebedstijdstip en de intentie.",
+        "de": "Es gibt fünf Gebete am Tag: Morgen, Mittag, Nachmittag, Abend und Nacht. Sechs Bedingungen gehen voraus: rituelle Reinheit, Bedecken der Awra, Ausrichtung zur Qibla, Eintritt der Gebetszeit und die Absicht."
+      },
+      "kitap": "Camiye Gidiyorum 1 s. 91–98",
+      "sorular": [
+        {
+          "id": "ib-005-1",
+          "soru": {
+            "tr": "Günlük farz namazların toplam rekât sayısı kaçtır?",
+            "fr": "Combien de rak‘a comptent au total les prières obligatoires de la journée ?",
+            "en": "How many rak‘ahs do the five daily obligatory prayers total?",
+            "nl": "Hoeveel rak‘a’s tellen de vijf verplichte dagelijkse gebeden samen?",
+            "de": "Wie viele Rak‘a umfassen die fünf täglichen Pflichtgebete zusammen?"
+          },
+          "siklar": [
+            {
+              "tr": "15",
+              "fr": "15",
+              "en": "15",
+              "nl": "15",
+              "de": "15"
+            },
+            {
+              "tr": "17",
+              "fr": "17",
+              "en": "17",
+              "nl": "17",
+              "de": "17"
+            },
+            {
+              "tr": "20",
+              "fr": "20",
+              "en": "20",
+              "nl": "20",
+              "de": "20"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "Diyanet İlmihali I, Farz namazlar"
+        },
+        {
+          "id": "ib-005-2",
+          "soru": {
+            "tr": "Akşam namazının farzı kaç rekâttır?",
+            "fr": "Combien de rak‘a compte la prière obligatoire du maghrib ?",
+            "en": "How many rak‘ahs is the obligatory maghrib prayer?",
+            "nl": "Hoeveel rak‘a’s telt het verplichte maghrib-gebed?",
+            "de": "Wie viele Rak‘a hat das Pflichtgebet des Maghrib?"
+          },
+          "siklar": [
+            {
+              "tr": "2",
+              "fr": "2",
+              "en": "2",
+              "nl": "2",
+              "de": "2"
+            },
+            {
+              "tr": "3",
+              "fr": "3",
+              "en": "3",
+              "nl": "3",
+              "de": "3"
+            },
+            {
+              "tr": "4",
+              "fr": "4",
+              "en": "4",
+              "nl": "4",
+              "de": "4"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "Diyanet İlmihali I, Farz namazlar"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ib-006",
+      "kod": "ibadet",
+      "planKonu": "Kur'an'la buluşuyoruz",
+      "ilkDers": "2026-10-10",
+      "seviyeAlani": "ibadet",
+      "basamak": 1,
+      "baslik": {
+        "tr": "Kur’an’la buluşuyoruz",
+        "fr": "Nous rencontrons le Coran",
+        "en": "We meet the Qur’an",
+        "nl": "We ontmoeten de Koran",
+        "de": "Wir begegnen dem Koran"
+      },
+      "ozet": {
+        "tr": "Kur’an, Allah’ın kitabıdır. Sûrelerden ve âyetlerden oluşur. Mushaf, Kur’an’ın sayfalarının bir araya toplandığı kitaptır. Meâl ise Kur’an’ın anlamının çevirisidir; Kur’an’ın kendisi Arapçadır. Ona saygı gösteririz.",
+        "fr": "Le Coran est le livre d’Allah. Il se compose de sourates et de versets. Le mushaf est le livre qui rassemble ses pages. La traduction du sens n’est pas le Coran lui-même, qui est en arabe. Nous le respectons.",
+        "en": "The Qur’an is Allah’s book. It consists of surahs and verses. The mushaf is the book gathering its pages. A translation of meaning is not the Qur’an itself, which is Arabic. We treat it with respect.",
+        "nl": "De Koran is het boek van Allah. Hij bestaat uit soera’s en verzen. De moesjaf is het boek waarin de bladzijden verzameld zijn. Een vertaling is niet de Koran zelf, die Arabisch is. We behandelen hem met respect.",
+        "de": "Der Koran ist das Buch Allahs. Er besteht aus Suren und Versen. Der Mushaf ist das Buch, das seine Seiten vereint. Eine Übersetzung ist nicht der Koran selbst, der arabisch ist. Wir behandeln ihn mit Respekt."
+      },
+      "kitap": "Camiye Gidiyorum 1 s. 101–106",
+      "sorular": [
+        {
+          "id": "ib-006-1",
+          "soru": {
+            "tr": "Meâl nedir?",
+            "fr": "Qu’est-ce que le « meâl » (traduction du sens) ?",
+            "en": "What is a “meal” (translation of meaning)?",
+            "nl": "Wat is een “meal” (vertaling van de betekenis)?",
+            "de": "Was ist ein „Meal“ (Bedeutungsübersetzung)?"
+          },
+          "siklar": [
+            {
+              "tr": "Kur’an’ın anlamının başka dilde anlatılması",
+              "fr": "L’explication du sens du Coran dans une autre langue",
+              "en": "An explanation of the Qur’an’s meaning in another language",
+              "nl": "Een uitleg van de betekenis van de Koran in een andere taal",
+              "de": "Die Wiedergabe der Koranbedeutung in einer anderen Sprache"
+            },
+            {
+              "tr": "Kur’an’ın kendisi",
+              "fr": "Le Coran lui-même",
+              "en": "The Qur’an itself",
+              "nl": "De Koran zelf",
+              "de": "Der Koran selbst"
+            },
+            {
+              "tr": "Bir dua kitabı",
+              "fr": "Un livre d’invocations",
+              "en": "A prayer book",
+              "nl": "Een gebedenboek",
+              "de": "Ein Gebetbuch"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "Dînî Kavramlar Sözlüğü, Mushaf; Kur’an-ı Kerim"
+        },
+        {
+          "id": "ib-006-2",
+          "soru": {
+            "tr": "Kur’an hangi dilde indirilmiştir?",
+            "fr": "Dans quelle langue le Coran a-t-il été révélé ?",
+            "en": "In which language was the Qur’an revealed?",
+            "nl": "In welke taal is de Koran geopenbaard?",
+            "de": "In welcher Sprache wurde der Koran offenbart?"
+          },
+          "siklar": [
+            {
+              "tr": "İbranice",
+              "fr": "En hébreu",
+              "en": "Hebrew",
+              "nl": "In het Hebreeuws",
+              "de": "Auf Hebräisch"
+            },
+            {
+              "tr": "Arapça",
+              "fr": "En arabe",
+              "en": "Arabic",
+              "nl": "In het Arabisch",
+              "de": "Auf Arabisch"
+            },
+            {
+              "tr": "Türkçe",
+              "fr": "En turc",
+              "en": "Turkish",
+              "nl": "In het Turks",
+              "de": "Auf Türkisch"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "Kur’an-ı Kerim, Yûsuf 12/2"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ib-007",
+      "kod": "ibadet",
+      "planKonu": "Allah'a dua ediyorum ve şükrediyorum",
+      "ilkDers": "2026-10-17",
+      "seviyeAlani": "ibadet",
+      "basamak": 1,
+      "baslik": {
+        "tr": "Allah’a dua ediyorum ve şükrediyorum",
+        "fr": "Je prie Allah et je Le remercie",
+        "en": "I make dua and give thanks to Allah",
+        "nl": "Ik smeek tot Allah en dank Hem",
+        "de": "Ich bete zu Allah und danke Ihm"
+      },
+      "ozet": {
+        "tr": "Dua, Allah’a içtenlikle yönelip O’ndan dilemektir. Allah bize çok yakındır ve duaya karşılık verir. İyilik yapana teşekkür eder, “Allah razı olsun” deriz. Müminler kardeştir; birbirimiz için de dua ederiz.",
+        "fr": "La doua est se tourner vers Allah avec sincérité et Lui demander. Allah est tout proche et répond à l’invocation. Nous remercions ceux qui nous font du bien en disant « Qu’Allah soit satisfait de toi ». Les croyants sont frères.",
+        "en": "Dua is turning to Allah sincerely and asking from Him. Allah is very near and answers the call. We thank those who do good to us and say “May Allah be pleased with you.” Believers are brothers and sisters.",
+        "nl": "Doe‘a is je oprecht tot Allah richten en bij Hem vragen. Allah is heel dichtbij en antwoordt op de smeekbede. We bedanken wie ons goed doet met “Moge Allah tevreden met je zijn”. Gelovigen zijn broers en zussen.",
+        "de": "Dua heißt, sich aufrichtig an Allah zu wenden und Ihn zu bitten. Allah ist uns ganz nah und erhört das Bittgebet. Wir danken dem, der uns Gutes tut: „Möge Allah mit dir zufrieden sein.“ Die Gläubigen sind Geschwister."
+      },
+      "kitap": "Camiye Gidiyorum 1 s. 127–132",
+      "sorular": [
+        {
+          "id": "ib-007-1",
+          "soru": {
+            "tr": "Bakara Sûresi’nin 186. âyetine göre Allah kullarına nasıldır?",
+            "fr": "Selon le verset 186 de la sourate al-Baqara, comment Allah est-Il envers Ses serviteurs ?",
+            "en": "According to verse 186 of Surah al-Baqarah, how is Allah towards His servants?",
+            "nl": "Volgens vers 186 van de soera al-Baqara, hoe is Allah voor Zijn dienaren?",
+            "de": "Wie ist Allah laut Vers 186 der Sure al-Baqara zu Seinen Dienern?"
+          },
+          "siklar": [
+            {
+              "tr": "Yalnız imamların duasını işitir",
+              "fr": "N’entend que la prière des imams",
+              "en": "Hears only the imams’ prayers",
+              "nl": "Hoort alleen de gebeden van imams",
+              "de": "Hört nur die Gebete der Imame"
+            },
+            {
+              "tr": "Çok yakındır ve duaya karşılık verir",
+              "fr": "Très proche, Il répond à l’invocation",
+              "en": "Very near, and He answers the call",
+              "nl": "Heel dichtbij en Hij antwoordt op de smeekbede",
+              "de": "Ganz nah, und Er erhört das Bittgebet"
+            },
+            {
+              "tr": "Uzaktır",
+              "fr": "Lointain",
+              "en": "Far away",
+              "nl": "Veraf",
+              "de": "Fern"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "Kur’an-ı Kerim, Bakara 2/186 (Kur’an Yolu Tefsiri)"
+        },
+        {
+          "id": "ib-007-2",
+          "soru": {
+            "tr": "“Mü’minler ancak kardeştirler” âyeti hangi sûrededir?",
+            "fr": "Dans quelle sourate se trouve le verset « Les croyants ne sont que des frères » ?",
+            "en": "In which surah is the verse “The believers are but brothers”?",
+            "nl": "In welke soera staat het vers “De gelovigen zijn slechts broeders”?",
+            "de": "In welcher Sure steht der Vers „Die Gläubigen sind doch Brüder“?"
+          },
+          "siklar": [
+            {
+              "tr": "Hucurât",
+              "fr": "Al-Hujurât",
+              "en": "Al-Hujurat",
+              "nl": "Al-Hujurat",
+              "de": "Al-Hudschurat"
+            },
+            {
+              "tr": "Kevser",
+              "fr": "Al-Kawthar",
+              "en": "Al-Kawthar",
+              "nl": "Al-Kawthar",
+              "de": "Al-Kauthar"
+            },
+            {
+              "tr": "Fil",
+              "fr": "Al-Fîl",
+              "en": "Al-Fil",
+              "nl": "Al-Fil",
+              "de": "Al-Fil"
+            },
+            {
+              "tr": "Nas",
+              "fr": "An-Nâs",
+              "en": "An-Nas",
+              "nl": "An-Nas",
+              "de": "An-Nas"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "Kur’an-ı Kerim, Hucurât 49/10"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ib-008",
+      "kod": "ibadet",
+      "planKonu": "Tekrar ve Değerlendirme 1",
+      "ilkDers": "2026-10-19",
+      "seviyeAlani": "ibadet",
+      "basamak": 1,
+      "baslik": {
+        "tr": "Tekrar ve değerlendirme 1",
+        "fr": "Révision et évaluation 1",
+        "en": "Review and assessment 1",
+        "nl": "Herhaling en evaluatie 1",
+        "de": "Wiederholung und Auswertung 1"
+      },
+      "ozet": {
+        "tr": "Şimdiye kadar öğrendiklerimizi hatırlıyoruz: namazın vakitleri ve şartları, Kur’an’ın tanıtımı, dua ve şükür. Kıble Kâbe’dir; beş vakit namaz Miraç olayından sonra farz kılındı. Soru-cevapla pekiştiririz.",
+        "fr": "Nous révisons ce que nous avons appris : les temps et conditions de la prière, la présentation du Coran, la doua et la gratitude. La qibla est la Kaaba ; les cinq prières sont devenues obligatoires après le Mi‘râj.",
+        "en": "We review what we have learned: prayer times and conditions, an introduction to the Qur’an, dua and gratitude. The qibla is the Kaaba; the five daily prayers became obligatory after the Mi‘raj.",
+        "nl": "We herhalen wat we geleerd hebben: gebedstijden en voorwaarden, kennismaking met de Koran, doe‘a en dankbaarheid. De qibla is de Ka‘ba; de vijf gebeden werden verplicht na de Mi‘raj.",
+        "de": "Wir wiederholen, was wir gelernt haben: Gebetszeiten und -bedingungen, Einführung in den Koran, Dua und Dankbarkeit. Die Qibla ist die Kaaba; die fünf Gebete wurden nach dem Mi‘radsch verpflichtend."
+      },
+      "kitap": "Camiye Gidiyorum 1 s. 91–98; s. 101–106; s. 127–132 (tekrar)",
+      "sorular": [
+        {
+          "id": "ib-008-1",
+          "soru": {
+            "tr": "Namazda hangi yöne dönülür?",
+            "fr": "Vers quelle direction se tourne-t-on dans la prière ?",
+            "en": "Which direction do we face in prayer?",
+            "nl": "Naar welke richting keren we ons in het gebed?",
+            "de": "In welche Richtung wendet man sich im Gebet?"
+          },
+          "siklar": [
+            {
+              "tr": "Güneşin doğduğu yöne",
+              "fr": "Vers le lever du soleil",
+              "en": "Towards the sunrise",
+              "nl": "Naar de zonsopgang",
+              "de": "Zum Sonnenaufgang"
+            },
+            {
+              "tr": "Herhangi bir yöne",
+              "fr": "Dans n’importe quelle direction",
+              "en": "Any direction",
+              "nl": "In eender welke richting",
+              "de": "In irgendeine Richtung"
+            },
+            {
+              "tr": "Kâbe’ye (kıbleye)",
+              "fr": "Vers la Kaaba (la qibla)",
+              "en": "Towards the Kaaba (the qibla)",
+              "nl": "Naar de Ka‘ba (de qibla)",
+              "de": "Zur Kaaba (zur Qibla)"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "Diyanet İlmihali I, İstikbâl-i kıble"
+        },
+        {
+          "id": "ib-008-2",
+          "soru": {
+            "tr": "Yaygın kabule göre beş vakit namaz hangi olaydan sonra farz kılındı?",
+            "fr": "Selon l’avis courant, après quel événement les cinq prières sont-elles devenues obligatoires ?",
+            "en": "According to the widely accepted view, after which event did the five prayers become obligatory?",
+            "nl": "Na welke gebeurtenis werden de vijf gebeden volgens de gangbare opvatting verplicht?",
+            "de": "Nach welchem Ereignis wurden die fünf Gebete der verbreiteten Ansicht nach verpflichtend?"
+          },
+          "siklar": [
+            {
+              "tr": "Hicretten sonra",
+              "fr": "Après l’Hégire",
+              "en": "After the Hijra",
+              "nl": "Na de Hidjra",
+              "de": "Nach der Hidschra"
+            },
+            {
+              "tr": "Miraç olayından sonra",
+              "fr": "Après le Mi‘râj",
+              "en": "After the Mi‘raj",
+              "nl": "Na de Mi‘raj",
+              "de": "Nach dem Mi‘radsch"
+            },
+            {
+              "tr": "Bedir Savaşı’ndan sonra",
+              "fr": "Après la bataille de Badr",
+              "en": "After the Battle of Badr",
+              "nl": "Na de slag bij Badr",
+              "de": "Nach der Schlacht von Badr"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "Diyanet İlmihali I, Namaz (namazın tarihçesi)"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ib-009",
+      "kod": "ibadet",
+      "planKonu": "Teyemmüm ve gusül abdestini öğreniyorum",
+      "ilkDers": "2026-10-25",
+      "seviyeAlani": "namaz",
+      "basamak": 1,
+      "baslik": {
+        "tr": "Teyemmüm ve gusül",
+        "fr": "Le tayammum et le ghusl",
+        "en": "Tayammum and ghusl",
+        "nl": "Tayammum en ghusl",
+        "de": "Tayammum und Ghusl"
+      },
+      "ozet": {
+        "tr": "Su bulunmadığında ya da kullanılamadığında teyemmüm yapılır: temiz toprak ya da toprak cinsi bir yüzeye eller vurulur, yüz ve kollar meshedilir. Gusül ise bütün vücudun yıkanmasıdır; ağıza ve buruna su vermek de gusle dahildir.",
+        "fr": "Quand l’eau manque ou ne peut être utilisée, on fait le tayammum : on frappe une terre pure ou une surface de même nature, puis on essuie le visage et les bras. Le ghusl est le lavage de tout le corps, bouche et nez compris.",
+        "en": "When water is missing or cannot be used, tayammum is done: the hands strike clean earth or a similar surface, then the face and arms are wiped. Ghusl is washing the whole body, including rinsing the mouth and nose.",
+        "nl": "Als er geen water is of het niet gebruikt kan worden, doet men tayammum: de handen slaan op zuivere aarde of een gelijkaardig oppervlak, dan worden gezicht en armen geveegd. Ghusl is het wassen van het hele lichaam, mond en neus inbegrepen.",
+        "de": "Fehlt Wasser oder kann es nicht verwendet werden, verrichtet man Tayammum: Die Hände berühren reine Erde oder eine ähnliche Fläche, dann werden Gesicht und Arme abgewischt. Ghusl ist das Waschen des ganzen Körpers, einschließlich Mund und Nase."
+      },
+      "kitap": "Camiye Gidiyorum 1 s. 165–168",
+      "sorular": [
+        {
+          "id": "ib-009-1",
+          "soru": {
+            "tr": "Teyemmüm ne zaman yapılır?",
+            "fr": "Quand fait-on le tayammum ?",
+            "en": "When is tayammum performed?",
+            "nl": "Wanneer doet men tayammum?",
+            "de": "Wann verrichtet man Tayammum?"
+          },
+          "siklar": [
+            {
+              "tr": "Su bulunmadığında ya da kullanılamadığında",
+              "fr": "Quand il n’y a pas d’eau ou qu’on ne peut l’utiliser",
+              "en": "When water is unavailable or cannot be used",
+              "nl": "Als er geen water is of het niet gebruikt kan worden",
+              "de": "Wenn Wasser fehlt oder nicht verwendet werden kann"
+            },
+            {
+              "tr": "Her namazdan önce, su varken de",
+              "fr": "Avant chaque prière, même s’il y a de l’eau",
+              "en": "Before every prayer, even with water available",
+              "nl": "Voor elk gebed, ook als er water is",
+              "de": "Vor jedem Gebet, auch wenn Wasser da ist"
+            },
+            {
+              "tr": "Yalnız cuma günü",
+              "fr": "Seulement le vendredi",
+              "en": "Only on Fridays",
+              "nl": "Alleen op vrijdag",
+              "de": "Nur am Freitag"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "Diyanet İlmihali I, Teyemmüm (sebepleri)"
+        },
+        {
+          "id": "ib-009-2",
+          "soru": {
+            "tr": "Hanefî mezhebine göre, guslün kaç farzı vardır?",
+            "fr": "Selon l’école hanafite, combien le ghusl compte-t-il d’obligations (farz) ?",
+            "en": "According to the Hanafi school, how many obligatory acts (fard) does ghusl have?",
+            "nl": "Volgens de Hanafi-school, hoeveel verplichte onderdelen (fard) heeft de ghusl?",
+            "de": "Nach der hanafitischen Rechtsschule, wie viele Pflichtteile (Fard) hat der Ghusl?"
+          },
+          "siklar": [
+            {
+              "tr": "2",
+              "fr": "2",
+              "en": "2",
+              "nl": "2",
+              "de": "2"
+            },
+            {
+              "tr": "3",
+              "fr": "3",
+              "en": "3",
+              "nl": "3",
+              "de": "3"
+            },
+            {
+              "tr": "5",
+              "fr": "5",
+              "en": "5",
+              "nl": "5",
+              "de": "5"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "Diyanet İlmihali I, Guslün farzları"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ib-010",
+      "kod": "ibadet",
+      "planKonu": "İbadet yerlerini öğreniyorum",
+      "ilkDers": "2026-10-31",
+      "seviyeAlani": "ibadet",
+      "basamak": 1,
+      "baslik": {
+        "tr": "İbadet yerlerini öğreniyorum",
+        "fr": "Je découvre les lieux de culte",
+        "en": "I learn about places of worship",
+        "nl": "Ik leer over gebedshuizen",
+        "de": "Ich lerne die Gebetsstätten kennen"
+      },
+      "ozet": {
+        "tr": "Cami; namaz, cemaat, ezan, hutbe ve yardımlaşmanın merkezidir. Camide minber hutbe okunan yüksek yerdir. Hac ibadetinin aşamaları sıralıdır: ihram, Arafat vakfesi, şeytan taşlama, tavaf ve sa’y.",
+        "fr": "La mosquée est le centre de la prière, de la communauté, de l’appel à la prière, du sermon et de l’entraide. Le minbar est l’estrade d’où l’on prononce le sermon. Le pèlerinage a des étapes : ihrâm, station à ‘Arafat, lapidation, tawâf et sa‘y.",
+        "en": "The mosque is the centre of prayer, community, the call to prayer, the sermon and mutual help. The minbar is the raised place from which the sermon is given. Hajj has stages: ihram, standing at Arafat, stoning, tawaf and sa‘y.",
+        "nl": "De moskee is het centrum van gebed, gemeenschap, gebedsoproep, preek en onderlinge hulp. De minbar is de verhoging waarvan de preek wordt gehouden. De hadj kent stappen: ihram, staan op Arafat, stenigen, tawaf en sa‘y.",
+        "de": "Die Moschee ist Mittelpunkt von Gebet, Gemeinschaft, Gebetsruf, Predigt und gegenseitiger Hilfe. Der Minbar ist die erhöhte Stelle, von der die Predigt gehalten wird. Die Hadsch hat Stationen: Ihram, Stehen in Arafat, Steinigung, Tawaf und Sa‘y."
+      },
+      "kitap": "Camiye Gidiyorum 1 s. 197–204",
+      "sorular": [
+        {
+          "id": "ib-010-1",
+          "soru": {
+            "tr": "Minber nedir?",
+            "fr": "Qu’est-ce que le minbar ?",
+            "en": "What is the minbar?",
+            "nl": "Wat is de minbar?",
+            "de": "Was ist der Minbar?"
+          },
+          "siklar": [
+            {
+              "tr": "Abdest alınan yer",
+              "fr": "L’endroit des ablutions",
+              "en": "The ablution place",
+              "nl": "De wasplaats",
+              "de": "Der Waschplatz"
+            },
+            {
+              "tr": "Camide hutbenin okunduğu, basamakla çıkılan yüksek yer",
+              "fr": "L’estrade à marches d’où l’on prononce le sermon à la mosquée",
+              "en": "The raised, stepped place in a mosque from which the sermon is given",
+              "nl": "De verhoogde trap in de moskee waarvan de preek wordt gehouden",
+              "de": "Die erhöhte Stufenkanzel, von der in der Moschee die Predigt gehalten wird"
+            },
+            {
+              "tr": "Caminin kapısı",
+              "fr": "La porte de la mosquée",
+              "en": "The door of the mosque",
+              "nl": "De deur van de moskee",
+              "de": "Die Tür der Moschee"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "Dînî Kavramlar Sözlüğü, Minber"
+        },
+        {
+          "id": "ib-010-2",
+          "soru": {
+            "tr": "Hanefî mezhebine göre, haccın farzı hangisidir?",
+            "fr": "Selon l’école hanafite, laquelle de ces étapes est une obligation (farz) du pèlerinage ?",
+            "en": "According to the Hanafi school, which of these is an obligatory (fard) part of hajj?",
+            "nl": "Volgens de Hanafi-school, welke van deze is een verplicht onderdeel (fard) van de hadj?",
+            "de": "Nach der hanafitischen Rechtsschule, welcher dieser Teile ist ein Pflichtteil (Fard) der Hadsch?"
+          },
+          "siklar": [
+            {
+              "tr": "Sa’y",
+              "fr": "Le sa‘y",
+              "en": "The sa‘y",
+              "nl": "De sa‘y",
+              "de": "Das Sa‘y"
+            },
+            {
+              "tr": "Şeytan taşlama",
+              "fr": "La lapidation",
+              "en": "The stoning",
+              "nl": "Het stenigen",
+              "de": "Die Steinigung"
+            },
+            {
+              "tr": "Arafat vakfesi",
+              "fr": "La station à ‘Arafat",
+              "en": "Standing at Arafat",
+              "nl": "Het staan op Arafat",
+              "de": "Das Stehen in Arafat"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "Diyanet İlmihali I, Haccın rükünleri; Dînî Kavramlar Sözlüğü, Sa’y"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ib-011",
+      "kod": "ibadet",
+      "planKonu": "İbadetlerime Hazırlanıyorum",
+      "ilkDers": "2026-11-07",
+      "seviyeAlani": "namaz",
+      "basamak": 2,
+      "baslik": {
+        "tr": "İbadetlerime hazırlanıyorum",
+        "fr": "Je me prépare à mes actes d’adoration",
+        "en": "I prepare for my worship",
+        "nl": "Ik bereid me voor op mijn aanbidding",
+        "de": "Ich bereite mich auf meine Gottesdienste vor"
+      },
+      "ozet": {
+        "tr": "İbadete hazırlık, İslâm’ın şartlarını bilmek, abdestin farzlarını ve sünnetlerini öğrenmek, camide edebe uymaktır. Cemaatle namazda imama uyulur, saflar düzenli tutulur. İbadet ruhumuzu dinlendirir.",
+        "fr": "Se préparer à l’adoration, c’est connaître les piliers de l’islam, apprendre les obligations et les sunnas des ablutions, et respecter les usages de la mosquée. Dans la prière en commun on suit l’imam et on garde des rangs ordonnés.",
+        "en": "Preparing for worship means knowing the pillars of Islam, learning the obligatory and sunnah acts of ablution, and keeping the manners of the mosque. In congregational prayer we follow the imam and keep the rows orderly.",
+        "nl": "Je voorbereiden op aanbidding betekent de pijlers van de islam kennen, de verplichte en soenna-onderdelen van de wassing leren en de manieren in de moskee naleven. In het gemeenschappelijk gebed volgen we de imam en houden we de rijen netjes.",
+        "de": "Sich auf den Gottesdienst vorzubereiten heißt, die Säulen des Islam zu kennen, die Pflicht- und Sunna-Teile der Waschung zu lernen und die Umgangsformen der Moschee zu wahren. Im Gemeinschaftsgebet folgt man dem Imam und hält die Reihen geordnet."
+      },
+      "kitap": "Camiye Gidiyorum 2 s. 13–20",
+      "sorular": [
+        {
+          "id": "ib-011-1",
+          "soru": {
+            "tr": "Cemaatle namaz kılarken kime uyulur?",
+            "fr": "Qui suit-on lorsqu’on prie en groupe ?",
+            "en": "Whom do we follow when praying in congregation?",
+            "nl": "Wie volgen we in het gemeenschappelijk gebed?",
+            "de": "Wem folgt man im Gemeinschaftsgebet?"
+          },
+          "siklar": [
+            {
+              "tr": "Yanımızdaki kişiye",
+              "fr": "Son voisin",
+              "en": "The person next to us",
+              "nl": "Onze buurman",
+              "de": "Dem Nebenmann"
+            },
+            {
+              "tr": "Kimseye",
+              "fr": "Personne",
+              "en": "No one",
+              "nl": "Niemand",
+              "de": "Niemandem"
+            },
+            {
+              "tr": "İmama",
+              "fr": "L’imam",
+              "en": "The imam",
+              "nl": "De imam",
+              "de": "Dem Imam"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "Diyanet İlmihali I, Cemaatle namaz (imama uyma)"
+        },
+        {
+          "id": "ib-011-2",
+          "soru": {
+            "tr": "Aşağıdakilerden hangisi abdesti bozar?",
+            "fr": "Lequel de ces cas annule les ablutions ?",
+            "en": "Which of these invalidates ablution?",
+            "nl": "Welke van deze maakt de wassing ongeldig?",
+            "de": "Was macht die Waschung ungültig?"
+          },
+          "siklar": [
+            {
+              "tr": "Küçük ya da büyük abdest bozmak (tuvalet ihtiyacı)",
+              "fr": "Les besoins naturels (urine ou selles)",
+              "en": "Using the toilet (urine or stool)",
+              "nl": "Naar het toilet gaan (urine of ontlasting)",
+              "de": "Der Toilettengang (Urin oder Stuhl)"
+            },
+            {
+              "tr": "Su içmek",
+              "fr": "Boire de l’eau",
+              "en": "Drinking water",
+              "nl": "Water drinken",
+              "de": "Wasser trinken"
+            },
+            {
+              "tr": "Yemek yemek",
+              "fr": "Manger",
+              "en": "Eating",
+              "nl": "Eten",
+              "de": "Essen"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "Diyanet İlmihali I, Abdesti bozan durumlar"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ib-012",
+      "kod": "ibadet",
+      "planKonu": "Dua İbadetin Özüdür",
+      "ilkDers": "2026-11-14",
+      "seviyeAlani": "ibadet",
+      "basamak": 1,
+      "baslik": {
+        "tr": "Dua ibadetin özüdür",
+        "fr": "La doua, cœur de l’adoration",
+        "en": "Dua is the heart of worship",
+        "nl": "Doe‘a is de kern van de aanbidding",
+        "de": "Das Dua ist das Herz des Gottesdienstes"
+      },
+      "ozet": {
+        "tr": "Dua, Allah’a yönelmek, O’na sığınmak, O’nu övmek ve derdimizi anlatmaktır. Fâtiha Sûresi her namazda okunan güzel bir duadır. Allah kullarına yakındır; samimi ve içten dua ederiz.",
+        "fr": "La doua, c’est se tourner vers Allah, se réfugier en Lui, Le louer et Lui confier nos peines. La sourate al-Fâtiha, récitée à chaque prière, est une belle invocation. Allah est proche ; nous prions avec sincérité.",
+        "en": "Dua means turning to Allah, taking refuge in Him, praising Him and sharing our troubles. Surah al-Fatiha, recited in every prayer, is a beautiful dua. Allah is near; we pray sincerely.",
+        "nl": "Doe‘a is je tot Allah richten, bij Hem schuilen, Hem prijzen en je zorgen delen. De soera al-Fatiha, in elk gebed gereciteerd, is een mooie smeekbede. Allah is nabij; we bidden oprecht.",
+        "de": "Dua heißt, sich Allah zuzuwenden, bei Ihm Zuflucht zu suchen, Ihn zu preisen und Sorgen zu teilen. Die Sure al-Fatiha, in jedem Gebet gelesen, ist ein schönes Bittgebet. Allah ist nah; wir beten aufrichtig."
+      },
+      "kitap": "Camiye Gidiyorum 2 s. 58–63",
+      "sorular": [
+        {
+          "id": "ib-012-1",
+          "soru": {
+            "tr": "Allah kullarına yakın olduğunu hangi sûrenin 186. âyetinde bildirir?",
+            "fr": "Dans le verset 186 de quelle sourate Allah dit-Il être proche de Ses serviteurs ?",
+            "en": "In verse 186 of which surah does Allah say He is near to His servants?",
+            "nl": "In vers 186 van welke soera zegt Allah dat Hij Zijn dienaren nabij is?",
+            "de": "In Vers 186 welcher Sure sagt Allah, dass Er Seinen Dienern nah ist?"
+          },
+          "siklar": [
+            {
+              "tr": "Bakara",
+              "fr": "Al-Baqara",
+              "en": "Al-Baqarah",
+              "nl": "Al-Baqara",
+              "de": "Al-Baqara"
+            },
+            {
+              "tr": "Kevser",
+              "fr": "Al-Kawthar",
+              "en": "Al-Kawthar",
+              "nl": "Al-Kawthar",
+              "de": "Al-Kauthar"
+            },
+            {
+              "tr": "İhlâs",
+              "fr": "Al-Ikhlâs",
+              "en": "Al-Ikhlas",
+              "nl": "Al-Ikhlas",
+              "de": "Al-Ikhlas"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "Kur’an-ı Kerim, Bakara 2/186 (Kur’an Yolu Tefsiri)"
+        },
+        {
+          "id": "ib-012-2",
+          "soru": {
+            "tr": "Mü’minler arasındaki ilişkiyi Kur’an nasıl anlatır?",
+            "fr": "Comment le Coran décrit-il la relation entre croyants ?",
+            "en": "How does the Qur’an describe the bond between believers?",
+            "nl": "Hoe beschrijft de Koran de band tussen gelovigen?",
+            "de": "Wie beschreibt der Koran die Beziehung unter den Gläubigen?"
+          },
+          "siklar": [
+            {
+              "tr": "Yabancılık",
+              "fr": "Une étrangeté",
+              "en": "Being strangers",
+              "nl": "Vreemdheid",
+              "de": "Fremdheit"
+            },
+            {
+              "tr": "Kardeşlik",
+              "fr": "Une fraternité",
+              "en": "Brotherhood",
+              "nl": "Broederschap",
+              "de": "Geschwisterlichkeit"
+            },
+            {
+              "tr": "Rekabet",
+              "fr": "Une rivalité",
+              "en": "Rivalry",
+              "nl": "Rivaliteit",
+              "de": "Rivalität"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "Kur’an-ı Kerim, Hucurât 49/10"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ib-013",
+      "kod": "ibadet",
+      "planKonu": "Namaz ibadetini öğreniyorum: Namazın önemi, çeşitleri ve şartları",
+      "ilkDers": "2026-11-21",
+      "seviyeAlani": "namaz",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Namazın önemi, çeşitleri ve şartları",
+        "fr": "L’importance, les types et les conditions de la prière",
+        "en": "The importance, types and conditions of prayer",
+        "nl": "Belang, soorten en voorwaarden van het gebed",
+        "de": "Bedeutung, Arten und Bedingungen des Gebets"
+      },
+      "ozet": {
+        "tr": "Namaz beden ve kalple birlikte yapılan bir ibadettir. Namazlar farz, vâcip, sünnet ve nâfile olarak ayrılır. Namazın on iki farzı vardır: altısı namazın dışında (şartlar), altısı namazın içindedir (rükünler).",
+        "fr": "La prière se fait avec le corps et le cœur. Elle se classe en farz, wâjib, sunna et surérogatoire. Elle comporte douze obligations : six en dehors de la prière (conditions) et six à l’intérieur (piliers).",
+        "en": "Prayer is worship done with body and heart. Prayers are classed as fard, wajib, sunnah and nafl. Prayer has twelve obligations: six outside it (conditions) and six within it (pillars).",
+        "nl": "Het gebed is aanbidding met lichaam en hart. Gebeden worden ingedeeld in fard, wadjib, soenna en nafl. Het gebed heeft twaalf verplichtingen: zes erbuiten (voorwaarden) en zes erbinnen (pijlers).",
+        "de": "Das Gebet ist Gottesdienst mit Körper und Herz. Die Gebete werden in Fard, Wadschib, Sunna und Nafl eingeteilt. Es hat zwölf Pflichten: sechs außerhalb (Bedingungen) und sechs innerhalb (Säulen)."
+      },
+      "kitap": "Camiye Gidiyorum 2 s. 98–103",
+      "sorular": [
+        {
+          "id": "ib-013-1",
+          "soru": {
+            "tr": "Namazın farzları kaç tanedir?",
+            "fr": "Combien la prière compte-t-elle d’obligations (farz) ?",
+            "en": "How many obligations (fard) does prayer have?",
+            "nl": "Hoeveel verplichtingen (fard) heeft het gebed?",
+            "de": "Wie viele Pflichten (Fard) hat das Gebet?"
+          },
+          "siklar": [
+            {
+              "tr": "6",
+              "fr": "6",
+              "en": "6",
+              "nl": "6",
+              "de": "6"
+            },
+            {
+              "tr": "10",
+              "fr": "10",
+              "en": "10",
+              "nl": "10",
+              "de": "10"
+            },
+            {
+              "tr": "12",
+              "fr": "12",
+              "en": "12",
+              "nl": "12",
+              "de": "12"
+            },
+            {
+              "tr": "14",
+              "fr": "14",
+              "en": "14",
+              "nl": "14",
+              "de": "14"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "Diyanet İlmihali I, Namazın farzları"
+        },
+        {
+          "id": "ib-013-2",
+          "soru": {
+            "tr": "Hanefî mezhebine göre, vitir namazı hangi hükümdedir?",
+            "fr": "Selon l’école hanafite, quel est le statut de la prière du witr ?",
+            "en": "According to the Hanafi school, what is the ruling of the witr prayer?",
+            "nl": "Volgens de Hanafi-school, wat is de status van het witr-gebed?",
+            "de": "Nach der hanafitischen Rechtsschule, welchen Rang hat das Witr-Gebet?"
+          },
+          "siklar": [
+            {
+              "tr": "Farz",
+              "fr": "Farz",
+              "en": "Fard",
+              "nl": "Fard",
+              "de": "Fard"
+            },
+            {
+              "tr": "Mübah",
+              "fr": "Permis (mubâh)",
+              "en": "Permissible (mubah)",
+              "nl": "Toegestaan (moebah)",
+              "de": "Erlaubt (Mubah)"
+            },
+            {
+              "tr": "Vâcip",
+              "fr": "Wâjib",
+              "en": "Wajib",
+              "nl": "Wadjib",
+              "de": "Wadschib"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "Diyanet İlmihali I, Vâcip namazlar"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ib-014",
+      "kod": "ibadet",
+      "planKonu": "Vakit, cuma, bayram ve cenaze namazları",
+      "ilkDers": "2026-11-28",
+      "seviyeAlani": "namaz",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Vakit, cuma, bayram ve cenaze namazları",
+        "fr": "Prières quotidiennes, du vendredi, des fêtes et funéraire",
+        "en": "Daily, Friday, festival and funeral prayers",
+        "nl": "Dagelijkse, vrijdag-, feest- en overlijdensgebeden",
+        "de": "Tages-, Freitags-, Fest- und Totengebet"
+      },
+      "ozet": {
+        "tr": "Beş vakit namazın ve cuma namazının farz, sünnet rekâtları vardır. Bayram namazı vâciptir ve iki rekâttır. Cenaze namazı farz-ı kifâyedir; rükû ve secde olmadan dört tekbirle kılınır.",
+        "fr": "Les cinq prières et la prière du vendredi ont chacune leurs rak‘a obligatoires et de sunna. La prière de fête est wâjib. La prière funéraire est une obligation collective (farz kifâya) : elle se fait avec quatre takbîr, sans inclinaison ni prosternation.",
+        "en": "The five daily prayers and the Friday prayer have set obligatory and sunnah rak‘ahs. The festival prayer is wajib. The funeral prayer is a communal obligation (fard kifaya): four takbirs, with no bowing or prostration.",
+        "nl": "De vijf dagelijkse gebeden en het vrijdaggebed hebben vaste verplichte en soenna-rak‘a’s. Het feestgebed is wadjib. Het dodengebed is een gemeenschappelijke plicht (fard kifaya): vier takbirs, zonder buiging of knieling.",
+        "de": "Die fünf Tagesgebete und das Freitagsgebet haben feste Pflicht- und Sunna-Rak‘a. Das Festgebet ist Wadschib. Das Totengebet ist eine Gemeinschaftspflicht (Fard Kifaya): vier Takbire, ohne Verbeugung und Niederwerfung."
+      },
+      "kitap": "Camiye Gidiyorum 2 s. 104–109",
+      "sorular": [
+        {
+          "id": "ib-014-1",
+          "soru": {
+            "tr": "Hanefî mezhebine göre, bayram namazının hükmü nedir?",
+            "fr": "Selon l’école hanafite, quel est le statut de la prière de fête ?",
+            "en": "According to the Hanafi school, what is the ruling of the festival prayer?",
+            "nl": "Volgens de Hanafi-school, wat is de status van het feestgebed?",
+            "de": "Nach der hanafitischen Rechtsschule, welchen Rang hat das Festgebet?"
+          },
+          "siklar": [
+            {
+              "tr": "Mekruh",
+              "fr": "Réprouvé (makrûh)",
+              "en": "Disliked (makruh)",
+              "nl": "Afgekeurd (makroeh)",
+              "de": "Missbilligt (Makruh)"
+            },
+            {
+              "tr": "Haram",
+              "fr": "Interdit (harâm)",
+              "en": "Forbidden (haram)",
+              "nl": "Verboden (haram)",
+              "de": "Verboten (Haram)"
+            },
+            {
+              "tr": "Vâcip",
+              "fr": "Wâjib",
+              "en": "Wajib",
+              "nl": "Wadjib",
+              "de": "Wadschib"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "Diyanet İlmihali I, Vâcip namazlar"
+        },
+        {
+          "id": "ib-014-2",
+          "soru": {
+            "tr": "Cenaze namazı nasıl kılınır?",
+            "fr": "Comment accomplit-on la prière funéraire ?",
+            "en": "How is the funeral prayer performed?",
+            "nl": "Hoe wordt het dodengebed verricht?",
+            "de": "Wie wird das Totengebet verrichtet?"
+          },
+          "siklar": [
+            {
+              "tr": "Dört tekbirle, rükû ve secde yapılmadan",
+              "fr": "Avec quatre takbîr, sans inclinaison ni prosternation",
+              "en": "With four takbirs, without bowing or prostration",
+              "nl": "Met vier takbirs, zonder buiging of knieling",
+              "de": "Mit vier Takbiren, ohne Verbeugung und Niederwerfung"
+            },
+            {
+              "tr": "İki rekât, rükû ve secdeyle",
+              "fr": "Deux rak‘a avec inclinaison et prosternation",
+              "en": "Two rak‘ahs with bowing and prostration",
+              "nl": "Twee rak‘a’s met buiging en knieling",
+              "de": "Zwei Rak‘a mit Verbeugung und Niederwerfung"
+            },
+            {
+              "tr": "Üç rekât, sadece secdeyle",
+              "fr": "Trois rak‘a avec prosternation seulement",
+              "en": "Three rak‘ahs with prostration only",
+              "nl": "Drie rak‘a’s alleen met knieling",
+              "de": "Drei Rak‘a nur mit Niederwerfung"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "Diyanet İlmihali I, Cenaze namazı; Namaz çeşitleri (farz-ı kifâye)"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ib-015",
+      "kod": "ibadet",
+      "planKonu": "Tekrar ve Değerlendirme 2",
+      "ilkDers": "2026-12-05",
+      "seviyeAlani": "namaz",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Tekrar ve değerlendirme 2",
+        "fr": "Révision et évaluation 2",
+        "en": "Review and assessment 2",
+        "nl": "Herhaling en evaluatie 2",
+        "de": "Wiederholung und Auswertung 2"
+      },
+      "ozet": {
+        "tr": "Abdest, dua ve namaz konularını tekrar ediyoruz: abdestin farzları, namazın çeşitleri, bayram ve cenaze namazı. Soru-cevap ve kısa yazılı çalışmalarla öğrendiklerimizi pekiştiririz.",
+        "fr": "Nous révisons les ablutions, la doua et la prière : obligations des ablutions, types de prière, prière de fête et funéraire. Questions-réponses et petits exercices écrits nous aident à retenir.",
+        "en": "We review ablution, dua and prayer: the obligations of ablution, types of prayer, festival and funeral prayers. Questions, answers and short written tasks help us remember.",
+        "nl": "We herhalen wassing, doe‘a en gebed: de verplichtingen van de wassing, soorten gebed, feest- en dodengebed. Vragen, antwoorden en korte schrijfoefeningen helpen ons onthouden.",
+        "de": "Wir wiederholen Waschung, Dua und Gebet: die Pflichten der Waschung, Gebetsarten, Fest- und Totengebet. Fragen, Antworten und kurze Schreibaufgaben festigen das Gelernte."
+      },
+      "kitap": "Camiye Gidiyorum 2 s. 13–20; s. 58–63; s. 98–109 (tekrar)",
+      "sorular": [
+        {
+          "id": "ib-015-1",
+          "soru": {
+            "tr": "Hanefî mezhebine göre, abdestte başın ne kadarı meshedilir?",
+            "fr": "Selon l’école hanafite, quelle partie de la tête est essuyée dans les ablutions ?",
+            "en": "According to the Hanafi school, how much of the head is wiped in ablution?",
+            "nl": "Volgens de Hanafi-school, welk deel van het hoofd wordt bij de wassing geveegd?",
+            "de": "Nach der hanafitischen Rechtsschule, wie viel vom Kopf wird bei der Waschung abgewischt?"
+          },
+          "siklar": [
+            {
+              "tr": "Başın tamamı",
+              "fr": "Toute la tête",
+              "en": "The whole head",
+              "nl": "Het hele hoofd",
+              "de": "Der ganze Kopf"
+            },
+            {
+              "tr": "Başın dörtte biri",
+              "fr": "Un quart de la tête",
+              "en": "A quarter of the head",
+              "nl": "Een kwart van het hoofd",
+              "de": "Ein Viertel des Kopfes"
+            },
+            {
+              "tr": "Yalnız saçın ucu",
+              "fr": "Seulement le bout des cheveux",
+              "en": "Only the tips of the hair",
+              "nl": "Alleen de haarpunten",
+              "de": "Nur die Haarspitzen"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "Diyanet İlmihali I, Abdestin farzları"
+        },
+        {
+          "id": "ib-015-2",
+          "soru": {
+            "tr": "Hanefî mezhebine göre, guslün farzlarından biri hangisidir?",
+            "fr": "Selon l’école hanafite, laquelle de ces actions est une obligation du ghusl ?",
+            "en": "According to the Hanafi school, which of these is an obligatory part of ghusl?",
+            "nl": "Volgens de Hanafi-school, welke van deze is een verplicht onderdeel van de ghusl?",
+            "de": "Nach der hanafitischen Rechtsschule, was gehört zu den Pflichtteilen des Ghusl?"
+          },
+          "siklar": [
+            {
+              "tr": "Kıbleye dönmek",
+              "fr": "Faire face à la qibla",
+              "en": "Facing the qibla",
+              "nl": "Naar de qibla keren",
+              "de": "Sich zur Qibla wenden"
+            },
+            {
+              "tr": "Ağıza su vermek",
+              "fr": "Se rincer la bouche",
+              "en": "Rinsing the mouth",
+              "nl": "De mond spoelen",
+              "de": "Den Mund ausspülen"
+            },
+            {
+              "tr": "Misvak kullanmak",
+              "fr": "Utiliser le siwâk",
+              "en": "Using the siwak",
+              "nl": "De siwak gebruiken",
+              "de": "Das Siwak benutzen"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "Diyanet İlmihali I, Guslün farzları"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ib-016",
+      "kod": "ibadet",
+      "planKonu": "Mübarek gün ve geceler",
+      "ilkDers": "2026-12-12",
+      "seviyeAlani": "ibadet",
+      "basamak": 1,
+      "baslik": {
+        "tr": "Mübarek gün ve geceler",
+        "fr": "Jours et nuits bénis",
+        "en": "Blessed days and nights",
+        "nl": "Gezegende dagen en nachten",
+        "de": "Gesegnete Tage und Nächte"
+      },
+      "ozet": {
+        "tr": "Cuma haftalık bir bayram sayılır; Ramazan ve Kurban bayramlarında ziyaret eder, barışır, yoksulları gözetiriz. Beş kandil gecesi vardır: Mevlit, Regâib, Miraç, Berat ve Kadir. Miraç gecesinde beş vakit namaz hediye edildi.",
+        "fr": "Le vendredi est une fête hebdomadaire ; aux deux fêtes on rend visite, on se réconcilie et on pense aux pauvres. Il y a cinq nuits de kandil : Mevlid, Raghâ’ib, Mi‘râj, Barâ’a et Qadr. Les cinq prières ont été offertes lors du Mi‘râj.",
+        "en": "Friday is seen as a weekly festival; at the two Eids we visit, reconcile and help the poor. There are five kandil nights: Mawlid, Raghaib, Mi‘raj, Bara’a and Qadr. The five prayers were gifted at the Mi‘raj.",
+        "nl": "Vrijdag geldt als wekelijks feest; tijdens de twee feesten bezoeken we elkaar, verzoenen we en helpen we de armen. Er zijn vijf kandil-nachten: Mawlid, Ragha’ib, Mi‘raj, Bara’a en Qadr. De vijf gebeden werden bij de Mi‘raj geschonken.",
+        "de": "Der Freitag gilt als wöchentliches Fest; an den Festtagen besuchen wir uns, versöhnen uns und helfen den Armen. Es gibt fünf Kandil-Nächte: Mawlid, Raghaib, Mi‘radsch, Bara’a und Qadr. Die fünf Gebete wurden im Mi‘radsch geschenkt."
+      },
+      "kitap": "Temel Dinî Bilgiler s. 179–183",
+      "sorular": [
+        {
+          "id": "ib-016-1",
+          "soru": {
+            "tr": "Miraç Gecesi hangi hicrî ayın 27. gecesidir?",
+            "fr": "La nuit du Mi‘râj est la 27e nuit de quel mois hégirien ?",
+            "en": "The Mi‘raj night is the 27th night of which Hijri month?",
+            "nl": "De Mi‘raj-nacht is de 27e nacht van welke islamitische maand?",
+            "de": "Die Mi‘radsch-Nacht ist die 27. Nacht welches Hidschra-Monats?"
+          },
+          "siklar": [
+            {
+              "tr": "Ramazan",
+              "fr": "Ramadan",
+              "en": "Ramadan",
+              "nl": "Ramadan",
+              "de": "Ramadan"
+            },
+            {
+              "tr": "Recep",
+              "fr": "Rajab",
+              "en": "Rajab",
+              "nl": "Radjab",
+              "de": "Radschab"
+            },
+            {
+              "tr": "Şaban",
+              "fr": "Sha‘bân",
+              "en": "Sha‘ban",
+              "nl": "Sja‘ban",
+              "de": "Scha‘ban"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "Dînî Kavramlar Sözlüğü, Üç aylar"
+        },
+        {
+          "id": "ib-016-2",
+          "soru": {
+            "tr": "Kadir Gecesi hangi ayda aranır?",
+            "fr": "Dans quel mois cherche-t-on la nuit du Qadr ?",
+            "en": "In which month is the Night of Qadr sought?",
+            "nl": "In welke maand zoekt men de Qadr-nacht?",
+            "de": "In welchem Monat sucht man die Nacht des Qadr?"
+          },
+          "siklar": [
+            {
+              "tr": "Muharrem",
+              "fr": "Muharram",
+              "en": "Muharram",
+              "nl": "Moeharram",
+              "de": "Muharram"
+            },
+            {
+              "tr": "Zilhicce",
+              "fr": "Dhou al-hijja",
+              "en": "Dhul-Hijjah",
+              "nl": "Dhoe al-hidjdja",
+              "de": "Dhul-Hiddscha"
+            },
+            {
+              "tr": "Ramazan",
+              "fr": "Ramadan",
+              "en": "Ramadan",
+              "nl": "Ramadan",
+              "de": "Ramadan"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "Dînî Kavramlar Sözlüğü, Üç aylar; Diyanet İlmihali I, İtikâf"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ib-017",
+      "kod": "ibadet",
+      "planKonu": "Sadaka ve zekât ibadetini öğreniyorum",
+      "ilkDers": "2026-12-19",
+      "seviyeAlani": "ibadet",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Sadaka ve zekât",
+        "fr": "La sadaqa et la zakât",
+        "en": "Sadaqa and zakat",
+        "nl": "Sadaqa en zakat",
+        "de": "Sadaqa und Zakat"
+      },
+      "ozet": {
+        "tr": "Zekât, İslâm’ın beş şartından biridir. Nisap denen miktarı bir yıl boyunca aşan malın kırkta biri, yani yüzde iki buçuğu ihtiyaç sahiplerine verilir. Zekât yardım değil, onların hakkıdır. Gönüllü verilene sadaka denir.",
+        "fr": "La zakât est l’un des cinq piliers. Quand un bien dépasse le seuil (nisâb) pendant une année, on en donne un quarantième, soit 2,5 %, aux nécessiteux. C’est leur droit, non une faveur. Ce qu’on donne volontairement s’appelle sadaqa.",
+        "en": "Zakat is one of the five pillars. When wealth stays above the threshold (nisab) for a year, one fortieth, or 2.5 %, is given to those in need. It is their right, not a favour. What is given voluntarily is called sadaqa.",
+        "nl": "Zakat is een van de vijf pijlers. Blijft het bezit een jaar boven de drempel (nisab), dan wordt een veertigste, dus 2,5 %, aan behoeftigen gegeven. Het is hun recht, geen gunst. Vrijwillig geven heet sadaqa.",
+        "de": "Zakat ist eine der fünf Säulen. Liegt das Vermögen ein Jahr über der Grenze (Nisab), wird ein Vierzigstel, also 2,5 %, an Bedürftige gegeben. Es ist ihr Recht, keine Gnade. Freiwilliges Geben heißt Sadaqa."
+      },
+      "kitap": "Camiye Gidiyorum 2 s. 189–193",
+      "sorular": [
+        {
+          "id": "ib-017-1",
+          "soru": {
+            "tr": "Zekât olarak malın ne kadarı verilir?",
+            "fr": "Quelle part du bien donne-t-on comme zakât ?",
+            "en": "How much of one’s wealth is given as zakat?",
+            "nl": "Hoeveel van het bezit geeft men als zakat?",
+            "de": "Wie viel vom Vermögen wird als Zakat gegeben?"
+          },
+          "siklar": [
+            {
+              "tr": "Yarısı",
+              "fr": "La moitié",
+              "en": "Half",
+              "nl": "De helft",
+              "de": "Die Hälfte"
+            },
+            {
+              "tr": "Onda biri",
+              "fr": "Un dixième",
+              "en": "One tenth",
+              "nl": "Een tiende",
+              "de": "Ein Zehntel"
+            },
+            {
+              "tr": "Kırkta biri (yüzde 2,5)",
+              "fr": "Un quarantième (2,5 %)",
+              "en": "One fortieth (2.5 %)",
+              "nl": "Een veertigste (2,5 %)",
+              "de": "Ein Vierzigstel (2,5 %)"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "Diyanet İlmihali I, Zekât (mahiyeti ve önemi)"
+        },
+        {
+          "id": "ib-017-2",
+          "soru": {
+            "tr": "Zekâta “nisap” denen şart ne anlama gelir?",
+            "fr": "Que désigne le « nisâb » pour la zakât ?",
+            "en": "What does the “nisab” mean for zakat?",
+            "nl": "Wat betekent de “nisab” voor de zakat?",
+            "de": "Was bedeutet der „Nisab“ bei der Zakat?"
+          },
+          "siklar": [
+            {
+              "tr": "Zekât için gereken belirli zenginlik ölçüsü",
+              "fr": "Le seuil de richesse requis pour la zakât",
+              "en": "The set level of wealth required for zakat",
+              "nl": "De vastgestelde rijkdomsgrens voor zakat",
+              "de": "Die festgelegte Vermögensgrenze für die Zakat"
+            },
+            {
+              "tr": "Zekât verilen kişi sayısı",
+              "fr": "Le nombre de bénéficiaires",
+              "en": "The number of recipients",
+              "nl": "Het aantal ontvangers",
+              "de": "Die Zahl der Empfänger"
+            },
+            {
+              "tr": "Zekâtın verildiği ay",
+              "fr": "Le mois où l’on donne",
+              "en": "The month it is given",
+              "nl": "De maand waarin gegeven wordt",
+              "de": "Der Monat der Zahlung"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "Diyanet İlmihali I, Zekât (nisab)"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ib-018",
+      "kod": "ibadet",
+      "planKonu": "Kur'an-ı Kerim ile çalışmayı öğreniyoruz",
+      "ilkDers": "2026-12-21",
+      "seviyeAlani": "ibadet",
+      "basamak": 1,
+      "baslik": {
+        "tr": "Kur’an-ı Kerim ile çalışmayı öğreniyoruz",
+        "fr": "Nous apprenons à travailler avec le Coran",
+        "en": "We learn to work with the Qur’an",
+        "nl": "We leren werken met de Koran",
+        "de": "Wir lernen, mit dem Koran zu arbeiten"
+      },
+      "ozet": {
+        "tr": "Kur’an, vahiy yoluyla Hz. Peygamber’e indirildi ve vahiy kâtipleri tarafından yazıldı. Kur’an’ın sonundaki fihristle bir sûreyi, meâllerin sonundaki konu dizinleriyle bir konuyu buluruz. “2/255” gibi gösterim sûre ve âyet numarasıdır.",
+        "fr": "Le Coran fut révélé au Prophète et mis par écrit par les scribes de la révélation. L’index à la fin du mushaf nous aide à trouver une sourate, et l’index thématique des traductions un sujet. « 2/255 » signifie sourate 2, verset 255.",
+        "en": "The Qur’an was revealed to the Prophet and written down by the scribes of revelation. The index at the end of the mushaf helps us find a surah, and subject indexes in translations help us find a topic. “2/255” means surah 2, verse 255.",
+        "nl": "De Koran werd aan de Profeet geopenbaard en door de schrijvers van de openbaring opgeschreven. De index achteraan helpt een soera te vinden, de onderwerpindex van vertalingen een thema. “2/255” betekent soera 2, vers 255.",
+        "de": "Der Koran wurde dem Propheten offenbart und von den Offenbarungsschreibern aufgezeichnet. Das Verzeichnis am Ende hilft, eine Sure zu finden, das Sachregister der Übersetzungen ein Thema. „2/255“ bedeutet Sure 2, Vers 255."
+      },
+      "kitap": "Camiye Gidiyorum 2 s. 200–203",
+      "sorular": [
+        {
+          "id": "ib-018-1",
+          "soru": {
+            "tr": "“Bakara 2/255” gösteriminde 255 neyi gösterir?",
+            "fr": "Dans « Bakara 2/255 », que désigne 255 ?",
+            "en": "In “Bakara 2/255”, what does 255 show?",
+            "nl": "In “Bakara 2/255”, wat geeft 255 aan?",
+            "de": "Was bezeichnet 255 in „Bakara 2/255“?"
+          },
+          "siklar": [
+            {
+              "tr": "Âyet numarasını",
+              "fr": "Le numéro du verset",
+              "en": "The verse number",
+              "nl": "Het versnummer",
+              "de": "Die Versnummer"
+            },
+            {
+              "tr": "Sayfa numarasını",
+              "fr": "Le numéro de page",
+              "en": "The page number",
+              "nl": "Het paginanummer",
+              "de": "Die Seitenzahl"
+            },
+            {
+              "tr": "Cüz numarasını",
+              "fr": "Le numéro du juz’",
+              "en": "The juz number",
+              "nl": "Het djoez-nummer",
+              "de": "Die Dschuz-Nummer"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "Dînî Kavramlar Sözlüğü, Sûre; Kur’an-ı Kerim"
+        },
+        {
+          "id": "ib-018-2",
+          "soru": {
+            "tr": "Kur’an’da en uzun sûre hangisidir?",
+            "fr": "Quelle est la plus longue sourate du Coran ?",
+            "en": "Which is the longest surah of the Qur’an?",
+            "nl": "Welke is de langste soera van de Koran?",
+            "de": "Welche ist die längste Sure des Korans?"
+          },
+          "siklar": [
+            {
+              "tr": "Bakara",
+              "fr": "Al-Baqara",
+              "en": "Al-Baqarah",
+              "nl": "Al-Baqara",
+              "de": "Al-Baqara"
+            },
+            {
+              "tr": "İhlâs",
+              "fr": "Al-Ikhlâs",
+              "en": "Al-Ikhlas",
+              "nl": "Al-Ikhlas",
+              "de": "Al-Ikhlas"
+            },
+            {
+              "tr": "Kevser",
+              "fr": "Al-Kawthar",
+              "en": "Al-Kawthar",
+              "nl": "Al-Kawthar",
+              "de": "Al-Kauthar"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "Dînî Kavramlar Sözlüğü, Sûre (en uzun sûre Bakara, 286 âyet)"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ib-019",
+      "kod": "ibadet",
+      "planKonu": "Hac ve umre ibadetini öğreniyorum",
+      "ilkDers": "2026-12-27",
+      "seviyeAlani": "ibadet",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Hac ve umre",
+        "fr": "Le hajj et la ‘umra",
+        "en": "Hajj and umrah",
+        "nl": "Hadj en oemra",
+        "de": "Hadsch und Umra"
+      },
+      "ozet": {
+        "tr": "Hac, hem mal hem bedenle yapılan bir ibadettir; Mekke’deki Kâbe’ye gidilir. Kâbe, Hz. İbrahim ve oğlu Hz. İsmail tarafından yapıldı. Mîkât, ihrama girilmesi gereken yerdir; ihram da hac için giyilen özel kıyafet ve haldir.",
+        "fr": "Le hajj est un acte d’adoration qui engage le corps et les biens ; on se rend à la Kaaba, à La Mecque. Elle fut bâtie par Ibrâhîm et son fils Ismaël. Le mîqât est le lieu où l’on doit entrer en ihrâm, l’état et la tenue du pèlerin.",
+        "en": "Hajj is worship with both body and wealth; pilgrims go to the Kaaba in Mecca. The Kaaba was built by Ibrahim and his son Isma‘il. The miqat is the place where one must enter ihram, the pilgrim’s state and dress.",
+        "nl": "De hadj is aanbidding met lichaam en bezit; men gaat naar de Ka‘ba in Mekka. De Ka‘ba werd gebouwd door Ibrahim en zijn zoon Isma‘il. De miqat is de plaats waar men in ihram moet treden, de staat en kledij van de bedevaartganger.",
+        "de": "Die Hadsch ist Gottesdienst mit Körper und Vermögen; man reist zur Kaaba in Mekka. Die Kaaba wurde von Ibrahim und seinem Sohn Ismail erbaut. Der Miqat ist der Ort, an dem man den Ihram anlegen muss, den Zustand und das Gewand des Pilgers."
+      },
+      "kitap": "Camiye Gidiyorum 2 s. 222–226",
+      "sorular": [
+        {
+          "id": "ib-019-1",
+          "soru": {
+            "tr": "Kur’an’a göre Kâbe’yi kimler inşa etmiştir?",
+            "fr": "D’après le Coran, qui a bâti la Kaaba ?",
+            "en": "According to the Qur’an, who built the Kaaba?",
+            "nl": "Wie bouwde volgens de Koran de Ka‘ba?",
+            "de": "Wer hat die Kaaba laut Koran errichtet?"
+          },
+          "siklar": [
+            {
+              "tr": "Hz. Musa ve Hz. Harun",
+              "fr": "Moïse et Aaron",
+              "en": "Musa and Harun",
+              "nl": "Moesa en Haroen",
+              "de": "Musa und Harun"
+            },
+            {
+              "tr": "Hz. İbrahim ve Hz. İsmail",
+              "fr": "Ibrâhîm et Ismaël",
+              "en": "Ibrahim and Isma‘il",
+              "nl": "Ibrahim en Isma‘il",
+              "de": "Ibrahim und Ismail"
+            },
+            {
+              "tr": "Hz. Nuh ve Hz. Yusuf",
+              "fr": "Noé et Joseph",
+              "en": "Nuh and Yusuf",
+              "nl": "Noeh en Joesoef",
+              "de": "Nuh und Yusuf"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "Dînî Kavramlar Sözlüğü, Kâbe (Bakara 2/124-129)"
+        },
+        {
+          "id": "ib-019-2",
+          "soru": {
+            "tr": "Mîkât nedir?",
+            "fr": "Qu’est-ce que le mîqât ?",
+            "en": "What is the miqat?",
+            "nl": "Wat is de miqat?",
+            "de": "Was ist der Miqat?"
+          },
+          "siklar": [
+            {
+              "tr": "Arafat’ta durulan yer",
+              "fr": "Le lieu de station à ‘Arafat",
+              "en": "The place of standing at Arafat",
+              "nl": "De plaats van het staan op Arafat",
+              "de": "Der Ort des Stehens in Arafat"
+            },
+            {
+              "tr": "Zemzem kuyusu",
+              "fr": "Le puits de Zamzam",
+              "en": "The Zamzam well",
+              "nl": "De Zamzam-put",
+              "de": "Der Zamzam-Brunnen"
+            },
+            {
+              "tr": "İhrama girilmesi gereken yerler",
+              "fr": "Les lieux où l’on doit entrer en ihrâm",
+              "en": "The places where one must enter ihram",
+              "nl": "De plaatsen waar men in ihram moet treden",
+              "de": "Die Orte, an denen man den Ihram anlegen muss"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "Dînî Kavramlar Sözlüğü, Mîkât"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ib-020",
+      "kod": "ibadet",
+      "planKonu": "Hacdaki semboller: Tavaf, sa'y, Arafat, Mina",
+      "ilkDers": "2027-01-02",
+      "seviyeAlani": "ibadet",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Hacdaki semboller: tavaf, sa’y, Arafat, Mina",
+        "fr": "Les symboles du hajj : tawâf, sa‘y, ‘Arafat, Mina",
+        "en": "Symbols of hajj: tawaf, sa‘y, Arafat, Mina",
+        "nl": "Symbolen van de hadj: tawaf, sa‘y, Arafat, Mina",
+        "de": "Symbole der Hadsch: Tawaf, Sa‘y, Arafat, Mina"
+      },
+      "ozet": {
+        "tr": "Tavaf, Kâbe’nin etrafında yedi defa dönmektir. Sa’y, Safâ ile Merve arasında yedi defa gidip gelmektir; Hz. Hacer’in su arayışını hatırlatır. Arafat’ta vakfe haccın farzıdır. Mina’da şeytan taşlanır.",
+        "fr": "Le tawâf consiste à tourner sept fois autour de la Kaaba. Le sa‘y est l’aller-retour de sept fois entre Safâ et Marwa, qui rappelle la recherche d’eau de Hâjar. La station à ‘Arafat est une obligation du hajj. À Mina on lapide Satan.",
+        "en": "Tawaf is circling the Kaaba seven times. Sa‘y is going back and forth seven times between Safa and Marwa, recalling Hajar’s search for water. Standing at Arafat is an obligation of hajj. At Mina the stoning of Satan takes place.",
+        "nl": "Tawaf is zevenmaal rond de Ka‘ba lopen. Sa‘y is zevenmaal heen en weer tussen Safa en Marwa, ter herinnering aan Hadjars zoektocht naar water. Het staan op Arafat is een plicht van de hadj. In Mina wordt de satan gestenigd.",
+        "de": "Tawaf heißt, die Kaaba siebenmal zu umrunden. Sa‘y ist das siebenmalige Hin- und Hergehen zwischen Safa und Marwa, zur Erinnerung an Hadschars Suche nach Wasser. Das Stehen in Arafat ist eine Pflicht der Hadsch. In Mina wird der Satan gesteinigt."
+      },
+      "kitap": "Camiye Gidiyorum 2 s. 227–231",
+      "sorular": [
+        {
+          "id": "ib-020-1",
+          "soru": {
+            "tr": "Tavaf, Kâbe’nin etrafında kaç defa dönmektir?",
+            "fr": "Combien de tours autour de la Kaaba comprend un tawâf ?",
+            "en": "How many times does one circle the Kaaba in tawaf?",
+            "nl": "Hoe vaak loopt men rond de Ka‘ba bij de tawaf?",
+            "de": "Wie oft umkreist man die Kaaba beim Tawaf?"
+          },
+          "siklar": [
+            {
+              "tr": "3",
+              "fr": "3",
+              "en": "3",
+              "nl": "3",
+              "de": "3"
+            },
+            {
+              "tr": "5",
+              "fr": "5",
+              "en": "5",
+              "nl": "5",
+              "de": "5"
+            },
+            {
+              "tr": "7",
+              "fr": "7",
+              "en": "7",
+              "nl": "7",
+              "de": "7"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "Diyanet İlmihali I, Tavaf (yedi şavt)"
+        },
+        {
+          "id": "ib-020-2",
+          "soru": {
+            "tr": "Sa’y hangi iki tepe arasında yapılır?",
+            "fr": "Entre quelles deux collines accomplit-on le sa‘y ?",
+            "en": "Between which two hills is sa‘y performed?",
+            "nl": "Tussen welke twee heuvels wordt de sa‘y verricht?",
+            "de": "Zwischen welchen beiden Hügeln wird das Sa‘y verrichtet?"
+          },
+          "siklar": [
+            {
+              "tr": "Safâ ile Merve",
+              "fr": "Safâ et Marwa",
+              "en": "Safa and Marwa",
+              "nl": "Safa en Marwa",
+              "de": "Safa und Marwa"
+            },
+            {
+              "tr": "Uhud ile Hira",
+              "fr": "Uhud et Hirâ’",
+              "en": "Uhud and Hira",
+              "nl": "Oehoed en Hira",
+              "de": "Uhud und Hira"
+            },
+            {
+              "tr": "Arafat ile Mina",
+              "fr": "‘Arafat et Mina",
+              "en": "Arafat and Mina",
+              "nl": "Arafat en Mina",
+              "de": "Arafat und Mina"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "Dînî Kavramlar Sözlüğü, Sa’y"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ib-021",
+      "kod": "ibadet",
+      "planKonu": "Çocuk İlmihali: Abdest, gusül, teyemmüm ve namazın kılınışı (sabah, öğle)",
+      "ilkDers": "2027-01-09",
+      "seviyeAlani": "namaz",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Çocuk İlmihali: abdest, gusül, teyemmüm ve namazın kılınışı (sabah, öğle)",
+        "fr": "Mini-catéchisme : ablutions, ghusl, tayammum et prière (fajr, dhuhr)",
+        "en": "Children’s catechism: ablution, ghusl, tayammum and prayer (fajr, dhuhr)",
+        "nl": "Kinder-ilmihal: wassing, ghusl, tayammum en gebed (ochtend, middag)",
+        "de": "Kinder-Ilmihal: Waschung, Ghusl, Tayammum und Gebet (Morgen, Mittag)"
+      },
+      "ozet": {
+        "tr": "Abdestin, guslün ve teyemmümün farzlarını birbirinden ayırırız. Namazın dışında altı, içinde altı farz vardır. Sabah namazı iki rekât sünnet ve iki rekât farzdır; öğle namazı dört sünnet, dört farz ve iki son sünnettir.",
+        "fr": "Nous distinguons les obligations des ablutions, du ghusl et du tayammum. La prière a six conditions extérieures et six piliers intérieurs. Le fajr compte 2 rak‘a de sunna et 2 de farz ; le dhuhr, 4 de sunna, 4 de farz et 2 de sunna finale.",
+        "en": "We tell apart the obligations of ablution, ghusl and tayammum. Prayer has six outer conditions and six inner pillars. Fajr is two rak‘ahs sunnah and two fard; Dhuhr is four sunnah, four fard and two final sunnah.",
+        "nl": "We onderscheiden de verplichtingen van wassing, ghusl en tayammum. Het gebed heeft zes voorwaarden buiten en zes pijlers binnen. Fadjr is twee rak‘a’s soenna en twee fard; Dhoehr is vier soenna, vier fard en twee slot-soenna.",
+        "de": "Wir unterscheiden die Pflichten von Waschung, Ghusl und Tayammum. Das Gebet hat sechs äußere Bedingungen und sechs innere Säulen. Fadschr: zwei Rak‘a Sunna und zwei Fard; Dhuhr: vier Sunna, vier Fard und zwei Schluss-Sunna."
+      },
+      "kitap": "Camiye Gidiyorum 2 s. 252–259",
+      "sorular": [
+        {
+          "id": "ib-021-1",
+          "soru": {
+            "tr": "Öğle namazının farzı kaç rekâttır?",
+            "fr": "Combien de rak‘a compte la prière obligatoire du dhuhr ?",
+            "en": "How many rak‘ahs is the obligatory Dhuhr prayer?",
+            "nl": "Hoeveel rak‘a’s telt het verplichte Dhoehr-gebed?",
+            "de": "Wie viele Rak‘a hat das Pflichtgebet des Dhuhr?"
+          },
+          "siklar": [
+            {
+              "tr": "2",
+              "fr": "2",
+              "en": "2",
+              "nl": "2",
+              "de": "2"
+            },
+            {
+              "tr": "3",
+              "fr": "3",
+              "en": "3",
+              "nl": "3",
+              "de": "3"
+            },
+            {
+              "tr": "4",
+              "fr": "4",
+              "en": "4",
+              "nl": "4",
+              "de": "4"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "Diyanet İlmihali I, Farz namazlar"
+        },
+        {
+          "id": "ib-021-2",
+          "soru": {
+            "tr": "Aşağıdakilerden hangisi namazı bozar?",
+            "fr": "Lequel de ces actes annule la prière ?",
+            "en": "Which of these invalidates the prayer?",
+            "nl": "Welke van deze maakt het gebed ongeldig?",
+            "de": "Was macht das Gebet ungültig?"
+          },
+          "siklar": [
+            {
+              "tr": "Kıbleye dönük durmak",
+              "fr": "Faire face à la qibla",
+              "en": "Facing the qibla",
+              "nl": "Naar de qibla staan",
+              "de": "Zur Qibla zu stehen"
+            },
+            {
+              "tr": "Namazda konuşmak",
+              "fr": "Parler pendant la prière",
+              "en": "Speaking during prayer",
+              "nl": "Praten tijdens het gebed",
+              "de": "Im Gebet zu sprechen"
+            },
+            {
+              "tr": "Secdede tesbih okumak",
+              "fr": "Dire le tasbîh en prosternation",
+              "en": "Reciting tasbih in prostration",
+              "nl": "Tasbih zeggen tijdens de knieling",
+              "de": "In der Niederwerfung den Tasbih zu sprechen"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "Diyanet İlmihali I, Namazı bozan durumlar"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ib-022",
+      "kod": "ibadet",
+      "planKonu": "Çocuk İlmihali: İkindi, akşam, yatsı ve vitir namazları; oruç, zekât, hac",
+      "ilkDers": "2027-01-16",
+      "seviyeAlani": "namaz",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Çocuk İlmihali: ikindi, akşam, yatsı, vitir; oruç, zekât, hac",
+        "fr": "Mini-catéchisme : ‘asr, maghrib, ‘ichâ’, witr ; jeûne, zakât, hajj",
+        "en": "Children’s catechism: Asr, Maghrib, Isha, Witr; fasting, zakat, hajj",
+        "nl": "Kinder-ilmihal: Asr, Maghrib, Isja, Witr; vasten, zakat, hadj",
+        "de": "Kinder-Ilmihal: Asr, Maghrib, Ischa, Witr; Fasten, Zakat, Hadsch"
+      },
+      "ozet": {
+        "tr": "İkindi, akşam ve yatsı namazlarının sünnet ve farzlarını sırayla kılarız. Vitir namazı yatsıdan sonra kılınan üç rekâtlık vâcip bir namazdır; üçüncü rekâtta kunut duası okunur. Oruçta unutarak yiyip içmek orucu bozmaz.",
+        "fr": "Nous accomplissons dans l’ordre les sunnas et farz de ‘asr, maghrib et ‘ichâ’. Le witr est une prière wâjib de trois rak‘a après ‘ichâ’ ; on y récite le qunût à la troisième. En jeûnant, manger ou boire par oubli n’annule pas le jeûne.",
+        "en": "We pray the sunnah and fard of Asr, Maghrib and Isha in order. Witr is a wajib prayer of three rak‘ahs after Isha; the qunut dua is recited in the third. Eating or drinking by forgetting does not break the fast.",
+        "nl": "We bidden de soenna en fard van Asr, Maghrib en Isja op volgorde. Witr is een wadjib-gebed van drie rak‘a’s na Isja; in de derde wordt de qunoet gelezen. Uit vergetelheid eten of drinken verbreekt het vasten niet.",
+        "de": "Wir beten Sunna und Fard von Asr, Maghrib und Ischa der Reihe nach. Witr ist ein Wadschib-Gebet mit drei Rak‘a nach Ischa; in der dritten wird das Qunut gesprochen. Aus Vergessen zu essen oder zu trinken bricht das Fasten nicht."
+      },
+      "kitap": "Camiye Gidiyorum 2 s. 260–268",
+      "sorular": [
+        {
+          "id": "ib-022-1",
+          "soru": {
+            "tr": "Hanefî mezhebine göre, vitir namazı kaç rekâttır?",
+            "fr": "Selon l’école hanafite, combien de rak‘a compte le witr ?",
+            "en": "According to the Hanafi school, how many rak‘ahs is the witr prayer?",
+            "nl": "Volgens de Hanafi-school, hoeveel rak‘a’s telt het witr-gebed?",
+            "de": "Nach der hanafitischen Rechtsschule, wie viele Rak‘a hat das Witr-Gebet?"
+          },
+          "siklar": [
+            {
+              "tr": "1",
+              "fr": "1",
+              "en": "1",
+              "nl": "1",
+              "de": "1"
+            },
+            {
+              "tr": "2",
+              "fr": "2",
+              "en": "2",
+              "nl": "2",
+              "de": "2"
+            },
+            {
+              "tr": "3",
+              "fr": "3",
+              "en": "3",
+              "nl": "3",
+              "de": "3"
+            },
+            {
+              "tr": "5",
+              "fr": "5",
+              "en": "5",
+              "nl": "5",
+              "de": "5"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "Diyanet İlmihali I, Vâcip namazlar (vitir)"
+        },
+        {
+          "id": "ib-022-2",
+          "soru": {
+            "tr": "Oruçlu biri unutarak yiyip içerse ne olur?",
+            "fr": "Que se passe-t-il si une personne qui jeûne mange ou boit par oubli ?",
+            "en": "What happens if a fasting person eats or drinks by forgetting?",
+            "nl": "Wat gebeurt er als iemand die vast uit vergetelheid eet of drinkt?",
+            "de": "Was geschieht, wenn jemand beim Fasten aus Vergessen isst oder trinkt?"
+          },
+          "siklar": [
+            {
+              "tr": "Orucu bozulur",
+              "fr": "Son jeûne est annulé",
+              "en": "The fast is broken",
+              "nl": "Het vasten is verbroken",
+              "de": "Das Fasten ist gebrochen"
+            },
+            {
+              "tr": "Kefaret öder",
+              "fr": "Il doit payer une expiation",
+              "en": "He or she must pay expiation",
+              "nl": "Hij of zij moet een boete betalen",
+              "de": "Er oder sie muss Sühne leisten"
+            },
+            {
+              "tr": "Orucu bozulmaz, devam eder",
+              "fr": "Son jeûne n’est pas annulé, il continue",
+              "en": "The fast is not broken; he or she continues",
+              "nl": "Het vasten is niet verbroken; hij of zij gaat door",
+              "de": "Das Fasten ist nicht gebrochen; er oder sie fährt fort"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "Diyanet İlmihali I, Orucu bozan ve bozmayan durumlar (Buhârî, Savm 26)"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ib-023",
+      "kod": "ibadet",
+      "planKonu": "İbadet",
+      "ilkDers": "2027-01-23",
+      "seviyeAlani": "ibadet",
+      "basamak": 1,
+      "baslik": {
+        "tr": "İbadet",
+        "fr": "L’adoration (‘ibâda)",
+        "en": "Worship (ibadah)",
+        "nl": "Aanbidding (ibada)",
+        "de": "Gottesdienst (Ibada)"
+      },
+      "ozet": {
+        "tr": "İbadet, Allah’a saygı göstermek ve nimetlerine şükretmektir. Bazı ibadetler bedenle (namaz), bazıları malla (zekât), bazıları hem beden hem malla (hac) yapılır. En değerli ibadet, yalnız Allah rızası için yapılandır.",
+        "fr": "L’adoration, c’est honorer Allah et Le remercier de Ses bienfaits. Certaines se font avec le corps (la prière), d’autres avec les biens (la zakât), d’autres avec les deux (le hajj). La plus précieuse est celle faite pour la seule satisfaction d’Allah.",
+        "en": "Worship means honouring Allah and thanking Him for His blessings. Some acts are done with the body (prayer), some with wealth (zakat), some with both (hajj). The most valuable worship is done for Allah’s pleasure alone.",
+        "nl": "Aanbidding is Allah eren en Hem danken voor Zijn gunsten. Sommige daden doet men met het lichaam (gebed), andere met bezit (zakat), andere met beide (hadj). De waardevolste is die enkel omwille van Allah.",
+        "de": "Gottesdienst heißt, Allah zu ehren und Ihm für Seine Gaben zu danken. Manches geschieht mit dem Körper (Gebet), manches mit Vermögen (Zakat), manches mit beidem (Hadsch). Am wertvollsten ist, was allein um Allahs Wohlgefallen willen geschieht."
+      },
+      "kitap": "Temel Dinî Bilgiler s. 75–77",
+      "sorular": [
+        {
+          "id": "ib-023-1",
+          "soru": {
+            "tr": "Hangi ibadet için bedenî ve malî imkân (güç) gerekir?",
+            "fr": "Pour quel acte d’adoration faut-il des moyens physiques et financiers ?",
+            "en": "For which act of worship are physical and financial means required?",
+            "nl": "Voor welke vorm van aanbidding zijn lichamelijke en financiële mogelijkheden nodig?",
+            "de": "Für welchen Gottesdienst braucht man körperliche und finanzielle Möglichkeiten?"
+          },
+          "siklar": [
+            {
+              "tr": "Kelime-i şehadet",
+              "fr": "La profession de foi",
+              "en": "The declaration of faith",
+              "nl": "Het geloofsgetuigenis",
+              "de": "Das Glaubensbekenntnis"
+            },
+            {
+              "tr": "Besmele çekmek",
+              "fr": "Dire la basmala",
+              "en": "Saying the basmala",
+              "nl": "De basmala zeggen",
+              "de": "Die Basmala sprechen"
+            },
+            {
+              "tr": "Hac",
+              "fr": "Le hajj",
+              "en": "Hajj",
+              "nl": "De hadj",
+              "de": "Die Hadsch"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "Diyanet İlmihali I, Hac ve umre (yükümlülük şartları: istitaat)"
+        },
+        {
+          "id": "ib-023-2",
+          "soru": {
+            "tr": "Oruç hangi ayda tutulur?",
+            "fr": "Dans quel mois jeûne-t-on ?",
+            "en": "In which month is the obligatory fast kept?",
+            "nl": "In welke maand vast men?",
+            "de": "In welchem Monat wird gefastet?"
+          },
+          "siklar": [
+            {
+              "tr": "Ramazan",
+              "fr": "Ramadan",
+              "en": "Ramadan",
+              "nl": "Ramadan",
+              "de": "Ramadan"
+            },
+            {
+              "tr": "Recep",
+              "fr": "Rajab",
+              "en": "Rajab",
+              "nl": "Radjab",
+              "de": "Radschab"
+            },
+            {
+              "tr": "Zilhicce",
+              "fr": "Dhou al-hijja",
+              "en": "Dhul-Hijjah",
+              "nl": "Dhoe al-hidjdja",
+              "de": "Dhul-Hiddscha"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "Dînî Kavramlar Sözlüğü, Üç aylar"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ib-024",
+      "kod": "ibadet",
+      "planKonu": "Ramazan Öncesi Genel Tekrar",
+      "ilkDers": "2027-01-30",
+      "seviyeAlani": "ibadet",
+      "basamak": 1,
+      "baslik": {
+        "tr": "Ramazan öncesi genel tekrar",
+        "fr": "Révision générale avant le Ramadan",
+        "en": "General review before Ramadan",
+        "nl": "Algemene herhaling vóór de Ramadan",
+        "de": "Allgemeine Wiederholung vor dem Ramadan"
+      },
+      "ozet": {
+        "tr": "Ramazan’dan önce bu dönemde öğrendiklerimizi bir arada tekrar ederiz: temizlik, namaz, dua ve Kur’an. Böylece Ramazan’a bilgiyle ve hazır bir kalple gireriz.",
+        "fr": "Avant le Ramadan, nous révisons ensemble ce que nous avons appris : propreté, prière, doua et Coran. Nous entrons ainsi dans le Ramadan avec des connaissances et un cœur prêt.",
+        "en": "Before Ramadan we review together what we have learned: cleanliness, prayer, dua and the Qur’an. This way we enter Ramadan with knowledge and a ready heart.",
+        "nl": "Vóór de Ramadan herhalen we samen wat we geleerd hebben: reinheid, gebed, doe‘a en Koran. Zo gaan we met kennis en een voorbereid hart de Ramadan in.",
+        "de": "Vor dem Ramadan wiederholen wir zusammen, was wir gelernt haben: Reinheit, Gebet, Dua und Koran. So gehen wir mit Wissen und bereitem Herzen in den Ramadan."
+      },
+      "kitap": "Camiye Gidiyorum 2 s. 252–268 (tekrar)",
+      "sorular": [
+        {
+          "id": "ib-024-1",
+          "soru": {
+            "tr": "Ramazan orucu hangi hükümdedir?",
+            "fr": "Quel est le statut du jeûne du Ramadan ?",
+            "en": "What is the status of the Ramadan fast?",
+            "nl": "Wat is de status van het Ramadan-vasten?",
+            "de": "Welchen Rang hat das Ramadan-Fasten?"
+          },
+          "siklar": [
+            {
+              "tr": "Farz",
+              "fr": "Farz (obligatoire)",
+              "en": "Fard (obligatory)",
+              "nl": "Fard (verplicht)",
+              "de": "Fard (Pflicht)"
+            },
+            {
+              "tr": "Mübah",
+              "fr": "Permis (mubâh)",
+              "en": "Permissible (mubah)",
+              "nl": "Toegestaan (moebah)",
+              "de": "Erlaubt (Mubah)"
+            },
+            {
+              "tr": "Mekruh",
+              "fr": "Réprouvé (makrûh)",
+              "en": "Disliked (makruh)",
+              "nl": "Afgekeurd (makroeh)",
+              "de": "Missbilligt (Makruh)"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "Diyanet İlmihali I, Oruç (Ramazan orucunun farziyeti)"
+        },
+        {
+          "id": "ib-024-2",
+          "soru": {
+            "tr": "Hanefî mezhebine göre, tilâvet secdesi hangi hükümdedir?",
+            "fr": "Selon l’école hanafite, quel est le statut de la prosternation de récitation (tilâwa) ?",
+            "en": "According to the Hanafi school, what is the ruling of the prostration of recitation?",
+            "nl": "Volgens de Hanafi-school, wat is de status van de tilawa-knieling?",
+            "de": "Nach der hanafitischen Rechtsschule, welchen Rang hat die Rezitationsniederwerfung?"
+          },
+          "siklar": [
+            {
+              "tr": "Mübah",
+              "fr": "Permis (mubâh)",
+              "en": "Permissible (mubah)",
+              "nl": "Toegestaan (moebah)",
+              "de": "Erlaubt (Mubah)"
+            },
+            {
+              "tr": "Vâcip",
+              "fr": "Wâjib",
+              "en": "Wajib",
+              "nl": "Wadjib",
+              "de": "Wadschib"
+            },
+            {
+              "tr": "Haram",
+              "fr": "Interdit (harâm)",
+              "en": "Forbidden (haram)",
+              "nl": "Verboden (haram)",
+              "de": "Verboten (Haram)"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "Diyanet İlmihali I, Tilâvet secdesi"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ib-025",
+      "kod": "ibadet",
+      "planKonu": "Ramazan'a Hazırlık ve Niyet",
+      "ilkDers": "2027-02-06",
+      "seviyeAlani": "ibadet",
+      "basamak": 1,
+      "baslik": {
+        "tr": "Ramazan’a hazırlık ve niyet",
+        "fr": "Se préparer au Ramadan et l’intention",
+        "en": "Preparing for Ramadan and intention",
+        "nl": "Voorbereiding op de Ramadan en intentie",
+        "de": "Vorbereitung auf den Ramadan und Absicht"
+      },
+      "ozet": {
+        "tr": "Oruç, niyetle tutulur; niyeti öğreniriz ve ezberleriz. Sahura kalkıp yemek ve içmek de niyet yerine geçer. Ramazan orucu farzdır. Ramazan’a gönül birliğiyle ve güzel bir hazırlıkla gireriz.",
+        "fr": "Le jeûne se fait avec l’intention ; nous apprenons et mémorisons la formule. Se lever pour le suhûr en mangeant et en buvant vaut intention. Le jeûne du Ramadan est obligatoire. Nous y entrons bien préparés.",
+        "en": "Fasting is done with intention; we learn and memorise its wording. Getting up for suhoor to eat and drink also counts as intention. The Ramadan fast is obligatory. We enter Ramadan well prepared.",
+        "nl": "Vasten gebeurt met intentie; we leren de formule en onthouden haar. Opstaan voor de soehoer, eten en drinken, geldt ook als intentie. Het Ramadan-vasten is verplicht. We gaan goed voorbereid de Ramadan in.",
+        "de": "Das Fasten geschieht mit Absicht (Niyya); wir lernen und merken uns die Formel. Das Aufstehen zum Suhur mit Essen und Trinken gilt ebenfalls als Absicht. Das Ramadan-Fasten ist Pflicht. Wir gehen gut vorbereitet in den Ramadan."
+      },
+      "kitap": "Camiye Gidiyorum 2 s. 148–154 (Ramazan özel programı)",
+      "sorular": [
+        {
+          "id": "ib-025-1",
+          "soru": {
+            "tr": "Sahura kalkıp yemek ve içmek oruç niyeti açısından ne sayılır?",
+            "fr": "Se lever pour manger et boire au suhûr compte comme quoi pour l’intention du jeûne ?",
+            "en": "How does getting up for suhoor to eat and drink count for the fasting intention?",
+            "nl": "Hoe telt opstaan voor de soehoer om te eten en te drinken voor de vastenintentie?",
+            "de": "Wie zählt das Aufstehen zum Suhur mit Essen und Trinken für die Fastenabsicht?"
+          },
+          "siklar": [
+            {
+              "tr": "Hiçbir anlamı yoktur",
+              "fr": "Cela ne signifie rien",
+              "en": "It means nothing",
+              "nl": "Het betekent niets",
+              "de": "Es hat keine Bedeutung"
+            },
+            {
+              "tr": "Niyet yerine geçer",
+              "fr": "Cela tient lieu d’intention",
+              "en": "It counts as intention",
+              "nl": "Het geldt als intentie",
+              "de": "Es gilt als Absicht"
+            },
+            {
+              "tr": "Orucu bozar",
+              "fr": "Cela annule le jeûne",
+              "en": "It breaks the fast",
+              "nl": "Het verbreekt het vasten",
+              "de": "Es bricht das Fasten"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "Diyanet İlmihali I, Orucun sahih olma şartları (niyet)"
+        },
+        {
+          "id": "ib-025-2",
+          "soru": {
+            "tr": "Ramazan orucu hangi hükümdedir?",
+            "fr": "Quel est le statut du jeûne du Ramadan ?",
+            "en": "What is the status of the Ramadan fast?",
+            "nl": "Wat is de status van het Ramadan-vasten?",
+            "de": "Welchen Rang hat das Ramadan-Fasten?"
+          },
+          "siklar": [
+            {
+              "tr": "Mübah",
+              "fr": "Permis (mubâh)",
+              "en": "Permissible (mubah)",
+              "nl": "Toegestaan (moebah)",
+              "de": "Erlaubt (Mubah)"
+            },
+            {
+              "tr": "Farz",
+              "fr": "Farz (obligatoire)",
+              "en": "Fard (obligatory)",
+              "nl": "Fard (verplicht)",
+              "de": "Fard (Pflicht)"
+            },
+            {
+              "tr": "Mekruh",
+              "fr": "Réprouvé (makrûh)",
+              "en": "Disliked (makruh)",
+              "nl": "Afgekeurd (makroeh)",
+              "de": "Missbilligt (Makruh)"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "Diyanet İlmihali I, Oruç (farz olan Ramazan orucu)"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ib-026",
+      "kod": "ibadet",
+      "planKonu": "Orucun Farziyeti, Şartları ve Çeşitleri",
+      "ilkDers": "2027-02-13",
+      "seviyeAlani": "ibadet",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Orucun farziyeti, şartları ve çeşitleri",
+        "fr": "L’obligation, les conditions et les types de jeûne",
+        "en": "The obligation, conditions and types of fasting",
+        "nl": "Verplichting, voorwaarden en soorten vasten",
+        "de": "Pflicht, Bedingungen und Arten des Fastens"
+      },
+      "ozet": {
+        "tr": "Oruç, Ramazan ayında farzdır. Oruç çeşitleri vardır: farz (Ramazan), vâcip (adak orucu), sünnet, müstehap, nâfile ve mekruh oruçlar. Yolculuk, Ramazan orucunu tutmamayı mubah kılan mazeretlerden biridir.",
+        "fr": "Le jeûne est obligatoire pendant le Ramadan. Il y a plusieurs types : farz (Ramadan), wâjib (jeûne voué), sunna, recommandé, surérogatoire et réprouvé. Le voyage est l’une des excuses qui permettent de ne pas jeûner en Ramadan.",
+        "en": "Fasting is obligatory in Ramadan. There are several kinds: fard (Ramadan), wajib (a vowed fast), sunnah, recommended, voluntary and disliked fasts. Travel is one of the excuses that allow not fasting in Ramadan.",
+        "nl": "Vasten is verplicht in de Ramadan. Er zijn soorten: fard (Ramadan), wadjib (een beloofd vasten), soenna, aanbevolen, vrijwillig en afgekeurd vasten. Reizen is een van de excuses om in de Ramadan niet te vasten.",
+        "de": "Fasten ist im Ramadan Pflicht. Es gibt Arten: Fard (Ramadan), Wadschib (Gelübdefasten), Sunna, empfohlenes, freiwilliges und missbilligtes Fasten. Eine Reise ist eine der Entschuldigungen, im Ramadan nicht zu fasten."
+      },
+      "kitap": "Temel Dinî Bilgiler s. 153–156 (Ramazan özel programı)",
+      "sorular": [
+        {
+          "id": "ib-026-1",
+          "soru": {
+            "tr": "Hanefî mezhebine göre, adak orucu hangi hükümdedir?",
+            "fr": "Selon l’école hanafite, quel est le statut d’un jeûne voué (nadhr) ?",
+            "en": "According to the Hanafi school, what is the ruling of a vowed fast?",
+            "nl": "Volgens de Hanafi-school, wat is de status van een beloofd vasten (nadhr)?",
+            "de": "Nach der hanafitischen Rechtsschule, welchen Rang hat ein Gelübdefasten?"
+          },
+          "siklar": [
+            {
+              "tr": "Mekruh",
+              "fr": "Réprouvé (makrûh)",
+              "en": "Disliked (makruh)",
+              "nl": "Afgekeurd (makroeh)",
+              "de": "Missbilligt (Makruh)"
+            },
+            {
+              "tr": "Haram",
+              "fr": "Interdit (harâm)",
+              "en": "Forbidden (haram)",
+              "nl": "Verboden (haram)",
+              "de": "Verboten (Haram)"
+            },
+            {
+              "tr": "Vâcip",
+              "fr": "Wâjib",
+              "en": "Wajib",
+              "nl": "Wadjib",
+              "de": "Wadschib"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "Diyanet İlmihali I, Orucun çeşitleri (adak orucu)"
+        },
+        {
+          "id": "ib-026-2",
+          "soru": {
+            "tr": "Aşağıdakilerden hangisi Ramazan orucunu tutmamayı mubah kılan mazeretlerden biridir?",
+            "fr": "Laquelle de ces excuses permet de ne pas jeûner en Ramadan ?",
+            "en": "Which of these is an excuse that permits not fasting in Ramadan?",
+            "nl": "Welke van deze is een excuus om in de Ramadan niet te vasten?",
+            "de": "Welche Entschuldigung erlaubt es, im Ramadan nicht zu fasten?"
+          },
+          "siklar": [
+            {
+              "tr": "Yolculuk (sefer)",
+              "fr": "Le voyage (safar)",
+              "en": "Travel (safar)",
+              "nl": "Reizen (safar)",
+              "de": "Eine Reise (Safar)"
+            },
+            {
+              "tr": "Canı istememesi",
+              "fr": "Ne pas en avoir envie",
+              "en": "Not feeling like it",
+              "nl": "Er geen zin in hebben",
+              "de": "Keine Lust zu haben"
+            },
+            {
+              "tr": "Arkadaşlarıyla gezmek",
+              "fr": "Sortir avec des amis",
+              "en": "Going out with friends",
+              "nl": "Uitgaan met vrienden",
+              "de": "Mit Freunden unterwegs zu sein"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "Diyanet İlmihali I, Ramazan orucunu tutmamayı mubah kılan mazeretler (sefer)"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ib-027",
+      "kod": "ibadet",
+      "planKonu": "Orucu Bozan ve Bozmayan Şeyler; Kaza ve Kefaret",
+      "ilkDers": "2027-02-20",
+      "seviyeAlani": "ibadet",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Orucu bozan ve bozmayan şeyler; kaza ve kefaret",
+        "fr": "Ce qui annule ou non le jeûne ; rattrapage et expiation",
+        "en": "What breaks and does not break the fast; qada and kaffara",
+        "nl": "Wat het vasten verbreekt en niet; inhalen en boete",
+        "de": "Was das Fasten bricht und was nicht; Nachholen und Sühne"
+      },
+      "ozet": {
+        "tr": "Oruçlu iken bilerek yiyip içmek orucu bozar. Unutarak yemek bozmaz. Yanlışlıkla su yutmak ise bozar ve kaza gerekir. Ramazan orucunu bilerek bozan, orucu kaza eder ve kefaret öder.",
+        "fr": "Manger ou boire volontairement annule le jeûne. Par oubli, il n’est pas annulé. Avaler de l’eau par erreur l’annule et demande un rattrapage. Qui rompt volontairement le jeûne du Ramadan le rattrape et fait une expiation.",
+        "en": "Eating or drinking on purpose breaks the fast. Doing so by forgetting does not. Swallowing water by mistake does break it and requires making it up. Whoever breaks the Ramadan fast on purpose makes it up and pays an expiation.",
+        "nl": "Opzettelijk eten of drinken verbreekt het vasten. Uit vergetelheid niet. Per ongeluk water doorslikken verbreekt het wel en moet ingehaald worden. Wie het Ramadan-vasten opzettelijk verbreekt, haalt het in en betaalt een boete.",
+        "de": "Absichtliches Essen oder Trinken bricht das Fasten. Aus Vergessen nicht. Wasser versehentlich zu schlucken bricht es doch und muss nachgeholt werden. Wer das Ramadan-Fasten absichtlich bricht, holt es nach und leistet Sühne."
+      },
+      "kitap": "Temel Dinî Bilgiler s. 156–159 (Ramazan özel programı)",
+      "sorular": [
+        {
+          "id": "ib-027-1",
+          "soru": {
+            "tr": "Hanefî mezhebine göre, oruçluyken yanlışlıkla (kasıtsız) su yutmak ne sonuç verir?",
+            "fr": "Selon l’école hanafite, avaler de l’eau par erreur (sans le vouloir) en jeûnant entraîne quoi ?",
+            "en": "According to the Hanafi school, what is the result of swallowing water by mistake while fasting?",
+            "nl": "Volgens de Hanafi-school, wat is het gevolg van per ongeluk water doorslikken tijdens het vasten?",
+            "de": "Nach der hanafitischen Rechtsschule, was bewirkt es, beim Fasten versehentlich Wasser zu schlucken?"
+          },
+          "siklar": [
+            {
+              "tr": "Oruç bozulur, kaza gerekir",
+              "fr": "Le jeûne est annulé et doit être rattrapé",
+              "en": "The fast is broken and must be made up",
+              "nl": "Het vasten is verbroken en moet ingehaald worden",
+              "de": "Das Fasten ist gebrochen und muss nachgeholt werden"
+            },
+            {
+              "tr": "Hiçbir şey olmaz",
+              "fr": "Rien ne se passe",
+              "en": "Nothing happens",
+              "nl": "Er gebeurt niets",
+              "de": "Nichts geschieht"
+            },
+            {
+              "tr": "Oruç mekruh olur ama bozulmaz",
+              "fr": "Il devient makrûh mais n’est pas annulé",
+              "en": "It becomes makruh but is not broken",
+              "nl": "Het wordt makroeh maar niet verbroken",
+              "de": "Es wird makruh, ist aber nicht gebrochen"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "Diyanet İlmihali I, Orucu bozan ve bozmayan şeyler"
+        },
+        {
+          "id": "ib-027-2",
+          "soru": {
+            "tr": "Hanefî mezhebine göre, Ramazan orucunu bilerek bozmanın kefareti nedir?",
+            "fr": "Selon l’école hanafite, quelle est l’expiation pour avoir rompu volontairement le jeûne du Ramadan ?",
+            "en": "According to the Hanafi school, what is the expiation for deliberately breaking the Ramadan fast?",
+            "nl": "Volgens de Hanafi-school, wat is de boete voor het opzettelijk verbreken van het Ramadan-vasten?",
+            "de": "Nach der hanafitischen Rechtsschule, was ist die Sühne für das absichtliche Brechen des Ramadan-Fastens?"
+          },
+          "siklar": [
+            {
+              "tr": "Hiçbir şey gerekmez",
+              "fr": "Rien n’est requis",
+              "en": "Nothing is required",
+              "nl": "Er is niets vereist",
+              "de": "Nichts ist erforderlich"
+            },
+            {
+              "tr": "Ara vermeden iki ay oruç tutmak (gücü yetmezse altmış fakiri doyurmak)",
+              "fr": "Jeûner deux mois consécutifs (sinon nourrir soixante pauvres)",
+              "en": "Fasting two months in a row (otherwise feeding sixty poor people)",
+              "nl": "Twee maanden onafgebroken vasten (anders zestig armen voeden)",
+              "de": "Zwei Monate hintereinander fasten (sonst sechzig Arme speisen)"
+            },
+            {
+              "tr": "Bir gün oruç tutmak",
+              "fr": "Jeûner un jour",
+              "en": "Fasting one day",
+              "nl": "Eén dag vasten",
+              "de": "Einen Tag fasten"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "Diyanet İlmihali I, Kefâretler (oruç kefâreti)"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ib-028",
+      "kod": "ibadet",
+      "planKonu": "Sahur, İftar ve Teravih Namazı",
+      "ilkDers": "2027-02-22",
+      "seviyeAlani": "ibadet",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Sahur, iftar ve teravih namazı",
+        "fr": "Le suhûr, l’iftâr et la prière de tarâwîh",
+        "en": "Suhoor, iftar and the tarawih prayer",
+        "nl": "Soehoer, iftar en het tarawih-gebed",
+        "de": "Suhur, Iftar und das Tarawih-Gebet"
+      },
+      "ozet": {
+        "tr": "Sahur yapmak sünnettir; oruca daha kolay devam etmeye yardım eder. İftarı güzel bir duayla ve paylaşarak açarız. Teravih, Ramazan gecelerinde yatsıdan sonra kılınan sünnet bir namazdır.",
+        "fr": "Prendre le suhûr est une sunna ; il aide à tenir le jeûne. Nous rompons le jeûne par une belle invocation et en partageant. Le tarâwîh est une prière de sunna accomplie après ‘ichâ’ pendant les nuits du Ramadan.",
+        "en": "Eating suhoor is sunnah; it helps one keep the fast. We break the fast with a beautiful dua and by sharing. Tarawih is a sunnah prayer performed after Isha on Ramadan nights.",
+        "nl": "De soehoer eten is soenna; hij helpt het vasten vol te houden. We verbreken het vasten met een mooie smeekbede en delend. Tarawih is een soenna-gebed na Isja in de nachten van de Ramadan.",
+        "de": "Das Suhur ist Sunna; es hilft, das Fasten durchzuhalten. Wir brechen das Fasten mit einem schönen Bittgebet und teilen. Tarawih ist ein Sunna-Gebet nach Ischa in den Ramadan-Nächten."
+      },
+      "kitap": "Temel Dinî Bilgiler s. 140–142 (Ramazan özel programı)",
+      "sorular": [
+        {
+          "id": "ib-028-1",
+          "soru": {
+            "tr": "Sahur yapmanın hükmü nedir?",
+            "fr": "Quel est le statut du fait de prendre le suhûr ?",
+            "en": "What is the status of eating suhoor?",
+            "nl": "Wat is de status van het eten van de soehoer?",
+            "de": "Welchen Rang hat das Essen des Suhur?"
+          },
+          "siklar": [
+            {
+              "tr": "Orucu bozar",
+              "fr": "Cela annule le jeûne",
+              "en": "It breaks the fast",
+              "nl": "Het verbreekt het vasten",
+              "de": "Es bricht das Fasten"
+            },
+            {
+              "tr": "Sünnettir",
+              "fr": "C’est une sunna",
+              "en": "It is sunnah",
+              "nl": "Het is soenna",
+              "de": "Es ist Sunna"
+            },
+            {
+              "tr": "Haramdır",
+              "fr": "C’est interdit",
+              "en": "It is forbidden",
+              "nl": "Het is verboden",
+              "de": "Es ist verboten"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "Diyanet İlmihali I, Oruç (sahur)"
+        },
+        {
+          "id": "ib-028-2",
+          "soru": {
+            "tr": "Hanefî mezhebine göre, teravih namazı toplam kaç rekâttır?",
+            "fr": "Selon l’école hanafite, combien de rak‘a compte la prière de tarâwîh au total ?",
+            "en": "According to the Hanafi school, how many rak‘ahs does tarawih total?",
+            "nl": "Volgens de Hanafi-school, hoeveel rak‘a’s telt tarawih in totaal?",
+            "de": "Nach der hanafitischen Rechtsschule, wie viele Rak‘a hat Tarawih insgesamt?"
+          },
+          "siklar": [
+            {
+              "tr": "8",
+              "fr": "8",
+              "en": "8",
+              "nl": "8",
+              "de": "8"
+            },
+            {
+              "tr": "12",
+              "fr": "12",
+              "en": "12",
+              "nl": "12",
+              "de": "12"
+            },
+            {
+              "tr": "20",
+              "fr": "20",
+              "en": "20",
+              "nl": "20",
+              "de": "20"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "Diyanet İlmihali I, Teravih namazı"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ib-029",
+      "kod": "ibadet",
+      "planKonu": "Fitre (Sadaka-i Fıtır) ve Zekât",
+      "ilkDers": "2027-02-28",
+      "seviyeAlani": "ibadet",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Fitre ve zekât",
+        "fr": "La zakât al-fitr et la zakât",
+        "en": "Fitr sadaqa and zakat",
+        "nl": "Fitra en zakat",
+        "de": "Fitra und Zakat"
+      },
+      "ozet": {
+        "tr": "Fitre (sadaka-i fıtır), Ramazan sonunda, bayram namazından önce verilen sadakadır. Zekât ise nisabı aşan malın yıllık hakkıdır. Kur’an ve sünnette zekât hep namazla birlikte anılır. Yoksullar için bir kumbara kurabiliriz.",
+        "fr": "La zakât al-fitr est une aumône donnée à la fin du Ramadan, avant la prière de la fête. La zakât, elle, est le droit annuel sur les biens dépassant le seuil. Le Coran cite toujours la zakât avec la prière. Nous pouvons créer une tirelire solidaire.",
+        "en": "Fitr sadaqa is given at the end of Ramadan, before the Eid prayer. Zakat is the yearly due on wealth above the threshold. Qur’an and sunnah always mention zakat together with prayer. We can set up a charity box.",
+        "nl": "De fitra is een aalmoes aan het einde van de Ramadan, vóór het feestgebed. Zakat is het jaarlijkse recht op bezit boven de drempel. Koran en soenna noemen zakat steeds samen met het gebed. We kunnen een spaarpot voor armen maken.",
+        "de": "Die Fitra ist eine Gabe am Ende des Ramadan, vor dem Festgebet. Zakat ist die jährliche Pflichtabgabe auf Vermögen über der Grenze. Koran und Sunna nennen die Zakat stets zusammen mit dem Gebet. Wir können eine Spendenbox einrichten."
+      },
+      "kitap": "Temel Dinî Bilgiler s. 161–165 (Ramazan özel programı)",
+      "sorular": [
+        {
+          "id": "ib-029-1",
+          "soru": {
+            "tr": "Fıtır sadakası (fitre) ne zaman verilir?",
+            "fr": "Quand donne-t-on la zakât al-fitr ?",
+            "en": "When is the fitr sadaqa given?",
+            "nl": "Wanneer geeft men de fitra?",
+            "de": "Wann wird die Fitra gegeben?"
+          },
+          "siklar": [
+            {
+              "tr": "Kurban Bayramı’ndan sonra",
+              "fr": "Après l’Aïd al-Adha",
+              "en": "After Eid al-Adha",
+              "nl": "Na het Offerfeest",
+              "de": "Nach dem Opferfest"
+            },
+            {
+              "tr": "Yılın herhangi bir günü",
+              "fr": "N’importe quel jour de l’année",
+              "en": "Any day of the year",
+              "nl": "Eender welke dag van het jaar",
+              "de": "An einem beliebigen Tag im Jahr"
+            },
+            {
+              "tr": "Ramazan Bayramı namazından önce",
+              "fr": "Avant la prière de l’Aïd de fin de Ramadan",
+              "en": "Before the Ramadan Eid prayer",
+              "nl": "Vóór het gebed van het Ramadanfeest",
+              "de": "Vor dem Gebet des Ramadanfestes"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "Diyanet İlmihali I, Fıtır sadakası (Buhârî, Zekât 76)"
+        },
+        {
+          "id": "ib-029-2",
+          "soru": {
+            "tr": "Kur’an ve sünnette zekât hangi ibadetle birlikte anılır?",
+            "fr": "Avec quel acte d’adoration la zakât est-elle toujours citée dans le Coran et la sunna ?",
+            "en": "With which act of worship is zakat always mentioned in the Qur’an and sunnah?",
+            "nl": "Met welke vorm van aanbidding wordt zakat in Koran en soenna steeds genoemd?",
+            "de": "Mit welchem Gottesdienst wird die Zakat in Koran und Sunna stets genannt?"
+          },
+          "siklar": [
+            {
+              "tr": "Namazla",
+              "fr": "Avec la prière",
+              "en": "With prayer",
+              "nl": "Met het gebed",
+              "de": "Mit dem Gebet"
+            },
+            {
+              "tr": "Hacla",
+              "fr": "Avec le hajj",
+              "en": "With hajj",
+              "nl": "Met de hadj",
+              "de": "Mit der Hadsch"
+            },
+            {
+              "tr": "Kurbanla",
+              "fr": "Avec le sacrifice",
+              "en": "With the sacrifice",
+              "nl": "Met het offer",
+              "de": "Mit dem Opfer"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "Diyanet İlmihali I, Zekât (mahiyeti ve önemi)"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ib-030",
+      "kod": "ibadet",
+      "planKonu": "İtikâf, Kadir Gecesi İhyası ve Bayram Namazı",
+      "ilkDers": "2027-03-06",
+      "seviyeAlani": "ibadet",
+      "basamak": 2,
+      "baslik": {
+        "tr": "İtikâf, Kadir Gecesi ve bayram namazı",
+        "fr": "La retraite (i‘tikâf), la Nuit du Qadr et la prière de l’Aïd",
+        "en": "I‘tikaf, the Night of Qadr and the Eid prayer",
+        "nl": "I‘tikaf, de Qadr-nacht en het feestgebed",
+        "de": "I‘tikaf, die Nacht des Qadr und das Festgebet"
+      },
+      "ozet": {
+        "tr": "İtikâf, niyetle bir mescitte ibadet için kalmaktır. Kadir Gecesi Ramazan’ın son on gününde aranır; itikâf buna ulaşmayı kolaylaştırır. Bayram namazı iki rekâttır ve namazdan sonra hutbe dinlenir.",
+        "fr": "L’i‘tikâf est de demeurer dans une mosquée avec l’intention de s’y adonner à l’adoration. La Nuit du Qadr se cherche dans les dix derniers jours du Ramadan. La prière de l’Aïd compte deux rak‘a et est suivie du sermon.",
+        "en": "I‘tikaf means staying in a mosque with intention for worship. The Night of Qadr is sought in the last ten days of Ramadan. The Eid prayer has two rak‘ahs and is followed by a sermon.",
+        "nl": "I‘tikaf is met de intentie in een moskee blijven voor aanbidding. De Qadr-nacht wordt gezocht in de laatste tien dagen van de Ramadan. Het feestgebed telt twee rak‘a’s en wordt gevolgd door een preek.",
+        "de": "I‘tikaf heißt, mit Absicht zum Gottesdienst in einer Moschee zu bleiben. Die Nacht des Qadr wird in den letzten zehn Tagen des Ramadan gesucht. Das Festgebet hat zwei Rak‘a, danach folgt die Predigt."
+      },
+      "kitap": "Temel Dinî Bilgiler s. 138–140 (Ramazan özel programı)",
+      "sorular": [
+        {
+          "id": "ib-030-1",
+          "soru": {
+            "tr": "İtikâfa girenin nerede bulunması gerekir?",
+            "fr": "Où doit se trouver celui qui fait l’i‘tikâf ?",
+            "en": "Where must a person in i‘tikaf stay?",
+            "nl": "Waar moet iemand in i‘tikaf verblijven?",
+            "de": "Wo muss sich jemand im I‘tikaf aufhalten?"
+          },
+          "siklar": [
+            {
+              "tr": "Bir mescitte (niyet ederek)",
+              "fr": "Dans une mosquée (avec l’intention)",
+              "en": "In a mosque (with intention)",
+              "nl": "In een moskee (met intentie)",
+              "de": "In einer Moschee (mit Absicht)"
+            },
+            {
+              "tr": "Çarşıda",
+              "fr": "Au marché",
+              "en": "At the market",
+              "nl": "Op de markt",
+              "de": "Auf dem Markt"
+            },
+            {
+              "tr": "Hangi yerde olduğu fark etmez",
+              "fr": "Peu importe l’endroit",
+              "en": "It makes no difference where",
+              "nl": "Het maakt niet uit waar",
+              "de": "Der Ort ist gleichgültig"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "Diyanet İlmihali I, İtikâf (Hanefîler’e göre kadınlar evlerinde)"
+        },
+        {
+          "id": "ib-030-2",
+          "soru": {
+            "tr": "Kadir Gecesi’nin Ramazan’ın hangi bölümünde olması beklenir?",
+            "fr": "Dans quelle partie du Ramadan attend-on la Nuit du Qadr ?",
+            "en": "In which part of Ramadan is the Night of Qadr expected?",
+            "nl": "In welk deel van de Ramadan verwacht men de Qadr-nacht?",
+            "de": "In welchem Teil des Ramadan wird die Nacht des Qadr erwartet?"
+          },
+          "siklar": [
+            {
+              "tr": "Ramazan’dan sonra",
+              "fr": "Après le Ramadan",
+              "en": "After Ramadan",
+              "nl": "Na de Ramadan",
+              "de": "Nach dem Ramadan"
+            },
+            {
+              "tr": "Son on gününde",
+              "fr": "Les dix derniers jours",
+              "en": "The last ten days",
+              "nl": "De laatste tien dagen",
+              "de": "In den letzten zehn Tagen"
+            },
+            {
+              "tr": "İlk üç gününde",
+              "fr": "Les trois premiers jours",
+              "en": "The first three days",
+              "nl": "De eerste drie dagen",
+              "de": "In den ersten drei Tagen"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "Diyanet İlmihali I, İtikâf (son on gün, Kadir gecesi)"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ib-031",
+      "kod": "ibadet",
+      "planKonu": "İslam ve İslam'ın şartları",
+      "ilkDers": "2027-03-13",
+      "seviyeAlani": "ibadet",
+      "basamak": 2,
+      "baslik": {
+        "tr": "İslâm ve İslâm’ın şartları",
+        "fr": "L’islam et ses piliers",
+        "en": "Islam and its pillars",
+        "nl": "De islam en zijn pijlers",
+        "de": "Der Islam und seine Säulen"
+      },
+      "ozet": {
+        "tr": "İslâm, inandığını yaşamaktır; beş şartı vardır. Dinî hükümlerle sorumlu olmak için akıllı ve ergin olmak gerekir. Fiillerin hükümleri vardır: farz, vâcip, sünnet, müstehap, mübah, haram, mekruh. Her biri farklı bir önem taşır.",
+        "fr": "L’islam, c’est vivre ce que l’on croit ; il a cinq piliers. Pour être tenu par les règles religieuses, il faut être doué de raison et pubère. Les actes ont des statuts : farz, wâjib, sunna, mustahabb, mubâh, harâm, makrûh.",
+        "en": "Islam means living what one believes; it has five pillars. To be bound by religious rulings one must be sane and mature. Actions carry rulings: fard, wajib, sunnah, mustahabb, mubah, haram, makruh.",
+        "nl": "De islam is leven naar wat je gelooft; hij heeft vijf pijlers. Om aan religieuze regels gebonden te zijn, moet men verstandig en volwassen zijn. Handelingen hebben een status: fard, wadjib, soenna, mustahabb, moebah, haram, makroeh.",
+        "de": "Der Islam heißt, das Geglaubte zu leben; er hat fünf Säulen. An religiöse Regeln ist gebunden, wer bei Verstand und mündig ist. Handlungen haben Rangstufen: Fard, Wadschib, Sunna, Mustahabb, Mubah, Haram, Makruh."
+      },
+      "kitap": "Temel Dinî Bilgiler s. 79–83",
+      "sorular": [
+        {
+          "id": "ib-031-1",
+          "soru": {
+            "tr": "Dinî hükümlerle sorumlu (mükellef) olmanın iki şartı nedir?",
+            "fr": "Quelles sont les deux conditions pour être tenu par les règles religieuses (mukallaf) ?",
+            "en": "What are the two conditions for being bound by religious rulings (mukallaf)?",
+            "nl": "Wat zijn de twee voorwaarden om aan religieuze regels gebonden te zijn (moekallaf)?",
+            "de": "Welche zwei Bedingungen machen jemanden religiös verpflichtet (Mukallaf)?"
+          },
+          "siklar": [
+            {
+              "tr": "Hafız olmak ve imam olmak",
+              "fr": "Être hâfiz et imam",
+              "en": "Being a hafiz and an imam",
+              "nl": "Hafiz en imam zijn",
+              "de": "Hafiz und Imam zu sein"
+            },
+            {
+              "tr": "Akıllı olmak ve ergin olmak",
+              "fr": "Avoir la raison et la puberté",
+              "en": "Being sane and having reached maturity",
+              "nl": "Verstandig en volwassen zijn",
+              "de": "Bei Verstand und mündig zu sein"
+            },
+            {
+              "tr": "Zengin olmak ve evli olmak",
+              "fr": "Être riche et marié",
+              "en": "Being wealthy and married",
+              "nl": "Rijk en getrouwd zijn",
+              "de": "Reich und verheiratet zu sein"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "Diyanet İlmihali I, Fıkıh (ehliyet ve bulûğ)"
+        },
+        {
+          "id": "ib-031-2",
+          "soru": {
+            "tr": "Hangisi İslâm’ın beş şartından biridir?",
+            "fr": "Lequel de ces actes est l’un des cinq piliers de l’islam ?",
+            "en": "Which of these is one of the five pillars of Islam?",
+            "nl": "Welke van deze is een van de vijf pijlers van de islam?",
+            "de": "Was gehört zu den fünf Säulen des Islam?"
+          },
+          "siklar": [
+            {
+              "tr": "Kurban kesmek",
+              "fr": "Sacrifier un animal",
+              "en": "Offering a sacrifice",
+              "nl": "Een offerdier slachten",
+              "de": "Ein Opfertier schlachten"
+            },
+            {
+              "tr": "Teravih kılmak",
+              "fr": "Faire le tarâwîh",
+              "en": "Praying tarawih",
+              "nl": "Tarawih bidden",
+              "de": "Tarawih beten"
+            },
+            {
+              "tr": "Namaz kılmak",
+              "fr": "Faire la prière",
+              "en": "Performing prayer",
+              "nl": "Het gebed verrichten",
+              "de": "Das Gebet verrichten"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "Diyanet İlmihali I, İslâm Dini (İslâm’ın şartları)"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ib-032",
+      "kod": "ibadet",
+      "planKonu": "Temizlik ve abdest",
+      "ilkDers": "2027-03-20",
+      "seviyeAlani": "namaz",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Temizlik ve abdest",
+        "fr": "La purification et les ablutions",
+        "en": "Purification and ablution",
+        "nl": "Reiniging en wassing",
+        "de": "Reinigung und Waschung"
+      },
+      "ozet": {
+        "tr": "İslâm temizliğe büyük önem verir. Abdest ve gusül, nehir, pınar, kuyu, deniz ve yağmur gibi temiz ve temizleyici suyla yapılır. Mest üzerine mesh süresi yolcu olmayan için bir gün bir gece, yolcu için üç gün üç gecedir.",
+        "fr": "L’islam accorde une grande importance à la propreté. Ablutions et ghusl se font avec une eau pure et purifiante : rivière, source, puits, mer ou pluie. Le mash sur les khuff dure un jour et une nuit pour le résident, trois jours et trois nuits pour le voyageur.",
+        "en": "Islam gives great importance to cleanliness. Ablution and ghusl use pure, purifying water such as river, spring, well, sea or rain water. Wiping over leather socks lasts one day and night for a resident and three days and nights for a traveller.",
+        "nl": "De islam hecht groot belang aan reinheid. Wassing en ghusl gebeuren met zuiver, reinigend water zoals rivier-, bron-, put-, zee- of regenwater. Het vegen over de leren sokken duurt een dag en nacht voor een inwoner en drie dagen en nachten voor een reiziger.",
+        "de": "Der Islam legt großen Wert auf Reinheit. Waschung und Ghusl geschehen mit reinem, reinigendem Wasser wie Fluss-, Quell-, Brunnen-, Meer- oder Regenwasser. Das Wischen über die Lederstrümpfe gilt einen Tag und eine Nacht für Ansässige, drei Tage und Nächte für Reisende."
+      },
+      "kitap": "Temel Dinî Bilgiler s. 85–91",
+      "sorular": [
+        {
+          "id": "ib-032-1",
+          "soru": {
+            "tr": "Yolcu olmayan biri için mest üzerine mesh süresi ne kadardır?",
+            "fr": "Combien de temps dure le mash sur les khuff pour un résident (non voyageur) ?",
+            "en": "How long does wiping over leather socks last for a non-traveller?",
+            "nl": "Hoe lang duurt het vegen over de leren sokken voor een niet-reiziger?",
+            "de": "Wie lange gilt das Wischen über die Lederstrümpfe für einen Nicht-Reisenden?"
+          },
+          "siklar": [
+            {
+              "tr": "Üç gün üç gece",
+              "fr": "Trois jours et trois nuits",
+              "en": "Three days and nights",
+              "nl": "Drie dagen en nachten",
+              "de": "Drei Tage und Nächte"
+            },
+            {
+              "tr": "Bir hafta",
+              "fr": "Une semaine",
+              "en": "One week",
+              "nl": "Eén week",
+              "de": "Eine Woche"
+            },
+            {
+              "tr": "Bir gün bir gece",
+              "fr": "Un jour et une nuit",
+              "en": "One day and night",
+              "nl": "Eén dag en nacht",
+              "de": "Einen Tag und eine Nacht"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "Diyanet İlmihali I, Mesh (mest üzerine mesh)"
+        },
+        {
+          "id": "ib-032-2",
+          "soru": {
+            "tr": "Hangi su ile abdest alınabilir?",
+            "fr": "Avec quelle eau peut-on faire les ablutions ?",
+            "en": "With which water can ablution be performed?",
+            "nl": "Met welk water kan men de wassing doen?",
+            "de": "Mit welchem Wasser kann man die Waschung verrichten?"
+          },
+          "siklar": [
+            {
+              "tr": "Pınar suyu",
+              "fr": "L’eau de source",
+              "en": "Spring water",
+              "nl": "Bronwater",
+              "de": "Quellwasser"
+            },
+            {
+              "tr": "Meyve suyu",
+              "fr": "Le jus de fruit",
+              "en": "Fruit juice",
+              "nl": "Vruchtensap",
+              "de": "Fruchtsaft"
+            },
+            {
+              "tr": "Çay",
+              "fr": "Le thé",
+              "en": "Tea",
+              "nl": "Thee",
+              "de": "Tee"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "Diyanet İlmihali I, Gusül (mutlak su: nehir, pınar, kuyu, deniz, yağmur)"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ib-033",
+      "kod": "ibadet",
+      "planKonu": "Gusül ve teyemmüm",
+      "ilkDers": "2027-03-27",
+      "seviyeAlani": "namaz",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Gusül ve teyemmüm",
+        "fr": "Le ghusl et le tayammum",
+        "en": "Ghusl and tayammum",
+        "nl": "Ghusl en tayammum",
+        "de": "Ghusl und Tayammum"
+      },
+      "ozet": {
+        "tr": "Cünüplük, hayız ve nifasın bitişinde gusül gerekir. Hayızlı kadın namaz kılmaz ve oruç tutmaz; namazları kaza etmez, orucu temizlendikten sonra tutar. Su yoksa ya da kullanılamıyorsa teyemmüm yapılır.",
+        "fr": "Le ghusl est nécessaire après la janâba et à la fin des règles et des lochies. La femme en période de règles ne prie pas et ne jeûne pas ; elle ne rattrape pas les prières mais rattrape les jours de jeûne une fois purifiée. Sans eau, on fait le tayammum.",
+        "en": "Ghusl is required after janaba and at the end of menstruation and postnatal bleeding. A woman in her period does not pray or fast; she does not make up the prayers but makes up the fasts once clean. Without usable water, tayammum is done.",
+        "nl": "Ghusl is nodig na janaba en bij het einde van menstruatie en kraambloed. Een vrouw in haar menstruatie bidt en vast niet; ze haalt de gebeden niet in, maar de vastendagen wel zodra ze rein is. Zonder bruikbaar water doet men tayammum.",
+        "de": "Ghusl ist nach Dschanaba und am Ende von Menstruation und Wochenfluss nötig. Eine Frau in ihrer Periode betet und fastet nicht; die Gebete holt sie nicht nach, das Fasten nach der Reinigung schon. Fehlt nutzbares Wasser, verrichtet man Tayammum."
+      },
+      "kitap": "Temel Dinî Bilgiler s. 92–99",
+      "sorular": [
+        {
+          "id": "ib-033-1",
+          "soru": {
+            "tr": "Hayız süresince terk edilen namazlar için ne gerekir?",
+            "fr": "Que faut-il faire pour les prières omises pendant les règles ?",
+            "en": "What is required for the prayers missed during menstruation?",
+            "nl": "Wat is nodig voor de gebeden die tijdens de menstruatie gemist zijn?",
+            "de": "Was ist für die während der Periode versäumten Gebete nötig?"
+          },
+          "siklar": [
+            {
+              "tr": "Kaza edilmesi gerekmez",
+              "fr": "Il n’est pas nécessaire de les rattraper",
+              "en": "They need not be made up",
+              "nl": "Ze hoeven niet ingehaald te worden",
+              "de": "Sie müssen nicht nachgeholt werden"
+            },
+            {
+              "tr": "Hepsi kaza edilir",
+              "fr": "Toutes sont rattrapées",
+              "en": "All are made up",
+              "nl": "Alles wordt ingehaald",
+              "de": "Alle werden nachgeholt"
+            },
+            {
+              "tr": "Kefaret gerekir",
+              "fr": "Une expiation est requise",
+              "en": "An expiation is required",
+              "nl": "Een boete is vereist",
+              "de": "Sühne ist erforderlich"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "Diyanet İlmihali I, Hayız (dinî hükümler)"
+        },
+        {
+          "id": "ib-033-2",
+          "soru": {
+            "tr": "Hanefî mezhebine göre, gusülde niyet hangi hükümdedir?",
+            "fr": "Selon l’école hanafite, quel est le statut de l’intention dans le ghusl ?",
+            "en": "According to the Hanafi school, what is the ruling of intention in ghusl?",
+            "nl": "Volgens de Hanafi-school, wat is de status van de intentie bij de ghusl?",
+            "de": "Nach der hanafitischen Rechtsschule, welchen Rang hat die Absicht beim Ghusl?"
+          },
+          "siklar": [
+            {
+              "tr": "Mekruhtur",
+              "fr": "Réprouvée (makrûh)",
+              "en": "Disliked (makruh)",
+              "nl": "Afgekeurd (makroeh)",
+              "de": "Missbilligt (Makruh)"
+            },
+            {
+              "tr": "Sünnettir",
+              "fr": "Sunna",
+              "en": "Sunnah",
+              "nl": "Soenna",
+              "de": "Sunna"
+            },
+            {
+              "tr": "Haramdır",
+              "fr": "Interdite (harâm)",
+              "en": "Forbidden (haram)",
+              "nl": "Verboden (haram)",
+              "de": "Verboten (Haram)"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "Diyanet İlmihali I, Guslün farzları (Hanefîler’e göre niyet sünnettir)"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ib-034",
+      "kod": "ibadet",
+      "planKonu": "Resimlerle abdestin alınışı",
+      "ilkDers": "2027-04-03",
+      "seviyeAlani": "namaz",
+      "basamak": 1,
+      "baslik": {
+        "tr": "Resimlerle abdestin alınışı",
+        "fr": "Les ablutions en images",
+        "en": "Ablution step by step",
+        "nl": "De wassing stap voor stap",
+        "de": "Die Waschung Schritt für Schritt"
+      },
+      "ozet": {
+        "tr": "Abdest niyet ve besmeleyle başlar. Sırayla eller, ağız ve burun, yüz, kollar (dirseklerle birlikte), baş, kulaklar, boyun ve ayaklar (topuklarla birlikte) yıkanır veya meshedilir; yıkama üçer kez yapılır. Sonunda şehadet getirilir.",
+        "fr": "Les ablutions commencent par l’intention et la basmala. On lave ou essuie dans l’ordre : mains, bouche et nez, visage, bras (coudes compris), tête, oreilles, nuque et pieds (chevilles comprises), en général trois fois. On termine par la chahada.",
+        "en": "Ablution begins with intention and the basmala. In order, one washes or wipes: hands, mouth and nose, face, arms (including elbows), head, ears, neck and feet (including ankles), usually three times each. It ends with the shahada.",
+        "nl": "De wassing begint met intentie en basmala. In volgorde wast of veegt men: handen, mond en neus, gezicht, armen (inclusief ellebogen), hoofd, oren, nek en voeten (inclusief enkels), meestal driemaal. Ze eindigt met de sjahada.",
+        "de": "Die Waschung beginnt mit Absicht und Basmala. Der Reihe nach wäscht oder wischt man: Hände, Mund und Nase, Gesicht, Arme (samt Ellbogen), Kopf, Ohren, Nacken und Füße (samt Knöcheln), meist dreimal. Am Ende spricht man das Glaubensbekenntnis."
+      },
+      "kitap": "Temel Dinî Bilgiler s. 331–335",
+      "sorular": [
+        {
+          "id": "ib-034-1",
+          "soru": {
+            "tr": "Abdestte kollar nereye kadar yıkanır?",
+            "fr": "Jusqu’où lave-t-on les bras dans les ablutions ?",
+            "en": "Up to where are the arms washed in ablution?",
+            "nl": "Tot waar worden de armen gewassen bij de wassing?",
+            "de": "Bis wohin werden die Arme bei der Waschung gewaschen?"
+          },
+          "siklar": [
+            {
+              "tr": "Omuza kadar",
+              "fr": "Jusqu’à l’épaule",
+              "en": "Up to the shoulder",
+              "nl": "Tot aan de schouder",
+              "de": "Bis zur Schulter"
+            },
+            {
+              "tr": "Dirseklerle birlikte",
+              "fr": "Jusqu’aux coudes inclus",
+              "en": "Including the elbows",
+              "nl": "Inclusief de ellebogen",
+              "de": "Einschließlich der Ellbogen"
+            },
+            {
+              "tr": "Bileğe kadar",
+              "fr": "Jusqu’au poignet",
+              "en": "Up to the wrist",
+              "nl": "Tot aan de pols",
+              "de": "Bis zum Handgelenk"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "Diyanet İlmihali I, Abdestin farzları ve şekli"
+        },
+        {
+          "id": "ib-034-2",
+          "soru": {
+            "tr": "Abdestte organlar genellikle kaç kez yıkanır?",
+            "fr": "Combien de fois lave-t-on généralement chaque partie dans les ablutions ?",
+            "en": "How many times is each part usually washed in ablution?",
+            "nl": "Hoe vaak wast men elk deel meestal bij de wassing?",
+            "de": "Wie oft wird jedes Glied bei der Waschung üblicherweise gewaschen?"
+          },
+          "siklar": [
+            {
+              "tr": "1",
+              "fr": "1",
+              "en": "1",
+              "nl": "1",
+              "de": "1"
+            },
+            {
+              "tr": "3",
+              "fr": "3",
+              "en": "3",
+              "nl": "3",
+              "de": "3"
+            },
+            {
+              "tr": "7",
+              "fr": "7",
+              "en": "7",
+              "nl": "7",
+              "de": "7"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "Diyanet İlmihali I, Abdestin şekli"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ib-035",
+      "kod": "ibadet",
+      "planKonu": "Namazın önemi, vakitleri ve çeşitleri",
+      "ilkDers": "2027-04-10",
+      "seviyeAlani": "namaz",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Namazın önemi, vakitleri ve çeşitleri",
+        "fr": "L’importance, les temps et les types de prière",
+        "en": "The importance, times and types of prayer",
+        "nl": "Belang, tijden en soorten van het gebed",
+        "de": "Bedeutung, Zeiten und Arten des Gebets"
+      },
+      "ozet": {
+        "tr": "Namaz, dinin direğidir; yaygın kabule göre Miraç olayından sonra beş vakit olarak farz kılınmıştır. Namaz Müslüman, ergin ve akıllı kişiye farzdır. Üç vakitte hiçbir namaz kılınmaz: güneşin doğuşu, tam tepede olması ve batışı.",
+        "fr": "La prière est le pilier de la religion ; selon l’avis courant, les cinq prières sont devenues obligatoires après le Mi‘râj. Elle est obligatoire pour le musulman pubère et sensé. Aucune prière n’est permise à trois moments : lever, zénith et coucher du soleil.",
+        "en": "Prayer is the pillar of religion; by the widely accepted view the five daily prayers became obligatory after the Mi‘raj. It is obligatory for a Muslim who is mature and sane. No prayer is performed at three times: sunrise, the sun at its peak, and sunset.",
+        "nl": "Het gebed is de pilaar van de godsdienst; volgens de gangbare opvatting werden de vijf gebeden verplicht na de Mi‘raj. Het is verplicht voor een volwassen, verstandige moslim. Op drie momenten wordt niet gebeden: zonsopgang, zenit en zonsondergang.",
+        "de": "Das Gebet ist die Säule der Religion; nach verbreiteter Ansicht wurden die fünf Gebete nach dem Mi‘radsch Pflicht. Es ist Pflicht für mündige, verständige Muslime. Zu drei Zeiten wird kein Gebet verrichtet: Sonnenaufgang, Zenit und Sonnenuntergang."
+      },
+      "kitap": "Temel Dinî Bilgiler s. 101–105",
+      "sorular": [
+        {
+          "id": "ib-035-1",
+          "soru": {
+            "tr": "Hiçbir namazın kılınamayacağı mekruh vakit kaç tanedir?",
+            "fr": "Combien y a-t-il de moments réprouvés où aucune prière ne peut être faite ?",
+            "en": "How many disliked times are there in which no prayer may be performed?",
+            "nl": "Hoeveel afgekeurde tijdstippen zijn er waarop geen gebed verricht mag worden?",
+            "de": "Wie viele missbilligte Zeiten gibt es, in denen kein Gebet verrichtet werden darf?"
+          },
+          "siklar": [
+            {
+              "tr": "1",
+              "fr": "1",
+              "en": "1",
+              "nl": "1",
+              "de": "1"
+            },
+            {
+              "tr": "3",
+              "fr": "3",
+              "en": "3",
+              "nl": "3",
+              "de": "3"
+            },
+            {
+              "tr": "5",
+              "fr": "5",
+              "en": "5",
+              "nl": "5",
+              "de": "5"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "Diyanet İlmihali I, Mekruh vakitler"
+        },
+        {
+          "id": "ib-035-2",
+          "soru": {
+            "tr": "Namaz kimlere farzdır?",
+            "fr": "Pour qui la prière est-elle obligatoire ?",
+            "en": "For whom is prayer obligatory?",
+            "nl": "Voor wie is het gebed verplicht?",
+            "de": "Für wen ist das Gebet Pflicht?"
+          },
+          "siklar": [
+            {
+              "tr": "Müslüman, ergin ve akıllı kişiye",
+              "fr": "Le musulman pubère et sensé",
+              "en": "A Muslim who is mature and sane",
+              "nl": "Een volwassen, verstandige moslim",
+              "de": "Einen mündigen, verständigen Muslim"
+            },
+            {
+              "tr": "Yalnızca imamlara",
+              "fr": "Seulement les imams",
+              "en": "Only imams",
+              "nl": "Alleen imams",
+              "de": "Nur Imame"
+            },
+            {
+              "tr": "Yalnızca erkeklere",
+              "fr": "Seulement les hommes",
+              "en": "Only men",
+              "nl": "Alleen mannen",
+              "de": "Nur Männer"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "Diyanet İlmihali I, Namaz (mükellefiyet şartları); Fıkıh (ehliyet)"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ib-036",
+      "kod": "ibadet",
+      "planKonu": "Namazın farzları, vacipleri, sünnetleri ve namazı bozan şeyler",
+      "ilkDers": "2027-04-17",
+      "seviyeAlani": "namaz",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Namazın farzları, vâcipleri, sünnetleri ve namazı bozanlar",
+        "fr": "Obligations, wâjib, sunnas et ce qui annule la prière",
+        "en": "Obligations, wajib and sunnah acts of prayer, and what invalidates it",
+        "nl": "Fard, wadjib, soenna en wat het gebed ongeldig maakt",
+        "de": "Fard, Wadschib, Sunna und was das Gebet ungültig macht"
+      },
+      "ozet": {
+        "tr": "Namazın on iki farzı vardır: altı şart (örneğin setr-i avret) ve altı rükün. Vâcipler arasında vitirde kunut duası ve sehiv secdesi sayılır. Konuşmak, yiyip içmek, gülmek ve kıbleden dönmek namazı bozar.",
+        "fr": "La prière a douze obligations : six conditions (par exemple couvrir l’awra) et six piliers. Parmi les wâjib figurent le qunût du witr et la prosternation d’oubli. Parler, manger, boire, rire et se détourner de la qibla annulent la prière.",
+        "en": "Prayer has twelve obligations: six conditions (such as covering the awra) and six pillars. Among the wajib are the qunut in witr and the prostration of forgetfulness. Speaking, eating, drinking, laughing and turning from the qibla invalidate it.",
+        "nl": "Het gebed heeft twaalf fard: zes voorwaarden (zoals het bedekken van de awra) en zes pijlers. Tot de wadjib behoren de qunoet in het witr en de vergetelheidsknieling. Praten, eten, drinken, lachen en zich van de qibla afkeren maken het ongeldig.",
+        "de": "Das Gebet hat zwölf Fard: sechs Bedingungen (etwa das Bedecken der Awra) und sechs Säulen. Zu den Wadschib zählen das Qunut im Witr und die Vergesslichkeits-Niederwerfung. Sprechen, Essen, Trinken, Lachen und Abwenden von der Qibla machen es ungültig."
+      },
+      "kitap": "Temel Dinî Bilgiler s. 106–111",
+      "sorular": [
+        {
+          "id": "ib-036-1",
+          "soru": {
+            "tr": "Aşağıdakilerden hangisi namazın şartlarından biridir?",
+            "fr": "Lequel de ces éléments est une condition de la prière ?",
+            "en": "Which of these is one of the conditions of prayer?",
+            "nl": "Welke van deze is een voorwaarde van het gebed?",
+            "de": "Was gehört zu den Bedingungen des Gebets?"
+          },
+          "siklar": [
+            {
+              "tr": "Setr-i avret (örtünmek)",
+              "fr": "Couvrir l’awra",
+              "en": "Covering the awra",
+              "nl": "De awra bedekken",
+              "de": "Das Bedecken der Awra"
+            },
+            {
+              "tr": "Rükû",
+              "fr": "L’inclinaison (rukû‘)",
+              "en": "Bowing (ruku‘)",
+              "nl": "De buiging (roekoe‘)",
+              "de": "Die Verbeugung (Ruku‘)"
+            },
+            {
+              "tr": "Secde",
+              "fr": "La prosternation",
+              "en": "Prostration",
+              "nl": "De knieling",
+              "de": "Die Niederwerfung"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "Diyanet İlmihali I, Namazın şartları (setr-i avret)"
+        },
+        {
+          "id": "ib-036-2",
+          "soru": {
+            "tr": "Ebû Hanîfe’ye göre vitir namazında kunut duası okumak hangi hükümdedir?",
+            "fr": "Selon Abû Hanîfa, quel est le statut de la récitation du qunût dans le witr ?",
+            "en": "According to Abu Hanifa, what is the ruling of reciting the qunut in witr?",
+            "nl": "Volgens Abu Hanifa, wat is de status van het reciteren van de qunoet in het witr?",
+            "de": "Welchen Rang hat nach Abu Hanifa das Rezitieren des Qunut im Witr?"
+          },
+          "siklar": [
+            {
+              "tr": "Mübah",
+              "fr": "Permis (mubâh)",
+              "en": "Permissible (mubah)",
+              "nl": "Toegestaan (moebah)",
+              "de": "Erlaubt (Mubah)"
+            },
+            {
+              "tr": "Vâcip",
+              "fr": "Wâjib",
+              "en": "Wajib",
+              "nl": "Wadjib",
+              "de": "Wadschib"
+            },
+            {
+              "tr": "Farz",
+              "fr": "Farz (obligatoire)",
+              "en": "Fard (obligatory)",
+              "nl": "Fard (verplicht)",
+              "de": "Fard (Pflicht)"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "Diyanet İlmihali I, Namazın vâcipleri (kunut duası)"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ib-037",
+      "kod": "ibadet",
+      "planKonu": "Sabah ve öğle namazlarının kılınışı",
+      "ilkDers": "2027-04-24",
+      "seviyeAlani": "namaz",
+      "basamak": 1,
+      "baslik": {
+        "tr": "Sabah ve öğle namazlarının kılınışı",
+        "fr": "Comment accomplir les prières du fajr et du dhuhr",
+        "en": "How to perform the Fajr and Dhuhr prayers",
+        "nl": "Hoe de Fadjr- en Dhoehr-gebeden te verrichten",
+        "de": "So verrichtet man das Fadschr- und das Dhuhr-Gebet"
+      },
+      "ozet": {
+        "tr": "Sabah namazı iki rekât sünnet, ardından iki rekât farzdır. Öğle namazı dört rekât ilk sünnet, dört rekât farz ve iki rekât son sünnettir. Sabah ve öğle sünnetleri müekked sünnetlerdir. Erkek ve kadının duruşunda küçük farklar vardır.",
+        "fr": "Le fajr comprend 2 rak‘a de sunna puis 2 de farz. Le dhuhr comprend 4 rak‘a de première sunna, 4 de farz et 2 de sunna finale. Les sunnas du fajr et du dhuhr sont muakkada. Hommes et femmes diffèrent légèrement dans la posture.",
+        "en": "Fajr is two rak‘ahs of sunnah followed by two of fard. Dhuhr is four rak‘ahs of first sunnah, four of fard and two of final sunnah. The Fajr and Dhuhr sunnahs are emphasised sunnahs. Men and women differ slightly in posture.",
+        "nl": "Fadjr is twee rak‘a’s soenna gevolgd door twee fard. Dhoehr is vier rak‘a’s eerste soenna, vier fard en twee slot-soenna. De soenna’s van Fadjr en Dhoehr zijn bevestigde soenna’s. Mannen en vrouwen verschillen licht in houding.",
+        "de": "Fadschr besteht aus zwei Rak‘a Sunna, dann zwei Fard. Dhuhr aus vier Rak‘a erster Sunna, vier Fard und zwei Rak‘a Schluss-Sunna. Die Sunna von Fadschr und Dhuhr sind bekräftigte Sunna. Männer und Frauen unterscheiden sich leicht in der Haltung."
+      },
+      "kitap": "Temel Dinî Bilgiler s. 112–119",
+      "sorular": [
+        {
+          "id": "ib-037-1",
+          "soru": {
+            "tr": "Sabah namazının sünneti kaç rekâttır?",
+            "fr": "Combien de rak‘a compte la sunna du fajr ?",
+            "en": "How many rak‘ahs is the sunnah of Fajr?",
+            "nl": "Hoeveel rak‘a’s telt de soenna van Fadjr?",
+            "de": "Wie viele Rak‘a hat die Sunna des Fadschr?"
+          },
+          "siklar": [
+            {
+              "tr": "2",
+              "fr": "2",
+              "en": "2",
+              "nl": "2",
+              "de": "2"
+            },
+            {
+              "tr": "3",
+              "fr": "3",
+              "en": "3",
+              "nl": "3",
+              "de": "3"
+            },
+            {
+              "tr": "4",
+              "fr": "4",
+              "en": "4",
+              "nl": "4",
+              "de": "4"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "Diyanet İlmihali I, Sünnet namazlar (farzlara tâbi nâfile namazlar)"
+        },
+        {
+          "id": "ib-037-2",
+          "soru": {
+            "tr": "Öğle namazının son sünneti kaç rekâttır?",
+            "fr": "Combien de rak‘a compte la sunna finale du dhuhr ?",
+            "en": "How many rak‘ahs is the final sunnah of Dhuhr?",
+            "nl": "Hoeveel rak‘a’s telt de slot-soenna van Dhoehr?",
+            "de": "Wie viele Rak‘a hat die Schluss-Sunna des Dhuhr?"
+          },
+          "siklar": [
+            {
+              "tr": "2",
+              "fr": "2",
+              "en": "2",
+              "nl": "2",
+              "de": "2"
+            },
+            {
+              "tr": "4",
+              "fr": "4",
+              "en": "4",
+              "nl": "4",
+              "de": "4"
+            },
+            {
+              "tr": "6",
+              "fr": "6",
+              "en": "6",
+              "nl": "6",
+              "de": "6"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "Diyanet İlmihali I, Sünnet namazlar"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ib-038",
+      "kod": "ibadet",
+      "planKonu": "İkindi, akşam, yatsı ve vitir namazları; namazdan sonra okunanlar",
+      "ilkDers": "2027-04-26",
+      "seviyeAlani": "namaz",
+      "basamak": 2,
+      "baslik": {
+        "tr": "İkindi, akşam, yatsı ve vitir; namazdan sonra okunanlar",
+        "fr": "‘Asr, maghrib, ‘ichâ’, witr ; ce qu’on récite après la prière",
+        "en": "Asr, Maghrib, Isha and Witr; what is recited after prayer",
+        "nl": "Asr, Maghrib, Isja, Witr; wat na het gebed gezegd wordt",
+        "de": "Asr, Maghrib, Ischa, Witr; was nach dem Gebet gesprochen wird"
+      },
+      "ozet": {
+        "tr": "İkindi, akşam ve yatsı namazlarının sünnet ve farzları sırayla kılınır. Öğlenin ilk sünneti müekked, ikindinin sünneti gayri müekkeddir. Yatsıdan sonra vitir kılınır, üçüncü rekâtta kunut duası okunur. Farzdan sonra salavat, tesbihler ve Ayetü’l-Kürsî okunur.",
+        "fr": "Les sunnas et farz de ‘asr, maghrib et ‘ichâ’ s’accomplissent dans l’ordre. La première sunna du dhuhr est muakkada, celle du ‘asr non. Le witr suit ‘ichâ’, avec le qunût à la troisième rak‘a. Après le farz : salutations, tasbîh et Âyat al-Kursî.",
+        "en": "The sunnah and fard of Asr, Maghrib and Isha are prayed in order. The first Dhuhr sunnah is emphasised; the Asr sunnah is not. Witr follows Isha, with the qunut in the third rak‘ah. After the fard come salawat, tasbih and Ayat al-Kursi.",
+        "nl": "De soenna en fard van Asr, Maghrib en Isja worden op volgorde gebeden. De eerste soenna van Dhoehr is bevestigd, die van Asr niet. Witr volgt na Isja, met de qunoet in de derde rak‘a. Na de fard volgen salawat, tasbih en Ayat al-Koersi.",
+        "de": "Sunna und Fard von Asr, Maghrib und Ischa werden der Reihe nach gebetet. Die erste Sunna des Dhuhr ist bekräftigt, die des Asr nicht. Witr folgt nach Ischa, das Qunut in der dritten Rak‘a. Nach dem Fard folgen Salawat, Tasbih und Ayat al-Kursi."
+      },
+      "kitap": "Temel Dinî Bilgiler s. 120–129",
+      "sorular": [
+        {
+          "id": "ib-038-1",
+          "soru": {
+            "tr": "İkindi namazının ilk sünneti hangi türdendir?",
+            "fr": "De quel type est la sunna du ‘asr ?",
+            "en": "What kind of sunnah is the Asr sunnah?",
+            "nl": "Wat voor soort soenna is de soenna van Asr?",
+            "de": "Von welcher Art ist die Sunna des Asr?"
+          },
+          "siklar": [
+            {
+              "tr": "Farz",
+              "fr": "Farz",
+              "en": "Fard",
+              "nl": "Fard",
+              "de": "Fard"
+            },
+            {
+              "tr": "Haram",
+              "fr": "Interdite (harâm)",
+              "en": "Forbidden (haram)",
+              "nl": "Verboden (haram)",
+              "de": "Verboten (Haram)"
+            },
+            {
+              "tr": "Gayri müekked sünnet",
+              "fr": "Une sunna non emphasisée (ghayr muakkada)",
+              "en": "A non-emphasised sunnah (ghayr mu’akkadah)",
+              "nl": "Een niet-bevestigde soenna (ghayr moe’akkada)",
+              "de": "Eine nicht bekräftigte Sunna (Ghayr Mu’akkada)"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "Diyanet İlmihali I, Müekked ve gayr-i müekked sünnetler"
+        },
+        {
+          "id": "ib-038-2",
+          "soru": {
+            "tr": "Akşam namazının farzından sonra kılınan son sünnet kaç rekâttır?",
+            "fr": "Combien de rak‘a compte la sunna qui suit le farz du maghrib ?",
+            "en": "How many rak‘ahs is the sunnah after the Maghrib fard?",
+            "nl": "Hoeveel rak‘a’s telt de soenna na de fard van Maghrib?",
+            "de": "Wie viele Rak‘a hat die Sunna nach dem Fard des Maghrib?"
+          },
+          "siklar": [
+            {
+              "tr": "2",
+              "fr": "2",
+              "en": "2",
+              "nl": "2",
+              "de": "2"
+            },
+            {
+              "tr": "3",
+              "fr": "3",
+              "en": "3",
+              "nl": "3",
+              "de": "3"
+            },
+            {
+              "tr": "4",
+              "fr": "4",
+              "en": "4",
+              "nl": "4",
+              "de": "4"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "Diyanet İlmihali I, Sünnet namazlar"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ib-039",
+      "kod": "ibadet",
+      "planKonu": "Sehiv secdesi, cemaatle namaz ve cuma namazı",
+      "ilkDers": "2027-05-02",
+      "seviyeAlani": "namaz",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Sehiv secdesi, cemaatle namaz ve cuma namazı",
+        "fr": "La prosternation d’oubli, la prière en commun et celle du vendredi",
+        "en": "Prostration of forgetfulness, congregational and Friday prayer",
+        "nl": "Vergetelheidsknieling, gemeenschaps- en vrijdaggebed",
+        "de": "Vergesslichkeits-Niederwerfung, Gemeinschafts- und Freitagsgebet"
+      },
+      "ozet": {
+        "tr": "Namazda bir vâcip unutulursa sehiv secdesi yapılır. Cemaatle namaz, tek başına kılınandan yirmi yedi derece faziletlidir. Cuma namazı haftalık cemaat namazıdır; hutbe ve cemaat gibi şartlarla kılınır.",
+        "fr": "Si l’on oublie un wâjib dans la prière, on fait la prosternation d’oubli. La prière en commun vaut vingt-sept degrés de plus que la prière seule. La prière du vendredi est la prière hebdomadaire en groupe, avec des conditions comme le sermon et l’assemblée.",
+        "en": "If a wajib act is forgotten in prayer, the prostration of forgetfulness is made. Congregational prayer is twenty-seven degrees better than praying alone. Friday prayer is the weekly congregational prayer, with conditions such as the sermon and the congregation.",
+        "nl": "Wordt een wadjib in het gebed vergeten, dan doet men de vergetelheidsknieling. Het gemeenschapsgebed is zevenentwintig graden beter dan alleen bidden. Het vrijdaggebed is het wekelijkse gemeenschapsgebed, met voorwaarden als de preek en de gemeente.",
+        "de": "Wird im Gebet ein Wadschib vergessen, folgt die Vergesslichkeits-Niederwerfung. Das Gemeinschaftsgebet ist siebenundzwanzig Grade besser als das Einzelgebet. Das Freitagsgebet ist das wöchentliche Gemeinschaftsgebet, mit Bedingungen wie Predigt und Gemeinde."
+      },
+      "kitap": "Temel Dinî Bilgiler s. 131–137",
+      "sorular": [
+        {
+          "id": "ib-039-1",
+          "soru": {
+            "tr": "Hanefî mezhebine göre, sehiv secdesi yapmak hangi hükümdedir?",
+            "fr": "Selon l’école hanafite, quel est le statut de la prosternation d’oubli ?",
+            "en": "According to the Hanafi school, what is the ruling of the prostration of forgetfulness?",
+            "nl": "Volgens de Hanafi-school, wat is de status van de vergetelheidsknieling?",
+            "de": "Nach der hanafitischen Rechtsschule, welchen Rang hat die Vergesslichkeits-Niederwerfung?"
+          },
+          "siklar": [
+            {
+              "tr": "Vâcip",
+              "fr": "Wâjib",
+              "en": "Wajib",
+              "nl": "Wadjib",
+              "de": "Wadschib"
+            },
+            {
+              "tr": "Farz",
+              "fr": "Farz (obligatoire)",
+              "en": "Fard (obligatory)",
+              "nl": "Fard (verplicht)",
+              "de": "Fard (Pflicht)"
+            },
+            {
+              "tr": "Mübah",
+              "fr": "Permis (mubâh)",
+              "en": "Permissible (mubah)",
+              "nl": "Toegestaan (moebah)",
+              "de": "Erlaubt (Mubah)"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "Diyanet İlmihali I, Sehiv secdesi"
+        },
+        {
+          "id": "ib-039-2",
+          "soru": {
+            "tr": "Hadise göre cemaatle namaz, tek başına kılınan namazdan kaç derece daha faziletlidir?",
+            "fr": "D’après le hadith, de combien de degrés la prière en commun surpasse-t-elle la prière seule ?",
+            "en": "According to the hadith, by how many degrees is congregational prayer better than praying alone?",
+            "nl": "Volgens de hadith, hoeveel graden is het gemeenschapsgebed beter dan alleen bidden?",
+            "de": "Um wie viele Grade ist das Gemeinschaftsgebet laut Hadith besser als das Einzelgebet?"
+          },
+          "siklar": [
+            {
+              "tr": "7",
+              "fr": "7",
+              "en": "7",
+              "nl": "7",
+              "de": "7"
+            },
+            {
+              "tr": "27",
+              "fr": "27",
+              "en": "27",
+              "nl": "27",
+              "de": "27"
+            },
+            {
+              "tr": "70",
+              "fr": "70",
+              "en": "70",
+              "nl": "70",
+              "de": "70"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "Diyanet İlmihali I, Cemaatle namaz (Buhârî, Ezân 30; Müslim, Mesâcid 42)"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ib-040",
+      "kod": "ibadet",
+      "planKonu": "Hac",
+      "ilkDers": "2027-05-08",
+      "seviyeAlani": "ibadet",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Hac",
+        "fr": "Le hajj",
+        "en": "Hajj",
+        "nl": "De hadj",
+        "de": "Die Hadsch"
+      },
+      "ozet": {
+        "tr": "Hac, gücü yetenin ömründe yerine getirdiği ibadettir. Hanefî mezhebine göre haccın farzları ihram, Arafat vakfesi ve ziyaret tavafıdır. Hac, Şevval, Zilkade ve Zilhicce’nin ilk on gününde yapılır. Umre ise haccın dışında yapılan ziyarettir.",
+        "fr": "Le hajj est l’adoration que celui qui en a les moyens accomplit dans sa vie. Selon l’école hanafite, ses farz sont l’ihrâm, la station à ‘Arafat et le tawâf de la visite. Il se fait durant Shawwâl, Dhou al-qa‘da et les dix premiers jours de Dhou al-hijja.",
+        "en": "Hajj is the worship a person who is able performs in a lifetime. In the Hanafi school its obligations are ihram, standing at Arafat and the tawaf of visit. It takes place in Shawwal, Dhul-Qa‘dah and the first ten days of Dhul-Hijjah.",
+        "nl": "De hadj is de aanbidding die wie daartoe in staat is in zijn leven verricht. Volgens de Hanafi-school zijn de fard: ihram, het staan op Arafat en de bezoek-tawaf. Ze vindt plaats in Sjawwal, Dhoe al-qa‘da en de eerste tien dagen van Dhoe al-hidjdja.",
+        "de": "Die Hadsch ist der Gottesdienst, den, wer dazu in der Lage ist, einmal im Leben verrichtet. Nach hanafitischer Schule sind ihre Pflichten Ihram, das Stehen in Arafat und der Besuchs-Tawaf. Sie findet in Schawwal, Dhul-Qa‘da und den ersten zehn Tagen von Dhul-Hiddscha statt."
+      },
+      "kitap": "Temel Dinî Bilgiler s. 167–172",
+      "sorular": [
+        {
+          "id": "ib-040-1",
+          "soru": {
+            "tr": "Hanefî mezhebine göre, haccın farzı kaç tanedir?",
+            "fr": "Selon l’école hanafite, combien le hajj compte-t-il d’obligations (farz) ?",
+            "en": "According to the Hanafi school, how many obligations (fard) does hajj have?",
+            "nl": "Volgens de Hanafi-school, hoeveel verplichtingen (fard) heeft de hadj?",
+            "de": "Nach der hanafitischen Rechtsschule, wie viele Pflichten (Fard) hat die Hadsch?"
+          },
+          "siklar": [
+            {
+              "tr": "2",
+              "fr": "2",
+              "en": "2",
+              "nl": "2",
+              "de": "2"
+            },
+            {
+              "tr": "3",
+              "fr": "3",
+              "en": "3",
+              "nl": "3",
+              "de": "3"
+            },
+            {
+              "tr": "5",
+              "fr": "5",
+              "en": "5",
+              "nl": "5",
+              "de": "5"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "Diyanet İlmihali I, Haccın rükünleri"
+        },
+        {
+          "id": "ib-040-2",
+          "soru": {
+            "tr": "Hac törenleri hangi aylarda yapılır?",
+            "fr": "Durant quels mois accomplit-on les rites du hajj ?",
+            "en": "In which months are the rites of hajj performed?",
+            "nl": "In welke maanden worden de hadj-riten verricht?",
+            "de": "In welchen Monaten werden die Riten der Hadsch verrichtet?"
+          },
+          "siklar": [
+            {
+              "tr": "Yalnız Ramazan",
+              "fr": "Seulement le Ramadan",
+              "en": "Ramadan only",
+              "nl": "Alleen de Ramadan",
+              "de": "Nur im Ramadan"
+            },
+            {
+              "tr": "Yılın her ayı",
+              "fr": "Tous les mois de l’année",
+              "en": "Every month of the year",
+              "nl": "Elke maand van het jaar",
+              "de": "In jedem Monat des Jahres"
+            },
+            {
+              "tr": "Şevval, Zilkade ve Zilhicce’nin ilk on günü",
+              "fr": "Shawwâl, Dhou al-qa‘da et les dix premiers jours de Dhou al-hijja",
+              "en": "Shawwal, Dhul-Qa‘dah and the first ten days of Dhul-Hijjah",
+              "nl": "Sjawwal, Dhoe al-qa‘da en de eerste tien dagen van Dhoe al-hidjdja",
+              "de": "Schawwal, Dhul-Qa‘da und die ersten zehn Tage von Dhul-Hiddscha"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "Diyanet İlmihali I, Hac (özel vakit: hac ayları)"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ib-041",
+      "kod": "ibadet",
+      "planKonu": "Kurban İbadeti, Bayram Namazı ve Bayram Adabı",
+      "ilkDers": "2027-05-15",
+      "seviyeAlani": "ibadet",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Kurban ibadeti, bayram namazı ve bayram âdabı",
+        "fr": "Le sacrifice, la prière de l’Aïd et les usages de la fête",
+        "en": "Sacrifice, the Eid prayer and Eid etiquette",
+        "nl": "Het offer, het feestgebed en feestmanieren",
+        "de": "Opfer, Festgebet und Festbräuche"
+      },
+      "ozet": {
+        "tr": "Kurban, Hanefî mezhebinde vâcip sayılan bir ibadettir. Koyun ve keçi bir kişi için, deve, sığır ve manda en çok yedi kişi için kesilir. Eti paylaşarak yoksullara da veririz. Bayramda teşrik tekbiri getirilir.",
+        "fr": "Dans l’école hanafite, le sacrifice est considéré comme wâjib. Un mouton ou une chèvre vaut pour une personne ; un chameau ou un bovin pour sept personnes au maximum. On partage la viande, notamment avec les pauvres. Le takbîr at-tachrîq est récité à l’Aïd.",
+        "en": "In the Hanafi school the sacrifice is considered wajib. A sheep or goat is for one person; a camel or cow for at most seven. We share the meat, including with the poor. The tashriq takbir is recited at Eid.",
+        "nl": "In de Hanafi-school geldt het offer als wadjib. Een schaap of geit is voor één persoon; een kameel of koe voor ten hoogste zeven. We delen het vlees, ook met de armen. Tijdens het feest wordt de tasjriq-takbir gereciteerd.",
+        "de": "In der hanafitischen Schule gilt das Opfer als Wadschib. Ein Schaf oder eine Ziege gilt für eine Person; ein Kamel oder Rind für höchstens sieben. Wir teilen das Fleisch, auch mit Armen. Am Fest wird der Taschriq-Takbir gesprochen."
+      },
+      "kitap": "Temel Dinî Bilgiler s. 173–178 (Kurban Bayramı özel programı)",
+      "sorular": [
+        {
+          "id": "ib-041-1",
+          "soru": {
+            "tr": "Hanefî mezhebine göre, kurban kesmek hangi hükümdedir?",
+            "fr": "Selon l’école hanafite, quel est le statut du sacrifice ?",
+            "en": "According to the Hanafi school, what is the ruling of the sacrifice?",
+            "nl": "Volgens de Hanafi-school, wat is de status van het offer?",
+            "de": "Nach der hanafitischen Rechtsschule, welchen Rang hat das Opfer?"
+          },
+          "siklar": [
+            {
+              "tr": "Vâcip",
+              "fr": "Wâjib",
+              "en": "Wajib",
+              "nl": "Wadjib",
+              "de": "Wadschib"
+            },
+            {
+              "tr": "Mübah",
+              "fr": "Permis (mubâh)",
+              "en": "Permissible (mubah)",
+              "nl": "Toegestaan (moebah)",
+              "de": "Erlaubt (Mubah)"
+            },
+            {
+              "tr": "Farz",
+              "fr": "Farz (obligatoire)",
+              "en": "Fard (obligatory)",
+              "nl": "Fard (verplicht)",
+              "de": "Fard (Pflicht)"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "Diyanet İlmihali I, Kurban (fıkhî değerlendirme)"
+        },
+        {
+          "id": "ib-041-2",
+          "soru": {
+            "tr": "Sığır, deve ve manda kurban olarak en çok kaç kişi adına kesilebilir?",
+            "fr": "Pour combien de personnes au maximum peut-on sacrifier un bovin ou un chameau ?",
+            "en": "For at most how many people can a cow or camel be sacrificed?",
+            "nl": "Voor ten hoogste hoeveel personen kan een rund of kameel geslacht worden?",
+            "de": "Für höchstens wie viele Personen kann ein Rind oder Kamel geopfert werden?"
+          },
+          "siklar": [
+            {
+              "tr": "3",
+              "fr": "3",
+              "en": "3",
+              "nl": "3",
+              "de": "3"
+            },
+            {
+              "tr": "5",
+              "fr": "5",
+              "en": "5",
+              "nl": "5",
+              "de": "5"
+            },
+            {
+              "tr": "7",
+              "fr": "7",
+              "en": "7",
+              "nl": "7",
+              "de": "7"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "Diyanet İlmihali I, Kurban (kurbanlık hayvanlar)"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ib-042",
+      "kod": "ibadet",
+      "planKonu": "Yolcu namazı, kaza namazı, tilavet secdesi ve cenaze namazı",
+      "ilkDers": "2027-05-23",
+      "seviyeAlani": "namaz",
+      "basamak": 3,
+      "baslik": {
+        "tr": "Yolcu, kaza ve cenaze namazları; tilâvet secdesi",
+        "fr": "Prière du voyageur, rattrapage, prière funéraire et prosternation de récitation",
+        "en": "Travellers’ prayer, qada, funeral prayer and prostration of recitation",
+        "nl": "Reizigersgebed, inhalen, dodengebed en tilawa-knieling",
+        "de": "Reisegebet, Nachholen, Totengebet und Rezitationsniederwerfung"
+      },
+      "ozet": {
+        "tr": "Yolculuk, namazda kolaylıklar getirir; yolcu sayılmak için yaklaşık 85–90 km mesafe esas alınır. Kaza yalnız beş vakit farz namaz ve vitir için söz konusudur. Secde âyeti okunduğunda tilâvet secdesi yapılır.",
+        "fr": "Le voyage apporte des facilités dans la prière ; on est voyageur à partir d’environ 85–90 km. Le rattrapage ne concerne que les cinq prières obligatoires et le witr. À la lecture d’un verset de prosternation, on fait la prosternation de récitation.",
+        "en": "Travel brings facilities in prayer; one counts as a traveller at roughly 85–90 km. Making up (qada) applies only to the five obligatory prayers and witr. When a verse of prostration is read, the prostration of recitation is made.",
+        "nl": "Reizen brengt gemakken in het gebed; men geldt als reiziger vanaf ongeveer 85–90 km. Inhalen (qada) geldt alleen voor de vijf verplichte gebeden en het witr. Bij een knielvers volgt de tilawa-knieling.",
+        "de": "Das Reisen bringt Erleichterungen im Gebet; als Reisender gilt man ab etwa 85–90 km. Nachholen (Qada) gibt es nur für die fünf Pflichtgebete und das Witr. Wird ein Niederwerfungsvers gelesen, folgt die Rezitationsniederwerfung."
+      },
+      "kitap": "Temel Dinî Bilgiler s. 143–150",
+      "sorular": [
+        {
+          "id": "ib-042-1",
+          "soru": {
+            "tr": "Diyanet İlmihali’ne göre yolcu sayılmanın mesafe ölçüsü yaklaşık kaç kilometredir?",
+            "fr": "Selon le Diyanet İlmihali, à partir de combien de kilomètres environ est-on considéré comme voyageur ?",
+            "en": "According to the Diyanet Ilmihal, roughly how many kilometres make one a traveller?",
+            "nl": "Volgens het Diyanet-ilmihal, vanaf ongeveer hoeveel kilometer geldt men als reiziger?",
+            "de": "Ab etwa wie vielen Kilometern gilt man laut Diyanet-Ilmihal als Reisender?"
+          },
+          "siklar": [
+            {
+              "tr": "Yaklaşık 85–90 km",
+              "fr": "Environ 85–90 km",
+              "en": "About 85–90 km",
+              "nl": "Ongeveer 85–90 km",
+              "de": "Etwa 85–90 km"
+            },
+            {
+              "tr": "Yaklaşık 10 km",
+              "fr": "Environ 10 km",
+              "en": "About 10 km",
+              "nl": "Ongeveer 10 km",
+              "de": "Etwa 10 km"
+            },
+            {
+              "tr": "Yaklaşık 500 km",
+              "fr": "Environ 500 km",
+              "en": "About 500 km",
+              "nl": "Ongeveer 500 km",
+              "de": "Etwa 500 km"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "Diyanet İlmihali I, Yolculuk (seferîlik ölçüsü)"
+        },
+        {
+          "id": "ib-042-2",
+          "soru": {
+            "tr": "Kaza edilebilen namazlar hangileridir?",
+            "fr": "Quelles prières peuvent être rattrapées ?",
+            "en": "Which prayers can be made up (qada)?",
+            "nl": "Welke gebeden kunnen ingehaald worden?",
+            "de": "Welche Gebete können nachgeholt werden?"
+          },
+          "siklar": [
+            {
+              "tr": "Bütün sünnet namazlar",
+              "fr": "Toutes les prières de sunna",
+              "en": "All sunnah prayers",
+              "nl": "Alle soenna-gebeden",
+              "de": "Alle Sunna-Gebete"
+            },
+            {
+              "tr": "Beş vakit farz namaz ve vitir",
+              "fr": "Les cinq prières obligatoires et le witr",
+              "en": "The five obligatory prayers and witr",
+              "nl": "De vijf verplichte gebeden en het witr",
+              "de": "Die fünf Pflichtgebete und das Witr"
+            },
+            {
+              "tr": "Cuma ve bayram namazları",
+              "fr": "La prière du vendredi et celles de l’Aïd",
+              "en": "Friday and Eid prayers",
+              "nl": "Het vrijdag- en feestgebed",
+              "de": "Freitags- und Festgebete"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "Diyanet İlmihali I, Namaz vakitleri (kazâ)"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ib-043",
+      "kod": "ibadet",
+      "planKonu": "Resimlerle namazın kılınışı",
+      "ilkDers": "2027-05-30",
+      "seviyeAlani": "namaz",
+      "basamak": 1,
+      "baslik": {
+        "tr": "Resimlerle namazın kılınışı",
+        "fr": "La prière en images",
+        "en": "The prayer step by step",
+        "nl": "Het gebed stap voor stap",
+        "de": "Das Gebet Schritt für Schritt"
+      },
+      "ozet": {
+        "tr": "Namaz iftitah tekbiriyle başlar: erkekler ellerini kulaklarına, kadınlar göğüs hizasına kaldırır. Sonra eller bağlanır: erkekler göbek altından, kadınlar göğüs üstünden. Ayakta durma, rükû, secde ve oturuşla devam edip selâmla biter.",
+        "fr": "La prière s’ouvre par le takbîr : les hommes lèvent les mains à hauteur des oreilles, les femmes à celle de la poitrine. Puis on place les mains : sous le nombril pour les hommes, sur la poitrine pour les femmes. Suivent inclinaison, prosternation et assise ; le salut conclut.",
+        "en": "Prayer begins with the opening takbir: men raise their hands to their ears, women to chest level. Hands are then folded: men below the navel, women over the chest. It continues with standing, bowing, prostration and sitting, and ends with the salaam.",
+        "nl": "Het gebed begint met de openingstakbir: mannen heffen de handen tot de oren, vrouwen tot borsthoogte. Daarna worden de handen gevouwen: mannen onder de navel, vrouwen op de borst. Het gaat verder met staan, buigen, knielen en zitten en eindigt met de salaam.",
+        "de": "Das Gebet beginnt mit dem Eröffnungs-Takbir: Männer heben die Hände bis zu den Ohren, Frauen bis zur Brusthöhe. Dann werden die Hände verschränkt: Männer unterhalb des Nabels, Frauen auf der Brust. Es folgen Stehen, Verbeugung, Niederwerfung und Sitzen; es endet mit dem Salam."
+      },
+      "kitap": "Temel Dinî Bilgiler s. 337–347",
+      "sorular": [
+        {
+          "id": "ib-043-1",
+          "soru": {
+            "tr": "Hanefî mezhebine göre, erkekler namazda ellerini nereye bağlar?",
+            "fr": "Selon l’école hanafite, où les hommes placent-ils leurs mains dans la prière ?",
+            "en": "According to the Hanafi school, where do men place their hands in prayer?",
+            "nl": "Volgens de Hanafi-school, waar leggen mannen hun handen in het gebed?",
+            "de": "Nach der hanafitischen Rechtsschule, wohin legen Männer im Gebet die Hände?"
+          },
+          "siklar": [
+            {
+              "tr": "Yanlara salar",
+              "fr": "Les laissent pendre",
+              "en": "Let them hang at the sides",
+              "nl": "Laten ze langs het lichaam hangen",
+              "de": "Lässt sie seitlich hängen"
+            },
+            {
+              "tr": "Göbeğin altına",
+              "fr": "Sous le nombril",
+              "en": "Below the navel",
+              "nl": "Onder de navel",
+              "de": "Unterhalb des Nabels"
+            },
+            {
+              "tr": "Boyuna",
+              "fr": "Sur la nuque",
+              "en": "On the neck",
+              "nl": "Op de nek",
+              "de": "Auf den Nacken"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "Diyanet İlmihali I, Namazın sünnetleri (el bağlamak)"
+        },
+        {
+          "id": "ib-043-2",
+          "soru": {
+            "tr": "İftitah tekbirinde erkekler ellerini nereye kadar kaldırır?",
+            "fr": "Jusqu’où les hommes lèvent-ils les mains au takbîr d’ouverture ?",
+            "en": "How high do men raise their hands at the opening takbir?",
+            "nl": "Tot waar heffen mannen de handen bij de openingstakbir?",
+            "de": "Wie hoch heben Männer die Hände beim Eröffnungs-Takbir?"
+          },
+          "siklar": [
+            {
+              "tr": "Dizlerine kadar",
+              "fr": "Jusqu’aux genoux",
+              "en": "Down to the knees",
+              "nl": "Tot aan de knieën",
+              "de": "Bis zu den Knien"
+            },
+            {
+              "tr": "Başlarının üstüne",
+              "fr": "Au-dessus de la tête",
+              "en": "Above the head",
+              "nl": "Boven het hoofd",
+              "de": "Über den Kopf"
+            },
+            {
+              "tr": "Kulaklarına kadar",
+              "fr": "Jusqu’aux oreilles",
+              "en": "Up to the ears",
+              "nl": "Tot aan de oren",
+              "de": "Bis zu den Ohren"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "Diyanet İlmihali I, Namazın sünnetleri (iftitah tekbiri)"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ib-044",
+      "kod": "ibadet",
+      "planKonu": "Yıl Sonu Genel Değerlendirme",
+      "ilkDers": "2027-06-06",
+      "seviyeAlani": "ibadet",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Yıl sonu genel değerlendirme",
+        "fr": "Bilan général de fin d’année",
+        "en": "End-of-year general review",
+        "nl": "Algemene evaluatie aan het einde van het jaar",
+        "de": "Allgemeine Auswertung zum Jahresende"
+      },
+      "ozet": {
+        "tr": "Yıl boyunca öğrendiklerimizi bir araya getiririz: temizlik, namaz, oruç, zekât, hac, dua ve Kur’an. Bildiklerimizi hayatımızda uygulamaya ve öğrendiklerimizi başkalarıyla paylaşmaya devam ederiz.",
+        "fr": "Nous rassemblons ce que nous avons appris cette année : propreté, prière, jeûne, zakât, hajj, doua et Coran. Nous continuons à mettre en pratique ce que nous savons et à le partager avec les autres.",
+        "en": "We bring together what we learned this year: cleanliness, prayer, fasting, zakat, hajj, dua and the Qur’an. We keep putting our knowledge into practice and sharing it with others.",
+        "nl": "We brengen samen wat we dit jaar geleerd hebben: reinheid, gebed, vasten, zakat, hadj, doe‘a en Koran. We blijven onze kennis in praktijk brengen en delen met anderen.",
+        "de": "Wir fassen zusammen, was wir im Jahr gelernt haben: Reinheit, Gebet, Fasten, Zakat, Hadsch, Dua und Koran. Wir setzen das Gelernte weiter um und teilen es mit anderen."
+      },
+      "sorular": [
+        {
+          "id": "ib-044-1",
+          "soru": {
+            "tr": "Yolcu olanlar için mest üzerine mesh süresi ne kadardır?",
+            "fr": "Combien de temps dure le mash sur les khuff pour le voyageur ?",
+            "en": "How long does wiping over leather socks last for a traveller?",
+            "nl": "Hoe lang duurt het vegen over de leren sokken voor een reiziger?",
+            "de": "Wie lange gilt das Wischen über die Lederstrümpfe für einen Reisenden?"
+          },
+          "siklar": [
+            {
+              "tr": "Bir gün bir gece",
+              "fr": "Un jour et une nuit",
+              "en": "One day and night",
+              "nl": "Eén dag en nacht",
+              "de": "Einen Tag und eine Nacht"
+            },
+            {
+              "tr": "On gün",
+              "fr": "Dix jours",
+              "en": "Ten days",
+              "nl": "Tien dagen",
+              "de": "Zehn Tage"
+            },
+            {
+              "tr": "Üç gün üç gece",
+              "fr": "Trois jours et trois nuits",
+              "en": "Three days and nights",
+              "nl": "Drie dagen en nachten",
+              "de": "Drei Tage und Nächte"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "Diyanet İlmihali I, Mesh (mest üzerine mesh)"
+        },
+        {
+          "id": "ib-044-2",
+          "soru": {
+            "tr": "Cenaze namazı hangi hükümdedir?",
+            "fr": "Quel est le statut de la prière funéraire ?",
+            "en": "What is the status of the funeral prayer?",
+            "nl": "Wat is de status van het dodengebed?",
+            "de": "Welchen Rang hat das Totengebet?"
+          },
+          "siklar": [
+            {
+              "tr": "Farz-ı kifâye",
+              "fr": "Farz kifâya (obligation collective)",
+              "en": "Fard kifaya (communal obligation)",
+              "nl": "Fard kifaya (gemeenschappelijke plicht)",
+              "de": "Fard Kifaya (Gemeinschaftspflicht)"
+            },
+            {
+              "tr": "Mekruh",
+              "fr": "Réprouvée (makrûh)",
+              "en": "Disliked (makruh)",
+              "nl": "Afgekeurd (makroeh)",
+              "de": "Missbilligt (Makruh)"
+            },
+            {
+              "tr": "Mübah",
+              "fr": "Permise (mubâh)",
+              "en": "Permissible (mubah)",
+              "nl": "Toegestaan (moebah)",
+              "de": "Erlaubt (Mubah)"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "Diyanet İlmihali I, Farz namazlar (farz-ı kifâye: cenaze namazı)"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    }
+  ]
+}

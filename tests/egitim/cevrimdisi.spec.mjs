@@ -25,9 +25,9 @@ import { existsSync, readFileSync, statSync } from 'node:fs';
 const KOK = 'http://127.0.0.1:4402';
 const SES_KOKU = 'https://ulucamii.be';
 const DILLER = ['tr', 'fr', 'en', 'nl', 'de'];
-const KAYDET = { tr: 'İnternetsiz çalışmak için kaydet', fr: 'Enregistrer pour travailler hors ligne', en: 'Save for offline study', nl: 'Opslaan om offline te oefenen', de: 'Zum Offline-Üben speichern' };
+const KAYDET = { tr: 'İnternetsiz çalışmak için kaydedin', fr: 'Enregistrer pour travailler hors ligne', en: 'Save for offline study', nl: 'Opslaan om offline te oefenen', de: 'Zum Offline-Üben speichern' };
 const SAYFA_BASLIK = { tr: 'Çevrim dışı çalışma', fr: 'Travail hors ligne', en: 'Offline study', nl: 'Offline oefenen', de: 'Offline üben' };
-const HEPSINI_SIL = { tr: 'Hepsini sil', fr: 'Tout supprimer', en: 'Delete all', nl: 'Alles verwijderen', de: 'Alles löschen' };
+const HEPSINI_SIL = { tr: 'Hepsini silin', fr: 'Tout supprimer', en: 'Delete all', nl: 'Alles verwijderen', de: 'Alles löschen' };
 const sesDosyasi = (yol) => new URL(`../../public${yol}`, import.meta.url);
 
 test.use({ serviceWorkers: 'allow' });
@@ -103,7 +103,7 @@ const kunyeler = (o) => (o['ezber-kayit-v1'] ?? []).filter((x) => !x.url.endsWit
 
 test.describe('service worker ve kayıt kutusu', () => {
   test('SW kayıt olur ve sayfayı denetler; sürümlü kabuk altı yedek sayfayla dolar; kalıcı önbellekler boş başlar', async ({ page }) => {
-    await page.goto('/tr/');
+    await page.goto('/tr/ezber/');
     await swDenetliyor(page);
     const kayit = await page.evaluate(async () => {
       const k = await navigator.serviceWorker.getRegistration();
@@ -119,14 +119,14 @@ test.describe('service worker ve kayıt kutusu', () => {
   });
 
   test('Uygulama bildirimi Chromium çözümleyicisinden hatasız geçer; uygulama kurulabilir', async ({ page, context }) => {
-    await page.goto('/tr/');
+    await page.goto('/tr/ezber/');
     await swDenetliyor(page);
     const cdp = await context.newCDPSession(page);
     const bildirim = await cdp.send('Page.getAppManifest');
     expect(bildirim.errors).toEqual([]);
     expect(bildirim.url).toBe(`${KOK}/manifest.webmanifest`);
     const m = JSON.parse(bildirim.data);
-    expect(m).toMatchObject({ display: 'standalone', start_url: '/', scope: '/', theme_color: '#134420', background_color: '#134420' });
+    expect(m).toMatchObject({ display: 'standalone', start_url: '/', scope: '/', theme_color: '#F6EEDF', background_color: '#F6EEDF' });
     expect(m.icons.map((i) => `${i.sizes}:${i.purpose}`)).toEqual(expect.arrayContaining(['192x192:any', '512x512:any', '512x512:maskable']));
     const kurulum = await cdp.send('Page.getInstallabilityErrors');
     expect(kurulum.installabilityErrors).toEqual([]);
@@ -166,8 +166,8 @@ test.describe('kaydet, çevrim dışı aç, sil', () => {
     await dugme(page).click();
     await expect(dugme(page)).toHaveAttribute('data-mod', 'vazgec'); // indirme sürerken vazgeçilebilir
     await expect(dugme(page)).toHaveAttribute('data-mod', 'sil', { timeout: 20_000 });
-    await expect(dugme(page)).toHaveText('Sil');
-    await expect(dugme(page)).toHaveAttribute('aria-label', 'Bu cihazdaki kaydı sil: İhlâs Sûresi');
+    await expect(dugme(page)).toHaveText('Silin');
+    await expect(dugme(page)).toHaveAttribute('aria-label', 'Bu cihazdaki kaydı silin: İhlâs Sûresi');
     await expect(page.locator('[data-cd-kayitli]')).toBeVisible();
     await expect(page.locator('[data-cd-kayitli-metin]')).toContainText(/^Bu cihazda kayıtlı · .*(KB|MB)/);
     await expect(page.locator('[data-cd-durum]')).toContainText('Kaydedildi. Bu madde artık internetsiz de açılır ve çalar. Toplam:');
@@ -304,7 +304,7 @@ test.describe('kaydet, çevrim dışı aç, sil', () => {
     await ac(page);
     await dugme(page).click();
     await expect(dugme(page)).toHaveAttribute('data-mod', 'vazgec');
-    await expect(dugme(page)).toHaveText('Vazgeç');
+    await expect(dugme(page)).toHaveText('Vazgeçin');
     await expect(page.locator('[data-cd-ilerleme-alan]')).toBeVisible();
     await expect(page.locator('[data-cd-sayac]')).toContainText('3 / 6 dosya');
     expect((await onbellekler(page))['ezber-ses-v1']).toHaveLength(2); // yazılmış, henüz künyesiz
@@ -352,7 +352,7 @@ test.describe('kaydet, çevrim dışı aç, sil', () => {
       if (surum === 2) govde = govde.replace('<title>', '<title>YENI ');
       return r.fulfill({ response: yanit, body: govde });
     });
-    await page.goto('/tr/');
+    await page.goto('/tr/ezber/');
     await swDenetliyor(page);
     await page.goto('/tr/kartlar/');
     expect(await page.title()).not.toContain('YENI');
@@ -405,7 +405,7 @@ test.describe('yedek sayfa ve yönetim', () => {
 
   for (const dil of ['fr', 'en', 'nl', 'de']) {
     test(`${dil}: kayıtsız adres kendi dilinde yedek sayfayı açar`, async ({ page, context }) => {
-      await page.goto(`/${dil}/`);
+      await page.goto(`/${dil}/ezber/`);
       await swDenetliyor(page);
       await cevrimdisiYap(context, true);
       await page.goto(`/${dil}/calis/s-fatiha/`);
@@ -439,7 +439,7 @@ test.describe('yedek sayfa ve yönetim', () => {
     await expect(satir).toHaveCount(2);
     await expect(page.locator('[data-cd-ozet]')).toContainText('2 madde');
     await expect(page.locator('[data-cd-bos]')).toBeHidden();
-    await page.getByRole('button', { name: 'Bu cihazdaki kaydı sil: İhlâs Sûresi' }).click();
+    await page.getByRole('button', { name: 'Bu cihazdaki kaydı silin: İhlâs Sûresi' }).click();
     await expect(satir).toHaveCount(1);
     await expect(page.locator('[data-cd-durum]')).toContainText('İhlâs Sûresi kaydı silindi.');
     await expect(page.locator('[data-cd-durum]')).toHaveAttribute('role', 'status');
@@ -447,7 +447,7 @@ test.describe('yedek sayfa ve yönetim', () => {
     expect(kunyeler(o)).toHaveLength(1);
     expect((o['ezber-ses-v1'] ?? []).every((s) => !s.url.includes('112-') && !s.url.includes('ihlas'))).toBe(true);
     expect((o['ezber-ses-v1'] ?? []).length).toBeGreaterThan(0); // Nâs’ın sesleri durur
-    await page.getByRole('button', { name: /^Bu cihazdaki kaydı sil: / }).click();
+    await page.getByRole('button', { name: /^Bu cihazdaki kaydı silin: / }).click();
     await expect(satir).toHaveCount(0);
     await expect(page.locator('[data-cd-bos]')).toBeVisible();
     await expect(page.locator('[data-cd-ozet]')).toHaveText('');
@@ -601,7 +601,7 @@ test.describe('giriş sayfası ve alt bilgi bağlantıları', () => {
   test.use({ serviceWorkers: 'block' });
   for (const dil of DILLER) {
     test(`${dil}: giriş sayfasındaki «Kendi çalışmanız için» bloğu ve alt bilgi çevrim dışı sayfaya bağlanır; araç döşemesi hâlâ üç`, async ({ page }) => {
-      await page.goto(`/${dil}/`);
+      await page.goto(`/${dil}/ezber/`);
       await expect(page.locator('a.arac')).toHaveCount(3);
       await expect(page.locator('.arac-cevrimdisi a')).toHaveAttribute('href', `/${dil}/cevrimdisi/`);
       await expect(page.locator('footer .don a[href$="/cevrimdisi/"]')).toHaveAttribute('href', `/${dil}/cevrimdisi/`);

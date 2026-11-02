@@ -50,7 +50,7 @@ for (const dil of DILLER) {
   }
 
   test(`${dil}: giriş listesinde yapay sesli maddede rozet ve çal düğmesi adında etiket; Diyanet kaydında yok`, async ({ page }) => {
-    await page.goto(`/${dil}/`);
+    await page.goto(`/${dil}/ezber/`);
     for (const oge of YAPAYLAR) {
       const satir = page.locator(`#m-${oge.id}`);
       await expect(satir.locator('.yapay-rozet')).toHaveText(ETIKET[dil]);

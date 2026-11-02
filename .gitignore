@@ -48,3 +48,6 @@ public/media/hero/_kaynak/
 
 # Cami ekranı istemci paketi — scripts/ekran-derle.mjs üretir (build/dev öncesi); depoya girmez.
 public/ekran/
+
+# İlim Yolu tasarım taslaklarının ekran görüntüleri (5,8 MB; ekran.mjs yeniden üretir, depoya girmez — 2 Kas 2026)
+egitim/docs/taslaklar/ilim-yolu/ekran/

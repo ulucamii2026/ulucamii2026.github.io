@@ -5,6 +5,7 @@
  * gizli kalır ve sayfa etkilenmez. Metin ve madde adları sayfadan `data-veri` ile gelir (CSP: satır içi betik yok).
  */
 import { oku, type Depo } from '@ortak/lib/ezber/cihaz';
+import { etkinAnahtar } from '../lib/hesap/isaret';
 import { bugunTekrar, haftaGunu, yerelGun } from '@ortak/lib/ezber/tekrar';
 import type { TekrarMetinleri } from '../i18n/sina';
 import { doldur, el } from './kip-ortak';
@@ -18,7 +19,7 @@ if (kok) {
     const veri = JSON.parse(kok.dataset.veri ?? '') as { dil: string; adlar: Record<string, string>; m: TekrarMetinleri };
     let depo: Depo | null = null;
     try { depo = window.localStorage; } catch { depo = null; }
-    const d = oku(depo);
+    const d = oku(depo, etkinAnahtar(depo));
     const bugun = yerelGun(new Date());
     const idler = bugunTekrar(d.maddeler, bugun).filter((id) => veri.adlar[id]);
     const planli = Object.values(d.maddeler).some((x) => x.sonraki !== '');

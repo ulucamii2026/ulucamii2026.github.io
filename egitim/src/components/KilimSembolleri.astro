@@ -1,0 +1,15 @@
+---
+/**
+ * İlim Yolu sembol seti (sayfada bir kez): kilim şeridi desenleri (`#serit`, `#serit-koyu`), marka damgası (`#damga`), hesap işareti,
+ * basamak işaretleri (`#b-…`), yol motifleri (`#m-…`) ve çizgi simgeleri (`#i-…`). Kaynak: egitim/docs/taslaklar/ilim-yolu/c (onaylı
+ * yön C); renkler satır içi değil sınıftan gelir (`.f-kok`, `.f-yesil`… kilim.css), böylece koyu temada da doğru boyanır.
+ * `kapak` (yalnız ziyaretçi ana sayfasındaki büyük kilim) ayrı dosyadır; her sayfaya yüklenmez.
+ */
+import sembol from '../assets/kilim/sembol-seti.svg?raw';
+import kapakKilim from '../assets/kilim/kapak-kilim.svg?raw';
+
+interface Props { kapak?: boolean }
+const { kapak = false } = Astro.props;
+---
+<Fragment set:html={sembol} />
+{kapak && <Fragment set:html={kapakKilim} />}

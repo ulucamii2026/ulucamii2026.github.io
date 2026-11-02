@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>İlim Yolu — Hesap aç / Giriş yap (Yön B · İznik)</title>
+<link rel="stylesheet" href="stil.css">
+</head>
+<body>
+<!--SPRITE-->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<pattern id="bordur" width="28" height="14" patternUnits="userSpaceOnUse" patternTransform="scale(1.5)"><path d="M7 1.5C8.6 4 8.6 6.5 7 9 5.4 6.5 5.4 4 7 1.5Z" fill="#B23A28"/><path d="M7 9C4.6 8.8 3.4 6.6 3.7 3.8 5 5.2 6.2 6.6 7 9ZM7 9C9.4 8.8 10.6 6.6 10.3 3.8 9 5.2 7.8 6.6 7 9Z" fill="#1B3F98"/><path d="M7 9V13" stroke="#1FA3A0" stroke-width="1.4"/><path d="M21 2.5 25.5 7 21 11.5 16.5 7Z" fill="#1FA3A0"/><circle cx="21" cy="7" r="1.5" fill="#1B3F98"/></pattern>
+<pattern id="yildiz-desen" width="40" height="40" patternUnits="userSpaceOnUse"><rect width="40" height="40" fill="#1B3F98"/><path d="M20 7 23.8 10.8 29.2 10.8 29.2 16.2 33 20 29.2 23.8 29.2 29.2 23.8 29.2 20 33 16.2 29.2 10.8 29.2 10.8 23.8 7 20 10.8 16.2 10.8 10.8 16.2 10.8Z" fill="#24509F" stroke="#8FB4EE" stroke-width="1"/><circle cx="20" cy="20" r="3.2" fill="#1FA3A0"/><circle cx="0" cy="0" r="5" fill="#B23A28"/><circle cx="40" cy="0" r="5" fill="#B23A28"/><circle cx="0" cy="40" r="5" fill="#B23A28"/><circle cx="40" cy="40" r="5" fill="#B23A28"/></pattern>
+<pattern id="yildiz-desen-koyu" width="40" height="40" patternUnits="userSpaceOnUse"><rect width="40" height="40" fill="#0F2560"/><path d="M20 7 23.8 10.8 29.2 10.8 29.2 16.2 33 20 29.2 23.8 29.2 29.2 23.8 29.2 20 33 16.2 29.2 10.8 29.2 10.8 23.8 7 20 10.8 16.2 10.8 10.8 16.2 10.8Z" fill="#1B3F98" stroke="#5F8EDB" stroke-width="1"/><circle cx="20" cy="20" r="3.2" fill="#1FA3A0"/><circle cx="0" cy="0" r="5" fill="#B23A28"/><circle cx="40" cy="0" r="5" fill="#B23A28"/><circle cx="0" cy="40" r="5" fill="#B23A28"/><circle cx="40" cy="40" r="5" fill="#B23A28"/></pattern>
+<pattern id="yildiz-desen-kucuk" href="#yildiz-desen" patternTransform="scale(.5)"/>
+<pattern id="acik-desen" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M16 6 18.9 8.9 23.1 8.9 23.1 13.1 26 16 23.1 18.9 23.1 23.1 18.9 23.1 16 26 13.1 23.1 8.9 23.1 8.9 18.9 6 16 8.9 13.1 8.9 8.9 13.1 8.9Z" fill="none" stroke="#fff" stroke-opacity=".28" stroke-width="1.2"/><circle cx="0" cy="0" r="3" fill="#fff" fill-opacity=".22"/><circle cx="32" cy="0" r="3" fill="#fff" fill-opacity=".22"/><circle cx="0" cy="32" r="3" fill="#fff" fill-opacity=".22"/><circle cx="32" cy="32" r="3" fill="#fff" fill-opacity=".22"/></pattern>
+<symbol id="damga" viewBox="0 0 48 48"><rect x="1" y="1" width="46" height="46" rx="11" fill="#1B3F98"/><path d="M24 27C17 26.5 13.5 21 14.3 13 18 16.5 21.5 20.5 24 27ZM24 27C31 26.5 34.5 21 33.7 13 30 16.5 26.5 20.5 24 27Z" fill="#fff"/><path d="M24 8C28.5 14 28.5 20.5 24 27 19.5 20.5 19.5 14 24 8Z" fill="#F08A75"/><path d="M24 27V41" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/><path d="M24 36C20.5 32 16.5 31.5 12.5 33 16 37 20 37.5 24 36ZM24 33C27.5 29 31.5 28.5 35.5 30 32 34 28 34.5 24 33Z" fill="#5FD0CB"/></symbol>
+<symbol id="lale" viewBox="0 0 100 100"><path d="M50 52C50 66 49 78 50 92" fill="none" stroke="#2F6B4F" stroke-width="3" stroke-linecap="round"/><path d="M49 74C38 66 27 68 18 60 30 56 42 61 49 74ZM51 84C62 74 73 76 82 68 71 64 59 70 51 84Z" fill="#1FA3A0" stroke="#0F2560" stroke-width="1.3" stroke-linejoin="round"/><path d="M50 52C36 51 28 40 30 22 38 30 45 38 50 52ZM50 52C64 51 72 40 70 22 62 30 55 38 50 52Z" fill="#1B3F98" stroke="#0F2560" stroke-width="1.5" stroke-linejoin="round"/><path d="M50 12C59 24 60 36 50 52 40 36 41 24 50 12Z" fill="#B23A28" stroke="#0F2560" stroke-width="1.5" stroke-linejoin="round"/><path d="M50 22C54 30 54 38 50 46" fill="none" stroke="#FBEAE6" stroke-width="1.4" stroke-linecap="round"/></symbol>
+<symbol id="karanfil" viewBox="0 0 100 100"><path d="M50 57V92" fill="none" stroke="#2F6B4F" stroke-width="3" stroke-linecap="round"/><path d="M50 78C40 74 32 66 30 58 38 64 46 68 50 78ZM50 72C60 68 68 60 70 52 62 58 54 62 50 72Z" fill="#1FA3A0" stroke="#0F2560" stroke-width="1.2" stroke-linejoin="round"/><path d="M50 50 27 30C29 22 35 19 40 24 41 15 47 13 50 19 53 13 59 15 60 24 65 19 71 22 73 30Z" fill="#B23A28" stroke="#0F2560" stroke-width="1.5" stroke-linejoin="round"/><path d="M50 49 39 26M50 49V21M50 49 61 26" stroke="#FBEAE6" stroke-width="1.3" stroke-linecap="round"/><path d="M40 46C42 58 58 58 60 46 55 50 45 50 40 46Z" fill="#1B3F98" stroke="#0F2560" stroke-width="1.3" stroke-linejoin="round"/></symbol>
+<symbol id="yildiz-karo" viewBox="0 0 100 100"><path d="M50 4 63.5 17.5 82.5 17.5 82.5 36.5 96 50 82.5 63.5 82.5 82.5 63.5 82.5 50 96 36.5 82.5 17.5 82.5 17.5 63.5 4 50 17.5 36.5 17.5 17.5 36.5 17.5Z" fill="#1B3F98" stroke="#0F2560" stroke-width="1.5" stroke-linejoin="round"/><path d="M50 22 58.2 30.2 69.8 30.2 69.8 41.8 78 50 69.8 58.2 69.8 69.8 58.2 69.8 50 78 41.8 69.8 30.2 69.8 30.2 58.2 22 50 30.2 41.8 30.2 30.2 41.8 30.2Z" fill="#fff" stroke="#1FA3A0" stroke-width="3" stroke-linejoin="round"/><circle cx="50" cy="50" r="9" fill="#B23A28"/><circle cx="50" cy="50" r="3.5" fill="#fff"/></symbol>
+<symbol id="rozet-cicek" viewBox="0 0 100 100"><circle cx="50" cy="50" r="44" fill="none" stroke="#1FA3A0" stroke-width="3"/><circle cx="50" cy="50" r="38" fill="none" stroke="#1B3F98" stroke-width="1.5" stroke-dasharray="2 5" stroke-linecap="round"/><g id="rc-yaprak"><path d="M50 16C58 25 58 34 50 42 42 34 42 25 50 16Z" fill="#B23A28" stroke="#0F2560" stroke-width="1.3" stroke-linejoin="round"/></g><use href="#rc-yaprak" transform="rotate(60 50 50)"/><use href="#rc-yaprak" transform="rotate(120 50 50)"/><use href="#rc-yaprak" transform="rotate(180 50 50)"/><use href="#rc-yaprak" transform="rotate(240 50 50)"/><use href="#rc-yaprak" transform="rotate(300 50 50)"/><circle cx="50" cy="50" r="10" fill="#1B3F98"/><circle cx="50" cy="50" r="4" fill="#1FA3A0"/></symbol>
+<symbol id="hilal-karo" viewBox="0 0 100 100"><path d="M44.98 24.02A30 30 0 1 0 74.03 64.69 25 25 0 0 1 44.98 24.02Z" fill="#2F6B4F" stroke="#0F2560" stroke-width="1.5" stroke-linejoin="round"/><path d="M74 20 76.3 22.3 79.7 22.3 79.7 25.7 82 28 79.7 30.3 79.7 33.7 76.3 33.7 74 36 71.7 33.7 68.3 33.7 68.3 30.3 66 28 68.3 25.7 68.3 22.3 71.7 22.3Z" fill="#B23A28"/></symbol>
+<symbol id="basamak-karo" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="none" stroke="#1FA3A0" stroke-width="2.5"/><path d="M50 12C59 22 59 32 50 41 41 32 41 22 50 12Z" fill="#1B3F98" stroke="#0F2560" stroke-width="1.3" stroke-linejoin="round" transform="rotate(0.00 50 50)"/><path d="M50 12C59 22 59 32 50 41 41 32 41 22 50 12Z" fill="#1FA3A0" stroke="#0F2560" stroke-width="1.3" stroke-linejoin="round" transform="rotate(51.43 50 50)"/><path d="M50 12C59 22 59 32 50 41 41 32 41 22 50 12Z" fill="#B23A28" stroke="#0F2560" stroke-width="1.3" stroke-linejoin="round" transform="rotate(102.86 50 50)"/><path d="M50 12C59 22 59 32 50 41 41 32 41 22 50 12Z" fill="#1B3F98" stroke="#0F2560" stroke-width="1.3" stroke-linejoin="round" transform="rotate(154.29 50 50)"/><path d="M50 12C59 22 59 32 50 41 41 32 41 22 50 12Z" fill="#1FA3A0" stroke="#0F2560" stroke-width="1.3" stroke-linejoin="round" transform="rotate(205.71 50 50)"/><path d="M50 12C59 22 59 32 50 41 41 32 41 22 50 12Z" fill="#B23A28" stroke="#0F2560" stroke-width="1.3" stroke-linejoin="round" transform="rotate(257.14 50 50)"/><path d="M50 12C59 22 59 32 50 41 41 32 41 22 50 12Z" fill="#1B3F98" stroke="#0F2560" stroke-width="1.3" stroke-linejoin="round" transform="rotate(308.57 50 50)"/><circle cx="50" cy="50" r="10" fill="#fff" stroke="#0F2560" stroke-width="1.3"/><circle cx="50" cy="50" r="4" fill="#B23A28"/></symbol>
+<symbol id="kisi-karo" viewBox="0 0 24 24"><rect x="1" y="1" width="22" height="22" rx="6" fill="#0A6B69"/><path d="M12 4.5 14.3 6.8 17.3 6.8 17.3 9.7 19.5 12 17.3 14.3 17.3 17.3 14.3 17.3 12 19.5 9.7 17.3 6.8 17.3 6.8 14.3 4.5 12 6.8 9.7 6.8 6.8 9.7 6.8Z" fill="#fff"/><circle cx="12" cy="12" r="2.6" fill="#B23A28"/></symbol>
+<symbol id="b-calisiyor" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3" fill="#fff" stroke="#1B3F98" stroke-width="2.2"/></symbol>
+<symbol id="b-okudu" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3" fill="#1FA3A0" stroke="#0A6B69" stroke-width="2"/></symbol>
+<symbol id="b-pekisti" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3" fill="#1B3F98" stroke="#1B3F98" stroke-width="2"/></symbol>
+<symbol id="b-kalici" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3" fill="#B23A28" stroke="#B23A28" stroke-width="2"/><rect x="8" y="8" width="8" height="8" rx="1.5" fill="none" stroke="#fff" stroke-width="1.6"/></symbol>
+<symbol id="rozet-var" viewBox="0 0 48 48"><rect x="2" y="2" width="44" height="44" rx="11" fill="#1B3F98"/><path d="M24 6.5 30.2 17.8 41.5 24 30.2 30.2 24 41.5 17.8 30.2 6.5 24 17.8 17.8Z" fill="none" stroke="#5FD0CB" stroke-width="1.4" stroke-linejoin="round"/></symbol>
+<symbol id="rozet-yok" viewBox="0 0 48 48"><rect x="2" y="2" width="44" height="44" rx="11" fill="none" stroke="#A9B8D0" stroke-width="1.6" stroke-dasharray="4 3"/></symbol>
+<symbol id="i-rahle" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.5c3.2-1.2 6.4-.8 9 1.2 2.6-2 5.8-2.4 9-1.2v7.2c-3.2-1.2-6.4-.8-9 1.2-2.6-2-5.8-2.4-9-1.2z"/><path d="M12 8.7v7.2M7 16.5l10 5M17 16.5l-10 5"/></g></symbol>
+<symbol id="i-kitap" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4.5h11.5a2.5 2.5 0 0 1 2.5 2.5v13.5H7.5A2.5 2.5 0 0 1 5 18z"/><path d="M5 18a2.5 2.5 0 0 1 2.5-2.5H19M10 4.5v6l2-1.4 2 1.4v-6"/></g></symbol>
+<symbol id="i-hilal" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11.38 4.01A8.5 8.5 0 1 0 18.8 15.88 7 7 0 0 1 11.38 4.01Z"/><circle cx="19" cy="5.5" r="1.2" fill="currentColor"/></g></symbol>
+<symbol id="i-yol" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21c0-4 3-5 7-6.5S19 11 19 7"/><circle cx="19" cy="4.5" r="1.6"/><circle cx="5" cy="21" r=".6"/></g></symbol>
+<symbol id="i-su" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3.6 4.6 6 7.8 6 11a6 6 0 0 1-12 0c0-3.2 2.4-6.4 6-11z"/></g></symbol>
+<symbol id="i-ok" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></g></symbol>
+<symbol id="i-oynat" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></symbol>
+<symbol id="i-tekrar" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5A8 8 0 0 1 17.7 6L20 8.3M20 3.5v4.8h-4.8M20 12.5A8 8 0 0 1 6.3 18L4 15.7M4 20.5v-4.8h4.8"/></g></symbol>
+<symbol id="i-soru" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.3a2.5 2.5 0 1 1 3.4 2.3c-.6.3-1 .8-1 1.5v.7M12 17v.01"/></g></symbol>
+<symbol id="i-takvim" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16v14H4zM4 10h16M8 3.5v4M16 3.5v4"/></g></symbol>
+<symbol id="i-ses" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5h3.5L12 6v12l-4.5-3.5H4z"/><path d="M15.5 9a4.5 4.5 0 0 1 0 6M18 6.5a8 8 0 0 1 0 11"/></g></symbol>
+<symbol id="i-cihaz" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6.5" y="2.5" width="11" height="19" rx="2"/><path d="M10.5 18.5h3"/></g></symbol>
+<symbol id="i-dunya" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.8 3.2 2.8 14.8 0 18M12 3c-2.8 3.2-2.8 14.8 0 18"/></g></symbol>
+<symbol id="i-kare-kod" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h2.5v2.5H14zM17.5 17.5H20V20h-2.5zM14 20h1M20 14v1"/></g></symbol>
+<symbol id="i-google" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M20.5 12h-8M19.4 7.6A8.5 8.5 0 1 0 20.5 12"/></g></symbol>
+<symbol id="i-goz" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></g></symbol>
+<symbol id="i-tik" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></g></symbol>
+<symbol id="i-kilit" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="10" rx="1.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></g></symbol>
+<symbol id="i-asagi" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></g></symbol>
+<symbol id="i-anahtar" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="15.5" cy="8.5" r="4.5"/><path d="M12.3 11.7 4 20M6.5 17.5l2 2M9 15l2 2"/></g></symbol>
+</defs></svg>
+<!--/SPRITE-->
+<a class="atla" href="#ana">İçeriğe geç</a>
+
+<header class="ust">
+  <div class="kap ust-ic">
+    <a class="damga" href="ana-misafir.html" aria-label="İlim Yolu, ana sayfa">
+      <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><use href="#damga"/></svg>
+      <span><span class="damga-ad">İlim Yolu</span><span class="damga-alt">Ulu Camii · Marche-en-Famenne</span></span>
+    </a>
+    <div class="diller" role="group" aria-label="Dil">
+      <a href="#" lang="tr" aria-current="true">TR</a><a href="#" lang="fr">FR</a><a href="#" lang="en">EN</a><a href="#" lang="nl">NL</a><a href="#" lang="de">DE</a>
+    </div>
+    <div class="ust-eylem">
+      <a class="dugme ikincil kucuk" href="ana-misafir.html">Hesapsız devam et</a>
+    </div>
+  </div>
+  <svg class="bordur" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#bordur)"/></svg>
+</header>
+
+<main id="ana" class="kap">
+  <div class="giris-bas">
+    <h1>Hesap aç</h1>
+    <ol class="adim-sirasi" aria-label="Hesap açma adımları">
+      <li aria-current="step"><b>1</b>Giriş bilgileri</li>
+      <li><b>2</b>Kullanıcı adı</li>
+      <li><b>3</b>İsteğe bağlı</li>
+    </ol>
+  </div>
+
+  <div class="giris-duzen">
+    <div class="form-sutun">
+      <section class="karo form-karo" aria-labelledby="adim1">
+        <div class="ust-desen" aria-hidden="true"><svg focusable="false"><rect width="100%" height="100%" fill="url(#yildiz-desen-kucuk)"/></svg></div>
+        <div class="sekmeler" role="tablist" aria-label="Hesap">
+          <button type="button" role="tab" aria-selected="true">Hesap aç</button>
+          <button type="button" role="tab" aria-selected="false" tabindex="-1">Giriş yap</button>
+        </div>
+        <h2 id="adim1" class="gorunmez">1. adım: giriş bilgileri</h2>
+        <a class="dugme google" href="#"><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-google"/></svg>Google ile devam et</a>
+        <p class="ya-da">ya da e-postayla</p>
+        <div class="alan">
+          <label for="eposta">E-posta</label>
+          <input class="girdi" id="eposta" type="email" autocomplete="email" value="ahmet.k@ornek.test">
+        </div>
+        <div class="alan">
+          <label for="sifre">Şifre</label>
+          <div class="sifre-kutu">
+            <input class="girdi" id="sifre" type="password" autocomplete="new-password" value="ornek-sifre" aria-describedby="sifre-ipucu">
+            <button type="button" aria-label="Şifreyi göster"><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-goz"/></svg></button>
+          </div>
+          <p class="ipucu" id="sifre-ipucu">En az 8 karakter.</p>
+        </div>
+        <a class="dugme birincil tam" href="#adim2">Devam et <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ok"/></svg></a>
+        <p class="form-alt"><a href="#">Şifremi unuttum</a></p>
+      </section>
+
+      <section class="hoca-kodu" aria-labelledby="hoca-kodu-baslik">
+        <svg class="buyuk" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-kare-kod"/></svg>
+        <h2 id="hoca-kodu-baslik">Hocadan kodun mu var?</h2>
+        <p>Kurs öğrencileri, hocanın verdiği kullanıcı adı ve kısa şifreyle ya da kare kodlu kartla girer.</p>
+        <div class="eylem">
+          <a class="dugme ikincil kucuk" href="#"><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-anahtar"/></svg>Kullanıcı adıyla gir</a>
+          <a class="dugme ikincil kucuk" href="#"><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-kare-kod"/></svg>Kartı okut</a>
+        </div>
+      </section>
+    </div>
+
+    <div class="form-sutun">
+      <section class="karo form-karo" aria-labelledby="adim2">
+        <div class="ust-desen" aria-hidden="true"><svg focusable="false"><rect width="100%" height="100%" fill="url(#yildiz-desen-kucuk)"/></svg></div>
+        <h2 id="adim2">Kullanıcı adını seç</h2>
+        <p class="alt-baslik">Diğer kullanıcılar seni bu adla görür; gerçek adını yazman gerekmez.</p>
+        <div class="alan">
+          <label for="kad">Kullanıcı adı</label>
+          <div class="onek-kutu"><span aria-hidden="true">@</span><input class="girdi" id="kad" value="ahmet.k" autocomplete="username" spellcheck="false" aria-describedby="kad-durum kad-kural"></div>
+          <p class="uygun" id="kad-durum"><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-tik"/></svg>@ahmet.k kullanılabilir</p>
+          <div class="kural" id="kad-kural">
+            <span>3–24 karakter</span>
+            <span>a–z harfleri</span>
+            <span>rakamlar</span>
+            <span>nokta (.) alt çizgi (_) tire (-)</span>
+            <span>ç ğ ı ö ş ü ve boşluk yok</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="karo form-karo" aria-labelledby="adim3">
+        <div class="ust-desen" aria-hidden="true"><svg focusable="false"><rect width="100%" height="100%" fill="url(#yildiz-desen-kucuk)"/></svg></div>
+        <h2 id="adim3">İsteğe bağlı bilgiler</h2>
+        <p class="alt-baslik">İkisini de boş bırakabilirsin; sonra ayarlardan da ekleyebilirsin.</p>
+        <div class="alan">
+          <label for="cami">Şehir ve cami <span class="istege-bagli">(isteğe bağlı)</span></label>
+          <div class="secim-kutu">
+            <select class="girdi" id="cami" aria-describedby="cami-ipucu">
+              <option value="">Seç…</option>
+              <option selected>Marche-en-Famenne — Ulu Camii</option>
+              <option>Diğer (şehrini yaz)</option>
+            </select>
+            <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-asagi"/></svg>
+          </div>
+          <p class="ipucu" id="cami-ipucu">Belçika’daki Diyanet camileri listelenir. Camin listede yoksa «Diğer»i seçip şehrini yaz.</p>
+        </div>
+        <fieldset>
+          <legend>Yeni Müslüman yolu <span class="istege-bagli">(isteğe bağlı)</span></legend>
+          <label class="kutu-secim"><input type="checkbox" checked><span>Yeni Müslümanım<small>Sana Yeni Müslüman yolunu öneririz.</small></span></label>
+          <div class="riza">
+            <p class="riza-bas"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-kilit"/></svg>Ayrı açık rıza · hassas bilgi</p>
+            <p>Bu bilgi dinî inancınla ilgili hassas bir bilgidir. Yalnız sen görürsün; hocan ancak sen «hocamla paylaş» dersen görür. İstediğin zaman ayarlardan silebilirsin.</p>
+            <label class="kutu-secim"><input type="checkbox"><span>Bu bilginin hesabımda saklanmasına açık rıza veriyorum.<small>Rıza vermezsen bilgi saklanmaz; Yeni Müslüman yolunu yine de açabilirsin.</small></span></label>
+          </div>
+        </fieldset>
+        <a class="dugme birincil tam" href="ana-girisli.html">Hesabımı oluştur</a>
+        <p class="form-alt">Hesap açmadan önce <a href="#">gizlilik metnini</a> okuyabilirsin.</p>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer class="alt">
+  <svg class="bordur" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#bordur)"/></svg>
+  <div class="kap alt-ic">
+    <div>
+      <p class="alt-damga">İlim Yolu</p>
+      <p>Marche-en-Famenne Ulu Camii’nin eğitim platformu</p>
+    </div>
+    <nav aria-label="Alt bilgi">
+      <a href="mailto:info@ulucamii.be">info@ulucamii.be</a>
+      <a href="#">Gizlilik</a>
+      <a href="https://www.ulucamii.be/tr/">ulucamii.be</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>

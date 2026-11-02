@@ -32,28 +32,28 @@ test('Kayıt başlar, durur, kendi kaydı çalınır (CSP ihlali yok), mikrofon 
   await page.goto('/tr/calis/s-ihlas/');
   await page.locator('#kip-sekme-sina').click();
   await page.locator('#kip-panel-sina .sina-oyunlar [data-oyun="kayit"]').click();
-  await page.getByRole('button', { name: 'Kaydı başlat' }).click();
-  await expect(page.getByRole('button', { name: 'Kaydı durdur' })).toBeVisible();
+  await page.getByRole('button', { name: 'Kaydı başlatın' }).click();
+  await expect(page.getByRole('button', { name: 'Kaydı durdurun' })).toBeVisible();
   await expect(page.locator('#kip-panel-sina .sina-alan + .kip-durum')).toContainText('Kayıt sürüyor');
   // Kayıt sürerken hafızın kaydı çalınamaz (hoparlör sesi kayda karışmasın).
-  await expect(page.getByRole('button', { name: 'Hafızın okuyuşunu dinle' })).toBeDisabled();
+  await expect(page.getByRole('button', { name: 'Hafızın okuyuşunu dinleyin' })).toBeDisabled();
   await page.waitForTimeout(1200);
-  await page.getByRole('button', { name: 'Kaydı durdur' }).click();
+  await page.getByRole('button', { name: 'Kaydı durdurun' }).click();
   await expect(page.locator('#kip-panel-sina .sina-alan + .kip-durum')).toHaveText('Kayıt hazır.');
-  await expect(page.getByRole('button', { name: 'Kaydımı dinle' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Kaydınızı dinleyin' })).toBeVisible();
   // Mikrofon bırakıldı: açılan bütün akışların bütün kanalları bitmiş durumda (tarayıcının kırmızı göstergesi söner).
   expect(await page.evaluate(() => window.__akimlar.length)).toBe(1);
   expect(await page.evaluate(() => window.__akimlar.flatMap((a) => a.getTracks()).every((t) => t.readyState === 'ended'))).toBe(true);
 
   // Kendi kaydı gerçek <audio> ile blob adresinden çalınır; CSP engellemez.
-  await page.getByRole('button', { name: 'Kaydımı dinle' }).click();
+  await page.getByRole('button', { name: 'Kaydınızı dinleyin' }).click();
   await page.waitForTimeout(1500);
   expect(await page.evaluate(() => window.__csp)).toEqual([]);
   await expect(page.locator('.kip-hata')).toBeHidden();
 
-  await page.getByRole('button', { name: 'Kaydı sil' }).click();
-  await expect(page.getByRole('button', { name: 'Kaydı başlat' })).toBeVisible();
-  await expect(page.getByRole('button', { name: 'Kaydımı dinle' })).toBeHidden();
+  await page.getByRole('button', { name: 'Kaydı silin' }).click();
+  await expect(page.getByRole('button', { name: 'Kaydı başlatın' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Kaydınızı dinleyin' })).toBeHidden();
   // Ağ: yalnız sayfanın kendi varlıkları; kayıt hiçbir yere POST/PUT edilmedi.
   expect(istekler.filter((i) => !i.startsWith('GET '))).toEqual([]);
 });
@@ -64,14 +64,14 @@ test('Sekme değişince kayıt durur ve silinir', async ({ page, context }) => {
   await page.goto('/tr/calis/s-ihlas/');
   await page.locator('#kip-sekme-sina').click();
   await page.locator('#kip-panel-sina .sina-oyunlar [data-oyun="kayit"]').click();
-  await page.getByRole('button', { name: 'Kaydı başlat' }).click();
-  await expect(page.getByRole('button', { name: 'Kaydı durdur' })).toBeVisible();
+  await page.getByRole('button', { name: 'Kaydı başlatın' }).click();
+  await expect(page.getByRole('button', { name: 'Kaydı durdurun' })).toBeVisible();
   await page.locator('#kip-sekme-gizle').click();
   await page.locator('#kip-sekme-sina').click();
   // Panel yeniden açılınca oyun seçimi temizdir; kayıt oyununu yeniden açmak taze bir ekran verir.
   await page.locator('#kip-panel-sina .sina-oyunlar [data-oyun="kayit"]').click();
-  await expect(page.getByRole('button', { name: 'Kaydı başlat' })).toBeVisible();
-  await expect(page.getByRole('button', { name: 'Kaydı durdur' })).toBeHidden();
+  await expect(page.getByRole('button', { name: 'Kaydı başlatın' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Kaydı durdurun' })).toBeHidden();
 });
 
 // Tarayıcı izin penceresi açıkken (getUserMedia bekliyor) ekranda bir açıklama olmalı; verilince ya da reddedilince bu satır değişir.
@@ -87,7 +87,7 @@ const kayitaGir = async (page) => {
   await page.goto('/tr/calis/s-ihlas/');
   await page.locator('#kip-sekme-sina').click();
   await page.locator('#kip-panel-sina .sina-oyunlar [data-oyun="kayit"]').click();
-  await page.getByRole('button', { name: 'Kaydı başlat' }).click();
+  await page.getByRole('button', { name: 'Kaydı başlatın' }).click();
 };
 const durumSatiri = (page) => page.locator('#kip-panel-sina .sina-alan + .kip-durum');
 
@@ -98,7 +98,7 @@ test('İzin penceresi beklerken durum satırı «Mikrofon izni bekleniyor» der;
   await kayitaGir(page);
   await expect(durumSatiri(page)).toContainText('Mikrofon izni bekleniyor');
   await page.evaluate(() => window.__izinSonuc());
-  await expect(page.getByRole('button', { name: 'Kaydı durdur' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Kaydı durdurun' })).toBeVisible();
   await expect(durumSatiri(page)).toContainText('Kayıt sürüyor');
   await expect(durumSatiri(page)).not.toContainText('bekleniyor');
 });
@@ -112,5 +112,5 @@ test('İzin reddedilince bekleme satırı kalkar, red iletisi görünür', async
   await page.evaluate(() => window.__izinSonuc());
   await expect(durumSatiri(page)).toContainText('Mikrofon izni verilmedi');
   await expect(durumSatiri(page)).not.toContainText('bekleniyor');
-  await expect(page.getByRole('button', { name: 'Kaydı başlat' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Kaydı başlatın' })).toBeVisible();
 });

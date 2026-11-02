@@ -54,7 +54,7 @@ const TAKVIM: Record<Dil, TakvimMetinleri> = {
       'Bilgi maddeleri ve niyetler ezber köşesinde değil, ilgili derslerde (İtikat, İbadet, Siyer) işlenir.',
       'Sınıfın ilerleyişine göre program küçük kaydırmalar gösterebilir.',
     ],
-    yazdir: 'Takvimi yazdır',
+    yazdir: 'Takvimi yazdırın',
     aylarEtiket: 'Aylar',
     bandBaslik: 'Derste bu hafta',
     bandBu: 'Bu haftanın dersleri: {aralik}',

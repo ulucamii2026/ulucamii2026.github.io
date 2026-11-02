@@ -3,11 +3,47 @@
     "rules": "firebase/firestore.rules",
     "indexes": "firebase/firestore.indexes.json"
   },
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "ilim-yolu",
+      "predeploy": [
+        "npm --prefix functions run build"
+      ],
+      "ignore": [
+        "node_modules",
+        ".git",
+        "*.log",
+        "src",
+        "build.mjs",
+        "tsconfig.json"
+      ]
+    }
+  ],
   "emulators": {
-    "firestore": { "host": "127.0.0.1", "port": 8185 },
-    "hub": { "host": "127.0.0.1", "port": 4485 },
-    "logging": { "host": "127.0.0.1", "port": 4585 },
-    "ui": { "enabled": false },
+    "firestore": {
+      "host": "127.0.0.1",
+      "port": 8185
+    },
+    "auth": {
+      "host": "127.0.0.1",
+      "port": 9185
+    },
+    "functions": {
+      "host": "127.0.0.1",
+      "port": 5185
+    },
+    "hub": {
+      "host": "127.0.0.1",
+      "port": 4485
+    },
+    "logging": {
+      "host": "127.0.0.1",
+      "port": 4585
+    },
+    "ui": {
+      "enabled": false
+    },
     "singleProjectMode": true
   }
 }

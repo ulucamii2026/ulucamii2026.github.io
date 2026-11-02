@@ -40,11 +40,11 @@ const tasmaYok = (page) => page.evaluate(() => document.documentElement.scrollWi
 
 for (const dil of DILLER) {
   test(`${dil}: pano, şeritler, iletişim ve dil seçici`, async ({ page }) => {
-    await page.goto(`/${dil}/`);
+    await page.goto(`/${dil}/ezber/`);
     await expect(page.locator('html')).toHaveAttribute('lang', new RegExp(`^${dil}`));
     await expect(page.locator('main h1')).toHaveText(BASLIK[dil]);
     await expect(page.locator('link[rel="alternate"][hreflang]')).toHaveCount(6);
-    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://egitim.ulucamii.be/${dil}/`);
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://egitim.ulucamii.be/${dil}/ezber/`);
     await expect(page.locator('.pano .karo.madde')).toHaveCount(81);
     await expect(page.locator('.pano .karo.bordur-karo')).toHaveCount(33);
     await expect(page.locator('.pano .karo.kose')).toHaveCount(4);
@@ -67,7 +67,7 @@ for (const dil of DILLER) {
     expect(await page.content()).not.toMatch(/wa\.me|gmail/i);
     // Dil seçici: beş dil, bulunulan işaretli; ana siteye dönüş aynı dilde.
     await expect(page.locator('.diller a')).toHaveCount(5);
-    await expect(page.locator('.diller a[aria-current="true"]')).toHaveAttribute('href', `/${dil}/`);
+    await expect(page.locator('.diller a[aria-current="true"]')).toHaveAttribute('href', `/${dil}/ezber/`);
     await expect(page.locator(`.alt a[href="https://ulucamii.be/${dil}/"]`)).toHaveCount(1);
     expect(await tasmaYok(page)).toBe(true);
     // Fransız tipografisi yalnız FR sayfada ve bütün metinde (ortak katalog adları dahil; src/middleware.ts).
@@ -80,7 +80,7 @@ for (const dil of DILLER) {
   });
 
   test(`${dil}: çal düğmesi tek ses çalar, parçaları sırayla çalar, hatayı söyler`, async ({ page }) => {
-    await page.goto(`/${dil}/`);
+    await page.goto(`/${dil}/ezber/`);
     await listeleriAc(page);
     const dugmeler = page.locator('button.dinle');
     const [ilk, ikinci] = [dugmeler.nth(1), dugmeler.nth(2)];
@@ -113,7 +113,7 @@ for (const dil of DILLER) {
   });
 
   test(`${dil}: klavyeyle pano gezilir, karo ve «başla» listedeki maddeyi açar`, async ({ page }) => {
-    await page.goto(`/${dil}/`);
+    await page.goto(`/${dil}/ezber/`);
     const karolar = page.locator('.pano .karo.madde');
     const odak = () => page.evaluate(() => {
       const k = document.activeElement;
@@ -151,7 +151,7 @@ for (const dil of DILLER) {
   });
 
   test(`${dil}: açık/koyu temada erişilebilir, taşma yok`, async ({ page }) => {
-    await page.goto(`/${dil}/`);
+    await page.goto(`/${dil}/ezber/`);
     await listeleriAc(page);
     for (const tema of ['light', 'dark']) {
       await page.emulateMedia({ colorScheme: tema, reducedMotion: 'reduce' });
@@ -165,7 +165,7 @@ for (const dil of DILLER) {
 }
 
 test('Telefonda şerit listeleri katlı başlar, geniş ekranda açık; azaltılmış harekette sır anında', async ({ page }, info) => {
-  await page.goto('/tr/');
+  await page.goto('/tr/ezber/');
   const acik = await page.locator('details.serit-liste').evaluateAll((d) => d.map((x) => x.open));
   expect(acik.length).toBe(9);
   expect(acik.every((x) => x === (info.project.name === 'masaustu-chromium'))).toBe(true);
@@ -200,10 +200,10 @@ test('Hosting güvenlik başlıkları: beş dil ve 404 CSP ihlalsiz; ses adresi 
   });
   const yanit = await page.goto('/tr/');
   const basliklar = yanit.headers();
-  expect(basliklar['content-security-policy']).toContain("default-src 'none'; script-src 'self'; style-src 'self'");
+  expect(basliklar['content-security-policy']).toContain("default-src 'none'; script-src 'self' https://apis.google.com; style-src 'self'");
   expect(basliklar['x-content-type-options']).toBe('nosniff');
-  expect(basliklar['x-frame-options']).toBe('DENY');
-  for (const yol of ['/tr/', '/fr/', '/en/', '/nl/', '/de/', '/boyle-bir-sayfa-yok/']) {
+  expect(basliklar['x-frame-options']).toBe('SAMEORIGIN'); // firebase.json (İlim Yolu Dilim 0): Google giriş penceresi aynı kökenli çerçeve ister
+  for (const yol of ['/tr/', '/fr/', '/en/', '/nl/', '/de/', '/tr/ezber/', '/fr/ezber/', '/en/ezber/', '/nl/ezber/', '/de/ezber/', '/boyle-bir-sayfa-yok/']) {
     await page.goto(yol);
     await page.evaluate(() => document.fonts.ready);
     const karo = page.locator('.pano .karo.madde').first();
@@ -211,7 +211,7 @@ test('Hosting güvenlik başlıkları: beş dil ve 404 CSP ihlalsiz; ses adresi 
     expect(await page.evaluate(() => window.__ihlaller), yol).toEqual([]);
   }
   // Ses yüklemesi: ana sitedeki kayıt media-src'ye uyar (istek testte yine kesilir); başka köken engellenir.
-  await page.goto('/tr/');
+  await page.goto('/tr/ezber/');
   const ses = (await page.locator('button.dinle').first().getAttribute('data-ses')).split(' ')[0];
   const yabanci = 'https://example.com/ses.mp3';
   const ihlal = await page.evaluate(async (adresler) => {

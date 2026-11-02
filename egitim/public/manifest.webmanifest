@@ -1,22 +1,44 @@
 {
   "id": "/",
-  "name": "Ezber Kilimi · Ulu Camii Kur’an Kursu",
-  "short_name": "Ezber Kilimi",
-  "description": "Ulu Camii Kur’an kursunun ezber platformu: Diyanet kayıtlarıyla dinle–tekrarla çalışma; kaydettiğiniz maddeler internetsiz de açılır.",
+  "name": "İlim Yolu · Ulu Camii",
+  "short_name": "İlim Yolu",
+  "description": "Ulu Camii’nin öğrenme platformu: hesapla her cihazda devam eden Ezber Kilimi; kaydettiğiniz maddeler internetsiz de açılır.",
   "lang": "tr",
   "dir": "ltr",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "orientation": "any",
-  "theme_color": "#134420",
-  "background_color": "#134420",
-  "categories": ["education"],
+  "theme_color": "#F6EEDF",
+  "background_color": "#F6EEDF",
+  "categories": [
+    "education"
+  ],
   "prefer_related_applications": false,
   "icons": [
-    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
-    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
-    { "src": "/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
-    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
   ]
 }

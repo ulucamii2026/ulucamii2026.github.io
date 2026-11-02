@@ -81,7 +81,7 @@ test.describe('sayfa ve boş durum', () => {
       await expect(page.locator('[data-km-bos]')).toBeVisible();
       await expect(page.locator('[data-km-dolu]')).toBeHidden();
       await expect(page.locator('[data-km-bos] a.birincil')).toHaveAttribute('href', `/${dil}/calis/s-fatiha/`);
-      await expect(page.locator('[data-km-bos] a.ikincil')).toHaveAttribute('href', `/${dil}/#seritler`);
+      await expect(page.locator('[data-km-bos] a.ikincil')).toHaveAttribute('href', `/${dil}/ezber/#seritler`);
       await expect(page.locator('.km-gizlilik')).toBeVisible();
       expect(await page.evaluate(() => window.__csp)).toEqual([]);
     });
@@ -365,10 +365,10 @@ test.describe('koyu tema: «çalışılmadı» dokusu (25 Ekim 2026)', () => {
     await page.emulateMedia({ colorScheme: 'light' });
     await page.goto('/tr/kilimim/');
     const acik = await olc(page, KILIM);
-    expect(acik.cizgi).toEqual([181, 197, 185]);
+    expect(acik.cizgi).toEqual([201, 178, 142]);
     await page.emulateMedia({ colorScheme: 'dark' });
-    await page.goto('/tr/');
-    // Öğretmenin kilimi `.kl-b0` kullanır ve çözgü rengi derz-koyu (#2D463A) kalır.
+    await page.goto('/tr/ezber/');
+    // Öğretmenin kilimi `.kl-b0` kullanır ve çözgü rengi derz-koyu kalır.
     const hoca = await page.evaluate(() => {
       const e = document.querySelector('svg.ezber-kilim:not(.kl-kendi) .kl-b0, svg.ezber-kilim:not(.kl-kendi) .kl-ara');
       const k = document.createElement('canvas'); k.width = k.height = 1;
@@ -376,7 +376,7 @@ test.describe('koyu tema: «çalışılmadı» dokusu (25 Ekim 2026)', () => {
       return { var: !!e, rgb: [...g.getImageData(0, 0, 1, 1).data].slice(0, 3) };
     });
     expect(hoca.var).toBe(true);
-    expect(hoca.rgb).toEqual([45, 70, 58]);
+    expect(hoca.rgb).toEqual([84, 64, 47]); // koyu temada derz-koyu (#54402F, Kilim paleti)
   });
 });
 
@@ -422,7 +422,7 @@ test.describe('bağlantılar', () => {
   for (const dil of DILLER) {
     test(`${dil}: alt bilgide, «Bugün tekrar» bandında, madde sayfasında ve Çalışma Belgesi'nde Kilimim'e; Kilimim'den Çalışma Belgesi'ne`, async ({ page }) => {
       await tohumla(page, durumKur());
-      await page.goto(`/${dil}/`);
+      await page.goto(`/${dil}/ezber/`);
       await expect(page.locator(`footer a[href="/${dil}/kilimim/"]`)).toHaveCount(1);
       await expect(page.locator(`[data-tekrar] a[href="/${dil}/kilimim/"]`)).toBeVisible();
       await page.goto(`/${dil}/calis/s-ihlas/`);

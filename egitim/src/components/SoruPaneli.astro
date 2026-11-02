@@ -1,0 +1,13 @@
+---
+/** Evet/hayır soru paneli (scripts/hesap-ortak.ts `evetHayir` doldurur): «Bu cihazdaki N madde hesabına eklensin mi?», çıkışta «yine de çıkılsın mı?». */
+interface Props { kimlik: string }
+const { kimlik } = Astro.props;
+---
+<div class="iy-soru" data-soru hidden role="group" aria-labelledby={kimlik}>
+  <p id={kimlik} data-soru-metin></p>
+  <p class="ipucu" data-soru-not hidden></p>
+  <div class="iy-eylem">
+    <button type="button" class="dugme birincil" data-soru-evet></button>
+    <button type="button" class="dugme ikincil" data-soru-hayir></button>
+  </div>
+</div>

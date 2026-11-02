@@ -41,7 +41,7 @@ for (const dil of DILLER) {
     await page.locator('.diller a[lang="fr"]').click();
     await expect(page).toHaveURL('/fr/calis/s-fatiha/');
     await page.locator('.calisma-geri').click();
-    await expect(page).toHaveURL('/fr/#m-s-fatiha');
+    await expect(page).toHaveURL('/fr/ezber/#m-s-fatiha');
     await expect(page.locator('#m-s-fatiha')).toBeInViewport();
     expect(hatalar).toEqual([]);
     expect(await page.evaluate(() => window.__csp)).toEqual([]);
@@ -54,10 +54,10 @@ test('Her parça üç kez; hız, duraklat/devam, bitiş ve yeniden başlatma', a
   await page.locator('[data-hiz]').selectOption('0.75');
   await page.locator('[data-oynat]').focus();
   await page.keyboard.press('Enter');
-  await expect(page.locator('[data-oynat]')).toHaveText('Duraklat');
+  await expect(page.locator('[data-oynat]')).toHaveText('Duraklatın');
   expect(await page.evaluate(() => window.__ses.playbackRate)).toBe(.75);
   await page.locator('[data-oynat]').click();
-  await expect(page.locator('[data-oynat]')).toHaveText('Devam et');
+  await expect(page.locator('[data-oynat]')).toHaveText('Devam edin');
   await page.locator('[data-oynat]').click();
   await bitir(page); await bitir(page); await bitir(page);
   expect(await page.evaluate(() => window.__ses.src)).toMatch(/\/media\/ses\/ayet\/1-1\.mp3$/);
@@ -81,10 +81,10 @@ test('Seçili bölüm, tek dinleyiş, durdurma ve eski kaydın geç gelen hatas�
   await expect(page.locator('.calisma-durum')).toContainText('tamamlandı');
   await page.locator('[data-oynat]').click();
   await page.locator('[data-bolum]').selectOption('0');
-  await expect(page.locator('[data-oynat]')).toHaveText('Dinlemeye başla');
+  await expect(page.locator('[data-oynat]')).toHaveText('Dinlemeye başlayın');
   await page.locator('[data-oynat]').click();
   await page.evaluate(() => window.__kayitlar[0].dispatchEvent(new Event('error')));
-  await expect(page.locator('[data-oynat]')).toHaveText('Duraklat');
+  await expect(page.locator('[data-oynat]')).toHaveText('Duraklatın');
   await page.locator('[data-durdur]').click();
   await expect(page.locator('.calisma-durum')).toContainText('Hazır');
 });
@@ -209,12 +209,12 @@ test('Ses hatası kurtarılabilir; eski play reddi yeni bölümü durduramaz', a
   await page.evaluate(() => { window.__gecik = false; });
   await page.locator('[data-oynat]').click();
   await page.evaluate(() => window.__reddet(new Error('Eski istek')));
-  await expect(page.locator('[data-oynat]')).toHaveText('Duraklat');
+  await expect(page.locator('[data-oynat]')).toHaveText('Duraklatın');
   await expect(page.locator('.calisma-durum')).toContainText('Bölüm 2');
 });
 
 test('Katalogda sesi ya da metni olan maddeler çalışmaya bağlanır; tek kayıt ve ezan vakit notu', async ({ page }) => {
-  await page.goto('/tr/');
+  await page.goto('/tr/ezber/');
   const baglar = await page.locator('.maddeler a[href*="/calis/"]').evaluateAll((a) => a.map((x) => x.pathname).sort());
   // calismaSayfasiVar (src/lib/ezber/katalog.ts) ile aynı koşul: Diyanet sesi, Kur'an metni, bilgi metni ya da (sessiz dualarda) metinli işareti.
   expect(baglar).toEqual(katalog.ogeler.filter((o) => o.ses || o.kuran || o.bilgiMetni || o.metinli).map((o) => `/tr/calis/${o.id}/`).sort());
@@ -233,14 +233,14 @@ test('Metinde âyet numarasına dokununca o âyet çalar ve vurgulanır; başka 
   await expect(ucuncu).toBeEnabled();
   await page.locator('[data-sira]').selectOption('0');
   await ucuncu.click();
-  await expect(page.locator('[data-oynat]')).toHaveText('Duraklat');
+  await expect(page.locator('[data-oynat]')).toHaveText('Duraklatın');
   expect(await page.evaluate(() => window.__sesler.at(-1).src)).toMatch(/\/media\/ses\/ayet\/1-3\.mp3$/);
   await expect(ucuncu).toHaveAttribute('data-calan', '');
   await expect(page.locator('.ayet[data-no="3"]')).toHaveAttribute('data-calan', '');
   await expect(page.locator('[data-calan]')).toHaveCount(2);
   // Tek bölüm seçildi: üç tekrar bitince çalar durur; başka âyete dokunmak onu çalar, vurgu ona geçer.
   for (let i = 0; i < 3; i++) await bitir(page);
-  await expect(page.locator('[data-oynat]')).not.toHaveText('Duraklat');
+  await expect(page.locator('[data-oynat]')).not.toHaveText('Duraklatın');
   await page.locator('button.ayet-no').nth(6).click();
   expect(await page.evaluate(() => window.__sesler.at(-1).src)).toMatch(/\/1-7\.mp3$/);
   await expect(page.locator('.ayet[data-no="7"]')).toHaveAttribute('data-calan', '');
@@ -255,7 +255,7 @@ test('Duraklatılan play isteğinin gecikmiş reddi devam eden aynı kaydı kesm
   await page.evaluate(() => { window.__gecik = false; });
   await page.locator('[data-oynat]').click();
   await page.evaluate(() => window.__reddet(Object.assign(new Error('İptal edildi'), { name: 'AbortError' })));
-  await expect(page.locator('[data-oynat]')).toHaveText('Duraklat');
+  await expect(page.locator('[data-oynat]')).toHaveText('Duraklatın');
   await expect(page.locator('.calisma-durum')).toContainText('Bölüm 1');
 });
 

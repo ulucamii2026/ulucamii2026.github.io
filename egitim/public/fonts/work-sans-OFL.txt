@@ -1,0 +1,6 @@
+Work Sans (500 ve 600 ağırlıkları, Latin + Latin Genişletilmiş alt kümesi)
+Copyright 2019 The Work Sans Project Authors (https://github.com/weiweihuanghuang/Work-Sans)
+
+Bu yazı tipi SIL Open Font License, Version 1.1 altında lisanslıdır.
+Lisans metni: https://openfontlicense.org (tam metin: https://scripts.sil.org/OFL)
+Dosyalar ana sitenin public/fonts/panel/ klasöründeki kopyalardır (aynı dosya, değiştirilmedi).

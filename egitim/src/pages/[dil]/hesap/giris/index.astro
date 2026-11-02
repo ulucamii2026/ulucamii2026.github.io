@@ -1,0 +1,103 @@
+---
+/**
+ * Giriş (2 Kasım 2026, İlim Yolu · Kilim): üç yöntem tek kartta sekmelerle: E-posta + şifre, Google, «Kurs öğrencisi» (hocanın verdiği kullanıcı adı +
+ * kısa şifre; kare kodlu kart `/k/` adresinden girer). Hesap sayfası: arama motorlarına kapalı, site haritasında yok, çevrim dışı önbelleğe alınmaz.
+ * Firebase bu sayfada yüklenir (scripts/giris.ts); anonim sayfalar yüklemez. Metinler beş dilde src/i18n/hesap.ts.
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import { dilListesi, yerelKodu } from '@ortak/i18n/utils';
+import Ikon from '../../../../components/Ikon.astro';
+import SoruPaneli from '../../../../components/SoruPaneli.astro';
+import { hesapMetinleri } from '../../../../i18n/hesap';
+import { ilimMetinleri } from '../../../../i18n/ilim';
+import { sablonlar } from '../../../../i18n/sablon';
+import Taban from '../../../../layouts/Taban.astro';
+import '../../../../styles/ilim.css';
+
+export function getStaticPaths() {
+  return dilListesi.map((dil) => ({ params: { dil } }));
+}
+
+const dil = Astro.params.dil as Dil;
+const m = hesapMetinleri(dil);
+const il = ilimMetinleri(dil);
+const veri = { dil, yerel: yerelKodu[dil], m: sablonlar(m) };
+---
+<Taban dil={dil} baslik={m.gBaslik} aciklama={m.gAciklama} yol="hesap/giris" noindex oturum={false}>
+  <div class="icerik" data-veri={JSON.stringify(veri)}>
+    <div class="iy-giris-bas">
+      <p class="iy-ust-yazi">{il.marka}</p>
+      <h1>{m.gBaslik}</h1>
+      <p>{m.gLead}</p>
+    </div>
+
+    <div class="iy-giris-duzen">
+      <div class="iy-form-yigin dar">
+        <section class="iy-kart iy-form-kart" aria-label={m.gBaslik}>
+          <svg class="kilim-serit" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#serit)" /></svg>
+          <div class="iy-kart-govde">
+            <div class="iy-sekmeler" role="tablist" aria-label={m.gSekmeAd} data-sekmeler>
+              <button type="button" role="tab" id="t-eposta" aria-controls="p-eposta" aria-selected="true" data-yontem="eposta">{m.gSekmeler[0]}</button>
+              <button type="button" role="tab" id="t-google" aria-controls="p-google" aria-selected="false" tabindex="-1" data-yontem="google">{m.gSekmeler[1]}</button>
+              <button type="button" role="tab" id="t-kurs" aria-controls="p-kurs" aria-selected="false" tabindex="-1" data-yontem="kurs">{m.gSekmeler[2]}</button>
+            </div>
+
+            <div id="p-eposta" role="tabpanel" aria-labelledby="t-eposta" class="iy-sekme-paneli">
+              <form data-form="eposta" novalidate>
+                <div class="iy-alan">
+                  <label for="g-eposta">{m.epostaEtiket}</label>
+                  <input class="iy-girdi" id="g-eposta" name="eposta" type="email" inputmode="email" autocomplete="email" autocapitalize="none" spellcheck="false" />
+                </div>
+                <div class="iy-alan">
+                  <label for="g-sifre">{m.sifreEtiket}</label>
+                  <div class="iy-sifre-kutu">
+                    <input class="iy-girdi" id="g-sifre" name="sifre" type="password" autocomplete="current-password" />
+                    <button type="button" data-sifre-goster aria-pressed="false"><Ikon ad="goz" /></button>
+                  </div>
+                </div>
+                <button type="submit" class="dugme birincil tam">{m.gGirisDugme}</button>
+                <p class="iy-form-alt"><button type="button" class="iy-baglanti-dugme" data-sifirla>{m.gSifremiUnuttum}</button></p>
+              </form>
+            </div>
+
+            <div id="p-google" role="tabpanel" aria-labelledby="t-google" class="iy-sekme-paneli" hidden>
+              <button type="button" class="dugme google" data-google>
+                <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-google" /></svg>{m.gGoogle}
+              </button>
+              <p class="iy-form-alt">{m.gGoogleNot}</p>
+            </div>
+
+            <div id="p-kurs" role="tabpanel" aria-labelledby="t-kurs" class="iy-sekme-paneli" hidden>
+              <form data-form="kurs" novalidate>
+                <div class="iy-alan">
+                  <label for="g-kad">{m.gKullaniciAdi}</label>
+                  <input class="iy-girdi" id="g-kad" name="kullaniciAdi" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" maxlength="64" />
+                </div>
+                <div class="iy-alan">
+                  <label for="g-kursifre">{m.gKursSifre}</label>
+                  <div class="iy-sifre-kutu">
+                    <input class="iy-girdi" id="g-kursifre" name="kursSifre" type="password" autocomplete="current-password" autocapitalize="none" spellcheck="false" maxlength="64" aria-describedby="g-kursnot" />
+                    <button type="button" data-sifre-goster aria-pressed="false"><Ikon ad="goz" /></button>
+                  </div>
+                  <p class="ipucu" id="g-kursnot">{m.gKursNot}</p>
+                </div>
+                <button type="submit" class="dugme birincil tam">{m.gGirisDugme}</button>
+                <p class="iy-form-alt">{m.gKartNot}</p>
+              </form>
+            </div>
+
+            <p class="iy-durum" role="status" data-durum></p>
+            <p class="iy-durum hata" role="alert" data-hata></p>
+            <SoruPaneli kimlik="g-soru" />
+          </div>
+        </section>
+        <p class="iy-form-alt">{m.gKayitSor} <a href={`/${dil}/hesap/kayit/`}>{m.gKayitLink}</a></p>
+      </div>
+    </div>
+  </div>
+</Taban>
+
+<script>
+  import '../../../../scripts/dil';
+  import '../../../../scripts/giris';
+</script>

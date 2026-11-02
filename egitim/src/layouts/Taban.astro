@@ -1,15 +1,22 @@
 ---
 /**
- * Sayfa iskeleti: baş etiketleri (kanonik adres, beş dilin hreflang'ı, simgeler, uygulama bildirimi + tema rengi, Open Graph + paylaşım kartı), motif
- * sembolleri, üst ve alt bilgi; service worker kaydı (scripts/cevrimdisi-kayit.ts, çevrim dışı çalışma: docs/EGITIM-PLATFORMU.md). Satır içi stil ve betik yok: Hosting'deki sıkı CSP (firebase.json) buna dayanır.
+ * Sayfa iskeleti (İlim Yolu · Kilim): baş etiketleri (kanonik adres, beş dilin hreflang'ı, simgeler, uygulama bildirimi + tema rengi, Open Graph +
+ * paylaşım kartı), sembol seti, üst ve alt bilgi; service worker kaydı ve oturum köprüsü (scripts/cevrimdisi-kayit.ts, scripts/oturum-sayfa.ts).
+ * Oturum işareti okuyucusu (public/oturum-isareti.js) boyamadan önce <html data-oturum> koyar. Satır içi stil ve betik yok: Hosting'deki sıkı
+ * CSP (firebase.json) buna dayanır.
+ *
+ * `oturum={false}`: sayfa oturumu kendisi yönetir (hesap sayfaları, kart girişi) ya da hiç Firebase yüklememeli (`/k/`); `<html data-oturum-yok>` konur ve
+ * genel oturum köprüsü (scripts/oturum-sayfa.ts) hiçbir şey yapmaz. (Astro betikleri koşula bağlı eklenemez; karar çalışma zamanında.)
+ * `sade`: yalnız marka damgalı üst şerit (dil bağımsız `/k/`).
  */
-import '../styles/cini.css';
+import '../styles/kilim.css';
 import type { Dil } from '@ortak/i18n/ui';
 import { dilListesi, hreflangKodu, yerelKodu } from '@ortak/i18n/utils';
 import { KILIM_METINLERI } from '@ortak/lib/ezber/metinler';
+import { ilimMetinleri } from '../i18n/ilim';
 import { metin } from '../i18n/metinler';
-import { kursAdi } from '../lib/kimlik';
 import AltBilgi from '../components/AltBilgi.astro';
+import KilimSembolleri from '../components/KilimSembolleri.astro';
 import MotifSembolleri from '../components/MotifSembolleri.astro';
 import Simgeler from '../components/Simgeler.astro';
 import UstBilgi from '../components/UstBilgi.astro';
@@ -18,20 +25,28 @@ interface Props {
   dil: Dil;
   baslik?: string;
   aciklama: string;
-  /** Dile bağlı sayfanın dil öneksiz yolu (ör. «»); yoksa hreflang ve kanonik adres basılmaz (404). */
+  /** Dile bağlı sayfanın dil öneksiz yolu (ör. «», «ezber», «hesap/giris»); yoksa hreflang ve kanonik adres basılmaz (404, /k/). */
   yol?: string;
   noindex?: boolean;
+  /** Üst bilgide hangi menü öğesi geçerli. */
+  sayfa?: 'ana' | 'ezber' | 'diger';
+  /** Ziyaretçi ana sayfasındaki büyük kapak kilimini de yükle. */
+  kapak?: boolean;
+  oturum?: boolean;
+  sade?: boolean;
 }
-const { dil, baslik = KILIM_METINLERI.baslik[dil], aciklama, yol, noindex = false } = Astro.props;
+const { dil, baslik, aciklama, yol, noindex = false, sayfa = 'diger', kapak = false, oturum = true, sade = false } = Astro.props;
 const m = metin(dil);
-const tamBaslik = `${baslik} — ${kursAdi(dil)}`;
+const il = ilimMetinleri(dil);
+const sayfaBasligi = baslik ?? KILIM_METINLERI.baslik[dil];
+const tamBaslik = sayfaBasligi === il.siteAdi ? `${sayfaBasligi} — ${il.markaAlt}` : `${sayfaBasligi} — ${il.siteAdi}`;
 const adres = (d: Dil) => new URL(`/${d}/${yol ? `${yol}/` : ''}`, Astro.site).toString();
 const ogYerel = yerelKodu[dil].replace('-', '_');
 // Paylaşım kartı (1200 × 630, dil başına bir tane): scripts/egitim-og-kart.mjs üretir.
 const ogKart = new URL(`/og/ezber-kilimi-${dil}.png`, Astro.site).toString();
 ---
 <!doctype html>
-<html lang={hreflangKodu(dil)} dir="ltr" data-dil={yol !== undefined ? dil : undefined}>
+<html lang={hreflangKodu(dil)} dir="ltr" data-dil={yol !== undefined ? dil : undefined} data-oturum-yok={oturum ? undefined : ""}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -39,21 +54,24 @@ const ogKart = new URL(`/og/ezber-kilimi-${dil}.png`, Astro.site).toString();
     <meta name="description" content={aciklama} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     {yol !== undefined && !noindex && <link rel="canonical" href={adres(dil)} />}
-    {yol !== undefined && dilListesi.map((d) => <link rel="alternate" hreflang={hreflangKodu(d)} href={adres(d)} />)}
-    {yol !== undefined && <link rel="alternate" hreflang="x-default" href={adres('tr')} />}
+    {yol !== undefined && !noindex && dilListesi.map((d) => <link rel="alternate" hreflang={hreflangKodu(d)} href={adres(d)} />)}
+    {yol !== undefined && !noindex && <link rel="alternate" hreflang="x-default" href={adres('tr')} />}
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <Simgeler />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <meta name="theme-color" content="#134420" />
+    <meta name="theme-color" content="#F6EEDF" />
+    <meta name="theme-color" content="#1A120E" media="(prefers-color-scheme: dark)" />
     <link rel="manifest" href="/manifest.webmanifest" />
-    <meta name="apple-mobile-web-app-title" content={KILIM_METINLERI.baslik[dil]} />
+    <meta name="apple-mobile-web-app-title" content={il.siteAdi} />
     <link rel="preload" as="font" type="font/woff2" href="/fonts/atkinson-next.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/work-sans-600.woff2" crossorigin />
+    <script is:inline src="/oturum-isareti.js"></script>
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content={kursAdi(dil)} />
+    <meta property="og:site_name" content={il.siteAdi} />
     <meta property="og:title" content={tamBaslik} />
     <meta property="og:description" content={aciklama} />
     <meta property="og:locale" content={ogYerel} />
-    {yol !== undefined && <meta property="og:url" content={adres(dil)} />}
+    {yol !== undefined && !noindex && <meta property="og:url" content={adres(dil)} />}
     <meta property="og:image" content={ogKart} />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
@@ -63,14 +81,18 @@ const ogKart = new URL(`/og/ezber-kilimi-${dil}.png`, Astro.site).toString();
   </head>
   <body>
     <MotifSembolleri />
+    <KilimSembolleri kapak={kapak} />
     <a class="gorunmez" href="#ana">{m.icerigeGec}</a>
-    <UstBilgi dil={dil} sayfa={yol === '' ? 'giris' : 'diger'} yol={yol} />
+    <UstBilgi dil={dil} sayfa={sayfa} yol={yol} sade={sade} />
     <main id="ana">
       <slot />
     </main>
-    <AltBilgi dil={dil} />
+    {!sade && <AltBilgi dil={dil} />}
     <script>
       import '../scripts/cevrimdisi-kayit';
+    </script>
+    <script>
+      import '../scripts/oturum-sayfa';
     </script>
   </body>
 </html>

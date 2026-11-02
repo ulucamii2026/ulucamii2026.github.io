@@ -104,7 +104,7 @@ test('Klavye: sekmeler oklarla gezilir; düğmeler Enter ile çalışır; İpucu
   await page.getByRole('button', { name: 'İpucu' }).focus();
   await page.keyboard.press('Enter');
   await expect(page.locator(`${GIZLE} .kelime.ilk`)).toHaveCount(1);
-  await page.getByRole('button', { name: 'Kelimeyi aç' }).focus();
+  await page.getByRole('button', { name: 'Kelimeyi açın' }).focus();
   await page.keyboard.press('Enter');
   await expect(sayac(page)).toContainText(/^\D*1\s*\/\s*15/);
   // Gizli kelimeler ekran okuyucudan gizlidir ve odak almaz.
@@ -117,18 +117,18 @@ test('Ses: yeni parça ve hepsi çalınır, tek ses sahibi (çalar ile kip birbi
   const ses = page.locator(`${ZINCIR} .kip-eylem .dugme.ikincil`);
   await ses.click();
   expect(await page.evaluate(() => window.__sesler)).toEqual(['/media/ses/ayet/112-1.mp3']);
-  await expect(ses).toHaveText('Sesi durdur');
+  await expect(ses).toHaveText('Sesi durdurun');
   await ses.click();
-  await expect(ses).toHaveText('Yeni parçayı dinle');
+  await expect(ses).toHaveText('Yeni parçayı dinleyin');
   // Çalar başlayınca kip sesi kesilir; kip başlayınca çalar durur.
   await ses.click();
-  await expect(ses).toHaveText('Sesi durdur');
+  await expect(ses).toHaveText('Sesi durdurun');
   await page.locator('[data-sira]').selectOption('0');
   await page.locator('[data-oynat]').click();
-  await expect(ses).toHaveText('Yeni parçayı dinle');
-  await expect(page.locator('[data-oynat]')).toHaveText('Duraklat');
+  await expect(ses).toHaveText('Yeni parçayı dinleyin');
+  await expect(page.locator('[data-oynat]')).toHaveText('Duraklatın');
   await ses.click();
-  await expect(page.locator('[data-oynat]')).toHaveText('Dinlemeye başla');
+  await expect(page.locator('[data-oynat]')).toHaveText('Dinlemeye başlayın');
   // Sondan zincir: yeni parça son âyet; kontrol evresinde bütün kapsam sırayla çalar.
   await page.evaluate(() => { window.__sesler.length = 0; });
   await page.locator(`${ZINCIR} .kip-onay input`).check();
@@ -141,13 +141,13 @@ test('Ses: yeni parça ve hepsi çalınır, tek ses sahibi (çalar ile kip birbi
   await hepsi.click();
   expect(await page.evaluate(() => window.__sesler)).toEqual(['/media/ses/ayet/112-4.mp3']);
   await page.evaluate(() => window.__ses.dispatchEvent(new Event('ended')));
-  await expect(hepsi).toHaveText('Hepsini dinle');
+  await expect(hepsi).toHaveText('Hepsini dinleyin');
   // Hata: kayıt açılamazsa uyarı çıkar, düğme eski hâline döner.
   await hepsi.click();
   await page.evaluate(() => window.__ses.dispatchEvent(new Event('error')));
   await expect(page.locator('.kip-hata')).toBeVisible();
   await expect(page.locator('.kip-hata')).toContainText('Ses çalınamadı');
-  await expect(hepsi).toHaveText('Hepsini dinle');
+  await expect(hepsi).toHaveText('Hepsini dinleyin');
 });
 
 test('Dinleyici kipi: Takıldı önce bölümün sesini çalar, sonra kelimeleri tek tek açar; sonraki bölüme geçilir', async ({ page }) => {

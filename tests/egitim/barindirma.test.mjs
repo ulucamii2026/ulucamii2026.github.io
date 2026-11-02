@@ -7,6 +7,10 @@
  * simgeler ve paylaşım kartları da yayının parçasıdır.
  * Çevrim dışı çalışma (25 Ekim 2026): service worker (/sw.js) kökten sunulur ve her açılışta doğrulanır (eski SW'nin sonsuza dek kalmaması için);
  * CSP yalnız üç yönerge kazandı (worker-src, manifest-src, connect-src'e ana site: SW sesi oradan alıp önbelleğe koyar) — başka gevşeme yok.
+ * İlim Yolu Dilim 0 (2 Kasım 2026): hesap girişi için (authDomain egitim.ulucamii.be, Google açılır penceresi, Firestore, Apps Script) CSP yalnız şu kadar açıldı:
+ * script-src + apis.google.com; connect-src + Firestore/Kimlik/Token/Cloud Functions (callable, europe-west1)/Apps Script kökenleri; yeni frame-src 'self' (Auth yardımcı iframe'i /__/auth/iframe aynı kökenden);
+ * frame-ancestors ve X-Frame-Options 'none'/DENY → 'self'/SAMEORIGIN. /api/saglik yalnız bu bir yola Cloud Function bağlar.
+ * Dilim 1 (2 Kasım 2026): çocuk girişi için iki tam yol daha: /api/cocuk-giris → cocukGiris, /api/kart-giris → kartGiris.
  * Önce `npm run egitim:build` (test:egitim bu sırayla çalışır; npm run dogrula:codex de).
  */
 import test from 'node:test';
@@ -30,8 +34,33 @@ test('Hosting: egitim sitesi derlenmiş çıktıyı yayınlar; Firestore bloğu 
   assert.equal(hosting.length, 1);
   assert.equal(egitim?.site, 'ulucamii-egitim');
   assert.deepEqual(firebase.firestore, { rules: 'firebase/firestore.rules', indexes: 'firebase/firestore.indexes.json' });
-  // Varsayılan davranış korunur: /tr → /tr/ (dizin dizini); yeniden yazma yok (404 sayfası gerçek 404 döner).
-  for (const ad of ['trailingSlash', 'cleanUrls', 'rewrites', 'redirects', 'i18n']) assert.equal(egitim[ad], undefined, ad);
+  // Varsayılan davranış korunur: /tr → /tr/ (dizin dizini); 404 sayfası gerçek 404 döner. Yeniden yazmalar yalnız üç tam yol → Cloud Function:
+  // /api/saglik, çocuk girişi (Dilim 1: /api/cocuk-giris, /api/kart-giris; aynı köken, çerez/CORS gerekmez). Genel `**` yok; başka yol yakalanmaz.
+  for (const ad of ['trailingSlash', 'cleanUrls', 'redirects', 'i18n']) assert.equal(egitim[ad], undefined, ad);
+  const islev = (functionId) => ({ functionId, region: 'europe-west1' });
+  assert.deepEqual(egitim.rewrites, [
+    { source: '/api/saglik', function: islev('saglik') },
+    { source: '/api/cocuk-giris', function: islev('cocukGiris') },
+    { source: '/api/kart-giris', function: islev('kartGiris') },
+  ]);
+  // Yönlendirilen her işlev gerçekten dışa aktarılıyor (yanlış ad canlıda 404 verirdi).
+  const disa = oku('functions/src/index.ts');
+  for (const { function: { functionId } } of egitim.rewrites) assert.match(disa, new RegExp(`\\b${functionId}\\b`), functionId);
+});
+
+test('Functions: ilim-yolu kod tabanı Node 22, europe-west1, derleme çıktısı dağıtılır', () => {
+  assert.equal(firebase.functions.length, 1);
+  const [f] = firebase.functions;
+  assert.equal(f.source, 'functions');
+  assert.equal(f.codebase, 'ilim-yolu');
+  assert.deepEqual(f.predeploy, ['npm --prefix functions run build']);
+  assert.equal(f.ignore.includes('lib'), false, 'lib/ (esbuild çıktısı) dağıtımdan dışlanamaz');
+  const paket = JSON.parse(oku('functions/package.json'));
+  assert.equal(paket.engines.node, '22');
+  assert.equal(paket.main, 'lib/index.js');
+  // Genel seçenekler ortak.ts'te: firebase-functions bunları işlev tanımlanırken okur; index.ts onu ilk içe aktarır.
+  assert.match(oku('functions/src/ortak.ts'), /setGlobalOptions\(\{ region: 'europe-west1', maxInstances: 2 \}\)/);
+  assert.match(oku('functions/src/index.ts'), /^(\/\/[^\n]*\n)*import '\.\/ortak';/);
 });
 
 test('Hosting: bütün yanıtlarda sıkı CSP ve güvenlik başlıkları', () => {
@@ -39,21 +68,26 @@ test('Hosting: bütün yanıtlarda sıkı CSP ve güvenlik başlıkları', () =>
   const csp = deger(genel, 'Content-Security-Policy');
   const yonerge = Object.fromEntries(csp.split(';').map((y) => y.trim().split(/\s+/)).map(([ad, ...d]) => [ad, d]));
   assert.deepEqual(yonerge['default-src'], ["'none'"]);
-  for (const ad of ['script-src', 'style-src', 'img-src', 'font-src', 'worker-src', 'manifest-src']) assert.deepEqual(yonerge[ad], ["'self'"], ad);
-  for (const ad of ['base-uri', 'form-action', 'frame-ancestors', 'object-src']) assert.deepEqual(yonerge[ad], ["'none'"], ad);
+  for (const ad of ['style-src', 'img-src', 'font-src', 'worker-src', 'manifest-src', 'frame-src', 'frame-ancestors']) assert.deepEqual(yonerge[ad], ["'self'"], ad);
+  for (const ad of ['base-uri', 'form-action', 'object-src']) assert.deepEqual(yonerge[ad], ["'none'"], ad);
+  // Google ile giriş: yalnız Google'ın giriş betiği (gapi) dış betik kaynağıdır.
+  assert.deepEqual(yonerge['script-src'], ["'self'", 'https://apis.google.com']);
   // Sesler ana siteden gelir (Diyanet kayıtları; egitim/src/lib/kimlik.ts ANA_SITE). `blob:` yalnız «Kendini sına»da çocuğun
   // kendi kaydını sayfa belleğinden çalmak içindir (2d); ağdan bir şey getirmez, başka köken eklenmedi.
   const anaSite = oku('egitim/src/lib/kimlik.ts').match(/ANA_SITE = '([^']+)'/)[1];
   assert.deepEqual(yonerge['media-src'], [anaSite, 'blob:']);
   // connect-src: sayfa ve service worker yalnız kendi kökeninden ve ana siteden (ses) okur; «İnternetsiz çalışmak için kaydet» sesi fetch ile
   // indirip önbelleğe koyar (service worker aynı isteği kendisi de yapar). Başka köken, joker ve ws/wss yok.
-  assert.deepEqual(yonerge['connect-src'], ["'self'", anaSite]);
+  // Hesap (Dilim 0): Firestore, Kimlik Araç Seti, Token ve Apps Script (script.google.com → script.googleusercontent.com yönlendirmesi) kökenleri açık yazılır.
+  assert.deepEqual(yonerge['connect-src'], ["'self'", anaSite, 'https://firestore.googleapis.com', 'https://identitytoolkit.googleapis.com',
+    'https://securetoken.googleapis.com',
+    'https://europe-west1-ulucamii-portal.cloudfunctions.net', 'https://script.google.com', 'https://script.googleusercontent.com']);
   // Çevrim dışı çalışma: service worker yalnız aynı kökenden (/sw.js), uygulama bildirimi yalnız aynı kökenden. Üçü dışında CSP değişmedi.
-  assert.deepEqual(Object.keys(yonerge).sort(), ['base-uri', 'connect-src', 'default-src', 'font-src', 'form-action', 'frame-ancestors', 'img-src', 'manifest-src', 'media-src', 'object-src', 'script-src', 'style-src', 'worker-src']);
+  assert.deepEqual(Object.keys(yonerge).sort(), ['base-uri', 'connect-src', 'default-src', 'font-src', 'form-action', 'frame-ancestors', 'frame-src', 'img-src', 'manifest-src', 'media-src', 'object-src', 'script-src', 'style-src', 'worker-src']);
   assert.doesNotMatch(csp, /unsafe-|\*|data:|http:/);
   assert.equal(deger(genel, 'X-Content-Type-Options'), 'nosniff');
   assert.equal(deger(genel, 'Referrer-Policy'), 'strict-origin-when-cross-origin');
-  assert.equal(deger(genel, 'X-Frame-Options'), 'DENY');
+  assert.equal(deger(genel, 'X-Frame-Options'), 'SAMEORIGIN');
   // Mikrofon yalnız sayfanın kendisine açıktır (2d: kendi sesini kaydet; izin yine kullanıcı dokunuşu ve tarayıcı penceresiyle);
   // kamera, konum, ödeme ve USB kapalı kalır.
   const izinler = deger(genel, 'Permissions-Policy');
@@ -87,11 +121,13 @@ const dist = (yol) => new URL(`egitim/dist/${yol}`, KOK);
 const derlendi = existsSync(dist('index.html'));
 // Çalışma sayfası olan her madde (src/lib/ezber/katalog.ts `calismaSayfasiVar`): ses, Kur'an metni, bilgi metni ya da sessiz kitap duasının metni.
 const sesliler = JSON.parse(oku('src/data/ezber/katalog.json')).ogeler.filter((o) => o.ses?.tam || o.ses?.parcalar?.length || o.kuran || o.bilgiMetni || o.metinli);
-// Giriş, Çalışma Belgesi, Kilimim, ezber kartları ve ezber takvimi (25 Ekim 2026) ve her çalışma sayfası.
-const dilYollari = DILLER.flatMap((d) => [`${d}/`, `${d}/calisma-belgesi/`, `${d}/kilimim/`, `${d}/kartlar/`, `${d}/takvim/`, ...sesliler.map((o) => `${d}/calis/${o.id}/`)]);
+// İlim Yolu ana sayfası, Ezber Kilimi girişi (ezber/), Çalışma Belgesi, Kilimim, ezber kartları ve ezber takvimi (25 Ekim 2026) ve her çalışma sayfası.
+const dilYollari = DILLER.flatMap((d) => [`${d}/`, `${d}/ezber/`, `${d}/calisma-belgesi/`, `${d}/kilimim/`, `${d}/kartlar/`, `${d}/takvim/`, ...sesliler.map((o) => `${d}/calis/${o.id}/`)]);
 // Çevrim dışı çalışma sayfaları (noindex, site haritasında yok) satır içi betik denetimine girer: service worker bunları önyükler.
 const cevrimdisiYollari = DILLER.map((d) => `${d}/cevrimdisi/`);
-const SAYFALAR = ['index.html', '404.html', ...[...dilYollari, ...cevrimdisiYollari].map((y) => `${y}index.html`)];
+// Hesap sayfaları ve kart girişi (2 Kasım 2026): noindex, site haritasında ve önbellekte yok; yine de CSP’ye uyar (satır içi betik yok).
+const hesapYollari = [...DILLER.flatMap((d) => [`${d}/hesap/`, `${d}/hesap/giris/`, `${d}/hesap/kayit/`]), 'k/'];
+const SAYFALAR = ['index.html', '404.html', ...[...dilYollari, ...cevrimdisiYollari, ...hesapYollari].map((y) => `${y}index.html`)];
 
 test('Derlenmiş sayfalarda satır içi betik, stil ve olay özniteliği yok (CSP)', { skip: !derlendi && 'önce npm run egitim:build' }, () => {
   for (const sayfa of SAYFALAR) {

@@ -17,7 +17,7 @@
  */
 import {
   KABUK_ONEKI, KAYIT_ONBELLEGI, ONYUKLEME_SAYFALARI, SES_ONBELLEGI, YENILENEN_SURUM,
-  aralikCoz, cevrimdisiYolu, dilSec, kayitAnahtariMi, kaydedilebilirYolMu, sayfaAnahtari, sesAdresiMi, sesTuru, statikMi, varlikAdresleri,
+  aralikCoz, cevrimdisiYolu, dilSec, kayitAnahtariMi, kaydedilebilirYolMu, sayfaAnahtari, sesAdresiMi, sesTuru, statikMi, varlikAdresleri, onbellekDisiYolMu,
   type Kayit,
 } from '../lib/cevrimdisi-ortak';
 
@@ -237,6 +237,7 @@ sw.addEventListener('fetch', (e: AgOlayi) => {
       yenilemeBasladi = true;
       e.waitUntil(kayitlileriYenile().catch((hata) => console.error(hata)));
     }
+    if (onbellekDisiYolMu(u.pathname)) return; // hesap sayfaları ve /k/: SW karışmaz (önbellek yok, çevrim dışı yedek yok)
     if (istek.mode === 'navigate') e.respondWith(sayfaIstegi(istek, e));
     else if (statikMi(u.pathname)) e.respondWith(onbellekOnce(istek));
   } else if (sesAdresiMi(u)) {

@@ -66,7 +66,7 @@ test.describe('sayfa ve boş durum', () => {
       await expect(page.locator('[data-belge-bos]')).toBeVisible();
       await expect(page.locator('[data-belge-dolu]')).toBeHidden();
       await expect(page.locator('[data-belge-bos] a.birincil')).toHaveAttribute('href', `/${dil}/calis/s-fatiha/`);
-      await expect(page.locator('[data-belge-bos] a.ikincil')).toHaveAttribute('href', `/${dil}/#seritler`);
+      await expect(page.locator('[data-belge-bos] a.ikincil')).toHaveAttribute('href', `/${dil}/ezber/#seritler`);
       // Gizlilik cümlesi sayfada (tek satır) ve zorunlu ayrım (Ezber Sertifikası) görünür.
       await expect(page.locator('.belge-gizlilik')).toBeVisible();
       await expect(page.locator('.belge-fark')).toBeVisible();
@@ -345,7 +345,7 @@ test.describe('bağlantılar', () => {
   for (const dil of DILLER) {
     test(`${dil}: alt bilgide, «Bugün tekrar» bandında ve madde sayfasında belgeye bağlantı var`, async ({ page }) => {
       await tohumla(page, durumKur(ID5));
-      await page.goto(`/${dil}/`);
+      await page.goto(`/${dil}/ezber/`);
       await expect(page.locator(`footer a[href="/${dil}/calisma-belgesi/"]`)).toHaveCount(1);
       await expect(page.locator(`[data-tekrar] a[href="/${dil}/calisma-belgesi/"]`)).toBeVisible();
       await page.goto(`/${dil}/calis/s-ihlas/`);

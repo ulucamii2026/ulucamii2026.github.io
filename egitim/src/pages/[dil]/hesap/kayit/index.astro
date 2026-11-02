@@ -1,0 +1,106 @@
+---
+/**
+ * Hesap aç (2 Kasım 2026, İlim Yolu · Kilim): 1) e-posta + şifre ya da Google, 2) ZORUNLU kullanıcı adı, 3) hazır. Şehir, cami, «Yeni Müslümanım» ve haftalık
+ * e-posta isteğe bağlıdır ve hesap sayfasındadır (yaş sorusu ve «13 yaşından büyüğüm» kutusu yoktur). Hesap sayfası: noindex, sitemap dışı, önbellek dışı.
+ * Davranış scripts/kayit.ts; Firebase bu sayfada yüklenir.
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import { dilListesi, yerelKodu } from '@ortak/i18n/utils';
+import AdAlani from '../../../../components/AdAlani.astro';
+import Ikon from '../../../../components/Ikon.astro';
+import SoruPaneli from '../../../../components/SoruPaneli.astro';
+import { hesapMetinleri } from '../../../../i18n/hesap';
+import { ilimMetinleri } from '../../../../i18n/ilim';
+import { sablonlar } from '../../../../i18n/sablon';
+import Taban from '../../../../layouts/Taban.astro';
+import { ANA_SITE } from '../../../../lib/kimlik';
+import '../../../../styles/ilim.css';
+
+export function getStaticPaths() {
+  return dilListesi.map((dil) => ({ params: { dil } }));
+}
+
+const dil = Astro.params.dil as Dil;
+const m = hesapMetinleri(dil);
+const il = ilimMetinleri(dil);
+const gizlilik = `${ANA_SITE}/${dil}/gizlilik/#ezber-kilimi`;
+const veri = { dil, yerel: yerelKodu[dil], m: sablonlar(m) };
+---
+<Taban dil={dil} baslik={m.kBaslik} aciklama={m.kAciklama} yol="hesap/kayit" noindex oturum={false}>
+  <div class="icerik" data-veri={JSON.stringify(veri)}>
+    <div class="iy-giris-bas">
+      <p class="iy-ust-yazi">{il.marka}</p>
+      <h1>{m.kBaslik}</h1>
+      <p>{m.kLead}</p>
+    </div>
+
+    <div class="iy-giris-duzen adimli">
+      <ol class="iy-tezgah" aria-label={m.kAdimAd} data-adimlar>
+        {m.kAdimlar.map(([ad, alt], i) => (
+          <li aria-current={i === 0 ? 'step' : undefined}><b aria-hidden="true">{i + 1}</b>{ad}<small>{alt}</small></li>
+        ))}
+      </ol>
+
+      <div class="iy-form-yigin">
+        <section class="iy-kart iy-form-kart" data-adim="1" aria-labelledby="k-baslik-1">
+          <svg class="kilim-serit" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#serit)" /></svg>
+          <div class="iy-kart-govde">
+            <h2 id="k-baslik-1" tabindex="-1">{m.kHesapBaslik}</h2>
+            <button type="button" class="dugme google" data-google>
+              <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-google" /></svg>{m.gGoogle}
+            </button>
+            <p class="iy-ya-da" aria-hidden="true">{m.gSekmeler[0]}</p>
+            <form data-form="kayit" novalidate>
+              <div class="iy-alan">
+                <label for="k-eposta">{m.epostaEtiket}</label>
+                <input class="iy-girdi" id="k-eposta" type="email" inputmode="email" autocomplete="email" autocapitalize="none" spellcheck="false" />
+              </div>
+              <div class="iy-alan">
+                <label for="k-sifre">{m.sifreEtiket}</label>
+                <div class="iy-sifre-kutu">
+                  <input class="iy-girdi" id="k-sifre" type="password" autocomplete="new-password" minlength="8" aria-describedby="k-sifre-ipucu" />
+                  <button type="button" data-sifre-goster aria-pressed="false"><Ikon ad="goz" /></button>
+                </div>
+                <p class="ipucu" id="k-sifre-ipucu">{m.sifreIpucu}</p>
+              </div>
+              <button type="submit" class="dugme birincil tam">{m.kHesapDugme}</button>
+            </form>
+            <p class="iy-form-alt">{m.kGizlilikNot} <a href={gizlilik}>{m.gizlilikBaglanti}</a></p>
+            <p class="iy-form-alt">{m.kZatenVar} <a href={`/${dil}/hesap/giris/`}>{m.kZatenLink}</a></p>
+          </div>
+        </section>
+
+        <section class="iy-kart iy-form-kart" data-adim="2" aria-labelledby="k-baslik-2" hidden>
+          <svg class="kilim-serit" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#serit)" /></svg>
+          <div class="iy-kart-govde">
+            <h2 id="k-baslik-2" tabindex="-1">{m.kAdBaslik}</h2>
+            <p class="alt-baslik">{m.kAdAlt}</p>
+            <p class="iy-durum" role="status" data-dogrulama></p>
+            <AdAlani m={m} kimlik="k-ad" />
+          </div>
+        </section>
+
+        <section class="iy-kart iy-form-kart" data-adim="3" aria-labelledby="k-baslik-3" hidden>
+          <svg class="kilim-serit" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#serit)" /></svg>
+          <div class="iy-kart-govde">
+            <h2 id="k-baslik-3" tabindex="-1">{m.kHazirBaslik}</h2>
+            <p data-hazir></p>
+            <div class="iy-eylem">
+              <a class="dugme birincil" href={`/${dil}/`}>{m.kAnaSayfa} <Ikon ad="ok" /></a>
+              <a class="dugme ikincil" href={`/${dil}/hesap/`}>{m.kProfil}</a>
+            </div>
+          </div>
+        </section>
+
+        <p class="iy-durum" role="status" data-durum></p>
+        <p class="iy-durum hata" role="alert" data-hata></p>
+        <SoruPaneli kimlik="k-soru" />
+      </div>
+    </div>
+  </div>
+</Taban>
+
+<script>
+  import '../../../../scripts/dil';
+  import '../../../../scripts/kayit';
+</script>

@@ -188,6 +188,19 @@ export const getDocs=async ref=>{
 };
 `;
 
+/* Callable sahtesi (2 Kasım 2026, İlim Yolu hesapları): hoca ekranının «İlim Yolu» sekmesi `firebase/functions` kullanır.
+   Yanıtı sınamanın verdiği window.__callables[ad](veri) üretir (hata için { code: 'functions/…' } fırlatır); her çağrı
+   window.__cagrilar'a düşer. Tanımsız callable «not-found» döner. */
+const functions = `
+export const getFunctions = (_app, bolge) => ({ bolge });
+export const httpsCallable = (f, ad) => async (veri) => {
+  (window.__cagrilar ||= []).push({ ad, veri: veri ?? null, bolge: f.bolge });
+  const h = (window.__callables || {})[ad];
+  if (!h) throw Object.assign(Error('not-found'), { code: 'functions/not-found' });
+  return { data: await h(veri) };
+};
+`;
+
 async function bundle(hoca=false) {
   const mode=hoca?'hoca':'veli';
   if (!kod[mode]) {
@@ -198,7 +211,7 @@ async function bundle(hoca=false) {
         b.onResolve({ filter: /^(firebase\/|\.\.\/lib\/firebase$)/ }, a => ({ path: a.path, namespace: 'test' }));
         b.onLoad({ filter: /.*/, namespace: 'test' }, a => ({ loader: 'js', contents:
           a.path === 'firebase/auth' ? auth : a.path === 'firebase/firestore/lite' ? firestore
-            : a.path === 'firebase/firestore' ? firestoreTam : 'export const firebaseUygulamasi = () => ({});' }));
+            : a.path === 'firebase/firestore' ? firestoreTam : a.path === 'firebase/functions' ? functions : 'export const firebaseUygulamasi = () => ({});' }));
       } }],
     });
     kod[mode] = result.outputFiles[0].text;

@@ -1,0 +1,202 @@
+---
+/**
+ * Hesabım (2 Kasım 2026, İlim Yolu · Kilim): kullanıcı adı, e-posta, isteğe bağlı şehir + cami, «Yeni Müslümanım» (AYRI açık rıza kutusuyla), haftalık e-posta,
+ * kurs bağlama kodu, hesap silme (30 gün bekleme) ve çıkış. Kullanıcı adı yoksa önce zorunlu ad adımı gelir. Çocuk hesabı yalnız adını, hocasının notunu ve
+ * çıkışı görür (silme, e-posta, rıza, bağlama kodu yok). Sayfa noindex, site haritasında ve çevrim dışı önbellekte yok; davranış scripts/hesap.ts.
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import { dilListesi, yerelKodu } from '@ortak/i18n/utils';
+import camiler from '../../../../../public/data/belcika-camileri.json';
+import AdAlani from '../../../components/AdAlani.astro';
+import Ikon from '../../../components/Ikon.astro';
+import SoruPaneli from '../../../components/SoruPaneli.astro';
+import { hesapMetinleri, RIZA_SURUMU } from '../../../i18n/hesap';
+import { ilimMetinleri } from '../../../i18n/ilim';
+import { sablonlar } from '../../../i18n/sablon';
+import Taban from '../../../layouts/Taban.astro';
+import { ANA_SITE } from '../../../lib/kimlik';
+import '../../../styles/ilim.css';
+
+export function getStaticPaths() {
+  return dilListesi.map((dil) => ({ params: { dil } }));
+}
+
+const dil = Astro.params.dil as Dil;
+const m = hesapMetinleri(dil);
+const il = ilimMetinleri(dil);
+const gizlilik = `${ANA_SITE}/${dil}/gizlilik/#ezber-kilimi`;
+const veri = { dil, yerel: yerelKodu[dil], m: sablonlar(m), ek: { rizaSurumu: RIZA_SURUMU, gizlilik } };
+// «Şehir — Cami adı», şehre göre sıralı (BDV camileri listesi; public/data/belcika-camileri.json).
+const secenekler = [...camiler.camiler]
+  .sort((a, b) => a.sehir.localeCompare(b.sehir, 'fr') || a.ad.localeCompare(b.ad, 'tr'))
+  .map((c) => ({ id: c.id, sehir: c.sehir, etiket: `${c.sehir} — ${c.ad}` }));
+// Haftanın günleri Pazartesi'den başlar (0 = Pazar en sonda).
+const gunSirasi = [1, 2, 3, 4, 5, 6, 0];
+const oturumYok = m.authHata['oturum-yok'];
+---
+<Taban dil={dil} baslik={m.pBaslik} aciklama={m.pAciklama} yol="hesap" noindex oturum={false}>
+  <div class="icerik" data-veri={JSON.stringify(veri)}>
+    <div class="iy-giris-bas">
+      <p class="iy-ust-yazi">{il.marka}</p>
+      <h1>{m.pBaslik}</h1>
+      <p>{m.pLead}</p>
+    </div>
+
+    <p class="iy-durum" role="status" data-yukleniyor>{m.yukleniyor}</p>
+    <div data-oturumsuz hidden>
+      <p class="iy-durum hata">{oturumYok}</p>
+      <p class="iy-eylem"><a class="dugme birincil" href={`/${dil}/hesap/giris/`}>{m.gBaslik} <Ikon ad="ok" /></a></p>
+    </div>
+    <p class="iy-durum hata" role="alert" data-yuklenemedi hidden>{m.pYuklenemedi}</p>
+
+    <div class="iy-hesap-duzen" data-hesap hidden>
+      <div class="iy-bolumler">
+        <section class="iy-kart iy-form-kart" data-bolum="ad-zorunlu" aria-labelledby="h-ad-zorunlu" hidden>
+          <svg class="kilim-serit" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#serit)" /></svg>
+          <div class="iy-kart-govde">
+            <h2 id="h-ad-zorunlu" tabindex="-1">{m.pAdZorunluBaslik}</h2>
+            <p class="alt-baslik">{m.pAdZorunluMetin}</p>
+            <AdAlani m={m} kimlik="z-ad" />
+          </div>
+        </section>
+
+        <section class="iy-kart iy-form-kart" data-bolum="kimlik" aria-labelledby="h-kimlik" hidden>
+          <svg class="kilim-serit" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#serit)" /></svg>
+          <div class="iy-kart-govde">
+            <h2 id="h-kimlik">{m.pAdBaslik}</h2>
+            <p class="iy-ad-buyuk" data-ad-yaz></p>
+            <p class="alt-baslik" data-cocuk-not hidden>{m.pCocukNot}</p>
+            <div class="iy-bilgi-satir" data-eposta-satiri hidden>
+              <b>{m.pEposta}</b>
+              <span><span data-eposta></span> <span class="iy-rozetli" data-eposta-durum></span></span>
+              <div class="iy-eylem"><button type="button" class="dugme ikincil kucuk" data-dogrulama-yeniden hidden>{m.pDogrulamaYeniden}</button></div>
+              <p class="iy-durum" role="status" data-dogrulama-durum></p>
+            </div>
+            <div data-ad-degistir-blok>
+              <button type="button" class="dugme ikincil kucuk" data-ad-degistir aria-expanded="false" aria-controls="p-ad-kutu">{m.pAdDegistir}</button>
+              <div id="p-ad-kutu" data-ad-kutu hidden>
+                <p class="ipucu iy-form-alt">{m.pAdNot}</p>
+                <AdAlani m={m} kimlik="p-ad" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="iy-kart iy-form-kart" data-bolum="yer" aria-labelledby="h-yer" hidden>
+          <svg class="kilim-serit" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#serit)" /></svg>
+          <div class="iy-kart-govde">
+            <h2 id="h-yer">{m.pYerBaslik}</h2>
+            <form data-form="yer" novalidate>
+              <div class="iy-alan">
+                <label for="p-yer">{m.pYerEtiket}</label>
+                <div class="iy-secim-kutu">
+                  <select class="iy-girdi" id="p-yer" aria-describedby="p-yer-ipucu">
+                    <option value="">{m.pYerSec}</option>
+                    {secenekler.map((c) => <option value={c.id} data-sehir={c.sehir}>{c.etiket}</option>)}
+                    <option value="__diger">{m.pYerDiger}</option>
+                  </select>
+                  <Ikon ad="asagi" />
+                </div>
+                <p class="ipucu" id="p-yer-ipucu">{m.pYerIpucu}</p>
+              </div>
+              <div class="iy-alan" data-yer-sehir-alan hidden>
+                <label for="p-yer-sehir">{m.pYerSehir}</label>
+                <input class="iy-girdi" id="p-yer-sehir" maxlength="60" autocomplete="address-level2" />
+              </div>
+              <div class="iy-eylem"><button type="submit" class="dugme birincil">{m.kaydet}</button></div>
+              <p class="iy-durum" role="status" data-yer-durum></p>
+            </form>
+          </div>
+        </section>
+
+        <section class="iy-kart iy-form-kart" data-bolum="muhtedi" aria-labelledby="h-muhtedi" hidden>
+          <svg class="kilim-serit" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#serit)" /></svg>
+          <div class="iy-kart-govde">
+            <h2 id="h-muhtedi">{m.pMuhtediBaslik}</h2>
+            <label class="iy-kutu-secim"><input type="checkbox" data-muhtedi /><span>{m.pMuhtediEtiket}<small>{m.pMuhtediAlt}</small></span></label>
+            <div class="iy-riza" data-riza hidden>
+              <p class="iy-riza-bas"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-kilit" /></svg>{m.pRizaBas}</p>
+              <p>{m.pRizaMetin}</p>
+              <label class="iy-kutu-secim"><input type="checkbox" data-riza-kutu /><span>{m.pRizaKutu}<small>{m.pRizaKutuAlt}</small></span></label>
+            </div>
+            <div class="iy-eylem"><button type="button" class="dugme birincil" data-muhtedi-kaydet hidden>{m.kaydet}</button></div>
+            <p class="iy-durum" role="status" data-muhtedi-durum></p>
+          </div>
+        </section>
+
+        <section class="iy-kart iy-form-kart" data-bolum="haftalik" aria-labelledby="h-haftalik" hidden>
+          <svg class="kilim-serit" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#serit)" /></svg>
+          <div class="iy-kart-govde">
+            <h2 id="h-haftalik">{m.pHaftalikBaslik}</h2>
+            <form data-form="haftalik" novalidate>
+              <label class="iy-anahtar"><input type="checkbox" data-haftalik /><span>{m.pHaftalikAnahtar}</span></label>
+              <fieldset class="iy-grup" data-gunler hidden>
+                <legend>{m.pHaftalikGun}</legend>
+                <div class="iy-gun-secimi">
+                  {gunSirasi.map((g) => <label><input type="radio" name="haftalik-gun" value={g} checked={g === 0} />{m.gunler[g]}</label>)}
+                </div>
+              </fieldset>
+              <div class="iy-eylem"><button type="submit" class="dugme birincil">{m.kaydet}</button></div>
+              <p class="iy-durum" role="status" data-haftalik-durum></p>
+            </form>
+          </div>
+        </section>
+
+        <section class="iy-kart iy-form-kart" data-bolum="kurs" aria-labelledby="h-kurs" hidden>
+          <svg class="kilim-serit" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#serit)" /></svg>
+          <div class="iy-kart-govde">
+            <h2 id="h-kurs">{m.pKursBaslik}</h2>
+            <p data-kurs-bagli hidden>{m.pKursBagli}</p>
+            <div data-kod-kutu>
+              <p class="alt-baslik">{m.pKursMetin}</p>
+              <form data-form="kod" novalidate>
+                <div class="iy-alan">
+                  <label for="p-kod">{m.pKodEtiket}</label>
+                  <input class="iy-girdi" id="p-kod" data-kod autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="9" aria-describedby="p-kod-ipucu" />
+                  <p class="ipucu" id="p-kod-ipucu">{m.pKodIpucu}</p>
+                </div>
+                <div class="iy-eylem"><button type="submit" class="dugme birincil">{m.pKodDugme}</button></div>
+              </form>
+            </div>
+            <p class="iy-durum" role="status" data-kod-durum></p>
+          </div>
+        </section>
+
+        <section class="iy-kart iy-form-kart" data-bolum="sil" aria-labelledby="h-sil" hidden>
+          <svg class="kilim-serit" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#serit)" /></svg>
+          <div class="iy-kart-govde">
+            <h2 id="h-sil">{m.pSilBaslik}</h2>
+            <p class="alt-baslik">{m.pSilMetin}</p>
+            <p class="iy-durum" role="status" data-sil-bekliyor></p>
+            <div class="iy-eylem">
+              <button type="button" class="dugme ikincil" data-sil-iptal hidden>{m.pSilIptal}</button>
+              <button type="button" class="dugme tehlike" data-sil-dugme aria-expanded="false" aria-controls="p-sil-onay">{m.pSilDugme}</button>
+            </div>
+            <div class="iy-soru" id="p-sil-onay" data-sil-onay hidden role="group" aria-labelledby="p-sil-onay-metin">
+              <p id="p-sil-onay-metin">{m.pSilOnay}</p>
+              <div class="iy-eylem">
+                <button type="button" class="dugme tehlike" data-sil-evet>{m.pSilOnayla}</button>
+                <button type="button" class="dugme ikincil" data-sil-vazgec>{m.vazgec}</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="iy-kart iy-form-kart" data-bolum="oturum" aria-labelledby="h-oturum" hidden>
+          <svg class="kilim-serit" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#serit)" /></svg>
+          <div class="iy-kart-govde">
+            <h2 id="h-oturum">{m.pOturumBaslik}</h2>
+            <div class="iy-eylem"><button type="button" class="dugme ikincil" data-cikis>{m.pCikis}</button></div>
+            <SoruPaneli kimlik="h-soru" />
+            <p class="iy-form-alt">{m.pGizlilikNot} <a href={gizlilik}>{m.gizlilikBaglanti}</a></p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</Taban>
+
+<script>
+  import '../../../scripts/dil';
+  import '../../../scripts/hesap';
+</script>

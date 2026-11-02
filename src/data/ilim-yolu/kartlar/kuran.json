@@ -1,0 +1,3506 @@
+{
+  "kod": "kuran",
+  "kartlar": [
+    {
+      "id": "ku-001",
+      "kod": "kuran",
+      "planKonu": "Elif Grubu Harfleri",
+      "ilkDers": "2026-09-05",
+      "seviyeAlani": "okuma",
+      "basamak": 1,
+      "baslik": {
+        "tr": "Elif grubu harfleri",
+        "fr": "Les lettres du groupe Alif",
+        "en": "The Alif group of letters",
+        "nl": "De letters van de Alif-groep",
+        "de": "Die Buchstaben der Alif-Gruppe"
+      },
+      "ozet": {
+        "tr": "Elif grubundaki harfleri şekline ve sesine bakarak birbirinden ayırırız. Önce harfin görünüşünü, sonra çıkış yerinden doğru sesini tanırız.",
+        "fr": "Nous distinguons les lettres du groupe Alif par leur forme et leur son. Nous reconnaissons d’abord l’aspect de la lettre, puis son bon son depuis son point d’articulation.",
+        "en": "We tell the letters of the Alif group apart by their shape and sound. First we recognise how a letter looks, then its correct sound from its place of articulation.",
+        "nl": "We onderscheiden de letters van de Alif-groep op vorm en klank. Eerst herkennen we hoe de letter eruitziet, daarna de juiste klank vanuit haar uitspraakplaats.",
+        "de": "Wir unterscheiden die Buchstaben der Alif-Gruppe nach Form und Klang. Zuerst erkennen wir das Aussehen, dann den richtigen Laut von seinem Artikulationsort."
+      },
+      "kitap": "Elifbâ / Kur'an-ı Kerim",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-002",
+      "kod": "kuran",
+      "planKonu": "Hı Grubu Harfleri",
+      "ilkDers": "2026-09-06",
+      "seviyeAlani": "okuma",
+      "basamak": 1,
+      "baslik": {
+        "tr": "Hı grubu harfleri",
+        "fr": "Les lettres du groupe Hâ",
+        "en": "The Ḥā group of letters",
+        "nl": "De letters van de Ḥā-groep",
+        "de": "Die Buchstaben der Ḥā-Gruppe"
+      },
+      "ozet": {
+        "tr": "Hı grubundaki harfleri doğru çıkış yerinden (mahreç) okumayı öğreniriz. Her harfin sesini ayrı ayrı dinler, benzerlerinden ayırırız.",
+        "fr": "Nous apprenons à lire les lettres du groupe Hâ depuis leur bon point d’articulation (makhraj). Nous écoutons chaque son et le distinguons de ses voisins.",
+        "en": "We learn to read the letters of the Ḥā group from their correct place of articulation (makhraj). We listen to each sound and tell it from similar ones.",
+        "nl": "We leren de letters van de Ḥā-groep vanuit de juiste uitspraakplaats (makhradj) te lezen. We luisteren naar elke klank en onderscheiden hem van lijkende klanken.",
+        "de": "Wir lernen, die Buchstaben der Ḥā-Gruppe vom richtigen Artikulationsort (Machradsch) zu lesen. Wir hören jeden Laut an und unterscheiden ihn von ähnlichen."
+      },
+      "kitap": "Elifbâ / Kur'an-ı Kerim",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-003",
+      "kod": "kuran",
+      "planKonu": "Şîn Grubu Harfleri",
+      "ilkDers": "2026-09-12",
+      "seviyeAlani": "okuma",
+      "basamak": 1,
+      "baslik": {
+        "tr": "Şîn grubu harfleri",
+        "fr": "Les lettres du groupe Shîn",
+        "en": "The Shīn group of letters",
+        "nl": "De letters van de Shīn-groep",
+        "de": "Die Buchstaben der Schīn-Gruppe"
+      },
+      "ozet": {
+        "tr": "Şîn grubundaki harfleri tanır, kalın ve ince seslerini ayırt etmeye dikkat ederiz. Harfi duyduğumuzda ve gördüğümüzde doğru sesi çıkarırız.",
+        "fr": "Nous reconnaissons les lettres du groupe Shîn et faisons attention à la différence entre sons épais et sons fins. Nous produisons le bon son en voyant ou en entendant la lettre.",
+        "en": "We recognise the letters of the Shīn group and pay attention to heavy and light sounds. When we see or hear a letter, we produce the right sound.",
+        "nl": "We herkennen de letters van de Shīn-groep en letten op zware en lichte klanken. Als we een letter zien of horen, maken we de juiste klank.",
+        "de": "Wir erkennen die Buchstaben der Schīn-Gruppe und achten auf dunkle und helle Laute. Beim Sehen oder Hören eines Buchstabens bilden wir den richtigen Laut."
+      },
+      "kitap": "Elifbâ / Kur'an-ı Kerim",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-004",
+      "kod": "kuran",
+      "planKonu": "Ayn Grubu Harfleri",
+      "ilkDers": "2026-09-13",
+      "seviyeAlani": "okuma",
+      "basamak": 1,
+      "baslik": {
+        "tr": "Ayn grubu harfleri",
+        "fr": "Les lettres du groupe ʿAyn",
+        "en": "The ʿAyn group of letters",
+        "nl": "De letters van de ʿAyn-groep",
+        "de": "Die Buchstaben der ʿAyn-Gruppe"
+      },
+      "ozet": {
+        "tr": "Ayn grubundaki harfleri duyduğumuzda ve gördüğümüzde doğru eşleştiririz. Sesi boğazdan temiz çıkarmayı ve benzer harflerle karıştırmamayı çalışırız.",
+        "fr": "Nous associons correctement les lettres du groupe ʿAyn à ce que nous voyons et entendons. Nous travaillons à émettre le son proprement depuis la gorge, sans le confondre.",
+        "en": "We match the letters of the ʿAyn group correctly when we hear and see them. We practise producing the sound cleanly from the throat without mixing it up with similar letters.",
+        "nl": "We koppelen de letters van de ʿAyn-groep juist als we ze horen en zien. We oefenen de klank zuiver uit de keel te maken en niet te verwarren.",
+        "de": "Wir ordnen die Buchstaben der ʿAyn-Gruppe beim Hören und Sehen richtig zu. Wir üben, den Laut sauber aus der Kehle zu bilden und ihn nicht zu verwechseln."
+      },
+      "kitap": "Elifbâ / Kur'an-ı Kerim",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-005",
+      "kod": "kuran",
+      "planKonu": "Lâm Grubu Harfleri",
+      "ilkDers": "2026-09-19",
+      "seviyeAlani": "okuma",
+      "basamak": 1,
+      "baslik": {
+        "tr": "Lâm grubu harfleri",
+        "fr": "Les lettres du groupe Lâm",
+        "en": "The Lām group of letters",
+        "nl": "De letters van de Lām-groep",
+        "de": "Die Buchstaben der Lām-Gruppe"
+      },
+      "ozet": {
+        "tr": "Lâm grubundaki harfleri çıkış yerlerine dikkat ederek seslendiririz. Harflerin dilin ve dudağın hangi bölgesinden çıktığını hissetmeye çalışırız.",
+        "fr": "Nous prononçons les lettres du groupe Lâm en soignant leurs points d’articulation. Nous essayons de sentir de quelle zone de la langue et des lèvres chaque son sort.",
+        "en": "We pronounce the letters of the Lām group, paying attention to where they are articulated. We try to feel which part of the tongue and lips each sound comes from.",
+        "nl": "We spreken de letters van de Lām-groep uit en letten op hun uitspraakplaats. We proberen te voelen uit welk deel van tong en lippen elke klank komt.",
+        "de": "Wir sprechen die Buchstaben der Lām-Gruppe aus und achten auf ihre Artikulationsorte. Wir versuchen zu spüren, aus welchem Teil von Zunge und Lippen jeder Laut kommt."
+      },
+      "kitap": "Elifbâ / Kur'an-ı Kerim",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-006",
+      "kod": "kuran",
+      "planKonu": "Harf Tanıma Pekiştirmesi",
+      "ilkDers": "2026-09-20",
+      "seviyeAlani": "okuma",
+      "basamak": 1,
+      "baslik": {
+        "tr": "Harf tanıma pekiştirmesi",
+        "fr": "Consolidation de la reconnaissance des lettres",
+        "en": "Letter recognition practice",
+        "nl": "Letterherkenning oefenen",
+        "de": "Buchstabenerkennung festigen"
+      },
+      "ozet": {
+        "tr": "Öğrendiğimiz bütün harfleri karışık sırada, eksiksiz tanımaya çalışırız. Önce görüp adını söyler, sonra sesini çıkarırız.",
+        "fr": "Nous essayons de reconnaître sans faute toutes les lettres apprises, dans le désordre. D’abord nous disons son nom en la voyant, puis nous produisons son son.",
+        "en": "We try to recognise all the letters we have learned, in mixed order, without gaps. First we name each letter, then we produce its sound.",
+        "nl": "We proberen alle geleerde letters in willekeurige volgorde foutloos te herkennen. Eerst noemen we de naam, dan maken we de klank.",
+        "de": "Wir versuchen, alle gelernten Buchstaben in gemischter Reihenfolge lückenlos zu erkennen. Erst nennen wir den Namen, dann bilden wir den Laut."
+      },
+      "kitap": "Elifbâ / Kur'an-ı Kerim",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-007",
+      "kod": "kuran",
+      "planKonu": "Başta Yazılış",
+      "ilkDers": "2026-09-26",
+      "seviyeAlani": "okuma",
+      "basamak": 1,
+      "baslik": {
+        "tr": "Başta yazılış",
+        "fr": "La forme initiale",
+        "en": "Letters at the start of a word",
+        "nl": "Letters aan het begin van een woord",
+        "de": "Buchstaben am Wortanfang"
+      },
+      "ozet": {
+        "tr": "Arap harfleri kelimenin başında farklı bir şekil alır. Harflerin kelime başındaki şeklini tanır ve ayırt ederiz.",
+        "fr": "Les lettres arabes prennent une forme différente en début de mot. Nous reconnaissons et distinguons leur forme initiale.",
+        "en": "Arabic letters take a different shape at the start of a word. We recognise and tell apart their initial forms.",
+        "nl": "Arabische letters krijgen aan het begin van een woord een andere vorm. We herkennen en onderscheiden die beginvormen.",
+        "de": "Arabische Buchstaben haben am Wortanfang eine andere Form. Wir erkennen und unterscheiden diese Anfangsformen."
+      },
+      "kitap": "Elifbâ s. 6",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-008",
+      "kod": "kuran",
+      "planKonu": "Ortada Yazılış",
+      "ilkDers": "2026-09-27",
+      "seviyeAlani": "okuma",
+      "basamak": 1,
+      "baslik": {
+        "tr": "Ortada yazılış",
+        "fr": "La forme médiane",
+        "en": "Letters in the middle of a word",
+        "nl": "Letters in het midden van een woord",
+        "de": "Buchstaben in der Wortmitte"
+      },
+      "ozet": {
+        "tr": "Harfler kelimenin ortasında da farklı görünür. Ortadaki şekillerini doğru ayırt etmeyi öğreniriz.",
+        "fr": "Les lettres ont aussi un aspect différent au milieu du mot. Nous apprenons à distinguer correctement leur forme médiane.",
+        "en": "Letters also look different in the middle of a word. We learn to tell their medial shapes apart correctly.",
+        "nl": "Ook in het midden van een woord zien letters er anders uit. We leren hun middenvormen goed te onderscheiden.",
+        "de": "Auch in der Wortmitte sehen Buchstaben anders aus. Wir lernen, ihre Mittelformen richtig zu unterscheiden."
+      },
+      "kitap": "Elifbâ s. 6",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-009",
+      "kod": "kuran",
+      "planKonu": "Sonda Yazılış",
+      "ilkDers": "2026-10-03",
+      "seviyeAlani": "okuma",
+      "basamak": 1,
+      "baslik": {
+        "tr": "Sonda yazılış",
+        "fr": "La forme finale",
+        "en": "Letters at the end of a word",
+        "nl": "Letters aan het eind van een woord",
+        "de": "Buchstaben am Wortende"
+      },
+      "ozet": {
+        "tr": "Kelimenin sonunda harfler yine başka bir şekil alır. Sondaki şekilleri okuma sırasında tanımaya çalışırız.",
+        "fr": "En fin de mot, les lettres prennent encore une autre forme. Nous essayons de reconnaître les formes finales pendant la lecture.",
+        "en": "At the end of a word, letters take yet another shape. We try to recognise the final forms while reading.",
+        "nl": "Aan het eind van een woord krijgen letters weer een andere vorm. We proberen de eindvormen tijdens het lezen te herkennen.",
+        "de": "Am Wortende nehmen Buchstaben wieder eine andere Form an. Wir versuchen, die Endformen beim Lesen zu erkennen."
+      },
+      "kitap": "Elifbâ s. 6",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-010",
+      "kod": "kuran",
+      "planKonu": "Bitişen Harfler",
+      "ilkDers": "2026-10-04",
+      "seviyeAlani": "okuma",
+      "basamak": 1,
+      "baslik": {
+        "tr": "Bitişen harfler",
+        "fr": "Les lettres qui se lient",
+        "en": "Connecting letters",
+        "nl": "Verbindende letters",
+        "de": "Verbindende Buchstaben"
+      },
+      "ozet": {
+        "tr": "Çoğu harf kendinden sonraki harfe bitişir. Kelimenin içinde bitişen harfleri doğru takip ederek okuruz.",
+        "fr": "La plupart des lettres se lient à la lettre suivante. Nous lisons en suivant correctement les lettres liées dans le mot.",
+        "en": "Most letters join to the letter that follows. We read by following the connected letters correctly inside a word.",
+        "nl": "De meeste letters verbinden met de volgende letter. We lezen door de verbonden letters in het woord goed te volgen.",
+        "de": "Die meisten Buchstaben verbinden sich mit dem folgenden. Wir lesen, indem wir die verbundenen Buchstaben im Wort richtig verfolgen."
+      },
+      "kitap": "Elifbâ s. 6",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-011",
+      "kod": "kuran",
+      "planKonu": "Bitişmeyen Harfler",
+      "ilkDers": "2026-10-10",
+      "seviyeAlani": "okuma",
+      "basamak": 1,
+      "baslik": {
+        "tr": "Bitişmeyen harfler",
+        "fr": "Les lettres qui ne se lient pas",
+        "en": "Non-connecting letters",
+        "nl": "Niet-verbindende letters",
+        "de": "Nicht verbindende Buchstaben"
+      },
+      "ozet": {
+        "tr": "Bazı harfler kendilerinden sonraki harfe bitişmez. Bu harfleri kelime içinde fark eder ve okurken doğru yerde ayırırız.",
+        "fr": "Certaines lettres ne se lient pas à la suivante. Nous les repérons dans le mot et les séparons au bon endroit en lisant.",
+        "en": "Some letters do not join to the next letter. We spot them inside a word and separate them in the right place while reading.",
+        "nl": "Sommige letters verbinden niet met de volgende. We herkennen ze in het woord en scheiden ze tijdens het lezen op de juiste plek.",
+        "de": "Manche Buchstaben verbinden sich nicht mit dem nächsten. Wir erkennen sie im Wort und trennen sie beim Lesen an der richtigen Stelle."
+      },
+      "kitap": "Elifbâ s. 6",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-012",
+      "kod": "kuran",
+      "planKonu": "Yazılış Şekilleri",
+      "ilkDers": "2026-10-11",
+      "seviyeAlani": "okuma",
+      "basamak": 1,
+      "baslik": {
+        "tr": "Yazılış şekilleri",
+        "fr": "Les formes d’écriture",
+        "en": "Letter shapes",
+        "nl": "Letterschrijfvormen",
+        "de": "Schreibformen der Buchstaben"
+      },
+      "ozet": {
+        "tr": "Harfleri kelimedeki yerine göre sınıflandırırız: başta, ortada, sonda ve tek başına. Böylece bir harfin bütün şekillerini birlikte hatırlarız.",
+        "fr": "Nous classons les lettres selon leur place dans le mot : initiale, médiane, finale et isolée. Ainsi nous retenons toutes les formes d’une lettre ensemble.",
+        "en": "We sort letters by their position in the word: initial, medial, final and isolated. This way we remember all the shapes of a letter together.",
+        "nl": "We ordenen letters naar hun plaats in het woord: begin, midden, eind en los. Zo onthouden we alle vormen van een letter samen.",
+        "de": "Wir ordnen Buchstaben nach ihrer Stellung im Wort: Anfang, Mitte, Ende und einzeln. So merken wir uns alle Formen eines Buchstabens zusammen."
+      },
+      "kitap": "Elifbâ s. 4–6 (tekrar)",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-013",
+      "kod": "kuran",
+      "planKonu": "Lâmelif",
+      "ilkDers": "2026-10-17",
+      "seviyeAlani": "okuma",
+      "basamak": 1,
+      "baslik": {
+        "tr": "Lâmelif",
+        "fr": "Lām-alif",
+        "en": "Lām-alif",
+        "nl": "Lām-alif",
+        "de": "Lām-Alif"
+      },
+      "ozet": {
+        "tr": "Lâm ile elifin birleşmesiyle oluşan lâmelifi kelime içinde tanır ve doğru okuruz.",
+        "fr": "Nous reconnaissons le lâm-alif, formé de la réunion du lâm et de l’alif, dans les mots et le lisons correctement.",
+        "en": "We recognise lām-alif, the joining of lām and alif, inside words and read it correctly.",
+        "nl": "We herkennen lām-alif, de samenvoeging van lām en alif, in woorden en lezen hem goed.",
+        "de": "Wir erkennen das Lām-Alif, die Verbindung von Lām und Alif, in Wörtern und lesen es richtig."
+      },
+      "kitap": "Elifbâ s. 4–6",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-014",
+      "kod": "kuran",
+      "planKonu": "Hemze",
+      "ilkDers": "2026-10-18",
+      "seviyeAlani": "okuma",
+      "basamak": 1,
+      "baslik": {
+        "tr": "Hemze",
+        "fr": "Le hamza",
+        "en": "The hamza",
+        "nl": "De hamza",
+        "de": "Das Hamza"
+      },
+      "ozet": {
+        "tr": "Hemze farklı yazılışlarla karşımıza çıkar. Bu yazılışları tanır ve hemzeyi doğru seslendiririz.",
+        "fr": "Le hamza se présente sous plusieurs écritures. Nous les reconnaissons et prononçons correctement le hamza.",
+        "en": "The hamza appears in different writings. We recognise them and pronounce the hamza correctly.",
+        "nl": "De hamza komt in verschillende schrijfwijzen voor. We herkennen ze en spreken de hamza goed uit.",
+        "de": "Das Hamza begegnet uns in verschiedenen Schreibweisen. Wir erkennen sie und sprechen das Hamza richtig aus."
+      },
+      "kitap": "Elifbâ s. 4–5",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-015",
+      "kod": "kuran",
+      "planKonu": "Üstün",
+      "ilkDers": "2026-10-19",
+      "seviyeAlani": "okuma",
+      "basamak": 1,
+      "baslik": {
+        "tr": "Üstün",
+        "fr": "Le fatha (üstün)",
+        "en": "Fatḥa (üstün)",
+        "nl": "Fatḥa (üstün)",
+        "de": "Fatha (Üstün)"
+      },
+      "ozet": {
+        "tr": "Üstün, harfin üstüne konan küçük bir çizgidir. Üstünlü harfleri kısa bir «e/a» sesiyle doğru okuruz.",
+        "fr": "Le fatha est un petit trait placé au-dessus de la lettre. Nous lisons correctement les lettres avec fatha par un son bref « a ».",
+        "en": "The fatḥa is a small stroke above a letter. We read letters with fatḥa correctly with a short “a” sound.",
+        "nl": "De fatḥa is een klein streepje boven de letter. We lezen letters met fatḥa goed met een korte “a”-klank.",
+        "de": "Die Fatha ist ein kleiner Strich über dem Buchstaben. Wir lesen Buchstaben mit Fatha richtig mit einem kurzen „a“-Laut."
+      },
+      "kitap": "Elifbâ s. 7",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-016",
+      "kod": "kuran",
+      "planKonu": "Esre",
+      "ilkDers": "2026-10-24",
+      "seviyeAlani": "okuma",
+      "basamak": 1,
+      "baslik": {
+        "tr": "Esre",
+        "fr": "Le kasra (esre)",
+        "en": "Kasra (esre)",
+        "nl": "Kasra (esre)",
+        "de": "Kasra (Esre)"
+      },
+      "ozet": {
+        "tr": "Esre, harfin altına konan küçük bir çizgidir. Esreli harfleri üstünlü harflerden ayırt ederek kısa bir «i» sesiyle okuruz.",
+        "fr": "Le kasra est un petit trait sous la lettre. Nous distinguons les lettres avec kasra de celles avec fatha et les lisons par un son bref « i ».",
+        "en": "The kasra is a small stroke below a letter. We tell letters with kasra from those with fatḥa and read them with a short “i” sound.",
+        "nl": "De kasra is een klein streepje onder de letter. We onderscheiden letters met kasra van die met fatḥa en lezen ze met een korte “i”-klank.",
+        "de": "Die Kasra ist ein kleiner Strich unter dem Buchstaben. Wir unterscheiden Buchstaben mit Kasra von denen mit Fatha und lesen sie mit einem kurzen „i“-Laut."
+      },
+      "kitap": "Elifbâ s. 10",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-017",
+      "kod": "kuran",
+      "planKonu": "Ötre",
+      "ilkDers": "2026-10-25",
+      "seviyeAlani": "okuma",
+      "basamak": 1,
+      "baslik": {
+        "tr": "Ötre",
+        "fr": "Le damma (ötre)",
+        "en": "Ḍamma (ötre)",
+        "nl": "Ḍamma (ötre)",
+        "de": "Damma (Ötre)"
+      },
+      "ozet": {
+        "tr": "Ötre, harfin üstüne konan küçük bir «vav» gibidir. Ötreli harfleri dudaklarımızı yuvarlayarak, kısa bir «u» sesiyle okuruz.",
+        "fr": "Le damma ressemble à un petit « wâw » au-dessus de la lettre. Nous lisons les lettres avec damma en arrondissant les lèvres, par un son bref « ou ».",
+        "en": "The ḍamma looks like a small “wāw” above a letter. We read letters with ḍamma by rounding our lips, with a short “u” sound.",
+        "nl": "De ḍamma lijkt op een kleine “wāw” boven de letter. We lezen letters met ḍamma met afgeronde lippen en een korte “oe”-klank.",
+        "de": "Die Damma sieht aus wie ein kleines „Wāw“ über dem Buchstaben. Wir lesen Buchstaben mit Damma mit gerundeten Lippen und einem kurzen „u“-Laut."
+      },
+      "kitap": "Elifbâ s. 11",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-018",
+      "kod": "kuran",
+      "planKonu": "Harekeli Kelime Okuma",
+      "ilkDers": "2026-10-26",
+      "seviyeAlani": "okuma",
+      "basamak": 1,
+      "baslik": {
+        "tr": "Harekeli kelime okuma",
+        "fr": "Lecture de mots avec voyelles brèves",
+        "en": "Reading words with short vowels",
+        "nl": "Woorden lezen met korte klinkers",
+        "de": "Wörter mit Kurzvokalen lesen"
+      },
+      "ozet": {
+        "tr": "Üstün, esre ve ötre ile yazılmış kısa kelimeleri harf harf değil, bütün olarak okumaya başlarız.",
+        "fr": "Nous commençons à lire les mots courts avec fatha, kasra et damma comme un tout, et non lettre par lettre.",
+        "en": "We begin to read short words written with fatḥa, kasra and ḍamma as a whole, not letter by letter.",
+        "nl": "We beginnen korte woorden met fatḥa, kasra en ḍamma als geheel te lezen, niet letter voor letter.",
+        "de": "Wir beginnen, kurze Wörter mit Fatha, Kasra und Damma als Ganzes zu lesen, nicht Buchstabe für Buchstabe."
+      },
+      "kitap": "Elifbâ s. 8–9",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-019",
+      "kod": "kuran",
+      "planKonu": "Hareke Pekiştirmesi",
+      "ilkDers": "2026-10-31",
+      "seviyeAlani": "okuma",
+      "basamak": 1,
+      "baslik": {
+        "tr": "Hareke pekiştirmesi",
+        "fr": "Consolidation des voyelles brèves",
+        "en": "Practising the short vowels",
+        "nl": "Korte klinkers oefenen",
+        "de": "Kurzvokale festigen"
+      },
+      "ozet": {
+        "tr": "Üstün, esre ve ötreyi birbirine karıştırmadan okumayı tekrar ederiz. Her hareketeyi doğru ses ve ağız şekliyle çıkarırız.",
+        "fr": "Nous répétons la lecture de la fatha, du kasra et du damma sans les confondre, avec le bon son et la bonne forme de bouche.",
+        "en": "We repeat reading fatḥa, kasra and ḍamma without mixing them up, with the right sound and mouth shape.",
+        "nl": "We herhalen het lezen van fatḥa, kasra en ḍamma zonder verwarring, met de juiste klank en mondstand.",
+        "de": "Wir wiederholen das Lesen von Fatha, Kasra und Damma ohne Verwechslung, mit dem richtigen Laut und der richtigen Mundform."
+      },
+      "kitap": "Elifbâ s. 5; s. 10–11 (tekrar)",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-020",
+      "kod": "kuran",
+      "planKonu": "Cezm",
+      "ilkDers": "2026-11-01",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Cezm",
+        "fr": "Le soukoun (cezm)",
+        "en": "Sukūn (cezm)",
+        "nl": "Sukūn (djazm)",
+        "de": "Sukun (Dschazm)"
+      },
+      "ozet": {
+        "tr": "Cezm, harfin hareke taşımadığını (sâkin olduğunu) gösterir. Cezmli harfi kendinden önceki harfe bağlayarak okuruz.",
+        "fr": "Le soukoun indique que la lettre ne porte pas de voyelle. Nous lisons la lettre sans voyelle en l’appuyant sur la lettre précédente.",
+        "en": "The sukūn shows that a letter carries no vowel. We read the vowel-less letter by linking it to the letter before it.",
+        "nl": "De sukūn toont dat een letter geen klinker draagt. We lezen de klinkerloze letter door hem aan de voorgaande letter te koppelen.",
+        "de": "Das Sukun zeigt, dass ein Buchstabe keinen Vokal trägt. Wir lesen den vokallosen Buchstaben, indem wir ihn an den vorherigen binden."
+      },
+      "kitap": "Elifbâ s. 12–13",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-021",
+      "kod": "kuran",
+      "planKonu": "Cezmli Kelime Okuma",
+      "ilkDers": "2026-11-07",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Cezmli kelime okuma",
+        "fr": "Lecture de mots avec soukoun",
+        "en": "Reading words with sukūn",
+        "nl": "Woorden met sukūn lezen",
+        "de": "Wörter mit Sukun lesen"
+      },
+      "ozet": {
+        "tr": "Cezm içeren kelimeleri duraksamadan, akıcı biçimde çözmeye çalışırız. Sâkin harfin önceki harfe yaslandığını duyarız.",
+        "fr": "Nous essayons de déchiffrer sans hésiter les mots contenant un soukoun. Nous entendons la lettre sans voyelle s’appuyer sur la précédente.",
+        "en": "We try to decode words containing sukūn without hesitating. We hear the vowel-less letter lean on the one before it.",
+        "nl": "We proberen woorden met sukūn zonder haperen te ontcijferen. We horen de klinkerloze letter op de vorige leunen.",
+        "de": "Wir versuchen, Wörter mit Sukun ohne Stocken zu entziffern. Wir hören, wie sich der vokallose Buchstabe an den vorherigen lehnt."
+      },
+      "kitap": "Elifbâ s. 13",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-022",
+      "kod": "kuran",
+      "planKonu": "Şedde",
+      "ilkDers": "2026-11-08",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Şedde",
+        "fr": "La chadda (şedde)",
+        "en": "Shadda (şedde)",
+        "nl": "Shadda (şedde)",
+        "de": "Schadda (Şedde)"
+      },
+      "ozet": {
+        "tr": "Şedde, harfin iki kez okunacağını gösterir: önce sâkin, sonra harekeli. Şeddeli harfi çift ses değerine dikkat ederek okuruz.",
+        "fr": "La chadda indique que la lettre se prononce deux fois : d’abord sans voyelle, puis avec voyelle. Nous lisons la lettre doublée en soignant sa valeur double.",
+        "en": "The shadda shows that a letter is pronounced twice: first without a vowel, then with one. We read the doubled letter paying attention to its double value.",
+        "nl": "De shadda toont dat een letter tweemaal wordt uitgesproken: eerst zonder klinker, daarna met klinker. We lezen de verdubbelde letter met aandacht voor haar dubbele waarde.",
+        "de": "Die Schadda zeigt, dass ein Buchstabe doppelt gesprochen wird: erst ohne, dann mit Vokal. Wir lesen den verdoppelten Buchstaben mit Blick auf seinen Doppelwert."
+      },
+      "kitap": "Elifbâ s. 20–21",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-023",
+      "kod": "kuran",
+      "planKonu": "Şeddeli Kelime Okuma",
+      "ilkDers": "2026-11-14",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Şeddeli kelime okuma",
+        "fr": "Lecture de mots avec chadda",
+        "en": "Reading words with shadda",
+        "nl": "Woorden met shadda lezen",
+        "de": "Wörter mit Schadda lesen"
+      },
+      "ozet": {
+        "tr": "Şeddeli kelimeleri doğru vurgu ve akıcılıkla okuruz. Şeddeli harfte kısa bir bekleme ve güçlü bir ses duyarız.",
+        "fr": "Nous lisons les mots avec chadda avec le bon accent et de façon fluide. Sur la lettre doublée, nous entendons une courte retenue et un son appuyé.",
+        "en": "We read words with shadda with correct stress and fluency. On the doubled letter we hear a short hold and a firm sound.",
+        "nl": "We lezen woorden met shadda met juiste nadruk en vlot. Op de verdubbelde letter horen we een korte aanhouding en een stevige klank.",
+        "de": "Wir lesen Wörter mit Schadda mit richtiger Betonung und flüssig. Auf dem verdoppelten Buchstaben hören wir ein kurzes Halten und einen festen Laut."
+      },
+      "kitap": "Elifbâ s. 21–22",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-024",
+      "kod": "kuran",
+      "planKonu": "Sâkinlik Pekiştirmesi",
+      "ilkDers": "2026-11-15",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Sâkinlik pekiştirmesi",
+        "fr": "Consolidation de la sukûn",
+        "en": "Practising sukūn and shadda together",
+        "nl": "Sukūn en shadda samen oefenen",
+        "de": "Sukun und Schadda zusammen üben"
+      },
+      "ozet": {
+        "tr": "Sâkin (cezmli) ve şeddeli okuma örneklerini birlikte doğru uygularız. İki işareti birbirine karıştırmamayı çalışırız.",
+        "fr": "Nous appliquons correctement ensemble des exemples avec soukoun et chadda. Nous veillons à ne pas confondre les deux signes.",
+        "en": "We practise examples with sukūn and shadda together correctly. We try not to mix the two signs up.",
+        "nl": "We passen voorbeelden met sukūn en shadda samen goed toe. We proberen de twee tekens niet te verwarren.",
+        "de": "Wir wenden Beispiele mit Sukun und Schadda gemeinsam richtig an. Wir achten darauf, die beiden Zeichen nicht zu verwechseln."
+      },
+      "kitap": "Elifbâ s. 14",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-025",
+      "kod": "kuran",
+      "planKonu": "İki Üstün",
+      "ilkDers": "2026-11-21",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "İki üstün",
+        "fr": "Le double fatha (tanwîn)",
+        "en": "Double fatḥa (tanwīn)",
+        "nl": "Dubbele fatḥa (tanwīn)",
+        "de": "Doppelte Fatha (Tanwīn)"
+      },
+      "ozet": {
+        "tr": "İki üstün (tenvin) harfin sonunda «-an» sesi verir. İki üstünlü kelimeleri doğru ses değeriyle okuruz.",
+        "fr": "Le double fatha (tanwîn) donne un son « -an » à la fin du mot. Nous lisons les mots avec double fatha avec la bonne valeur sonore.",
+        "en": "The double fatḥa (tanwīn) gives an “-an” sound at the end of a word. We read words with double fatḥa with the right sound value.",
+        "nl": "De dubbele fatḥa (tanwīn) geeft aan het woordeinde een “-an”-klank. We lezen woorden met dubbele fatḥa met de juiste klankwaarde.",
+        "de": "Die doppelte Fatha (Tanwīn) gibt am Wortende einen „-an“-Laut. Wir lesen Wörter mit doppelter Fatha mit dem richtigen Lautwert."
+      },
+      "kitap": "Elifbâ s. 23",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-026",
+      "kod": "kuran",
+      "planKonu": "İki Esre",
+      "ilkDers": "2026-11-22",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "İki esre",
+        "fr": "Le double kasra (tanwîn)",
+        "en": "Double kasra (tanwīn)",
+        "nl": "Dubbele kasra (tanwīn)",
+        "de": "Doppelte Kasra (Tanwīn)"
+      },
+      "ozet": {
+        "tr": "İki esre (tenvin) harfin sonunda «-in» sesi verir. İki esreli kelimeleri tenvin sesini koruyarak okuruz.",
+        "fr": "Le double kasra (tanwîn) donne un son « -in » à la fin du mot. Nous lisons les mots avec double kasra en gardant le son du tanwîn.",
+        "en": "The double kasra (tanwīn) gives an “-in” sound at the end of a word. We read words with double kasra keeping the tanwīn sound.",
+        "nl": "De dubbele kasra (tanwīn) geeft aan het woordeinde een “-in”-klank. We lezen woorden met dubbele kasra en behouden de tanwīn-klank.",
+        "de": "Die doppelte Kasra (Tanwīn) gibt am Wortende einen „-in“-Laut. Wir lesen Wörter mit doppelter Kasra und bewahren den Tanwīn-Klang."
+      },
+      "kitap": "Elifbâ s. 24",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-027",
+      "kod": "kuran",
+      "planKonu": "İki Ötre",
+      "ilkDers": "2026-11-28",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "İki ötre",
+        "fr": "Le double damma (tanwîn)",
+        "en": "Double ḍamma (tanwīn)",
+        "nl": "Dubbele ḍamma (tanwīn)",
+        "de": "Doppelte Damma (Tanwīn)"
+      },
+      "ozet": {
+        "tr": "İki ötre (tenvin) harfin sonunda «-un» sesi verir. İki ötreli kelimeleri doğru dudak hareketiyle okuruz.",
+        "fr": "Le double damma (tanwîn) donne un son « -oun » à la fin du mot. Nous lisons les mots avec double damma avec le bon mouvement des lèvres.",
+        "en": "The double ḍamma (tanwīn) gives an “-un” sound at the end of a word. We read words with double ḍamma with the right lip movement.",
+        "nl": "De dubbele ḍamma (tanwīn) geeft aan het woordeinde een “-oen”-klank. We lezen woorden met dubbele ḍamma met de juiste lipbeweging.",
+        "de": "Die doppelte Damma (Tanwīn) gibt am Wortende einen „-un“-Laut. Wir lesen Wörter mit doppelter Damma mit der richtigen Lippenbewegung."
+      },
+      "kitap": "Elifbâ s. 25",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-028",
+      "kod": "kuran",
+      "planKonu": "Tenvinli Kelime Okuma",
+      "ilkDers": "2026-11-29",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Tenvinli kelime okuma",
+        "fr": "Lecture de mots avec tanwîn",
+        "en": "Reading words with tanwīn",
+        "nl": "Woorden met tanwīn lezen",
+        "de": "Wörter mit Tanwīn lesen"
+      },
+      "ozet": {
+        "tr": "Üç tenvin çeşidini (iki üstün, iki esre, iki ötre) kelime içinde doğru ayırt ederek okuruz.",
+        "fr": "Nous lisons en distinguant correctement les trois sortes de tanwîn (double fatha, kasra, damma) dans les mots.",
+        "en": "We read the three kinds of tanwīn (double fatḥa, kasra, ḍamma) in words, telling them apart correctly.",
+        "nl": "We lezen de drie soorten tanwīn (dubbele fatḥa, kasra, ḍamma) in woorden en onderscheiden ze goed.",
+        "de": "Wir lesen die drei Arten des Tanwīn (doppelte Fatha, Kasra, Damma) in Wörtern und unterscheiden sie richtig."
+      },
+      "kitap": "Elifbâ s. 23–25 (tekrar)",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-029",
+      "kod": "kuran",
+      "planKonu": "Tenvin Pekiştirmesi",
+      "ilkDers": "2026-12-05",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Tenvin pekiştirmesi",
+        "fr": "Consolidation du tanwîn",
+        "en": "Practising tanwīn",
+        "nl": "Tanwīn oefenen",
+        "de": "Tanwīn festigen"
+      },
+      "ozet": {
+        "tr": "Tenvinli kelimeleri hatasız ve seri biçimde okumak için tekrar çalışması yaparız.",
+        "fr": "Nous nous exerçons en répétant pour lire sans faute et rapidement les mots avec tanwîn.",
+        "en": "We practise by repetition so that we can read words with tanwīn without mistakes and at a good speed.",
+        "nl": "We oefenen door herhaling om woorden met tanwīn foutloos en vlot te lezen.",
+        "de": "Wir üben durch Wiederholung, um Wörter mit Tanwīn fehlerfrei und zügig zu lesen."
+      },
+      "kitap": "Elifbâ s. 23–25 (tekrar)",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-030",
+      "kod": "kuran",
+      "planKonu": "Med Harfleri",
+      "ilkDers": "2026-12-06",
+      "seviyeAlani": "kuranBilgi",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Med harfleri",
+        "fr": "Les lettres de prolongation (med)",
+        "en": "The madd letters",
+        "nl": "De madd-letters",
+        "de": "Die Madd-Buchstaben"
+      },
+      "ozet": {
+        "tr": "Med, harfin sesini uzatmaktır. Med harfleri üç tanedir: elif, vâv ve yâ. Kelimede uzatılan yeri fark eder, süresini tutarlı biçimde uzatırız.",
+        "fr": "Le madd consiste à allonger le son d’une lettre. Il y a trois lettres de madd : alif, wâw et yâ. Nous repérons l’allongement dans le mot et le tenons régulièrement.",
+        "en": "Madd means lengthening a letter’s sound. There are three madd letters: alif, wāw and yā’. We spot the lengthening in a word and keep its duration steady.",
+        "nl": "Madd betekent de klank van een letter verlengen. Er zijn drie madd-letters: alif, wāw en yā’. We herkennen de verlenging in het woord en houden haar duur gelijk.",
+        "de": "Madd bedeutet, den Laut eines Buchstabens zu dehnen. Es gibt drei Madd-Buchstaben: Alif, Wāw und Yā’. Wir erkennen die Dehnung im Wort und halten ihre Dauer gleichmäßig."
+      },
+      "kitap": "Elifbâ s. 15–18",
+      "sorular": [
+        {
+          "id": "ku-030-1",
+          "soru": {
+            "tr": "Med ne demektir?",
+            "fr": "Que signifie « madd » ?",
+            "en": "What does madd mean?",
+            "nl": "Wat betekent madd?",
+            "de": "Was bedeutet Madd?"
+          },
+          "siklar": [
+            {
+              "tr": "Harfin sesini harekesi yönünde uzatmak",
+              "fr": "Allonger le son de la lettre dans le sens de sa voyelle",
+              "en": "Lengthening a letter’s sound in the direction of its vowel",
+              "nl": "De klank van een letter verlengen in de richting van haar klinker",
+              "de": "Den Laut des Buchstabens in Richtung seines Vokals zu dehnen"
+            },
+            {
+              "tr": "Harfi hiç okumamak",
+              "fr": "Ne pas lire la lettre",
+              "en": "Not reading the letter at all",
+              "nl": "De letter helemaal niet lezen",
+              "de": "Den Buchstaben gar nicht zu lesen"
+            },
+            {
+              "tr": "Harfi sert söylemek",
+              "fr": "Dire la lettre durement",
+              "en": "Saying the letter harshly",
+              "nl": "De letter hard zeggen",
+              "de": "Den Buchstaben hart zu sprechen"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "Kur’an Okuma ve Tecvid I (İstanbul Üniv. AUZEF), Medler bölümü («Med» kavramı)"
+        },
+        {
+          "id": "ku-030-2",
+          "soru": {
+            "tr": "Med harfleri hangileridir?",
+            "fr": "Quelles sont les lettres de madd ?",
+            "en": "Which are the madd letters?",
+            "nl": "Welke zijn de madd-letters?",
+            "de": "Welche sind die Madd-Buchstaben?"
+          },
+          "siklar": [
+            {
+              "tr": "Elif, vâv, yâ",
+              "fr": "Alif, wâw, yâ",
+              "en": "Alif, wāw, yā’",
+              "nl": "Alif, wāw, yā’",
+              "de": "Alif, Wāw, Yā’"
+            },
+            {
+              "tr": "Be, te, se",
+              "fr": "Bâ, tâ, thâ",
+              "en": "Bā’, tā’, thā’",
+              "nl": "Bā’, tā’, thā’",
+              "de": "Bā’, Tā’, Thā’"
+            },
+            {
+              "tr": "Sin, şin, sad",
+              "fr": "Sîn, chîn, sâd",
+              "en": "Sīn, shīn, ṣād",
+              "nl": "Sīn, sjīn, ṣād",
+              "de": "Sīn, Schīn, Ṣād"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "Kur’an Okuma ve Tecvid I (İstanbul Üniv. AUZEF), Medler bölümü («Med» kavramı)"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-031",
+      "kod": "kuran",
+      "planKonu": "Medli Kelime Okuma",
+      "ilkDers": "2026-12-12",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Medli kelime okuma",
+        "fr": "Lecture de mots avec madd",
+        "en": "Reading words with madd",
+        "nl": "Woorden met madd lezen",
+        "de": "Wörter mit Madd lesen"
+      },
+      "ozet": {
+        "tr": "Medli kelimelerde uzatma yerini doğru buluruz. Uzatmayı ne eksik ne fazla, her seferinde aynı sürede yaparız.",
+        "fr": "Dans les mots avec madd, nous trouvons bien l’endroit de l’allongement. Nous le faisons ni trop court ni trop long, toujours de la même durée.",
+        "en": "In words with madd we find the place of lengthening correctly. We make it neither too short nor too long, the same length each time.",
+        "nl": "In woorden met madd vinden we de plek van de verlenging goed. We maken haar niet te kort of te lang, steeds even lang.",
+        "de": "In Wörtern mit Madd finden wir die Stelle der Dehnung richtig. Wir dehnen weder zu kurz noch zu lang, jedes Mal gleich lang."
+      },
+      "kitap": "Elifbâ s. 19",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-032",
+      "kod": "kuran",
+      "planKonu": "Lafza-i Celâl",
+      "ilkDers": "2026-12-13",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Lafza-i Celâl",
+        "fr": "Le nom d’Allah (lafẓ al-jalâla)",
+        "en": "The Name of Allah (lafẓ al-jalāla)",
+        "nl": "De Naam Allah (lafẓ al-djalāla)",
+        "de": "Der Name Allah (Lafẓ al-Dschalāla)"
+      },
+      "ozet": {
+        "tr": "Lafza-i Celâl, «Allah» ismidir. Onu kendinden önceki harekeye göre kalın veya ince okumayı öğreniriz ve örnekleri dikkatle dinleriz.",
+        "fr": "Le lafẓ al-jalâla est le nom « Allah ». Nous apprenons à le dire épais ou fin selon la voyelle qui le précède et écoutons attentivement des exemples.",
+        "en": "Lafẓ al-jalāla is the name “Allah”. We learn to read it heavy or light depending on the vowel before it, and listen carefully to examples.",
+        "nl": "Lafẓ al-djalāla is de naam “Allah”. We leren hem zwaar of licht te lezen naargelang de klinker ervoor en luisteren aandachtig naar voorbeelden.",
+        "de": "Lafẓ al-Dschalāla ist der Name „Allah“. Wir lernen, ihn je nach vorherigem Vokal dunkel oder hell zu lesen, und hören Beispiele aufmerksam an."
+      },
+      "kitap": "Elifbâ s. 31",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-033",
+      "kod": "kuran",
+      "planKonu": "Lâm Okunuşları",
+      "ilkDers": "2026-12-19",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Lâm okunuşları",
+        "fr": "Les lectures du lâm",
+        "en": "Readings of the lām",
+        "nl": "Uitspraken van de lām",
+        "de": "Lesarten des Lām"
+      },
+      "ozet": {
+        "tr": "Elif-lâm takısındaki lâmın bazen okunduğunu (kamerî), bazen sonraki harfe katıldığını (şemsî) örneklerle ayırt ederek okuruz.",
+        "fr": "Nous lisons en distinguant par des exemples le lâm de l’article, tantôt prononcé (lunaire), tantôt assimilé à la lettre suivante (solaire).",
+        "en": "We read, telling by examples the lām of the article that is sometimes pronounced (lunar) and sometimes merged into the next letter (solar).",
+        "nl": "We lezen en onderscheiden aan de hand van voorbeelden de lām van het lidwoord die soms uitgesproken wordt (maan) en soms in de volgende letter opgaat (zon).",
+        "de": "Wir lesen und unterscheiden anhand von Beispielen das Lām des Artikels, das manchmal gesprochen (Mondbuchstabe) und manchmal im nächsten Buchstaben aufgeht (Sonnenbuchstabe)."
+      },
+      "kitap": "Elifbâ s. 29–30",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-034",
+      "kod": "kuran",
+      "planKonu": "Duraklı Okuma",
+      "ilkDers": "2026-12-20",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Duraklı okuma",
+        "fr": "Lecture avec pauses",
+        "en": "Reading with pauses",
+        "nl": "Lezen met pauzes",
+        "de": "Lesen mit Pausen"
+      },
+      "ozet": {
+        "tr": "Okurken durmamız (vakf) ya da devam etmemiz (vasl) gereken yerleri işaretlerden anlarız. İşarete göre ya duraklar ya akıcı sürdürürüz.",
+        "fr": "Les signes nous indiquent où nous devons nous arrêter (waqf) ou continuer (wasl). Selon le signe, nous faisons une pause ou poursuivons.",
+        "en": "The marks show where we should stop (waqf) or continue (waṣl). According to the sign, we either pause or keep reading smoothly.",
+        "nl": "De tekens tonen waar we moeten stoppen (waqf) of doorgaan (waṣl). Naargelang het teken pauzeren we of lezen we vlot door.",
+        "de": "Die Zeichen zeigen, wo wir anhalten (Waqf) oder weiterlesen (Wasl) sollen. Je nach Zeichen machen wir eine Pause oder lesen flüssig weiter."
+      },
+      "kitap": "Elifbâ s. 48",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-035",
+      "kod": "kuran",
+      "planKonu": "Kelimeden Cümleye Geçiş",
+      "ilkDers": "2026-12-21",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Kelimeden cümleye geçiş",
+        "fr": "Des mots aux phrases",
+        "en": "From words to sentences",
+        "nl": "Van woorden naar zinnen",
+        "de": "Von Wörtern zu Sätzen"
+      },
+      "ozet": {
+        "tr": "Okuduğumuz kelimeleri birleştirerek kısa cümleleri bütün hâlinde okumaya geçeriz.",
+        "fr": "Nous passons à la lecture de courtes phrases entières en reliant les mots que nous savons lire.",
+        "en": "We move on to reading short sentences as a whole by joining the words we can read.",
+        "nl": "We gaan over op het lezen van korte zinnen als geheel door de woorden die we kunnen lezen aan elkaar te koppelen.",
+        "de": "Wir gehen dazu über, kurze Sätze als Ganzes zu lesen, indem wir die gelernten Wörter verbinden."
+      },
+      "kitap": "Elifbâ s. 26–27",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-036",
+      "kod": "kuran",
+      "planKonu": "Cümle Okuma",
+      "ilkDers": "2026-12-26",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Cümle okuma",
+        "fr": "Lecture de phrases",
+        "en": "Reading sentences",
+        "nl": "Zinnen lezen",
+        "de": "Sätze lesen"
+      },
+      "ozet": {
+        "tr": "Kısa Kur’an cümlelerini doğru sırayla ve düzgün bir tempoyla okuruz.",
+        "fr": "Nous lisons de courtes phrases coraniques dans le bon ordre et à un rythme régulier.",
+        "en": "We read short Qur’anic sentences in the right order and at a steady pace.",
+        "nl": "We lezen korte Koranzinnen in de juiste volgorde en in een gelijkmatig tempo.",
+        "de": "Wir lesen kurze Koransätze in der richtigen Reihenfolge und in gleichmäßigem Tempo."
+      },
+      "kitap": "Elifbâ s. 28",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-037",
+      "kod": "kuran",
+      "planKonu": "Kur'an Satırını Tanıma",
+      "ilkDers": "2026-12-27",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Kur’an satırını tanıma",
+        "fr": "Reconnaître une ligne du Coran",
+        "en": "Following a line of the Qur’an",
+        "nl": "Een regel van de Koran herkennen",
+        "de": "Eine Zeile des Korans erkennen"
+      },
+      "ozet": {
+        "tr": "Kur’an-ı Kerim’in bir satırını karıştırmadan, gözümüzle takip ederek okuruz.",
+        "fr": "Nous suivons des yeux une ligne du Coran sans nous perdre et la lisons.",
+        "en": "We follow a line of the Qur’an with our eyes without losing our place, and read it.",
+        "nl": "We volgen een regel van de Koran met onze ogen zonder het spoor bijster te raken en lezen hem.",
+        "de": "Wir folgen einer Zeile des Korans mit den Augen, ohne die Stelle zu verlieren, und lesen sie."
+      },
+      "kitap": "Elifbâ s. 32",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-038",
+      "kod": "kuran",
+      "planKonu": "Amme Cüzü Satırları",
+      "ilkDers": "2026-12-28",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Amme cüzü satırları",
+        "fr": "Les lignes du Juz’ ʿAmma",
+        "en": "Lines from Juz’ ʿAmma",
+        "nl": "Regels uit Djoez’ ʿAmma",
+        "de": "Zeilen aus Dschuz’ ʿAmma"
+      },
+      "ozet": {
+        "tr": "Amme cüzünden kısa satırları mushafa bakarak (yüzünden) okuruz.",
+        "fr": "Nous lisons de courtes lignes du Juz’ ʿAmma en regardant le mushaf.",
+        "en": "We read short lines from Juz’ ʿAmma, looking at the mushaf.",
+        "nl": "We lezen korte regels uit Djoez’ ʿAmma terwijl we in de mushaf kijken.",
+        "de": "Wir lesen kurze Zeilen aus Dschuz’ ʿAmma mit Blick in den Mushaf."
+      },
+      "kitap": "Elifbâ s. 32–33",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-039",
+      "kod": "kuran",
+      "planKonu": "Yüzünden Okuma Alıştırması",
+      "ilkDers": "2027-01-02",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Yüzünden okuma alıştırması",
+        "fr": "Exercice de lecture dans le mushaf",
+        "en": "Reading from the mushaf",
+        "nl": "Oefenen met lezen uit de mushaf",
+        "de": "Übung: Lesen aus dem Mushaf"
+      },
+      "ozet": {
+        "tr": "Kısa sure satırlarını mushaftan, öğrendiğimiz okuma kurallarına uygun şekilde seslendirmeyi alıştırma yaparak geliştiririz.",
+        "fr": "Nous nous entraînons à lire à voix haute de courtes lignes de sourates dans le mushaf selon les règles de lecture apprises.",
+        "en": "We practise reading short lines of surahs aloud from the mushaf, following the reading rules we have learned.",
+        "nl": "We oefenen korte regels van soera’s hardop uit de mushaf te lezen volgens de geleerde leesregels.",
+        "de": "Wir üben, kurze Suren-Zeilen laut aus dem Mushaf nach den gelernten Leseregeln zu lesen."
+      },
+      "kitap": "Elifbâ s. 33",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-040",
+      "kod": "kuran",
+      "planKonu": "Akıcılık Çalışması",
+      "ilkDers": "2027-01-03",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Akıcılık çalışması",
+        "fr": "Entraînement à la fluidité",
+        "en": "Fluency practice",
+        "nl": "Vlot leren lezen",
+        "de": "Flüssigkeitstraining"
+      },
+      "ozet": {
+        "tr": "Kısa Kur’an satırlarını hecelemeden, akıcı okumaya yaklaşmak için tekrarlarız.",
+        "fr": "Nous répétons de courtes lignes du Coran pour nous approcher d’une lecture fluide, sans épeler.",
+        "en": "We repeat short lines of the Qur’an to get closer to fluent reading without spelling out syllables.",
+        "nl": "We herhalen korte regels van de Koran om dichter bij vlot lezen te komen, zonder te spellen.",
+        "de": "Wir wiederholen kurze Koransätze, um uns dem flüssigen Lesen ohne Buchstabieren zu nähern."
+      },
+      "kitap": "Elifbâ s. 32–33 (tekrar)",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-041",
+      "kod": "kuran",
+      "planKonu": "Nefes Kontrolü",
+      "ilkDers": "2027-01-09",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Nefes kontrolü",
+        "fr": "Maîtrise du souffle",
+        "en": "Breath control",
+        "nl": "Ademcontrole",
+        "de": "Atemkontrolle"
+      },
+      "ozet": {
+        "tr": "Kısa âyet parçalarını nefesimizi önceden planlayarak okuruz. Nefesimiz bittiğinde değil, uygun yerde dururuz.",
+        "fr": "Nous lisons de courts passages de versets en planifiant notre souffle. Nous nous arrêtons à un endroit adapté, pas quand le souffle manque.",
+        "en": "We read short verse segments by planning our breath ahead. We stop at a suitable place, not only when we run out of air.",
+        "nl": "We lezen korte versfragmenten en plannen onze adem vooraf. We stoppen op een geschikte plek, niet pas als we geen adem meer hebben.",
+        "de": "Wir lesen kurze Versabschnitte und planen unseren Atem im Voraus. Wir halten an einer passenden Stelle an, nicht erst wenn uns die Luft ausgeht."
+      },
+      "kitap": "Elifbâ s. 48",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-042",
+      "kod": "kuran",
+      "planKonu": "Okuma Değerlendirmesi",
+      "ilkDers": "2027-01-10",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Okuma değerlendirmesi",
+        "fr": "Évaluation de la lecture",
+        "en": "Reading assessment",
+        "nl": "Leesevaluatie",
+        "de": "Leseauswertung"
+      },
+      "ozet": {
+        "tr": "Seviyemize uygun bir Kur’an satırını, hocamızın kontrolünde okuruz. Kendimizi dinler, hatalarımızı fark eder ve düzeltiriz.",
+        "fr": "Nous lisons une ligne du Coran adaptée à notre niveau sous le contrôle de notre enseignant. Nous nous écoutons, repérons et corrigeons nos erreurs.",
+        "en": "We read a line of the Qur’an suited to our level under our teacher’s supervision. We listen to ourselves, notice our mistakes and correct them.",
+        "nl": "We lezen een regel van de Koran op ons niveau onder toezicht van onze leraar. We luisteren naar onszelf, merken fouten op en verbeteren ze.",
+        "de": "Wir lesen eine unserem Niveau entsprechende Koranzeile unter Aufsicht des Lehrers. Wir hören uns zu, bemerken Fehler und verbessern sie."
+      },
+      "kitap": "Elifbâ s. 32–33 (tekrar)",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-043",
+      "kod": "kuran",
+      "planKonu": "Med Çeşitleri",
+      "ilkDers": "2027-01-16",
+      "seviyeAlani": "kuranBilgi",
+      "basamak": 3,
+      "baslik": {
+        "tr": "Med çeşitleri",
+        "fr": "Les sortes de madd",
+        "en": "Kinds of madd",
+        "nl": "Soorten madd",
+        "de": "Arten des Madd"
+      },
+      "ozet": {
+        "tr": "Tabiî med, hemze ya da sükûn gibi bir med sebebi olmadan yalnız med harfiyle yapılan uzatmadır. Süresi bir elif ölçüsüdür. Örnek üzerinde temel med çeşitlerini tanır ve uygun uzatmayla okuruz.",
+        "fr": "Le madd naturel est l’allongement fait par la seule lettre de madd, sans cause comme un hamza ou un soukoun. Sa durée est d’un alif. Sur des exemples, nous reconnaissons les principaux madd et les lisons avec le bon allongement.",
+        "en": "Natural madd is the lengthening made by the madd letter alone, without a cause such as a hamza or sukūn. It lasts one alif. On examples we recognise the main kinds of madd and read them with the right lengthening.",
+        "nl": "Natuurlijke madd is de verlenging door alleen de madd-letter, zonder oorzaak zoals hamza of sukūn. Ze duurt één alif. Aan voorbeelden herkennen we de belangrijkste soorten madd en lezen ze met de juiste verlenging.",
+        "de": "Natürliches Madd ist die Dehnung allein durch den Madd-Buchstaben, ohne Ursache wie Hamza oder Sukun. Sie dauert ein Alif. An Beispielen erkennen wir die wichtigsten Arten des Madd und lesen sie mit der richtigen Dehnung."
+      },
+      "kitap": "Elifbâ s. 42–44",
+      "sorular": [
+        {
+          "id": "ku-043-1",
+          "soru": {
+            "tr": "Tabiî med (medd-i tabiî) nasıl oluşur?",
+            "fr": "Comment se forme le madd naturel ?",
+            "en": "How does natural madd (madd ṭabīʿī) arise?",
+            "nl": "Hoe ontstaat natuurlijke madd (madd ṭabīʿī)?",
+            "de": "Wie entsteht das natürliche Madd (Madd ṭabīʿī)?"
+          },
+          "siklar": [
+            {
+              "tr": "Hemze ya da sükûn gibi sebep olmadan, yalnız med harfiyle yapılan uzatmayla",
+              "fr": "Par l’allongement fait par la seule lettre de madd, sans cause comme hamza ou soukoun",
+              "en": "By lengthening with the madd letter alone, with no cause such as hamza or sukūn",
+              "nl": "Door verlenging met alleen de madd-letter, zonder oorzaak zoals hamza of sukūn",
+              "de": "Durch die Dehnung allein mit dem Madd-Buchstaben, ohne Ursache wie Hamza oder Sukun"
+            },
+            {
+              "tr": "Hemzeden sonra yapılan çok uzun uzatmayla",
+              "fr": "Par un très long allongement après un hamza",
+              "en": "By a very long lengthening after a hamza",
+              "nl": "Door een zeer lange verlenging na een hamza",
+              "de": "Durch eine sehr lange Dehnung nach einem Hamza"
+            },
+            {
+              "tr": "Harfi hiç uzatmamakla",
+              "fr": "En n’allongeant jamais la lettre",
+              "en": "By never lengthening the letter",
+              "nl": "Door de letter nooit te verlengen",
+              "de": "Indem man den Buchstaben nie dehnt"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "Kur’an Okuma ve Tecvid I (İstanbul Üniv. AUZEF), «Med» kavramı (medd-i tabiî)"
+        },
+        {
+          "id": "ku-043-2",
+          "soru": {
+            "tr": "Tabiî medde uzatma süresi hangi ölçüyle anlatılır?",
+            "fr": "Par quelle mesure la durée du madd naturel est-elle exprimée ?",
+            "en": "By which measure is the duration of natural madd described?",
+            "nl": "Met welke maat wordt de duur van natuurlijke madd uitgedrukt?",
+            "de": "Mit welchem Maß wird die Dauer des natürlichen Madd beschrieben?"
+          },
+          "siklar": [
+            {
+              "tr": "Bir elif ölçüsüyle",
+              "fr": "Par la mesure d’un alif",
+              "en": "By the measure of one alif",
+              "nl": "Met de maat van één alif",
+              "de": "Mit dem Maß eines Alif"
+            },
+            {
+              "tr": "Bir saatle",
+              "fr": "Par une heure",
+              "en": "By one hour",
+              "nl": "Met één uur",
+              "de": "Mit einer Stunde"
+            },
+            {
+              "tr": "Hiçbir ölçüyle anlatılmaz",
+              "fr": "Elle n’est exprimée par aucune mesure",
+              "en": "It is not described by any measure",
+              "nl": "Ze wordt met geen enkele maat uitgedrukt",
+              "de": "Sie wird mit keinem Maß beschrieben"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "Kur’an Okuma ve Tecvid I (İstanbul Üniv. AUZEF), «Med» kavramı (medd-i tabiî)"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-044",
+      "kod": "kuran",
+      "planKonu": "İhfâ",
+      "ilkDers": "2027-01-17",
+      "seviyeAlani": "kuranBilgi",
+      "basamak": 3,
+      "baslik": {
+        "tr": "İhfâ",
+        "fr": "L’ikhfâ’",
+        "en": "Ikhfāʾ",
+        "nl": "Ikhfāʾ",
+        "de": "Ichfā’"
+      },
+      "ozet": {
+        "tr": "Sâkin nûn ya da tenvinden sonra on beş ihfâ harfinden biri gelirse nûn sesi gizlenir ve geniz (ğunne) sesiyle okunur. İhfâ örneklerini geniz sesini koruyarak okuruz.",
+        "fr": "Quand un nûn sans voyelle ou un tanwîn est suivi d’une des quinze lettres d’ikhfâ’, le son du nûn est voilé et lu avec la nasalisation (ghunna). Nous lisons les exemples en gardant ce son nasal.",
+        "en": "When a vowel-less nūn or tanwīn is followed by one of the fifteen ikhfāʾ letters, the nūn sound is veiled and read with nasalisation (ghunna). We read the examples keeping the nasal sound.",
+        "nl": "Als een klinkerloze nūn of tanwīn gevolgd wordt door een van de vijftien ikhfāʾ-letters, wordt de nūn-klank versluierd en met neusklank (ghunna) gelezen. We lezen voorbeelden met behoud van die neusklank.",
+        "de": "Folgt auf ein vokalloses Nūn oder Tanwīn einer der fünfzehn Ichfā’-Buchstaben, wird der Nūn-Laut verhüllt und mit Nasalierung (Ghunna) gelesen. Wir lesen die Beispiele mit dem nasalen Klang."
+      },
+      "kitap": "Elifbâ s. 46",
+      "sorular": [
+        {
+          "id": "ku-044-1",
+          "soru": {
+            "tr": "İhfâ harfleri kaç tanedir?",
+            "fr": "Combien y a-t-il de lettres d’ikhfâ’ ?",
+            "en": "How many ikhfāʾ letters are there?",
+            "nl": "Hoeveel ikhfāʾ-letters zijn er?",
+            "de": "Wie viele Ichfā’-Buchstaben gibt es?"
+          },
+          "siklar": [
+            {
+              "tr": "Altı",
+              "fr": "Six",
+              "en": "Six",
+              "nl": "Zes",
+              "de": "Sechs"
+            },
+            {
+              "tr": "On beş",
+              "fr": "Quinze",
+              "en": "Fifteen",
+              "nl": "Vijftien",
+              "de": "Fünfzehn"
+            },
+            {
+              "tr": "Dört",
+              "fr": "Quatre",
+              "en": "Four",
+              "nl": "Vier",
+              "de": "Vier"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "Diyanet İlmî Dergi 2021, c. 57, s. 1 (Erzurumlu İbrahim Hakkı’nın Tecvîdü’l-Kur’ân risalesi, «Tenvin ve Sâkin Nûn’un Hükümleri», s. 25–26)"
+        },
+        {
+          "id": "ku-044-2",
+          "soru": {
+            "tr": "İhfâ nasıl okunur?",
+            "fr": "Comment lit-on l’ikhfâ’ ?",
+            "en": "How is ikhfāʾ read?",
+            "nl": "Hoe wordt ikhfāʾ gelezen?",
+            "de": "Wie wird Ichfā’ gelesen?"
+          },
+          "siklar": [
+            {
+              "tr": "Nûn sesi hiç duyulmaz, ses kesilir",
+              "fr": "Le son du nûn disparaît, le son est coupé",
+              "en": "The nūn sound is not heard at all; the sound is cut",
+              "nl": "De nūn-klank is niet te horen; de klank wordt afgebroken",
+              "de": "Der Nūn-Laut ist gar nicht zu hören; der Laut bricht ab"
+            },
+            {
+              "tr": "Boğazdan sert okunur",
+              "fr": "On le lit durement depuis la gorge",
+              "en": "It is read harshly from the throat",
+              "nl": "Het wordt hard uit de keel gelezen",
+              "de": "Es wird hart aus der Kehle gelesen"
+            },
+            {
+              "tr": "Geniz (ğunne) sesiyle, gizlenerek okunur",
+              "fr": "On le lit voilé, avec la nasalisation (ghunna)",
+              "en": "It is read veiled, with nasalisation (ghunna)",
+              "nl": "Het wordt versluierd gelezen, met neusklank (ghunna)",
+              "de": "Es wird verhüllt mit Nasalierung (Ghunna) gelesen"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "Diyanet İlmî Dergi 2021, c. 57, s. 1 (Erzurumlu İbrahim Hakkı’nın Tecvîdü’l-Kur’ân risalesi, «Tenvin ve Sâkin Nûn’un Hükümleri», s. 25–26)"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-045",
+      "kod": "kuran",
+      "planKonu": "İzhâr",
+      "ilkDers": "2027-01-23",
+      "seviyeAlani": "kuranBilgi",
+      "basamak": 3,
+      "baslik": {
+        "tr": "İzhâr",
+        "fr": "L’iẓhâr",
+        "en": "Iẓhār",
+        "nl": "Iẓhār",
+        "de": "Idhār"
+      },
+      "ozet": {
+        "tr": "Sâkin nûn ya da tenvinden sonra altı boğaz harfinden biri gelirse nûn sesi açıkça, geniz sesi katmadan çıkarılır; buna izhâr denir. İzhâr örneklerinde nûn’u açık okuruz.",
+        "fr": "Quand un nûn sans voyelle ou un tanwîn est suivi d’une des six lettres de la gorge, le nûn est prononcé clairement, sans nasalisation : c’est l’iẓhâr. Nous lisons le nûn nettement dans les exemples.",
+        "en": "When a vowel-less nūn or tanwīn is followed by one of the six throat letters, the nūn is pronounced clearly, without nasalisation; this is called iẓhār. We read the nūn clearly in the examples.",
+        "nl": "Als een klinkerloze nūn of tanwīn gevolgd wordt door een van de zes keelletters, wordt de nūn duidelijk uitgesproken, zonder neusklank; dit heet iẓhār. In de voorbeelden lezen we de nūn helder.",
+        "de": "Folgt auf ein vokalloses Nūn oder Tanwīn einer der sechs Kehlbuchstaben, wird das Nūn klar und ohne Nasalierung gesprochen; das heißt Idhār. In den Beispielen lesen wir das Nūn deutlich."
+      },
+      "kitap": "Elifbâ s. 45",
+      "sorular": [
+        {
+          "id": "ku-045-1",
+          "soru": {
+            "tr": "İzhâr harfleri kaç tanedir ve hangi gruptandır?",
+            "fr": "Combien y a-t-il de lettres d’iẓhâr, et de quel groupe ?",
+            "en": "How many iẓhār letters are there, and which group are they?",
+            "nl": "Hoeveel iẓhār-letters zijn er en tot welke groep behoren ze?",
+            "de": "Wie viele Idhār-Buchstaben gibt es, und zu welcher Gruppe gehören sie?"
+          },
+          "siklar": [
+            {
+              "tr": "Altı; boğaz harfleri",
+              "fr": "Six ; les lettres de la gorge",
+              "en": "Six; the throat letters",
+              "nl": "Zes; de keelletters",
+              "de": "Sechs; die Kehlbuchstaben"
+            },
+            {
+              "tr": "On beş; dudak harfleri",
+              "fr": "Quinze ; les lettres des lèvres",
+              "en": "Fifteen; the lip letters",
+              "nl": "Vijftien; de lipletters",
+              "de": "Fünfzehn; die Lippenbuchstaben"
+            },
+            {
+              "tr": "Dört; dil harfleri",
+              "fr": "Quatre ; les lettres de la langue",
+              "en": "Four; the tongue letters",
+              "nl": "Vier; de tongletters",
+              "de": "Vier; die Zungenbuchstaben"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "Diyanet İlmî Dergi 2021, c. 57, s. 1 (Erzurumlu İbrahim Hakkı’nın Tecvîdü’l-Kur’ân risalesi, «Tenvin ve Sâkin Nûn’un Hükümleri», s. 25–26)"
+        },
+        {
+          "id": "ku-045-2",
+          "soru": {
+            "tr": "Hangisi izhâr (boğaz) harflerinden biridir?",
+            "fr": "Laquelle est une lettre d’iẓhâr (de la gorge) ?",
+            "en": "Which is one of the iẓhār (throat) letters?",
+            "nl": "Welke is een iẓhār-letter (keelletter)?",
+            "de": "Welcher ist ein Idhār-Buchstabe (Kehlbuchstabe)?"
+          },
+          "siklar": [
+            {
+              "ar": "ب"
+            },
+            {
+              "ar": "ع"
+            },
+            {
+              "ar": "م"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "Diyanet İlmî Dergi 2021, c. 57, s. 1 (Erzurumlu İbrahim Hakkı’nın Tecvîdü’l-Kur’ân risalesi, «Tenvin ve Sâkin Nûn’un Hükümleri», s. 25–26)"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-046",
+      "kod": "kuran",
+      "planKonu": "İklâb",
+      "ilkDers": "2027-01-24",
+      "seviyeAlani": "kuranBilgi",
+      "basamak": 3,
+      "baslik": {
+        "tr": "İklâb",
+        "fr": "L’iqlâb",
+        "en": "Iqlāb",
+        "nl": "Iqlāb",
+        "de": "Iqlāb"
+      },
+      "ozet": {
+        "tr": "Sâkin nûn ya da tenvinden sonra «be» harfi gelirse nûn (ya da tenvin) «mim» sesine çevrilir ve gizlenerek okunur; buna iklâb denir. Bunu yaparken dudaklarımızı kapatmaya dikkat ederiz.",
+        "fr": "Quand un nûn sans voyelle ou un tanwîn est suivi de la lettre « bâ’ », le nûn (ou le tanwîn) se change en « mîm » et se lit voilé : c’est l’iqlâb. Nous veillons à bien fermer les lèvres.",
+        "en": "When a vowel-less nūn or tanwīn is followed by the letter “bā’”, the nūn (or tanwīn) turns into a “mīm” and is read veiled; this is called iqlāb. We take care to close the lips.",
+        "nl": "Als een klinkerloze nūn of tanwīn gevolgd wordt door de letter “bā’”, verandert de nūn (of tanwīn) in een “mīm” en wordt versluierd gelezen; dit heet iqlāb. We letten erop de lippen te sluiten.",
+        "de": "Folgt auf ein vokalloses Nūn oder Tanwīn der Buchstabe „Bā’“, wird das Nūn (oder Tanwīn) zu einem „Mīm“ und verhüllt gelesen; das heißt Iqlāb. Wir achten darauf, die Lippen zu schließen."
+      },
+      "kitap": "Elifbâ s. 45",
+      "sorular": [
+        {
+          "id": "ku-046-1",
+          "soru": {
+            "tr": "Sâkin nûn ya da tenvinden sonra hangi harf gelirse iklâb olur?",
+            "fr": "Quelle lettre, après un nûn sans voyelle ou un tanwîn, provoque l’iqlâb ?",
+            "en": "Which letter after a vowel-less nūn or tanwīn causes iqlāb?",
+            "nl": "Welke letter na een klinkerloze nūn of tanwīn veroorzaakt iqlāb?",
+            "de": "Welcher Buchstabe nach vokallosem Nūn oder Tanwīn bewirkt Iqlāb?"
+          },
+          "siklar": [
+            {
+              "ar": "ت"
+            },
+            {
+              "ar": "ر"
+            },
+            {
+              "ar": "ب"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "Diyanet İlmî Dergi 2021, c. 57, s. 1 (Erzurumlu İbrahim Hakkı’nın Tecvîdü’l-Kur’ân risalesi, «Tenvin ve Sâkin Nûn’un Hükümleri», s. 25–26)"
+        },
+        {
+          "id": "ku-046-2",
+          "soru": {
+            "tr": "İklâbda nûn (ya da tenvin) hangi harfe çevrilir?",
+            "fr": "En quelle lettre le nûn (ou tanwîn) est-il changé dans l’iqlâb ?",
+            "en": "Into which letter is the nūn (or tanwīn) changed in iqlāb?",
+            "nl": "In welke letter verandert de nūn (of tanwīn) bij iqlāb?",
+            "de": "In welchen Buchstaben wird das Nūn (oder Tanwīn) beim Iqlāb verwandelt?"
+          },
+          "siklar": [
+            {
+              "ar": "م"
+            },
+            {
+              "ar": "ل"
+            },
+            {
+              "ar": "ي"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "Diyanet İlmî Dergi 2021, c. 57, s. 1 (Erzurumlu İbrahim Hakkı’nın Tecvîdü’l-Kur’ân risalesi, «Tenvin ve Sâkin Nûn’un Hükümleri», s. 25–26)"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-047",
+      "kod": "kuran",
+      "planKonu": "İdgâm",
+      "ilkDers": "2027-01-30",
+      "seviyeAlani": "kuranBilgi",
+      "basamak": 3,
+      "baslik": {
+        "tr": "İdğâm",
+        "fr": "L’idghâm",
+        "en": "Idghām",
+        "nl": "Idghām",
+        "de": "Idghām"
+      },
+      "ozet": {
+        "tr": "Sâkin nûn ya da tenvinden sonra lâm, râ, mim, nûn, vâv ya da yâ gelirse nûn, sonraki harfe katılır; buna idğâm denir. Lâm ve râ ile ğunnesiz, mim, nûn, vâv ve yâ ile ğunneli okunur.",
+        "fr": "Quand un nûn sans voyelle ou un tanwîn est suivi de lâm, râ’, mîm, nûn, wâw ou yâ’, le nûn s’assimile à la lettre suivante : c’est l’idghâm. Avec lâm et râ’ sans ghunna ; avec mîm, nûn, wâw et yâ’ avec ghunna.",
+        "en": "When a vowel-less nūn or tanwīn is followed by lām, rā’, mīm, nūn, wāw or yā’, the nūn merges into the next letter; this is idghām. With lām and rā’ it is without ghunna; with mīm, nūn, wāw and yā’ it is with ghunna.",
+        "nl": "Als een klinkerloze nūn of tanwīn gevolgd wordt door lām, rā’, mīm, nūn, wāw of yā’, gaat de nūn op in de volgende letter; dit is idghām. Met lām en rā’ zonder ghunna; met mīm, nūn, wāw en yā’ met ghunna.",
+        "de": "Folgt auf ein vokalloses Nūn oder Tanwīn Lām, Rā’, Mīm, Nūn, Wāw oder Yā’, geht das Nūn im nächsten Buchstaben auf; das ist Idghām. Bei Lām und Rā’ ohne Ghunna; bei Mīm, Nūn, Wāw und Yā’ mit Ghunna."
+      },
+      "kitap": "Elifbâ s. 44–45",
+      "sorular": [
+        {
+          "id": "ku-047-1",
+          "soru": {
+            "tr": "Hangi harflerde idğâm ğunnesiz yapılır?",
+            "fr": "Avec quelles lettres l’idghâm se fait-il sans ghunna ?",
+            "en": "With which letters is idghām done without ghunna?",
+            "nl": "Bij welke letters gebeurt idghām zonder ghunna?",
+            "de": "Bei welchen Buchstaben erfolgt Idghām ohne Ghunna?"
+          },
+          "siklar": [
+            {
+              "tr": "Lâm ve râ",
+              "fr": "Lâm et râ’",
+              "en": "Lām and rā’",
+              "nl": "Lām en rā’",
+              "de": "Lām und Rā’"
+            },
+            {
+              "tr": "Mim ve nûn",
+              "fr": "Mîm et nûn",
+              "en": "Mīm and nūn",
+              "nl": "Mīm en nūn",
+              "de": "Mīm und Nūn"
+            },
+            {
+              "tr": "Vâv ve yâ",
+              "fr": "Wâw et yâ’",
+              "en": "Wāw and yā’",
+              "nl": "Wāw en yā’",
+              "de": "Wāw und Yā’"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "Diyanet İlmî Dergi 2021, c. 57, s. 1 (Erzurumlu İbrahim Hakkı’nın Tecvîdü’l-Kur’ân risalesi, «Tenvin ve Sâkin Nûn’un Hükümleri», s. 25–26)"
+        },
+        {
+          "id": "ku-047-2",
+          "soru": {
+            "tr": "Hangisi ğunneli idğâm harflerinden biridir?",
+            "fr": "Laquelle est une lettre d’idghâm avec ghunna ?",
+            "en": "Which is one of the idghām-with-ghunna letters?",
+            "nl": "Welke is een idghām-letter met ghunna?",
+            "de": "Welcher ist ein Idghām-Buchstabe mit Ghunna?"
+          },
+          "siklar": [
+            {
+              "ar": "ل"
+            },
+            {
+              "ar": "ر"
+            },
+            {
+              "ar": "ي"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "Diyanet İlmî Dergi 2021, c. 57, s. 1 (Erzurumlu İbrahim Hakkı’nın Tecvîdü’l-Kur’ân risalesi, «Tenvin ve Sâkin Nûn’un Hükümleri», s. 25–26)"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-048",
+      "kod": "kuran",
+      "planKonu": "Tecvid Aşama Değerlendirmesi",
+      "ilkDers": "2027-01-31",
+      "seviyeAlani": "kuranBilgi",
+      "basamak": 3,
+      "baslik": {
+        "tr": "Tecvid aşama değerlendirmesi",
+        "fr": "Bilan d’étape du tajwîd",
+        "en": "Tajwīd checkpoint",
+        "nl": "Tajwīd-tussentijdse evaluatie",
+        "de": "Tadschwīd-Zwischenstand"
+      },
+      "ozet": {
+        "tr": "Ramazan’dan önce öğrendiğimiz temel tecvid kurallarını bir metin üzerinde gösteririz: med, ihfâ, izhâr, iklâb ve idğâm. Hangi kuralın nerede geçtiğini fark etmeye çalışırız.",
+        "fr": "Avant le Ramadan, nous montrons sur un texte les règles de base du tajwîd apprises : madd, ikhfâ’, iẓhâr, iqlâb et idghâm. Nous essayons de repérer quelle règle apparaît où.",
+        "en": "Before Ramadan we show on a text the basic tajwīd rules we have learned: madd, ikhfāʾ, iẓhār, iqlāb and idghām. We try to notice which rule appears where.",
+        "nl": "Vóór Ramadan tonen we op een tekst de geleerde basisregels van tajwīd: madd, ikhfāʾ, iẓhār, iqlāb en idghām. We proberen op te merken welke regel waar voorkomt.",
+        "de": "Vor dem Ramadan zeigen wir an einem Text die gelernten Grundregeln des Tadschwīd: Madd, Ichfā’, Idhār, Iqlāb und Idghām. Wir versuchen zu erkennen, welche Regel wo vorkommt."
+      },
+      "kitap": "Elifbâ s. 42–49 (tekrar)",
+      "sorular": [
+        {
+          "id": "ku-048-1",
+          "soru": {
+            "tr": "Sâkin nûn ve tenvinin kaç hükmü vardır?",
+            "fr": "Combien de règles y a-t-il pour le nûn sans voyelle et le tanwîn ?",
+            "en": "How many rules are there for vowel-less nūn and tanwīn?",
+            "nl": "Hoeveel regels zijn er voor klinkerloze nūn en tanwīn?",
+            "de": "Wie viele Regeln gibt es für vokalloses Nūn und Tanwīn?"
+          },
+          "siklar": [
+            {
+              "tr": "Dört: iklâb, idğâm, izhâr, ihfâ",
+              "fr": "Quatre : iqlâb, idghâm, iẓhâr, ikhfâ’",
+              "en": "Four: iqlāb, idghām, iẓhār, ikhfāʾ",
+              "nl": "Vier: iqlāb, idghām, iẓhār, ikhfāʾ",
+              "de": "Vier: Iqlāb, Idghām, Idhār, Ichfā’"
+            },
+            {
+              "tr": "İki",
+              "fr": "Deux",
+              "en": "Two",
+              "nl": "Twee",
+              "de": "Zwei"
+            },
+            {
+              "tr": "Yedi",
+              "fr": "Sept",
+              "en": "Seven",
+              "nl": "Zeven",
+              "de": "Sieben"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "Diyanet İlmî Dergi 2021, c. 57, s. 1 (Erzurumlu İbrahim Hakkı’nın Tecvîdü’l-Kur’ân risalesi, «Tenvin ve Sâkin Nûn’un Hükümleri», s. 25–26)"
+        },
+        {
+          "id": "ku-048-2",
+          "soru": {
+            "tr": "Ğunne nedir?",
+            "fr": "Qu’est-ce que la ghunna ?",
+            "en": "What is ghunna?",
+            "nl": "Wat is ghunna?",
+            "de": "Was ist Ghunna?"
+          },
+          "siklar": [
+            {
+              "tr": "Genizden (burundan) gelen ses",
+              "fr": "Le son qui vient du nez (nasal)",
+              "en": "The sound that comes from the nose (nasal sound)",
+              "nl": "De klank die uit de neus komt (neusklank)",
+              "de": "Der Laut aus der Nase (Nasenlaut)"
+            },
+            {
+              "tr": "Boğazdan gelen sert ses",
+              "fr": "Un son dur venant de la gorge",
+              "en": "A harsh sound from the throat",
+              "nl": "Een harde klank uit de keel",
+              "de": "Ein harter Laut aus der Kehle"
+            },
+            {
+              "tr": "Dudakla çıkan ses",
+              "fr": "Un son fait avec les lèvres",
+              "en": "A sound made with the lips",
+              "nl": "Een klank met de lippen",
+              "de": "Ein Lippenlaut"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "Diyanet İlmî Dergi 2021, c. 57, s. 1 (Erzurumlu İbrahim Hakkı’nın Tecvîdü’l-Kur’ân risalesi, «Tenvin ve Sâkin Nûn’un Hükümleri», s. 25–26)"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-049",
+      "kod": "kuran",
+      "planKonu": "Ramazan: Kur'an Ayı",
+      "ilkDers": "2027-02-06",
+      "seviyeAlani": "kuranBilgi",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Ramazan: Kur’an ayı",
+        "fr": "Ramadan : le mois du Coran",
+        "en": "Ramadan: the month of the Qur’an",
+        "nl": "Ramadan: de maand van de Koran",
+        "de": "Ramadan: der Monat des Korans"
+      },
+      "ozet": {
+        "tr": "Ramazan, Kur’an’ın indirilmeye başlandığı aydır; Bakara 185. âyet bunu bildirir. Kur’an insanlara rehberdir ve doğruyu eğriden ayıran açıklamalar içerir. Bu Ramazan’da Kur’an hedefimizi bir kartta yazarız.",
+        "fr": "Le Ramadan est le mois où le Coran a commencé à être révélé ; le verset 185 d’al-Baqara l’indique. Le Coran guide les gens et contient des éclaircissements qui distinguent le vrai du faux. Cette année, nous écrivons notre objectif coranique sur une carte.",
+        "en": "Ramadan is the month in which the Qur’an began to be revealed; verse 185 of al-Baqara says so. The Qur’an guides people and contains clear teachings that separate right from wrong. This Ramadan we write our Qur’an goal on a card.",
+        "nl": "Ramadan is de maand waarin de Koran begon geopenbaard te worden; vers 185 van al-Baqara zegt dat. De Koran leidt de mensen en bevat duidelijke uitleg die goed van kwaad onderscheidt. Dit Ramadan schrijven we ons Koran-doel op een kaart.",
+        "de": "Der Ramadan ist der Monat, in dem der Koran zu offenbaren begann; Vers 185 der Sure al-Baqara sagt es. Der Koran leitet die Menschen und enthält klare Erläuterungen, die Recht von Unrecht trennen. Dieses Jahr schreiben wir unser Koranziel auf eine Karte."
+      },
+      "kitap": "Camiye Gidiyorum 1 s. 106 (tekrar) (Ramazan özel programı)",
+      "sorular": [
+        {
+          "id": "ku-049-1",
+          "soru": {
+            "tr": "Bakara 185’e göre Kur’an hangi ayda indirilmiştir?",
+            "fr": "Selon al-Baqara 185, en quel mois le Coran a-t-il été révélé ?",
+            "en": "According to al-Baqara 185, in which month was the Qur’an revealed?",
+            "nl": "In welke maand is de Koran volgens al-Baqara 185 geopenbaard?",
+            "de": "In welchem Monat wurde der Koran nach al-Baqara 185 offenbart?"
+          },
+          "siklar": [
+            {
+              "tr": "Şaban",
+              "fr": "Chaabane",
+              "en": "Shaʿbān",
+              "nl": "Sjaʿbān",
+              "de": "Schaʿbān"
+            },
+            {
+              "tr": "Ramazan",
+              "fr": "Ramadan",
+              "en": "Ramadan",
+              "nl": "Ramadan",
+              "de": "Ramadan"
+            },
+            {
+              "tr": "Zilkade",
+              "fr": "Dhoul-qaʿda",
+              "en": "Dhul-Qaʿda",
+              "nl": "Dhoe’l-qaʿda",
+              "de": "Dhul-Qaʿda"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "Bakara 2/185 (Kur’an Yolu meali ve tefsiri)"
+        },
+        {
+          "id": "ku-049-2",
+          "soru": {
+            "tr": "Bakara 185’e göre Kur’an insanlar için neyin açıklamalarını içerir?",
+            "fr": "Selon al-Baqara 185, de quoi le Coran contient-il les éclaircissements pour les gens ?",
+            "en": "According to al-Baqara 185, what does the Qur’an clarify for people?",
+            "nl": "Wat verduidelijkt de Koran volgens al-Baqara 185 voor de mensen?",
+            "de": "Was erläutert der Koran den Menschen nach al-Baqara 185?"
+          },
+          "siklar": [
+            {
+              "tr": "Doğruyu eğriden ayırma ve gidilecek yolu bulma",
+              "fr": "La distinction entre le vrai et le faux et le chemin à suivre",
+              "en": "Telling right from wrong and finding the way to follow",
+              "nl": "Het onderscheid tussen goed en kwaad en het vinden van de weg",
+              "de": "Das Unterscheiden von Recht und Unrecht und das Finden des Weges"
+            },
+            {
+              "tr": "Yalnızca hava durumu",
+              "fr": "Seulement la météo",
+              "en": "Only the weather",
+              "nl": "Alleen het weer",
+              "de": "Nur das Wetter"
+            },
+            {
+              "tr": "Yalnızca ticaret hesapları",
+              "fr": "Seulement les comptes du commerce",
+              "en": "Only trade accounts",
+              "nl": "Alleen handelsrekeningen",
+              "de": "Nur Handelsrechnungen"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "Bakara 2/185 (Kur’an Yolu meali ve tefsiri)"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-050",
+      "kod": "kuran",
+      "planKonu": "Mukabele Nedir, Nasıl Yapılır?",
+      "ilkDers": "2027-02-07",
+      "seviyeAlani": "kuranBilgi",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Mukabele nedir, nasıl yapılır?",
+        "fr": "Qu’est-ce que la mukabele et comment la faire ?",
+        "en": "What is mukabele and how is it done?",
+        "nl": "Wat is mukabele en hoe doe je het?",
+        "de": "Was ist Mukabele und wie wird sie gemacht?"
+      },
+      "ozet": {
+        "tr": "Mukabele, bir hâfızın Kur’an okuyuşunu takip ederek hatim indirme geleneğidir. Dinleyici olarak edebe uyar, sessiz ve dikkatli oluruz. Sınıfta küçük bir mukabele halkası kurar, herkes birer satır okur.",
+        "fr": "La mukabele est la tradition de suivre la récitation d’un hâfiz pour achever le Coran. En tant qu’auditeurs, nous respectons les convenances : silence et attention. En classe, nous formons un petit cercle où chacun lit une ligne.",
+        "en": "Mukabele is the tradition of completing the Qur’an by following a hafiz’s recitation. As listeners we keep good manners: quiet and attentive. In class we form a small mukabele circle where everyone reads a line.",
+        "nl": "Mukabele is de traditie om de Koran uit te lezen door de recitatie van een ḥāfiẓ te volgen. Als luisteraar houden we ons aan de etiquette: stil en aandachtig. In de klas vormen we een kleine mukabele-kring waarin ieder een regel leest.",
+        "de": "Mukabele ist die Tradition, den Koran zu vollenden, indem man der Rezitation eines Hāfiz folgt. Als Zuhörer wahren wir die Etikette: still und aufmerksam. In der Klasse bilden wir einen kleinen Mukabele-Kreis, in dem jeder eine Zeile liest."
+      },
+      "kitap": "Elifbâ s. 32–33 (Ramazan özel programı)",
+      "sorular": [
+        {
+          "id": "ku-050-1",
+          "soru": {
+            "tr": "Mukabele nedir?",
+            "fr": "Qu’est-ce que la mukabele ?",
+            "en": "What is mukabele?",
+            "nl": "Wat is mukabele?",
+            "de": "Was ist Mukabele?"
+          },
+          "siklar": [
+            {
+              "tr": "Bir hâfızın okuyuşunu takip ederek hatim indirme geleneği",
+              "fr": "La tradition de suivre la lecture d’un hâfiz pour achever le Coran",
+              "en": "The tradition of completing the Qur’an by following a hafiz’s reading",
+              "nl": "De traditie om de Koran uit te lezen door de lezing van een ḥāfiẓ te volgen",
+              "de": "Die Tradition, den Koran zu vollenden, indem man der Lesung eines Hāfiz folgt"
+            },
+            {
+              "tr": "Bir çeşit yarış",
+              "fr": "Une sorte de compétition",
+              "en": "A kind of competition",
+              "nl": "Een soort wedstrijd",
+              "de": "Eine Art Wettbewerb"
+            },
+            {
+              "tr": "Yalnızca bayram kutlaması",
+              "fr": "Seulement une célébration de la fête",
+              "en": "Only a festival celebration",
+              "nl": "Alleen een feestviering",
+              "de": "Nur eine Festfeier"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "TDV İslâm Ansiklopedisi, «Mukābele» md. (Kur’ân)"
+        },
+        {
+          "id": "ku-050-2",
+          "soru": {
+            "tr": "Mukabele okuyuşu nasıl bir hızda yapılması tavsiye edilmiştir?",
+            "fr": "À quelle vitesse la lecture de la mukabele est-elle recommandée ?",
+            "en": "At what pace is the mukabele reading recommended?",
+            "nl": "Met welk tempo wordt de mukabele-lezing aanbevolen?",
+            "de": "In welchem Tempo wird die Mukabele-Lesung empfohlen?"
+          },
+          "siklar": [
+            {
+              "tr": "Çok hızlı",
+              "fr": "Très rapide",
+              "en": "Very fast",
+              "nl": "Heel snel",
+              "de": "Sehr schnell"
+            },
+            {
+              "tr": "Orta hızla, tane tane (tertîl)",
+              "fr": "À allure moyenne, posément (tartîl)",
+              "en": "At a medium pace, clearly (tartīl)",
+              "nl": "In gematigd tempo, helder (tartīl)",
+              "de": "In mittlerem Tempo, deutlich (Tartīl)"
+            },
+            {
+              "tr": "Çok yavaş, bir günde bir âyet",
+              "fr": "Très lent, un verset par jour",
+              "en": "Very slow, one verse a day",
+              "nl": "Heel langzaam, één vers per dag",
+              "de": "Sehr langsam, ein Vers pro Tag"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "TDV İslâm Ansiklopedisi, «Mukābele» md. (Kur’ân)"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-051",
+      "kod": "kuran",
+      "planKonu": "Kur'an'ın İndirilişi ve İlk Vahiy: Alak Suresi 1-5",
+      "ilkDers": "2027-02-13",
+      "seviyeAlani": "kuranBilgi",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Kur’an’ın indirilişi ve ilk vahiy: Alak suresi 1-5",
+        "fr": "La révélation du Coran et la première révélation : al-ʿAlaq 1-5",
+        "en": "The revelation of the Qur’an and the first revelation: al-ʿAlaq 1-5",
+        "nl": "De openbaring van de Koran en de eerste openbaring: al-ʿAlaq 1-5",
+        "de": "Die Offenbarung des Korans und die erste Offenbarung: al-ʿAlaq 1-5"
+      },
+      "ozet": {
+        "tr": "Hz. Peygamber’e inen ilk vahiy Alak suresinin ilk âyetleridir ve «Oku!» emriyle başlar. Bu âyetleri doğru okur, mealini kendi cümlelerimizle anlatırız. «İlk emir: Oku» başlıklı bir afiş hazırlarız.",
+        "fr": "La première révélation faite au Prophète est celle des premiers versets de la sourate al-ʿAlaq, qui commence par l’ordre « Lis ! ». Nous lisons correctement ces versets et en expliquons le sens avec nos mots. Nous préparons une affiche « Premier ordre : Lis ».",
+        "en": "The first revelation to the Prophet was the opening verses of Surat al-ʿAlaq, beginning with the command “Read!”. We read these verses correctly and explain their meaning in our own words. We make a poster titled “The first command: Read”.",
+        "nl": "De eerste openbaring aan de Profeet waren de openingsverzen van soera al-ʿAlaq, die begint met het gebod “Lees!”. We lezen deze verzen goed en leggen de betekenis in eigen woorden uit. We maken een poster “Het eerste gebod: Lees”.",
+        "de": "Die erste Offenbarung an den Propheten waren die ersten Verse der Sure al-ʿAlaq, die mit dem Gebot „Lies!“ beginnen. Wir lesen diese Verse richtig und erklären ihren Sinn mit eigenen Worten. Wir gestalten ein Plakat „Das erste Gebot: Lies“."
+      },
+      "kitap": "Camiye Gidiyorum 2 s. 76–77 (Ramazan özel programı)",
+      "sorular": [
+        {
+          "id": "ku-051-1",
+          "soru": {
+            "tr": "Hz. Peygamber’e gelen ilk vahiy hangi sûrenin âyetleridir?",
+            "fr": "Les premiers versets révélés au Prophète appartiennent à quelle sourate ?",
+            "en": "Which surah contains the first verses revealed to the Prophet?",
+            "nl": "Tot welke soera behoren de eerste verzen die aan de Profeet werden geopenbaard?",
+            "de": "Zu welcher Sure gehören die ersten dem Propheten offenbarten Verse?"
+          },
+          "siklar": [
+            {
+              "tr": "Fâtiha",
+              "fr": "Al-Fâtiha",
+              "en": "Al-Fātiḥa",
+              "nl": "Al-Fātiḥa",
+              "de": "Al-Fātiha"
+            },
+            {
+              "tr": "Alak",
+              "fr": "Al-ʿAlaq",
+              "en": "Al-ʿAlaq",
+              "nl": "Al-ʿAlaq",
+              "de": "Al-ʿAlaq"
+            },
+            {
+              "tr": "İhlâs",
+              "fr": "Al-Ikhlâs",
+              "en": "Al-Ikhlāṣ",
+              "nl": "Al-Ikhlāṣ",
+              "de": "Al-Ichlās"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "Alak 96 (sûrenin tanıtımı) (Kur’an Yolu meali ve tefsiri)"
+        },
+        {
+          "id": "ku-051-2",
+          "soru": {
+            "tr": "Alak suresi 1. âyet nasıl başlar?",
+            "fr": "Comment commence le verset 1 d’al-ʿAlaq ?",
+            "en": "How does verse 1 of Surat al-ʿAlaq begin?",
+            "nl": "Hoe begint vers 1 van soera al-ʿAlaq?",
+            "de": "Wie beginnt Vers 1 der Sure al-ʿAlaq?"
+          },
+          "siklar": [
+            {
+              "tr": "«Yaratan Rabbinin adıyla oku!»",
+              "fr": "« Lis, au nom de ton Seigneur qui a créé ! »",
+              "en": "“Read in the name of your Lord who created!”",
+              "nl": "“Lees in de naam van je Heer die schiep!”",
+              "de": "„Lies im Namen deines Herrn, der erschuf!“"
+            },
+            {
+              "tr": "«Yalnız yaz!»",
+              "fr": "« Écris seulement ! »",
+              "en": "“Only write!”",
+              "nl": "“Schrijf alleen!”",
+              "de": "„Schreibe nur!“"
+            },
+            {
+              "tr": "«Say!»",
+              "fr": "« Compte ! »",
+              "en": "“Count!”",
+              "nl": "“Tel!”",
+              "de": "„Zähle!“"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "Alak 96/1 (Kur’an Yolu meali ve tefsiri)"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-052",
+      "kod": "kuran",
+      "planKonu": "Alak Suresi İlk 5 Ayet — Ezber",
+      "ilkDers": "2027-02-14",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Alak suresi ilk 5 âyet: ezber",
+        "fr": "Les 5 premiers versets d’al-ʿAlaq : mémorisation",
+        "en": "First 5 verses of al-ʿAlaq: memorisation",
+        "nl": "Eerste 5 verzen van al-ʿAlaq: memoriseren",
+        "de": "Erste 5 Verse der Sure al-ʿAlaq: Auswendiglernen"
+      },
+      "ozet": {
+        "tr": "Alak suresinin ilk beş âyetini ezbere ve doğru tecvidle okuruz. İkişerli eşleşip birbirimizi dinler, nazikçe değerlendiririz.",
+        "fr": "Nous récitons par cœur et avec un tajwîd correct les cinq premiers versets d’al-ʿAlaq. Par deux, nous nous écoutons et nous évaluons avec gentillesse.",
+        "en": "We recite the first five verses of Surat al-ʿAlaq by heart with correct tajwīd. In pairs we listen to each other and give kind feedback.",
+        "nl": "We reciteren de eerste vijf verzen van soera al-ʿAlaq uit het hoofd en met juiste tajwīd. In paren luisteren we naar elkaar en geven vriendelijke feedback.",
+        "de": "Wir rezitieren die ersten fünf Verse der Sure al-ʿAlaq auswendig und mit richtigem Tadschwīd. Zu zweit hören wir einander zu und geben freundliche Rückmeldung."
+      },
+      "kitap": "Camiye Gidiyorum 2 s. 76–77 (tekrar) (Ramazan özel programı)",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-053",
+      "kod": "kuran",
+      "planKonu": "Kadir Suresi — Okuma ve Meal",
+      "ilkDers": "2027-02-20",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Kadir suresi: okuma ve meal",
+        "fr": "Sourate al-Qadr : lecture et sens",
+        "en": "Surat al-Qadr: reading and meaning",
+        "nl": "Soera al-Qadr: lezen en betekenis",
+        "de": "Sure al-Qadr: Lesen und Bedeutung"
+      },
+      "ozet": {
+        "tr": "Kadir suresini doğru okur ve mealinin ana fikrini kendi sözlerimizle söyleriz. Sure mealini resimli bir şerit hâline getiririz.",
+        "fr": "Nous lisons correctement la sourate al-Qadr et disons avec nos mots l’idée principale de son sens. Nous mettons le sens de la sourate en bande illustrée.",
+        "en": "We read Surat al-Qadr correctly and say the main idea of its meaning in our own words. We turn the meaning of the surah into an illustrated strip.",
+        "nl": "We lezen soera al-Qadr goed en vertellen het hoofdidee van de betekenis in eigen woorden. We maken van de betekenis een geïllustreerde strook.",
+        "de": "Wir lesen die Sure al-Qadr richtig und sagen die Hauptidee ihrer Bedeutung mit eigenen Worten. Wir gestalten die Bedeutung der Sure als Bildstreifen."
+      },
+      "kitap": "Temel Dinî Bilgiler s. 182–183 (Ramazan özel programı)",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-054",
+      "kod": "kuran",
+      "planKonu": "Kadir Suresi — Ezber ve Değerlendirme",
+      "ilkDers": "2027-02-21",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Kadir suresi: ezber ve değerlendirme",
+        "fr": "Sourate al-Qadr : mémorisation et bilan",
+        "en": "Surat al-Qadr: memorisation and review",
+        "nl": "Soera al-Qadr: memoriseren en evalueren",
+        "de": "Sure al-Qadr: Auswendiglernen und Auswertung"
+      },
+      "ozet": {
+        "tr": "Kadir suresini ezbere okuruz. Ezber halkasında sırayla birer âyet okuruz.",
+        "fr": "Nous récitons la sourate al-Qadr par cœur. Dans le cercle de mémorisation, chacun lit un verset à tour de rôle.",
+        "en": "We recite Surat al-Qadr by heart. In the memorisation circle we each recite one verse in turn.",
+        "nl": "We reciteren soera al-Qadr uit het hoofd. In de memorisatiekring reciteert ieder om de beurt een vers.",
+        "de": "Wir rezitieren die Sure al-Qadr auswendig. Im Kreis sagt jeder der Reihe nach einen Vers."
+      },
+      "kitap": "Temel Dinî Bilgiler s. 182–183 (tekrar) (Ramazan özel programı)",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-055",
+      "kod": "kuran",
+      "planKonu": "Oruç Ayeti: Bakara 183-185",
+      "ilkDers": "2027-02-22",
+      "seviyeAlani": "kuranBilgi",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Oruç âyeti: Bakara 183-185",
+        "fr": "Les versets sur le jeûne : al-Baqara 183-185",
+        "en": "The verses on fasting: al-Baqara 183-185",
+        "nl": "De verzen over het vasten: al-Baqara 183-185",
+        "de": "Die Verse über das Fasten: al-Baqara 183-185"
+      },
+      "ozet": {
+        "tr": "Bakara 183-185. âyetler orucun Kur’an’da farz kılındığını bildirir. Âyet mealinden anahtar kelimeleri buluruz: oruç, takva, kolaylık, Ramazan.",
+        "fr": "Les versets 183 à 185 d’al-Baqara montrent que le jeûne est prescrit dans le Coran. Dans le sens des versets, nous cherchons les mots clés : jeûne, piété, facilité, Ramadan.",
+        "en": "Verses 183 to 185 of al-Baqara show that fasting is prescribed in the Qur’an. In the meaning of the verses we find key words: fasting, piety, ease, Ramadan.",
+        "nl": "Vers 183 tot 185 van al-Baqara tonen dat vasten in de Koran is voorgeschreven. In de betekenis van de verzen zoeken we sleutelwoorden: vasten, godvrezendheid, gemak, Ramadan.",
+        "de": "Die Verse 183 bis 185 der Sure al-Baqara zeigen, dass das Fasten im Koran vorgeschrieben ist. In der Bedeutung der Verse suchen wir Schlüsselwörter: Fasten, Gottesbewusstsein, Erleichterung, Ramadan."
+      },
+      "kitap": "Camiye Gidiyorum 2 s. 150 (Ramazan özel programı)",
+      "sorular": [
+        {
+          "id": "ku-055-1",
+          "soru": {
+            "tr": "Bakara 183’e göre oruç kimlere de farz kılınmıştı?",
+            "fr": "Selon al-Baqara 183, à qui le jeûne avait-il aussi été prescrit ?",
+            "en": "According to al-Baqara 183, for whom was fasting also prescribed?",
+            "nl": "Voor wie was het vasten volgens al-Baqara 183 ook voorgeschreven?",
+            "de": "Wem war das Fasten nach al-Baqara 183 ebenfalls vorgeschrieben?"
+          },
+          "siklar": [
+            {
+              "tr": "Sizden öncekilere de",
+              "fr": "Aux générations avant vous aussi",
+              "en": "For those before you as well",
+              "nl": "Ook voor wie vóór jullie kwamen",
+              "de": "Auch denen vor euch"
+            },
+            {
+              "tr": "Yalnızca bu ümmete",
+              "fr": "Seulement à cette communauté",
+              "en": "Only for this community",
+              "nl": "Alleen voor deze gemeenschap",
+              "de": "Nur dieser Gemeinschaft"
+            },
+            {
+              "tr": "Hiç kimseye",
+              "fr": "À personne",
+              "en": "For no one",
+              "nl": "Voor niemand",
+              "de": "Niemandem"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "Bakara 2/183-184 (Kur’an Yolu meali ve tefsiri)"
+        },
+        {
+          "id": "ku-055-2",
+          "soru": {
+            "tr": "Hasta veya yolcu olan kişi orucunu nasıl tamamlar?",
+            "fr": "Comment une personne malade ou en voyage complète-t-elle son jeûne ?",
+            "en": "How does a sick person or traveller make up the fast?",
+            "nl": "Hoe maakt een zieke of reiziger het vasten in?",
+            "de": "Wie holt ein Kranker oder Reisender das Fasten nach?"
+          },
+          "siklar": [
+            {
+              "tr": "Hiç tutmaz",
+              "fr": "Il ne jeûne jamais",
+              "en": "Never fasts",
+              "nl": "Vast nooit",
+              "de": "Fastet nie"
+            },
+            {
+              "tr": "Başka günlerde sayısınca tutar",
+              "fr": "Il jeûne un nombre égal de jours à d’autres moments",
+              "en": "Fasts the same number of days at other times",
+              "nl": "Vast hetzelfde aantal dagen op andere dagen",
+              "de": "Fastet die gleiche Zahl von Tagen an anderen Tagen"
+            },
+            {
+              "tr": "Yalnızca bir gün tutar",
+              "fr": "Il jeûne un seul jour",
+              "en": "Fasts only one day",
+              "nl": "Vast slechts één dag",
+              "de": "Fastet nur einen Tag"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "Bakara 2/185 (Kur’an Yolu meali ve tefsiri)"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-056",
+      "kod": "kuran",
+      "planKonu": "Mukabele Uygulaması: Sınıf Hatim Halkası",
+      "ilkDers": "2027-02-27",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Mukabele uygulaması: sınıf hatim halkası",
+        "fr": "Mukabele en pratique : le cercle de khatm de la classe",
+        "en": "Mukabele in practice: the class khatm circle",
+        "nl": "Mukabele in de praktijk: de khatm-kring van de klas",
+        "de": "Mukabele in der Praxis: der Khatm-Kreis der Klasse"
+      },
+      "ozet": {
+        "tr": "Grup içinde sırası gelince akıcı ve doğru okuruz. Sınıf hatim çizelgesini birlikte dolduruz.",
+        "fr": "Quand vient notre tour dans le groupe, nous lisons de façon fluide et correcte. Nous remplissons ensemble le tableau de khatm de la classe.",
+        "en": "When it is our turn in the group, we read fluently and correctly. Together we fill in the class khatm chart.",
+        "nl": "Als we in de groep aan de beurt zijn, lezen we vlot en correct. Samen vullen we het khatm-schema van de klas in.",
+        "de": "Wenn wir in der Gruppe an der Reihe sind, lesen wir flüssig und richtig. Gemeinsam füllen wir die Khatm-Tabelle der Klasse aus."
+      },
+      "kitap": "Elifbâ s. 32–33 (tekrar) (Ramazan özel programı)",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-057",
+      "kod": "kuran",
+      "planKonu": "Teravihte Kur'an: Namaz Surelerinin Tekrarı",
+      "ilkDers": "2027-02-28",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Teravihte Kur’an: namaz surelerinin tekrarı",
+        "fr": "Le Coran aux tarâwîh : révision des sourates de la prière",
+        "en": "The Qur’an in tarawih: revising the prayer surahs",
+        "nl": "De Koran in de tarawih: herhaling van de gebedssoera’s",
+        "de": "Der Koran im Tarawih: Wiederholung der Gebetssuren"
+      },
+      "ozet": {
+        "tr": "Namazda okuduğumuz sureleri hatasız okumayı tekrar ederiz. Sure kartlarıyla eşleştirme oyunu oynarız.",
+        "fr": "Nous répétons la lecture sans faute des sourates récitées dans la prière. Nous jouons à associer les cartes de sourates.",
+        "en": "We repeat reading the surahs we recite in prayer without mistakes. We play a matching game with surah cards.",
+        "nl": "We herhalen het foutloos lezen van de soera’s die we in het gebed reciteren. We spelen een koppelspel met soerakaarten.",
+        "de": "Wir wiederholen, die im Gebet gelesenen Suren fehlerfrei zu lesen. Wir spielen ein Zuordnungsspiel mit Suren-Karten."
+      },
+      "kitap": "Temel Dinî Bilgiler s. 325–330 (Ramazan özel programı)",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-058",
+      "kod": "kuran",
+      "planKonu": "Kadir Gecesi ve Kur'an: İhya ve Dua",
+      "ilkDers": "2027-03-01",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Kadir Gecesi ve Kur’an: ihya ve dua",
+        "fr": "La Nuit du Destin et le Coran : veillée et invocation",
+        "en": "The Night of Power and the Qur’an: staying awake and prayer",
+        "nl": "De Nacht van de Beschikking en de Koran: waken en smeekbede",
+        "de": "Die Nacht der Bestimmung und der Koran: Wachen und Bittgebet"
+      },
+      "ozet": {
+        "tr": "Kadir Gecesi’nde okunan duayı ezbere okuruz. Gecenin ihyası için kendi duamızı da yazarız.",
+        "fr": "Nous récitons par cœur l’invocation dite la Nuit du Destin. Nous écrivons aussi notre propre invocation pour cette veillée.",
+        "en": "We recite by heart the prayer said on the Night of Power. We also write our own prayer for the night’s vigil.",
+        "nl": "We reciteren uit het hoofd de smeekbede die in de Nacht van de Beschikking wordt gedaan. We schrijven ook onze eigen smeekbede voor het waken.",
+        "de": "Wir sprechen das in der Nacht der Bestimmung gebetete Bittgebet auswendig. Wir schreiben auch unser eigenes Gebet für die Nachtwache."
+      },
+      "kitap": "Temel Dinî Bilgiler s. 182–183 (tekrar) (Ramazan özel programı)",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-059",
+      "kod": "kuran",
+      "planKonu": "Bayram Tekbiri: Öğrenme ve Ezber",
+      "ilkDers": "2027-03-06",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Bayram tekbiri: öğrenme ve ezber",
+        "fr": "Le takbîr de la fête : apprentissage et mémorisation",
+        "en": "The festival takbir: learning and memorising",
+        "nl": "De feesttakbīr: leren en memoriseren",
+        "de": "Das Festtakbir: Lernen und Auswendiglernen"
+      },
+      "ozet": {
+        "tr": "Bayram tekbirini doğru telaffuzla ezbere okuruz. Toplu tekbir çalışması yapar ve ses kaydı alırız.",
+        "fr": "Nous récitons par cœur le takbîr de la fête avec une bonne prononciation. Nous le pratiquons en groupe et faisons un enregistrement.",
+        "en": "We recite the festival takbir by heart with correct pronunciation. We practise it together as a group and make a recording.",
+        "nl": "We reciteren de feesttakbīr uit het hoofd met juiste uitspraak. We oefenen hem samen in de groep en maken een opname.",
+        "de": "Wir sprechen das Festtakbir mit richtiger Aussprache auswendig. Wir üben es gemeinsam in der Gruppe und nehmen es auf."
+      },
+      "kitap": "Temel Dinî Bilgiler s. 140 (Ramazan özel programı)",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-060",
+      "kod": "kuran",
+      "planKonu": "Ramazan Kur'an Değerlendirmesi ve Bayram Hazırlığı",
+      "ilkDers": "2027-03-07",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Ramazan Kur’an değerlendirmesi ve bayram hazırlığı",
+        "fr": "Bilan coranique du Ramadan et préparation de la fête",
+        "en": "Ramadan Qur’an review and festival preparation",
+        "nl": "Koran-evaluatie van Ramadan en feestvoorbereiding",
+        "de": "Koran-Auswertung des Ramadan und Festvorbereitung"
+      },
+      "ozet": {
+        "tr": "Ramazan’da öğrendiğimiz bütün metinleri hatasız okumayı gözden geçiririz. Bayram programı için ezber sırasını birlikte belirleriz.",
+        "fr": "Nous révisons la lecture sans faute de tous les textes appris pendant le Ramadan. Ensemble, nous fixons l’ordre des récitations pour le programme de la fête.",
+        "en": "We review reading without mistakes all the texts we learned in Ramadan. Together we decide the order of recitations for the festival programme.",
+        "nl": "We bekijken het foutloos lezen van alle teksten die we in Ramadan leerden. Samen bepalen we de volgorde van de recitaties voor het feestprogramma.",
+        "de": "Wir gehen das fehlerfreie Lesen aller im Ramadan gelernten Texte durch. Gemeinsam legen wir die Reihenfolge der Rezitationen für das Festprogramm fest."
+      },
+      "kitap": "Elifbâ s. 32–33 (tekrar) (Ramazan özel programı)",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-061",
+      "kod": "kuran",
+      "planKonu": "Ramazan Sonrası Hatırlatma",
+      "ilkDers": "2027-03-13",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Ramazan sonrası hatırlatma",
+        "fr": "Rappel après le Ramadan",
+        "en": "Reminder after Ramadan",
+        "nl": "Herinnering na Ramadan",
+        "de": "Erinnerung nach dem Ramadan"
+      },
+      "ozet": {
+        "tr": "Ramazan’dan sonra okuma kurallarını yeniden hatırlar, derse tekrar alışırız. Öğrendiklerimizi kısa örneklerle gözden geçiririz.",
+        "fr": "Après le Ramadan, nous rappelons les règles de lecture et reprenons le rythme des cours. Nous révisons ce que nous avons appris avec de courts exemples.",
+        "en": "After Ramadan we recall the reading rules and settle back into lessons. We review what we have learned with short examples.",
+        "nl": "Na Ramadan herinneren we de leesregels en komen we weer in het ritme van de lessen. We bekijken wat we leerden met korte voorbeelden.",
+        "de": "Nach dem Ramadan rufen wir die Leseregeln in Erinnerung und finden wieder in den Unterricht. Wir gehen das Gelernte mit kurzen Beispielen durch."
+      },
+      "kitap": "Elifbâ s. 49 (tekrar)",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-062",
+      "kod": "kuran",
+      "planKonu": "Tevhid İfadeleri",
+      "ilkDers": "2027-03-14",
+      "seviyeAlani": "okuma",
+      "basamak": 1,
+      "baslik": {
+        "tr": "Tevhid ifadeleri",
+        "fr": "Les formules du tawḥîd",
+        "en": "The tawhid phrases",
+        "nl": "De tawhīd-uitdrukkingen",
+        "de": "Die Tauhid-Formeln"
+      },
+      "ozet": {
+        "tr": "Kelime-i Tevhid ve Kelime-i Şehâdet’i ezbere okuruz. Bu ifadeler İslam’ın temel inancını söyler.",
+        "fr": "Nous récitons par cœur la formule du tawḥîd et celle de la shahâda. Ces formules disent la croyance fondamentale de l’islam.",
+        "en": "We recite the Kalima of Tawhid and the Kalima of Shahada by heart. These phrases state the basic belief of Islam.",
+        "nl": "We reciteren de Kalima van Tawhīd en de Kalima van Shahāda uit het hoofd. Deze uitdrukkingen brengen het basisgeloof van de islam onder woorden.",
+        "de": "Wir sprechen das Tauhid-Wort und das Schahāda-Wort auswendig. Diese Formeln fassen den Grundglauben des Islam in Worte."
+      },
+      "kitap": "Camiye Gidiyorum 1 s. 18–19",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-063",
+      "kod": "kuran",
+      "planKonu": "Âmentü",
+      "ilkDers": "2027-03-20",
+      "seviyeAlani": "okuma",
+      "basamak": 1,
+      "baslik": {
+        "tr": "Âmentü",
+        "fr": "L’Âmentü (la profession de foi)",
+        "en": "The Āmantu (articles of faith)",
+        "nl": "De Āmantu (geloofsbelijdenis)",
+        "de": "Das Āmantu (Glaubensbekenntnis)"
+      },
+      "ozet": {
+        "tr": "Âmentü duasını bölümler hâlinde, doğru sırayla okuruz. Her bölümde bir iman esasını söyleriz.",
+        "fr": "Nous récitons l’Âmentü par parties, dans le bon ordre. Chaque partie énonce un article de foi.",
+        "en": "We recite the Āmantu in sections, in the right order. Each section names one article of faith.",
+        "nl": "We reciteren de Āmantu in delen, in de juiste volgorde. Elk deel noemt een geloofsartikel.",
+        "de": "Wir sprechen das Āmantu abschnittsweise in der richtigen Reihenfolge. Jeder Abschnitt nennt einen Glaubensartikel."
+      },
+      "kitap": "Elifbâ s. 39",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-064",
+      "kod": "kuran",
+      "planKonu": "Sübhâneke",
+      "ilkDers": "2027-03-21",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Sübhâneke",
+        "fr": "Subḥânaka",
+        "en": "Subḥānaka",
+        "nl": "Subḥānaka",
+        "de": "Subḥānaka"
+      },
+      "ozet": {
+        "tr": "Sübhâneke duasını ezbere okur ve namazdaki yerini söyleriz.",
+        "fr": "Nous récitons par cœur l’invocation Subḥânaka et disons sa place dans la prière.",
+        "en": "We recite the Subḥānaka prayer by heart and say where it comes in the ritual prayer.",
+        "nl": "We reciteren de Subḥānaka-smeekbede uit het hoofd en zeggen waar ze in het gebed voorkomt.",
+        "de": "Wir sprechen das Subḥānaka-Gebet auswendig und sagen, wo es im Gebet vorkommt."
+      },
+      "kitap": "Elifbâ s. 34; Temel Dinî Bilgiler s. 321",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-065",
+      "kod": "kuran",
+      "planKonu": "Fâtiha Suresi",
+      "ilkDers": "2027-03-27",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Fâtiha suresi",
+        "fr": "La sourate al-Fâtiha",
+        "en": "Surat al-Fātiḥa",
+        "nl": "Soera al-Fātiḥa",
+        "de": "Die Sure al-Fātiḥa"
+      },
+      "ozet": {
+        "tr": "Fâtiha suresini ezbere okur, namazdaki yerini bilerek tecvid kurallarına dikkat ederiz.",
+        "fr": "Nous récitons la sourate al-Fâtiha par cœur, en connaissant sa place dans la prière et en soignant le tajwîd.",
+        "en": "We recite Surat al-Fātiḥa by heart, knowing its place in the prayer and paying attention to tajwīd.",
+        "nl": "We reciteren soera al-Fātiḥa uit het hoofd, kennen haar plaats in het gebed en letten op tajwīd.",
+        "de": "Wir sprechen die Sure al-Fātiḥa auswendig, kennen ihren Platz im Gebet und achten auf den Tadschwīd."
+      },
+      "kitap": "Elifbâ s. 32; Temel Dinî Bilgiler s. 325",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-066",
+      "kod": "kuran",
+      "planKonu": "Ettehiyyâtü",
+      "ilkDers": "2027-03-28",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Ettehiyyâtü",
+        "fr": "At-Tahiyyât",
+        "en": "At-Tahiyyāt",
+        "nl": "At-Tahiyyāt",
+        "de": "At-Tahiyyāt"
+      },
+      "ozet": {
+        "tr": "Ettehiyyâtü duasını okur, hangi oturuşta okunduğunu söyleriz.",
+        "fr": "Nous récitons la prière at-Tahiyyât et disons à quelle position assise elle se récite.",
+        "en": "We recite the At-Tahiyyāt prayer and say in which sitting it is read.",
+        "nl": "We reciteren het At-Tahiyyāt-gebed en zeggen bij welke zit het gelezen wordt.",
+        "de": "Wir sprechen das At-Tahiyyāt-Gebet und sagen, in welchem Sitzen es gelesen wird."
+      },
+      "kitap": "Elifbâ s. 34; Temel Dinî Bilgiler s. 322",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-067",
+      "kod": "kuran",
+      "planKonu": "Salavat Duaları",
+      "ilkDers": "2027-04-03",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Salavat duaları",
+        "fr": "Les invocations de ṣalawât",
+        "en": "The salawat prayers",
+        "nl": "De salawāt-smeekbeden",
+        "de": "Die Salawāt-Gebete"
+      },
+      "ozet": {
+        "tr": "Allâhümme Salli ve Allâhümme Bârik dualarını sırasıyla ezbere okuruz.",
+        "fr": "Nous récitons par cœur dans l’ordre les invocations Allâhumma ṣalli et Allâhumma bârik.",
+        "en": "We recite the prayers Allāhumma ṣalli and Allāhumma bārik by heart in order.",
+        "nl": "We reciteren de smeekbeden Allāhumma ṣalli en Allāhumma bārik in volgorde uit het hoofd.",
+        "de": "Wir sprechen die Gebete Allāhumma ṣalli und Allāhumma bārik der Reihe nach auswendig."
+      },
+      "kitap": "Elifbâ s. 34–35; Temel Dinî Bilgiler s. 322–323",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-068",
+      "kod": "kuran",
+      "planKonu": "Rabbenâ Duaları",
+      "ilkDers": "2027-04-04",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Rabbenâ duaları",
+        "fr": "Les invocations Rabbanâ",
+        "en": "The Rabbana prayers",
+        "nl": "De Rabbanā-smeekbeden",
+        "de": "Die Rabbanā-Gebete"
+      },
+      "ozet": {
+        "tr": "Rabbenâ Âtinâ ve Rabbenağfirlî dualarını doğru sırayla ezbere okuruz.",
+        "fr": "Nous récitons par cœur et dans le bon ordre les invocations Rabbanâ âtinâ et Rabbanâghfir lî.",
+        "en": "We recite the prayers Rabbanā ātinā and Rabbanāghfir lī by heart in the right order.",
+        "nl": "We reciteren de smeekbeden Rabbanā ātinā en Rabbanāghfir lī in de juiste volgorde uit het hoofd.",
+        "de": "Wir sprechen die Gebete Rabbanā ātinā und Rabbanāghfir lī in der richtigen Reihenfolge auswendig."
+      },
+      "kitap": "Elifbâ s. 35; Temel Dinî Bilgiler s. 323",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-069",
+      "kod": "kuran",
+      "planKonu": "Kunut Duaları",
+      "ilkDers": "2027-04-10",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Kunut duaları",
+        "fr": "Les invocations du qunût",
+        "en": "The qunut prayers",
+        "nl": "De qunūt-smeekbeden",
+        "de": "Die Qunūt-Gebete"
+      },
+      "ozet": {
+        "tr": "Kunut dualarını ezbere okur ve vitir namazındaki yerini öğreniriz.",
+        "fr": "Nous récitons par cœur les invocations du qunût et apprenons leur place dans la prière du witr.",
+        "en": "We recite the qunūt prayers by heart and learn their place in the witr prayer.",
+        "nl": "We reciteren de qunūt-smeekbeden uit het hoofd en leren hun plaats in het witr-gebed.",
+        "de": "Wir sprechen die Qunūt-Gebete auswendig und lernen ihren Platz im Witr-Gebet."
+      },
+      "kitap": "Elifbâ s. 35–36; Temel Dinî Bilgiler s. 323–324",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-070",
+      "kod": "kuran",
+      "planKonu": "Namaz Çağrısı",
+      "ilkDers": "2027-04-11",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Namaz çağrısı: ezan ve kâmet",
+        "fr": "L’appel à la prière : adhân et iqâma",
+        "en": "The call to prayer: adhan and iqama",
+        "nl": "De oproep tot gebed: adhān en iqāma",
+        "de": "Der Gebetsruf: Adhān und Iqāma"
+      },
+      "ozet": {
+        "tr": "Ezan ve kâmet metinlerini, sırasını koruyarak ezbere okuruz.",
+        "fr": "Nous récitons par cœur les textes de l’adhân et de l’iqâma en gardant leur ordre.",
+        "en": "We recite the texts of the adhan and iqama by heart, keeping their order.",
+        "nl": "We reciteren de teksten van de adhān en iqāma uit het hoofd en houden de volgorde aan.",
+        "de": "Wir sprechen die Texte von Adhān und Iqāma auswendig und behalten die Reihenfolge bei."
+      },
+      "kitap": "Elifbâ s. 36–37",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-071",
+      "kod": "kuran",
+      "planKonu": "Ezber Değerlendirmesi",
+      "ilkDers": "2027-04-17",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Ezber değerlendirmesi",
+        "fr": "Bilan de mémorisation",
+        "en": "Memorisation review",
+        "nl": "Evaluatie van het memoriseren",
+        "de": "Auswertung des Auswendiglernens"
+      },
+      "ozet": {
+        "tr": "Öğrendiğimiz temel duaları hocamıza hatasız dinletiriz.",
+        "fr": "Nous récitons sans faute à notre enseignant les invocations de base apprises.",
+        "en": "We recite the basic prayers we have learned to our teacher without mistakes.",
+        "nl": "We dragen de geleerde basissmeekbeden foutloos voor aan onze leraar.",
+        "de": "Wir tragen unserem Lehrer die gelernten Grundgebete fehlerfrei vor."
+      },
+      "kitap": "Elifbâ s. 34–39 (tekrar)",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-072",
+      "kod": "kuran",
+      "planKonu": "Muavvizeteyn Sureleri",
+      "ilkDers": "2027-04-18",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Muavvizeteyn sureleri: Felak ve Nâs",
+        "fr": "Les deux sourates de protection : al-Falaq et an-Nâs",
+        "en": "The two protection surahs: al-Falaq and an-Nās",
+        "nl": "De twee beschermingssoera’s: al-Falaq en an-Nās",
+        "de": "Die beiden Schutzsuren: al-Falaq und an-Nās"
+      },
+      "ozet": {
+        "tr": "Nâs ve Felak surelerini doğru sırayla ezbere okuruz.",
+        "fr": "Nous récitons par cœur les sourates an-Nâs et al-Falaq dans le bon ordre.",
+        "en": "We recite Surat an-Nās and Surat al-Falaq by heart in the right order.",
+        "nl": "We reciteren soera an-Nās en soera al-Falaq in de juiste volgorde uit het hoofd.",
+        "de": "Wir sprechen die Suren an-Nās und al-Falaq in der richtigen Reihenfolge auswendig."
+      },
+      "kitap": "Temel Dinî Bilgiler s. 330",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-073",
+      "kod": "kuran",
+      "planKonu": "İhlâs Suresi",
+      "ilkDers": "2027-04-24",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "İhlâs suresi",
+        "fr": "La sourate al-Ikhlâs",
+        "en": "Surat al-Ikhlāṣ",
+        "nl": "Soera al-Ikhlāṣ",
+        "de": "Die Sure al-Ikhlās"
+      },
+      "ozet": {
+        "tr": "İhlâs suresini duraklarına dikkat ederek ezbere okuruz.",
+        "fr": "Nous récitons la sourate al-Ikhlâs par cœur en soignant les arrêts.",
+        "en": "We recite Surat al-Ikhlāṣ by heart, paying attention to the stops.",
+        "nl": "We reciteren soera al-Ikhlāṣ uit het hoofd en letten op de pauzes.",
+        "de": "Wir sprechen die Sure al-Ikhlās auswendig und achten auf die Pausen."
+      },
+      "kitap": "Temel Dinî Bilgiler s. 329",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-074",
+      "kod": "kuran",
+      "planKonu": "Çok Kısa Sureler",
+      "ilkDers": "2027-04-25",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Çok kısa sureler: Kevser, Asr, Nasr",
+        "fr": "Les très courtes sourates : al-Kawthar, al-ʿAṣr, an-Naṣr",
+        "en": "The very short surahs: al-Kawthar, al-ʿAṣr, an-Naṣr",
+        "nl": "De heel korte soera’s: al-Kawthar, al-ʿAṣr, an-Naṣr",
+        "de": "Die ganz kurzen Suren: al-Kauthar, al-ʿAṣr, an-Naṣr"
+      },
+      "ozet": {
+        "tr": "Kevser, Asr ve Nasr surelerini birbirine karıştırmadan okuruz.",
+        "fr": "Nous récitons les sourates al-Kawthar, al-ʿAṣr et an-Naṣr sans les confondre.",
+        "en": "We recite Surat al-Kawthar, al-ʿAṣr and an-Naṣr without mixing them up.",
+        "nl": "We reciteren soera al-Kawthar, al-ʿAṣr en an-Naṣr zonder ze te verwarren.",
+        "de": "Wir sprechen die Suren al-Kauthar, al-ʿAṣr und an-Naṣr, ohne sie zu verwechseln."
+      },
+      "kitap": "Temel Dinî Bilgiler s. 328",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-075",
+      "kod": "kuran",
+      "planKonu": "Tebbet Suresi",
+      "ilkDers": "2027-04-26",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Tebbet suresi",
+        "fr": "La sourate al-Masad (Tabbat)",
+        "en": "Surat al-Masad (Tabbat)",
+        "nl": "Soera al-Masad (Tabbat)",
+        "de": "Die Sure al-Masad (Tabbat)"
+      },
+      "ozet": {
+        "tr": "Tebbet suresini çıkış yerlerine ve duraklara dikkat ederek ezbere okuruz.",
+        "fr": "Nous récitons la sourate Tabbat par cœur en soignant les points d’articulation et les arrêts.",
+        "en": "We recite Surat Tabbat by heart, paying attention to articulation points and stops.",
+        "nl": "We reciteren soera Tabbat uit het hoofd en letten op uitspraakplaatsen en pauzes.",
+        "de": "Wir sprechen die Sure Tabbat auswendig und achten auf Artikulationsorte und Pausen."
+      },
+      "kitap": "Temel Dinî Bilgiler s. 329",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-076",
+      "kod": "kuran",
+      "planKonu": "Kâfirûn Suresi",
+      "ilkDers": "2027-05-01",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Kâfirûn suresi",
+        "fr": "La sourate al-Kâfirûn",
+        "en": "Surat al-Kāfirūn",
+        "nl": "Soera al-Kāfirūn",
+        "de": "Die Sure al-Kāfirūn"
+      },
+      "ozet": {
+        "tr": "Kâfirûn suresini âyet sırasını bozmadan ezbere okuruz.",
+        "fr": "Nous récitons la sourate al-Kâfirûn par cœur sans changer l’ordre des versets.",
+        "en": "We recite Surat al-Kāfirūn by heart without changing the order of the verses.",
+        "nl": "We reciteren soera al-Kāfirūn uit het hoofd zonder de volgorde van de verzen te veranderen.",
+        "de": "Wir sprechen die Sure al-Kāfirūn auswendig, ohne die Reihenfolge der Verse zu ändern."
+      },
+      "kitap": "Temel Dinî Bilgiler s. 328",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-077",
+      "kod": "kuran",
+      "planKonu": "Mâûn Suresi",
+      "ilkDers": "2027-05-02",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Mâûn suresi",
+        "fr": "La sourate al-Mâʿûn",
+        "en": "Surat al-Māʿūn",
+        "nl": "Soera al-Māʿūn",
+        "de": "Die Sure al-Māʿūn"
+      },
+      "ozet": {
+        "tr": "Mâûn suresini doğru telaffuz ve duraklarla ezbere okuruz.",
+        "fr": "Nous récitons la sourate al-Mâʿûn par cœur avec une bonne prononciation et les arrêts.",
+        "en": "We recite Surat al-Māʿūn by heart with correct pronunciation and stops.",
+        "nl": "We reciteren soera al-Māʿūn uit het hoofd met juiste uitspraak en pauzes.",
+        "de": "Wir sprechen die Sure al-Māʿūn auswendig mit richtiger Aussprache und Pausen."
+      },
+      "kitap": "Temel Dinî Bilgiler s. 327",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-078",
+      "kod": "kuran",
+      "planKonu": "Kâbe Sureleri",
+      "ilkDers": "2027-05-03",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Kâbe sureleri: Kureyş ve Fîl",
+        "fr": "Les sourates de la Kaaba : Quraysh et al-Fîl",
+        "en": "The Kaaba surahs: Quraysh and al-Fīl",
+        "nl": "De Kaäba-soera’s: Qoeraisj en al-Fīl",
+        "de": "Die Kaaba-Suren: Quraisch und al-Fīl"
+      },
+      "ozet": {
+        "tr": "Kureyş ve Fîl surelerini ayrı sureler olarak ezbere okuruz.",
+        "fr": "Nous récitons par cœur les sourates Quraysh et al-Fîl comme deux sourates distinctes.",
+        "en": "We recite Surat Quraysh and Surat al-Fīl by heart as two separate surahs.",
+        "nl": "We reciteren soera Qoeraisj en soera al-Fīl uit het hoofd als twee aparte soera’s.",
+        "de": "Wir sprechen die Suren Quraisch und al-Fīl auswendig als zwei getrennte Suren."
+      },
+      "kitap": "Temel Dinî Bilgiler s. 326",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-079",
+      "kod": "kuran",
+      "planKonu": "Sure Değerlendirmesi",
+      "ilkDers": "2027-05-08",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Sure değerlendirmesi",
+        "fr": "Bilan des sourates",
+        "en": "Surah review",
+        "nl": "Soera-evaluatie",
+        "de": "Suren-Auswertung"
+      },
+      "ozet": {
+        "tr": "Öğrendiğimiz kısa sureleri, adı söylendiğinde ezbere okuruz.",
+        "fr": "Nous récitons par cœur les courtes sourates apprises dès que leur nom est cité.",
+        "en": "We recite the short surahs we have learned by heart when their name is called.",
+        "nl": "We reciteren de geleerde korte soera’s uit het hoofd zodra hun naam wordt genoemd.",
+        "de": "Wir sprechen die gelernten kurzen Suren auswendig, sobald ihr Name genannt wird."
+      },
+      "kitap": "Temel Dinî Bilgiler s. 325–330 (tekrar)",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-080",
+      "kod": "kuran",
+      "planKonu": "Hümeze Suresi",
+      "ilkDers": "2027-05-09",
+      "seviyeAlani": "okuma",
+      "basamak": 3,
+      "baslik": {
+        "tr": "Hümeze suresi",
+        "fr": "La sourate al-Humaza",
+        "en": "Surat al-Humaza",
+        "nl": "Soera al-Humaza",
+        "de": "Die Sure al-Humaza"
+      },
+      "ozet": {
+        "tr": "Hümeze suresini mahreç hatalarını azaltarak ezbere okuruz.",
+        "fr": "Nous récitons la sourate al-Humaza par cœur en réduisant les erreurs de points d’articulation.",
+        "en": "We recite Surat al-Humaza by heart, reducing articulation mistakes.",
+        "nl": "We reciteren soera al-Humaza uit het hoofd en verminderen fouten in de uitspraakplaats.",
+        "de": "Wir sprechen die Sure al-Humaza auswendig und verringern Artikulationsfehler."
+      },
+      "kitap": "Elifbâ / Kur'an-ı Kerim",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-081",
+      "kod": "kuran",
+      "planKonu": "Kevser Suresi ve Kurban Ayeti",
+      "ilkDers": "2027-05-15",
+      "seviyeAlani": "kuranBilgi",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Kevser suresi ve kurban âyeti",
+        "fr": "La sourate al-Kawthar et le verset du sacrifice",
+        "en": "Surat al-Kawthar and the sacrifice verse",
+        "nl": "Soera al-Kawthar en het offervers",
+        "de": "Die Sure al-Kauthar und der Opfervers"
+      },
+      "ozet": {
+        "tr": "Kevser suresini doğru okur, kurbanla ilişkisini açıklarız. İkinci âyette Hz. Peygamber’den şükür olarak namaz kılması ve kurban kesmesi istenir. Sure mealini resimleriz.",
+        "fr": "Nous lisons correctement la sourate al-Kawthar et expliquons son lien avec le sacrifice. Au deuxième verset, le Prophète est invité à prier et à sacrifier en signe de gratitude. Nous illustrons le sens de la sourate.",
+        "en": "We read Surat al-Kawthar correctly and explain its link with sacrifice. In the second verse the Prophet is asked to pray and sacrifice in gratitude. We illustrate the meaning of the surah.",
+        "nl": "We lezen soera al-Kawthar goed en leggen het verband met het offer uit. In het tweede vers wordt de Profeet gevraagd uit dankbaarheid te bidden en te offeren. We illustreren de betekenis van de soera.",
+        "de": "Wir lesen die Sure al-Kauthar richtig und erklären ihren Bezug zum Opfer. Im zweiten Vers wird der Prophet aufgefordert, aus Dankbarkeit zu beten und zu opfern. Wir illustrieren die Bedeutung der Sure."
+      },
+      "kitap": "Temel Dinî Bilgiler s. 327 (Kurban Bayramı özel programı)",
+      "sorular": [
+        {
+          "id": "ku-081-1",
+          "soru": {
+            "tr": "Kevser suresinin ikinci âyetinde Hz. Peygamber’den ne istenir?",
+            "fr": "Que demande le deuxième verset d’al-Kawthar au Prophète ?",
+            "en": "What does the second verse of Surat al-Kawthar ask of the Prophet?",
+            "nl": "Wat vraagt het tweede vers van soera al-Kawthar aan de Profeet?",
+            "de": "Was verlangt der zweite Vers der Sure al-Kauthar vom Propheten?"
+          },
+          "siklar": [
+            {
+              "tr": "Rabbi için namaz kılması ve kurban kesmesi",
+              "fr": "Prier pour son Seigneur et sacrifier",
+              "en": "To pray for his Lord and to sacrifice",
+              "nl": "Voor zijn Heer te bidden en te offeren",
+              "de": "Für seinen Herrn zu beten und zu opfern"
+            },
+            {
+              "tr": "Yalnızca ticaret yapması",
+              "fr": "Seulement faire du commerce",
+              "en": "Only to trade",
+              "nl": "Alleen handel drijven",
+              "de": "Nur Handel zu treiben"
+            },
+            {
+              "tr": "Yolculuğa çıkması",
+              "fr": "Partir en voyage",
+              "en": "To go on a journey",
+              "nl": "Op reis te gaan",
+              "de": "Auf Reisen zu gehen"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "Kevser 108/2 (Kur’an Yolu meali ve tefsiri)"
+        },
+        {
+          "id": "ku-081-2",
+          "soru": {
+            "tr": "Kevser suresinin ilk âyetinde Allah Hz. Peygamber’e ne verdiğini bildirir?",
+            "fr": "Que dit Allah au premier verset d’al-Kawthar avoir donné au Prophète ?",
+            "en": "What does Allah say He gave the Prophet in the first verse of Surat al-Kawthar?",
+            "nl": "Wat zegt Allah het eerste vers van soera al-Kawthar aan de Profeet gegeven te hebben?",
+            "de": "Was gibt Allah im ersten Vers der Sure al-Kauthar dem Propheten, wie Er sagt?"
+          },
+          "siklar": [
+            {
+              "tr": "Bitip tükenmez nimetler",
+              "fr": "Des bienfaits intarissables",
+              "en": "Never-ending blessings",
+              "nl": "Onuitputtelijke weldaden",
+              "de": "Unerschöpfliche Gaben"
+            },
+            {
+              "tr": "Hiçbir şey",
+              "fr": "Rien",
+              "en": "Nothing",
+              "nl": "Niets",
+              "de": "Nichts"
+            },
+            {
+              "tr": "Yalnızca bir kitap",
+              "fr": "Seulement un livre",
+              "en": "Only a book",
+              "nl": "Alleen een boek",
+              "de": "Nur ein Buch"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "Kevser 108/1 (Kur’an Yolu meali ve tefsiri)"
+        }
+      ],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-082",
+      "kod": "kuran",
+      "planKonu": "Tekâsür Suresi",
+      "ilkDers": "2027-05-22",
+      "seviyeAlani": "okuma",
+      "basamak": 3,
+      "baslik": {
+        "tr": "Tekâsür suresi",
+        "fr": "La sourate at-Takâthur",
+        "en": "Surat at-Takāthur",
+        "nl": "Soera at-Takāthur",
+        "de": "Die Sure at-Takāthur"
+      },
+      "ozet": {
+        "tr": "Tekâsür suresini duraklara dikkat ederek ezbere okuruz.",
+        "fr": "Nous récitons la sourate at-Takâthur par cœur en soignant les arrêts.",
+        "en": "We recite Surat at-Takāthur by heart, paying attention to the stops.",
+        "nl": "We reciteren soera at-Takāthur uit het hoofd en letten op de pauzes.",
+        "de": "Wir sprechen die Sure at-Takāthur auswendig und achten auf die Pausen."
+      },
+      "kitap": "Elifbâ / Kur'an-ı Kerim",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-083",
+      "kod": "kuran",
+      "planKonu": "Kâria Suresi",
+      "ilkDers": "2027-05-23",
+      "seviyeAlani": "okuma",
+      "basamak": 3,
+      "baslik": {
+        "tr": "Kâria suresi",
+        "fr": "La sourate al-Qâriʿa",
+        "en": "Surat al-Qāriʿa",
+        "nl": "Soera al-Qāriʿa",
+        "de": "Die Sure al-Qāriʿa"
+      },
+      "ozet": {
+        "tr": "Kâria suresini bölümleri birleştirerek ezbere okuruz.",
+        "fr": "Nous récitons la sourate al-Qâriʿa par cœur en reliant ses parties.",
+        "en": "We recite Surat al-Qāriʿa by heart, joining its sections together.",
+        "nl": "We reciteren soera al-Qāriʿa uit het hoofd en voegen de delen samen.",
+        "de": "Wir sprechen die Sure al-Qāriʿa auswendig und verbinden ihre Abschnitte."
+      },
+      "kitap": "Elifbâ / Kur'an-ı Kerim",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-084",
+      "kod": "kuran",
+      "planKonu": "Âdiyât Suresi",
+      "ilkDers": "2027-05-29",
+      "seviyeAlani": "okuma",
+      "basamak": 3,
+      "baslik": {
+        "tr": "Âdiyât suresi",
+        "fr": "La sourate al-ʿÂdiyât",
+        "en": "Surat al-ʿĀdiyāt",
+        "nl": "Soera al-ʿĀdiyāt",
+        "de": "Die Sure al-ʿĀdiyāt"
+      },
+      "ozet": {
+        "tr": "Âdiyât suresini âyet sırasını koruyarak ezbere okuruz.",
+        "fr": "Nous récitons la sourate al-ʿÂdiyât par cœur en gardant l’ordre des versets.",
+        "en": "We recite Surat al-ʿĀdiyāt by heart, keeping the order of the verses.",
+        "nl": "We reciteren soera al-ʿĀdiyāt uit het hoofd en houden de volgorde van de verzen aan.",
+        "de": "Wir sprechen die Sure al-ʿĀdiyāt auswendig und behalten die Reihenfolge der Verse bei."
+      },
+      "kitap": "Elifbâ / Kur'an-ı Kerim",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-085",
+      "kod": "kuran",
+      "planKonu": "Zilzâl Suresi",
+      "ilkDers": "2027-05-30",
+      "seviyeAlani": "okuma",
+      "basamak": 3,
+      "baslik": {
+        "tr": "Zilzâl suresi",
+        "fr": "La sourate az-Zalzala",
+        "en": "Surat az-Zalzala",
+        "nl": "Soera az-Zalzala",
+        "de": "Die Sure az-Zalzala"
+      },
+      "ozet": {
+        "tr": "Zilzâl suresini durak ve uzatmalara dikkat ederek ezbere okuruz.",
+        "fr": "Nous récitons la sourate az-Zalzala par cœur en soignant arrêts et allongements.",
+        "en": "We recite Surat az-Zalzala by heart, paying attention to stops and lengthening.",
+        "nl": "We reciteren soera az-Zalzala uit het hoofd en letten op pauzes en verlengingen.",
+        "de": "Wir sprechen die Sure az-Zalzala auswendig und achten auf Pausen und Dehnungen."
+      },
+      "kitap": "Elifbâ / Kur'an-ı Kerim",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-086",
+      "kod": "kuran",
+      "planKonu": "Beyyine Suresi",
+      "ilkDers": "2027-06-05",
+      "seviyeAlani": "okuma",
+      "basamak": 3,
+      "baslik": {
+        "tr": "Beyyine suresi",
+        "fr": "La sourate al-Bayyina",
+        "en": "Surat al-Bayyina",
+        "nl": "Soera al-Bayyina",
+        "de": "Die Sure al-Bayyina"
+      },
+      "ozet": {
+        "tr": "Beyyine suresini bölümler hâlinde takip eder ve ezber okumasına başlarız.",
+        "fr": "Nous suivons la sourate al-Bayyina par parties et commençons à la mémoriser.",
+        "en": "We follow Surat al-Bayyina in sections and begin memorising it.",
+        "nl": "We volgen soera al-Bayyina in delen en beginnen haar te memoriseren.",
+        "de": "Wir folgen der Sure al-Bayyina abschnittsweise und beginnen, sie auswendig zu lernen."
+      },
+      "kitap": "Elifbâ / Kur'an-ı Kerim",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    },
+    {
+      "id": "ku-087",
+      "kod": "kuran",
+      "planKonu": "Yıl Sonu Değerlendirmesi",
+      "ilkDers": "2027-06-06",
+      "seviyeAlani": "okuma",
+      "basamak": 2,
+      "baslik": {
+        "tr": "Yıl sonu değerlendirmesi",
+        "fr": "Bilan de fin d’année",
+        "en": "End-of-year review",
+        "nl": "Evaluatie aan het eind van het jaar",
+        "de": "Auswertung zum Jahresende"
+      },
+      "ozet": {
+        "tr": "Yıl sonunda Kur’an-ı Kerim okuma ve ezber kazanımlarımızı hocamıza gösteririz.",
+        "fr": "En fin d’année, nous montrons à notre enseignant nos acquis de lecture et de mémorisation du Coran.",
+        "en": "At the end of the year we show our teacher what we have achieved in Qur’an reading and memorisation.",
+        "nl": "Aan het eind van het jaar tonen we onze leraar wat we bereikten in Koranlezen en memoriseren.",
+        "de": "Am Jahresende zeigen wir unserem Lehrer unsere Fortschritte im Koranlesen und Auswendiglernen."
+      },
+      "kitap": "Temel Dinî Bilgiler s. 325–330 (tekrar)",
+      "sorular": [],
+      "durum": {
+        "tr": "taslak",
+        "fr": "taslak",
+        "en": "taslak",
+        "nl": "taslak",
+        "de": "taslak"
+      }
+    }
+  ]
+}

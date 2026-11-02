@@ -49,7 +49,7 @@ const KILIMIM: Record<Dil, KilimimMetinleri> = {
   tr: {
     baslik: 'Kilimim · kendi çalışmam',
     aciklama: 'Bu cihazdaki kendi çalışmanızdan çizilen kilim. Hocanın verdiği basamak değildir; hiçbir veri gönderilmez.',
-    lead: 'Bu cihazda çalıştığınız her ezber kilimde bir motif olur. Motif, ezbere çalıştıkça ve «Kendini sına» ile tekrar ettikçe kurşun kalemle doldurulur gibi değişir.',
+    lead: 'Bu cihazda çalıştığınız her ezber kilimde bir motif olur. Motif, ezbere çalıştıkça ve «Kendinizi sınayın» ile tekrar ettikçe kurşun kalemle doldurulur gibi değişir.',
     fark: 'Hocanın dinlediği ezberler veli portalındaki kilimde görünür.',
     ayrim: 'Bu kilim, hocanın verdiği basamağı değil, yalnızca bu cihazda yapılan kendi çalışmayı gösterir. Hocanın dinlediği ezberler veli portalındaki kilimde görünür.',
     gizlilik: 'Gizlilik: Kilim yalnız bu cihazdaki çalışma kaydınızdan çizilir; hiçbir yere gönderilmez ve bu sayfa kayıt yazmaz. Yazdığınız ad da kaydedilmez, sayfayı kapatınca silinir.',

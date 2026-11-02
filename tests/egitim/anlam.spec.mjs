@@ -160,7 +160,7 @@ test('Üç çiftin hepsi kurulunca «Hepsi eşleşti» yazar, çalışılan gün
 test('«Eşleşmeleri göster» doğru çiftleri işaretler ama çalışılan günü işlemez', async ({ page }) => {
   await acAnlam(page, '/tr/calis/s-ihlas/');
   const j = await dogruSiralar(page, 's-ihlas', 'tr');
-  await page.getByRole('button', { name: 'Eşleşmeleri göster' }).click();
+  await page.getByRole('button', { name: 'Eşleşmeleri gösterin' }).click();
   await expect(page.locator(`${SINA} .anlam-ogesi.dogru`)).toHaveCount(6);
   await expect(durum(page)).toHaveText('Doğru eşleşmeler gösterildi.');
   // Gösterilen her anlam, Arapça sütunda karşılığının numarasını taşır.
@@ -217,7 +217,7 @@ test('Oyun kurulamayan madde: tek meâl blokluk sûrede (TR Felak) düğme çık
 test('Kur’an dışı madde (TR dua): anlam bölümleriyle eşleşir; başka dillerde anlam olmadığından düğme çıkmaz', async ({ page }) => {
   await acAnlam(page, '/tr/calis/d-subhaneke/');
   expect(await sol(page).count()).toBeGreaterThanOrEqual(2);
-  await page.getByRole('button', { name: 'Eşleşmeleri göster' }).click();
+  await page.getByRole('button', { name: 'Eşleşmeleri gösterin' }).click();
   await expect(page.locator(`${SINA} .anlam-ogesi:not(:disabled)`)).toHaveCount(0);
   await page.goto('/en/calis/d-subhaneke/');
   await page.locator('#kip-sekme-sina').click();

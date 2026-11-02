@@ -43,9 +43,12 @@ export const sayfaAnahtari = (u: URL): string => u.origin + u.pathname;
 export const sesAdresiMi = (u: URL): boolean => u.origin === SES_KOKENI && u.pathname.startsWith(SES_YOLU);
 
 const STATIK_ONEKLER = ['/_astro/', '/fonts/', '/logo/'];
-const STATIK_DOSYALAR = new Set(['/favicon.svg', '/favicon.ico', '/apple-touch-icon.png', '/icon-192.png', '/icon-512.png', '/icon-maskable-512.png']);
+const STATIK_DOSYALAR = new Set(['/favicon.svg', '/favicon.ico', '/apple-touch-icon.png', '/icon-192.png', '/icon-512.png', '/icon-maskable-512.png', '/oturum-isareti.js']);
 /** Önbellek öncelikli statik dosya mı: özetli yapı dosyaları, yazı tipleri, logo ve simgeler. */
 export const statikMi = (yol: string): boolean => STATIK_ONEKLER.some((o) => yol.startsWith(o)) || STATIK_DOSYALAR.has(yol);
+
+/** Hesap sayfaları (/<dil>/hesap/…) ve kart girişi (/k/): kişisel durum taşırlar; SW bunlara HİÇ dokunmaz (önbelleğe almaz, çevrim dışı sunmaz). */
+export const onbellekDisiYolMu = (yol: string): boolean => /^\/(?:tr|fr|en|nl|de)\/hesap(?:\/|$)/.test(yol) || yol === '/k' || yol.startsWith('/k/');
 
 /** Sayfanın (ya da bir CSS/JS dosyasının) istediği statik dosyalar: HTML'de href/src, CSS'te url(), JS'te `./x.js`, `/_astro/x.js` ve
  *  Vite'ın `_astro/x.js` yükleme listesi. `taban`: metnin kendi yolu (göreli adresler buna göre çözülür). Başka köken ve statik olmayan
@@ -112,7 +115,7 @@ export const ONYUKLEME_SAYFALARI: readonly string[] = ['/', ...DILLER.map((d) =>
 export const cevrimdisiYolu = (dil: string): string => `/${dil}/cevrimdisi/`;
 
 /** SW'ye «bu sayfayı ve dosyalarını al» denebilecek yollar: yalnız beş dilin sayfaları (`/tr/calis/s-ihlas/`); başka yol reddedilir. */
-export const kaydedilebilirYolMu = (yol: string): boolean => new RegExp(`^/(?:${DILLER.join('|')})/(?:[a-z0-9-]+/)*$`).test(yol);
+export const kaydedilebilirYolMu = (yol: string): boolean => new RegExp(`^/(?:${DILLER.join('|')})/(?:[a-z0-9-]+/)*$`).test(yol) && !onbellekDisiYolMu(yol);
 
 /** `{ad}` gibi yer tutucuları doldurur (metinlerin sayfa betiğine `data-veri` ile gelen kısmı için; i18n dosyasını pakete almamak için burada). */
 export const doldur = (s: string, d: Record<string, string | number>): string => s.replace(/\{(\w+)\}/g, (_, x: string) => String(d[x] ?? ''));

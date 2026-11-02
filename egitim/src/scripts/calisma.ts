@@ -150,7 +150,7 @@ if (kok) {
     oynat.click();
   });
   // Ezan vakit seçimi (25 Ekim 2026; katalog `ses.secenekler`): seçim yalnız çalınacak kaydı ve notu değiştirir. Çalan kayıt hemen
-  // durur (yeni kayıt, kullanıcı başlatana dek sessiz kalır); tekrar, hız ve «senin sıran» ayarları aynen sürer. Grup JavaScript
+  // durur (yeni kayıt, kullanıcı başlatana dek sessiz kalır); tekrar, hız ve «sıra sizde» ayarları aynen sürer. Grup JavaScript
   // olmadan gizlidir (sayfa o durumda beş kaydı doğrudan bağlantı olarak verir). Tarayıcı form durumunu geri yüklerse (autocomplete
   // kapalı olsa da) açılışta işaretli seçenek esas alınır.
   const vakitGrubu = kok.querySelector<HTMLElement>('[data-vakit]');

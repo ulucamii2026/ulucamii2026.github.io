@@ -5,6 +5,7 @@
  * DOM elle kurulur, `innerHTML` yok (CSP).
  */
 import { oku, type Depo } from '@ortak/lib/ezber/cihaz';
+import { etkinAnahtar } from '../lib/hesap/isaret';
 import { baslangicSecimi, basimOzeti, basimSirasi, sayfala, secParametresi, type YuzSecimi } from '@ortak/lib/ezber/kartlar';
 import { belgeSatirlari } from '@ortak/lib/ezber/belge';
 import { doldur, el } from './kip-ortak';
@@ -34,7 +35,7 @@ function kur(kok: HTMLElement, veri: Veri) {
 
   let depo: Depo | null = null;
   try { depo = window.localStorage; } catch { depo = null; }
-  const d = oku(depo);
+  const d = oku(depo, etkinAnahtar(depo));
   const kayitli = belgeSatirlari(d, veri.sira).length > 0;
   const secili = new Set(baslangicSecimi(d, veri.sira, secParametresi(window.location.search, veri.sira)));
   let yuz: YuzSecimi = 'cift';

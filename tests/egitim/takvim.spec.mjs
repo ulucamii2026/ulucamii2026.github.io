@@ -45,7 +45,7 @@ test.beforeEach(async ({ context, page }) => {
 
 test.describe('giriş sayfasındaki band: hafta seçimi (Brüksel günü)', () => {
   test('çarşamba (28 Ekim): sıradaki ders 31 Ekim; Cumartesi yeni ezber İhlâs, Pazar pekiştirme; bağlantılar çalışma sayfasına', async ({ page }) => {
-    await page.goto('/tr/');
+    await page.goto('/tr/ezber/');
     const band = page.locator('[data-ders-bandi]');
     await expect(band).toBeVisible();
     await expect(band.locator('h2')).toHaveText(BAND.tr);
@@ -72,7 +72,7 @@ test.describe('giriş sayfasındaki band: hafta seçimi (Brüksel günü)', () =
 
   test('Cumartesi sabahı (24 Ekim): bu haftanın dersleri 24–26 Ekim, üç kart; kartın bugünü yok (hafta içi sonrası) ve her şey yerinde', async ({ page }) => {
     await saat(page, '2026-10-24T06:00:00Z'); // 08.00 Brüksel
-    await page.goto('/tr/');
+    await page.goto('/tr/ezber/');
     const band = page.locator('[data-ders-bandi]');
     expect(await duzMetin(band.locator('[data-ders-alt]'))).toMatch(/^Bu haftanın dersleri: 24\s*[–-]\s*26 Ekim$/);
     expect(await band.locator('.tk-gun').evaluateAll((k) => k.map((x) => x.dataset.tarih))).toEqual(['2026-10-24', '2026-10-25', '2026-10-26']);
@@ -87,7 +87,7 @@ test.describe('giriş sayfasındaki band: hafta seçimi (Brüksel günü)', () =
 
   test('Pazar (25 Ekim): aynı hafta sonu; «Bugün» ve aria-current yalnız 25 Ekim kartında', async ({ page }) => {
     await saat(page, '2026-10-25T09:00:00Z');
-    await page.goto('/tr/');
+    await page.goto('/tr/ezber/');
     const band = page.locator('[data-ders-bandi]');
     expect(await duzMetin(band.locator('[data-ders-alt]'))).toMatch(/^Bu haftanın dersleri: 24\s*[–-]\s*26 Ekim$/);
     await expect(band.locator('[aria-current="date"]')).toHaveCount(1);
@@ -98,7 +98,7 @@ test.describe('giriş sayfasındaki band: hafta seçimi (Brüksel günü)', () =
 
   test('tatil Pazartesisi (26 Ekim): ders günü; aynı hafta sonunun üçüncü kartı bugün', async ({ page }) => {
     await saat(page, '2026-10-26T09:00:00Z');
-    await page.goto('/tr/');
+    await page.goto('/tr/ezber/');
     const band = page.locator('[data-ders-bandi]');
     expect(await duzMetin(band.locator('[data-ders-alt]'))).toMatch(/^Bu haftanın dersleri:/);
     await expect(band.locator('[aria-current="date"]')).toHaveAttribute('data-tarih', '2026-10-26');
@@ -106,20 +106,20 @@ test.describe('giriş sayfasındaki band: hafta seçimi (Brüksel günü)', () =
 
   test('hafta içi (27 Ekim, Salı): sıradaki hafta sonu, bugün işareti yok', async ({ page }) => {
     await saat(page, '2026-10-27T09:00:00Z');
-    await page.goto('/tr/');
+    await page.goto('/tr/ezber/');
     expect(await duzMetin(page.locator('[data-ders-alt]'))).toBe('Sıradaki ders: 31 Ekim Cumartesi');
   });
 
   test('yıl bitince: son günden sonra kısa not, gün listesi gizli; ilk günden önce: 10 Ekim sıradaki', async ({ page }) => {
     await saat(page, '2027-06-07T09:00:00Z');
-    await page.goto('/tr/');
+    await page.goto('/tr/ezber/');
     const band = page.locator('[data-ders-bandi]');
     await expect(band).toBeVisible();
     expect(await duzMetin(band.locator('[data-ders-alt]'))).toMatch(/^Bu ders yılının dersleri tamamlandı\./);
     await expect(band.locator('[data-ders-gunler]')).toBeHidden();
     await expect(band.locator('.ders-tumu')).toBeVisible();
     await saat(page, '2026-10-09T09:00:00Z');
-    await page.goto('/tr/');
+    await page.goto('/tr/ezber/');
     expect(await duzMetin(page.locator('[data-ders-alt]'))).toBe('Sıradaki ders: 10 Ekim Cumartesi');
   });
 });
@@ -128,10 +128,10 @@ test.describe('Brüksel günü (cihaz saat dilimi başka)', () => {
   test.use({ timezoneId: 'America/Los_Angeles' });
   test('Los Angeles’ta 25 Ekim 16.30 = Brüksel 26 Ekim 00.30: bugün 26 Ekim; 24 Ekim 15.30 LA = Brüksel 25 Ekim 00.30 CEST: bugün 25 Ekim', async ({ page }) => {
     await saat(page, '2026-10-25T23:30:00Z');
-    await page.goto('/tr/');
+    await page.goto('/tr/ezber/');
     await expect(page.locator('[data-ders-bandi] [aria-current="date"]')).toHaveAttribute('data-tarih', '2026-10-26');
     await saat(page, '2026-10-24T22:30:00Z');
-    await page.goto('/tr/');
+    await page.goto('/tr/ezber/');
     await expect(page.locator('[data-ders-bandi] [aria-current="date"]')).toHaveAttribute('data-tarih', '2026-10-25');
   });
 });
@@ -139,7 +139,7 @@ test.describe('Brüksel günü (cihaz saat dilimi başka)', () => {
 test.describe('JavaScript kapalı', () => {
   test.use({ javaScriptEnabled: false });
   test('band gizli kalır, yerine takvime tek bağlantılı sabit paragraf; yanlış hafta gösterilmez', async ({ page }) => {
-    await page.goto('/tr/');
+    await page.goto('/tr/ezber/');
     await expect(page.locator('[data-ders-bandi]')).toBeHidden();
     const yedek = page.locator('.ders-bandi:not([data-ders-bandi])');
     await expect(yedek).toBeVisible();
@@ -234,7 +234,7 @@ test.describe('takvim sayfası', () => {
     const istekler = [];
     page.on('request', (r) => istekler.push(r.url()));
     await page.goto('/tr/takvim/');
-    await page.goto('/tr/');
+    await page.goto('/tr/ezber/');
     const depo = await page.evaluate(async () => ({
       // Dil tercihi (ulucamiiEgitimDili) bütün sayfaların ortak davranışıdır (scripts/dil.ts); takvim buna ve ezber kaydına hiçbir şey eklemez.
       yerel: Object.keys(localStorage).filter((k) => k !== 'ulucamiiEgitimDili'), oturum: sessionStorage.length, cerez: document.cookie, idb: (await indexedDB.databases?.())?.length ?? 0,
@@ -303,9 +303,9 @@ test.describe('erişilebilirlik ve yeniden akış', () => {
     test(`${dil}: giriş (bandla) ve takvim sayfasında iki temada axe, 320 px yatay taşma yok, CSP ihlali yok`, async ({ page }) => {
       await page.setViewportSize({ width: 320, height: 700 });
       await saat(page, '2026-10-26T09:00:00Z'); // üç kartlı hafta sonu, bir kart «Bugün»
-      for (const yol of [`/${dil}/`, `/${dil}/takvim/`]) {
+      for (const yol of [`/${dil}/ezber/`, `/${dil}/takvim/`]) {
         await page.goto(yol);
-        if (yol.endsWith(`/${dil}/`)) await expect(page.locator('[data-ders-bandi]')).toBeVisible();
+        if (yol.endsWith(`/${dil}/ezber/`)) await expect(page.locator('[data-ders-bandi]')).toBeVisible();
         for (const colorScheme of ['light', 'dark']) {
           await page.emulateMedia({ colorScheme, reducedMotion: 'reduce' });
           expect(await tasmaYok(page), `${yol} ${colorScheme}`).toBe(true);
@@ -318,7 +318,7 @@ test.describe('erişilebilirlik ve yeniden akış', () => {
   }
 
   test('band ve takvim: bağlantılar ve düğmeler dokunulabilir boyda (≥ 44 px yükseklik); klavye ile gezilir', async ({ page }) => {
-    await page.goto('/tr/');
+    await page.goto('/tr/ezber/');
     for (const bag of await page.locator('[data-ders-bandi] .tk-madde a').all()) expect((await bag.boundingBox()).height).toBeGreaterThanOrEqual(44);
     expect((await page.locator('.ders-tumu').boundingBox()).height).toBeGreaterThanOrEqual(44);
     await page.locator('.ders-tumu').focus();
@@ -332,7 +332,7 @@ test.describe('erişilebilirlik ve yeniden akış', () => {
 test.describe('giriş noktaları ve yazdırma', () => {
   for (const dil of DILLER) {
     test(`${dil}: giriş sayfasında band hero’dan sonra, şeritlerden önce; üç araç karosu aynı, takvim satırı ve alt bilgi bağlantısı var`, async ({ page }) => {
-      await page.goto(`/${dil}/`);
+      await page.goto(`/${dil}/ezber/`);
       const y = (s) => page.locator(s).first().evaluate((e) => e.getBoundingClientRect().top + scrollY);
       await expect(page.locator('[data-ders-bandi]')).toBeVisible();
       expect(await y('[data-ders-bandi]')).toBeGreaterThan(await y('.giris'));
@@ -366,7 +366,7 @@ test.describe('giriş noktaları ve yazdırma', () => {
   });
 
   test('yazdırmada girişteki band görünmez', async ({ page }) => {
-    await page.goto('/tr/');
+    await page.goto('/tr/ezber/');
     await expect(page.locator('[data-ders-bandi]')).toBeVisible();
     await page.emulateMedia({ media: 'print' });
     await expect(page.locator('[data-ders-bandi]')).toBeHidden();

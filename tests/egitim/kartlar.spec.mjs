@@ -91,7 +91,7 @@ test.describe('sayfa ve seçim', () => {
       const beklenen = SAYFALI.filter((o) => String(o.seviye) === seviye).sort((a, b) => a.sira - b.sira).map((o) => o.id);
       expect(await page.locator(`[data-kk-grup="${seviye}"] input[data-kk-kutu]`).evaluateAll((k) => k.map((x) => x.value))).toEqual(beklenen);
     }
-    await expect(page.locator('[data-kk-grup="1"] .kk-grup-sec')).toHaveText('1. şerit: tümünü seç');
+    await expect(page.locator('[data-kk-grup="1"] .kk-grup-sec')).toHaveText('1. şerit: tümünü seçin');
   });
 
   test('Tümü, Hiçbiri ve şerit kutusu (işaretli, belirsiz, boş) çalışır; sayaç ve özet güncellenir', async ({ page }) => {
@@ -431,7 +431,7 @@ test.describe('erişilebilirlik ve yeniden akış', () => {
 test.describe('giriş noktaları', () => {
   for (const dil of DILLER) {
     test(`${dil}: giriş sayfasında üç araç karosu, alt bilgi, madde sayfası, Çalışma Belgesi ve Kilimim'den kartlara bağlantı`, async ({ page }) => {
-      await page.goto(`/${dil}/`);
+      await page.goto(`/${dil}/ezber/`);
       const karolar = page.locator('[data-araclar] a.arac');
       await expect(karolar).toHaveCount(3);
       expect(await karolar.evaluateAll((a) => a.map((x) => x.getAttribute('href')))).toEqual([`/${dil}/kilimim/`, `/${dil}/calisma-belgesi/`, `/${dil}/kartlar/`]);
@@ -447,7 +447,7 @@ test.describe('giriş noktaları', () => {
   }
 
   test('giriş sayfası: araç bloğu ana içeriğin (şeritler ve örnek kilim) altında, kaynaklardan önce', async ({ page }) => {
-    await page.goto('/tr/');
+    await page.goto('/tr/ezber/');
     const y = (s) => page.locator(s).first().evaluate((e) => e.getBoundingClientRect().top + scrollY);
     expect(await y('[data-araclar]')).toBeGreaterThan(await y('#seritler'));
     expect(await y('[data-araclar]')).toBeGreaterThan(await y('#kilim-baslik'));
@@ -458,7 +458,7 @@ test.describe('giriş noktaları', () => {
     await page.goto('/tr/calis/s-kevser/');
     await page.locator('[data-kartlar-bag]').click();
     await expect(page).toHaveURL(/\/tr\/kartlar\/\?sec=s-kevser$/);
-    expect(await page.locator('input[data-kk-kutu]:checked').evaluateAll((k) => k.map((x) => x.value))).toEqual(['s-kevser']);
+    await expect.poll(async () => page.locator('input[data-kk-kutu]:checked').evaluateAll((k) => k.map((x) => x.value))).toEqual(['s-kevser']); // betik sayfa yüklendikten sonra işaretler
     await page.goto('/tr/calis/s-kevser/');
     await page.emulateMedia({ media: 'print' });
     await expect(page.locator('[data-kartlar-bag]')).toBeHidden();

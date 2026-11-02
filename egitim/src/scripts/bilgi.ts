@@ -7,6 +7,7 @@
  * öznitelik kullanır: Hosting'in CSP'si satır içi stil ve betiğe izin vermez. Veri `data-veri` ile gelir.
  */
 import { AR_ENAZ, AR_ENCOK, arBoyutuAyarla, calismaGunuIsle, maddeAyari, maddeyiGuncelle, oku, yaz, type CihazDurumu, type Depo } from '@ortak/lib/ezber/cihaz';
+import { etkinAnahtar } from '../lib/hesap/isaret';
 import { farkliSira, rastgele, siraDogru, yerindeSayisi } from '@ortak/lib/ezber/oyun';
 import { gunFarki, sonrakiTekrar, tarihMi, yerelGun, type TekrarSonucu } from '@ortak/lib/ezber/tekrar';
 import { doldur, dugme, el } from './kip-ortak';
@@ -22,8 +23,8 @@ const depo = (): Depo | null => {
 };
 // Her değişiklikten önce depodan taze okunur: sayfadaki başka betik (kip.ts) kendi kopyasını tutar, ezilmesin.
 const guncelle = (f: (d: CihazDurumu) => CihazDurumu): CihazDurumu => {
-  const yeni = f(oku(depo()));
-  yaz(depo(), yeni);
+  const yeni = f(oku(depo(), etkinAnahtar(depo())));
+  yaz(depo(), yeni, etkinAnahtar(depo()));
   return yeni;
 };
 
@@ -55,7 +56,7 @@ function arBoyutu() {
     arttir.disabled = ar >= AR_ENCOK;
   };
   kutu.hidden = false;
-  goster(oku(depo()).ar);
+  goster(oku(depo(), etkinAnahtar(depo())).ar);
   azalt.addEventListener('click', () => goster(guncelle((d) => arBoyutuAyarla(d, d.ar - 1)).ar));
   arttir.addEventListener('click', () => goster(guncelle((d) => arBoyutuAyarla(d, d.ar + 1)).ar));
 }
@@ -278,14 +279,14 @@ function kurNasil(kutu: HTMLElement | null, veri: Veri) {
   const oneriNot = el('p', 'kip-not', m.oneriNot);
   oneriNot.hidden = true;
   const gunDurumu = () => {
-    const ay = maddeAyari(oku(depo()), veri.id);
+    const ay = maddeAyari(oku(depo(), etkinAnahtar(depo())), veri.id);
     const bugun = yerelGun(new Date());
     if (!tarihMi(ay.sonraki)) { oneri.textContent = ''; return; }
     oneri.textContent = ay.sonraki <= bugun ? m.tekrarGunu : oneriMetni(m.kayitliOneri, ay.sonraki, bugun);
   };
   const yanit = (s: TekrarSonucu) => {
     const bugun = yerelGun(new Date());
-    const yeni = sonrakiTekrar(maddeAyari(oku(depo()), veri.id).kutu, s, bugun);
+    const yeni = sonrakiTekrar(maddeAyari(oku(depo(), etkinAnahtar(depo())), veri.id).kutu, s, bugun);
     guncelle((d) => calismaGunuIsle(maddeyiGuncelle(d, veri.id, { kutu: yeni.kutu, sonraki: yeni.sonraki }, Date.now()), bugun));
     const bas = s === 'tam' ? m.yanitTam : s === 'az' ? m.yanitAz : m.yanitTekrar;
     oneri.textContent = `${bas} ${oneriMetni(m.oneri, yeni.sonraki, bugun)}`;

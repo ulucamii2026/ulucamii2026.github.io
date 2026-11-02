@@ -5,6 +5,7 @@
  * yazılmaz). Kilim sunucuda boş çizilmiştir; burada yalnız sınıf ve metin değişir. DOM elle güncellenir, `innerHTML` yok (CSP).
  */
 import { oku, type Depo } from '@ortak/lib/ezber/cihaz';
+import { etkinAnahtar } from '../lib/hesap/isaret';
 import { kendiMaddeler, kendiOzeti, type KendiMadde } from '@ortak/lib/ezber/kilimim';
 import { yerelGun } from '@ortak/lib/ezber/tekrar';
 import { doldur } from './kip-ortak';
@@ -36,7 +37,7 @@ function kur(kok: HTMLElement, veri: Veri) {
 
   let depo: Depo | null = null;
   try { depo = window.localStorage; } catch { depo = null; }
-  const d = oku(depo);
+  const d = oku(depo, etkinAnahtar(depo));
   const bugun = yerelGun(new Date());
   const maddeler = kendiMaddeler(d, veri.sira).filter((x) => veri.adlar[x.id]);
   const ozet = kendiOzeti(maddeler, d.gunler, bugun);

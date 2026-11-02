@@ -1,69 +1,266 @@
 ---
 /**
- * Ezber Kilimi girişi (Faz 1f, 27 Eylül 2026): başlık + çini pano, dört basamak, şeritler (ses varsa «Dinle»), örnek
- * kilim ve kaynaklar. Beş dil (tr, fr, en, nl, de). Onaylı taslak: egitim/docs/taslaklar/giris.html; görünüm
- * egitim/DESIGN.md. «Fâtiha ile başla» Faz 2'nin dinle-tekrarla sayfasına götürür. 2d: bu cihazda tekrar kaydı varsa
- * «Bugün tekrar» bandı (components/Tekrar.astro, scripts/bugun-tekrar.ts) hero'nun altında görünür. 25 Ekim 2026: hero'nun hemen altında, herkese açık
- * «Derste bu hafta» bandı (components/DersBandi.astro, scripts/ders-bu-hafta.ts): bu ders hafta sonunda hangi ezberler çalışılıyor.
+ * İlim Yolu ana sayfası (2 Kasım 2026, Rıdvan'ın seçimi: yön C · Kilim; taslak egitim/docs/taslaklar/ilim-yolu/c).
+ *
+ * İki görünüm tek HTML'de: ZİYARETÇİ (statik, Firebase'siz: kapak, dört yol, üç adım, güvence, kurs bandı) ve GİRİŞ YAPMIŞ (karşılama, «Bugün tekrar»,
+ * «Kaldığın yer», kilim, yollar). Hangisinin görüneceğini <html data-oturum> belirler (public/oturum-isareti.js, yalnız yerel işarete bakar);
+ * giriş yapmış görünümü scripts/ana.ts doldurur ve oturum varsa Firebase'i o zaman yükler. JS kapalıysa ya da işaret yoksa ziyaretçi görünümü kalır.
+ *
+ * Eski Ezber Kilimi girişi 2 Kasım 2026'dan beri /[dil]/ezber/ adresindedir; bu sayfadaki eski bağlantı çapaları (#seritler, #m-…) o sayfaya
+ * yönlendirilir (scripts/ana.ts). Dört yoldan yalnız Ezber Kilimi hazır; kurs bilgileri, seviye yolu ve Yeni Müslüman yolu sonraki dilimlerde
+ * açılır, o zamana dek «Hazırlanıyor» yazar ve ölü bağlantı konmaz.
  */
 import type { Dil } from '@ortak/i18n/ui';
-import { dilListesi } from '@ortak/i18n/utils';
-import { KATALOG } from '@ortak/lib/ezber/katalog';
-import { KILIM_METINLERI } from '@ortak/lib/ezber/metinler';
-import Araclar from '../../components/Araclar.astro';
-import Basamaklar from '../../components/Basamaklar.astro';
-import DersBandi from '../../components/DersBandi.astro';
+import { dilListesi, yerelKodu } from '@ortak/i18n/utils';
+import { KATALOG, calismaSayfasiVar } from '@ortak/lib/ezber/katalog';
+import { kendiLejanti, kilimSvg } from '@ortak/lib/ezber/kilim';
 import Ikon from '../../components/Ikon.astro';
-import Kaynaklar from '../../components/Kaynaklar.astro';
-import Kilimim from '../../components/Kilimim.astro';
-import Pano from '../../components/Pano.astro';
-import Seritler from '../../components/Seritler.astro';
-import Tekrar from '../../components/Tekrar.astro';
+import { ilimMetinleri } from '../../i18n/ilim';
+import { kilimimMetinleri } from '../../i18n/kilimim';
 import { metin } from '../../i18n/metinler';
+import { sablonlar } from '../../i18n/sablon';
+import { tekrarMetinleri } from '../../i18n/sina';
 import Taban from '../../layouts/Taban.astro';
-import { cizim } from '../../lib/cizim';
-import '../../styles/tekrar.css';
-import '../../styles/takvim.css';
-import '../../styles/araclar.css';
+import '../../styles/ilim.css';
 
 export function getStaticPaths() {
   return dilListesi.map((dil) => ({ params: { dil } }));
 }
 
 const dil = Astro.params.dil as Dil;
+const il = ilimMetinleri(dil);
 const m = metin(dil);
-const n = KATALOG.ogeler.length;
+const km = kilimimMetinleri(dil);
+const tm = tekrarMetinleri(dil);
+const tum = KATALOG.ogeler;
+const sayfali = tum.filter(calismaSayfasiVar);
+const sira = sayfali.map((o) => o.id);
+const sayfaSet = new Set(sira);
+const n = tum.length;
+const yolMotifleri = ['m-goz', 'm-yildiz', 'm-sevron', 'm-mihrap'] as const;
+
+// Giriş yapmış görünümündeki kendi kilimim (Kilimim sayfasıyla aynı çizici ve aynı dokular; dokuları scripts/ana.ts cihazdan doldurur).
+const secenek = {
+  onek: 'kl-kendi', dil, baslik: km.baslik,
+  kendi: {
+    etiket: (id: string, ad: string, d: 0 | 1 | 2 | 3) => `${ad}, ${sayfaSet.has(id) ? km.dokuMadde[d] : km.sayfasiz}`,
+    ozet: `${km.ozetBasladi.replace('{n}', '0').replace('{m}', String(sira.length))}`,
+    baglanti: (id: string) => (sayfaSet.has(id) ? `/${dil}/calis/${id}/` : null),
+  },
+};
+const veri = {
+  dil,
+  yerel: yerelKodu[dil],
+  sira,
+  adlar: Object.fromEntries(sayfali.map((o) => [o.id, o.ad[dil]])),
+  il: sablonlar({
+    selamAd: il.selamAd, baslikTekrar: il.baslikTekrar, baslikYok: il.baslikYok, baslikBos: il.baslikBos, kaldiginSon: il.kaldiginSon,
+    devamEt: il.devamEt, yolDurumEzber: il.yolDurumEzber, yolDurumYok: il.yolDurumYok, tekrarBos: il.tekrarBos, tekrarAlt: il.tekrarAlt,
+    tekrarla: il.tekrarla, hocaYok: il.hocaYok, hocaSeritler: il.hocaSeritler, hocaSon: il.hocaSon, birlesikBaslik: il.birlesikBaslik, birlesikOzet: il.birlesikOzet,
+    kaldiginBos: il.kaldiginBos, kilimBos: il.kilimBos, hocaBaslik: il.hocaBaslik, hocaAciklama: il.hocaAciklama,
+  }),
+  tm: { hafta1: tm.hafta1, haftaN: tm.haftaN },
+  km: { doku: km.doku, dokuMadde: km.dokuMadde, ozetBasladi: km.ozetBasladi, ozetTakvim: km.ozetTakvim, ozetGun: km.ozetGun, sayfasiz: km.sayfasiz },
+  baslik: km.baslik,
+};
 ---
-<Taban dil={dil} aciklama={m.aciklama(n)} yol="">
-  <section class="giris" aria-labelledby="baslik">
-    <div class="icerik">
-      <div class="giris-metin">
-        <h1 id="baslik">{KILIM_METINLERI.baslik[dil]}</h1>
-        <p class="vaat">{m.vaat(n)}</p>
+<Taban dil={dil} baslik={il.siteAdi} aciklama={il.aciklama} yol="" sayfa="ana" kapak>
+  <div class="icerik" data-misafir>
+    <section class="iy-kapak" aria-labelledby="kapak-baslik">
+      <div class="iy-kapak-metin">
+        <p class="iy-ust-yazi">{il.kapakUst}</p>
+        <h1 id="kapak-baslik">{il.marka}</h1>
+        <p class="vaat">{il.vaat}</p>
         <div class="eylem">
-          <a class="dugme birincil" href={`/${dil}/calis/s-fatiha/`}>{m.baslaDugme} <Ikon ad="ok" /></a>
-          <a class="dugme ikincil" href="#seritler">{m.seritleriGez}</a>
+          <a class="dugme birincil" href={`/${dil}/hesap/kayit/`}>{il.kayit} <Ikon ad="ok" /></a>
+          <a class="dugme ikincil" href={`/${dil}/hesap/giris/`}>{il.giris}</a>
+        </div>
+        <p class="iy-cihaz-notu">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-cihaz" /></svg>
+          <span><b>{il.hesapsizBaslik}</b> {il.hesapsizMetin} <a href="#yollar">{il.hesapsizBasla}</a></span>
+        </p>
+      </div>
+      <svg class="iy-kapak-kilim" viewBox="0 0 240 330" role="img" aria-label={il.kapakKilimAd} focusable="false"><use href="#kapak-kilim" /></svg>
+    </section>
+
+    <svg class="kilim-serit iy-bant" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#serit)" /></svg>
+
+    <section class="iy-bolum" id="yollar" aria-labelledby="yollar-baslik">
+      <div class="iy-bolum-bas">
+        <p class="iy-ust-yazi">{il.yollarUst}</p>
+        <h2 id="yollar-baslik">{il.yollarBaslik}</h2>
+        <p>{il.yollarMetin}</p>
+      </div>
+      <div class="iy-yollar">
+        <article class="iy-yol ezber">
+          <div class="iy-yol-motif" aria-hidden="true"><svg viewBox="0 0 100 100"><use href={`#${yolMotifleri[0]}`} /></svg></div>
+          <div class="iy-yol-metin">
+            <h3>{il.yolEzberAd} <small>{il.yolEzberRozet(n)}</small></h3>
+            <p class="acik">{il.yolEzberMetin}</p>
+          </div>
+          <div class="iy-yol-sag"><a class="dugme ikincil kucuk" href={`/${dil}/ezber/`}>{il.yolaBak}</a></div>
+        </article>
+        <article class="iy-yol kurs">
+          <div class="iy-yol-motif" aria-hidden="true"><svg viewBox="0 0 100 100"><use href={`#${yolMotifleri[1]}`} /></svg></div>
+          <div class="iy-yol-metin">
+            <h3>{il.yolKursAd} <small>{il.yolKursRozet}</small></h3>
+            <p class="acik">{il.yolKursMetin}</p>
+          </div>
+          <div class="iy-yol-sag"><p class="durum">{il.hazirlaniyor}</p></div>
+        </article>
+        <article class="iy-yol seviye">
+          <div class="iy-yol-motif" aria-hidden="true"><svg viewBox="0 0 100 100"><use href={`#${yolMotifleri[2]}`} /></svg></div>
+          <div class="iy-yol-metin">
+            <h3>{il.yolSeviyeAd} <small>{il.yolSeviyeRozet}</small></h3>
+            <ul class="iy-alanlar" aria-label={il.yolSeviyeRozet}>{il.alanlar.map((a) => <li>{a}</li>)}</ul>
+          </div>
+          <div class="iy-yol-sag"><p class="durum">{il.hazirlaniyor}</p></div>
+        </article>
+        <article class="iy-yol yeni">
+          <div class="iy-yol-motif" aria-hidden="true"><svg viewBox="0 0 100 100"><use href={`#${yolMotifleri[3]}`} /></svg></div>
+          <div class="iy-yol-metin">
+            <h3>{il.yolYeniAd} <small>{il.yolYeniRozet}</small></h3>
+            <p class="acik">{il.yolYeniMetin}</p>
+          </div>
+          <div class="iy-yol-sag"><p class="durum">{il.hazirlaniyor}</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="iy-bolum" id="nasil" aria-labelledby="nasil-baslik">
+      <div class="iy-bolum-bas">
+        <p class="iy-ust-yazi">{il.nasilUst}</p>
+        <h2 id="nasil-baslik">{il.nasilBaslik}</h2>
+      </div>
+      <ol class="iy-adimlar">
+        {il.adimlar.map(([baslik, aciklama], i) => (
+          <li class="iy-adim"><span class="iy-adim-no" aria-hidden="true">{i + 1}</span><h3>{baslik}</h3><p>{aciklama}</p></li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="iy-bolum" aria-label={il.guvenler[0][0]}>
+      <ul class="iy-guven">
+        {il.guvenler.map(([baslik, aciklama], i) => (
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href={`#${['i-kitap', 'i-yol', 'i-dunya'][i]}`} /></svg>
+            <span><b>{baslik}</b><span>{aciklama}</span></span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="iy-bolum" id="kurs" aria-labelledby="kurs-baslik">
+      <div class="iy-kurs-bant">
+        <svg class="kilim-serit" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#serit-koyu)" /></svg>
+        <div class="iy-kurs-bant-ic">
+          <svg class="buyuk" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-kare-kod" /></svg>
+          <div>
+            <h2 id="kurs-baslik">{il.kursBaslik}</h2>
+            <p>{il.kursMetin}</p>
+          </div>
+          <a class="dugme safran" href={`/${dil}/hesap/giris/#kurs`}>{il.kursDugme}</a>
         </div>
       </div>
-      <Pano dil={dil} />
-      <p class="guven"><Fragment set:html={cizim('serit-6-mushaf', 'muhur')} /><span>{m.guven}</span></p>
+    </section>
+  </div>
+
+  <div class="icerik" data-girisli data-ana-girisli data-veri={JSON.stringify(veri)}>
+    <div class="iy-pano">
+      <section class="iy-karsilama" aria-labelledby="selam-baslik">
+        <p class="iy-selam" data-selam>{il.selam}</p>
+        <h1 id="selam-baslik" data-baslik>{il.baslikBos}</h1>
+        <p class="iy-yolun">
+          <span>{il.yolun}</span>
+          <a class="iy-yolun-isaret" href={`/${dil}/ezber/`}><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><use href="#m-goz" /></svg>{il.yolEzberAd}</a>
+        </p>
+      </section>
+
+      <section class="iy-kart iy-tekrar-kart" aria-labelledby="tekrar-baslik">
+        <div class="iy-kart-bas">
+          <h2 id="tekrar-baslik">{il.tekrarBaslik}</h2>
+          <span class="ek">{il.tekrarEk}</span>
+        </div>
+        <ul class="iy-tekrar-liste" data-tekrar-liste aria-label={tm.liste} hidden></ul>
+        <p class="iy-tekrar-bos" data-tekrar-bos>{il.tekrarBos}</p>
+        <p class="iy-tekrar-hafta" data-tekrar-hafta hidden></p>
+        <template data-tekrar-satir>
+          <li class="iy-tekrar">
+            <span class="iy-tekrar-isaret" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><use href="#i-tekrar" /></svg></span>
+            <div>
+              <h3 data-ad></h3>
+              <p class="iy-tekrar-ust">{il.tekrarAlt}</p>
+            </div>
+            <a class="dugme birincil kucuk" href="#" data-baglanti><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-tekrar" /></svg><span class="dar-gizle">{il.tekrarla}</span></a>
+          </li>
+        </template>
+      </section>
+
+      <section class="iy-kaldigin" aria-labelledby="kaldigin-baslik">
+        <svg class="kilim-serit" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#serit-koyu)" /></svg>
+        <div class="iy-kaldigin-govde">
+          <p class="iy-ust-yazi">{il.kaldiginBaslik}</p>
+          <h2 id="kaldigin-baslik" data-kaldigin-ad>{il.kaldiginBos}</h2>
+          <p class="yer" data-kaldigin-son hidden></p>
+          <div class="eylem">
+            <a class="dugme safran" href={`/${dil}/calis/s-fatiha/`} data-kaldigin-baglanti><span data-kaldigin-dugme>{m.baslaDugme}</span> <Ikon ad="ok" /></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="iy-kart iy-kilim-kart" aria-labelledby="kilim-baslik">
+        <h2 id="kilim-baslik">{il.kilimBaslik}</h2>
+        <p class="alt-satir" data-kilim-alt>{il.kilimBos}</p>
+        <div class="iy-birlesik" data-kilim-kutu>
+          <Fragment set:html={kilimSvg({}, secenek)} />
+          <div data-kilim-lejant><Fragment set:html={kendiLejanti(secenek, km.doku)} /></div>
+        </div>
+        <p class="iy-kilim-eylem"><a class="dugme ikincil kucuk" href={`/${dil}/kilimim/`}>{il.kilimGit}</a></p>
+        <div data-hoca hidden>
+          <p class="iy-kilim-bos" data-hoca-durum></p>
+          <ul class="iy-hoca-satirlari" data-hoca-satirlari></ul>
+        </div>
+      </section>
     </div>
-  </section>
-  <DersBandi dil={dil} />
-  <Tekrar dil={dil} />
-  <Basamaklar dil={dil} />
-  <Seritler dil={dil} />
-  <Kilimim dil={dil} />
-  <Araclar dil={dil} />
-  <Kaynaklar dil={dil} />
-  <p class="gorunmez" role="status" aria-live="polite" data-ses-durumu data-hata={m.sesHatasi}></p>
+
+    <section class="iy-bolum" aria-labelledby="yollarim-baslik">
+      <div class="iy-bolum-bas">
+        <p class="iy-ust-yazi">{il.yollarimUst}</p>
+        <h2 id="yollarim-baslik">{il.yollarimBaslik}</h2>
+      </div>
+      <div class="iy-yollar">
+        <article class="iy-yol ezber">
+          <div class="iy-yol-motif" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#m-goz" /></svg></div>
+          <div class="iy-yol-metin">
+            <h3>{il.yolEzberAd} <small>{il.yolEzberRozet(n)}</small></h3>
+            <p class="acik">{il.yolEzberMetin}</p>
+          </div>
+          <div class="iy-yol-sag">
+            <p class="durum" data-yol-durum>{il.yolDurumYok}</p>
+            <a class="dugme birincil kucuk" href={`/${dil}/ezber/`}>{il.ezbereGit}</a>
+          </div>
+        </article>
+        <article class="iy-yol kurs">
+          <div class="iy-yol-motif" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#m-yildiz" /></svg></div>
+          <div class="iy-yol-metin"><h3>{il.yolKursAd} <small>{il.yolKursRozet}</small></h3><p class="acik">{il.yolKursMetin}</p></div>
+          <div class="iy-yol-sag"><p class="durum">{il.hazirlaniyor}</p></div>
+        </article>
+        <article class="iy-yol seviye">
+          <div class="iy-yol-motif" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#m-sevron" /></svg></div>
+          <div class="iy-yol-metin"><h3>{il.yolSeviyeAd} <small>{il.yolSeviyeRozet}</small></h3></div>
+          <div class="iy-yol-sag"><p class="durum">{il.hazirlaniyor}</p></div>
+        </article>
+        <article class="iy-yol yeni">
+          <div class="iy-yol-motif" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#m-mihrap" /></svg></div>
+          <div class="iy-yol-metin"><h3>{il.yolYeniAd} <small>{il.yolYeniRozet}</small></h3><p class="acik">{il.yolYeniMetin}</p></div>
+          <div class="iy-yol-sag"><p class="durum">{il.hazirlaniyor}</p></div>
+        </article>
+      </div>
+    </section>
+  </div>
 </Taban>
 
 <script>
   import '../../scripts/dil';
-  import '../../scripts/pano';
-  import '../../scripts/seritler';
-  import '../../scripts/calar';
-  import '../../scripts/bugun-tekrar';
-  import '../../scripts/ders-bu-hafta';
+  import '../../scripts/ana';
 </script>

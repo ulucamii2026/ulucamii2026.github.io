@@ -6,14 +6,15 @@
  * sayfadan `data-veri` ile gelir.
  */
 import { AR_ENAZ, AR_ENCOK, arBoyutuAyarla, calismaGunuIsle, maddeAyari, maddeyiGuncelle, oku, yaz, type CihazDurumu, type Depo } from '@ortak/lib/ezber/cihaz';
+import { etkinAnahtar } from '../lib/hesap/isaret';
 import { yerelGun } from '@ortak/lib/ezber/tekrar';
 import { sesSahibiKur, type Baglam, type Kip, type KipVeri } from './kip-ortak';
 
 const depo = (): Depo | null => {
   try { return window.localStorage; } catch { return null; }
 };
-let cihaz: CihazDurumu = oku(depo());
-const kaydetCihaz = () => { yaz(depo(), cihaz); };
+let cihaz: CihazDurumu = oku(depo(), etkinAnahtar(depo()));
+const kaydetCihaz = () => { yaz(depo(), cihaz, etkinAnahtar(depo())); };
 
 // Arapça yazı boyutu: A− / A+ (sayfadaki metin ve kip ekranları); CSS `data-ar-olcek` özniteliğinden okur.
 const sayfa = document.querySelector<HTMLElement>('.madde');

@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>İlim Yolu — Ana sayfa (Yön A · Tezhip)</title>
+<link rel="stylesheet" href="stil.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<pattern id="zencerek" width="20" height="10" patternUnits="userSpaceOnUse"><path d="M10 1.5 14.5 5 10 8.5 5.5 5Z" fill="#B8913A"/><circle cx="0" cy="5" r="1.5" fill="#1F2F63"/><circle cx="20" cy="5" r="1.5" fill="#1F2F63"/></pattern>
+<pattern id="zencerek-koyu" width="20" height="10" patternUnits="userSpaceOnUse"><path d="M10 1.5 14.5 5 10 8.5 5.5 5Z" fill="#B8913A"/><circle cx="0" cy="5" r="1.5" fill="#F3E7C6"/><circle cx="20" cy="5" r="1.5" fill="#F3E7C6"/></pattern>
+<symbol id="damga" viewBox="0 0 48 48"><g id="d-yaprak"><path d="M24 2.5C29 8.5 29 14 24 19 19 14 19 8.5 24 2.5Z" fill="#B8913A" stroke="#1F2F63" stroke-width="1.3" stroke-linejoin="round"/></g><use href="#d-yaprak" transform="rotate(45 24 24)"/><use href="#d-yaprak" transform="rotate(90 24 24)"/><use href="#d-yaprak" transform="rotate(135 24 24)"/><use href="#d-yaprak" transform="rotate(180 24 24)"/><use href="#d-yaprak" transform="rotate(225 24 24)"/><use href="#d-yaprak" transform="rotate(270 24 24)"/><use href="#d-yaprak" transform="rotate(315 24 24)"/><circle cx="24" cy="24" r="7.5" fill="#1F2F63"/><circle cx="24" cy="24" r="3" fill="#E9D9AE"/></symbol>
+<symbol id="kose" viewBox="0 0 40 40"><path d="M3 3h26M3 3v26" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M3 3C14 5 19 9 21 21 9 19 5 14 3 3Z" fill="currentColor"/><circle cx="33" cy="3" r="1.8" fill="currentColor"/><circle cx="3" cy="33" r="1.8" fill="currentColor"/></symbol>
+<symbol id="madalyon" viewBox="0 0 84 84"><circle cx="42" cy="42" r="40" fill="#F4ECD6" stroke="#B8913A" stroke-width="1.5"/><circle cx="42" cy="42" r="35" fill="none" stroke="#B8913A" stroke-width="2.4" stroke-dasharray="0 5.5" stroke-linecap="round"/><circle cx="42" cy="42" r="30" fill="#FFFDF7" stroke="#1F2F63" stroke-width="1.2"/></symbol>
+<symbol id="kisi-yildiz" viewBox="0 0 24 24"><path d="M12 1 15.2 4.2 19.8 4.2 19.8 8.8 23 12 19.8 15.2 19.8 19.8 15.2 19.8 12 23 8.8 19.8 4.2 19.8 4.2 15.2 1 12 4.2 8.8 4.2 4.2 8.8 4.2Z" fill="#1F2F63"/><circle cx="12" cy="12" r="5" fill="#E9D9AE"/><circle cx="12" cy="12" r="1.8" fill="#1F2F63"/></symbol>
+<symbol id="b-calisiyor" viewBox="0 0 24 24"><path d="M12 3 21 12 12 21 3 12Z" fill="#FFFDF7" stroke="#1F2F63" stroke-width="2" stroke-linejoin="round"/></symbol>
+<symbol id="b-okudu" viewBox="0 0 24 24"><path d="M12 3 21 12 12 21 3 12Z" fill="#E9D9AE" stroke="#1F2F63" stroke-width="2" stroke-linejoin="round"/><path d="M12 3 3 12 12 21Z" fill="#1F2F63"/></symbol>
+<symbol id="b-pekisti" viewBox="0 0 24 24"><path d="M12 3 21 12 12 21 3 12Z" fill="#1F2F63" stroke="#1F2F63" stroke-width="2" stroke-linejoin="round"/></symbol>
+<symbol id="b-kalici" viewBox="0 0 24 24"><path d="M12 1.5 22.5 12 12 22.5 1.5 12Z" fill="#B8913A" stroke="#1F2F63" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 7.5 16.5 12 12 16.5 7.5 12Z" fill="#1F2F63"/></symbol>
+<symbol id="rozet-var" viewBox="0 0 64 64"><path d="M32 2 40.8 10.8 53.2 10.8 53.2 23.2 62 32 53.2 40.8 53.2 53.2 40.8 53.2 32 62 23.2 53.2 10.8 53.2 10.8 40.8 2 32 10.8 23.2 10.8 10.8 23.2 10.8Z" fill="#B8913A" stroke="#1F2F63" stroke-width="1.5" stroke-linejoin="round"/><circle cx="32" cy="32" r="17" fill="#FFFDF7" stroke="#1F2F63" stroke-width="1.2"/></symbol>
+<symbol id="rozet-yok" viewBox="0 0 64 64"><path d="M32 2 40.8 10.8 53.2 10.8 53.2 23.2 62 32 53.2 40.8 53.2 53.2 40.8 53.2 32 62 23.2 53.2 10.8 53.2 10.8 40.8 2 32 10.8 23.2 10.8 10.8 23.2 10.8Z" fill="none" stroke="#8C7A55" stroke-width="1.5" stroke-dasharray="3 3" stroke-linejoin="round"/><circle cx="32" cy="32" r="17" fill="none" stroke="#8C7A55" stroke-width="1.2" stroke-dasharray="2 3"/></symbol>
+<symbol id="i-rahle" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.5c3.2-1.2 6.4-.8 9 1.2 2.6-2 5.8-2.4 9-1.2v7.2c-3.2-1.2-6.4-.8-9 1.2-2.6-2-5.8-2.4-9-1.2z"/><path d="M12 8.7v7.2M7 16.5l10 5M17 16.5l-10 5"/></g></symbol>
+<symbol id="i-kitap" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4.5h11.5a2.5 2.5 0 0 1 2.5 2.5v13.5H7.5A2.5 2.5 0 0 1 5 18z"/><path d="M5 18a2.5 2.5 0 0 1 2.5-2.5H19M10 4.5v6l2-1.4 2 1.4v-6"/></g></symbol>
+<symbol id="i-basamak" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20.5h5v-4h4.5v-4H17v-4h4"/><path d="M19 2.5l1 2 2.2.3-1.6 1.5.4 2.2-2-1-2 1 .4-2.2-1.6-1.5 2.2-.3z"/></g></symbol>
+<symbol id="i-hilal" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11.38 4.01A8.5 8.5 0 1 0 18.8 15.88 7 7 0 0 1 11.38 4.01Z"/><circle cx="19" cy="5.5" r="1.2" fill="currentColor"/></g></symbol>
+<symbol id="i-ok" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></g></symbol>
+<symbol id="i-oynat" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></symbol>
+<symbol id="i-tekrar" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5A8 8 0 0 1 17.7 6L20 8.3M20 3.5v4.8h-4.8M20 12.5A8 8 0 0 1 6.3 18L4 15.7M4 20.5v-4.8h4.8"/></g></symbol>
+<symbol id="i-soru" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.3a2.5 2.5 0 1 1 3.4 2.3c-.6.3-1 .8-1 1.5v.7M12 17v.01"/></g></symbol>
+<symbol id="i-takvim" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16v14H4zM4 10h16M8 3.5v4M16 3.5v4"/></g></symbol>
+<symbol id="i-ses" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5h3.5L12 6v12l-4.5-3.5H4z"/><path d="M15.5 9a4.5 4.5 0 0 1 0 6M18 6.5a8 8 0 0 1 0 11"/></g></symbol>
+<symbol id="i-su" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3.6 4.6 6 7.8 6 11a6 6 0 0 1-12 0c0-3.2 2.4-6.4 6-11z"/></g></symbol>
+<symbol id="i-yol" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21c0-4 3-5 7-6.5S19 11 19 7"/><circle cx="19" cy="4.5" r="1.6"/><circle cx="5" cy="21" r=".6"/></g></symbol>
+</defs></svg>
+<a class="atla" href="#ana">İçeriğe geç</a>
+
+<header class="ust">
+  <svg class="zencerek" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#zencerek)"/></svg>
+  <div class="kap ust-ic">
+    <a class="damga" href="ana-girisli.html" aria-label="İlim Yolu, ana sayfa">
+      <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><use href="#damga"/></svg>
+      <span><span class="damga-ad">İlim Yolu</span><span class="damga-alt">Ulu Camii · Marche-en-Famenne</span></span>
+    </a>
+    <nav class="ust-menu" aria-label="Ana menü">
+      <a href="ana-girisli.html" aria-current="page">Ana sayfa</a>
+      <a href="#yollar">Yollarım</a>
+      <a href="#rozetler">Rozetlerim</a>
+    </nav>
+    <div class="diller" role="group" aria-label="Dil">
+      <a href="#" lang="tr" aria-current="true">TR</a><a href="#" lang="fr">FR</a><a href="#" lang="en">EN</a><a href="#" lang="nl">NL</a><a href="#" lang="de">DE</a>
+    </div>
+    <a class="kisi" href="#" aria-label="Hesabım: @ahmet.k">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#kisi-yildiz"/></svg>
+      <span>@ahmet.k</span>
+    </a>
+  </div>
+  <div class="cetvel" aria-hidden="true"></div>
+</header>
+
+<main id="ana" class="kap">
+  <div class="pano">
+  <section class="karsilama" aria-labelledby="selam-baslik">
+    <p class="selam">Hoş geldin, @ahmet.k <span class="etiket-ornek">Örnek veri</span></p>
+    <h1 id="selam-baslik">Bugün seni 4 tekrar bekliyor</h1>
+    <p class="yolun">
+      <span>Yolun:</span>
+      <span class="yolun-isaret"><svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><use href="#damga"/></svg>Ezber Kilimi</span>
+      <span><b>3. şerit</b> · Kıyam, rükû ve secde</span>
+    </p>
+  </section>
+
+    <section class="levha tekrar-levha" aria-labelledby="tekrar-baslik">
+      <div class="levha-bas">
+        <h2 id="tekrar-baslik"><svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><use href="#damga"/></svg>Bugün tekrar</h2>
+        <span class="ek">Acele yok; kendi hızında.</span>
+      </div>
+      <ul class="tekrar-liste">
+        <li class="tekrar">
+          <span class="tekrar-isaret" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#b-okudu"/></svg></span>
+          <div>
+            <h3>Fâtiha Sûresi</h3>
+            <p class="tekrar-ust">Ezber Kilimi · Hocaya okudu</p>
+            <p class="tekrar-not"><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-takvim"/></svg>Pekişme kontrolü bugün</p>
+          </div>
+          <a class="dugme ikincil kucuk" href="#" aria-label="Fâtiha Sûresi: tekrarla"><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-tekrar"/></svg><span class="dar-gizle">Tekrarla</span></a>
+        </li>
+        <li class="tekrar">
+          <span class="tekrar-isaret" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#b-calisiyor"/></svg></span>
+          <div>
+            <h3>Sübhâneke Duası</h3>
+            <p class="tekrar-ust">Ezber Kilimi · Çalışıyor</p>
+            <p class="tekrar-ust">Dün 3 kez dinledin</p>
+          </div>
+          <a class="dugme ikincil kucuk" href="#" aria-label="Sübhâneke Duası: dinle"><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-oynat"/></svg><span class="dar-gizle">Dinle</span></a>
+        </li>
+        <li class="tekrar">
+          <span class="tekrar-isaret" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#b-calisiyor"/></svg></span>
+          <div>
+            <h3>Ettehiyyâtü (Tahiyyât)</h3>
+            <p class="tekrar-ust">Ezber Kilimi · Çalışıyor</p>
+            <p class="tekrar-ust">3 gün önce başladın</p>
+          </div>
+          <a class="dugme ikincil kucuk" href="#" aria-label="Ettehiyyâtü: tekrarla"><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-tekrar"/></svg><span class="dar-gizle">Tekrarla</span></a>
+        </li>
+        <li class="tekrar">
+          <span class="tekrar-isaret" aria-hidden="true"><svg viewBox="0 0 24 24" style="color:#1F2F63"><use href="#i-kitap"/></svg></span>
+          <div>
+            <h3>Abdestin farzları</h3>
+            <p class="tekrar-ust">Kurs bilgileri · bilgi kartı</p>
+            <p class="tekrar-ust">Mini soru: 4 soru</p>
+          </div>
+          <a class="dugme ikincil kucuk" href="#" aria-label="Abdestin farzları: mini soruyu çöz"><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-soru"/></svg><span class="dar-gizle">Çöz</span></a>
+        </li>
+      </ul>
+    </section>
+
+      <section class="kaldigin koyu" aria-labelledby="kaldigin-baslik">
+        <svg class="kose ust-sol" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><use href="#kose"/></svg>
+        <svg class="kose ust-sag" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><use href="#kose"/></svg>
+        <svg class="kose alt-sol" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><use href="#kose"/></svg>
+        <svg class="kose alt-sag" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><use href="#kose"/></svg>
+        <p class="kaldigin-ust">Kaldığın yer</p>
+        <h2 id="kaldigin-baslik">İhlâs Sûresi</h2>
+        <p class="yer">1. âyet · dinle-tekrarla · dün akşam</p>
+        <p class="ayet" lang="ar" dir="rtl" data-ar="s-ihlas:1">قُلْ هُوَ اللّٰهُ اَحَدٌۚ</p>
+        <p class="meal" data-meal="s-ihlas:1">De ki: "O, Allah'tır, bir tektir."</p>
+        <p class="kaynak">Meâl: Diyanet İşleri Başkanlığı</p>
+        <div class="eylem">
+          <a class="dugme altin" href="#">Kaldığın yerden devam et <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ok"/></svg></a>
+          <a class="dugme cizgili-krem" href="#"><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ses"/></svg>Dinle</a>
+        </div>
+      </section>
+
+      <section class="levha ilerleme-levha" aria-labelledby="ilerleme-baslik">
+        <div class="levha-bas">
+          <h2 id="ilerleme-baslik"><svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><use href="#damga"/></svg>İlerlemen</h2>
+          <span class="ek">Ezber Kilimi</span>
+        </div>
+        <div class="ilerleme">
+          <div class="semse-kutu">
+            <svg id="semse-ilerleme" viewBox="0 0 240 240" aria-hidden="true" focusable="false">
+              <circle cx="120" cy="120" r="117" fill="none" stroke="#B8913A" stroke-width="1.2"/>
+              <circle cx="120" cy="120" r="111" fill="none" stroke="#B8913A" stroke-width="2.2" stroke-dasharray="0 6.2" stroke-linecap="round"/>
+              <circle cx="120" cy="120" r="70" fill="#F4ECD6" stroke="#B8913A" stroke-width="1.2"/>
+            </svg>
+            <p class="semse-orta"><b class="rakam">14</b><span>/ 81 ezber</span></p>
+          </div>
+          <ul class="basamaklar" aria-label="Basamaklara göre">
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#b-calisiyor"/></svg>Çalışıyor<b>5</b></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#b-okudu"/></svg>Hocaya okudu<b>4</b></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#b-pekisti"/></svg>Pekişti<b>3</b></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#b-kalici"/></svg>Kalıcı<b>2</b></li>
+          </ul>
+        </div>
+      </section>
+  </div>
+
+  <section class="bolum" id="yollar" aria-labelledby="yollar-baslik">
+    <div class="bolum-bas">
+      <div class="ayrac" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#damga"/></svg></div>
+      <h2 id="yollar-baslik">Yolların</h2>
+      <p>Dört yol, tek hesap. Hangisinden istersen oradan devam et.</p>
+    </div>
+    <div class="yollar">
+      <article class="yol">
+        <svg class="yol-madalyon" viewBox="0 0 84 84" aria-hidden="true" focusable="false"><use href="#madalyon"/><svg x="24" y="24" width="36" height="36" viewBox="0 0 24 24"><use href="#i-rahle"/></svg></svg>
+        <h3>Ezber Kilimi</h3>
+        <p class="olcu">81 madde</p>
+        <p class="acik">Namaz sûrelerinden Amme cüzüne; Diyanet metni ve sesiyle.</p>
+        <p class="durum"><b>14 madde</b> kilimine dokundu</p>
+        <a class="dugme birincil kucuk" href="#">Kilimime git</a>
+      </article>
+      <article class="yol">
+        <svg class="yol-madalyon" viewBox="0 0 84 84" aria-hidden="true" focusable="false"><use href="#madalyon"/><svg x="24" y="24" width="36" height="36" viewBox="0 0 24 24"><use href="#i-kitap"/></svg></svg>
+        <h3>Kurs bilgileri</h3>
+        <p class="olcu">Yıllık plan konuları</p>
+        <p class="acik">Her konu bir kart ve kısa bir mini soru.</p>
+        <p class="durum"><b>6 konu</b> «öğrendim»</p>
+        <a class="dugme ikincil kucuk" href="#">Konulara bak</a>
+      </article>
+      <article class="yol">
+        <svg class="yol-madalyon" viewBox="0 0 84 84" aria-hidden="true" focusable="false"><use href="#madalyon"/><svg x="24" y="24" width="36" height="36" viewBox="0 0 24 24"><use href="#i-basamak"/></svg></svg>
+        <h3>Seviye yolu</h3>
+        <p class="olcu">7 alan</p>
+        <ul class="alanlar" aria-label="Alanlar">
+          <li>Kur’an okuma</li><li>Kur’an bilgisi</li><li>İman</li><li>Namaz</li><li>Diğer ibadetler</li><li>Siyer</li><li>Ahlak</li>
+        </ul>
+        <p class="durum"><b>2 alanda</b> başladın</p>
+        <a class="dugme ikincil kucuk" href="#">Yola devam et</a>
+      </article>
+      <article class="yol">
+        <svg class="yol-madalyon" viewBox="0 0 84 84" aria-hidden="true" focusable="false"><use href="#madalyon"/><svg x="24" y="24" width="36" height="36" viewBox="0 0 24 24"><use href="#i-hilal"/></svg></svg>
+        <h3>Yeni Müslüman yolu</h3>
+        <p class="olcu">8 adım · 12 hafta</p>
+        <p class="acik">«İlk Adımlar»: iman, abdest ve namazla sakin bir başlangıç.</p>
+        <p class="durum">Henüz başlamadın</p>
+        <a class="dugme ikincil kucuk" href="#">Yola bak</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="bolum" id="rozetler" aria-labelledby="rozet-baslik">
+    <div class="bolum-bas">
+      <div class="ayrac" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#damga"/></svg></div>
+      <h2 id="rozet-baslik">Rozetlerin</h2>
+    </div>
+    <ul class="rozetler">
+      <li class="rozet"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#rozet-var"/><svg x="21" y="21" width="22" height="22" viewBox="0 0 24 24" style="color:#1F2F63"><use href="#i-rahle"/></svg></svg>İlk sûre<span class="tarih">12 Ekim</span></li>
+      <li class="rozet"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#rozet-var"/><svg x="21" y="21" width="22" height="22" viewBox="0 0 24 24" style="color:#1F2F63"><use href="#i-yol"/></svg></svg>1. şerit<span class="tarih">19 Ekim</span></li>
+      <li class="rozet"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#rozet-var"/><svg x="21" y="21" width="22" height="22" viewBox="0 0 24 24" style="color:#1F2F63"><use href="#i-su"/></svg></svg>Abdest bilgisi<span class="tarih">26 Ekim</span></li>
+      <li class="rozet bekliyor"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#rozet-yok"/><svg x="21" y="21" width="22" height="22" viewBox="0 0 24 24" style="color:#6F6650"><use href="#i-hilal"/></svg></svg>Namaz duaları<span class="tarih">sırada</span></li>
+      <li class="rozet bekliyor"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#rozet-yok"/><svg x="21" y="21" width="22" height="22" viewBox="0 0 24 24" style="color:#6F6650"><use href="#i-kitap"/></svg></svg>Amme’ye ilk adım<span class="tarih">sırada</span></li>
+    </ul>
+    <p class="rozet-not">Rozetler kendi çalışmanla gelir. Hocanın dinlediği ezberler için ayrıca Ezber Sertifikası verilir.</p>
+  </section>
+</main>
+
+<footer class="alt koyu">
+  <svg class="zencerek" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#zencerek-koyu)"/></svg>
+  <div class="kap alt-ic">
+    <div>
+      <p class="alt-damga">İlim Yolu</p>
+      <p>Marche-en-Famenne Ulu Camii’nin eğitim platformu</p>
+    </div>
+    <nav aria-label="Alt bilgi">
+      <a href="mailto:info@ulucamii.be">info@ulucamii.be</a>
+      <a href="#">Gizlilik</a>
+      <a href="https://www.ulucamii.be/tr/">ulucamii.be</a>
+    </nav>
+  </div>
+</footer>
+<script>
+/* Şemse ışınları: 81 ezberin her biri bir ışın. Sıra: Kalıcı, Pekişti, Hocaya okudu, Çalışıyor, sonra boş (taslak verisi). */
+(() => {
+  const svg = document.getElementById('semse-ilerleme');
+  const ns = 'http://www.w3.org/2000/svg';
+  const sayilar = [['kalici', 2], ['pekisti', 3], ['okudu', 4], ['calisiyor', 5]];
+  const sira = sayilar.flatMap(([d, n]) => Array(n).fill(d));
+  const boya = { kalici: ['#B8913A', '#1F2F63'], pekisti: ['#1F2F63', '#1F2F63'], okudu: ['#E9D9AE', '#1F2F63'],
+    calisiyor: ['#FFFDF7', '#1F2F63'], bos: ['#F4ECD6', '#C9B88F'] };
+  for (let i = 0; i < 81; i++) {
+    const d = sira[i] || 'bos';
+    const p = document.createElementNS(ns, 'path');
+    p.setAttribute('d', 'M120 16C123 26 123 36 120 46 117 36 117 26 120 16Z');
+    p.setAttribute('transform', `rotate(${(i * 360) / 81} 120 120)`);
+    p.setAttribute('fill', boya[d][0]);
+    p.setAttribute('stroke', boya[d][1]);
+    p.setAttribute('stroke-width', d === 'bos' ? '0.8' : '1.3');
+    svg.appendChild(p);
+  }
+})();
+</script>
+</body>
+</html>
