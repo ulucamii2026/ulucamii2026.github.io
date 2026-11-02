@@ -336,7 +336,25 @@ Uygulama düzeni:
 - Taslak çeviriler öğrencilere görünür.
 - ihtida.ulucamii.be'yi taşırken DNS değişikliği gerekir.
 
-## Durum (2 Kasım 2026, dal `ilim-yolu`, commit YOK)
+## Durum (2 Kasım 2026 akşamüstü, dal `ilim-yolu`, yayın YOK)
+
+**Son durum — oturum kapanışı (2 Kas 2026):**
+- Commit `f41cce14` (dal `ilim-yolu`, yerel, push yok): Dilim 0 + Dilim 1 tamam; Dilim 2 verisi ve Dilim 3 ortak modülü.
+- Dilim 1 arayüzü bitti: bütün egitim Kilim tasarımına geçti (`egitim/DESIGN.md`), `/[dil]/` İlim Yolu ana sayfası
+  (misafir/girişli), eski Ezber ana sayfası `/[dil]/ezber/`, `/[dil]/hesap/{giris,kayit}/`, `/[dil]/hesap/`, `/k/`;
+  hoca ekranı «İlim Yolu» sekmesi (hesap aç, kart bas, bağlama kodu, yıkıcı işlem onayı).
+- Türkçe hitap «siz» (Rıdvan, 2 Kas 2026); FR vous, NL u, DE Sie, EN değişmedi.
+- Düzeltilen hatalar: ana sayfa mini kilim siyah dolgu (şeffaf tıklama kutuları ortak `kilim.css`'e taşındı; bekçi
+  `tests/egitim/ana-kilim.spec.mjs`); hoca penceresindeki şifre kapanınca anında silinir (`gizliGoster`);
+  `ekran.spec.mjs` test sonunda uçuştaki isteğin «disposed» hatası (yalnız o hata yutulur).
+- Kalite kapısı `npm run dogrula:codex` (2 Kas 15.43): 12 bölümün 11'i geçti, tek düşen ekran testi yukarıdaki
+  düzeltmeyle 114/114. `test:hesap` 25/25, `test:kurallar` geçti, `test:ilim-yolu` 54 + 1 atlanan, `test:egitim` geçti.
+- ihtida deposu: `b57bbdc` (yerel `main`, push yok) — `scripts/ortak-dogrula.mjs` + build önünde denetim; yasak terim
+  taraması 0.
+- Taslak ekran görüntüleri (`egitim/docs/taslaklar/ilim-yolu/ekran/`, 5,8 MB) depoya girmez; `ekran.mjs` yeniden üretir.
+- Sıradaki: Rıdvan Blaze'i açınca «Yayından önce» 1–8 ve plandaki yayın sırası; beklerken Dilim 2 arayüzü.
+
+**Ayrıntılı notlar:**
 
 - Dilim 0 altyapısı hazır:
   - `functions/`: TypeScript, esbuild, gen2, europe-west1, `maxInstances: 2`;
@@ -395,4 +413,10 @@ Uygulama düzeni:
 5. Auth: Google ve e-posta/şifre sağlayıcıları açılır; `fb-auth-ayar.py` ile TAM alan listesi verilir; OAuth istemcisine
    egitim `/__/auth/handler` eklenir.
 6. `/__/auth/*` başlıkları önizleme kanalında sınanır.
-7. `ILIM_SIL_GERCEK=1` yalnız Rıdvan karar verince açılır. O zamana kadar hareketsiz hesap taraması kuru çalışır.
+7. Firestore TTL ilkesi: `ipler` (koleksiyon grubu, `gizli/giris/ipler`) ve `bagKodlari` koleksiyonlarında `bitis` alanı (süresi dolan deneme sayaçları ve
+   bağlama kodları kendiliğinden silinir).
+8. `ILIM_SIL_GERCEK=1` yalnız Rıdvan karar verince açılır. O zamana kadar hareketsiz hesap taraması kuru çalışır.
+
+Yayın sırası: `test:kurallar` + `test:hesap` → `scripts/firebase-cami.ps1 deploy --only functions` →
+`npm run firebase:kurallar` → ana site push (hoca ekranı) → `npm run egitim:yayinla` → `npm run egitim:canli` →
+`docs/YAYIN-KAYITLARI.md` kaydı. Yayından sonra: gerçek bir gmail ile Google girişi denemesi (çakışma notu yukarıda).
