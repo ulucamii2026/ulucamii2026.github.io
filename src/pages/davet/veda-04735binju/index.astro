@@ -1,6 +1,6 @@
 ---
 /**
- * «Ahde Vefa» — Veda Programı: gizli katılım bildirimi sayfası (7 Kasım 2026).
+ * «Ahde Vefa» — Veda Programı: gizli katılım bildirimi sayfası (8 Kasım 2026).
  * Adres SABİTTİR (basılı karekod bu adresi taşır): /davet/veda-04735binju/ — klasör adını DEĞİŞTİRME.
  * Gizlilik: noindex, sitemap'e girmez (astro.config.mjs süzgeci meta etiketini okur), robots.txt'ye yazılmaz,
  * sitede hiçbir yerden bağlantı yok. Kurumsal kimlik: DİB (Ulu Camii kimliği DEĞİL), Base.astro kullanılmaz.
@@ -13,14 +13,14 @@ const VEDA = {
   altBaslik: 'Veda Programı',
   giris: 'Sayın Coşkun BEYAZGÜL Hocamızın Paris Din Hizmetleri Müşaviri olarak atanması münasebetiyle düzenlenen veda programı',
   davetci: 'Salih GÖR, Brüksel Sosyal İşler Müşaviri',
-  tarih: '7 Kasım 2026 Cumartesi',
-  saat: 'Saat 15.00',
+  tarih: '8 Kasım 2026 Pazar',
+  saat: 'Saat 15.30',
   yerAd: 'Belçika Diyanet Vakfı Genel Merkezi',
   yerAdres: 'Chaussée de Haecht 67, 1210 Saint-Josse-ten-Noode (Brüksel)',
   harita: 'https://www.google.com/maps/search/?api=1&query=Chauss%C3%A9e+de+Haecht+67%2C+1210+Saint-Josse-ten-Noode',
-  sonTarih: '6 Kasım 2026 Cuma gününe kadar',
-  // Form 7 Kasım 2026 12.00'de (Brüksel saati, kış saati = +01:00) kapanır; sunucu da aynı kuralı uygular.
-  kapanis: '2026-11-07T12:00:00+01:00',
+  sonTarih: '7 Kasım 2026 Cumartesi gününe kadar',
+  // Form 8 Kasım 2026 12.00'de (Brüksel saati, kış saati = +01:00) kapanır; sunucu da aynı kuralı uygular.
+  kapanis: '2026-11-08T12:00:00+01:00',
   // Apps Script dağıtımından sonra /exec adresi buraya yazılır (OKUBENI.md). «__» içeriyorsa form gönderim yapmaz.
   uc: 'https://script.google.com/macros/s/AKfycbyhTvE9DHr58vAZC7ifqmz13HHrGMIBzug_thLzV-7y_hxdWJ1OLV6f-oCMPUFqwphecA/exec',
   mesajEtiket: 'Hocamıza iletmek istediğiniz kısa bir mesaj (isteğe bağlı)',
@@ -66,7 +66,7 @@ const VEDA = {
         <figure class="sanat">
           <picture>
             <source type="image/webp" srcset="ebru-lale-480.webp 480w, ebru-lale-800.webp 800w" sizes="(min-width: 760px) 300px, min(72vw, 300px)">
-            <img src="ebru-lale-800.jpg" alt="Ebru sanatıyla yapılmış, kemer içinde beş laleli bir tablo" width="800" height="993" decoding="async" fetchpriority="high">
+            <img src="ebru-lale-800.jpg" alt="Ebru sanatıyla yapılmış, kemer içinde beş laleli bir tablo" width="800" height="1065" decoding="async" fetchpriority="high">
           </picture>
         </figure>
         <div class="hero-metin">

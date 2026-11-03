@@ -25,7 +25,7 @@ body{margin:0;background:var(--zemin);color:var(--koyu);font:400 17px/1.6 var(--
 /* Üst eser: 4:5 dikey ebru, kırpılmadan bütün gösterilir (kemer ve laleler tam) */
 .hero{display:block}
 .sanat{margin:28px auto 0;width:min(72vw,300px)}
-.sanat img{display:block;width:100%;height:auto;aspect-ratio:800/993;background:var(--krem);border:1px solid var(--cizgi)}
+.sanat img{display:block;width:100%;height:auto;aspect-ratio:800/1065;background:var(--krem);border:1px solid var(--cizgi)}
 @media(min-width:760px){
   .hero{display:grid;grid-template-columns:300px 1fr;gap:36px;align-items:center;margin-top:28px}
   .sanat{margin:0;width:300px}

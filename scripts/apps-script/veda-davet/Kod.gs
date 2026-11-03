@@ -1,5 +1,5 @@
 /**
- * «Ahde Vefa» — Veda Programı (7 Kasım 2026) katılım bildirimi arka ucu.
+ * «Ahde Vefa» — Veda Programı (8 Kasım 2026) katılım bildirimi arka ucu.
  * AYRI küçük Apps Script projesi (dernek hesabı ulucamii2026@gmail.com). Canlı kayıt/ihtida arka ucuna dokunmaz.
  *
  *   POST {tur:'veda', ...}                 herkese açık: doğrular, deftere yazar, bildirim e-postası gönderir
@@ -12,7 +12,7 @@
  */
 var SURUM = 1;
 var BILDIRIM_ALICI = 'rdvankayahan@gmail.com';
-var KAPANIS_MS = Date.parse('2026-11-07T12:00:00+01:00');
+var KAPANIS_MS = Date.parse('2026-11-08T12:00:00+01:00');
 var TABLO_ADI = 'Veda Programı 2026-11-07 — katılım (veda-2026-11-07)';
 var BASLIK = ['Anahtar', 'Zaman (Brüksel)', 'Ad soyad', 'Kurum / dernek', 'Görevi', 'Telefon', 'Katılım', 'Kişi', 'Zaman (ISO)', 'Mesaj'];
 var GOREVLER = ['', 'Dernek başkanı', 'Din görevlisi', 'STK temsilcisi', 'Diğer'];
