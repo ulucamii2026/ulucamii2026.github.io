@@ -132,3 +132,27 @@ test('mesaj: isteğe bağlı, iki durumda da saklanır, e-postaya ve listeye gir
   const l = o.post({ tur: 'veda-liste', anahtar: ANAHTAR });
   assert.ok(l.kayitlar.some((k) => k.mesaj === m));
 });
+
+// ---- Liste sayfası: hız (preconnect + yerel önbellek) ----
+const SAYFA = readFileSync(new URL('../src/pages/davet/liste-hh81xwgssz/index.astro', import.meta.url), 'utf8');
+
+test('liste sayfası: Apps Script için preconnect var, önbelleğe anahtar yazılmaz', () => {
+  assert.match(SAYFA, /<link rel="preconnect" href="https:\/\/script\.google\.com" crossorigin>/);
+  assert.match(SAYFA, /<link rel="preconnect" href="https:\/\/script\.googleusercontent\.com" crossorigin>/);
+  assert.match(SAYFA, /ilk açılış birkaç saniye sürebilir/);
+  assert.match(SAYFA, /visibilitychange/);
+  assert.match(SAYFA, /JSON\.stringify\(\{ alindi: new Date\(\)\.toISOString\(\), veri \}\)/); // yalnız yanıt saklanır
+});
+
+test('liste sayfası: önbellek 9 Kasım 23.59 (Brüksel) sonrası geçersiz, bozuk kayıt reddedilir', () => {
+  const m = SAYFA.match(/\/\/ <onbellek-mantigi>([\s\S]*?)\/\/ <\/onbellek-mantigi>/);
+  assert.ok(m, 'mantık işaretleri bulunmalı');
+  const f = new Function(m[1] + '; return { gecerli: onbellekGecerliMi };')().gecerli;
+  const iyi = { alindi: '2026-11-05T10:00:00.000Z', veri: { ok: true, toplam: {}, kayitlar: [] } };
+  assert.equal(f(iyi, Date.parse('2026-11-09T23:58:00+01:00')), true);
+  assert.equal(f(iyi, Date.parse('2026-11-09T23:59:00+01:00')), false);
+  assert.equal(f(iyi, Date.parse('2026-11-10T08:00:00+01:00')), false);
+  assert.equal(f(null, 0), false);
+  assert.equal(f({ alindi: 'x', veri: iyi.veri }, 0), false);
+  assert.equal(f({ alindi: iyi.alindi, veri: { ok: false } }, 0), false);
+});

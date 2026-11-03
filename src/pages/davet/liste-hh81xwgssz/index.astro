@@ -15,7 +15,17 @@ const UC = 'https://script.google.com/macros/s/AKfycbyhTvE9DHr58vAZC7ifqmz13HHrG
   <meta name="robots" content="noindex,nofollow,noarchive">
   <meta name="referrer" content="no-referrer">
   <title>Veda Programı — Katılım Listesi</title>
+  <link rel="preconnect" href="https://script.google.com" crossorigin>
+  <link rel="preconnect" href="https://script.googleusercontent.com" crossorigin>
   <link rel="stylesheet" href="/davet/ortak/davet.css">
+  <style>
+    .yukleniyor { display: flex; align-items: center; gap: .6rem; }
+    .donen { width: 1.1rem; height: 1.1rem; flex: none; border: 2px solid currentColor; border-top-color: transparent; border-radius: 50%; animation: don .8s linear infinite; opacity: .6; }
+    .ipucu { opacity: .7; font-size: .9em; }
+    .guncel { margin: .25rem 0 .5rem; font-size: .9em; opacity: .75; }
+    @keyframes don { to { transform: rotate(360deg); } }
+    @media (prefers-reduced-motion: reduce) { .donen { animation-duration: 2.4s; } }
+  </style>
 </head>
 <body>
   <div class="sayfa genis">
@@ -35,6 +45,7 @@ const UC = 'https://script.google.com/macros/s/AKfycbyhTvE9DHr58vAZC7ifqmz13HHrG
           <div><b id="t-yok">0</b><span>Katılamayacak</span></div>
         </div>
         <p><button type="button" class="ikincil" id="yenile">Yenile</button></p>
+        <p class="guncel" id="guncel" role="status" aria-live="polite"></p>
         <ul class="liste" id="liste"></ul>
         <p class="gizlilik" id="not"></p>
       </section>
@@ -45,10 +56,22 @@ const UC = 'https://script.google.com/macros/s/AKfycbyhTvE9DHr58vAZC7ifqmz13HHrG
     (() => {
       const UC = JSON.parse(document.getElementById('uc').textContent);
       const $ = (i) => document.getElementById(i);
+      const yukleniyor = () => { const d = $('durum'); d.innerHTML = ''; const p = document.createElement('p'); p.className = 'mesaj yukleniyor'; const s = document.createElement('span'); s.className = 'donen'; s.setAttribute('aria-hidden', 'true'); p.appendChild(s); const m = document.createElement('span'); m.textContent = 'Liste yükleniyor… '; const i = document.createElement('span'); i.className = 'ipucu'; i.textContent = '(ilk açılış birkaç saniye sürebilir)'; m.appendChild(i); p.appendChild(m); d.appendChild(p); };
       const mesaj = (m, t) => { $('durum').innerHTML = ''; if (!m) return; const p = document.createElement('p'); p.className = 'mesaj ' + (t || ''); p.textContent = m; $('durum').appendChild(p); };
       const anahtar = decodeURIComponent(location.hash.replace(/^#/, ''));
       if (location.hash) history.replaceState(null, '', location.pathname);
-      let sakla = anahtar; // yalnız bellekte; depoya yazılmaz
+      let sakla = anahtar; // yalnız bellekte; depoya yazılmaz (önbelleğe yalnız liste yanıtı girer, anahtar girmez)
+      // <onbellek-mantigi>
+      const ONBELLEK_ANAHTARI = 'veda-liste-onbellek-v1';
+      const ONBELLEK_SON = Date.parse('2026-11-09T23:59:00+01:00');
+      const onbellekGecerliMi = (o, simdi) => !!(o && typeof o === 'object' && o.veri && o.veri.ok && Array.isArray(o.veri.kayitlar) && o.veri.toplam && typeof o.alindi === 'string' && !isNaN(Date.parse(o.alindi)) && (simdi == null ? Date.now() : simdi) < ONBELLEK_SON);
+      // </onbellek-mantigi>
+      const depoOku = () => { try { const o = JSON.parse(localStorage.getItem(ONBELLEK_ANAHTARI) || 'null'); if (onbellekGecerliMi(o)) return o; if (o) depoSil(); } catch (_) {} return null; };
+      const depoYaz = (veri) => { try { localStorage.setItem(ONBELLEK_ANAHTARI, JSON.stringify({ alindi: new Date().toISOString(), veri })); } catch (_) {} };
+      const depoSil = () => { try { localStorage.removeItem(ONBELLEK_ANAHTARI); } catch (_) {} };
+      const saat = (iso) => { try { return new Intl.DateTimeFormat('tr-TR', { timeZone: 'Europe/Brussels', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).format(new Date(iso)).replace(':', '.'); } catch (_) { return ''; } };
+      const guncel = (m) => { $('guncel').textContent = m || ''; };
+      let sonYenileme = 0, suruyor = false, gosterilen = null;
       const GOREV = { katilacak: 'Katılacak', katilamayacak: 'Katılamayacak' };
       const zaman = (iso) => { try { return new Intl.DateTimeFormat('tr-TR', { timeZone: 'Europe/Brussels', dateStyle: 'short', timeStyle: 'short' }).format(new Date(iso)); } catch (_) { return iso || ''; } };
       const ekle = (ust, sinif, metin) => { const e = document.createElement('div'); if (sinif) e.className = sinif; e.textContent = metin; ust.appendChild(e); return e; };
@@ -81,16 +104,25 @@ const UC = 'https://script.google.com/macros/s/AKfycbyhTvE9DHr58vAZC7ifqmz13HHrG
       const yukle = async () => {
         if (!sakla) { mesaj('Bu sayfa yalnızca yetkili bağlantıyla açılır.', 'hata'); return; }
         if (UC.includes('__')) { mesaj('Liste hizmeti henüz etkinleştirilmemiştir.', 'hata'); return; }
-        mesaj('Liste yükleniyor…');
+        if (suruyor) return;
+        suruyor = true;
+        if (gosterilen) guncel('Son güncelleme: ' + saat(gosterilen) + ' · yenileniyor…'); else yukleniyor();
         try {
           const y = await fetch(UC, { method: 'POST', mode: 'cors', redirect: 'follow', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify({ tur: 'veda-liste', anahtar: sakla }) });
           const s = await y.json();
-          if (s && s.ok) { mesaj(''); goster(s); }
-          else if (s && s.hata === 'yetki') { $('icerik').hidden = true; mesaj('Yetki yok. Bağlantıyı yetkili kişiden yeniden alın.', 'hata'); }
+          if (s && s.ok) { depoYaz(s); gosterilen = new Date().toISOString(); mesaj(''); goster(s); guncel('Güncellendi: ' + saat(gosterilen)); sonYenileme = Date.now(); }
+          else if (s && s.hata === 'yetki') { depoSil(); gosterilen = null; guncel(''); $('icerik').hidden = true; mesaj('Yetki yok. Bağlantıyı yetkili kişiden yeniden alın.', 'hata'); }
+          else if (gosterilen) guncel('Güncellenemedi; son güncelleme ' + saat(gosterilen));
           else mesaj('Liste şu anda alınamadı. Biraz sonra yeniden deneyin.', 'hata');
-        } catch (_) { mesaj('Liste şu anda alınamadı. Bağlantınızı kontrol edin.', 'hata'); }
+        } catch (_) {
+          if (gosterilen) guncel('Güncellenemedi; son güncelleme ' + saat(gosterilen));
+          else mesaj('Liste şu anda alınamadı. Bağlantınızı kontrol edin.', 'hata');
+        } finally { suruyor = false; }
       };
       $('yenile').addEventListener('click', yukle);
+      document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible' && sakla && Date.now() - sonYenileme > 60000) yukle(); });
+      const onb = sakla ? depoOku() : null;
+      if (onb) { gosterilen = onb.alindi; mesaj(''); goster(onb.veri); guncel('Son güncelleme: ' + saat(onb.alindi) + ' · yenileniyor…'); }
       yukle();
     })();
   </script>
