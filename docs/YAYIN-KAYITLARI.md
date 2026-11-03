@@ -2508,3 +2508,10 @@ aynı kayıt düzenine bağlanır. İzole çalışma kopyası:
 - Canlı: [ekran](https://ulucamii.be/ekran/) HTTP200. Başsız tarayıcı ve sahte saatle canlı adreste: dokunmatik kipte 4 dk boyunca sayaç +240 ve slayt yerinde (yayından önce aynı ölçüm +40'ta duruyordu); TV kipinde sayaç +240, slaytlar otomatik geçti. `/ekran/vakitler.json` `kaynakTuru=diyanet`, ilçe 11890, 397 gün.
 - Sınırlar: saha ekranı gece kipinde olduğu için cihaz üzerindeki doğrulama sabah açılışından sonraki renderer sayaçlarıyla yapılacak. Kişisel veri, telefon numarası veya anahtar yayımlanmadı. Bu kayıt için belge commit'i içerik yayını değildir.
 
+
+## 2026-11-03T16:50:00+01:00 — Duyuru: Kur'an ve Dinî Bilgiler Kursu (TR/FR) (Europe/Brussels, CET / UTC+01:00)
+
+- Yetki: Rıdvan'ın 3 Kasım 2026 «hemen yayınla» onayı (onaylı afiş sürümü B). Kapsam: iki duyuru sayfası, afiş görseli (WebP + küçük) ve A4 afiş PDF'i; başka sayfa değişmedi.
+- Dosyalar: `src/content/duyurular/{tr,fr}/kuran-ve-dini-bilgiler-kursu-2026-11.md`, `public/media/duyurular/kuran-dini-bilgiler-kursu-2026-11{,-thumb}.webp`, `public/belgeler/kuran-kursu/kuran-dini-bilgiler-kursu-2026-11.pdf`. EN/NL/DE sayfaları Fransızca içeriğe düşer (`icerikDili`).
+- İçerik commit'i `97ff51e7`. [Pages dağıtımı](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/41666801677) **success**. Canlı: TR/FR duyuru sayfaları, görsel, PDF, seviye testi bağlantıları HTTP200; canlı HTML'de imam telefonu yok.
+- Kontroller: `astro build` çıkış 0; derlenmiş HTML'de imam telefonu ve `tel:` bağlantısı yok; yasak sözcük taraması sıfır. Kişisel veri yayımlanmadı. Bu kayıt için belge commit'i içerik yayını değildir.
