@@ -94,7 +94,7 @@ const ayarlar = defineCollection({
        eksik dil DuyuruSeridi içinde fr'ye düşer (21 Eyl 2026: nl+de eklendi). */
     heroMesajlar: z.array(z.object({ metin: z.object({ tr: z.string(), fr: z.string(), en: z.string().optional(), nl: z.string().optional(), de: z.string().optional() }), sayfa: z.string().optional(), baglanti: z.string().optional(), baslangic: z.coerce.date().optional(), son: z.coerce.date().optional() })).default([]),
     imsakiyePdf: z.string().url().optional(),
-    sosyal: z.object({ facebook: z.string().url().optional(), instagram: z.string().url().optional(), youtube: z.string().url().optional() }).default({}),
+    sosyal: z.object({ facebook: z.string().url().optional(), instagram: z.string().url().optional(), youtube: z.string().url().optional(), whatsappTopluluk: z.string().url().optional() }).default({}),
     konsolosluk: z.object({
       ad: z.string(), santral: z.string(), acil: z.string(), cagriMerkezi: z.string(), eposta: z.string(), web: z.string().url(), randevu: z.string().url(), edevlet: z.string().url(),
     }),

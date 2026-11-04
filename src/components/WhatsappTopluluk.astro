@@ -1,0 +1,49 @@
+---
+/** «WhatsApp topluluğumuz» kutusu — ana sayfa (ziyaret bölümünün altı) ve iletişim sayfası.
+ *  Davet bağlantısı site.yaml → sosyal.whatsappTopluluk (boşsa kutu basılmaz). Dokunmatik cihazda düğme
+ *  doğrudan WhatsApp'ı açar; fareli masaüstünde karekod da gösterilir (vektör SVG, beyaz zeminli). Telefon numarası yok. */
+import type { Dil } from '../i18n/ui';
+interface Props { dil: Dil; site: any; class?: string }
+const { dil, site, class: cls = '' } = Astro.props;
+const url: string | undefined = site?.sosyal?.whatsappTopluluk;
+const M = {
+  tr: { baslik: 'WhatsApp topluluğumuz', govde: 'WhatsApp topluluğumuza katılın — duyurular, programlar ve kurslar tek yerde.', not: 'Alt gruplara katılım yönetici onayıyla olur; veliler grubu yalnız kayıtlı velilere açıktır.', dugme: 'Topluluğa katıl', karekod: 'Telefonunuzun kamerasıyla okutun', alt: 'WhatsApp topluluğuna katılmak için karekod', dis: '(dış bağlantı)' },
+  fr: { baslik: 'Notre communauté WhatsApp', govde: 'Rejoignez notre communauté WhatsApp — annonces, programmes et cours au même endroit.', not: 'L’accès aux sous-groupes est soumis à l’approbation d’un administrateur ; le groupe des parents est réservé aux parents inscrits.', dugme: 'Rejoindre la communauté', karekod: 'Scannez avec l’appareil photo de votre téléphone', alt: 'Code QR pour rejoindre la communauté WhatsApp', dis: '(lien externe)' },
+  en: { baslik: 'Our WhatsApp community', govde: 'Join our WhatsApp community — announcements, programmes and courses in one place.', not: 'Joining a sub-group needs an administrator’s approval; the parents’ group is for registered parents only.', dugme: 'Join the community', karekod: 'Scan with your phone’s camera', alt: 'QR code to join the WhatsApp community', dis: '(external link)' },
+  nl: { baslik: 'Onze WhatsApp-community', govde: 'Word lid van onze WhatsApp-community — aankondigingen, programma’s en cursussen op één plek.', not: 'Voor subgroepen is de goedkeuring van een beheerder nodig; de oudergroep is alleen voor ingeschreven ouders.', dugme: 'Lid worden van de community', karekod: 'Scan met de camera van uw telefoon', alt: 'QR-code om lid te worden van de WhatsApp-community', dis: '(externe link)' },
+  de: { baslik: 'Unsere WhatsApp-Community', govde: 'Treten Sie unserer WhatsApp-Community bei — Ankündigungen, Programme und Kurse an einem Ort.', not: 'Für Untergruppen ist die Freigabe durch einen Administrator nötig; die Elterngruppe steht nur angemeldeten Eltern offen.', dugme: 'Der Community beitreten', karekod: 'Mit der Handykamera scannen', alt: 'QR-Code zum Beitritt zur WhatsApp-Community', dis: '(externer Link)' },
+}[dil];
+---
+{url && (
+  <aside class:list={['wa-topluluk kart yazdirma-gizle', cls]} aria-labelledby={`wa-topluluk-baslik-${dil}`} data-wa-topluluk>
+    <div class="wa-topluluk-metin">
+      <h2 id={`wa-topluluk-baslik-${dil}`} class="wa-topluluk-baslik">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="#25D366" aria-hidden="true" focusable="false"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.02ZM12.05 20.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23a8.2 8.2 0 0 1 8.23 8.24c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.79.98-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.48-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.41-.56-.42l-.48-.01c-.16 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+        <span>{M.baslik}</span>
+      </h2>
+      <p class="wa-topluluk-govde">{M.govde}</p>
+      <p class="wa-topluluk-not">{M.not}</p>
+      <p class="wa-topluluk-eylem"><a href={url} target="_blank" rel="noopener" class="dugme dugme-birincil">{M.dugme}<span aria-hidden="true"> ↗</span><span class="sr-only"> {M.dis}</span></a></p>
+    </div>
+    <figure class="wa-topluluk-qr">
+      <img src="/media/whatsapp/topluluk-qr.svg" width="164" height="164" alt={M.alt} loading="lazy" decoding="async" />
+      <figcaption>{M.karekod}</figcaption>
+    </figure>
+  </aside>
+)}
+
+<style>
+  .wa-topluluk { display: grid; gap: 1.25rem 1.75rem; grid-template-columns: minmax(0, 1fr); align-items: center; padding: 1.25rem 1.5rem; border-top: 3px solid #25D366; }
+  .wa-topluluk-baslik { display: flex; align-items: center; gap: .6rem; font-size: 1.35rem; margin: 0; }
+  .wa-topluluk-govde { margin: .6rem 0 0; max-width: 52ch; }
+  .wa-topluluk-not { margin: .5rem 0 0; max-width: 52ch; font-size: .9rem; color: var(--metin-2); }
+  .wa-topluluk-eylem { margin: 1rem 0 0; }
+  /* Karekod yalnız fareli (masaüstü) cihazlarda: dokunmatik cihazda düğme doğrudan WhatsApp'ı açar. */
+  .wa-topluluk-qr { display: none; margin: 0; text-align: center; }
+  .wa-topluluk-qr img { display: block; width: 164px; height: 164px; padding: 10px; background: #fff; border: 1px solid var(--cizgi); border-radius: var(--radius-kose); }
+  .wa-topluluk-qr figcaption { margin-top: .4rem; font-size: .8rem; color: var(--metin-2); max-width: 164px; }
+  @media (hover: hover) and (pointer: fine) and (min-width: 768px) {
+    .wa-topluluk { grid-template-columns: minmax(0, 1fr) auto; }
+    .wa-topluluk-qr { display: block; }
+  }
+</style>
