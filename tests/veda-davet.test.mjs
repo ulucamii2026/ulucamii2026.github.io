@@ -102,11 +102,12 @@ test('liste: yanlış anahtar reddedilir, doğru anahtarla toplamlar çıkar, te
   assert.equal(l.kayitlar.filter((k) => !k.gecerli).length, 1);
 });
 
-test('form 7 Kasım 17.00 (Brüksel) sonrası kapanır', () => {
-  const o = ortam('2026-11-07T17:00:01+01:00');
-  assert.equal(o.post(gecerli()).hata, 'kapali');
-  assert.equal(o.get().kapali, true);
-  assert.equal(ortam('2026-11-07T11:59:00+01:00').get().kapali, false);
+test('form kapanmaz (Müşavir Bey, 4.11.2026): 8 Kasım 12.00 sonrası da kayıt alınır, kapanış 2099', () => {
+  const o = ortam('2026-11-08T12:00:01+01:00');
+  assert.equal(o.post(gecerli()).ok, true);
+  assert.equal(o.get().kapali, false);
+  assert.equal(ortam('2026-11-20T11:59:00+01:00').get().kapali, false);
+  assert.equal(ortam('2100-01-01T00:00:00+01:00').get().kapali, true);
 });
 
 test('anahtar tanımlı değilse liste kapalıdır', () => {

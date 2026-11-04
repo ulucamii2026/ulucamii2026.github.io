@@ -18,9 +18,9 @@ const VEDA = {
   yerAd: 'Belçika Diyanet Vakfı Genel Merkezi',
   yerAdres: 'Chaussée de Haecht 67, 1210 Saint-Josse-ten-Noode (Brüksel)',
   harita: 'https://www.google.com/maps/search/?api=1&query=Chauss%C3%A9e+de+Haecht+67%2C+1210+Saint-Josse-ten-Noode',
-  sonTarih: '7 Kasım 2026 Cumartesi günü saat 17.00’ye',
-  // Form 7 Kasım 2026 Cumartesi 17.00'de (Brüksel saati, kış saati = +01:00) kapanır; sunucu da aynı kuralı uygular.
-  kapanis: '2026-11-07T17:00:00+01:00',
+  sonTarih: '7 Kasım 2026 Cumartesi günü saat 12.00’ye kadar',
+  // 4.11.2026 Müşavir Bey & Rıdvan: form hiç kapanmasın (davetiyedeki son bildirim saati 12.00, ancak gönderim açık kalır).
+  kapanis: null,
   // Apps Script dağıtımından sonra /exec adresi buraya yazılır (OKUBENI.md). «__» içeriyorsa form gönderim yapmaz.
   uc: 'https://script.google.com/macros/s/AKfycbyhTvE9DHr58vAZC7ifqmz13HHrGMIBzug_thLzV-7y_hxdWJ1OLV6f-oCMPUFqwphecA/exec',
   mesajEtiket: 'Hocamıza iletmek istediğiniz kısa bir mesaj (isteğe bağlı)',
@@ -147,10 +147,10 @@ const VEDA = {
       const V = JSON.parse(document.getElementById('veda-veri').textContent);
       const $ = (id) => document.getElementById(id);
       const form = $('form'), durumKutu = $('durum');
-      const kapanis = Date.parse(V.kapanis);
+      const kapanis = V.kapanis ? Date.parse(V.kapanis) : null;
       const mesaj = (metin, tur) => { durumKutu.innerHTML = ''; if (!metin) return; const p = document.createElement('p'); p.className = 'mesaj ' + (tur || ''); p.textContent = metin; durumKutu.appendChild(p); };
       const kapat = () => { form.hidden = true; $('kapali').hidden = false; document.querySelector('.gizlilik').hidden = true; };
-      if (Date.now() >= kapanis) kapat();
+      if (kapanis && Date.now() >= kapanis) kapat();
 
       const mesajKutu = $('mesaj');
       mesajKutu.addEventListener('input', () => { $('mesaj-say').textContent = mesajKutu.value.length; });
@@ -179,7 +179,7 @@ const VEDA = {
       form.addEventListener('submit', async (olay) => {
         olay.preventDefault();
         mesaj('');
-        if (Date.now() >= kapanis) { kapat(); return; }
+        if (kapanis && Date.now() >= kapanis) { kapat(); return; }
         if (!dogrula()) return;
         if (V.uc.includes('__')) { mesaj(V.mesajlar.hazirDegil, 'hata'); return; }
         const dugme = $('gonder'); dugme.disabled = true;

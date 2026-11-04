@@ -23,8 +23,8 @@ Drive'da o tabloyu çöpe at, betik özelliklerinden `TABLO_ID` ve `LISTE_ANAHTA
 (sayfadaki gizlilik notu: «program sonrasında silinir»).
 
 ## Davranış
-- Form 7 Kasım 2026 Cumartesi 17.00'de (Brüksel) kapanır; sunucu da reddeder (`kapali`).
-- Dikkat: yayındaki Apps Script (sürüm 2) hâlâ 8 Kasım 12.00'de kapanıyor; eşleşmesi için ulucamii2026 düzenleyicisinden yeni sürüm dağıtılmalı (acil değil, sayfa önce kapanır).
+- Form kapanmaz (4.11.2026 Müşavir Bey): sayfada `kapanis: null`, Kod.gs `KAPANIS_MS` = 2099. Davetiyedeki son bildirim saati 7 Kasım 12.00.
+- Dikkat: yayındaki Apps Script (sürüm 2) hâlâ 8 Kasım 12.00'de kapanıyor; yeni sürüm ulucamii2026 düzenleyicisinden dağıtılmalı (8 Kasım'dan önce).
 - Aynı ad+kurumla yeniden gönderilirse toplamlara yalnız en yeni kayıt girer.
 - Bildirim e-postası her yeni kayıtta `rdvankayahan@gmail.com`'a düz metin gider; e-posta başarısız olsa da kayıt korunur.
 - Test: `node --test tests/veda-davet.test.mjs`

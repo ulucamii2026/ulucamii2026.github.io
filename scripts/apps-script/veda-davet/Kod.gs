@@ -12,7 +12,7 @@
  */
 var SURUM = 1;
 var BILDIRIM_ALICI = 'rdvankayahan@gmail.com';
-var KAPANIS_MS = Date.parse('2026-11-07T17:00:00+01:00');
+var KAPANIS_MS = Date.parse('2099-12-31T23:59:59+01:00'); // 4.11.2026 Müşavir Bey: kapanmasın
 var TABLO_ADI = 'Veda Programı 2026-11-07 — katılım (veda-2026-11-07)';
 var BASLIK = ['Anahtar', 'Zaman (Brüksel)', 'Ad soyad', 'Kurum / dernek', 'Görevi', 'Telefon', 'Katılım', 'Kişi', 'Zaman (ISO)', 'Mesaj'];
 var GOREVLER = ['', 'Dernek başkanı', 'Din görevlisi', 'STK temsilcisi', 'Diğer'];
