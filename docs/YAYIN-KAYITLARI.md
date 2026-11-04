@@ -2515,3 +2515,10 @@ aynı kayıt düzenine bağlanır. İzole çalışma kopyası:
 - Dosyalar: `src/content/duyurular/{tr,fr}/kuran-ve-dini-bilgiler-kursu-2026-11.md`, `public/media/duyurular/kuran-dini-bilgiler-kursu-2026-11{,-thumb}.webp`, `public/belgeler/kuran-kursu/kuran-dini-bilgiler-kursu-2026-11.pdf`. EN/NL/DE sayfaları Fransızca içeriğe düşer (`icerikDili`).
 - İçerik commit'i `97ff51e7`. [Pages dağıtımı](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/41666801677) **success**. Canlı: TR/FR duyuru sayfaları, görsel, PDF, seviye testi bağlantıları HTTP200; canlı HTML'de imam telefonu yok.
 - Kontroller: `astro build` çıkış 0; derlenmiş HTML'de imam telefonu ve `tel:` bağlantısı yok; yasak sözcük taraması sıfır. Kişisel veri yayımlanmadı. Bu kayıt için belge commit'i içerik yayını değildir.
+
+## 2026-11-04T13:00:00+01:00 — WhatsApp topluluğu kutusu + cami ekranı duyurusu (Europe/Brussels, CET / UTC+01:00)
+
+- Yetki: Rıdvan'ın 4 Kasım 2026 «yayınla» onayı (ana sayfa/iletişim kutusu ve ekran duyurusu).
+- Değişiklik: `WhatsappTopluluk.astro` kutusu (5 dil; dokunmatikte düğme, fareli masaüstünde vektör karekod) ana sayfada ve iletişim sayfasında; davet bağlantısı `site.yaml → sosyal.whatsappTopluluk` (CMS alanı eklendi); TR/FR duyuru `whatsapp-toplulugumuza-katilin-2026` (ekranda: 4 Kas–31 Ara 2026, afiş kutusunda tek slayt, başlık ≤30 / metin ≤44). Karekod SVG `public/media/whatsapp/`, afiş WebP + küçük `public/media/duyurular/`.
+- İçerik commit'i `43b34b7c`. [Pages dağıtımı](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/41820524964) **success**. Canlı: beş dilde ana sayfa ve iletişim sayfasında kutu, karekod ve görsel HTTP200, `/ekran/akis.json` duyuruyu içeriyor (`son` 2026-12-31).
+- Kontroller: `check` 0 hata/0 uyarı; `dogrula` çıkış 0 (`test:ekran` 220/220); Playwright 882 geçti/120 atlandı. Karekod davet bağlantısına çözülüyor. Namaz vakitleri ve telefon numaraları değişmedi; kişisel veri yayımlanmadı. Bu kayıt için belge commit'i içerik yayını değildir.
