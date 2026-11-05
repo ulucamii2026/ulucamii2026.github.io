@@ -4,6 +4,27 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 5 Kasım 2026 (öğleden sonra) — vaaz düzeltmesi: «İyilik ve İhsan Üzere Bir Hayat» (niyaz görseli + hata taraması)
+
+- Zaman: 5 Kasım 2026, Europe/Brussels (CET). Durum: commit ve push bu kayıtla birlikte; canlı doğrulama sonucu
+  aşağıda.
+- Dayanak: kullanıcının isteği: «en son tren şeklinde dua ettikleri resim olmamış, onu değiştir … elin değmişken hata
+  taraması yap … hatalar varsa onları da düzelt … opencode cli'ı bol bol çalıştır».
+- Kapsam:
+  - `cemaat-niyaz` sahnesi yenilendi: yandan çizilen ve tren gibi görünen yedi kişi yerine önden, omuz omuza tek saf.
+    Dört WebP boyu ve sunum 74–75. slaytlar.
+  - Yedi OpenCode tarama işçisi (TR ×3, FR, EN, NL, DE) 127 bulgu getirdi. Claude her birini kaynakla karşılaştırdı;
+    yaklaşık 100'ü uygulandı. Gerekçeyle reddedilenler: başlıktaki bilinçli «ihsan» yazımı, NL «Allahs» (doğru),
+    tasarım gereği çift boşluklar, not = Word metni kuralına takılan iki künye tekrarı.
+  - TR: «kürümek» → «küremek» (5 yer); Fussilet 41/34 meali «aranızda» (Kur'an Yolu); Âl-i İmrân 3/134 «Allah
+    yolunda»; İnfitâr 82/13 «cennetindedirler» (DİB); «Birr, 14–15»; Hz. Ömer sözünün slayt künyesi.
+  - FR/EN/NL/DE: anlam, dilbilgisi, terim birliği ve künye düzeltmeleri. Örnekler: NL «oef» → «foei» (İsrâ 17/23),
+    FR «c./s.» → «t./p.», DE «Bairuha» → «Beyruha», EN «Zikir» → «Dhikr».
+  - Beş dilde Word/PDF (15 sayfa, yazım 0) ve web sayfaları yeniden üretildi. Release'teki 10 sunum dosyası
+    `--clobber` ile değiştirildi.
+- Kalite: `npm run build` (1985 sayfa) ve `npm run dogrula` geçti. Sunum taşma 0 (TR 18. slaytta kart yüksekliği
+  ayarlandı).
+
 ## 5 Kasım 2026 (öğle) — vaaz: «İyilik ve İhsan Üzere Bir Hayat» (6 Kasım 2026 Cuma vaazı) beş dilde + duyuru
 
 - Zaman: 5 Kasım 2026, Europe/Brussels (CET). Release ≈10.40, push 10.51 (`a92d001d..6f4fc88f`), Pages
