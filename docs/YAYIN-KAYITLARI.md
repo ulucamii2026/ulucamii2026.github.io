@@ -4,6 +4,41 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 5 Kasım 2026 (öğle) — vaaz: «İyilik ve İhsan Üzere Bir Hayat» (6 Kasım 2026 Cuma vaazı) beş dilde + duyuru
+
+- Zaman: 5 Kasım 2026, Europe/Brussels (CET). Release ≈10.40, push 10.51 (`a92d001d..6f4fc88f`), Pages
+  [run 42005880035](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/42005880035) **success**,
+  canlı doğrulama ≈11.00. **Yayımlandı ve canlı doğrulandı.**
+- Dayanak: kullanıcının isteği. Bu haftanın vaazı önceki haftalar kalitesinde sitede yayımlanacak. OpenCode CLI işçisi
+  çalıştırılacak ve yönetilecek. Soru kutusu cevapları: «Tam paket, geçen hafta gibi», «Bu oturumda yayınla»,
+  «Bütün işi sen yürüt … tam yetkiyle ilerle».
+- Kapsam:
+  - TR sayfa `src/content/vaazlar/iyilik-ve-ihsan-uzere-bir-hayat.md`: 19 temsilî sahne × 4 boy + `kapak-og.webp`
+    (77 WebP), dört ana fikir, 11 duraklı vaaz haritası, nass kartları, 9 vektör şema, iyilik sözleşmesi ve
+    «Gurbette 40 iyilik» eki.
+  - FR/EN/NL/DE çevirileri `src/content/vaaz-cevirileri/<dil>/iyilik-ve-ihsan-uzere-bir-hayat.md`.
+  - Beş dilde Word/PDF `public/vaazlar/…`: 15 sayfa; PDF'ler 0,88–1,04 MB.
+  - TR/FR duyuru `src/content/duyurular/{tr,fr}/cuma-vaazi-iyilik-ve-ihsan-uzere-bir-hayat.md`.
+- Release `vaaz-iyilik-ve-ihsan-uzere-bir-hayat`: 10 dosya (5 dil × PowerPoint + sunum PDF, 82 slayt). Boyutlar yerel
+  dosyalarla eşit. Latest yapılmadı.
+- İçerik commit'i `6f4fc88f` (94 dosya), dernek kimliği.
+- Kalite:
+  - `npm run dogrula` 26 aşama, 733 test, derleme 1985 sayfa, çıkış 0. İlk turda `test:vaaz-pdf` düştü: çeviri
+    PDF'leri 4,9–5,0 MB idi, emoji yazı tipi küçültmesi atlanmıştı. Küçültüldü, kaynak hattına kalıcı adım eklendi.
+  - `npm run test:web` 877 geçti, 120 atlandı, 5 düştü. Düşenler vaazla ilgisiz:
+    - `tests/web/ders-defteri.spec.mjs:88` mobil axe kontrastı kararsız; ikinci koşuda geçti.
+    - `tests/web/cuma-hatirlatma.spec.mjs:53` ve `:64` (masaüstü + mobil, 4 test): bant Cuma 08.00 UTC'de «yarin»
+      gösteriyor, Çarşamba/Cumartesi bant çıkıyor. Vaaz dosyaları stash'lenip yeniden derlenince de aynı 4 test düştü.
+      Yani hata bu yayından önce de vardı; ayrı ele alınmalı.
+  - Çeviri denetimi fr/en/nl/de 1120 kayıt, HATA 0.
+  - Word 5 dil 15 sayfa, yazım 0.
+  - Sunum 5 dil 82 slayt, taşma 0. `cakisma_denetle.py` fr/en/nl/de 0. Dil etiketsiz run 0.
+  - Site kopyaları teslimlerle SHA-256 eşit. Yasaklı ifade taraması 0.
+  - Yerel ve canlı `web_kontrol.mjs` (5 dil): 22 görünüm, axe 0, 87 dosya SHA eşit, 10 bağlantı. Canlıda 10 sunum
+    dosyası Release'ten indirildi ve teslim SHA'sıyla eşleşti.
+- Sınırlar: paylaşım mesajları ve kişiye özel WhatsApp taslakları hazır, gönderilmedi (onay bekliyor). Facebook paylaşımı
+  yapılmadı.
+
 ## 1 Kasım 2026 (gece) — Rahmetle Anıyoruz: Hasan Hüseyin Yılmaz metni ailenin isteğiyle düzeltildi, Recep Açıkgöz'ün yeni fotoğrafı
 
 - Zaman: 1 Kasım 2026 23.33 push · Pages run 41357747608 başarılı · canlı doğrulama 23.36, Europe/Brussels (CET).
