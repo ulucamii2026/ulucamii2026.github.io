@@ -4,6 +4,19 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 5 Kasım 2026 (akşam) — vaaz düzeltmesi: «İyilik ve İhsan Üzere Bir Hayat» (ikinci hata avı)
+
+- Zaman: 5 Kasım 2026, Europe/Brussels (CET). Push ≈17.05 (`21214980..072a9516`). Push olayı Pages işini başlatmadı
+  (GitHub API 500 veriyordu); iş elle tetiklendi: [run 42061356019](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/42061356019)
+  **success**. Canlı `web_kontrol`: 22 görünüm, axe 0, 87 dosya + 10 sunum SHA eşit. **Yayımlandı ve canlı doğrulandı.**
+- Dayanak: kullanıcının isteği: «yeni bir opencode cli oturumu başlat, bu oturumun görevi hata bulmak olsun, bulunan
+  hataları diğer opencode cli oturumu düzeltsin, en son kararı revizeyi sen yap».
+- Kapsam: bulucu OpenCode oturumu 61 bulgu (iki tur); Claude 26 kabul, 35 ret (Türkçe ek eksiltmesi ve genel 2. şahıs
+  doğru; nl birr karşılığı doğru; en/de DIA/Ilmihal tutarlı). Düzeltici OpenCode oturumu yalnız fr/de/nl çeviri
+  kayıtlarını değiştirdi. Sitede DE metin (ahit 4 «anrufen und besuchen», «Friedensgruß») ve DE docx/pdf; release'te
+  FR/DE/NL sunum pptx/pdf (`--clobber`; ilk denemede GitHub 500, tekrar yüklendi, boyutlar eşit).
+- Doğrulama: `npm run build` (1985 sayfa) ve `npm run dogrula` geçti; DE Word 15 sayfa, yazım 0; sunumlar taşma 0.
+
 ## 5 Kasım 2026 (öğleden sonra) — vaaz düzeltmesi: «İyilik ve İhsan Üzere Bir Hayat» (niyaz görseli + hata taraması)
 
 - Zaman: 5 Kasım 2026, Europe/Brussels (CET). Push ≈14.40 (`eb9c5024..119311dd`), Pages
