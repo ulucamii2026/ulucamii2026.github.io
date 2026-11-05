@@ -6,8 +6,9 @@ Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI
 
 ## 5 Kasım 2026 (öğleden sonra) — vaaz düzeltmesi: «İyilik ve İhsan Üzere Bir Hayat» (niyaz görseli + hata taraması)
 
-- Zaman: 5 Kasım 2026, Europe/Brussels (CET). Durum: commit ve push bu kayıtla birlikte; canlı doğrulama sonucu
-  aşağıda.
+- Zaman: 5 Kasım 2026, Europe/Brussels (CET). Push ≈14.40 (`eb9c5024..119311dd`), Pages
+  [run 42038284439](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/42038284439) **success**.
+  Canlı `web_kontrol`: 22 görünüm, axe 0, 87 dosya + 10 sunum SHA eşit. **Yayımlandı ve canlı doğrulandı.**
 - Dayanak: kullanıcının isteği: «en son tren şeklinde dua ettikleri resim olmamış, onu değiştir … elin değmişken hata
   taraması yap … hatalar varsa onları da düzelt … opencode cli'ı bol bol çalıştır».
 - Kapsam:
