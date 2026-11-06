@@ -107,6 +107,7 @@ const UC = 'https://script.google.com/macros/s/AKfycbyhTvE9DHr58vAZC7ifqmz13HHrG
     .kart .alt { font: 400 .8rem/1.45 var(--sans); color: var(--muted); margin: 4px 0 0; }
     .sayac2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     @media (max-width: 420px) { .sayac2 { grid-template-columns: 1fr; } }
+    .sayac2.program-once .kart:nth-child(2) { order: -1; }
     .grafik { display: flex; align-items: flex-end; gap: 3px; height: 64px; margin-top: 8px; }
     .grafik .gun { flex: 1 1 0; min-width: 0; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: stretch; }
     .grafik .gun i { display: block; background: var(--bar); min-height: 0; }
@@ -525,12 +526,17 @@ const UC = 'https://script.google.com/macros/s/AKfycbyhTvE9DHr58vAZC7ifqmz13HHrG
         if (simdi < SON_YANIT) {
           $('s1-et').textContent = 'Yanıt süresine'; $('s1-deger').textContent = sureMetni(SON_YANIT - simdi); $('s1-alt').textContent = 'Cumartesi 7 Kasım, 12.00';
         } else {
-          $('s1-et').textContent = 'Yanıt süresi'; $('s1-deger').textContent = 'Doldu';
-          $('s1-alt').textContent = 'Form hâlâ açık. Sonradan gelenler «süre sonrası» diye işaretlenir' + (ozet && ozet.sonra ? ' (' + ozet.sonra + ' kayıt).' : '.');
+          $('s1-et').textContent = 'Yanıt süresi'; $('s1-deger').textContent = 'Süre doldu';
+          $('s1-alt').textContent = 'Yanıt süresi doldu · form açık, geç bildirimler işaretleniyor' + (ozet && ozet.sonra ? ' (' + ozet.sonra + ' kayıt).' : '.');
         }
-        if (simdi < PROGRAM) { $('s2-deger').textContent = 'Programa ' + sureMetni(PROGRAM - simdi); $('s2-alt').textContent = 'Pazar 8 Kasım · karşılama 15.00, başlangıç 15.30'; }
-        else if (simdi < PROGRAM_SON) { $('s2-deger').textContent = simdi < PROGRAM_BAS ? 'Karşılama başladı' : 'Program başladı'; $('s2-alt').textContent = 'BDV Genel Merkezi · 8 Kasım'; }
+        if (simdi < PROGRAM_BAS) {
+          const kars = simdi >= PROGRAM;
+          $('s2-deger').textContent = kars ? 'Karşılama başladı · programa ' + sureMetni(PROGRAM_BAS - simdi) : 'Programa ' + sureMetni(PROGRAM_BAS - simdi);
+          $('s2-alt').textContent = 'Pazar 8 Kasım, 15.30 · karşılama 15.00';
+        }
+        else if (simdi < PROGRAM_SON) { $('s2-deger').textContent = 'Program başladı'; $('s2-alt').textContent = 'BDV Genel Merkezi · 8 Kasım'; }
         else { $('s2-deger').textContent = 'Program günü geçti'; $('s2-alt').textContent = '8 Kasım 2026'; }
+        const sayac = document.querySelector('.sayac2'); if (sayac) sayac.classList.toggle('program-once', simdi >= SON_YANIT);
       };
       const dilimCiz = (ul, liste, tur) => {
         bosalt(ul);
