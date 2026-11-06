@@ -362,7 +362,7 @@ const UC = 'https://script.google.com/macros/s/AKfycbyhTvE9DHr58vAZC7ifqmz13HHrG
       const UC = JSON.parse(document.getElementById('uc').textContent);
       const $ = (i) => document.getElementById(i);
       const TZ = 'Europe/Brussels';
-      const SON_YANIT = Date.parse('2026-11-07T17:00:00+01:00');
+      const SON_YANIT = Date.parse('2026-11-07T12:00:00+01:00');
       const SON_YANIT_GUN = '2026-11-07';
       const PROGRAM = Date.parse('2026-11-08T15:00:00+01:00');
       const PROGRAM_BAS = Date.parse('2026-11-08T15:30:00+01:00');
@@ -523,7 +523,7 @@ const UC = 'https://script.google.com/macros/s/AKfycbyhTvE9DHr58vAZC7ifqmz13HHrG
       const zamanCiz = () => {
         const simdi = Date.now();
         if (simdi < SON_YANIT) {
-          $('s1-et').textContent = 'Yanıt süresine'; $('s1-deger').textContent = sureMetni(SON_YANIT - simdi); $('s1-alt').textContent = 'Cumartesi 7 Kasım, 17.00';
+          $('s1-et').textContent = 'Yanıt süresine'; $('s1-deger').textContent = sureMetni(SON_YANIT - simdi); $('s1-alt').textContent = 'Cumartesi 7 Kasım, 12.00';
         } else {
           $('s1-et').textContent = 'Yanıt süresi'; $('s1-deger').textContent = 'Doldu';
           $('s1-alt').textContent = 'Form hâlâ açık. Sonradan gelenler «süre sonrası» diye işaretlenir' + (ozet && ozet.sonra ? ' (' + ozet.sonra + ' kayıt).' : '.');
