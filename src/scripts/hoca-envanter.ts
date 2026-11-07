@@ -295,7 +295,7 @@ export function envanterPaneli(kok: HTMLElement, s: EnvanterPaneliSecenek): { te
     return `<section class="env-notlar"><h3 class="env-bolum-bas"><span>Hocanın notu</span><span class="env-fr" lang="fr">Note de l’enseignant</span></h3>
       <label class="env-alan"><span>Türkçe (güçlü yön, somut gözlem, tek sonraki adım)</span><textarea rows="4" maxlength="800" data-metin="hoca_notu">${esc(t('hoca_notu'))}</textarea></label>
       <label class="env-alan"><span>Fransızca</span><textarea rows="3" maxlength="800" data-metin="hoca_notu_fr" lang="fr">${esc(t('hoca_notu_fr'))}</textarea></label>
-      <label class="env-alan"><span>Doğrulama tarihi</span><input type="text" inputmode="numeric" maxlength="10" data-metin="dogrulama_tarihi" value="${esc(t('dogrulama_tarihi'))}" placeholder="${esc(s.bugun)}"></label>
+      <label class="env-alan"><span>Doğrulama tarihi</span><input type="text" inputmode="text" maxlength="10" data-metin="dogrulama_tarihi" value="${esc(t('dogrulama_tarihi'))}" placeholder="${esc(s.bugun)}"></label>
       <div class="env-satir-dugmeler"><button type="button" class="env-dugme" data-env-dogrulama-bugun>Doğrulama tarihi: bugün</button>
         <button type="button" class="env-dugme birincil${b.durum === 'tamam' ? ' secili' : ''}" data-env-tamam aria-pressed="${b.durum === 'tamam'}">${simge('onay')}${b.durum === 'tamam' ? 'Form tamam (geri al)' : 'Formu tamamlandı say'}</button></div></section>`;
   };

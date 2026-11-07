@@ -208,3 +208,15 @@ test('360 px: yatay taşma yok; liste, süzgeç, arama, çubuk ve sütun düğme
 });
 
 test.afterAll(() => { void K; });
+
+test('Doğrulama tarihi alanı tire girilebilen klavye açar (inputmode=text)', async ({ page, context }) => {
+  const kok = await ac(page, context);
+  await kok.locator('[data-env-ac="T-4"][data-grup="9-13"]').click();
+  await kok.locator('[data-env-sayfa="4"]').click();
+  const alan = kok.locator('[data-metin="dogrulama_tarihi"]');
+  await expect(alan).toHaveAttribute('inputmode', 'text');
+  await alan.fill('2026-11-07');
+  await alan.blur();
+  await page.waitForTimeout(1400);
+  expect((await kayit(page, `T-4_${BUGUN}_9-13`)).metin.dogrulama_tarihi).toBe('2026-11-07');
+});
