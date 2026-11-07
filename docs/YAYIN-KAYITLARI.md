@@ -4,6 +4,27 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 7 Kasım 2026 (öğleden sonra) — «Neler biliyorum?» telefonla dinleyerek kayıt: liste, yapışkan çubuk, hata iletileri
+
+- Zaman: 7 Kasım 2026 12.54 push · Pages run 42370161750 başarılı (12.54–12.57) · canlı doğrulama 12.58, Europe/Brussels
+  (CET). **Yayımlandı ve canlı doğrulandı.** Dayanak: Rıdvan 7 Kasım sabahı «geri kalan öğrenciler için telefondan kayıtlara
+  devam edeyim, online form hazırla her açıdan mükemmel olsun» · «formu her açıdan mükemmel hale getir». Ders saatinde canlı
+  sayfa değişmesin diye yayın ders bitimine (12.40) bırakıldı.
+- Kapsam (commit `c7777992` + `36b31c8e`; `0dc7daf0` namaz vakti güncellemesinin üstüne yeniden dizildi, çakışma yok):
+  `src/scripts/hoca-envanter.ts`, `src/scripts/envanter-baglanti.ts`, `src/lib/ogrenci-envanteri/depo.ts`,
+  `src/styles/hoca-envanter.css`; testler `tests/web/neler-biliyorum-telefon.spec.mjs` (yeni),
+  `tests/web/helpers/neler-baglanti.mjs` (yeni), `tests/web/neler-biliyorum-ev.spec.mjs` (1 satır). Günün sırası yoksa
+  doğrudan öğrenci listesi; Kalan/Tümü/Tamam süzgeci, aksan ve i/ı duyarsız arama; yapışkan çubuk, canlı kayıt durumu,
+  sonraki/önceki, «Listeye dön»; geri tuşu formdan listeye; sütun seçici (yalnız hoca) hatırlanır; sekme gizlenince bekleyen
+  yazım hemen gönderilir; kota/ağ/geçersiz bağlantı ayrı Türkçe iletiler; doğrulama tarihi `inputmode=text`. Firestore kuralı
+  değişmedi. Release 0, indirilebilir dosya 0.
+- Kalite: `npm run build` çıkış 0 (1985 sayfa); Playwright `neler-biliyorum-telefon` + `neler-biliyorum-ev` + `hoca-envanter`
+  54/54 geçti (masaüstü + mobil; 360 px taşma yok, dokunma hedefleri ≥ 56 px, okuma maliyeti testi dahil).
+- Canlı: `/neler-biliyorum/` HTTP 200, noindex; sayfa betiği ve `hoca-envanter` parçası (`.js` + `.css`) SHA-256'ları yerel
+  derlemeyle aynı; canlı parçada «Listeye dön» var. Gerçek anahtarla sayfa açılmadı, veri yazılmadı.
+- Açık: sınıf bağlantısı 30 Kasım 23.59'a kadar açık; her ders günü `hocaGunSirasi/<gün>` bağlantıya kopyalanmalı (kurs
+  `scripts/` altında kalıcılaştırılacak). Bu kayıt için belge commit'i içerik yayını değildir.
+
 ## 5 Kasım 2026 (akşam) — vaaz düzeltmesi: «İyilik ve İhsan Üzere Bir Hayat» (ikinci hata avı)
 
 - Zaman: 5 Kasım 2026, Europe/Brussels (CET). Push ≈17.05 (`21214980..072a9516`). Push olayı Pages işini başlatmadı
