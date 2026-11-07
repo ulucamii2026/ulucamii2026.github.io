@@ -37,14 +37,19 @@ export async function baglantiEnvanteri() {
   const app = firebaseUygulamasi();
   const db = tamFirestore(app);
   let veri: Record<string, unknown> | undefined;
+  let hataKodu = '';
   try {
     const s = await getDoc(doc(db, 'envanterBaglanti', anahtar));
     veri = s.exists() ? s.data() : undefined;
-  } catch {
+  } catch (e) {
     veri = undefined;
+    hataKodu = (e as { code?: string } | null)?.code || 'bilinmiyor';
   }
   if (!veri) {
-    mesaj(kok, 'Bu bağlantı geçersiz ya da süresi dolmuş. Yeni bağlantıyı 1. hocadan isteyin.');
+    // Kural süresi dolmuş/bilinmeyen anahtarı «permission-denied» ile reddeder; ağ ve kota hataları ayrı, düz Türkçe iletilerle söylenir.
+    if (hataKodu === 'resource-exhausted') mesaj(kok, 'Sunucunun günlük okuma sınırı doldu. Saat 09.00’dan sonra sayfayı yeniden açın; daha önce yazdıklarınız kayıtlıdır.');
+    else if (hataKodu && hataKodu !== 'permission-denied' && hataKodu !== 'not-found') mesaj(kok, 'Sayfa açılamadı: internet yok ya da çok zayıf. Bağlantınızı kontrol edip sayfayı yenileyin.');
+    else mesaj(kok, 'Bu bağlantı geçersiz ya da süresi dolmuş. Yeni bağlantıyı 1. hocadan isteyin.');
     return;
   }
   const ham = Array.isArray(veri.ogrenciler) ? veri.ogrenciler : [];

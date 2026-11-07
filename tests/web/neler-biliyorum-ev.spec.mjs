@@ -225,6 +225,7 @@ test('Ev kipi olmayan bağlantı değişmedi: Bugün / Öğrenciler görünümü
   const kok = await sayfaAc(page, context, { veri: bag() });
   await expect(kok.locator('[data-env-gorunum=bugun]')).toBeVisible();
   await kok.locator('[data-env-gorunum=liste]').click();
+  await kok.locator('[data-env-filtre=tumu]').click(); // bağlantıda varsayılan süzgeç «Kalan» (7 Kas 2026)
   await expect(kok.locator('.env-ogr-kart', { hasText: 'Deneme öğrenci' })).toHaveCount(1);
   await kok.locator('.env-ogr-kart', { hasText: 'Elif K' }).locator('[data-env-ac][data-grup="9-13"]').click();
   await expect(kok.locator('[data-env-ogr-ac]')).toBeVisible();
