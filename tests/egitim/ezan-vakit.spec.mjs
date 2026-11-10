@@ -291,7 +291,7 @@ test('CSP: beş kaydın adresi media-src içinde (ihlal yok); başka köken enge
   const yanit = await page.goto('/tr/calis/d-ezan/');
   const csp = yanit.headers()['content-security-policy'];
   const mediaSrc = csp.split(';').map((x) => x.trim()).find((x) => x.startsWith('media-src'));
-  expect(mediaSrc).toBe(`media-src ${ANA} blob:`);
+  expect(mediaSrc).toBe(`media-src 'self' ${ANA} blob:`);
   for (const adres of Object.values(ADRES)) expect(mediaSrc.split(' ')).toContain(new URL(adres).origin);
   const ihlal = await page.evaluate(async (adresler) => {
     const sonuc = {};

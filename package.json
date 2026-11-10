@@ -85,7 +85,7 @@
     "ezber:inceleme": "node scripts/ezber-inceleme.mjs --pdf",
     "ezber:bilgi": "node scripts/ezber-bilgi.mjs --pdf",
     "egitim:dev": "astro dev --root egitim",
-    "egitim:build": "astro check --root egitim && astro build --root egitim",
+    "egitim:build": "node scripts/kart-ses-al.mjs --denetle && astro check --root egitim && astro build --root egitim && node scripts/kart-ses-al.mjs --denetle --dist",
     "egitim:onizle": "node scripts/egitim-onizle.mjs",
     "test:egitim": "node --test tests/egitim/pano.test.mjs tests/egitim/barindirma.test.mjs tests/egitim/cevrimdisi.test.mjs && playwright test -c playwright.egitim.config.mjs",
     "egitim:yayinla": "npm run egitim:build && npm run test:egitim && powershell -NoProfile -File scripts/firebase-cami.ps1 deploy --only hosting:ulucamii-egitim",

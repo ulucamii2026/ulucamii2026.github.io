@@ -1,6 +1,6 @@
 /**
  * İlim Yolu bilgi kartı seslendirmesi (10 Kasım 2026). Saf: manifest (src/data/ilim-yolu/kart-ses.json) hangi kartın hangi dilde sesi olduğunu söyler;
- * dosyalar ana sitede `<taban>/<dil>/<kart-kimliği>.mp3` adresinden çalar (okuma sesleriyle aynı kural: ulucamii.be, egitim CSP `media-src` izinli).
+ * dosyalar egitim Hosting'in kendi alanında (aynı köken, CSP `media-src 'self'`) `<taban>/<dil>/<kart-kimliği>.mp3` adresinden çalar; git dışıdır, denetim scripts/kart-ses-al.mjs --denetle.
  * Yalnız tr ve fr seslendirilir. Manifest boşsa hiçbir sayfada «Dinleyin» görünmez. Manifesti `scripts/kart-ses-al.mjs` üretir (sha256 ile).
  */
 /** Varsayılan taban (manifestteki `taban` bununla aynı olmalı; test denetler). */
@@ -18,7 +18,7 @@ export interface KartSesManifesti {
 
 const sesDiliMi = (dil: string): dil is KartSesDili => (KART_SES_DILLERI as readonly string[]).includes(dil);
 
-/** Kartın bu dilde sesi varsa `<kök><taban>/<dil>/<id>.mp3`, yoksa `null` (kök: sayfanın ses sitesi, ör. https://ulucamii.be). */
+/** Kartın bu dilde sesi varsa `<kök><taban>/<dil>/<id>.mp3`, yoksa `null` (kök: boş = aynı köken). */
 export function kartSesAdresi(m: KartSesManifesti, dil: string, id: string, kok = ''): string | null {
   if (!sesDiliMi(dil) || !/^[a-z0-9-]+$/.test(id)) return null;
   return m.kartlar[id]?.[dil] ? `${kok}${m.taban}/${dil}/${id}.mp3` : null;

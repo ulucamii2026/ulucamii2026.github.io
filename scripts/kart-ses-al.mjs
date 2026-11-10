@@ -1,14 +1,18 @@
 #!/usr/bin/env node
 /**
- * İlim Yolu bilgi kartı seslendirmelerini içe alır (10 Kasım 2026).
+ * İlim Yolu bilgi kartı seslendirmelerini içe alır ve denetler (10 Kasım 2026).
  *
- *   node scripts/kart-ses-al.mjs [--kaynak <klasör>] [--kuru]
+ *   node scripts/kart-ses-al.mjs [--kaynak <klasör>] [--kuru]   MP3'leri içe alır, manifesti yeniden üretir
+ *   node scripts/kart-ses-al.mjs --denetle [--dist]             manifestteki her dosya var mı, bayt ve sha256 tutuyor mu (egitim:build çalıştırır)
  *
+ * Barındırma: sesler egitim Firebase Hosting'in kendi alanında, aynı kökenden çalar: `egitim/public/media/ses/kart/<dil>/<id>.mp3`.
+ * O klasör git'te YOK (.gitignore; 98 MB); git'te yalnız `src/data/ilim-yolu/kart-ses.json` (kimlik, dil, süre, bayt, sha256) durur.
+ * Temiz klonda dosyalar yoktur: `--denetle` açık iletiyle başarısız olur, egitim derlemesi/yayını durur; geri getirme: bu betik (`--kaynak` ile).
  * Kaynak (varsayılan `D:\sesli-anlatim\ilim-yolu-kartlar`): `MANIFEST.json` (dizi: {id, lang, file, seconds, bytes, sha256}) ve `{tr,fr}/<id>.mp3`.
- * Her kayıt doğrulanır (kart kimliği var, dil tr/fr, dosya MP3, bayt ve sha256 tutuyor), sonra `public/media/ses/kart/<dil>/<id>.mp3` yoluna kopyalanır
- * ve `src/data/ilim-yolu/kart-ses.json` o klasördeki dosyalardan (sha256 ile) YENİDEN üretilir. Bozuk kayıt varsa hiçbir şey yazılmaz (çıkış 1).
- * Kaynak klasöre dokunulmaz (yalnız okunur). `--kuru`: yalnız doğrular ve ne yapılacağını yazar.
- * Test: tests/ilim-yolu-kart-ses.test.mjs (aynı `ice_al` işlevini geçici klasörlerle sınar).
+ * Her kayıt doğrulanır (kart kimliği var, dil tr/fr, dosya MP3, bayt ve sha256 tutuyor), sonra kopyalanır; manifest hedef klasördeki dosyalardan
+ * (sha256 ile) YENİDEN üretilir. Bozuk kayıt varsa hiçbir şey yazılmaz (çıkış 1). Kaynak klasöre dokunulmaz. `--kuru`: yalnız doğrular.
+ * HARIC: imam onayı bekleyen üç tecvid kartının Fransızca sesi (Arapça terimlerin okunuşu) içe alınmaz; o kartlarda fr'de «Écouter» çıkmaz.
+ * Test: tests/ilim-yolu-kart-ses.test.mjs (aynı işlevleri geçici klasörlerle sınar).
  */
 import { createHash } from 'node:crypto';
 import { copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs';
@@ -17,6 +21,8 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const KOK = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const TABAN = '/media/ses/kart';
+const PUBLIC = ['egitim', 'public']; // ses dosyalarının yeri: egitim Hosting'in public klasörü (git dışı)
+export const HARIC = new Set(['fr/ku-044', 'fr/ku-047', 'fr/ku-048']);
 const DILLER = ['tr', 'fr'];
 const KIMLIK = /^[a-z0-9-]+$/;
 
@@ -42,7 +48,7 @@ export function kartKimlikleri(kok = KOK) {
  * `kok`: depo kökü (public/ ve src/ burada); testler geçici klasör verir.
  */
 export function ice_al({ kaynak, kok = KOK, kartlar = kartKimlikleri(kok), kuru = false }) {
-  const hedefKlasor = join(kok, 'public', ...TABAN.split('/').filter(Boolean));
+  const hedefKlasor = join(kok, ...PUBLIC, ...TABAN.split('/').filter(Boolean));
   const manifestYolu = join(kok, 'src/data/ilim-yolu/kart-ses.json');
   const kaynakManifest = JSON.parse(readFileSync(join(kaynak, 'MANIFEST.json'), 'utf8'));
   if (!Array.isArray(kaynakManifest)) throw new Error('MANIFEST.json bir dizi olmalı');
@@ -50,7 +56,8 @@ export function ice_al({ kaynak, kok = KOK, kartlar = kartKimlikleri(kok), kuru 
   const secilen = [];
   const goruldu = new Set();
   for (const k of kaynakManifest) {
-    const ad = `${k?.lang}/${k?.id}`;
+    if (HARIC.has(`${k?.lang}/${k?.id}`)) continue;
+    const ad =`${k?.lang}/${k?.id}`;
     if (!KIMLIK.test(String(k?.id)) || !kartlar.has(k.id)) { hatalar.push(`${ad}: kart kimliği yok`); continue; }
     if (!DILLER.includes(k.lang)) { hatalar.push(`${ad}: dil tr/fr değil`); continue; }
     if (goruldu.has(ad)) { hatalar.push(`${ad}: tekrarlı kayıt`); continue; }
@@ -96,8 +103,46 @@ export function ice_al({ kaynak, kok = KOK, kartlar = kartKimlikleri(kok), kuru 
   return { kopyalanan, toplam: secilen.length, manifest };
 }
 
+/**
+ * Denetim: manifestteki her ses dosyası `<klasör>/<dil>/<id>.mp3` olarak var, bayt ve sha256 tutuyor; klasörde manifestsiz dosya yok;
+ * HARIC kayıtlar manifestte yok. `klasor`: varsayılan egitim/public/media/ses/kart; `--dist` egitim/dist/media/ses/kart (derlenmiş çıktı).
+ * Döner: hata iletilerinin listesi (boş = tamam).
+ */
+export function denetle({ kok = KOK, dist = false } = {}) {
+  const klasor = join(kok, 'egitim', dist ? 'dist' : 'public', ...TABAN.split('/').filter(Boolean));
+  const m = JSON.parse(readFileSync(join(kok, 'src/data/ilim-yolu/kart-ses.json'), 'utf8'));
+  const hatalar = [];
+  const beklenen = new Set();
+  for (const [id, diller] of Object.entries(m.kartlar)) {
+    for (const [dil, k] of Object.entries(diller)) {
+      const ad = `${dil}/${id}.mp3`;
+      beklenen.add(ad);
+      if (HARIC.has(`${dil}/${id}`)) { hatalar.push(`${ad}: onay bekleyen kart, manifestte olmamalı`); continue; }
+      const yol = join(klasor, ad);
+      if (!existsSync(yol)) hatalar.push(`${ad}: dosya yok`);
+      else if (statSync(yol).size !== k.bayt) hatalar.push(`${ad}: bayt tutmuyor`);
+      else if (sha256(yol) !== k.sha256) hatalar.push(`${ad}: sha256 tutmuyor`);
+    }
+  }
+  for (const dil of DILLER) {
+    const d = join(klasor, dil);
+    if (existsSync(d)) for (const a of readdirSync(d)) if (!beklenen.has(`${dil}/${a}`)) hatalar.push(`${dil}/${a}: manifestte yok (yetim dosya)`);
+  }
+  return hatalar;
+}
+
 if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
   const a = process.argv.slice(2);
+  if (a.includes('--denetle')) {
+    const hatalar = denetle({ dist: a.includes('--dist') });
+    if (hatalar.length) {
+      const goster = hatalar.slice(0, 12).map((h) => `- ${h}`).join('\n');
+      console.error(`Kart seslendirme denetimi BAŞARISIZ (${hatalar.length} sorun). Sesler git'te değildir; manifest ile dosyalar tutmalı.\n${goster}${hatalar.length > 12 ? `\n- … ve ${hatalar.length - 12} tane daha` : ''}\nGeri getirme: node scripts/kart-ses-al.mjs   (kaynak: D:\\sesli-anlatim\\ilim-yolu-kartlar; ayrıntı docs/ILIM-YOLU.md «Kart seslendirmesi»)`);
+      process.exit(1);
+    }
+    console.log(`Kart seslendirme denetimi tamam${a.includes('--dist') ? ' (egitim/dist)' : ''}.`);
+    process.exit(0);
+  }
   const i = a.indexOf('--kaynak');
   const kaynak = resolve(i >= 0 && a[i + 1] ? a[i + 1] : 'D:/sesli-anlatim/ilim-yolu-kartlar');
   try {

@@ -17,6 +17,8 @@ if (dugmeler.length) {
   const goster = (d: HTMLButtonElement, caliyor: boolean) => {
     d.toggleAttribute('data-caliyor', caliyor);
     d.setAttribute('aria-label', (caliyor ? d.dataset.etiketDurdur : d.dataset.etiketDinle) ?? '');
+    const yazi = d.querySelector('[data-etiket-yazi]'); // görünen yazı da değişir (erişilebilir ad görünen yazıyı içersin)
+    if (yazi) yazi.textContent = (caliyor ? d.dataset.etiketDurdur : d.dataset.etiketDinle) ?? '';
   };
   const durdur = () => {
     oturum++;

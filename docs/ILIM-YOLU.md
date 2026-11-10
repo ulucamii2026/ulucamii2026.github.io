@@ -336,6 +336,16 @@ Uygulama düzeni:
 - Taslak çeviriler öğrencilere görünür.
 - ihtida.ulucamii.be'yi taşırken DNS değişikliği gerekir.
 
+## Kart seslendirmesi: ses nereden gelir, nasıl geri getirilir
+
+- Bilgi kartlarının «Dinleyin / Écouter» çaları yalnız **tr ve fr** içindir (en/nl/de'de kontrol yoktur). Kontrol, `src/data/ilim-yolu/kart-ses.json` manifesti o kart ve dil için dosya listeliyorsa çizilir.
+- **Barındırma:** MP3'ler egitim Firebase Hosting'in kendi alanından, aynı kökenden çalar: `egitim/public/media/ses/kart/<dil>/<kart-kimliği>.mp3` (519 dosya, ≈ 95 MB, mono 64 kbps). Ana siteye (ulucamii.be) EKLENMEDİ: Pages çıktısı zaten büyük, dağıtım zaman aşımına uğruyordu. CSP `media-src 'self'`; `/media/ses/kart/**` için `Cache-Control: public, max-age=604800` (bir hafta; hatalı bir anlatım düzeltilirse en geç bir haftada herkese ulaşır). Service worker bu dosyaları önceden indirmez ve kaydetmez (sayfa dosyası/`/_astro/` dışı aynı köken istekleri SW'den geçmez); sesler çevrim dışı kutuya girmez.
+- **Git'te yok:** `egitim/public/media/ses/kart/` `.gitignore`'dadır. Git'te yalnız manifest durur (kimlik, dil, süre, bayt, sha256).
+- **Koruma (bekçi):** `npm run egitim:build` başında ve sonunda `node scripts/kart-ses-al.mjs --denetle` (ikincisi `--dist`, derlenmiş çıktıyı denetler) çalışır; manifestte listelenen dosya eksik, bayt ya da sha256 farklıysa ya da klasörde manifestsiz dosya varsa AÇIK iletiyle başarısız olur ve derleme/yayın (`egitim:yayinla`) durur. Temiz klondan yayın bu yüzden sessizce bozuk «Dinleyin» düğmeleri çıkaramaz. GitHub CI egitim'i hiç derlemez (`deploy.yml` yalnız ana siteyi derler; egitim yalnız yerelde yayınlanır) ve `test:ilim-yolu` CI'da koşmaz; bu yüzden ortam bayrağı gerekmedi. Kural basit: egitim derlemesi her zaman denetler.
+- **Geri getirme (dosyalar yoksa):** kaynak `D:\sesli-anlatim\ilim-yolu-kartlar\` (`MANIFEST.json` + `tr\`, `fr\`; bu klasör salt okunur kaynaktır). Komut: `node scripts/kart-ses-al.mjs` (önce `--kuru`). Betik her kaydı doğrular (kimlik, dil, MP3, bayt, sha256), dosyaları kopyalar ve manifesti yeniden üretir; bozuk kayıtta hiçbir şey yazmaz. Kaynak da yoksa sesler yeniden üretilmeli (aşağıdaki üretim notu) ve manifest yenilenmelidir.
+- **Hariç:** fr `ku-044`, `ku-047`, `ku-048` (Arapça tecvid terimlerinin Fransızca okunuşu imam tarafından henüz onaylanmadı) içe alınmaz; bu kartlarda fr'de kontrol yoktur (tr'de vardır). İmam onaylarsa `HARIC` kümesinden çıkarılıp betik yeniden çalıştırılır.
+- **Üretim:** Gemini TTS `gemini-3.1-flash-tts-preview`, ses «Charon», 10 Kasım 2026; çoğu Vertex (`vertex-global`, dernek kredisi), 25 dosya Gemini API anahtar havuzu. Toplam ≈ 3,4 saat. Vertex maliyeti üst sınır ≈ 6 $ (dernek kredisinden). Sayfa, sesin yapay olduğunu söyler.
+
 ## Durum (10 Kasım 2026 gece, ikinci): okuma satırı, «bir tur geri», çevrim dışı kapsam, kart sesi çaları CANLI
 
 - Duyurusuz. Kilimim ve ana sayfa Kur'an Okuma ilerlemesi/bugün tekrar satırı gösterir; yarışmada ← ile bir tur geri; çevrim dışı kutu okuma adım/harita ve ibadet sayfalarını da kaydeder; kart sesi çaları hazır, manifest boş (içe alma: `node scripts/kart-ses-al.mjs`, sesler `D:sesli-anlatimilim-yolu-kartlar` bitince, önce `--kuru`). `/__/auth/handler` başlıkları değişmedi (ayrılmış ad alanı; önizleme kanalı sınaması gerekir). Apps Script v47 canlı (ayrı kayıt). Kayıt: `docs/YAYIN-KAYITLARI.md`.

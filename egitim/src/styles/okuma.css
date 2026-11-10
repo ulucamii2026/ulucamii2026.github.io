@@ -58,7 +58,7 @@
 .ok-ses { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; }
 .ok-dinle { min-width: 12rem; }
 .ok-dinle:not([data-caliyor]) .ikon-dur, .ok-dinle[data-caliyor] .ikon-cal { display: none; }
-.ok-dinle[data-caliyor] { background: var(--yesil); border-color: var(--yesil); }
+.ok-dinle[data-caliyor], .ok-dinle[data-caliyor]:hover { background: var(--yesil); border-color: var(--yesil); color: var(--krem-yazi); }
 .ok-ses .dugme[aria-pressed="true"] { background: var(--yesil); border-color: var(--yesil); color: var(--krem-yazi); }
 .ok-yonerge { margin: 0; max-width: 34em; color: var(--murekkep-2); }
 .ok-isaretler { display: grid; gap: 0.6rem; width: 100%; }

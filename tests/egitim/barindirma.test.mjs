@@ -76,7 +76,7 @@ test('Hosting: bütün yanıtlarda sıkı CSP ve güvenlik başlıkları', () =>
   // Sesler ana siteden gelir (Diyanet kayıtları; egitim/src/lib/kimlik.ts ANA_SITE). `blob:` yalnız «Kendini sına»da çocuğun
   // kendi kaydını sayfa belleğinden çalmak içindir (2d); ağdan bir şey getirmez, başka köken eklenmedi.
   const anaSite = oku('egitim/src/lib/kimlik.ts').match(/ANA_SITE = '([^']+)'/)[1];
-  assert.deepEqual(yonerge['media-src'], [anaSite, 'blob:']);
+  assert.deepEqual(yonerge['media-src'], ["'self'", anaSite, 'blob:']); // 'self': İlim Yolu kart seslendirmesi egitim Hosting'in kendi alanından çalar
   // connect-src: sayfa ve service worker yalnız kendi kökeninden ve ana siteden (ses) okur; «İnternetsiz çalışmak için kaydet» sesi fetch ile
   // indirip önbelleğe koyar (service worker aynı isteği kendisi de yapar). Başka köken, joker ve ws/wss yok.
   // Hesap (Dilim 0): Firestore, Kimlik Araç Seti, Token ve Apps Script (script.google.com → script.googleusercontent.com yönlendirmesi) kökenleri açık yazılır.
@@ -108,6 +108,7 @@ test('Hosting: önbellek — HTML her açılışta doğrulanır, özetli dosyala
     '/_astro/Taban.ABC123.css': 'public, max-age=31536000, immutable',
     '/_astro/index.astro_astro_type_script_index_0_lang.ABC.js': 'public, max-age=31536000, immutable',
     '/fonts/atkinson-next.woff2': 'public, max-age=604800',
+    '/media/ses/kart/tr/ib-013.mp3': 'public, max-age=604800', // kart seslendirmesi: bir hafta (hatalı bir anlatım düzeltilirse en geç bir haftada herkese ulaşır)
     '/favicon.ico': undefined, '/og/ezber-kilimi-tr.png': undefined, '/robots.txt': undefined, // Hosting varsayılanı (1 saat)
     '/manifest.webmanifest': undefined, '/icon-192.png': undefined, '/icon-maskable-512.png': undefined,
   };

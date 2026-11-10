@@ -10,7 +10,7 @@ import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { build } from 'esbuild';
-import { ice_al, kartKimlikleri } from '../scripts/kart-ses-al.mjs';
+import { HARIC, denetle, ice_al, kartKimlikleri } from '../scripts/kart-ses-al.mjs';
 
 mkdirSync('node_modules/.cache', { recursive: true });
 const cikti = resolve('node_modules/.cache/kart-ses-test.mjs');
@@ -24,7 +24,7 @@ const kartlar = kartKimlikleri();
 test('manifest: biçim, taban ve her kayıt dosyayla tutar; klasörde manifestsiz dosya yok', () => {
   assert.equal(manifest.v, 1);
   assert.equal(manifest.taban, lib.KART_SES_TABANI ?? '/media/ses/kart');
-  const klasor = join('public', ...manifest.taban.split('/').filter(Boolean));
+  const klasor = join('egitim', 'public', ...manifest.taban.split('/').filter(Boolean));
   const beklenen = new Set();
   for (const [id, diller] of Object.entries(manifest.kartlar)) {
     assert.ok(kartlar.has(id), `${id}: kart yok`);
@@ -45,6 +45,12 @@ test('manifest: biçim, taban ve her kayıt dosyayla tutar; klasörde manifestsi
     if (existsSync(d)) for (const a of readdirSync(d)) var_.push(`${dil}/${a}`);
   }
   assert.deepEqual(var_.sort(), [...beklenen].sort(), 'klasördeki dosyalar manifestle aynı olmalı');
+});
+
+test('denetle (egitim:build kapısı): dosyalar manifestle tutuyor; HARIC kartlar manifestte yok', () => {
+  assert.deepEqual(denetle(), []);
+  for (const h of HARIC) { const [dil, id] = h.split('/'); assert.equal(manifest.kartlar[id]?.[dil], undefined, h); }
+  assert.deepEqual([...HARIC].sort(), ['fr/ku-044', 'fr/ku-047', 'fr/ku-048']);
 });
 
 test('adres: yalnız manifestte olan kart ve dil için, tek tabandan; boş manifestte hiçbiri', () => {
@@ -83,7 +89,7 @@ test('içe alma: dosyalar kopyalanır, manifest sha256 ile yeniden üretilir, ye
     const ids = new Set(['ib-013', 'it-001']);
     const kuru = ice_al({ kaynak, kok, kartlar: ids, kuru: true });
     assert.equal(kuru.toplam, 3);
-    assert.equal(existsSync(join(kok, 'public/media/ses/kart/tr/ib-013.mp3')), false, 'kuru kipte yazma yok');
+    assert.equal(existsSync(join(kok, 'egitim/public/media/ses/kart/tr/ib-013.mp3')), false, 'kuru kipte yazma yok');
     const s = ice_al({ kaynak, kok, kartlar: ids });
     assert.equal(s.kopyalanan, 3);
     const yazilan = JSON.parse(readFileSync(join(kok, 'src/data/ilim-yolu/kart-ses.json'), 'utf8'));
@@ -109,6 +115,38 @@ test('içe alma: bozuk kayıt (sha256, bilinmeyen kart, dil, MP3 değil) hiçbir
     writeFileSync(join(kaynak, 'tr/ib-013.mp3'), Buffer.from('metin dosyası'));
     yaz([{ ...kayitlar[0], bytes: 13, sha256: sha(Buffer.from('metin dosyası')) }]);
     assert.throws(() => ice_al({ kaynak, kok, kartlar: ids }), /MP3 değil/);
-    assert.equal(existsSync(join(kok, 'public')), false, 'hata durumunda hiçbir dosya yazılmaz');
+    assert.equal(existsSync(join(kok, 'egitim')), false, 'hata durumunda hiçbir dosya yazılmaz');
+  } finally { rmSync(kok, { recursive: true, force: true }); }
+});
+
+test('denetle: eksik dosya, bozuk içerik ve yetim dosya açık iletiyle bildirilir (temiz klonda yayın durur)', () => {
+  const { kok, kaynak } = hazirla();
+  try {
+    const ids = new Set(['ib-013', 'it-001']);
+    assert.equal(denetle({ kok }).length, 0, 'manifest boşken sorun yok');
+    ice_al({ kaynak, kok, kartlar: ids });
+    assert.deepEqual(denetle({ kok }), []);
+    const yol = (a) => join(kok, 'egitim/public/media/ses/kart', a);
+    writeFileSync(yol('tr/ib-013.mp3'), Buffer.concat([Buffer.from([0x49, 0x44, 0x33, 4, 0]), Buffer.alloc(30, 9)]));
+    rmSync(yol('fr/ib-013.mp3'));
+    writeFileSync(yol('tr/baska-001.mp3'), 'x');
+    const h = denetle({ kok }).join('|');
+    assert.match(h, /tr\/ib-013\.mp3: sha256 tutmuyor/);
+    assert.match(h, /fr\/ib-013\.mp3: dosya yok/);
+    assert.match(h, /tr\/baska-001\.mp3: manifestte yok/);
+  } finally { rmSync(kok, { recursive: true, force: true }); }
+});
+
+test('içe alma: HARIC kart (fr ku-044/047/048) kaynakta olsa da alınmaz', () => {
+  const { kok, kaynak } = hazirla();
+  try {
+    const b = Buffer.concat([Buffer.from([0x49, 0x44, 0x33, 4, 0]), Buffer.alloc(20, 7)]);
+    writeFileSync(join(kaynak, 'fr/ku-044.mp3'), b);
+    const onceki = JSON.parse(readFileSync(join(kaynak, 'MANIFEST.json'), 'utf8'));
+    writeFileSync(join(kaynak, 'MANIFEST.json'), JSON.stringify([...onceki, { id: 'ku-044', lang: 'fr', file: 'fr/ku-044.mp3', seconds: 2, bytes: b.length, sha256: sha(b) }]));
+    const s = ice_al({ kaynak, kok, kartlar: new Set(['ib-013', 'it-001', 'ku-044']) });
+    assert.equal(s.toplam, 3);
+    assert.equal(existsSync(join(kok, 'egitim/public/media/ses/kart/fr/ku-044.mp3')), false);
+    assert.equal(s.manifest.kartlar['ku-044'], undefined);
   } finally { rmSync(kok, { recursive: true, force: true }); }
 });

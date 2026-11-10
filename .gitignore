@@ -51,3 +51,6 @@ public/ekran/
 
 # İlim Yolu tasarım taslaklarının ekran görüntüleri (5,8 MB; ekran.mjs yeniden üretir, depoya girmez — 2 Kas 2026)
 egitim/docs/taslaklar/ilim-yolu/ekran/
+
+# İlim Yolu kart seslendirmesi (98 MB): git dışı; manifest src/data/ilim-yolu/kart-ses.json içinde. Geri getirme: node scripts/kart-ses-al.mjs
+egitim/public/media/ses/kart/
