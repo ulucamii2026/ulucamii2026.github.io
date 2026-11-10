@@ -8,7 +8,7 @@ rules_version = '2';
 // Liste sorguları: veli tarafı her zaman where('ref','==',…) ya da where('yayin','==',true) ile sorar (kural kanıtlanabilir olsun).
 service cloud.firestore {
   match /databases/{db}/documents {
-    function girisli() { return request.auth != null && request.auth.token.email != null; }
+    function girisli() { return request.auth != null && request.auth.token.email != null && !cocukOturumu(); }
     /* 26 Eyl 2026: e-postaya dayanan her yetki DOĞRULANMIŞ e-posta ister. Veli hesabını ilk e-posta
        bağlantısıyla kendisi açar (bağlantı adresi doğrular). Ama hesap açma herkese açık olduğundan biri,
        henüz giriş yapmamış bir velinin adresiyle herkese açık web anahtarı üzerinden doğrulanmamış bir
@@ -24,9 +24,18 @@ service cloud.firestore {
        {rol:'cocuk', ref}) dahil her giriş. Çocuk token'ında e-posta yoktur: girisli(), aile() ve hoca() onu hiçbir zaman
        kabul etmez; çocuk yalnız aşağıdaki oturum()/sahip()/ogrenciOkur() yollarına girer. `ref` yetkisini yalnız sunucu verir
        (cocukHesabiAc, hesabiBagla). */
-    function oturum() { return request.auth != null; }
+    /* 10 Kas 2026 (güvenlik incelemesi F-03, F-05): çocuk oturumu YALNIZ custom token'dan gelir ve e-posta taşımaz. Bir çocuk
+       ID token'ıyla Auth'a e-posta/şifre ya da Google kimliği bağlarsa (kart/şifre yenilemeyi atlatırdı) token'da
+       sign_in_provider 'custom' dışına çıkar ya da e-posta belirir → oturum() ve ogrenciOkur() reddeder, girisli() de (hoca/aile yolu).
+       canli(uid): hesabiTamamenSil silinen uid için silinenUidler/{uid} yazar; silinmiş hesabın önbellekteki token'ı belge yeniden yazamaz. */
+    function cocukOturumu() { return request.auth != null && (request.auth.token.get('rol', '') == 'cocuk' || request.auth.uid.matches('^c_.*')); }
+    function oturum() {
+      return request.auth != null
+        && (!cocukOturumu() || (request.auth.token.firebase.sign_in_provider == 'custom' && !('email' in request.auth.token)));
+    }
+    function canli(uid) { return !exists(/databases/$(db)/documents/silinenUidler/$(uid)); }
     function sahip(uid) { return oturum() && request.auth.uid == uid; }
-    function ogrenciOkur(ref) { return request.auth != null && request.auth.token.get('ref', '') == ref && ref != ''; }
+    function ogrenciOkur(ref) { return oturum() && request.auth.token.get('ref', '') == ref && ref != '' && canli(request.auth.uid); }
     // Ezber Kilimi (27 Eyl 2026, Faz 1b): katalog kimliği, ders günü ve veliye giden kalıp notu biçimleri.
     function ezberKimligi(k) { return k is string && k.size() <= 40 && k.matches('^[sdb]-[a-z0-9]+(-[a-z0-9]+)*$'); }
     function gunDizesi(g) { return g is string && g.matches('^20[0-9]{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$'); }
@@ -432,8 +441,10 @@ service cloud.firestore {
     function uidDizesi(x) { return x is string && x.matches('^[A-Za-z0-9_-]{1,128}$'); }
     match /kullanicilar/{uid} {
       allow get: if sahip(uid);
-      allow create: if sahip(uid) && profilGecerli(request.resource.data, request.resource.data.keys());
-      allow update: if sahip(uid) && profilGecerli(request.resource.data, request.resource.data.diff(resource.data).affectedKeys());
+      // Profili sunucu açar: çocuk hiçbir koşulda kendi profilini oluşturamaz; güncellemede yalnız dil/sonGiris (F-10, F-05).
+      allow create: if sahip(uid) && canli(uid) && !cocukOturumu() && profilGecerli(request.resource.data, request.resource.data.keys());
+      allow update: if sahip(uid) && canli(uid) && profilGecerli(request.resource.data, request.resource.data.diff(resource.data).affectedKeys())
+        && (!cocukOturumu() || request.resource.data.diff(resource.data).affectedKeys().hasOnly(['dil', 'sonGiris']));
       allow list, delete: if false;
 
       /* Çalışma ilerlemesi: belge adı yalnız ezber | bilgi | yol. Biçim cihaz durumunun (src/lib/ezber/cihaz.ts CihazDurumu)
@@ -462,7 +473,7 @@ service cloud.firestore {
         // Liste sorgusunda belge adı (ad) bağlı değildir; yazım üç adla sınırlı olduğundan sahibi ve kursun hocası listeleyebilir.
         // Paylaşımla gelen hoca listeleyemez, yalnız `yol` belgesini get ile okur.
         allow list: if sahip(uid) || (hoca() && kursaBagli());
-        allow create, update: if calismaAdi() && sahip(uid) && calismaGecerli();
+        allow create, update: if calismaAdi() && sahip(uid) && canli(uid) && calismaGecerli();
         allow delete: if calismaAdi() && sahip(uid);
       }
 
@@ -480,16 +491,26 @@ service cloud.firestore {
               || (d.muhtedi == false && !('riza' in d)));
         }
         allow get, delete: if belge == 'hassas' && sahip(uid);
-        allow create, update: if belge == 'hassas' && sahip(uid) && request.auth.token.get('rol', '') != 'cocuk' && hassasGecerli();
+        allow create, update: if belge == 'hassas' && sahip(uid) && canli(uid) && !cocukOturumu() && hassasGecerli();
         allow list: if false;
+      }
+
+      /* İhtida özeti (ihtida platformu yazar, Admin SDK): YALNIZ sahibi okur — hoca() ya da başka geniş okuma buraya uzanmaz
+         (bu eşleşme dışında kullanicilar/{uid} altında özyinelemeli joker yoktur). İstemci yazamaz. */
+      match /ihtida/{belge} {
+        allow get: if belge == 'ozet' && sahip(uid);
+        allow list, create, update, delete: if false;
       }
     }
 
     /* Kullanıcı adı → uid eşlemesi: yalnız callable kullaniciAdiAl yazar (ayrılmış adlar sunucuda). Giriş yapan biri tek adı
        sorabilir (müsait mi); liste (sayma, toplama) ve istemci yazımı yok. */
     match /kullaniciAdlari/{ad} {
-      allow get: if oturum();
-      allow list, create, update, delete: if false;
+      allow read, write: if false; // F-06: istemci okumaz (müsaitlik kullaniciAdiAl'da sınanır); uid/çocuk adı sızmasın
+    }
+    /* Silinen hesapların mezar taşı (F-05): yalnız Admin SDK yazar; kurallar exists() ile okur. */
+    match /silinenUidler/{yol=**} {
+      allow read, write: if false;
     }
 
     /* «Hocamla paylaş» (Dilim 3): yalnız öğrenen yazar; en çok 3 hoca uid'si. Silince paylaşım (ve calisma/yol okuması) kapanır.
@@ -504,7 +525,7 @@ service cloud.firestore {
           && d.zaman == request.time;
       }
       allow read: if sahip(uid) || (hoca() && request.auth.uid in resource.data.hocalar);
-      allow create, update: if sahip(uid) && paylasimGecerli();
+      allow create, update: if sahip(uid) && canli(uid) && paylasimGecerli();
       allow delete: if sahip(uid);
     }
 
@@ -517,6 +538,11 @@ service cloud.firestore {
       allow read, write: if false;
     }
     match /ogrenciHesaplari/{yol=**} {
+      allow read, write: if false;
+    }
+    /* Haftalık e-posta kuyruğu (Dilim 2): haftalikKuyruk (Admin SDK) yazar, Apps Script (hizmet kimliği, IAM) boşaltır. İstemci
+       hiçbir koşulda okuyamaz/yazamaz (e-posta adresi içerir). */
+    match /epostaKuyrugu/{yol=**} {
       allow read, write: if false;
     }
   }

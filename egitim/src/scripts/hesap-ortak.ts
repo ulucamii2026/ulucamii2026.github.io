@@ -6,14 +6,16 @@
  *  - `veriOku`, `sor`, `durumYaz`: sayfa verisi, zorunlu öğe, `role="status"/"alert"` alanları.
  *  - `authMetni`, `cocukMetni`, `cagriMetni`, `adHatasi`: sunucu ve Firebase hata kodlarının dostça cümleleri.
  *  - `adAdimi`: kullanıcı adı alanı (canlı biçim denetimi + öneri + sunucuya kaydet); kayıt ve hesabım sayfaları paylaşır.
- *  - `girisSonrasi`: gerçek bir girişten sonra `giristeEsitle`; cihazdaki çalışma varsa «hesabına eklensin mi?» sorulur.
+ *  - `girisSonrasi`: gerçek bir girişten sonra `giristeEsitle` (Ezber) ve `bilgiGiristeEsitle` (bilgi kartı işaretleri); cihazdaki çalışma varsa «hesabına eklensin mi?» sorulur.
  *  - `sekmeler`, `sifreGoster`: ARIA sekme grubu (ok tuşlarıyla) ve şifre göster/gizle.
  */
 import type { Dil } from '@ortak/i18n/ui';
 import { gecerliMi, oneri } from '@ortak/lib/ilim-yolu/kullanici-adi';
 import type { HesapMetinleri } from '../i18n/hesap';
+import { bilgiEsitleSor } from '../i18n/bilgi-esitle';
 import { kalipDoldur, type Sablonlu } from '../i18n/sablon';
 import { firebaseYukle, type IlimFirebase } from '../lib/firebase-istemci';
+import { bilgiGiristeEsitle } from '../lib/hesap/bilgi-esitle';
 import { giristeEsitle } from '../lib/hesap/esitle';
 import type { CocukGirisSonucu } from '../lib/hesap/kart-giris';
 import { kullaniciAdiAl, profilGetir, profilYaz, type CagriHatasi } from '../lib/hesap/profil';
@@ -163,6 +165,14 @@ export async function girisSonrasi(f: IlimFirebase, v: SayfaVeri, panel: HTMLEle
       ? await evetHayir(panel, { metin: kalipDoldur(v.m.esitleSor, karar.n), not: v.m.esitleNot, evet: v.m.esitleEvet, hayir: v.m.esitleHayir })
       : false;
     await karar.cevapla(ekle);
+  }
+  // Aynı soru bilgi kartı işaretleri için: ikincisi ancak birincisi cevaplanınca açılır (panel tek).
+  const bilgi = await bilgiGiristeEsitle(f);
+  if (bilgi.tur === 'sor') {
+    const ekle = panel
+      ? await evetHayir(panel, { metin: bilgiEsitleSor(v.dil, bilgi.n), not: v.m.esitleNot, evet: v.m.esitleEvet, hayir: v.m.esitleHayir })
+      : false;
+    await bilgi.cevapla(ekle);
   }
 }
 

@@ -21,6 +21,7 @@ import elifbaAlistirmalari from '../data/elifba-alistirmalari.json';
 import { ogrenmeAtolyesi } from './ogrenme-atolyesi';
 import { ogrenmeMetni } from '../i18n/ogrenme';
 import type { VeliEzberi } from './veli-ezber';
+import { medyaYolu } from '../lib/ses-koken';
 
 type Ders = { no: number; kod: string; alan: string; konu: string; ezber: string[] };
 type PlanGun = { tarih: string; hafta: number; dersler: Ders[] };
@@ -199,7 +200,8 @@ export async function veliPortali(): Promise<void> {
 
   // Bir önceki isteğin geç gelen hatası yeni kaydı veya ekranı etkileyemez.
   // Elifba/tilavet hiçbir koşulda cihaz TTS sesiyle değiştirilmez.
-  const kayitSeslendir = (url: string, kutu?: HTMLElement) => {
+  const kayitSeslendir = (url0: string, kutu?: HTMLElement) => {
+    const url = medyaYolu(url0);
     if (aktifAudio?.getAttribute('src') === url) { tumSesleriDurdur(); return; }
     tumSesleriDurdur();
     const istek = sesIstegi;
@@ -234,13 +236,13 @@ export async function veliPortali(): Promise<void> {
       const ornek = elifbaAlistirmalari.cezm.ornekler.find((x) => x.id === harfId);
       if (ornek) kayitSeslendir(ornek.sesUrl);
     } else if (harekeId === 'ustun' || harekeId === 'esre' || harekeId === 'otre') {
-      kayitSeslendir(`/media/ses/elifba/${harekeId}/${harfId}.mp3`);
+      kayitSeslendir(medyaYolu(`/media/ses/elifba/${harekeId}/${harfId}.mp3`));
     }
   };
 
   const harfSeslendir = (harfMetni: string, harfId?: string) => {
     const sesId = harfId || HARF_SES_HARITASI[harfMetni] || HARF_SES_HARITASI[harfMetni[0]];
-    if (sesId) kayitSeslendir(`/media/ses/elifba/${sesId}.mp3`);
+    if (sesId) kayitSeslendir(medyaYolu(`/media/ses/elifba/${sesId}.mp3`));
   };
 
   const harfTikSesiCal = () => {
@@ -857,7 +859,7 @@ export async function veliPortali(): Promise<void> {
 
                 <!-- SES OYNATICI VE KUMANDALAR -->
                 <div class="ezber-ses-kutusu">
-                  <audio controls preload="none" class="ezber-audio" src="${seciliEzber.sesUrl}" ${d.ezberDongu ? 'loop' : ''}>
+                  <audio controls preload="none" class="ezber-audio" src="${medyaYolu(seciliEzber.sesUrl)}" ${d.ezberDongu ? 'loop' : ''}>
                     Tarayıcınız ses oynatmayı desteklemiyor.
                   </audio>
                   <div class="ezber-hizli-kumanda" role="group" aria-label="${esc(m.sesKumandasi)}">
@@ -1085,7 +1087,7 @@ export async function veliPortali(): Promise<void> {
                       <span class="quiz-skor-rozeti">🎯 ${d.quizDogruSayisi ?? toplamSoru} / ${toplamSoru} ${t5({ tr: 'Doğru Cevap', fr: 'Bonnes réponses', en: 'Correct answers', nl: 'Juiste antwoorden', de: 'Richtige Antworten' })}</span>
                     </div>
                     <p class="quiz-bitti-metin">${esc(m.haftaninTestiNot)}</p>
-                    <div class="quiz-eylem-satir" style="justify-content:center;margin-top:1.2rem">
+                    <div class="quiz-eylem-satir ps-quiz-eylem">
                       <button type="button" class="dugme dugme-birincil" data-eylem="quizYeniden">
                         ${esc(m.testiYenidenBaslat)}
                       </button>
@@ -1319,8 +1321,8 @@ export async function veliPortali(): Promise<void> {
           <div class="karne-baslik-sol">
             <span class="karne-simge" aria-hidden="true">🌟</span>
             <div>
-              <h3 style="margin:0;font-size:1.15rem">${esc(m.haftalikKarne)}</h3>
-              <p class="kucuk" style="margin:0">${esc(m.haftalikKarneAciklama)}</p>
+              <h3 class="ps-baslik-kucuk">${esc(m.haftalikKarne)}</h3>
+              <p class="kucuk ps-sifir">${esc(m.haftalikKarneAciklama)}</p>
             </div>
           </div>
           <a href="https://api.whatsapp.com/send?text=${paylasMesaji}" target="_blank" rel="noopener" class="dugme dugme-ikincil kucuk-dugme whatsapp-paylas-btn" title="${esc(m.ailecePaylas)}">
@@ -1386,10 +1388,10 @@ export async function veliPortali(): Promise<void> {
               <span class="g-dersler">${g.dersler.map((x) => `<span class="g-ders"><span class="g-no">${x.no}.</span> ${esc(alanAdi(x.kod))}: <span lang="tr">${esc(x.konu)}</span></span>`).join('')}
               ${g.dersler.some((x) => x.ezber.length) ? `<span class="rozet ogrendi">${esc(m.ezber)}: <span lang="tr">${esc(g.dersler.flatMap((x) => x.ezber).join(', '))}</span></span>` : ''}
               ${veri.materyalGunleri.includes(g.tarih) ? `<a class="ic-bag" href="${esc(veri.materyalYolu)}#g-${g.tarih}">${esc(m.materyal)}${simge('disari')}</a>` : ''}</span></div>`).join('')}</div>` : ''}
-          ${haftaOdev ? `<h3>${esc(m.ezber)}</h3><p style="white-space:pre-line">${bagla(odevMetni(haftaOdev.ezber, dil) || '—')}</p>
-            <h3>${esc(m.odev)}</h3><p style="white-space:pre-line">${bagla(odevMetni(haftaOdev.odev, dil) || '—')}</p>
-            ${haftaOdev.materyal ? `<p style="margin-top:.7rem"><a class="ic-bag" href="${esc(haftaOdev.materyal)}">${esc(m.materyal)}${simge('disari')}</a></p>` : ''}` : bosDurum('kitap', m.odevYok)}
-          ${siradaki ? `<p class="kucuk" style="margin-top:1rem;display:flex;align-items:center;gap:.45rem">${simge('takvim')}<span><b>${esc(m.siradakiDers)}:</b> ${esc(tarihYaz(siradaki.tarih, { weekday: 'long', day: 'numeric', month: 'long' }))}</span></p>` : ''}
+          ${haftaOdev ? `<h3>${esc(m.ezber)}</h3><p class="ps-satir-koru">${bagla(odevMetni(haftaOdev.ezber, dil) || '—')}</p>
+            <h3>${esc(m.odev)}</h3><p class="ps-satir-koru">${bagla(odevMetni(haftaOdev.odev, dil) || '—')}</p>
+            ${haftaOdev.materyal ? `<p class="ps-ust-07"><a class="ic-bag" href="${esc(haftaOdev.materyal)}">${esc(m.materyal)}${simge('disari')}</a></p>` : ''}` : bosDurum('kitap', m.odevYok)}
+          ${siradaki ? `<p class="kucuk ps-siradaki">${simge('takvim')}<span><b>${esc(m.siradakiDers)}:</b> ${esc(tarihYaz(siradaki.tarih, { weekday: 'long', day: 'numeric', month: 'long' }))}</span></p>` : ''}
         </section>
         ${ezk && ezGorunum !== 'eski' ? ezk.veliKilimKarti(ezberKaydi, `kl-v${d.secili}`, kartYardimi) : ''}
 
@@ -1404,21 +1406,21 @@ export async function veliPortali(): Promise<void> {
         <section class="bolum r-kiremit">
           ${bas('grafik', m.ilerleme, ilerlemeVar && ile?.guncelleme ? tarihYaz(ile.guncelleme, { day: 'numeric', month: 'short' }) : '')}
           ${ilerlemeVar && ile ? `
-            ${kuranKonu ? `<h3>${esc(m.kuranAdim)}</h3><div class="ilerleme-not"><b lang="tr">${esc(kuranKonu)}</b><span class="kucuk">${kuranNo + 1}/${kuranSirasi.length}</span></div><div class="cubuk"><span style="width:${yuzde}%"></span></div>` : ''}
+            ${kuranKonu ? `<h3>${esc(m.kuranAdim)}</h3><div class="ilerleme-not"><b lang="tr">${esc(kuranKonu)}</b><span class="kucuk">${kuranNo + 1}/${kuranSirasi.length}</span></div><div class="cubuk"><span class="yz-${Math.max(0, Math.min(100, Math.round(yuzde)))}"></span></div>` : ''}
             ${eskiEzberGoster && ile.ezber ? `<h3>${esc(m.ezberler)}</h3><ul class="liste">${Object.entries(ile.ezber).map(([ad, dr]) => `<li><span lang="tr">${esc(ad)}</span><span class="rozet ${esc(dr)}">${esc((m.ezberDurum as Record<string, string>)[dr] || dr)}</span></li>`).join('')}</ul>` : ''}
             ${ile.alanlar && Object.keys(ile.alanlar).length ? `<h3>${esc(m.alanlar)}</h3><div class="dereceler">${Object.entries(ile.alanlar).map(([k, n]) => `<div class="derece"><b>${esc(alanAdi(k))}</b><span class="pipler" aria-hidden="true">${Array.from({ length: 5 }, (_, i) => `<span class="pip ${i < n ? 'dolu' : ''}"></span>`).join('')}</span><span class="d-ad">${esc(dereceAdi(n))}</span></div>`).join('')}</div>` : ''}
-            ${ile.hocaNotu ? `<h3>${esc(m.hocaNotu)}</h3><p style="white-space:pre-line">${esc(ile.hocaNotu)}</p>` : ''}`
+            ${ile.hocaNotu ? `<h3>${esc(m.hocaNotu)}</h3><p class="ps-satir-koru">${esc(ile.hocaNotu)}</p>` : ''}`
             : bosDurum('grafik', m.ilerlemeYok)}
         </section>
 
         <section class="bolum r-ochre">
           ${bas('yildiz', m.degerlendirme)}
-          ${c && c.degerlendirme.length ? `<ul class="liste">${c.degerlendirme.map((x) => `<li><span class="kucuk">${esc(tarihYaz(x.tarih))}</span><b>${esc(alanAdi(x.alan))}</b>${x.olcut ? `<span lang="tr">${esc(x.olcut)}</span>` : ''}${x.derece ? `<span class="rozet derece">${esc(dereceAdi(x.derece))}</span>` : ''}${x.not ? `<span class="kucuk" style="flex-basis:100%">${esc(x.not)}</span>` : ''}</li>`).join('')}</ul>` : bosDurum('yildiz', m.degerlendirmeYok)}
+          ${c && c.degerlendirme.length ? `<ul class="liste">${c.degerlendirme.map((x) => `<li><span class="kucuk">${esc(tarihYaz(x.tarih))}</span><b>${esc(alanAdi(x.alan))}</b>${x.olcut ? `<span lang="tr">${esc(x.olcut)}</span>` : ''}${x.derece ? `<span class="rozet derece">${esc(dereceAdi(x.derece))}</span>` : ''}${x.not ? `<span class="kucuk ps-tam-satir">${esc(x.not)}</span>` : ''}</li>`).join('')}</ul>` : bosDurum('yildiz', m.degerlendirmeYok)}
         </section>
 
         <section class="bolum r-iznik">
           ${bas('not', m.notlar)}
-          ${c && c.notlar.length ? `<ul class="liste">${c.notlar.map((x) => `<li><span class="kucuk">${esc(tarihYaz(x.tarih))}</span><span style="white-space:pre-line;flex-basis:100%">${esc(x.metin)}</span></li>`).join('')}</ul>` : bosDurum('not', m.notYok)}
+          ${c && c.notlar.length ? `<ul class="liste">${c.notlar.map((x) => `<li><span class="kucuk">${esc(tarihYaz(x.tarih))}</span><span class="ps-satir-koru ps-tam-satir">${esc(x.metin)}</span></li>`).join('')}</ul>` : bosDurum('not', m.notYok)}
         </section>
 
         <section class="bolum r-ochre genis">
@@ -1444,12 +1446,12 @@ export async function veliPortali(): Promise<void> {
         <section class="bolum r-kiremit">
           ${bas('ayar', m.hesap)}
           <label>${esc(m.dil)}<select name="dil" data-dil-sec>${dilListesi.map((x) => `<option value="${x}" ${x === dil ? 'selected' : ''}>${esc(diller[x])}</option>`).join('')}</select></label>
-          <p class="kucuk" style="margin:.9rem 0 .1rem">${esc(m.girisBilgisi)}</p>
-          <p style="margin:0;font-weight:600;overflow-wrap:anywhere">${esc(d.eposta)}</p>
-          <details class="katlanir" style="margin-top:.95rem">
+          <p class="kucuk ps-giris-bilgi">${esc(m.girisBilgisi)}</p>
+          <p class="ps-eposta">${esc(d.eposta)}</p>
+          <details class="katlanir ps-ust-095">
             <summary>${simge('kilit')}<span>${esc(m.sifreDegistir)}</span></summary>
             <form data-form="sifreDegistir" novalidate class="govde">
-              <p class="kucuk" style="margin-top:0">${esc(m.sifreDegistirA)}</p>
+              <p class="kucuk ps-ust-0">${esc(m.sifreDegistirA)}</p>
               <label>${esc(m.yeniSifre)}<input type="password" name="sifre" minlength="8" required autocomplete="new-password"></label>
               <p data-mesaj hidden class="not"></p>
               <div class="satir-dugmeler"><button type="submit" class="dugme dugme-ikincil">${esc(m.kaydet)}</button></div>
@@ -1572,7 +1574,7 @@ export async function veliPortali(): Promise<void> {
         tumSesleriDurdur();
         bildirimGoster(m.sesDiliYok, 'hata');
       } else {
-        kayitSeslendir(`/media/ses/hadisler/${tur === 'arapca' ? 'ar' : dil}/${gh.id}.mp3`, kutu);
+        kayitSeslendir(medyaYolu(`/media/ses/hadisler/${tur === 'arapca' ? 'ar' : dil}/${gh.id}.mp3`), kutu);
       }
       return;
     }
@@ -1884,7 +1886,7 @@ export async function veliPortali(): Promise<void> {
       const ezId = hedef.dataset.ezber || durum?.seciliEzberId || 'fatiha';
       const ezOgesi = EZBER_LISTESI.find((x) => x.id === ezId) || EZBER_LISTESI[0];
       const kutu = kok.querySelector<HTMLElement>(`.ezber-${sesDili}-anlam`) || hedef;
-      kayitSeslendir(`/media/ses/mealler/${sesDili}/${ezOgesi.id}.mp3`, kutu);
+      kayitSeslendir(medyaYolu(`/media/ses/mealler/${sesDili}/${ezOgesi.id}.mp3`), kutu);
       return;
     }
     if (hedef.dataset.eylem === 'quizSecim' && durum && !durum.quizCevaplandi) {

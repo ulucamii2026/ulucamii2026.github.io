@@ -3,6 +3,7 @@
  * hiçbir ağ isteği, günlük ya da depo bundan önce çalışmaz. Sır yalnız bu betiğin belleğinde yaşar. Sonra Firebase yüklenir ve `kartlaGir` çağrılır;
  * başarıda ana sayfaya gidilir (bu cihazdaki anonim çalışma varsa önce «hesabına eklensin mi?» sorulur). Bu sayfa dil bağımsızdır: dil cihazdan seçilir.
  */
+import type { Dil } from '@ortak/i18n/ui';
 import { adrestenKartAl, kartlaGir } from '../lib/hesap/kart-giris';
 
 const kart = adrestenKartAl();
@@ -77,6 +78,13 @@ async function giris() {
         metin: s('esitleSor').replace('{0}', String(karar.n)), not: s('esitleNot'), evet: s('esitleEvet'), hayir: s('esitleHayir'),
       });
       await karar.cevapla(ekle);
+    }
+    const bilgi = await (await import('../lib/hesap/bilgi-esitle')).bilgiGiristeEsitle(f);
+    if (bilgi.tur === 'sor') {
+      const ekle = await evetHayir(sor<HTMLElement>('[data-soru]'), {
+        metin: (await import('../i18n/bilgi-esitle')).bilgiEsitleSor(dil as Dil, bilgi.n), not: s('esitleNot'), evet: s('esitleEvet'), hayir: s('esitleHayir'),
+      });
+      await bilgi.cevapla(ekle);
     }
   } catch { /* eşitleme sonra, ana sayfa açılışında yeniden denenir */ }
   location.replace(`/${dil}/`);

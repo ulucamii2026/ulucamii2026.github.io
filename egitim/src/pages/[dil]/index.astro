@@ -7,7 +7,7 @@
  * giriş yapmış görünümü scripts/ana.ts doldurur ve oturum varsa Firebase'i o zaman yükler. JS kapalıysa ya da işaret yoksa ziyaretçi görünümü kalır.
  *
  * Eski Ezber Kilimi girişi 2 Kasım 2026'dan beri /[dil]/ezber/ adresindedir; bu sayfadaki eski bağlantı çapaları (#seritler, #m-…) o sayfaya
- * yönlendirilir (scripts/ana.ts). Dört yoldan yalnız Ezber Kilimi hazır; kurs bilgileri, seviye yolu ve Yeni Müslüman yolu sonraki dilimlerde
+ * yönlendirilir (scripts/ana.ts). Dört yoldan Ezber Kilimi, kurs bilgileri ve seviye yolu hazır (Dilim 2: /[dil]/yollar/); Yeni Müslüman yolu sonraki dilimde
  * açılır, o zamana dek «Hazırlanıyor» yazar ve ölü bağlantı konmaz.
  */
 import type { Dil } from '@ortak/i18n/ui';
@@ -20,6 +20,7 @@ import { kilimimMetinleri } from '../../i18n/kilimim';
 import { metin } from '../../i18n/metinler';
 import { sablonlar } from '../../i18n/sablon';
 import { tekrarMetinleri } from '../../i18n/sina';
+import { ezberKapagi } from '../../lib/yol-kapaklari';
 import Taban from '../../layouts/Taban.astro';
 import '../../styles/ilim.css';
 
@@ -93,7 +94,7 @@ const veri = {
       </div>
       <div class="iy-yollar">
         <article class="iy-yol ezber">
-          <div class="iy-yol-motif" aria-hidden="true"><svg viewBox="0 0 100 100"><use href={`#${yolMotifleri[0]}`} /></svg></div>
+          <div class="iy-yol-motif kapakli" aria-hidden="true"><img src={ezberKapagi().kucuk} width="640" height="360" alt="" loading="lazy" decoding="async" /></div>
           <div class="iy-yol-metin">
             <h3>{il.yolEzberAd} <small>{il.yolEzberRozet(n)}</small></h3>
             <p class="acik">{il.yolEzberMetin}</p>
@@ -106,7 +107,7 @@ const veri = {
             <h3>{il.yolKursAd} <small>{il.yolKursRozet}</small></h3>
             <p class="acik">{il.yolKursMetin}</p>
           </div>
-          <div class="iy-yol-sag"><p class="durum">{il.hazirlaniyor}</p></div>
+          <div class="iy-yol-sag"><a class="dugme ikincil kucuk" href={`/${dil}/yollar/#plan`}>{il.yolaBak}</a></div>
         </article>
         <article class="iy-yol seviye">
           <div class="iy-yol-motif" aria-hidden="true"><svg viewBox="0 0 100 100"><use href={`#${yolMotifleri[2]}`} /></svg></div>
@@ -114,7 +115,7 @@ const veri = {
             <h3>{il.yolSeviyeAd} <small>{il.yolSeviyeRozet}</small></h3>
             <ul class="iy-alanlar" aria-label={il.yolSeviyeRozet}>{il.alanlar.map((a) => <li>{a}</li>)}</ul>
           </div>
-          <div class="iy-yol-sag"><p class="durum">{il.hazirlaniyor}</p></div>
+          <div class="iy-yol-sag"><a class="dugme ikincil kucuk" href={`/${dil}/yollar/#seviye`}>{il.yolaBak}</a></div>
         </article>
         <article class="iy-yol yeni">
           <div class="iy-yol-motif" aria-hidden="true"><svg viewBox="0 0 100 100"><use href={`#${yolMotifleri[3]}`} /></svg></div>
@@ -230,7 +231,7 @@ const veri = {
       </div>
       <div class="iy-yollar">
         <article class="iy-yol ezber">
-          <div class="iy-yol-motif" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#m-goz" /></svg></div>
+          <div class="iy-yol-motif kapakli" aria-hidden="true"><img src={ezberKapagi().kucuk} width="640" height="360" alt="" loading="lazy" decoding="async" /></div>
           <div class="iy-yol-metin">
             <h3>{il.yolEzberAd} <small>{il.yolEzberRozet(n)}</small></h3>
             <p class="acik">{il.yolEzberMetin}</p>
@@ -243,12 +244,12 @@ const veri = {
         <article class="iy-yol kurs">
           <div class="iy-yol-motif" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#m-yildiz" /></svg></div>
           <div class="iy-yol-metin"><h3>{il.yolKursAd} <small>{il.yolKursRozet}</small></h3><p class="acik">{il.yolKursMetin}</p></div>
-          <div class="iy-yol-sag"><p class="durum">{il.hazirlaniyor}</p></div>
+          <div class="iy-yol-sag"><a class="dugme ikincil kucuk" href={`/${dil}/yollar/#plan`}>{il.yolaBak}</a></div>
         </article>
         <article class="iy-yol seviye">
           <div class="iy-yol-motif" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#m-sevron" /></svg></div>
           <div class="iy-yol-metin"><h3>{il.yolSeviyeAd} <small>{il.yolSeviyeRozet}</small></h3></div>
-          <div class="iy-yol-sag"><p class="durum">{il.hazirlaniyor}</p></div>
+          <div class="iy-yol-sag"><a class="dugme ikincil kucuk" href={`/${dil}/yollar/#seviye`}>{il.yolaBak}</a></div>
         </article>
         <article class="iy-yol yeni">
           <div class="iy-yol-motif" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#m-mihrap" /></svg></div>

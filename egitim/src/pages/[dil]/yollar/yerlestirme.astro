@@ -1,0 +1,83 @@
+---
+/**
+ * Yerleştirme testi (İlim Yolu · Dilim 2, 10 Kasım 2026): seviye testi soru bankasının küçük bir alt kümesi, TARAYICIDA çalışır; hiçbir şey
+ * gönderilmez, kaydedilmez, adrese yazılmaz. Test yalnız bir bilgi yolu ve başlangıç basamağı ÖNERİR (src/lib/ilim-yolu/yerlestirme.ts, seviye
+ * testinin puanlaması). Sorular sayfa dilinde `data-veri` ile gelir (CSP: satır içi betik yok); soruları scripts/yerlestirme.ts sırayla gösterir.
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import { dilListesi } from '@ortak/i18n/utils';
+import { yerlestirmeSorulari } from '@ortak/lib/ilim-yolu/yerlestirme';
+import { MADDELER } from '@ortak/lib/seviye-testi/index';
+import Ikon from '../../../components/Ikon.astro';
+import { ilimMetinleri } from '../../../i18n/ilim';
+import { alanAdlari, yollarMetinleri } from '../../../i18n/yollar';
+import Taban from '../../../layouts/Taban.astro';
+import '../../../styles/ilim.css';
+import '../../../styles/yollar.css';
+
+export function getStaticPaths() {
+  return dilListesi.map((dil) => ({ params: { dil } }));
+}
+
+const dil = Astro.params.dil as Dil;
+const y = yollarMetinleri(dil);
+const il = ilimMetinleri(dil);
+// Yalnız gösterilecek alanlar ve cevap anahtarı gider (kaynak künyesi sayfaya basılmaz); şıklar sayfa dilindeki metne çözülür.
+const sorular = yerlestirmeSorulari(MADDELER).map((m) => ({
+  id: m.id,
+  alan: m.alan,
+  basamak: m.basamak,
+  soru: m.soru[dil],
+  goster: 'goster' in m ? m.goster : undefined,
+  siklar: m.siklar.map((s) => ('ar' in s ? { ar: s.ar } : { t: s[dil] })),
+  dogru: m.dogru,
+}));
+const veri = {
+  dil,
+  sorular,
+  alanlar: alanAdlari(dil),
+  m: { yNo: y.yNo, yBilmiyorum: y.yBilmiyorum, yOneri: y.yOneri, yAlanSatiri: y.yAlanSatiri, yYolaGit: y.yYolaGit, basamak: y.basamak },
+};
+---
+<Taban dil={dil} baslik={y.yBaslik} aciklama={y.yAciklama} yol="yollar/yerlestirme">
+  <div class="icerik yl-sayfa" data-yerlestirme data-veri={JSON.stringify(veri)}>
+    <p><a class="yl-geri-baglanti" href={`/${dil}/yollar/`}><Ikon ad="geri" /> {y.tumYollar}</a></p>
+    <div class="yl-yerlestirme">
+      <header class="yl-bas">
+        <p class="iy-ust-yazi">{il.marka}</p>
+        <h1>{y.yBaslik}</h1>
+        <p>{y.yLead}</p>
+        <p class="yl-not">{y.yGizlilik}</p>
+        <noscript><p class="yl-not">{y.jsGerek}</p></noscript>
+      </header>
+
+      <div class="yl-giris" data-giris>
+        <button type="button" class="dugme birincil" data-basla>{y.yBasla} <Ikon ad="ok" /></button>
+      </div>
+
+      <form class="yl-test" data-test hidden novalidate>
+        <fieldset class="yl-soru" data-soru-alani>
+          <legend tabindex="-1" data-legend></legend>
+          <p class="yl-ar-buyuk" lang="ar" dir="rtl" data-goster hidden></p>
+          <div data-siklar class="yl-siklar"></div>
+        </fieldset>
+        <div class="yl-sinav-eylem"><button type="submit" class="dugme birincil" data-ileri>{y.yIleri} <Ikon ad="ok" /></button></div>
+      </form>
+
+      <section class="yl-sonuc" data-sonuc hidden aria-labelledby="yl-sonuc-baslik">
+        <h2 id="yl-sonuc-baslik" tabindex="-1">{y.ySonuc}</h2>
+        <p class="yl-oneri" data-oneri></p>
+        <a class="dugme birincil" data-oneri-baglanti href={`/${dil}/yollar/`}>{y.yYolaGit} <Ikon ad="ok" /></a>
+        <h3>{y.yAlanlar}</h3>
+        <ul class="yl-alan-liste" data-alan-liste></ul>
+        <p class="yl-not">{y.yNot}</p>
+        <div class="yl-sinav-eylem"><button type="button" class="dugme ikincil" data-yeniden>{y.yYeniden}</button></div>
+      </section>
+    </div>
+  </div>
+</Taban>
+
+<script>
+  import '../../../scripts/dil';
+  import '../../../scripts/yerlestirme';
+</script>

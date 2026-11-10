@@ -1,0 +1,102 @@
+---
+/**
+ * Bilgi kartı (İlim Yolu · Dilim 2, 10 Kasım 2026): bir yıllık plan konusunun kısa kartı, «Öğrendim» işareti ve (varsa) iki soruluk mini sınav.
+ * İçerik yalnız src/data/ilim-yolu/kartlar/*.json'dan gelir (kendi cümlelerimizle özet; kitap metni yok). Dili `durum: taslak` olan kartta ortak
+ * «Taslak» etiketi görünür. İşaret ve sınav sonucu scripts/ogren.ts ile cihaza (ve girişliyse hesaba) yazılır; sayfa sunucuda yalnız içeriği çizer.
+ * Şıkların doğru olanı `data-dogru` ile işaretlidir (cevap anahtarı gizli bilgi değildir; sınav kendini sınamadır, puan ya da sıralama yoktur).
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import { dilListesi } from '@ortak/i18n/utils';
+import type { Sik } from '@ortak/lib/seviye-testi/tipler';
+import { yolKartlari } from '@ortak/lib/ilim-yolu/yollar';
+import Ikon from '../../../components/Ikon.astro';
+import TaslakEtiketi from '../../../components/TaslakEtiketi.astro';
+import { alanAdlari, yollarMetinleri } from '../../../i18n/yollar';
+import { KARTLAR, kartBul } from '../../../lib/bilgi-karti-verisi';
+import Taban from '../../../layouts/Taban.astro';
+import '../../../styles/yollar.css';
+
+export function getStaticPaths() {
+  return dilListesi.flatMap((dil) => KARTLAR.map((k) => ({ params: { dil, id: k.id } })));
+}
+
+const dil = Astro.params.dil as Dil;
+const kart = kartBul(Astro.params.id as string)!;
+const y = yollarMetinleri(dil);
+const alanlar = alanAdlari(dil);
+const planYolu = `plan-${kart.kod}`;
+const alanYolu = `alan-${kart.seviyeAlani}`;
+const sira = yolKartlari(KARTLAR, planYolu);
+const i = sira.findIndex((k) => k.id === kart.id);
+const onceki = i > 0 ? sira[i - 1] : null;
+const sonraki = i >= 0 && i < sira.length - 1 ? sira[i + 1] : null;
+const sikMetni = (s: Sik): { yazi: string; ar: boolean } => ('ar' in s ? { yazi: s.ar, ar: true } : { yazi: s[dil], ar: false });
+const veri = { id: kart.id, m: { ogrendimOldu: y.ogrendimOldu, kaydedilemedi: y.kaydedilemedi, dogru: y.dogru, yanlis: y.yanlis, secimYok: y.secimYok, sonucTam: y.sonucTam, sonucEksik: y.sonucEksik } };
+const doldur = (s: string, d: Record<string, string | number>) => s.replace(/\{(\w+)\}/g, (_, k: string) => String(d[k] ?? ''));
+---
+<Taban dil={dil} baslik={kart.baslik[dil]} aciklama={kart.ozet[dil]} yol={`ogren/${kart.id}`}>
+  <article class="icerik yl-kart-sayfa" data-kart-sayfa data-veri={JSON.stringify(veri)}>
+    <div>
+      <a class="yl-geri-baglanti" href={`/${dil}/yollar/${planYolu}/`}><Ikon ad="geri" /> {y.planAd[kart.kod]}</a>
+    </div>
+    <header class="yl-bas">
+      <p class="iy-ust-yazi">{y.kartUst}</p>
+      <h1>{kart.baslik[dil]}</h1>
+      <TaslakEtiketi dil={dil} durum={kart.durum[dil]} />
+    </header>
+
+    <p class="yl-ozet">{kart.ozet[dil]}</p>
+
+    <div class="yl-meta">
+      <p>{y.planAd[kart.kod]} · {alanlar[kart.seviyeAlani]} · {doldur(y.basamak, { n: kart.basamak })}</p>
+      {kart.kitap && <p>{y.kitap}: {kart.kitap}</p>}
+      <p>{y.yollari}: <a href={`/${dil}/yollar/${planYolu}/`}>{y.planAd[kart.kod]}</a> · <a href={`/${dil}/yollar/${alanYolu}/#basamak-${kart.basamak}`}>{alanlar[kart.seviyeAlani]}</a></p>
+    </div>
+
+    <section class="yl-ogrendim" aria-labelledby="ogrendim-baslik">
+      <h2 id="ogrendim-baslik" class="gorunmez">{y.ogrendim}</h2>
+      <button type="button" class="dugme birincil" data-ogrendim aria-pressed="false"><Ikon ad="onay" /> {y.ogrendim}</button>
+      <p class="yl-durum-satir" role="status" data-ogrendim-durum></p>
+      <p class="yl-not">{y.ogrendimNot}</p>
+    </section>
+
+    <section class="yl-sinav" aria-labelledby="sinav-baslik">
+      <h2 id="sinav-baslik">{y.sinavBaslik}</h2>
+      {kart.sorular.length === 0 ? <p>{y.sinavYok}</p> : (
+        <>
+          <p>{y.sinavYonerge}</p>
+          {kart.sorular.map((s, n) => (
+            <fieldset class="yl-soru" data-soru={n}>
+              <legend><span class="no">{doldur(y.soruNo, { n: n + 1, m: kart.sorular.length })}</span>{s.soru[dil]}</legend>
+              {s.siklar.map((sik, j) => {
+                const { yazi, ar } = sikMetni(sik);
+                return (
+                  <label class="yl-sik">
+                    <input type="radio" name={`soru-${n}`} value={j} data-dogru={j === s.dogru ? '' : undefined} />
+                    <span class:list={['yazi', ar && 'yl-ar']} lang={ar ? 'ar' : undefined} dir={ar ? 'rtl' : undefined}>{yazi}</span>
+                  </label>
+                );
+              })}
+              <p class="yl-geri" role="status" data-geri></p>
+            </fieldset>
+          ))}
+          <div class="yl-sinav-eylem">
+            <button type="button" class="dugme ikincil" data-kontrol>{y.kontrolEt}</button>
+            <button type="button" class="dugme ikincil" data-yeniden hidden>{y.yeniden}</button>
+          </div>
+          <p class="yl-durum-satir" role="status" data-sinav-sonuc></p>
+        </>
+      )}
+    </section>
+
+    <nav class="yl-gezinti" aria-label={y.yolKartlar}>
+      {onceki ? <a class="dugme ikincil" href={`/${dil}/ogren/${onceki.id}/`}><Ikon ad="geri" /> {y.onceki}</a> : <span></span>}
+      {sonraki && <a class="dugme ikincil" href={`/${dil}/ogren/${sonraki.id}/`}>{y.sonraki} <Ikon ad="ok" /></a>}
+    </nav>
+  </article>
+</Taban>
+
+<script>
+  import '../../../scripts/dil';
+  import '../../../scripts/ogren';
+</script>

@@ -25,8 +25,16 @@ export const bagKoduUret = onCall(CAGRI, async (istek) => {
   if (silme.exists) throw new HttpsError('failed-precondition', 'kayit-kapali');
   const kod = rastgeleDize(CROCKFORD, 8);
   const bitis = Timestamp.fromMillis(Date.now() + KOD_SURESI);
-  // Kodun kendisi saklanmaz; belge kimliği SHA-256 özetidir.
-  await db.doc(`bagKodlari/${sha256(kod)}`).create({ ref, bitis, kullanildi: false, uretenHoca: hoca });
+  const ohRef = db.doc(`ogrenciHesaplari/${ref}`);
+  // F-07: her yeni kod öncekileri geçersiz kılar (bagSurum artar; hesabiBagla eşleşmeyen kodu reddeder); çocuk hesabı olan kayda yetişkin bağlanmaz.
+  await db.runTransaction(async (tx) => {
+    const oh = await tx.get(ohRef);
+    if (oh.get('cocukUid')) throw new HttpsError('failed-precondition', 'hesap-var');
+    const surum = (Number(oh.get('bagSurum')) || 0) + 1;
+    tx.set(ohRef, { bagSurum: surum, ...(oh.get('olusturma') ? {} : { olusturma: FieldValue.serverTimestamp() }) }, { merge: true });
+    // Kodun kendisi saklanmaz; belge kimliği SHA-256 özetidir.
+    tx.create(db.doc(`bagKodlari/${sha256(kod)}`), { ref, bitis, kullanildi: false, uretenHoca: hoca, bagSurum: surum });
+  });
   return { kod, bitis: bitis.toDate().toISOString() };
 });
 
@@ -49,19 +57,24 @@ export const hesabiBagla = onCall(CAGRI, async (istek) => {
   const { ref, onceki } = await db.runTransaction(async (tx) => {
     const k = await tx.get(kodRef);
     if (!k.exists) throw new HttpsError('not-found', 'gecersiz-kod', { neden: 'yok' });
-    if (k.get('kullanildi')) throw new HttpsError('failed-precondition', 'gecersiz-kod', { neden: 'kullanildi' });
     const bitis = k.get('bitis');
     if (!(bitis instanceof Timestamp) || bitis.toMillis() <= Date.now()) throw new HttpsError('failed-precondition', 'gecersiz-kod', { neden: 'suresi-doldu' });
     const ref = String(k.get('ref'));
     const ohRef = db.doc(`ogrenciHesaplari/${ref}`);
     const [oh, ogr, silme, profil] = await tx.getAll(ohRef, db.doc(`ogrenciler/${ref}`), db.doc(`portalSilme/${ref}`), profilRef);
     // Kod üretildikten sonra öğrenci silindiyse ya da idari işlem sürüyorsa bağ kurulmaz.
-    if (!ogr.exists || silme.exists) throw new HttpsError('failed-precondition', 'gecersiz-kod', { neden: 'kapali' });
+    if (!ogr.exists || silme.exists || oh.get('cocukUid')) throw new HttpsError('failed-precondition', 'gecersiz-kod', { neden: 'kapali' });
+    // Aynı hesap aynı kodu yeniden kullanabilir (ilk deneme token yetkisini yazamadan düştüyse kurtarma); başkası kullanılmış kodu açamaz.
+    const ayniHesap = k.get('kullanildi') === true && k.get('kullanan') === uid && oh.get('yetiskinUid') === uid;
+    if (k.get('kullanildi') && !ayniHesap) throw new HttpsError('failed-precondition', 'gecersiz-kod', { neden: 'kullanildi' });
+    if (!ayniHesap && (Number(k.get('bagSurum')) || 0) !== (Number(oh.get('bagSurum')) || 0)) throw new HttpsError('failed-precondition', 'gecersiz-kod', { neden: 'eski' });
     const mevcut = profil.get('ref');
     if (mevcut && mevcut !== ref) throw new HttpsError('failed-precondition', 'baska-kayit', { neden: 'baska-kayit' });
+    if (ayniHesap) return { ref, onceki: '' };
     const zaman = FieldValue.serverTimestamp();
     tx.update(kodRef, { kullanildi: true, kullanan: uid, kullanimZamani: zaman });
-    tx.set(profilRef, { ref, tur: 'kursYetiskin', ...(profil.get('olusturma') ? {} : { olusturma: zaman }) }, { merge: true });
+    // sonGiris: hareketsiz hesap taraması (sonGiris sorgusu) bu hesabı da görsün (F-08).
+    tx.set(profilRef, { ref, tur: 'kursYetiskin', sonGiris: zaman, ...(profil.get('olusturma') ? {} : { olusturma: zaman }) }, { merge: true });
     tx.set(ohRef, { yetiskinUid: uid, yetiskinAd: String(profil.get('ad') ?? ''), ...(oh.get('olusturma') ? {} : { olusturma: zaman }) }, { merge: true });
     const eski = oh.get('yetiskinUid');
     return { ref, onceki: typeof eski === 'string' && eski !== uid ? eski : '' };
@@ -104,8 +117,9 @@ export const portalSilmeTetik = onDocumentDeleted('ogrenciler/{ref}', async (ola
   if (!oh.exists || ogr.exists) return;
   const cocukUid = oh.get('cocukUid');
   if (typeof cocukUid === 'string' && cocukUid) {
-    await hesabiTamamenSil(cocukUid);
+    // Önce giriş özetleri: uçuştaki kart/şifre girişleri token üretemesin (F-05); sonra Auth + profil.
     await db.doc(`gizli/cocuk/hesaplar/${cocukUid}`).delete();
+    await hesabiTamamenSil(cocukUid);
   }
   const yetiskinUid = oh.get('yetiskinUid');
   if (typeof yetiskinUid === 'string' && yetiskinUid) await yetiskinBaginiCoz(yetiskinUid);

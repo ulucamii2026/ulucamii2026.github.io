@@ -44,9 +44,10 @@ test('İki kardeşin tekrar defterleri ayrıdır; yazdırma yalnız seçili öğ
  const a=page.locator('[data-ogrenme]');await a.locator('[data-oa=basla]').click();await a.locator('[data-oa=goster]').click();await a.locator('[data-deger=rahat]').click();
  await page.locator('[data-sec="1"]').click();await a.locator('[data-sekme=takip]').click();await expect(a.locator('.oa-liste li')).toHaveCount(0);
  await page.locator('[data-sec="0"]').click();await a.locator('[data-sekme=takip]').click();await expect(a.locator('.oa-liste li')).toHaveCount(1);
- await page.evaluate(()=>{const get=Object.getOwnPropertyDescriptor(HTMLIFrameElement.prototype,'contentWindow').get;Object.defineProperty(HTMLIFrameElement.prototype,'contentWindow',{get(){const win=get.call(this);if(win)win.print=()=>{window.__printed=win.document.body.innerText};return win;}});});
+ await page.emulateMedia({media:'print'});await page.evaluate(()=>{window.print=()=>{const a=document.querySelector('.baski-alani');window.__printed=a.textContent;window.__disari=[...document.body.children].filter(c=>c!==a&&getComputedStyle(c).display!=='none').map(c=>c.tagName);window.__modu=document.documentElement.classList.contains('baski-modu');setTimeout(()=>window.dispatchEvent(new Event('afterprint')));};});
  await a.locator('[data-sekme=aile]').click();await a.locator('[data-oa=yazdir]').click();
  const printed=await page.evaluate(()=>window.__printed);expect(printed).toContain('Birinci Örnek');expect(printed).not.toContain('İkinci Örnek');expect(printed).toContain('Cumartesi konusu');
+ await expect.poll(()=>page.evaluate(()=>document.querySelectorAll('.baski-alani').length)).toBe(0);expect(await page.evaluate(()=>document.documentElement.classList.contains('baski-modu'))).toBe(false);expect(await page.evaluate(()=>window.__modu)).toBe(true);expect(await page.evaluate(()=>window.__disari)).toEqual([]);await page.emulateMedia({media:'screen'});
 });
 test('Yerel defter bozukken ve depolama kapalıyken öğrenme çalışır',async({page,context})=>{
  await mektepAc(page,context);await page.evaluate(()=>{Storage.prototype.setItem=function(){throw new Error('blocked')};});

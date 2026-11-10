@@ -1,0 +1,54 @@
+---
+/**
+ * Haftalık e-postadan çıkış onayı (Dilim 2). E-postadaki bağlantı (GET /api/abonelik-cik?k=…) buraya SITE/<dil>/abonelik-cik/#<belirteç> olarak yönlenir;
+ * belirteç parça olduğundan sunucuya ve Referer'e gitmez. Betik onu bellekte tutar, adres çubuğundan siler ve düğmeye basılınca POST eder
+ * (scripts/abonelik-cik.ts). Durum yalnız POST ile değişir: posta tarayıcılarının önceden açması abonelik kapatmaz.
+ * Sayfa noindex, site haritasında ve çevrim dışı önbellekte yok (yol /hesap/ gibi önbellek dışı; lib/cevrimdisi-ortak.ts).
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import { dilListesi } from '@ortak/i18n/utils';
+import { abonelikMetinleri } from '../../i18n/abonelik';
+import { ilimMetinleri } from '../../i18n/ilim';
+import Ikon from '../../components/Ikon.astro';
+import Taban from '../../layouts/Taban.astro';
+import '../../styles/ilim.css';
+
+export function getStaticPaths() {
+  return dilListesi.map((dil) => ({ params: { dil } }));
+}
+
+const dil = Astro.params.dil as Dil;
+const m = abonelikMetinleri(dil);
+const il = ilimMetinleri(dil);
+const veri = { gonderiliyor: m.gonderiliyor, agHatasi: m.agHatasi, tamamBaslik: m.tamamBaslik, gecersizBaslik: m.gecersizBaslik };
+---
+<Taban dil={dil} baslik={m.baslik} aciklama={m.aciklama} yol="abonelik-cik" noindex oturum={false}>
+  <div class="icerik" data-veri={JSON.stringify(veri)}>
+    <div class="iy-giris-bas">
+      <p class="iy-ust-yazi">{il.marka}</p>
+      <h1 data-baslik>{m.baslik}</h1>
+      <p data-lead>{m.lead}</p>
+    </div>
+
+    <section class="iy-kart iy-form-kart" data-onay hidden>
+      <svg class="kilim-serit" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#serit)" /></svg>
+      <div class="iy-kart-govde">
+        <div class="iy-eylem"><button type="button" class="dugme birincil" data-dugme>{m.dugme}</button></div>
+        <p class="iy-durum" role="status" data-durum></p>
+      </div>
+    </section>
+
+    <p class="iy-durum iyi" role="status" data-tamam hidden>{m.tamamMetin}</p>
+    <p class="iy-durum hata" role="alert" data-gecersiz hidden>{m.gecersizMetin}</p>
+    <p class="iy-durum" data-tokensiz hidden>{m.tokenYokMetin}</p>
+
+    <p class="iy-eylem" data-hesap hidden>
+      <a class="dugme" href={`/${dil}/hesap/`}>{m.hesapBaglantisi} <Ikon ad="ok" /></a>
+    </p>
+  </div>
+</Taban>
+
+<script>
+  import '../../scripts/dil';
+  import '../../scripts/abonelik-cik';
+</script>

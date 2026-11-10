@@ -34,7 +34,7 @@ const METINLER: Record<Dil, CalismaMetinleri> = {
   },
   fr: {
     baslik: 'Écouter et répéter', giris: 'Écoutez un passage, puis répétez-le à voix haute. Passez au suivant à votre rythme.',
-    ac: 'Travailler', geri: 'Revenir au kilim', bolum: 'Passage à écouter', tumu: 'Tous les passages dans l’ordre', parca: 'Passage',
+    ac: 'Travailler', geri: 'Revenir au kilim de mémorisation', bolum: 'Passage à écouter', tumu: 'Tous les passages dans l’ordre', parca: 'Passage',
     tekrar: 'Écoutes de chaque passage', bir: '1 fois', uc: '3 fois', hiz: 'Vitesse d’écoute', normal: 'Normale · 1×', yavas: 'Lente · 0,75×',
     sira: 'À vous : pause pour répéter après chaque écoute', siraYok: 'Aucune pause', sira1: 'Aussi longue que l’écoute', sira15: '1,5 fois l’écoute', sira2: '2 fois l’écoute', baslat: 'Commencer l’écoute', duraklat: 'Mettre en pause', surdur: 'Reprendre',
     durdur: 'Revenir au début', hazir: 'Prêt. Vous choisissez quand commencer.', bitti: 'Écoute terminée. Vous pouvez recommencer.',
@@ -53,7 +53,7 @@ const METINLER: Record<Dil, CalismaMetinleri> = {
   },
   en: {
     baslik: 'Listen and repeat', giris: 'Listen to a passage, then repeat it aloud. Move to the next passage at your own pace.',
-    ac: 'Practise', geri: 'Back to the kilim', bolum: 'Passage to listen to', tumu: 'All passages in order', parca: 'Passage',
+    ac: 'Practise', geri: 'Back to the memorisation kilim', bolum: 'Passage to listen to', tumu: 'All passages in order', parca: 'Passage',
     tekrar: 'Plays per passage', bir: 'Once', uc: '3 times', hiz: 'Playback speed', normal: 'Normal · 1×', yavas: 'Slow · 0.75×',
     sira: 'Your turn: pause to repeat after each playback', siraYok: 'No pause', sira1: 'As long as the recording', sira15: '1.5 times the recording', sira2: '2 times the recording', baslat: 'Start listening', duraklat: 'Pause', surdur: 'Resume',
     durdur: 'Back to the start', hazir: 'Ready. You choose when to start.', bitti: 'Listening complete. You can practise again.',
@@ -71,7 +71,7 @@ const METINLER: Record<Dil, CalismaMetinleri> = {
   },
   nl: {
     baslik: 'Luisteren en herhalen', giris: 'Luister naar een passage en herhaal die hardop. Ga op uw eigen tempo naar de volgende passage.',
-    ac: 'Oefenen', geri: 'Terug naar de kelim', bolum: 'Passage om te beluisteren', tumu: 'Alle passages op volgorde', parca: 'Passage',
+    ac: 'Oefenen', geri: 'Terug naar de memorisatiekelim', bolum: 'Passage om te beluisteren', tumu: 'Alle passages op volgorde', parca: 'Passage',
     tekrar: 'Aantal luisterbeurten per passage', bir: '1 keer', uc: '3 keer', hiz: 'Afspeelsnelheid', normal: 'Normaal · 1×', yavas: 'Langzaam · 0,75×',
     sira: 'Uw beurt: pauze om te herhalen na elke luisterbeurt', siraYok: 'Geen pauze', sira1: 'Even lang als de opname', sira15: '1,5 keer de opname', sira2: '2 keer de opname', baslat: 'Begin met luisteren', duraklat: 'Pauzeren', surdur: 'Doorgaan',
     durdur: 'Terug naar het begin', hazir: 'Klaar. U kiest wanneer u begint.', bitti: 'Luisteren voltooid. U kunt opnieuw oefenen.',
@@ -80,8 +80,8 @@ const METINLER: Record<Dil, CalismaMetinleri> = {
     parcasiz: 'Dit onderdeel is beschikbaar als één opname.', ilerleme: 'Thuis oefenen verandert de door de leerkracht bevestigde stap niet.',
     js: 'Schakel JavaScript in voor de bediening. U kunt de opname ook rechtstreeks openen.', vakitBaslik: 'Gebedstijd van de adhan',
     vakitNotu: {
-      sabah: 'Dit is de oproep tot het ochtendgebed.', ogle: 'Dit is de oproep tot het middaggebed.', ikindi: 'Dit is de oproep tot het namiddaggebed.',
-      aksam: 'Dit is de oproep tot het avondgebed.', yatsi: 'Dit is de oproep tot het nachtgebed.',
+      sabah: 'Deze opname is de oproep tot het ochtendgebed.', ogle: 'Deze opname is de oproep tot het middaggebed.', ikindi: 'Deze opname is de oproep tot het namiddaggebed.',
+      aksam: 'Deze opname is de oproep tot het avondgebed.', yatsi: 'Deze opname is de oproep tot het nachtgebed.',
     },
     vakitEk: { sabah: { metin: 'In de adhan van het ochtendgebed wordt, nadat „Hayye ale’l-felâh” is gezegd, tweemaal „es-salâtü hayrün mine’n-nevm” (Het gebed is beter dan slaap) gezegd.', kunye: 'Bron: Diyanet İlmihali I, p. 267.' } },
     yapayAd: 'Synthetische stem',
@@ -89,7 +89,7 @@ const METINLER: Record<Dil, CalismaMetinleri> = {
   },
   de: {
     baslik: 'Hören und wiederholen', giris: 'Hören Sie einen Abschnitt und wiederholen Sie ihn laut. Gehen Sie in Ihrem eigenen Tempo zum nächsten Abschnitt.',
-    ac: 'Üben', geri: 'Zurück zum Kelim', bolum: 'Abschnitt zum Anhören', tumu: 'Alle Abschnitte der Reihe nach', parca: 'Abschnitt',
+    ac: 'Üben', geri: 'Zurück zum Memorier-Kelim', bolum: 'Abschnitt zum Anhören', tumu: 'Alle Abschnitte der Reihe nach', parca: 'Abschnitt',
     tekrar: 'Wiedergaben pro Abschnitt', bir: '1 Mal', uc: '3 Mal', hiz: 'Wiedergabegeschwindigkeit', normal: 'Normal · 1×', yavas: 'Langsam · 0,75×',
     sira: 'Sie sind dran: Pause zum Wiederholen nach jeder Wiedergabe', siraYok: 'Keine Pause', sira1: 'So lang wie die Aufnahme', sira15: '1,5-mal so lang wie die Aufnahme', sira2: 'Doppelt so lang wie die Aufnahme', baslat: 'Anhören starten', duraklat: 'Pausieren', surdur: 'Fortsetzen',
     durdur: 'Zurück zum Anfang', hazir: 'Bereit. Sie entscheiden, wann es losgeht.', bitti: 'Wiedergabe beendet. Sie können erneut üben.',

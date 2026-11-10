@@ -21,6 +21,7 @@ const KART_KOK = 'https://egitim.ulucamii.be/k/#';
 const HATA_SINIRI = 8; // kullanıcı adı başına; sonra 15 dk kilit
 const KILIT_SURESI = 15 * DAKIKA;
 const IP_SINIRI = 30; // IP başına saatte hatalı deneme
+const YUK_SINIRI = 150; // örnek başına dakikada hatalı deneme (IP'den bağımsız)
 const GOVDE_SINIRI = 2048;
 const gizliRef = (uid: string) => db.doc(`gizli/cocuk/hesaplar/${uid}`);
 
@@ -124,6 +125,20 @@ async function cocukUid(ref: string): Promise<string> {
   return uid;
 }
 
+/**
+ * Çocuk hesabı yalnız custom token ile açılır. İstemci, ID token'la Auth'a e-posta/şifre ya da Google kimliği BAĞLAYABİLİR
+ * (public API anahtarı + accounts:update); bağlanırsa o kimlik kart/şifre yenilemeyi atlatır. Bu yüzden bağlı her kimlik
+ * kaldırılır ve yenilemede bütün yenileme belirteçleri iptal edilir. Kurallar ayrıca yalnız sign_in_provider == 'custom'
+ * olan çocuk oturumunu kabul eder.
+ */
+async function sagliksizKimlikleriKaldir(uid: string, kullanici: { providerData: { providerId: string }[] }): Promise<void> {
+  if (kullanici.providerData.length) await auth.updateUser(uid, { providersToUnlink: kullanici.providerData.map((p) => p.providerId) });
+}
+async function oturumuTemizle(uid: string): Promise<void> {
+  await sagliksizKimlikleriKaldir(uid, await auth.getUser(uid));
+  await auth.revokeRefreshTokens(uid);
+}
+
 export const kartYenile = onCall(CAGRI, async (istek) => {
   await hocaGerekli(istek);
   const ref = refAl(istek.data);
@@ -136,7 +151,7 @@ export const kartYenile = onCall(CAGRI, async (istek) => {
     tx.set(db.doc(`ogrenciHesaplari/${ref}`), { kartSurum: kart.kartSurum }, { merge: true });
     return kart.kartUrl;
   });
-  await auth.revokeRefreshTokens(uid); // eski kartla açılmış oturumlar da kapanır
+  await oturumuTemizle(uid); // eski kartla açılmış oturumlar kapanır; sonradan bağlanmış e-posta/Google kimliği (F-03) kalkar
   return { kartUrl };
 });
 
@@ -144,7 +159,8 @@ export const cocukSifreYenile = onCall(CAGRI, async (istek) => {
   await hocaGerekli(istek);
   const uid = await cocukUid(refAl(istek.data));
   const sifre = sifreUret();
-  await gizliRef(uid).update({ ...(await sifreAlanlari(sifre)), hatalar: 0, kilitBitis: FieldValue.delete() });
+  await gizliRef(uid).update({ ...(await sifreAlanlari(sifre)), hatalar: 0, ilkHata: FieldValue.delete(), kilitBitis: FieldValue.delete() });
+  await oturumuTemizle(uid); // eski şifreyle açılmış oturumlar da kapanır (F-04)
   return { sifre };
 });
 
@@ -183,11 +199,25 @@ async function ipAnahtari(istek: Request): Promise<string> {
     }
     ipTuzu = Buffer.from(String(s.get('tuz')), 'base64');
   }
-  // shortcut: X-Forwarded-For'un ilk değeri Hosting'den gelen istemci IP'sidir; işlevin run.app adresine doğrudan gelen biri bunu
-  // taklit edebilir. Asıl koruma kullanıcı adı kilidi + 128 bitlik kart sırrı; canlıda başlıklar görülünce sağlamlaştırılır.
-  const ip = istek.get('x-forwarded-for')?.split(',')[0]?.trim() || istek.ip || 'bilinmiyor';
-  return createHmac('sha256', ipTuzu).update(ip).digest('hex');
+  return createHmac('sha256', ipTuzu).update(istemciIp(istek)).digest('hex');
 }
+/**
+ * İstemci IP'si. X-Forwarded-For'un SOLDAKİ girdileri istemci tarafından yazılabilir (F-01); güvenilir olan yalnız Google'ın ön
+ * ucunun eklediği SAĞ uçtur. Hosting uzantısı Fastly-Client-IP'yi kendisi yazar (Hosting üzerinden gelen istekte taklit edilemez).
+ * shortcut: işlevin run.app adresine DOĞRUDAN gelen biri Fastly-Client-IP'yi uydurabilir; bu yüzden IP sınırı tek koruma değildir:
+ * kullanıcı adı kilidi (8 hata, hesap başına, IP'den bağımsız), 128 bitlik kart sırrı ve örnek başına yük tavanı (yukAsildi) var.
+ * Canlıda önizleme kanalında başlıklar görülünce doğrulanır (docs/ILIM-YOLU.md «Yayından önce»).
+ */
+export function istemciIp(istek: Request): string {
+  const fastly = istek.get('fastly-client-ip')?.trim();
+  if (fastly) return fastly;
+  const zincir = (istek.get('x-forwarded-for') ?? '').split(',').map((x) => x.trim()).filter(Boolean);
+  return zincir[zincir.length - 1] || istek.ip || 'bilinmiyor';
+}
+// Örnek başına yük tavanı: IP sahteciliğiyle dakikada sınırsız scrypt/Firestore yazımı yapılamasın. Yalnız BAŞARISIZ denemeler sayılır.
+let yukBas = 0;
+let yukSayi = 0;
+const yukAsildi = () => { if (Date.now() - yukBas >= DAKIKA) { yukBas = Date.now(); yukSayi = 0; } return yukSayi >= YUK_SINIRI; };
 const ipRef = (anahtar: string) => db.doc(`gizli/giris/ipler/${anahtar}`);
 /** IP kilitliyse kilidin bitişi (ms). */
 async function ipKilidi(anahtar: string): Promise<number | null> {
@@ -197,6 +227,7 @@ async function ipKilidi(anahtar: string): Promise<number | null> {
   return Number(s.get('sayi')) >= IP_SINIRI ? pencere.toMillis() + SAAT : null;
 }
 async function ipHatasi(anahtar: string): Promise<void> {
+  yukSayi++;
   await db.runTransaction(async (tx) => {
     const s = await tx.get(ipRef(anahtar));
     const simdi = Date.now();
@@ -213,9 +244,10 @@ async function tokenVer(uid: string): Promise<string | null> {
   let kullanici;
   try { kullanici = await auth.getUser(uid); } catch (e) { if (kullaniciYok(e)) return null; throw e; }
   if (kullanici.disabled) return null;
-  const token = await auth.createCustomToken(uid, { ...kullanici.customClaims }); // {rol:'cocuk', ref}
-  await db.doc(`kullanicilar/${uid}`).set({ sonGiris: FieldValue.serverTimestamp() }, { merge: true });
-  return token;
+  await sagliksizKimlikleriKaldir(uid, kullanici);
+  // update (set/merge DEĞİL): silinmiş çocuğun profili uçuştaki bir giriş yüzünden yeniden doğmaz (F-05).
+  try { await db.doc(`kullanicilar/${uid}`).update({ sonGiris: FieldValue.serverTimestamp() }); } catch (e) { if ((e as { code?: number }).code === 5) return null; throw e; }
+  return auth.createCustomToken(uid, { ...kullanici.customClaims }); // {rol:'cocuk', ref}
 }
 
 const kilitYaniti = (yanit: Response, bitis: number) => gonder(yanit, 429, { hata: 'kilit', bitis: new Date(bitis).toISOString() });
@@ -233,6 +265,7 @@ export const cocukGiris = onRequest({ cors: KOKENLER, concurrency: 4 }, async (i
   const ipA = await ipAnahtari(istek);
   const ipBitis = await ipKilidi(ipA);
   if (ipBitis) { kilitYaniti(yanit, ipBitis); return; }
+  if (yukAsildi()) { kilitYaniti(yanit, yukBas + DAKIKA); return; }
 
   const ad = gecerliMi(kullaniciAdi);
   const adSnap = ad.ok ? await db.doc(`kullaniciAdlari/${ad.ad}`).get() : undefined;
@@ -252,17 +285,23 @@ export const cocukGiris = onRequest({ cors: KOKENLER, concurrency: 4 }, async (i
   if (beklenen.length !== gelen.length || !timingSafeEqual(beklenen, gelen)) {
     const bitis = await db.runTransaction(async (tx) => {
       const s = await tx.get(gizliRef(uid));
-      const hatalar = (Number(s.get('hatalar')) || 0) + 1;
-      if (hatalar < HATA_SINIRI) { tx.update(gizliRef(uid), { hatalar }); return null; }
-      const son = Date.now() + KILIT_SURESI;
-      tx.update(gizliRef(uid), { hatalar: 0, kilitBitis: Timestamp.fromMillis(son) });
+      const simdi = Date.now();
+      const kilitli = s.get('kilitBitis');
+      if (kilitli instanceof Timestamp && kilitli.toMillis() > simdi) return kilitli.toMillis(); // eşzamanlı istek: kilit uzamaz
+      // Hata penceresi KILIT_SURESI: ilk hatadan 15 dk sonra sayaç sıfırlanır (seyrek yanlışlar kilide birikmez).
+      const ilk = s.get('ilkHata');
+      const acik = ilk instanceof Timestamp && ilk.toMillis() + KILIT_SURESI > simdi;
+      const hatalar = (acik ? Number(s.get('hatalar')) || 0 : 0) + 1;
+      if (hatalar < HATA_SINIRI) { tx.update(gizliRef(uid), { hatalar, ilkHata: acik ? ilk : Timestamp.fromMillis(simdi) }); return null; }
+      const son = simdi + KILIT_SURESI;
+      tx.update(gizliRef(uid), { hatalar: 0, ilkHata: FieldValue.delete(), kilitBitis: Timestamp.fromMillis(son) });
       return son;
     });
     await ipHatasi(ipA);
     if (bitis) kilitYaniti(yanit, bitis); else gonder(yanit, 401, { hata: 'yanlis' });
     return;
   }
-  if (Number(g.get('hatalar')) || g.get('kilitBitis')) await gizliRef(uid).update({ hatalar: 0, kilitBitis: FieldValue.delete() });
+  if (Number(g.get('hatalar')) || g.get('kilitBitis')) await gizliRef(uid).update({ hatalar: 0, ilkHata: FieldValue.delete(), kilitBitis: FieldValue.delete() });
   const token = await tokenVer(uid);
   if (!token) { gonder(yanit, 401, { hata: 'yanlis' }); return; }
   gonder(yanit, 200, { token });
@@ -270,7 +309,7 @@ export const cocukGiris = onRequest({ cors: KOKENLER, concurrency: 4 }, async (i
 
 const KART_ID = /^[A-Za-z0-9_-]{12}$/;
 const KART_SIR = /^[A-Za-z0-9_-]{22}$/;
-export const kartGiris = onRequest({ cors: KOKENLER }, async (istek, yanit) => {
+export const kartGiris = onRequest({ cors: KOKENLER, concurrency: 10 }, async (istek, yanit) => {
   const govde = girisKapisi(istek, yanit);
   if (!govde) return;
   const { kartId, sir } = govde;
@@ -281,6 +320,7 @@ export const kartGiris = onRequest({ cors: KOKENLER }, async (istek, yanit) => {
   const ipA = await ipAnahtari(istek);
   const ipBitis = await ipKilidi(ipA);
   if (ipBitis) { kilitYaniti(yanit, ipBitis); return; }
+  if (yukAsildi()) { kilitYaniti(yanit, yukBas + DAKIKA); return; }
   const bulunan = await db.collection('gizli/cocuk/hesaplar').where('kartId', '==', kartId).limit(1).get();
   const g = bulunan.docs[0];
   const beklenen = Buffer.from(g ? String(g.get('kartOzeti')) : '', 'hex');

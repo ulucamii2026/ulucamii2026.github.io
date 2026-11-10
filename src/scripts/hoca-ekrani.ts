@@ -141,14 +141,14 @@ export async function hocaEkrani(): Promise<void> {
     if (kayitli) kok.querySelectorAll<HTMLInputElement>('input[name=eposta]').forEach((i) => { i.value = kayitli; });
   };
   const bagTamamlaEkrani = () => {
-    kok.innerHTML = `<form class="kutu" data-form="bagTamamla" style="max-width:32rem" novalidate>
+    kok.innerHTML = `<form class="kutu ps-form-dar" data-form="bagTamamla" novalidate>
       <h2>Girişi tamamla</h2><p class="kucuk">Bağlantıyı başka bir cihazda açtınız; e-postanızı yazın.</p>
       <label>E-posta<input type="email" name="eposta" required autocomplete="username"></label>
       <p data-mesaj hidden class="not"></p>
       <div class="satir-dugmeler"><button type="submit" class="dugme dugme-birincil">Devam</button></div></form>`;
   };
   const sifreEkrani = () => {
-    kok.innerHTML = `<form class="kutu" data-form="sifreBelirle" style="max-width:32rem" novalidate>
+    kok.innerHTML = `<form class="kutu ps-form-dar" data-form="sifreBelirle" novalidate>
       <h2>Şifre belirle</h2><p class="kucuk">Sonraki girişlerde e-posta + bu şifre kullanılır (en az 8 karakter).</p>
       <label>Şifre<input type="password" name="sifre" required minlength="8" autocomplete="new-password"></label>
       <label>Şifre (tekrar)<input type="password" name="sifre2" required minlength="8" autocomplete="new-password"></label>
@@ -362,7 +362,7 @@ export async function hocaEkrani(): Promise<void> {
       const pasifSay = S.ogrenciler.filter((x) => x.durum === 'pasif').length;
       govde = `<section class="bolum"><h2>${simge('ogrenci')}Öğrenciler <span class="kucuk">(${S.ogrenciler.length - pasifSay} aktif${pasifSay ? ` · ${pasifSay} pasif` : ''})</span></h2>
         <ul class="liste ogr-liste">${S.ogrenciler.map((x) => `<li class="${x.ref === S!.secili ? 'secili' : ''}"><button type="button" class="baglanti-dugme buyu ogr-ad" data-ogr="${esc(x.ref)}"${x.ref === S!.secili ? ' aria-current="true"' : ''}><b>${esc(x.ad)} ${esc(x.soyad)}</b></button>${x.grup ? `<span class="rozet grup">${esc(x.grup)}</span>` : ''}<span class="kucuk">${(x.veliler || []).length} veli</span>${x.durum === 'pasif' ? '<span class="rozet">pasif</span>' : ''}<span class="kucuk ogr-ref">${esc(x.ref)}</span></li>`).join('')}</ul>
-        <p class="kucuk" style="margin-top:.6rem">Bir öğrenciyi seçince ilerleme, değerlendirme ve notları açılır. Yeni öğrenci: «Aileler · Davet» → «Kayıt defterinden yenile».</p></section>`;
+        <p class="kucuk ps-ust-06">Bir öğrenciyi seçince ilerleme, değerlendirme ve notları açılır. Yeni öğrenci: «Aileler · Davet» → «Kayıt defterinden yenile».</p></section>`;
       if (o) {
         const ile = S.ilerleme || {};
         /* Ezber özeti (27 Eyl 2026): basamak sayıları + kontrol günü gelenler; dinleme ve düzeltme «Ezber» sekmesinde. */
@@ -376,8 +376,8 @@ export async function hocaEkrani(): Promise<void> {
           return ([1, 2, 3, 4] as const).map((b) => `<span>${esc(BASAMAK_ADLARI[b].tr)} <b>${say[b]}</b></span>`).join('') + (vade ? `<span class="ogr-ezber-vade"><b>${vade}</b> maddenin kontrol günü geldi</span>` : '');
         })();
         govde += `<section class="bolum" id="ogrenci-karti">
-          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem">
-            <h2 style="margin:0">${simge('ogrenci')}${esc(o.ad)} ${esc(o.soyad)} <span class="kucuk">${esc(o.ref)} · ${esc(DIL_ADI[o.dil || ''] || o.dil || '')}</span></h2>
+          <div class="ps-baslik-satir">
+            <h2>${simge('ogrenci')}${esc(o.ad)} ${esc(o.soyad)} <span class="kucuk">${esc(o.ref)} · ${esc(DIL_ADI[o.dil || ''] || o.dil || '')}</span></h2>
             <button type="button" class="dugme dugme-ikincil kucuk-dugme" data-eylem="whatsappKarneKopyala" data-ogr="${esc(o.ref)}">
               📱 WhatsApp Karnesi Kopyala
             </button>
@@ -387,12 +387,12 @@ export async function hocaEkrani(): Promise<void> {
             <label>Durum<select name="durum">${secenekler({ aktif: 'Aktif', pasif: 'Pasif' }, o.durum === 'pasif' ? 'pasif' : 'aktif')}</select></label>
             <label>Grup / sınıf<input type="text" name="grup" value="${esc(o.grup || '')}" maxlength="40"></label>
             <div><label>&nbsp;</label><button type="submit" class="dugme dugme-ikincil">Kaydet</button></div>
-            <p data-mesaj hidden class="not" style="grid-column:1/-1"></p>
+            <p data-mesaj hidden class="not ps-izgara-tam"></p>
           </form>
 
           <h3>${simge('aile')}Veliler (e-posta)</h3>
           <ul class="liste">${(o.veliler || []).map((e) => `<li><span class="buyu">${esc(e)}</span><button type="button" class="baglanti-dugme" data-veli-sil="${esc(e)}">kaldır</button></li>`).join('') || '<li class="kucuk">Veli e-postası yok.</li>'}</ul>
-          <form data-form="veliEkle" class="satir-dugmeler"><input type="email" name="eposta" placeholder="veli@ornek.be" required style="flex:1 1 14rem"><button type="submit" class="dugme dugme-ikincil">Veli ekle</button><p data-mesaj hidden class="not" style="flex-basis:100%"></p></form>
+          <form data-form="veliEkle" class="satir-dugmeler"><input type="email" name="eposta" placeholder="veli@ornek.be" required class="ps-esnek-14"><button type="submit" class="dugme dugme-ikincil">Veli ekle</button><p data-mesaj hidden class="not ps-basis-tam"></p></form>
 
           <section class="bolum" data-ev-calismasi><h3>Evde çalışma · öz değerlendirme</h3><p class="kucuk">Öğrencinin veya ailesinin bildirimidir; öğretmen değerlendirmesi değildir. Her etkinliğin son çalışması gösterilir.</p>
           ${S.evCalismasi===null?'<p class="not hata">Evde çalışma kayıtları alınamadı. Öğrenciyi yeniden seçerek deneyin.</p>':Object.keys(S.evCalismasi||{}).length?`<ul class="liste">${Object.entries(S.evCalismasi||{}).sort((a,b)=>b[1].son.localeCompare(a[1].son)).map(([id,r])=>`<li><span class="buyu"><b>${esc(ETKINLIKLER.find(e=>e.id===id)?.baslik.tr||id)}</b><br><span class="kucuk">${esc(tarihYaz(r.son))} · ${{destek:'Yardımla denedim',tekrar:'Biraz daha tekrar',rahat:'Rahatça hatırladım'}[r.cevap]}</span></span></li>`).join('')}</ul>`:'<p class="kucuk">Henüz hesapta çalışma kaydı yok. Bu durum öğrencinin evde çalışmadığı anlamına gelmez.</p>'}</section>
@@ -403,9 +403,9 @@ export async function hocaEkrani(): Promise<void> {
           <h3>${simge('grafik')}İlerleme</h3>
           <form data-form="ilerleme">
             <label>Kur’an’da gelinen adım<select name="kuranAdim"><option value="-1">—</option>${kuranSirasi.map((k, i) => `<option value="${i}" ${ile.kuranAdim === i ? 'selected' : ''}>${i + 1}. ${esc(k.konu)} (${esc(tarihYaz(k.tarih, { day: 'numeric', month: 'short' }))})</option>`).join('')}</select></label>
-            <label style="margin-top:1rem">Alan değerlendirmesi <span class="kucuk">· 1 zayıf – 5 çok iyi</span></label>
+            <label class="ps-ust-1">Alan değerlendirmesi <span class="kucuk">· 1 zayıf – 5 çok iyi</span></label>
             <div class="izgara-3">${['kuran', 'itikat', 'ibadet', 'siyer', 'ahlak'].map((k) => `<label>${esc(ALANLAR[k])}<select name="alan:${k}">${secenekler(DERECE, String((ile.alanlar || {})[k] || 0))}</select></label>`).join('')}</div>
-            <label style="margin-top:.8rem">Hocanın Tebrik / Takdir Rozeti <span class="kucuk">· Öğrenci odasında parlar</span>
+            <label class="ps-ust-08">Hocanın Tebrik / Takdir Rozeti <span class="kucuk">· Öğrenci odasında parlar</span>
               <select name="rozet">
                 <option value="">— Rozet seçilmedi —</option>
                 <option value="yildiz" ${ile.rozet === 'yildiz' ? 'selected' : ''}>⭐ Haftanın Yıldız Talebesi</option>
@@ -426,16 +426,16 @@ export async function hocaEkrani(): Promise<void> {
             <label>Tarih<input type="date" name="tarih" value="${bugunISO()}" required></label>
             <label>Alan<select name="alan">${secenekler(ALANLAR, 'kuran')}</select></label>
             <label>Derece (1 zayıf – 5 çok iyi)<select name="derece">${secenekler(DERECE, '4')}</select></label>
-            <label style="grid-column:1/-1">Ölçüt / konu<input type="text" name="olcut" maxlength="120" list="olcut-listesi" placeholder="örn. Mahreç, Tecvid, Fâtiha ezberi"><datalist id="olcut-listesi">${OLCUTLER.map((o) => `<option value="${esc(o)}">`).join('')}</datalist></label>
-            <label style="grid-column:1/-1">Not<input type="text" name="not" maxlength="300"></label>
+            <label class="ps-izgara-tam">Ölçüt / konu<input type="text" name="olcut" maxlength="120" list="olcut-listesi" placeholder="örn. Mahreç, Tecvid, Fâtiha ezberi"><datalist id="olcut-listesi">${OLCUTLER.map((o) => `<option value="${esc(o)}">`).join('')}</datalist></label>
+            <label class="ps-izgara-tam">Not<input type="text" name="not" maxlength="300"></label>
             <div><button type="submit" class="dugme dugme-ikincil">Değerlendirme ekle</button></div>
-            <p data-mesaj hidden class="not" style="grid-column:1/-1"></p>
+            <p data-mesaj hidden class="not ps-izgara-tam"></p>
           </form>
 
           <h3>${simge('not')}Notlar</h3>
-          <ul class="liste">${S.notlar.map((n) => `<li><span class="kucuk">${esc(tarihYaz(String(n.tarih)))}</span><span class="buyu" style="white-space:pre-line">${esc(n.metin)}</span><span class="rozet">${n.veliyeGorunur ? 'veliye görünür' : 'yalnız hoca'}</span><button type="button" class="baglanti-dugme" data-sil="notlar" data-id="${esc(n.id)}">sil</button></li>`).join('') || '<li class="kucuk">Henüz not yok.</li>'}</ul>
+          <ul class="liste">${S.notlar.map((n) => `<li><span class="kucuk">${esc(tarihYaz(String(n.tarih)))}</span><span class="buyu ps-satir-koru">${esc(n.metin)}</span><span class="rozet">${n.veliyeGorunur ? 'veliye görünür' : 'yalnız hoca'}</span><button type="button" class="baglanti-dugme" data-sil="notlar" data-id="${esc(n.id)}">sil</button></li>`).join('') || '<li class="kucuk">Henüz not yok.</li>'}</ul>
           <form data-form="not">
-            <div class="izgara-2"><label>Tarih<input type="date" name="tarih" value="${bugunISO()}" required></label><label class="satir" style="margin-top:1.9rem"><input type="checkbox" name="veliyeGorunur" checked> Veliye görünür</label></div>
+            <div class="izgara-2"><label>Tarih<input type="date" name="tarih" value="${bugunISO()}" required></label><label class="satir ps-ust-19"><input type="checkbox" name="veliyeGorunur" checked> Veliye görünür</label></div>
             <label>Not<textarea name="metin" maxlength="1000" required></textarea></label>
             <p data-mesaj hidden class="not"></p>
             <div class="satir-dugmeler"><button type="submit" class="dugme dugme-ikincil">Not ekle</button></div>
@@ -451,7 +451,7 @@ export async function hocaEkrani(): Promise<void> {
         <div class="za-arac" role="group" aria-label="${etiket} biçimlendirme">
           <button type="button" class="za-b" data-zk="bold" title="Kalın"><b>B</b></button><button type="button" class="za-b" data-zk="italic" title="İtalik"><i>I</i></button><button type="button" class="za-b" data-zk="underline" title="Altı çizili"><u>U</u></button>
           <span class="za-ayr"></span>
-          <button type="button" class="za-b za-renk" data-zk="foreColor" data-renk="#b5452b" title="Kiremit" style="color:#b5452b">A</button><button type="button" class="za-b za-renk" data-zk="foreColor" data-renk="#1f5f8b" title="Mavi" style="color:#1f5f8b">A</button><button type="button" class="za-b za-renk" data-zk="foreColor" data-renk="#2f6d3c" title="Yeşil" style="color:#2f6d3c">A</button><button type="button" class="za-b za-renk" data-zk="foreColor" data-renk="#24201c" title="Varsayılan renk" style="color:#24201c">A</button>
+          <button type="button" class="za-b za-renk" data-zk="foreColor" data-renk="#b5452b" title="Kiremit">A</button><button type="button" class="za-b za-renk" data-zk="foreColor" data-renk="#1f5f8b" title="Mavi">A</button><button type="button" class="za-b za-renk" data-zk="foreColor" data-renk="#2f6d3c" title="Yeşil">A</button><button type="button" class="za-b za-renk" data-zk="foreColor" data-renk="#24201c" title="Varsayılan renk">A</button>
           <span class="za-ayr"></span>
           <button type="button" class="za-b" data-zk="createLink" title="Bağlantı ekle"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9.5 13.5a4 4 0 0 0 5.5 0l3-3a4 4 0 0 0-5.5-5.5l-1 1"/><path d="M14.5 10.5a4 4 0 0 0-5.5 0l-3 3a4 4 0 0 0 5.5 5.5l1-1"/></svg></button>
           <span class="za-ayr"></span>
@@ -518,9 +518,9 @@ export async function hocaEkrani(): Promise<void> {
       govde = kitaplarHtml();
     } else if (S.sekme === 'hesap') {
       govde = `<section class="bolum"><h2>${simge('ayar')}Hesap</h2><p>${esc(S.ad)} · <span class="kucuk">${esc(a.currentUser?.email || '')}</span></p>
-        <form data-form="sifreDegistir" style="max-width:28rem"><label>Yeni şifre<input type="password" name="sifre" minlength="8" required autocomplete="new-password"></label><p data-mesaj hidden class="not"></p>
+        <form data-form="sifreDegistir" class="ps-form-dar-28"><label>Yeni şifre<input type="password" name="sifre" minlength="8" required autocomplete="new-password"></label><p data-mesaj hidden class="not"></p>
         <div class="satir-dugmeler"><button type="submit" class="dugme dugme-ikincil">Şifreyi değiştir</button></div></form>
-        <p class="kucuk" style="margin-top:1rem">Veli portalı: <a href="${esc(veri.veliYollari.tr)}">${esc(location.origin + veri.veliYollari.tr)}</a></p></section>`;
+        <p class="kucuk ps-ust-1">Veli portalı: <a href="${esc(veri.veliYollari.tr)}">${esc(location.origin + veri.veliYollari.tr)}</a></p></section>`;
     }
     const SEKME_IKON: Record<string, string> = { yoklama: 'takvim', defter: 'kitap', ezber: 'ezber', envanter: 'kitap', kitaplar: 'kitap', ogrenci: 'ogrenci', ilim: 'kart', odev: 'kitap', duyuru: 'duyuru', bildirim: 'zarf', aile: 'aile', hesap: 'ayar' };
     /* Günün özeti (14 Eyl 2026): büyük sayfa başlığı yerine, hocanın ilk bakışta gördüğü şey — bugün (ya da sıradaki)

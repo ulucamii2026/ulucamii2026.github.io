@@ -317,7 +317,7 @@ export function envanterPaneli(kok: HTMLElement, s: EnvanterPaneliSecenek): { te
   };
   const ogrenciIlerlemeHtml = () => {
     const p = ogrenciIlerleme();
-    return `<div class="env-cubuk" role="progressbar" aria-valuemin="0" aria-valuemax="${p.toplam}" aria-valuenow="${p.say}" aria-label="İlerleme"><span style="width:${p.yuzde}%"></span></div><span class="env-sayac">${p.say}/${p.toplam}</span>`;
+    return `<div class="env-cubuk" role="progressbar" aria-valuemin="0" aria-valuemax="${p.toplam}" aria-valuenow="${p.say}" aria-label="İlerleme"><span class="yz-${Math.max(0, Math.min(100, Math.round(p.yuzde)))}"></span></div><span class="env-sayac">${p.say}/${p.toplam}</span>`;
   };
   const ogrenciKabuk = () => {
     const f = form!;
@@ -429,7 +429,17 @@ export function envanterPaneli(kok: HTMLElement, s: EnvanterPaneliSecenek): { te
     const f = form;
     ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, tuval.width, tuval.height);
     const mevcut = f.oturum.belge.cizim;
-    if (mevcut) { const im = new Image(); im.onload = () => ctx.drawImage(im, 0, 0, tuval.width, tuval.height); im.src = mevcut; }
+    if (mevcut) {
+      // CSP: img-src 'data:' gerektirmesin — data adresi elle Blob'a çevrilir, createImageBitmap ile çizilir (blob: da gerekmez).
+      const m = /^data:([^;,]+)(;base64)?,(.*)$/s.exec(mevcut);
+      if (m) {
+        try {
+          const ikili = m[2] ? atob(m[3]) : decodeURIComponent(m[3]);
+          const bayt = Uint8Array.from(ikili, (c) => c.charCodeAt(0));
+          createImageBitmap(new Blob([bayt], { type: m[1] })).then((bmp) => { ctx.drawImage(bmp, 0, 0, tuval.width, tuval.height); bmp.close?.(); }, () => {});
+        } catch { /* bozuk kayıt: boş tuval */ }
+      }
+    }
     ctx.lineWidth = 5; ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.strokeStyle = '#1a3d9e';
     let cizen = false; let degisti = false;
     const nokta = (e: PointerEvent) => { const r = tuval.getBoundingClientRect(); return [(e.clientX - r.left) * (tuval.width / r.width), (e.clientY - r.top) * (tuval.height / r.height)] as const; };

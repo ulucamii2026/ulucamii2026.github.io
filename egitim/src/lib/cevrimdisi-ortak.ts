@@ -47,8 +47,8 @@ const STATIK_DOSYALAR = new Set(['/favicon.svg', '/favicon.ico', '/apple-touch-i
 /** Önbellek öncelikli statik dosya mı: özetli yapı dosyaları, yazı tipleri, logo ve simgeler. */
 export const statikMi = (yol: string): boolean => STATIK_ONEKLER.some((o) => yol.startsWith(o)) || STATIK_DOSYALAR.has(yol);
 
-/** Hesap sayfaları (/<dil>/hesap/…) ve kart girişi (/k/): kişisel durum taşırlar; SW bunlara HİÇ dokunmaz (önbelleğe almaz, çevrim dışı sunmaz). */
-export const onbellekDisiYolMu = (yol: string): boolean => /^\/(?:tr|fr|en|nl|de)\/hesap(?:\/|$)/.test(yol) || yol === '/k' || yol.startsWith('/k/');
+/** Hesap sayfaları (/<dil>/hesap/…), abonelikten çıkış onayı (/<dil>/abonelik-cik/) ve kart girişi (/k/): kişisel durum/belirteç taşırlar; SW bunlara HİÇ dokunmaz (önbelleğe almaz, çevrim dışı sunmaz). */
+export const onbellekDisiYolMu = (yol: string): boolean => /^\/(?:tr|fr|en|nl|de)\/(?:hesap|abonelik-cik)(?:\/|$)/.test(yol) || yol === '/k' || yol.startsWith('/k/');
 
 /** Sayfanın (ya da bir CSS/JS dosyasının) istediği statik dosyalar: HTML'de href/src, CSS'te url(), JS'te `./x.js`, `/_astro/x.js` ve
  *  Vite'ın `_astro/x.js` yükleme listesi. `taban`: metnin kendi yolu (göreli adresler buna göre çözülür). Başka köken ve statik olmayan

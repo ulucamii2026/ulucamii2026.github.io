@@ -1,0 +1,124 @@
+---
+/**
+ * Bilgi yolları dizini (İlim Yolu · Dilim 2, 10 Kasım 2026): (a) yıllık plan konuları (kart + mini sınav), (b) bilgi maddeleri (Ezber Kilimi sayfaları),
+ * (c) seviye testinin yedi alanına göre yol; ayrıca yerleştirme testi ve rozetler. Sunucu yalnız iskeleti çizer; her yolun ilerleme sayısını ve
+ * «rozet kazanıldı» satırını scripts/yollar.ts cihaz kaydından (girişliyse hesapla eşitlenmiş kopyadan) doldurur.
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import { dilListesi } from '@ortak/i18n/utils';
+import { KODLAR } from '@ortak/lib/ilim-yolu/bilgi-ilerleme';
+import { ALANLAR, yolKartlari } from '@ortak/lib/ilim-yolu/yollar';
+import Ikon from '../../../components/Ikon.astro';
+import { ilimMetinleri } from '../../../i18n/ilim';
+import { alanAdlari, yollarMetinleri } from '../../../i18n/yollar';
+import { BILGI_ID_LISTESI } from '../../../lib/bilgi-yolu';
+import { yolKapagi } from '../../../lib/yol-kapaklari';
+import { KARTLAR } from '../../../lib/bilgi-karti-verisi';
+import Taban from '../../../layouts/Taban.astro';
+import '../../../styles/ilim.css';
+import '../../../styles/yollar.css';
+
+export function getStaticPaths() {
+  return dilListesi.map((dil) => ({ params: { dil } }));
+}
+
+const dil = Astro.params.dil as Dil;
+const y = yollarMetinleri(dil);
+const il = ilimMetinleri(dil);
+const alanlar = alanAdlari(dil);
+const motifler = ['m-goz', 'm-yildiz', 'm-sevron', 'm-mihrap'] as const;
+const doldur = (s: string, d: Record<string, string | number>) => s.replace(/\{(\w+)\}/g, (_, k: string) => String(d[k] ?? ''));
+const planlar = KODLAR.map((kod, n) => ({ yol: `plan-${kod}`, ad: y.planAd[kod], idler: yolKartlari(KARTLAR, `plan-${kod}`).map((k) => k.id), motif: motifler[n % 4], tur: 'plan' }));
+const seviyeler = ALANLAR.map((alan, n) => ({ yol: `alan-${alan}`, ad: alanlar[alan], idler: yolKartlari(KARTLAR, `alan-${alan}`).map((k) => k.id), motif: motifler[(n + 1) % 4], tur: 'alan' }));
+const kapak = (yol: string) => yolKapagi(yol);
+const veri = {
+  dil,
+  m: { sayim: y.sayim, sayimBilgi: y.sayimBilgi },
+};
+---
+<Taban dil={dil} baslik={y.baslik} aciklama={y.aciklama} yol="yollar">
+  <div class="icerik yl-sayfa" data-yollar data-veri={JSON.stringify(veri)}>
+    <header class="yl-bas">
+      <p class="iy-ust-yazi">{il.marka}</p>
+      <h1>{y.baslik}</h1>
+      <p>{y.lead}</p>
+      <p class="yl-not">{y.cihazNotu}</p>
+      <noscript><p class="yl-not">{y.jsGerek}</p></noscript>
+      <p><a class="yl-geri-baglanti" href={`/${dil}/yollar/rozetler/`}>{y.rozetBaglanti} <Ikon ad="ok" /></a></p>
+    </header>
+
+    <section class="iy-kart yl-yer" aria-labelledby="yer-baslik">
+      <svg class="kilim-serit" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#serit)" /></svg>
+      <div class="iy-kart-govde">
+        <h2 id="yer-baslik">{y.yerBaslik}</h2>
+        <p>{y.yerMetin}</p>
+        <a class="dugme birincil" href={`/${dil}/yollar/yerlestirme/`}>{y.yerDugme} <Ikon ad="ok" /></a>
+      </div>
+    </section>
+
+    <section class="iy-bolum" id="plan" aria-labelledby="plan-baslik">
+      <div class="iy-bolum-bas">
+        <h2 id="plan-baslik">{y.planBaslik}</h2>
+        <p>{y.planMetin}</p>
+      </div>
+      <ul class="yl-yollar">
+        {planlar.map((p) => (
+          <li class="yl-yol" data-yol={p.yol} data-tur="plan" data-idler={p.idler.join(',')}>
+            {kapak(p.yol) && <img class="yl-yol-kapak" src={kapak(p.yol)!.kucuk} srcset={kapak(p.yol)!.srcset} sizes="(min-width: 40rem) 36rem, calc(100vw - 4rem)" width="640" height="360" alt="" loading="lazy" decoding="async" />}
+            <div class="yl-yol-motif" aria-hidden="true"><svg viewBox="0 0 100 100"><use href={`#${p.motif}`} /></svg></div>
+            <div class="yl-yol-metin">
+              <h3><a href={`/${dil}/yollar/${p.yol}/`}>{p.ad}</a></h3>
+              <p class="yl-sayi">{doldur(y.kartSayisi, { n: p.idler.length })}</p>
+              <p class="yl-ilerleme" data-ilerleme></p>
+              <p class="yl-rozet-yazi" data-rozet hidden><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-tik" /></svg>{y.rozetKazanildi}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="iy-bolum" id="bilgi" aria-labelledby="bilgi-baslik">
+      <div class="iy-bolum-bas">
+        <h2 id="bilgi-baslik">{y.bilgiBaslik}</h2>
+        <p>{y.bilgiMetin}</p>
+      </div>
+      <ul class="yl-yollar">
+        <li class="yl-yol" data-yol="bilgi" data-tur="bilgi" data-bilgi-idler={BILGI_ID_LISTESI.join(',')}>
+          <div class="yl-yol-motif" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#m-mihrap" /></svg></div>
+          <div class="yl-yol-metin">
+            <h3><a href={`/${dil}/yollar/bilgi/`}>{y.bilgiAd}</a></h3>
+            <p class="yl-sayi">{doldur(y.maddeSayisi, { n: BILGI_ID_LISTESI.length })}</p>
+            <p class="yl-ilerleme" data-ilerleme></p>
+            <p class="yl-rozet-yazi" data-rozet hidden><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-tik" /></svg>{y.rozetKazanildi}</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="iy-bolum" id="seviye" aria-labelledby="seviye-baslik">
+      <div class="iy-bolum-bas">
+        <h2 id="seviye-baslik">{y.seviyeBaslik}</h2>
+        <p>{y.seviyeMetin}</p>
+      </div>
+      <ul class="yl-yollar iki">
+        {seviyeler.map((p) => (
+          <li class="yl-yol" data-yol={p.yol} data-tur="alan" data-idler={p.idler.join(',')}>
+            {kapak(p.yol) && <img class="yl-yol-kapak" src={kapak(p.yol)!.kucuk} srcset={kapak(p.yol)!.srcset} sizes="(min-width: 40rem) 36rem, calc(100vw - 4rem)" width="640" height="360" alt="" loading="lazy" decoding="async" />}
+            <div class="yl-yol-motif" aria-hidden="true"><svg viewBox="0 0 100 100"><use href={`#${p.motif}`} /></svg></div>
+            <div class="yl-yol-metin">
+              <h3><a href={`/${dil}/yollar/${p.yol}/`}>{p.ad}</a></h3>
+              <p class="yl-sayi">{doldur(y.kartSayisi, { n: p.idler.length })}</p>
+              <p class="yl-ilerleme" data-ilerleme></p>
+              <p class="yl-rozet-yazi" data-rozet hidden><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-tik" /></svg>{y.rozetKazanildi}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
+  </div>
+</Taban>
+
+<script>
+  import '../../../scripts/dil';
+  import '../../../scripts/yollar';
+</script>

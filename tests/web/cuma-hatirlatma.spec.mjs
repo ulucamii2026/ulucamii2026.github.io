@@ -20,8 +20,11 @@ const gunler = JSON.parse(readFileSync(resolve(process.cwd(), 'src/data/namaz-va
 const sabit = yamlParse(readFileSync(resolve(process.cwd(), 'src/content/ayarlar/site.yaml'), 'utf-8')).site.cumaSaati || '';
 const haftaGunu = (tarih) => new Date(tarih + 'T12:00:00Z').getUTCDay(); // 4 = Perşembe, 5 = Cuma
 const sonrakiGun = (tarih) => new Date(Date.parse(tarih + 'T12:00:00Z') + 86_400_000).toISOString().slice(0, 10);
-// Verideki ilk Perşembe-Cuma çifti (Cuma kaydı da olmalı)
-const persembe = gunler.find((g) => haftaGunu(g.tarih) === 4 && gunler.some((c) => c.tarih === sonrakiGun(g.tarih)))?.tarih;
+// Verideki ilk (bugünden sonraki) Perşembe-Cuma çifti (Cuma kaydı da olmalı)
+// Sayfalara verilen pencere dünden başlar (lib/icerik.ts namazVakitleri); geçmiş Perşembe'ler bantta yoktur, bu yüzden
+// bugünden sonraki ilk çift seçilir (sabit ilk tarih takvim ilerleyince çürürdü).
+const bugunUtc = new Date().toISOString().slice(0, 10);
+const persembe = gunler.find((g) => g.tarih >= bugunUtc && haftaGunu(g.tarih) === 4 && gunler.some((c) => c.tarih === sonrakiGun(g.tarih)))?.tarih;
 const cuma = persembe && gunler.find((g) => g.tarih === sonrakiGun(persembe));
 const saat = sabit || cuma?.ogle;
 // Çarşamba: Perşembe'den bir gün önce

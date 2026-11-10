@@ -83,7 +83,7 @@ test('kaydedilebilirYolMu: yalnız beş dilin sayfaları; dosya, üst dizin, bü
 });
 
 test('onbellekDisiYolMu: hesap sayfaları ve /k/ önbelleğe alınmaz ve kaydedilemez; öteki sayfalar etkilenmez', () => {
-  for (const y of ['/tr/hesap/', '/fr/hesap/giris/', '/en/hesap/kayit/', '/nl/hesap', '/de/hesap/giris/', '/k/', '/k', '/k/abc']) {
+  for (const y of ['/tr/hesap/', '/tr/abonelik-cik/', '/fr/hesap/giris/', '/en/hesap/kayit/', '/nl/hesap', '/de/hesap/giris/', '/k/', '/k', '/k/abc']) {
     assert.equal(m.onbellekDisiYolMu(y), true, y);
     assert.equal(m.kaydedilebilirYolMu(y), false, y);
   }

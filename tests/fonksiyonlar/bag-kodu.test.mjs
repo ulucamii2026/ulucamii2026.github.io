@@ -23,7 +23,7 @@ test('kod: 8 karakter Crockford (I/L/O/U yok), 14 gün; yalnız özeti saklanır
   assert.match(kod, /^[0-9A-HJKMNP-TV-Z]{8}$/);
   assert.ok(Math.abs(Date.parse(bitis) - Date.now() - 14 * GUN) < 60_000);
   const belge = await db.doc(`bagKodlari/${ozet(kod)}`).get();
-  assert.deepEqual({ ...belge.data(), bitis: undefined }, { ref: 'R2', kullanildi: false, uretenHoca: 'hoca-a', bitis: undefined });
+  assert.deepEqual({ ...belge.data(), bitis: undefined }, { ref: 'R2', kullanildi: false, uretenHoca: 'hoca-a', bagSurum: 1, bitis: undefined });
   assert.equal((await db.collection('bagKodlari').get()).docs.some((d) => JSON.stringify(d.data()).includes(kod)), false);
   assert.equal((await cagir('bagKoduUret', { ref: 'YOK' }, hoca)).hata.status, 'NOT_FOUND');
 });
@@ -92,13 +92,43 @@ test('aynı kayda yeni kod: bağ yeni hesaba geçer, eski hesabın yetkisi kalka
   assert.equal(baska.hata.details.neden, 'baska-kayit');
 });
 
+test('F-07: yeni kod öncekileri geçersiz kılar; çocuk hesabı olan kayda kod/bağ yok; kurtarma için aynı hesap kodu yeniden kullanır', async () => {
+  const hoca = await hocaAc();
+  const { kod: k1 } = await basarili('bagKoduUret', { ref: 'R2' }, hoca);
+  const { kod: k2 } = await basarili('bagKoduUret', { ref: 'R2' }, hoca);
+  const y1 = await kullaniciAc('y1');
+  const eski = await cagir('hesabiBagla', { kod: k1 }, y1);
+  assert.equal(eski.hata.status, 'FAILED_PRECONDITION');
+  assert.equal(eski.hata.details.neden, 'eski');
+  assert.equal((await db.doc('ogrenciHesaplari/R2').get()).get('yetiskinUid'), undefined, 'eski kod kimseyi bağlamadı');
+  assert.equal((await db.doc(`bagKodlari/${ozet(k1)}`).get()).get('kullanildi'), false);
+  assert.deepEqual(await basarili('hesabiBagla', { kod: k2 }, y1), { ref: 'R2' });
+  assert.ok((await db.doc('kullanicilar/y1').get()).get('sonGiris'), 'bağlanan hesap hareketsiz taramasında görünür (sonGiris)');
+
+  // Token yetkisi yazılamadan düşmüş gibi: aynı hesap aynı kodu yeniden kullanır, yetki geri gelir; başkası açamaz.
+  await auth.setCustomUserClaims('y1', null);
+  assert.deepEqual(await basarili('hesabiBagla', { kod: k2 }, y1), { ref: 'R2' });
+  assert.equal((await auth.getUser('y1')).customClaims.ref, 'R2');
+  assert.equal((await cagir('hesabiBagla', { kod: k2 }, await kullaniciAc('y2'))).hata.details.neden, 'kullanildi');
+  assert.equal((await db.doc('ogrenciHesaplari/R2').get()).get('yetiskinUid'), 'y1');
+
+  // Çocuk hesabı olan kayda yeni kod üretilmez; önceden üretilmiş kod da bağlamaz.
+  const { kod: onceden } = await basarili('bagKoduUret', { ref: 'R1' }, hoca);
+  await basarili('cocukHesabiAc', { ref: 'R1' }, hoca);
+  assert.equal((await cagir('bagKoduUret', { ref: 'R1' }, hoca)).hata.status, 'FAILED_PRECONDITION');
+  const kapali = await cagir('hesabiBagla', { kod: onceden }, await kullaniciAc('y3'));
+  assert.equal(kapali.hata.details.neden, 'kapali');
+  assert.equal((await db.doc('ogrenciHesaplari/R1').get()).get('yetiskinUid'), undefined);
+});
+
 test('öğrenci silinince (ogrenciler/{ref}) çocuk hesabı tümden silinir, yetişkin bağı çözülür; yalnız işlem kilidi (portalSilme) kapatmaz', async () => {
   const hoca = await hocaAc();
-  const { uid, kullaniciAdi, sifre, kartUrl } = await basarili('cocukHesabiAc', { ref: 'R1' }, hoca);
-  const r2 = await basarili('cocukHesabiAc', { ref: 'R2' }, hoca);
+  // Yetişkin bağı ve bekleyen kod ÖNCE (çocuk hesabı olan kayda kod üretilmez, F-07), sonra çocuk hesapları.
   const { kod } = await basarili('bagKoduUret', { ref: 'R1' }, hoca);
   await basarili('hesabiBagla', { kod }, await kullaniciAc('y1'));
   const { kod: bekleyen } = await basarili('bagKoduUret', { ref: 'R1' }, hoca);
+  const { uid, kullaniciAdi, sifre, kartUrl } = await basarili('cocukHesabiAc', { ref: 'R1' }, hoca);
+  const r2 = await basarili('cocukHesabiAc', { ref: 'R2' }, hoca);
   assert.equal((await giris('cocukGiris', { kullaniciAdi, sifre })).durum, 200);
 
   // «Yalnız ev çalışmaları» silme (src/lib/portal-idare.ts): kilit açılır ve kalkar, öğrenci kursta kalır. Kilit sürerken kod yok.
@@ -115,6 +145,7 @@ test('öğrenci silinince (ogrenciler/{ref}) çocuk hesabı tümden silinir, yet
   await assert.rejects(auth.getUser(uid), (e) => e.code === 'auth/user-not-found');
   assert.equal((await db.doc(`kullanicilar/${uid}`).get()).exists, false);
   assert.equal((await db.doc(`gizli/cocuk/hesaplar/${uid}`).get()).exists, false);
+  assert.equal((await db.doc(`silinenUidler/${uid}`).get()).exists, true, 'mezar taşı: önbellekteki token silinen belgeleri yeniden yazamaz (F-05)');
   assert.deepEqual((await giris('cocukGiris', { kullaniciAdi, sifre })).govde, { hata: 'yanlis' });
   assert.equal((await giris('kartGiris', kartAyir(kartUrl))).durum, 401);
   assert.equal((await auth.getUser('y1')).customClaims?.ref, undefined);

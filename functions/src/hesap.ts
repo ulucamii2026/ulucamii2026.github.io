@@ -8,7 +8,9 @@ import * as logger from 'firebase-functions/logger';
 import type { DocumentSnapshot } from 'firebase-admin/firestore';
 import { gecerliMi } from '../../src/lib/ilim-yolu/kullanici-adi';
 import { ayrilmisMi } from './ayrilmis';
-import { db, auth, FieldValue, Timestamp, CAGRI, GUN, yetiskinGerekli, iso, kullaniciYok } from './ortak';
+import { epostaDiliMi } from '../../src/lib/ilim-yolu/eposta';
+import { SITE } from './eposta';
+import { db, auth, FieldValue, Timestamp, CAGRI, GUN, SAAT, yetiskinGerekli, iso, kullaniciYok } from './ortak';
 
 const AD_ARALIGI = 30 * GUN; // ad değişikliği en çok 30 günde bir; bırakılan ad 30 gün eski sahibine ayrılı kalır
 const SILME_BEKLEME = 30 * GUN;
@@ -83,6 +85,9 @@ export const hesapSilmeIptal = onCall(CAGRI, async (istek) => {
  * Yarıda kalırsa bir sonraki tarama kaldığı yerden sürdürür (kullanicilar belgesi en son silinir).
  */
 export async function hesabiTamamenSil(uid: string): Promise<void> {
+  // Mezar taşı (F-05): silinen uid'nin önbellekteki ID token'ı (≤ 1 saat) ve uçuştaki custom token'lar silinen belgeleri yeniden
+  // yazamasın; kurallar canli(uid) ile bunu okur. bitis: Firestore TTL ilkesi için (2 saat; canlı adımı), yoksa belge kalır, zararsız.
+  await db.doc(`silinenUidler/${uid}`).set({ zaman: FieldValue.serverTimestamp(), bitis: Timestamp.fromMillis(Date.now() + 2 * SAAT) });
   try { await auth.deleteUser(uid); } catch (e) { if (!kullaniciYok(e)) throw e; }
   const profil = await db.doc(`kullanicilar/${uid}`).get();
   const ref = profil.get('ref');
@@ -109,33 +114,42 @@ export const silmeTara = onSchedule({ schedule: '0 3 * * *', timeZone: 'Europe/B
   const gelen = await db.collection('kullanicilar').where('silinecek', '<=', Timestamp.now()).limit(200).get();
   let silinen = 0;
   let atlanan = 0;
+  let hata = 0;
   for (const d of gelen.docs) {
     if (d.get('tur') === 'cocuk') { atlanan++; continue; }
-    await hesabiTamamenSil(d.id);
-    silinen++;
+    try { await hesabiTamamenSil(d.id); silinen++; } catch (e) { hata++; logger.error('silmeTara', { uid: d.id, kod: (e as { code?: string }).code }); } // biri düşse tur durmaz
   }
-  logger.info('silmeTara', { silinen, atlanan });
+  logger.info('silmeTara', { silinen, atlanan, hata });
 });
 
 /**
- * Her ayın 1'i 04:00 (Brüksel): 24 aydır girmeyen hesaba uyarı (epostaKuyrugu; gönderen Dilim 2'de), uyarıdan 30 gün sonra hâlâ
- * girmemişse silme. VARSAYILAN KURU ÇALIŞMA: yalnız sayılar günlüğe yazılır; ILIM_SIL_GERCEK=1 olmadan hiçbir şey değişmez.
+ * Her ayın 1'i 04:00 (Brüksel): 24 aydır girmeyen hesaba uyarı (epostaKuyrugu/z_<uid>, tur: hareketsiz; gönderen
+ * scripts/apps-script/ilim-yolu-eposta.gs), uyarıdan 30 gün sonra hâlâ girmemişse silme. Uyarısı henüz GİTMEMİŞ (kuyrukta bekleyen)
+ * hesap silinmez; e-postası olmayan/doğrulanmamış hesaba uyarı yazılamaz (silme yine 30 gün sonra). VARSAYILAN KURU ÇALIŞMA: yalnız sayılar günlüğe yazılır; ILIM_SIL_GERCEK=1 olmadan hiçbir şey değişmez.
  */
 export const hareketsizTara = onSchedule({ schedule: '0 4 1 * *', timeZone: 'Europe/Brussels' }, async () => {
   const gercek = process.env.ILIM_SIL_GERCEK === '1';
   const simdi = new Date();
   const sinir = new Date(simdi);
   sinir.setUTCMonth(sinir.getUTCMonth() - 24);
-  const sayac = { uyarilacak: 0, silinecek: 0, geriDonen: 0, atlanan: 0 };
+  const sayac = { uyarilacak: 0, silinecek: 0, geriDonen: 0, atlanan: 0, epostasiz: 0, uyariBekliyor: 0 };
 
-  const eskiler = await db.collection('kullanicilar').where('sonGiris', '<', Timestamp.fromDate(sinir)).limit(500).get();
+  const eskiler = await db.collection('kullanicilar').where('sonGiris', '<', Timestamp.fromDate(sinir)).limit(200).get(); // 2 yazım/hesap: toplu işlem 500 sınırı
   const yigin = db.batch();
   for (const d of eskiler.docs) {
     if (d.get('tur') === 'cocuk' || d.get('silinecek') || d.get('hareketsizUyari')) { sayac.atlanan++; continue; }
     sayac.uyarilacak++;
     if (!gercek) continue;
     yigin.set(d.ref, { hareketsizUyari: FieldValue.serverTimestamp() }, { merge: true });
-    yigin.set(db.collection('epostaKuyrugu').doc(), { tur: 'hareketsiz', uid: d.id, dil: d.get('dil') ?? 'tr', zaman: FieldValue.serverTimestamp() });
+    let kullanici;
+    try { kullanici = await auth.getUser(d.id); } catch (e) { if (!kullaniciYok(e)) throw e; }
+    if (!kullanici?.email || !kullanici.emailVerified) { sayac.epostasiz++; continue; }
+    const dil = epostaDiliMi(d.get('dil')) ? d.get('dil') : 'tr';
+    yigin.set(db.doc(`epostaKuyrugu/z_${d.id}`), {
+      tur: 'hareketsiz', uid: d.id, eposta: kullanici.email, dil, ad: typeof d.get('ad') === 'string' ? d.get('ad') : '',
+      baglanti: `${SITE}/${dil}/hesap/giris/`, durum: 'bekliyor', deneme: 0,
+      zaman: FieldValue.serverTimestamp(), bitis: Timestamp.fromMillis(simdi.getTime() + 45 * GUN), // uyarı penceresi (30 gün) + pay
+    });
   }
   if (gercek) await yigin.commit();
 
@@ -148,8 +162,10 @@ export const hareketsizTara = onSchedule({ schedule: '0 4 1 * *', timeZone: 'Eur
       sayac.geriDonen++;
       if (gercek) await d.ref.update({ hareketsizUyari: FieldValue.delete() });
     } else if (d.get('tur') !== 'cocuk') {
+      const uyari = await db.doc(`epostaKuyrugu/z_${d.id}`).get();
+      if (uyari.exists && ['bekliyor', 'gonderiliyor'].includes(uyari.get('durum'))) { sayac.uyariBekliyor++; continue; } // uyarı gitmeden silinmez
       sayac.silinecek++;
-      if (gercek) await hesabiTamamenSil(d.id);
+      if (gercek) { try { await hesabiTamamenSil(d.id); } catch (e) { logger.error('hareketsizTara', { uid: d.id, kod: (e as { code?: string }).code }); } }
     }
   }
   logger.info('hareketsizTara', { kuru: !gercek, sinir: iso(Timestamp.fromDate(sinir)), ...sayac });

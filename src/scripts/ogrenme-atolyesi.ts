@@ -4,6 +4,7 @@ import { yerelKodu } from '../i18n/utils';
 import { ETKINLIKLER, VELI_REHBERLERI, type Etkinlik } from '../lib/ogrenme-icerigi';
 import { ogrenmeMetni } from '../i18n/ogrenme';
 import { kaydiOku, gunlukSec, tekrarKaydet, bosKayit, type Tekrar, tekrarBirlestir } from '../lib/ogrenme-ilerleme';
+import { baskiAlaniYazdir } from './bulten-gorunumu';
 const esc=(s:unknown)=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]!));
 type Secenek = { bulut?:OgrenmeDeposu; atanan?:string[]; dil:Dil; ogrenci:boolean; hesap:string; ref:string; ad:string; hafta:{tarih:string;konu:string}[]; oynat:(url:string)=>void; durdur:()=>void; yardim:(metin:string)=>void };
 export function ogrenmeAtolyesi(kok:HTMLElement,o:Secenek):()=>void {
@@ -106,11 +107,8 @@ export function ogrenmeAtolyesi(kok:HTMLElement,o:Secenek):()=>void {
   if(t.dataset.canta){k.canta[bugun()+':'+t.dataset.canta]=t.checked;kaydet();}
  },{signal:ctl.signal});
  function yazdir(){
-  const frame=document.createElement('iframe');frame.title=m.yazdir;frame.style.cssText='position:fixed;width:1px;height:1px;inset:0;border:0';document.body.append(frame);
-  const doc=frame.contentDocument;if(!doc){frame.remove();return;}
   const rows=Array.from({length:7},()=>`<tr><td> </td><td> </td><td> </td></tr>`).join('');
-  doc.open();doc.write(`<!doctype html><html lang="${o.dil}"><head><meta charset="utf-8"><title>${esc(m.yazdir)}</title><style>body{font:18px/1.5 sans-serif;color:#111;margin:24px}h1{font-size:26px}table{border-collapse:collapse;width:100%;margin-top:20px}td,th{border:1px solid #555;padding:12px;height:34px}p{max-width:70ch}@page{size:A4;margin:18mm}</style></head><body><h1>Ulu Camii — ${esc(m.seans)}</h1><p>${esc(o.ad)} · ${esc(tarih(bugun()))}</p><p>${esc(m.aileOneri)}</p><h2>${esc(m.hafta)}</h2>${o.hafta.length?`<ul>${o.hafta.map(g=>`<li>${esc(tarih(g.tarih))}: <span lang="tr">${esc(g.konu)}</span></li>`).join('')}</ul>`:`<p>${esc(m.plansiz)}</p>`}<p>${esc(m.yazili)}</p><table aria-label="${esc(m.yazili)}"><tbody>${rows}</tbody></table><p>${esc(m.canta)}: ${esc(m.kitap)}, ${esc(m.defter)}, ${esc(m.kalem)}, ${esc(m.odev)}.</p><p>${esc(m.bitis)}</p></body></html>`);doc.close();
-  frame.contentWindow?.focus();frame.contentWindow?.print();setTimeout(()=>frame.remove(),1000);
+  baskiAlaniYazdir('baski-atolye',`<h1>Ulu Camii — ${esc(m.seans)}</h1><p>${esc(o.ad)} · ${esc(tarih(bugun()))}</p><p>${esc(m.aileOneri)}</p><h2>${esc(m.hafta)}</h2>${o.hafta.length?`<ul>${o.hafta.map(g=>`<li>${esc(tarih(g.tarih))}: <span lang="tr">${esc(g.konu)}</span></li>`).join('')}</ul>`:`<p>${esc(m.plansiz)}</p>`}<p>${esc(m.yazili)}</p><table aria-label="${esc(m.yazili)}"><tbody>${rows}</tbody></table><p>${esc(m.canta)}: ${esc(m.kitap)}, ${esc(m.defter)}, ${esc(m.kalem)}, ${esc(m.odev)}.</p><p>${esc(m.bitis)}</p>`,o.dil,m.yazdir);
  }
  window.addEventListener('online',()=>{void esle();},{signal:ctl.signal});
  ciz();void esle();return ()=>{kapali=true;ctl.abort();};

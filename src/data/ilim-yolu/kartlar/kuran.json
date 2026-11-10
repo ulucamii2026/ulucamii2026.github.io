@@ -388,11 +388,11 @@
         "de": "Lām-Alif"
       },
       "ozet": {
-        "tr": "Lâm ile elifin birleşmesiyle oluşan lâmelifi kelime içinde tanır ve doğru okuruz.",
-        "fr": "Nous reconnaissons le lâm-alif, formé de la réunion du lâm et de l’alif, dans les mots et le lisons correctement.",
-        "en": "We recognise lām-alif, the joining of lām and alif, inside words and read it correctly.",
-        "nl": "We herkennen lām-alif, de samenvoeging van lām en alif, in woorden en lezen hem goed.",
-        "de": "Wir erkennen das Lām-Alif, die Verbindung von Lām und Alif, in Wörtern und lesen es richtig."
+        "tr": "Lâmelifi, yani lâm desteğine yazılmış sâkin med elifini, kelime içinde tanır ve doğru okuruz.",
+        "fr": "Nous reconnaissons le lâm-alif, c’est-à-dire l’alif d’allongement sans voyelle écrit sur le support du lâm, dans les mots et le lisons correctement.",
+        "en": "We recognise lām-alif, that is, the vowel-less lengthening alif written on a lām support, inside words and read it correctly.",
+        "nl": "We herkennen lām-alif, dat wil zeggen de klinkerloze verlengings-alif op een lām-steun, in woorden en lezen hem goed.",
+        "de": "Wir erkennen das Lām-Alif, das heißt das vokallose Dehnungs-Alif auf einer Lām-Stütze, in Wörtern und lesen es richtig."
       },
       "kitap": "Elifbâ s. 4–6",
       "sorular": [],
@@ -574,7 +574,7 @@
         "de": "Kurzvokale festigen"
       },
       "ozet": {
-        "tr": "Üstün, esre ve ötreyi birbirine karıştırmadan okumayı tekrar ederiz. Her hareketeyi doğru ses ve ağız şekliyle çıkarırız.",
+        "tr": "Üstün, esre ve ötreyi birbirine karıştırmadan okumayı tekrar ederiz. Her harekeyi doğru ses ve ağız şekliyle çıkarırız.",
         "fr": "Nous répétons la lecture de la fatha, du kasra et du damma sans les confondre, avec le bon son et la bonne forme de bouche.",
         "en": "We repeat reading fatḥa, kasra and ḍamma without mixing them up, with the right sound and mouth shape.",
         "nl": "We herhalen het lezen van fatḥa, kasra en ḍamma zonder verwarring, met de juiste klank en mondstand.",
@@ -729,7 +729,7 @@
         "de": "Sukun und Schadda zusammen üben"
       },
       "ozet": {
-        "tr": "Sâkin (cezmli) ve şeddeli okuma örneklerini birlikte doğru uygularız. İki işareti birbirine karıştırmamayı çalışırız.",
+        "tr": "Sâkin (cezimli) ve şeddeli okuma örneklerini birlikte doğru uygularız. İki işareti birbirine karıştırmamaya çalışırız.",
         "fr": "Nous appliquons correctement ensemble des exemples avec soukoun et chadda. Nous veillons à ne pas confondre les deux signes.",
         "en": "We practise examples with sukūn and shadda together correctly. We try not to mix the two signs up.",
         "nl": "We passen voorbeelden met sukūn en shadda samen goed toe. We proberen de twee tekens niet te verwarren.",
@@ -1593,11 +1593,11 @@
         "de": "Idhār"
       },
       "ozet": {
-        "tr": "Sâkin nûn ya da tenvinden sonra altı boğaz harfinden biri gelirse nûn sesi açıkça, geniz sesi katmadan çıkarılır; buna izhâr denir. İzhâr örneklerinde nûn’u açık okuruz.",
-        "fr": "Quand un nûn sans voyelle ou un tanwîn est suivi d’une des six lettres de la gorge, le nûn est prononcé clairement, sans nasalisation : c’est l’iẓhâr. Nous lisons le nûn nettement dans les exemples.",
-        "en": "When a vowel-less nūn or tanwīn is followed by one of the six throat letters, the nūn is pronounced clearly, without nasalisation; this is called iẓhār. We read the nūn clearly in the examples.",
-        "nl": "Als een klinkerloze nūn of tanwīn gevolgd wordt door een van de zes keelletters, wordt de nūn duidelijk uitgesproken, zonder neusklank; dit heet iẓhār. In de voorbeelden lezen we de nūn helder.",
-        "de": "Folgt auf ein vokalloses Nūn oder Tanwīn einer der sechs Kehlbuchstaben, wird das Nūn klar und ohne Nasalierung gesprochen; das heißt Idhār. In den Beispielen lesen wir das Nūn deutlich."
+        "tr": "Sâkin nûn ya da tenvinden sonra altı boğaz harfinden biri gelirse nûn sesi açıkça çıkarılır; buna izhâr denir. İzhâr örneklerinde nûn’u açık okuruz.",
+        "fr": "Quand un nûn sans voyelle ou un tanwîn est suivi d’une des six lettres de la gorge, le nûn est prononcé clairement : c’est l’iẓhâr. Nous lisons le nûn nettement dans les exemples.",
+        "en": "When a vowel-less nūn or tanwīn is followed by one of the six throat letters, the nūn is pronounced clearly; this is called iẓhār. We read the nūn clearly in the examples.",
+        "nl": "Als een klinkerloze nūn of tanwīn gevolgd wordt door een van de zes keelletters, wordt de nūn duidelijk uitgesproken; dit heet iẓhār. In de voorbeelden lezen we de nūn helder.",
+        "de": "Folgt auf ein vokalloses Nūn oder Tanwīn einer der sechs Kehlbuchstaben, wird das Nūn klar gesprochen; das heißt Idhār. In den Beispielen lesen wir das Nūn deutlich."
       },
       "kitap": "Elifbâ s. 45",
       "sorular": [
@@ -1954,10 +1954,10 @@
       },
       "ozet": {
         "tr": "Ramazan, Kur’an’ın indirilmeye başlandığı aydır; Bakara 185. âyet bunu bildirir. Kur’an insanlara rehberdir ve doğruyu eğriden ayıran açıklamalar içerir. Bu Ramazan’da Kur’an hedefimizi bir kartta yazarız.",
-        "fr": "Le Ramadan est le mois où le Coran a commencé à être révélé ; le verset 185 d’al-Baqara l’indique. Le Coran guide les gens et contient des éclaircissements qui distinguent le vrai du faux. Cette année, nous écrivons notre objectif coranique sur une carte.",
+        "fr": "Le Ramadan est le mois où le Coran a commencé à être révélé ; le verset 185 d’al-Baqara l’indique. Le Coran guide les gens et contient des éclaircissements qui distinguent le vrai du faux. Ce Ramadan, nous écrivons notre objectif coranique sur une carte.",
         "en": "Ramadan is the month in which the Qur’an began to be revealed; verse 185 of al-Baqara says so. The Qur’an guides people and contains clear teachings that separate right from wrong. This Ramadan we write our Qur’an goal on a card.",
         "nl": "Ramadan is de maand waarin de Koran begon geopenbaard te worden; vers 185 van al-Baqara zegt dat. De Koran leidt de mensen en bevat duidelijke uitleg die goed van kwaad onderscheidt. Dit Ramadan schrijven we ons Koran-doel op een kaart.",
-        "de": "Der Ramadan ist der Monat, in dem der Koran zu offenbaren begann; Vers 185 der Sure al-Baqara sagt es. Der Koran leitet die Menschen und enthält klare Erläuterungen, die Recht von Unrecht trennen. Dieses Jahr schreiben wir unser Koranziel auf eine Karte."
+        "de": "Der Ramadan ist der Monat, in dem der Koran zu offenbaren begann; Vers 185 der Sure al-Baqara sagt es. Der Koran leitet die Menschen und enthält klare Erläuterungen, die Recht von Unrecht trennen. Diesen Ramadan schreiben wir unser Koranziel auf eine Karte."
       },
       "kitap": "Camiye Gidiyorum 1 s. 106 (tekrar) (Ramazan özel programı)",
       "sorular": [

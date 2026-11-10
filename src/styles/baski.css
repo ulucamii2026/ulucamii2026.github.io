@@ -1,0 +1,50 @@
+/* Sayfa içi yazdırma alanı (bulten-gorunumu.ts baskiAlaniYazdir).
+   Eskiden srcdoc / document.write iframe'i + <style> kullanılıyordu; egitim.ulucamii.be'nin sıkı CSP'si
+   (style-src 'self') bunu engeller. Alan yalnız yazdırırken görünür; kuralların değerleri eski iframe
+   stilleriyle birebir aynıdır. `all: revert` içerideki öğeleri tarayıcı varsayılanına döndürür
+   (boş bir iframe belgesindeki gibi), sonra eski kurallar yeniden yazılır. */
+.baski-alani { display: none; }
+
+@page baski-bulten { size: A4; margin: 16mm; }
+@page baski-defter { size: A4; margin: 18mm; }
+@page baski-atolye { size: A4; margin: 18mm; }
+
+@media print {
+  html.baski-modu body > :not(.baski-alani) { display: none !important; }
+  html.baski-modu dialog, html.baski-modu dialog::backdrop { display: none !important; }
+  html.baski-modu, html.baski-modu body { background: #fff !important; margin: 0; padding: 0; }
+  html.baski-modu .baski-alani { display: block; margin: 0; padding: 0; background: #fff; }
+  html.baski-modu .baski-alani * { all: revert; }
+
+  /* ── Haftalık bülten ── */
+  html.baski-modu .baski-bulten { page: baski-bulten; font: 12pt/1.5 Arial, sans-serif; color: #202c2b; }
+  html.baski-modu .baski-bulten, html.baski-modu .baski-bulten * { box-sizing: border-box; }
+  html.baski-modu .baski-bulten header { border-bottom: 2px solid #815238; padding-bottom: 4mm; }
+  html.baski-modu .baski-bulten h1 { font: 24pt Georgia, serif; margin: 0 0 7mm; }
+  html.baski-modu .baski-bulten h3 { font: 20pt Georgia, serif; margin: 2mm 0; }
+  html.baski-modu .baski-bulten h4 { font-size: 13pt; margin: 5mm 0 1.5mm; color: #653b27; }
+  html.baski-modu .baski-bulten p { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+  html.baski-modu .baski-bulten section { break-inside: avoid; padding-bottom: 2mm; }
+  html.baski-modu .baski-bulten .bulten-kurum { font-size: 10pt; }
+  html.baski-modu .baski-bulten footer { border-top: 1px solid #b8b6ad; padding-top: 5mm; break-inside: avoid; margin-top: 5mm; }
+  html.baski-modu .baski-bulten .bulten-yazi-alani { height: 16mm; border-bottom: 1px solid #bbb; margin-bottom: 4mm; }
+  html.baski-modu .baski-bulten .bulten-imza-alani { height: 16mm; }
+  html.baski-modu .baski-bulten .dip { font-size: 9pt; margin-top: 6mm; }
+
+  /* ── Dijital ders defteri ── */
+  html.baski-modu .baski-defter { page: baski-defter; margin: 8px; font: 12pt/1.55 Arial, sans-serif; color: #202c2b; }
+  html.baski-modu .baski-defter h1 { font: 24pt Georgia, serif; }
+  html.baski-modu .baski-defter h2 { font-size: 17pt; }
+  html.baski-modu .baski-defter h3 { font-size: 12pt; margin-bottom: 2mm; }
+  html.baski-modu .baski-defter p { white-space: pre-wrap; overflow-wrap: anywhere; margin-top: 0; }
+  html.baski-modu .baski-defter .ders { break-before: page; }
+  html.baski-modu .baski-defter section { break-inside: avoid; }
+  html.baski-modu .baski-defter .bilgi { font-size: 10pt; border-block: 1px solid #bbb; padding: 4mm 0; }
+
+  /* ── Öğrenme atölyesi çalışma kâğıdı ── */
+  html.baski-modu .baski-atolye { page: baski-atolye; margin: 24px; font: 18px/1.5 sans-serif; color: #111; }
+  html.baski-modu .baski-atolye h1 { font-size: 26px; }
+  html.baski-modu .baski-atolye table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+  html.baski-modu .baski-atolye td, html.baski-modu .baski-atolye th { border: 1px solid #555; padding: 12px; height: 34px; }
+  html.baski-modu .baski-atolye p { max-width: 70ch; }
+}

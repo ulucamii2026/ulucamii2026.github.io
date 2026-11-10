@@ -105,7 +105,7 @@
  * bu KASITLI: PDF artık istemciden gelmez, eski gövde biçimi zaten geçersizdir.)
  */
 
-var SURUM = 46;
+var SURUM = 47;
 /* 21 Eyl 2026: Sitenin ve formların dilleri TEK listede. Gönderilen form dilinin («dil» alanı) ve
    ?islem=pdf-ornek önizlemesinin geçerli değerleri buradan okunur; ["tr","fr","en"] artık hiçbir yere yazılmaz.
    DİKKAT — bu liste FORM dilidir: velinin kalıcı İLETİŞİM dili (veli.iletisimDili) ve tören dili
@@ -1506,6 +1506,7 @@ function brevoGonder(s, anahtar, kurum) {
   if (!govde.htmlContent && !govde.textContent) govde.textContent = " ";
   if (s.replyTo && epostaGecerli(s.replyTo)) govde.replyTo = { email: String(s.replyTo).trim() };
   if (s.cc) govde.cc = brevoAlicilar(s.cc);
+  if (s.headers && typeof s.headers === "object") govde.headers = s.headers; // v47: List-Unsubscribe(-Post) (ilim-yolu-eposta.gs); MailApp yedeği başlık taşımaz → o çağrılar yedeksiz:true
   if (s.attachments && s.attachments.length) {
     govde.attachment = s.attachments.map(function (b, i) {
       return { name: (b.getName && b.getName()) || ("ek-" + (i + 1)), content: Utilities.base64Encode(b.getBytes()) };

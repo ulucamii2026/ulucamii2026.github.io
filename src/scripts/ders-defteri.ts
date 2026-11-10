@@ -19,7 +19,7 @@ import {
   type DefterDersi,
   type DersKaydi,
 } from "../lib/ders-defteri";
-import { bultenEsc as e } from "./bulten-gorunumu";
+import { bultenEsc as e, baskiAlaniYazdir } from "./bulten-gorunumu";
 import {
   ceviriDeposu,
   ceviriGuncel,
@@ -1142,31 +1142,25 @@ export function dersDefteri(
 
 export function defterYazdir(kayitlar: DersKaydi[], ad: string) {
   if (!kayitlar.length) return;
-  const frame = document.createElement("iframe");
-  frame.className = "bulten-baski";
-  frame.title = "Dijital ders defteri çıktısı";
-  frame.srcdoc = `<!doctype html><html lang="tr"><head><meta charset="utf-8"><title>Ders Defteri — ${e(ad)}</title><style>@page{size:A4;margin:18mm}body{font:12pt/1.55 Arial,sans-serif;color:#202c2b}h1{font:24pt Georgia,serif}h2{font-size:17pt}h3{font-size:12pt;margin-bottom:2mm}p{white-space:pre-wrap;overflow-wrap:anywhere;margin-top:0}.ders{break-before:page}section{break-inside:avoid}.bilgi{font-size:10pt;border-block:1px solid #bbb;padding:4mm 0}</style></head><body><h1>Dijital ders defteri</h1><h2>${e(ad)}</h2><p>2026–2027 · ${kayitlar.length} kayıtlı ders</p><p>Bu çıktı dijitale girilmiş notları içerir. Kâğıttaki çizimlerin ve ıslak imzaların taraması değildir.</p>${kayitlar
-    .map(
-      (k) =>
-        `<article class="ders"><h2>${e(k.konu)}</h2><p class="bilgi">${e(k.tarih)} · ${k.sira}. ders · Basılı sayfa ${basiliDefterSayfasi(k)} · ${dersDurumlari[k.durum]} · Sürüm ${k.surum}<br>${k.giris === "kagit" ? "Kâğıttan aktarıldı" : "Dijital giriş"}${k.grup ? " · Grup " + e(k.grup) : ""}</p>${Object.entries(
-          defterAlanlari,
-        )
-          .filter(([key]) => k[key as keyof DersKaydi])
-          .map(
-            ([key, f]) =>
-              `<section><h3>${f.ad}</h3><p>${e(k[key as keyof DersKaydi])}</p></section>`,
+  baskiAlaniYazdir(
+    "baski-defter",
+    `<h1>Dijital ders defteri</h1><h2>${e(ad)}</h2><p>2026–2027 · ${kayitlar.length} kayıtlı ders</p><p>Bu çıktı dijitale girilmiş notları içerir. Kâğıttaki çizimlerin ve ıslak imzaların taraması değildir.</p>${kayitlar
+      .map(
+        (k) =>
+          `<article class="ders"><h2>${e(k.konu)}</h2><p class="bilgi">${e(k.tarih)} · ${k.sira}. ders · Basılı sayfa ${basiliDefterSayfasi(k)} · ${dersDurumlari[k.durum]} · Sürüm ${k.surum}<br>${k.giris === "kagit" ? "Kâğıttan aktarıldı" : "Dijital giriş"}${k.grup ? " · Grup " + e(k.grup) : ""}</p>${Object.entries(
+            defterAlanlari,
           )
-          .join(
-            "",
-          )}<p>Öğrencinin işareti: ${ozDurumlari[k.oz]}</p><p>Kaynak: ${e(k.kaynak)}</p></article>`,
-    )
-    .join("")}</body></html>`;
-  frame.onload = () => {
-    frame.contentWindow?.addEventListener("afterprint", () => frame.remove(), {
-      once: true,
-    });
-    frame.contentWindow?.print();
-  };
-  document.body.appendChild(frame);
-  setTimeout(() => frame.remove(), 120000);
+            .filter(([key]) => k[key as keyof DersKaydi])
+            .map(
+              ([key, f]) =>
+                `<section><h3>${f.ad}</h3><p>${e(k[key as keyof DersKaydi])}</p></section>`,
+            )
+            .join(
+              "",
+            )}<p>Öğrencinin işareti: ${ozDurumlari[k.oz]}</p><p>Kaynak: ${e(k.kaynak)}</p></article>`,
+      )
+      .join("")}`,
+    "tr",
+    `Ders Defteri — ${ad}`,
+  );
 }

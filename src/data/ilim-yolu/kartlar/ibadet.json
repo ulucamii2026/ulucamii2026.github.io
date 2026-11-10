@@ -1581,7 +1581,7 @@
         "de": "Gesegnete Tage und Nächte"
       },
       "ozet": {
-        "tr": "Cuma haftalık bir bayram sayılır; Ramazan ve Kurban bayramlarında ziyaret eder, barışır, yoksulları gözetiriz. Beş kandil gecesi vardır: Mevlit, Regâib, Miraç, Berat ve Kadir. Miraç gecesinde beş vakit namaz hediye edildi.",
+        "tr": "Cuma haftalık bir bayram sayılır; Ramazan ve Kurban bayramlarında ziyaret eder, barışır, yoksulları gözetiriz. Beş kandil gecesi vardır: Mevlid, Regâib, Miraç, Berat ve Kadir. Miraç gecesinde beş vakit namaz hediye edildi.",
         "fr": "Le vendredi est une fête hebdomadaire ; aux deux fêtes on rend visite, on se réconcilie et on pense aux pauvres. Il y a cinq nuits de kandil : Mevlid, Raghâ’ib, Mi‘râj, Barâ’a et Qadr. Les cinq prières ont été offertes lors du Mi‘râj.",
         "en": "Friday is seen as a weekly festival; at the two Eids we visit, reconcile and help the poor. There are five kandil nights: Mawlid, Raghaib, Mi‘raj, Bara’a and Qadr. The five prayers were gifted at the Mi‘raj.",
         "nl": "Vrijdag geldt als wekelijks feest; tijdens de twee feesten bezoeken we elkaar, verzoenen we en helpen we de armen. Er zijn vijf kandil-nachten: Mawlid, Ragha’ib, Mi‘raj, Bara’a en Qadr. De vijf gebeden werden bij de Mi‘raj geschonken.",
@@ -4037,10 +4037,10 @@
       },
       "ozet": {
         "tr": "Hac, gücü yetenin ömründe yerine getirdiği ibadettir. Hanefî mezhebine göre haccın farzları ihram, Arafat vakfesi ve ziyaret tavafıdır. Hac, Şevval, Zilkade ve Zilhicce’nin ilk on gününde yapılır. Umre ise haccın dışında yapılan ziyarettir.",
-        "fr": "Le hajj est l’adoration que celui qui en a les moyens accomplit dans sa vie. Selon l’école hanafite, ses farz sont l’ihrâm, la station à ‘Arafat et le tawâf de la visite. Il se fait durant Shawwâl, Dhou al-qa‘da et les dix premiers jours de Dhou al-hijja.",
-        "en": "Hajj is the worship a person who is able performs in a lifetime. In the Hanafi school its obligations are ihram, standing at Arafat and the tawaf of visit. It takes place in Shawwal, Dhul-Qa‘dah and the first ten days of Dhul-Hijjah.",
-        "nl": "De hadj is de aanbidding die wie daartoe in staat is in zijn leven verricht. Volgens de Hanafi-school zijn de fard: ihram, het staan op Arafat en de bezoek-tawaf. Ze vindt plaats in Sjawwal, Dhoe al-qa‘da en de eerste tien dagen van Dhoe al-hidjdja.",
-        "de": "Die Hadsch ist der Gottesdienst, den, wer dazu in der Lage ist, einmal im Leben verrichtet. Nach hanafitischer Schule sind ihre Pflichten Ihram, das Stehen in Arafat und der Besuchs-Tawaf. Sie findet in Schawwal, Dhul-Qa‘da und den ersten zehn Tagen von Dhul-Hiddscha statt."
+        "fr": "Le hajj est l’adoration que celui qui le peut accomplit dans sa vie. Chez les hanafites, ses farz sont l’ihrâm, la station à ‘Arafat et le tawâf de la visite. Il se fait durant Shawwâl, Dhou al-qa‘da et les dix premiers jours de Dhou al-hijja. La ‘umra est la visite hors du hajj.",
+        "en": "Hajj is the worship a person who is able performs in a lifetime. In the Hanafi school its obligations are ihram, standing at Arafat and the tawaf of visit. It takes place in Shawwal, Dhul-Qa‘dah and the first ten days of Dhul-Hijjah. Umrah is the visit performed outside hajj.",
+        "nl": "De hadj is de aanbidding die wie daartoe in staat is in zijn leven verricht. Volgens de Hanafi-school: de fard: ihram, het staan op Arafat en de bezoek-tawaf. Ze valt in Sjawwal, Dhoe al-qa‘da en de eerste tien dagen van Dhoe al-hidjdja. De oemra is het bezoek buiten de hadj.",
+        "de": "Die Hadsch ist der Gottesdienst, den, wer kann, einmal im Leben verrichtet. Hanafitisch sind Pflicht: Ihram, das Stehen in Arafat und der Besuchs-Tawaf. Zeit: Schawwal, Dhul-Qa‘da und die ersten zehn Tage von Dhul-Hiddscha. Die Umra ist der Besuch außerhalb der Hadsch."
       },
       "kitap": "Temel Dinî Bilgiler s. 167–172",
       "sorular": [

@@ -3,7 +3,7 @@
 import { before, beforeEach, test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
-  db, auth, temizle, hazir, cagir, basarili, kullaniciAc, hocaAc, cocukOturumu, giris, ozelTokenleGir, coz, kartAyir, Timestamp,
+  db, auth, temizle, hazir, cagir, basarili, kullaniciAc, hocaAc, cocukOturumu, giris, ozelTokenleGir, coz, kartAyir, bekle, Timestamp,
 } from './yardimci.mjs';
 
 const HOCA_ISLEVLERI = ['cocukHesabiAc', 'kartYenile', 'cocukSifreYenile', 'cocukOturumKapat', 'bagKoduUret', 'ogrenciHesaplariListe'];
@@ -148,7 +148,10 @@ test('kartla giriş; kart yenilenince eski kart geçersiz, sürüm artar', async
 
 test('şifre yenileme ve oturum kapatma', async () => {
   const { uid, kullaniciAdi, sifre, hoca } = await hesapAc();
+  const onceki = (await auth.getUser(uid)).tokensValidAfterTime;
+  await new Promise((r) => setTimeout(r, 1100)); // tokensValidAfterTime saniye çözünürlüklü
   const { sifre: yeni } = await basarili('cocukSifreYenile', { ref: 'R1' }, hoca);
+  assert.notEqual((await auth.getUser(uid)).tokensValidAfterTime, onceki, 'F-04: şifre yenileme eski oturumları kapatır');
   assert.match(yeni, SIFRE_BICIMI);
   assert.equal((await giris('cocukGiris', { kullaniciAdi, sifre })).durum, 401, 'eski şifre');
   assert.equal((await giris('cocukGiris', { kullaniciAdi, sifre: yeni })).durum, 200, 'yeni şifre');
@@ -172,4 +175,89 @@ test('giriş uçlarının kapıları: yöntem, köken, içerik türü, boyut, al
   }
   const yok = await fetch('http://127.0.0.1:5185/demo-ulucamii/europe-west1/cocukGiris', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(g) });
   assert.equal(yok.status, 403, 'Origin başlığı olmayan istek');
+});
+
+// ── 10 Kasım 2026 güvenlik incelemesi ──
+const AUTH = 'http://127.0.0.1:9185/identitytoolkit.googleapis.com/v1';
+const kimlikIstegi = (yol, govde) => fetch(`${AUTH}/accounts:${yol}?key=demo`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(govde) }).then(async (y) => ({ durum: y.status, govde: await y.json() }));
+
+test('F-03: çocuğa sonradan bağlanan e-posta/şifre kimliği kart yenilemede kalkar (eski oturum + yeniden giriş yolu kapanır); kartla girişte de temizlenir', async () => {
+  const { uid, kartUrl, hoca } = await hesapAc();
+  const kart = kartAyir(kartUrl);
+  const token = (await giris('kartGiris', kart)).govde.token;
+  const idToken = (await kimlikIstegi('signInWithCustomToken', { token, returnSecureToken: true })).govde.idToken;
+  // Saldırgan: kendi ID token'ıyla public API üzerinden e-posta + şifre bağlar.
+  const bagla = await kimlikIstegi('update', { idToken, email: 'saldirgan@example.test', password: 'saldirgan-sifre-1', returnSecureToken: true });
+  assert.equal(bagla.durum, 200, JSON.stringify(bagla.govde));
+  assert.ok((await auth.getUser(uid)).providerData.length > 0, 'ön koşul: kimlik bağlandı');
+  assert.equal((await kimlikIstegi('signInWithPassword', { email: 'saldirgan@example.test', password: 'saldirgan-sifre-1', returnSecureToken: true })).durum, 200);
+
+  await new Promise((r) => setTimeout(r, 1100));
+  await basarili('kartYenile', { ref: 'R1' }, hoca);
+  const k = await auth.getUser(uid);
+  assert.deepEqual(k.providerData, [], 'bağlı kimlik kaldırıldı');
+  assert.equal((await kimlikIstegi('signInWithPassword', { email: 'saldirgan@example.test', password: 'saldirgan-sifre-1', returnSecureToken: true })).durum, 400, 'e-posta/şifreyle yeniden giriş kapandı');
+  assert.equal((await kimlikIstegi('token', { grant_type: 'refresh_token', refresh_token: 'x' })).durum >= 400, true);
+
+  // Yenilemeden önce bağlanıp hoca fark etmediyse: ilk kartla/şifreyle girişte de temizlenir.
+  const yeni = await giris('kartGiris', kartAyir((await basarili('kartYenile', { ref: 'R1' }, hoca)).kartUrl));
+  const id2 = (await kimlikIstegi('signInWithCustomToken', { token: yeni.govde.token, returnSecureToken: true })).govde.idToken;
+  await kimlikIstegi('update', { idToken: id2, email: 'saldirgan2@example.test', password: 'saldirgan-sifre-2', returnSecureToken: true });
+  assert.ok((await auth.getUser(uid)).providerData.length > 0);
+  assert.equal((await giris('kartGiris', kartAyir((await basarili('kartYenile', { ref: 'R1' }, hoca)).kartUrl))).durum, 200);
+  assert.deepEqual((await auth.getUser(uid)).providerData, []);
+});
+
+test('F-02: hata penceresi 15 dk; eski hatalar kilide birikmez, pencere içindeki 8. hata kilitler, kilit uzamaz', async () => {
+  const { uid, kullaniciAdi } = await hesapAc();
+  const g = db.doc(`gizli/cocuk/hesaplar/${uid}`);
+  // 7 hata ama ilk hata 16 dk önce: pencere kapandı, bu hata sayacı 1'den başlatır (kilit yok).
+  await g.update({ hatalar: 7, ilkHata: Timestamp.fromMillis(Date.now() - 16 * 60_000) });
+  assert.equal((await giris('cocukGiris', { kullaniciAdi, sifre: 'yanlis-a' })).durum, 401);
+  assert.equal((await g.get()).get('hatalar'), 1);
+  // 7 hata, ilk hata 1 dk önce: 8. hata kilitler.
+  await g.update({ hatalar: 7, ilkHata: Timestamp.fromMillis(Date.now() - 60_000) });
+  const kilit = await giris('cocukGiris', { kullaniciAdi, sifre: 'yanlis-b' });
+  assert.equal(kilit.durum, 429);
+  const bitis = (await g.get()).get('kilitBitis').toMillis();
+  assert.equal((await giris('cocukGiris', { kullaniciAdi, sifre: 'yanlis-c' })).durum, 429);
+  assert.equal((await g.get()).get('kilitBitis').toMillis(), bitis, 'kilitliyken yeni hata kilidi uzatmaz (sınırlı pencere)');
+  // Kart girişi şifre kilidinden etkilenmez; hoca şifre yenileyince kilit kalkar.
+  assert.equal((await giris('kartGiris', kartAyir((await basarili('kartYenile', { ref: 'R1' }, await hocaAc('hoca-z'))).kartUrl))).durum, 200);
+  const { sifre } = await basarili('cocukSifreYenile', { ref: 'R1' }, await hocaAc('hoca-y'));
+  assert.equal((await giris('cocukGiris', { kullaniciAdi, sifre })).durum, 200);
+});
+
+test('F-05: profili silinmiş çocuğa giriş token vermez ve profili yeniden doğurmaz', async () => {
+  const { uid, kartUrl, kullaniciAdi, sifre } = await hesapAc();
+  await db.doc(`kullanicilar/${uid}`).delete();
+  assert.equal((await giris('kartGiris', kartAyir(kartUrl))).durum, 401);
+  assert.equal((await giris('cocukGiris', { kullaniciAdi, sifre })).durum, 401);
+  assert.equal((await db.doc(`kullanicilar/${uid}`).get()).exists, false);
+});
+
+test('F-01: X-Forwarded-For\'un soldaki (istemci) girdisini değiştirmek IP sınırını aşmaz; IP anahtarı sağ uçtan', async () => {
+  const { kullaniciAdi, sifre } = await hesapAc();
+  let i = 0;
+  const sahte = () => ({ basliklar: { 'X-Forwarded-For': `10.${i >> 8}.${i++ & 255}.7, 203.0.113.9` } });
+  for (let n = 0; n < 30; n++) assert.equal((await giris('cocukGiris', { kullaniciAdi: `yok${n}`, sifre: 'bir-iki-12' }, sahte())).durum, 401);
+  const g = await giris('cocukGiris', { kullaniciAdi, sifre }, sahte());
+  assert.equal(g.durum, 429, 'sol girdiyi her seferinde değiştirmek yeni IP sayılmadı');
+  assert.equal((await db.collection('gizli/giris/ipler').get()).size, 1);
+});
+
+// En sonda: pencere (1 dk) dolana dek bekler ki sonraki dosyaların girişleri etkilenmesin.
+test('F-01: IP sahteciliği (her istekte yeni Fastly-Client-IP) örnek başına yük tavanını aşamaz; pencere dolunca giriş açılır', { timeout: 240_000 }, async () => {
+  const { kullaniciAdi, sifre } = await hesapAc();
+  let tavan;
+  // Ardışık: emülatör eşzamanlı isteklere ayrı işçi süreçleri açar ve sayaç süreç başınadır; ardışıkta tek işçi sayar.
+  for (let n = 0; n < 500 && !tavan; n++) {
+    const y = await giris('cocukGiris', { kullaniciAdi: `yok${n}`, sifre: 'bir-iki-12' }, { basliklar: { 'Fastly-Client-IP': `198.51.${n >> 8}.${n & 255}` } });
+    if (y.durum === 429) tavan = y;
+  }
+  assert.ok(tavan, 'tavan devreye girdi (IP başına sınır tek başına yetmezdi: her istek yeni IP)');
+  assert.equal(tavan.govde.hata, 'kilit');
+  const dogru = { kullaniciAdi, sifre };
+  assert.equal((await giris('cocukGiris', dogru, { basliklar: { 'Fastly-Client-IP': '198.51.100.250' } })).durum, 429);
+  await bekle(async () => (await giris('cocukGiris', dogru, { basliklar: { 'Fastly-Client-IP': '198.51.100.251' } })).durum === 200, 90_000);
 });

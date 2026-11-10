@@ -57,7 +57,13 @@ test('silmeTara: süresi gelen hesabı bütünüyle siler; gelmeyene ve çocuğa
 
 test('hareketsizTara: varsayılan kuru çalışma hiçbir şeyi değiştirmez; ILIM_SIL_GERCEK=1 uyarır ve siler', async () => {
   const ay = (n) => { const d = new Date(); d.setUTCMonth(d.getUTCMonth() - n); return Timestamp.fromDate(d); };
-  for (const uid of ['eski', 'yeni', 'uyarilmis', 'donen']) await auth.createUser({ uid, email: `${uid}@example.test` });
+  for (const uid of ['eski', 'yeni', 'uyarilmis', 'donen', 'bekleyen']) await auth.createUser({ uid, email: `${uid}@example.test`, emailVerified: true });
+  await auth.createUser({ uid: 'adressiz' });
+  await db.doc('kullanicilar/adressiz').set({ ad: 'adressiz', tur: 'genel', sonGiris: ay(25) });
+  // Uyarısı kuyrukta henüz gitmemiş hesap (GAS gecikti) silinmez; gitmiş olan silinir.
+  await db.doc('kullanicilar/bekleyen').set({ ad: 'bekleyen', tur: 'genel', sonGiris: ay(26), hareketsizUyari: once(31) });
+  await db.doc('epostaKuyrugu/z_bekleyen').set({ tur: 'hareketsiz', uid: 'bekleyen', durum: 'bekliyor' });
+  await db.doc('epostaKuyrugu/z_uyarilmis').set({ tur: 'hareketsiz', uid: 'uyarilmis', durum: 'gonderildi' });
   await db.doc('kullanicilar/eski').set({ ad: 'eski', tur: 'genel', dil: 'fr', sonGiris: ay(25) });
   await db.doc('kullanicilar/yeni').set({ ad: 'yeni', tur: 'genel', dil: 'tr', sonGiris: ay(1) });
   await db.doc('kullanicilar/uyarilmis').set({ ad: 'uyarilmis', tur: 'genel', sonGiris: ay(26), hareketsizUyari: once(31) });
@@ -69,17 +75,29 @@ test('hareketsizTara: varsayılan kuru çalışma hiçbir şeyi değiştirmez; I
   delete process.env.ILIM_SIL_GERCEK;
   await calistir();
   assert.equal((await db.doc('kullanicilar/eski').get()).get('hareketsizUyari'), undefined, 'kuru: uyarı yok');
-  assert.equal((await db.collection('epostaKuyrugu').get()).size, 0, 'kuru: kuyruk boş');
+  assert.deepEqual((await db.collection('epostaKuyrugu').get()).docs.map((d) => d.id).sort(), ['z_bekleyen', 'z_uyarilmis'], 'kuru: kuyruğa yeni belge yok');
+  assert.equal((await db.doc('silinenUidler/uyarilmis').get()).exists, false, 'kuru: mezar taşı yok');
   assert.equal(await authVar('uyarilmis'), true, 'kuru: silme yok');
   assert.ok((await db.doc('kullanicilar/donen').get()).get('hareketsizUyari'), 'kuru: uyarı kaldırılmaz');
 
   process.env.ILIM_SIL_GERCEK = '1';
   try { await calistir(); } finally { delete process.env.ILIM_SIL_GERCEK; }
   assert.ok((await db.doc('kullanicilar/eski').get()).get('hareketsizUyari') instanceof Timestamp);
-  const kuyruk = (await db.collection('epostaKuyrugu').get()).docs.map((d) => d.data());
-  assert.equal(kuyruk.length, 1);
-  assert.deepEqual({ ...kuyruk[0], zaman: undefined }, { tur: 'hareketsiz', uid: 'eski', dil: 'fr', zaman: undefined });
+  // Uyarı belgesi GAS'ın boşaltabileceği biçimde: z_<uid>, adres, dil, giriş bağlantısı, durum bekliyor, TTL.
+  const uyari = (await db.doc('epostaKuyrugu/z_eski').get()).data();
+  assert.deepEqual(Object.keys(uyari).sort(), ['ad', 'baglanti', 'bitis', 'deneme', 'dil', 'durum', 'eposta', 'tur', 'uid', 'zaman']);
+  assert.deepEqual({ ...uyari, zaman: undefined, bitis: undefined }, {
+    tur: 'hareketsiz', uid: 'eski', eposta: 'eski@example.test', dil: 'fr', ad: 'eski', baglanti: 'https://egitim.ulucamii.be/fr/hesap/giris/',
+    durum: 'bekliyor', deneme: 0, zaman: undefined, bitis: undefined,
+  });
+  assert.ok(uyari.bitis.toMillis() > Date.now() + 40 * GUN);
+  assert.ok((await db.doc('kullanicilar/adressiz').get()).get('hareketsizUyari') instanceof Timestamp, 'adressiz: işaretlenir');
+  assert.equal((await db.doc('epostaKuyrugu/z_adressiz').get()).exists, false, 'adressiz: kuyruk yok');
+  assert.equal(await authVar('bekleyen'), true, 'uyarısı gitmemiş hesap silinmez');
+  assert.equal(await var_mi('kullanicilar/bekleyen'), true);
   assert.equal(await authVar('uyarilmis'), false);
+  assert.equal(await var_mi('silinenUidler/uyarilmis'), true, 'silinen uid mezar taşı alır (F-05)');
+  assert.ok((await db.doc('silinenUidler/uyarilmis').get()).get('bitis') instanceof Timestamp);
   assert.equal(await var_mi('kullanicilar/uyarilmis'), false);
   assert.equal((await db.doc('kullanicilar/donen').get()).get('hareketsizUyari'), undefined, 'uyarıdan sonra giren kalır');
   assert.equal(await authVar('donen'), true);

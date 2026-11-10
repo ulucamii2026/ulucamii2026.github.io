@@ -1,0 +1,155 @@
+---
+/**
+ * Rozetlerim ve Yol Belgesi (İlim Yolu · Dilim 2, 10 Kasım 2026): bir yolun (13 yol: 5 plan konusu, 7 seviye alanı, bilgi maddeleri) bütün kartları
+ * öğrenildi olarak işaretlenince o yolun rozeti kazanılır ve «kendi çalışmasıyla» yazan basılabilir belge hazırlanır. Belge, Çalışma Belgesi'nin
+ * kâğıdını (BelgeCercevesi, belge.css, src/lib/ezber/belge.ts yoğunluğu) yeniden kullanır; hocanın dinlediği ezberin Sertifikası değildir.
+ * Hesap yok/sunucu yok: ilerleme cihazdan (girişliyse hesapla eşitlenmiş kopyadan) okunur; isteğe bağlı ad yalnız sayfa belleğinde durur.
+ * Kart başlıkları ve yol adları `data-veri` ile gelir (CSP: satır içi betik yok); belgeyi scripts/rozetler.ts doldurur.
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import { dilListesi, yerelKodu } from '@ortak/i18n/utils';
+import { KODLAR } from '@ortak/lib/ilim-yolu/bilgi-ilerleme';
+import { ALANLAR, yolKartlari } from '@ortak/lib/ilim-yolu/yollar';
+import BelgeCercevesi from '../../../components/BelgeCercevesi.astro';
+import Ikon from '../../../components/Ikon.astro';
+import TaslakEtiketi from '../../../components/TaslakEtiketi.astro';
+import { belgeMetinleri } from '../../../i18n/belge';
+import { ilimMetinleri } from '../../../i18n/ilim';
+import { alanAdlari, yollarMetinleri } from '../../../i18n/yollar';
+import { BILGI_MADDELERI } from '../../../lib/bilgi-yolu';
+import { BILGI_METINLERI } from '../../../lib/bilgi-metinleri';
+import { KARTLAR } from '../../../lib/bilgi-karti-verisi';
+import Taban from '../../../layouts/Taban.astro';
+import { kursTamAdi } from '../../../lib/kimlik';
+import '../../../styles/ilim.css';
+import '../../../styles/belge.css';
+import '../../../styles/yollar.css';
+
+export function getStaticPaths() {
+  return dilListesi.map((dil) => ({ params: { dil } }));
+}
+
+const dil = Astro.params.dil as Dil;
+const y = yollarMetinleri(dil);
+const b = belgeMetinleri(dil);
+const il = ilimMetinleri(dil);
+const alanlar = alanAdlari(dil);
+const motifler = ['m-goz', 'm-yildiz', 'm-sevron', 'm-mihrap'] as const;
+const yollar = [
+  ...KODLAR.map((kod) => ({ id: `plan-${kod}`, ad: y.planAd[kod], tur: 'plan' })),
+  ...ALANLAR.map((alan) => ({ id: `alan-${alan}`, ad: alanlar[alan], tur: 'alan' })),
+  { id: 'bilgi', ad: y.bilgiAd, tur: 'bilgi' },
+].map((p, n) => ({ ...p, motif: motifler[n % 4], idler: p.tur === 'bilgi' ? BILGI_MADDELERI.map((o) => o.id) : yolKartlari(KARTLAR, p.id).map((k) => k.id) }));
+// Yolun herhangi bir kartı (bilgi yolunda maddesi) bu dilde taslaksa belge «Taslak» etiketi taşır (onaylanmamış metin resmî gibi sunulmaz).
+const taslakMi = (p: { id: string; tur: string }) => (p.tur === 'bilgi'
+  ? BILGI_MADDELERI.some((o) => BILGI_METINLERI.get(o.id)?.taslak.includes(dil))
+  : yolKartlari(KARTLAR, p.id).some((k) => k.durum[dil] === 'taslak'));
+const veri = {
+  dil,
+  yerel: yerelKodu[dil],
+  yollar: yollar.map((p) => ({ id: p.id, ad: p.ad, idler: p.idler, taslak: taslakMi(p) })),
+  adlar: {
+    ...Object.fromEntries(KARTLAR.map((k) => [k.id, k.baslik[dil]])),
+    ...Object.fromEntries(BILGI_MADDELERI.map((o) => [o.id, o.ad[dil]])),
+  },
+  m: {
+    rKazanildi: y.rKazanildi, rKazanilmadi: y.rKazanilmadi, rBelge: y.rBelge, rSecili: y.rSecili, bIfade: y.bIfade, bDurumOgrenildi: y.bDurumOgrenildi,
+    bDurumSinav: y.bDurumSinav, bDurumCalisildi: y.bDurumCalisildi, bOzet: y.bOzet, bOzetBilgi: y.bOzetBilgi, duzenleme: b.duzenleme,
+  },
+};
+---
+<Taban dil={dil} baslik={y.rBaslik} aciklama={y.rAciklama} yol="yollar/rozetler">
+  <div class="belge-sayfa" data-rozetler data-veri={JSON.stringify(veri)}>
+    <section class="belge-giris" aria-labelledby="rozet-baslik">
+      <div class="icerik">
+        <div class="belge-giris-metin">
+          <p class="yl-geri-bag"><a class="yl-geri-baglanti" href={`/${dil}/yollar/`}><Ikon ad="geri" /> {y.tumYollar}</a></p>
+          <p class="iy-ust-yazi">{il.marka}</p>
+          <h1 id="rozet-baslik">{y.rBaslik}</h1>
+          <p class="belge-lead">{y.rLead}</p>
+          <p class="belge-gizlilik">{y.rGizlilik}</p>
+          <noscript><p class="belge-js">{y.jsGerek}</p></noscript>
+          <p class="yl-ilerleme" data-hic-yok role="status" hidden>{y.rHicYok}</p>
+          <ul class="yl-rozetler">
+            {yollar.map((p) => (
+              <li class="yl-rozetli" data-rozet-yol={p.id} data-kazanildi="0">
+                <div class="yl-yol-motif" aria-hidden="true"><svg viewBox="0 0 100 100"><use href={`#${p.motif}`} /></svg></div>
+                <div class="yl-yol-metin">
+                  <h3>{p.ad}</h3>
+                  <p class="yl-ilerleme" data-durum-yazi></p>
+                  <button type="button" class="dugme ikincil kucuk" data-belge-sec={p.id} aria-pressed="false" hidden>{y.rBelge}</button>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="belge-alan" data-belge-alan aria-label={y.rSecili} hidden>
+      <div class="icerik">
+        <div class="belge-dolu">
+          <div class="belge-panel">
+            <div class="belge-ad">
+              <label for="belge-ad">{b.adEtiket}</label>
+              <input id="belge-ad" type="text" name="ad" maxlength="60" autocomplete="name" data-belge-ad />
+              <p class="belge-ipucu">{b.adIpucu}</p>
+            </div>
+            <div class="belge-eylem">
+              <button type="button" class="dugme birincil" data-belge-yazdir><Ikon ad="yazici" /> {b.yazdir}</button>
+              <p>{b.yazdirNot}</p>
+            </div>
+          </div>
+
+          <div class="belge-onizleme">
+            <h2>{b.onizleme}</h2>
+            <article class="belge" data-belge-kagit data-yogunluk="az" aria-label={y.bBaslik}>
+              <BelgeCercevesi />
+              <div class="belge-sarmal">
+                <div class="belge-ic">
+                  <div class="belge-ic-kutu">
+                    <img class="belge-logo" src="/logo/kuran-kursu-yatay.svg" alt={kursTamAdi(dil)} width="1640" height="400" />
+                    <div class="belge-ayrac" aria-hidden="true"><svg viewBox="0 0 100 100" focusable="false"><use href="#belge-yildiz" width="100" height="100" /></svg></div>
+                    <p class="belge-baslik">{y.bBaslik}</p>
+                    <p class="belge-alt">{b.altBaslik}</p>
+                    <div class="belge-adsatir">
+                      <span class="etiket">{b.adSatiri}</span>
+                      <span class="deger" data-belge-ad-yaz></span>
+                    </div>
+                    <p class="belge-ifade" data-belge-ifade></p>
+                    <p class="belge-taslak" data-belge-taslak hidden><TaslakEtiketi dil={dil} durum="taslak" /></p>
+                    <table class="belge-tablo">
+                      <caption>{y.bTabloAdi}</caption>
+                      <thead>
+                        <tr class="bosluk" aria-hidden="true"><td colspan="3"></td></tr>
+                        <tr>
+                          <th scope="col" class="no">{y.bSutunNo}</th>
+                          <th scope="col">{y.bSutunKonu}</th>
+                          <th scope="col">{y.bSutunDurum}</th>
+                        </tr>
+                      </thead>
+                      <tbody data-belge-satirlar></tbody>
+                      <tfoot><tr class="bosluk" aria-hidden="true"><td colspan="3"></td></tr></tfoot>
+                    </table>
+                    <p class="belge-ozet" data-belge-ozet></p>
+                  </div>
+                </div>
+                <div class="belge-alt-satir">
+                  <div>
+                    <span data-belge-tarih></span>
+                    <span class="kurum">{kursTamAdi(dil)} · egitim.ulucamii.be</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</Taban>
+
+<script>
+  import '../../../scripts/dil';
+  import '../../../scripts/rozetler';
+</script>

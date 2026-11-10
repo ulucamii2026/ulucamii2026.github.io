@@ -40,3 +40,23 @@ test('Kitap çözümü doğru dosyayı verir; yanlış anahtar, bozuk parça, ya
   controller.abort();await assert.rejects(kitapCoz(fixture,keyHex,controller.signal,()=>{}));
  } finally {globalThis.fetch=original;}
 });
+test('Şifreli kitap parçaları tek kök sabitinden istenir: ulucamii.be/localhost aynı köken, başka kök mutlak adres',async()=>{
+ const koken=resolve('node_modules/.cache/ses-koken-test.mjs');
+ await build({entryPoints:['src/lib/ses-koken.ts'],outfile:koken,bundle:true,platform:'node',format:'esm'});
+ const {sesKokeniBul,medyaYolu,SES_KOKEN}=await import(pathToFileURL(koken));
+ assert.equal(SES_KOKEN,'');
+ for(const h of ['ulucamii.be','www.ulucamii.be','localhost','127.0.0.1']) assert.equal(sesKokeniBul(h),'',h);
+ for(const h of ['egitim.ulucamii.be','ilim.example.test']) assert.equal(sesKokeniBul(h),'https://ulucamii.be',h);
+ assert.equal(medyaYolu('/media/hoca-kitaplari/a.bin'),'/media/hoca-kitaplari/a.bin');
+ const raw=new TextEncoder().encode('%PDF-1.7\nx');const keyBytes=new Uint8Array(32).fill(3);
+ const key=await crypto.subtle.importKey('raw',keyBytes,'AES-GCM',false,['encrypt']);
+ const iv=new Uint8Array(12).fill(1);
+ const cipher=await crypto.subtle.encrypt({name:'AES-GCM',iv,additionalData:new TextEncoder().encode('k:0')},key,raw);
+ const bytes=Buffer.concat([iv,Buffer.from(cipher)]);
+ const istenen=[];const original=globalThis.fetch;
+ try{
+  globalThis.fetch=async(u)=>{istenen.push(u);return new Response(bytes);};
+  await kitapCoz({id:'k',bayt:raw.length,sha256:sha(raw),parcalar:[{yol:'/media/hoca-kitaplari/k.bin',sha256:sha(bytes)}]},Buffer.from(keyBytes).toString('hex'),new AbortController().signal,()=>{});
+  assert.deepEqual(istenen,['/media/hoca-kitaplari/k.bin']);
+ } finally {globalThis.fetch=original;}
+});

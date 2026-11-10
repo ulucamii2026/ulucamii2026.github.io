@@ -165,10 +165,10 @@ test('Çocuk hesabı: e-postasız token aile, veli ve hoca yollarından hiçbiri
   await assertFails(oku(sahte, 'kullanicilar/u1/calisma/ezber'));
 });
 
-test('Kullanıcı adları: giriş yapan tek ad sorar; liste ve istemci yazımı yok', async () => {
-  await assertSucceeds(oku(kisi('u2'), 'kullaniciAdlari/ali'));
-  await assertSucceeds(oku(cocuk(), 'kullaniciAdlari/ali'));
-  await assertSucceeds(oku(kisi('u2'), 'kullaniciAdlari/bos-ad'));
+test('Kullanıcı adları: istemci ne okur ne yazar (F-06; müsaitlik kullaniciAdiAl callable içinde sınanır)', async () => {
+  await assertFails(oku(kisi('u2'), 'kullaniciAdlari/ali'));
+  await assertFails(oku(cocuk(), 'kullaniciAdlari/ali'));
+  await assertFails(oku(kisi('u2'), 'kullaniciAdlari/bos-ad'));
   await assertFails(oku(anonim(), 'kullaniciAdlari/ali'));
   for (const db of [kisi('u1'), kisi('u9'), hocaA(), cocuk()]) {
     await assertFails(getDocs(collection(db, 'kullaniciAdlari')));
@@ -302,4 +302,105 @@ test('gizli, bagKodlari, ogrenciHesaplari: istemciye tamamen kapalı (hoca dahil
       await assertFails(getDocs(collection(db, koleksiyon)), koleksiyon);
     }
   }
+});
+
+test('epostaKuyrugu: e-posta adresi içerir, istemciye tamamen kapalı (hoca, sahibi ve çocuk dahil)', async () => {
+  const yollar = ['epostaKuyrugu/h_u1_2026-W45', 'epostaKuyrugu/yeni'];
+  const belge = { tur: 'haftalik', uid: 'u1', eposta: 'u1@example.test', dil: 'tr', durum: 'bekliyor' };
+  // Admin yolu (kurallar yok sayılır) ile okunacak bir belge de var: kapalılık «belge yok» yüzünden değil kuraldan gelir.
+  await env.withSecurityRulesDisabled((ctx) => setDoc(doc(ctx.firestore(), yollar[0]), belge));
+  for (const db of [kisi('u1'), hocaA(), cocuk(), kisi('y1', { ref: 'R2' }), anonim()]) {
+    for (const yol of yollar) {
+      await assertFails(oku(db, yol), yol);
+      await assertFails(setDoc(doc(db, yol), belge), yol);
+      await assertFails(updateDoc(doc(db, yol), { durum: 'gonderildi' }), yol);
+      await assertFails(deleteDoc(doc(db, yol)), yol);
+    }
+    await assertFails(getDocs(collection(db, 'epostaKuyrugu')), 'liste');
+    await assertFails(getDocs(query(collection(db, 'epostaKuyrugu'), where('uid', '==', 'u1'))), 'uid sorgusu');
+  }
+});
+
+// ── 10 Kasım 2026 güvenlik incelemesi (F-03, F-05, F-06, F-10) ve ihtida/ozel gizliliği ──
+const cocukSaglayici = (saglayici, ek = {}) =>
+  env.authenticatedContext('c_cocuk1', { rol: 'cocuk', ref: 'R1', firebase: { sign_in_provider: saglayici, identities: {} }, ...ek }).firestore();
+
+test('F-03: çocuk oturumu yalnız custom token ile geçerli; e-posta/Google bağlanmış çocuk hiçbir yola giremez', async () => {
+  await assertSucceeds(oku(cocuk(), 'ezberDurum/R1'));
+  await assertSucceeds(oku(cocukSaglayici('custom'), 'ezberDurum/R1'));
+  for (const db of [
+    cocukSaglayici('password'), cocukSaglayici('google.com'), // bağlanmış kimlikle yeniden girişte sağlayıcı değişir
+    cocukSaglayici('custom', { email: 'sinif@example.test', email_verified: true }), // custom oturumda bağlanmış e-posta belirdi
+  ]) {
+    await assertFails(oku(db, 'ezberDurum/R1'));
+    await assertFails(oku(db, 'kullanicilar/c_cocuk1'));
+    await assertFails(setDoc(doc(db, 'kullanicilar/c_cocuk1/calisma/ezber'), calisma()));
+  }
+  // Çocuğun bağladığı e-posta, veli (aileler) ya da hoca yolunu da açmaz.
+  await assertFails(oku(cocukSaglayici('password', { email: 'veli-a@example.test', email_verified: true }), 'ogrenciler/R1'));
+  await assertFails(oku(cocukSaglayici('password', { email: 'hoca-a@example.test', email_verified: true }), 'hocalar/hoca-a'));
+});
+
+test('F-10: çocuk profilini oluşturamaz; yalnız dil/sonGiris günceller (sehir, cami, tercihler yetişkin alanları)', async () => {
+  const c = cocuk();
+  await assertSucceeds(updateDoc(doc(c, 'kullanicilar/c_cocuk1'), { dil: 'fr', sonGiris: serverTimestamp() }));
+  for (const alan of [{ sehir: 'Namur' }, { cami: 'x' }, { tercihler: { haftalik: true } }]) {
+    await assertFails(updateDoc(doc(c, 'kullanicilar/c_cocuk1'), alan), JSON.stringify(alan));
+  }
+  await env.withSecurityRulesDisabled((ctx) => deleteDoc(doc(ctx.firestore(), 'kullanicilar/c_cocuk1')));
+  await assertFails(setDoc(doc(c, 'kullanicilar/c_cocuk1'), { dil: 'tr' })); // F-05: silinen çocuk profilini yeniden doğuramaz
+});
+
+test('F-05: mezar taşı (silinenUidler) olan uid hiçbir belgeyi yeniden yazamaz; okuma/başkaları etkilenmez', async () => {
+  await env.withSecurityRulesDisabled(async (ctx) => {
+    await setDoc(doc(ctx.firestore(), 'silinenUidler/u2'), { zaman: ESKI });
+    await setDoc(doc(ctx.firestore(), 'silinenUidler/c_cocuk1'), { zaman: ESKI });
+    await setDoc(doc(ctx.firestore(), 'silinenUidler/y1'), { zaman: ESKI });
+  });
+  const u2 = kisi('u2');
+  await assertFails(setDoc(doc(u2, 'kullanicilar/u2'), { dil: 'tr' }));
+  await assertFails(updateDoc(doc(u2, 'kullanicilar/u2'), { dil: 'tr' }));
+  await assertFails(setDoc(doc(u2, 'kullanicilar/u2/calisma/ezber'), calisma()));
+  await assertFails(setDoc(doc(u2, 'kullanicilar/u2/ozel/hassas'), { muhtedi: false }));
+  await assertFails(setDoc(doc(u2, 'paylasimlar/u2'), { hocalar: ['hoca-a'], zaman: serverTimestamp() }));
+  await assertFails(updateDoc(doc(cocuk(), 'kullanicilar/c_cocuk1'), { sonGiris: serverTimestamp() }));
+  await assertFails(oku(cocuk(), 'ezberDurum/R1')); // çocuğun uçuştaki token'ı ref okuması da kapanır
+  await assertFails(oku(kisi('y1', { ref: 'R2' }), 'ezberDurum/R2'));
+  await assertSucceeds(updateDoc(doc(kisi('u1'), 'kullanicilar/u1'), { dil: 'nl' })); // silinmemiş hesap etkilenmez
+  for (const db of [kisi('u1'), hocaA(), cocuk(), anonim()]) {
+    await assertFails(oku(db, 'silinenUidler/u2'));
+    await assertFails(setDoc(doc(db, 'silinenUidler/yeni'), { zaman: ESKI }));
+  }
+});
+
+test('F-06: kullaniciAdlari istemciye tamamen kapalı (get dahil)', async () => {
+  for (const db of [kisi('u1'), kisi('u2'), hocaA(), cocuk(), anonim()]) {
+    await assertFails(oku(db, 'kullaniciAdlari/ali'));
+    await assertFails(setDoc(doc(db, 'kullaniciAdlari/yeni'), { uid: 'u2' }));
+  }
+});
+
+test('ihtida/ozet ve ozel/hassas: YALNIZ sahibi okur — hoca, başka kullanıcı, çocuk, kursa bağlı hoca, paylaşılan hoca, anonim okuyamaz', async () => {
+  await env.withSecurityRulesDisabled(async (ctx) => {
+    const d = ctx.firestore();
+    await setDoc(doc(d, 'kullanicilar/u1/ihtida/ozet'), { durum: 'basvuru', guncelleme: ESKI });
+    await setDoc(doc(d, 'kullanicilar/u1/ihtida/baska'), { x: 1 });
+    await setDoc(doc(d, 'kullanicilar/u1'), { ad: 'ali', tur: 'kursYetiskin', ref: 'R2', dil: 'tr', olusturma: ESKI }); // hoca kursaBagli() true
+    await setDoc(doc(d, 'paylasimlar/u1'), { hocalar: ['hoca-a'], zaman: ESKI }); // hoca-a ile paylaşıldı
+  });
+  await assertSucceeds(oku(kisi('u1'), 'kullanicilar/u1/ihtida/ozet'));
+  await assertSucceeds(oku(kisi('u1'), 'kullanicilar/u1/ozel/hassas'));
+  for (const yol of ['kullanicilar/u1/ihtida/ozet', 'kullanicilar/u1/ozel/hassas']) {
+    for (const db of [hocaA(), hocaB(), kisi('u2'), kisi('y1', { ref: 'R2' }), cocuk(), anonim()]) {
+      await assertFails(oku(db, yol), yol);
+      await assertFails(setDoc(doc(db, yol), { muhtedi: false }), yol);
+      await assertFails(deleteDoc(doc(db, yol)), yol);
+    }
+    await assertFails(getDocs(collection(kisi('u2'), yol.split('/').slice(0, 3).join('/'))), 'liste ' + yol);
+    await assertFails(getDocs(collection(hocaA(), yol.split('/').slice(0, 3).join('/'))), 'hoca liste ' + yol);
+  }
+  await assertFails(oku(kisi('u1'), 'kullanicilar/u1/ihtida/baska')); // başka belge adı yok
+  await assertFails(setDoc(doc(kisi('u1'), 'kullanicilar/u1/ihtida/ozet'), { durum: 'x' })); // sahibi de yazamaz (sunucu yazar)
+  // Hoca yalnız calisma'yı okuyabilir; üst belge listelemesi altkoleksiyon verisini getirmez.
+  await assertSucceeds(oku(hocaA(), 'kullanicilar/u1/calisma/ezber'));
 });

@@ -25,7 +25,9 @@ export const GUN = 24 * SAAT;
 
 /** Callable CORS ve giriş uçlarının Origin denetimi: iki site + yerel geliştirme. */
 export const KOKENLER: (string | RegExp)[] = [
-  'https://ulucamii.be', 'https://egitim.ulucamii.be', /^http:\/\/(localhost|127\.0\.0\.1)(:\d{1,5})?$/,
+  'https://ulucamii.be', 'https://egitim.ulucamii.be',
+  // F-12: yerel geliştirme kökenleri yalnız emülatörde (canlıda yerel bir sayfa işlevleri tarayıcıdan çağıramaz).
+  ...(process.env.FUNCTIONS_EMULATOR === 'true' ? [/^http:\/\/(localhost|127\.0\.0\.1)(:\d{1,5})?$/] : []),
 ];
 export const kokenIzinli = (koken: unknown): boolean =>
   typeof koken === 'string' && KOKENLER.some((k) => (typeof k === 'string' ? k === koken : k.test(koken)));

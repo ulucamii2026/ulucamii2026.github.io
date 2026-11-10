@@ -13,3 +13,6 @@ export const saglik = onRequest({ cors: false }, (_istek, yanit) => {
 export { kullaniciAdiAl, hesabimiSil, hesapSilmeIptal, silmeTara, hareketsizTara } from './hesap';
 export { cocukHesabiAc, kartYenile, cocukSifreYenile, cocukOturumKapat, cocukGiris, kartGiris } from './cocuk';
 export { bagKoduUret, hesabiBagla, ogrenciHesaplariListe, portalSilmeTetik } from './bag';
+
+// İlim Yolu Dilim 2 — haftalık e-posta kuyruğu ve tek tıkla abonelikten çıkış (docs/ILIM-YOLU.md).
+export { haftalikKuyruk, abonelikCik } from './eposta';

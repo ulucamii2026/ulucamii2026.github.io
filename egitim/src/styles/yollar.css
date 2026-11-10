@@ -1,0 +1,123 @@
+/* İlim Yolu bilgi yolları (Dilim 2, 10 Kasım 2026): yol dizini, yol sayfası, bilgi kartı, mini sınav, yerleştirme testi, rozetler.
+   Kilim dili (egitim/DESIGN.md): köşe 2 px, gölge ve eğri yok, renk ikinci işaret (her durumun bir biçimi/metni vardır). Piksel görsel yok. */
+
+.yl-sayfa { padding-block: 2rem 4rem; }
+.yl-bas { display: grid; gap: 0.7rem; max-width: 46rem; }
+.yl-bas h1 { font-size: clamp(2rem, 1.4rem + 2.2vw, 3rem); letter-spacing: -0.02em; line-height: 1.08; }
+.yl-not { color: var(--murekkep-2); font-size: 0.95rem; max-width: 42em; }
+.yl-geri-baglanti { display: inline-flex; align-items: center; gap: 0.4rem; min-height: 2.75rem; font-weight: 650; color: var(--kokboya-yazi); }
+
+/* Taslak etiketi: kesik kenarlı safran-soluk rozet (renk tek başına anlam taşımaz: «Taslak» yazar). */
+.yl-taslak { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.6rem; }
+.yl-taslak-ad { display: inline-block; padding: 0.05rem 0.5rem; font: 700 0.78rem/1.4 var(--baslik); letter-spacing: 0.04em; text-transform: uppercase;
+  color: var(--safran-yazi); background: var(--safran-soluk); border: 1.5px dashed var(--safran-yazi); border-radius: var(--r); }
+.yl-taslak-not { font-size: 0.9rem; color: var(--murekkep-2); }
+
+/* Yerleştirme çağrısı */
+.yl-yer { margin-top: 2rem; }
+.yl-yer .iy-kart-govde { display: grid; gap: 0.6rem; justify-items: start; padding-block: 1rem 1.2rem; }
+.yl-yer h2 { font-size: 1.35rem; }
+
+/* Yol kartları */
+.yl-yollar { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
+.yl-yol { display: grid; grid-template-columns: 4.5rem minmax(0, 1fr); gap: 0.4rem 1rem; align-items: start; padding: 0.9rem; background: var(--yuz); border: 1.5px solid var(--cizgi-koyu); border-radius: var(--r); }
+.yl-yol[data-tamam="1"] { border-color: var(--yesil); border-width: 2px; }
+.yl-yol-motif { width: 4.5rem; height: 4.5rem; display: grid; place-items: center; border: 1.5px solid var(--murekkep); background: var(--safran-soluk); }
+.yl-yol-motif svg { width: 78%; height: 78%; }
+.yl-yol[data-tur="alan"] .yl-yol-motif { background: var(--yesil-soluk); }
+.yl-yol[data-tur="bilgi"] .yl-yol-motif { background: var(--kokboya-soluk); }
+.yl-yol h3 { font-size: 1.2rem; }
+.yl-yol h3 a { color: var(--murekkep); text-decoration-thickness: 2px; text-underline-offset: 0.2em; }
+.yl-yol h3 a:hover { color: var(--kokboya-yazi); }
+.yl-yol-metin { display: grid; gap: 0.2rem; min-width: 0; }
+.yl-sayi { color: var(--murekkep-2); font-size: 0.95rem; }
+.yl-ilerleme { font-weight: 650; font-size: 0.95rem; }
+.yl-rozet-yazi { display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 700; color: var(--yesil); }
+.yl-rozet-yazi svg { width: 1.2rem; height: 1.2rem; fill: currentColor; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .yl-rozet-yazi { color: #CFE8DB; } }
+:root[data-theme="dark"] .yl-rozet-yazi { color: #CFE8DB; }
+@media (min-width: 40rem) { .yl-yollar.iki { grid-template-columns: 1fr 1fr; } }
+
+/* Yol sayfası: kart listesi */
+.yl-liste { list-style: none; margin: 0; padding: 0; display: grid; border: 1.5px solid var(--cizgi-koyu); border-radius: var(--r); background: var(--yuz); }
+.yl-liste li + li { border-top: 1px solid var(--cizgi); }
+.yl-liste li { display: grid; gap: 0.25rem 1rem; padding: 0.7rem 1rem; align-items: center; }
+@media (min-width: 40rem) { .yl-liste li { grid-template-columns: minmax(0, 1fr) auto; } }
+.yl-liste a { font-weight: 650; color: var(--murekkep); text-underline-offset: 0.2em; min-height: 2.75rem; display: inline-flex; align-items: center; overflow-wrap: anywhere; }
+.yl-liste a:hover { color: var(--kokboya-yazi); }
+.yl-durum { font-size: 0.92rem; color: var(--murekkep-2); }
+.yl-liste li[data-durum="1"] .yl-durum, .yl-liste li[data-durum="3"] .yl-durum, .yl-liste li[data-durum="2"] .yl-durum { color: var(--yesil); font-weight: 700; }
+.yl-liste li[data-durum="1"], .yl-liste li[data-durum="2"], .yl-liste li[data-durum="3"] { background: var(--yesil-soluk); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .yl-liste li[data-durum] .yl-durum { color: #CFE8DB; } }
+:root[data-theme="dark"] .yl-liste li[data-durum] .yl-durum { color: #CFE8DB; }
+.yl-basamak { margin-top: 1.6rem; font-size: 1.25rem; }
+.yl-baslik-satir { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem 0.8rem; }
+
+/* Bilgi kartı sayfası */
+.yl-kart-sayfa { display: grid; gap: 1.4rem; max-width: 46rem; padding-block: 2rem 4rem; }
+.yl-kart-sayfa h1 { font-size: clamp(1.8rem, 1.3rem + 2vw, 2.6rem); letter-spacing: -0.02em; line-height: 1.1; }
+.yl-ozet { font-size: 1.15rem; line-height: 1.6; }
+.yl-meta { display: grid; gap: 0.3rem; color: var(--murekkep-2); font-size: 0.95rem; }
+.yl-meta a { color: var(--kokboya-yazi); font-weight: 650; }
+.yl-ogrendim { display: grid; gap: 0.6rem; justify-items: start; }
+.yl-ogrendim .dugme[aria-pressed="true"] { background: var(--yesil); border-color: var(--yesil); color: var(--krem-yazi); }
+.yl-ogrendim .dugme[aria-pressed="true"]:hover { background: var(--yesil-2); border-color: var(--yesil-2); }
+.yl-durum-satir { font-weight: 650; min-height: 1.5em; }
+.yl-durum-satir.hata { color: var(--kokboya-yazi); }
+.yl-sinav { display: grid; gap: 1rem; padding: 1.1rem; background: var(--yuz); border: 1.5px solid var(--cizgi-koyu); border-radius: var(--r); }
+.yl-sinav h2 { font-size: 1.35rem; }
+.yl-soru { margin: 0; padding: 0; border: 0; min-width: 0; display: grid; gap: 0.5rem; }
+.yl-soru legend { padding: 0; font-weight: 700; font-size: 1.05rem; line-height: 1.4; }
+.yl-soru legend .no { display: block; font: 700 0.8rem/1.4 var(--baslik); letter-spacing: 0.12em; text-transform: uppercase; color: var(--kokboya-yazi); }
+.yl-sik { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.7rem; align-items: center; min-height: 3rem; padding: 0.45rem 0.8rem; border: 2px solid var(--girdi-kenar); border-radius: var(--r); background: var(--yun); cursor: pointer; }
+.yl-sik:hover { background: var(--yesil-soluk); }
+.yl-sik input { width: 1.35rem; height: 1.35rem; margin: 0; accent-color: var(--yesil); }
+.yl-sik:has(input:focus-visible) { outline: 3px solid var(--murekkep); outline-offset: 2px; }
+.yl-sik .yazi { overflow-wrap: anywhere; }
+.yl-ar { font-family: var(--font-ar); font-size: 1.5rem; line-height: 1.9; }
+.yl-ar-buyuk { font-family: var(--font-ar); font-size: clamp(1.9rem, 1.35rem + 1.9vw, 2.6rem); line-height: 2.05; font-feature-settings: "cv62" 1; text-align: center; padding: 0.4rem; background: var(--yun); border: 1.5px solid var(--cizgi-koyu); }
+.yl-sik[data-sonuc="dogru"] { border-color: var(--yesil); background: var(--yesil-soluk); border-style: solid; }
+.yl-sik[data-sonuc="yanlis"] { border-color: var(--kokboya); background: var(--kokboya-soluk); border-style: dashed; }
+.yl-geri { font-weight: 650; min-height: 1.4em; }
+.yl-geri[data-d="dogru"] { color: var(--yesil); }
+.yl-geri[data-d="yanlis"] { color: var(--kokboya-yazi); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .yl-geri[data-d="dogru"] { color: #CFE8DB; } }
+:root[data-theme="dark"] .yl-geri[data-d="dogru"] { color: #CFE8DB; }
+.yl-sinav-eylem { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.yl-gezinti { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.6rem; }
+
+/* Yerleştirme testi */
+.yl-yerlestirme { display: grid; gap: 1.2rem; max-width: 46rem; }
+.yl-test { padding: 1.1rem; background: var(--yuz); border: 1.5px solid var(--cizgi-koyu); border-radius: var(--r); display: grid; gap: 1rem; }
+.yl-test[hidden], .yl-sonuc[hidden], .yl-giris[hidden] { display: none; }
+.yl-sonuc { display: grid; gap: 1rem; padding: 1.1rem; background: var(--yuz); border: 2px solid var(--yesil); border-radius: var(--r); }
+.yl-sonuc h2 { font-size: 1.4rem; }
+.yl-oneri { font-size: 1.2rem; font-weight: 700; }
+.yl-alan-liste { list-style: none; margin: 0; padding: 0; display: grid; border: 1.5px solid var(--cizgi-koyu); }
+.yl-alan-liste li { padding: 0.55rem 0.9rem; }
+.yl-alan-liste li + li { border-top: 1px solid var(--cizgi); }
+.yl-alan-liste li[data-onerilen="1"] { background: var(--yesil-soluk); font-weight: 700; }
+.yl-giris { display: grid; gap: 0.8rem; justify-items: start; }
+
+/* Rozetler */
+.yl-rozetler { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
+@media (min-width: 40rem) { .yl-rozetler { grid-template-columns: 1fr 1fr; } }
+.yl-rozetli { display: grid; grid-template-columns: 4.5rem minmax(0, 1fr); gap: 0.4rem 1rem; align-items: start; padding: 0.9rem; border: 1.5px dashed var(--girdi-kenar); border-radius: var(--r); background: var(--yun); }
+.yl-rozetli[data-kazanildi="1"] { border: 2px solid var(--yesil); background: var(--yuz); }
+.yl-rozetli .yl-yol-motif { filter: grayscale(1); opacity: 0.55; }
+.yl-rozetli[data-kazanildi="1"] .yl-yol-motif { filter: none; opacity: 1; background: var(--safran-soluk); }
+.yl-rozetli h3 { font-size: 1.1rem; }
+.yl-rozetli .dugme { justify-self: start; margin-top: 0.4rem; }
+.yl-rozetli .dugme[aria-pressed="true"] { background: var(--yesil); border-color: var(--yesil); color: var(--krem-yazi); }
+
+/* Belge: kâğıt ve ekran düzeni belge.css'ten gelir; yalnız tablo sütunu */
+.belge-tablo .durum { white-space: nowrap; }
+.yl-siklar { display: grid; gap: 0.5rem; }
+
+/* Yol kapakları (yapay zekâ süs resmi; alt metin boş). Kart: üstte 16:9 şerit; yol sayfası: başlığın altında, metin genişliğinde. Gölge ve eğri yok. */
+.yl-yol-kapak { grid-column: 1 / -1; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; display: block; border: 1.5px solid var(--murekkep); border-radius: var(--r); background: var(--safran-soluk); margin-bottom: 0.3rem; }
+.yl-kapak { display: block; width: 100%; max-width: 46rem; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border: 1.5px solid var(--murekkep); border-radius: var(--r); background: var(--safran-soluk); margin-bottom: 1.4rem; }
+
+/* Belgede «Taslak» etiketi (yolun bir kartı bu dilde onaylanmamışsa; basılı kâğıtta da görünür, renk tek başına anlam taşımaz). */
+.belge-taslak { margin: 0.8em 0 0; text-align: center; }
+.belge-taslak[hidden] { display: none; }

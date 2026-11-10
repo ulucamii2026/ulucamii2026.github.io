@@ -14,9 +14,10 @@ for(const dil of ['tr','fr','en'])test(`${dil}: veli bülteni okur, bir kez onay
  const p=page.locator('[data-veli-bulten]');await expect(p.locator('.bulten-sayfa')).toContainText('12–13. sayfalar');
  await p.locator('[data-bulten-oku]').click();await expect(p.locator('[data-bulten-oku]')).toBeDisabled();
  expect(await page.evaluate(()=>window.__writes.filter(w=>w.ref.col.includes('/okumalar')).length)).toBe(1);
- await page.evaluate(()=>{const append=document.body.appendChild.bind(document.body);document.body.appendChild=function(n){if(n.tagName==='IFRAME'){const onload=n.onload;n.onload=()=>{n.contentWindow.print=()=>{window.__bultenPrint=n.contentDocument.body.textContent;};onload?.();};}return append(n);};});
+ await page.emulateMedia({media:'print'});await page.evaluate(()=>{window.print=()=>{const a=document.querySelector('.baski-alani');window.__bultenPrint=a.textContent;window.__disari=[...document.body.children].filter(c=>c!==a&&getComputedStyle(c).display!=='none').map(c=>c.tagName);window.__modu=document.documentElement.classList.contains('baski-modu');setTimeout(()=>window.dispatchEvent(new Event('afterprint')));};});
  await p.locator('[data-bulten-yazdir]').click();await expect.poll(()=>page.evaluate(()=>window.__bultenPrint)).toContain('Örnek Talebe');
  expect(await page.evaluate(()=>window.__bultenPrint)).not.toContain('İkinci Örnek');
+ await expect.poll(()=>page.evaluate(()=>document.querySelectorAll('.baski-alani').length)).toBe(0);expect(await page.evaluate(()=>document.documentElement.classList.contains('baski-modu'))).toBe(false);expect(await page.evaluate(()=>window.__modu)).toBe(true);expect(await page.evaluate(()=>window.__disari)).toEqual([]);await page.emulateMedia({media:'screen'});
  await page.locator('[data-sec="1"]').click();await expect(page.locator('[data-veli-bulten] .bulten-sayfa')).toHaveCount(0);
 });
 

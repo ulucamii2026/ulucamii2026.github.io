@@ -42,6 +42,7 @@ test('Hosting: egitim sitesi derlenmiş çıktıyı yayınlar; Firestore bloğu 
     { source: '/api/saglik', function: islev('saglik') },
     { source: '/api/cocuk-giris', function: islev('cocukGiris') },
     { source: '/api/kart-giris', function: islev('kartGiris') },
+    { source: '/api/abonelik-cik', function: islev('abonelikCik') },
   ]);
   // Yönlendirilen her işlev gerçekten dışa aktarılıyor (yanlış ad canlıda 404 verirdi).
   const disa = oku('functions/src/index.ts');
@@ -122,7 +123,10 @@ const derlendi = existsSync(dist('index.html'));
 // Çalışma sayfası olan her madde (src/lib/ezber/katalog.ts `calismaSayfasiVar`): ses, Kur'an metni, bilgi metni ya da sessiz kitap duasının metni.
 const sesliler = JSON.parse(oku('src/data/ezber/katalog.json')).ogeler.filter((o) => o.ses?.tam || o.ses?.parcalar?.length || o.kuran || o.bilgiMetni || o.metinli);
 // İlim Yolu ana sayfası, Ezber Kilimi girişi (ezber/), Çalışma Belgesi, Kilimim, ezber kartları ve ezber takvimi (25 Ekim 2026) ve her çalışma sayfası.
-const dilYollari = DILLER.flatMap((d) => [`${d}/`, `${d}/ezber/`, `${d}/calisma-belgesi/`, `${d}/kilimim/`, `${d}/kartlar/`, `${d}/takvim/`, ...sesliler.map((o) => `${d}/calis/${o.id}/`)]);
+// İlim Yolu Dilim 2: bilgi yolları dizini, 13 yol, yerleştirme, rozetler ve her bilgi kartı (src/data/ilim-yolu/kartlar).
+const KART_IDLERI = ['kuran', 'itikat', 'ibadet', 'siyer', 'ahlak'].flatMap((k) => JSON.parse(readFileSync(new URL(`src/data/ilim-yolu/kartlar/${k}.json`, KOK), 'utf8')).kartlar.map((c) => c.id));
+const YOL_IDLERI = ['plan-kuran', 'plan-itikat', 'plan-ibadet', 'plan-siyer', 'plan-ahlak', ...['okuma', 'kuranBilgi', 'itikat', 'namaz', 'ibadet', 'siyer', 'ahlak'].map((a) => `alan-${a}`), 'bilgi'];
+const dilYollari = DILLER.flatMap((d) => [`${d}/`, `${d}/ezber/`, `${d}/calisma-belgesi/`, `${d}/kilimim/`, `${d}/kartlar/`, `${d}/takvim/`, `${d}/yollar/`, `${d}/yollar/rozetler/`, `${d}/yollar/yerlestirme/`, ...YOL_IDLERI.map((y) => `${d}/yollar/${y}/`), ...KART_IDLERI.map((i) => `${d}/ogren/${i}/`), ...sesliler.map((o) => `${d}/calis/${o.id}/`)]);
 // Çevrim dışı çalışma sayfaları (noindex, site haritasında yok) satır içi betik denetimine girer: service worker bunları önyükler.
 const cevrimdisiYollari = DILLER.map((d) => `${d}/cevrimdisi/`);
 // Hesap sayfaları ve kart girişi (2 Kasım 2026): noindex, site haritasında ve önbellekte yok; yine de CSP’ye uyar (satır içi betik yok).

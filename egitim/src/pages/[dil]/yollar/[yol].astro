@@ -1,0 +1,106 @@
+---
+/**
+ * Bilgi yolu sayfası (İlim Yolu · Dilim 2, 10 Kasım 2026): bir yoldaki kartların sıralı listesi. Yollar: `plan-<kod>` (beş plan konusu, ilk işlenme
+ * gününe göre), `alan-<alan>` (seviye testinin yedi alanı, basamak başlıklarıyla) ve `bilgi` (Ezber Kilimi'ndeki bilgi maddeleri; çalışma sayfalarına gider).
+ * Her satırın durumunu ve yolun «rozet kazanıldı» satırını scripts/yollar.ts cihaz kaydından doldurur. Dili taslak olan kartta ortak «Taslak» etiketi görünür.
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import { dilListesi } from '@ortak/i18n/utils';
+import { TUM_YOLLAR, yolBicimi, yolKartlari } from '@ortak/lib/ilim-yolu/yollar';
+import Ikon from '../../../components/Ikon.astro';
+import TaslakEtiketi from '../../../components/TaslakEtiketi.astro';
+import { ilimMetinleri } from '../../../i18n/ilim';
+import { alanAdlari, yollarMetinleri } from '../../../i18n/yollar';
+import { KARTLAR } from '../../../lib/bilgi-karti-verisi';
+import { BILGI_MADDELERI } from '../../../lib/bilgi-yolu';
+import { BILGI_METINLERI } from '../../../lib/bilgi-metinleri';
+import { yolKapagi } from '../../../lib/yol-kapaklari';
+import Taban from '../../../layouts/Taban.astro';
+import '../../../styles/ilim.css';
+import '../../../styles/yollar.css';
+
+export function getStaticPaths() {
+  return dilListesi.flatMap((dil) => TUM_YOLLAR.map((yol) => ({ params: { dil, yol } })));
+}
+
+const dil = Astro.params.dil as Dil;
+const yolKimligi = Astro.params.yol as string;
+const bicim = yolBicimi(yolKimligi)!;
+const y = yollarMetinleri(dil);
+const il = ilimMetinleri(dil);
+const alanlar = alanAdlari(dil);
+const ad = bicim.tur === 'plan' ? y.planAd[bicim.kod] : bicim.tur === 'alan' ? alanlar[bicim.alan] : y.bilgiAd;
+const kapak = yolKapagi(yolKimligi);
+const kartlar = yolKartlari(KARTLAR, yolKimligi);
+const basamaklar = bicim.tur === 'alan' ? [...new Set(kartlar.map((k) => k.basamak))].sort() : [];
+const doldur = (s: string, d: Record<string, string | number>) => s.replace(/\{(\w+)\}/g, (_, k: string) => String(d[k] ?? ''));
+const veri = { dil, yol: yolKimligi, m: { sayim: y.sayim, sayimBilgi: y.sayimBilgi, durumOgrenildi: y.durumOgrenildi, durumSinav: y.durumSinav, durumBekliyor: y.durumBekliyor, bilgiCalisildi: y.bilgiCalisildi, bilgiBekliyor: y.bilgiBekliyor } };
+---
+<Taban dil={dil} baslik={`${ad} — ${y.baslik}`} aciklama={y.aciklama} yol={`yollar/${yolKimligi}`}>
+  <div class="icerik yl-sayfa" data-yol-sayfa data-veri={JSON.stringify(veri)}
+    data-idler={bicim.tur === 'bilgi' ? undefined : kartlar.map((k) => k.id).join(',')}
+    data-bilgi-idler={bicim.tur === 'bilgi' ? BILGI_MADDELERI.map((o) => o.id).join(',') : undefined}>
+    <p><a class="yl-geri-baglanti" href={`/${dil}/yollar/`}><Ikon ad="geri" /> {y.tumYollar}</a></p>
+    <header class="yl-bas">
+      <p class="iy-ust-yazi">{y.yolUst} · {il.marka}</p>
+      <h1>{ad}</h1>
+      <p class="yl-ilerleme" data-ilerleme></p>
+      <p class="yl-rozet-yazi" data-rozet hidden><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-tik" /></svg>{y.rozetKazanildi}</p>
+      <p class="yl-not" data-rozet-not>{y.yolRozet}</p>
+      {bicim.tur === 'bilgi' && <p class="yl-not">{y.bilgiYolNotu}</p>}
+      <noscript><p class="yl-not">{y.jsGerek}</p></noscript>
+    </header>
+
+    {kapak && <img class="yl-kapak" src={kapak.buyuk} srcset={kapak.srcset} sizes="(min-width: 48rem) 46rem, calc(100vw - 2rem)" width="1600" height="900" alt="" loading="lazy" decoding="async" />}
+
+    {bicim.tur === 'bilgi' && (
+      <ul class="yl-liste" aria-label={y.yolKartlar}>
+        {BILGI_MADDELERI.map((o) => (
+          <li data-bilgi-id={o.id}>
+            <span class="yl-baslik-satir">
+              <a href={`/${dil}/calis/${o.id}/`}>{o.ad[dil]}</a>
+              <TaslakEtiketi dil={dil} kisa durum={BILGI_METINLERI.get(o.id)?.taslak.includes(dil) ? 'taslak' : 'onayli'} />
+            </span>
+            <span class="yl-durum" data-durum-yazi>{y.bilgiBekliyor}</span>
+          </li>
+        ))}
+      </ul>
+    )}
+
+    {bicim.tur === 'plan' && (
+      <ol class="yl-liste" aria-label={y.yolKartlar}>
+        {kartlar.map((k) => (
+          <li data-kart-id={k.id}>
+            <span class="yl-baslik-satir">
+              <a href={`/${dil}/ogren/${k.id}/`}>{k.baslik[dil]}</a>
+              <TaslakEtiketi dil={dil} kisa durum={k.durum[dil]} />
+            </span>
+            <span class="yl-durum" data-durum-yazi>{y.durumBekliyor}</span>
+          </li>
+        ))}
+      </ol>
+    )}
+
+    {bicim.tur === 'alan' && basamaklar.map((b) => (
+      <section aria-labelledby={`basamak-${b}`}>
+        <h2 class="yl-basamak" id={`basamak-${b}`}>{doldur(y.basamak, { n: b })}</h2>
+        <ol class="yl-liste" aria-labelledby={`basamak-${b}`}>
+          {kartlar.filter((k) => k.basamak === b).map((k) => (
+            <li data-kart-id={k.id}>
+              <span class="yl-baslik-satir">
+                <a href={`/${dil}/ogren/${k.id}/`}>{k.baslik[dil]}</a>
+                <TaslakEtiketi dil={dil} kisa durum={k.durum[dil]} />
+              </span>
+              <span class="yl-durum" data-durum-yazi>{y.durumBekliyor}</span>
+            </li>
+          ))}
+        </ol>
+      </section>
+    ))}
+  </div>
+</Taban>
+
+<script>
+  import '../../../scripts/dil';
+  import '../../../scripts/yollar';
+</script>

@@ -16,20 +16,42 @@ export function bultenIcerik(b: Bulten, ad: string, dil: Dil) {
     e = bultenEsc;
   return `<article class="bulten-sayfa" lang="${e(b.dil)}"><header><p class="bulten-kurum">Ulu Camii · Marche-en-Famenne</p><h3>${e(ad)}</h3><p>${e(m.hafta)} ${b.hafta} · ${e(b.tarih)} · ${e(m.surum)} ${b.surum}${!b.yayin ? " · " + e(m.taslak) : ""}</p>${b.dil !== dil ? `<p lang="${dil}">${e(m.dil)}: ${e(bultenMetni(b.dil).dilAdi)}</p>` : ""}</header>${(["ders", "odev", "getir", "not"] as const).map((k) => `<section><h4 lang="${dil}">${e(m[k])}</h4><p>${e(b.metin[k] || m.bos)}</p></section>`).join("")}<footer><p>${e(m.aileNot)}</p><div class="bulten-yazi-alani"></div><p>${e(m.imza)}</p><div class="bulten-imza-alani"></div></footer></article>`;
 }
-export function bultenYazdir(b: Bulten, ad: string, dil: Dil) {
-  const frame = document.createElement("iframe");
-  frame.title = bultenMetni(dil).baslik;
-  frame.className = "bulten-baski";
-  const html = `<!doctype html><html lang="${dil}"><head><meta charset="utf-8"><title>${bultenEsc(bultenMetni(dil).baslik)} — ${bultenEsc(ad)}</title><style>@page{size:A4;margin:16mm}*{box-sizing:border-box}body{font:12pt/1.5 Arial,sans-serif;color:#202c2b;margin:0}header{border-bottom:2px solid #815238;padding-bottom:4mm}h1{font:24pt Georgia,serif;margin:0 0 7mm}h3{font:20pt Georgia,serif;margin:2mm 0}h4{font-size:13pt;margin:5mm 0 1.5mm;color:#653b27}p{margin:0;white-space:pre-wrap;overflow-wrap:anywhere}section{break-inside:avoid;padding-bottom:2mm}.bulten-kurum{font-size:10pt}footer{border-top:1px solid #b8b6ad;padding-top:5mm;break-inside:avoid;margin-top:5mm}.bulten-yazi-alani{height:16mm;border-bottom:1px solid #bbb;margin-bottom:4mm}.bulten-imza-alani{height:16mm}.dip{font-size:9pt;margin-top:6mm}</style></head><body><h1>${bultenEsc(bultenMetni(dil).baslik)}</h1>${bultenIcerik(b, ad, dil)}<p class="dip">${bultenEsc(bultenMetni(dil).imzaAciklama)}</p></body></html>`;
-  frame.onload = () => {
-    frame.contentWindow?.focus();
-    frame.contentWindow?.print();
+/**
+ * Yazdırma: sayfa içi yazdırma alanı (CSP: srcdoc/document.write + <style> engellenir).
+ * Alan yalnız yazdırırken görünür, sayfanın geri kalanı gizlenir; kurallar src/styles/baski.css'tedir
+ * (`@media print`, sınıf `baski-<ad>`). Yazdırma bitince (afterprint) alan ve başlık geri alınır.
+ */
+export function baskiAlaniYazdir(sinif: string, icerikHtml: string, dil: string, baslik: string) {
+  document.querySelectorAll(".baski-alani").forEach((x) => x.remove());
+  const kab = document.createElement("div");
+  kab.className = `baski-alani ${sinif}`;
+  kab.lang = dil;
+  kab.innerHTML = icerikHtml;
+  document.body.appendChild(kab);
+  const eskiBaslik = document.title;
+  document.title = baslik;
+  document.documentElement.classList.add("baski-modu");
+  let bitti = false;
+  const bitir = () => {
+    if (bitti) return;
+    bitti = true;
+    window.removeEventListener("afterprint", bitir);
+    document.documentElement.classList.remove("baski-modu");
+    document.title = eskiBaslik;
+    kab.remove();
   };
-  frame.srcdoc = html;
-  document.body.appendChild(frame);
-  const sil = () => frame.remove();
-  frame.contentWindow?.addEventListener("afterprint", sil, { once: true });
-  window.setTimeout(sil, 120000);
+  window.addEventListener("afterprint", bitir);
+  window.setTimeout(bitir, 300000);
+  window.print();
+}
+export function bultenYazdir(b: Bulten, ad: string, dil: Dil) {
+  const m = bultenMetni(dil);
+  baskiAlaniYazdir(
+    "baski-bulten",
+    `<h1>${bultenEsc(m.baslik)}</h1>${bultenIcerik(b, ad, dil)}<p class="dip">${bultenEsc(m.imzaAciklama)}</p>`,
+    dil,
+    `${m.baslik} — ${ad}`,
+  );
 }
 export function veliBulteni(
   root: HTMLElement,

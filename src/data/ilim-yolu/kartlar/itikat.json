@@ -221,10 +221,10 @@
       },
       "ozet": {
         "tr": "Allah bütün canlıları ve her şeyi yoktan var etmiştir. Yaratmak, var olan şeylerden bir şey yapmaktan farklıdır. Allah birdir ve eşsizdir; buna tevhid denir. İhlâs Sûresi bunu anlatır. Semî’, Basîr, Alîm, Rahîm ve Vedûd Allah’ın güzel isimlerindendir.",
-        "fr": "Allah a créé tous les êtres vivants et toute chose à partir du néant. Créer est différent de fabriquer avec des matériaux existants. Allah est unique et sans égal : c’est le tawhid, expliqué par la sourate Al-Ikhlas. As-Sami‘, Al-Basir et Ar-Rahim sont de beaux noms d’Allah.",
-        "en": "Allah created all living things and everything else from nothing. Creating differs from making something out of existing materials. Allah is One and without equal; this is tawhid, explained in Surah al-Ikhlas. As-Sami‘, Al-Basir and Ar-Rahim are beautiful names of Allah.",
-        "nl": "Allah schiep alle levende wezens en alles uit het niets. Scheppen is iets anders dan iets maken van bestaande materialen. Allah is Eén en zonder gelijke: dat is tawhied, uitgelegd in soera al-Ikhlas. As-Sami‘, Al-Basier en Ar-Rahiem zijn mooie namen van Allah.",
-        "de": "Allah hat alle Lebewesen und alles andere aus dem Nichts erschaffen. Erschaffen ist etwas anderes, als aus vorhandenem Material zu fertigen. Allah ist Einer und ohnegleichen: das ist Tauhid, erklärt in der Sure al-Ikhlas. As-Sami‘, Al-Basir und Ar-Rahim sind schöne Namen Allahs."
+        "fr": "Allah a créé tous les êtres vivants et toute chose du néant. Créer diffère de fabriquer avec des matériaux existants. Allah est unique et sans égal : le tawhid, expliqué par la sourate Al-Ikhlas. As-Sami‘, Al-Basir, Al-Alim, Ar-Rahim et Al-Wadoud sont de beaux noms d’Allah.",
+        "en": "Allah created all living things and everything else from nothing. Creating differs from making from existing materials. Allah is One and without equal; this is tawhid, explained in Surah al-Ikhlas. As-Sami‘, Al-Basir, Al-Alim, Ar-Rahim and Al-Wadud are beautiful names of Allah.",
+        "nl": "Allah schiep alle levende wezens en alles uit het niets. Scheppen is iets anders dan maken van bestaande materialen. Allah is Eén en zonder gelijke: dat is tawhied, uitgelegd in soera al-Ikhlas. As-Sami‘, Al-Basier, Al-Aliem, Ar-Rahiem en Al-Wadoed zijn mooie namen van Allah.",
+        "de": "Allah hat alle Lebewesen und alles andere aus dem Nichts erschaffen. Erschaffen ist nicht Herstellen aus Vorhandenem. Allah ist Einer und ohnegleichen: das ist Tauhid, erklärt in der Sure al-Ikhlas. As-Sami‘, Al-Basir, Al-Alim, Ar-Rahim und Al-Wadud sind schöne Namen Allahs."
       },
       "kitap": "Camiye Gidiyorum 1 s. 49–54",
       "sorular": [
@@ -741,7 +741,7 @@
         {
           "id": "it-008-1",
           "soru": {
-            "tr": "Melekler neden yaratılmıştır?",
+            "tr": "Melekler neyden yaratılmıştır?",
             "fr": "De quoi les anges sont-ils créés ?",
             "en": "What are angels created from?",
             "nl": "Waaruit zijn engelen geschapen?",
@@ -1648,11 +1648,11 @@
         "de": "Ich glaube an die Bücher"
       },
       "ozet": {
-        "tr": "Kitaplara iman, imanın üçüncü şartıdır. Allah Tevrat, Zebur, İncil ve Kur’an’ı indirmiştir. Kur’an’ın âyetleri, kâğıt henüz yaygın değilken hem ezberlenerek hem de vahiy kâtipleri tarafından yazılarak korunmuştur.",
-        "fr": "Croire aux livres est le troisième article de la foi. Allah a révélé la Torah, les Psaumes, l’Évangile et le Coran. Les versets du Coran ont été préservés à la fois par la mémorisation et par l’écriture des scribes de la révélation, à une époque où le papier était encore rare.",
-        "en": "Belief in the books is the third article of faith. Allah sent down the Torah, the Psalms, the Gospel and the Qur’an. The verses of the Qur’an were preserved both by memorisation and by the scribes of revelation who wrote them down, when paper was still uncommon.",
-        "nl": "Geloof in de boeken is het derde geloofsartikel. Allah zond de Thora, de Psalmen, het Evangelie en de Koran. De verzen van de Koran werden bewaard door zowel uit het hoofd leren als opschrijven door de schrijvers van de openbaring, toen papier nog zeldzaam was.",
-        "de": "Der Glaube an die Bücher ist der dritte Glaubensartikel. Allah sandte die Tora, die Psalmen, das Evangelium und den Koran. Die Verse des Korans wurden bewahrt, indem man sie auswendig lernte und die Offenbarungsschreiber sie niederschrieben, als Papier noch selten war."
+        "tr": "Kitaplara iman, imanın üçüncü şartıdır. Allah Tevrat, Zebur, İncil ve Kur’an’ı indirmiştir. Kur’an’ın âyetleri, kâğıt henüz yokken hem ezberlenerek hem de vahiy kâtipleri tarafından yazılarak korunmuştur.",
+        "fr": "Croire aux livres est le troisième article de la foi. Allah a révélé la Torah, les Psaumes, l’Évangile et le Coran. Les versets du Coran ont été préservés à la fois par la mémorisation et par l’écriture des scribes de la révélation, quand il n’y avait pas encore de papier.",
+        "en": "Belief in the books is the third article of faith. Allah sent down the Torah, the Psalms, the Gospel and the Qur’an. The verses of the Qur’an were preserved both by memorisation and by the scribes of revelation who wrote them down, when there was not yet any paper.",
+        "nl": "Geloof in de boeken is het derde geloofsartikel. Allah zond de Thora, de Psalmen, het Evangelie en de Koran. De verzen van de Koran werden bewaard door zowel uit het hoofd leren als opschrijven door de schrijvers van de openbaring, toen er nog geen papier was.",
+        "de": "Der Glaube an die Bücher ist der dritte Glaubensartikel. Allah sandte die Tora, die Psalmen, das Evangelium und den Koran. Die Verse des Korans wurden bewahrt, indem man sie auswendig lernte und die Offenbarungsschreiber sie niederschrieben, als es noch kein Papier gab."
       },
       "kitap": "Camiye Gidiyorum 2 s. 92–97",
       "sorular": [
@@ -2876,7 +2876,7 @@
         "fr": "Le jeûne nous apprend la patience. Allah est avec ceux qui patientent. Les noms Ar-Rahman et Ar-Rahim montrent qu’Il est très miséricordieux, et Al-Ghafur qu’Il pardonne beaucoup. On ne désespère pas de la miséricorde d’Allah ; la maghfira est le pardon des péchés.",
         "en": "Fasting teaches us patience. Allah is with those who are patient. The names Ar-Rahman and Ar-Rahim show He is most merciful, and Al-Ghafur shows He forgives much. We never lose hope in Allah’s mercy; maghfirah means the forgiveness of sins.",
         "nl": "Vasten leert ons geduld. Allah is met de geduldigen. De namen Ar-Rahman en Ar-Rahiem tonen dat Hij zeer barmhartig is, en Al-Ghafoer dat Hij veel vergeeft. We verliezen nooit de hoop op Allahs barmhartigheid; maghfira is de vergeving van zonden.",
-        "de": "Das Fasten lehrt uns Geduld. Allah ist mit den Geduldigen. Die Namen Ar-Rahman und Ar-Rahim zeigen, dass Er sehr barmherzig ist, und Al-Ghaffar, dass Er viel vergibt. Man verzweifelt nie an Allahs Barmherzigkeit; Maghfira ist die Vergebung der Sünden."
+        "de": "Das Fasten lehrt uns Geduld. Allah ist mit den Geduldigen. Die Namen Ar-Rahman und Ar-Rahim zeigen, dass Er sehr barmherzig ist, und Al-Ghafur, dass Er viel vergibt. Man verzweifelt nie an Allahs Barmherzigkeit; Maghfira ist die Vergebung der Sünden."
       },
       "kitap": "Camiye Gidiyorum 2 s. 218–219 (tekrar) (Ramazan özel programı)",
       "sorular": [
@@ -4266,11 +4266,11 @@
               "de": "Die Verwirklichung von Allahs Bestimmung zu ihrer Zeit"
             },
             {
-              "tr": "Namazı vaktinden sonra kılmak",
-              "fr": "Faire la prière après son temps",
-              "en": "Praying after its time",
-              "nl": "Het gebed na zijn tijd verrichten",
-              "de": "Das Gebet nach seiner Zeit verrichten"
+              "tr": "Ezanın bir bölümü",
+              "fr": "Une partie de l’appel à la prière",
+              "en": "A part of the call to prayer",
+              "nl": "Een onderdeel van de gebedsoproep",
+              "de": "Ein Teil des Gebetsrufs"
             }
           ],
           "dogru": 1,

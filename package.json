@@ -54,7 +54,7 @@
     "test:web:rapor": "playwright show-report",
     "test:kurallar": "node scripts/test-kurallar.mjs",
     "test:hesap": "node scripts/test-hesap.mjs",
-    "test:ilim-yolu": "node --test tests/ilim-yolu-kullanici-adi.test.mjs tests/ilim-yolu-bilgi-kartlari.test.mjs tests/ilim-yolu-esitle.test.mjs tests/egitim/hesap-giris.test.mjs tests/egitim/hesap-profil.test.mjs tests/ortak-aktar.test.mjs tests/ogrenme-yolu-icerik.test.mjs",
+    "test:ilim-yolu": "node --test tests/ilim-yolu-kullanici-adi.test.mjs tests/ilim-yolu-bilgi-kartlari.test.mjs tests/ilim-yolu-esitle.test.mjs tests/ilim-yolu-bilgi-ilerleme.test.mjs tests/ilim-yolu-yollar.test.mjs tests/egitim/hesap-giris.test.mjs tests/egitim/hesap-profil.test.mjs tests/ortak-aktar.test.mjs tests/ogrenme-yolu-icerik.test.mjs",
     "ortak:aktar": "node scripts/ortak-aktar.mjs",
     "codex:kontrol": "node scripts/codex-kontrol.mjs",
     "agy:kontrol": "node scripts/agy-kontrol.mjs",

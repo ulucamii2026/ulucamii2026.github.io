@@ -73,9 +73,10 @@ test('Kesinti ve çakışmada not kaybolmaz; menü ve öğrenci değişiminde va
 test('Arşiv çıktısı seçili öğrenciyle sınırlı; bültene aktarım kendiliğinden yayımlanmaz',async({page,context})=>{
  const p=await ac(page,context,{[yol]:[kayit],'dersDefteri/TEST-2/kayitlar':[{...kayit,calisma:'Kardeşin özel notu'}]});
  await p.locator('.dd-arsiv summary').click();
- await page.evaluate(()=>{const append=document.body.appendChild.bind(document.body);document.body.appendChild=function(n){if(n.tagName==='IFRAME'){const load=n.onload;n.onload=()=>{n.contentWindow.print=()=>{window.__defterPrint=n.contentDocument.body.textContent;};load?.();};}return append(n);};});
+ await page.emulateMedia({media:'print'});await page.evaluate(()=>{window.print=()=>{const a=document.querySelector('.baski-alani');window.__defterPrint=a.textContent;window.__disari=[...document.body.children].filter(c=>c!==a&&getComputedStyle(c).display!=='none').map(c=>c.tagName);window.__modu=document.documentElement.classList.contains('baski-modu');setTimeout(()=>window.dispatchEvent(new Event('afterprint')));};});
  await p.locator('[data-dd-yazdir]').click();await expect.poll(()=>page.evaluate(()=>window.__defterPrint)).toContain('Örnek Talebe');
  const metin=await page.evaluate(()=>window.__defterPrint);expect(metin).toContain('<b>örnek</b>');expect(metin).not.toContain('Kardeşin özel notu');expect(metin).toContain(`Basılı sayfa ${d.no + 54}`);
+ await expect.poll(()=>page.evaluate(()=>document.querySelectorAll('.baski-alani').length)).toBe(0);expect(await page.evaluate(()=>document.documentElement.classList.contains('baski-modu'))).toBe(false);expect(await page.evaluate(()=>window.__modu)).toBe(true);expect(await page.evaluate(()=>window.__disari)).toEqual([]);await page.emulateMedia({media:'screen'});
  const indirme=page.waitForEvent('download');await p.locator('[data-dd-indir]').click();const dosya=await indirme;expect(dosya.suggestedFilename()).toBe('Ders-Defteri-TEST-1.json');
  const data=JSON.parse(readFileSync(await dosya.path(),'utf8'));expect(data.kayitlar).toHaveLength(1);expect(data.ogrenci.ref).toBe('TEST-1');
  await page.locator('[data-sekme=bulten]').click();await page.locator('[data-hb-ogr]').selectOption('TEST-1');await expect(page.locator('[data-hb-form]')).toBeVisible();

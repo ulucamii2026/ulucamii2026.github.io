@@ -33,7 +33,8 @@ const PARCA = new Set([
 
 export function ayrilmisMi(ad: string): boolean {
   const duz = ad.replace(/[._-]/g, '');
-  if (AYRILMIS.has(duz)) return true;
-  if (ICERIR.some((k) => duz.includes(k))) return true;
+  // F-13: rakam benzeri harfler (h0ca, 1mam, adm1n, u1ucamii): 0 → o ve 1 → i / l katlanmış biçimler de aynı denetimden geçer.
+  const bicimler = [duz, duz.replace(/0/g, 'o').replace(/1/g, 'i'), duz.replace(/0/g, 'o').replace(/1/g, 'l')];
+  if (bicimler.some((b) => AYRILMIS.has(b) || ICERIR.some((k) => b.includes(k)))) return true;
   return ad.split(/[._\-0-9]+/).some((p) => p && (AYRILMIS.has(p) || PARCA.has(p)));
 }

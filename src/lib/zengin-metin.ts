@@ -12,12 +12,60 @@ const IZINLI = new Set(['B', 'STRONG', 'I', 'EM', 'U', 'S', 'BR', 'A', 'SPAN', '
 // İçeriğiyle birlikte tamamen atılan etiketler (metni bile korunmaz)
 const AT = new Set(['SCRIPT', 'STYLE', 'IFRAME', 'OBJECT', 'EMBED', 'NOSCRIPT', 'TEMPLATE', 'SVG', 'MATH', 'LINK', 'META', 'HEAD', 'TITLE', 'IMG']);
 
+// CSP (egitim.ulucamii.be: style-src 'self'): `style=` özniteliği engellenir. Bu yüzden renk, çıktıda
+// `span.zr-<ad>` sınıfı olarak yazılır (src/styles/portal-sinif.css). Eski kayıtlardaki
+// `style="color:…"` / `<font color>` render sırasında bu sınıflara çevrilir; sınıf listesi dışındaki
+// güvenli bir renk RGB uzaklığı en yakın sınıfa eşlenir.
 const RENK_RE = /^#(?:[0-9a-f]{3}|[0-9a-f]{6})$|^rgb\(\s*\d{1,3}\s*,\s*\d{1,3}\s*,\s*\d{1,3}\s*\)$/i;
-const RENK_ADI = new Set(['red', 'blue', 'green', 'black', 'orange', 'purple', 'teal', 'maroon', 'navy', 'olive', 'brown', 'crimson', 'darkgreen', 'darkblue', 'gray', 'grey']);
+
+/** sınıf adı → [r,g,b]. portal-sinif.css'teki .zr-* ile birebir aynı olmalı. */
+export const RENK_PALETI: Record<string, readonly [number, number, number]> = {
+  kiremit: [0xb5, 0x45, 0x2b], mavi: [0x1f, 0x5f, 0x8b], yesil: [0x2f, 0x6d, 0x3c], koyu: [0x24, 0x20, 0x1c],
+  red: [255, 0, 0], blue: [0, 0, 255], green: [0, 128, 0], black: [0, 0, 0], orange: [255, 165, 0], purple: [128, 0, 128],
+  teal: [0, 128, 128], maroon: [128, 0, 0], navy: [0, 0, 128], olive: [128, 128, 0], brown: [165, 42, 42],
+  crimson: [220, 20, 60], darkgreen: [0, 100, 0], darkblue: [0, 0, 139], gray: [128, 128, 128],
+};
+const RENK_ADI_ESLE: Record<string, string> = { grey: 'gray' };
+const RENK_ADI = new Set([...Object.keys(RENK_PALETI), ...Object.keys(RENK_ADI_ESLE)].filter((k) => !['kiremit', 'mavi', 'yesil', 'koyu'].includes(k)));
 
 function renkGuvenli(deger: string): string | null {
   const v = (deger || '').trim().toLowerCase();
   return v && (RENK_RE.test(v) || RENK_ADI.has(v)) ? v : null;
+}
+
+function rgbCoz(v: string): readonly [number, number, number] | null {
+  let m = /^#([0-9a-f]{3})$/.exec(v);
+  if (m) return [...m[1]].map((c) => parseInt(c + c, 16)) as unknown as [number, number, number];
+  m = /^#([0-9a-f]{6})$/.exec(v);
+  if (m) return [parseInt(m[1].slice(0, 2), 16), parseInt(m[1].slice(2, 4), 16), parseInt(m[1].slice(4, 6), 16)];
+  m = /^rgb\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*\)$/.exec(v);
+  if (m) return [Math.min(255, +m[1]), Math.min(255, +m[2]), Math.min(255, +m[3])];
+  const ad = RENK_ADI_ESLE[v] || v;
+  return RENK_PALETI[ad] || null;
+}
+
+/** Güvenli bir renk değerini `zr-<ad>` sınıf adına çevirir (yoksa null). */
+export function renkSinifi(deger: string): string | null {
+  const v = renkGuvenli(deger);
+  const rgb = v && rgbCoz(v);
+  if (!rgb) return null;
+  let en = '', enUzak = Infinity;
+  for (const [ad, p] of Object.entries(RENK_PALETI)) {
+    const u = (p[0] - rgb[0]) ** 2 + (p[1] - rgb[1]) ** 2 + (p[2] - rgb[2]) ** 2;
+    if (u < enUzak) { en = ad; enUzak = u; }
+  }
+  return 'zr-' + en;
+}
+
+/**
+ * Bir öğenin rengini okur: `style` özniteliğinden metin olarak (CSP'li inert belgede `el.style` güvenilmez),
+ * yoksa `el.style.color`; `<font color>` için `color` özniteliği.
+ */
+export function renkOku(el: Element): string {
+  const st = el.getAttribute('style') || '';
+  const m = /(?:^|;)\s*color\s*:\s*([^;]+)/i.exec(st);
+  if (m) return m[1].trim();
+  return (el as HTMLElement).style?.color || el.getAttribute('color') || '';
 }
 
 function anchorTemizle(kaynak: HTMLAnchorElement, yeni: HTMLAnchorElement): void {
@@ -44,8 +92,10 @@ function gez(kaynak: Node, hedef: Node, doc: Document): void {
       const yeni = doc.createElement(tag.toLowerCase());
       if (tag === 'A') anchorTemizle(el as HTMLAnchorElement, yeni as HTMLAnchorElement);
       else if (tag === 'SPAN') {
-        const renk = renkGuvenli(el.style?.color || '');
-        if (renk) (yeni as HTMLElement).style.color = renk;
+        const sinif = renkSinifi(renkOku(el));
+        const eski = (el.getAttribute('class') || '').split(/\s+/).find((c) => /^zr-[a-z]+$/.test(c) && RENK_PALETI[c.slice(3)]);
+        const k = sinif || eski;
+        if (k) yeni.setAttribute('class', k);
       }
       gez(el, yeni, doc);
       hedef.appendChild(yeni);
@@ -53,8 +103,8 @@ function gez(kaynak: Node, hedef: Node, doc: Document): void {
       // execCommand('foreColor') styleWithCSS kapalıyken (tarayıcı varsayılanı) <font color="…">
       // üretir; güvenli renkli span'a çevir ki renk kayıtta/render'da düşmesin.
       const yeni = doc.createElement('span');
-      const renk = renkGuvenli(el.getAttribute('color') || el.style?.color || '');
-      if (renk) (yeni as HTMLElement).style.color = renk;
+      const sinif = renkSinifi(renkOku(el));
+      if (sinif) yeni.setAttribute('class', sinif);
       gez(el, yeni, doc);
       hedef.appendChild(yeni);
     } else {

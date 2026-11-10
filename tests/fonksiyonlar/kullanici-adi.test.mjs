@@ -41,7 +41,8 @@ test('biçim ve ayrılmış adlar: invalid-argument + details.neden', async () =
   assert.equal(await neden('_abc'), 'bas');
   assert.equal(await neden('ali veli'), 'karakter');
   for (const ayrilmis of ['admin', 'Hoca', 'imam.ali', 'ulu.camii', 'diyanetbelcika', 'yonetim', 'test', 'null', 'undefined',
-    'root42', 'bdv', 'ilimyolu', 'shit42', 'ali.amk', 'merde', 'connard99', 'scheisse', 'klootzak']) {
+    'root42', 'bdv', 'ilimyolu', 'shit42', 'ali.amk', 'merde', 'connard99', 'scheisse', 'klootzak',
+    'h0ca', '1mam', 'u1ucamii', 'adm1n', 'd1yanet', 'r00t']) { // F-13: rakam benzeri harfler
     assert.equal(await neden(ayrilmis), 'ayrilmis', ayrilmis);
   }
   // Kısa küfürler yalnız tam parça olarak reddedilir: başka kelimenin içinde geçen masum adlar kabul edilir.

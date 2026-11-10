@@ -170,7 +170,7 @@ const BELGE: Record<Dil, BelgeMetinleri> = {
     baslik: 'Bewijs van zelfstudie',
     aciklama: 'Een afdrukbaar bewijs, opgesteld uit uw eigen oefening op dit apparaat, zonder dat een leerkracht luisterde. Er worden geen gegevens verstuurd.',
     lead: 'Stel van wat u op dit apparaat hebt geoefend een afdrukbaar A4-document op. Het toont dat u de teksten zelf hebt geoefend, zonder ze voor een leerkracht op te zeggen.',
-    fark: 'Het memorisatiecertificaat geldt alleen voor teksten waarnaar een leerkracht heeft geluisterd; dit bewijs vervangt het niet.',
+    fark: 'Het memorisatiecertificaat wordt alleen uitgereikt voor teksten waarnaar een leerkracht heeft geluisterd; dit bewijs vervangt het niet.',
     gizlilik: 'Privacy: het bewijs wordt alleen opgesteld uit uw voortgang op dit apparaat. De naam die u typt wordt nergens naartoe gestuurd of opgeslagen en verdwijnt zodra u de pagina sluit.',
     jsGerek: 'Deze pagina heeft JavaScript nodig om uw voortgang op dit apparaat te lezen.',
     adEtiket: 'Uw naam (optioneel)',

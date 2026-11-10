@@ -70,7 +70,7 @@ const KILIMIM: Record<Dil, KilimimMetinleri> = {
   },
   fr: {
     baslik: 'Mon kilim · mon travail personnel',
-    aciklama: 'Le kilim tissé à partir de votre travail personnel sur cet appareil. Ce n’est pas l’étape attribuée par l’enseignant ; aucune donnée n’est envoyée.',
+    aciklama: 'Le kilim dessiné à partir de votre travail personnel sur cet appareil. Ce n’est pas l’étape attribuée par l’enseignant ; aucune donnée n’est envoyée.',
     lead: 'Chaque texte que vous travaillez sur cet appareil devient un motif du kilim. Le motif se remplit comme au crayon à mesure que vous le travaillez et le révisez avec « Se tester ».',
     fark: 'Les textes écoutés par l’enseignant apparaissent dans le kilim du portail des parents.',
     ayrim: 'Ce kilim montre uniquement le travail personnel fait sur cet appareil, pas l’étape attribuée par l’enseignant. Les textes écoutés par l’enseignant apparaissent dans le kilim du portail des parents.',

@@ -128,7 +128,7 @@ const TAKVIM: Record<Dil, TakvimMetinleri> = {
     lead: 'Every Qur’an lesson ends with a memorisation corner. Below you can see which text is worked on each day this year; texts to memorise in the other lessons (creed, worship, the life of the Prophet) are listed separately. Every text with a link has its own practice page: listen, repeat, test yourself.',
     notlar: [
       'On most lesson weekends a new text starts on Saturday and is consolidated on Sunday; holiday Mondays are for review.',
-      'Individual listening is done in class by the teacher; this page only shows which texts are being worked on.',
+      'Individual listening to the children is done in class by the teacher; this page only shows which texts are being worked on.',
       'Knowledge items and intentions (niyyah) are not part of the memorisation corner; they are taught in the relevant lessons (creed, worship, the life of the Prophet).',
       'The programme may shift slightly as the class progresses.',
     ],
@@ -207,7 +207,7 @@ const TAKVIM: Record<Dil, TakvimMetinleri> = {
     notlar: [
       'An den meisten Unterrichtswochenenden beginnt am Samstag ein neuer Text und wird am Sonntag gefestigt; die Montage in den Ferien dienen der Wiederholung.',
       'Das einzelne Abhören der Kinder übernimmt der Lehrer im Unterricht; diese Seite zeigt nur, welche Texte geübt werden.',
-      'Wissensstoffe und Absichtserklärungen (Niyya) gehören nicht zur Memorierecke; sie werden in den jeweiligen Fächern behandelt (Glaubenslehre, Gottesdienst, Leben des Propheten).',
+      'Wissensstoffe und Intentionen (Niyya) gehören nicht zur Memorierecke; sie werden in den jeweiligen Fächern behandelt (Glaubenslehre, Gottesdienst, Leben des Propheten).',
       'Das Programm kann sich je nach Fortschritt der Klasse leicht verschieben.',
     ],
     yazdir: 'Kalender drucken',

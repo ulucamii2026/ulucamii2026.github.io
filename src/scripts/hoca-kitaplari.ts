@@ -1,4 +1,5 @@
 import kitaplar from '../data/hoca-kitaplari.json';
+import { medyaYolu } from '../lib/ses-koken';
 
 type Kitap = (typeof kitaplar)[number];
 const hex = (bytes: ArrayBuffer) => Array.from(new Uint8Array(bytes), b => b.toString(16).padStart(2, '0')).join('');
@@ -32,7 +33,7 @@ export async function kitapCoz(k: Kitap, anahtar: string, signal: AbortSignal, i
   const pieces: ArrayBuffer[]=[];
   for (const [i,part] of k.parcalar.entries()) {
     signal.throwIfAborted();
-    const response=await fetch(part.yol,{signal,cache:'no-store',credentials:'same-origin'});
+    const response=await fetch(medyaYolu(part.yol),{signal,cache:'no-store',credentials:'same-origin'});
     if (!response.ok) throw new Error('kitap-indirme');
     const cipher=await response.arrayBuffer();
     if (await ozet(cipher)!==part.sha256) throw new Error('kitap-butunluk');

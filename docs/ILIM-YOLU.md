@@ -420,3 +420,45 @@ Uygulama düzeni:
 Yayın sırası: `test:kurallar` + `test:hesap` → `scripts/firebase-cami.ps1 deploy --only functions` →
 `npm run firebase:kurallar` → ana site push (hoca ekranı) → `npm run egitim:yayinla` → `npm run egitim:canli` →
 `docs/YAYIN-KAYITLARI.md` kaydı. Yayından sonra: gerçek bir gmail ile Google girişi denemesi (çakışma notu yukarıda).
+
+### Dilim 2 — haftalık e-posta arka ucu (10 Kasım 2026, yerel; yayın YOK)
+
+- **Kuyruk:** `functions/src/eposta.ts` → `haftalikKuyruk` (saatlik, Brüksel) `epostaKuyrugu/h_<uid>_<ISO hafta>` yazar (`create`,
+  TTL `bitis` = 7 gün). Çocuk, e-postası doğrulanmamış, silinecek hesap atlanır. Saf mantık: `src/lib/ilim-yolu/eposta.ts`
+  (Brüksel saati, yaz/kış saati, hafta kimliği, özet), `abonelik-imza.ts` (HMAC, 180 gün).
+- **Çıkış:** `abonelikCik` = `/api/abonelik-cik?k=<token>` (GET ve POST, `firebase.json` yönlendirmesi eklendi); sıkı CSP ile uyumlu düz sayfa, 5 dil.
+- **Kurallar:** `epostaKuyrugu` istemciye tamamen kapalı. Sınavlar: `test:hesap` 47/47, `test:kurallar` 73/73.
+- **Apps Script (v47, yerel):** `scripts/apps-script/ilim-yolu-eposta.gs` (10 dakikada bir; kilitle-gönder-işaretle; günlük sınır 120);
+  `brevoGonder` artık `headers` taşır. Sürüm numarası ve dosya adı (v46 → v47) canlıya alınırken değişir: `git mv`, `SURUM = 47`,
+  `v46` dosyasına ve `surum, 46` değerine bakan testler, `scripts/ihtida-gas-derle.mjs` paket listesine yeni dosya.
+- **Canlı adımlar:** (1) `ABONELIK_SIRRI` Functions secret'ı (≥ 32 rastgele karakter); (2) Firestore TTL: `epostaKuyrugu.bitis`;
+  (3) functions + kurallar + egitim Hosting dağıtımı; (4) Apps Script v47 dağıtımı, düzenleyicide bir kez `ilimYoluEpostaKur()`
+  ardından `ilimYoluEpostaSina()` (kuru tur); (5) Brevo günlük kotası bakılıp gerekirse `ILIM_YOLU_EPOSTA_GUNLUK_SINIR`; (6) canlıda
+  kendi hesabıyla bir deneme: kuyruk → e-posta → bağlantıyla çıkış.
+
+### Güvenlik sertleştirmesi (10 Kasım 2026, yerel; yayın YOK)
+
+Bağımsız inceleme (13 bulgu) kod karşısında doğrulandı; gerçek olanlar kökünden kapatıldı, her biri için geri-dönüş testi var.
+- **Giriş uçları:** IP anahtarı artık `Fastly-Client-IP`, yoksa `X-Forwarded-For`'un SAĞ ucu (sol girdiler istemcinin); IP'den bağımsız
+  örnek başına yük tavanı (dakikada 150 hatalı deneme), hesap başına 8 hata/15 dk penceresi (eski hatalar birikmez, kilit uzamaz),
+  `kartGiris` eşzamanlılığı 10. **Sınır:** run.app adresine doğrudan gelen biri `Fastly-Client-IP`'yi uydurabilir; asıl koruma hesap
+  kilidi + 128 bit kart sırrı + yük tavanı. Başlıklar canlı önizlemede doğrulanmadı.
+- **Çocuk oturumu:** kurallar yalnız `sign_in_provider == 'custom'` ve e-postasız çocuk token'ını kabul eder; `kartYenile`/`cocukSifreYenile`/
+  giriş bağlı kimlikleri Auth'tan kaldırır; şifre yenileme de yenileme belirteçlerini iptal eder.
+- **Silinen hesap:** `silinenUidler/{uid}` mezar taşı (hesabiTamamenSil yazar; kurallar `canli(uid)` ile yazımı ve `ref` okumasını keser);
+  çocuk girişi profil yoksa token vermez; `portalSilmeTetik` önce gizli özeti siler. Çocuk kendi profilini oluşturamaz, yalnız `dil`/`sonGiris` günceller.
+- **Gizlilik:** `kullanicilar/{uid}/ihtida/ozet` ve `ozel/hassas` yalnız sahibine açık (hoca, kursa bağlı hoca, paylaşılan hoca, başka kullanıcı kapalı;
+  testli). `kullaniciAdlari` istemciye tamamen kapalı. Rezerve adlarda `0→o`, `1→i/l` katlaması.
+- **Bağlama kodu:** yeni kod öncekileri geçersiz kılar (`bagSurum`); çocuk hesabı olan kayda kod/bağ yok; aynı hesap kodu kurtarma için yeniden kullanır.
+- **Taramalar:** `hareketsizTara` 200 hesap/tur (500 yazım sınırı), tek hesabın hatası turu durdurmaz; `hesabiBagla` `sonGiris` yazar.
+- **Abonelik çıkışı:** yalnız POST çıkar; GET geçerli belirteçle `https://egitim.ulucamii.be/<dil>/abonelik-cik/#<belirteç>` adresine 302 (sayfa
+  ayrı ajanda; fetch ile POST `/api/abonelik-cik?k=<belirteç>`).
+- **Hareketsiz uyarı:** `hareketsizTara` artık `epostaKuyrugu/z_<uid>` yazar (adres, dil, giriş bağlantısı, TTL 45 gün); `ilim-yolu-eposta.gs`
+  haftalıktan ÖNCE, aynı günlük sınırla, beş dilde gönderir; uyarısı gitmemiş hesap silinmez.
+- **Apps Script v47:** dosya `ulucamii-Kod-v47.gs`, `SURUM = 47`; testler ve `ihtida-gas-derle.mjs` (artık `ilim-yolu-eposta.gs` dahil) güncel.
+- **Reddedilen/ertelenen:** F-02 kullanıcı adı yoklaması (kilit mesajı çocuğa gösterilmek zorunda; ad gizli değil, şifre korur) ve kart kilidi
+  (128 bit sır); F-07 JWT `ref` 1 saatlik gecikmesi (Firebase'in genel sınırı); F-09 App Check (istemci + konsol işi, ayrı karar);
+  F-10 `calisma` iç içe boyutu (yalnız sahibi/kursun hocası okur, belge başı 1 MiB sınırı); F-12 HSTS/CSP (`firebase.json` başlıkları bu
+  paketin dışında; localhost CORS yalnız emülatörde); F-13 sahte ad kaydı için e-posta doğrulaması.
+- **Yeni canlı adımlar:** Firestore TTL `silinenUidler.bitis`; Hosting önizlemesinde `Fastly-Client-IP`/`X-Forwarded-For` başlıkları görülür;
+  `functions` yeniden dağıtımı (Fastly başlığı + kurallar birlikte).

@@ -46,7 +46,7 @@ const SINA: Record<Dil, SinaMetinleri> = {
     tekrarGunu: 'Bu madde için tekrar günü geldi.', kayitliOneri: 'Bu madde için tekrar önerisi: {ne} ({tarih}).',
   },
   fr: {
-    sinaGiris: 'Vous souvenez-vous du texte sans le regarder ? Il n’y a ni points ni classement : le résultat sert seulement à vous conseiller quand réviser.',
+    sinaGiris: 'Dans quelle mesure vous souvenez-vous du texte sans le regarder ? Il n’y a ni points ni classement : le résultat sert seulement à proposer la prochaine révision.',
     oyunlar: 'Choisissez un jeu', oyunSirala: 'Remettre dans l’ordre', oyunEksik: 'Mot manquant', oyunHangi: 'Quel verset ?', oyunKayit: 'Ma voix',
     sinaKisa: 'Ce contenu est trop court pour ce jeu. Choisissez-en un autre.', hangiYok: 'Ce jeu demande un enregistrement par verset ; ce contenu n’en a pas.', yeniTur: 'Nouveau tour',
     siralaYonerge: 'Remettez les passages dans le bon ordre. Déplacez-les avec les boutons ↑ ↓ ou avec Alt + flèches.',
@@ -139,10 +139,10 @@ const SINA: Record<Dil, SinaMetinleri> = {
     kayitAciklama: 'Rezitieren Sie auswendig, hören Sie Ihre Aufnahme an und vergleichen Sie sie mit dem Rezitator. Die Aufnahme bleibt auf dieser Seite: Sie wird nirgendwohin gesendet und verschwindet, wenn Sie die Seite schließen.',
     kayitBasla: 'Aufnahme starten', kayitDur: 'Aufnahme beenden', kayitSuruyor: 'Aufnahme läuft… (höchstens 3 Minuten)', kayitHazir: 'Aufnahme bereit.',
     kayitDinle: 'Meine Aufnahme anhören', kayitHafiz: 'Den Rezitator anhören', kayitSil: 'Aufnahme löschen',
-    kayitYok: 'Dieser Browser kann keinen Ton aufnehmen.', kayitBekle: 'Warte auf die Mikrofonfreigabe… Beachten Sie die Anfrage des Browsers.', kayitIzin: 'Der Zugriff auf das Mikrofon wurde nicht erlaubt. Sie können ihn in der Adressleiste des Browsers erlauben.', kayitHata: 'Die Aufnahme konnte nicht gestartet werden.',
+    kayitYok: 'Dieser Browser kann keinen Ton aufnehmen.', kayitBekle: 'Warten auf die Mikrofonfreigabe… Beachten Sie die Anfrage des Browsers.', kayitIzin: 'Der Zugriff auf das Mikrofon wurde nicht erlaubt. Sie können ihn in der Adressleiste des Browsers erlauben.', kayitHata: 'Die Aufnahme konnte nicht gestartet werden.',
     sinaNasil: 'Nach dem Auswendig-Rezitieren: Wie ist es gelaufen?', yanitTam: 'Sehr gut.', yanitAz: 'In Ordnung.', yanitTekrar: 'Kein Problem.',
     oneri: 'Vorgeschlagene Wiederholung: {ne} ({tarih}).',
-    oneriNot: 'Das ist nur ein Vorschlag: Die von der Lehrkraft vergebene Stufe ändert sich nicht. Tragen Sie vor, wenn Sie bereit sind.',
+    oneriNot: 'Das ist nur ein Vorschlag: Die von der Lehrkraft vergebene Stufe ändert sich nicht. Tragen Sie Ihrer Lehrkraft vor, wenn Sie bereit sind.',
     tekrarGunu: 'Es ist Zeit, diesen Inhalt zu wiederholen.', kayitliOneri: 'Vorgeschlagene Wiederholung für diesen Inhalt: {ne} ({tarih}).',
   },
 };

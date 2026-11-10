@@ -90,6 +90,8 @@
 .iy-yol-motif { width: 5rem; height: 5rem; display: grid; place-items: center; border: 1.5px solid var(--murekkep); background: var(--yun); grid-row: span 2; }
 @media (min-width: 48rem) { .iy-yol-motif { width: 7rem; height: 7rem; grid-row: auto; } }
 .iy-yol-motif svg { width: 78%; height: 78%; }
+.iy-yol-motif.kapakli { padding: 0; overflow: hidden; background: var(--kokboya-soluk); }
+.iy-yol-motif.kapakli img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .iy-yol.ezber .iy-yol-motif { background: var(--kokboya-soluk); }
 .iy-yol.kurs .iy-yol-motif { background: var(--safran-soluk); }
 .iy-yol.seviye .iy-yol-motif { background: var(--yesil-soluk); }

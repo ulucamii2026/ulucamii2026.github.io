@@ -13,6 +13,8 @@ for (const key of ['GOOGLE_APPLICATION_CREDENTIALS', 'FIREBASE_TOKEN', 'GCLOUD_P
 // Yüklü makinede (uzun kalite kapısı, Defender taraması) fonksiyon paketinin tanıtımı 10 sn varsayılanını aşıp bütün testleri
 // düşürdü (2 Kas 2026). Süre yalnız emülatörün paketi okuma beklemesidir; testlerin kendisini yavaşlatmaz.
 env.FUNCTIONS_DISCOVERY_TIMEOUT = env.FUNCTIONS_DISCOVERY_TIMEOUT || '60';
+// Haftalık e-posta (Dilim 2): abonelik bağlantısı imza sırrı. Yalnız test; canlıda Functions secret'ı ABONELIK_SIRRI.
+env.ABONELIK_SIRRI = 'test-abonelik-sirri-yalniz-emulator-0001';
 const cache = join(homedir(), '.codex', 'tools', 'temurin-jre-21');
 const javaHomes = [env.ULUCAMII_JAVA_HOME,
   ...(existsSync(cache) ? readdirSync(cache).map(name => join(cache, name)) : []), env.JAVA_HOME].filter(Boolean);

@@ -1,0 +1,19 @@
+---
+/**
+ * Ortak «Taslak» etiketi (Dilim 2, 10 Kasım 2026): bir bilgi kartı (ya da bilgi maddesi) dilinde `durum: taslak` ise gösterilir, `onayli` ise
+ * hiçbir şey basılmaz. Onaylanmamış metin resmî gibi sunulmaz (docs/ILIM-YOLU.md, çeviri kararı). Biçim ve renk: kesik kenarlı «Taslak»
+ * yazısı (renk tek başına anlam taşımaz). `kisa`: listelerde yalnız etiket (açıklama `title` ve ekran okuyucu için gizli metinde).
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import { yollarMetinleri } from '../i18n/yollar';
+
+interface Props { dil: Dil; durum?: 'taslak' | 'onayli'; kisa?: boolean }
+const { dil, durum, kisa = false } = Astro.props;
+const y = yollarMetinleri(dil);
+---
+{durum === 'taslak' && (
+  <span class="yl-taslak" data-taslak title={y.taslakAciklama}>
+    <span class="yl-taslak-ad">{y.taslak}</span>
+    {kisa ? <span class="gorunmez">{y.taslakAciklama}</span> : <span class="yl-taslak-not">{y.taslakAciklama}</span>}
+  </span>
+)}

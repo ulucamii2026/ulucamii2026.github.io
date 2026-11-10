@@ -18,7 +18,8 @@
       "rewrites": [
         { "source": "/api/saglik", "function": { "functionId": "saglik", "region": "europe-west1" } },
         { "source": "/api/cocuk-giris", "function": { "functionId": "cocukGiris", "region": "europe-west1" } },
-        { "source": "/api/kart-giris", "function": { "functionId": "kartGiris", "region": "europe-west1" } }
+        { "source": "/api/kart-giris", "function": { "functionId": "kartGiris", "region": "europe-west1" } },
+        { "source": "/api/abonelik-cik", "function": { "functionId": "abonelikCik", "region": "europe-west1" } }
       ],
       "headers": [
         {
