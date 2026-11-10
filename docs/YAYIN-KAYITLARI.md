@@ -4,6 +4,15 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 10 Kasım 2026 (akşam) — İlim Yolu: «Kur'an Okuma» ve «Abdest ve Namaz» bölümleri (duyuru YOK)
+
+- Zaman: Europe/Brussels (CET), 10 Kasım 2026 akşamı. Dayanak: imamın bu iki bölümü duyurusuz yayımlama onayı. Duyuru, e-posta, WhatsApp yok.
+- Kapsam: `/[dil]/okuma/` (elifbâ dersleri, sûre birimleri, bugünün dersi; 225 Diyanet sesi `public/media/ses/okuma/`, ana siteden çalar) ve `/[dil]/ibadet/` (abdest, namaz, vakit sayfaları, sıralama/eşleştirme alıştırmaları; 28 yüzsüz SVG); beş dil. Firestore kuralları `calismaAdi()` += okuma, ibadet.
+- Commit'ler: `8e0bd263` (bölümler), `551c46fb` (canlı denetim site haritası beklentisi); ikisi origin/main'de. Ana site Pages koşusu [42816120989](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/42816120989) success; okuma sesi `https://ulucamii.be/media/ses/okuma/damme/uygulama/1.mp3` HTTP 200. Firestore kuralları canlı (sha256 `4210cc6af269…`).
+- egitim Hosting: `npm run egitim:build` temiz; `test:egitim` 922 geçti / 32 atlandı; ilk koşuda yük altında iki nl mobil bilgi testi «teardown timeout» verdi, aynı testler tek başına 3/3 geçti. Sonra `firebase-cami.ps1 deploy --only hosting:ulucamii-egitim`: 2038 dosya, release tamamlandı (sürüm numarası çıktıda yazılmadı).
+- Canlı: `npm run egitim:canli -- https://egitim.ulucamii.be` 99/99. Başsız Chromium, tr+fr, 360 ve 1280 px: okuma ana sayfası, elifbâ dersi (ses ulucamii.be 200/206, işaret yenilemede kalıyor), sûre birimi, ibadet ana sayfası, abdest, namaz, sabah vakti, ana sayfadan iki bölüme bağlantı, taşma yok, «taslak» etiketi yok, konsol/CSP hatası 0; abdest sıralaması klavyeyle tamamlandı. en/nl/de için canlı denetim 99/99 ve yerel testler.
+- Açık sınırlar: bölümleri imam henüz gözden geçirmedi; okuma `/kilimim` sayfasına bağlı değil; Bakara sayfa okuması kapsam dışı; kalan elifbâ sesleri barındırılmıyor. Kişisel veri/anahtar yok. Bu kayıt commit'i içerik yayını değildir.
+
 ## 10 Kasım 2026 — İlim Yolu ilk canlı yayın: hesaplar, Ezber Kilimi, bilgi yolları (duyuru YOK)
 
 - Zaman: 10 Kasım 2026, Europe/Brussels (CET). Functions ≈ 11.00–11.10, kurallar 11.07, ana site push 11.07, Pages

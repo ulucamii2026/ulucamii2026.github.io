@@ -336,6 +336,10 @@ Uygulama düzeni:
 - Taslak çeviriler öğrencilere görünür.
 - ihtida.ulucamii.be'yi taşırken DNS değişikliği gerekir.
 
+## Durum (10 Kasım 2026 akşam): «Kur'an Okuma» (/okuma/) ve «Abdest ve Namaz» (/ibadet/) CANLI
+
+- Duyurusuz yayımlandı; imam henüz gözden geçirmedi; okuma `/kilimim`'e bağlı değil. Kayıt: `docs/YAYIN-KAYITLARI.md` 10 Kasım akşam.
+
 ## Durum (10 Kasım 2026): İLK CANLI YAYIN YAPILDI
 
 - Canlı: 18 Cloud Function (`europe-west1`), Firestore kuralları (bayt eşit), TTL ilkeleri, ana site (hoca «İlim Yolu»
