@@ -1,9 +1,13 @@
 ---
 /**
- * «Ahde Vefa» — Veda Programı: KORUMALI katılım listesi (yalnız Rıdvan KAYAHAN). Gizli adres; noindex.
+ * «Ahde Vefa» — Veda Programı: KORUMALI katılım paneli v3 (yalnız Rıdvan KAYAHAN ve Müşavir Bey). Gizli adres; noindex.
  * Koruma: uzun rastgele anahtar adres parçasında (#anahtar) verilir; sunucuya yalnız POST gövdesiyle gider,
- * depoda YOK (Apps Script özelliği LISTE_ANAHTARI). Parça açılır açılmaz adres çubuğundan silinir.
+ * depoda YOK (Apps Script özelliği LISTE_ANAHTARI). Parça açılır açılmaz adres çubuğundan silinir;
+ * yenilemede erişim kaybolmasın diye anahtar yalnız sessionStorage'da (sekmeye özel) tutulur,
+ * localStorage'a, adrese ya da günlüğe ASLA yazılmaz. Seçili görünüm de sessionStorage'dadır (adreste değil).
  * Açılış: https://ulucamii.be/davet/liste-hh81xwgssz/#<anahtar>
+ * Arka uç: scripts/apps-script/veda-davet/Kod.gs (değişmez). Her şey istemci tarafındadır.
+ * Kod: public/davet/liste-hh81xwgssz/liste.js (kaynak parçaları: scripts/veda-liste-kaynak/) + liste.css. Dış istek yalnız Apps Script'e.
  */
 const UC = 'https://script.google.com/macros/s/AKfycbyhTvE9DHr58vAZC7ifqmz13HHrGMIBzug_thLzV-7y_hxdWJ1OLV6f-oCMPUFqwphecA/exec';
 ---
@@ -11,122 +15,174 @@ const UC = 'https://script.google.com/macros/s/AKfycbyhTvE9DHr58vAZC7ifqmz13HHrG
 <html lang="tr">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="robots" content="noindex,nofollow,noarchive">
   <meta name="referrer" content="no-referrer">
-  <title>Veda Programı — Katılım Listesi</title>
+  <meta name="color-scheme" content="light dark">
+  <title>Katılım listesi</title>
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://script.google.com" crossorigin>
   <link rel="preconnect" href="https://script.googleusercontent.com" crossorigin>
   <link rel="stylesheet" href="/davet/ortak/davet.css">
-  <style>
-    .yukleniyor { display: flex; align-items: center; gap: .6rem; }
-    .donen { width: 1.1rem; height: 1.1rem; flex: none; border: 2px solid currentColor; border-top-color: transparent; border-radius: 50%; animation: don .8s linear infinite; opacity: .6; }
-    .ipucu { opacity: .7; font-size: .9em; }
-    .guncel { margin: .25rem 0 .5rem; font-size: .9em; opacity: .75; }
-    @keyframes don { to { transform: rotate(360deg); } }
-    @media (prefers-reduced-motion: reduce) { .donen { animation-duration: 2.4s; } }
-  </style>
+  <link rel="stylesheet" href="/davet/liste-hh81xwgssz/liste.css?v=3">
 </head>
-<body>
-  <div class="sayfa genis">
-    <header class="ustlogo">
-      <img src="/davet/ortak/antet.svg" alt="T.C. Brüksel Büyükelçiliği Sosyal İşler Müşavirliği">
-      <img src="/davet/ortak/bdv-logo.svg" alt="Belçika Diyanet Vakfı">
-    </header>
-    <div class="kirmizi-serit"></div>
-    <main>
-      <h1>Katılım listesi</h1>
-      <p class="altbaslik">Ahde Vefa — Veda Programı · 8 Kasım 2026</p>
-      <div id="durum" role="status" aria-live="polite"></div>
-      <section id="icerik" hidden>
-        <div class="ozet" aria-label="Toplamlar">
-          <div><b id="t-kayit">0</b><span>Katılacak (kayıt)</span></div>
-          <div><b id="t-kisi">0</b><span>Katılacak kişi sayısı (eşler/misafirler dahil)</span></div>
-          <div><b id="t-yok">0</b><span>Katılamayacak (kayıt)</span></div>
+<body data-erisim="yok">
+  <div class="sayfa genis d" id="uygulama">
+    <header class="appbar" id="appbar">
+      <div class="ab-logolar">
+        <img src="/davet/ortak/antet.svg" alt="T.C. Brüksel Büyükelçiliği Sosyal İşler Müşavirliği" height="30">
+        <img src="/davet/ortak/bdv-logo.svg" alt="Belçika Diyanet Vakfı" height="30">
+      </div>
+      <div class="ab-alt">
+        <h1 class="ab-baslik">Katılım listesi<small>Ahde Vefa · 8 Kasım 2026</small></h1>
+        <div class="canli"><span class="nokta" id="nokta" aria-hidden="true"></span><span id="guncel">—</span></div>
+      </div>
+      <div class="ab-araclar">
+        <button type="button" class="ikon-btn" id="yenile" aria-label="Listeyi yenile" title="Yenile"></button>
+        <button type="button" class="ikon-btn" id="menu-ac" aria-label="Menü" aria-haspopup="true" aria-expanded="false" aria-controls="menu" title="Menü"></button>
+      </div>
+      <div class="kirmizi-serit"></div>
+      <nav class="gorunum" id="gorunum" aria-label="Görünümler">
+        <button type="button" data-gorunum="ozet" data-ikon="ozet"><span class="nav-ikon"></span><span>Özet</span></button>
+        <button type="button" data-gorunum="katilimcilar" data-ikon="kisiler"><span class="nav-ikon"></span><span>Katılımcılar</span></button>
+        <button type="button" data-gorunum="analiz" data-ikon="analiz"><span class="nav-ikon"></span><span>Analiz</span></button>
+        <button type="button" data-gorunum="mesajlar" data-ikon="mesaj"><span class="nav-ikon"></span><span>Mesajlar</span><span class="nav-rozet" id="nav-mesaj"></span></button>
+        <button type="button" data-gorunum="disari" data-ikon="yazdir"><span class="nav-ikon"></span><span>Dışa aktar</span></button>
+      </nav>
+      <div class="menu" id="menu" hidden>
+        <h2>Görünüm</h2>
+        <div class="tema-sec" role="group" aria-label="Tema">
+          <button type="button" class="tema" data-tema="" aria-pressed="true">Sistem</button>
+          <button type="button" class="tema" data-tema="light" aria-pressed="false">Açık</button>
+          <button type="button" class="tema" data-tema="dark" aria-pressed="false">Koyu</button>
         </div>
-        <p class="guncel" id="toplam-not"></p>
-        <p><button type="button" class="ikincil" id="yenile">Yenile</button></p>
-        <p class="guncel" id="guncel" role="status" aria-live="polite"></p>
-        <ul class="liste" id="liste"></ul>
-        <p class="gizlilik" id="not"></p>
-      </section>
+        <button type="button" class="d-btn sessiz" id="cikis" title="Bu cihazdaki anahtarı ve önbelleği siler">Çıkış yap</button>
+      </div>
+    </header>
+
+    <main id="ana">
+      <div id="cevrimdisi" class="bant uyari" hidden>Bağlantı yok. Son alınan liste gösteriliyor; bağlantı gelince kendiliğinden yenilenecek.</div>
+      <div id="durum"></div>
+      <p class="sr" id="duyuru" role="status" aria-live="polite"></p>
+
+      <div id="icerik" hidden>
+        <div id="yeni-bant" class="bant yeni" hidden>
+          <span id="yeni-metin"></span>
+          <button type="button" class="d-btn" id="yeni-temizle">İşaretleri kaldır</button>
+        </div>
+
+        <!-- ÖZET -->
+        <section class="view" id="v-ozet" aria-labelledby="h-ozet">
+          <h2 class="sr" id="h-ozet">Özet</h2>
+          <div class="ozet-ust">
+            <div class="kahraman">
+              <div class="buyuk"><b id="t-kisi">0</b><span>Katılacak kişi<small id="t-kisi-alt">eşler ve misafirler dahil</small></span></div>
+              <div class="hero-alt"><span class="delta" id="t-kisi-delta"></span><span class="spark-yer" id="sp-kisi"></span></div>
+            </div>
+            <div class="kpi-izgara">
+              <div class="kpi"><span class="kpi-et">Katılacak kayıt</span><b id="t-kayit">0</b><span class="delta" id="d-kayit"></span><span class="spark-yer" id="sp-kayit"></span></div>
+              <div class="kpi"><span class="kpi-et">Katılamayacak</span><b id="t-yok">0</b><span class="delta" id="d-yok"></span><span class="spark-yer" id="sp-yok"></span></div>
+              <div class="kpi"><span class="kpi-et">Hocamıza mesaj</span><b id="t-msj">0</b><span class="delta" id="d-msj"></span><span class="spark-yer" id="sp-msj"></span></div>
+              <div class="kpi"><span class="kpi-et">Bugün gelen</span><b id="t-bugun">0</b><span class="delta" id="d-bugun"></span><span class="spark-yer" id="sp-bugun"></span></div>
+              <div class="kpi"><span class="kpi-et">Son 24 saat</span><b id="t-24">0</b><span class="delta" id="d-24"></span><span class="spark-yer" id="sp-24"></span></div>
+            </div>
+          </div>
+          <div class="sayac2" id="sayac2">
+            <div class="sy"><p class="et" id="s1-et">Yanıt süresi</p><p class="deger" id="s1-deger">—</p><p class="sy-alt" id="s1-alt"></p></div>
+            <div class="sy"><p class="et">Program</p><p class="deger" id="s2-deger">—</p><p class="sy-alt" id="s2-alt"></p></div>
+          </div>
+          <div class="ozet-orta" id="g-kum-ozet-yer"></div>
+          <div class="kirilimlar">
+            <section class="kart kirilim" aria-labelledby="h-gorev"><h3 id="h-gorev">Göreve göre (katılacak kişi)</h3><ul id="k-gorev"></ul></section>
+            <section class="kart kirilim" aria-labelledby="h-kurum"><h3 id="h-kurum">Kuruma / derneğe göre (katılacak kişi)</h3><ul id="k-kurum"></ul><button type="button" class="d-btn daha" id="kurum-daha" hidden></button></section>
+          </div>
+          <section class="kart son" style="margin-top:12px" aria-labelledby="h-son">
+            <h3 id="h-son">Son bildirimler</h3>
+            <ul class="son-liste" id="son-bildirimler"></ul>
+            <button type="button" class="d-btn" data-git="katilimcilar" style="margin-top:8px">Tüm katılımcılar</button>
+          </section>
+        </section>
+
+        <!-- KATILIMCILAR -->
+        <section class="view" id="v-katilimcilar" aria-labelledby="h-kat" hidden>
+          <h2 class="sr" id="h-kat">Katılımcılar</h2>
+          <div class="arac" id="arac">
+            <div class="ust">
+              <div><label class="sr" for="ara">Ad, kurum veya görev ara</label><input type="search" id="ara" placeholder="Ad, kurum veya görev ara…  ( / )" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search"></div>
+              <div><label class="sr" for="sira">Sıralama</label><select id="sira"><option value="yeni">En yeni önce</option><option value="ad">Ad (A–Z)</option><option value="kurum">Kurum (A–Z)</option><option value="kisi">Kişi sayısı</option></select></div>
+            </div>
+            <div class="sekmeler" role="group" aria-label="Liste süzgeci" id="sekmeler">
+              <button type="button" class="sekme" data-sekme="tumu" aria-pressed="true">Tümü<span class="n" id="n-tumu"></span></button>
+              <button type="button" class="sekme" data-sekme="katilacak" aria-pressed="false">Katılacak<span class="n" id="n-katilacak"></span></button>
+              <button type="button" class="sekme" data-sekme="katilamayacak" aria-pressed="false">Katılamayacak<span class="n" id="n-katilamayacak"></span></button>
+            </div>
+            <div class="hizli" id="hizli" role="group" aria-label="Hızlı süzgeçler"></div>
+            <div id="grup-chip-yeri"></div>
+          </div>
+          <p class="sonuc-sayi" id="sonuc-sayi"></p>
+          <div id="liste-yeri"></div>
+          <p class="not-alt" id="not-alt">Aynı ad ve kurumla yeniden gönderilen bildirimlerde yalnız en yenisi sayılır; eskileri ilgili kaydın altında «eski bildirim» olarak durur. Bir kişiye dokunursanız bildirim geçmişi açılır. Kapı listesinde telefon numarası ve mesaj bulunmaz.</p>
+        </section>
+
+        <!-- ANALİZ -->
+        <section class="view" id="v-analiz" aria-labelledby="h-analiz" hidden>
+          <div class="v-baslik"><h2 id="h-analiz">Analiz</h2><p>Grafiklere dokunun ya da imleci getirin; her grafiğin altında tablo olarak da görebilirsiniz.</p></div>
+          <div class="analiz-izgara" id="analiz-yer"></div>
+          <div class="v-baslik kalite-baslik"><h2>Veri kalitesi</h2><p>Gözden geçirilmesi gereken kayıtlar. Telefon numaraları burada gösterilmez.</p></div>
+          <div class="kalite" id="kalite"></div>
+        </section>
+
+        <!-- MESAJLAR -->
+        <section class="view" id="v-mesajlar" aria-labelledby="h-mesaj" hidden>
+          <div class="v-baslik"><h2 id="h-mesaj">Hocamıza mesajlar</h2></div>
+          <div id="mesaj-yer"></div>
+        </section>
+
+        <!-- DIŞA AKTAR -->
+        <section class="view" id="v-disari" aria-labelledby="h-disari" hidden>
+          <div class="v-baslik"><h2 id="h-disari">Yazdır / Dışa aktar</h2></div>
+          <div class="disari" id="disari-yer"></div>
+          <p class="not-alt">Hiçbir yazdırma ya da dışa aktarma çıktısında telefon numarası bulunmaz.</p>
+        </section>
+      </div>
     </main>
+
+    <dialog class="detay" id="detay" aria-label="Katılımcı ayrıntısı"></dialog>
   </div>
+  <div id="gelen-bant" class="toast-alan" role="status" aria-live="polite" hidden></div>
+
+  <!-- Yazdırma blokları: ekranda gizli, yalnız yazdırırken görünür -->
+  <div id="yazdir" aria-hidden="true">
+    <div class="blok kapi">
+      <div class="yz-ust"><img src="/davet/ortak/antet.svg" alt=""><img src="/davet/ortak/bdv-logo.svg" alt=""></div>
+      <div class="yz-serit"></div>
+      <h1>Kapı listesi</h1>
+      <p class="yz-alt">Ahde Vefa — Veda Programı · 8 Kasım 2026, Pazar · BDV Genel Merkezi, Chaussée de Haecht 67</p>
+      <p class="yz-ozet" id="yz-ozet"></p>
+      <table class="kapi-t"><thead><tr><th></th><th></th><th>Ad soyad</th><th>Kurum</th><th>Görevi</th><th>Kişi</th></tr></thead><tbody id="yz-govde"></tbody></table>
+      <p class="yz-not" id="yz-not"></p>
+    </div>
+    <div class="blok msjblok">
+      <div class="yz-ust"><img src="/davet/ortak/antet.svg" alt=""><img src="/davet/ortak/bdv-logo.svg" alt=""></div>
+      <div class="yz-serit"></div>
+      <h1>Hocamıza mesajlar</h1>
+      <p class="yz-alt">Ahde Vefa — Veda Programı · 8 Kasım 2026, Pazar</p>
+      <p class="yz-ozet" id="yz-m-ozet"></p>
+      <div id="yz-m-govde"></div>
+    </div>
+    <div class="blok raporblok">
+      <div class="yz-ust"><img src="/davet/ortak/antet.svg" alt=""><img src="/davet/ortak/bdv-logo.svg" alt=""></div>
+      <div class="yz-serit"></div>
+      <h1>Katılım özeti</h1>
+      <p class="yz-alt">Ahde Vefa — Veda Programı · 8 Kasım 2026, Pazar · BDV Genel Merkezi</p>
+      <p class="yz-ozet" id="yz-r-ozet"></p>
+      <div id="yz-rapor-govde"></div>
+      <p class="yz-not" id="yz-r-not"></p>
+    </div>
+  </div>
+
   <script is:inline type="application/json" id="uc" set:html={JSON.stringify(UC)}></script>
-  <script is:inline>
-    (() => {
-      const UC = JSON.parse(document.getElementById('uc').textContent);
-      const $ = (i) => document.getElementById(i);
-      const yukleniyor = () => { const d = $('durum'); d.innerHTML = ''; const p = document.createElement('p'); p.className = 'mesaj yukleniyor'; const s = document.createElement('span'); s.className = 'donen'; s.setAttribute('aria-hidden', 'true'); p.appendChild(s); const m = document.createElement('span'); m.textContent = 'Liste yükleniyor… '; const i = document.createElement('span'); i.className = 'ipucu'; i.textContent = '(ilk açılış birkaç saniye sürebilir)'; m.appendChild(i); p.appendChild(m); d.appendChild(p); };
-      const mesaj = (m, t) => { $('durum').innerHTML = ''; if (!m) return; const p = document.createElement('p'); p.className = 'mesaj ' + (t || ''); p.textContent = m; $('durum').appendChild(p); };
-      const anahtar = decodeURIComponent(location.hash.replace(/^#/, ''));
-      if (location.hash) history.replaceState(null, '', location.pathname);
-      let sakla = anahtar; // yalnız bellekte; depoya yazılmaz (önbelleğe yalnız liste yanıtı girer, anahtar girmez)
-      // <onbellek-mantigi>
-      const ONBELLEK_ANAHTARI = 'veda-liste-onbellek-v1';
-      const ONBELLEK_SON = Date.parse('2026-11-09T23:59:00+01:00');
-      const onbellekGecerliMi = (o, simdi) => !!(o && typeof o === 'object' && o.veri && o.veri.ok && Array.isArray(o.veri.kayitlar) && o.veri.toplam && typeof o.alindi === 'string' && !isNaN(Date.parse(o.alindi)) && (simdi == null ? Date.now() : simdi) < ONBELLEK_SON);
-      // </onbellek-mantigi>
-      const depoOku = () => { try { const o = JSON.parse(localStorage.getItem(ONBELLEK_ANAHTARI) || 'null'); if (onbellekGecerliMi(o)) return o; if (o) depoSil(); } catch (_) {} return null; };
-      const depoYaz = (veri) => { try { localStorage.setItem(ONBELLEK_ANAHTARI, JSON.stringify({ alindi: new Date().toISOString(), veri })); } catch (_) {} };
-      const depoSil = () => { try { localStorage.removeItem(ONBELLEK_ANAHTARI); } catch (_) {} };
-      const saat = (iso) => { try { return new Intl.DateTimeFormat('tr-TR', { timeZone: 'Europe/Brussels', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).format(new Date(iso)).replace(':', '.'); } catch (_) { return ''; } };
-      const guncel = (m) => { $('guncel').textContent = m || ''; };
-      let sonYenileme = 0, suruyor = false, gosterilen = null;
-      const GOREV = { katilacak: 'Katılacak', katilamayacak: 'Katılamayacak' };
-      const zaman = (iso) => { try { return new Intl.DateTimeFormat('tr-TR', { timeZone: 'Europe/Brussels', dateStyle: 'short', timeStyle: 'short' }).format(new Date(iso)); } catch (_) { return iso || ''; } };
-      const ekle = (ust, sinif, metin) => { const e = document.createElement('div'); if (sinif) e.className = sinif; e.textContent = metin; ust.appendChild(e); return e; };
-      const goster = (v) => {
-        $('t-kayit').textContent = v.toplam.katilacakKayit;
-        $('t-kisi').textContent = v.toplam.katilacakKisi;
-        $('t-yok').textContent = v.toplam.katilamayacak;
-        $('toplam-not').textContent = (v.toplam.katilacakKayit + v.toplam.katilamayacak) + ' geçerli kayıt: ' + v.toplam.katilacakKayit + ' katılacak + ' + v.toplam.katilamayacak + ' katılamayacak. Katılacak ' + v.toplam.katilacakKayit + ' kayıtta toplam ' + v.toplam.katilacakKisi + ' kişi var.';
-        const ul = $('liste'); ul.innerHTML = '';
-        const b = document.createElement('li'); b.className = 'baslik'; ['Ad soyad', 'Kurum', 'Görevi', 'Telefon', 'Kişi', 'Zaman'].forEach((t) => ekle(b, '', t)); ul.appendChild(b);
-        v.kayitlar.forEach((k) => {
-          const li = document.createElement('li'); if (!k.gecerli) li.className = 'eski';
-          const ad = ekle(li, 'ad', k.ad);
-          const r = document.createElement('span'); r.className = 'rozet ' + (k.durum === 'katilacak' ? 'evet' : 'hayir'); r.textContent = k.durum === 'katilacak' ? 'Katılacak' : 'Katılamayacak'; ad.appendChild(r);
-          if (!k.gecerli) { const e = document.createElement('span'); e.className = 'rozet eski'; e.textContent = 'Eski kayıt'; ad.appendChild(e); }
-          ekle(li, 'alt2', k.kurum);
-          ekle(li, 'alt2', k.gorev || '—');
-          ekle(li, 'alt2', k.telefon || '—');
-          ekle(li, 'alt2', k.durum === 'katilacak' ? k.kisi + ' kişi' : '—');
-          ekle(li, 'alt2', zaman(k.zaman));
-          if (k.mesaj) {
-            const kutu = document.createElement('div'); kutu.className = 'mesaj-kutu';
-            const d = document.createElement('details'); const sm = document.createElement('summary'); sm.textContent = 'Hocamıza mesaj'; d.appendChild(sm);
-            const pp = document.createElement('p'); pp.textContent = k.mesaj; d.appendChild(pp); kutu.appendChild(d); li.appendChild(kutu);
-          }
-          ul.appendChild(li);
-        });
-        $('not').textContent = v.kayitlar.length ? 'Aynı ad ve kurumla yeniden gönderilen bildirimlerde yalnız en yenisi toplamlara girer; eskiler üstü çizili gösterilir.' : 'Henüz kayıt yok.';
-        $('icerik').hidden = false;
-      };
-      const yukle = async () => {
-        if (!sakla) { mesaj('Bu sayfa yalnızca yetkili bağlantıyla açılır.', 'hata'); return; }
-        if (UC.includes('__')) { mesaj('Liste hizmeti henüz etkinleştirilmemiştir.', 'hata'); return; }
-        if (suruyor) return;
-        suruyor = true;
-        if (gosterilen) guncel('Son güncelleme: ' + saat(gosterilen) + ' · yenileniyor…'); else yukleniyor();
-        try {
-          const y = await fetch(UC, { method: 'POST', mode: 'cors', redirect: 'follow', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify({ tur: 'veda-liste', anahtar: sakla }) });
-          const s = await y.json();
-          if (s && s.ok) { depoYaz(s); gosterilen = new Date().toISOString(); mesaj(''); goster(s); guncel('Güncellendi: ' + saat(gosterilen)); sonYenileme = Date.now(); }
-          else if (s && s.hata === 'yetki') { depoSil(); gosterilen = null; guncel(''); $('icerik').hidden = true; mesaj('Yetki yok. Bağlantıyı yetkili kişiden yeniden alın.', 'hata'); }
-          else if (gosterilen) guncel('Güncellenemedi; son güncelleme ' + saat(gosterilen));
-          else mesaj('Liste şu anda alınamadı. Biraz sonra yeniden deneyin.', 'hata');
-        } catch (_) {
-          if (gosterilen) guncel('Güncellenemedi; son güncelleme ' + saat(gosterilen));
-          else mesaj('Liste şu anda alınamadı. Bağlantınızı kontrol edin.', 'hata');
-        } finally { suruyor = false; }
-      };
-      $('yenile').addEventListener('click', yukle);
-      document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible' && sakla && Date.now() - sonYenileme > 60000) yukle(); });
-      const onb = sakla ? depoOku() : null;
-      if (onb) { gosterilen = onb.alindi; mesaj(''); goster(onb.veri); guncel('Son güncelleme: ' + saat(onb.alindi) + ' · yenileniyor…'); }
-      yukle();
-    })();
-  </script>
+  <script is:inline src="/davet/liste-hh81xwgssz/liste.js?v=3" defer></script>
 </body>
 </html>

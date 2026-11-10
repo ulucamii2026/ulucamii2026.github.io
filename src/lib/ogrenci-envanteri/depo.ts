@@ -20,7 +20,13 @@ const kodu = (e: unknown) => (e as { code?: string } | null)?.code || '';
 export interface DepoYollari { envanter: string; gunSirasi: string; program: string }
 export const HOCA_YOLLARI: DepoYollari = { envanter: 'ogrenciEnvanteri', gunSirasi: 'hocaGunSirasi', program: 'ogrenciProgrami' };
 
-export interface DepoDurumu { hazir: boolean; hata: boolean; bekleyen: boolean; onbellekten: boolean }
+export interface DepoDurumu {
+  hazir: boolean; hata: boolean; bekleyen: boolean; onbellekten: boolean;
+  /** Okuma hatasının Firestore kodu (örn. resource-exhausted = günlük kota). */
+  hataKodu: string;
+  /** Günün sırası belgesi ilk kez okundu (belge yoksa da true). */
+  siraHazir: boolean;
+}
 
 type Yama = Record<string, unknown>;
 const kopya = <T,>(v: T): T => (v === undefined ? v : (JSON.parse(JSON.stringify(v)) as T));
@@ -45,7 +51,7 @@ export function envanterDeposu(db: Firestore, bugun: string, uid: () => string, 
   const dinleyiciler = new Set<() => void>();
   const oturumlar = new Set<{ snapshot(): void; kapat(): void; bekliyor(): boolean; gonder(): void }>();
   let gunSirasi: GunSirasi | null = null;
-  const durum: DepoDurumu = { hazir: false, hata: false, bekleyen: false, onbellekten: false };
+  const durum: DepoDurumu = { hazir: false, hata: false, bekleyen: false, onbellekten: false, hataKodu: '', siraHazir: false };
   let birakmalar: (() => void)[] = [];
   const duyur = () => { for (const f of dinleyiciler) f(); };
 
@@ -62,15 +68,16 @@ export function envanterDeposu(db: Firestore, bugun: string, uid: () => string, 
         const b = belgeOku(d.id, d.data());
         if (b) belgeler.set(d.id, b);
       }
-      durum.hazir = true; durum.hata = false;
+      durum.hazir = true; durum.hata = false; durum.hataKodu = '';
       durum.bekleyen = s.metadata.hasPendingWrites; durum.onbellekten = s.metadata.fromCache;
       for (const o of oturumlar) o.snapshot();
       duyur();
-    }, () => { durum.hata = true; duyur(); }));
+    }, (e) => { durum.hata = true; durum.hataKodu = kodu(e); duyur(); }));
     birakmalar.push(onSnapshot(doc(db, yollar.gunSirasi, bugun), (s) => {
       gunSirasi = s.exists() ? gunSirasiOku(s.data()) : null;
+      durum.siraHazir = true;
       duyur();
-    }, () => { gunSirasi = null; duyur(); }));
+    }, () => { gunSirasi = null; durum.siraHazir = true; duyur(); }));
   }
 
   /** Bir öğrenci + grup için belge oturumu; kayıt yoksa ilk değişiklikte `ref_bugun_grup` oluşturulur. */
@@ -110,7 +117,7 @@ export function envanterDeposu(db: Firestore, bugun: string, uid: () => string, 
       const kimlikAlani: Yama = varMi ? {} : { ref, tarih: yerel.tarih, grup, kaynak: yerel.kaynak };
       toplu.set(belgeRef, { ...kimlikAlani, ...veri, durum: yerel.durum, surum, guncelleme: serverTimestamp(), kaydeden: uid() }, { merge: true });
       yerel.surum = surum; varMi = true; son = Date.now(); bekleyenSayi++;
-      toplu.commit().then(() => { bekleyenSayi--; }, async (e) => {
+      toplu.commit().then(() => { bekleyenSayi--; duyur(); }, async (e) => {
         bekleyenSayi--;
         // Kural sürümü reddettiyse başka bir cihaz araya girmiştir: sunucudaki son hâl yüklenir, yama kaybolur.
         let cakisma = kodu(e) === 'permission-denied';

@@ -4,6 +4,97 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 7 Kasım 2026 (öğleden sonra) — «Neler biliyorum?» telefonla dinleyerek kayıt: liste, yapışkan çubuk, hata iletileri
+
+- Zaman: 7 Kasım 2026 12.54 push · Pages run 42370161750 başarılı (12.54–12.57) · canlı doğrulama 12.58, Europe/Brussels
+  (CET). **Yayımlandı ve canlı doğrulandı.** Dayanak: Rıdvan 7 Kasım sabahı «geri kalan öğrenciler için telefondan kayıtlara
+  devam edeyim, online form hazırla her açıdan mükemmel olsun» · «formu her açıdan mükemmel hale getir». Ders saatinde canlı
+  sayfa değişmesin diye yayın ders bitimine (12.40) bırakıldı.
+- Kapsam (commit `c7777992` + `36b31c8e`; `0dc7daf0` namaz vakti güncellemesinin üstüne yeniden dizildi, çakışma yok):
+  `src/scripts/hoca-envanter.ts`, `src/scripts/envanter-baglanti.ts`, `src/lib/ogrenci-envanteri/depo.ts`,
+  `src/styles/hoca-envanter.css`; testler `tests/web/neler-biliyorum-telefon.spec.mjs` (yeni),
+  `tests/web/helpers/neler-baglanti.mjs` (yeni), `tests/web/neler-biliyorum-ev.spec.mjs` (1 satır). Günün sırası yoksa
+  doğrudan öğrenci listesi; Kalan/Tümü/Tamam süzgeci, aksan ve i/ı duyarsız arama; yapışkan çubuk, canlı kayıt durumu,
+  sonraki/önceki, «Listeye dön»; geri tuşu formdan listeye; sütun seçici (yalnız hoca) hatırlanır; sekme gizlenince bekleyen
+  yazım hemen gönderilir; kota/ağ/geçersiz bağlantı ayrı Türkçe iletiler; doğrulama tarihi `inputmode=text`. Firestore kuralı
+  değişmedi. Release 0, indirilebilir dosya 0.
+- Kalite: `npm run build` çıkış 0 (1985 sayfa); Playwright `neler-biliyorum-telefon` + `neler-biliyorum-ev` + `hoca-envanter`
+  54/54 geçti (masaüstü + mobil; 360 px taşma yok, dokunma hedefleri ≥ 56 px, okuma maliyeti testi dahil).
+- Canlı: `/neler-biliyorum/` HTTP 200, noindex; sayfa betiği ve `hoca-envanter` parçası (`.js` + `.css`) SHA-256'ları yerel
+  derlemeyle aynı; canlı parçada «Listeye dön» var. Gerçek anahtarla sayfa açılmadı, veri yazılmadı.
+- Açık: sınıf bağlantısı 30 Kasım 23.59'a kadar açık; her ders günü `hocaGunSirasi/<gün>` bağlantıya kopyalanmalı (kurs
+  `scripts/` altında kalıcılaştırılacak). Bu kayıt için belge commit'i içerik yayını değildir.
+
+## 5 Kasım 2026 (akşam) — vaaz düzeltmesi: «İyilik ve İhsan Üzere Bir Hayat» (ikinci hata avı)
+
+- Zaman: 5 Kasım 2026, Europe/Brussels (CET). Push ≈17.05 (`21214980..072a9516`). Push olayı Pages işini başlatmadı
+  (GitHub API 500 veriyordu); iş elle tetiklendi: [run 42061356019](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/42061356019)
+  **success**. Canlı `web_kontrol`: 22 görünüm, axe 0, 87 dosya + 10 sunum SHA eşit. **Yayımlandı ve canlı doğrulandı.**
+- Dayanak: kullanıcının isteği: «yeni bir opencode cli oturumu başlat, bu oturumun görevi hata bulmak olsun, bulunan
+  hataları diğer opencode cli oturumu düzeltsin, en son kararı revizeyi sen yap».
+- Kapsam: bulucu OpenCode oturumu 61 bulgu (iki tur); Claude 26 kabul, 35 ret (Türkçe ek eksiltmesi ve genel 2. şahıs
+  doğru; nl birr karşılığı doğru; en/de DIA/Ilmihal tutarlı). Düzeltici OpenCode oturumu yalnız fr/de/nl çeviri
+  kayıtlarını değiştirdi. Sitede DE metin (ahit 4 «anrufen und besuchen», «Friedensgruß») ve DE docx/pdf; release'te
+  FR/DE/NL sunum pptx/pdf (`--clobber`; ilk denemede GitHub 500, tekrar yüklendi, boyutlar eşit).
+- Doğrulama: `npm run build` (1985 sayfa) ve `npm run dogrula` geçti; DE Word 15 sayfa, yazım 0; sunumlar taşma 0.
+
+## 5 Kasım 2026 (öğleden sonra) — vaaz düzeltmesi: «İyilik ve İhsan Üzere Bir Hayat» (niyaz görseli + hata taraması)
+
+- Zaman: 5 Kasım 2026, Europe/Brussels (CET). Push ≈14.40 (`eb9c5024..119311dd`), Pages
+  [run 42038284439](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/42038284439) **success**.
+  Canlı `web_kontrol`: 22 görünüm, axe 0, 87 dosya + 10 sunum SHA eşit. **Yayımlandı ve canlı doğrulandı.**
+- Dayanak: kullanıcının isteği: «en son tren şeklinde dua ettikleri resim olmamış, onu değiştir … elin değmişken hata
+  taraması yap … hatalar varsa onları da düzelt … opencode cli'ı bol bol çalıştır».
+- Kapsam:
+  - `cemaat-niyaz` sahnesi yenilendi: yandan çizilen ve tren gibi görünen yedi kişi yerine önden, omuz omuza tek saf.
+    Dört WebP boyu ve sunum 74–75. slaytlar.
+  - Yedi OpenCode tarama işçisi (TR ×3, FR, EN, NL, DE) 127 bulgu getirdi. Claude her birini kaynakla karşılaştırdı;
+    yaklaşık 100'ü uygulandı. Gerekçeyle reddedilenler: başlıktaki bilinçli «ihsan» yazımı, NL «Allahs» (doğru),
+    tasarım gereği çift boşluklar, not = Word metni kuralına takılan iki künye tekrarı.
+  - TR: «kürümek» → «küremek» (5 yer); Fussilet 41/34 meali «aranızda» (Kur'an Yolu); Âl-i İmrân 3/134 «Allah
+    yolunda»; İnfitâr 82/13 «cennetindedirler» (DİB); «Birr, 14–15»; Hz. Ömer sözünün slayt künyesi.
+  - FR/EN/NL/DE: anlam, dilbilgisi, terim birliği ve künye düzeltmeleri. Örnekler: NL «oef» → «foei» (İsrâ 17/23),
+    FR «c./s.» → «t./p.», DE «Bairuha» → «Beyruha», EN «Zikir» → «Dhikr».
+  - Beş dilde Word/PDF (15 sayfa, yazım 0) ve web sayfaları yeniden üretildi. Release'teki 10 sunum dosyası
+    `--clobber` ile değiştirildi.
+- Kalite: `npm run build` (1985 sayfa) ve `npm run dogrula` geçti. Sunum taşma 0 (TR 18. slaytta kart yüksekliği
+  ayarlandı).
+
+## 5 Kasım 2026 (öğle) — vaaz: «İyilik ve İhsan Üzere Bir Hayat» (6 Kasım 2026 Cuma vaazı) beş dilde + duyuru
+
+- Zaman: 5 Kasım 2026, Europe/Brussels (CET). Release ≈10.40, push 10.51 (`a92d001d..6f4fc88f`), Pages
+  [run 42005880035](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/42005880035) **success**,
+  canlı doğrulama ≈11.00. **Yayımlandı ve canlı doğrulandı.**
+- Dayanak: kullanıcının isteği. Bu haftanın vaazı önceki haftalar kalitesinde sitede yayımlanacak. OpenCode CLI işçisi
+  çalıştırılacak ve yönetilecek. Soru kutusu cevapları: «Tam paket, geçen hafta gibi», «Bu oturumda yayınla»,
+  «Bütün işi sen yürüt … tam yetkiyle ilerle».
+- Kapsam:
+  - TR sayfa `src/content/vaazlar/iyilik-ve-ihsan-uzere-bir-hayat.md`: 19 temsilî sahne × 4 boy + `kapak-og.webp`
+    (77 WebP), dört ana fikir, 11 duraklı vaaz haritası, nass kartları, 9 vektör şema, iyilik sözleşmesi ve
+    «Gurbette 40 iyilik» eki.
+  - FR/EN/NL/DE çevirileri `src/content/vaaz-cevirileri/<dil>/iyilik-ve-ihsan-uzere-bir-hayat.md`.
+  - Beş dilde Word/PDF `public/vaazlar/…`: 15 sayfa; PDF'ler 0,88–1,04 MB.
+  - TR/FR duyuru `src/content/duyurular/{tr,fr}/cuma-vaazi-iyilik-ve-ihsan-uzere-bir-hayat.md`.
+- Release `vaaz-iyilik-ve-ihsan-uzere-bir-hayat`: 10 dosya (5 dil × PowerPoint + sunum PDF, 82 slayt). Boyutlar yerel
+  dosyalarla eşit. Latest yapılmadı.
+- İçerik commit'i `6f4fc88f` (94 dosya), dernek kimliği.
+- Kalite:
+  - `npm run dogrula` 26 aşama, 733 test, derleme 1985 sayfa, çıkış 0. İlk turda `test:vaaz-pdf` düştü: çeviri
+    PDF'leri 4,9–5,0 MB idi, emoji yazı tipi küçültmesi atlanmıştı. Küçültüldü, kaynak hattına kalıcı adım eklendi.
+  - `npm run test:web` 877 geçti, 120 atlandı, 5 düştü. Düşenler vaazla ilgisiz:
+    - `tests/web/ders-defteri.spec.mjs:88` mobil axe kontrastı kararsız; ikinci koşuda geçti.
+    - `tests/web/cuma-hatirlatma.spec.mjs:53` ve `:64` (masaüstü + mobil, 4 test): bant Cuma 08.00 UTC'de «yarin»
+      gösteriyor, Çarşamba/Cumartesi bant çıkıyor. Vaaz dosyaları stash'lenip yeniden derlenince de aynı 4 test düştü.
+      Yani hata bu yayından önce de vardı; ayrı ele alınmalı.
+  - Çeviri denetimi fr/en/nl/de 1120 kayıt, HATA 0.
+  - Word 5 dil 15 sayfa, yazım 0.
+  - Sunum 5 dil 82 slayt, taşma 0. `cakisma_denetle.py` fr/en/nl/de 0. Dil etiketsiz run 0.
+  - Site kopyaları teslimlerle SHA-256 eşit. Yasaklı ifade taraması 0.
+  - Yerel ve canlı `web_kontrol.mjs` (5 dil): 22 görünüm, axe 0, 87 dosya SHA eşit, 10 bağlantı. Canlıda 10 sunum
+    dosyası Release'ten indirildi ve teslim SHA'sıyla eşleşti.
+- Sınırlar: paylaşım mesajları ve kişiye özel WhatsApp taslakları hazır, gönderilmedi (onay bekliyor). Facebook paylaşımı
+  yapılmadı.
+
 ## 1 Kasım 2026 (gece) — Rahmetle Anıyoruz: Hasan Hüseyin Yılmaz metni ailenin isteğiyle düzeltildi, Recep Açıkgöz'ün yeni fotoğrafı
 
 - Zaman: 1 Kasım 2026 23.33 push · Pages run 41357747608 başarılı · canlı doğrulama 23.36, Europe/Brussels (CET).
