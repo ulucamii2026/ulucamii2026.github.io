@@ -82,12 +82,12 @@ test('kaydedilebilirYolMu: yalnız beş dilin sayfaları; dosya, üst dizin, bü
     assert.equal(m.kaydedilebilirYolMu(y), false, y);
 });
 
-test('onbellekDisiYolMu: hesap sayfaları ve /k/ önbelleğe alınmaz ve kaydedilemez; öteki sayfalar etkilenmez', () => {
-  for (const y of ['/tr/hesap/', '/tr/abonelik-cik/', '/fr/hesap/giris/', '/en/hesap/kayit/', '/nl/hesap', '/de/hesap/giris/', '/k/', '/k', '/k/abc']) {
+test('onbellekDisiYolMu: hesap, veli, hoca sayfaları ve /k/ önbelleğe alınmaz ve kaydedilemez; öteki sayfalar etkilenmez', () => {
+  for (const y of ['/tr/hesap/', '/tr/abonelik-cik/', '/fr/hesap/giris/', '/en/hesap/kayit/', '/nl/hesap', '/de/hesap/giris/', '/k/', '/k', '/k/abc', '/tr/veli/', '/fr/veli/', '/en/veli', '/nl/veli/', '/de/veli/', '/hoca/', '/hoca']) {
     assert.equal(m.onbellekDisiYolMu(y), true, y);
     assert.equal(m.kaydedilebilirYolMu(y), false, y);
   }
-  for (const y of ['/', '/tr/', '/tr/ezber/', '/tr/kilimim/', '/tr/calis/s-ihlas/', '/tr/hesapla/', '/kk/', '/_astro/k/a.js']) assert.equal(m.onbellekDisiYolMu(y), false, y);
+  for (const y of ['/', '/tr/', '/tr/ezber/', '/tr/kilimim/', '/tr/calis/s-ihlas/', '/tr/hesapla/', '/kk/', '/_astro/k/a.js', '/tr/velilik/', '/hocalar/', '/xx/veli/']) assert.equal(m.onbellekDisiYolMu(y), false, y);
   assert.equal(m.kaydedilebilirYolMu('/tr/ezber/'), true);
 });
 
@@ -207,7 +207,11 @@ test('Her sayfa manifest ve tema rengiyle bağlı; manifest alanları, kapsamı 
   // Kök (/) yalnız dile yönlendiren ince sayfadır (Taban kullanmaz); uygulama dil sayfalarından kurulur, başlangıç adresi `/` yönlendirmeyle dile gider.
   for (const s of sayfalar.filter((x) => x !== join(DIST, 'index.html'))) {
     const html = readFileSync(s, 'utf8');
-    assert.equal(html.split('<link rel="manifest" href="/manifest.webmanifest">').length - 1, 1, `${s}: manifest bağlantısı`);
+    // Veli portalı (/<dil>/veli/) kendi dil manifestini taşır (kapsam /<dil>/veli/); ortak manifest orada basılmaz.
+    const veliDili = /[\\/](tr|fr|en|nl|de)[\\/]veli[\\/]index\.html$/.exec(s)?.[1];
+    const beklenen = veliDili ? `<link rel="manifest" href="/portal/veli-${veliDili}.webmanifest">` : '<link rel="manifest" href="/manifest.webmanifest">';
+    assert.equal(html.split(beklenen).length - 1, 1, `${s}: manifest bağlantısı`);
+    if (veliDili) assert.ok(!html.includes('/manifest.webmanifest'), `${s}: ortak manifest basılmamalı`);
     assert.ok(new RegExp(`<meta name="theme-color" content="${manifest.theme_color}">`).test(html), `${s}: tema rengi`);
   }
   assert.equal(manifest.display, 'standalone');

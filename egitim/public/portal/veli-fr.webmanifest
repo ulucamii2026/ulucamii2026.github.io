@@ -1,0 +1,19 @@
+{
+  "name": "Portail des parents — Ulu Camii",
+  "short_name": "Portail parents",
+  "description": "Portail des parents du cours coranique de la Mosquée Ulu Camii de Marche-en-Famenne : présences, mémorisation et devoirs de la semaine, progression, notes de l'imam et annonces.",
+  "lang": "fr",
+  "dir": "ltr",
+  "start_url": "/fr/veli/",
+  "scope": "/fr/veli/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F6EEDF",
+  "theme_color": "#9B2C22",
+  "categories": ["education"],
+  "icons": [
+    { "src": "/portal/ikon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/portal/ikon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/portal/ikon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

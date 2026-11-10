@@ -87,7 +87,7 @@
     "egitim:dev": "astro dev --root egitim",
     "egitim:build": "node scripts/kart-ses-al.mjs --denetle && node scripts/okuma-ses-ekle.mjs --denetle && astro check --root egitim && astro build --root egitim && node scripts/kart-ses-al.mjs --denetle --dist && node scripts/okuma-ses-ekle.mjs --denetle --dist",
     "egitim:onizle": "node scripts/egitim-onizle.mjs",
-    "test:egitim": "node --test tests/egitim/pano.test.mjs tests/egitim/barindirma.test.mjs tests/egitim/cevrimdisi.test.mjs && playwright test -c playwright.egitim.config.mjs",
+    "test:egitim": "node --test tests/egitim/pano.test.mjs tests/egitim/barindirma.test.mjs tests/egitim/cevrimdisi.test.mjs tests/egitim/firebase-uyg.test.mjs tests/egitim/tasima-varlik.test.mjs && playwright test -c playwright.egitim.config.mjs",
     "egitim:yayinla": "npm run egitim:build && npm run test:egitim && powershell -NoProfile -File scripts/firebase-cami.ps1 deploy --only hosting:ulucamii-egitim",
     "egitim:canli": "node scripts/egitim-canli-denetim.mjs"
   },

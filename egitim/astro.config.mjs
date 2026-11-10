@@ -52,6 +52,8 @@ export default defineConfig({
     },
   ],
   vite: {
+    // Ortak kod (kök src/) egitim derlemesini bundan tanır: src/lib/firebase.ts egitim'de `ilim` uygulamasını + egitim Auth alanını döndürür.
+    define: { 'import.meta.env.PUBLIC_UYGULAMA': JSON.stringify('egitim') },
     resolve: { alias: { '@ortak': fileURLToPath(new URL('../src', import.meta.url)) } },
     build: { assetsInlineLimit: 0 },
   },

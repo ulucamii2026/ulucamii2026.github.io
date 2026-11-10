@@ -61,7 +61,9 @@ const ogKart = new URL(`/og/ezber-kilimi-${dil}.png`, Astro.site).toString();
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta name="theme-color" content="#F6EEDF" />
     <meta name="theme-color" content="#1A120E" media="(prefers-color-scheme: dark)" />
-    <link rel="manifest" href="/manifest.webmanifest" />
+    {/* Sayfa kendi manifestini/başlık etiketlerini `slot="head"` ile verebilir (veli portalı: dil başına kurulabilir uygulama); o zaman ortak manifest basılmaz. */}
+    {!Astro.slots.has("head") && <link rel="manifest" href="/manifest.webmanifest" />}
+    <slot name="head" />
     <meta name="apple-mobile-web-app-title" content={il.siteAdi} />
     <link rel="preload" as="font" type="font/woff2" href="/fonts/atkinson-next.woff2" crossorigin />
     <link rel="preload" as="font" type="font/woff2" href="/fonts/work-sans-600.woff2" crossorigin />

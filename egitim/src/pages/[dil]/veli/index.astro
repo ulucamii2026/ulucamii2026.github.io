@@ -1,0 +1,83 @@
+---
+/**
+ * Veli portalı — egitim.ulucamii.be/<dil>/veli/ (Dilim 4 / P3, 10 Kasım 2026). Ana sitedeki /tr/veli-portali/ sayfasının egitim kabuğu: aynı betik
+ * (src/scripts/veli-portali.ts), aynı CSS, aynı `veli-veri` bloğu (Apps Script veli-cuma.gs planı bu bloktan okur). Eklemeli: ulucamii.be'deki sayfa
+ * yerinde durur; bu sayfa HENÜZ hiçbir yerden bağlanmaz. noindex, robots.txt'te yasak, site haritasında ve çevrim dışı önbellekte yok.
+ * Kimlik: Firebase Authentication (ilim uygulaması + egitim alanı, src/lib/firebase.ts egitim bayrağı); veri: Firestore, kurallar firebase/firestore.rules.
+ * Ses ve şifreli kitap: ulucamii.be'den (src/lib/ses-koken.ts); resimler: bu kökenin /media/mektep/ klasörü.
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import { ceviri, dilListesi, yol } from '@ortak/i18n/utils';
+import { veliMetni } from '@ortak/i18n/veli';
+import { AHLAK_HADISLERI } from '@ortak/lib/hadis-verisi';
+import plan from '@ortak/data/yillik-plan-2026-2027.json';
+import materyal from '@ortak/data/ders-materyalleri.json';
+import { existsSync } from 'node:fs';
+import { anaPublic } from '../../../lib/ana-public';
+import { ANA_SITE } from '../../../lib/kimlik';
+import Taban from '../../../layouts/Taban.astro';
+import '@ortak/styles/ogrenme-atolyesi.css';
+import '@ortak/styles/haftalik-bulten.css';
+import '@ortak/styles/portal-sinif.css';
+import '@ortak/styles/baski.css';
+import '@ortak/styles/ezber-kilim.css';
+import '../../../styles/uyum-jetonlari.css';
+import '../../../styles/veli.css';
+
+export function getStaticPaths() {
+  return dilListesi.map((dil) => ({ params: { dil } }));
+}
+
+const dil = Astro.params.dil as Dil;
+const t = ceviri(dil);
+const m = veliMetni(dil);
+
+type PlanGun = { tarih: string; hafta: number; gun: string; dersler: { no?: number; sira?: number; alan: string; kod: string; konu: string; ezber?: string[] }[] };
+const gunler = (plan as { gunler: PlanGun[] }).gunler.map((g) => ({
+  tarih: g.tarih, hafta: g.hafta,
+  dersler: g.dersler.map((d) => ({ no: d.sira ?? d.no ?? 0, kod: d.kod, alan: d.alan, konu: d.konu, ezber: d.ezber || [] })),
+}));
+const materyalGunleri = (materyal.gunler as { tarih: string }[]).map((g) => g.tarih);
+const kok = anaPublic();
+const hadisSesleri = Object.fromEntries(['ar', 'tr', 'fr', 'en'].map((d) => [d, AHLAK_HADISLERI.filter((h) => existsSync(`${kok}/media/ses/hadisler/${d}/${h.id}.mp3`)).map((h) => h.id)]));
+// Kurs, materyal ve gizlilik sayfaları henüz ulucamii.be'dedir (P5/P7'de egitim'e taşınınca bu üç adres /<dil>/kurs/… olur).
+const veri = {
+  donem: (plan as { donem: string }).donem, gunler, hadisSesleri, materyalGunleri,
+  materyalYolu: ANA_SITE + yol(dil, 'dersmateryalleri'),
+  gizlilikYolu: ANA_SITE + yol(dil, 'gizlilik'),
+  kursYolu: ANA_SITE + yol(dil, 'kurankursu'),
+  dilYollari: Object.fromEntries(dilListesi.map((d) => [d, `/${d}/veli/`])),
+};
+---
+<Taban dil={dil} baslik={t('nav.veli')} aciklama={m.altBaslik} yol="veli" noindex oturum={false}>
+  {/* Portal telefona kurulabilir olsun: her dilin kendi manifesti (start_url + kapsam /<dil>/veli/). */}
+  <link slot="head" rel="manifest" href={`/portal/veli-${dil}.webmanifest`} />
+  <meta slot="head" name="mobile-web-app-capable" content="yes" />
+  <meta slot="head" name="apple-mobile-web-app-capable" content="yes" />
+  <meta slot="head" name="apple-mobile-web-app-status-bar-style" content="default" />
+  <header class="uyum-baslik">
+    <div class="icerik">
+      <p class="etiket etiket-vurgu">{t('nav.kurankursu')}</p>
+      <h1>{t('nav.veli')}</h1>
+      <p class="uyum-alt">{m.altBaslik}</p>
+    </div>
+  </header>
+  <div class="icerik uyum-ana">
+    {/* Duyurular yalnız bu küçük bölgeden yapılır; panonun tamamı canlı bölge olursa her yeniden çizimde tüm içerik baştan okunur. */}
+    <div id="veli-durum" role="status" aria-live="polite" class="ekran-okuyucu"></div>
+    <div id="veli-portal" data-dil={dil} class="portal">
+      <p class="not">{m.yukleniyor}</p>
+      <noscript><p class="not">Bu sayfa JavaScript gerektirir. · Cette page nécessite JavaScript. · This page requires JavaScript. · Deze pagina vereist JavaScript. · Diese Seite benötigt JavaScript.</p></noscript>
+    </div>
+    <script is:inline type="application/json" id="veli-veri" set:html={JSON.stringify(veri)} />
+    <p class="alt-baglantilar">
+      <a href={veri.kursYolu} class="dugme dugme-ikincil">{m.kurs}</a>
+      <a href={veri.gizlilikYolu} class="dugme dugme-ikincil">{m.gizlilik}</a>
+    </p>
+  </div>
+</Taban>
+
+<script>
+  import { veliPortali } from '@ortak/scripts/veli-portali';
+  veliPortali();
+</script>

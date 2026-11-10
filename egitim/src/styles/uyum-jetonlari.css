@@ -1,0 +1,70 @@
+/* Uyum katmanı (Dilim 4, 10 Kasım 2026): ana siteden (ulucamii.be) gelen veli portalı ve hoca ekranı CSS'i ana sitenin jeton adlarıyla yazılı
+   (--zemin, --metin, --vurgu, --color-kiremit …). egitim'de bu adlar yoktur; burada Kilim değerlerine bağlanır, böylece ortak CSS dosyaları
+   (veli.css, hoca.css, ogrenme-atolyesi.css, haftalik-bulten.css, ders-defteri.css, hoca-*.css, ezber-kilim.css, portal-sinif.css, baski.css)
+   DEĞİŞTİRİLMEDEN çalışır. Yalnız bu sayfaları yükleyen sayfalarda bulunur (Astro CSS'i sayfa başına bağlar); açık/koyu tema Kilim'in kendi
+   jetonlarından gelir (var zinciri), bu yüzden ayrıca koyu tema kuralı gerekmez. Satır içi stil yok (sıkı CSP). */
+
+:root {
+  /* Yüzeyler ve metin */
+  --zemin: var(--yuz);
+  --zemin-2: var(--yun);
+  --zemin-3: var(--cizgi);
+  --metin: var(--murekkep);
+  --metin-2: var(--murekkep-2);
+  --cizgi-etkilesim: var(--girdi-kenar);
+  /* Vurgular */
+  --vurgu: var(--kokboya-yazi);
+  --vurgu-2: var(--yesil-bag);
+  --vurgu-metin: var(--kokboya-yazi);
+  --color-kiremit: var(--kokboya);
+  --color-kiremit-koyu: var(--kokboya-2);
+  --color-ochre: #9A6A14;
+  --color-ochre-acik: #e9c98a;
+  --color-adacayi: #7e8f6a;
+  --color-adacayi-koyu: #5d6c4c;
+  --color-adacayi-acik: #a4b58c;
+  --color-iznik: var(--yesil);
+  --color-iznik-koyu: var(--yesil-2);
+  --color-iznik-acik: #7FCBA9;
+  --color-ceviz: var(--murekkep-2);
+  --color-ceviz-koyu: var(--murekkep);
+  --color-murekkep: var(--murekkep);
+  --color-krem: var(--yun);
+  --color-kagit: var(--yun);
+  /* Ölçüler ve yazı tipleri */
+  --radius-kose: var(--r);
+  --shadow-kart: none;
+  --tracking-etiket: 0.1em;
+  --font-sans: var(--font);
+  --font-serif: var(--baslik);
+  --font-mono: ui-monospace, "Cascadia Mono", Consolas, monospace;
+  --font-arabic: var(--font-ar);
+  --font-arapca: var(--font-ar);
+}
+
+/* Ana sitenin düğme ve etiket sınıfları (betikler bunları basar); egitim'in `.dugme` tabanı üstüne biçimler. */
+.dugme { cursor: pointer; text-decoration: none; }
+.dugme-birincil { background: var(--kokboya); color: #fff; border-color: var(--kokboya); }
+.dugme-birincil:hover { background: var(--kokboya-2); color: #fff; }
+.dugme-ikincil { background: transparent; color: var(--murekkep); border: 1px solid var(--girdi-kenar); }
+.dugme-ikincil:hover { border-color: var(--murekkep); color: var(--murekkep); }
+.dugme-iznik { background: var(--yesil); color: var(--krem-yazi); border-color: var(--yesil); }
+.dugme-iznik:hover { background: var(--yesil-2); color: var(--krem-yazi); }
+.etiket { font-family: var(--baslik); font-size: 0.75rem; font-weight: 600; letter-spacing: var(--tracking-etiket); text-transform: uppercase; color: var(--murekkep-2); }
+.etiket-vurgu { color: var(--kokboya-yazi); }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+
+/* Sayfa üst bloğu ve ana kap (ana sitedeki SayfaBasligi + `kapsayici py-10` yerine) */
+.uyum-baslik { border-bottom: 1px solid var(--cizgi); background: var(--yuz); }
+.uyum-baslik .icerik { padding-block: 2.25rem 1.75rem; }
+.uyum-baslik h1 { font-size: clamp(1.7rem, 4vw, 2.4rem); }
+.uyum-baslik .etiket { margin: 0 0 0.5rem; }
+.uyum-baslik p.uyum-alt { margin: 0.7rem 0 0; max-width: 60em; color: var(--murekkep-2); }
+.uyum-ana { padding-block: 2.5rem; }
+.uyum-ana.dar { padding-block: 1.5rem; }
+
+/* Koyu temada dolgu renkleri açık tonlara döner (veli.css); üstlerindeki beyaz yazı okunmaz, koyu mürekkep yazılır (WCAG AA). */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .portal .ogrenci-avatar, :root:not([data-theme="light"]) .portal .sekme-avatar { color: #1A120E; }
+}
+:root[data-theme="dark"] .portal .ogrenci-avatar, :root[data-theme="dark"] .portal .sekme-avatar { color: #1A120E; }
