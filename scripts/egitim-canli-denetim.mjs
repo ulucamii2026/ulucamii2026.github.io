@@ -17,7 +17,7 @@
  *    Range'e doğru 206 verir) → kayıtsız adres yedek sayfayı açar → sil. Kayıt denetim tarayıcısının kendi geçici profilindedir; sunucuya yazılan bir şey yok.
  *  Hiçbir şey yazmaz, giriş yapmaz. Çıkış kodu: 0 hepsi geçti · 1 en az biri düştü.
  */
-import { readFileSync } from 'node:fs';
+import { readdirSync, readFileSync } from 'node:fs';
 import { chromium } from '@playwright/test';
 
 const girdi = process.argv[2];
@@ -29,6 +29,9 @@ const KOK = new URL(girdi).origin;
 const DILLER = ['tr', 'fr', 'en', 'nl', 'de'];
 const katalog = JSON.parse(readFileSync(new URL('../src/data/ezber/katalog.json', import.meta.url), 'utf8'));
 // Çalışma sayfası olan her madde (src/lib/ezber/katalog.ts `calismaSayfasiVar`): ses, Kur'an metni, bilgi metni ya da sessiz kitap duasının metni (24 Ekim 2026).
+// İlim Yolu (10 Kasım 2026): kart sayfaları (/ogren/<kart>/) ve yol sayfaları (/yollar/…) site haritasındadır; kimlikler depodaki kart verisinden ve derlenen yol klasörlerinden gelir.
+const kartKimlikleri = readdirSync(new URL('../src/data/ilim-yolu/kartlar/', import.meta.url)).flatMap((d) => JSON.parse(readFileSync(new URL(`../src/data/ilim-yolu/kartlar/${d}`, import.meta.url), 'utf8')).kartlar.map((k) => k.id));
+const yolSayfalari = readdirSync(new URL('../egitim/dist/tr/yollar/', import.meta.url), { withFileTypes: true }).filter((e) => e.isDirectory()).map((e) => e.name);
 const sesliler = katalog.ogeler.filter((o) => o.ses?.tam || o.ses?.parcalar?.length || o.kuran || o.bilgiMetni || o.metinli);
 const bilgiOgeleri = katalog.ogeler.filter((o) => o.bilgiMetni);
 const firebase = JSON.parse(readFileSync(new URL('../firebase.json', import.meta.url), 'utf8'));
@@ -75,7 +78,7 @@ kontrol('/sw.js yer tutucusuz ve damgalı', !swMetni.includes('__SURUM__') && /e
 const bildirimYaniti = await getir('/manifest.webmanifest');
 const bildirim = await bildirimYaniti.json().catch(() => null);
 kontrol('/manifest.webmanifest 200, kurulabilir uygulama alanları', bildirimYaniti.status === 200 && bildirim?.display === 'standalone' && bildirim?.start_url === '/' && bildirim?.scope === '/' &&
-  bildirim?.theme_color === '#134420' && bildirim?.icons?.some((i) => i.purpose === 'maskable'), `${bildirimYaniti.status} ${bildirimYaniti.headers.get('content-type')}`);
+  bildirim?.theme_color === '#F6EEDF' && bildirim?.icons?.some((i) => i.purpose === 'maskable'), `${bildirimYaniti.status} ${bildirimYaniti.headers.get('content-type')}`);
 for (const i of bildirim?.icons ?? []) {
   const y = await getir(i.src, { method: 'HEAD' });
   kontrol(`bildirim simgesi ${i.src}`, y.status === 200 && (i.type ? new RegExp(i.type.split('/')[1].split('+')[0]).test(y.headers.get('content-type') ?? '') : true), `${y.status} ${y.headers.get('content-type')}`);
@@ -90,7 +93,9 @@ const robots = await getir('/robots.txt');
 kontrol('robots.txt site haritasını gösterir', robots.status === 200 && (await robots.text()).includes('Sitemap: https://egitim.ulucamii.be/sitemap-index.xml'), robots.status);
 const harita = await getir('/sitemap-0.xml');
 const locs = [...(await harita.text()).matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, a]) => a).sort();
-const beklenen = DILLER.flatMap((d) => [`https://egitim.ulucamii.be/${d}/`, `https://egitim.ulucamii.be/${d}/ezber/`, `https://egitim.ulucamii.be/${d}/calisma-belgesi/`, `https://egitim.ulucamii.be/${d}/kilimim/`, `https://egitim.ulucamii.be/${d}/kartlar/`, `https://egitim.ulucamii.be/${d}/takvim/`,
+const beklenen = DILLER.flatMap((d) => [`https://egitim.ulucamii.be/${d}/`, `https://egitim.ulucamii.be/${d}/ezber/`, `https://egitim.ulucamii.be/${d}/calisma-belgesi/`, `https://egitim.ulucamii.be/${d}/kilimim/`, `https://egitim.ulucamii.be/${d}/kartlar/`, `https://egitim.ulucamii.be/${d}/takvim/`, `https://egitim.ulucamii.be/${d}/yollar/`,
+  ...yolSayfalari.map((y) => `https://egitim.ulucamii.be/${d}/yollar/${y}/`),
+  ...kartKimlikleri.map((k) => `https://egitim.ulucamii.be/${d}/ogren/${k}/`),
   ...sesliler.map((o) => `https://egitim.ulucamii.be/${d}/calis/${o.id}/`)]).sort();
 kontrol(`site haritası ${beklenen.length} adres`, harita.status === 200 && JSON.stringify(locs) === JSON.stringify(beklenen), `${harita.status}, ${locs.length} adres`);
 // Hesap sayfaları ve kart girişi (2 Kasım 2026): 200, noindex, önbelleksiz; site haritasında yok (yukarıdaki eşitlik).
@@ -159,7 +164,7 @@ try {
     const sesYanit = await yanitBekle;
     await s.waitForTimeout(1500);
     kontrol('çalışma: gerçek ses 200/206 ve hata yok', sesYanit && [200, 206].includes(sesYanit.status()) &&
-      (await s.locator('[data-oynat]').textContent()) === 'Duraklat' && hatalar.length === 0,
+      (await s.locator('[data-oynat]').textContent()) === 'Duraklatın' && hatalar.length === 0,
       sesYanit ? `${sesYanit.status()} ${sesYanit.url()}` : 'istek yok');
     await s.locator('[data-durdur]').click();
     kontrol('çalışma: CSP ihlali 0', (await s.evaluate(() => window.__ihlaller)).length === 0);
@@ -254,7 +259,7 @@ try {
     const listede = await c.locator('[data-cd-kayitlar] li a').allTextContents();
     kontrol('çevrim dışı: kayıtsız adres yedek sayfayı açar ve kayıtlı maddeyi listeler', yedekBaslik === 'Çevrim dışı çalışma' && listede.some((t) => /İhlâs/.test(t)) && await c.locator('[data-cd-istenen]').isVisible(), `${yedekBaslik} · ${listede.join(', ')}`);
     await cd.setOffline(false);
-    await c.getByRole('button', { name: /^Bu cihazdaki kaydı sil: / }).click();
+    await c.getByRole('button', { name: /^Bu cihazdaki kaydı sil(in)?: / }).click();
     await c.locator('[data-cd-bos]').waitFor({ state: 'visible', timeout: 10_000 }).catch(() => {});
     const son = await durumOku();
     kontrol('çevrim dışı: kayıt silinince ses ve künye önbellekten gider', (son['ezber-ses-v1'] ?? []).length === 0 && !(son['ezber-kayit-v1'] ?? []).some((x) => !x.u.endsWith('_yenilenen-surum')), '');
