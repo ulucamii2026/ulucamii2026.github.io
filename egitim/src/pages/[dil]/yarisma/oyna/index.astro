@@ -1,0 +1,66 @@
+---
+/**
+ * Bilgi Yarışması oyunu (İlim Yolu, 10 Kasım 2026): sınıfın birlikte oynadığı TEK ekran. Ayarlar ve tohum adres çubuğunun `#` kısmındadır;
+ * sayfa yalnız KENDİ dilinin sorularını taşır (`data-veri`), hassas gizemli kutular hiç gönderilmez. Hesap, Firebase, depo ve ağ yazımı YOK:
+ * ortak puan yalnız bellektedir, sayfa yenilenince oyun baştan başlar. Sahne scripts/yarisma-oyna.ts ile çizilir (yalnız `textContent`; CSP).
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import { dilListesi } from '@ortak/i18n/utils';
+import { yerellestir } from '@ortak/lib/yarisma/veri';
+import { yarismaMetinleri } from '../../../../i18n/yarisma';
+import Taban from '../../../../layouts/Taban.astro';
+import '../../../../styles/yollar.css';
+import '../../../../styles/yarisma.css';
+
+export function getStaticPaths() {
+  return dilListesi.map((dil) => ({ params: { dil } }));
+}
+
+const dil = Astro.params.dil as Dil;
+const m = yarismaMetinleri(dil);
+const veri = { dil, sorular: yerellestir(dil), m };
+---
+<Taban dil={dil} baslik={m.ad} aciklama={m.hubAciklama} yol="yarisma/oyna" oturum={false} noindex>
+  <article class="icerik ya-oyun" data-ya-oyun data-veri={JSON.stringify(veri)}>
+    <svg class="ya-sprite" width="0" height="0" aria-hidden="true" focusable="false">
+      <symbol id="ya-kutu" viewBox="0 0 120 120">
+        <path d="M60 14 L104 34 L60 54 L16 34 Z" fill="var(--safran-soluk)" stroke="currentColor" stroke-width="4" stroke-linejoin="miter" />
+        <path d="M16 34 L60 54 L60 108 L16 88 Z" fill="var(--yuz)" stroke="currentColor" stroke-width="4" stroke-linejoin="miter" />
+        <path d="M104 34 L60 54 L60 108 L104 88 Z" fill="var(--yesil-soluk)" stroke="currentColor" stroke-width="4" stroke-linejoin="miter" />
+        <path d="M60 54 L60 108 M38 44 L82 64 M38 44 L38 40 L82 60 L82 64" fill="none" stroke="currentColor" stroke-width="3" />
+        <path d="M54 76 H66 V88 H54 Z" fill="var(--kokboya)" stroke="currentColor" stroke-width="3" />
+      </symbol>
+    </svg>
+
+    <header class="ya-ust">
+      <p class="ya-sinif">{m.sinifimiz}</p>
+      <p class="ya-puan"><span class="ya-puan-ad">{m.ortakPuan}</span><output class="ya-puan-sayi" data-puan>0</output></p>
+      <p class="ya-tur" data-tur-yazi></p>
+      <ol class="ya-karolar" data-karolar></ol>
+    </header>
+
+    <section class="ya-sahne" data-sahne aria-label={m.ad}>
+      <noscript><p class="yl-not">{m.jsGerek}</p></noscript>
+    </section>
+
+    <p class="ya-durum" role="status" aria-live="polite" aria-atomic="true" data-durum></p>
+
+    <div class="ya-cubuk" data-cubuk>
+      <button type="button" class="dugme birincil ya-dugme" data-kontrol hidden>{m.kontrol}</button>
+      <button type="button" class="dugme ikincil ya-dugme" data-ipucu hidden>{m.sonrakiIpucu}</button>
+      <button type="button" class="dugme birincil ya-dugme" data-sonraki hidden>{m.sonraki}</button>
+      <button type="button" class="dugme ikincil ya-dugme" data-tam hidden>{m.tamEkran}</button>
+      <a class="dugme ikincil ya-dugme" href={`/${dil}/yarisma/`}>{m.ayarlaraDon}</a>
+    </div>
+
+    <details class="ya-kisayol">
+      <summary>{m.kisayolBaslik}</summary>
+      <ul>{m.kisayollar.map((k) => <li>{k}</li>)}</ul>
+    </details>
+  </article>
+</Taban>
+
+<script>
+  import '../../../../scripts/dil';
+  import '../../../../scripts/yarisma-oyna';
+</script>

@@ -77,7 +77,7 @@ test('dilSec: önce adresteki dil, sonra tarayıcının dil sırası, yoksa İng
 });
 
 test('kaydedilebilirYolMu: yalnız beş dilin sayfaları; dosya, üst dizin, büyük harf, dış ve boş yol reddedilir', () => {
-  for (const y of ['/tr/', '/fr/kartlar/', '/en/calis/s-ihlas/', '/de/calis/b-secme-hadisler/', '/nl/cevrimdisi/']) assert.equal(m.kaydedilebilirYolMu(y), true, y);
+  for (const y of ['/tr/', '/fr/kartlar/', '/en/calis/s-ihlas/', '/de/calis/b-secme-hadisler/', '/nl/cevrimdisi/', '/tr/yarisma/', '/fr/yarisma/oyna/']) assert.equal(m.kaydedilebilirYolMu(y), true, y);
   for (const y of ['/', '', '/xx/calis/s-ihlas/', '/tr/calis/s-ihlas', '/tr/calis/../', '/tr/%2e%2e/', '/tr//', '//evil.example/tr/', '/tr/Calis/', '/_astro/a.js', '/sw.js', '/tr/calis/s-ihlas/?x=1', 'https://ulucamii.be/tr/', '/tr/calis/s ihlas/'])
     assert.equal(m.kaydedilebilirYolMu(y), false, y);
 });

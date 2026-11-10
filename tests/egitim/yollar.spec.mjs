@@ -40,8 +40,8 @@ test.describe('bilgi kartı ve mini sınav', () => {
     await page.goto(`/tr/ogren/${SORULU.id}/`);
     await expect(page.locator('h1')).toHaveText(SORULU.baslik.tr);
     await expect(page.locator('.yl-ozet')).toHaveText(SORULU.ozet.tr);
-    await expect(page.locator('[data-taslak]').first()).toBeVisible();
-    await expect(page.locator('[data-taslak] .yl-taslak-ad')).toHaveText('Taslak');
+    // Kaynak denetiminden geçen kartlar «onayli» (10 Kas 2026): taslak etiketi yok; mekanizma gelecekteki taslaklar için durur.
+    await expect(page.locator('[data-taslak]')).toHaveCount(0);
     expect(await tasmaYok(page)).toBe(true);
     const dugme = page.locator('[data-ogrendim]');
     await expect(dugme).toHaveAttribute('aria-pressed', 'false');
@@ -117,7 +117,7 @@ test.describe('bilgi kartı ve mini sınav', () => {
       await page.goto(`/${dil}/ogren/${SORULU.id}/`);
       await expect(page.locator('html')).toHaveAttribute('lang', new RegExp(`^${dil}`));
       await expect(page.locator('h1')).toHaveText(SORULU.baslik[dil]);
-      await expect(page.locator('[data-taslak]').first()).toBeVisible();
+      await expect(page.locator('[data-taslak]')).toHaveCount(0);
       await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://egitim.ulucamii.be/${dil}/ogren/${SORULU.id}/`);
       await expect(page.locator(`.yl-meta a[href="/${dil}/yollar/plan-ibadet/"]`)).toHaveCount(1);
       expect(await tasmaYok(page)).toBe(true);
@@ -230,7 +230,7 @@ test.describe('yol dizini, yol sayfası, rozet ve belge', () => {
     await expect(page.locator('#basamak-1')).toBeVisible();
     await expect(page.locator('li[data-kart-id]').first()).toHaveAttribute('data-durum', '3');
     await expect(page.locator('li[data-kart-id]').first().locator('[data-durum-yazi]')).toHaveText('Öğrenildi · mini soru çözüldü');
-    await expect(page.locator('li[data-kart-id] [data-taslak]').first()).toBeVisible();
+    await expect(page.locator('li[data-kart-id] [data-taslak]')).toHaveCount(0);
     expect(await tasmaYok(page)).toBe(true);
 
     // Belge

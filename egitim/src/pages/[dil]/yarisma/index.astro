@@ -1,0 +1,99 @@
+---
+/**
+ * Bilgi Yarışması girişi (İlim Yolu, 10 Kasım 2026): öğretmen biçimi, konuları, yaş grubunu ve tur sayısını seçer; «Başlatın» oyun sayfasına gider.
+ * Ayarlar ve tohum adres çubuğunun `#` kısmında taşınır, sunucuya hiçbir şey ulaşmaz. Hesap, Firebase ve kayıt YOK (`oturum={false}`).
+ * Betik yalnız seçime göre soru sayısını yazar ve bağlantıyı günceller; JavaScript yoksa bağlantı varsayılan ayarla oyunu açar.
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import { dilListesi } from '@ortak/i18n/utils';
+import { ozetSatirlari } from '@ortak/lib/yarisma/veri';
+import { ADETLER, SEVIYELER, VARSAYILAN, ayarYaz } from '@ortak/lib/yarisma/tur';
+import { BICIMLER, KONULAR } from '@ortak/lib/yarisma/tipler';
+import CevrimdisiKutu from '../../../components/CevrimdisiKutu.astro';
+import { doldur, yarismaMetinleri } from '../../../i18n/yarisma';
+import Taban from '../../../layouts/Taban.astro';
+import '../../../styles/yollar.css';
+import '../../../styles/yarisma.css';
+
+export function getStaticPaths() {
+  return dilListesi.map((dil) => ({ params: { dil } }));
+}
+
+const dil = Astro.params.dil as Dil;
+const m = yarismaMetinleri(dil);
+const veri = {
+  ozet: ozetSatirlari(),
+  oynaYolu: `/${dil}/yarisma/oyna/`,
+  m: { sayim: m.sayim, sayimAz: m.sayimAz, sayimYok: m.sayimYok },
+};
+const varsayilanBag = `/${dil}/yarisma/oyna/#${ayarYaz({ ...VARSAYILAN, tohum: 'ilk' })}`;
+---
+<Taban dil={dil} baslik={m.ad} aciklama={m.hubAciklama} yol="yarisma" oturum={false}>
+  <article class="icerik yl-sayfa ya-sayfa" data-ya-hub data-veri={JSON.stringify(veri)}>
+    <header class="yl-bas">
+      <h1>{m.ad}</h1>
+      <p class="yl-ozet">{m.hubLead}</p>
+      <p class="yl-not">{m.kaydedilmez}</p>
+    </header>
+
+    <section class="ya-ayar" aria-labelledby="ya-ayar-baslik">
+      <h2 id="ya-ayar-baslik">{m.ayarBaslik}</h2>
+
+      <fieldset class="ya-grup">
+        <legend>{m.bicimEtiket}</legend>
+        <div class="ya-secenekler">
+          {(['karisik', ...BICIMLER] as const).map((b) => (
+            <label class="ya-secenek"><input type="radio" name="bicim" value={b} checked={b === VARSAYILAN.bicim} /><span>{m.bicim[b]}</span></label>
+          ))}
+        </div>
+      </fieldset>
+
+      <fieldset class="ya-grup">
+        <legend>{m.konuEtiket}</legend>
+        <div class="ya-secenekler">
+          {KONULAR.map((k) => (
+            <label class="ya-secenek"><input type="checkbox" name="konu" value={k} checked /><span>{m.konu[k]}</span></label>
+          ))}
+        </div>
+      </fieldset>
+
+      <fieldset class="ya-grup">
+        <legend>{m.seviyeEtiket}</legend>
+        <div class="ya-secenekler">
+          {SEVIYELER.map((s) => (
+            <label class="ya-secenek"><input type="radio" name="seviye" value={s} checked={s === VARSAYILAN.seviye} /><span>{m.seviye[s]}</span></label>
+          ))}
+        </div>
+      </fieldset>
+
+      <fieldset class="ya-grup">
+        <legend>{m.adetEtiket}</legend>
+        <div class="ya-secenekler">
+          {ADETLER.map((n) => (
+            <label class="ya-secenek"><input type="radio" name="adet" value={String(n)} checked={n === VARSAYILAN.adet} /><span>{doldur(m.adetBirim, { n })}</span></label>
+          ))}
+        </div>
+      </fieldset>
+
+      <p class="ya-sayim" role="status" aria-live="polite" data-sayim></p>
+      <div class="ya-eylem">
+        <a class="dugme birincil ya-basla" href={varsayilanBag} data-basla>{m.basla}</a>
+      </div>
+      <noscript><p class="yl-not">{m.jsGerek}</p></noscript>
+    </section>
+
+    <section class="ya-kisayol" aria-labelledby="ya-kisayol-baslik">
+      <h2 id="ya-kisayol-baslik">{m.kisayolBaslik}</h2>
+      <ul>{m.kisayollar.map((k) => <li>{k}</li>)}</ul>
+    </section>
+
+    <CevrimdisiKutu dil={dil} ozel={{ id: 'yarisma', ad: m.ad, yol: `/${dil}/yarisma/oyna/`, sesler: [] }} />
+    <p class="yl-not">{m.hocaNotu}</p>
+  </article>
+</Taban>
+
+<script>
+  import '../../../scripts/dil';
+  import '../../../scripts/yarisma';
+  import '../../../scripts/cevrimdisi';
+</script>

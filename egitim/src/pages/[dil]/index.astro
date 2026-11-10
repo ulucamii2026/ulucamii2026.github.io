@@ -18,6 +18,7 @@ import Ikon from '../../components/Ikon.astro';
 import { ilimMetinleri } from '../../i18n/ilim';
 import { ibadetMetinleri } from '../../i18n/ibadet';
 import { okumaMetinleri } from '../../i18n/okuma';
+import { yarismaMetinleri } from '../../i18n/yarisma';
 import { kilimimMetinleri } from '../../i18n/kilimim';
 import { metin } from '../../i18n/metinler';
 import { sablonlar } from '../../i18n/sablon';
@@ -34,6 +35,7 @@ const dil = Astro.params.dil as Dil;
 const il = ilimMetinleri(dil);
 const ok = okumaMetinleri(dil).anaKart;
 const ib = ibadetMetinleri(dil);
+const ya = yarismaMetinleri(dil);
 const m = metin(dil);
 const km = kilimimMetinleri(dil);
 const tm = tekrarMetinleri(dil);
@@ -120,6 +122,14 @@ const veri = {
             <p class="acik">{ib.hubAciklama}</p>
           </div>
           <div class="iy-yol-sag"><a class="dugme ikincil kucuk" href={`/${dil}/ibadet/`}>{ib.basla}</a></div>
+        </article>
+        <article class="iy-yol yarisma">
+          <div class="iy-yol-motif" aria-hidden="true"><svg viewBox="0 0 100 100"><use href={`#${yolMotifleri[2]}`} /></svg></div>
+          <div class="iy-yol-metin">
+            <h3>{ya.ad}</h3>
+            <p class="acik">{ya.hubAciklama}</p>
+          </div>
+          <div class="iy-yol-sag"><a class="dugme ikincil kucuk" href={`/${dil}/yarisma/`}>{ya.anaKartGit}</a></div>
         </article>
         <article class="iy-yol kurs">
           <div class="iy-yol-motif" aria-hidden="true"><svg viewBox="0 0 100 100"><use href={`#${yolMotifleri[1]}`} /></svg></div>
