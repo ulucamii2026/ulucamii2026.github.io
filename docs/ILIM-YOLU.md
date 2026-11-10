@@ -336,6 +336,10 @@ Uygulama düzeni:
 - Taslak çeviriler öğrencilere görünür.
 - ihtida.ulucamii.be'yi taşırken DNS değişikliği gerekir.
 
+## Durum (10 Kasım 2026 gece, ikinci): okuma satırı, «bir tur geri», çevrim dışı kapsam, kart sesi çaları CANLI
+
+- Duyurusuz. Kilimim ve ana sayfa Kur'an Okuma ilerlemesi/bugün tekrar satırı gösterir; yarışmada ← ile bir tur geri; çevrim dışı kutu okuma adım/harita ve ibadet sayfalarını da kaydeder; kart sesi çaları hazır, manifest boş (içe alma: `node scripts/kart-ses-al.mjs`, sesler `D:sesli-anlatimilim-yolu-kartlar` bitince, önce `--kuru`). `/__/auth/handler` başlıkları değişmedi (ayrılmış ad alanı; önizleme kanalı sınaması gerekir). Apps Script v47 canlı (ayrı kayıt). Kayıt: `docs/YAYIN-KAYITLARI.md`.
+
 ## Durum (10 Kasım 2026 gece): «Bilgi Yarışması» (/yarisma/) CANLI; bilgi kartlarında taslak etiketi kalktı
 
 - Duyurusuz yayımlandı; imam henüz gözden geçirmedi. Sınıfça tek ekran, tek ortak puan, hiçbir veri saklanmaz. 261 kartın hepsi «onayli» (etiket mekanizması gelecek taslaklar için durur). Kayıt: `docs/YAYIN-KAYITLARI.md` 10 Kasım gece (kapı parça parça koşuldu).
