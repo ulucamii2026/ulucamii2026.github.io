@@ -99,7 +99,7 @@ Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI
 
 - Dayanak: Rıdvan'ın kararı; Esma AVCI Hoca Hanım çarşambaları 12.00–16.00 camide (hanımlar 12.00–14.00, genç kızlar 14.00–16.00 değişmedi). Eski 10.30–12.30 geçersiz.
 - Değişen: çarşamba duyurusu (TR/FR), `irsat-mufredati.json`, İrşat sayfası, `site.yaml` haftalık program. Tek seferlik 14 Ekim metinleri ve Namur'a dokunulmadı.
-- Afiş görselleri (`carsamba-bulusmalari-2026*.webp`, `carsamba-programi-2026*.webp`) eski saatleri gösteriyor; yeni afiş ayrıca hazırlanıp değiştirilecek.
+- Yeni afişler (TR/FR, `carsamba-yeni-saatler-2026-11-*.webp`) duyuruya bağlandı; eski saatli afiş görselleri depodan silindi.
 
 ## 1 Kasım 2026 (gece) — Rahmetle Anıyoruz: Hasan Hüseyin Yılmaz metni ailenin isteğiyle düzeltildi, Recep Açıkgöz'ün yeni fotoğrafı
 

@@ -2,9 +2,9 @@
 baslik: "Chaque mercredi, retrouvons Mme Esma AVCI à la mosquée"
 tarih: 2026-08-29
 ozet: "Chaque mercredi avec Mme Esma AVCI : femmes de 12h00 à 14h00, jeunes filles de 14h00 à 16h00. Coran, enseignement religieux et échanges. Gratuit et sans inscription."
-kapak: /media/duyurular/carsamba-bulusmalari-2026.webp
-kapakKucuk: /media/duyurular/carsamba-bulusmalari-2026-thumb.webp
-kapakAlt: "Affiche du programme du mercredi — femmes de 12h00 à 14h00, jeunes filles de 14h00 à 16h00, avec Mme Esma AVCI"
+kapak: /media/duyurular/carsamba-yeni-saatler-2026-11-fr.webp
+kapakKucuk: /media/duyurular/carsamba-yeni-saatler-2026-11-fr-thumb.webp
+kapakAlt: "Affiche du programme du mercredi, nouveaux horaires : femmes de 12h00 à 14h00, jeunes filles de 14h00 à 16h00, avec Mme Esma AVCI ; à partir du 11 novembre 2026"
 etiketler:
   - femmes
   - education

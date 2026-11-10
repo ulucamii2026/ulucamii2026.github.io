@@ -2,9 +2,9 @@
 baslik: "Her Çarşamba Esma AVCI Hoca Hanım ile Camimizde Buluşuyoruz"
 tarih: 2026-08-29
 ozet: "Her çarşamba Esma AVCI Hoca Hanım ile hanımlar 12.00–14.00, genç kızlar 14.00–16.00 saatlerinde camimizde buluşuyor. Kur’an, dinî bilgiler ve sohbet; katılım ücretsiz, kayıt gerekmiyor."
-kapak: /media/duyurular/carsamba-bulusmalari-2026.webp
-kapakKucuk: /media/duyurular/carsamba-bulusmalari-2026-thumb.webp
-kapakAlt: "Çarşamba Programı afişi — hanımlar 12:00-14:00, genç kızlar 14:00-16:00, Esma AVCI Hoca Hanım ile"
+kapak: /media/duyurular/carsamba-yeni-saatler-2026-11-tr.webp
+kapakKucuk: /media/duyurular/carsamba-yeni-saatler-2026-11-tr-thumb.webp
+kapakAlt: "Çarşamba Programı afişi, yeni saatler: hanımlar 12:00-14:00, genç kızlar 14:00-16:00, Esma AVCI Hoca Hanım ile; 11 Kasım 2026’dan itibaren"
 etiketler:
   - irşat
   - hanımlar
