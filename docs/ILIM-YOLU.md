@@ -354,6 +354,10 @@ Uygulama düzeni:
 - **Metin doğrulaması** (`--dogrula --kuran <kuran_arapca.json>`; tam Kur'an metni depo dışı: `D:\app\Ihtisas2027\data-prep\kaynak\`): Arapça metin Diyanet kaydından OLDUĞU GİBİ alındı. Kanonik karşılaştırma yalnız yazılış biçimini eler (elif/hemze, hançer elif, işaret kodlaması); ünsüz/hareke/şedde/sükûn farkı eşitsizliktir. Âyetler Ezber Kilimi metniyle sıkı kipte karşılaştırıldı (Bakara 1–5 için depoda kaynak yok: tam metne karşı). Tecvid «yazılışı» örnekleri tam metinde kelime sınırlarında aranıp sûre:âyet'i kaydedildi; «okunuşu» maddeleri eşiyle ≤ 3 harf farkla DOLAYLI kabul edildi (Kur'an'da aynen geçmez); hurûf-u mukattaa sûre başlangıçlarıyla ve harf adı açılımıyla.
 - **Alınmayanlar:** 156 tecvid örneğinden 51'i (23 maddede Arapça metin yok; 14 «Mushaflarda yer alan işaretler» maddesinin metni Türkçe açıklama; 12 «tenvinli kelimelerden geçiş» fonetik yeniden yazım; 1 zamir ve 1 lâzım örneği tam metinde bulunamadı). Ayrıca Bakara 1–141 (metin kaynağı yok), 115 Türkçe ders sesi, 25 etiket sesi, ihfâ/idğâm/iklâb/kalkale uygulamalarının 43 âyet parçası (sonraki tur adayı).
 
+## Durum (10 Kasım 2026 gece, dördüncü): Kur'an Okuma o8 (tecvid uygulamaları) ve o9 (kısa âyetler) CANLI
+
+- Duyurusuz. 105 + 60 madde, 165 Diyanet sesi egitim Hosting'inde; metin doğrulaması ve alınmayanlar yukarıdaki «Okuma sesleri» bölümünde. İmam gözden geçirmedi. Kayıt: `docs/YAYIN-KAYITLARI.md` 10 Kasım gece (dördüncü).
+
 ## Durum (10 Kasım 2026 gece, üçüncü): kart seslendirmesi (TR + FR) CANLI
 
 - Duyurusuz. 261 bilgi kartında tr, 258'inde fr «Dinleyin/Écouter» çaları çalışıyor (fr `ku-044/047/048` imam onayı bekliyor, hariç). Sesler egitim Hosting'de, git dışı; bekçi ve geri getirme için yukarıdaki «Kart seslendirmesi» bölümü. Kayıt: `docs/YAYIN-KAYITLARI.md` 10 Kasım gece (üçüncü).

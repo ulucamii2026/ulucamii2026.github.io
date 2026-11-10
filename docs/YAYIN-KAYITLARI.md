@@ -4,6 +4,17 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 10 Kasım 2026 (gece, dördüncü) — İlim Yolu: Kur'an Okuma tecvid uygulamaları (o8) ve kısa âyetler (o9) CANLI (duyuru YOK)
+
+- Zaman: Europe/Brussels (CET), 10 Kasım 2026 gecesi. Dayanak: imamın yetki devri; kapsam koordinatör kararı (156 tecvid örneği + 60 kısa âyet; Bakara 1–141, Türkçe ders sesleri ve etiket sesleri hariç). Duyuru, e-posta, WhatsApp yok.
+- Kapsam: o8 = 105 tecvid örneği, o9 = 60 kısa âyet (besmeleler dâhil); 165 Diyanet MP3 (21 MB, yapay/üçüncü taraf ses yok), 11 + 13 yeni ders. Eski adımların madde kimlikleri ve ilerleme dizeleri değişmedi (parmak izi, eski uzunlukta ilerleme testi). Firestore kuralı değişmedi (≤ 120 anahtar; dize uzunluğu kuralda sınırlı değil).
+- Metin doğrulaması: `scripts/okuma-ses-ekle.mjs --dogrula`, kayıt `docs/okuma-metin-dogrulama.json`. 60/60 âyet Ezber Kilimi metniyle sıkı kipte tuttu (Bakara 1–5 yalnız tam Kur'an metnine karşı); 71 tecvid «yazılışı/örnek» maddesi tam metinde sûre:âyet ile bulundu, 34 «okunuşu/harf adı» maddesi eşiyle dolaylı doğrulandı. Alınmayan 51: 23 metinsiz, 14 Türkçe açıklama, 12 fonetik yeniden yazım, 2 bulunamadı.
+- Barındırma: sesler egitim Hosting'inde (`/media/ses/okuma/yeni/…`, aynı köken, `max-age=604800`), git dışı; künye `docs/okuma-ses-kaynaklari-egitim.json` (Diyanet adresi, bayt, sha256), `egitim:build` bekçisi (`okuma-ses-ekle.mjs --denetle [--dist]`). Ana site Pages artefaktına dosya eklenmedi. Yeni sesler çevrim dışı kutuya girmez.
+- İçerik commit'i: `b201ae7a` (origin/main, `9543c8fa..b201ae7a`). Ana site Pages koşusu 42878551142 (yalnız kaynak değişti, çıktı değişmedi). egitim Hosting `ulucamii-egitim` yayını ≈ 19.50, `egitim:canli` 100/100.
+- Canlı: https://egitim.ulucamii.be/{tr,fr,en,nl,de}/okuma/o8/ ve /o9/; ses `HTTP 200`, `Cache-Control: public, max-age=604800`, `audio/mpeg`, Range 206. Tarayıcı (360/1280 px, açık/koyu, tr/fr): yeni ses çalıyor (currentTime ilerliyor), eski ses ulucamii.be'den çalıyor, CSP ve konsol hatası 0.
+- Kapılar: design:check, check, dogrula, egitim:build, test:egitim, test:kurallar, test:ilim-yolu, test:hesap, test:veli-eposta, test:oto-kaydet, test:ogrenme yeşil; test:web 921 geçti, 1 başarısız (`ana-sayfa-akisi.spec.mjs:42` mobil tr, «Tearing down context exceeded the test timeout of 30000ms», yük kaynaklı; tek başına geçti).
+- Açık sınırlar: imam gözden geçirmedi (özellikle tecvid terimlerinin fr/en/nl/de karşılıkları ve «okunuşu» çiftleri); 43 tecvid âyet parçası (ihfâ/idğâm/iklâb/kalkale uygulamaları) ve Bakara 1–141 sonraki tur.
+
 ## 10 Kasım 2026 (gece, üçüncü) — İlim Yolu: bilgi kartı seslendirmesi (TR + FR) CANLI (duyuru YOK)
 
 - Zaman: Europe/Brussels (CET), 10 Kasım 2026 gecesi (egitim Hosting yayını ≈ 18.35). Dayanak: imamın kart seslendirmesini TR + FR yayımlama ve duyurusuz yapma onayı. Duyuru, e-posta, WhatsApp, Firestore kuralı, Functions, Apps Script yok.
