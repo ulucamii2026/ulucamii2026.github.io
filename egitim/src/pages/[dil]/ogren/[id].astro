@@ -9,12 +9,16 @@ import type { Dil } from '@ortak/i18n/ui';
 import { dilListesi } from '@ortak/i18n/utils';
 import type { Sik } from '@ortak/lib/seviye-testi/tipler';
 import { yolKartlari } from '@ortak/lib/ilim-yolu/yollar';
+import manifest from '@ortak/data/ilim-yolu/kart-ses.json';
+import { kartSesAdresi, type KartSesManifesti } from '@ortak/lib/ilim-yolu/kart-ses';
 import Ikon from '../../../components/Ikon.astro';
 import TaslakEtiketi from '../../../components/TaslakEtiketi.astro';
 import { alanAdlari, yollarMetinleri } from '../../../i18n/yollar';
 import { KARTLAR, kartBul } from '../../../lib/bilgi-karti-verisi';
 import Taban from '../../../layouts/Taban.astro';
+import { ANA_SITE } from '../../../lib/kimlik';
 import '../../../styles/yollar.css';
+import '../../../styles/okuma.css';
 
 export function getStaticPaths() {
   return dilListesi.flatMap((dil) => KARTLAR.map((k) => ({ params: { dil, id: k.id } })));
@@ -30,6 +34,8 @@ const sira = yolKartlari(KARTLAR, planYolu);
 const i = sira.findIndex((k) => k.id === kart.id);
 const onceki = i > 0 ? sira[i - 1] : null;
 const sonraki = i >= 0 && i < sira.length - 1 ? sira[i + 1] : null;
+// Seslendirme yalnız manifest bu kart ve dil için dosya listeliyorsa vardır (manifest boşken sayfa değişmez).
+const sesAdresi = kartSesAdresi(manifest as KartSesManifesti, dil, kart.id, ANA_SITE);
 const sikMetni = (s: Sik): { yazi: string; ar: boolean } => ('ar' in s ? { yazi: s.ar, ar: true } : { yazi: s[dil], ar: false });
 const veri = { id: kart.id, m: { ogrendimOldu: y.ogrendimOldu, kaydedilemedi: y.kaydedilemedi, dogru: y.dogru, yanlis: y.yanlis, secimYok: y.secimYok, sonucTam: y.sonucTam, sonucEksik: y.sonucEksik } };
 const doldur = (s: string, d: Record<string, string | number>) => s.replace(/\{(\w+)\}/g, (_, k: string) => String(d[k] ?? ''));
@@ -46,6 +52,17 @@ const doldur = (s: string, d: Record<string, string | number>) => s.replace(/\{(
     </header>
 
     <p class="yl-ozet">{kart.ozet[dil]}</p>
+
+    {sesAdresi && (
+      <section class="yl-kart-ses" aria-label={y.kartDinle}>
+        <p class="gorunmez" role="status" aria-live="polite" data-ses-durumu data-hata={y.kartSesHata}></p>
+        <button class="dugme ikincil ok-dinle" type="button" data-ses={sesAdresi} data-etiket-dinle={y.kartDinle} data-etiket-durdur={y.kartDurdur} aria-label={y.kartDinle}>
+          <Ikon ad="cal" sinif="ikon-cal" /><Ikon ad="durdur" sinif="ikon-dur" /><span>{y.kartDinle}</span>
+        </button>
+        <noscript><a href={sesAdresi}>{y.kartDinle}</a></noscript>
+        <p class="yl-not">{y.kartSesNotu}</p>
+      </section>
+    )}
 
     <div class="yl-meta">
       <p>{y.planAd[kart.kod]} · {alanlar[kart.seviyeAlani]} · {doldur(y.basamak, { n: kart.basamak })}</p>
@@ -99,4 +116,5 @@ const doldur = (s: string, d: Record<string, string | number>) => s.replace(/\{(
 <script>
   import '../../../scripts/dil';
   import '../../../scripts/ogren';
+  import '../../../scripts/calar';
 </script>

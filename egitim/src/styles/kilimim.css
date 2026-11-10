@@ -59,7 +59,7 @@ a.km-madde-ad:hover { text-decoration-color: currentColor; }
 /* ——— Yazdırma ——— */
 @media print {
   @page { size: A4 portrait; margin: 14mm; }
-  .ust, .alt, .bordur, .km-giris, .km-panel, .km-seritler, .km-bos, .km-bag, .km-js, noscript, a.gorunmez { display: none !important; }
+  .ust, .alt, .bordur, .km-giris, .km-panel, .km-seritler, .km-bos, .km-bag, .km-js, .ok-satir, noscript, a.gorunmez { display: none !important; }
   .km-sayfa, .km-alan, .km-dolu, .km-alan .icerik { display: block; width: 100%; max-width: none; margin: 0; padding: 0; }
   /* Kâğıt jetonları sabittir: koyu temada da kâğıt beyaz, kilim kâğıt renklerinde (belge.css `.belge` ile aynı değerler). */
   .km-kagit {

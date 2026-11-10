@@ -15,6 +15,7 @@ import { dilListesi, yerelKodu } from '@ortak/i18n/utils';
 import { KATALOG, calismaSayfasiVar } from '@ortak/lib/ezber/katalog';
 import { kendiLejanti, kilimSvg } from '@ortak/lib/ezber/kilim';
 import Ikon from '../../components/Ikon.astro';
+import OkumaSatiri from '../../components/OkumaSatiri.astro';
 import { ilimMetinleri } from '../../i18n/ilim';
 import { ibadetMetinleri } from '../../i18n/ibadet';
 import { okumaMetinleri } from '../../i18n/okuma';
@@ -26,6 +27,7 @@ import { tekrarMetinleri } from '../../i18n/sina';
 import { ezberKapagi } from '../../lib/yol-kapaklari';
 import Taban from '../../layouts/Taban.astro';
 import '../../styles/ilim.css';
+import '../../styles/okuma.css';
 
 export function getStaticPaths() {
   return dilListesi.map((dil) => ({ params: { dil } }));
@@ -215,6 +217,7 @@ const veri = {
         <ul class="iy-tekrar-liste" data-tekrar-liste aria-label={tm.liste} hidden></ul>
         <p class="iy-tekrar-bos" data-tekrar-bos>{il.tekrarBos}</p>
         <p class="iy-tekrar-hafta" data-tekrar-hafta hidden></p>
+        <OkumaSatiri dil={dil} esitle />
         <template data-tekrar-satir>
           <li class="iy-tekrar">
             <span class="iy-tekrar-isaret" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><use href="#i-tekrar" /></svg></span>
@@ -294,4 +297,5 @@ const veri = {
 <script>
   import '../../scripts/dil';
   import '../../scripts/ana';
+  import '../../scripts/okuma-satiri';
 </script>

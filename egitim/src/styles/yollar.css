@@ -121,3 +121,7 @@
 /* Belgede «Taslak» etiketi (yolun bir kartı bu dilde onaylanmamışsa; basılı kâğıtta da görünür, renk tek başına anlam taşımaz). */
 .belge-taslak { margin: 0.8em 0 0; text-align: center; }
 .belge-taslak[hidden] { display: none; }
+
+/* Kart seslendirmesi (manifest listeliyorsa): Dinleyin düğmesi + yapay ses notu */
+.yl-kart-ses { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1rem; margin: 0.5rem 0 1rem; }
+.yl-kart-ses .yl-not { margin: 0; }

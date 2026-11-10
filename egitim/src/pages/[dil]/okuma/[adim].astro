@@ -95,7 +95,7 @@ const onizleme = (d: (typeof b.dersler)[number]) => d.ogeler.slice(0, 3);
       ))}
     </section>
 
-    <CevrimdisiKutu dil={dil} ozel={{ id: `okuma-${b.id}`, ad: `${t.ad} · ${ad.ad}`, yol: `/${dil}/okuma/bugun/`, sesler: adimSesleri(b.id) }} />
+    <CevrimdisiKutu dil={dil} ozel={{ id: `okuma-${b.id}`, ad: `${t.ad} · ${ad.ad}`, yol: `/${dil}/okuma/bugun/`, ek: [`/${dil}/okuma/`, `/${dil}/okuma/${b.id}/`], sesler: adimSesleri(b.id) }} />
 
     <aside class="ok-notlar">
       <p class="yl-not">{t.sinirNot}</p>

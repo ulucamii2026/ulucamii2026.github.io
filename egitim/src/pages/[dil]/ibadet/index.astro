@@ -7,12 +7,14 @@ import type { Dil } from '@ortak/i18n/ui';
 import { dilListesi } from '@ortak/i18n/utils';
 import { KONU_SLOTLARI } from '@ortak/lib/ilim-yolu/ibadet-ilerleme';
 import { NAMAZ, VAKIT_IDLERI } from '@ortak/lib/ibadet/ibadet-veri';
+import CevrimdisiKutu from '../../../components/CevrimdisiKutu.astro';
 import IbadetCizim from '../../../components/IbadetCizim.astro';
 import { doldur, ibadetMetinleri } from '../../../i18n/ibadet';
 import { sembolSeti } from '../../../lib/ibadet-cizim';
 import Taban from '../../../layouts/Taban.astro';
 import '../../../styles/yollar.css';
 import '../../../styles/ibadet.css';
+import '../../../styles/cevrimdisi.css';
 
 export function getStaticPaths() {
   return dilListesi.map((dil) => ({ params: { dil } }));
@@ -26,6 +28,8 @@ const ana = [
   { konu: 'namaz', ad: m.namazBaslik, ozet: m.namazOzet, cizim: 'namaz-ruku', href: `/${dil}/ibadet/namaz/` },
 ] as const;
 const vakitler = VAKIT_IDLERI.map((id) => ({ konu: id, ad: doldur(m.vakitAd, { ad: NAMAZ.vakitler.find((v) => v.id === id)!.ad[dil] }), href: `/${dil}/ibadet/namaz/${id}/` }));
+// Çevrim dışı kutu: giriş + abdest + namaz + beş vakit sayfası birlikte (sesli içerik yok).
+const cevrimdisiYollari = [`/${dil}/ibadet/abdest/`, `/${dil}/ibadet/namaz/`, ...VAKIT_IDLERI.map((id) => `/${dil}/ibadet/namaz/${id}/`)];
 const veri = { m: { bolumTamam: m.bolumTamam, basla: m.basla, devam: m.devam }, toplamlar: Object.fromEntries(Object.entries(KONU_SLOTLARI).map(([k, s]) => [k, s.length])) };
 ---
 <Taban dil={dil} baslik={m.ad} aciklama={m.hubAciklama} yol="ibadet">
@@ -66,6 +70,7 @@ const veri = { m: { bolumTamam: m.bolumTamam, basla: m.basla, devam: m.devam }, 
         ))}
       </ul>
     </section>
+    <CevrimdisiKutu dil={dil} ozel={{ id: 'ibadet', ad: m.ad, yol: `/${dil}/ibadet/`, ek: cevrimdisiYollari, sesler: [] }} />
     <p class="yl-not">{m.hocaNotu}</p>
   </div>
 </Taban>
@@ -73,4 +78,5 @@ const veri = { m: { bolumTamam: m.bolumTamam, basla: m.basla, devam: m.devam }, 
 <script>
   import '../../../scripts/dil';
   import '../../../scripts/ibadet';
+  import '../../../scripts/cevrimdisi';
 </script>

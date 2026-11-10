@@ -12,6 +12,7 @@ interface Veri {
   dil: KayitDili;
   ad: string;
   yol: string;
+  ek?: string[];
   sesler: string[];
   yerel: string;
   m: Record<'kaydet' | 'vazgec' | 'sil' | 'silEtiket' | 'baslangic' | 'baslangicSessiz' | 'ilerleme' | 'bitti' | 'bittiSessiz'
@@ -36,6 +37,7 @@ async function baslat(kok: HTMLElement): Promise<void> {
   let iptal: AbortController | null = null;
   let isleniyor = false;
   const sesli = v.sesler.length > 0;
+  const sayfaSayisi = 1 + (v.ek?.length ?? 0);
 
   const bildir = (metin: string) => { durum.textContent = metin; };
   const baglanti = () => {
@@ -85,11 +87,11 @@ async function baslat(kok: HTMLElement): Promise<void> {
       }
       iptal = new AbortController();
       let sonCeyrek = 0;
-      ilerlemeGoster({ yapilan: 0, toplam: 1 + v.sesler.length, bayt: 0 });
+      ilerlemeGoster({ yapilan: 0, toplam: sayfaSayisi + v.sesler.length, bayt: 0 });
       modAyarla('vazgec');
       bildir(sesli ? doldur(m.baslangic, { n: v.sesler.length }) : m.baslangicSessiz);
       try {
-        const k = await maddeyiKaydet({ id: v.id, dil: v.dil, ad: v.ad, yol: v.yol, sesler: v.sesler }, (i) => {
+        const k = await maddeyiKaydet({ id: v.id, dil: v.dil, ad: v.ad, yol: v.yol, ek: v.ek, sesler: v.sesler }, (i) => {
           ilerlemeGoster(i);
           const ceyrek = Math.floor((4 * i.yapilan) / i.toplam);
           if (ceyrek > sonCeyrek && i.yapilan < i.toplam) {

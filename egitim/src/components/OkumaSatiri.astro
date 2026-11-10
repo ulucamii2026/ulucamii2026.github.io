@@ -1,0 +1,24 @@
+---
+/**
+ * Kur'an Okuma kısa satırı (10 Kasım 2026): Kilimim sayfasında ve giriş yapmış ana sayfada okuma çalışmasının ilerlemesini ve «bugün tekrar»
+ * sayısını gösterir. Sunucuda gizli gelir; scripts/okuma-satiri.ts cihazdaki (girişliyse hesaptaki) ilerlemeden doldurur, hiç madde çalışılmadıysa
+ * gizli kalır. Metin yalnız `textContent` ile yazılır (CSP: satır içi betik yok).
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import { PLAN } from '@ortak/lib/okuma/yol';
+import { okumaMetinleri } from '../i18n/okuma';
+import Ikon from './Ikon.astro';
+
+interface Props { dil: Dil; esitle?: boolean }
+const { dil, esitle = false } = Astro.props;
+const t = okumaMetinleri(dil);
+const veri = { plan: PLAN, ilerleme: t.ilerleme, tekrar: t.satir.tekrar, yok: t.satir.yok };
+---
+<section class="ok-satir" data-okuma-satir data-esitle={esitle ? '' : undefined} data-veri={JSON.stringify(veri)} aria-label={t.anaKart.ad} hidden>
+  <div class="ok-satir-ad">
+    <h2>{t.anaKart.ad}</h2>
+    <p class="ok-satir-ilerleme" data-satir-ilerleme></p>
+    <p class="ok-satir-tekrar" data-satir-tekrar></p>
+  </div>
+  <a class="dugme ikincil kucuk" href={`/${dil}/okuma/bugun/`} data-satir-git>{t.satir.git} <Ikon ad="ok" /></a>
+</section>

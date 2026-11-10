@@ -29,6 +29,8 @@ export interface OkumaYazilari {
   geri: string; dersler: string; dersCalis: string; dersCalisAd: string; dinlemeBaslik: string; dinlemeMetin: string;
   sinirNot: string; kaynakNot: string; hesapNot: string; js: string; dinleAdi: string; oturumGeri: string; adimaGit: string;
   anaKart: { ad: string; metin: string; git: string; rozet: string };
+  /** Kilimim ve ana sayfadaki kısa okuma satırı. */
+  satir: { tekrar: string; yok: string; git: string };
   kart: KartYazilari;
 }
 
@@ -190,6 +192,7 @@ const OKUMA: Record<Dil, Omit<OkumaYazilari, 'adimlar' | 'adlar' | 'kart'>> = {
     hesapNot: 'İlerlemeniz bu cihazda tutulur; giriş yaparsanız hesabınızla eşitlenir.',
     js: 'Çalışma ekranı için JavaScript gerekir. Aşağıdaki kayıtları doğrudan dinleyebilirsiniz.', dinleAdi: '{ad} kaydını dinleyin', oturumGeri: 'Kur’an Okuma sayfasına dönün', adimaGit: 'Adıma gidin',
     anaKart: { ad: 'Kur’an Okuma', metin: 'Günde 10–15 dakika: Diyanet kaydını dinleyin, sonra tekrar edin. Harflerden sûrelere.', git: 'Okumaya başlayın', rozet: 'Yeni' },
+    satir: { tekrar: '{t} madde bugün tekrar bekliyor', yok: 'Bugün tekrar yok', git: 'Okumaya devam edin' },
   },
   fr: {
     ad: 'Lecture du Coran', ust: 'Chemin du savoir', aciklama: 'Apprenez à lire le Coran en 10 à 15 minutes par jour : écoutez, puis répétez. Des lettres aux sourates, avec les enregistrements de la Diyanet.',
@@ -204,6 +207,7 @@ const OKUMA: Record<Dil, Omit<OkumaYazilari, 'adimlar' | 'adlar' | 'kart'>> = {
     hesapNot: 'Votre progression est conservée sur cet appareil ; elle se synchronise avec votre compte si vous vous connectez.',
     js: 'L’écran de travail nécessite JavaScript. Vous pouvez écouter les enregistrements ci-dessous directement.', dinleAdi: 'Écouter l’enregistrement : {ad}', oturumGeri: 'Retour à Lecture du Coran', adimaGit: 'Aller à l’étape',
     anaKart: { ad: 'Lecture du Coran', metin: '10 à 15 minutes par jour : écoutez l’enregistrement de la Diyanet, puis répétez. Des lettres aux sourates.', git: 'Commencer la lecture', rozet: 'Nouveau' },
+    satir: { tekrar: `{t}${NB}éléments à réviser aujourd’hui`, yok: 'Aucune révision aujourd’hui', git: 'Continuer la lecture' },
   },
   en: {
     ad: 'Qur’an Reading', ust: 'Path of Knowledge', aciklama: 'Learn to read the Qur’an in 10–15 minutes a day: listen first, then repeat. From letters to surahs, with Diyanet recordings.',
@@ -218,6 +222,7 @@ const OKUMA: Record<Dil, Omit<OkumaYazilari, 'adimlar' | 'adlar' | 'kart'>> = {
     hesapNot: 'Your progress is kept on this device and syncs with your account if you sign in.',
     js: 'The practice screen needs JavaScript. You can listen to the recordings below directly.', dinleAdi: 'Listen to the recording: {ad}', oturumGeri: 'Back to Qur’an Reading', adimaGit: 'Go to the step',
     anaKart: { ad: 'Qur’an Reading', metin: '10–15 minutes a day: listen to the Diyanet recording, then repeat. From letters to surahs.', git: 'Start reading', rozet: 'New' },
+    satir: { tekrar: '{t} items to review today', yok: 'No reviews today', git: 'Continue reading' },
   },
   nl: {
     ad: 'Koran lezen', ust: 'Weg van kennis', aciklama: 'Leer de Koran lezen in 10 tot 15 minuten per dag: eerst luisteren, dan herhalen. Van letters tot soera’s, met opnamen van de Diyanet.',
@@ -232,6 +237,7 @@ const OKUMA: Record<Dil, Omit<OkumaYazilari, 'adimlar' | 'adlar' | 'kart'>> = {
     hesapNot: 'Uw voortgang blijft op dit apparaat bewaard en wordt met uw account gesynchroniseerd als u inlogt.',
     js: 'Het oefenscherm heeft JavaScript nodig. U kunt de opnamen hieronder rechtstreeks beluisteren.', dinleAdi: 'Luister naar de opname: {ad}', oturumGeri: 'Terug naar Koran lezen', adimaGit: 'Naar de stap',
     anaKart: { ad: 'Koran lezen', metin: '10 tot 15 minuten per dag: luister naar de opname van de Diyanet en herhaal. Van letters tot soera’s.', git: 'Begin met lezen', rozet: 'Nieuw' },
+    satir: { tekrar: '{t} onderdelen om vandaag te herhalen', yok: 'Vandaag niets te herhalen', git: 'Verder met lezen' },
   },
   de: {
     ad: 'Koran lesen', ust: 'Weg des Wissens', aciklama: 'Lernen Sie, den Koran in 10 bis 15 Minuten am Tag zu lesen: erst hören, dann nachsprechen. Von den Buchstaben bis zu den Suren, mit Aufnahmen der Diyanet.',
@@ -246,6 +252,7 @@ const OKUMA: Record<Dil, Omit<OkumaYazilari, 'adimlar' | 'adlar' | 'kart'>> = {
     hesapNot: 'Ihr Fortschritt bleibt auf diesem Gerät gespeichert und wird mit Ihrem Konto abgeglichen, wenn Sie sich anmelden.',
     js: 'Der Übungsbildschirm benötigt JavaScript. Die Aufnahmen unten können Sie direkt anhören.', dinleAdi: 'Aufnahme anhören: {ad}', oturumGeri: 'Zurück zu Koran lesen', adimaGit: 'Zum Schritt',
     anaKart: { ad: 'Koran lesen', metin: '10 bis 15 Minuten am Tag: Aufnahme der Diyanet hören, dann nachsprechen. Von den Buchstaben bis zu den Suren.', git: 'Mit dem Lesen beginnen', rozet: 'Neu' },
+    satir: { tekrar: '{t} Punkte heute zu wiederholen', yok: 'Heute nichts zu wiederholen', git: 'Mit dem Lesen weitermachen' },
   },
 };
 

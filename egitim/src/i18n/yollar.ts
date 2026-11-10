@@ -62,6 +62,11 @@ export interface YollarMetinleri {
 
   /** Bilgi kartı */
   kartUst: string;
+  /** Kart seslendirmesi (yalnız manifest o kart ve dil için ses listeliyorsa görünür). */
+  kartDinle: string;
+  kartDurdur: string;
+  kartSesHata: string;
+  kartSesNotu: string;
   kitap: string;
   yollari: string;
   ogrendim: string;
@@ -172,6 +177,10 @@ const YOLLAR: Record<Dil, YollarMetinleri> = {
     yolRozet: 'Bu yolun tamamını öğrendiğinizde rozet kazanırsınız.',
 
     kartUst: 'Bilgi kartı',
+    kartDinle: 'Dinleyin',
+    kartDurdur: 'Durdurun',
+    kartSesHata: 'Ses açılamadı. İnternet bağlantınızı denetleyip yeniden deneyin.',
+    kartSesNotu: 'Seslendirme yapay sesle hazırlanmıştır.',
     kitap: 'Kitaptaki yeri',
     yollari: 'Bu kart şu yollarda',
     ogrendim: 'Öğrendim',
@@ -271,6 +280,10 @@ const YOLLAR: Record<Dil, YollarMetinleri> = {
     yolRozet: 'Vous obtenez l’insigne de ce chemin quand vous avez appris toutes ses fiches.',
 
     kartUst: 'Fiche de connaissance',
+    kartDinle: 'Écouter',
+    kartDurdur: 'Arrêter',
+    kartSesHata: 'Le son n’a pas pu être lu. Vérifiez votre connexion et réessayez.',
+    kartSesNotu: 'Cette narration est produite par une voix de synthèse.',
     kitap: 'Dans le manuel',
     yollari: 'Cette fiche se trouve dans ces chemins',
     ogrendim: 'J’ai appris',
@@ -370,6 +383,10 @@ const YOLLAR: Record<Dil, YollarMetinleri> = {
     yolRozet: 'You earn this path’s badge when you have learned all of its cards.',
 
     kartUst: 'Knowledge card',
+    kartDinle: 'Listen',
+    kartDurdur: 'Stop',
+    kartSesHata: 'The audio could not be played. Check your connection and try again.',
+    kartSesNotu: 'This narration uses a synthetic voice.',
     kitap: 'Where in the book',
     yollari: 'This card is on these paths',
     ogrendim: 'I learned it',
@@ -469,6 +486,10 @@ const YOLLAR: Record<Dil, YollarMetinleri> = {
     yolRozet: 'U behaalt het insigne van dit pad als u alle kaarten hebt geleerd.',
 
     kartUst: 'Kenniskaart',
+    kartDinle: 'Beluisteren',
+    kartDurdur: 'Stoppen',
+    kartSesHata: 'Het geluid kon niet worden afgespeeld. Controleer uw verbinding en probeer het opnieuw.',
+    kartSesNotu: 'Deze voorlezing gebruikt een synthetische stem.',
     kitap: 'Plaats in het boek',
     yollari: 'Deze kaart staat op deze paden',
     ogrendim: 'Ik heb het geleerd',
@@ -568,6 +589,10 @@ const YOLLAR: Record<Dil, YollarMetinleri> = {
     yolRozet: 'Das Abzeichen dieses Wegs erhalten Sie, wenn Sie alle seine Karten gelernt haben.',
 
     kartUst: 'Wissenskarte',
+    kartDinle: 'Anhören',
+    kartDurdur: 'Anhalten',
+    kartSesHata: 'Der Ton konnte nicht abgespielt werden. Prüfen Sie Ihre Verbindung und versuchen Sie es erneut.',
+    kartSesNotu: 'Diese Vorlesefassung verwendet eine synthetische Stimme.',
     kitap: 'Stelle im Buch',
     yollari: 'Diese Karte liegt auf diesen Wegen',
     ogrendim: 'Gelernt',

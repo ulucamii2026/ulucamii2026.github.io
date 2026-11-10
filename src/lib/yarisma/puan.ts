@@ -37,3 +37,18 @@ export function bant(toplam: number, turSayisi: number): Bant {
 
 /** Tur karosunun dokusu 0–3: tura göre ortak puan. */
 export const dokuma = (puan: number): TurPuani => (puan >= 3 ? 3 : puan <= 0 ? 0 : (Math.round(puan) as TurPuani));
+
+export type GeriEvre = 'soru' | 'geri' | 'son';
+
+/**
+ * «Bir tur geri»: oyunun en son turunu geri alır ve o turu baştan açar; ortak puan o turun puanı çıkarılmış hâlde kalır.
+ *  - tur çözülmüşse (`geri`): bu turun puanı silinir, aynı tur yeniden açılır;
+ *  - tur henüz çözülmediyse (`soru`): önceki tur silinir ve o tur yeniden açılır (ilk turda geri yoktur → `null`);
+ *  - son ekranda (`son`): son tur silinir ve yeniden açılır.
+ * Değişmez: `soru` evresinde `puanlar.length === i`, `geri` evresinde `i + 1`; sonuçta `puanlar.length === i`.
+ */
+export function turGeri(puanlar: readonly number[], i: number, evre: GeriEvre, turSayisi: number): { puanlar: number[]; i: number } | null {
+  const hedef = evre === 'son' ? turSayisi - 1 : evre === 'geri' ? i : i - 1;
+  if (hedef < 0 || hedef >= turSayisi) return null;
+  return { puanlar: puanlar.slice(0, hedef), i: hedef };
+}

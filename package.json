@@ -54,7 +54,7 @@
     "test:web:rapor": "playwright show-report",
     "test:kurallar": "node scripts/test-kurallar.mjs",
     "test:hesap": "node scripts/test-hesap.mjs",
-    "test:ilim-yolu": "node --test tests/ilim-yolu-kullanici-adi.test.mjs tests/ilim-yolu-bilgi-kartlari.test.mjs tests/ilim-yolu-esitle.test.mjs tests/ilim-yolu-bilgi-ilerleme.test.mjs tests/ilim-yolu-yollar.test.mjs tests/egitim/hesap-giris.test.mjs tests/egitim/hesap-profil.test.mjs tests/ortak-aktar.test.mjs tests/ogrenme-yolu-icerik.test.mjs",
+    "test:ilim-yolu": "node --test tests/ilim-yolu-kullanici-adi.test.mjs tests/ilim-yolu-bilgi-kartlari.test.mjs tests/ilim-yolu-esitle.test.mjs tests/ilim-yolu-bilgi-ilerleme.test.mjs tests/ilim-yolu-yollar.test.mjs tests/ilim-yolu-kart-ses.test.mjs tests/egitim/hesap-giris.test.mjs tests/egitim/hesap-profil.test.mjs tests/ortak-aktar.test.mjs tests/ogrenme-yolu-icerik.test.mjs",
     "test:okuma": "node --test tests/okuma-ilerleme.test.mjs tests/okuma-veri.test.mjs && node scripts/okuma-uret.mjs --denetle",
     "test:yarisma": "node --test tests/yarisma-veri.test.mjs tests/yarisma-mantik.test.mjs tests/yarisma-sayfa.test.mjs",
     "test:ibadet": "node --test tests/ibadet-veri.test.mjs tests/ibadet-alistirma.test.mjs tests/ibadet-ilerleme.test.mjs && node scripts/svg-denetim.mjs egitim/src/assets/cizim/ibadet",

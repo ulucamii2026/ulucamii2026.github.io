@@ -76,3 +76,14 @@
   .ok-oge .dinle[data-caliyor], .ok-dinle[data-caliyor] { forced-color-adjust: none; background: Highlight; color: HighlightText; }
   .ok-vurgu { forced-color-adjust: none; background: Mark; color: MarkText; }
 }
+
+/* Kilimim ve ana sayfadaki kısa okuma satırı */
+.ok-satir { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.6rem 1.25rem; padding: 0.8rem 1.1rem; margin-top: 1.25rem; background: var(--yuz); border: 1.5px solid var(--cizgi-koyu); border-radius: var(--r); }
+.ok-satir[hidden] { display: none; }
+.ok-satir-ad { display: grid; gap: 0.15rem; min-width: 0; }
+.ok-satir h2 { font-size: 1.05rem; margin: 0; }
+.ok-satir p { margin: 0; }
+.ok-satir-ilerleme { color: var(--murekkep-2); font-variant-numeric: tabular-nums; }
+.ok-satir-tekrar[data-var="1"] { font-weight: 700; }
+.iy-tekrar-kart .ok-satir { margin: 0.25rem 1.2rem 1.1rem; }
+@media (max-width: 29.99rem) { .iy-tekrar-kart .ok-satir { margin-inline: 0.85rem; } }

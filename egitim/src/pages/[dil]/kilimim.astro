@@ -16,6 +16,7 @@ import { kendiLejanti, kilimSvg } from '@ortak/lib/ezber/kilim';
 import { veliSeritleri } from '@ortak/lib/ezber/veli';
 import BelgeCercevesi from '../../components/BelgeCercevesi.astro';
 import Ikon from '../../components/Ikon.astro';
+import OkumaSatiri from '../../components/OkumaSatiri.astro';
 import { belgeMetinleri } from '../../i18n/belge';
 import { kartlarMetinleri } from '../../i18n/kartlar';
 import { kilimimMetinleri } from '../../i18n/kilimim';
@@ -24,6 +25,7 @@ import Taban from '../../layouts/Taban.astro';
 import { kursTamAdi } from '../../lib/kimlik';
 import '../../styles/belge.css';
 import '../../styles/kilimim.css';
+import '../../styles/okuma.css';
 
 export function getStaticPaths() {
   return dilListesi.map((dil) => ({ params: { dil } }));
@@ -71,6 +73,8 @@ const veri = {
         </div>
       </div>
     </section>
+
+    <div class="icerik"><OkumaSatiri dil={dil} /></div>
 
     <section class="km-alan" data-kilimim data-veri={JSON.stringify(veri)} aria-label={k.baslik} hidden>
       <div class="icerik">
@@ -159,4 +163,5 @@ const veri = {
 <script>
   import '../../scripts/dil';
   import '../../scripts/kilimim';
+  import '../../scripts/okuma-satiri';
 </script>

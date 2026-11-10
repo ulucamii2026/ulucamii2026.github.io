@@ -86,7 +86,7 @@ async function baslat(kok: HTMLElement): Promise<void> {
     liste.hidden = kayitlar.length === 0;
     ozet.textContent = kayitlar.length ? doldur(m.ozet, { n: kayitlar.length, boyut: boyutYaz(toplamBayt(kayitlar), v.yerel) }) : '';
     hepsi.hidden = !onay.hidden;
-    const acilan = await acilanSayfalar(v.dil, new Set(kayitlar.map((k) => k.yol)));
+    const acilan = await acilanSayfalar(v.dil, new Set(kayitlar.flatMap((k) => [k.yol, ...(k.ek ?? [])])));
     acilanListe.replaceChildren(...acilan.map((a) => {
       const li = document.createElement('li');
       const bagl = document.createElement('a');

@@ -27,6 +27,8 @@ export interface Kayit {
   dil: KayitDili;
   ad: string;
   yol: string;
+  /** Aynı kayıtla alınan ek sayfalar (adım/ders listesi gibi): `yol` ile birlikte kaydedilir ve silinir. */
+  ek?: string[];
   sayfaBayt: number;
   sesler: { y: string; b: number }[];
   tarih: string;

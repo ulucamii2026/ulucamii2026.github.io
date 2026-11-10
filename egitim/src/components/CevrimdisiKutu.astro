@@ -14,7 +14,7 @@ import { ANA_SITE } from '../lib/kimlik';
 import Ikon from './Ikon.astro';
 
 /** `ozel`: katalog maddesi olmayan sayfa (ör. Kur'an Okuma adımı) kendi kimliği, adı, sayfa yolu ve ses listesiyle kaydedilir. */
-interface Props { dil: Dil; oge?: KatalogOgesi; ozel?: { id: string; ad: string; yol: string; sesler: string[] } }
+interface Props { dil: Dil; oge?: KatalogOgesi; ozel?: { id: string; ad: string; yol: string; ek?: string[]; sesler: string[] } }
 const { dil, oge, ozel } = Astro.props;
 const c = cevrimdisiMetinleri(dil);
 const veri = {
@@ -22,6 +22,7 @@ const veri = {
   dil,
   ad: ozel?.ad ?? oge!.ad[dil],
   yol: ozel?.yol ?? `/${dil}/calis/${oge!.id}/`,
+  ek: ozel?.ek,
   sesler: ozel?.sesler ?? sesYollari(oge!).map((y) => `${ANA_SITE}${y}`),
   yerel: yerelKodu[dil],
   m: {

@@ -7,7 +7,7 @@
  * `data-` ile (renk tek başına anlam taşımaz: her durumun yazısı ve kenar biçimi vardır).
  */
 import { siraDegerlendir } from '@ortak/lib/ibadet/ibadet-alistirma';
-import { EN_COK_KONTROL, bant, dokuma, gizemliPuani, toplamPuan, turPuani } from '@ortak/lib/yarisma/puan';
+import { EN_COK_KONTROL, bant, dokuma, gizemliPuani, toplamPuan, turGeri, turPuani } from '@ortak/lib/yarisma/puan';
 import { ayarOku, ayarYaz, sunumHazirla, turDagit, type Ayar } from '@ortak/lib/yarisma/tur';
 import { gruplamaDegerlendir, tasiSabitli, yanlisCiftleriBosalt } from '@ortak/lib/yarisma/yerlesim';
 import type { YerelSoru } from '@ortak/lib/yarisma/veri';
@@ -66,6 +66,7 @@ function oyna(oyun: HTMLElement, v: Veri): void {
   const kontrolD = oyun.querySelector<HTMLButtonElement>('[data-kontrol]')!;
   const ipucuD = oyun.querySelector<HTMLButtonElement>('[data-ipucu]')!;
   const sonrakiD = oyun.querySelector<HTMLButtonElement>('[data-sonraki]')!;
+  const geriD = oyun.querySelector<HTMLButtonElement>('[data-geri]')!;
   const tamD = oyun.querySelector<HTMLButtonElement>('[data-tam]')!;
   puanYeri.setAttribute('aria-live', 'off');
 
@@ -95,7 +96,7 @@ function oyna(oyun: HTMLElement, v: Veri): void {
     if (!turlar.length) {
       evre = 'son';
       sahne.replaceChildren(e('h2', 'ya-soru', m.bosHavuz));
-      kontrolD.hidden = ipucuD.hidden = sonrakiD.hidden = true;
+      kontrolD.hidden = ipucuD.hidden = sonrakiD.hidden = geriD.hidden = true;
       turYazi.textContent = '';
       karolar.replaceChildren();
       duyur(m.bosHavuz);
@@ -188,6 +189,7 @@ function oyna(oyun: HTMLElement, v: Veri): void {
       else if (s.format === 'eslestirme') hazir = t.cevap.every((c) => c !== null);
       kontrolD.disabled = !hazir;
     }
+    geriD.hidden = turGeri(puanlar, i, evre, turlar.length) === null;
     tamD.hidden = !document.fullscreenEnabled;
     tamD.textContent = document.fullscreenElement ? m.tamEkranKapat : m.tamEkran;
     for (const [d, ad] of [[kontrolD, 'kontrol'], [ipucuD, 'ipucu'], [sonrakiD, 'sonraki']] as const) d.dataset.odak = ad;
@@ -483,6 +485,15 @@ function oyna(oyun: HTMLElement, v: Veri): void {
     duyur(`${m.sonBaslik} ${m.sonPuan}: ${toplam()}. ${bantMetni()}`);
   }
 
+  /** «Bir tur geri»: son turu geri alır, ortak puan o turun puanı çıkarılmış hâlde kalır ve tur baştan açılır (puan.ts `turGeri`). */
+  function geriAl() {
+    const r = turGeri(puanlar, i, evre, turlar.length);
+    if (!r) return;
+    puanlar = r.puanlar;
+    turuAc(r.i);
+    duyur(`${m.geriYapildi} ${doldur(m.turSayaci, { n: r.i + 1, m: turlar.length })} · ${m.ortakPuan}: ${toplam()}.`);
+  }
+
   const bantMetni = (): string => ({ ilk: m.bantIlk, orta: m.bantOrta, yuksek: m.bantYuksek })[bant(toplam(), turlar.length)];
 
   function sonEkran() {
@@ -501,6 +512,7 @@ function oyna(oyun: HTMLElement, v: Veri): void {
   /* ——— Olaylar ——— */
   kontrolD.addEventListener('click', kontrolEt);
   sonrakiD.addEventListener('click', sonraki);
+  geriD.addEventListener('click', geriAl);
   ipucuD.addEventListener('click', () => {
     const s = t.soru;
     if (evre !== 'soru' || s.format !== 'gizemli' || t.acik >= s.ipuclari.length) return;
@@ -559,6 +571,8 @@ function oyna(oyun: HTMLElement, v: Veri): void {
     const anahtar = o.key.length === 1 ? o.key.toLowerCase() : o.key;
     const dugmedeMi = ['BUTTON', 'A', 'SUMMARY'].includes(hedef.tagName);
     if (anahtar === 'f') { o.preventDefault(); tamEkranDegistir(); return; }
+    // ← bir tur geri; gruplamada kart seçiliyken ← kutu seçer (aşağıda).
+    if (anahtar === 'ArrowLeft' && !(evre === 'soru' && t.soru.format === 'gruplama' && t.kartSec !== null)) { o.preventDefault(); geriAl(); return; }
     if (evre === 'geri') {
       if (anahtar === 'ArrowRight' || anahtar === 'n' || ((anahtar === 'Enter' || anahtar === ' ') && !dugmedeMi)) { o.preventDefault(); sonraki(); }
       return;

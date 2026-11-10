@@ -105,7 +105,7 @@ export async function sesiAl(adres: string, iptal: AbortSignal): Promise<{ bayt:
   return { bayt: blob.size, yeni: true };
 }
 
-export interface KaydedilecekMadde { id: string; dil: KayitDili; ad: string; yol: string; sesler: readonly string[] }
+export interface KaydedilecekMadde { id: string; dil: KayitDili; ad: string; yol: string; ek?: readonly string[]; sesler: readonly string[] }
 export interface Ilerleme { yapilan: number; toplam: number; bayt: number }
 
 /** Yarım kalan kayıtta yazılan sesleri siler; başka bir kayıtlı maddenin künyesinde geçenler (aynı dosyayı paylaşan maddeler) kalır. */
@@ -122,13 +122,18 @@ async function sesleriGeriAl(adresler: readonly string[]): Promise<void> {
 
 /** Maddeyi kaydeder: sayfa (SW), sonra sesler sırayla; en sonda künye. İptalde `AbortError`, kota dolunca `kod: 'kota'` ile reddeder. */
 export async function maddeyiKaydet(madde: KaydedilecekMadde, ilerle: (i: Ilerleme) => void, iptal: AbortSignal): Promise<Kayit> {
-  const toplam = 1 + madde.sesler.length;
+  const yollar = [madde.yol, ...(madde.ek ?? [])];
+  const toplam = yollar.length + madde.sesler.length;
   let bayt = 0;
   const yazilan: string[] = []; // bu denemede ses önbelleğine yeni yazılanlar (yarım kalırsa geri alınır)
   try {
-    const sayfaBayt = await sayfayiKaydet(madde.yol);
-    bayt += sayfaBayt;
-    ilerle({ yapilan: 1, toplam, bayt });
+    let sayfaBayt = 0;
+    for (const [n, yol] of yollar.entries()) {
+      if (iptal.aborted) throw new DOMException('iptal', 'AbortError');
+      sayfaBayt += await sayfayiKaydet(yol);
+      bayt = sayfaBayt;
+      ilerle({ yapilan: n + 1, toplam, bayt });
+    }
     const sesler: Kayit['sesler'] = [];
     for (const adres of madde.sesler) {
       if (iptal.aborted) throw new DOMException('iptal', 'AbortError');
@@ -136,9 +141,9 @@ export async function maddeyiKaydet(madde: KaydedilecekMadde, ilerle: (i: Ilerle
       if (yeni) yazilan.push(adres);
       sesler.push({ y: adres, b });
       bayt += b;
-      ilerle({ yapilan: 1 + sesler.length, toplam, bayt });
+      ilerle({ yapilan: yollar.length + sesler.length, toplam, bayt });
     }
-    const kayit: Kayit = { v: 1, id: madde.id, dil: madde.dil, ad: madde.ad, yol: madde.yol, sayfaBayt, sesler, tarih: new Date().toISOString() };
+    const kayit: Kayit = { v: 1, id: madde.id, dil: madde.dil, ad: madde.ad, yol: madde.yol, ...(madde.ek?.length ? { ek: [...madde.ek] } : {}), sayfaBayt, sesler, tarih: new Date().toISOString() };
     await (await caches.open(KAYIT_ONBELLEGI)).put(
       kayitAnahtari(madde.dil, madde.id),
       new Response(JSON.stringify(kayit), { headers: { 'Content-Type': 'application/json' } }),
@@ -169,8 +174,10 @@ export async function maddeyiSil(dil: string, id: string): Promise<void> {
   const kullanilan = new Set((await kayitlariOku()).flatMap((k) => k.sesler.map((s) => s.y)));
   const ses = await caches.open(SES_ONBELLEGI);
   for (const s of kayit.sesler) if (!kullanilan.has(s.y)) await ses.delete(s.y);
-  const anahtar = sayfaAnahtari(new URL(kayit.yol, location.origin));
-  for (const ad of await kabukAdlari()) await (await caches.open(ad)).delete(anahtar);
+  for (const yol of [kayit.yol, ...(kayit.ek ?? [])]) {
+    const anahtar = sayfaAnahtari(new URL(yol, location.origin));
+    for (const ad of await kabukAdlari()) await (await caches.open(ad)).delete(anahtar);
+  }
 }
 
 /** Bütün künyeleri, kalıcı ses önbelleğini ve açılmış sayfaların HTML'ini siler (çevrim dışı yedek sayfalar ve kök kalır). */

@@ -238,3 +238,43 @@ test('320 px: giriş ve oyun taşmaz; azaltılmış harekette geçiş yok', asyn
   await page.emulateMedia({ reducedMotion: 'reduce' });
   expect(await page.locator('.ya-sec, .ya-oge, .ya-sira-oge').first().evaluate((el) => getComputedStyle(el).transitionDuration)).toMatch(/^0s|0\.001s|1e-05s|0s/);
 });
+
+test('tr: bir tur geri — ← ve düğme; ortak puan tutarlı düzelir, ilk turda düğme yok', async ({ page }) => {
+  await page.goto('/tr/yarisma/oyna/' + HASH('quiz', 5, 'geri-1'));
+  const veri = await veriOku(page);
+  const geri = page.locator('[data-geri]');
+  const dogruYap = async () => {
+    const id = await page.locator('[data-sahne]').getAttribute('data-soru-id');
+    const s = veri.sorular.find((x) => x.id === id);
+    const k = (await page.locator('.ya-sec .ya-metin').allTextContents()).indexOf(s.secenekler[s.dogru]);
+    await page.keyboard.press(String(k + 1));
+    await page.keyboard.press('Enter');
+    await expect(page.locator('p.ya-durum')).toContainText('+3');
+    return id;
+  };
+  // İlk tur çözülmeden geri yok; ← hiçbir şey yapmaz.
+  await expect(geri).toBeHidden();
+  await page.keyboard.press('ArrowLeft');
+  await expect(page.locator('[data-tur-yazi]')).toContainText('1 / 5');
+  // Tur 1 doğru (3), tur 2 doğru (6).
+  const id1 = await dogruYap();
+  await expect(page.locator('[data-puan]')).toHaveText('3');
+  await page.keyboard.press('n');
+  const id2 = await dogruYap();
+  await expect(page.locator('[data-puan]')).toHaveText('6');
+  // Çözülmüş turda ←: bu turun puanı çıkar, aynı tur baştan açılır.
+  await page.keyboard.press('ArrowLeft');
+  await expect(page.locator('[data-puan]')).toHaveText('3');
+  await expect(page.locator('[data-sahne]')).toHaveAttribute('data-soru-id', id2);
+  await expect(page.locator('p.ya-durum')).toContainText('geri alındı');
+  await expect(page.locator('.ya-sec:not([disabled])').first()).toBeVisible();
+  // Çözülmemiş turda düğmeyle: önceki tur silinir ve yeniden açılır.
+  await geri.click();
+  await expect(page.locator('[data-puan]')).toHaveText('0');
+  await expect(page.locator('[data-sahne]')).toHaveAttribute('data-soru-id', id1);
+  await expect(page.locator('[data-tur-yazi]')).toContainText('1 / 5');
+  await expect(geri).toBeHidden();
+  // Yeniden oynanır: puan yine tutarlı.
+  await dogruYap();
+  await expect(page.locator('[data-puan]')).toHaveText('3');
+});

@@ -147,3 +147,22 @@ test('eşleştirme: yanlış çiftler boşaltılır, doğrular kalır', () => {
   assert.deepEqual(s.cevap, [0, null, null, null]);
   assert.deepEqual(s.birakilan, [1, 2]);
 });
+
+test('bir tur geri: puan tutarlı düzeltilir (çözülmüş tur, çözülmemiş tur, son ekran, ilk tur)', () => {
+  // 2. tur çözüldü (puanlar [3, 1], i = 1): bu tur geri alınır, 1. turun puanı kalır.
+  assert.deepEqual(p.turGeri([3, 1], 1, 'geri', 5), { puanlar: [3], i: 1 });
+  assert.equal(p.toplamPuan(p.turGeri([3, 1], 1, 'geri', 5).puanlar), 3);
+  // 3. tur açık ama çözülmedi (puanlar [3, 1], i = 2): önceki (2.) tur silinir ve yeniden açılır.
+  assert.deepEqual(p.turGeri([3, 1], 2, 'soru', 5), { puanlar: [3], i: 1 });
+  // İlk tur çözülmediyse geri yok; çözüldüyse aynı tur baştan.
+  assert.equal(p.turGeri([], 0, 'soru', 5), null);
+  assert.deepEqual(p.turGeri([2], 0, 'geri', 5), { puanlar: [], i: 0 });
+  // Son ekran: son tur silinir.
+  assert.deepEqual(p.turGeri([3, 3, 0], 2, 'son', 3), { puanlar: [3, 3], i: 2 });
+  // Girdi değiştirilmez; üst üste geri alma puanı tek tek düşürür.
+  const once = [3, 1, 2];
+  const bir = p.turGeri(once, 3, 'soru', 4);
+  assert.deepEqual(once, [3, 1, 2]);
+  const iki = p.turGeri(bir.puanlar, bir.i, 'soru', 4);
+  assert.deepEqual(iki, { puanlar: [3], i: 1 });
+});
