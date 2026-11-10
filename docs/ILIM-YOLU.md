@@ -346,6 +346,10 @@ Uygulama düzeni:
 - **Hariç:** fr `ku-044`, `ku-047`, `ku-048` (Arapça tecvid terimlerinin Fransızca okunuşu imam tarafından henüz onaylanmadı) içe alınmaz; bu kartlarda fr'de kontrol yoktur (tr'de vardır). İmam onaylarsa `HARIC` kümesinden çıkarılıp betik yeniden çalıştırılır.
 - **Üretim:** Gemini TTS `gemini-3.1-flash-tts-preview`, ses «Charon», 10 Kasım 2026; çoğu Vertex (`vertex-global`, dernek kredisi), 25 dosya Gemini API anahtar havuzu. Toplam ≈ 3,4 saat. Vertex maliyeti üst sınır ≈ 6 $ (dernek kredisinden). Sayfa, sesin yapay olduğunu söyler.
 
+## Durum (10 Kasım 2026 gece, üçüncü): kart seslendirmesi (TR + FR) CANLI
+
+- Duyurusuz. 261 bilgi kartında tr, 258'inde fr «Dinleyin/Écouter» çaları çalışıyor (fr `ku-044/047/048` imam onayı bekliyor, hariç). Sesler egitim Hosting'de, git dışı; bekçi ve geri getirme için yukarıdaki «Kart seslendirmesi» bölümü. Kayıt: `docs/YAYIN-KAYITLARI.md` 10 Kasım gece (üçüncü).
+
 ## Durum (10 Kasım 2026 gece, ikinci): okuma satırı, «bir tur geri», çevrim dışı kapsam, kart sesi çaları CANLI
 
 - Duyurusuz. Kilimim ve ana sayfa Kur'an Okuma ilerlemesi/bugün tekrar satırı gösterir; yarışmada ← ile bir tur geri; çevrim dışı kutu okuma adım/harita ve ibadet sayfalarını da kaydeder; kart sesi çaları hazır, manifest boş (içe alma: `node scripts/kart-ses-al.mjs`, sesler `D:sesli-anlatimilim-yolu-kartlar` bitince, önce `--kuru`). `/__/auth/handler` başlıkları değişmedi (ayrılmış ad alanı; önizleme kanalı sınaması gerekir). Apps Script v47 canlı (ayrı kayıt). Kayıt: `docs/YAYIN-KAYITLARI.md`.
