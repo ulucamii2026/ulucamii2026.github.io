@@ -1,10 +1,10 @@
 ---
 baslik: "Her Çarşamba Esma AVCI Hoca Hanım ile Camimizde Buluşuyoruz"
 tarih: 2026-08-29
-ozet: "Her çarşamba Esma AVCI Hoca Hanım ile hanımlar 10.30–12.30, genç kızlar 14.00–16.00 saatlerinde camimizde buluşuyor. Kur’an, dinî bilgiler ve sohbet; katılım ücretsiz, kayıt gerekmiyor."
+ozet: "Her çarşamba Esma AVCI Hoca Hanım ile hanımlar 12.00–14.00, genç kızlar 14.00–16.00 saatlerinde camimizde buluşuyor. Kur’an, dinî bilgiler ve sohbet; katılım ücretsiz, kayıt gerekmiyor."
 kapak: /media/duyurular/carsamba-bulusmalari-2026.webp
 kapakKucuk: /media/duyurular/carsamba-bulusmalari-2026-thumb.webp
-kapakAlt: "Çarşamba Programı afişi — hanımlar 10:30-12:30, genç kızlar 14:00-16:00, Esma AVCI Hoca Hanım ile"
+kapakAlt: "Çarşamba Programı afişi — hanımlar 12:00-14:00, genç kızlar 14:00-16:00, Esma AVCI Hoca Hanım ile"
 etiketler:
   - irşat
   - hanımlar
@@ -21,8 +21,10 @@ vitrinSon: 2027-06-30
 
 | Saat | Kimler için | İçerik |
 |---|---|---|
-| 10:30 – 12:30 | Hanımlar | Kur'an-ı Kerim ve tecvid, ilmihal–siyer–aile dersi, soru-cevap ve dua; ardından öğle namazı ve ikram |
+| 12:00 – 14:00 | Hanımlar | Kur'an-ı Kerim ve tecvid, ilmihal–siyer–aile dersi, soru-cevap ve dua; öğle namazı vakti girince cemaatle kılınır, ikram edilir |
 | 14:00 – 16:00 | Genç kızlar (lise çağı) | Kur'an ve ezber, haftanın konusu üzerine atölye (Türkçe/Fransızca), soru kutusu ve sohbet |
+
+**Saatler 11 Kasım 2026 Çarşamba gününden itibaren yenidir:** Hoca Hanım 12.00–16.00 arası camidedir; hanımlar 12.00–14.00, genç kızlar 14.00–16.00.
 
 Çarşamba öğleden sonra okullar tatil olduğu için genç kızlarımızı da bekliyoruz.
 

@@ -1,10 +1,10 @@
 ---
 baslik: "Chaque mercredi, retrouvons Mme Esma AVCI à la mosquée"
 tarih: 2026-08-29
-ozet: "Chaque mercredi avec Mme Esma AVCI : femmes de 10h30 à 12h30, jeunes filles de 14h00 à 16h00. Coran, enseignement religieux et échanges. Gratuit et sans inscription."
+ozet: "Chaque mercredi avec Mme Esma AVCI : femmes de 12h00 à 14h00, jeunes filles de 14h00 à 16h00. Coran, enseignement religieux et échanges. Gratuit et sans inscription."
 kapak: /media/duyurular/carsamba-bulusmalari-2026.webp
 kapakKucuk: /media/duyurular/carsamba-bulusmalari-2026-thumb.webp
-kapakAlt: "Affiche du programme du mercredi — femmes de 10h30 à 12h30, jeunes filles de 14h00 à 16h00, avec Mme Esma AVCI"
+kapakAlt: "Affiche du programme du mercredi — femmes de 12h00 à 14h00, jeunes filles de 14h00 à 16h00, avec Mme Esma AVCI"
 etiketler:
   - femmes
   - education
@@ -20,8 +20,10 @@ vitrinSon: 2027-06-30
 
 | Horaire | Public | Contenu |
 |---|---|---|
-| 10h30 – 12h30 | Femmes | Coran et tajwid, cours (pratique religieuse, vie du Prophète, famille), questions-réponses et invocation ; ensuite la prière de midi et une collation |
+| 12h00 – 14h00 | Femmes | Coran et tajwid, cours (pratique religieuse, vie du Prophète, famille), questions-réponses et invocation ; la prière de midi est accomplie en commun dès que son heure entre, et une collation est offerte |
 | 14h00 – 16h00 | Jeunes filles (âge du secondaire) | Coran et mémorisation, atelier sur le thème de la semaine (turc/français), boîte à questions et discussion |
+
+**Nouveaux horaires à partir du mercredi 11 novembre 2026 :** Mme Esma AVCI est présente à la mosquée de 12h00 à 16h00 ; femmes de 12h00 à 14h00, jeunes filles de 14h00 à 16h00.
 
 Les écoles étant fermées le mercredi après-midi, nos jeunes filles sont particulièrement les bienvenues.
 

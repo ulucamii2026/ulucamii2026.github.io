@@ -95,6 +95,12 @@ Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI
 - Sınırlar: paylaşım mesajları ve kişiye özel WhatsApp taslakları hazır, gönderilmedi (onay bekliyor). Facebook paylaşımı
   yapılmadı.
 
+## 10 Kasım 2026 — Çarşamba programı: hanımlar 12.00–14.00 (11 Kasım 2026'dan itibaren)
+
+- Dayanak: Rıdvan'ın kararı; Esma AVCI Hoca Hanım çarşambaları 12.00–16.00 camide (hanımlar 12.00–14.00, genç kızlar 14.00–16.00 değişmedi). Eski 10.30–12.30 geçersiz.
+- Değişen: çarşamba duyurusu (TR/FR), `irsat-mufredati.json`, İrşat sayfası, `site.yaml` haftalık program. Tek seferlik 14 Ekim metinleri ve Namur'a dokunulmadı.
+- Afiş görselleri (`carsamba-bulusmalari-2026*.webp`, `carsamba-programi-2026*.webp`) eski saatleri gösteriyor; yeni afiş ayrıca hazırlanıp değiştirilecek.
+
 ## 1 Kasım 2026 (gece) — Rahmetle Anıyoruz: Hasan Hüseyin Yılmaz metni ailenin isteğiyle düzeltildi, Recep Açıkgöz'ün yeni fotoğrafı
 
 - Zaman: 1 Kasım 2026 23.33 push · Pages run 41357747608 başarılı · canlı doğrulama 23.36, Europe/Brussels (CET).

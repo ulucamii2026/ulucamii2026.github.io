@@ -152,7 +152,7 @@ site:
   haftalikProgram:
     - gun: 3
       baslik: { tr: "Hanımlara irşat programı — Esma AVCI Hoca Hanım", fr: "Séance pour les femmes — Mme Esma AVCI" }
-      saat: { tr: "10:30–12:30 · Kur’an, ana ders, soru-cevap", fr: "10h30–12h30 · Coran, cours, questions-réponses" }
+      saat: { tr: "12:00–14:00 · Kur’an, ana ders, soru-cevap", fr: "12h00–14h00 · Coran, cours, questions-réponses" }
       sayfa: irsat
     - gun: 3
       baslik: { tr: "Genç kızlar atölyesi — Esma AVCI Hoca Hanım", fr: "Atelier des jeunes filles — Mme Esma AVCI" }

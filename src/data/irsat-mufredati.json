@@ -7,13 +7,13 @@
     {
       "id": "hanimlar",
       "ad": { "tr": "Hanımlar", "fr": "Femmes" },
-      "saat": "10:30 – 12:30",
+      "saat": "12:00 – 14:00",
       "yer": { "tr": "Ders salonu", "fr": "Salle de cours" },
       "akis": [
-        { "saat": "10:30", "ad": { "tr": "Kur'an-ı Kerim", "fr": "Lecture du Coran" }, "aciklama": { "tr": "40 dk · Tecvid kaidesi ve o haftanın sûresi/âyetleri; her katılımcı okur, tashih edilir.", "fr": "40 min · Règle de tajwid et sourate/versets de la semaine ; chaque participante lit et est corrigée." } },
-        { "saat": "11:10", "ad": { "tr": "Ana ders", "fr": "Cours principal" }, "aciklama": { "tr": "60 dk · Modülün konusu; ilmihal–siyer–tefsir ekseninde, günlük hayattan örneklerle.", "fr": "60 min · Thème du module (pratique religieuse, vie du Prophète, exégèse) avec des exemples de la vie quotidienne." } },
-        { "saat": "12:10", "ad": { "tr": "Soru-cevap ve dua", "fr": "Questions-réponses et invocation" }, "aciklama": { "tr": "20 dk · Haftanın soruları, kısa dua eğitimi, kapanış duası.", "fr": "20 min · Questions de la semaine, courte initiation aux invocations, prière de clôture." } },
-        { "saat": "12:30", "ad": { "tr": "Öğle namazı ve ikram", "fr": "Prière de midi et collation" }, "aciklama": { "tr": "Dernek tarafından; hanım cemaatle kaynaşma vakti.", "fr": "Offerte par l'association ; moment de convivialité entre femmes." } }
+        { "saat": "12:00", "ad": { "tr": "Kur'an-ı Kerim", "fr": "Lecture du Coran" }, "aciklama": { "tr": "40 dk · Tecvid kaidesi ve o haftanın sûresi/âyetleri; her katılımcı okur, tashih edilir.", "fr": "40 min · Règle de tajwid et sourate/versets de la semaine ; chaque participante lit et est corrigée." } },
+        { "saat": "12:40", "ad": { "tr": "Ana ders", "fr": "Cours principal" }, "aciklama": { "tr": "60 dk · Modülün konusu; ilmihal–siyer–tefsir ekseninde, günlük hayattan örneklerle.", "fr": "60 min · Thème du module (pratique religieuse, vie du Prophète, exégèse) avec des exemples de la vie quotidienne." } },
+        { "saat": "13:40", "ad": { "tr": "Soru-cevap ve dua", "fr": "Questions-réponses et invocation" }, "aciklama": { "tr": "20 dk · Haftanın soruları, kısa dua eğitimi, kapanış duası.", "fr": "20 min · Questions de la semaine, courte initiation aux invocations, prière de clôture." } },
+        { "saat": "", "ad": { "tr": "Öğle namazı ve ikram", "fr": "Prière de midi et collation" }, "aciklama": { "tr": "Öğle namazı vakti girince cemaatle kılınır; ikram dernek tarafından yapılır, hanım cemaatle kaynaşma vakti.", "fr": "La prière de midi est accomplie en commun dès que son heure entre ; collation offerte par l'association, moment de convivialité entre femmes." } }
       ]
     },
     {
