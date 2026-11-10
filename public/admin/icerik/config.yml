@@ -355,6 +355,7 @@ collections:
                   - { name: facebook, label: Facebook, widget: string, required: false }
                   - { name: instagram, label: Instagram, widget: string, required: false }
                   - { name: youtube, label: YouTube, widget: string, required: false }
+                  - { name: whatsappTopluluk, label: WhatsApp topluluğu davet bağlantısı, widget: string, required: false }
               - name: konsolosluk
                 label: Başkonsolosluk bilgileri
                 widget: object

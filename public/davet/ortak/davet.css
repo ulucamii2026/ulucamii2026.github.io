@@ -1,0 +1,104 @@
+/* DİB kurumsal kimliği (kimlik.json): kırmızı #EE3434, gri #808285; yazı tipleri yalnız Source Serif 4 + Montserrat. */
+@font-face{font-family:"Source Serif 4";font-weight:400;font-style:normal;font-display:swap;src:url(fonts/SourceSerif4Text-Regular.woff2) format("woff2")}
+@font-face{font-family:"Source Serif 4";font-weight:400;font-style:italic;font-display:swap;src:url(fonts/SourceSerif4Text-Italic.woff2) format("woff2")}
+@font-face{font-family:"Source Serif 4";font-weight:600;font-style:normal;font-display:swap;src:url(fonts/SourceSerif4Text-SemiBold.woff2) format("woff2")}
+@font-face{font-family:"Source Serif 4 Display";font-weight:600;font-style:normal;font-display:swap;src:url(fonts/SourceSerif4Display-SemiBold.woff2) format("woff2")}
+@font-face{font-family:"Montserrat";font-weight:400;font-style:normal;font-display:swap;src:url(fonts/MontserratStatic-Regular.woff2) format("woff2")}
+@font-face{font-family:"Montserrat";font-weight:600;font-style:normal;font-display:swap;src:url(fonts/MontserratStatic-SemiBold.woff2) format("woff2")}
+
+:root{
+  --kirmizi:#EE3434;--gri:#808285;--koyu:#4a4b4d;--zemin:#fff;--krem:#F2EBDD;--cizgi:#d9d6cf;--hata:#b3261e;--ok:#2f6b3a;
+  --serif:"Source Serif 4",Georgia,serif;--sans:"Montserrat",system-ui,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--zemin);color:var(--koyu);font:400 17px/1.6 var(--serif)}
+.sayfa{max-width:720px;margin:0 auto;padding:0 16px 48px}
+
+/* Antet satırı: iki logo yükseklikle boyutlanır, BDV logosu antetten büyük olmaz */
+.ustlogo{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:20px 0 16px}
+.ustlogo img{display:block;height:44px;width:auto}
+@media(min-width:640px){.ustlogo img{height:56px}}
+.kirmizi-serit{height:4px;background:var(--kirmizi);margin:0 -16px}
+
+/* Üst eser: 4:5 dikey ebru, kırpılmadan bütün gösterilir (kemer ve laleler tam) */
+.hero{display:block}
+.sanat{margin:28px auto 0;width:min(72vw,300px)}
+.sanat img{display:block;width:100%;height:auto;aspect-ratio:800/1065;background:var(--krem);border:1px solid var(--cizgi)}
+@media(min-width:760px){
+  .hero{display:grid;grid-template-columns:300px 1fr;gap:36px;align-items:center;margin-top:28px}
+  .sanat{margin:0;width:300px}
+  .hero-metin h1{margin-top:0}
+}
+
+h1{font:600 clamp(2rem,8vw,3rem)/1.1 "Source Serif 4 Display",var(--serif);color:var(--kirmizi);margin:32px 0 4px;letter-spacing:.005em}
+.altbaslik{font:600 .8rem/1.4 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--gri);margin:0 0 20px}
+.giris{font-size:1.15rem;line-height:1.55;margin:0 0 8px}
+.davetci{font:400 .9rem/1.5 var(--sans);color:var(--gri);margin:0 0 28px}
+
+.kunye{border-top:1px solid var(--cizgi);border-bottom:1px solid var(--cizgi);margin:0 0 28px}
+.kunye div{display:grid;grid-template-columns:96px 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--cizgi)}
+.kunye div:first-child{border-top:0}
+.kunye dt{font:600 .72rem/1.6 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--gri);margin:0}
+.kunye dd{margin:0}
+.kunye a{color:var(--kirmizi);font:600 .85rem var(--sans);text-underline-offset:3px;display:inline-block;margin-top:4px}
+
+h2{font:600 .8rem/1.4 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--kirmizi);margin:0 0 14px}
+form{margin:0}
+.alan{margin:0 0 18px}
+label,.etiket{display:block;font:600 .8rem/1.4 var(--sans);color:var(--koyu);margin:0 0 6px}
+.zorunlu::after{content:" *";color:var(--kirmizi)}
+.ipucu{font:400 .78rem/1.4 var(--sans);color:var(--gri);margin:4px 0 0}
+textarea{width:100%;min-height:112px;padding:10px 12px;border:1px solid #a9a7a1;border-radius:2px;background:#fff;color:var(--koyu);font:400 17px/1.5 var(--serif);resize:vertical}
+textarea:focus{outline:3px solid rgba(238,52,52,.35);outline-offset:1px;border-color:var(--kirmizi)}
+.sayac{text-align:right}
+input[type=text],input[type=tel],input[type=number],select{width:100%;min-height:48px;padding:10px 12px;border:1px solid #a9a7a1;border-radius:2px;background:#fff;color:var(--koyu);font:400 17px/1.3 var(--serif)}
+input:focus,select:focus{outline:3px solid rgba(238,52,52,.35);outline-offset:1px;border-color:var(--kirmizi)}
+.secenek{display:flex;align-items:center;gap:12px;min-height:48px;padding:8px 12px;border:1px solid #a9a7a1;border-radius:2px;margin:0 0 8px;cursor:pointer;font:400 17px/1.3 var(--serif);color:var(--koyu)}
+.secenek input{width:22px;height:22px;accent-color:var(--kirmizi);flex:none;margin:0}
+.secenek:has(input:checked){border-color:var(--kirmizi);background:#fff5f5}
+fieldset{border:0;padding:0;margin:0 0 18px}
+legend{padding:0}
+.tuzak{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.hata-alan{font:400 .85rem/1.4 var(--sans);color:var(--hata);margin:6px 0 0}
+[aria-invalid=true]{border-color:var(--hata)}
+button{font:600 .85rem/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;min-height:52px;padding:0 28px;border:0;border-radius:2px;background:var(--kirmizi);color:#fff;cursor:pointer;width:100%}
+button:hover{background:#d62a2a}
+button:disabled{background:var(--gri);cursor:wait}
+button.ikincil{background:#fff;color:var(--kirmizi);border:1px solid var(--kirmizi);width:auto;padding:0 18px;min-height:44px}
+.mesaj{font:400 1rem/1.5 var(--serif);padding:14px 16px;border-left:4px solid var(--gri);background:#f7f6f3;margin:0 0 18px}
+.mesaj.ok{border-color:var(--ok);background:#f1f7f2;color:#1f4a28}
+.mesaj.hata{border-color:var(--hata);background:#fdf3f2;color:#7d1a14}
+.gizlilik{font:400 .8rem/1.55 var(--sans);color:var(--gri);margin:24px 0 0}
+.kapali{font-size:1.2rem;text-align:center;padding:28px 12px}
+[hidden]{display:none!important}
+.alt{border-top:1px solid var(--cizgi);margin-top:36px;padding-top:14px;font:400 .72rem/1.5 var(--sans);color:var(--gri)}
+
+/* Liste sayfası */
+.ozet{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:20px 0}
+.ozet div{border:1px solid var(--cizgi);padding:12px 8px;text-align:center}
+.ozet b{display:block;font:600 1.9rem/1.1 "Source Serif 4 Display",var(--serif);color:var(--kirmizi)}
+.ozet span{font:400 .68rem/1.3 var(--sans);color:var(--gri);letter-spacing:.04em}
+.liste{list-style:none;margin:0;padding:0}
+.liste li{border-top:1px solid var(--cizgi);padding:12px 0}
+.liste .ad{font:600 1.05rem/1.3 var(--serif);color:var(--koyu)}
+.liste .alt2{font:400 .85rem/1.5 var(--sans);color:var(--gri)}
+.rozet{display:inline-block;font:600 .68rem/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;padding:4px 7px;border-radius:2px;margin-left:6px;vertical-align:2px}
+.rozet.evet{background:#e7f1e9;color:#1f4a28}
+.rozet.hayir{background:#f4e4e2;color:#7d1a14}
+.rozet.eski{background:#eee;color:#666}
+.liste li.eski .ad{text-decoration:line-through;color:var(--gri)}
+.liste li.baslik{display:none}
+@media(min-width:760px){
+  .liste li.baslik{display:grid}
+  .liste li{display:grid;grid-template-columns:1.4fr 1.4fr 1fr 1fr .5fr 1fr;gap:12px;align-items:center}
+  .liste li.baslik{font:600 .7rem/1.4 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--gri)}
+  .sayfa.genis{max-width:1040px}
+}
+
+.liste .mesaj-kutu{grid-column:1/-1}
+.liste details{margin-top:6px}
+.liste summary{cursor:pointer;font:600 .78rem/1.4 var(--sans);color:var(--kirmizi);min-height:32px;display:flex;align-items:center}
+.liste details p{margin:6px 0 0;padding:10px 12px;background:#f7f6f3;border-left:3px solid var(--kirmizi);white-space:pre-wrap;overflow-wrap:anywhere;font:400 .95rem/1.5 var(--serif);color:var(--koyu)}
+@media(min-width:760px){.kirmizi-serit{margin-left:0;margin-right:0}}

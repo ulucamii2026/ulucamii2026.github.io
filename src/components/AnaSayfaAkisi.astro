@@ -4,6 +4,7 @@ import icMekan from '../assets/foto/ic-mekan.jpg';
 import Ikon from './Ikon.astro';
 import BuHafta from './BuHafta.astro';
 import BagisBandi from './BagisBandi.astro';
+import WhatsappTopluluk from './WhatsappTopluluk.astro';
 import { yol, tarihBicimle, kayitBaglantisi } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
 import { duyurular, icerikDili, yaklasanEtkinlikler, siteAyarlari } from '../lib/icerik';
@@ -281,6 +282,9 @@ const haritaUrl = `https://www.google.com/maps/dir/?api=1&destination=${site.gps
       </div>
     </div>
   </section>
+
+  <!-- 4b. WhatsApp topluluğu (davet bağlantısı site.yaml → sosyal.whatsappTopluluk) -->
+  <section id="whatsapp-topluluk" class="kapsayici"><WhatsappTopluluk dil={dil} site={site} /></section>
 
   <!-- 5. Bağış -->
   <BagisBandi dil={dil} banka={site.banka} kompakt />

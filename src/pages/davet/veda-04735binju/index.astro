@@ -1,0 +1,208 @@
+---
+/**
+ * «Ahde Vefa» — Veda Programı: gizli katılım bildirimi sayfası (8 Kasım 2026).
+ * Adres SABİTTİR (basılı karekod bu adresi taşır): /davet/veda-04735binju/ — klasör adını DEĞİŞTİRME.
+ * Gizlilik: noindex, sitemap'e girmez (astro.config.mjs süzgeci meta etiketini okur), robots.txt'ye yazılmaz,
+ * sitede hiçbir yerden bağlantı yok. Kurumsal kimlik: DİB (Ulu Camii kimliği DEĞİL), Base.astro kullanılmaz.
+ * Arka uç: scripts/apps-script/veda-davet/ (ayrı küçük Apps Script; dağıtım için OKUBENI.md).
+ * Üst görsel: `node scripts/davet-gorsel-uret.mjs <kaynak.png>` bu klasöre ebru-lale-480/800.webp + ebru-lale-800.jpg yazar
+ * (4:5 dikey eser; b görseline geçmek = aynı komutu başka kaynakla çalıştırmak).
+ */
+const VEDA = {
+  baslik: 'Ahde Vefa',
+  altBaslik: 'Veda Programı',
+  giris: 'Sayın Coşkun BEYAZGÜL Hocamızın Paris Din Hizmetleri Müşaviri olarak atanması münasebetiyle düzenlenen veda programı',
+  davetci: 'Salih GÖR, Brüksel Sosyal İşler Müşaviri',
+  tarih: '8 Kasım 2026 Pazar',
+  saat: 'Saat 15.30',
+  yerAd: 'Belçika Diyanet Vakfı Genel Merkezi',
+  yerAdres: 'Chaussée de Haecht 67, 1210 Saint-Josse-ten-Noode (Brüksel)',
+  harita: 'https://www.google.com/maps/search/?api=1&query=Chauss%C3%A9e+de+Haecht+67%2C+1210+Saint-Josse-ten-Noode',
+  sonTarih: '7 Kasım 2026 Cumartesi günü saat 12.00’ye kadar',
+  // 4.11.2026 Müşavir Bey & Rıdvan: form hiç kapanmasın (davetiyedeki son bildirim saati 12.00, ancak gönderim açık kalır).
+  kapanis: null,
+  // Apps Script dağıtımından sonra /exec adresi buraya yazılır (OKUBENI.md). «__» içeriyorsa form gönderim yapmaz.
+  uc: 'https://script.google.com/macros/s/AKfycbyhTvE9DHr58vAZC7ifqmz13HHrGMIBzug_thLzV-7y_hxdWJ1OLV6f-oCMPUFqwphecA/exec',
+  mesajEtiket: 'Hocamıza iletmek istediğiniz kısa bir mesaj (isteğe bağlı)',
+  mesajIpucu: 'Mesajınız programın hatıra defterine eklenebilir.',
+  mesajAzami: 600,
+  gizlilik: 'Bilgileriniz yalnızca bu programın düzenlenmesi için kullanılır, kimseyle paylaşılmaz ve program sonrasında silinir.',
+  gorevler: ['Dernek başkanı', 'Din görevlisi', 'STK temsilcisi', 'Diğer'],
+  mesajlar: {
+    basari: 'Katılım bildiriminiz alındı. Teşekkür ederiz.',
+    kapali: 'Katılım bildirimi kapanmıştır.',
+    hata: 'Bildiriminiz şu anda gönderilemedi. Lütfen bağlantınızı kontrol edip biraz sonra yeniden deneyin.',
+    hazirDegil: 'Katılım formu henüz etkinleştirilmemiştir. Lütfen daha sonra yeniden deneyin.',
+    mesajUzun: 'Mesaj en çok 600 karakter olabilir.',
+    ad: 'Lütfen adınızı ve soyadınızı yazın.',
+    kurum: 'Lütfen kurum veya dernek adını yazın.',
+    durum: 'Lütfen katılım durumunuzu seçin.',
+    kisi: 'Lütfen 1 ile 10 arasında bir kişi sayısı yazın.',
+    telefon: 'Telefon numarasını uluslararası biçimde yazın (örn. +32 …).',
+  },
+};
+---
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="referrer" content="no-referrer">
+  <title>{VEDA.baslik} — {VEDA.altBaslik}</title>
+  <meta name="theme-color" content="#EE3434">
+  <link rel="stylesheet" href="/davet/ortak/davet.css">
+  <link rel="preload" href="/davet/ortak/fonts/SourceSerif4Display-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+</head>
+<body>
+  <div class="sayfa">
+    <header class="ustlogo">
+      <img src="/davet/ortak/antet.svg" alt="T.C. Brüksel Büyükelçiliği Sosyal İşler Müşavirliği">
+      <img src="/davet/ortak/bdv-logo.svg" alt="Belçika Diyanet Vakfı">
+    </header>
+    <div class="kirmizi-serit"></div>
+    <main>
+      <section class="hero">
+        <figure class="sanat">
+          <picture>
+            <source type="image/webp" srcset="ebru-lale-480.webp 480w, ebru-lale-800.webp 800w" sizes="(min-width: 760px) 300px, min(72vw, 300px)">
+            <img src="ebru-lale-800.jpg" alt="Ebru sanatıyla yapılmış, kemer içinde beş laleli bir tablo" width="800" height="1065" decoding="async" fetchpriority="high">
+          </picture>
+        </figure>
+        <div class="hero-metin">
+          <h1>{VEDA.baslik}</h1>
+          <p class="altbaslik">{VEDA.altBaslik}</p>
+          <p class="giris">{VEDA.giris}</p>
+          <p class="davetci">{VEDA.davetci}</p>
+        </div>
+      </section>
+
+      <dl class="kunye">
+        <div><dt>Tarih</dt><dd>{VEDA.tarih}<br>{VEDA.saat}</dd></div>
+        <div><dt>Yer</dt><dd>{VEDA.yerAd}<br>{VEDA.yerAdres}<br><a href={VEDA.harita} rel="noopener noreferrer" target="_blank">Haritada aç</a></dd></div>
+        <div><dt>Katılım</dt><dd>Katılım durumunuzu {VEDA.sonTarih} kadar karekod üzerinden bildirmenizi rica ederiz.</dd></div>
+      </dl>
+
+      <section id="form-bolum" aria-labelledby="form-baslik">
+        <h2 id="form-baslik">Katılım bildirimi</h2>
+        <div id="durum" role="status" aria-live="polite"></div>
+        <p id="kapali" class="kapali" hidden>{VEDA.mesajlar.kapali}</p>
+
+        <form id="form" novalidate autocomplete="off">
+          <div class="alan">
+            <label for="ad" class="zorunlu">Ad soyad</label>
+            <input id="ad" name="ad" type="text" maxlength="80" autocomplete="name" required>
+            <p class="hata-alan" id="ad-hata" hidden></p>
+          </div>
+          <div class="alan">
+            <label for="kurum" class="zorunlu">Kurum / dernek adı</label>
+            <input id="kurum" name="kurum" type="text" maxlength="120" autocomplete="organization" required>
+            <p class="hata-alan" id="kurum-hata" hidden></p>
+          </div>
+          <div class="alan">
+            <label for="gorev">Görevi</label>
+            <select id="gorev" name="gorev">
+              <option value="">Seçiniz</option>
+              {VEDA.gorevler.map((g) => <option value={g}>{g}</option>)}
+            </select>
+          </div>
+          <div class="alan">
+            <label for="telefon">Telefon (isteğe bağlı)</label>
+            <input id="telefon" name="telefon" type="tel" maxlength="24" inputmode="tel" autocomplete="tel" placeholder="+32 …">
+            <p class="ipucu">Uluslararası biçimde yazın, örn. +32 …</p>
+            <p class="hata-alan" id="telefon-hata" hidden></p>
+          </div>
+          <fieldset class="alan">
+            <legend class="etiket zorunlu">Katılım durumu</legend>
+            <label class="secenek"><input type="radio" name="durum" value="katilacak"> Katılacağım</label>
+            <label class="secenek"><input type="radio" name="durum" value="katilamayacak"> Katılamayacağım</label>
+            <p class="hata-alan" id="durum-hata" hidden></p>
+          </fieldset>
+          <div class="alan" id="kisi-alan" hidden>
+            <label for="kisi" class="zorunlu">Kaç kişi geleceksiniz?</label>
+            <input id="kisi" name="kisi" type="number" min="1" max="10" step="1" inputmode="numeric" value="1">
+            <p class="ipucu">Kendiniz dahil (1–10).</p>
+            <p class="hata-alan" id="kisi-hata" hidden></p>
+          </div>
+          <div class="alan">
+            <label for="mesaj">{VEDA.mesajEtiket}</label>
+            <textarea id="mesaj" name="mesaj" rows="4" maxlength={VEDA.mesajAzami} aria-describedby="mesaj-ipucu mesaj-sayac"></textarea>
+            <p class="ipucu" id="mesaj-ipucu">{VEDA.mesajIpucu}</p>
+            <p class="ipucu sayac" id="mesaj-sayac" aria-live="off"><span id="mesaj-say">0</span> / {VEDA.mesajAzami}</p>
+          </div>
+          <div class="tuzak" aria-hidden="true">
+            <label for="web">Web sitesi</label>
+            <input id="web" name="web" type="text" tabindex="-1" autocomplete="off">
+          </div>
+          <button type="submit" id="gonder">Gönder</button>
+        </form>
+        <p class="gizlilik">{VEDA.gizlilik}</p>
+      </section>
+    </main>
+  </div>
+
+  <script is:inline type="application/json" id="veda-veri" set:html={JSON.stringify(VEDA)}></script>
+  <script is:inline>
+    (() => {
+      const V = JSON.parse(document.getElementById('veda-veri').textContent);
+      const $ = (id) => document.getElementById(id);
+      const form = $('form'), durumKutu = $('durum');
+      const kapanis = V.kapanis ? Date.parse(V.kapanis) : null;
+      const mesaj = (metin, tur) => { durumKutu.innerHTML = ''; if (!metin) return; const p = document.createElement('p'); p.className = 'mesaj ' + (tur || ''); p.textContent = metin; durumKutu.appendChild(p); };
+      const kapat = () => { form.hidden = true; $('kapali').hidden = false; document.querySelector('.gizlilik').hidden = true; };
+      if (kapanis && Date.now() >= kapanis) kapat();
+
+      const mesajKutu = $('mesaj');
+      mesajKutu.addEventListener('input', () => { $('mesaj-say').textContent = mesajKutu.value.length; });
+
+      const secili = () => (form.elements['durum'].value || '');
+      const kisiGoster = () => { $('kisi-alan').hidden = secili() !== 'katilacak'; };
+      form.addEventListener('change', kisiGoster);
+
+      const hataYaz = (id, metin) => { const e = $(id + '-hata'); if (!e) return; e.hidden = !metin; e.textContent = metin || ''; const g = $(id); if (g) g.setAttribute('aria-invalid', metin ? 'true' : 'false'); };
+      ['ad', 'kurum', 'telefon', 'kisi'].forEach((k) => $(k).addEventListener('input', () => hataYaz(k, '')));
+
+      const dogrula = () => {
+        let ilk = null; const say = (id, m) => { hataYaz(id, m); if (m && !ilk) ilk = id; };
+        const ad = form.elements['ad'].value.trim(), kurum = form.elements['kurum'].value.trim(), tel = form.elements['telefon'].value.trim();
+        say('ad', ad.length < 3 ? V.mesajlar.ad : '');
+        say('kurum', kurum.length < 2 ? V.mesajlar.kurum : '');
+        say('telefon', tel && !/^\+?[0-9 ()./-]{6,24}$/.test(tel) ? V.mesajlar.telefon : '');
+        const d = secili();
+        say('durum', d ? '' : V.mesajlar.durum);
+        if (d === 'katilacak') { const n = Number(form.elements['kisi'].value); say('kisi', Number.isInteger(n) && n >= 1 && n <= 10 ? '' : V.mesajlar.kisi); } else hataYaz('kisi', '');
+        if (ilk) { const hedef = ilk === 'durum' ? form.querySelector('input[name=durum]') : $(ilk); hedef.scrollIntoView({ block: 'center', behavior: 'smooth' }); hedef.focus({ preventScroll: true }); }
+        return !ilk;
+      };
+
+      const anahtar = (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random().toString(16).slice(2));
+      form.addEventListener('submit', async (olay) => {
+        olay.preventDefault();
+        mesaj('');
+        if (kapanis && Date.now() >= kapanis) { kapat(); return; }
+        if (!dogrula()) return;
+        if (V.uc.includes('__')) { mesaj(V.mesajlar.hazirDegil, 'hata'); return; }
+        const dugme = $('gonder'); dugme.disabled = true;
+        const govde = {
+          tur: 'veda', gonderimAnahtari: anahtar,
+          ad: form.elements['ad'].value.trim(), kurum: form.elements['kurum'].value.trim(), gorev: form.elements['gorev'].value,
+          telefon: form.elements['telefon'].value.trim(), durum: secili(),
+          kisi: secili() === 'katilacak' ? Number(form.elements['kisi'].value) : 0,
+          mesaj: form.elements['mesaj'].value.trim(),
+          web: form.elements['web'].value,
+        };
+        const ac = new AbortController(); const zaman = setTimeout(() => ac.abort(), 30000);
+        try {
+          const y = await fetch(V.uc, { method: 'POST', mode: 'cors', redirect: 'follow', signal: ac.signal, headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(govde) });
+          const s = await y.json();
+          if (s && s.ok) { form.hidden = true; document.querySelector('.gizlilik').hidden = true; mesaj(V.mesajlar.basari, 'ok'); durumKutu.scrollIntoView({ block: 'center', behavior: 'smooth' }); }
+          else if (s && s.hata === 'gecersiz' && s.alan === 'mesaj') mesaj(V.mesajlar.mesajUzun, 'hata');
+          else if (s && s.hata === 'kapali') { mesaj('', ''); kapat(); }
+          else mesaj(V.mesajlar.hata, 'hata');
+        } catch (_) { mesaj(V.mesajlar.hata, 'hata'); }
+        finally { clearTimeout(zaman); dugme.disabled = false; }
+      });
+    })();
+  </script>
+</body>
+</html>

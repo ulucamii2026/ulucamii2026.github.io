@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import SayfaBasligi from '../components/SayfaBasligi.astro';
 import Harita from '../components/Harita.astro';
 import WhatsappBaglanti from '../components/WhatsappBaglanti.astro';
+import WhatsappTopluluk from '../components/WhatsappTopluluk.astro';
 import { ceviri } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
 import { siteAyarlari } from '../lib/icerik';
@@ -58,4 +59,5 @@ const m = M[dil];
     </div>
     <Harita enlem={site.gps.enlem} boylam={site.gps.boylam} baslik={t('genel.harita')} yoltarifi={t('genel.yoltarifi')} />
   </div>
+  <div class="kapsayici pb-12"><WhatsappTopluluk dil={dil} site={site} /></div>
 </Base>

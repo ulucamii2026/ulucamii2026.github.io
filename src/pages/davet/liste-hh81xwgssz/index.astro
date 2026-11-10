@@ -1,0 +1,132 @@
+---
+/**
+ * «Ahde Vefa» — Veda Programı: KORUMALI katılım listesi (yalnız Rıdvan KAYAHAN). Gizli adres; noindex.
+ * Koruma: uzun rastgele anahtar adres parçasında (#anahtar) verilir; sunucuya yalnız POST gövdesiyle gider,
+ * depoda YOK (Apps Script özelliği LISTE_ANAHTARI). Parça açılır açılmaz adres çubuğundan silinir.
+ * Açılış: https://ulucamii.be/davet/liste-hh81xwgssz/#<anahtar>
+ */
+const UC = 'https://script.google.com/macros/s/AKfycbyhTvE9DHr58vAZC7ifqmz13HHrGMIBzug_thLzV-7y_hxdWJ1OLV6f-oCMPUFqwphecA/exec';
+---
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="referrer" content="no-referrer">
+  <title>Veda Programı — Katılım Listesi</title>
+  <link rel="preconnect" href="https://script.google.com" crossorigin>
+  <link rel="preconnect" href="https://script.googleusercontent.com" crossorigin>
+  <link rel="stylesheet" href="/davet/ortak/davet.css">
+  <style>
+    .yukleniyor { display: flex; align-items: center; gap: .6rem; }
+    .donen { width: 1.1rem; height: 1.1rem; flex: none; border: 2px solid currentColor; border-top-color: transparent; border-radius: 50%; animation: don .8s linear infinite; opacity: .6; }
+    .ipucu { opacity: .7; font-size: .9em; }
+    .guncel { margin: .25rem 0 .5rem; font-size: .9em; opacity: .75; }
+    @keyframes don { to { transform: rotate(360deg); } }
+    @media (prefers-reduced-motion: reduce) { .donen { animation-duration: 2.4s; } }
+  </style>
+</head>
+<body>
+  <div class="sayfa genis">
+    <header class="ustlogo">
+      <img src="/davet/ortak/antet.svg" alt="T.C. Brüksel Büyükelçiliği Sosyal İşler Müşavirliği">
+      <img src="/davet/ortak/bdv-logo.svg" alt="Belçika Diyanet Vakfı">
+    </header>
+    <div class="kirmizi-serit"></div>
+    <main>
+      <h1>Katılım listesi</h1>
+      <p class="altbaslik">Ahde Vefa — Veda Programı · 8 Kasım 2026</p>
+      <div id="durum" role="status" aria-live="polite"></div>
+      <section id="icerik" hidden>
+        <div class="ozet" aria-label="Toplamlar">
+          <div><b id="t-kayit">0</b><span>Katılacak (kayıt)</span></div>
+          <div><b id="t-kisi">0</b><span>Katılacak kişi sayısı (eşler/misafirler dahil)</span></div>
+          <div><b id="t-yok">0</b><span>Katılamayacak (kayıt)</span></div>
+        </div>
+        <p class="guncel" id="toplam-not"></p>
+        <p><button type="button" class="ikincil" id="yenile">Yenile</button></p>
+        <p class="guncel" id="guncel" role="status" aria-live="polite"></p>
+        <ul class="liste" id="liste"></ul>
+        <p class="gizlilik" id="not"></p>
+      </section>
+    </main>
+  </div>
+  <script is:inline type="application/json" id="uc" set:html={JSON.stringify(UC)}></script>
+  <script is:inline>
+    (() => {
+      const UC = JSON.parse(document.getElementById('uc').textContent);
+      const $ = (i) => document.getElementById(i);
+      const yukleniyor = () => { const d = $('durum'); d.innerHTML = ''; const p = document.createElement('p'); p.className = 'mesaj yukleniyor'; const s = document.createElement('span'); s.className = 'donen'; s.setAttribute('aria-hidden', 'true'); p.appendChild(s); const m = document.createElement('span'); m.textContent = 'Liste yükleniyor… '; const i = document.createElement('span'); i.className = 'ipucu'; i.textContent = '(ilk açılış birkaç saniye sürebilir)'; m.appendChild(i); p.appendChild(m); d.appendChild(p); };
+      const mesaj = (m, t) => { $('durum').innerHTML = ''; if (!m) return; const p = document.createElement('p'); p.className = 'mesaj ' + (t || ''); p.textContent = m; $('durum').appendChild(p); };
+      const anahtar = decodeURIComponent(location.hash.replace(/^#/, ''));
+      if (location.hash) history.replaceState(null, '', location.pathname);
+      let sakla = anahtar; // yalnız bellekte; depoya yazılmaz (önbelleğe yalnız liste yanıtı girer, anahtar girmez)
+      // <onbellek-mantigi>
+      const ONBELLEK_ANAHTARI = 'veda-liste-onbellek-v1';
+      const ONBELLEK_SON = Date.parse('2026-11-09T23:59:00+01:00');
+      const onbellekGecerliMi = (o, simdi) => !!(o && typeof o === 'object' && o.veri && o.veri.ok && Array.isArray(o.veri.kayitlar) && o.veri.toplam && typeof o.alindi === 'string' && !isNaN(Date.parse(o.alindi)) && (simdi == null ? Date.now() : simdi) < ONBELLEK_SON);
+      // </onbellek-mantigi>
+      const depoOku = () => { try { const o = JSON.parse(localStorage.getItem(ONBELLEK_ANAHTARI) || 'null'); if (onbellekGecerliMi(o)) return o; if (o) depoSil(); } catch (_) {} return null; };
+      const depoYaz = (veri) => { try { localStorage.setItem(ONBELLEK_ANAHTARI, JSON.stringify({ alindi: new Date().toISOString(), veri })); } catch (_) {} };
+      const depoSil = () => { try { localStorage.removeItem(ONBELLEK_ANAHTARI); } catch (_) {} };
+      const saat = (iso) => { try { return new Intl.DateTimeFormat('tr-TR', { timeZone: 'Europe/Brussels', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).format(new Date(iso)).replace(':', '.'); } catch (_) { return ''; } };
+      const guncel = (m) => { $('guncel').textContent = m || ''; };
+      let sonYenileme = 0, suruyor = false, gosterilen = null;
+      const GOREV = { katilacak: 'Katılacak', katilamayacak: 'Katılamayacak' };
+      const zaman = (iso) => { try { return new Intl.DateTimeFormat('tr-TR', { timeZone: 'Europe/Brussels', dateStyle: 'short', timeStyle: 'short' }).format(new Date(iso)); } catch (_) { return iso || ''; } };
+      const ekle = (ust, sinif, metin) => { const e = document.createElement('div'); if (sinif) e.className = sinif; e.textContent = metin; ust.appendChild(e); return e; };
+      const goster = (v) => {
+        $('t-kayit').textContent = v.toplam.katilacakKayit;
+        $('t-kisi').textContent = v.toplam.katilacakKisi;
+        $('t-yok').textContent = v.toplam.katilamayacak;
+        $('toplam-not').textContent = (v.toplam.katilacakKayit + v.toplam.katilamayacak) + ' geçerli kayıt: ' + v.toplam.katilacakKayit + ' katılacak + ' + v.toplam.katilamayacak + ' katılamayacak. Katılacak ' + v.toplam.katilacakKayit + ' kayıtta toplam ' + v.toplam.katilacakKisi + ' kişi var.';
+        const ul = $('liste'); ul.innerHTML = '';
+        const b = document.createElement('li'); b.className = 'baslik'; ['Ad soyad', 'Kurum', 'Görevi', 'Telefon', 'Kişi', 'Zaman'].forEach((t) => ekle(b, '', t)); ul.appendChild(b);
+        v.kayitlar.forEach((k) => {
+          const li = document.createElement('li'); if (!k.gecerli) li.className = 'eski';
+          const ad = ekle(li, 'ad', k.ad);
+          const r = document.createElement('span'); r.className = 'rozet ' + (k.durum === 'katilacak' ? 'evet' : 'hayir'); r.textContent = k.durum === 'katilacak' ? 'Katılacak' : 'Katılamayacak'; ad.appendChild(r);
+          if (!k.gecerli) { const e = document.createElement('span'); e.className = 'rozet eski'; e.textContent = 'Eski kayıt'; ad.appendChild(e); }
+          ekle(li, 'alt2', k.kurum);
+          ekle(li, 'alt2', k.gorev || '—');
+          ekle(li, 'alt2', k.telefon || '—');
+          ekle(li, 'alt2', k.durum === 'katilacak' ? k.kisi + ' kişi' : '—');
+          ekle(li, 'alt2', zaman(k.zaman));
+          if (k.mesaj) {
+            const kutu = document.createElement('div'); kutu.className = 'mesaj-kutu';
+            const d = document.createElement('details'); const sm = document.createElement('summary'); sm.textContent = 'Hocamıza mesaj'; d.appendChild(sm);
+            const pp = document.createElement('p'); pp.textContent = k.mesaj; d.appendChild(pp); kutu.appendChild(d); li.appendChild(kutu);
+          }
+          ul.appendChild(li);
+        });
+        $('not').textContent = v.kayitlar.length ? 'Aynı ad ve kurumla yeniden gönderilen bildirimlerde yalnız en yenisi toplamlara girer; eskiler üstü çizili gösterilir.' : 'Henüz kayıt yok.';
+        $('icerik').hidden = false;
+      };
+      const yukle = async () => {
+        if (!sakla) { mesaj('Bu sayfa yalnızca yetkili bağlantıyla açılır.', 'hata'); return; }
+        if (UC.includes('__')) { mesaj('Liste hizmeti henüz etkinleştirilmemiştir.', 'hata'); return; }
+        if (suruyor) return;
+        suruyor = true;
+        if (gosterilen) guncel('Son güncelleme: ' + saat(gosterilen) + ' · yenileniyor…'); else yukleniyor();
+        try {
+          const y = await fetch(UC, { method: 'POST', mode: 'cors', redirect: 'follow', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify({ tur: 'veda-liste', anahtar: sakla }) });
+          const s = await y.json();
+          if (s && s.ok) { depoYaz(s); gosterilen = new Date().toISOString(); mesaj(''); goster(s); guncel('Güncellendi: ' + saat(gosterilen)); sonYenileme = Date.now(); }
+          else if (s && s.hata === 'yetki') { depoSil(); gosterilen = null; guncel(''); $('icerik').hidden = true; mesaj('Yetki yok. Bağlantıyı yetkili kişiden yeniden alın.', 'hata'); }
+          else if (gosterilen) guncel('Güncellenemedi; son güncelleme ' + saat(gosterilen));
+          else mesaj('Liste şu anda alınamadı. Biraz sonra yeniden deneyin.', 'hata');
+        } catch (_) {
+          if (gosterilen) guncel('Güncellenemedi; son güncelleme ' + saat(gosterilen));
+          else mesaj('Liste şu anda alınamadı. Bağlantınızı kontrol edin.', 'hata');
+        } finally { suruyor = false; }
+      };
+      $('yenile').addEventListener('click', yukle);
+      document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible' && sakla && Date.now() - sonYenileme > 60000) yukle(); });
+      const onb = sakla ? depoOku() : null;
+      if (onb) { gosterilen = onb.alindi; mesaj(''); goster(onb.veri); guncel('Son güncelleme: ' + saat(onb.alindi) + ' · yenileniyor…'); }
+      yukle();
+    })();
+  </script>
+</body>
+</html>
