@@ -336,6 +336,10 @@ Uygulama düzeni:
 - Taslak çeviriler öğrencilere görünür.
 - ihtida.ulucamii.be'yi taşırken DNS değişikliği gerekir.
 
+## Durum (10 Kasım 2026 gece): «Bilgi Yarışması» (/yarisma/) CANLI; bilgi kartlarında taslak etiketi kalktı
+
+- Duyurusuz yayımlandı; imam henüz gözden geçirmedi. Sınıfça tek ekran, tek ortak puan, hiçbir veri saklanmaz. 261 kartın hepsi «onayli» (etiket mekanizması gelecek taslaklar için durur). Kayıt: `docs/YAYIN-KAYITLARI.md` 10 Kasım gece (kapı parça parça koşuldu).
+
 ## Durum (10 Kasım 2026 akşam): «Kur'an Okuma» (/okuma/) ve «Abdest ve Namaz» (/ibadet/) CANLI
 
 - Duyurusuz yayımlandı; imam henüz gözden geçirmedi; okuma `/kilimim`'e bağlı değil. Kayıt: `docs/YAYIN-KAYITLARI.md` 10 Kasım akşam.
