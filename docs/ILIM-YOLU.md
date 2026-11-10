@@ -336,7 +336,17 @@ Uygulama düzeni:
 - Taslak çeviriler öğrencilere görünür.
 - ihtida.ulucamii.be'yi taşırken DNS değişikliği gerekir.
 
-## Durum (2 Kasım 2026 akşamüstü, dal `ilim-yolu`, yayın YOK)
+## Durum (10 Kasım 2026): İLK CANLI YAYIN YAPILDI
+
+- Canlı: 18 Cloud Function (`europe-west1`), Firestore kuralları (bayt eşit), TTL ilkeleri, ana site (hoca «İlim Yolu»
+  sekmesi) ve egitim.ulucamii.be (99/99 canlı denetim). Duyuru yapılmadı. Ayrıntı ve kanıtlar: `docs/YAYIN-KAYITLARI.md` 10 Kasım.
+- Uçtan uca hesap sınaması geçti (kayıt, kullanıcı adı, kart ilerlemesi, sunucudan geri gelme, uygulamadan silme); sınama hesabı
+  yönetici araçlarıyla tamamen silindi. `Fastly-Client-IP` işleve ulaşıyor ve istemci uyduramıyor.
+- Açık: Google ile giriş gerçek hesapla denenmedi; Apps Script v47 dağıtılmadı (e-postalar kuyrukta, gönderilmiyor); App Check
+  ertelendi; kartlar «taslak»; `/__/auth/handler` güvenlik başlığı taşımıyor; `ILIM_SIL_GERCEK` kapalı (hareketsiz hesap silme kuru).
+- Aşağıdaki bölüm 2 Kasım tarihli geçmiş durumdur («yayın YOK» artık geçerli değil).
+
+## Durum (2 Kasım 2026 akşamüstü, dal `ilim-yolu`; geçmiş)
 
 **Son durum — oturum kapanışı (2 Kas 2026):**
 - Commit `f41cce14` (dal `ilim-yolu`, yerel, push yok): Dilim 0 + Dilim 1 tamam; Dilim 2 verisi ve Dilim 3 ortak modülü.

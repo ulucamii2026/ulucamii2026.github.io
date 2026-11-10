@@ -4,6 +4,63 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 10 Kasım 2026 — İlim Yolu ilk canlı yayın: hesaplar, Ezber Kilimi, bilgi yolları (duyuru YOK)
+
+- Zaman: 10 Kasım 2026, Europe/Brussels (CET). Functions ≈ 11.00–11.10, kurallar 11.07, ana site push 11.07, Pages
+  (başarılı koşu) 11.38–11.41, egitim Hosting 11.50, canlı denetim ve duman testi 11.53–12.00. Dayanak: Rıdvan 10 Kasım
+  «Evet, yayınla»; duyuru yapılmadı. Blaze açık; yayın öncesi ayarlar (API'ler, token-creator rolü, yetkili alan adı, Google
+  sağlayıcısı, `ABONELIK_SIRRI`, TTL ilkeleri) önceden yapılmıştı.
+- **Durum: egitim.ulucamii.be CANLI ve doğrulandı; Cloud Functions ve Firestore kuralları CANLI; ana site (ulucamii.be) CANLI**
+  (aşağıdaki Pages notuna bak). Uygulama içi duyuru, e-posta ve WhatsApp gönderimi yapılmadı.
+- İçerik: birleşik dal `7f9587ff` (= origin/main `9751b2b1` + `7b74a9a9` + `f41cce14`; 257 dosya). Gruplar: `functions/` (13),
+  `firebase/firestore.rules`, `firebase.json`; `egitim/src` (82), `egitim/public` (23); `src/lib/ilim-yolu`, `src/data/ilim-yolu`
+  (261 kart), `src/scripts` (hoca «İlim Yolu» sekmesi), `src/content/sayfalar/*/gizlilik.md` (5 dil); testler (`tests/egitim`,
+  `tests/fonksiyonlar`, `tests/kurallar`, `tests/web`); `paylasilan/ogrenme-yolu`; `scripts/`; `docs/`. Sonradan eklenen
+  ayrı commit: `scripts/egitim-canli-denetim.mjs` beklentileri (aşağıda).
+- Cloud Functions (kod tabanı `ilim-yolu`, gen2, `europe-west1`, `maxInstances: 2`, Node 22): **18 işlev ACTIVE** —
+  `abonelikCik, bagKoduUret, cocukGiris, cocukHesabiAc, cocukOturumKapat, cocukSifreYenile, haftalikKuyruk, hareketsizTara,
+  hesabiBagla, hesabimiSil, hesapSilmeIptal, kartGiris, kartYenile, kullaniciAdiAl, ogrenciHesaplariListe, portalSilmeTetik,
+  saglik, silmeTara`. Cloud Scheduler (`Europe/Brussels`, ENABLED): `haftalikKuyruk` `0 * * * *`, `silmeTara` `0 3 * * *`,
+  `hareketsizTara` `0 4 1 * *`. İlk dağıtımda `portalSilmeTetik` Eventarc hizmet hesabı izni yayılmadığı için 400 verdi
+  («first time using 2nd gen»); aynı komut birkaç dakika sonra `--force` (yalnız artifact temizlik ilkesi, 1 gün) ile geçti.
+  Hareketsiz hesap silme KURU (`ILIM_SIL_GERCEK` kapalı).
+- Firestore: `npm run firebase:kurallar` → canlı kural kümesi `firebase/firestore.rules` ile aynı (REST ile okundu, bayt eşit,
+  sha256 `3fd8099b…`). TTL ilkeleri ACTIVE: `ipler.bitis`, `bagKodlari.bitis`, `epostaKuyrugu.bitis`, `silinenUidler.bitis`.
+  Dizin dağıtımı `--force` olmadan yapıldı; dosyada olmayan 4 alan geçersiz kılması (TTL) silinmedi.
+- Ana site: `git push origin ilim-yolu:main` ileri sarma (`9751b2b1..7f9587ff`). İlk Pages koşusu
+  [42796455354](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/42796455354) **failure**: `deploy` adımı
+  `syncing_files`'ta takılıp «Timeout reached» (iki deneme; artifact ≈ 802 MB, önceki başarılı koşuyla aynı boy; GitHub durumu
+  normal). Yeni koşu (`workflow_dispatch`) [42800097759](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/42800097759)
+  başka bir push (`4ab5aea3`, çarşamba programı) yüzünden concurrency ile iptal edildi; onun tetiklediği
+  [42800821619](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/42800821619) (`4ab5aea3`, içeriğimizi kapsar)
+  **success** (≈ 3 dk). Canlı: `/hoca/` yeni betik (bağlama kodu / İlim Yolu) içeriyor; `/hoca/`, `/tr/veli-portali/`, `/tr/`,
+  `/e/alphabet/` HTTP 200, başsız Playwright'ta CSP ihlali 0, konsol/sayfa hatası 0 (giriş yapılmadı). Bu denetim ayrıca
+  Pages tamamlanmadan ÖNCE de eski canlı kodla yapıldı (kurallar yeni, hoca/veli kodu eski iken): 200, hata 0.
+- egitim Hosting: `npm run egitim:yayinla` (astro check + derleme + `test:egitim` Playwright ≈ 800 test + `deploy --only
+  hosting:ulucamii-egitim`) temiz ağaçtan; **1936 dosya, release `1794307854401000`** (10 Kas 10:50:54Z, yayıncı dernek hesabı).
+  `npm run egitim:canli -- https://egitim.ulucamii.be`: ilk koşuda 96/99; üç fark bilinçli çıktı ve denetim betiği ayrı commit'te
+  güncellendi (`425a6cce`): site haritası 410 → 1795 adres (261 kart × 5 dil + yol sayfaları), manifest tema rengi `#F6EEDF`
+  (Kilim tasarımı), çalar düğmesi «Duraklatın» ve silme düğmesi «silin» (Türkçe «siz» hitabı). Sonra **99/99**.
+- Duman testi (başsız Chromium, `serviceWorkers: 'block'`, CSP ihlali 0, konsol hatası 0): beş dilde ana sayfa; `/tr/yollar/`,
+  `/tr/yollar/plan-ahlak/`, `/tr/ogren/ah-001/` (mini sınav), `/tr/calis/b-imanin-sartlari/`, `/tr/yollar/yerlestirme/`,
+  `/tr/hesap/giris/`, `/tr/hesap/kayit/`, `/k/`, `/tr/abonelik-cik/` (belirteçsiz açıklama) hepsi 200. `GET /api/abonelik-cik`
+  belirteçsiz 400; `POST /api/cocuk-giris` Origin'siz 403, bozuk gövde 400, sahte kullanıcı 401 (5xx yok); `GET /api/saglik` 200.
+  `/__/auth/handler` 200, `text/html`, `Cache-Control: max-age=1800`; **`X-Frame-Options`, `Content-Security-Policy`,
+  `X-Content-Type-Options`, `Referrer-Policy` YOK** (Hosting'in ayrılmış `/__/` yolu `firebase.json` başlıklarını almıyor; açık).
+- Uçtan uca hesap sınaması (örnek `@example.test` adresi): e-posta + şifre ile kayıt → kullanıcı adı seçimi → bir kart
+  «öğrendim» → sayfa yenileme (ilerleme duruyor) → temiz tarayıcıda girişle sunucudan ilerleme geliyor → hesap uygulamadan
+  silinmek üzere işaretlendi (30 gün bekleme, tarih gösterildi). Ardından yönetici araçlarıyla Auth kullanıcısı, `kullanicilar/<uid>`
+  ve alt belgeleri, `kullaniciAdlari`, `epostaKuyrugu`, `paylasimlar` silindi; geri okumada hiçbiri kalmadı (Auth 0, belgeler 404).
+  Sınama sırasında `gizli/giris/ipler` altında oluşan 1 sayaç belgesi de silindi.
+- İstemci IP başlığı: `POST /api/cocuk-giris` üç kez (düz, sahte `Fastly-Client-IP`, sahte `X-Forwarded-For` sol girdileri)
+  → hepsi **aynı** `gizli/giris/ipler` belgesine yazdı (sayaç 1, 2, 3): Hosting `Fastly-Client-IP`'yi kendisi yazıyor ve
+  işlev onu okuyor; istemci uyduramıyor. Hata günlüğünde yalnız bu sınamanın bozuk gövdesi ve dağıtım anındaki geçici hatalar var.
+- Açık sınırlar: Google ile giriş gerçek bir Google hesabıyla DENENMEDİ (yayın sonrası tek deneme gerekiyor); Apps Script v47
+  DAĞITILMADI, yani haftalık/hareketsiz e-postalar kuyruğa yazılır ama gönderilmez; App Check ertelendi; kartlar hâlâ «taslak»
+  etiketli ve çeviriler taslak; `/__/auth/*` başlıkları yukarıdaki gibi; `ILIM_SIL_GERCEK` kapalı. Pages ilk koşusu iki kez
+  zaman aşımına uğradı (GitHub tarafı geçici görünüyor); tekrarlarsa artifact boyutu (≈ 800 MB) incelenmeli. Ana site koşusu
+  başka bir push tarafından iptal edilebilir (`concurrency: pages`, `cancel-in-progress`).
+
 ## 7 Kasım 2026 (öğleden sonra) — «Neler biliyorum?» telefonla dinleyerek kayıt: liste, yapışkan çubuk, hata iletileri
 
 - Zaman: 7 Kasım 2026 12.54 push · Pages run 42370161750 başarılı (12.54–12.57) · canlı doğrulama 12.58, Europe/Brussels
