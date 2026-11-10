@@ -1,0 +1,1391 @@
+{
+ "surum": 1,
+ "taban": "/media/ses/okuma/yeni",
+ "kaynak": "Diyanet Elifbâ portalı (kuran.diyanet.gov.tr/elifba, webdosya.diyanet.gov.tr); doğrulama: docs/okuma-metin-dogrulama.json",
+ "tecvid": [
+  {
+   "grup": "tv-zamir",
+   "ogeler": [
+    {
+     "ar": "فَلَمَّا رَاَتْهُ حَسِبَتْهُ",
+     "ses": "/media/ses/okuma/yeni/zamir/uygulama/1.mp3"
+    },
+    {
+     "ar": "مَعَهُ السَّعْىَ",
+     "ses": "/media/ses/okuma/yeni/zamir/uygulama/2.mp3"
+    },
+    {
+     "ar": "ف۪ى هٰذِهِ الدُّنْيَا",
+     "ses": "/media/ses/okuma/yeni/zamir/uygulama/3.mp3"
+    },
+    {
+     "ar": "قَدَّمْتُمُوهُ لَنَا",
+     "ses": "/media/ses/okuma/yeni/zamir/uygulama/4.mp3"
+    },
+    {
+     "ar": "اِلَيْهِ يَزِفُّونَ",
+     "ses": "/media/ses/okuma/yeni/zamir/uygulama/5.mp3"
+    },
+    {
+     "ar": "فَوَكَزَهُ مُوسٰى",
+     "ses": "/media/ses/okuma/yeni/zamir/uygulama/6.mp3"
+    },
+    {
+     "ar": "اِتَّخَذَ اِلٰهَهُ هَوٰيهُ",
+     "ses": "/media/ses/okuma/yeni/zamir/uygulama/8.mp3"
+    },
+    {
+     "ar": "فَالْتَقَمَهُ الْحُوتُ",
+     "ses": "/media/ses/okuma/yeni/zamir/uygulama/9.mp3"
+    },
+    {
+     "ar": "اِنَّهُ عَلٰى رَجْعِه۪ لَقَادِرٌ",
+     "ses": "/media/ses/okuma/yeni/zamir/uygulama/10.mp3"
+    }
+   ]
+  },
+  {
+   "grup": "tv-ra",
+   "ogeler": [
+    {
+     "ar": "فَشٰرِبُونَ شُرْبَ الْه۪يمِ",
+     "ses": "/media/ses/okuma/yeni/ra-harfi/uygulama/1.mp3"
+    },
+    {
+     "ar": "فَكَيْفَ كَانَ عَذَاب۪ى وَنُذُرِ",
+     "ses": "/media/ses/okuma/yeni/ra-harfi/uygulama/2.mp3"
+    },
+    {
+     "ar": "وَمَاْوٰيهُمُ النَّارُ وَلَبِئْسَ الْمَص۪يرُ",
+     "ses": "/media/ses/okuma/yeni/ra-harfi/uygulama/3.mp3"
+    },
+    {
+     "ar": "يَقُولُ الْكٰفِرُونَ هٰذَا يَوْمٌ عَسِرٌ",
+     "ses": "/media/ses/okuma/yeni/ra-harfi/uygulama/4.mp3"
+    },
+    {
+     "ar": "وَلِلَّذ۪ينَ كَفَرُوا بِرَبِّهِمْ عَذَابُ جَهَنَّمَ",
+     "ses": "/media/ses/okuma/yeni/ra-harfi/uygulama/5.mp3"
+    }
+   ]
+  },
+  {
+   "grup": "tv-idgam-bila",
+   "ogeler": [
+    {
+     "ar": "مِ‍‍‍نْ رَبِّهِمْ",
+     "v": [
+      [
+       4,
+       7
+      ],
+      [
+       8,
+       10
+      ]
+     ],
+     "e": "yazilis",
+     "ses": "/media/ses/okuma/yeni/idgami-bila-gunne/idgami-bila-gunne/1.mp3"
+    },
+    {
+     "ar": "مِ‍‍رَّبِّهِمْ",
+     "v": [
+      [
+       4,
+       7
+      ]
+     ],
+     "e": "okunus",
+     "ses": "/media/ses/okuma/yeni/idgami-bila-gunne/idgami-bila-gunne/2.mp3"
+    },
+    {
+     "ar": "مَثَ‍‍لًا رَجُلَيْنِ",
+     "v": [
+      [
+       6,
+       9
+      ],
+      [
+       10,
+       12
+      ]
+     ],
+     "e": "yazilis",
+     "ses": "/media/ses/okuma/yeni/idgami-bila-gunne/idgami-bila-gunne/3.mp3"
+    },
+    {
+     "ar": "مَثَلَ‍‍رَّجُلَيْنِ",
+     "v": [
+      [
+       8,
+       11
+      ]
+     ],
+     "e": "okunus",
+     "ses": "/media/ses/okuma/yeni/idgami-bila-gunne/idgami-bila-gunne/4.mp3"
+    },
+    {
+     "ar": "غَفُورٌ رَح۪يمٌ",
+     "v": [
+      [
+       5,
+       7
+      ],
+      [
+       8,
+       10
+      ]
+     ],
+     "e": "yazilis",
+     "ses": "/media/ses/okuma/yeni/idgami-bila-gunne/idgami-bila-gunne/5.mp3"
+    },
+    {
+     "ar": "غَفُورُ رَّح۪يمٌ",
+     "v": [
+      [
+       8,
+       11
+      ]
+     ],
+     "e": "okunus",
+     "ses": "/media/ses/okuma/yeni/idgami-bila-gunne/idgami-bila-gunne/6.mp3"
+    },
+    {
+     "ar": "فَاِنْ لَ‍مْ تَفْعَلُوا",
+     "v": [
+      [
+       4,
+       6
+      ],
+      [
+       7,
+       9
+      ]
+     ],
+     "e": "yazilis",
+     "ses": "/media/ses/okuma/yeni/idgami-bila-gunne/idgami-bila-gunne/7.mp3"
+    },
+    {
+     "ar": "فَاِلَّ‍مْ تَفْعَلُوا",
+     "v": [
+      [
+       4,
+       7
+      ]
+     ],
+     "e": "okunus",
+     "ses": "/media/ses/okuma/yeni/idgami-bila-gunne/idgami-bila-gunne/8.mp3"
+    },
+    {
+     "ar": "هُ‍‍دًى لِ‍لْمُتَّق۪ينَ",
+     "v": [
+      [
+       4,
+       7
+      ],
+      [
+       8,
+       10
+      ]
+     ],
+     "e": "yazilis",
+     "ses": "/media/ses/okuma/yeni/idgami-bila-gunne/idgami-bila-gunne/9.mp3"
+    },
+    {
+     "ar": "هُدَلِّ‍لْمُتَّق۪ينَ",
+     "v": [
+      [
+       4,
+       7
+      ]
+     ],
+     "e": "okunus",
+     "ses": "/media/ses/okuma/yeni/idgami-bila-gunne/idgami-bila-gunne/10.mp3"
+    },
+    {
+     "ar": "ذٰلِكُمْ خَيْ‍‍رٌ لَ‍كُمْ",
+     "v": [
+      [
+       15,
+       17
+      ],
+      [
+       18,
+       20
+      ]
+     ],
+     "e": "yazilis",
+     "ses": "/media/ses/okuma/yeni/idgami-bila-gunne/idgami-bila-gunne/11.mp3"
+    },
+    {
+     "ar": "ذٰلِكُمْ خَيْرُ لَّ‍كُمْ",
+     "v": [
+      [
+       16,
+       19
+      ]
+     ],
+     "e": "okunus",
+     "ses": "/media/ses/okuma/yeni/idgami-bila-gunne/idgami-bila-gunne/12.mp3"
+    }
+   ]
+  },
+  {
+   "grup": "tv-idgam-misleyn",
+   "ogeler": [
+    {
+     "ar": "اِذْ ذَهَبَ",
+     "v": [
+      [
+       2,
+       4
+      ],
+      [
+       5,
+       7
+      ]
+     ],
+     "e": "yazilis",
+     "ses": "/media/ses/okuma/yeni/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/1.mp3"
+    },
+    {
+     "ar": "اِذَّهَبَ",
+     "v": [
+      [
+       2,
+       5
+      ]
+     ],
+     "e": "okunus",
+     "ses": "/media/ses/okuma/yeni/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/2.mp3"
+    },
+    {
+     "ar": "وَقَ‍‍‍دْدَخَلُوا",
+     "v": [
+      [
+       6,
+       9
+      ],
+      [
+       9,
+       11
+      ]
+     ],
+     "e": "yazilis",
+     "ses": "/media/ses/okuma/yeni/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/3.mp3"
+    },
+    {
+     "ar": "وَقَ‍‍‍دَّخَلُوا",
+     "v": [
+      [
+       6,
+       10
+      ]
+     ],
+     "e": "okunus",
+     "ses": "/media/ses/okuma/yeni/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/4.mp3"
+    },
+    {
+     "ar": "وَاذْكُ‍‍‍رْرَبَّكَ",
+     "v": [
+      [
+       9,
+       12
+      ],
+      [
+       12,
+       14
+      ]
+     ],
+     "e": "yazilis",
+     "ses": "/media/ses/okuma/yeni/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/5.mp3"
+    },
+    {
+     "ar": "وَاذْكُ‍‍‍رَّبَّكَ",
+     "v": [
+      [
+       9,
+       13
+      ]
+     ],
+     "e": "okunus",
+     "ses": "/media/ses/okuma/yeni/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/6.mp3"
+    },
+    {
+     "ar": "لَمْ تَسْتَطِ‍‍‍عْ عَ‍‍لَيْهِ",
+     "v": [
+      [
+       15,
+       18
+      ],
+      [
+       19,
+       22
+      ]
+     ],
+     "e": "yazilis",
+     "ses": "/media/ses/okuma/yeni/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/7.mp3"
+    },
+    {
+     "ar": "لَمْ تَسْتَطِ‍‍‍عَّ‍‍لَيْهِ",
+     "v": [
+      [
+       15,
+       20
+      ]
+     ],
+     "e": "okunus",
+     "ses": "/media/ses/okuma/yeni/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/8.mp3"
+    },
+    {
+     "ar": "فَمَا رَبِحَ‍‍‍تْتِ‍‍جٰرَتُهُمْ",
+     "v": [
+      [
+       14,
+       17
+      ],
+      [
+       17,
+       20
+      ]
+     ],
+     "e": "yazilis",
+     "ses": "/media/ses/okuma/yeni/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/9.mp3"
+    },
+    {
+     "ar": "فَمَا رَبِحَ‍‍‍تِّ‍‍جٰرَتُهُمْ",
+     "v": [
+      [
+       14,
+       19
+      ]
+     ],
+     "e": "okunus",
+     "ses": "/media/ses/okuma/yeni/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/10.mp3"
+    }
+   ]
+  },
+  {
+   "grup": "tv-idgam-mutekaribeyn",
+   "ogeler": [
+    {
+     "ar": "بَ‍‍‍لْ رَفَعَهُ اللّٰهُ",
+     "v": [
+      [
+       4,
+       7
+      ],
+      [
+       8,
+       10
+      ]
+     ],
+     "e": "yazilis",
+     "ses": "/media/ses/okuma/yeni/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutekaribeyn/1.mp3"
+    },
+    {
+     "ar": "بَ‍‍‍رَّفَعَهُ اللّٰهُ",
+     "v": [
+      [
+       4,
+       8
+      ]
+     ],
+     "e": "okunus",
+     "ses": "/media/ses/okuma/yeni/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutekaribeyn/2.mp3"
+    },
+    {
+     "ar": "فَقُ‍‍‍لْرَبُّكُمْ",
+     "v": [
+      [
+       6,
+       9
+      ],
+      [
+       9,
+       11
+      ]
+     ],
+     "e": "yazilis",
+     "ses": "/media/ses/okuma/yeni/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutekaribeyn/3.mp3"
+    },
+    {
+     "ar": "فَقُ‍‍‍رَّبُّكُمْ",
+     "v": [
+      [
+       6,
+       10
+      ]
+     ],
+     "e": "okunus",
+     "ses": "/media/ses/okuma/yeni/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutekaribeyn/4.mp3"
+    },
+    {
+     "ar": "بَ‍‍‍لْ رَبُّكُمْ",
+     "v": [
+      [
+       4,
+       7
+      ],
+      [
+       8,
+       10
+      ]
+     ],
+     "e": "yazilis",
+     "ses": "/media/ses/okuma/yeni/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutekaribeyn/5.mp3"
+    },
+    {
+     "ar": "بَ‍‍‍رَّبُّكُمْ",
+     "v": [
+      [
+       4,
+       8
+      ]
+     ],
+     "e": "okunus",
+     "ses": "/media/ses/okuma/yeni/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutekaribeyn/6.mp3"
+    },
+    {
+     "ar": "وَقُ‍‍‍لْ رَبِّ",
+     "v": [
+      [
+       6,
+       9
+      ],
+      [
+       10,
+       12
+      ]
+     ],
+     "e": "yazilis",
+     "ses": "/media/ses/okuma/yeni/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutekaribeyn/7.mp3"
+    },
+    {
+     "ar": "وَقُ‍‍‍رَّبِّ",
+     "v": [
+      [
+       6,
+       10
+      ]
+     ],
+     "e": "okunus",
+     "ses": "/media/ses/okuma/yeni/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutekaribeyn/8.mp3"
+    }
+   ]
+  },
+  {
+   "grup": "tv-idgam-mutecaniseyn",
+   "ogeler": [
+    {
+     "ar": "وَدَّتْطَۤ‍‍ائِفَةٌ",
+     "v": [
+      [
+       5,
+       7
+      ],
+      [
+       7,
+       11
+      ]
+     ],
+     "e": "yazilis",
+     "ses": "/media/ses/okuma/yeni/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/1.mp3"
+    },
+    {
+     "ar": "وَدَّطَّۤ‍‍ائِفَةٌ",
+     "v": [
+      [
+       5,
+       10
+      ]
+     ],
+     "e": "okunus",
+     "ses": "/media/ses/okuma/yeni/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/2.mp3"
+    },
+    {
+     "ar": "اَثْقَلَ‍‍‍تْدَ عَوَااللّٰهَ",
+     "v": [
+      [
+       10,
+       13
+      ],
+      [
+       13,
+       15
+      ]
+     ],
+     "e": "yazilis",
+     "ses": "/media/ses/okuma/yeni/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/3.mp3"
+    },
+    {
+     "ar": "اَثْقَلَ‍‍‍دَّ عَوَا اللّٰهَ",
+     "v": [
+      [
+       10,
+       14
+      ]
+     ],
+     "e": "okunus",
+     "ses": "/media/ses/okuma/yeni/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/4.mp3"
+    },
+    {
+     "ar": "قَ‍‍‍دْتَ‍‍بَيَّنَ الرُّشْدُ",
+     "v": [
+      [
+       4,
+       7
+      ],
+      [
+       7,
+       10
+      ]
+     ],
+     "e": "yazilis",
+     "ses": "/media/ses/okuma/yeni/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/5.mp3"
+    },
+    {
+     "ar": "قَ‍‍‍تَّ‍‍بَيَّنَ الرُّشْدُ",
+     "v": [
+      [
+       4,
+       9
+      ]
+     ],
+     "e": "okunus",
+     "ses": "/media/ses/okuma/yeni/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/6.mp3"
+    },
+    {
+     "ar": "اِذْ هَمَّ‍‍‍تْطَۤ‍‍ائِفَتَانِ",
+     "v": [
+      [
+       12,
+       15
+      ],
+      [
+       15,
+       19
+      ]
+     ],
+     "e": "yazilis",
+     "ses": "/media/ses/okuma/yeni/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/7.mp3"
+    },
+    {
+     "ar": "اِذْ هَمَّ‍‍‍طَّۤ‍‍ائِفَتَانِ",
+     "v": [
+      [
+       12,
+       18
+      ]
+     ],
+     "e": "okunus",
+     "ses": "/media/ses/okuma/yeni/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/8.mp3"
+    },
+    {
+     "ar": "اِذْظَ‍‍لَمُۤوا اَنْفُسَهُمْ",
+     "v": [
+      [
+       2,
+       4
+      ],
+      [
+       4,
+       7
+      ]
+     ],
+     "e": "yazilis",
+     "ses": "/media/ses/okuma/yeni/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/9.mp3"
+    },
+    {
+     "ar": "اِظَّ‍‍لَمُۤوا اَنْفُسَهُمْ",
+     "v": [
+      [
+       2,
+       6
+      ]
+     ],
+     "e": "okunus",
+     "ses": "/media/ses/okuma/yeni/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/10.mp3"
+    },
+    {
+     "ar": "لَئِنْ بَسَ‍‍‍طْتَ اِلَىَّ يَدَكَ",
+     "v": [
+      [
+       13,
+       18
+      ]
+     ],
+     "ses": "/media/ses/okuma/yeni/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/11.mp3"
+    },
+    {
+     "ar": "مَا فَرَّطْتُ‍‍مْ ف۪ى يُوسُفَ",
+     "v": [
+      [
+       9,
+       14
+      ]
+     ],
+     "ses": "/media/ses/okuma/yeni/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/12.mp3"
+    },
+    {
+     "ar": "فَقَالَ اَحَ‍‍‍طْتُ بِمَا لَمْ",
+     "v": [
+      [
+       14,
+       19
+      ]
+     ],
+     "ses": "/media/ses/okuma/yeni/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/13.mp3"
+    }
+   ]
+  },
+  {
+   "grup": "tv-med-muttasil",
+   "ogeler": [
+    {
+     "ar": "وَسَٓاءَتْ مَص۪يرًا",
+     "v": [
+      [
+       2,
+       8
+      ]
+     ],
+     "ses": "/media/ses/okuma/yeni/meddi-tabii-muttasil-munfasil/meddi-muttasil/1.mp3"
+    },
+    {
+     "ar": "طَٓائِفَةٌ اُخْرٰى",
+     "v": [
+      [
+       0,
+       6
+      ]
+     ],
+     "ses": "/media/ses/okuma/yeni/meddi-tabii-muttasil-munfasil/meddi-muttasil/2.mp3"
+    },
+    {
+     "ar": "مَا وَرَٓاءَ ذٰلِكُمْ",
+     "v": [
+      [
+       6,
+       12
+      ]
+     ],
+     "ses": "/media/ses/okuma/yeni/meddi-tabii-muttasil-munfasil/meddi-muttasil/3.mp3"
+    },
+    {
+     "ar": "سُٓوءَالْعَذَابِ",
+     "v": [
+      [
+       0,
+       6
+      ]
+     ],
+     "ses": "/media/ses/okuma/yeni/meddi-tabii-muttasil-munfasil/meddi-muttasil/4.mp3"
+    },
+    {
+     "ar": "لَتَنُٓوأُ بِالْعُصْبَةِ",
+     "v": [
+      [
+       4,
+       10
+      ]
+     ],
+     "ses": "/media/ses/okuma/yeni/meddi-tabii-muttasil-munfasil/meddi-muttasil/5.mp3"
+    },
+    {
+     "ar": "اَنْ تَبُٓوأَبِاِثْم۪ى",
+     "v": [
+      [
+       7,
+       13
+      ]
+     ],
+     "ses": "/media/ses/okuma/yeni/meddi-tabii-muttasil-munfasil/meddi-muttasil/6.mp3"
+    },
+    {
+     "ar": "س۪ٓئَبِهِمْ",
+     "v": [
+      [
+       0,
+       5
+      ]
+     ],
+     "ses": "/media/ses/okuma/yeni/meddi-tabii-muttasil-munfasil/meddi-muttasil/7.mp3"
+    },
+    {
+     "ar": "حَتّٰى تَف۪ۤئَ",
+     "v": [
+      [
+       9,
+       14
+      ]
+     ],
+     "ses": "/media/ses/okuma/yeni/meddi-tabii-muttasil-munfasil/meddi-muttasil/8.mp3"
+    },
+    {
+     "ar": "زَيْتُهَا يُض۪ٓئُ",
+     "v": [
+      [
+       12,
+       17
+      ]
+     ],
+     "ses": "/media/ses/okuma/yeni/meddi-tabii-muttasil-munfasil/meddi-muttasil/9.mp3"
+    }
+   ]
+  },
+  {
+   "grup": "tv-med-lazim",
+   "ogeler": [
+    {
+     "ar": "وَالصّٰٓفّٰتِ",
+     "v": [
+      [
+       4,
+       11
+      ]
+     ],
+     "ses": "/media/ses/okuma/yeni/meddi-lazim-ariz-lin/meddi-lazim/1.mp3"
+    },
+    {
+     "ar": "مُدْهَٓامَّتَانِ",
+     "v": [
+      [
+       4,
+       11
+      ]
+     ],
+     "ses": "/media/ses/okuma/yeni/meddi-lazim-ariz-lin/meddi-lazim/2.mp3"
+    },
+    {
+     "ar": "اَلْحَۤاقَّةُ",
+     "v": [
+      [
+       4,
+       11
+      ]
+     ],
+     "ses": "/media/ses/okuma/yeni/meddi-lazim-ariz-lin/meddi-lazim/4.mp3"
+    },
+    {
+     "ar": "تَاْمُرُٓونّ۪ى",
+     "v": [
+      [
+       6,
+       14
+      ]
+     ],
+     "ses": "/media/ses/okuma/yeni/meddi-lazim-ariz-lin/meddi-lazim/5.mp3"
+    },
+    {
+     "ar": "جَۤاءَتِ الصَّۤاخَّةُ",
+     "v": [
+      [
+       11,
+       19
+      ]
+     ],
+     "ses": "/media/ses/okuma/yeni/meddi-lazim-ariz-lin/meddi-lazim/6.mp3"
+    },
+    {
+     "ar": "مِنْ قَبْلِ اَنْ يَـتَمَۤاسَّا  ۝",
+     "ses": "/media/ses/okuma/yeni/meddi-lazim-ariz-lin/uygulama/1.mp3"
+    },
+    {
+     "ar": "وَلَيْسَ بِضَۤارِّهِمْ  ۝",
+     "ses": "/media/ses/okuma/yeni/meddi-lazim-ariz-lin/uygulama/2.mp3"
+    },
+    {
+     "ar": "يُوَۤادُّونَ مَنْ حَۤادَّ اللّٰهَ  ۝",
+     "ses": "/media/ses/okuma/yeni/meddi-lazim-ariz-lin/uygulama/3.mp3"
+    },
+    {
+     "ar": "وَمَنْ يُشَۤاقِّ اللّٰهَ  ۝",
+     "ses": "/media/ses/okuma/yeni/meddi-lazim-ariz-lin/uygulama/4.mp3"
+    }
+   ]
+  },
+  {
+   "grup": "tv-hurufu",
+   "ogeler": [
+    {
+     "ar": "الٓمٓ",
+     "e": "yazilis",
+     "ses": "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/1.mp3"
+    },
+    {
+     "ar": "اَلِفْ لَامّ۪يمْ",
+     "e": "okunus",
+     "ses": "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/2.mp3"
+    },
+    {
+     "ar": "الٓمٓصٓ",
+     "e": "yazilis",
+     "ses": "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/4.mp3"
+    },
+    {
+     "ar": "اَلِفْ لَامّ۪يمْ صَادْ",
+     "e": "okunus",
+     "ses": "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/5.mp3"
+    },
+    {
+     "ar": "الٓرٰ",
+     "e": "yazilis",
+     "ses": "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/7.mp3"
+    },
+    {
+     "ar": "اَلِفْ لَامْ رَا",
+     "e": "okunus",
+     "ses": "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/8.mp3"
+    },
+    {
+     "ar": "الٓمٓرٰ",
+     "e": "yazilis",
+     "ses": "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/10.mp3"
+    },
+    {
+     "ar": "اَلِفْ لَامّ۪يمْ رَا",
+     "e": "okunus",
+     "ses": "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/11.mp3"
+    },
+    {
+     "ar": "كٓهٰيٰعٓصٓ",
+     "e": "yazilis",
+     "ses": "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/13.mp3"
+    },
+    {
+     "ar": "كَافْ هَا يَا عَيْنْ صَادْ",
+     "e": "okunus",
+     "ses": "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/14.mp3"
+    },
+    {
+     "ar": "طٰهٰ",
+     "e": "yazilis",
+     "ses": "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/16.mp3"
+    },
+    {
+     "ar": "طَاهَا",
+     "e": "okunus",
+     "ses": "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/17.mp3"
+    },
+    {
+     "ar": "طٰسٓمٓ",
+     "e": "yazilis",
+     "ses": "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/19.mp3"
+    },
+    {
+     "ar": "طَاسِيمّ۪يمْ",
+     "e": "okunus",
+     "ses": "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/20.mp3"
+    },
+    {
+     "ar": "طٰسٓ",
+     "e": "yazilis",
+     "ses": "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/22.mp3"
+    },
+    {
+     "ar": "طَاسِينْ",
+     "e": "okunus",
+     "ses": "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/23.mp3"
+    },
+    {
+     "ar": "طٰسٓ",
+     "e": "yazilis",
+     "ses": "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/25.mp3"
+    },
+    {
+     "ar": "طَاس۪ينْ",
+     "e": "okunus",
+     "ses": "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/26.mp3"
+    },
+    {
+     "ar": "يٰسٓ",
+     "e": "yazilis",
+     "ses": "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/28.mp3"
+    },
+    {
+     "ar": "يَاس۪ينْ",
+     "e": "okunus",
+     "ses": "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/29.mp3"
+    },
+    {
+     "ar": "صٓ",
+     "e": "yazilis",
+     "ses": "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/31.mp3"
+    },
+    {
+     "ar": "صَادْ",
+     "e": "okunus",
+     "ses": "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/32.mp3"
+    },
+    {
+     "ar": "حٰمٓ",
+     "e": "yazilis",
+     "ses": "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/34.mp3"
+    },
+    {
+     "ar": "حَام۪يمْ",
+     "e": "okunus",
+     "ses": "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/35.mp3"
+    },
+    {
+     "ar": "عٓسٓقٓ",
+     "e": "yazilis",
+     "ses": "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/37.mp3"
+    },
+    {
+     "ar": "عَيْنْ س۪ينْ قَافْ",
+     "e": "okunus",
+     "ses": "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/38.mp3"
+    },
+    {
+     "ar": "قٓ",
+     "e": "yazilis",
+     "ses": "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/40.mp3"
+    },
+    {
+     "ar": "قَافْ",
+     "e": "okunus",
+     "ses": "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/41.mp3"
+    },
+    {
+     "ar": "نٓ",
+     "e": "yazilis",
+     "ses": "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/43.mp3"
+    },
+    {
+     "ar": "نُونْ",
+     "e": "okunus",
+     "ses": "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/44.mp3"
+    }
+   ]
+  }
+ ],
+ "ayetler": [
+  {
+   "grup": "bakara-1-5",
+   "ogeler": [
+    {
+     "ar": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّح۪يمِ",
+     "s": "bakara-1-5",
+     "e": "besmele",
+     "ses": "/media/ses/okuma/yeni/uygulama/bakara-suresi/besmele.mp3"
+    },
+    {
+     "ar": "الٓمٓۚ",
+     "s": "bakara-1-5",
+     "n": 1,
+     "ses": "/media/ses/okuma/yeni/uygulama/bakara-suresi/bakara_suresi_1.mp3"
+    },
+    {
+     "ar": "ذٰلِكَ الْكِتَابُ لَا رَيْبَۚۛ ف۪يهِۚۛ هُدًى لِلْمُتَّق۪ينَۙ",
+     "s": "bakara-1-5",
+     "n": 2,
+     "ses": "/media/ses/okuma/yeni/uygulama/bakara-suresi/bakara_suresi_2.mp3"
+    },
+    {
+     "ar": "اَلَّذ۪ينَ يُؤْمِنُونَ بِالْغَيْبِ وَيُق۪يمُونَ الصَّلٰوةَ وَمِمَّا رَزَقْنَاهُمْ يُنْفِقُونَۙ",
+     "s": "bakara-1-5",
+     "n": 3,
+     "ses": "/media/ses/okuma/yeni/uygulama/bakara-suresi/bakara_suresi_3.mp3"
+    },
+    {
+     "ar": "وَالَّذ۪ينَ يُؤْمِنُونَ بِمَٓا اُنْزِلَ اِلَيْكَ وَمَٓا اُنْزِلَ مِنْ قَبْلِكَۚ وَبِالْاٰخِرَةِ هُمْ يُوقِنُونَۜ",
+     "s": "bakara-1-5",
+     "n": 4,
+     "ses": "/media/ses/okuma/yeni/uygulama/bakara-suresi/bakara_suresi_4.mp3"
+    },
+    {
+     "ar": "اُو۬لٰٓئِكَ عَلٰى هُدًى مِنْ رَبِّهِمْ وَاُو۬لٰٓئِكَ هُمُ الْمُفْلِحُونَ",
+     "s": "bakara-1-5",
+     "n": 5,
+     "ses": "/media/ses/okuma/yeni/uygulama/bakara-suresi/bakara_suresi_5.mp3"
+    }
+   ]
+  },
+  {
+   "grup": "s-ayetel-kursi",
+   "ogeler": [
+    {
+     "ar": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّح۪يمِ",
+     "s": "s-ayetel-kursi",
+     "e": "besmele",
+     "ses": "/media/ses/okuma/yeni/uygulama/ayetel-kursi/besmele.mp3"
+    },
+    {
+     "ar": "اَللّٰهُ لَٓا اِلٰهَ اِلَّا هُوَۚ اَلْحَيُّ الْقَيُّومُۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌۜ لَهُ مَا فِي السَّمٰوَاتِ وَمَا فِي الْاَرْضِۜ مَنْ ذَا الَّذ۪ي يَشْفَعُ عِنْدَهُٓ اِلَّا بِاِذْنِه۪ۜ يَعْلَمُ مَا بَيْنَ اَيْد۪يهِمْ وَمَا خَلْفَهُمْۚ وَلَا يُح۪يطُونَ بِشَيْءٍ مِنْ عِلْمِه۪ٓ اِلَّا بِمَا شَٓاءَۚ وَسِعَ كُرْسِيُّهُ السَّمٰوَاتِ وَالْاَرْضَۚ وَلَا يَؤُ۫دُهُ حِفْظُهُمَاۚ وَهُوَ الْعَلِيُّ الْعَظ۪يمُ",
+     "s": "s-ayetel-kursi",
+     "n": 255,
+     "ses": "/media/ses/okuma/yeni/uygulama/ayetel-kursi/ayetel_kursi_1.mp3"
+    }
+   ]
+  },
+  {
+   "grup": "s-bakara-285-286",
+   "ogeler": [
+    {
+     "ar": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّح۪يمِ",
+     "s": "s-bakara-285-286",
+     "e": "besmele",
+     "ses": "/media/ses/okuma/yeni/uygulama/bakara-suresi-285-286/besmele.mp3"
+    },
+    {
+     "ar": "ءَامَنَ الرَّسُولُ بِمَٓا اُنْزِلَ اِلَيْهِ مِنْ رَبِّه۪ وَالْمُؤْمِنُونَۜ كُلٌّ ءَامَنَ بِاللّٰهِ وَمَلٰٓئِكَتِه۪ وَكُتُبِه۪ وَرُسُلِه۪ۜ لَا نُفَرِّقُ بَيْنَ اَحَدٍ مِنْ رُسُلِه۪۠ وَقَالُوا سَمِعْنَا وَاَطَعْنَا غُفْرَانَكَ رَبَّنَا وَاِلَيْكَ الْمَص۪يرُ",
+     "s": "s-bakara-285-286",
+     "n": 285,
+     "ses": "/media/ses/okuma/yeni/uygulama/bakara-suresi-285-286/bakara_285_286_1.mp3"
+    },
+    {
+     "ar": "لَا يُكَلِّفُ اللّٰهُ نَفْساً اِلَّا وُسْعَهَاۜ لَهَا مَا كَسَبَتْ وَعَلَيْهَا مَا اكْتَسَبَتْۜ رَبَّنَا لَا تُؤَاخِذْنَٓا اِنْ نَس۪ينَٓا اَوْ اَخْطَأْنَاۚ رَبَّنَا وَلَا تَحْمِلْ عَلَيْنَٓا اِصْراً كَمَا حَمَلْتَهُ عَلَى الَّذ۪ينَ مِنْ قَبْلِنَاۚ رَبَّنَا وَلَا تُحَمِّلْنَا مَا لَا طَاقَةَ لَنَا بِه۪ۚ وَاعْفُ عَنَّا۠ وَاغْفِرْ لَنَا۠ وَارْحَمْنَا۠ اَنْتَ مَوْلٰينَا فَانْصُرْنَا عَلَى الْقَوْمِ الْكَافِر۪ينَ",
+     "s": "s-bakara-285-286",
+     "n": 286,
+     "ses": "/media/ses/okuma/yeni/uygulama/bakara-suresi-285-286/bakara_285_286_2.mp3"
+    }
+   ]
+  },
+  {
+   "grup": "s-hasr-22-24",
+   "ogeler": [
+    {
+     "ar": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّح۪يمِ",
+     "s": "s-hasr-22-24",
+     "e": "besmele",
+     "ses": "/media/ses/okuma/yeni/uygulama/hasr-suresi/besmele.mp3"
+    },
+    {
+     "ar": "هُوَ اللّٰهُ الَّذ۪ى لَٓا اِلٰهَ اِلَّا هُوَۚ عٰلِمُ الْغَيْبِ وَالشَّهٰدَةِۚ هُوَ الرَّحْمٰنُ الرَّح۪يمُ",
+     "s": "s-hasr-22-24",
+     "n": 22,
+     "ses": "/media/ses/okuma/yeni/uygulama/hasr-suresi/hasr_suresi_1.mp3"
+    },
+    {
+     "ar": "هُوَ اللّٰهُ الَّذ۪ى لَٓا اِلٰهَ اِلَّا هُوَۚ اَلْمَلِكُ الْقُدُّوسُ السَّلٰمُ الْمُؤْمِنُ الْمُهَيْمِنُ الْعَز۪يزُ الْجَبَّارُ الْمُتَكَبِّرُۜ سُبْحٰنَ اللّٰهِ عَمَّا يُشْرِكُونَ",
+     "s": "s-hasr-22-24",
+     "n": 23,
+     "ses": "/media/ses/okuma/yeni/uygulama/hasr-suresi/hasr_suresi_2.mp3"
+    },
+    {
+     "ar": "هُوَ اللّٰهُ الْخَالِقُ الْبَارِئُ الْمُصَوِّرُ لَهُ الْاَسْمَٓاءُ الْحُسْنٰىۜ يُسَبِّـحُ لَهُ مَا فِي السَّمٰوَاتِ وَالْاَرْضِۚ وَهُوَ الْعَز۪يزُ الْحَك۪يمُ",
+     "s": "s-hasr-22-24",
+     "n": 24,
+     "ses": "/media/ses/okuma/yeni/uygulama/hasr-suresi/hasr_suresi_3.mp3"
+    }
+   ]
+  },
+  {
+   "grup": "s-fil",
+   "ogeler": [
+    {
+     "ar": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّح۪يمِ",
+     "s": "s-fil",
+     "e": "besmele",
+     "ses": "/media/ses/okuma/yeni/uygulama/fil-suresi/besmele.mp3"
+    },
+    {
+     "ar": "اَلَمْ تَرَ كَيْفَ فَعَلَ رَبُّكَ بِاَصْحَابِ الْف۪يلِۜ",
+     "s": "s-fil",
+     "n": 1,
+     "ses": "/media/ses/okuma/yeni/uygulama/fil-suresi/fil_suresi_1.mp3"
+    },
+    {
+     "ar": "اَلَمْ يَجْعَلْ كَيْدَهُمْ ف۪ي تَضْل۪يلٍۙ",
+     "s": "s-fil",
+     "n": 2,
+     "ses": "/media/ses/okuma/yeni/uygulama/fil-suresi/fil_suresi_2.mp3"
+    },
+    {
+     "ar": "وَاَرْسَلَ عَلَيْهِمْ طَيْراً اَبَاب۪يلَۙ",
+     "s": "s-fil",
+     "n": 3,
+     "ses": "/media/ses/okuma/yeni/uygulama/fil-suresi/fil_suresi_3.mp3"
+    },
+    {
+     "ar": "تَرْم۪يهِمْ بِحِجَارَةٍ مِنْ سِجّ۪يلٍۖۙ",
+     "s": "s-fil",
+     "n": 4,
+     "ses": "/media/ses/okuma/yeni/uygulama/fil-suresi/fil_suresi_4.mp3"
+    },
+    {
+     "ar": "فَجَعَلَهُمْ كَعَصْفٍ مَأْكُولٍ",
+     "s": "s-fil",
+     "n": 5,
+     "ses": "/media/ses/okuma/yeni/uygulama/fil-suresi/fil_suresi_5.mp3"
+    }
+   ]
+  },
+  {
+   "grup": "s-kureys",
+   "ogeler": [
+    {
+     "ar": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّح۪يمِ",
+     "s": "s-kureys",
+     "e": "besmele",
+     "ses": "/media/ses/okuma/yeni/uygulama/kureys-suresi/besmele.mp3"
+    },
+    {
+     "ar": "لِا۪يلٰفِ قُرَيْشٍۙ",
+     "s": "s-kureys",
+     "n": 1,
+     "ses": "/media/ses/okuma/yeni/uygulama/kureys-suresi/kureys_suresi_1.mp3"
+    },
+    {
+     "ar": "ا۪يلٰفِهِمْ رِحْلَةَ الشِّتَٓاءِ وَالصَّيْفِۚ",
+     "s": "s-kureys",
+     "n": 2,
+     "ses": "/media/ses/okuma/yeni/uygulama/kureys-suresi/kureys_suresi_2.mp3"
+    },
+    {
+     "ar": "فَلْيَعْبُدُوا رَبَّ هٰذَا الْبَيْتِۙ",
+     "s": "s-kureys",
+     "n": 3,
+     "ses": "/media/ses/okuma/yeni/uygulama/kureys-suresi/kureys_suresi_3.mp3"
+    },
+    {
+     "ar": "اَلَّذ۪ٓى اَطْعَمَهُمْ مِنْ جُوعٍ وَءَامَنَهُمْ مِنْ خَوْفٍ",
+     "s": "s-kureys",
+     "n": 4,
+     "ses": "/media/ses/okuma/yeni/uygulama/kureys-suresi/kureys_suresi_4.mp3"
+    }
+   ]
+  },
+  {
+   "grup": "s-maun",
+   "ogeler": [
+    {
+     "ar": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّح۪يمِ",
+     "s": "s-maun",
+     "e": "besmele",
+     "ses": "/media/ses/okuma/yeni/uygulama/maun-suresi/besmele.mp3"
+    },
+    {
+     "ar": "اَرَاَيْتَ الَّذ۪ي يُكَذِّبُ بِالدّ۪ينِۜ",
+     "s": "s-maun",
+     "n": 1,
+     "ses": "/media/ses/okuma/yeni/uygulama/maun-suresi/maun_suresi_1.mp3"
+    },
+    {
+     "ar": "فَذٰلِكَ الَّذ۪ي يَدُعُّ الْيَت۪يمَۙ",
+     "s": "s-maun",
+     "n": 2,
+     "ses": "/media/ses/okuma/yeni/uygulama/maun-suresi/maun_suresi_2.mp3"
+    },
+    {
+     "ar": "وَلَا يَحُضُّ عَلٰى طَعَامِ الْمِسْك۪ينِۜ",
+     "s": "s-maun",
+     "n": 3,
+     "ses": "/media/ses/okuma/yeni/uygulama/maun-suresi/maun_suresi_3.mp3"
+    },
+    {
+     "ar": "فَوَيْلٌ لِلْمُصَلّ۪ينَۙ",
+     "s": "s-maun",
+     "n": 4,
+     "ses": "/media/ses/okuma/yeni/uygulama/maun-suresi/maun_suresi_4.mp3"
+    },
+    {
+     "ar": "اَلَّذ۪ينَ هُمْ عَنْ صَلَاتِهِمْ سَاهُونَۙ",
+     "s": "s-maun",
+     "n": 5,
+     "ses": "/media/ses/okuma/yeni/uygulama/maun-suresi/maun_suresi_5.mp3"
+    },
+    {
+     "ar": "اَلَّذ۪ينَ هُمْ يُرَٓاؤُ۫نَۙ",
+     "s": "s-maun",
+     "n": 6,
+     "ses": "/media/ses/okuma/yeni/uygulama/maun-suresi/maun_suresi_6.mp3"
+    },
+    {
+     "ar": "وَيَمْنَعُونَ الْمَاعُونَ",
+     "s": "s-maun",
+     "n": 7,
+     "ses": "/media/ses/okuma/yeni/uygulama/maun-suresi/maun_suresi_7.mp3"
+    }
+   ]
+  },
+  {
+   "grup": "s-kevser",
+   "ogeler": [
+    {
+     "ar": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّح۪يمِ",
+     "s": "s-kevser",
+     "e": "besmele",
+     "ses": "/media/ses/okuma/yeni/uygulama/kevser-suresi/besmele.mp3"
+    }
+   ]
+  },
+  {
+   "grup": "s-kafirun",
+   "ogeler": [
+    {
+     "ar": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّح۪يمِ",
+     "s": "s-kafirun",
+     "e": "besmele",
+     "ses": "/media/ses/okuma/yeni/uygulama/kafirun-suresi/besmele.mp3"
+    },
+    {
+     "ar": "قُلْ يَٓا اَيُّهَا الْـكَافِرُونَۙ",
+     "s": "s-kafirun",
+     "n": 1,
+     "ses": "/media/ses/okuma/yeni/uygulama/kafirun-suresi/kafirun_suresi_1.mp3"
+    },
+    {
+     "ar": "لَٓا اَعْبُدُ مَا تَعْبُدُونَۙ",
+     "s": "s-kafirun",
+     "n": 2,
+     "ses": "/media/ses/okuma/yeni/uygulama/kafirun-suresi/kafirun_suresi_2.mp3"
+    },
+    {
+     "ar": "وَلَٓا اَنْتُمْ عَابِدُونَ مَٓا اَعْبُدُۚ",
+     "s": "s-kafirun",
+     "n": 3,
+     "ses": "/media/ses/okuma/yeni/uygulama/kafirun-suresi/kafirun_suresi_3.mp3"
+    },
+    {
+     "ar": "وَلَٓا اَنَا۬ عَابِدٌ مَا عَبَدْتُمْۙ",
+     "s": "s-kafirun",
+     "n": 4,
+     "ses": "/media/ses/okuma/yeni/uygulama/kafirun-suresi/kafirun_suresi_4.mp3"
+    },
+    {
+     "ar": "وَلَٓا اَنْتُمْ عَابِدُونَ مَٓا اَعْبُدُۜ",
+     "s": "s-kafirun",
+     "n": 5,
+     "ses": "/media/ses/okuma/yeni/uygulama/kafirun-suresi/kafirun_suresi_5.mp3"
+    },
+    {
+     "ar": "لَـكُمْ د۪ينُكُمْ وَلِيَ د۪ينِ",
+     "s": "s-kafirun",
+     "n": 6,
+     "ses": "/media/ses/okuma/yeni/uygulama/kafirun-suresi/kafirun_suresi_6.mp3"
+    }
+   ]
+  },
+  {
+   "grup": "s-nasr",
+   "ogeler": [
+    {
+     "ar": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّح۪يمِ",
+     "s": "s-nasr",
+     "e": "besmele",
+     "ses": "/media/ses/okuma/yeni/uygulama/nasr-suresi/besmele.mp3"
+    },
+    {
+     "ar": "اِذَا جَٓاءَ نَصْرُ اللّٰهِ وَالْفَتْحُۙ",
+     "s": "s-nasr",
+     "n": 1,
+     "ses": "/media/ses/okuma/yeni/uygulama/nasr-suresi/nasr_suresi_1.mp3"
+    },
+    {
+     "ar": "وَرَاَيْتَ النَّاسَ يَدْخُلُونَ ف۪ي د۪ينِ اللّٰهِ اَفْوَاجاًۙ",
+     "s": "s-nasr",
+     "n": 2,
+     "ses": "/media/ses/okuma/yeni/uygulama/nasr-suresi/nasr_suresi_2.mp3"
+    },
+    {
+     "ar": "فَسَبِّحْ بِحَمْدِ رَبِّكَ وَاسْتَغْفِرْهُۜ اِنَّهُ كَانَ تَوَّاباً",
+     "s": "s-nasr",
+     "n": 3,
+     "ses": "/media/ses/okuma/yeni/uygulama/nasr-suresi/nasr_suresi_3.mp3"
+    }
+   ]
+  },
+  {
+   "grup": "s-tebbet",
+   "ogeler": [
+    {
+     "ar": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّح۪يمِ",
+     "s": "s-tebbet",
+     "e": "besmele",
+     "ses": "/media/ses/okuma/yeni/uygulama/tebbet-suresi/besmele.mp3"
+    },
+    {
+     "ar": "تَبَّتْ يَدَٓا اَب۪ي لَهَبٍ وَتَبَّۜ",
+     "s": "s-tebbet",
+     "n": 1,
+     "ses": "/media/ses/okuma/yeni/uygulama/tebbet-suresi/tebbet_suresi_1.mp3"
+    },
+    {
+     "ar": "مَٓا اَغْنٰى عَنْهُ مَالُهُ وَمَا كَسَبَۜ",
+     "s": "s-tebbet",
+     "n": 2,
+     "ses": "/media/ses/okuma/yeni/uygulama/tebbet-suresi/tebbet_suresi_2.mp3"
+    },
+    {
+     "ar": "سَيَصْلٰى نَاراً ذَاتَ لَهَبٍۚ",
+     "s": "s-tebbet",
+     "n": 3,
+     "ses": "/media/ses/okuma/yeni/uygulama/tebbet-suresi/tebbet_suresi_3.mp3"
+    },
+    {
+     "ar": "وَامْرَاَتُهُۜ حَمَّالَةَ الْحَطَبِۚ",
+     "s": "s-tebbet",
+     "n": 4,
+     "ses": "/media/ses/okuma/yeni/uygulama/tebbet-suresi/tebbet_suresi_4.mp3"
+    },
+    {
+     "ar": "ف۪ي ج۪يدِهَا حَبْلٌ مِنْ مَسَدٍ",
+     "s": "s-tebbet",
+     "n": 5,
+     "ses": "/media/ses/okuma/yeni/uygulama/tebbet-suresi/tebbet_suresi_5.mp3"
+    }
+   ]
+  },
+  {
+   "grup": "s-ihlas",
+   "ogeler": [
+    {
+     "ar": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّح۪يمِ",
+     "s": "s-ihlas",
+     "e": "besmele",
+     "ses": "/media/ses/okuma/yeni/uygulama/ihlas-suresi/besmele.mp3"
+    }
+   ]
+  },
+  {
+   "grup": "s-nas",
+   "ogeler": [
+    {
+     "ar": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّح۪يمِ",
+     "s": "s-nas",
+     "e": "besmele",
+     "ses": "/media/ses/okuma/yeni/uygulama/nas-suresi/besmele.mp3"
+    },
+    {
+     "ar": "قُلْ اَعُوذُ بِرَبِّ النَّاسِۙ",
+     "s": "s-nas",
+     "n": 1,
+     "ses": "/media/ses/okuma/yeni/uygulama/nas-suresi/nas_suresi_1.mp3"
+    },
+    {
+     "ar": "مَلِكِ النَّاسِۙ",
+     "s": "s-nas",
+     "n": 2,
+     "ses": "/media/ses/okuma/yeni/uygulama/nas-suresi/nas_suresi_2.mp3"
+    },
+    {
+     "ar": "اِلٰهِ النَّاسِۙ",
+     "s": "s-nas",
+     "n": 3,
+     "ses": "/media/ses/okuma/yeni/uygulama/nas-suresi/nas_suresi_3.mp3"
+    },
+    {
+     "ar": "مِنْ شَرِّ الْوَسْوَاسِ الْخَنَّاسِۙ",
+     "s": "s-nas",
+     "n": 4,
+     "ses": "/media/ses/okuma/yeni/uygulama/nas-suresi/nas_suresi_4.mp3"
+    },
+    {
+     "ar": "اَلَّذ۪ي يُوَسْوِسُ ف۪ي صُدُورِ النَّاسِۙ",
+     "s": "s-nas",
+     "n": 5,
+     "ses": "/media/ses/okuma/yeni/uygulama/nas-suresi/nas_suresi_5.mp3"
+    },
+    {
+     "ar": "مِنَ الْجِنَّةِ وَالنَّاسِ",
+     "s": "s-nas",
+     "n": 6,
+     "ses": "/media/ses/okuma/yeni/uygulama/nas-suresi/nas_suresi_6.mp3"
+    }
+   ]
+  }
+ ]
+}

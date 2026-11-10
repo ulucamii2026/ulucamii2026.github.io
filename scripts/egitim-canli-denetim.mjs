@@ -94,7 +94,7 @@ kontrol('robots.txt site haritasını gösterir', robots.status === 200 && (awai
 const harita = await getir('/sitemap-0.xml');
 const locs = [...(await harita.text()).matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, a]) => a).sort();
 const beklenen = DILLER.flatMap((d) => [`https://egitim.ulucamii.be/${d}/`, `https://egitim.ulucamii.be/${d}/ezber/`, `https://egitim.ulucamii.be/${d}/calisma-belgesi/`, `https://egitim.ulucamii.be/${d}/kilimim/`, `https://egitim.ulucamii.be/${d}/kartlar/`, `https://egitim.ulucamii.be/${d}/takvim/`, `https://egitim.ulucamii.be/${d}/yollar/`,
-  ...['ibadet', 'ibadet/abdest', 'ibadet/namaz', ...['sabah', 'ogle', 'ikindi', 'aksam', 'yatsi'].map((v) => `ibadet/namaz/${v}`), 'okuma', 'yarisma', ...[1, 2, 3, 4, 5, 6, 7].map((n) => `okuma/o${n}`)].map((y) => `https://egitim.ulucamii.be/${d}/${y}/`),
+  ...['ibadet', 'ibadet/abdest', 'ibadet/namaz', ...['sabah', 'ogle', 'ikindi', 'aksam', 'yatsi'].map((v) => `ibadet/namaz/${v}`), 'okuma', 'yarisma', ...[1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => `okuma/o${n}`)].map((y) => `https://egitim.ulucamii.be/${d}/${y}/`),
   ...yolSayfalari.map((y) => `https://egitim.ulucamii.be/${d}/yollar/${y}/`),
   ...kartKimlikleri.map((k) => `https://egitim.ulucamii.be/${d}/ogren/${k}/`),
   ...sesliler.map((o) => `https://egitim.ulucamii.be/${d}/calis/${o.id}/`)]).sort();

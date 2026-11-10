@@ -54,3 +54,6 @@ egitim/docs/taslaklar/ilim-yolu/ekran/
 
 # İlim Yolu kart seslendirmesi (98 MB): git dışı; manifest src/data/ilim-yolu/kart-ses.json içinde. Geri getirme: node scripts/kart-ses-al.mjs
 egitim/public/media/ses/kart/
+
+# İlim Yolu okuma: tecvid + kısa âyet sesleri (egitim Hosting, git dışı); künye docs/okuma-ses-kaynaklari-egitim.json. Geri getirme: node scripts/okuma-ses-ekle.mjs --uret
+egitim/public/media/ses/okuma/

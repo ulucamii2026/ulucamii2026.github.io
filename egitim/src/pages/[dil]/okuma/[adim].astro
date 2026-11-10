@@ -12,7 +12,7 @@ import Ikon from '../../../components/Ikon.astro';
 import { doldur, dersAdi, etiketYaz, okumaMetinleri } from '../../../i18n/okuma';
 import Taban from '../../../layouts/Taban.astro';
 import { ANA_SITE } from '../../../lib/kimlik';
-import { adimSesleri } from '../../../lib/okuma-veri';
+import { adimSesleri, sesKoku } from '../../../lib/okuma-veri';
 import '../../../styles/ilim.css';
 import '../../../styles/yollar.css';
 import '../../../styles/cevrimdisi.css';
@@ -77,7 +77,7 @@ const onizleme = (d: (typeof b.dersler)[number]) => d.ogeler.slice(0, 3);
           <ul class="ok-oge-liste">
             {d.ogeler.map((g) => {
               const etiket = etiketYaz(dil, g);
-              const adres = `${ANA_SITE}${g.ses}`;
+              const adres = `${sesKoku(g.ses)}${g.ses}`;
               const dinleAdi = doldur(t.dinleAdi, { ad: etiket || g.ar });
               return (
                 <li class="ok-oge">

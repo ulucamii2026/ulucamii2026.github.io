@@ -1,0 +1,1839 @@
+{
+ "surum": 1,
+ "tarih": "2026-11-10",
+ "yontem": "Betik başlığına bakın (scripts/okuma-ses-ekle.mjs). Tam Kur’an metni: Ihtisas2027 kuran_arapca.json (depo dışı); sûre metni: src/data/ezber/metin.",
+ "sayilar": {
+  "tecvid": {
+   "dogrulandi": 71,
+   "dolayli": 34,
+   "elendi": 51
+  },
+  "ayet": {
+   "dogrulandi": 60,
+   "dolayli": 0,
+   "elendi": 0
+  }
+ },
+ "ogeler": {
+  "elifba/hurufu-mukattaa/hurufu-mukattaa/1.mp3": {
+   "grup": "tv-hurufu",
+   "sira": 5,
+   "durum": "dogrulandi",
+   "yontem": "sure-baslangici",
+   "rol": "yazilis"
+  },
+  "elifba/hurufu-mukattaa/hurufu-mukattaa/2.mp3": {
+   "grup": "tv-hurufu",
+   "sira": 6,
+   "durum": "dolayli",
+   "yontem": "harf-adlari",
+   "es": "elifba/hurufu-mukattaa/hurufu-mukattaa/1.mp3",
+   "rol": "okunus"
+  },
+  "elifba/hurufu-mukattaa/hurufu-mukattaa/3.mp3": {
+   "grup": "tv-hurufu",
+   "sira": 7,
+   "durum": "elendi",
+   "neden": "Arapça metin yok (yalnız ses)"
+  },
+  "elifba/hurufu-mukattaa/hurufu-mukattaa/4.mp3": {
+   "grup": "tv-hurufu",
+   "sira": 8,
+   "durum": "dogrulandi",
+   "yontem": "sure-baslangici",
+   "rol": "yazilis"
+  },
+  "elifba/hurufu-mukattaa/hurufu-mukattaa/5.mp3": {
+   "grup": "tv-hurufu",
+   "sira": 9,
+   "durum": "dolayli",
+   "yontem": "harf-adlari",
+   "es": "elifba/hurufu-mukattaa/hurufu-mukattaa/4.mp3",
+   "rol": "okunus"
+  },
+  "elifba/hurufu-mukattaa/hurufu-mukattaa/6.mp3": {
+   "grup": "tv-hurufu",
+   "sira": 10,
+   "durum": "elendi",
+   "neden": "Arapça metin yok (yalnız ses)"
+  },
+  "elifba/hurufu-mukattaa/hurufu-mukattaa/7.mp3": {
+   "grup": "tv-hurufu",
+   "sira": 11,
+   "durum": "dogrulandi",
+   "yontem": "sure-baslangici",
+   "rol": "yazilis"
+  },
+  "elifba/hurufu-mukattaa/hurufu-mukattaa/8.mp3": {
+   "grup": "tv-hurufu",
+   "sira": 12,
+   "durum": "dolayli",
+   "yontem": "harf-adlari",
+   "es": "elifba/hurufu-mukattaa/hurufu-mukattaa/7.mp3",
+   "rol": "okunus"
+  },
+  "elifba/hurufu-mukattaa/hurufu-mukattaa/9.mp3": {
+   "grup": "tv-hurufu",
+   "sira": 13,
+   "durum": "elendi",
+   "neden": "Arapça metin yok (yalnız ses)"
+  },
+  "elifba/hurufu-mukattaa/hurufu-mukattaa/10.mp3": {
+   "grup": "tv-hurufu",
+   "sira": 14,
+   "durum": "dogrulandi",
+   "yontem": "sure-baslangici",
+   "rol": "yazilis"
+  },
+  "elifba/hurufu-mukattaa/hurufu-mukattaa/11.mp3": {
+   "grup": "tv-hurufu",
+   "sira": 15,
+   "durum": "dolayli",
+   "yontem": "harf-adlari",
+   "es": "elifba/hurufu-mukattaa/hurufu-mukattaa/10.mp3",
+   "rol": "okunus"
+  },
+  "elifba/hurufu-mukattaa/hurufu-mukattaa/12.mp3": {
+   "grup": "tv-hurufu",
+   "sira": 16,
+   "durum": "elendi",
+   "neden": "Arapça metin yok (yalnız ses)"
+  },
+  "elifba/hurufu-mukattaa/hurufu-mukattaa/13.mp3": {
+   "grup": "tv-hurufu",
+   "sira": 17,
+   "durum": "dogrulandi",
+   "yontem": "sure-baslangici",
+   "rol": "yazilis"
+  },
+  "elifba/hurufu-mukattaa/hurufu-mukattaa/14.mp3": {
+   "grup": "tv-hurufu",
+   "sira": 18,
+   "durum": "dolayli",
+   "yontem": "harf-adlari",
+   "es": "elifba/hurufu-mukattaa/hurufu-mukattaa/13.mp3",
+   "rol": "okunus"
+  },
+  "elifba/hurufu-mukattaa/hurufu-mukattaa/15.mp3": {
+   "grup": "tv-hurufu",
+   "sira": 19,
+   "durum": "elendi",
+   "neden": "Arapça metin yok (yalnız ses)"
+  },
+  "elifba/hurufu-mukattaa/hurufu-mukattaa/16.mp3": {
+   "grup": "tv-hurufu",
+   "sira": 20,
+   "durum": "dogrulandi",
+   "yontem": "sure-baslangici",
+   "rol": "yazilis"
+  },
+  "elifba/hurufu-mukattaa/hurufu-mukattaa/17.mp3": {
+   "grup": "tv-hurufu",
+   "sira": 21,
+   "durum": "dolayli",
+   "yontem": "harf-adlari",
+   "es": "elifba/hurufu-mukattaa/hurufu-mukattaa/16.mp3",
+   "rol": "okunus"
+  },
+  "elifba/hurufu-mukattaa/hurufu-mukattaa/18.mp3": {
+   "grup": "tv-hurufu",
+   "sira": 22,
+   "durum": "elendi",
+   "neden": "Arapça metin yok (yalnız ses)"
+  },
+  "elifba/hurufu-mukattaa/hurufu-mukattaa/19.mp3": {
+   "grup": "tv-hurufu",
+   "sira": 23,
+   "durum": "dogrulandi",
+   "yontem": "sure-baslangici",
+   "rol": "yazilis"
+  },
+  "elifba/hurufu-mukattaa/hurufu-mukattaa/20.mp3": {
+   "grup": "tv-hurufu",
+   "sira": 24,
+   "durum": "dolayli",
+   "yontem": "harf-adlari",
+   "es": "elifba/hurufu-mukattaa/hurufu-mukattaa/19.mp3",
+   "rol": "okunus"
+  },
+  "elifba/hurufu-mukattaa/hurufu-mukattaa/21.mp3": {
+   "grup": "tv-hurufu",
+   "sira": 25,
+   "durum": "elendi",
+   "neden": "Arapça metin yok (yalnız ses)"
+  },
+  "elifba/hurufu-mukattaa/hurufu-mukattaa/22.mp3": {
+   "grup": "tv-hurufu",
+   "sira": 26,
+   "durum": "dogrulandi",
+   "yontem": "sure-baslangici",
+   "rol": "yazilis"
+  },
+  "elifba/hurufu-mukattaa/hurufu-mukattaa/23.mp3": {
+   "grup": "tv-hurufu",
+   "sira": 27,
+   "durum": "dolayli",
+   "yontem": "harf-adlari",
+   "es": "elifba/hurufu-mukattaa/hurufu-mukattaa/22.mp3",
+   "rol": "okunus"
+  },
+  "elifba/hurufu-mukattaa/hurufu-mukattaa/24.mp3": {
+   "grup": "tv-hurufu",
+   "sira": 28,
+   "durum": "elendi",
+   "neden": "Arapça metin yok (yalnız ses)"
+  },
+  "elifba/hurufu-mukattaa/hurufu-mukattaa/25.mp3": {
+   "grup": "tv-hurufu",
+   "sira": 29,
+   "durum": "dogrulandi",
+   "yontem": "sure-baslangici",
+   "rol": "yazilis"
+  },
+  "elifba/hurufu-mukattaa/hurufu-mukattaa/26.mp3": {
+   "grup": "tv-hurufu",
+   "sira": 30,
+   "durum": "dolayli",
+   "yontem": "harf-adlari",
+   "es": "elifba/hurufu-mukattaa/hurufu-mukattaa/25.mp3",
+   "rol": "okunus"
+  },
+  "elifba/hurufu-mukattaa/hurufu-mukattaa/27.mp3": {
+   "grup": "tv-hurufu",
+   "sira": 31,
+   "durum": "elendi",
+   "neden": "Arapça metin yok (yalnız ses)"
+  },
+  "elifba/hurufu-mukattaa/hurufu-mukattaa/28.mp3": {
+   "grup": "tv-hurufu",
+   "sira": 32,
+   "durum": "dogrulandi",
+   "yontem": "sure-baslangici",
+   "rol": "yazilis"
+  },
+  "elifba/hurufu-mukattaa/hurufu-mukattaa/29.mp3": {
+   "grup": "tv-hurufu",
+   "sira": 33,
+   "durum": "dolayli",
+   "yontem": "harf-adlari",
+   "es": "elifba/hurufu-mukattaa/hurufu-mukattaa/28.mp3",
+   "rol": "okunus"
+  },
+  "elifba/hurufu-mukattaa/hurufu-mukattaa/30.mp3": {
+   "grup": "tv-hurufu",
+   "sira": 34,
+   "durum": "elendi",
+   "neden": "Arapça metin yok (yalnız ses)"
+  },
+  "elifba/hurufu-mukattaa/hurufu-mukattaa/31.mp3": {
+   "grup": "tv-hurufu",
+   "sira": 35,
+   "durum": "dogrulandi",
+   "yontem": "sure-baslangici",
+   "rol": "yazilis"
+  },
+  "elifba/hurufu-mukattaa/hurufu-mukattaa/32.mp3": {
+   "grup": "tv-hurufu",
+   "sira": 36,
+   "durum": "dolayli",
+   "yontem": "harf-adlari",
+   "es": "elifba/hurufu-mukattaa/hurufu-mukattaa/31.mp3",
+   "rol": "okunus"
+  },
+  "elifba/hurufu-mukattaa/hurufu-mukattaa/33.mp3": {
+   "grup": "tv-hurufu",
+   "sira": 37,
+   "durum": "elendi",
+   "neden": "Arapça metin yok (yalnız ses)"
+  },
+  "elifba/hurufu-mukattaa/hurufu-mukattaa/34.mp3": {
+   "grup": "tv-hurufu",
+   "sira": 38,
+   "durum": "dogrulandi",
+   "yontem": "sure-baslangici",
+   "rol": "yazilis"
+  },
+  "elifba/hurufu-mukattaa/hurufu-mukattaa/35.mp3": {
+   "grup": "tv-hurufu",
+   "sira": 39,
+   "durum": "dolayli",
+   "yontem": "harf-adlari",
+   "es": "elifba/hurufu-mukattaa/hurufu-mukattaa/34.mp3",
+   "rol": "okunus"
+  },
+  "elifba/hurufu-mukattaa/hurufu-mukattaa/36.mp3": {
+   "grup": "tv-hurufu",
+   "sira": 40,
+   "durum": "elendi",
+   "neden": "Arapça metin yok (yalnız ses)"
+  },
+  "elifba/hurufu-mukattaa/hurufu-mukattaa/37.mp3": {
+   "grup": "tv-hurufu",
+   "sira": 41,
+   "durum": "dogrulandi",
+   "yontem": "sure-baslangici",
+   "rol": "yazilis"
+  },
+  "elifba/hurufu-mukattaa/hurufu-mukattaa/38.mp3": {
+   "grup": "tv-hurufu",
+   "sira": 42,
+   "durum": "dolayli",
+   "yontem": "harf-adlari",
+   "es": "elifba/hurufu-mukattaa/hurufu-mukattaa/37.mp3",
+   "rol": "okunus"
+  },
+  "elifba/hurufu-mukattaa/hurufu-mukattaa/39.mp3": {
+   "grup": "tv-hurufu",
+   "sira": 43,
+   "durum": "elendi",
+   "neden": "Arapça metin yok (yalnız ses)"
+  },
+  "elifba/hurufu-mukattaa/hurufu-mukattaa/40.mp3": {
+   "grup": "tv-hurufu",
+   "sira": 44,
+   "durum": "dogrulandi",
+   "yontem": "sure-baslangici",
+   "rol": "yazilis"
+  },
+  "elifba/hurufu-mukattaa/hurufu-mukattaa/41.mp3": {
+   "grup": "tv-hurufu",
+   "sira": 45,
+   "durum": "dolayli",
+   "yontem": "harf-adlari",
+   "es": "elifba/hurufu-mukattaa/hurufu-mukattaa/40.mp3",
+   "rol": "okunus"
+  },
+  "elifba/hurufu-mukattaa/hurufu-mukattaa/42.mp3": {
+   "grup": "tv-hurufu",
+   "sira": 46,
+   "durum": "elendi",
+   "neden": "Arapça metin yok (yalnız ses)"
+  },
+  "elifba/hurufu-mukattaa/hurufu-mukattaa/43.mp3": {
+   "grup": "tv-hurufu",
+   "sira": 47,
+   "durum": "dogrulandi",
+   "yontem": "sure-baslangici",
+   "rol": "yazilis"
+  },
+  "elifba/hurufu-mukattaa/hurufu-mukattaa/44.mp3": {
+   "grup": "tv-hurufu",
+   "sira": 48,
+   "durum": "dolayli",
+   "yontem": "harf-adlari",
+   "es": "elifba/hurufu-mukattaa/hurufu-mukattaa/43.mp3",
+   "rol": "okunus"
+  },
+  "elifba/hurufu-mukattaa/hurufu-mukattaa/45.mp3": {
+   "grup": "tv-hurufu",
+   "sira": 49,
+   "durum": "elendi",
+   "neden": "Arapça metin yok (yalnız ses)"
+  },
+  "elifba/idgami-bila-gunne/idgami-bila-gunne/1.mp3": {
+   "grup": "tv-idgam-bila",
+   "sira": 4,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 2,
+   "ayet": 5,
+   "eslesen": 16,
+   "okunusEsi": "elifba/idgami-bila-gunne/idgami-bila-gunne/2.mp3",
+   "rol": "yazilis"
+  },
+  "elifba/idgami-bila-gunne/idgami-bila-gunne/2.mp3": {
+   "grup": "tv-idgam-bila",
+   "sira": 5,
+   "durum": "dolayli",
+   "yontem": "es-farki",
+   "es": "elifba/idgami-bila-gunne/idgami-bila-gunne/1.mp3",
+   "harfFarki": 1,
+   "sure": 2,
+   "ayet": 5,
+   "rol": "okunus"
+  },
+  "elifba/idgami-bila-gunne/idgami-bila-gunne/3.mp3": {
+   "grup": "tv-idgam-bila",
+   "sira": 6,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 16,
+   "ayet": 76,
+   "eslesen": 2,
+   "okunusEsi": "elifba/idgami-bila-gunne/idgami-bila-gunne/4.mp3",
+   "rol": "yazilis"
+  },
+  "elifba/idgami-bila-gunne/idgami-bila-gunne/4.mp3": {
+   "grup": "tv-idgam-bila",
+   "sira": 7,
+   "durum": "dolayli",
+   "yontem": "es-farki",
+   "es": "elifba/idgami-bila-gunne/idgami-bila-gunne/3.mp3",
+   "harfFarki": 1,
+   "sure": 16,
+   "ayet": 76,
+   "rol": "okunus"
+  },
+  "elifba/idgami-bila-gunne/idgami-bila-gunne/5.mp3": {
+   "grup": "tv-idgam-bila",
+   "sira": 8,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 2,
+   "ayet": 173,
+   "eslesen": 48,
+   "okunusEsi": "elifba/idgami-bila-gunne/idgami-bila-gunne/6.mp3",
+   "rol": "yazilis"
+  },
+  "elifba/idgami-bila-gunne/idgami-bila-gunne/6.mp3": {
+   "grup": "tv-idgam-bila",
+   "sira": 9,
+   "durum": "dolayli",
+   "yontem": "es-farki",
+   "es": "elifba/idgami-bila-gunne/idgami-bila-gunne/5.mp3",
+   "harfFarki": 0,
+   "sure": 2,
+   "ayet": 173,
+   "rol": "okunus"
+  },
+  "elifba/idgami-bila-gunne/idgami-bila-gunne/7.mp3": {
+   "grup": "tv-idgam-bila",
+   "sira": 10,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 2,
+   "ayet": 24,
+   "eslesen": 2,
+   "okunusEsi": "elifba/idgami-bila-gunne/idgami-bila-gunne/8.mp3",
+   "rol": "yazilis"
+  },
+  "elifba/idgami-bila-gunne/idgami-bila-gunne/8.mp3": {
+   "grup": "tv-idgam-bila",
+   "sira": 11,
+   "durum": "dolayli",
+   "yontem": "es-farki",
+   "es": "elifba/idgami-bila-gunne/idgami-bila-gunne/7.mp3",
+   "harfFarki": 1,
+   "sure": 2,
+   "ayet": 24,
+   "rol": "okunus"
+  },
+  "elifba/idgami-bila-gunne/idgami-bila-gunne/9.mp3": {
+   "grup": "tv-idgam-bila",
+   "sira": 12,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 2,
+   "ayet": 2,
+   "eslesen": 1,
+   "okunusEsi": "elifba/idgami-bila-gunne/idgami-bila-gunne/10.mp3",
+   "rol": "yazilis"
+  },
+  "elifba/idgami-bila-gunne/idgami-bila-gunne/10.mp3": {
+   "grup": "tv-idgam-bila",
+   "sira": 13,
+   "durum": "dolayli",
+   "yontem": "es-farki",
+   "es": "elifba/idgami-bila-gunne/idgami-bila-gunne/9.mp3",
+   "harfFarki": 1,
+   "sure": 2,
+   "ayet": 2,
+   "rol": "okunus"
+  },
+  "elifba/idgami-bila-gunne/idgami-bila-gunne/11.mp3": {
+   "grup": "tv-idgam-bila",
+   "sira": 14,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 2,
+   "ayet": 54,
+   "eslesen": 7,
+   "okunusEsi": "elifba/idgami-bila-gunne/idgami-bila-gunne/12.mp3",
+   "rol": "yazilis"
+  },
+  "elifba/idgami-bila-gunne/idgami-bila-gunne/12.mp3": {
+   "grup": "tv-idgam-bila",
+   "sira": 15,
+   "durum": "dolayli",
+   "yontem": "es-farki",
+   "es": "elifba/idgami-bila-gunne/idgami-bila-gunne/11.mp3",
+   "harfFarki": 0,
+   "sure": 2,
+   "ayet": 54,
+   "rol": "okunus"
+  },
+  "elifba/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/1.mp3": {
+   "grup": "tv-idgam-misleyn",
+   "sira": 4,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 21,
+   "ayet": 87,
+   "eslesen": 2,
+   "okunusEsi": "elifba/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/2.mp3",
+   "rol": "yazilis"
+  },
+  "elifba/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/2.mp3": {
+   "grup": "tv-idgam-misleyn",
+   "sira": 5,
+   "durum": "dolayli",
+   "yontem": "es-farki",
+   "es": "elifba/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/1.mp3",
+   "harfFarki": 1,
+   "sure": 21,
+   "ayet": 87,
+   "rol": "okunus"
+  },
+  "elifba/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/3.mp3": {
+   "grup": "tv-idgam-misleyn",
+   "sira": 6,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 5,
+   "ayet": 61,
+   "eslesen": 1,
+   "okunusEsi": "elifba/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/4.mp3",
+   "rol": "yazilis"
+  },
+  "elifba/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/4.mp3": {
+   "grup": "tv-idgam-misleyn",
+   "sira": 7,
+   "durum": "dolayli",
+   "yontem": "es-farki",
+   "es": "elifba/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/3.mp3",
+   "harfFarki": 1,
+   "sure": 5,
+   "ayet": 61,
+   "rol": "okunus"
+  },
+  "elifba/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/5.mp3": {
+   "grup": "tv-idgam-misleyn",
+   "sira": 8,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 3,
+   "ayet": 41,
+   "eslesen": 3,
+   "okunusEsi": "elifba/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/6.mp3",
+   "rol": "yazilis"
+  },
+  "elifba/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/6.mp3": {
+   "grup": "tv-idgam-misleyn",
+   "sira": 9,
+   "durum": "dolayli",
+   "yontem": "es-farki",
+   "es": "elifba/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/5.mp3",
+   "harfFarki": 1,
+   "sure": 3,
+   "ayet": 41,
+   "rol": "okunus"
+  },
+  "elifba/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/7.mp3": {
+   "grup": "tv-idgam-misleyn",
+   "sira": 10,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 18,
+   "ayet": 78,
+   "eslesen": 1,
+   "okunusEsi": "elifba/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/8.mp3",
+   "rol": "yazilis"
+  },
+  "elifba/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/8.mp3": {
+   "grup": "tv-idgam-misleyn",
+   "sira": 11,
+   "durum": "dolayli",
+   "yontem": "es-farki",
+   "es": "elifba/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/7.mp3",
+   "harfFarki": 1,
+   "sure": 18,
+   "ayet": 78,
+   "rol": "okunus"
+  },
+  "elifba/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/9.mp3": {
+   "grup": "tv-idgam-misleyn",
+   "sira": 12,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 2,
+   "ayet": 16,
+   "eslesen": 1,
+   "okunusEsi": "elifba/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/10.mp3",
+   "rol": "yazilis"
+  },
+  "elifba/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/10.mp3": {
+   "grup": "tv-idgam-misleyn",
+   "sira": 13,
+   "durum": "dolayli",
+   "yontem": "es-farki",
+   "es": "elifba/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/9.mp3",
+   "harfFarki": 1,
+   "sure": 2,
+   "ayet": 16,
+   "rol": "okunus"
+  },
+  "elifba/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/1.mp3": {
+   "grup": "tv-idgam-mutecaniseyn",
+   "sira": 4,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 3,
+   "ayet": 69,
+   "eslesen": 1,
+   "okunusEsi": "elifba/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/2.mp3",
+   "rol": "yazilis"
+  },
+  "elifba/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/2.mp3": {
+   "grup": "tv-idgam-mutecaniseyn",
+   "sira": 5,
+   "durum": "dolayli",
+   "yontem": "es-farki",
+   "es": "elifba/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/1.mp3",
+   "harfFarki": 1,
+   "sure": 3,
+   "ayet": 69,
+   "rol": "okunus"
+  },
+  "elifba/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/3.mp3": {
+   "grup": "tv-idgam-mutecaniseyn",
+   "sira": 6,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 7,
+   "ayet": 189,
+   "eslesen": 1,
+   "okunusEsi": "elifba/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/4.mp3",
+   "rol": "yazilis"
+  },
+  "elifba/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/4.mp3": {
+   "grup": "tv-idgam-mutecaniseyn",
+   "sira": 7,
+   "durum": "dolayli",
+   "yontem": "es-farki",
+   "es": "elifba/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/3.mp3",
+   "harfFarki": 1,
+   "sure": 7,
+   "ayet": 189,
+   "rol": "okunus"
+  },
+  "elifba/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/5.mp3": {
+   "grup": "tv-idgam-mutecaniseyn",
+   "sira": 8,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 2,
+   "ayet": 256,
+   "eslesen": 1,
+   "okunusEsi": "elifba/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/6.mp3",
+   "rol": "yazilis"
+  },
+  "elifba/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/6.mp3": {
+   "grup": "tv-idgam-mutecaniseyn",
+   "sira": 9,
+   "durum": "dolayli",
+   "yontem": "es-farki",
+   "es": "elifba/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/5.mp3",
+   "harfFarki": 1,
+   "sure": 2,
+   "ayet": 256,
+   "rol": "okunus"
+  },
+  "elifba/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/7.mp3": {
+   "grup": "tv-idgam-mutecaniseyn",
+   "sira": 10,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 3,
+   "ayet": 122,
+   "eslesen": 1,
+   "okunusEsi": "elifba/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/8.mp3",
+   "rol": "yazilis"
+  },
+  "elifba/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/8.mp3": {
+   "grup": "tv-idgam-mutecaniseyn",
+   "sira": 11,
+   "durum": "dolayli",
+   "yontem": "es-farki",
+   "es": "elifba/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/7.mp3",
+   "harfFarki": 1,
+   "sure": 3,
+   "ayet": 122,
+   "rol": "okunus"
+  },
+  "elifba/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/9.mp3": {
+   "grup": "tv-idgam-mutecaniseyn",
+   "sira": 12,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 4,
+   "ayet": 64,
+   "eslesen": 1,
+   "rol": "yazilis",
+   "okunusEsi": "elifba/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/10.mp3"
+  },
+  "elifba/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/10.mp3": {
+   "grup": "tv-idgam-mutecaniseyn",
+   "sira": 13,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 3,
+   "ayet": 117,
+   "eslesen": 6,
+   "rol": "okunus"
+  },
+  "elifba/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/11.mp3": {
+   "grup": "tv-idgam-mutecaniseyn",
+   "sira": 14,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 5,
+   "ayet": 28,
+   "eslesen": 1
+  },
+  "elifba/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/12.mp3": {
+   "grup": "tv-idgam-mutecaniseyn",
+   "sira": 15,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 12,
+   "ayet": 80,
+   "eslesen": 1
+  },
+  "elifba/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/13.mp3": {
+   "grup": "tv-idgam-mutecaniseyn",
+   "sira": 16,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 27,
+   "ayet": 22,
+   "eslesen": 1
+  },
+  "elifba/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutekaribeyn/1.mp3": {
+   "grup": "tv-idgam-mutekaribeyn",
+   "sira": 4,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 4,
+   "ayet": 158,
+   "eslesen": 1,
+   "okunusEsi": "elifba/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutekaribeyn/2.mp3",
+   "rol": "yazilis"
+  },
+  "elifba/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutekaribeyn/2.mp3": {
+   "grup": "tv-idgam-mutekaribeyn",
+   "sira": 5,
+   "durum": "dolayli",
+   "yontem": "es-farki",
+   "es": "elifba/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutekaribeyn/1.mp3",
+   "harfFarki": 1,
+   "sure": 4,
+   "ayet": 158,
+   "rol": "okunus"
+  },
+  "elifba/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutekaribeyn/3.mp3": {
+   "grup": "tv-idgam-mutekaribeyn",
+   "sira": 6,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 6,
+   "ayet": 147,
+   "eslesen": 1,
+   "okunusEsi": "elifba/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutekaribeyn/4.mp3",
+   "rol": "yazilis"
+  },
+  "elifba/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutekaribeyn/4.mp3": {
+   "grup": "tv-idgam-mutekaribeyn",
+   "sira": 7,
+   "durum": "dolayli",
+   "yontem": "es-farki",
+   "es": "elifba/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutekaribeyn/3.mp3",
+   "harfFarki": 1,
+   "sure": 6,
+   "ayet": 147,
+   "rol": "okunus"
+  },
+  "elifba/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutekaribeyn/5.mp3": {
+   "grup": "tv-idgam-mutekaribeyn",
+   "sira": 8,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 21,
+   "ayet": 56,
+   "eslesen": 1,
+   "okunusEsi": "elifba/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutekaribeyn/6.mp3",
+   "rol": "yazilis"
+  },
+  "elifba/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutekaribeyn/6.mp3": {
+   "grup": "tv-idgam-mutekaribeyn",
+   "sira": 9,
+   "durum": "dolayli",
+   "yontem": "es-farki",
+   "es": "elifba/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutekaribeyn/5.mp3",
+   "harfFarki": 1,
+   "sure": 21,
+   "ayet": 56,
+   "rol": "okunus"
+  },
+  "elifba/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutekaribeyn/7.mp3": {
+   "grup": "tv-idgam-mutekaribeyn",
+   "sira": 10,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 17,
+   "ayet": 24,
+   "eslesen": 6,
+   "okunusEsi": "elifba/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutekaribeyn/8.mp3",
+   "rol": "yazilis"
+  },
+  "elifba/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutekaribeyn/8.mp3": {
+   "grup": "tv-idgam-mutekaribeyn",
+   "sira": 11,
+   "durum": "dolayli",
+   "yontem": "es-farki",
+   "es": "elifba/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutekaribeyn/7.mp3",
+   "harfFarki": 1,
+   "sure": 17,
+   "ayet": 24,
+   "rol": "okunus"
+  },
+  "elifba/meddi-lazim-ariz-lin/meddi-lazim/1.mp3": {
+   "grup": "tv-med-lazim",
+   "sira": 2,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 37,
+   "ayet": 1,
+   "eslesen": 1
+  },
+  "elifba/meddi-lazim-ariz-lin/meddi-lazim/2.mp3": {
+   "grup": "tv-med-lazim",
+   "sira": 3,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 55,
+   "ayet": 64,
+   "eslesen": 1
+  },
+  "elifba/meddi-lazim-ariz-lin/meddi-lazim/3.mp3": {
+   "grup": "tv-med-lazim",
+   "sira": 4,
+   "durum": "elendi",
+   "neden": "Kur’an metninde bulunamadı"
+  },
+  "elifba/meddi-lazim-ariz-lin/meddi-lazim/4.mp3": {
+   "grup": "tv-med-lazim",
+   "sira": 5,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 69,
+   "ayet": 1,
+   "eslesen": 3
+  },
+  "elifba/meddi-lazim-ariz-lin/meddi-lazim/5.mp3": {
+   "grup": "tv-med-lazim",
+   "sira": 6,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 39,
+   "ayet": 64,
+   "eslesen": 1
+  },
+  "elifba/meddi-lazim-ariz-lin/meddi-lazim/6.mp3": {
+   "grup": "tv-med-lazim",
+   "sira": 7,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 80,
+   "ayet": 33,
+   "eslesen": 1
+  },
+  "elifba/meddi-lazim-ariz-lin/uygulama/1.mp3": {
+   "grup": "tv-med-lazim",
+   "sira": 2,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 58,
+   "ayet": 3,
+   "eslesen": 2
+  },
+  "elifba/meddi-lazim-ariz-lin/uygulama/2.mp3": {
+   "grup": "tv-med-lazim",
+   "sira": 3,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 58,
+   "ayet": 10,
+   "eslesen": 1
+  },
+  "elifba/meddi-lazim-ariz-lin/uygulama/3.mp3": {
+   "grup": "tv-med-lazim",
+   "sira": 4,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 58,
+   "ayet": 22,
+   "eslesen": 1
+  },
+  "elifba/meddi-lazim-ariz-lin/uygulama/4.mp3": {
+   "grup": "tv-med-lazim",
+   "sira": 5,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 59,
+   "ayet": 4,
+   "eslesen": 1
+  },
+  "elifba/meddi-tabii-muttasil-munfasil/meddi-muttasil/1.mp3": {
+   "grup": "tv-med-muttasil",
+   "sira": 2,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 4,
+   "ayet": 97,
+   "eslesen": 3
+  },
+  "elifba/meddi-tabii-muttasil-munfasil/meddi-muttasil/2.mp3": {
+   "grup": "tv-med-muttasil",
+   "sira": 3,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 4,
+   "ayet": 102,
+   "eslesen": 1
+  },
+  "elifba/meddi-tabii-muttasil-munfasil/meddi-muttasil/3.mp3": {
+   "grup": "tv-med-muttasil",
+   "sira": 4,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 4,
+   "ayet": 24,
+   "eslesen": 1
+  },
+  "elifba/meddi-tabii-muttasil-munfasil/meddi-muttasil/4.mp3": {
+   "grup": "tv-med-muttasil",
+   "sira": 5,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 2,
+   "ayet": 49,
+   "eslesen": 9
+  },
+  "elifba/meddi-tabii-muttasil-munfasil/meddi-muttasil/5.mp3": {
+   "grup": "tv-med-muttasil",
+   "sira": 6,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 28,
+   "ayet": 76,
+   "eslesen": 1
+  },
+  "elifba/meddi-tabii-muttasil-munfasil/meddi-muttasil/6.mp3": {
+   "grup": "tv-med-muttasil",
+   "sira": 7,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 5,
+   "ayet": 29,
+   "eslesen": 1
+  },
+  "elifba/meddi-tabii-muttasil-munfasil/meddi-muttasil/7.mp3": {
+   "grup": "tv-med-muttasil",
+   "sira": 8,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 11,
+   "ayet": 77,
+   "eslesen": 2
+  },
+  "elifba/meddi-tabii-muttasil-munfasil/meddi-muttasil/8.mp3": {
+   "grup": "tv-med-muttasil",
+   "sira": 9,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 49,
+   "ayet": 9,
+   "eslesen": 1
+  },
+  "elifba/meddi-tabii-muttasil-munfasil/meddi-muttasil/9.mp3": {
+   "grup": "tv-med-muttasil",
+   "sira": 10,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 24,
+   "ayet": 35,
+   "eslesen": 1
+  },
+  "elifba/meddi-tabii-muttasil-munfasil/meddi-tabii-muttasil-munfasil/kesrali.mp3": {
+   "grup": null,
+   "sira": 3,
+   "durum": "elendi",
+   "neden": "Arapça metin yok (yalnız ses)"
+  },
+  "elifba/meddi-tabii-muttasil-munfasil/meddi-tabii-muttasil-munfasil/dammeli.mp3": {
+   "grup": null,
+   "sira": 4,
+   "durum": "elendi",
+   "neden": "Arapça metin yok (yalnız ses)"
+  },
+  "elifba/meddi-tabii-muttasil-munfasil/meddi-tabii-muttasil-munfasil/fethali.mp3": {
+   "grup": null,
+   "sira": 5,
+   "durum": "elendi",
+   "neden": "Arapça metin yok (yalnız ses)"
+  },
+  "elifba/meddi-tabii-muttasil-munfasil/meddi-tabii-muttasil-munfasil/sukunu_ariz.mp3": {
+   "grup": null,
+   "sira": 10,
+   "durum": "elendi",
+   "neden": "Arapça metin yok (yalnız ses)"
+  },
+  "elifba/meddi-tabii-muttasil-munfasil/meddi-tabii-muttasil-munfasil/sedde.mp3": {
+   "grup": null,
+   "sira": 11,
+   "durum": "elendi",
+   "neden": "Arapça metin yok (yalnız ses)"
+  },
+  "elifba/meddi-tabii-muttasil-munfasil/meddi-tabii-muttasil-munfasil/cezm.mp3": {
+   "grup": null,
+   "sira": 12,
+   "durum": "elendi",
+   "neden": "Arapça metin yok (yalnız ses)"
+  },
+  "elifba/meddi-tabii-muttasil-munfasil/meddi-tabii-muttasil-munfasil/hemze.mp3": {
+   "grup": null,
+   "sira": 13,
+   "durum": "elendi",
+   "neden": "Arapça metin yok (yalnız ses)"
+  },
+  "elifba/mushaflarda-yer-alan-isaretler/mushaflarda-yer-alan-isaretler/1.mp3": {
+   "grup": null,
+   "sira": 2,
+   "durum": "elendi",
+   "neden": "«metin» Türkçe açıklama içeriyor (Arapça örnek değil)"
+  },
+  "elifba/mushaflarda-yer-alan-isaretler/mushaflarda-yer-alan-isaretler/2.mp3": {
+   "grup": null,
+   "sira": 3,
+   "durum": "elendi",
+   "neden": "«metin» Türkçe açıklama içeriyor (Arapça örnek değil)"
+  },
+  "elifba/mushaflarda-yer-alan-isaretler/mushaflarda-yer-alan-isaretler/3.mp3": {
+   "grup": null,
+   "sira": 4,
+   "durum": "elendi",
+   "neden": "«metin» Türkçe açıklama içeriyor (Arapça örnek değil)"
+  },
+  "elifba/mushaflarda-yer-alan-isaretler/mushaflarda-yer-alan-isaretler/4.mp3": {
+   "grup": null,
+   "sira": 5,
+   "durum": "elendi",
+   "neden": "«metin» Türkçe açıklama içeriyor (Arapça örnek değil)"
+  },
+  "elifba/mushaflarda-yer-alan-isaretler/mushaflarda-yer-alan-isaretler/5.mp3": {
+   "grup": null,
+   "sira": 6,
+   "durum": "elendi",
+   "neden": "«metin» Türkçe açıklama içeriyor (Arapça örnek değil)"
+  },
+  "elifba/mushaflarda-yer-alan-isaretler/mushaflarda-yer-alan-isaretler/6.mp3": {
+   "grup": null,
+   "sira": 7,
+   "durum": "elendi",
+   "neden": "«metin» Türkçe açıklama içeriyor (Arapça örnek değil)"
+  },
+  "elifba/mushaflarda-yer-alan-isaretler/mushaflarda-yer-alan-isaretler/7.mp3": {
+   "grup": null,
+   "sira": 8,
+   "durum": "elendi",
+   "neden": "«metin» Türkçe açıklama içeriyor (Arapça örnek değil)"
+  },
+  "elifba/mushaflarda-yer-alan-isaretler/mushaflarda-yer-alan-isaretler/8.mp3": {
+   "grup": null,
+   "sira": 9,
+   "durum": "elendi",
+   "neden": "«metin» Türkçe açıklama içeriyor (Arapça örnek değil)"
+  },
+  "elifba/mushaflarda-yer-alan-isaretler/mushaflarda-yer-alan-isaretler/9.mp3": {
+   "grup": null,
+   "sira": 10,
+   "durum": "elendi",
+   "neden": "«metin» Türkçe açıklama içeriyor (Arapça örnek değil)"
+  },
+  "elifba/mushaflarda-yer-alan-isaretler/mushaflarda-yer-alan-isaretler/10.mp3": {
+   "grup": null,
+   "sira": 11,
+   "durum": "elendi",
+   "neden": "Arapça metin yok (yalnız ses)"
+  },
+  "elifba/mushaflarda-yer-alan-isaretler/mushaflarda-yer-alan-isaretler/11.mp3": {
+   "grup": null,
+   "sira": 12,
+   "durum": "elendi",
+   "neden": "«metin» Türkçe açıklama içeriyor (Arapça örnek değil)"
+  },
+  "elifba/mushaflarda-yer-alan-isaretler/mushaflarda-yer-alan-isaretler/12.mp3": {
+   "grup": null,
+   "sira": 14,
+   "durum": "elendi",
+   "neden": "«metin» Türkçe açıklama içeriyor (Arapça örnek değil)"
+  },
+  "elifba/mushaflarda-yer-alan-isaretler/mushaflarda-yer-alan-isaretler/13.mp3": {
+   "grup": null,
+   "sira": 15,
+   "durum": "elendi",
+   "neden": "«metin» Türkçe açıklama içeriyor (Arapça örnek değil)"
+  },
+  "elifba/mushaflarda-yer-alan-isaretler/mushaflarda-yer-alan-isaretler/14.mp3": {
+   "grup": null,
+   "sira": 16,
+   "durum": "elendi",
+   "neden": "«metin» Türkçe açıklama içeriyor (Arapça örnek değil)"
+  },
+  "elifba/mushaflarda-yer-alan-isaretler/mushaflarda-yer-alan-isaretler/15.mp3": {
+   "grup": null,
+   "sira": 17,
+   "durum": "elendi",
+   "neden": "«metin» Türkçe açıklama içeriyor (Arapça örnek değil)"
+  },
+  "elifba/ra-harfi/uygulama/1.mp3": {
+   "grup": "tv-ra",
+   "sira": 2,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 56,
+   "ayet": 55,
+   "eslesen": 1
+  },
+  "elifba/ra-harfi/uygulama/2.mp3": {
+   "grup": "tv-ra",
+   "sira": 3,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 54,
+   "ayet": 16,
+   "eslesen": 4
+  },
+  "elifba/ra-harfi/uygulama/3.mp3": {
+   "grup": "tv-ra",
+   "sira": 4,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 24,
+   "ayet": 57,
+   "eslesen": 1
+  },
+  "elifba/ra-harfi/uygulama/4.mp3": {
+   "grup": "tv-ra",
+   "sira": 5,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 54,
+   "ayet": 8,
+   "eslesen": 1
+  },
+  "elifba/ra-harfi/uygulama/5.mp3": {
+   "grup": "tv-ra",
+   "sira": 6,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 67,
+   "ayet": 6,
+   "eslesen": 1
+  },
+  "elifba/tenvinli-kelimelerden-gecis/tenvinli-kelimelerden-gecis/1.mp3": {
+   "grup": null,
+   "sira": 4,
+   "durum": "elendi",
+   "neden": "fonetik yeniden yazım (nûn-i kesre eklenmiş); Kur’an metniyle doğrulanamaz"
+  },
+  "elifba/tenvinli-kelimelerden-gecis/tenvinli-kelimelerden-gecis/2.mp3": {
+   "grup": null,
+   "sira": 5,
+   "durum": "elendi",
+   "neden": "fonetik yeniden yazım (nûn-i kesre eklenmiş); Kur’an metniyle doğrulanamaz"
+  },
+  "elifba/tenvinli-kelimelerden-gecis/tenvinli-kelimelerden-gecis/3.mp3": {
+   "grup": null,
+   "sira": 6,
+   "durum": "elendi",
+   "neden": "fonetik yeniden yazım (nûn-i kesre eklenmiş); Kur’an metniyle doğrulanamaz"
+  },
+  "elifba/tenvinli-kelimelerden-gecis/tenvinli-kelimelerden-gecis/4.mp3": {
+   "grup": null,
+   "sira": 7,
+   "durum": "elendi",
+   "neden": "fonetik yeniden yazım (nûn-i kesre eklenmiş); Kur’an metniyle doğrulanamaz"
+  },
+  "elifba/tenvinli-kelimelerden-gecis/tenvinli-kelimelerden-gecis/5.mp3": {
+   "grup": null,
+   "sira": 8,
+   "durum": "elendi",
+   "neden": "fonetik yeniden yazım (nûn-i kesre eklenmiş); Kur’an metniyle doğrulanamaz"
+  },
+  "elifba/tenvinli-kelimelerden-gecis/tenvinli-kelimelerden-gecis/6.mp3": {
+   "grup": null,
+   "sira": 9,
+   "durum": "elendi",
+   "neden": "fonetik yeniden yazım (nûn-i kesre eklenmiş); Kur’an metniyle doğrulanamaz"
+  },
+  "elifba/tenvinli-kelimelerden-gecis/tenvinli-kelimelerden-gecis/7.mp3": {
+   "grup": null,
+   "sira": 10,
+   "durum": "elendi",
+   "neden": "fonetik yeniden yazım (nûn-i kesre eklenmiş); Kur’an metniyle doğrulanamaz"
+  },
+  "elifba/tenvinli-kelimelerden-gecis/tenvinli-kelimelerden-gecis/8.mp3": {
+   "grup": null,
+   "sira": 11,
+   "durum": "elendi",
+   "neden": "fonetik yeniden yazım (nûn-i kesre eklenmiş); Kur’an metniyle doğrulanamaz"
+  },
+  "elifba/tenvinli-kelimelerden-gecis/tenvinli-kelimelerden-gecis/9.mp3": {
+   "grup": null,
+   "sira": 12,
+   "durum": "elendi",
+   "neden": "fonetik yeniden yazım (nûn-i kesre eklenmiş); Kur’an metniyle doğrulanamaz"
+  },
+  "elifba/tenvinli-kelimelerden-gecis/tenvinli-kelimelerden-gecis/10.mp3": {
+   "grup": null,
+   "sira": 13,
+   "durum": "elendi",
+   "neden": "fonetik yeniden yazım (nûn-i kesre eklenmiş); Kur’an metniyle doğrulanamaz"
+  },
+  "elifba/tenvinli-kelimelerden-gecis/tenvinli-kelimelerden-gecis/11.mp3": {
+   "grup": null,
+   "sira": 14,
+   "durum": "elendi",
+   "neden": "fonetik yeniden yazım (nûn-i kesre eklenmiş); Kur’an metniyle doğrulanamaz"
+  },
+  "elifba/tenvinli-kelimelerden-gecis/tenvinli-kelimelerden-gecis/12.mp3": {
+   "grup": null,
+   "sira": 15,
+   "durum": "elendi",
+   "neden": "fonetik yeniden yazım (nûn-i kesre eklenmiş); Kur’an metniyle doğrulanamaz"
+  },
+  "elifba/uygulama/ayetel-kursi/besmele.mp3": {
+   "grup": "s-ayetel-kursi",
+   "sira": 1,
+   "durum": "dogrulandi",
+   "yontem": "ezber+tam-metin",
+   "sure": 1,
+   "ayet": 1,
+   "besmele": true
+  },
+  "elifba/uygulama/ayetel-kursi/ayetel_kursi_1.mp3": {
+   "grup": "s-ayetel-kursi",
+   "sira": 2,
+   "durum": "dogrulandi",
+   "yontem": "ezber",
+   "sure": 2,
+   "ayet": 255,
+   "tamMetin": false
+  },
+  "elifba/uygulama/bakara-suresi-285-286/besmele.mp3": {
+   "grup": "s-bakara-285-286",
+   "sira": 1,
+   "durum": "dogrulandi",
+   "yontem": "ezber+tam-metin",
+   "sure": 1,
+   "ayet": 1,
+   "besmele": true
+  },
+  "elifba/uygulama/bakara-suresi-285-286/bakara_285_286_1.mp3": {
+   "grup": "s-bakara-285-286",
+   "sira": 2,
+   "durum": "dogrulandi",
+   "yontem": "ezber",
+   "sure": 2,
+   "ayet": 285,
+   "tamMetin": true
+  },
+  "elifba/uygulama/bakara-suresi-285-286/bakara_285_286_2.mp3": {
+   "grup": "s-bakara-285-286",
+   "sira": 3,
+   "durum": "dogrulandi",
+   "yontem": "ezber",
+   "sure": 2,
+   "ayet": 286,
+   "tamMetin": true
+  },
+  "elifba/uygulama/bakara-suresi/besmele.mp3": {
+   "grup": "bakara-1-5",
+   "sira": 1,
+   "durum": "dogrulandi",
+   "yontem": "ezber+tam-metin",
+   "sure": 1,
+   "ayet": 1,
+   "besmele": true
+  },
+  "elifba/uygulama/bakara-suresi/bakara_suresi_1.mp3": {
+   "grup": "bakara-1-5",
+   "sira": 2,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 2,
+   "ayet": 1
+  },
+  "elifba/uygulama/bakara-suresi/bakara_suresi_2.mp3": {
+   "grup": "bakara-1-5",
+   "sira": 3,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 2,
+   "ayet": 2
+  },
+  "elifba/uygulama/bakara-suresi/bakara_suresi_3.mp3": {
+   "grup": "bakara-1-5",
+   "sira": 4,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 2,
+   "ayet": 3
+  },
+  "elifba/uygulama/bakara-suresi/bakara_suresi_4.mp3": {
+   "grup": "bakara-1-5",
+   "sira": 5,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 2,
+   "ayet": 4
+  },
+  "elifba/uygulama/bakara-suresi/bakara_suresi_5.mp3": {
+   "grup": "bakara-1-5",
+   "sira": 6,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 2,
+   "ayet": 5
+  },
+  "elifba/uygulama/fil-suresi/besmele.mp3": {
+   "grup": "s-fil",
+   "sira": 1,
+   "durum": "dogrulandi",
+   "yontem": "ezber+tam-metin",
+   "sure": 1,
+   "ayet": 1,
+   "besmele": true
+  },
+  "elifba/uygulama/fil-suresi/fil_suresi_1.mp3": {
+   "grup": "s-fil",
+   "sira": 2,
+   "durum": "dogrulandi",
+   "yontem": "ezber",
+   "sure": 105,
+   "ayet": 1,
+   "tamMetin": true
+  },
+  "elifba/uygulama/fil-suresi/fil_suresi_2.mp3": {
+   "grup": "s-fil",
+   "sira": 3,
+   "durum": "dogrulandi",
+   "yontem": "ezber",
+   "sure": 105,
+   "ayet": 2,
+   "tamMetin": true
+  },
+  "elifba/uygulama/fil-suresi/fil_suresi_3.mp3": {
+   "grup": "s-fil",
+   "sira": 4,
+   "durum": "dogrulandi",
+   "yontem": "ezber",
+   "sure": 105,
+   "ayet": 3,
+   "tamMetin": true
+  },
+  "elifba/uygulama/fil-suresi/fil_suresi_4.mp3": {
+   "grup": "s-fil",
+   "sira": 5,
+   "durum": "dogrulandi",
+   "yontem": "ezber",
+   "sure": 105,
+   "ayet": 4,
+   "tamMetin": true
+  },
+  "elifba/uygulama/fil-suresi/fil_suresi_5.mp3": {
+   "grup": "s-fil",
+   "sira": 6,
+   "durum": "dogrulandi",
+   "yontem": "ezber",
+   "sure": 105,
+   "ayet": 5,
+   "tamMetin": true
+  },
+  "elifba/uygulama/hasr-suresi/besmele.mp3": {
+   "grup": "s-hasr-22-24",
+   "sira": 1,
+   "durum": "dogrulandi",
+   "yontem": "ezber+tam-metin",
+   "sure": 1,
+   "ayet": 1,
+   "besmele": true
+  },
+  "elifba/uygulama/hasr-suresi/hasr_suresi_1.mp3": {
+   "grup": "s-hasr-22-24",
+   "sira": 2,
+   "durum": "dogrulandi",
+   "yontem": "ezber",
+   "sure": 59,
+   "ayet": 22,
+   "tamMetin": true
+  },
+  "elifba/uygulama/hasr-suresi/hasr_suresi_2.mp3": {
+   "grup": "s-hasr-22-24",
+   "sira": 3,
+   "durum": "dogrulandi",
+   "yontem": "ezber",
+   "sure": 59,
+   "ayet": 23,
+   "tamMetin": true
+  },
+  "elifba/uygulama/hasr-suresi/hasr_suresi_3.mp3": {
+   "grup": "s-hasr-22-24",
+   "sira": 4,
+   "durum": "dogrulandi",
+   "yontem": "ezber",
+   "sure": 59,
+   "ayet": 24,
+   "tamMetin": true
+  },
+  "elifba/uygulama/ihlas-suresi/besmele.mp3": {
+   "grup": "s-ihlas",
+   "sira": 1,
+   "durum": "dogrulandi",
+   "yontem": "ezber+tam-metin",
+   "sure": 1,
+   "ayet": 1,
+   "besmele": true
+  },
+  "elifba/uygulama/kafirun-suresi/besmele.mp3": {
+   "grup": "s-kafirun",
+   "sira": 1,
+   "durum": "dogrulandi",
+   "yontem": "ezber+tam-metin",
+   "sure": 1,
+   "ayet": 1,
+   "besmele": true
+  },
+  "elifba/uygulama/kafirun-suresi/kafirun_suresi_1.mp3": {
+   "grup": "s-kafirun",
+   "sira": 2,
+   "durum": "dogrulandi",
+   "yontem": "ezber",
+   "sure": 109,
+   "ayet": 1,
+   "tamMetin": true
+  },
+  "elifba/uygulama/kafirun-suresi/kafirun_suresi_2.mp3": {
+   "grup": "s-kafirun",
+   "sira": 3,
+   "durum": "dogrulandi",
+   "yontem": "ezber",
+   "sure": 109,
+   "ayet": 2,
+   "tamMetin": true
+  },
+  "elifba/uygulama/kafirun-suresi/kafirun_suresi_3.mp3": {
+   "grup": "s-kafirun",
+   "sira": 4,
+   "durum": "dogrulandi",
+   "yontem": "ezber",
+   "sure": 109,
+   "ayet": 3,
+   "tamMetin": true
+  },
+  "elifba/uygulama/kafirun-suresi/kafirun_suresi_4.mp3": {
+   "grup": "s-kafirun",
+   "sira": 5,
+   "durum": "dogrulandi",
+   "yontem": "ezber",
+   "sure": 109,
+   "ayet": 4,
+   "tamMetin": true
+  },
+  "elifba/uygulama/kafirun-suresi/kafirun_suresi_5.mp3": {
+   "grup": "s-kafirun",
+   "sira": 6,
+   "durum": "dogrulandi",
+   "yontem": "ezber",
+   "sure": 109,
+   "ayet": 5,
+   "tamMetin": true
+  },
+  "elifba/uygulama/kafirun-suresi/kafirun_suresi_6.mp3": {
+   "grup": "s-kafirun",
+   "sira": 7,
+   "durum": "dogrulandi",
+   "yontem": "ezber",
+   "sure": 109,
+   "ayet": 6,
+   "tamMetin": true
+  },
+  "elifba/uygulama/kevser-suresi/besmele.mp3": {
+   "grup": "s-kevser",
+   "sira": 1,
+   "durum": "dogrulandi",
+   "yontem": "ezber+tam-metin",
+   "sure": 1,
+   "ayet": 1,
+   "besmele": true
+  },
+  "elifba/uygulama/kureys-suresi/besmele.mp3": {
+   "grup": "s-kureys",
+   "sira": 1,
+   "durum": "dogrulandi",
+   "yontem": "ezber+tam-metin",
+   "sure": 1,
+   "ayet": 1,
+   "besmele": true
+  },
+  "elifba/uygulama/kureys-suresi/kureys_suresi_1.mp3": {
+   "grup": "s-kureys",
+   "sira": 2,
+   "durum": "dogrulandi",
+   "yontem": "ezber",
+   "sure": 106,
+   "ayet": 1,
+   "tamMetin": true
+  },
+  "elifba/uygulama/kureys-suresi/kureys_suresi_2.mp3": {
+   "grup": "s-kureys",
+   "sira": 3,
+   "durum": "dogrulandi",
+   "yontem": "ezber",
+   "sure": 106,
+   "ayet": 2,
+   "tamMetin": true
+  },
+  "elifba/uygulama/kureys-suresi/kureys_suresi_3.mp3": {
+   "grup": "s-kureys",
+   "sira": 4,
+   "durum": "dogrulandi",
+   "yontem": "ezber",
+   "sure": 106,
+   "ayet": 3,
+   "tamMetin": true
+  },
+  "elifba/uygulama/kureys-suresi/kureys_suresi_4.mp3": {
+   "grup": "s-kureys",
+   "sira": 5,
+   "durum": "dogrulandi",
+   "yontem": "ezber",
+   "sure": 106,
+   "ayet": 4,
+   "tamMetin": true
+  },
+  "elifba/uygulama/maun-suresi/besmele.mp3": {
+   "grup": "s-maun",
+   "sira": 1,
+   "durum": "dogrulandi",
+   "yontem": "ezber+tam-metin",
+   "sure": 1,
+   "ayet": 1,
+   "besmele": true
+  },
+  "elifba/uygulama/maun-suresi/maun_suresi_1.mp3": {
+   "grup": "s-maun",
+   "sira": 2,
+   "durum": "dogrulandi",
+   "yontem": "ezber",
+   "sure": 107,
+   "ayet": 1,
+   "tamMetin": true
+  },
+  "elifba/uygulama/maun-suresi/maun_suresi_2.mp3": {
+   "grup": "s-maun",
+   "sira": 3,
+   "durum": "dogrulandi",
+   "yontem": "ezber",
+   "sure": 107,
+   "ayet": 2,
+   "tamMetin": true
+  },
+  "elifba/uygulama/maun-suresi/maun_suresi_3.mp3": {
+   "grup": "s-maun",
+   "sira": 4,
+   "durum": "dogrulandi",
+   "yontem": "ezber",
+   "sure": 107,
+   "ayet": 3,
+   "tamMetin": true
+  },
+  "elifba/uygulama/maun-suresi/maun_suresi_4.mp3": {
+   "grup": "s-maun",
+   "sira": 5,
+   "durum": "dogrulandi",
+   "yontem": "ezber",
+   "sure": 107,
+   "ayet": 4,
+   "tamMetin": true
+  },
+  "elifba/uygulama/maun-suresi/maun_suresi_5.mp3": {
+   "grup": "s-maun",
+   "sira": 6,
+   "durum": "dogrulandi",
+   "yontem": "ezber",
+   "sure": 107,
+   "ayet": 5,
+   "tamMetin": true
+  },
+  "elifba/uygulama/maun-suresi/maun_suresi_6.mp3": {
+   "grup": "s-maun",
+   "sira": 7,
+   "durum": "dogrulandi",
+   "yontem": "ezber",
+   "sure": 107,
+   "ayet": 6,
+   "tamMetin": true
+  },
+  "elifba/uygulama/maun-suresi/maun_suresi_7.mp3": {
+   "grup": "s-maun",
+   "sira": 8,
+   "durum": "dogrulandi",
+   "yontem": "ezber",
+   "sure": 107,
+   "ayet": 7,
+   "tamMetin": true
+  },
+  "elifba/uygulama/nas-suresi/besmele.mp3": {
+   "grup": "s-nas",
+   "sira": 1,
+   "durum": "dogrulandi",
+   "yontem": "ezber+tam-metin",
+   "sure": 1,
+   "ayet": 1,
+   "besmele": true
+  },
+  "elifba/uygulama/nas-suresi/nas_suresi_1.mp3": {
+   "grup": "s-nas",
+   "sira": 2,
+   "durum": "dogrulandi",
+   "yontem": "ezber",
+   "sure": 114,
+   "ayet": 1,
+   "tamMetin": true
+  },
+  "elifba/uygulama/nas-suresi/nas_suresi_2.mp3": {
+   "grup": "s-nas",
+   "sira": 3,
+   "durum": "dogrulandi",
+   "yontem": "ezber",
+   "sure": 114,
+   "ayet": 2,
+   "tamMetin": true
+  },
+  "elifba/uygulama/nas-suresi/nas_suresi_3.mp3": {
+   "grup": "s-nas",
+   "sira": 4,
+   "durum": "dogrulandi",
+   "yontem": "ezber",
+   "sure": 114,
+   "ayet": 3,
+   "tamMetin": true
+  },
+  "elifba/uygulama/nas-suresi/nas_suresi_4.mp3": {
+   "grup": "s-nas",
+   "sira": 5,
+   "durum": "dogrulandi",
+   "yontem": "ezber",
+   "sure": 114,
+   "ayet": 4,
+   "tamMetin": true
+  },
+  "elifba/uygulama/nas-suresi/nas_suresi_5.mp3": {
+   "grup": "s-nas",
+   "sira": 6,
+   "durum": "dogrulandi",
+   "yontem": "ezber",
+   "sure": 114,
+   "ayet": 5,
+   "tamMetin": true
+  },
+  "elifba/uygulama/nas-suresi/nas_suresi_6.mp3": {
+   "grup": "s-nas",
+   "sira": 7,
+   "durum": "dogrulandi",
+   "yontem": "ezber",
+   "sure": 114,
+   "ayet": 6,
+   "tamMetin": true
+  },
+  "elifba/uygulama/nasr-suresi/besmele.mp3": {
+   "grup": "s-nasr",
+   "sira": 1,
+   "durum": "dogrulandi",
+   "yontem": "ezber+tam-metin",
+   "sure": 1,
+   "ayet": 1,
+   "besmele": true
+  },
+  "elifba/uygulama/nasr-suresi/nasr_suresi_1.mp3": {
+   "grup": "s-nasr",
+   "sira": 2,
+   "durum": "dogrulandi",
+   "yontem": "ezber",
+   "sure": 110,
+   "ayet": 1,
+   "tamMetin": true
+  },
+  "elifba/uygulama/nasr-suresi/nasr_suresi_2.mp3": {
+   "grup": "s-nasr",
+   "sira": 3,
+   "durum": "dogrulandi",
+   "yontem": "ezber",
+   "sure": 110,
+   "ayet": 2,
+   "tamMetin": true
+  },
+  "elifba/uygulama/nasr-suresi/nasr_suresi_3.mp3": {
+   "grup": "s-nasr",
+   "sira": 4,
+   "durum": "dogrulandi",
+   "yontem": "ezber",
+   "sure": 110,
+   "ayet": 3,
+   "tamMetin": false
+  },
+  "elifba/uygulama/tebbet-suresi/besmele.mp3": {
+   "grup": "s-tebbet",
+   "sira": 1,
+   "durum": "dogrulandi",
+   "yontem": "ezber+tam-metin",
+   "sure": 1,
+   "ayet": 1,
+   "besmele": true
+  },
+  "elifba/uygulama/tebbet-suresi/tebbet_suresi_1.mp3": {
+   "grup": "s-tebbet",
+   "sira": 2,
+   "durum": "dogrulandi",
+   "yontem": "ezber",
+   "sure": 111,
+   "ayet": 1,
+   "tamMetin": true
+  },
+  "elifba/uygulama/tebbet-suresi/tebbet_suresi_2.mp3": {
+   "grup": "s-tebbet",
+   "sira": 3,
+   "durum": "dogrulandi",
+   "yontem": "ezber",
+   "sure": 111,
+   "ayet": 2,
+   "tamMetin": true
+  },
+  "elifba/uygulama/tebbet-suresi/tebbet_suresi_3.mp3": {
+   "grup": "s-tebbet",
+   "sira": 4,
+   "durum": "dogrulandi",
+   "yontem": "ezber",
+   "sure": 111,
+   "ayet": 3,
+   "tamMetin": true
+  },
+  "elifba/uygulama/tebbet-suresi/tebbet_suresi_4.mp3": {
+   "grup": "s-tebbet",
+   "sira": 5,
+   "durum": "dogrulandi",
+   "yontem": "ezber",
+   "sure": 111,
+   "ayet": 4,
+   "tamMetin": true
+  },
+  "elifba/uygulama/tebbet-suresi/tebbet_suresi_5.mp3": {
+   "grup": "s-tebbet",
+   "sira": 6,
+   "durum": "dogrulandi",
+   "yontem": "ezber",
+   "sure": 111,
+   "ayet": 5,
+   "tamMetin": true
+  },
+  "elifba/zamir/uygulama/1.mp3": {
+   "grup": "tv-zamir",
+   "sira": 2,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 27,
+   "ayet": 44,
+   "eslesen": 1
+  },
+  "elifba/zamir/uygulama/2.mp3": {
+   "grup": "tv-zamir",
+   "sira": 3,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 37,
+   "ayet": 102,
+   "eslesen": 1
+  },
+  "elifba/zamir/uygulama/3.mp3": {
+   "grup": "tv-zamir",
+   "sira": 4,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 7,
+   "ayet": 156,
+   "eslesen": 5
+  },
+  "elifba/zamir/uygulama/4.mp3": {
+   "grup": "tv-zamir",
+   "sira": 5,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 38,
+   "ayet": 60,
+   "eslesen": 1
+  },
+  "elifba/zamir/uygulama/5.mp3": {
+   "grup": "tv-zamir",
+   "sira": 6,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 37,
+   "ayet": 94,
+   "eslesen": 1
+  },
+  "elifba/zamir/uygulama/6.mp3": {
+   "grup": "tv-zamir",
+   "sira": 7,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 28,
+   "ayet": 15,
+   "eslesen": 1
+  },
+  "elifba/zamir/uygulama/7.mp3": {
+   "grup": "tv-zamir",
+   "sira": 8,
+   "durum": "elendi",
+   "neden": "Kur’an metninde bulunamadı"
+  },
+  "elifba/zamir/uygulama/8.mp3": {
+   "grup": "tv-zamir",
+   "sira": 9,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 25,
+   "ayet": 43,
+   "eslesen": 2
+  },
+  "elifba/zamir/uygulama/9.mp3": {
+   "grup": "tv-zamir",
+   "sira": 10,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 37,
+   "ayet": 142,
+   "eslesen": 1
+  },
+  "elifba/zamir/uygulama/10.mp3": {
+   "grup": "tv-zamir",
+   "sira": 11,
+   "durum": "dogrulandi",
+   "yontem": "tam-metin",
+   "sure": 86,
+   "ayet": 8,
+   "eslesen": 1
+  }
+ }
+}

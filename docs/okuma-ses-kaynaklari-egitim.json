@@ -1,0 +1,827 @@
+{
+ "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/1.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/hurufu-mukattaa/hurufu-mukattaa/btn_1.mp3",
+  "sha256": "fb22bf2cc8ca49eb2d6d323b188069618002f34cc028867fbd3b1cbbeb9ffd24",
+  "bayt": 51409
+ },
+ "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/10.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/hurufu-mukattaa/hurufu-mukattaa/btn_10.mp3",
+  "sha256": "61db67016a3493ff3fd266e8452111e95e7c8f36bb8de5192ac39ab8930e7e8c",
+  "bayt": 81084
+ },
+ "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/11.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/hurufu-mukattaa/hurufu-mukattaa/btn_11.mp3",
+  "sha256": "c4d57349c45394a3240214ddc97897ae5c3e3542c3a22f1af2246ca6200bae0f",
+  "bayt": 168437
+ },
+ "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/13.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/hurufu-mukattaa/hurufu-mukattaa/btn_13.mp3",
+  "sha256": "42555cafbf3df1ed8370acbceac847d5c3cb5d212f257a31fcd4312e1f7bad8e",
+  "bayt": 96548
+ },
+ "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/14.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/hurufu-mukattaa/hurufu-mukattaa/btn_14.mp3",
+  "sha256": "e49210d430c7ff02fc28802a62d7fb4a435b7ecf08827d5f749cdd6b1ec8bce2",
+  "bayt": 212741
+ },
+ "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/16.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/hurufu-mukattaa/hurufu-mukattaa/btn_16.mp3",
+  "sha256": "f188b0f62707413612503b9d4efeae8d571ef84210038a0355b750df295d035e",
+  "bayt": 29257
+ },
+ "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/17.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/hurufu-mukattaa/hurufu-mukattaa/btn_17.mp3",
+  "sha256": "25bb8223dbd84eefa0bb9bf8428bec1727733df6425679e2785fd873381faa2a",
+  "bayt": 42631
+ },
+ "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/19.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/hurufu-mukattaa/hurufu-mukattaa/btn_19.mp3",
+  "sha256": "02b611e9a83723739b501b30b0f892d5db7ab396e04b82bf225fc12cb9f9f4d9",
+  "bayt": 52662
+ },
+ "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/2.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/hurufu-mukattaa/hurufu-mukattaa/btn_2.mp3",
+  "sha256": "bb7d7bd0e97fe43330499aa2c79d0ddd14e310b9968f725caa6c0d875ff41941",
+  "bayt": 161332
+ },
+ "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/20.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/hurufu-mukattaa/hurufu-mukattaa/btn_20.mp3",
+  "sha256": "b486896bd66589459d0672f1205b7470ac6083e13b2b402badb7bfe5dc73b263",
+  "bayt": 152137
+ },
+ "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/22.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/hurufu-mukattaa/hurufu-mukattaa/btn_22.mp3",
+  "sha256": "a2ac57a0cfdabb110630c24093de2242cd467e033baf8db31e9e468db1272da5",
+  "bayt": 37616
+ },
+ "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/23.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/hurufu-mukattaa/hurufu-mukattaa/btn_23.mp3",
+  "sha256": "7bc3930fda5da08af3a376c9676ea610bba6985a23df949bfea6c08f2f20788f",
+  "bayt": 79830
+ },
+ "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/25.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/hurufu-mukattaa/hurufu-mukattaa/btn_25.mp3",
+  "sha256": "34fdf740756da99eb31cb281676fea6a27ce1dbb50fd329a298e61909bc2647c",
+  "bayt": 39706
+ },
+ "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/26.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/hurufu-mukattaa/hurufu-mukattaa/btn_26.mp3",
+  "sha256": "707e506e3772ca1bf1b7d94ea17e184b9aa2b8faf9c5f278155843ddaf3fa0ba",
+  "bayt": 83591
+ },
+ "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/28.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/hurufu-mukattaa/hurufu-mukattaa/btn_28.mp3",
+  "sha256": "35e3ea55782f5c380c3913497f192ce81e27f60094e3b7503a291299567eed83",
+  "bayt": 40542
+ },
+ "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/29.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/hurufu-mukattaa/hurufu-mukattaa/btn_29.mp3",
+  "sha256": "5fc5cda3bb7fc772e31ad1248bdfa5d0b420d859338a792acae6021c2aff7b04",
+  "bayt": 74396
+ },
+ "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/31.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/hurufu-mukattaa/hurufu-mukattaa/btn_31.mp3",
+  "sha256": "44efa670e6e47814140531980fd48fc8c4fe7dd740ea636eba9892202c38af2c",
+  "bayt": 24241
+ },
+ "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/32.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/hurufu-mukattaa/hurufu-mukattaa/btn_32.mp3",
+  "sha256": "060b2b17f015ae13d2277443f6d81e2480d1fe334f023371cb5ca6158a1cd5fe",
+  "bayt": 80248
+ },
+ "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/34.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/hurufu-mukattaa/hurufu-mukattaa/btn_34.mp3",
+  "sha256": "25763cb7dc84a60d9e0800b675798f66817a1fcf1dbdeb0ded8f143788bf23c6",
+  "bayt": 27585
+ },
+ "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/35.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/hurufu-mukattaa/hurufu-mukattaa/btn_35.mp3",
+  "sha256": "c4dcce5b89e694d2789236143f2f77c14d6591cc847d26ca68eaa5b8db6b3dc1",
+  "bayt": 76486
+ },
+ "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/37.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/hurufu-mukattaa/hurufu-mukattaa/btn_37.mp3",
+  "sha256": "b5c8eabe2dfa4690a099a8ca10453c1ab63e25042bad8a21aaefff1b2bc49ddc",
+  "bayt": 80248
+ },
+ "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/38.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/hurufu-mukattaa/hurufu-mukattaa/btn_38.mp3",
+  "sha256": "409b24c335a49c8b93883cc5772bf7c446ffd5720787d785ff8c32843fafab99",
+  "bayt": 206889
+ },
+ "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/4.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/hurufu-mukattaa/hurufu-mukattaa/btn_4.mp3",
+  "sha256": "d4752019221e3bbfbf0189ab5ca0853928633bb0cfa37187522bdf536e8d7e06",
+  "bayt": 77740
+ },
+ "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/40.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/hurufu-mukattaa/hurufu-mukattaa/btn_40.mp3",
+  "sha256": "cba266862c6c1f09d01161757084760864c154b98a9d53632107147c0f79e05a",
+  "bayt": 17972
+ },
+ "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/41.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/hurufu-mukattaa/hurufu-mukattaa/btn_41.mp3",
+  "sha256": "eb15c560d8489b3b5cbac53be47d11427106dddf2afe4314c47e30ceed046b63",
+  "bayt": 64365
+ },
+ "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/43.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/hurufu-mukattaa/hurufu-mukattaa/btn_43.mp3",
+  "sha256": "f45b5f16e3d46bb71d3522308a07495c8fc95c5e12dfaccd4438832f0773fd86",
+  "bayt": 27585
+ },
+ "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/44.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/hurufu-mukattaa/hurufu-mukattaa/btn_44.mp3",
+  "sha256": "4d2bd936abb0d69245fd2982e83604ba3cadca6c22e3d06668ff306d41919998",
+  "bayt": 88607
+ },
+ "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/5.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/hurufu-mukattaa/hurufu-mukattaa/btn_5.mp3",
+  "sha256": "a83cc89fdcda11ff1a6e26aa01d9e0367536f0687cd28fe640ab49ee18983637",
+  "bayt": 209815
+ },
+ "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/7.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/hurufu-mukattaa/hurufu-mukattaa/btn_7.mp3",
+  "sha256": "298fe66b7a192029b7469497727f599f838eabaa017d4624d54830c6d618ea5e",
+  "bayt": 50991
+ },
+ "/media/ses/okuma/yeni/hurufu-mukattaa/hurufu-mukattaa/8.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/hurufu-mukattaa/hurufu-mukattaa/btn_8.mp3",
+  "sha256": "f460840e8d15931ed77f1f59b956cda608a7fd9d060ccc1fbabcfa52981ce3a4",
+  "bayt": 108669
+ },
+ "/media/ses/okuma/yeni/idgami-bila-gunne/idgami-bila-gunne/1.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/idgami-bila-gunne/idgami-bila-gunne/btn_1.mp3",
+  "sha256": "76bcc0acffcc8d70464f7e8aee906977628dfb27577a543ce0c312c5094795f5",
+  "bayt": 45139
+ },
+ "/media/ses/okuma/yeni/idgami-bila-gunne/idgami-bila-gunne/10.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/idgami-bila-gunne/idgami-bila-gunne/btn_10.mp3",
+  "sha256": "cd1bd0ce29d93548f5168dc9102981c74a5683768a7d1123ebe3c7cb5ffd47ac",
+  "bayt": 86935
+ },
+ "/media/ses/okuma/yeni/idgami-bila-gunne/idgami-bila-gunne/11.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/idgami-bila-gunne/idgami-bila-gunne/btn_11.mp3",
+  "sha256": "cb1129595ef5e36bcc4e6187f000ed3c77319c1ac182d30fb5df394a73272c91",
+  "bayt": 77322
+ },
+ "/media/ses/okuma/yeni/idgami-bila-gunne/idgami-bila-gunne/12.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/idgami-bila-gunne/idgami-bila-gunne/btn_12.mp3",
+  "sha256": "facf7d966a1af930168ef9c788ed1de251854456a6856ff19dac294ae90383b2",
+  "bayt": 89443
+ },
+ "/media/ses/okuma/yeni/idgami-bila-gunne/idgami-bila-gunne/2.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/idgami-bila-gunne/idgami-bila-gunne/btn_2.mp3",
+  "sha256": "d1a258b68b4ddbd1e1ee33035153eabe28422d959a30118dac9f5f3fd36963f9",
+  "bayt": 55588
+ },
+ "/media/ses/okuma/yeni/idgami-bila-gunne/idgami-bila-gunne/3.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/idgami-bila-gunne/idgami-bila-gunne/btn_3.mp3",
+  "sha256": "3f147f173b5abaca78b5b020881324328bafb0b3be04b9734ae23bdaf9ce6bf0",
+  "bayt": 58932
+ },
+ "/media/ses/okuma/yeni/idgami-bila-gunne/idgami-bila-gunne/4.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/idgami-bila-gunne/idgami-bila-gunne/btn_4.mp3",
+  "sha256": "736f7886dfe2f2460cdac2b685540ecd912731def5822ba86d8983d704420cad",
+  "bayt": 56842
+ },
+ "/media/ses/okuma/yeni/idgami-bila-gunne/idgami-bila-gunne/5.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/idgami-bila-gunne/idgami-bila-gunne/btn_5.mp3",
+  "sha256": "eaedf442d34ac5000dbe56b290e952380d7ca8a095c04444998f422f448f3405",
+  "bayt": 66037
+ },
+ "/media/ses/okuma/yeni/idgami-bila-gunne/idgami-bila-gunne/6.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/idgami-bila-gunne/idgami-bila-gunne/btn_6.mp3",
+  "sha256": "9dfcef58d06727c851db85bb6c245814410d13c72edbd3e239ed9f5948ceac0a",
+  "bayt": 87771
+ },
+ "/media/ses/okuma/yeni/idgami-bila-gunne/idgami-bila-gunne/7.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/idgami-bila-gunne/idgami-bila-gunne/btn_7.mp3",
+  "sha256": "8542cacad1928794a9c417fa59c9b5b77892187eab967a8181ddd4d4b7ac24c0",
+  "bayt": 74814
+ },
+ "/media/ses/okuma/yeni/idgami-bila-gunne/idgami-bila-gunne/8.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/idgami-bila-gunne/idgami-bila-gunne/btn_8.mp3",
+  "sha256": "3ac5e707efd0e5327d589f5e52ace43ce44c6a8fe4b5323c7f5e2f9f2cbbb0ec",
+  "bayt": 68127
+ },
+ "/media/ses/okuma/yeni/idgami-bila-gunne/idgami-bila-gunne/9.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/idgami-bila-gunne/idgami-bila-gunne/btn_9.mp3",
+  "sha256": "b39fa1cb6edee285ab9f3065948b7d967df2152d92c9365be3ca4afc3447902e",
+  "bayt": 73142
+ },
+ "/media/ses/okuma/yeni/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/1.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/btn_1.mp3",
+  "sha256": "d3f9e7b7e2814a2defdf0355bb9cecdddb3834426f081f089753d643637bb2a6",
+  "bayt": 42213
+ },
+ "/media/ses/okuma/yeni/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/10.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/btn_10.mp3",
+  "sha256": "3c9db37ecce6af0986ee5905fc2d986b15ff2fcf95b43d3f680e8f5815139c6c",
+  "bayt": 81502
+ },
+ "/media/ses/okuma/yeni/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/2.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/btn_2.mp3",
+  "sha256": "de3854b531b1613f6455eda01489489c0c54e9f667db65f84fab28250f4b3f2e",
+  "bayt": 45975
+ },
+ "/media/ses/okuma/yeni/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/3.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/btn_3.mp3",
+  "sha256": "4dcd4a7173bb07ceecb1fd043d503f215ef90247ca8ce06133c8b5195ba32cb7",
+  "bayt": 43467
+ },
+ "/media/ses/okuma/yeni/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/4.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/btn_4.mp3",
+  "sha256": "1049e9dcd29bb05041862770efbece48317a00eb90a32ae21b9dd5e91a3f6288",
+  "bayt": 49319
+ },
+ "/media/ses/okuma/yeni/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/5.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/btn_5.mp3",
+  "sha256": "2e7ff4f598f5194ecc7c0eb9fec39efbce2262eb5bb44815d3271054a6b0db9f",
+  "bayt": 53498
+ },
+ "/media/ses/okuma/yeni/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/6.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/btn_6.mp3",
+  "sha256": "a0014c8301e0b2dbec729c65a3779b3ad274c42ff5cc46759fb968c9ba8ecada",
+  "bayt": 57260
+ },
+ "/media/ses/okuma/yeni/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/7.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/btn_7.mp3",
+  "sha256": "2502b8ba8d0e29a68f7ef1e79450adeba91cb76b319847f2eb4a0ddeeadd9e5b",
+  "bayt": 72724
+ },
+ "/media/ses/okuma/yeni/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/8.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/btn_8.mp3",
+  "sha256": "d6ba74aff161cc565bc7e5fecc296dfaf5471a2c0f61dde35cf2eff40df2ccd7",
+  "bayt": 68963
+ },
+ "/media/ses/okuma/yeni/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/9.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/idgami-misleyn-bila-gunne/idgami-misleyn-bila-gunne/btn_9.mp3",
+  "sha256": "e184078211cb129ba91d92fc3045509d6f7b29d830075104cb6d677cd4813401",
+  "bayt": 75650
+ },
+ "/media/ses/okuma/yeni/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/1.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/btn_1.mp3",
+  "sha256": "c06340d47d912ef3bb223ba88b0a6083dfbe07a81e5ad5ccd6753f60223553fe",
+  "bayt": 71889
+ },
+ "/media/ses/okuma/yeni/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/10.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/btn_10.mp3",
+  "sha256": "517df0892a889e4156e70a57f66b8d8b9543897122e4aeab4986f8680688d807",
+  "bayt": 119536
+ },
+ "/media/ses/okuma/yeni/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/11.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/btn_11.mp3",
+  "sha256": "2c712253ff1397449d2d81aa32244fd05af4beb5f357693dc468ab1f8d532649",
+  "bayt": 46646
+ },
+ "/media/ses/okuma/yeni/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/12.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/btn_12.mp3",
+  "sha256": "192e4a842824b9425a83520157a80d184147238647c42fac3f056250a33dd6d5",
+  "bayt": 43302
+ },
+ "/media/ses/okuma/yeni/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/13.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/btn_13.mp3",
+  "sha256": "d96d0f7497d316d2ac4d62a4c321b445aedb9a149a5522edcccbd0f45469de16",
+  "bayt": 45392
+ },
+ "/media/ses/okuma/yeni/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/2.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/btn_2.mp3",
+  "sha256": "25514a332e2eddfd6e36f40dcf17b87f4a82abc07c3ca1e10a1349941c8c6c76",
+  "bayt": 86935
+ },
+ "/media/ses/okuma/yeni/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/3.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/btn_3.mp3",
+  "sha256": "bfae4e6f81bf104dcba1c89bf525e4192398bc8acdaaceca1f770724926c3893",
+  "bayt": 71471
+ },
+ "/media/ses/okuma/yeni/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/4.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/btn_4.mp3",
+  "sha256": "d9b95ea042266491edecef1a84b36e2aed0ce60dc67288b8b368bc7135b21256",
+  "bayt": 85263
+ },
+ "/media/ses/okuma/yeni/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/5.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/btn_5.mp3",
+  "sha256": "e3d274b5938dbdf7b189d6b13457e22f416e3ff2ee0c18bb3d5f52b70274c9a1",
+  "bayt": 58932
+ },
+ "/media/ses/okuma/yeni/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/6.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/btn_6.mp3",
+  "sha256": "06a1e51f1eec25e69cb21980626bc2396962e08d1658f05ce4ba02f23e619f1d",
+  "bayt": 70217
+ },
+ "/media/ses/okuma/yeni/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/7.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/btn_7.mp3",
+  "sha256": "8e1b0a9813f27a2b8dbbe759ac154b88998c50025a0286fd205ad735de62d2ab",
+  "bayt": 90697
+ },
+ "/media/ses/okuma/yeni/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/8.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/btn_8.mp3",
+  "sha256": "62e49fe420b1e36eece50e0c893b2f0bbcc696bd411fa7b7cd7845ce30ca4007",
+  "bayt": 131657
+ },
+ "/media/ses/okuma/yeni/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/9.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutecaniseyn/btn_9.mp3",
+  "sha256": "c8a3773a1ce9fc70e3cbdac949a55830a136d4c1f5c6542bbc8b85bf9de1d012",
+  "bayt": 80248
+ },
+ "/media/ses/okuma/yeni/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutekaribeyn/1.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutekaribeyn/btn_1.mp3",
+  "sha256": "bc67f917b11fd1c7965a183957368cd2dca5fba784fe79cb179be843a9984f93",
+  "bayt": 53916
+ },
+ "/media/ses/okuma/yeni/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutekaribeyn/2.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutekaribeyn/btn_2.mp3",
+  "sha256": "578c792f551c9c350c55b89d25ca86aed65f5294687c3bd6130b9d90ae170647",
+  "bayt": 56842
+ },
+ "/media/ses/okuma/yeni/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutekaribeyn/3.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutekaribeyn/btn_3.mp3",
+  "sha256": "9f14754d2b1e9428611a62beba741ccca92cb6bbcc220b31db8bea38565d0ff2",
+  "bayt": 44303
+ },
+ "/media/ses/okuma/yeni/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutekaribeyn/4.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutekaribeyn/btn_4.mp3",
+  "sha256": "c1f995fbb18ffe70efa83147b34b890591937d7f9cda5ba3b52098afe6d8c2ff",
+  "bayt": 53080
+ },
+ "/media/ses/okuma/yeni/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutekaribeyn/5.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutekaribeyn/btn_5.mp3",
+  "sha256": "eb70f3ff5497ac5342e3c8741782df2bd3edfc574f590677f3f244ec02bbc7ce",
+  "bayt": 46811
+ },
+ "/media/ses/okuma/yeni/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutekaribeyn/6.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutekaribeyn/btn_6.mp3",
+  "sha256": "b873b6fa9ad397f39b6019f9c86dba87cb63167cf8e0986baf9aeb736a26b041",
+  "bayt": 41795
+ },
+ "/media/ses/okuma/yeni/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutekaribeyn/7.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutekaribeyn/btn_7.mp3",
+  "sha256": "cdb09c01f1e0a329bb69d101b615daecd097ed9d972e6a23db175d966df2a09e",
+  "bayt": 39288
+ },
+ "/media/ses/okuma/yeni/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutekaribeyn/8.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/idgami-mutekaribeyn-idgami-mütecaniseyn/idgami-mutekaribeyn/btn_8.mp3",
+  "sha256": "2e4c7b150d9490b401efc425714ffbf91302cc1a795b887c1061bac33367c878",
+  "bayt": 43885
+ },
+ "/media/ses/okuma/yeni/meddi-lazim-ariz-lin/meddi-lazim/1.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/meddi-lazim-ariz-lin/meddi-lazim/btn_1.mp3",
+  "sha256": "430bb0de1d659a9b33856c89b772b1b6e690a9c4e416a4ce3bbf606079bc3c6b",
+  "bayt": 46437
+ },
+ "/media/ses/okuma/yeni/meddi-lazim-ariz-lin/meddi-lazim/2.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/meddi-lazim-ariz-lin/meddi-lazim/btn_2.mp3",
+  "sha256": "9a9ee0b520c06aeb94567c6a7073d629eaded976fa6b5cab706380fde2f14a3b",
+  "bayt": 58140
+ },
+ "/media/ses/okuma/yeni/meddi-lazim-ariz-lin/meddi-lazim/4.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/meddi-lazim-ariz-lin/meddi-lazim/btn_4.mp3",
+  "sha256": "dfe179bd3d92ae000daea22c92c37287eed7e406d68c7f9f16977022337c6ad8",
+  "bayt": 49154
+ },
+ "/media/ses/okuma/yeni/meddi-lazim-ariz-lin/meddi-lazim/5.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/meddi-lazim-ariz-lin/meddi-lazim/btn_5.mp3",
+  "sha256": "761f8d466c9db5c81f47393e62d2749a5f1b6b38683a31b729522d38adb3e64d",
+  "bayt": 63573
+ },
+ "/media/ses/okuma/yeni/meddi-lazim-ariz-lin/meddi-lazim/6.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/meddi-lazim-ariz-lin/meddi-lazim/btn_6.mp3",
+  "sha256": "1f93fc6ea782ede1a38a96c864a5075282e2139d7cd7d34548d5a7edbe9e337c",
+  "bayt": 74440
+ },
+ "/media/ses/okuma/yeni/meddi-lazim-ariz-lin/uygulama/1.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/meddi-lazim-ariz-lin/uygulama/btn_1.mp3",
+  "sha256": "080021e2b96a7e819175fe0e4e723ebad1a4eb492ad3229480509dfd8fcfccd5",
+  "bayt": 75276
+ },
+ "/media/ses/okuma/yeni/meddi-lazim-ariz-lin/uygulama/2.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/meddi-lazim-ariz-lin/uygulama/btn_2.mp3",
+  "sha256": "46156f77e2151fd981ac28d439d11763b2ea450ed743c41f19f635f03205f3a2",
+  "bayt": 57304
+ },
+ "/media/ses/okuma/yeni/meddi-lazim-ariz-lin/uygulama/3.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/meddi-lazim-ariz-lin/uygulama/btn_3.mp3",
+  "sha256": "454ca0fd15370f0a0f331261038d3c7650a1382d58d8c6de1a144d5e82cea2a3",
+  "bayt": 104742
+ },
+ "/media/ses/okuma/yeni/meddi-lazim-ariz-lin/uygulama/4.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/meddi-lazim-ariz-lin/uygulama/btn_4.mp3",
+  "sha256": "8477afd97e28c3fc0a621d13ae744222cb9e410f23c594d1282b73f4d29c5e82",
+  "bayt": 74649
+ },
+ "/media/ses/okuma/yeni/meddi-tabii-muttasil-munfasil/meddi-muttasil/1.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/meddi-tabii-muttasil-munfasil/meddi-muttasil/btn_1.mp3",
+  "sha256": "627a01d3a6ded475c8d8739b2f52a0b914130811bca8c139ab9a3ae282e3d788",
+  "bayt": 47691
+ },
+ "/media/ses/okuma/yeni/meddi-tabii-muttasil-munfasil/meddi-muttasil/2.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/meddi-tabii-muttasil-munfasil/meddi-muttasil/btn_2.mp3",
+  "sha256": "796fef8311f85dabe8cfa3bf70340c52fa4a08bb09b163c32b2a14420f217935",
+  "bayt": 53751
+ },
+ "/media/ses/okuma/yeni/meddi-tabii-muttasil-munfasil/meddi-muttasil/3.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/meddi-tabii-muttasil-munfasil/meddi-muttasil/btn_3.mp3",
+  "sha256": "9f9736e7d8b29ccff7895ccb256b533d53c472a6dbdcb44430c9bbe5980be76f",
+  "bayt": 57513
+ },
+ "/media/ses/okuma/yeni/meddi-tabii-muttasil-munfasil/meddi-muttasil/4.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/meddi-tabii-muttasil-munfasil/meddi-muttasil/btn_4.mp3",
+  "sha256": "c1a1d0ac2a9f9e1dbed3d8afd40201efd7e13638ec8a2e4ec55f278df303a896",
+  "bayt": 53542
+ },
+ "/media/ses/okuma/yeni/meddi-tabii-muttasil-munfasil/meddi-muttasil/5.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/meddi-tabii-muttasil-munfasil/meddi-muttasil/btn_5.mp3",
+  "sha256": "7c512f8c4ab431297d03753922b00f4d68bbbbc4b61f143c2828d674a23eea2d",
+  "bayt": 51453
+ },
+ "/media/ses/okuma/yeni/meddi-tabii-muttasil-munfasil/meddi-muttasil/6.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/meddi-tabii-muttasil-munfasil/meddi-muttasil/btn_6.mp3",
+  "sha256": "48d764ac24b0b55497a7b56fd024bf3f9b2edd627a4617a7c745000c43363491",
+  "bayt": 62737
+ },
+ "/media/ses/okuma/yeni/meddi-tabii-muttasil-munfasil/meddi-muttasil/7.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/meddi-tabii-muttasil-munfasil/meddi-muttasil/btn_7.mp3",
+  "sha256": "d20f6c8d965ab461cca19d970db21c7c9226055469ad07419f9b41895bb0e25c",
+  "bayt": 40586
+ },
+ "/media/ses/okuma/yeni/meddi-tabii-muttasil-munfasil/meddi-muttasil/8.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/meddi-tabii-muttasil-munfasil/meddi-muttasil/btn_8.mp3",
+  "sha256": "2ad8199ba7d6c802926515fb100b6f6b6c611fe785edad31350993143bab99fb",
+  "bayt": 44556
+ },
+ "/media/ses/okuma/yeni/meddi-tabii-muttasil-munfasil/meddi-muttasil/9.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/meddi-tabii-muttasil-munfasil/meddi-muttasil/btn_9.mp3",
+  "sha256": "16c63cf0ecb8f49534b6af690fd1993c9b779c4731eeb8f2c3e4f54849ec9a29",
+  "bayt": 50408
+ },
+ "/media/ses/okuma/yeni/ra-harfi/uygulama/1.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/ra-harfi/uygulama/btn_1.mp3",
+  "sha256": "317697fbc060569b2694b255a42d0db2abfc51adb2d447bf5e3569962411027e",
+  "bayt": 46437
+ },
+ "/media/ses/okuma/yeni/ra-harfi/uygulama/2.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/ra-harfi/uygulama/btn_2.mp3",
+  "sha256": "3a4c84362eef2366b5537aa6c62b6a7bd151ce817bb6b0ac8302e0900f350954",
+  "bayt": 48736
+ },
+ "/media/ses/okuma/yeni/ra-harfi/uygulama/3.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/ra-harfi/uygulama/btn_3.mp3",
+  "sha256": "547618eec96b373fce375360a0c15e11b8072cc57afafa29bab5708b64df7988",
+  "bayt": 74231
+ },
+ "/media/ses/okuma/yeni/ra-harfi/uygulama/4.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/ra-harfi/uygulama/btn_4.mp3",
+  "sha256": "76fbe65a61a341daf53ef9bbb62157ce4214239d242a25e6570d706ffab5944b",
+  "bayt": 68798
+ },
+ "/media/ses/okuma/yeni/ra-harfi/uygulama/5.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/ra-harfi/uygulama/btn_5.mp3",
+  "sha256": "0a9a931095df03a37ab91f6219c7ca1ad2012739ca36055ad13f7e1d70791835",
+  "bayt": 87188
+ },
+ "/media/ses/okuma/yeni/uygulama/ayetel-kursi/ayetel_kursi_1.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/ayetel-kursi/ayetel_kursi_1.mp3",
+  "sha256": "68823949ee976a1749823908c0e3cb1f857f53fd5e05bf772affbeb566c489e3",
+  "bayt": 1592842
+ },
+ "/media/ses/okuma/yeni/uygulama/ayetel-kursi/besmele.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/ayetel-kursi/besmele.mp3",
+  "sha256": "1473eed3795ae7dcfd4be4f2b183e3a8f2dd5b186ce5d545cf95320c35181e7f",
+  "bayt": 123297
+ },
+ "/media/ses/okuma/yeni/uygulama/bakara-suresi-285-286/bakara_285_286_1.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/bakara-suresi-285-286/bakara_285_286_1.mp3",
+  "sha256": "f06a0d4fa17a8cf59b051dbdc1fc57ba1d0eefc145f519ad5fabf089a4d0e991",
+  "bayt": 893178
+ },
+ "/media/ses/okuma/yeni/uygulama/bakara-suresi-285-286/bakara_285_286_2.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/bakara-suresi-285-286/bakara_285_286_2.mp3",
+  "sha256": "ce541b29c3396330849fe07ee4c3c1f5b85c17bce37cd78c2c6c8cda252f31a7",
+  "bayt": 1666403
+ },
+ "/media/ses/okuma/yeni/uygulama/bakara-suresi-285-286/besmele.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/bakara-suresi-285-286/besmele.mp3",
+  "sha256": "ad16d02a5bfe7d42754bf21db2b04a00698876cf1230f52ccae071f7ff3b4b6b",
+  "bayt": 126223
+ },
+ "/media/ses/okuma/yeni/uygulama/bakara-suresi/bakara_suresi_1.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/bakara-suresi/bakara_suresi_1.mp3",
+  "sha256": "8b233548d1c0e952db0e0fc4cf76e76756933a55370d55890fd12b6560b605a2",
+  "bayt": 148793
+ },
+ "/media/ses/okuma/yeni/uygulama/bakara-suresi/bakara_suresi_2.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/bakara-suresi/bakara_suresi_2.mp3",
+  "sha256": "16e09c9a852c881d6f9e1d52855f15662eeea85402347c13342fefdc0c6fed5d",
+  "bayt": 234475
+ },
+ "/media/ses/okuma/yeni/uygulama/bakara-suresi/bakara_suresi_3.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/bakara-suresi/bakara_suresi_3.mp3",
+  "sha256": "2e0f328f50c5901948acb4ad6e83a274d8acc0e5cbc02626df819cb20077a39e",
+  "bayt": 310961
+ },
+ "/media/ses/okuma/yeni/uygulama/bakara-suresi/bakara_suresi_4.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/bakara-suresi/bakara_suresi_4.mp3",
+  "sha256": "2a665dd8049b411ac809cfc0354bc2df263ea9f69d70af6b71a7110028c4d08e",
+  "bayt": 413361
+ },
+ "/media/ses/okuma/yeni/uygulama/bakara-suresi/bakara_suresi_5.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/bakara-suresi/bakara_suresi_5.mp3",
+  "sha256": "1415ee730eb80cf405a5b3cb23808fd1f5eb817a38daeff85d3ad05b0fe5a658",
+  "bayt": 283794
+ },
+ "/media/ses/okuma/yeni/uygulama/bakara-suresi/besmele.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/bakara-suresi/besmele.mp3",
+  "sha256": "63322fd40969338a08006f1780c87e364da28c6db031c7db385d26234b38d92a",
+  "bayt": 119118
+ },
+ "/media/ses/okuma/yeni/uygulama/fil-suresi/besmele.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/fil-suresi/besmele.mp3",
+  "sha256": "3563cad06d4000bd849ed73bec7dc3bbd76547f021b7543d03d81c902038f02b",
+  "bayt": 133329
+ },
+ "/media/ses/okuma/yeni/uygulama/fil-suresi/fil_suresi_1.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/fil-suresi/fil_suresi_1.mp3",
+  "sha256": "6824fe97e6689bb3e7678d5084044d22066a3865af01f577aef4148701aaa352",
+  "bayt": 162168
+ },
+ "/media/ses/okuma/yeni/uygulama/fil-suresi/fil_suresi_2.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/fil-suresi/fil_suresi_2.mp3",
+  "sha256": "53ecbce6dfa31198bcf640ad9a491dfc8a5d7dccc7cbe3ca5af443e65f9585ba",
+  "bayt": 129567
+ },
+ "/media/ses/okuma/yeni/uygulama/fil-suresi/fil_suresi_3.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/fil-suresi/fil_suresi_3.mp3",
+  "sha256": "150d73dd0b7e18b5356b8a9a7efd2c0beae1d21489fadcde3854cab5c34341c8",
+  "bayt": 138762
+ },
+ "/media/ses/okuma/yeni/uygulama/fil-suresi/fil_suresi_4.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/fil-suresi/fil_suresi_4.mp3",
+  "sha256": "037e64bb2085fbff0808e35d2bc097539854539481531c43e84bdafd572c7f6a",
+  "bayt": 206471
+ },
+ "/media/ses/okuma/yeni/uygulama/fil-suresi/fil_suresi_5.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/fil-suresi/fil_suresi_5.mp3",
+  "sha256": "98aa9fbaa9050a17f3f4cda92569235ca8df9b5287e0487f6eaf356ae770f409",
+  "bayt": 180140
+ },
+ "/media/ses/okuma/yeni/uygulama/hasr-suresi/besmele.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/hasr-suresi/besmele.mp3",
+  "sha256": "c472c258744156bc5193e981e246161a7575d865cb137e7e612b47d2ced45f93",
+  "bayt": 119118
+ },
+ "/media/ses/okuma/yeni/uygulama/hasr-suresi/hasr_suresi_1.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/hasr-suresi/hasr_suresi_1.mp3",
+  "sha256": "067102e3a8e5ab7526a333770c4e553f75a1e0421d71fc7d002ef286f7abc47d",
+  "bayt": 394971
+ },
+ "/media/ses/okuma/yeni/uygulama/hasr-suresi/hasr_suresi_2.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/hasr-suresi/hasr_suresi_2.mp3",
+  "sha256": "bba397017c20c2ab434e862f1f6cd2cf6dc704c61d7d918c480688fd626318b2",
+  "bayt": 643239
+ },
+ "/media/ses/okuma/yeni/uygulama/hasr-suresi/hasr_suresi_3.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/hasr-suresi/hasr_suresi_3.mp3",
+  "sha256": "16a0165fd2f64deab256c824fd3e8e2d72167ed7e16874452fd3786f25414543",
+  "bayt": 563826
+ },
+ "/media/ses/okuma/yeni/uygulama/ihlas-suresi/besmele.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/ihlas-suresi/besmele.mp3",
+  "sha256": "de35bc9abc30a82cae65868ba6e1517761e439254c66d0a4c39af8851f83f322",
+  "bayt": 117864
+ },
+ "/media/ses/okuma/yeni/uygulama/kafirun-suresi/besmele.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/kafirun-suresi/besmele.mp3",
+  "sha256": "37b876a4ccceac9b9f1aa2bbaefddbc6bf3de6cf0e465185cf747bf9f8b5b665",
+  "bayt": 122462
+ },
+ "/media/ses/okuma/yeni/uygulama/kafirun-suresi/kafirun_suresi_1.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/kafirun-suresi/kafirun_suresi_1.mp3",
+  "sha256": "e606a36e44f56e34f38627130eb6bf7b51ef315638e08fc0573bb1250e8ba6b5",
+  "bayt": 145031
+ },
+ "/media/ses/okuma/yeni/uygulama/kafirun-suresi/kafirun_suresi_2.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/kafirun-suresi/kafirun_suresi_2.mp3",
+  "sha256": "125d6ed2e9c07f7baad1274f99992f5cb635714dcfde95fdd9a1a29a7c2865ec",
+  "bayt": 141270
+ },
+ "/media/ses/okuma/yeni/uygulama/kafirun-suresi/kafirun_suresi_3.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/kafirun-suresi/kafirun_suresi_3.mp3",
+  "sha256": "d2349c369142ebd295242f30032b9d661031c365aa0580a6669760fa1eb530d3",
+  "bayt": 192679
+ },
+ "/media/ses/okuma/yeni/uygulama/kafirun-suresi/kafirun_suresi_4.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/kafirun-suresi/kafirun_suresi_4.mp3",
+  "sha256": "99603f2ab4d53145edd874dce69bfae7b4dc9eac0f0a02b90eb191f739e08c81",
+  "bayt": 155062
+ },
+ "/media/ses/okuma/yeni/uygulama/kafirun-suresi/kafirun_suresi_5.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/kafirun-suresi/kafirun_suresi_5.mp3",
+  "sha256": "1a377e3ae57441bda973ffa0be5a1a99f67899e931133a1ffc71e8904d44d1f7",
+  "bayt": 198948
+ },
+ "/media/ses/okuma/yeni/uygulama/kafirun-suresi/kafirun_suresi_6.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/kafirun-suresi/kafirun_suresi_6.mp3",
+  "sha256": "d4023c5a4019ede8cb2e9c0ecc0754177ed48d66fb0ee5a240c6c0536cad88d7",
+  "bayt": 146285
+ },
+ "/media/ses/okuma/yeni/uygulama/kevser-suresi/besmele.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/kevser-suresi/besmele.mp3",
+  "sha256": "d2f74f1e4aab599eb50328f5eb31a3666d3923c4480d8096b21018181e909e2b",
+  "bayt": 129149
+ },
+ "/media/ses/okuma/yeni/uygulama/kureys-suresi/besmele.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/kureys-suresi/besmele.mp3",
+  "sha256": "2f43004c17833e3d33b750003664b61744964c89ad1e3bd46bc32acf56585636",
+  "bayt": 106579
+ },
+ "/media/ses/okuma/yeni/uygulama/kureys-suresi/kureys_suresi_1.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/kureys-suresi/kureys_suresi_1.mp3",
+  "sha256": "0644c589329c2d440906e0ffd15473c114223ca2323392489cc455790523052d",
+  "bayt": 87771
+ },
+ "/media/ses/okuma/yeni/uygulama/kureys-suresi/kureys_suresi_2.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/kureys-suresi/kureys_suresi_2.mp3",
+  "sha256": "6538c81c2f84b8835040edc84a613bd307f6e9bbf9ce4e9cbd0cd06053cac0da",
+  "bayt": 179722
+ },
+ "/media/ses/okuma/yeni/uygulama/kureys-suresi/kureys_suresi_3.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/kureys-suresi/kureys_suresi_3.mp3",
+  "sha256": "c806703bab08171a5b1a8c680f2176590861408b75107a8f40961097fba071fa",
+  "bayt": 122880
+ },
+ "/media/ses/okuma/yeni/uygulama/kureys-suresi/kureys_suresi_4.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/kureys-suresi/kureys_suresi_4.mp3",
+  "sha256": "c5e87cd910c0c7ce24c53da3deaeb090434968290fd5f3cf1197fce2aeb2fb9f",
+  "bayt": 285048
+ },
+ "/media/ses/okuma/yeni/uygulama/maun-suresi/besmele.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/maun-suresi/besmele.mp3",
+  "sha256": "139d7986b020a703fe58ade5441bb0395e5e9209abd5077d00a46d3190bebb75",
+  "bayt": 115774
+ },
+ "/media/ses/okuma/yeni/uygulama/maun-suresi/maun_suresi_1.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/maun-suresi/maun_suresi_1.mp3",
+  "sha256": "3cdebb7be747122e5905a26a93f22cea172eafabce7f57affbaf1e501a9ee175",
+  "bayt": 145449
+ },
+ "/media/ses/okuma/yeni/uygulama/maun-suresi/maun_suresi_2.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/maun-suresi/maun_suresi_2.mp3",
+  "sha256": "60142b91d460535a332b4b8cfd533087025829c681438f4c4484e93931f14920",
+  "bayt": 119118
+ },
+ "/media/ses/okuma/yeni/uygulama/maun-suresi/maun_suresi_3.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/maun-suresi/maun_suresi_3.mp3",
+  "sha256": "d45b5aecfdfc9511d6d0a6698276017d2ec4cea3549317c0848847fe4da19c4b",
+  "bayt": 155062
+ },
+ "/media/ses/okuma/yeni/uygulama/maun-suresi/maun_suresi_4.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/maun-suresi/maun_suresi_4.mp3",
+  "sha256": "287d84fa7b4614de720cd10afa0ce3c4c9e7488acaa5958889654a99606447cf",
+  "bayt": 109923
+ },
+ "/media/ses/okuma/yeni/uygulama/maun-suresi/maun_suresi_5.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/maun-suresi/maun_suresi_5.mp3",
+  "sha256": "1120c3c8edea4c4bd104c2344fb700b7be9c48d75e9ec1c897baac1ad14f15d7",
+  "bayt": 163004
+ },
+ "/media/ses/okuma/yeni/uygulama/maun-suresi/maun_suresi_6.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/maun-suresi/maun_suresi_6.mp3",
+  "sha256": "b9a8cb8dc63cacfd8d6d78075284f3d2b6d2cc89a778fd50470b9d5580525e79",
+  "bayt": 151719
+ },
+ "/media/ses/okuma/yeni/uygulama/maun-suresi/maun_suresi_7.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/maun-suresi/maun_suresi_7.mp3",
+  "sha256": "f62409f78c6c7fae64a9b2dd413de1680da2c582d1188f5214fab75acd5e16fe",
+  "bayt": 122462
+ },
+ "/media/ses/okuma/yeni/uygulama/nas-suresi/besmele.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/nas-suresi/besmele.mp3",
+  "sha256": "b0347b2e1782637d8b9668f6e18bbcd6a39efa88f082bd2d77a3fdeef16be6dd",
+  "bayt": 146285
+ },
+ "/media/ses/okuma/yeni/uygulama/nas-suresi/nas_suresi_1.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/nas-suresi/nas_suresi_1.mp3",
+  "sha256": "923875bc6f45084731ffdd25fb3a51ba5c941b99ad26a245324909d41c92067f",
+  "bayt": 112013
+ },
+ "/media/ses/okuma/yeni/uygulama/nas-suresi/nas_suresi_2.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/nas-suresi/nas_suresi_2.mp3",
+  "sha256": "53bdf3163c848adc003ec5771bfb270f70c9503ff1eeef42ce4b30194a5deeae",
+  "bayt": 71471
+ },
+ "/media/ses/okuma/yeni/uygulama/nas-suresi/nas_suresi_3.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/nas-suresi/nas_suresi_3.mp3",
+  "sha256": "242b8e4da3b96461ca9b440badd8115eadc29fc769f553240274cb3f5b09bde0",
+  "bayt": 87771
+ },
+ "/media/ses/okuma/yeni/uygulama/nas-suresi/nas_suresi_4.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/nas-suresi/nas_suresi_4.mp3",
+  "sha256": "e62ff255c83bf71311ca7629704ed87e85c833e051a1ce5c5dff5865ee1ffd2a",
+  "bayt": 155480
+ },
+ "/media/ses/okuma/yeni/uygulama/nas-suresi/nas_suresi_5.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/nas-suresi/nas_suresi_5.mp3",
+  "sha256": "d61c95980b9bd9b270fe03a213b7f3bd2bb98a0718a26d08c62c951aaff37a60",
+  "bayt": 152137
+ },
+ "/media/ses/okuma/yeni/uygulama/nas-suresi/nas_suresi_6.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/nas-suresi/nas_suresi_6.mp3",
+  "sha256": "80d3dd1de6f2f84b14e0e9ca9a25588b50b5548e0508102663af461bd444295c",
+  "bayt": 153809
+ },
+ "/media/ses/okuma/yeni/uygulama/nasr-suresi/besmele.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/nasr-suresi/besmele.mp3",
+  "sha256": "88249ff540843dae3829792ad25c25ace0ce3f40f9e43ea5cb15e9b2bad2dd2d",
+  "bayt": 132075
+ },
+ "/media/ses/okuma/yeni/uygulama/nasr-suresi/nasr_suresi_1.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/nasr-suresi/nasr_suresi_1.mp3",
+  "sha256": "ed2cdc93789e4ca0d11d80ee517695cb8771510c27bd1f192fdddf1c060ac9e2",
+  "bayt": 158406
+ },
+ "/media/ses/okuma/yeni/uygulama/nasr-suresi/nasr_suresi_2.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/nasr-suresi/nasr_suresi_2.mp3",
+  "sha256": "d85d6859b77cca22c607e7e33b6faf5101cdaf3ada2b7720c945451e120b18b4",
+  "bayt": 205217
+ },
+ "/media/ses/okuma/yeni/uygulama/nasr-suresi/nasr_suresi_3.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/nasr-suresi/nasr_suresi_3.mp3",
+  "sha256": "8b3bc2f1b468bd938f7f9d3e8f48db750daadf2d0207b214827aa270ff4fbd93",
+  "bayt": 240744
+ },
+ "/media/ses/okuma/yeni/uygulama/tebbet-suresi/besmele.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/tebbet-suresi/besmele.mp3",
+  "sha256": "2e17eb04e8e244184cdaa664af4ab56216753fa55981148b7a1536d6c2b6027b",
+  "bayt": 109087
+ },
+ "/media/ses/okuma/yeni/uygulama/tebbet-suresi/tebbet_suresi_1.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/tebbet-suresi/tebbet_suresi_1.mp3",
+  "sha256": "8284bdec5b450cf9ed72363502e0b0239b6d303ccb58dfa81c18f421b45c5352",
+  "bayt": 156734
+ },
+ "/media/ses/okuma/yeni/uygulama/tebbet-suresi/tebbet_suresi_2.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/tebbet-suresi/tebbet_suresi_2.mp3",
+  "sha256": "2e9ce1425246d96667ca31284ffb1e34d231aeb901a328098872a82c4393b0c0",
+  "bayt": 160496
+ },
+ "/media/ses/okuma/yeni/uygulama/tebbet-suresi/tebbet_suresi_3.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/tebbet-suresi/tebbet_suresi_3.mp3",
+  "sha256": "6f23769ccab1ecea6e9918de278c0e5b374b2a71b420d107eb2fb8aaa4f397ec",
+  "bayt": 105743
+ },
+ "/media/ses/okuma/yeni/uygulama/tebbet-suresi/tebbet_suresi_4.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/tebbet-suresi/tebbet_suresi_4.mp3",
+  "sha256": "7408403cb4a57d0780a57279a6e0b6a635b903d341982e86e9996bdc5108b827",
+  "bayt": 147957
+ },
+ "/media/ses/okuma/yeni/uygulama/tebbet-suresi/tebbet_suresi_5.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/uygulama/tebbet-suresi/tebbet_suresi_5.mp3",
+  "sha256": "115ffcd3aafe06806c3fb28a04a0a49793bb9f196f532f3cd05f85c05b058c21",
+  "bayt": 145867
+ },
+ "/media/ses/okuma/yeni/zamir/uygulama/1.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/zamir/uygulama/btn_1.mp3",
+  "sha256": "e4a2f6758b2900fe3f4e106c45be974f1c7767d3cffcf08dc952d8ce8411cd49",
+  "bayt": 47900
+ },
+ "/media/ses/okuma/yeni/zamir/uygulama/10.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/zamir/uygulama/btn_10.mp3",
+  "sha256": "4e70872b08844442b840a52b4d56c54b155dc5859bfacb4bbb1d2ac5d8b7cc41",
+  "bayt": 68171
+ },
+ "/media/ses/okuma/yeni/zamir/uygulama/2.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/zamir/uygulama/btn_2.mp3",
+  "sha256": "11c63bd55a93c52bd32bace43a0503bf71c46bdd04bb1167ce64f48e3338f60d",
+  "bayt": 30137
+ },
+ "/media/ses/okuma/yeni/zamir/uygulama/3.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/zamir/uygulama/btn_3.mp3",
+  "sha256": "abea71626656b42436f51a17bedabc61ef79b2b23a687d0ab12051fc21b7aaf3",
+  "bayt": 40795
+ },
+ "/media/ses/okuma/yeni/zamir/uygulama/4.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/zamir/uygulama/btn_4.mp3",
+  "sha256": "d3530d66cc31e517406e23edbb64db14ff9bf6818ad8922f8f531fcfcf0a56ce",
+  "bayt": 39123
+ },
+ "/media/ses/okuma/yeni/zamir/uygulama/5.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/zamir/uygulama/btn_5.mp3",
+  "sha256": "aae2649a7c2d42415f1bab340426dc04665cd310f021aaffc9efe99ec481fbef",
+  "bayt": 33898
+ },
+ "/media/ses/okuma/yeni/zamir/uygulama/6.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/zamir/uygulama/btn_6.mp3",
+  "sha256": "d318b18fe865c70f5c6cb67b9937cdceed66b28f953e6ede3443d787ca98f0b3",
+  "bayt": 39541
+ },
+ "/media/ses/okuma/yeni/zamir/uygulama/8.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/zamir/uygulama/btn_8.mp3",
+  "sha256": "8057338bf115139c668f3b6973975ed7324a64b9c83d9f6749bfe1229c52b739",
+  "bayt": 54169
+ },
+ "/media/ses/okuma/yeni/zamir/uygulama/9.mp3": {
+  "kaynak": "https://kuran.diyanet.gov.tr/elifba/data/sound/tecvid/zamir/uygulama/btn_9.mp3",
+  "sha256": "68b81e0412d29c78eacbf8b0c0b27c647ca61e388edb69b8a72af93992f5b905",
+  "bayt": 41839
+ }
+}

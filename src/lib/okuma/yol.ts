@@ -1,17 +1,24 @@
 /**
- * İlim Yolu · Kur'an Okuma yolunun içeriği (10 Kasım 2026): yedi adım, derslere bölünmüş maddeler. Dil bağımsızdır (etiketler egitim/src/i18n/okuma.ts'te).
+ * İlim Yolu · Kur'an Okuma yolunun içeriği (10 Kasım 2026): dokuz adım (o8 tecvid uygulamaları ve o9 kısa âyetler 10 Kasım 2026 akşamı sona eklendi), derslere bölünmüş maddeler. Dil bağımsızdır (etiketler egitim/src/i18n/okuma.ts'te).
  * Her madde: büyük Arapça, resmî Diyanet kaydı (dinle), kendi okuyuşunu denemek. KAYNAKLAR, hepsi yerel ve doğrulanmış:
  *  - harfler, heceler, tecvid örnekleri, cezm/şedde/tenvin/med alıştırmaları: src/data/ecouter.json (Diyanet Elifbâ, sha256 tests/ecouter-ses.test.mjs);
  *  - harflerin şekilleri ve üstün/esre/ötre kelimeleri: src/data/okuma/ek.json (aynı portal, scripts/okuma-uret.mjs, sha256 docs/okuma-ses-kaynaklari.json);
  *  - sûreler: src/data/okuma/sureler.json (Ezber Kilimi'nin Arapça metni ve âyet sesleri, scripts/okuma-uret.mjs ile kataloğa karşı üretilir).
+ *  - tecvid uygulamaları (o8) ve kısa âyetler (o9): src/data/okuma/yeni.json (Diyanet Elifbâ; scripts/okuma-ses-ekle.mjs, metin doğrulaması docs/okuma-metin-dogrulama.json). Sesleri ulucamii.be'de değil
+ *    egitim Hosting'inde (aynı köken, YEREL_SES_KOKU altında) durur: oynatıcı bu kökü adresine ANA_SITE eklemeden kullanır.
  * Yapay ses ve harici Kur'an kaynağı yoktur. SIRA KALICIDIR: madde kimliği `<adım>-<sıra>` ilerleme dizesindeki yerdir (ilerleme.ts); yeni madde
  * yalnız adımın SONUNA eklenir (tests/okuma-veri.test.mjs parmak izi).
  */
 import ecouter from '../../data/ecouter.json';
 import ek from '../../data/okuma/ek.json';
 import sureler from '../../data/okuma/sureler.json';
+import yeni from '../../data/okuma/yeni.json';
 import { ELIFBA_HARFLERI } from '../elifba-verisi';
 import { maddeKimligi } from './ilerleme';
+
+/** Bu kökün altındaki sesler egitim Hosting'inin kendi alanındadır (aynı köken); diğerleri ulucamii.be'de. */
+export const YEREL_SES_KOKU = '/media/ses/okuma/yeni/';
+export const yerelSesMi = (ses: string): boolean => ses.startsWith(YEREL_SES_KOKU);
 
 export interface Oge {
   /** `<adım>-<sıra>` */
@@ -124,7 +131,11 @@ const o6 = kur('o6', 6, 'elifba', [
 ]);
 const o7 = kur('o7', 7, 'mushaf', sureler.flatMap((s) => bol(s.id, s.ayetler.map((a): Ham => ({ ar: a.ar, ses: a.ses, s: s.id, n: a.n })), 10)));
 
-export const YOL: readonly Basamak[] = [o1, o2, o3, o4, o5, o6, o7];
+// Sona eklenen adımlar: mevcut maddelerin kimliği ve ilerleme dizesindeki yeri değişmez. Çift (yazılışı/okunuşu) dersleri tek derste kalır (≤ 14 madde).
+const o8 = kur('o8', 8, 'elifba', yeni.tecvid.flatMap((g) => bol(g.grup, g.ogeler.map((o): Ham => ({ ar: o.ar, ses: o.ses, ...('v' in o ? { v: o.v as [number, number][] } : {}), ...('e' in o ? { e: o.e } : {}) })), 14)));
+const o9 = kur('o9', 9, 'mushaf', yeni.ayetler.flatMap((g) => bol(g.grup, g.ogeler.map((o): Ham => ({ ar: o.ar, ses: o.ses, s: o.s, ...('n' in o ? { n: o.n } : {}) })), 10)));
+
+export const YOL: readonly Basamak[] = [o1, o2, o3, o4, o5, o6, o7, o8, o9];
 
 /** Adımın bütün maddeleri (ilerleme dizesindeki sırayla). */
 export const adimOgeleri = (adim: string): Oge[] => YOL.find((b) => b.id === adim)?.dersler.flatMap((d) => d.ogeler) ?? [];

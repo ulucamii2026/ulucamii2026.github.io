@@ -43,6 +43,8 @@ const ADIMLAR: Record<Dil, OkumaYazilari['adimlar']> = {
     o5: { ad: 'Kelimeler', metin: 'Harekeli kısa kelimeleri dinleyip tekrar edin.' },
     o6: { ad: 'Tecvid temelleri', metin: 'Kalkale, iklâb, ihfâ-i şefevî ve med çeşitleri.' },
     o7: { ad: 'Sûre okuma', metin: 'Fâtiha ve son cüzün sûreleri, âyet âyet.' },
+    o8: { ad: 'Tecvid uygulamaları', metin: 'İdğâm, zamir hâsı, râ ve med örneklerini, yazılışı ve okunuşuyla dinleyin.' },
+    o9: { ad: 'Kısa âyetler', metin: 'Bakara, Âyetü’l-Kürsî, Haşr ve kısa sûrelerden seçme âyetleri dinleyin.' },
   },
   fr: {
     o1: { ad: 'Les lettres', metin: 'Écoutez les 28 lettres avec leur nom et apprenez à les reconnaître.' },
@@ -52,6 +54,8 @@ const ADIMLAR: Record<Dil, OkumaYazilari['adimlar']> = {
     o5: { ad: 'Les mots', metin: 'Écoutez de courts mots vocalisés et répétez-les.' },
     o6: { ad: 'Bases du tajwîd', metin: 'Qalqala, iqlâb, ikhfâ’ labial et les sortes de madd.' },
     o7: { ad: 'Lecture des sourates', metin: 'La Fâtiha et les sourates du dernier juz’, verset par verset.' },
+    o8: { ad: 'Le tajwîd en pratique', metin: 'Écoutez des exemples d’idghâm, du hâ’ du pronom, du râ’ et du madd, avec leur écriture et leur lecture.' },
+    o9: { ad: 'Versets courts', metin: 'Écoutez des versets choisis de la sourate Al-Baqara, d’Ayat Al-Kursi, d’Al-Hachr et des courtes sourates.' },
   },
   en: {
     o1: { ad: 'The letters', metin: 'Listen to the 28 letters by name and learn to recognise them.' },
@@ -61,6 +65,8 @@ const ADIMLAR: Record<Dil, OkumaYazilari['adimlar']> = {
     o5: { ad: 'Words', metin: 'Listen to short vowelled words and repeat them.' },
     o6: { ad: 'Tajwid basics', metin: 'Qalqalah, iqlab, ikhfa shafawi and the kinds of madd.' },
     o7: { ad: 'Reading surahs', metin: 'Al-Fatiha and the surahs of the last juz’, verse by verse.' },
+    o8: { ad: 'Tajwid in practice', metin: 'Listen to examples of idgham, the pronoun hā’, rā’ and madd, as written and as read.' },
+    o9: { ad: 'Short verses', metin: 'Listen to selected verses from Surah Al-Baqarah, Ayat Al-Kursi, Al-Hashr and the short surahs.' },
   },
   nl: {
     o1: { ad: 'De letters', metin: 'Luister naar de 28 letters met hun naam en leer ze herkennen.' },
@@ -70,6 +76,8 @@ const ADIMLAR: Record<Dil, OkumaYazilari['adimlar']> = {
     o5: { ad: 'Woorden', metin: 'Luister naar korte woorden met klinkertekens en herhaal ze.' },
     o6: { ad: 'Basis van tajwied', metin: 'Qalqala, iqlaab, ikhfa shafawi en de soorten madd.' },
     o7: { ad: 'Soera’s lezen', metin: 'Al-Fatiha en de soera’s van de laatste djoez, vers voor vers.' },
+    o8: { ad: 'Tajwied in de praktijk', metin: 'Luister naar voorbeelden van idgham, de voornaamwoord-haa, de raa en madd, zoals geschreven en zoals gelezen.' },
+    o9: { ad: 'Korte verzen', metin: 'Luister naar uitgekozen verzen uit soera Al-Baqara, Ayat Al-Koersie, Al-Hasjr en de korte soera’s.' },
   },
   de: {
     o1: { ad: 'Die Buchstaben', metin: 'Hören Sie die 28 Buchstaben mit ihrem Namen und lernen Sie, sie zu erkennen.' },
@@ -79,6 +87,8 @@ const ADIMLAR: Record<Dil, OkumaYazilari['adimlar']> = {
     o5: { ad: 'Wörter', metin: 'Hören Sie kurze Wörter mit Vokalzeichen und sprechen Sie sie nach.' },
     o6: { ad: 'Grundlagen des Tadschwid', metin: 'Qalqala, Iqlab, Ichfa schafawi und die Arten der Madd.' },
     o7: { ad: 'Suren lesen', metin: 'Al-Fatiha und die Suren des letzten Dschuz, Vers für Vers.' },
+    o8: { ad: 'Tadschwid in der Praxis', metin: 'Hören Sie Beispiele für Idgham, das Pronomen-Ha, das Ra und die Madd, geschrieben und gelesen.' },
+    o9: { ad: 'Kurze Verse', metin: 'Hören Sie ausgewählte Verse aus der Sure Al-Baqara, Ayat Al-Kursi, Al-Haschr und den kurzen Suren.' },
   },
 };
 
@@ -91,6 +101,7 @@ const ADLAR: Record<Dil, Record<string, string>> = {
     'med-a': 'Uzatma: â (üstün + elif)', 'med-i': 'Uzatma: î (esre + ye)', 'med-u': 'Uzatma: û (ötre + vav)',
     kelime: 'Kelime', 'kelime-ilk': 'İlk kelimeler', 'kelime-ustun': 'Üstünlü kelimeler', 'kelime-esre': 'Esreli kelimeler', 'kelime-otre': 'Ötreli kelimeler', 'kelime-tenvin': 'Tenvinli kelimeler',
     kalkale: 'Kalkale', iklab: 'İklâb', 'ihfa-sefevi': 'İhfâ-i şefevî', 'med-tabii': 'Tabiî med', 'med-munfasil': 'Munfasıl med', 'med-ariz': 'Ârız med', 'med-lin': 'Lîn med',
+    'tv-zamir': 'Zamir hâsı (hâ-i kinâye)', 'tv-ra': 'Râ harfi', 'tv-idgam-bila': 'İdğâm bilâ ğunne', 'tv-idgam-misleyn': 'İdğâm-ı misleyn bilâ ğunne', 'tv-idgam-mutekaribeyn': 'İdğâm-ı mütekâribeyn', 'tv-idgam-mutecaniseyn': 'İdğâm-ı mütecâniseyn', 'tv-med-muttasil': 'Muttasıl med', 'tv-med-lazim': 'Lâzım med', 'tv-hurufu': 'Hurûf-u mukattaa', yazilis: 'Yazılışı', okunus: 'Okunuşu', besmele: 'Besmele', 'bakara-1-5': 'Bakara Sûresi 1–5. âyetler',
   },
   fr: {
     harf: 'Les lettres', ustun: 'Fatha', esre: 'Kasra', otre: 'Damma', 'hece-ustun': 'Syllabes avec fatha', 'hece-esre': 'Syllabes avec kasra', 'hece-otre': 'Syllabes avec damma',
@@ -100,6 +111,7 @@ const ADLAR: Record<Dil, Record<string, string>> = {
     'med-a': `Allongement «${NB}â${NB}» (fatha + alif)`, 'med-i': `Allongement «${NB}î${NB}» (kasra + yâ’)`, 'med-u': `Allongement «${NB}oû${NB}» (damma + wâw)`,
     kelime: 'Mot', 'kelime-ilk': 'Premiers mots', 'kelime-ustun': 'Mots avec fatha', 'kelime-esre': 'Mots avec kasra', 'kelime-otre': 'Mots avec damma', 'kelime-tenvin': 'Mots avec tanwîn',
     kalkale: 'Qalqala', iklab: 'Iqlâb', 'ihfa-sefevi': 'Ikhfâ’ labial', 'med-tabii': 'Madd naturel', 'med-munfasil': 'Madd détaché', 'med-ariz': 'Madd accidentel', 'med-lin': 'Madd lîn',
+    'tv-zamir': 'Le hâ’ du pronom (hâ’ al-kinâya)', 'tv-ra': 'La lettre râ’', 'tv-idgam-bila': 'Idghâm sans ghunna', 'tv-idgam-misleyn': 'Idghâm mithlayn sans ghunna', 'tv-idgam-mutekaribeyn': 'Idghâm mutaqâribayn', 'tv-idgam-mutecaniseyn': 'Idghâm mutajânisayn', 'tv-med-muttasil': 'Madd attaché (muttasil)', 'tv-med-lazim': 'Madd obligatoire (lâzim)', 'tv-hurufu': 'Les lettres isolées (hurûf muqatta‘a)', yazilis: 'Tel qu’écrit', okunus: 'Tel que lu', besmele: 'Basmala', 'bakara-1-5': 'Sourate Al-Baqara, versets 1 à 5',
   },
   en: {
     harf: 'The letters', ustun: 'Fatha', esre: 'Kasra', otre: 'Damma', 'hece-ustun': 'Syllables with fatha', 'hece-esre': 'Syllables with kasra', 'hece-otre': 'Syllables with damma',
@@ -109,6 +121,7 @@ const ADLAR: Record<Dil, Record<string, string>> = {
     'med-a': 'Lengthening “ā” (fatha + alif)', 'med-i': 'Lengthening “ī” (kasra + yā’)', 'med-u': 'Lengthening “ū” (damma + wāw)',
     kelime: 'Word', 'kelime-ilk': 'First words', 'kelime-ustun': 'Words with fatha', 'kelime-esre': 'Words with kasra', 'kelime-otre': 'Words with damma', 'kelime-tenvin': 'Words with tanwin',
     kalkale: 'Qalqalah', iklab: 'Iqlab', 'ihfa-sefevi': 'Ikhfa shafawi (labial)', 'med-tabii': 'Natural madd', 'med-munfasil': 'Separated madd (munfasil)', 'med-ariz': 'Temporary madd (arid)', 'med-lin': 'Soft madd (lin)',
+    'tv-zamir': 'The pronoun hā’ (hā’ al-kināya)', 'tv-ra': 'The letter rā’', 'tv-idgam-bila': 'Idgham without ghunna', 'tv-idgam-misleyn': 'Idgham mithlayn without ghunna', 'tv-idgam-mutekaribeyn': 'Idgham mutaqaribayn', 'tv-idgam-mutecaniseyn': 'Idgham mutajanisayn', 'tv-med-muttasil': 'Connected madd (muttasil)', 'tv-med-lazim': 'Obligatory madd (lazim)', 'tv-hurufu': 'The disjointed letters (huruf muqatta‘a)', yazilis: 'As written', okunus: 'As read', besmele: 'Basmala', 'bakara-1-5': 'Surah Al-Baqarah, verses 1–5',
   },
   nl: {
     harf: 'De letters', ustun: 'Fatha', esre: 'Kasra', otre: 'Damma', 'hece-ustun': 'Lettergrepen met fatha', 'hece-esre': 'Lettergrepen met kasra', 'hece-otre': 'Lettergrepen met damma',
@@ -118,6 +131,7 @@ const ADLAR: Record<Dil, Record<string, string>> = {
     'med-a': 'Verlenging “aa” (fatha + alif)', 'med-i': 'Verlenging “ie” (kasra + yaa)', 'med-u': 'Verlenging “oe” (damma + waaw)',
     kelime: 'Woord', 'kelime-ilk': 'Eerste woorden', 'kelime-ustun': 'Woorden met fatha', 'kelime-esre': 'Woorden met kasra', 'kelime-otre': 'Woorden met damma', 'kelime-tenvin': 'Woorden met tanwien',
     kalkale: 'Qalqala', iklab: 'Iqlaab', 'ihfa-sefevi': 'Ikhfa shafawi (lippen)', 'med-tabii': 'Natuurlijke madd', 'med-munfasil': 'Gescheiden madd (munfasil)', 'med-ariz': 'Tijdelijke madd (aarid)', 'med-lin': 'Zachte madd (lien)',
+    'tv-zamir': 'Het voornaamwoord-haa (haa’ al-kinaaya)', 'tv-ra': 'De letter raa', 'tv-idgam-bila': 'Idgham zonder ghunna', 'tv-idgam-misleyn': 'Idgham mithlayn zonder ghunna', 'tv-idgam-mutekaribeyn': 'Idgham mutaqaribayn', 'tv-idgam-mutecaniseyn': 'Idgham mutajanisayn', 'tv-med-muttasil': 'Verbonden madd (muttasil)', 'tv-med-lazim': 'Verplichte madd (lazim)', 'tv-hurufu': 'De losse letters (huruf muqatta‘a)', yazilis: 'Geschreven', okunus: 'Gelezen', besmele: 'Basmala', 'bakara-1-5': 'Soera Al-Baqara, verzen 1–5',
   },
   de: {
     harf: 'Die Buchstaben', ustun: 'Fatha', esre: 'Kasra', otre: 'Damma', 'hece-ustun': 'Silben mit Fatha', 'hece-esre': 'Silben mit Kasra', 'hece-otre': 'Silben mit Damma',
@@ -127,6 +141,7 @@ const ADLAR: Record<Dil, Record<string, string>> = {
     'med-a': 'Dehnung „ā“ (Fatha + Alif)', 'med-i': 'Dehnung „ī“ (Kasra + Ya)', 'med-u': 'Dehnung „ū“ (Damma + Waw)',
     kelime: 'Wort', 'kelime-ilk': 'Erste Wörter', 'kelime-ustun': 'Wörter mit Fatha', 'kelime-esre': 'Wörter mit Kasra', 'kelime-otre': 'Wörter mit Damma', 'kelime-tenvin': 'Wörter mit Tanwin',
     kalkale: 'Qalqala', iklab: 'Iqlab', 'ihfa-sefevi': 'Ichfa schafawi (Lippen)', 'med-tabii': 'Natürliche Madd', 'med-munfasil': 'Getrennte Madd (munfasil)', 'med-ariz': 'Vorübergehende Madd (arid)', 'med-lin': 'Weiche Madd (lin)',
+    'tv-zamir': 'Das Pronomen-Ha (Hā’ al-Kināya)', 'tv-ra': 'Der Buchstabe Ra', 'tv-idgam-bila': 'Idgham ohne Ghunna', 'tv-idgam-misleyn': 'Idgham mithlayn ohne Ghunna', 'tv-idgam-mutekaribeyn': 'Idgham mutaqaribayn', 'tv-idgam-mutecaniseyn': 'Idgham mutajanisayn', 'tv-med-muttasil': 'Verbundene Madd (muttasil)', 'tv-med-lazim': 'Verpflichtende Madd (lazim)', 'tv-hurufu': 'Die einzelnen Buchstaben (Huruf muqatta‘a)', yazilis: 'Geschrieben', okunus: 'Gelesen', besmele: 'Basmala', 'bakara-1-5': 'Sure Al-Baqara, Verse 1–5',
   },
 };
 
@@ -265,11 +280,11 @@ export function dersAdi(dil: Dil, grup: string, parca: number, parcaSayisi: numb
   return parcaSayisi > 1 ? `${ad} · ${parca}/${parcaSayisi}` : ad;
 }
 
-/** Maddenin kısa etiketi (hangi harf/şekil/konu): harf adı, hareke adı, konum, tecvid adı ya da «Sûre · n». */
+/** Maddenin kısa etiketi (hangi harf/şekil/konu): harf adı, hareke adı, konum, tecvid adı, yazılışı/okunuşu ya da «Sûre · n» (besmele maddesinde «Sûre · Besmele»). */
 export function etiketYaz(dil: Dil, o: Pick<Oge, 'e' | 'h' | 's' | 'n'>): string {
   if (o.s) {
-    const ad = KATALOG.ogeler.find((x) => x.id === o.s)?.ad[dil] ?? o.s;
-    return `${ad} · ${o.n}`;
+    const ad = KATALOG.ogeler.find((x) => x.id === o.s)?.ad[dil] ?? ADLAR[dil][o.s] ?? o.s;
+    return `${ad} · ${o.n ?? ADLAR[dil].besmele}`; // n yoksa besmele maddesi
   }
   const parcalar: string[] = [];
   if (o.e) parcalar.push(ADLAR[dil][o.e] ?? '');

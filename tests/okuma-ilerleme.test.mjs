@@ -89,7 +89,7 @@ test('Temizle: bozuk girdi atılır; yalnız o1…o9; uzunluk sınırlı', () =>
   assert.equal(m.temizle({ maddeler: { o1: '1ab'.repeat(900) } }).maddeler.o1.length, m.AZAMI_MADDE * 3);
 });
 
-test('Hesap kuralı: yedi adımın hepsi dolu olsa da ≤ 120 anahtar; buluta yalnız v, maddeler, guncelleme', () => {
+test('Hesap kuralı: dokuz adımın hepsi dolu olsa da ≤ 120 anahtar; buluta yalnız v, maddeler, guncelleme', () => {
   let il = m.bos();
   for (const a of PLAN) il = calis(il, hepsi(a.id, a.n));
   assert.deepEqual(Object.keys(il.maddeler).sort(), PLAN.map((a) => a.id).sort());
@@ -98,7 +98,7 @@ test('Hesap kuralı: yedi adımın hepsi dolu olsa da ≤ 120 anahtar; buluta ya
   const yuk = m.bulutYuku(il, 'ZAMAN');
   assert.deepEqual(Object.keys(yuk).sort(), ['guncelleme', 'maddeler', 'v']);
   assert.equal(yuk.guncelleme, 'ZAMAN');
-  assert.deepEqual(m.sayim(il, ['o1-0', 'o1-1', 'o9-0']), { goruldu: 2, toplam: 3 });
+  assert.deepEqual(m.sayim(il, ['o1-0', 'o1-1', 'o10-0']), { goruldu: 2, toplam: 3 });
 });
 
 test('Cihaz anahtarı ham uid taşımaz; depo okuma/yazma bozulmaya dayanır', () => {
@@ -159,11 +159,11 @@ test('Oturum: seçilen adım, iz kuralı ve bitiş', () => {
   assert.equal(o.oturumKur(hepsiBitti, '2026-12-30', plan).tekrar.length, 5, 'bir ay sonra tekrarlar geri gelir');
 });
 
-test('Gerçek yol: 7 adım, her biri ≤ 400 madde; ilk oturum 6 yeni madde', () => {
-  assert.equal(PLAN.length, 7);
-  assert.equal(YOL.length, 7);
+test('Gerçek yol: 9 adım, her biri ≤ 400 madde; ilk oturum 6 yeni madde', () => {
+  assert.equal(PLAN.length, 9);
+  assert.equal(YOL.length, 9);
   for (const a of PLAN) assert.ok(a.n > 0 && a.n <= m.AZAMI_MADDE, a.id);
-  assert.deepEqual(PLAN.map((a) => a.iz), ['elifba', 'elifba', 'elifba', 'elifba', 'elifba', 'elifba', 'mushaf']);
+  assert.deepEqual(PLAN.map((a) => a.iz), ['elifba', 'elifba', 'elifba', 'elifba', 'elifba', 'elifba', 'mushaf', 'elifba', 'mushaf']);
   assert.equal(o.oturumKur(m.bos(), G0, PLAN).sira.length, 6);
 });
 
@@ -217,4 +217,30 @@ test('girişte karar (okuma-esitle.ts): anonim yoksa sorulmaz; yeni madde varsa 
   assert.equal(depo.getItem(m.ANAHTAR), null, 'anonim silindi');
   assert.ok(m.goruldu(m.oku(depo, anahtar), 'o1-1'));
   assert.equal(s2.k.yazimlar.length, 1);
+});
+
+test('ESKİ UZUNLUKTA İLERLEME (yedi adımlı sürüm) yeni adımlarla geçerli kalır: dizeler değişmez, o8/o9 görülmemiş, birleşir ve bulutla uyumlu', () => {
+  // yedi adım dönemindeki bir kayıt: o1, o6 ve o7 dolu, o8/o9 hiç yok
+  const eski = { v: 1, maddeler: { o1: '1ab'.repeat(28), o6: '2ac'.repeat(69), o7: '3ad'.repeat(164) } };
+  const t = m.temizle(eski);
+  assert.deepEqual(t.maddeler, eski.maddeler, 'olduğu gibi korunur');
+  assert.equal(m.goruldu(t, 'o7-163'), true);
+  assert.equal(m.goruldu(t, 'o8-0'), false);
+  assert.equal(m.goruldu(t, 'o9-59'), false);
+  // yeni adımda çalışınca eski adımların dizeleri bayt bayt aynı kalır
+  const yeni = m.isaretle(t, 'o8-104', 'tam', '2026-11-10');
+  assert.equal(yeni.maddeler.o1, eski.maddeler.o1);
+  assert.equal(yeni.maddeler.o7, eski.maddeler.o7);
+  assert.equal(yeni.maddeler.o8.length, 105 * 3);
+  assert.equal(m.goruldu(yeni, 'o8-104'), true);
+  // eski cihaz kopyası (o8'siz) ile yeni bulut kopyası birleşir; hiçbir şey kaybolmaz
+  const b = m.birlestir(t, yeni);
+  assert.equal(b.maddeler.o7, eski.maddeler.o7);
+  assert.equal(m.goruldu(b, 'o8-104'), true);
+  assert.deepEqual(m.birlestir(b, t), b);
+  assert.deepEqual(Object.keys(m.bulutYuku(b, 'Z').maddeler).sort(), ['o1', 'o6', 'o7', 'o8']);
+  assert.ok(Object.keys(b.maddeler).length <= 120);
+  // eski kayıtla bugünkü çalışma: elifba izinde o1–o6 bitmişse sıradaki adım o8
+  const elifbaBitti = m.temizle({ maddeler: Object.fromEntries(PLAN.filter((a) => a.iz === 'elifba' && a.id !== 'o8').map((a) => [a.id, '1ab'.repeat(a.n)])) });
+  assert.equal(o.oturumKur(elifbaBitti, G0, PLAN).adim, 'o8');
 });

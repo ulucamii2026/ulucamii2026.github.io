@@ -26,12 +26,15 @@ const { vurguAyir, konumSec } = await import('../scripts/okuma-uret.mjs');
 const DILLER = ['tr', 'fr', 'en', 'nl', 'de'];
 const okumaKunye = json('docs/okuma-ses-kaynaklari.json');
 const dinlemeKunye = json('docs/dinleme-ses-kaynaklari.json');
+const yeniKunye = json('docs/okuma-ses-kaynaklari-egitim.json');
+const yeni = json('src/data/okuma/yeni.json');
+const dogrulama = json('docs/okuma-metin-dogrulama.json');
 const ek = json('src/data/okuma/ek.json');
 const sureler = json('src/data/okuma/sureler.json');
 const ogeler = YOL.flatMap((b) => b.dersler.flatMap((d) => d.ogeler));
 
-test('Yedi adım; kimlikler benzersiz, sıralı ve <adım>-<sıra> biçiminde', () => {
-  assert.deepEqual(YOL.map((b) => b.id), ['o1', 'o2', 'o3', 'o4', 'o5', 'o6', 'o7']);
+test('Dokuz adım; kimlikler benzersiz, sıralı ve <adım>-<sıra> biçiminde', () => {
+  assert.deepEqual(YOL.map((b) => b.id), ['o1', 'o2', 'o3', 'o4', 'o5', 'o6', 'o7', 'o8', 'o9']);
   assert.equal(new Set(ogeler.map((o) => o.id)).size, ogeler.length);
   for (const b of YOL) {
     const idler = b.dersler.flatMap((d) => d.ogeler.map((o) => o.id));
@@ -46,8 +49,10 @@ test('Her madde: Arapça dolu, ses yolu Diyanet künyesinde kayıtlı, dosya var
     assert.ok(o.ar && o.ar.trim() === o.ar, o.id);
     assert.match(o.ses, /^\/media\/ses\/(elifba|okuma|ayet)\/.+\.mp3$/, o.id);
     assert.ok(!/yapay/.test(o.ses), o.id);
-    assert.ok(existsSync(`public${o.ses}`), `${o.id}: ${o.ses}`);
-    assert.ok(okumaKunye[o.ses] || dinlemeKunye[o.ses], `${o.id}: künye yok ${o.ses}`);
+    // ulucamii.be'deki sesler public/ altında; egitim Hosting'indeki yeni sesler (o8, o9) egitim/public/ altında ve kendi künyesinde (git dışı: dosya yoksa bekçi `node scripts/okuma-ses-ekle.mjs --denetle` bildirir)
+    const yerel = o.ses.startsWith('/media/ses/okuma/yeni/');
+    if (!yerel) assert.ok(existsSync(`public${o.ses}`), `${o.id}: ${o.ses}`);
+    assert.ok(okumaKunye[o.ses] || dinlemeKunye[o.ses] || yeniKunye[o.ses], `${o.id}: künye yok ${o.ses}`);
     if (o.v) for (const [bas, bit] of o.v) assert.ok(0 <= bas && bas < bit && bit <= o.ar.length, `${o.id}: vurgu`);
   }
 });
@@ -86,7 +91,7 @@ test('Harf, hece ve tecvid maddeleri ecouter.json ile aynı (Arapça ve ses)', (
   assert.ok(yerel.length > 300);
   for (const o of yerel) assert.equal(havuz.get(o.ses), o.ar, o.id);
   // yeni sesler: bitişme + kelime sayıları
-  assert.equal(ogeler.filter((o) => o.ses.startsWith('/media/ses/okuma/')).length, 225);
+  assert.equal(ogeler.filter((o) => o.ses.startsWith('/media/ses/okuma/') && !o.ses.startsWith('/media/ses/okuma/yeni/')).length, 225);
 });
 
 test('Portal metni vurgu ayrıştırıcısı ve harf konumu', () => {
@@ -101,15 +106,15 @@ test('Portal metni vurgu ayrıştırıcısı ve harf konumu', () => {
   assert.deepEqual([...konumlar].sort(), ['basta', 'harf', 'ortada', 'sonda']);
 });
 
-const IZ = { o1: '742bec0b9cad301c', o2: '3ab456d5bd5e6870', o3: '84581b4846bbcd09', o4: '9c8da8ed2ea30bbe', o5: '1cd00693997d0359', o6: '7727226ac8fc1eb4', o7: '5d425ebb61e8ddd0' };
+const IZ = { o1: '742bec0b9cad301c', o2: '3ab456d5bd5e6870', o3: '84581b4846bbcd09', o4: '9c8da8ed2ea30bbe', o5: '1cd00693997d0359', o6: '7727226ac8fc1eb4', o7: '5d425ebb61e8ddd0', o8: 'ebde8eee3e1ccc48', o9: '1513acd68a8aa9f7' };
 
 test('PARMAK İZİ: madde sırası kalıcıdır (ilerleme dizesi sıraya bağlı). Değişirse bilerek güncelleyin; yalnız SONA ekleme güvenlidir', () => {
   const iz = Object.fromEntries(YOL.map((b) => [b.id, {
     n: b.dersler.reduce((t, d) => t + d.ogeler.length, 0),
     sha: createHash('sha256').update(b.dersler.flatMap((d) => d.ogeler.map((o) => o.ses)).join('\n')).digest('hex').slice(0, 16),
   }]));
-  assert.deepEqual(Object.fromEntries(Object.entries(iz).map(([k, v]) => [k, v.n])), { o1: 28, o2: 84, o3: 120, o4: 232, o5: 146, o6: 69, o7: 164 });
-  assert.deepEqual(PLAN.map((p) => p.n), [28, 84, 120, 232, 146, 69, 164]);
+  assert.deepEqual(Object.fromEntries(Object.entries(iz).map(([k, v]) => [k, v.n])), { o1: 28, o2: 84, o3: 120, o4: 232, o5: 146, o6: 69, o7: 164, o8: 105, o9: 60 });
+  assert.deepEqual(PLAN.map((p) => p.n), [28, 84, 120, 232, 146, 69, 164, 105, 60]);
   assert.deepEqual(Object.fromEntries(Object.entries(iz).map(([k, v]) => [k, v.sha])), IZ);
 });
 
@@ -151,4 +156,37 @@ test('Hitap ve ilke: «taslak» etiketi yok; kalp simgesi yok; telefon numarası
   assert.match(T.okumaMetinleri('nl').giris, /\bu\b/);
   assert.match(T.okumaMetinleri('de').giris, /\bSie\b/);
   assert.match(T.okumaMetinleri('fr').giris, /\brépétez\b|\bécoutez\b/i);
+});
+
+test('Yeni adımlar (o8 tecvid, o9 kısa âyet): her madde doğrulanmış, künyede Diyanet adresi ve sha256, ses egitim Hosting köküne işaret eder', () => {
+  const kayitlar = Object.entries(dogrulama.ogeler);
+  const alinan = new Map(kayitlar.filter(([, r]) => r.durum !== 'elendi').map(([yol]) => [yol, true]));
+  const maddeler = [...yeni.tecvid, ...yeni.ayetler].flatMap((g) => g.ogeler);
+  assert.equal(maddeler.length, alinan.size, 'yeni.json yalnız doğrulananları taşır');
+  assert.equal(Object.keys(yeniKunye).length, maddeler.length);
+  for (const [yol, k] of Object.entries(yeniKunye)) {
+    assert.match(yol, /^\/media\/ses\/okuma\/yeni\/.+\.mp3$/, yol);
+    assert.match(k.kaynak, /^https:\/\/(kuran|webdosya)\.diyanet\.gov\.tr\//, yol);
+    assert.match(k.sha256, /^[0-9a-f]{64}$/, yol);
+    assert.ok(k.bayt > 1000, yol);
+  }
+  for (const o of maddeler) assert.ok(yeniKunye[o.ses], o.ses);
+  // her kayıt ya doğrulandı ya da gerekçesiyle elendi; dolaylı olanın eşi doğrulanmış olmalı
+  for (const [yol, r] of kayitlar) {
+    assert.ok(['dogrulandi', 'dolayli', 'elendi'].includes(r.durum), yol);
+    if (r.durum === 'elendi') assert.ok(r.neden, yol);
+    if (r.durum === 'dolayli') assert.equal(dogrulama.ogeler[r.es]?.durum, 'dogrulandi', yol);
+  }
+  assert.equal(dogrulama.sayilar.ayet.elendi, 0);
+  assert.ok(dogrulama.sayilar.tecvid.dogrulandi + dogrulama.sayilar.tecvid.dolayli >= 100);
+  for (const g of yeni.ayetler) {
+    const ns = g.ogeler.filter((o) => o.n !== undefined).map((o) => o.n);
+    assert.deepEqual(ns, [...ns].sort((a, b) => a - b), g.grup);
+    assert.ok(g.ogeler.filter((o) => o.e === 'besmele').length <= 1, g.grup);
+  }
+  for (const o of ogeler.filter((x) => x.ses.startsWith('/media/ses/okuma/yeni/'))) assert.ok(/^o[89]-/.test(o.id), o.id);
+  assert.equal(YOL.find((b) => b.id === 'o8').iz, 'elifba');
+  assert.equal(YOL.find((b) => b.id === 'o9').iz, 'mushaf');
+  assert.equal(T.etiketYaz('tr', ogeler.find((o) => o.s === 's-nas' && o.n === undefined)), 'Nâs Sûresi · Besmele');
+  assert.equal(T.etiketYaz('fr', ogeler.find((o) => o.s === 'bakara-1-5' && o.n === 1)), 'Sourate Al-Baqara, versets 1 à 5 · 1');
 });
