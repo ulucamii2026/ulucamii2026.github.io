@@ -1,0 +1,56 @@
+---
+/**
+ * Adım adım öğrenme (10 Kasım 2026): bütün adımlar sunucuda çizilir (JavaScript olmadan da tam okunur); scripts/ibadet.ts dar ekranda
+ * yalnız bir adım gösteren akışı açar (önceki/sonraki + «Adım n / m»). Etiket (farz/vâcip/sünnet/âdâp) verideki gibi yazılır; etiketi asıl
+ * fiile ait olan adımlarda (iftitah tekbiri, rükû, secde) bunu söyleyen bir not eklenir. Renk anlam taşımaz: her hükmün yazısı ve kenar biçimi vardır.
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import type { Konu } from '@ortak/lib/ilim-yolu/ibadet-ilerleme';
+import { ibadetMetinleri, doldur } from '../i18n/ibadet';
+import type { AdimKarti } from '../lib/ibadet-sayfa';
+import IbadetCizim from './IbadetCizim.astro';
+import Ikon from './Ikon.astro';
+
+interface Props { dil: Dil; konu: Konu; kartlar: AdimKarti[]; baslikId?: string }
+const { dil, konu, kartlar, baslikId = 'ogren-baslik' } = Astro.props;
+const m = ibadetMetinleri(dil);
+const veri = { konu, m: { adimSayaci: m.adimSayaci, hepsiniGoster: m.hepsiniGoster, adimAdim: m.adimAdim, ogrendimOldu: m.ogrendimOldu, kaydedilemedi: m.kaydedilemedi } };
+---
+<section class="ib-bolum" data-ib-ogren data-konu={konu} data-veri={JSON.stringify(veri)} aria-labelledby={baslikId}>
+  <div class="ib-bolum-bas">
+    <h2 id={baslikId}>{m.ogrenBaslik}</h2>
+    <p class="ib-tamam" data-tamam hidden><Ikon ad="onay" /> {m.tamamlandi}</p>
+  </div>
+  <p class="ib-not-satir">{m.ogrenMetin}</p>
+  <div class="ib-gezgin" data-gezgin hidden>
+    <button type="button" class="dugme ikincil" data-onceki><Ikon ad="geri" /> {m.onceki}</button>
+    <p class="ib-sayac" role="status" data-sayac>{doldur(m.adimSayaci, { n: 1, m: kartlar.length })}</p>
+    <button type="button" class="dugme ikincil" data-sonraki>{m.sonraki} <Ikon ad="ok" /></button>
+    <button type="button" class="ib-baglanti-dugme" data-hepsi aria-pressed="false">{m.hepsiniGoster}</button>
+  </div>
+  <ol class="ib-adimlar">
+    {kartlar.map((k) => (
+      <li class="ib-adim" data-adim id={`adim-${k.id}`}>
+        <IbadetCizim ad={k.ikon} alt={k.alt} />
+        <div class="ib-adim-govde">
+          <p class="ib-adim-no"><span class="ib-no-rozet">{k.no}</span> <b>{k.ad}</b></p>
+          <p class="ib-hukum-satir"><span class="ib-hukum" data-tur={k.tur}>{m.hukum}: {k.hukum}</span></p>
+          {k.kismiFiil && <p class="ib-kismi">{doldur(m.kismiNot, { fiil: k.kismiFiil })}</p>}
+          <p class="ib-adim-metin">{k.metin}</p>
+          {k.kadin && <p class="ib-yan-not"><b>{m.kadin}:</b> {k.kadin}</p>}
+          {k.not && <p class="ib-yan-not"><b>{m.not}:</b> {k.not}</p>}
+          {k.dualar.length > 0 && (
+            <ul class="ib-dualar">
+              {k.dualar.map((d) => <li><a href={d.href}>{doldur(m.duaCalis, { ad: d.ad })}</a></li>)}
+            </ul>
+          )}
+          <p class="ib-kaynak">{m.kaynak}: {k.kaynak}</p>
+        </div>
+      </li>
+    ))}
+  </ol>
+  <div class="ib-ogrendim">
+    <button type="button" class="dugme birincil" data-ogrendim aria-pressed="false"><Ikon ad="onay" /> {m.ogrendim}</button>
+    <p class="yl-durum-satir" role="status" data-ogrendim-durum></p>
+  </div>
+</section>

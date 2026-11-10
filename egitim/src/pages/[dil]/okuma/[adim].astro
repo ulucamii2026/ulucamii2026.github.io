@@ -1,0 +1,112 @@
+---
+/**
+ * Kur'an Okuma adım sayfası (10 Kasım 2026): adımın dersleri (her biri «Bu dersi çalışın» ile çalışma ekranına gider) ve serbest dinleme listesi.
+ * Dinleme düğmeleri scripts/calar.ts'i kullanır (tek ses nesnesi, Diyanet kaydı ulucamii.be'den). Sunucu sıfır ilerlemeyle çizer; sayıları
+ * scripts/okuma-harita.ts doldurur. Çevrim dışı kutusu bu adımın bütün seslerini ve çalışma ekranını cihaza kaydeder (scripts/cevrimdisi.ts).
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import { dilListesi } from '@ortak/i18n/utils';
+import { YOL } from '@ortak/lib/okuma/yol';
+import CevrimdisiKutu from '../../../components/CevrimdisiKutu.astro';
+import Ikon from '../../../components/Ikon.astro';
+import { doldur, dersAdi, etiketYaz, okumaMetinleri } from '../../../i18n/okuma';
+import Taban from '../../../layouts/Taban.astro';
+import { ANA_SITE } from '../../../lib/kimlik';
+import { adimSesleri } from '../../../lib/okuma-veri';
+import '../../../styles/ilim.css';
+import '../../../styles/yollar.css';
+import '../../../styles/cevrimdisi.css';
+import '../../../styles/okuma.css';
+
+export function getStaticPaths() {
+  return dilListesi.flatMap((dil) => YOL.map((b) => ({ params: { dil, adim: b.id }, props: { b } })));
+}
+interface Props { b: (typeof YOL)[number] }
+const { b } = Astro.props;
+const dil = Astro.params.dil as Dil;
+const t = okumaMetinleri(dil);
+const ad = t.adimlar[b.id];
+const n = b.dersler.reduce((s, d) => s + d.ogeler.length, 0);
+let bas = 0;
+const dersler = b.dersler.map((d) => {
+  const satir = { d, bas, ad: dersAdi(dil, d.grup, d.parca, d.parcaSayisi) };
+  bas += d.ogeler.length;
+  return satir;
+});
+const onizleme = (d: (typeof b.dersler)[number]) => d.ogeler.slice(0, 3);
+---
+<Taban dil={dil} baslik={`${ad.ad} — ${t.ad}`} aciklama={ad.metin} yol={`okuma/${b.id}`}>
+  <div class="icerik yl-sayfa ok-sayfa">
+    <div><a class="yl-geri-baglanti" href={`/${dil}/okuma/`}><Ikon ad="geri" /> {t.geri}</a></div>
+    <header class="yl-bas">
+      <p class="iy-ust-yazi">{doldur(t.adimNo, { n: b.sira })}</p>
+      <h1>{ad.ad}</h1>
+      <p class="ok-lead">{ad.metin}</p>
+      <p class="yl-sayi">{doldur(t.dersSayisi, { n: b.dersler.length })} · {doldur(t.maddeSayisi, { n })}</p>
+      <p class="yl-ilerleme" data-okuma-aralik data-adim={b.id} data-bas="0" data-n={n} data-sablon={t.ilerleme}><span data-okuma-sayi></span></p>
+      <noscript><p class="yl-not">{t.js}</p></noscript>
+    </header>
+
+    <section class="iy-bolum" aria-labelledby="dersler-baslik">
+      <div class="iy-bolum-bas"><h2 id="dersler-baslik">{t.dersler}</h2></div>
+      <ol class="ok-dersler">
+        {dersler.map(({ d, bas, ad: dAd }) => (
+          <li class="ok-ders" data-okuma-aralik data-adim={b.id} data-bas={bas} data-n={d.ogeler.length} data-sablon={t.ilerleme}>
+            <div class="ok-ders-bas">
+              <h3>{dAd}</h3>
+              <p class="yl-sayi">{doldur(t.maddeSayisi, { n: d.ogeler.length })} · <span data-okuma-sayi></span></p>
+            </div>
+            <p class="ok-onizleme" aria-hidden="true">
+              {onizleme(d).map((g) => <span lang="ar" dir="rtl">{g.ar}</span>)}
+            </p>
+            <a class="dugme birincil kucuk" href={`/${dil}/okuma/bugun/?ders=${d.id}`} aria-label={doldur(t.dersCalisAd, { ad: dAd })}>{t.dersCalis} <Ikon ad="ok" /></a>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="iy-bolum" aria-labelledby="dinleme-baslik">
+      <div class="iy-bolum-bas">
+        <h2 id="dinleme-baslik">{t.dinlemeBaslik}</h2>
+        <p>{t.dinlemeMetin}</p>
+      </div>
+      <p class="gorunmez" role="status" aria-live="polite" data-ses-durumu data-hata={t.kart.sesHata}></p>
+      {dersler.map(({ d, ad: dAd }, di) => (
+        <details class="ok-dinleme" open={di === 0}>
+          <summary>{dAd}</summary>
+          <ul class="ok-oge-liste">
+            {d.ogeler.map((g) => {
+              const etiket = etiketYaz(dil, g);
+              const adres = `${ANA_SITE}${g.ses}`;
+              const dinleAdi = doldur(t.dinleAdi, { ad: etiket || g.ar });
+              return (
+                <li class="ok-oge">
+                  <button class="dinle" type="button" data-ses={adres} data-etiket-dinle={dinleAdi} data-etiket-durdur={t.kart.durdur} aria-label={dinleAdi}>
+                    <Ikon ad="cal" sinif="ikon-cal" /><Ikon ad="durdur" sinif="ikon-dur" />
+                  </button>
+                  <span class="ok-oge-ar" lang="ar" dir="rtl">{g.ar}</span>
+                  {etiket && <span class="ok-oge-etiket">{etiket}</span>}
+                  <noscript><a href={adres}>{dinleAdi}</a></noscript>
+                </li>
+              );
+            })}
+          </ul>
+        </details>
+      ))}
+    </section>
+
+    <CevrimdisiKutu dil={dil} ozel={{ id: `okuma-${b.id}`, ad: `${t.ad} · ${ad.ad}`, yol: `/${dil}/okuma/bugun/`, sesler: adimSesleri(b.id) }} />
+
+    <aside class="ok-notlar">
+      <p class="yl-not">{t.sinirNot}</p>
+      <p class="yl-not">{t.kaynakNot}</p>
+    </aside>
+  </div>
+</Taban>
+
+<script>
+  import '../../../scripts/dil';
+  import '../../../scripts/okuma-harita';
+  import '../../../scripts/calar';
+  import '../../../scripts/cevrimdisi';
+</script>

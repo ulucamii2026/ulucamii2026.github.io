@@ -1,0 +1,48 @@
+---
+/**
+ * Seçim alıştırması (10 Kasım 2026): her satırda bir ad ve düz radyo seçenekleri (hüküm eşleştirme; «kaç rek‘at»). Yerel radyo düğmeleri:
+ * klavye (oklar) ve ekran okuyucu kendiliğinden çalışır. Doğru seçenek `data-dogru` ile işaretlidir (cevap anahtarı gizli bilgi değildir;
+ * alıştırma kendini sınamadır, puan ya da sıralama yoktur). Satır sayısı `adet`ten fazlaysa scripts/ibadet.ts her turda `adet` satırı
+ * gösterir. Sonuç «tamam» bitiyle kaydedilir.
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import type { Konu, Slot } from '@ortak/lib/ilim-yolu/ibadet-ilerleme';
+import { ibadetMetinleri } from '../i18n/ibadet';
+import Ikon from './Ikon.astro';
+
+interface Secenek { deger: number; metin: string }
+interface Satir { id: string; ad: string; ek?: string; secenekler: Secenek[]; dogru: number }
+interface Props { dil: Dil; konu: Konu; slot: Slot; baslik: string; yonerge: string; satirlar: Satir[]; adet?: number; baslikId: string }
+const { dil, konu, slot, baslik, yonerge, satirlar, adet = 99, baslikId } = Astro.props;
+const m = ibadetMetinleri(dil);
+const veri = {
+  konu, slot, adet,
+  m: { secimYok: m.secimYok, dogru: m.dogru, yanlis: m.yanlis, secimSonuc: m.secimSonuc, secimTam: m.secimTam, kaydedilemedi: m.kaydedilemedi },
+};
+---
+<section class="ib-bolum ib-alistirma" data-ib-secim data-konu={konu} data-slot={slot} data-veri={JSON.stringify(veri)} aria-labelledby={baslikId}>
+  <div class="ib-bolum-bas">
+    <h2 id={baslikId}>{baslik}</h2>
+    <p class="ib-tamam" data-tamam hidden><Ikon ad="onay" /> {m.tamamlandi}</p>
+  </div>
+  <p class="ib-not-satir">{yonerge}</p>
+  {satirlar.map((s, i) => (
+    <fieldset class="ib-secim-satir" data-satir>
+      <legend><b>{s.ad}</b>{s.ek && <span class="ib-secim-ek"> {s.ek}</span>}</legend>
+      <div class="ib-secenekler">
+        {s.secenekler.map((o) => (
+          <label class="ib-secenek">
+            <input type="radio" name={`${slot}-${konu}-${i}`} value={o.deger} data-dogru={o.deger === s.dogru ? '' : undefined} />
+            <span>{o.metin}</span>
+          </label>
+        ))}
+      </div>
+      <p class="ib-geri" role="status" data-geri></p>
+    </fieldset>
+  ))}
+  <div class="ib-eylem">
+    <button type="button" class="dugme birincil" data-kontrol>{m.kontrolEt}</button>
+    <button type="button" class="dugme ikincil" data-yeni>{m.yeniTur}</button>
+  </div>
+  <p class="yl-durum-satir" role="status" data-durum></p>
+</section>

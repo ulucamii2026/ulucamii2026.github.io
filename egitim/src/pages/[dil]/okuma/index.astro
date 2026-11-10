@@ -1,0 +1,89 @@
+---
+/**
+ * Kur'an Okuma ana sayfası (İlim Yolu · 10 Kasım 2026): «dinle → tekrar et» ile günde 10–15 dakikalık okuma çalışması. Üstte «Bugünkü çalışma»,
+ * altında iki iz: Elifbâ (harf, hece, harflerin şekilleri, cezm/şedde/tenvin/med, kelime, tecvid) ve Mushaf (Fâtiha ve son cüzün sûreleri).
+ * Sunucu iskeleti sıfır ilerlemeyle çizer; sayıları scripts/okuma-harita.ts cihaz kaydından doldurur. Sesler ve metinler Diyanet kaynaklarındandır (src/lib/okuma/yol.ts).
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import { dilListesi } from '@ortak/i18n/utils';
+import { PLAN, YOL } from '@ortak/lib/okuma/yol';
+import Ikon from '../../../components/Ikon.astro';
+import { ilimMetinleri } from '../../../i18n/ilim';
+import { doldur, okumaMetinleri } from '../../../i18n/okuma';
+import Taban from '../../../layouts/Taban.astro';
+import '../../../styles/ilim.css';
+import '../../../styles/yollar.css';
+import '../../../styles/okuma.css';
+
+export function getStaticPaths() {
+  return dilListesi.map((dil) => ({ params: { dil } }));
+}
+
+const dil = Astro.params.dil as Dil;
+const t = okumaMetinleri(dil);
+const il = ilimMetinleri(dil);
+const motifler = ['m-goz', 'm-yildiz', 'm-sevron', 'm-mihrap'] as const;
+const izler = [
+  { iz: 'elifba' as const, ad: t.izElifba, metin: t.izElifbaMetin },
+  { iz: 'mushaf' as const, ad: t.izMushaf, metin: t.izMushafMetin },
+];
+---
+<Taban dil={dil} baslik={t.ad} aciklama={t.aciklama} yol="okuma">
+  <div class="icerik yl-sayfa ok-sayfa">
+    <header class="yl-bas">
+      <p class="iy-ust-yazi">{il.marka}</p>
+      <h1>{t.ad}</h1>
+      <p class="ok-lead">{t.giris}</p>
+      <noscript><p class="yl-not">{t.js}</p></noscript>
+    </header>
+
+    <section class="iy-kart yl-yer ok-bugun" aria-labelledby="bugun-baslik">
+      <svg class="kilim-serit" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#serit)" /></svg>
+      <div class="iy-kart-govde">
+        <h2 id="bugun-baslik">{t.bugunBaslik}</h2>
+        <p>{t.bugunMetin}</p>
+        <p class="ok-ozet" data-okuma-bugun data-plan={JSON.stringify(PLAN)} data-sablon={t.bugunOzet}></p>
+        <a class="dugme birincil" href={`/${dil}/okuma/bugun/`}>{t.bugunBasla} <Ikon ad="ok" /></a>
+      </div>
+    </section>
+
+    {izler.map((grup) => (
+      <section class="iy-bolum" aria-labelledby={`iz-${grup.iz}`}>
+        <div class="iy-bolum-bas">
+          <h2 id={`iz-${grup.iz}`}>{grup.ad}</h2>
+          <p>{grup.metin}</p>
+        </div>
+        <ul class="yl-yollar iki">
+          {YOL.filter((b) => b.iz === grup.iz).map((b) => {
+            const n = PLAN.find((p) => p.id === b.id)!.n;
+            const ad = t.adimlar[b.id];
+            return (
+              <li class="yl-yol" data-tur="alan" data-okuma-aralik data-adim={b.id} data-bas="0" data-n={n} data-sablon={t.ilerleme}>
+                <div class="yl-yol-motif" aria-hidden="true"><svg viewBox="0 0 100 100"><use href={`#${motifler[(b.sira - 1) % 4]}`} /></svg></div>
+                <div class="yl-yol-metin">
+                  <p class="ok-adim-no">{doldur(t.adimNo, { n: b.sira })}</p>
+                  <h3><a href={`/${dil}/okuma/${b.id}/`}>{ad.ad}</a></h3>
+                  <p class="yl-not">{ad.metin}</p>
+                  <p class="yl-sayi">{doldur(t.dersSayisi, { n: b.dersler.length })} · {doldur(t.maddeSayisi, { n })}</p>
+                  <p class="yl-ilerleme" data-okuma-sayi></p>
+                  <progress class="ok-cubuk" max={n} value="0" aria-hidden="true"></progress>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+    ))}
+
+    <aside class="ok-notlar" aria-label={t.ad}>
+      <p class="yl-not">{t.sinirNot}</p>
+      <p class="yl-not">{t.kaynakNot}</p>
+      <p class="yl-not">{t.hesapNot}</p>
+    </aside>
+  </div>
+</Taban>
+
+<script>
+  import '../../../scripts/dil';
+  import '../../../scripts/okuma-harita';
+</script>

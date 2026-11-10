@@ -1,0 +1,113 @@
+---
+/**
+ * Vakit sayfası (İlim Yolu · Abdest ve Namaz, 10 Kasım 2026): bir vaktin farz ve sünnet rek‘atları, hükümleri, farzın rek‘at rek‘at kılınışı
+ * (src/data/ibadet/namaz.json `rekatSablonu`'ndan), sıraya dizme ve hüküm seçme. Sayılar ve hükümler yalnız veriden gelir (Diyanet İlmihali,
+ * Hanefî). Üçüncü/dördüncü rek‘attaki Fâtiha her zaman rk-03 kuralıyla birlikte yazılır.
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import { dilListesi } from '@ortak/i18n/utils';
+import { NAMAZ, VAKIT_IDLERI, adimBul, kuralBul, rekatSemasi, vakitBirimleri, vakitBul } from '@ortak/lib/ibadet/ibadet-veri';
+import IbadetBas from '../../../../components/IbadetBas.astro';
+import IbadetSecim from '../../../../components/IbadetSecim.astro';
+import IbadetSirala from '../../../../components/IbadetSirala.astro';
+import Ikon from '../../../../components/Ikon.astro';
+import { adimAdi, doldur, ibadetMetinleri } from '../../../../i18n/ibadet';
+import { birimAdi, hukumAdi } from '../../../../lib/ibadet-sayfa';
+import Taban from '../../../../layouts/Taban.astro';
+import '../../../../styles/yollar.css';
+import '../../../../styles/ibadet.css';
+
+export function getStaticPaths() {
+  return dilListesi.flatMap((dil) => VAKIT_IDLERI.map((vakit) => ({ params: { dil, vakit } })));
+}
+
+const dil = Astro.params.dil as Dil;
+const vakitId = Astro.params.vakit as (typeof VAKIT_IDLERI)[number];
+const m = ibadetMetinleri(dil);
+const v = vakitBul(vakitId);
+const birimler = vakitBirimleri(v);
+const ad = (id: string) => adimAdi(dil, id, adimBul(NAMAZ, id).ikon);
+const baslik = doldur(m.vakitAd, { ad: v.ad[dil] });
+const sema = rekatSemasi(v.farz);
+const hukumTurleri = ['farz', 'muekked', 'gayrimuekked'] as const;
+const secenekler = hukumTurleri.map((t, i) => ({ deger: i, metin: hukumAdi(NAMAZ, t, dil) }));
+const ogeler = birimler.map((b) => ({ id: b.tip, ad: birimAdi(dil, b), metin: hukumAdi(NAMAZ, b.hukum, dil) }));
+const satirlar = birimler.map((b) => ({ id: b.tip, ad: birimAdi(dil, b), secenekler, dogru: hukumTurleri.indexOf(b.hukum) }));
+const rk03 = kuralBul('rk-03');
+const rk04 = kuralBul('rk-04');
+const sunnetUcten = birimler.some((b) => b.tip !== 'farz' && b.rekat > 2);
+const digerleri = NAMAZ.vakitler.filter((x) => x.id !== v.id);
+const veri = { konu: vakitId, m: { ogrendimOldu: m.ogrendimOldu, kaydedilemedi: m.kaydedilemedi } };
+---
+<Taban dil={dil} baslik={baslik} aciklama={doldur(m.vakitSayfaAciklama, { ad: v.ad[dil] })} yol={`ibadet/namaz/${vakitId}`}>
+  <article class="icerik yl-sayfa ib-sayfa" data-ibadet-sayfa>
+    <IbadetBas dil={dil} baslik={baslik} lead={m.vakitSayfaLead} etiket={NAMAZ.etiket[dil]} geriHref={`/${dil}/ibadet/namaz/`} geriAd={m.namazBaslik} />
+
+    <section class="ib-bolum" data-ib-ogren data-konu={vakitId} data-veri={JSON.stringify(veri)} aria-labelledby="ogren-baslik">
+      <div class="ib-bolum-bas">
+        <h2 id="ogren-baslik">{m.ogrenBaslik}</h2>
+        <p class="ib-tamam" data-tamam hidden><Ikon ad="onay" /> {m.tamamlandi}</p>
+      </div>
+      <ol class="ib-birimler">
+        {birimler.map((b) => (
+          <li class="ib-birim">
+            <b>{birimAdi(dil, b)}</b>
+            <span class="ib-hukum" data-tur={b.hukum === 'farz' ? 'farz' : 'sunnet'}>{m.hukum}: {hukumAdi(NAMAZ, b.hukum, dil)}</span>
+          </li>
+        ))}
+      </ol>
+      <p class="ib-kaynak">{m.kaynak}: {NAMAZ.kaynak[0].eser}, {v.kaynakNo.farz}, {v.kaynakNo.sunnet}</p>
+
+      <h3 class="ib-alt-baslik">{m.semaBaslik}</h3>
+      <p class="ib-not-satir">{m.semaMetin}</p>
+      <ol class="ib-gruplar">
+        {sema.map((r) => (
+          <li class="ib-grup">
+            <h4>{doldur(m.rekatNo, { n: r.no })}{v.farz > 2 && r.no === 2 ? ` — ${m.ilkOturusEtiketi}` : ''}{r.son ? ` — ${m.sonOturusEtiketi}` : ''}</h4>
+            <ul class="ib-yonga">
+              {r.adimlar.map((id) => <li><a href={`/${dil}/ibadet/namaz/#adim-${id}`}>{ad(id)}</a></li>)}
+            </ul>
+            {r.no >= 3 && (
+              <p class="ib-kural-kutu"><b>{ad('nm-06')} · {m.kural} ({rk03.kaynakNo}):</b> {rk03.metin[dil]}</p>
+            )}
+          </li>
+        ))}
+      </ol>
+
+      {(v.farz > 2 || sunnetUcten) && (
+        <div class="ib-hatirlatma">
+          <h3 class="ib-alt-baslik">{m.hatirlatma}</h3>
+          <ul class="ib-kurallar">
+            {v.farz > 2 && <li>{rk03.metin[dil]} <span class="ib-kaynak">({rk03.kaynakNo})</span></li>}
+            {sunnetUcten && <li>{rk04.metin[dil]} <span class="ib-kaynak">({rk04.kaynakNo})</span></li>}
+          </ul>
+        </div>
+      )}
+
+      {vakitId === 'yatsi' && (
+        <p class="ib-not-satir"><b>{NAMAZ.vitir.ad[dil]}:</b> {NAMAZ.vitir.zaman[dil]} · {doldur(m.rekat, { n: NAMAZ.vitir.rekat })} · {hukumAdi(NAMAZ, NAMAZ.vitir.hukum, dil)}. {m.vitirNot} <span class="ib-kaynak">({NAMAZ.vitir.kaynakNo})</span></p>
+      )}
+
+      <div class="ib-ogrendim">
+        <button type="button" class="dugme birincil" data-ogrendim aria-pressed="false"><Ikon ad="onay" /> {m.ogrendim}</button>
+        <p class="yl-durum-satir" role="status" data-ogrendim-durum></p>
+      </div>
+    </section>
+
+    <IbadetSirala dil={dil} konu={vakitId} baslik={m.siralaBaslik} yonerge={m.siralaVakit} ogeler={ogeler} baslikId="sirala-baslik" />
+    <IbadetSecim dil={dil} konu={vakitId} slot="hukum" baslik={m.hukumVakitBaslik} yonerge={m.hukumYonerge} satirlar={satirlar} baslikId="hukum-baslik" />
+
+    <nav class="ib-diger" aria-labelledby="diger-baslik">
+      <h2 id="diger-baslik">{m.digerVakitler}</h2>
+      <ul>
+        {digerleri.map((x) => <li><a class="dugme ikincil" href={`/${dil}/ibadet/namaz/${x.id}/`}>{doldur(m.vakitAd, { ad: x.ad[dil] })}</a></li>)}
+      </ul>
+    </nav>
+    <p class="yl-not">{m.hocaNotu}</p>
+  </article>
+</Taban>
+
+<script>
+  import '../../../../scripts/dil';
+  import '../../../../scripts/ibadet';
+</script>

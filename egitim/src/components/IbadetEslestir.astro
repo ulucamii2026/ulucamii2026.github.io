@@ -1,0 +1,58 @@
+---
+/**
+ * «Adımı çizimle eşleştirin» (10 Kasım 2026): iki sütun, dokunarak/klavyeyle eşleştirme (önce bir öğeyi seçin, sonra karşı sütundan eşini);
+ * sürükleme yoktur. Bütün çiftler sunucuda çizilir; scripts/ibadet.ts her turda `adet` tanesini seçer ve sağ sütunu karıştırır. Sol: adım
+ * metni, sağ: çizim (düğmenin metin alternatifi çizimin adı). Doğru eşleşme çiftin kendisidir. Sonuç «tamam» bitiyle kaydedilir.
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import type { Konu, Slot } from '@ortak/lib/ilim-yolu/ibadet-ilerleme';
+import { ibadetMetinleri } from '../i18n/ibadet';
+import IbadetCizim from './IbadetCizim.astro';
+import Ikon from './Ikon.astro';
+
+interface Cift { id: string; sol: string; cizim: string; alt: string }
+interface Props { dil: Dil; konu: Konu; slot?: Slot; baslik: string; yonerge: string; ciftler: Cift[]; adet?: number; baslikId: string }
+const { dil, konu, slot = 'eslestir', baslik, yonerge, ciftler, adet = 6, baslikId } = Astro.props;
+const m = ibadetMetinleri(dil);
+const veri = {
+  konu, slot, adet,
+  m: { eslesNo: m.eslesNo, secili: m.secili, eslesSonuc: m.eslesSonuc, eslesTam: m.eslesTam, eslesEksik: m.eslesEksik, dogruEslesme: m.dogruEslesme, yanlisEslesme: m.yanlisEslesme, kaydedilemedi: m.kaydedilemedi },
+};
+---
+<section class="ib-bolum ib-alistirma" data-ib-esles data-konu={konu} data-slot={slot} data-veri={JSON.stringify(veri)} aria-labelledby={baslikId}>
+  <div class="ib-bolum-bas">
+    <h2 id={baslikId}>{baslik}</h2>
+    <p class="ib-tamam" data-tamam hidden><Ikon ad="onay" /> {m.tamamlandi}</p>
+  </div>
+  <p class="ib-not-satir">{yonerge}</p>
+  <noscript><p class="ib-not-satir">{m.jsGerek}</p></noscript>
+  <div class="ib-esles">
+    <ul class="ib-esles-sutun" data-sol>
+      {ciftler.map((c, i) => (
+        <li data-i={i}>
+          <button type="button" class="ib-esle-oge" data-sol-oge aria-pressed="false">
+            <span class="ib-esle-rozet" data-rozet></span>
+            <span class="ib-esle-metin">{c.sol}</span>
+            <span class="ib-esle-sonuc" data-oge-sonuc></span>
+          </button>
+        </li>
+      ))}
+    </ul>
+    <ul class="ib-esles-sutun ib-esles-cizimler" data-sag>
+      {ciftler.map((c, i) => (
+        <li data-i={i}>
+          <button type="button" class="ib-esle-oge ib-esle-cizim" data-sag-oge aria-pressed="false" aria-label={c.alt}>
+            <span class="ib-esle-rozet" data-rozet></span>
+            <IbadetCizim ad={c.cizim} />
+            <span class="ib-esle-sonuc" data-oge-sonuc></span>
+          </button>
+        </li>
+      ))}
+    </ul>
+  </div>
+  <div class="ib-eylem">
+    <button type="button" class="dugme birincil" data-kontrol>{m.kontrolEt}</button>
+    <button type="button" class="dugme ikincil" data-yeni>{m.yeniTur}</button>
+  </div>
+  <p class="yl-durum-satir" role="status" data-durum></p>
+</section>

@@ -1,0 +1,45 @@
+---
+/**
+ * «Sıraya dizin» alıştırması (10 Kasım 2026): parçalar sunucuda DOĞRU sırada çizilir (JavaScript yoksa liste yine okunur); scripts/ibadet.ts
+ * açılışta karıştırır. Sürükleme gerekmez: her satırda yukarı/aşağı düğmesi vardır (klavye ve dokunma). Sonuç «tamam» bitiyle kaydedilir.
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import type { Konu, Slot } from '@ortak/lib/ilim-yolu/ibadet-ilerleme';
+import { ibadetMetinleri } from '../i18n/ibadet';
+import Ikon from './Ikon.astro';
+
+interface Oge { id: string; ad: string; metin: string }
+interface Props { dil: Dil; konu: Konu; slot?: Slot; baslik: string; yonerge: string; ogeler: Oge[]; baslikId: string }
+const { dil, konu, slot = 'sirala', baslik, yonerge, ogeler, baslikId } = Astro.props;
+const m = ibadetMetinleri(dil);
+const veri = {
+  konu, slot,
+  m: { konum: m.konum, siraSonuc: m.siraSonuc, siraTam: m.siraTam, dogruYerde: m.dogruYerde, yanlisYerde: m.yanlisYerde, kaydedilemedi: m.kaydedilemedi },
+};
+---
+<section class="ib-bolum ib-alistirma" data-ib-sirala data-konu={konu} data-slot={slot} data-veri={JSON.stringify(veri)} aria-labelledby={baslikId}>
+  <div class="ib-bolum-bas">
+    <h2 id={baslikId}>{baslik}</h2>
+    <p class="ib-tamam" data-tamam hidden><Ikon ad="onay" /> {m.tamamlandi}</p>
+  </div>
+  <p class="ib-not-satir">{yonerge}</p>
+  <noscript><p class="ib-not-satir">{m.jsGerek}</p></noscript>
+  <ol class="ib-sira" data-liste>
+    {ogeler.map((o, i) => (
+      <li class="ib-sira-oge" data-i={i} data-ad={o.ad}>
+        <span class="ib-sira-no" aria-hidden="true" data-no>{i + 1}</span>
+        <span class="ib-sira-metin"><b>{o.ad}</b><span>{o.metin}</span></span>
+        <span class="ib-sira-sonuc" data-oge-sonuc></span>
+        <span class="ib-oklar">
+          <button type="button" class="ib-ok" data-yukari aria-label={`${m.yukari}: ${o.ad}`}><span aria-hidden="true">↑</span></button>
+          <button type="button" class="ib-ok" data-asagi aria-label={`${m.asagi}: ${o.ad}`}><span aria-hidden="true">↓</span></button>
+        </span>
+      </li>
+    ))}
+  </ol>
+  <div class="ib-eylem">
+    <button type="button" class="dugme birincil" data-kontrol>{m.kontrolEt}</button>
+    <button type="button" class="dugme ikincil" data-yeniden>{m.yenidenKaristir}</button>
+  </div>
+  <p class="yl-durum-satir" role="status" data-durum></p>
+</section>

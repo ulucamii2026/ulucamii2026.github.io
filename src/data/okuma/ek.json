@@ -1,0 +1,2082 @@
+{
+ "surum": 1,
+ "kaynak": "Diyanet Elifbâ portalı (kuran.diyanet.gov.tr/elifba); metin ve sesler olduğu gibi, sha256 docs/okuma-ses-kaynaklari.json",
+ "bitisme": [
+  {
+   "id": 1,
+   "ar": "ا",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "harf",
+   "ses": "/media/ses/okuma/harfler/sekilleri/1.mp3"
+  },
+  {
+   "id": 2,
+   "ar": "امر",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "basta",
+   "ses": "/media/ses/okuma/harfler/sekilleri/2.mp3"
+  },
+  {
+   "id": 3,
+   "ar": "سال",
+   "v": [
+    [
+     1,
+     2
+    ]
+   ],
+   "konum": "ortada",
+   "ses": "/media/ses/okuma/harfler/sekilleri/3.mp3"
+  },
+  {
+   "id": 4,
+   "ar": "نبا",
+   "v": [
+    [
+     2,
+     3
+    ]
+   ],
+   "konum": "sonda",
+   "ses": "/media/ses/okuma/harfler/sekilleri/4.mp3"
+  },
+  {
+   "id": 6,
+   "ar": "ءانذر",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "basta",
+   "ses": "/media/ses/okuma/harfler/sekilleri/6.mp3"
+  },
+  {
+   "id": 7,
+   "ar": "يئس",
+   "v": [
+    [
+     1,
+     2
+    ]
+   ],
+   "konum": "ortada",
+   "ses": "/media/ses/okuma/harfler/sekilleri/7.mp3"
+  },
+  {
+   "id": 8,
+   "ar": "سوء",
+   "v": [
+    [
+     2,
+     3
+    ]
+   ],
+   "konum": "sonda",
+   "ses": "/media/ses/okuma/harfler/sekilleri/8.mp3"
+  },
+  {
+   "id": 9,
+   "ar": "أبعث",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "basta",
+   "ses": "/media/ses/okuma/harfler/sekilleri/9.mp3"
+  },
+  {
+   "id": 10,
+   "ar": "تؤمن",
+   "v": [
+    [
+     1,
+     2
+    ]
+   ],
+   "konum": "ortada",
+   "ses": "/media/ses/okuma/harfler/sekilleri/10.mp3"
+  },
+  {
+   "id": 11,
+   "ar": "سيئ",
+   "v": [
+    [
+     2,
+     3
+    ]
+   ],
+   "konum": "sonda",
+   "ses": "/media/ses/okuma/harfler/sekilleri/11.mp3"
+  },
+  {
+   "id": 1000,
+   "ar": "ب",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "harf",
+   "ses": "/media/ses/okuma/harfler/sekilleri/1000.mp3"
+  },
+  {
+   "id": 12,
+   "ar": "بعث",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "basta",
+   "ses": "/media/ses/okuma/harfler/sekilleri/12.mp3"
+  },
+  {
+   "id": 13,
+   "ar": "عبد",
+   "v": [
+    [
+     1,
+     2
+    ]
+   ],
+   "konum": "ortada",
+   "ses": "/media/ses/okuma/harfler/sekilleri/13.mp3"
+  },
+  {
+   "id": 14,
+   "ar": "وهب",
+   "v": [
+    [
+     2,
+     3
+    ]
+   ],
+   "konum": "sonda",
+   "ses": "/media/ses/okuma/harfler/sekilleri/14.mp3"
+  },
+  {
+   "id": 15,
+   "ar": "ت",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "harf",
+   "ses": "/media/ses/okuma/harfler/sekilleri/15.mp3"
+  },
+  {
+   "id": 16,
+   "ar": "ترك",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "basta",
+   "ses": "/media/ses/okuma/harfler/sekilleri/16.mp3"
+  },
+  {
+   "id": 17,
+   "ar": "اعتدوا",
+   "v": [
+    [
+     2,
+     3
+    ]
+   ],
+   "konum": "ortada",
+   "ses": "/media/ses/okuma/harfler/sekilleri/17.mp3"
+  },
+  {
+   "id": 18,
+   "ar": "سكت جنة",
+   "v": [
+    [
+     2,
+     3
+    ],
+    [
+     6,
+     7
+    ]
+   ],
+   "konum": "sonda",
+   "ses": "/media/ses/okuma/harfler/sekilleri/18.mp3"
+  },
+  {
+   "id": 19,
+   "ar": "ث",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "harf",
+   "ses": "/media/ses/okuma/harfler/sekilleri/19.mp3"
+  },
+  {
+   "id": 20,
+   "ar": "ثبت",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "basta",
+   "ses": "/media/ses/okuma/harfler/sekilleri/20.mp3"
+  },
+  {
+   "id": 21,
+   "ar": "مثل",
+   "v": [
+    [
+     1,
+     2
+    ]
+   ],
+   "konum": "ortada",
+   "ses": "/media/ses/okuma/harfler/sekilleri/21.mp3"
+  },
+  {
+   "id": 22,
+   "ar": "رفث",
+   "v": [
+    [
+     2,
+     3
+    ]
+   ],
+   "konum": "sonda",
+   "ses": "/media/ses/okuma/harfler/sekilleri/22.mp3"
+  },
+  {
+   "id": 23,
+   "ar": "ج",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "harf",
+   "ses": "/media/ses/okuma/harfler/sekilleri/23.mp3"
+  },
+  {
+   "id": 24,
+   "ar": "جعل",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "basta",
+   "ses": "/media/ses/okuma/harfler/sekilleri/24.mp3"
+  },
+  {
+   "id": 25,
+   "ar": "تعجب",
+   "v": [
+    [
+     2,
+     3
+    ]
+   ],
+   "konum": "ortada",
+   "ses": "/media/ses/okuma/harfler/sekilleri/25.mp3"
+  },
+  {
+   "id": 26,
+   "ar": "الحج",
+   "v": [
+    [
+     3,
+     4
+    ]
+   ],
+   "konum": "sonda",
+   "ses": "/media/ses/okuma/harfler/sekilleri/26.mp3"
+  },
+  {
+   "id": 27,
+   "ar": "ح",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "harf",
+   "ses": "/media/ses/okuma/harfler/sekilleri/27.mp3"
+  },
+  {
+   "id": 28,
+   "ar": "حذر",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "basta",
+   "ses": "/media/ses/okuma/harfler/sekilleri/28.mp3"
+  },
+  {
+   "id": 29,
+   "ar": "يجحد",
+   "v": [
+    [
+     2,
+     3
+    ]
+   ],
+   "konum": "ortada",
+   "ses": "/media/ses/okuma/harfler/sekilleri/29.mp3"
+  },
+  {
+   "id": 30,
+   "ar": "فتح",
+   "v": [
+    [
+     2,
+     3
+    ]
+   ],
+   "konum": "sonda",
+   "ses": "/media/ses/okuma/harfler/sekilleri/30.mp3"
+  },
+  {
+   "id": 31,
+   "ar": "د",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "harf",
+   "ses": "/media/ses/okuma/harfler/sekilleri/31.mp3"
+  },
+  {
+   "id": 32,
+   "ar": "دخل",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "basta",
+   "ses": "/media/ses/okuma/harfler/sekilleri/32.mp3"
+  },
+  {
+   "id": 33,
+   "ar": "عدد",
+   "v": [
+    [
+     1,
+     2
+    ]
+   ],
+   "konum": "ortada",
+   "ses": "/media/ses/okuma/harfler/sekilleri/33.mp3"
+  },
+  {
+   "id": 34,
+   "ar": "وعد",
+   "v": [
+    [
+     2,
+     3
+    ]
+   ],
+   "konum": "sonda",
+   "ses": "/media/ses/okuma/harfler/sekilleri/34.mp3"
+  },
+  {
+   "id": 35,
+   "ar": "ذ",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "harf",
+   "ses": "/media/ses/okuma/harfler/sekilleri/35.mp3"
+  },
+  {
+   "id": 36,
+   "ar": "ذرا",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "basta",
+   "ses": "/media/ses/okuma/harfler/sekilleri/36.mp3"
+  },
+  {
+   "id": 37,
+   "ar": "كذلك",
+   "v": [
+    [
+     1,
+     2
+    ]
+   ],
+   "konum": "ortada",
+   "ses": "/media/ses/okuma/harfler/sekilleri/37.mp3"
+  },
+  {
+   "id": 38,
+   "ar": "نبذ",
+   "v": [
+    [
+     2,
+     3
+    ]
+   ],
+   "konum": "sonda",
+   "ses": "/media/ses/okuma/harfler/sekilleri/38.mp3"
+  },
+  {
+   "id": 39,
+   "ar": "ر",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "harf",
+   "ses": "/media/ses/okuma/harfler/sekilleri/39.mp3"
+  },
+  {
+   "id": 40,
+   "ar": "رجع",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "basta",
+   "ses": "/media/ses/okuma/harfler/sekilleri/40.mp3"
+  },
+  {
+   "id": 41,
+   "ar": "فرض",
+   "v": [
+    [
+     1,
+     2
+    ]
+   ],
+   "konum": "ortada",
+   "ses": "/media/ses/okuma/harfler/sekilleri/41.mp3"
+  },
+  {
+   "id": 42,
+   "ar": "امر",
+   "v": [
+    [
+     2,
+     3
+    ]
+   ],
+   "konum": "sonda",
+   "ses": "/media/ses/okuma/harfler/sekilleri/42.mp3"
+  },
+  {
+   "id": 43,
+   "ar": "ز",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "harf",
+   "ses": "/media/ses/okuma/harfler/sekilleri/43.mp3"
+  },
+  {
+   "id": 44,
+   "ar": "زعم",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "basta",
+   "ses": "/media/ses/okuma/harfler/sekilleri/44.mp3"
+  },
+  {
+   "id": 45,
+   "ar": "نزل",
+   "v": [
+    [
+     1,
+     2
+    ]
+   ],
+   "konum": "ortada",
+   "ses": "/media/ses/okuma/harfler/sekilleri/45.mp3"
+  },
+  {
+   "id": 46,
+   "ar": "برز",
+   "v": [
+    [
+     2,
+     3
+    ]
+   ],
+   "konum": "sonda",
+   "ses": "/media/ses/okuma/harfler/sekilleri/46.mp3"
+  },
+  {
+   "id": 47,
+   "ar": "س",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "harf",
+   "ses": "/media/ses/okuma/harfler/sekilleri/47.mp3"
+  },
+  {
+   "id": 48,
+   "ar": "سال",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "basta",
+   "ses": "/media/ses/okuma/harfler/sekilleri/48.mp3"
+  },
+  {
+   "id": 49,
+   "ar": "فسجد",
+   "v": [
+    [
+     1,
+     2
+    ]
+   ],
+   "konum": "ortada",
+   "ses": "/media/ses/okuma/harfler/sekilleri/49.mp3"
+  },
+  {
+   "id": 50,
+   "ar": "عبس",
+   "v": [
+    [
+     2,
+     3
+    ]
+   ],
+   "konum": "sonda",
+   "ses": "/media/ses/okuma/harfler/sekilleri/50.mp3"
+  },
+  {
+   "id": 51,
+   "ar": "ش",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "harf",
+   "ses": "/media/ses/okuma/harfler/sekilleri/51.mp3"
+  },
+  {
+   "id": 52,
+   "ar": "شكر",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "basta",
+   "ses": "/media/ses/okuma/harfler/sekilleri/52.mp3"
+  },
+  {
+   "id": 53,
+   "ar": "يشعر",
+   "v": [
+    [
+     1,
+     2
+    ]
+   ],
+   "konum": "ortada",
+   "ses": "/media/ses/okuma/harfler/sekilleri/53.mp3"
+  },
+  {
+   "id": 54,
+   "ar": "بطش",
+   "v": [
+    [
+     2,
+     3
+    ]
+   ],
+   "konum": "sonda",
+   "ses": "/media/ses/okuma/harfler/sekilleri/54.mp3"
+  },
+  {
+   "id": 55,
+   "ar": "ع",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "harf",
+   "ses": "/media/ses/okuma/harfler/sekilleri/55.mp3"
+  },
+  {
+   "id": 56,
+   "ar": "عبد",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "basta",
+   "ses": "/media/ses/okuma/harfler/sekilleri/56.mp3"
+  },
+  {
+   "id": 57,
+   "ar": "لعن",
+   "v": [
+    [
+     1,
+     2
+    ]
+   ],
+   "konum": "ortada",
+   "ses": "/media/ses/okuma/harfler/sekilleri/57.mp3"
+  },
+  {
+   "id": 58,
+   "ar": "منع",
+   "v": [
+    [
+     2,
+     3
+    ]
+   ],
+   "konum": "sonda",
+   "ses": "/media/ses/okuma/harfler/sekilleri/58.mp3"
+  },
+  {
+   "id": 59,
+   "ar": "ف",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "harf",
+   "ses": "/media/ses/okuma/harfler/sekilleri/59.mp3"
+  },
+  {
+   "id": 60,
+   "ar": "فوقع",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "basta",
+   "ses": "/media/ses/okuma/harfler/sekilleri/60.mp3"
+  },
+  {
+   "id": 61,
+   "ar": "كفر",
+   "v": [
+    [
+     1,
+     2
+    ]
+   ],
+   "konum": "ortada",
+   "ses": "/media/ses/okuma/harfler/sekilleri/61.mp3"
+  },
+  {
+   "id": 62,
+   "ar": "خلف",
+   "v": [
+    [
+     2,
+     3
+    ]
+   ],
+   "konum": "sonda",
+   "ses": "/media/ses/okuma/harfler/sekilleri/62.mp3"
+  },
+  {
+   "id": 63,
+   "ar": "ك",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "harf",
+   "ses": "/media/ses/okuma/harfler/sekilleri/63.mp3"
+  },
+  {
+   "id": 64,
+   "ar": "كسب",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "basta",
+   "ses": "/media/ses/okuma/harfler/sekilleri/64.mp3"
+  },
+  {
+   "id": 65,
+   "ar": "مكر",
+   "v": [
+    [
+     1,
+     2
+    ]
+   ],
+   "konum": "ortada",
+   "ses": "/media/ses/okuma/harfler/sekilleri/65.mp3"
+  },
+  {
+   "id": 66,
+   "ar": "منك",
+   "v": [
+    [
+     2,
+     3
+    ]
+   ],
+   "konum": "sonda",
+   "ses": "/media/ses/okuma/harfler/sekilleri/66.mp3"
+  },
+  {
+   "id": 67,
+   "ar": "ل",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "harf",
+   "ses": "/media/ses/okuma/harfler/sekilleri/67.mp3"
+  },
+  {
+   "id": 68,
+   "ar": "لبرز",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "basta",
+   "ses": "/media/ses/okuma/harfler/sekilleri/68.mp3"
+  },
+  {
+   "id": 69,
+   "ar": "خلع",
+   "v": [
+    [
+     1,
+     2
+    ]
+   ],
+   "konum": "ortada",
+   "ses": "/media/ses/okuma/harfler/sekilleri/69.mp3"
+  },
+  {
+   "id": 70,
+   "ar": "جعل",
+   "v": [
+    [
+     2,
+     3
+    ]
+   ],
+   "konum": "sonda",
+   "ses": "/media/ses/okuma/harfler/sekilleri/70.mp3"
+  },
+  {
+   "id": 71,
+   "ar": "م",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "harf",
+   "ses": "/media/ses/okuma/harfler/sekilleri/71.mp3"
+  },
+  {
+   "id": 72,
+   "ar": "مثل",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "basta",
+   "ses": "/media/ses/okuma/harfler/sekilleri/72.mp3"
+  },
+  {
+   "id": 73,
+   "ar": "يطمع",
+   "v": [
+    [
+     2,
+     3
+    ]
+   ],
+   "konum": "ortada",
+   "ses": "/media/ses/okuma/harfler/sekilleri/73.mp3"
+  },
+  {
+   "id": 74,
+   "ar": "لمم",
+   "v": [
+    [
+     2,
+     3
+    ]
+   ],
+   "konum": "sonda",
+   "ses": "/media/ses/okuma/harfler/sekilleri/74.mp3"
+  },
+  {
+   "id": 75,
+   "ar": "ن",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "harf",
+   "ses": "/media/ses/okuma/harfler/sekilleri/75.mp3"
+  },
+  {
+   "id": 76,
+   "ar": "نظر",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "basta",
+   "ses": "/media/ses/okuma/harfler/sekilleri/76.mp3"
+  },
+  {
+   "id": 77,
+   "ar": "منع",
+   "v": [
+    [
+     1,
+     2
+    ]
+   ],
+   "konum": "ortada",
+   "ses": "/media/ses/okuma/harfler/sekilleri/77.mp3"
+  },
+  {
+   "id": 78,
+   "ar": "بطن",
+   "v": [
+    [
+     2,
+     3
+    ]
+   ],
+   "konum": "sonda",
+   "ses": "/media/ses/okuma/harfler/sekilleri/78.mp3"
+  },
+  {
+   "id": 79,
+   "ar": "هـ",
+   "v": [
+    [
+     0,
+     2
+    ]
+   ],
+   "konum": "harf",
+   "ses": "/media/ses/okuma/harfler/sekilleri/79.mp3"
+  },
+  {
+   "id": 80,
+   "ar": "هلك",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "basta",
+   "ses": "/media/ses/okuma/harfler/sekilleri/80.mp3"
+  },
+  {
+   "id": 81,
+   "ar": "فهم",
+   "v": [
+    [
+     1,
+     2
+    ]
+   ],
+   "konum": "ortada",
+   "ses": "/media/ses/okuma/harfler/sekilleri/81.mp3"
+  },
+  {
+   "id": 82,
+   "ar": "وجه",
+   "v": [
+    [
+     2,
+     3
+    ]
+   ],
+   "konum": "sonda",
+   "ses": "/media/ses/okuma/harfler/sekilleri/82.mp3"
+  },
+  {
+   "id": 83,
+   "ar": "و",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "harf",
+   "ses": "/media/ses/okuma/harfler/sekilleri/83.mp3"
+  },
+  {
+   "id": 84,
+   "ar": "وعد",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "basta",
+   "ses": "/media/ses/okuma/harfler/sekilleri/84.mp3"
+  },
+  {
+   "id": 85,
+   "ar": "عود",
+   "v": [
+    [
+     1,
+     2
+    ]
+   ],
+   "konum": "ortada",
+   "ses": "/media/ses/okuma/harfler/sekilleri/85.mp3"
+  },
+  {
+   "id": 86,
+   "ar": "دلو",
+   "v": [
+    [
+     2,
+     3
+    ]
+   ],
+   "konum": "sonda",
+   "ses": "/media/ses/okuma/harfler/sekilleri/86.mp3"
+  },
+  {
+   "id": 87,
+   "ar": "ى",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "harf",
+   "ses": "/media/ses/okuma/harfler/sekilleri/87.mp3"
+  },
+  {
+   "id": 88,
+   "ar": "يتيم",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "basta",
+   "ses": "/media/ses/okuma/harfler/sekilleri/88.mp3"
+  },
+  {
+   "id": 89,
+   "ar": "خير",
+   "v": [
+    [
+     1,
+     2
+    ]
+   ],
+   "konum": "ortada",
+   "ses": "/media/ses/okuma/harfler/sekilleri/89.mp3"
+  },
+  {
+   "id": 90,
+   "ar": "لقى",
+   "v": [
+    [
+     2,
+     3
+    ]
+   ],
+   "konum": "sonda",
+   "ses": "/media/ses/okuma/harfler/sekilleri/90.mp3"
+  },
+  {
+   "id": 92,
+   "ar": "خلق",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "basta",
+   "ses": "/media/ses/okuma/harfler/sekilleri/92.mp3"
+  },
+  {
+   "id": 93,
+   "ar": "فيخرج",
+   "v": [
+    [
+     2,
+     3
+    ]
+   ],
+   "konum": "ortada",
+   "ses": "/media/ses/okuma/harfler/sekilleri/93.mp3"
+  },
+  {
+   "id": 94,
+   "ar": "ونفخ",
+   "v": [
+    [
+     3,
+     4
+    ]
+   ],
+   "konum": "sonda",
+   "ses": "/media/ses/okuma/harfler/sekilleri/94.mp3"
+  },
+  {
+   "id": 96,
+   "ar": "صدق",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "basta",
+   "ses": "/media/ses/okuma/harfler/sekilleri/96.mp3"
+  },
+  {
+   "id": 97,
+   "ar": "نصف",
+   "v": [
+    [
+     1,
+     2
+    ]
+   ],
+   "konum": "ortada",
+   "ses": "/media/ses/okuma/harfler/sekilleri/97.mp3"
+  },
+  {
+   "id": 98,
+   "ar": "نكص",
+   "v": [
+    [
+     2,
+     3
+    ]
+   ],
+   "konum": "sonda",
+   "ses": "/media/ses/okuma/harfler/sekilleri/98.mp3"
+  },
+  {
+   "id": 100,
+   "ar": "ضل",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "basta",
+   "ses": "/media/ses/okuma/harfler/sekilleri/100.mp3"
+  },
+  {
+   "id": 101,
+   "ar": "تضع",
+   "v": [
+    [
+     1,
+     2
+    ]
+   ],
+   "konum": "ortada",
+   "ses": "/media/ses/okuma/harfler/sekilleri/101.mp3"
+  },
+  {
+   "id": 102,
+   "ar": "ببعض",
+   "v": [
+    [
+     3,
+     4
+    ]
+   ],
+   "konum": "sonda",
+   "ses": "/media/ses/okuma/harfler/sekilleri/102.mp3"
+  },
+  {
+   "id": 104,
+   "ar": "طبع",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "basta",
+   "ses": "/media/ses/okuma/harfler/sekilleri/104.mp3"
+  },
+  {
+   "id": 105,
+   "ar": "فطر",
+   "v": [
+    [
+     1,
+     2
+    ]
+   ],
+   "konum": "ortada",
+   "ses": "/media/ses/okuma/harfler/sekilleri/105.mp3"
+  },
+  {
+   "id": 106,
+   "ar": "خلط",
+   "v": [
+    [
+     2,
+     3
+    ]
+   ],
+   "konum": "sonda",
+   "ses": "/media/ses/okuma/harfler/sekilleri/106.mp3"
+  },
+  {
+   "id": 108,
+   "ar": "ظهر",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "basta",
+   "ses": "/media/ses/okuma/harfler/sekilleri/108.mp3"
+  },
+  {
+   "id": 109,
+   "ar": "نظر",
+   "v": [
+    [
+     1,
+     2
+    ]
+   ],
+   "konum": "ortada",
+   "ses": "/media/ses/okuma/harfler/sekilleri/109.mp3"
+  },
+  {
+   "id": 110,
+   "ar": "غلظ",
+   "v": [
+    [
+     2,
+     3
+    ]
+   ],
+   "konum": "sonda",
+   "ses": "/media/ses/okuma/harfler/sekilleri/110.mp3"
+  },
+  {
+   "id": 112,
+   "ar": "غضب",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "basta",
+   "ses": "/media/ses/okuma/harfler/sekilleri/112.mp3"
+  },
+  {
+   "id": 113,
+   "ar": "فغفر",
+   "v": [
+    [
+     1,
+     2
+    ]
+   ],
+   "konum": "ortada",
+   "ses": "/media/ses/okuma/harfler/sekilleri/113.mp3"
+  },
+  {
+   "id": 114,
+   "ar": "بلغ",
+   "v": [
+    [
+     2,
+     3
+    ]
+   ],
+   "konum": "sonda",
+   "ses": "/media/ses/okuma/harfler/sekilleri/114.mp3"
+  },
+  {
+   "id": 116,
+   "ar": "قدم",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "basta",
+   "ses": "/media/ses/okuma/harfler/sekilleri/116.mp3"
+  },
+  {
+   "id": 117,
+   "ar": "سقر",
+   "v": [
+    [
+     1,
+     2
+    ]
+   ],
+   "konum": "ortada",
+   "ses": "/media/ses/okuma/harfler/sekilleri/117.mp3"
+  },
+  {
+   "id": 118,
+   "ar": "فسق",
+   "v": [
+    [
+     2,
+     3
+    ]
+   ],
+   "konum": "sonda",
+   "ses": "/media/ses/okuma/harfler/sekilleri/118.mp3"
+  },
+  {
+   "id": 120,
+   "ar": "ثبت",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "basta",
+   "ses": "/media/ses/okuma/harfler/sekilleri/120.mp3"
+  },
+  {
+   "id": 121,
+   "ar": "مثل",
+   "v": [
+    [
+     1,
+     2
+    ]
+   ],
+   "konum": "ortada",
+   "ses": "/media/ses/okuma/harfler/sekilleri/121.mp3"
+  },
+  {
+   "id": 122,
+   "ar": "رفث",
+   "v": [
+    [
+     2,
+     3
+    ]
+   ],
+   "konum": "sonda",
+   "ses": "/media/ses/okuma/harfler/sekilleri/122.mp3"
+  },
+  {
+   "id": 124,
+   "ar": "ذرا",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "basta",
+   "ses": "/media/ses/okuma/harfler/sekilleri/124.mp3"
+  },
+  {
+   "id": 125,
+   "ar": "كذلك",
+   "v": [
+    [
+     1,
+     2
+    ]
+   ],
+   "konum": "ortada",
+   "ses": "/media/ses/okuma/harfler/sekilleri/125.mp3"
+  },
+  {
+   "id": 126,
+   "ar": "نبذ",
+   "v": [
+    [
+     2,
+     3
+    ]
+   ],
+   "konum": "sonda",
+   "ses": "/media/ses/okuma/harfler/sekilleri/126.mp3"
+  },
+  {
+   "id": 128,
+   "ar": "ظهر",
+   "v": [
+    [
+     0,
+     1
+    ]
+   ],
+   "konum": "basta",
+   "ses": "/media/ses/okuma/harfler/sekilleri/128.mp3"
+  },
+  {
+   "id": 129,
+   "ar": "نظر",
+   "v": [
+    [
+     1,
+     2
+    ]
+   ],
+   "konum": "ortada",
+   "ses": "/media/ses/okuma/harfler/sekilleri/129.mp3"
+  },
+  {
+   "id": 130,
+   "ar": "غلظ",
+   "v": [
+    [
+     2,
+     3
+    ]
+   ],
+   "konum": "sonda",
+   "ses": "/media/ses/okuma/harfler/sekilleri/130.mp3"
+  }
+ ],
+ "kelimeler": [
+  {
+   "id": "ustun-1",
+   "ar": "اَمَرَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/1.mp3"
+  },
+  {
+   "id": "ustun-2",
+   "ar": "سَاَلَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/2.mp3"
+  },
+  {
+   "id": "ustun-3",
+   "ar": "ثَمَرَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/3.mp3"
+  },
+  {
+   "id": "ustun-4",
+   "ar": "بَعَثَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/4.mp3"
+  },
+  {
+   "id": "ustun-5",
+   "ar": "نَبَذَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/5.mp3"
+  },
+  {
+   "id": "ustun-8",
+   "ar": "بَدَاَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/8.mp3"
+  },
+  {
+   "id": "ustun-10",
+   "ar": "تَرَكَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/10.mp3"
+  },
+  {
+   "id": "ustun-11",
+   "ar": "خَتَمَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/11.mp3"
+  },
+  {
+   "id": "ustun-12",
+   "ar": "عَدَدَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/12.mp3"
+  },
+  {
+   "id": "ustun-14",
+   "ar": "مَثَلَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/14.mp3"
+  },
+  {
+   "id": "ustun-15",
+   "ar": "رَفَثَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/15.mp3"
+  },
+  {
+   "id": "ustun-16",
+   "ar": "حَذَرَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/16.mp3"
+  },
+  {
+   "id": "ustun-17",
+   "ar": "شَجَرَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/17.mp3"
+  },
+  {
+   "id": "ustun-20",
+   "ar": "اَحَدَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/20.mp3"
+  },
+  {
+   "id": "ustun-21",
+   "ar": "وَعَدَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/21.mp3"
+  },
+  {
+   "id": "ustun-22",
+   "ar": "ذَرَاَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/22.mp3"
+  },
+  {
+   "id": "ustun-26",
+   "ar": "رَجَعَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/26.mp3"
+  },
+  {
+   "id": "ustun-28",
+   "ar": "وَجَهَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/28.mp3"
+  },
+  {
+   "id": "ustun-29",
+   "ar": "فَرَضَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/29.mp3"
+  },
+  {
+   "id": "ustun-30",
+   "ar": "عَبَسَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/30.mp3"
+  },
+  {
+   "id": "ustun-31",
+   "ar": "بَلَغَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/31.mp3"
+  },
+  {
+   "id": "ustun-32",
+   "ar": "زَعَمَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/32.mp3"
+  },
+  {
+   "id": "ustun-34",
+   "ar": "هَلَكَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/34.mp3"
+  },
+  {
+   "id": "ustun-35",
+   "ar": "لَعَنَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/35.mp3"
+  },
+  {
+   "id": "ustun-36",
+   "ar": "غَضَبَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/36.mp3"
+  },
+  {
+   "id": "ustun-37",
+   "ar": "بَطَشَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/37.mp3"
+  },
+  {
+   "id": "ustun-39",
+   "ar": "حَضَرَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/39.mp3"
+  },
+  {
+   "id": "ustun-40",
+   "ar": "عَرَضَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/40.mp3"
+  },
+  {
+   "id": "ustun-41",
+   "ar": "طَبَعَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/41.mp3"
+  },
+  {
+   "id": "ustun-42",
+   "ar": "نَكَصَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/42.mp3"
+  },
+  {
+   "id": "ustun-43",
+   "ar": "خَلَطَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/43.mp3"
+  },
+  {
+   "id": "ustun-44",
+   "ar": "ظَهَرَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/44.mp3"
+  },
+  {
+   "id": "ustun-45",
+   "ar": "مَكَرَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/45.mp3"
+  },
+  {
+   "id": "ustun-46",
+   "ar": "غَلَظَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/46.mp3"
+  },
+  {
+   "id": "ustun-47",
+   "ar": "عَشَرَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/47.mp3"
+  },
+  {
+   "id": "ustun-48",
+   "ar": "كَفَرَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/48.mp3"
+  },
+  {
+   "id": "ustun-49",
+   "ar": "فَطَرَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/49.mp3"
+  },
+  {
+   "id": "ustun-50",
+   "ar": "قَدَمَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/50.mp3"
+  },
+  {
+   "id": "ustun-51",
+   "ar": "سَقَرَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/51.mp3"
+  },
+  {
+   "id": "ustun-52",
+   "ar": "جَرَمَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/52.mp3"
+  },
+  {
+   "id": "ustun-53",
+   "ar": "بَطَنَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/53.mp3"
+  },
+  {
+   "id": "ustun-54",
+   "ar": "مَنَعَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/54.mp3"
+  },
+  {
+   "id": "ustun-55",
+   "ar": "مَثَلَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/55.mp3"
+  },
+  {
+   "id": "ustun-57",
+   "ar": "فَصَلَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/57.mp3"
+  },
+  {
+   "id": "ustun-58",
+   "ar": "وَاَخَذَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/58.mp3"
+  },
+  {
+   "id": "ustun-59",
+   "ar": "وَجَمَعَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/59.mp3"
+  },
+  {
+   "id": "ustun-60",
+   "ar": "فَفَسَقَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/60.mp3"
+  },
+  {
+   "id": "ustun-61",
+   "ar": "فَصَرَفَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/61.mp3"
+  },
+  {
+   "id": "ustun-62",
+   "ar": "وَنَفَخَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/62.mp3"
+  },
+  {
+   "id": "ustun-63",
+   "ar": "فَحَشَرَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/63.mp3"
+  },
+  {
+   "id": "ustun-64",
+   "ar": "ظَلَمَكَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/64.mp3"
+  },
+  {
+   "id": "ustun-65",
+   "ar": "فَسَجَدَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/65.mp3"
+  },
+  {
+   "id": "ustun-66",
+   "ar": "لَذَهَبَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/66.mp3"
+  },
+  {
+   "id": "ustun-67",
+   "ar": "فَوَقَعَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/67.mp3"
+  },
+  {
+   "id": "ustun-68",
+   "ar": "فَخَلَفَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/68.mp3"
+  },
+  {
+   "id": "ustun-69",
+   "ar": "لَجَعَلَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/69.mp3"
+  },
+  {
+   "id": "ustun-70",
+   "ar": "فَغَفَرَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/70.mp3"
+  },
+  {
+   "id": "ustun-71",
+   "ar": "فَنَظَرَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/71.mp3"
+  },
+  {
+   "id": "ustun-72",
+   "ar": "سَاَلَكَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/72.mp3"
+  },
+  {
+   "id": "ustun-73",
+   "ar": "لَبَرَزَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/73.mp3"
+  },
+  {
+   "id": "ustun-74",
+   "ar": "فَخَرَجَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/74.mp3"
+  },
+  {
+   "id": "ustun-75",
+   "ar": "فَهَزَمَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/75.mp3"
+  },
+  {
+   "id": "ustun-76",
+   "ar": "وَكَفَرَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/76.mp3"
+  },
+  {
+   "id": "ustun-77",
+   "ar": "عَقَبَةَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/77.mp3"
+  },
+  {
+   "id": "ustun-78",
+   "ar": "فَعَدَلَكَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/78.mp3"
+  },
+  {
+   "id": "ustun-79",
+   "ar": "وَوَجَدَكَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/79.mp3"
+  },
+  {
+   "id": "ustun-80",
+   "ar": "جَعَلَ لَكَ",
+   "hareke": "ustun",
+   "ses": "/media/ses/okuma/fetha/uygulama/80.mp3"
+  },
+  {
+   "id": "esre-1",
+   "ar": "بِهَا",
+   "hareke": "esre",
+   "ses": "/media/ses/okuma/kesra/uygulama/1.mp3"
+  },
+  {
+   "id": "esre-2",
+   "ar": "اِلٰى",
+   "hareke": "esre",
+   "ses": "/media/ses/okuma/kesra/uygulama/2.mp3"
+  },
+  {
+   "id": "esre-4",
+   "ar": "ضِرَارًا",
+   "hareke": "esre",
+   "ses": "/media/ses/okuma/kesra/uygulama/4.mp3"
+  },
+  {
+   "id": "esre-5",
+   "ar": "ءَاِذَا",
+   "hareke": "esre",
+   "ses": "/media/ses/okuma/kesra/uygulama/5.mp3"
+  },
+  {
+   "id": "esre-6",
+   "ar": "فَفَزِعَ",
+   "hareke": "esre",
+   "ses": "/media/ses/okuma/kesra/uygulama/6.mp3"
+  },
+  {
+   "id": "esre-7",
+   "ar": "بَاطِلًا",
+   "hareke": "esre",
+   "ses": "/media/ses/okuma/kesra/uygulama/7.mp3"
+  },
+  {
+   "id": "esre-8",
+   "ar": "سَلٰسِلَ",
+   "hareke": "esre",
+   "ses": "/media/ses/okuma/kesra/uygulama/8.mp3"
+  },
+  {
+   "id": "esre-9",
+   "ar": "عِبَادِنَا",
+   "hareke": "esre",
+   "ses": "/media/ses/okuma/kesra/uygulama/9.mp3"
+  },
+  {
+   "id": "esre-10",
+   "ar": "ذِرَاعًا",
+   "hareke": "esre",
+   "ses": "/media/ses/okuma/kesra/uygulama/10.mp3"
+  },
+  {
+   "id": "esre-11",
+   "ar": "وَمَغَارِبَهَا",
+   "hareke": "esre",
+   "ses": "/media/ses/okuma/kesra/uygulama/11.mp3"
+  },
+  {
+   "id": "esre-12",
+   "ar": "مَنَازِلَ",
+   "hareke": "esre",
+   "ses": "/media/ses/okuma/kesra/uygulama/12.mp3"
+  },
+  {
+   "id": "esre-13",
+   "ar": "فَطَفِقَ",
+   "hareke": "esre",
+   "ses": "/media/ses/okuma/kesra/uygulama/13.mp3"
+  },
+  {
+   "id": "esre-14",
+   "ar": "خِيَانَتَكَ",
+   "hareke": "esre",
+   "ses": "/media/ses/okuma/kesra/uygulama/14.mp3"
+  },
+  {
+   "id": "esre-15",
+   "ar": "لِعِبَادِىَ",
+   "hareke": "esre",
+   "ses": "/media/ses/okuma/kesra/uygulama/15.mp3"
+  },
+  {
+   "id": "esre-16",
+   "ar": "خَائِفًا",
+   "hareke": "esre",
+   "ses": "/media/ses/okuma/kesra/uygulama/16.mp3"
+  },
+  {
+   "id": "esre-17",
+   "ar": "وَلَا جِدَالَ",
+   "hareke": "esre",
+   "ses": "/media/ses/okuma/kesra/uygulama/17.mp3"
+  },
+  {
+   "id": "esre-18",
+   "ar": "سَفَرِنَا هٰذَا",
+   "hareke": "esre",
+   "ses": "/media/ses/okuma/kesra/uygulama/18.mp3"
+  },
+  {
+   "id": "esre-19",
+   "ar": "خَلَقَ ظِلَالًا",
+   "hareke": "esre",
+   "ses": "/media/ses/okuma/kesra/uygulama/19.mp3"
+  },
+  {
+   "id": "esre-20",
+   "ar": "بِهٰذَا مَثَلاً",
+   "hareke": "esre",
+   "ses": "/media/ses/okuma/kesra/uygulama/20.mp3"
+  },
+  {
+   "id": "esre-21",
+   "ar": "اِلٰى صِرَاطِ",
+   "hareke": "esre",
+   "ses": "/media/ses/okuma/kesra/uygulama/21.mp3"
+  },
+  {
+   "id": "otre-1",
+   "ar": "اُمَمٍ",
+   "hareke": "otre",
+   "ses": "/media/ses/okuma/damme/uygulama/1.mp3"
+  },
+  {
+   "id": "otre-2",
+   "ar": "كُتُبٍ",
+   "hareke": "otre",
+   "ses": "/media/ses/okuma/damme/uygulama/2.mp3"
+  },
+  {
+   "id": "otre-3",
+   "ar": "عِبَادُ",
+   "hareke": "otre",
+   "ses": "/media/ses/okuma/damme/uygulama/3.mp3"
+  },
+  {
+   "id": "otre-4",
+   "ar": "اُنَاسٍ",
+   "hareke": "otre",
+   "ses": "/media/ses/okuma/damme/uygulama/4.mp3"
+  },
+  {
+   "id": "otre-7",
+   "ar": "اُكُلٍ",
+   "hareke": "otre",
+   "ses": "/media/ses/okuma/damme/uygulama/7.mp3"
+  },
+  {
+   "id": "otre-8",
+   "ar": "مَفَاتِحُ",
+   "hareke": "otre",
+   "ses": "/media/ses/okuma/damme/uygulama/8.mp3"
+  },
+  {
+   "id": "otre-9",
+   "ar": "تَخَاصُمُ",
+   "hareke": "otre",
+   "ses": "/media/ses/okuma/damme/uygulama/9.mp3"
+  },
+  {
+   "id": "otre-11",
+   "ar": "يُؤَاخِذُ",
+   "hareke": "otre",
+   "ses": "/media/ses/okuma/damme/uygulama/11.mp3"
+  },
+  {
+   "id": "otre-12",
+   "ar": "ف۪ى ظُلَلٍ",
+   "hareke": "otre",
+   "ses": "/media/ses/okuma/damme/uygulama/12.mp3"
+  },
+  {
+   "id": "otre-13",
+   "ar": "بِمَا تَعِدُنَا",
+   "hareke": "otre",
+   "ses": "/media/ses/okuma/damme/uygulama/13.mp3"
+  },
+  {
+   "id": "otre-14",
+   "ar": "كَمَا سُئِلَ",
+   "hareke": "otre",
+   "ses": "/media/ses/okuma/damme/uygulama/14.mp3"
+  },
+  {
+   "id": "otre-15",
+   "ar": "خُطُوٰتِ",
+   "hareke": "otre",
+   "ses": "/media/ses/okuma/damme/uygulama/15.mp3"
+  },
+  {
+   "id": "otre-16",
+   "ar": "بِغُلَامٍ عَل۪يمٍ",
+   "hareke": "otre",
+   "ses": "/media/ses/okuma/damme/uygulama/16.mp3"
+  },
+  {
+   "id": "otre-17",
+   "ar": "فَلَا جُنَاحَ",
+   "hareke": "otre",
+   "ses": "/media/ses/okuma/damme/uygulama/17.mp3"
+  },
+  {
+   "id": "otre-18",
+   "ar": "فَاِذَا نُفِخَ",
+   "hareke": "otre",
+   "ses": "/media/ses/okuma/damme/uygulama/18.mp3"
+  },
+  {
+   "id": "otre-19",
+   "ar": "ف۪يهَا مَنٰفِعُ",
+   "hareke": "otre",
+   "ses": "/media/ses/okuma/damme/uygulama/19.mp3"
+  },
+  {
+   "id": "otre-20",
+   "ar": "وَاِذَا قُرِئَ",
+   "hareke": "otre",
+   "ses": "/media/ses/okuma/damme/uygulama/20.mp3"
+  },
+  {
+   "id": "otre-21",
+   "ar": "يَه۪يجُ فَتَرٰيهُ",
+   "hareke": "otre",
+   "ses": "/media/ses/okuma/damme/uygulama/21.mp3"
+  }
+ ]
+}

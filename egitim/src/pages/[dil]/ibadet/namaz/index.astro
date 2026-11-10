@@ -1,0 +1,111 @@
+---
+/**
+ * Namaz (İlim Yolu · Abdest ve Namaz, 10 Kasım 2026): on altı adım (çizim, hüküm, kaynak, dua bağlantısı), rek‘at düzeni ve kuralları, beş
+ * vaktin rek‘at sayıları ve alıştırmalar (ilk rek‘atı sıralama, çizim eşleştirme, hüküm, kaç rek‘at farz). İçerik src/data/ibadet/namaz.json
+ * (Diyanet İlmihali'ne göre, Hanefî). Üçüncü/dördüncü rek‘atta Fâtiha (nm-06) her zaman rk-03 kuralıyla birlikte gösterilir.
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import { dilListesi } from '@ortak/i18n/utils';
+import { CIZIM_ADIMLARI_NAMAZ, HUKUM_ADIMLARI_NAMAZ, NAMAZ, adimBul, kuralBul, vakitBirimleri } from '@ortak/lib/ibadet/ibadet-veri';
+import IbadetAdimlar from '../../../../components/IbadetAdimlar.astro';
+import IbadetBas from '../../../../components/IbadetBas.astro';
+import IbadetEslestir from '../../../../components/IbadetEslestir.astro';
+import IbadetSecim from '../../../../components/IbadetSecim.astro';
+import IbadetSirala from '../../../../components/IbadetSirala.astro';
+import { adimAdi, doldur, ibadetMetinleri } from '../../../../i18n/ibadet';
+import { sembolSeti } from '../../../../lib/ibadet-cizim';
+import { adimKartlari, altMetni, hukumAdi, kaynakSatiri } from '../../../../lib/ibadet-sayfa';
+import Taban from '../../../../layouts/Taban.astro';
+import '../../../../styles/yollar.css';
+import '../../../../styles/ibadet.css';
+
+export function getStaticPaths() {
+  return dilListesi.map((dil) => ({ params: { dil } }));
+}
+
+const dil = Astro.params.dil as Dil;
+const m = ibadetMetinleri(dil);
+const s = NAMAZ.rekatSablonu;
+const ad = (id: string) => adimAdi(dil, id, adimBul(NAMAZ, id).ikon);
+const kartlar = adimKartlari(dil, NAMAZ);
+
+const hukumTurleri = ['farz', 'vacip', 'sunnet'] as const;
+const hukumSecenekleri = hukumTurleri.map((t, i) => ({ deger: i, metin: hukumAdi(NAMAZ, t, dil) }));
+const sirala = s.ilkRekat.map((id) => ({ id, ad: ad(id), metin: adimBul(NAMAZ, id).metin[dil] }));
+const ciftler = CIZIM_ADIMLARI_NAMAZ.map((id) => { const a = adimBul(NAMAZ, id); return { id, sol: a.metin[dil], cizim: a.ikon, alt: altMetni(dil, a.ikon) }; });
+const hukumSatirlari = HUKUM_ADIMLARI_NAMAZ.map((id) => ({ id, ad: ad(id), secenekler: hukumSecenekleri, dogru: hukumTurleri.indexOf(adimBul(NAMAZ, id).tur as (typeof hukumTurleri)[number]) }));
+const sayilar = [2, 3, 4];
+const sayiSatirlari = NAMAZ.vakitler.map((v) => ({ id: v.id, ad: v.ad[dil], secenekler: sayilar.map((n) => ({ deger: n, metin: doldur(m.rekat, { n }) })), dogru: v.farz }));
+
+const gruplar = [
+  { k: 'ilk', baslik: m.grup.ilk, ids: s.ilkRekat },
+  { k: 'ikinci', baslik: m.grup.ikinci, ids: s.ikinciRekat },
+  { k: 'ucuncu', baslik: m.grup.ucuncu, ids: s.ucuncuDorduncuRekat },
+  { k: 'son', baslik: m.grup.son, ids: s.sonOturus },
+];
+const rk03 = kuralBul('rk-03');
+const sprite = sembolSeti([...NAMAZ.adimlar.map((a) => a.ikon), 'ui-seccade']);
+---
+<Taban dil={dil} baslik={m.namazBaslik} aciklama={m.namazAciklama} yol="ibadet/namaz">
+  <article class="icerik yl-sayfa ib-sayfa" data-ibadet-sayfa>
+    <Fragment set:html={sprite} />
+    <IbadetBas dil={dil} baslik={m.namazBaslik} lead={m.namazLead} etiket={NAMAZ.etiket[dil]} kaynakSatiri={kaynakSatiri(dil, NAMAZ)} />
+
+    <IbadetAdimlar dil={dil} konu="namaz" kartlar={kartlar} />
+
+    <section class="ib-bolum" aria-labelledby="rekat-baslik">
+      <h2 id="rekat-baslik">{m.rekatBaslik}</h2>
+      <p class="ib-not-satir">{m.rekatMetin}</p>
+      <ol class="ib-gruplar">
+        {gruplar.map((g) => (
+          <li class="ib-grup">
+            <h3>{g.baslik}</h3>
+            <ul class="ib-yonga">
+              {g.ids.map((id) => <li><a href={`#adim-${id}`}>{ad(id)}</a></li>)}
+            </ul>
+            {g.k === 'ucuncu' && (
+              <p class="ib-kural-kutu"><b>{ad('nm-06')} · {m.kural} ({rk03.kaynakNo}):</b> {rk03.metin[dil]}</p>
+            )}
+          </li>
+        ))}
+      </ol>
+      <h3 class="ib-alt-baslik">{m.kuralBaslik}</h3>
+      <ul class="ib-kurallar">
+        {NAMAZ.rekatKurallari.map((k) => <li id={`kural-${k.id}`}>{k.metin[dil]} <span class="ib-kaynak">({k.kaynakNo})</span></li>)}
+      </ul>
+    </section>
+
+    <section class="ib-bolum" aria-labelledby="vakit-baslik">
+      <h2 id="vakit-baslik">{m.vakitlerBaslik}</h2>
+      <p class="ib-not-satir">{m.vakitlerMetin}</p>
+      <ul class="ib-vakitler">
+        {NAMAZ.vakitler.map((v) => (
+          <li class="ib-vakit">
+            <h3><a href={`/${dil}/ibadet/namaz/${v.id}/`}>{doldur(m.vakitAd, { ad: v.ad[dil] })}</a></h3>
+            <dl>
+              {vakitBirimleri(v).map((b) => (
+                <div><dt>{m.birimler[b.tip]}</dt><dd>{doldur(m.rekat, { n: b.rekat })} · {hukumAdi(NAMAZ, b.hukum, dil)}</dd></div>
+              ))}
+            </dl>
+          </li>
+        ))}
+        <li class="ib-vakit">
+          <h3>{NAMAZ.vitir.ad[dil]}</h3>
+          <dl><div><dt>{NAMAZ.vitir.zaman[dil]}</dt><dd>{doldur(m.rekat, { n: NAMAZ.vitir.rekat })} · {hukumAdi(NAMAZ, NAMAZ.vitir.hukum, dil)}</dd></div></dl>
+          <p class="ib-kaynak">{m.vitirNot} ({NAMAZ.vitir.kaynakNo})</p>
+        </li>
+      </ul>
+    </section>
+
+    <IbadetSirala dil={dil} konu="namaz" baslik={m.siralaBaslik} yonerge={m.siralaNamaz} ogeler={sirala} baslikId="sirala-baslik" />
+    <IbadetEslestir dil={dil} konu="namaz" baslik={m.eslesBaslik} yonerge={m.eslesYonerge} ciftler={ciftler} adet={6} baslikId="esles-baslik" />
+    <IbadetSecim dil={dil} konu="namaz" slot="hukum" baslik={m.hukumBaslik} yonerge={m.hukumYonerge} satirlar={hukumSatirlari} baslikId="hukum-baslik" />
+    <IbadetSecim dil={dil} konu="namaz" slot="vakit" baslik={m.vakitSayiBaslik} yonerge={m.vakitSayiYonerge} satirlar={sayiSatirlari} baslikId="vakit-sayi-baslik" />
+    <p class="yl-not">{m.hocaNotu}</p>
+  </article>
+</Taban>
+
+<script>
+  import '../../../../scripts/dil';
+  import '../../../../scripts/ibadet';
+</script>

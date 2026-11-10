@@ -16,6 +16,8 @@ import { KATALOG, calismaSayfasiVar } from '@ortak/lib/ezber/katalog';
 import { kendiLejanti, kilimSvg } from '@ortak/lib/ezber/kilim';
 import Ikon from '../../components/Ikon.astro';
 import { ilimMetinleri } from '../../i18n/ilim';
+import { ibadetMetinleri } from '../../i18n/ibadet';
+import { okumaMetinleri } from '../../i18n/okuma';
 import { kilimimMetinleri } from '../../i18n/kilimim';
 import { metin } from '../../i18n/metinler';
 import { sablonlar } from '../../i18n/sablon';
@@ -30,6 +32,8 @@ export function getStaticPaths() {
 
 const dil = Astro.params.dil as Dil;
 const il = ilimMetinleri(dil);
+const ok = okumaMetinleri(dil).anaKart;
+const ib = ibadetMetinleri(dil);
 const m = metin(dil);
 const km = kilimimMetinleri(dil);
 const tm = tekrarMetinleri(dil);
@@ -100,6 +104,22 @@ const veri = {
             <p class="acik">{il.yolEzberMetin}</p>
           </div>
           <div class="iy-yol-sag"><a class="dugme ikincil kucuk" href={`/${dil}/ezber/`}>{il.yolaBak}</a></div>
+        </article>
+        <article class="iy-yol okuma">
+          <div class="iy-yol-motif" aria-hidden="true"><svg viewBox="0 0 100 100"><use href={`#${yolMotifleri[0]}`} /></svg></div>
+          <div class="iy-yol-metin">
+            <h3>{ok.ad} <small>{ok.rozet}</small></h3>
+            <p class="acik">{ok.metin}</p>
+          </div>
+          <div class="iy-yol-sag"><a class="dugme ikincil kucuk" href={`/${dil}/okuma/`}>{ok.git}</a></div>
+        </article>
+        <article class="iy-yol ibadet">
+          <div class="iy-yol-motif" aria-hidden="true"><svg viewBox="0 0 100 100"><use href={`#${yolMotifleri[3]}`} /></svg></div>
+          <div class="iy-yol-metin">
+            <h3>{ib.ad}</h3>
+            <p class="acik">{ib.hubAciklama}</p>
+          </div>
+          <div class="iy-yol-sag"><a class="dugme ikincil kucuk" href={`/${dil}/ibadet/`}>{ib.basla}</a></div>
         </article>
         <article class="iy-yol kurs">
           <div class="iy-yol-motif" aria-hidden="true"><svg viewBox="0 0 100 100"><use href={`#${yolMotifleri[1]}`} /></svg></div>

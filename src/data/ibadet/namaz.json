@@ -1,0 +1,662 @@
+{
+  "konu": "namaz",
+  "etiket": {
+    "tr": "Diyanet İlmihali'ne göre (Hanefî)",
+    "fr": "D’après l’İlmihal (manuel) de la Diyanet (rite hanafite)",
+    "en": "According to the Diyanet İlmihal (Hanafi school)",
+    "nl": "Volgens de Diyanet-İlmihal (hanafitisch)",
+    "de": "Nach dem Diyanet-İlmihal (hanafitisch)"
+  },
+  "kaynak": [
+    {
+      "eser": "Diyanet İlmihali",
+      "cilt": 1,
+      "dosya": "06-namaz.md",
+      "sayfa": "s. 223-309"
+    }
+  ],
+  "terimler": {
+    "farz": {
+      "tr": "farz",
+      "fr": "obligatoire (fard)",
+      "en": "obligatory (fard)",
+      "nl": "verplicht (fard)",
+      "de": "Pflicht (Fard)"
+    },
+    "vacip": {
+      "tr": "vâcip",
+      "fr": "nécessaire (wâjib)",
+      "en": "necessary (wajib)",
+      "nl": "noodzakelijk (wadjib)",
+      "de": "notwendig (Wadschib)"
+    },
+    "sunnet": {
+      "tr": "sünnet",
+      "fr": "sunna",
+      "en": "sunnah",
+      "nl": "sunna",
+      "de": "Sunna"
+    },
+    "adab": {
+      "tr": "âdâp",
+      "fr": "bonne conduite (adab)",
+      "en": "etiquette (adab)",
+      "nl": "fatsoensnorm (adab)",
+      "de": "Anstand (Adab)"
+    },
+    "muekked": {
+      "tr": "müekked sünnet",
+      "fr": "sunna confirmée (mou’akkada)",
+      "en": "confirmed sunnah (mu’akkadah)",
+      "nl": "bevestigde sunna (moe’akkada)",
+      "de": "bekräftigte Sunna (Mu’akkada)"
+    },
+    "gayrimuekked": {
+      "tr": "gayr-i müekked sünnet",
+      "fr": "sunna non confirmée (ghayr mou’akkada)",
+      "en": "non-confirmed sunnah (ghayr mu’akkadah)",
+      "nl": "niet-bevestigde sunna (ghayr moe’akkada)",
+      "de": "nicht bekräftigte Sunna (Ghair Mu’akkada)"
+    }
+  },
+  "adimlar": [
+    {
+      "id": "nm-01",
+      "sira": 1,
+      "tur": "farz",
+      "grup": "baslangic",
+      "metin": {
+        "tr": "Abdestli olarak kıbleye dönüp ayakta durulur ve namaza niyet edilir.",
+        "fr": "Debout, en état d’ablution et tourné vers la qibla, formuler l’intention de prier.",
+        "en": "Stand facing the qibla, in a state of ablution, and make the intention for the prayer.",
+        "nl": "In staat van wassing, naar de qibla gericht, rechtop staan en de intentie voor het gebed maken.",
+        "de": "Im Zustand der Waschung zur Kibla gewandt aufrecht stehen und die Absicht zum Gebet fassen."
+      },
+      "ikon": "namaz-niyet",
+      "kaynakNo": "s. 262",
+      "kaynakNolar": [
+        "s. 227",
+        "s. 262"
+      ]
+    },
+    {
+      "id": "nm-02",
+      "sira": 2,
+      "tur": "farz",
+      "grup": "baslangic",
+      "metin": {
+        "tr": "Eller kaldırılıp «Allahüekber» denir (iftitah tekbiri). Erkekler ellerini kulaklarına kadar kaldırır.",
+        "fr": "Lever les mains et dire « Allahou akbar » (takbir d’ouverture). Les hommes lèvent les mains jusqu’aux oreilles.",
+        "en": "Raise the hands and say “Allahu akbar” (opening takbir). Men raise the hands to the ears.",
+        "nl": "De handen opheffen en ‘Allahoe akbar’ zeggen (openingstakbier). Mannen heffen de handen tot de oren.",
+        "de": "Die Hände heben und „Allahu akbar“ sagen (Eröffnungs-Takbir). Männer heben die Hände bis zu den Ohren."
+      },
+      "kadin": {
+        "tr": "Kadınlar ellerini göğüsleri hizasına kadar kaldırır.",
+        "fr": "Les femmes lèvent les mains à hauteur de la poitrine.",
+        "en": "Women raise the hands to chest level.",
+        "nl": "Vrouwen heffen de handen tot borsthoogte.",
+        "de": "Frauen heben die Hände bis auf Brusthöhe."
+      },
+      "ikon": "namaz-iftitah",
+      "dua": "d-tekbir",
+      "kaynakNo": "s. 263",
+      "kaynakNolar": [
+        "s. 227",
+        "s. 252",
+        "s. 263"
+      ]
+    },
+    {
+      "id": "nm-03",
+      "sira": 3,
+      "tur": "sunnet",
+      "grup": "baslangic",
+      "metin": {
+        "tr": "Hemen ardından eller bağlanır: sağ el sol elin üzerine, erkeklerde göbek altından konur.",
+        "fr": "Juste après, nouer les mains : la main droite sur la gauche, sous le nombril pour les hommes.",
+        "en": "Right after, fold the hands: the right hand over the left, below the navel for men.",
+        "nl": "Meteen daarna de handen vouwen: de rechterhand over de linker, bij mannen onder de navel.",
+        "de": "Gleich danach die Hände verschränken: die rechte Hand über die linke, bei Männern unterhalb des Nabels."
+      },
+      "kadin": {
+        "tr": "Kadınlar ellerini göğüs üstünden bağlar.",
+        "fr": "Les femmes nouent les mains sur la poitrine.",
+        "en": "Women fold the hands on the chest.",
+        "nl": "Vrouwen vouwen de handen op de borst.",
+        "de": "Frauen verschränken die Hände auf der Brust."
+      },
+      "ikon": "namaz-kiyam",
+      "kaynakNo": "s. 252"
+    },
+    {
+      "id": "nm-04",
+      "sira": 4,
+      "tur": "sunnet",
+      "grup": "baslangic",
+      "metin": {
+        "tr": "«Sübhâneke» okunur: namaza Allah'ı överek başlanır. Yalnız birinci rek‘atta okunur.",
+        "fr": "Réciter « Soubhânaka » : on commence la prière en louant Allah. On ne le récite qu’à la première unité de prière (rak‘a).",
+        "en": "Recite “Subhanaka”: the prayer begins by praising Allah. It is recited only in the first rak‘a (unit of prayer).",
+        "nl": "‘Soebhanaka’ reciteren: het gebed begint met lof aan Allah. Alleen in de eerste rak‘a (gebedseenheid).",
+        "de": "„Subhanaka“ rezitieren: das Gebet beginnt mit dem Lob Allahs. Nur in der ersten Rak‘a (Gebetseinheit)."
+      },
+      "ikon": "namaz-kiyam",
+      "dua": "d-subhaneke",
+      "kaynakNo": "s. 253",
+      "kaynakNolar": [
+        "s. 253",
+        "s. 263"
+      ]
+    },
+    {
+      "id": "nm-05",
+      "sira": 5,
+      "tur": "sunnet",
+      "grup": "baslangic",
+      "metin": {
+        "tr": "İmama uyulmuyorsa «Eûzü billâhi mine'ş-şeytâni'r-racîm. Bismillâhi'r-rahmâni'r-rahîm» denir.",
+        "fr": "Si l’on ne suit pas d’imam : dire « A‘oudhou billahi mina ch-chaytani r-radjim. Bismillahi r-rahmani r-rahim ».",
+        "en": "If not following an imam: say “A‘udhu billahi min ash-shaytani r-rajim. Bismillahi r-rahmani r-rahim.”",
+        "nl": "Als men geen imam volgt: ‘A‘oedoe billahi mina sj-sjaitani r-radjiem. Bismillahi r-rahmani r-rahiem’ zeggen.",
+        "de": "Wenn man keinem Imam folgt: „A‘udhu billahi mina sch-schaitani r-radschim. Bismillahi r-rahmani r-rahim“ sagen."
+      },
+      "ikon": "namaz-kiyam",
+      "dua": "d-euzu-besmele",
+      "kaynakNo": "s. 263"
+    },
+    {
+      "id": "nm-06",
+      "sira": 6,
+      "tur": "vacip",
+      "grup": "rekat",
+      "metin": {
+        "tr": "Fâtiha okunur, sonunda «âmin» denir. Sonra bir sûre veya birkaç âyet okunur (zamm-ı sûre).",
+        "fr": "Réciter la Fâtiha et dire « âmîn » à la fin ; réciter ensuite une sourate ou quelques versets.",
+        "en": "Recite al-Fatiha and say “amin” at its end; then recite a surah or a few verses.",
+        "nl": "De Fatiha reciteren en aan het eind ‘amien’ zeggen; daarna een soera of enkele verzen reciteren.",
+        "de": "Die Fatiha rezitieren und am Ende „Amin“ sagen; danach eine Sure oder einige Verse rezitieren."
+      },
+      "ikon": "namaz-kiyam",
+      "kaynakNo": "s. 263",
+      "kaynakNolar": [
+        "s. 227",
+        "s. 263"
+      ]
+    },
+    {
+      "id": "nm-07",
+      "sira": 7,
+      "tur": "farz",
+      "grup": "rekat",
+      "metin": {
+        "tr": "«Allahüekber» diyerek rükûa gidilir: sırt düz, eller dizlerde. En az üç kere «Sübhâne rabbiye'l-azîm» denir.",
+        "fr": "Dire « Allahou akbar » et s’incliner (rukû‘) : dos droit, mains sur les genoux. Dire au moins trois fois « Soubhâna rabbiya l-‘azîm ».",
+        "en": "Say “Allahu akbar” and bow (ruku‘): back straight, hands on the knees. Say “Subhana rabbiya al-‘azim” at least three times.",
+        "nl": "‘Allahoe akbar’ zeggen en buigen (roekoe‘): rug recht, handen op de knieën. Minstens driemaal ‘Soebhana rabbiya l-‘azim’ zeggen.",
+        "de": "„Allahu akbar“ sagen und sich verbeugen (Ruku‘): Rücken gerade, Hände auf den Knien. Mindestens dreimal „Subhana rabbiya l-‘azim“ sagen."
+      },
+      "kadin": {
+        "tr": "Kadınlar ellerini dizleri üzerine koyar, dizlerini tutmaz.",
+        "fr": "Les femmes posent les mains sur les genoux sans les saisir.",
+        "en": "Women place the hands on the knees without gripping them.",
+        "nl": "Vrouwen leggen de handen op de knieën zonder ze vast te grijpen.",
+        "de": "Frauen legen die Hände auf die Knie, ohne sie zu umfassen."
+      },
+      "ikon": "namaz-ruku",
+      "dua": "d-ruku-tesbihi",
+      "kaynakNo": "s. 263",
+      "kaynakNolar": [
+        "s. 227",
+        "s. 254",
+        "s. 263"
+      ]
+    },
+    {
+      "id": "nm-08",
+      "sira": 8,
+      "tur": "sunnet",
+      "grup": "rekat",
+      "metin": {
+        "tr": "Rükûdan doğrulurken «Semiallâhü limen hamideh» denir, dik durulur ve «Rabbenâ lekel-hamd» denir.",
+        "fr": "En se redressant, dire « Sami‘a Llâhu liman hamidah », se tenir droit et dire « Rabbanâ laka l-hamd ».",
+        "en": "Rising from the bow, say “Sami‘a Allahu liman hamidah”, stand upright and say “Rabbana laka al-hamd”.",
+        "nl": "Bij het opstaan ‘Sami‘a Allahoe liman hamidah’ zeggen, rechtop staan en ‘Rabbana laka l-hamd’ zeggen.",
+        "de": "Beim Aufrichten „Sami‘a Allahu liman hamidah“ sagen, aufrecht stehen und „Rabbana laka l-hamd“ sagen."
+      },
+      "not": {
+        "tr": "İmama uyan kişi «Semiallâhü limen hamideh» demez; yalnız «Rabbenâ leke'l-hamd» der.",
+        "fr": "Celui qui suit l’imam ne dit pas « Sami‘a Llâhu liman hamidah » ; il dit seulement « Rabbanâ laka l-hamd ».",
+        "en": "The one following the imam does not say “Sami‘a Allahu liman hamidah”; he says only “Rabbana laka al-hamd”.",
+        "nl": "Wie de imam volgt zegt niet ‘Sami‘a Allahoe liman hamidah’, maar alleen ‘Rabbana laka l-hamd’.",
+        "de": "Wer dem Imam folgt, sagt nicht „Sami‘a Allahu liman hamidah“, sondern nur „Rabbana laka l-hamd“."
+      },
+      "ikon": "namaz-kavme",
+      "dua": "d-tesmi-tahmid",
+      "kaynakNo": "s. 263",
+      "kaynakNolar": [
+        "s. 254",
+        "s. 263"
+      ]
+    },
+    {
+      "id": "nm-09",
+      "sira": 9,
+      "tur": "farz",
+      "grup": "rekat",
+      "metin": {
+        "tr": "«Allahüekber» diyerek secdeye gidilir: önce dizler, sonra eller, sonra yüz yere konur; alın ve burun yere değer. Erkekler karnı uyluklardan, dirsekleri yanlarından uzak tutar. En az üç kere «Sübhâne rabbiye'l-a‘lâ» denir.",
+        "fr": "Dire « Allahou akbar » et se prosterner (sajda) : d’abord les genoux, puis les mains, puis le visage au sol ; le front et le nez touchent le sol. Les hommes écartent le ventre des cuisses et les coudes des flancs. Dire au moins trois fois « Soubhâna rabbiya l-a‘lâ ».",
+        "en": "Say “Allahu akbar” and go down into prostration (sajda): first the knees, then the hands, then the face on the ground; forehead and nose touch the ground. Men keep the belly away from the thighs and the elbows away from the sides. Say “Subhana rabbiya al-a‘la” at least three times.",
+        "nl": "‘Allahoe akbar’ zeggen en in prosternatie (sadjda) gaan: eerst de knieën, dan de handen, dan het gezicht op de grond; voorhoofd en neus raken de grond. Mannen houden de buik van de dijen en de ellebogen van de zij af. Minstens driemaal ‘Soebhana rabbiya l-a‘la’ zeggen.",
+        "de": "„Allahu akbar“ sagen und sich niederwerfen (Sadschda): zuerst die Knie, dann die Hände, dann das Gesicht auf den Boden; Stirn und Nase berühren den Boden. Männer halten den Bauch von den Oberschenkeln und die Ellbogen von den Seiten fern. Mindestens dreimal „Subhana rabbiya l-a‘la“ sagen."
+      },
+      "not": {
+        "tr": "Secde yedi uzuv üzerinde yapılır: yüz, eller, dizler ve ayak parmakları.",
+        "fr": "La prosternation se fait sur sept membres : le visage, les mains, les genoux et les orteils.",
+        "en": "Prostration is done on seven limbs: the face, the hands, the knees and the toes.",
+        "nl": "De prosternatie gebeurt op zeven lichaamsdelen: gezicht, handen, knieën en tenen.",
+        "de": "Die Niederwerfung geschieht auf sieben Körperteilen: Gesicht, Hände, Knie und Zehen."
+      },
+      "kadin": {
+        "tr": "Kadınlar secdede alçalıp kollarını yanlarına, karnı uyluklarına yapıştırır.",
+        "fr": "Les femmes se tiennent basses, bras contre les flancs et ventre contre les cuisses.",
+        "en": "Women keep low, with the arms against the sides and the belly against the thighs.",
+        "nl": "Vrouwen blijven laag, met de armen tegen de zij en de buik tegen de dijen.",
+        "de": "Frauen bleiben tief, die Arme an den Seiten und den Bauch an den Oberschenkeln."
+      },
+      "ikon": "namaz-secde",
+      "dua": "d-secde-tesbihi",
+      "kaynakNo": "s. 263",
+      "kaynakNolar": [
+        "s. 227",
+        "s. 250",
+        "s. 254",
+        "s. 263"
+      ]
+    },
+    {
+      "id": "nm-10",
+      "sira": 10,
+      "tur": "sunnet",
+      "grup": "rekat",
+      "metin": {
+        "tr": "«Allahüekber» diyerek kalkılıp iki secde arasında kısa süre oturulur (celse). Erkekler sol ayağını yere yayıp üzerine oturur, sağ ayağını parmakları kıbleye gelecek şekilde diker; eller uyluklara konur.",
+        "fr": "Dire « Allahou akbar », se relever et s’asseoir brièvement entre les deux prosternations (jalsa). Les hommes s’assoient sur le pied gauche étendu au sol et dressent le pied droit, orteils vers la qibla ; les mains reposent sur les cuisses.",
+        "en": "Say “Allahu akbar”, rise and sit briefly between the two prostrations (jalsa). Men sit on the left foot spread on the ground and set the right foot upright with the toes toward the qibla; the hands rest on the thighs.",
+        "nl": "‘Allahoe akbar’ zeggen, omhoogkomen en kort zitten tussen de twee prosternaties (djalsa). Mannen zitten op de links op de grond gespreide voet en zetten de rechtervoet rechtop met de tenen naar de qibla; de handen rusten op de dijen.",
+        "de": "„Allahu akbar“ sagen, sich aufrichten und kurz zwischen den beiden Niederwerfungen sitzen (Dschalsa). Männer sitzen auf dem am Boden ausgebreiteten linken Fuß und stellen den rechten Fuß mit den Zehen zur Kibla auf; die Hände ruhen auf den Oberschenkeln."
+      },
+      "kadin": {
+        "tr": "Kadınlar ayaklarını sağ yanlarına yatık çıkarıp oturur.",
+        "fr": "Les femmes s’assoient les pieds sortis sur le côté droit.",
+        "en": "Women sit with both feet brought out to the right side.",
+        "nl": "Vrouwen zitten met beide voeten naar de rechterkant uitgestoken.",
+        "de": "Frauen sitzen mit den Füßen zur rechten Seite herausgestellt."
+      },
+      "ikon": "namaz-celse",
+      "kaynakNo": "s. 254"
+    },
+    {
+      "id": "nm-11",
+      "sira": 11,
+      "tur": "farz",
+      "grup": "rekat",
+      "metin": {
+        "tr": "«Allahüekber» diyerek ikinci secdeye gidilir; yine üç kere «Sübhâne rabbiye'l-a‘lâ» denir.",
+        "fr": "Dire « Allahou akbar » et faire la seconde prosternation ; dire de nouveau trois fois « Soubhâna rabbiya l-a‘lâ ».",
+        "en": "Say “Allahu akbar” and go into the second prostration; again say “Subhana rabbiya al-a‘la” three times.",
+        "nl": "‘Allahoe akbar’ zeggen en de tweede prosternatie doen; opnieuw driemaal ‘Soebhana rabbiya l-a‘la’ zeggen.",
+        "de": "„Allahu akbar“ sagen und die zweite Niederwerfung ausführen; erneut dreimal „Subhana rabbiya l-a‘la“ sagen."
+      },
+      "ikon": "namaz-secde",
+      "dua": "d-secde-tesbihi",
+      "kaynakNo": "s. 263"
+    },
+    {
+      "id": "nm-12",
+      "sira": 12,
+      "tur": "farz",
+      "grup": "oturus",
+      "metin": {
+        "tr": "İkinci secdeden sonra oturulur (ka‘de) ve Tahiyyât okunur; «lâ ilâhe» derken sağ elin şahadet parmağı kaldırılır, «illallâh» derken indirilir.",
+        "fr": "Après la seconde prosternation, s’asseoir (qa‘da) et réciter le Tahiyyât ; en disant « lâ ilâha », lever l’index de la main droite, le baisser en disant « illallâh ».",
+        "en": "After the second prostration, sit (qa‘da) and recite the Tahiyyat; while saying “la ilaha” raise the index finger of the right hand, lower it at “illallah”.",
+        "nl": "Na de tweede prosternatie zitten (qa‘da) en de Tahiyyat reciteren; bij ‘la ilaha’ de wijsvinger van de rechterhand opheffen, bij ‘illallah’ laten zakken.",
+        "de": "Nach der zweiten Niederwerfung sitzen (Qa‘da) und das Tahiyyat rezitieren; bei „la ilaha“ den Zeigefinger der rechten Hand heben, bei „illallah“ senken."
+      },
+      "not": {
+        "tr": "Rek‘at sayısı ikiden fazlaysa bu oturuş ilk oturuştur (ka‘de-i ûlâ, vâcip): Tahiyyât'a bir şey eklenmez, «Allahüekber» denip üçüncü rek‘ata kalkılır.",
+        "fr": "Si la prière compte plus de deux unités (rak‘a), c’est la première assise (qa‘da ûlâ, wâjib) : rien n’est ajouté au Tahiyyât ; dire « Allahou akbar » et se lever pour la troisième.",
+        "en": "If the prayer has more than two rak‘as, this is the first sitting (qa‘da ula, wajib): nothing is added to the Tahiyyat; say “Allahu akbar” and rise for the third rak‘a.",
+        "nl": "Heeft het gebed meer dan twee rak‘as, dan is dit de eerste zit (qa‘da oela, wadjib): aan de Tahiyyat wordt niets toegevoegd; ‘Allahoe akbar’ zeggen en opstaan voor de derde rak‘a.",
+        "de": "Hat das Gebet mehr als zwei Rak‘as, ist dies das erste Sitzen (Qa‘da Ula, Wadschib): dem Tahiyyat wird nichts hinzugefügt; „Allahu akbar“ sagen und zur dritten Rak‘a aufstehen."
+      },
+      "ikon": "namaz-kade",
+      "dua": "d-ettehiyyatu",
+      "kaynakNo": "s. 263",
+      "kaynakNolar": [
+        "s. 227",
+        "s. 254",
+        "s. 263"
+      ]
+    },
+    {
+      "id": "nm-13",
+      "sira": 13,
+      "tur": "sunnet",
+      "grup": "oturus",
+      "metin": {
+        "tr": "Son oturuşta Tahiyyât'tan sonra salavat okunur (Allâhümme salli, Allâhümme bârik).",
+        "fr": "À la dernière assise, après le Tahiyyât, réciter les salawât (Allahoumma salli, Allahoumma barik).",
+        "en": "In the final sitting, after the Tahiyyat, recite the salawat (Allahumma salli, Allahumma barik).",
+        "nl": "In de laatste zit, na de Tahiyyat, de salawat reciteren (Allahoemma salli, Allahoemma barik).",
+        "de": "Im letzten Sitzen nach dem Tahiyyat die Salawat rezitieren (Allahumma salli, Allahumma barik)."
+      },
+      "ikon": "namaz-kade",
+      "dua": "d-salli",
+      "duaEk": [
+        "d-barik"
+      ],
+      "kaynakNo": "s. 255",
+      "kaynakNolar": [
+        "s. 255",
+        "s. 264"
+      ]
+    },
+    {
+      "id": "nm-14",
+      "sira": 14,
+      "tur": "sunnet",
+      "grup": "oturus",
+      "metin": {
+        "tr": "Salavattan sonra Kur'an'dan veya hadislerden bir dua edilir (örnek: Rabbenâ âtinâ).",
+        "fr": "Après les salawât, faire une invocation tirée du Coran ou des hadiths (exemple : Rabbana atina).",
+        "en": "After the salawat, make a supplication taken from the Qur’an or the hadiths (example: Rabbana atina).",
+        "nl": "Na de salawat een smeekbede uit de Koran of de hadiths doen (voorbeeld: Rabbana atina).",
+        "de": "Nach den Salawat ein Bittgebet aus dem Koran oder den Hadithen sprechen (Beispiel: Rabbana atina)."
+      },
+      "ikon": "namaz-kade",
+      "dua": "d-rabbena-atina",
+      "duaEk": [
+        "d-rabbenagfirli"
+      ],
+      "kaynakNo": "s. 255",
+      "kaynakNolar": [
+        "s. 255",
+        "s. 264"
+      ]
+    },
+    {
+      "id": "nm-15",
+      "sira": 15,
+      "tur": "vacip",
+      "grup": "bitis",
+      "metin": {
+        "tr": "Başı önce sağa çevirip «es-Selâmü aleyküm ve rahmetullâh» diyerek selâm verilir.",
+        "fr": "Tourner d’abord la tête à droite et donner le salut : « Es-salâmou ‘alaykoum wa rahmatoullâh ».",
+        "en": "First turn the head to the right and give the salam: “As-salamu ‘alaykum wa rahmatullah”.",
+        "nl": "Eerst het hoofd naar rechts draaien en de groet geven: ‘As-salamoe ‘alaikoem wa rahmatoellah’.",
+        "de": "Zuerst den Kopf nach rechts drehen und den Friedensgruß sprechen: „As-salamu ‘alaikum wa rahmatullah“."
+      },
+      "ikon": "namaz-selam-sag",
+      "dua": "d-selam",
+      "kaynakNo": "s. 255"
+    },
+    {
+      "id": "nm-16",
+      "sira": 16,
+      "tur": "vacip",
+      "grup": "bitis",
+      "metin": {
+        "tr": "Sonra başı sola çevirip aynı şekilde selâm verilir.",
+        "fr": "Puis tourner la tête à gauche et donner le même salut.",
+        "en": "Then turn the head to the left and give the same salam.",
+        "nl": "Daarna het hoofd naar links draaien en dezelfde groet geven.",
+        "de": "Danach den Kopf nach links drehen und denselben Gruß sprechen."
+      },
+      "ikon": "namaz-selam-sol",
+      "dua": "d-selam",
+      "kaynakNo": "s. 255",
+      "kaynakNolar": [
+        "s. 255",
+        "s. 264"
+      ]
+    }
+  ],
+  "rekatSablonu": {
+    "ilkRekat": [
+      "nm-01",
+      "nm-02",
+      "nm-03",
+      "nm-04",
+      "nm-05",
+      "nm-06",
+      "nm-07",
+      "nm-08",
+      "nm-09",
+      "nm-10",
+      "nm-11"
+    ],
+    "ikinciRekat": [
+      "nm-03",
+      "nm-06",
+      "nm-07",
+      "nm-08",
+      "nm-09",
+      "nm-10",
+      "nm-11",
+      "nm-12"
+    ],
+    "ucuncuDorduncuRekat": [
+      "nm-03",
+      "nm-06",
+      "nm-07",
+      "nm-08",
+      "nm-09",
+      "nm-10",
+      "nm-11"
+    ],
+    "sonOturus": [
+      "nm-12",
+      "nm-13",
+      "nm-14",
+      "nm-15",
+      "nm-16"
+    ]
+  },
+  "rekatKurallari": [
+    {
+      "id": "rk-01",
+      "sira": 1,
+      "metin": {
+        "tr": "İkinci rek‘at birinci gibidir; yalnız elleri kaldırma, Sübhâneke ve eûzü yoktur.",
+        "fr": "La deuxième unité est comme la première ; seuls le levé des mains, le Soubhânaka et l’istiâdha n’y figurent pas.",
+        "en": "The second rak‘a is like the first; only the raising of the hands, the Subhanaka and the ta‘awwudh are left out.",
+        "nl": "De tweede rak‘a is zoals de eerste; alleen het opheffen van de handen, de Soebhanaka en de ta‘awwoedh ontbreken.",
+        "de": "Die zweite Rak‘a ist wie die erste; nur das Heben der Hände, das Subhanaka und das Ta‘awwudh entfallen."
+      },
+      "kaynakNo": "s. 263"
+    },
+    {
+      "id": "rk-02",
+      "sira": 2,
+      "metin": {
+        "tr": "Birinci rek‘atın ikinci secdesinden sonra «Allahüekber» diyerek ikinci rek‘ata kalkılır.",
+        "fr": "Après la seconde prosternation de la première unité, dire « Allahou akbar » et se lever pour la deuxième.",
+        "en": "After the second prostration of the first rak‘a, say “Allahu akbar” and rise for the second.",
+        "nl": "Na de tweede prosternatie van de eerste rak‘a ‘Allahoe akbar’ zeggen en opstaan voor de tweede.",
+        "de": "Nach der zweiten Niederwerfung der ersten Rak‘a „Allahu akbar“ sagen und zur zweiten aufstehen."
+      },
+      "kaynakNo": "s. 263"
+    },
+    {
+      "id": "rk-03",
+      "sira": 3,
+      "metin": {
+        "tr": "Farz namazın üçüncü ve dördüncü rek‘atında Fâtiha'dan sonra sûre okunmaz; rükûa varılır.",
+        "fr": "Dans la prière obligatoire, aux troisième et quatrième unités, on ne récite pas de sourate après la Fâtiha ; on passe au rukû‘.",
+        "en": "In an obligatory prayer, in the third and fourth rak‘as no surah is recited after al-Fatiha; one goes into the bowing.",
+        "nl": "Bij een verplicht gebed wordt in de derde en vierde rak‘a na de Fatiha geen soera gereciteerd; men gaat naar de roekoe‘.",
+        "de": "Im Pflichtgebet wird in der dritten und vierten Rak‘a nach der Fatiha keine Sure rezitiert; man geht in den Ruku‘."
+      },
+      "kaynakNo": "s. 263"
+    },
+    {
+      "id": "rk-04",
+      "sira": 4,
+      "metin": {
+        "tr": "Farz olmayan namazda üçüncü rek‘atta da Fâtiha'dan sonra bir sûre veya birkaç âyet okunur.",
+        "fr": "Dans une prière non obligatoire, à la troisième unité aussi, on récite après la Fâtiha une sourate ou quelques versets.",
+        "en": "In a prayer that is not obligatory, in the third rak‘a too, a surah or a few verses are recited after al-Fatiha.",
+        "nl": "Bij een gebed dat niet verplicht is wordt ook in de derde rak‘a na de Fatiha een soera of enkele verzen gereciteerd.",
+        "de": "In einem nicht verpflichtenden Gebet wird auch in der dritten Rak‘a nach der Fatiha eine Sure oder einige Verse rezitiert."
+      },
+      "kaynakNo": "s. 263"
+    },
+    {
+      "id": "rk-05",
+      "sira": 5,
+      "metin": {
+        "tr": "Son oturuşta Tahiyyât'tan sonra salavat ve dualar okunur, ardından selâm verilir.",
+        "fr": "À la dernière assise, après le Tahiyyât, on récite les salawât et des invocations, puis on donne le salut.",
+        "en": "In the final sitting, after the Tahiyyat, the salawat and supplications are recited, then the salam is given.",
+        "nl": "In de laatste zit worden na de Tahiyyat de salawat en smeekbeden gereciteerd; daarna volgt de groet.",
+        "de": "Im letzten Sitzen werden nach dem Tahiyyat die Salawat und Bittgebete rezitiert, danach folgt der Gruß."
+      },
+      "kaynakNo": "s. 264"
+    }
+  ],
+  "vakitler": [
+    {
+      "id": "sabah",
+      "ad": {
+        "tr": "Sabah",
+        "fr": "Sobh (aube)",
+        "en": "Fajr (dawn)",
+        "nl": "Fadjr (dageraad)",
+        "de": "Fadschr (Morgengrauen)"
+      },
+      "farz": 2,
+      "sunnetOnce": {
+        "rekat": 2,
+        "hukum": "muekked"
+      },
+      "sunnetSonra": null,
+      "kaynakNo": {
+        "farz": "s. 223",
+        "sunnet": "s. 308-309"
+      }
+    },
+    {
+      "id": "ogle",
+      "ad": {
+        "tr": "Öğle",
+        "fr": "Dohr (midi)",
+        "en": "Dhuhr (noon)",
+        "nl": "Dhoehr (middag)",
+        "de": "Duhr (Mittag)"
+      },
+      "farz": 4,
+      "sunnetOnce": {
+        "rekat": 4,
+        "hukum": "muekked"
+      },
+      "sunnetSonra": {
+        "rekat": 2,
+        "hukum": "muekked"
+      },
+      "kaynakNo": {
+        "farz": "s. 223",
+        "sunnet": "s. 308-309"
+      }
+    },
+    {
+      "id": "ikindi",
+      "ad": {
+        "tr": "İkindi",
+        "fr": "‘Asr (après-midi)",
+        "en": "Asr (afternoon)",
+        "nl": "‘Asr (namiddag)",
+        "de": "Asr (Nachmittag)"
+      },
+      "farz": 4,
+      "sunnetOnce": {
+        "rekat": 4,
+        "hukum": "gayrimuekked"
+      },
+      "sunnetSonra": null,
+      "kaynakNo": {
+        "farz": "s. 223",
+        "sunnet": "s. 308-309"
+      }
+    },
+    {
+      "id": "aksam",
+      "ad": {
+        "tr": "Akşam",
+        "fr": "Maghrib (coucher du soleil)",
+        "en": "Maghrib (sunset)",
+        "nl": "Maghrib (zonsondergang)",
+        "de": "Maghrib (Sonnenuntergang)"
+      },
+      "farz": 3,
+      "sunnetOnce": null,
+      "sunnetSonra": {
+        "rekat": 2,
+        "hukum": "muekked"
+      },
+      "kaynakNo": {
+        "farz": "s. 223",
+        "sunnet": "s. 308-309"
+      }
+    },
+    {
+      "id": "yatsi",
+      "ad": {
+        "tr": "Yatsı",
+        "fr": "‘Icha (nuit)",
+        "en": "Isha (night)",
+        "nl": "‘Isja (nacht)",
+        "de": "Ischa (Nacht)"
+      },
+      "farz": 4,
+      "sunnetOnce": {
+        "rekat": 4,
+        "hukum": "gayrimuekked"
+      },
+      "sunnetSonra": {
+        "rekat": 2,
+        "hukum": "muekked"
+      },
+      "kaynakNo": {
+        "farz": "s. 223",
+        "sunnet": "s. 308-309"
+      }
+    }
+  ],
+  "vitir": {
+    "id": "vitir",
+    "ad": {
+      "tr": "Vitir",
+      "fr": "Witr",
+      "en": "Witr",
+      "nl": "Witr",
+      "de": "Witr"
+    },
+    "rekat": 3,
+    "hukum": "vacip",
+    "zaman": {
+      "tr": "Yatsı namazından sonra",
+      "fr": "Après la prière de l’‘icha",
+      "en": "After the isha prayer",
+      "nl": "Na het ‘isja-gebed",
+      "de": "Nach dem Ischa-Gebet"
+    },
+    "kaynakNo": "s. 224",
+    "kaynakNolar": [
+      "s. 224",
+      "s. 305"
+    ]
+  }
+}

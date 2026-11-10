@@ -211,7 +211,18 @@ test('Hassas belge: yalnız sahibi; muhtedi true her yazımda sunucu zamanlı r�
 
 test('Çalışma belgeleri: üç ad, ≤ 120 madde, guncelleme = sunucu zamanı; yalnız sahibi yazar', async () => {
   const u1 = kisi('u1');
-  for (const ad of ['ezber', 'bilgi', 'yol']) await assertSucceeds(setDoc(doc(u1, `kullanicilar/u1/calisma/${ad}`), calisma()));
+  for (const ad of ['ezber', 'bilgi', 'yol', 'okuma']) await assertSucceeds(setDoc(doc(u1, `kullanicilar/u1/calisma/${ad}`), calisma()));
+  // Kur'an Okuma (okuma): adım başına tek sıkıştırılmış dize; hoca (kursa bağlı) okur, başkası yazamaz/okuyamaz.
+  await assertSucceeds(setDoc(doc(u1, 'kullanicilar/u1/calisma/okuma'), calisma({ maddeler: { o1: '1ab2ab', o7: '3zz' } })));
+  await assertFails(setDoc(doc(kisi('u2'), 'kullanicilar/u1/calisma/okuma'), calisma()));
+  await assertFails(oku(kisi('u2'), 'kullanicilar/u1/calisma/okuma'));
+  await assertFails(setDoc(doc(u1, 'kullanicilar/u1/calisma/okuma'), calisma({ fazla: 'x' })));
+  // Abdest ve Namaz (ibadet): konu başına kısa dize ('0'…'3'); yalnız sahibi yazar, başkası yazamaz/okuyamaz, fazla alan yok.
+  await assertSucceeds(setDoc(doc(u1, 'kullanicilar/u1/calisma/ibadet'), calisma({ maddeler: { abdest: '3313', namaz: '33113', sabah: '311' } })));
+  await assertSucceeds(oku(u1, 'kullanicilar/u1/calisma/ibadet'));
+  await assertFails(setDoc(doc(kisi('u2'), 'kullanicilar/u1/calisma/ibadet'), calisma()));
+  await assertFails(oku(kisi('u2'), 'kullanicilar/u1/calisma/ibadet'));
+  await assertFails(setDoc(doc(u1, 'kullanicilar/u1/calisma/ibadet'), calisma({ fazla: 'x' })));
   await assertSucceeds(oku(u1, 'kullanicilar/u1/calisma/bilgi'));
   await assertSucceeds(getDocs(collection(u1, 'kullanicilar/u1/calisma')));
   await assertFails(setDoc(doc(u1, 'kullanicilar/u1/calisma/baska'), calisma()));

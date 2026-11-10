@@ -1,0 +1,51 @@
+---
+/**
+ * Abdest (İlim Yolu · Abdest ve Namaz, 10 Kasım 2026): on üç adım (çizim, hüküm, kaynak), sıraya dizme, adım–çizim eşleştirme ve hüküm
+ * seçme. İçerik src/data/ibadet/abdest.json (Diyanet İlmihali'ne göre, Hanefî; iki kez kaynakla denetlendi). Sunucu iskeleti çizer; ilerleme
+ * ve alıştırmalar scripts/ibadet.ts ile cihaza (girişliyse hesaba) yazılır.
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import { dilListesi } from '@ortak/i18n/utils';
+import { ABDEST } from '@ortak/lib/ibadet/ibadet-veri';
+import IbadetAdimlar from '../../../components/IbadetAdimlar.astro';
+import IbadetBas from '../../../components/IbadetBas.astro';
+import IbadetEslestir from '../../../components/IbadetEslestir.astro';
+import IbadetSecim from '../../../components/IbadetSecim.astro';
+import IbadetSirala from '../../../components/IbadetSirala.astro';
+import { adimAdi, ibadetMetinleri } from '../../../i18n/ibadet';
+import { sembolSeti } from '../../../lib/ibadet-cizim';
+import { adimKartlari, altMetni, hukumAdi, kaynakSatiri } from '../../../lib/ibadet-sayfa';
+import Taban from '../../../layouts/Taban.astro';
+import '../../../styles/yollar.css';
+import '../../../styles/ibadet.css';
+
+export function getStaticPaths() {
+  return dilListesi.map((dil) => ({ params: { dil } }));
+}
+
+const dil = Astro.params.dil as Dil;
+const m = ibadetMetinleri(dil);
+const kartlar = adimKartlari(dil, ABDEST);
+const turler = ['farz', 'sunnet', 'adab'] as const;
+const secenekler = turler.map((t, i) => ({ deger: i, metin: hukumAdi(ABDEST, t, dil) }));
+const sirala = ABDEST.adimlar.map((a) => ({ id: a.id, ad: adimAdi(dil, a.id, a.ikon), metin: a.metin[dil] }));
+const ciftler = ABDEST.adimlar.map((a) => ({ id: a.id, sol: a.metin[dil], cizim: a.ikon, alt: altMetni(dil, a.ikon) }));
+const satirlar = ABDEST.adimlar.map((a) => ({ id: a.id, ad: adimAdi(dil, a.id, a.ikon), secenekler, dogru: turler.indexOf(a.tur as (typeof turler)[number]) }));
+const sprite = sembolSeti(ABDEST.adimlar.map((a) => a.ikon));
+---
+<Taban dil={dil} baslik={m.abdestBaslik} aciklama={m.abdestAciklama} yol="ibadet/abdest">
+  <article class="icerik yl-sayfa ib-sayfa" data-ibadet-sayfa>
+    <Fragment set:html={sprite} />
+    <IbadetBas dil={dil} baslik={m.abdestBaslik} lead={m.abdestLead} etiket={ABDEST.etiket[dil]} kaynakSatiri={kaynakSatiri(dil, ABDEST)} />
+    <IbadetAdimlar dil={dil} konu="abdest" kartlar={kartlar} />
+    <IbadetSirala dil={dil} konu="abdest" baslik={m.siralaBaslik} yonerge={m.siralaAbdest} ogeler={sirala} baslikId="sirala-baslik" />
+    <IbadetEslestir dil={dil} konu="abdest" baslik={m.eslesBaslik} yonerge={m.eslesYonerge} ciftler={ciftler} adet={6} baslikId="esles-baslik" />
+    <IbadetSecim dil={dil} konu="abdest" slot="hukum" baslik={m.hukumBaslik} yonerge={m.hukumYonerge} satirlar={satirlar} adet={7} baslikId="hukum-baslik" />
+    <p class="yl-not">{m.hocaNotu}</p>
+  </article>
+</Taban>
+
+<script>
+  import '../../../scripts/dil';
+  import '../../../scripts/ibadet';
+</script>

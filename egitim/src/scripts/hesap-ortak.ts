@@ -16,6 +16,8 @@ import { bilgiEsitleSor } from '../i18n/bilgi-esitle';
 import { kalipDoldur, type Sablonlu } from '../i18n/sablon';
 import { firebaseYukle, type IlimFirebase } from '../lib/firebase-istemci';
 import { bilgiGiristeEsitle } from '../lib/hesap/bilgi-esitle';
+import { okumaGiristeEsitle } from '../lib/hesap/okuma-esitle';
+import { ibadetGiristeEsitle } from '../lib/hesap/ibadet-esitle';
 import { giristeEsitle } from '../lib/hesap/esitle';
 import type { CocukGirisSonucu } from '../lib/hesap/kart-giris';
 import { kullaniciAdiAl, profilGetir, profilYaz, type CagriHatasi } from '../lib/hesap/profil';
@@ -173,6 +175,21 @@ export async function girisSonrasi(f: IlimFirebase, v: SayfaVeri, panel: HTMLEle
       ? await evetHayir(panel, { metin: bilgiEsitleSor(v.dil, bilgi.n), not: v.m.esitleNot, evet: v.m.esitleEvet, hayir: v.m.esitleHayir })
       : false;
     await bilgi.cevapla(ekle);
+  }
+  // Kur'an Okuma ilerlemesi için aynı soru (soru metni bilgi sorusuyla ortak).
+  const okuma = await okumaGiristeEsitle(f);
+  if (okuma.tur === 'sor') {
+    const ekle = panel
+      ? await evetHayir(panel, { metin: bilgiEsitleSor(v.dil, okuma.n), not: v.m.esitleNot, evet: v.m.esitleEvet, hayir: v.m.esitleHayir })
+      : false;
+    await okuma.cevapla(ekle);
+  }
+  const ibadet = await ibadetGiristeEsitle(f);
+  if (ibadet.tur === 'sor') {
+    const ekle = panel
+      ? await evetHayir(panel, { metin: bilgiEsitleSor(v.dil, ibadet.n), not: v.m.esitleNot, evet: v.m.esitleEvet, hayir: v.m.esitleHayir })
+      : false;
+    await ibadet.cevapla(ekle);
   }
 }
 

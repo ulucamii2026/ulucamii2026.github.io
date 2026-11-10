@@ -451,7 +451,7 @@ service cloud.firestore {
          karşılığı: ≤ 120 madde, ≤ 60 gün; her yazımda guncelleme = sunucu zamanı. Okuma: sahibi; kursa bağlı hesabı (sunucunun
          yazdığı ref) hoca; `yol` belgesini ayrıca öğrenenin paylasimlar listesine koyduğu hoca (Dilim 3, «hocamla paylaş»). */
       match /calisma/{ad} {
-        function calismaAdi() { return ad in ['ezber', 'bilgi', 'yol']; }
+        function calismaAdi() { return ad in ['ezber', 'bilgi', 'yol', 'okuma', 'ibadet']; }
         function kursaBagli() {
           return exists(/databases/$(db)/documents/kullanicilar/$(uid))
             && get(/databases/$(db)/documents/kullanicilar/$(uid)).data.get('ref', '') != '';

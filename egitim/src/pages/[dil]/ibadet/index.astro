@@ -1,0 +1,76 @@
+---
+/**
+ * Abdest ve Namaz girişi (İlim Yolu, 10 Kasım 2026): iki ana konu (abdest, namaz) ve beş vakit sayfası. Sunucu iskeleti çizer; her kartın
+ * «n / m bölüm tamamlandı» satırını scripts/ibadet.ts cihaz kaydından (girişliyse hesapla eşitlenmiş kopyadan) doldurur. Puan ve sıralama yoktur.
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import { dilListesi } from '@ortak/i18n/utils';
+import { KONU_SLOTLARI } from '@ortak/lib/ilim-yolu/ibadet-ilerleme';
+import { NAMAZ, VAKIT_IDLERI } from '@ortak/lib/ibadet/ibadet-veri';
+import IbadetCizim from '../../../components/IbadetCizim.astro';
+import { doldur, ibadetMetinleri } from '../../../i18n/ibadet';
+import { sembolSeti } from '../../../lib/ibadet-cizim';
+import Taban from '../../../layouts/Taban.astro';
+import '../../../styles/yollar.css';
+import '../../../styles/ibadet.css';
+
+export function getStaticPaths() {
+  return dilListesi.map((dil) => ({ params: { dil } }));
+}
+
+const dil = Astro.params.dil as Dil;
+const m = ibadetMetinleri(dil);
+const sprite = sembolSeti(['abdest-yuz', 'namaz-ruku', 'ui-seccade']);
+const ana = [
+  { konu: 'abdest', ad: m.abdestBaslik, ozet: m.abdestOzet, cizim: 'abdest-yuz', href: `/${dil}/ibadet/abdest/` },
+  { konu: 'namaz', ad: m.namazBaslik, ozet: m.namazOzet, cizim: 'namaz-ruku', href: `/${dil}/ibadet/namaz/` },
+] as const;
+const vakitler = VAKIT_IDLERI.map((id) => ({ konu: id, ad: doldur(m.vakitAd, { ad: NAMAZ.vakitler.find((v) => v.id === id)!.ad[dil] }), href: `/${dil}/ibadet/namaz/${id}/` }));
+const veri = { m: { bolumTamam: m.bolumTamam, basla: m.basla, devam: m.devam }, toplamlar: Object.fromEntries(Object.entries(KONU_SLOTLARI).map(([k, s]) => [k, s.length])) };
+---
+<Taban dil={dil} baslik={m.ad} aciklama={m.hubAciklama} yol="ibadet">
+  <div class="icerik yl-sayfa ib-sayfa" data-ibadet-hub data-veri={JSON.stringify(veri)}>
+    <Fragment set:html={sprite} />
+    <header class="yl-bas">
+      <h1>{m.ad}</h1>
+      <p class="yl-ozet">{m.hubLead}</p>
+      <p class="yl-not">{m.cizimNotu}</p>
+    </header>
+
+    <ul class="yl-yollar iki">
+      {ana.map((k) => (
+        <li class="yl-yol" data-konu-kart={k.konu}>
+          <div class="yl-yol-motif"><IbadetCizim ad={k.cizim} /></div>
+          <div class="yl-yol-metin">
+            <h3><a href={k.href}>{k.ad}</a></h3>
+            <p class="yl-sayi">{k.ozet}</p>
+            <p class="yl-ilerleme" data-sayim></p>
+          </div>
+        </li>
+      ))}
+    </ul>
+
+    <section class="ib-bolum" aria-labelledby="vakitler-baslik">
+      <h2 id="vakitler-baslik">{m.vakitlerBaslik}</h2>
+      <p class="ib-not-satir">{m.vakitlerMetin}</p>
+      <ul class="yl-yollar iki">
+        {vakitler.map((k) => (
+          <li class="yl-yol" data-konu-kart={k.konu}>
+            <div class="yl-yol-motif"><IbadetCizim ad="ui-seccade" /></div>
+            <div class="yl-yol-metin">
+              <h3><a href={k.href}>{k.ad}</a></h3>
+              <p class="yl-sayi">{m.vakitOzet}</p>
+              <p class="yl-ilerleme" data-sayim></p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
+    <p class="yl-not">{m.hocaNotu}</p>
+  </div>
+</Taban>
+
+<script>
+  import '../../../scripts/dil';
+  import '../../../scripts/ibadet';
+</script>

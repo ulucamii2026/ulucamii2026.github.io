@@ -86,6 +86,20 @@ async function giris() {
       });
       await bilgi.cevapla(ekle);
     }
+    const okuma = await (await import('../lib/hesap/okuma-esitle')).okumaGiristeEsitle(f);
+    if (okuma.tur === 'sor') {
+      const ekle = await evetHayir(sor<HTMLElement>('[data-soru]'), {
+        metin: (await import('../i18n/bilgi-esitle')).bilgiEsitleSor(dil as Dil, okuma.n), not: s('esitleNot'), evet: s('esitleEvet'), hayir: s('esitleHayir'),
+      });
+      await okuma.cevapla(ekle);
+    }
+    const ibadet = await (await import('../lib/hesap/ibadet-esitle')).ibadetGiristeEsitle(f);
+    if (ibadet.tur === 'sor') {
+      const ekle = await evetHayir(sor<HTMLElement>('[data-soru]'), {
+        metin: (await import('../i18n/bilgi-esitle')).bilgiEsitleSor(dil as Dil, ibadet.n), not: s('esitleNot'), evet: s('esitleEvet'), hayir: s('esitleHayir'),
+      });
+      await ibadet.cevapla(ekle);
+    }
   } catch { /* eşitleme sonra, ana sayfa açılışında yeniden denenir */ }
   location.replace(`/${dil}/`);
 }

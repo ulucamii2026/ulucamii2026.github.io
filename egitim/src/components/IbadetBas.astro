@@ -1,0 +1,23 @@
+---
+/**
+ * «Abdest ve Namaz» sayfa başı (10 Kasım 2026): geri bağlantısı, başlık, kaynak etiketi («Diyanet İlmihali'ne göre (Hanefî)»), özet ve
+ * çizim notu (figürler bilerek yüzsüz). «Taslak» etiketi YOKTUR: bölüm gerçek içerik olarak yayımlanır (imamın kararı, 10 Kasım 2026).
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import { ibadetMetinleri } from '../i18n/ibadet';
+import Ikon from './Ikon.astro';
+
+interface Props { dil: Dil; baslik: string; lead: string; etiket?: string; geriHref?: string; geriAd?: string; kaynakSatiri?: string }
+const { dil, baslik, lead, etiket, geriHref = `/${dil}/ibadet/`, geriAd, kaynakSatiri } = Astro.props;
+const m = ibadetMetinleri(dil);
+---
+<div>
+  <a class="yl-geri-baglanti" href={geriHref}><Ikon ad="geri" /> {geriAd ?? m.geri}</a>
+</div>
+<header class="yl-bas">
+  <h1>{baslik}</h1>
+  {etiket && <p class="ib-etiket">{etiket}</p>}
+  <p class="yl-ozet">{lead}</p>
+  <p class="yl-not">{m.cizimNotu}</p>
+  {kaynakSatiri && <p class="yl-not">{kaynakSatiri}</p>}
+</header>

@@ -1,0 +1,78 @@
+---
+/**
+ * Kur'an Okuma çalışma ekranı (10 Kasım 2026): «Dinleyin → sesli tekrar edin → dürüstçe işaretleyin». Hiçbir şey sunucuda seçilmez: hangi
+ * maddelerin geleceğini scripts/okuma-kart.ts cihazdaki ilerlemeden kurar (varsayılan: bugünkü çalışma; `?adim=o2` o adımdan yeni maddeler;
+ * `?ders=o2-d1` o dersin maddeleri). Yük `data-veri` ile gelir (lib/okuma-veri.ts); satır içi betik yok (CSP). JavaScript kapalıysa adım
+ * sayfalarındaki doğrudan ses bağlantılarına yönlendiren bir not görünür.
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import { dilListesi } from '@ortak/i18n/utils';
+import Ikon from '../../../components/Ikon.astro';
+import { okumaMetinleri } from '../../../i18n/okuma';
+import Taban from '../../../layouts/Taban.astro';
+import { okumaYuku } from '../../../lib/okuma-veri';
+import '../../../styles/ilim.css';
+import '../../../styles/yollar.css';
+import '../../../styles/okuma.css';
+
+export function getStaticPaths() {
+  return dilListesi.map((dil) => ({ params: { dil } }));
+}
+
+const dil = Astro.params.dil as Dil;
+const t = okumaMetinleri(dil);
+const k = t.kart;
+const yuk = okumaYuku(dil);
+---
+<Taban dil={dil} baslik={t.bugunBaslik} aciklama={t.bugunMetin} yol="okuma/bugun" noindex>
+  <div class="icerik yl-sayfa ok-sayfa ok-calis" data-okuma-calis data-veri={JSON.stringify(yuk)}>
+    <div><a class="yl-geri-baglanti" href={`/${dil}/okuma/`}><Ikon ad="geri" /> {t.geri}</a></div>
+    <header class="yl-bas">
+      <p class="iy-ust-yazi">{t.ad}</p>
+      <h1 data-baslik>{t.bugunBaslik}</h1>
+      <noscript><p class="yl-not">{t.js} <a href={`/${dil}/okuma/`}>{t.oturumGeri}</a></p></noscript>
+    </header>
+
+    <div class="ok-ilerleme" role="group" aria-label={k.ilerleme}>
+      <progress data-ilerleme max="1" value="0"></progress>
+      <p class="ok-sayac" data-sayac></p>
+    </div>
+
+    <article class="ok-kart" data-kart hidden aria-labelledby="ok-ar">
+      <p class="ok-rozet" data-rozet></p>
+      <p class="ok-ar" id="ok-ar" lang="ar" dir="rtl" data-ar></p>
+      <p class="ok-etiket" data-etiket></p>
+      <div class="ok-ses">
+        <button class="dugme birincil ok-dinle" type="button" data-dinle>
+          <Ikon ad="cal" sinif="ikon-cal" /><Ikon ad="durdur" sinif="ikon-dur" /><span data-dinle-yazi>{k.dinle}</span>
+        </button>
+        <button class="dugme ikincil" type="button" data-yavas aria-pressed="false">{k.yavas}</button>
+      </div>
+      <p class="ok-yonerge">{k.yonerge}</p>
+      <div class="ok-isaretler" role="group" aria-label={k.yonerge}>
+        <button class="dugme birincil" type="button" data-sonuc="tam"><Ikon ad="onay" /> {k.dogru}</button>
+        <button class="dugme ikincil" type="button" data-sonuc="az">{k.takildim}</button>
+        <button class="dugme ikincil" type="button" data-sonuc="tekrar">{k.tekrar}</button>
+      </div>
+      <p class="ok-kisayol">{k.kisayol}</p>
+      <button class="dugme ikincil kucuk ok-bitir" type="button" data-bitir>{k.bitir}</button>
+    </article>
+
+    <section class="ok-bitti" data-bitti hidden aria-live="polite">
+      <h2 data-bitti-baslik>{k.sonuc}</h2>
+      <p data-bitti-metin></p>
+      <div class="ok-bitti-eylem">
+        <a class="dugme birincil" href={`/${dil}/okuma/`}>{t.oturumGeri} <Ikon ad="ok" /></a>
+        <button class="dugme ikincil" type="button" data-yeniden hidden>{k.yeniden}</button>
+      </div>
+    </section>
+
+    <p class="ok-durum" role="status" aria-live="polite" data-durum></p>
+    <p class="yl-not">{t.sinirNot}</p>
+  </div>
+</Taban>
+
+<script>
+  import '../../../scripts/dil';
+  import '../../../scripts/okuma-kart';
+</script>

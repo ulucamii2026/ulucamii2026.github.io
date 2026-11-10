@@ -1,0 +1,9 @@
+---
+/**
+ * Bir «Abdest ve Namaz» çizimi (10 Kasım 2026): sayfanın gizli sembol setinden (lib/ibadet-cizim.ts `sembolSeti`) `<use>` ile çağrılır.
+ * `alt` verilirse çizim bir resimdir (`role="img"` + `aria-label`); verilmezse süstür ve ekran okuyucudan gizlenir.
+ */
+interface Props { ad: string; alt?: string; sinif?: string }
+const { ad, alt, sinif = '' } = Astro.props;
+---
+<svg class:list={['ib-cizim', sinif]} viewBox="0 0 240 240" focusable="false" role={alt ? 'img' : undefined} aria-label={alt} aria-hidden={alt ? undefined : 'true'}><use href={`#ib-${ad}`} /></svg>

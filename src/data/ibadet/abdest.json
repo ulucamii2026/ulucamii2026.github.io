@@ -1,0 +1,245 @@
+{
+  "konu": "abdest",
+  "etiket": {
+    "tr": "Diyanet İlmihali'ne göre (Hanefî)",
+    "fr": "D’après l’İlmihal (manuel) de la Diyanet (rite hanafite)",
+    "en": "According to the Diyanet İlmihal (Hanafi school)",
+    "nl": "Volgens de Diyanet-İlmihal (hanafitisch)",
+    "de": "Nach dem Diyanet-İlmihal (hanafitisch)"
+  },
+  "kaynak": [
+    {
+      "eser": "Diyanet İlmihali",
+      "cilt": 1,
+      "dosya": "05-temizlik.md",
+      "sayfa": "s. 197-201"
+    }
+  ],
+  "terimler": {
+    "farz": {
+      "tr": "farz",
+      "fr": "obligatoire (fard)",
+      "en": "obligatory (fard)",
+      "nl": "verplicht (fard)",
+      "de": "Pflicht (Fard)"
+    },
+    "sunnet": {
+      "tr": "sünnet",
+      "fr": "sunna",
+      "en": "sunnah",
+      "nl": "sunna",
+      "de": "Sunna"
+    },
+    "adab": {
+      "tr": "âdâp",
+      "fr": "bonne conduite (adab)",
+      "en": "etiquette (adab)",
+      "nl": "fatsoensnorm (adab)",
+      "de": "Anstand (Adab)"
+    }
+  },
+  "adimlar": [
+    {
+      "id": "ab-01",
+      "sira": 1,
+      "tur": "adab",
+      "metin": {
+        "tr": "Su elbiseye sıçramayacak bir yerde durulur; mümkünse kıbleye dönülür.",
+        "fr": "Se placer là où l’eau n’éclabousse pas les vêtements ; si possible, se tourner vers la qibla.",
+        "en": "Stand where the water will not splash on the clothes; if possible, face the qibla.",
+        "nl": "Op een plek staan waar het water de kleding niet bespat; indien mogelijk naar de qibla gericht.",
+        "de": "Sich so hinstellen, dass das Wasser die Kleidung nicht bespritzt; wenn möglich zur Kibla gewandt."
+      },
+      "ikon": "ui-kible",
+      "kaynakNo": "s. 200"
+    },
+    {
+      "id": "ab-02",
+      "sira": 2,
+      "tur": "sunnet",
+      "metin": {
+        "tr": "Niyet edilip besmele çekilerek abdeste başlanır.",
+        "fr": "Commencer les ablutions (woudou’) avec l’intention et la basmala.",
+        "en": "Begin the ablution (wudu) with the intention and the basmala.",
+        "nl": "De wassing (woedoe) beginnen met de intentie en de basmala.",
+        "de": "Die Waschung (Wudu) mit der Absicht und der Basmala beginnen."
+      },
+      "ikon": "abdest-niyet",
+      "kaynakNo": "s. 200",
+      "kaynakNolar": [
+        "s. 198",
+        "s. 200"
+      ]
+    },
+    {
+      "id": "ab-03",
+      "sira": 3,
+      "tur": "sunnet",
+      "metin": {
+        "tr": "Eller bileklere kadar üç defa yıkanır; parmak araları ovuşturulur.",
+        "fr": "Laver les mains jusqu’aux poignets, trois fois, en frottant entre les doigts.",
+        "en": "Wash the hands up to the wrists three times, rubbing between the fingers.",
+        "nl": "De handen driemaal tot aan de polsen wassen en tussen de vingers wrijven.",
+        "de": "Die Hände dreimal bis zu den Handgelenken waschen und zwischen den Fingern reiben."
+      },
+      "ikon": "abdest-eller",
+      "kaynakNo": "s. 200"
+    },
+    {
+      "id": "ab-04",
+      "sira": 4,
+      "tur": "sunnet",
+      "metin": {
+        "tr": "Dişler misvak veya diş fırçasıyla temizlenir; yoksa sağ elin parmaklarıyla.",
+        "fr": "Nettoyer les dents avec un siwak ou une brosse à dents, à défaut avec les doigts de la main droite.",
+        "en": "Clean the teeth with a miswak or a toothbrush, or with the fingers of the right hand if there is none.",
+        "nl": "De tanden reinigen met een miswak of tandenborstel, of anders met de vingers van de rechterhand.",
+        "de": "Die Zähne mit einem Miswak oder einer Zahnbürste reinigen, sonst mit den Fingern der rechten Hand."
+      },
+      "ikon": "abdest-dis",
+      "kaynakNo": "s. 200"
+    },
+    {
+      "id": "ab-05",
+      "sira": 5,
+      "tur": "sunnet",
+      "metin": {
+        "tr": "Sağ avuca alınan suyla ağız üç defa çalkalanır.",
+        "fr": "Se rincer la bouche trois fois avec l’eau prise dans la paume de la main droite.",
+        "en": "Rinse the mouth three times with water taken in the right palm.",
+        "nl": "De mond driemaal spoelen met water uit de rechterhandpalm.",
+        "de": "Den Mund dreimal mit Wasser aus der rechten Handfläche ausspülen."
+      },
+      "ikon": "abdest-agiz",
+      "kaynakNo": "s. 200"
+    },
+    {
+      "id": "ab-06",
+      "sira": 6,
+      "tur": "sunnet",
+      "metin": {
+        "tr": "Burna üç defa su çekilir, burun sol elle temizlenir.",
+        "fr": "Aspirer de l’eau dans le nez trois fois et le nettoyer avec la main gauche.",
+        "en": "Sniff water into the nose three times and clean the nose with the left hand.",
+        "nl": "Driemaal water in de neus optrekken en de neus met de linkerhand reinigen.",
+        "de": "Dreimal Wasser in die Nase ziehen und die Nase mit der linken Hand reinigen."
+      },
+      "ikon": "abdest-burun",
+      "kaynakNo": "s. 200"
+    },
+    {
+      "id": "ab-07",
+      "sira": 7,
+      "tur": "farz",
+      "metin": {
+        "tr": "Yüz üç kere yıkanır: saç bitim yerinden çenenin sona erdiği yere kadar, iki kulak yumuşağı arasında. Farz olan birer defadır; üçe tamamlamak sünnettir.",
+        "fr": "Laver le visage trois fois : de la racine des cheveux au menton, entre les deux lobes des oreilles. Le fard est une seule fois ; compléter jusqu’à trois est sunna.",
+        "en": "Wash the face three times: from the hairline to the chin, between the two earlobes. The fard is once; completing it to three is sunnah.",
+        "nl": "Het gezicht driemaal wassen: van de haargrens tot de kin, tussen de twee oorlellen. Het fard is eenmaal; aanvullen tot driemaal is sunna.",
+        "de": "Das Gesicht dreimal waschen: vom Haaransatz bis zum Kinn, zwischen den beiden Ohrläppchen. Das Fard ist einmal; auf dreimal zu ergänzen ist Sunna."
+      },
+      "ikon": "abdest-yuz",
+      "kaynakNo": "s. 200",
+      "kaynakNolar": [
+        "s. 197",
+        "s. 200"
+      ]
+    },
+    {
+      "id": "ab-08",
+      "sira": 8,
+      "tur": "farz",
+      "metin": {
+        "tr": "Önce sağ kol, sonra sol kol, dirsekle birlikte üçer defa yıkanır. Farz olan birer defadır; üçe tamamlamak sünnettir.",
+        "fr": "Laver le bras droit puis le bras gauche, coude compris, trois fois chacun. Le fard est une seule fois ; compléter jusqu’à trois est sunna.",
+        "en": "Wash the right arm, then the left arm, each three times, including the elbow. The fard is once; completing it to three is sunnah.",
+        "nl": "Eerst de rechter-, dan de linkerarm, elk driemaal, inclusief de elleboog wassen. Het fard is eenmaal; aanvullen tot driemaal is sunna.",
+        "de": "Zuerst den rechten, dann den linken Arm je dreimal samt dem Ellbogen waschen. Das Fard ist einmal; auf dreimal zu ergänzen ist Sunna."
+      },
+      "ikon": "abdest-kollar",
+      "kaynakNo": "s. 200",
+      "kaynakNolar": [
+        "s. 197",
+        "s. 200"
+      ]
+    },
+    {
+      "id": "ab-09",
+      "sira": 9,
+      "tur": "farz",
+      "metin": {
+        "tr": "Islak elle başın üstü bir defa meshedilir. Başın dörtte biri yeterlidir; tamamını meshetmek sünnettir.",
+        "fr": "Essuyer le dessus de la tête une fois avec la main mouillée (mesh). Un quart de la tête suffit ; essuyer toute la tête est sunna.",
+        "en": "Wipe (masah) the top of the head once with the wet hand. A quarter of the head is enough; wiping all of it is sunnah.",
+        "nl": "Met de natte hand eenmaal over het hoofd strijken (mash). Een kwart van het hoofd volstaat; het hele hoofd is sunna.",
+        "de": "Mit der nassen Hand einmal über den Kopf streichen (Masah). Ein Viertel des Kopfes genügt; den ganzen Kopf zu bestreichen ist Sunna."
+      },
+      "ikon": "abdest-bas",
+      "kaynakNo": "s. 200",
+      "kaynakNolar": [
+        "s. 197",
+        "s. 200"
+      ]
+    },
+    {
+      "id": "ab-10",
+      "sira": 10,
+      "tur": "sunnet",
+      "metin": {
+        "tr": "Kulaklar meshedilir: dışı baş parmakla, içi şahadet parmağı veya serçe parmakla.",
+        "fr": "Essuyer les oreilles : l’extérieur avec le pouce, l’intérieur avec l’index ou l’auriculaire.",
+        "en": "Wipe the ears: the outside with the thumb, the inside with the index finger or the little finger.",
+        "nl": "De oren afstrijken: de buitenkant met de duim, de binnenkant met de wijsvinger of pink.",
+        "de": "Die Ohren bestreichen: außen mit dem Daumen, innen mit dem Zeigefinger oder kleinen Finger."
+      },
+      "ikon": "abdest-kulak",
+      "kaynakNo": "s. 201"
+    },
+    {
+      "id": "ab-11",
+      "sira": 11,
+      "tur": "sunnet",
+      "metin": {
+        "tr": "İki elin arkasıyla boyun meshedilir.",
+        "fr": "Essuyer le cou avec le dos des deux mains.",
+        "en": "Wipe the neck with the backs of both hands.",
+        "nl": "De nek met de rug van beide handen afstrijken.",
+        "de": "Den Nacken mit den Handrücken beider Hände bestreichen."
+      },
+      "ikon": "abdest-boyun",
+      "kaynakNo": "s. 201"
+    },
+    {
+      "id": "ab-12",
+      "sira": 12,
+      "tur": "farz",
+      "metin": {
+        "tr": "Önce sağ, sonra sol ayak, topuk ve aşık kemikleriyle birlikte yıkanır; parmak aralarına özen gösterilir.",
+        "fr": "Laver le pied droit puis le gauche, des orteils aux talons et aux chevilles, en soignant les espaces entre les orteils.",
+        "en": "Wash the right foot, then the left, starting from the toes, including the heels and ankle bones, taking care between the toes.",
+        "nl": "Eerst de rechter-, dan de linkervoet wassen, vanaf de tenen, inclusief hielen en enkelbeenderen; let op de ruimtes tussen de tenen.",
+        "de": "Zuerst den rechten, dann den linken Fuß von den Zehen an waschen, samt Fersen und Knöcheln; auf die Zehenzwischenräume achten."
+      },
+      "ikon": "abdest-ayak",
+      "kaynakNo": "s. 201",
+      "kaynakNolar": [
+        "s. 197",
+        "s. 201"
+      ]
+    },
+    {
+      "id": "ab-13",
+      "sira": 13,
+      "tur": "adab",
+      "metin": {
+        "tr": "Abdestten sonra kelime-i şehâdet okunur.",
+        "fr": "Après les ablutions, réciter la profession de foi (chahada).",
+        "en": "After the ablution, recite the declaration of faith (shahadah).",
+        "nl": "Na de wassing de geloofsgetuigenis (sjahada) uitspreken.",
+        "de": "Nach der Waschung das Glaubensbekenntnis (Schahada) sprechen."
+      },
+      "ikon": "abdest-sehadet",
+      "kaynakNo": "s. 201"
+    }
+  ]
+}
