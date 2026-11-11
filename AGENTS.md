@@ -46,6 +46,9 @@ kalıcı kuraldır; işlem günlüğü ayrı dosyada tutulur.
 - Form backend'i: `scripts/apps-script/`; yerel sürüm numarası canlı sürüm kanıtı değildir.
 - Kur'an kursu yıllık planı/müfredatı değişirse (24 Eylül 2026 kitap-sayfa revizyonu dahil) önce
   `docs/MUFREDAT-VE-YILLIK-PLAN.md`: plan JSON'u elle düzenlenmez; bağımlı dosyalar ve sıra oradadır.
+- egitim.ulucamii.be (İlim Yolu): main'deki ilgili push'lar `.github/workflows/egitim-yayinla.yml` ile kendiliğinden Hosting'e
+  gider (yalnız `hosting:ulucamii-egitim`, WIF kimliği). Yeni SES (git dışı) asla CI'dan girmez: önce yerelde
+  `npm run egitim:yayinla`. Ayrıntı: `docs/EGITIM-PLATFORMU.md` «Otomatik yayın».
 - `ulucamii-site` becerisini oku; hesap, içerik ve operasyon ayrıntılarında kullan.
   Özel tarihçe notlarında sır bulunabilir: yalnız gereken bölümü incele, kopyalama.
 - Arayüz/tasarım işinde `impeccable`; kütüphane API'sinde Context7;

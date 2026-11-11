@@ -1,0 +1,147 @@
+name: egitim yayını (İlim Yolu, Firebase Hosting)
+
+# 11 Kasım 2026. egitim.ulucamii.be yalnız ana depodaki veriden derlenir (kurs sayfaları, defter, yıllık plan, veli-veri bloğu);
+# bu iş akışı o kopyaların bayatlamasını önler. Ayrıntı, kurallar ve geri alma: docs/EGITIM-PLATFORMU.md «Otomatik yayın».
+#
+# Tetik:
+#  - push (main) + egitim'in derlemede okuduğu yollar: yerel/CMS/betik push'ları.
+#  - workflow_run: GITHUB_TOKEN ile atılan commit'ler (namaz vakitleri, bot) push iş akışlarını TETİKLEMEZ. Ana site yayını
+#    (zamanlanmış 2 koşu + «Yayını tetikle») bunları zaten kapsar; o yayın başarıyla biterse egitim de yenilenir. Push ile başlayan
+#    ana site yayınları atlanır (yol süzgeci egitim'e dokunan push'ları doğrudan yakalar). Bu, «bugün» hesabını da günlük tazeler.
+#  - workflow_dispatch: elle.
+# Güvenlik: yalnız bu depo ve main; çatal/PR yok; Hosting dışında hiçbir şey yayınlanmaz (--only hosting:ulucamii-egitim).
+on:
+  push:
+    branches: [main]
+    paths:
+      - "egitim/**"
+      - "src/lib/**"
+      - "src/i18n/**"
+      - "src/data/**"
+      - "src/styles/**"
+      - "src/scripts/**"
+      - "src/content/**"
+      - "public/data/**"
+      - "public/materyal/**"
+      - "public/portal/**"
+      - "public/veli/**"
+      - "public/media/ses/hadisler/**"
+      - "docs/okuma-ses-kaynaklari-egitim.json"
+      - "scripts/egitim-*"
+      - "scripts/okuma-*"
+      - "scripts/kart-ses-al.mjs"
+      - "tests/egitim/**"
+      - "firebase.json"
+      - ".firebaserc"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/egitim-yayinla.yml"
+  workflow_run:
+    workflows: ["Siteyi yayınla (GitHub Pages)"]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Yayınlar üst üste binmez; çalışan iptal edilmez (yarım Hosting yayını olmasın), bekleyen en yeniyle yer değiştirir.
+concurrency:
+  group: egitim-yayin
+  cancel-in-progress: false
+
+env:
+  FIREBASE_TOOLS: "15.33.0"
+  WIF_SAGLAYICI: projects/349745995690/locations/global/workloadIdentityPools/github-actions/providers/github-oidc
+  HIZMET_HESABI: egitim-ci-yayin@ulucamii-portal.iam.gserviceaccount.com
+
+jobs:
+  yayinla:
+    if: >-
+      github.repository == 'ulucamii2026/ulucamii2026.github.io' &&
+      github.ref == 'refs/heads/main' &&
+      (github.event_name != 'workflow_run' ||
+       (github.event.workflow_run.conclusion == 'success' &&
+        github.event.workflow_run.event != 'push' &&
+        github.event.workflow_run.head_repository.full_name == github.repository))
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Depoyu al
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 24
+          cache: npm
+      - name: Bağımlılıkları kur
+        run: npm ci
+
+      # Sesler git'te yok (≈ 116 MB). Canlı sitenin kendisinden geri alınır, manifest/künye ile bayt+sha256 doğrulanır;
+      # eksik ya da uyuşmayan tek dosya işi burada durdurur (aksi halde yayın canlıdaki sesleri silerdi).
+      - name: Ses önbelleği
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: egitim/public/media/ses
+          key: egitim-ses-${{ hashFiles('src/data/ilim-yolu/kart-ses.json', 'docs/okuma-ses-kaynaklari-egitim.json') }}
+      - name: Sesleri canlıdan geri al ve doğrula
+        run: node scripts/egitim-ses-getir.mjs
+
+      - name: Derle (ses bekçisi başta ve dist'te, astro check, build)
+        run: npm run egitim:build
+      - name: Derleme kapısı (dosya sayısı tabanı + zorunlu sayfalar)
+        run: node scripts/egitim-dist-denetle.mjs
+      # Tarayıcısız, ağsız, deterministik düğüm testleri (test:egitim'in node --test bölümü + CI kapıları). Playwright bölümü yerelde çalışır.
+      - name: Düğüm testleri
+        run: node --test tests/egitim/pano.test.mjs tests/egitim/barindirma.test.mjs tests/egitim/cevrimdisi.test.mjs tests/egitim/firebase-uyg.test.mjs tests/egitim/tasima-varlik.test.mjs tests/egitim/kurs-icerik.test.mjs tests/egitim/e-kodlar.test.mjs tests/egitim/ses-getir.test.mjs tests/egitim/dist-denetle.test.mjs
+      - name: Canlı denetim için tarayıcı
+        run: npx playwright install --with-deps chromium
+
+      # Kimlik: Workload Identity Federation (uzun ömürlü anahtar YOK). Sağlayıcı yalnız bu depo + refs/heads/main kabul eder.
+      - name: Google'a OIDC ile giriş
+        uses: google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093 # v3
+        with:
+          workload_identity_provider: ${{ env.WIF_SAGLAYICI }}
+          service_account: ${{ env.HIZMET_HESABI }}
+          project_id: ulucamii-portal
+      - name: Hosting'e yayınla (yalnız hosting:ulucamii-egitim)
+        run: npx --yes firebase-tools@${FIREBASE_TOOLS} deploy --only hosting:ulucamii-egitim --project ulucamii-portal --non-interactive --message "CI ${GITHUB_SHA::8} (${GITHUB_EVENT_NAME})"
+
+      - name: Canlı denetim (egitim:canli)
+        run: node scripts/egitim-canli-denetim.mjs https://egitim.ulucamii.be
+      - name: Canlıdaki tüm sesler yerinde mi (bayt + sha256)
+        run: node scripts/egitim-ses-getir.mjs --hedef "$RUNNER_TEMP/canli-ses"
+
+  # Yayın zinciri sessizce kırılmasın (deploy.yml'deki uyarı ile aynı kalıp: Date + Message-ID başlıkları şart).
+  uyari:
+    needs: yayinla
+    if: failure()
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Başarısızsa uyarı e-postası (info@ulucamii.be)
+        env:
+          SMTP_SIFRE: ${{ secrets.SMTP_SIFRE }}
+        run: |
+          {
+            echo "From: Ulu Camii Site Denetimi <info@ulucamii.be>"
+            echo "Date: $(date -R)"
+            echo "Message-ID: <$(uuidgen)@ulucamii.be>"
+            echo "To: info@ulucamii.be"
+            echo "Subject: [UYARI] egitim yayini basarisiz"
+            echo "Content-Type: text/plain; charset=utf-8"
+            echo
+            echo "egitim.ulucamii.be otomatik yayin zinciri basarisiz oldu."
+            echo "Hosting'e yayin ONCESI bir kapi dustuyse canli surum DEGISMEDI."
+            echo "Yayin SONRASI denetim dustuyse canli surum degismis olabilir: kaydi acin, gerekirse Firebase Hosting'te onceki surume donun."
+            echo "Kurslarin guncel verisi (gunluk, materyal, plan) egitim'e cikmaz; elle: npm run egitim:yayinla."
+            echo
+            echo "Kayit: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          } > /tmp/uyari.txt
+          curl -s --url "smtps://smtp.purelymail.com:465" --ssl-reqd \
+            --mail-from "info@ulucamii.be" --mail-rcpt "info@ulucamii.be" \
+            --user "info@ulucamii.be:$SMTP_SIFRE" --upload-file /tmp/uyari.txt

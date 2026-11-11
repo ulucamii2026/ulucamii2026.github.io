@@ -354,6 +354,12 @@ Uygulama düzeni:
 - **Metin doğrulaması** (`--dogrula --kuran <kuran_arapca.json>`; tam Kur'an metni depo dışı: `D:\app\Ihtisas2027\data-prep\kaynak\`): Arapça metin Diyanet kaydından OLDUĞU GİBİ alındı. Kanonik karşılaştırma yalnız yazılış biçimini eler (elif/hemze, hançer elif, işaret kodlaması); ünsüz/hareke/şedde/sükûn farkı eşitsizliktir. Âyetler Ezber Kilimi metniyle sıkı kipte karşılaştırıldı (Bakara 1–5 için depoda kaynak yok: tam metne karşı). Tecvid «yazılışı» örnekleri tam metinde kelime sınırlarında aranıp sûre:âyet'i kaydedildi; «okunuşu» maddeleri eşiyle ≤ 3 harf farkla DOLAYLI kabul edildi (Kur'an'da aynen geçmez); hurûf-u mukattaa sûre başlangıçlarıyla ve harf adı açılımıyla.
 - **Alınmayanlar:** 156 tecvid örneğinden 51'i (23 maddede Arapça metin yok; 14 «Mushaflarda yer alan işaretler» maddesinin metni Türkçe açıklama; 12 «tenvinli kelimelerden geçiş» fonetik yeniden yazım; 1 zamir ve 1 lâzım örneği tam metinde bulunamadı). Ayrıca Bakara 1–141 (metin kaynağı yok), 115 Türkçe ders sesi, 25 etiket sesi, ihfâ/idğâm/iklâb/kalkale uygulamalarının 43 âyet parçası (sonraki tur adayı).
 
+## Durum (11 Kasım 2026): egitim OTOMATİK YAYIN (P7 öncesi engel kalktı)
+
+- `.github/workflows/egitim-yayinla.yml`: main'de egitim'i ilgilendiren push'ta, başarılı ana site yayınından sonra (zamanlanmış/namaz tetikli koşular) ve elle derler, kapılardan geçirir, Hosting'e (`hosting:ulucamii-egitim`, başka hiçbir şey) yayınlar ve canlıyı denetler. Kimlik: Workload Identity Federation, JSON anahtar yok. Tüm kurallar, IAM nesneleri ve geri alma: `docs/EGITIM-PLATFORMU.md` «Otomatik yayın».
+- **Kural:** sesler (≈ 116 MB, git dışı) CI'da canlı siteden geri alınıp manifestle doğrulanır; yeni ses her zaman ÖNCE yerelde `npm run egitim:yayinla` ile girer. Kart sesi ve okuma sesi bölümlerindeki «geri getirme» yolu yerel yoldur; CI yolu yalnız mevcut sesleri korur.
+- Kanıt ve çalıştırma kayıtları: `docs/YAYIN-KAYITLARI.md` 11 Kasım.
+
 ## Durum (10 Kasım 2026 gece, altıncı): Dilim 4 P5a+P5b+P6 — kurs sayfaları ve `/e/` egitim'de AÇIK (bağlantısız)
 
 - Duyurusuz, eklemeli: `egitim.ulucamii.be/<dil>/kurs/` (+ `mufredat/`, `yillik-plan/`, `materyaller/`, `gunluk/`) ve `/e/` + 74 basılı kodun `/e/<kod>/` sayfaları canlı; `noindex`, robots Disallow (`/*/kurs/`, `/e/`), haritada ve SW önbelleğinde yok, hiçbir yerden bağlı değil. Kanonik adres ulucamii.be'deki asıl sayfa (`Taban` `kanonik` özelliği). ulucamii.be'de hiçbir şey değişmedi (yönlendirme, kaldırma, bağlantı yok); basılı karekodlar orada aynen çalışır.
