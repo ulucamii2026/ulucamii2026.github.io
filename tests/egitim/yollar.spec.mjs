@@ -58,6 +58,7 @@ test.describe('bilgi kartı ve mini sınav', () => {
   });
 
   test('sorusuz kart: sınav yok notu, öğrendim yine çalışır', async ({ page }) => {
+    test.skip(!SORUSUZ, 'her kartın mini sorusu var (11 Kasım 2026); sorusuz kart kalmadı');
     await page.goto(`/tr/ogren/${SORUSUZ.id}/`);
     await expect(page.locator('.yl-sinav')).toContainText('mini sorusu yok');
     await expect(page.locator('[data-kontrol]')).toHaveCount(0);
