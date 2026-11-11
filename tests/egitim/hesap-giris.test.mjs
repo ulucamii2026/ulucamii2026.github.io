@@ -267,3 +267,33 @@ test('oturum kendiliğinden düşerse yalnız işaret kalkar, cihaz kopyası kor
   durdur();
   assert.equal(k.dinleyici, null);
 });
+
+test('çıkış: bilgi, okuma ve ibadet cihaz kopyaları ÖNCE buluta gider, sonra silinir; anonim kopyalar kalır; eşitlenemezse hiçbiri silinmez', async () => {
+  const k = (ad, ozet) => `ulucamii:${ad}:cihaz:v1:u:${ozet}`;
+  const ANONIM = { bilgi: 'ulucamii:bilgi:cihaz:v1', okuma: 'ulucamii:okuma:cihaz:v1', ibadet: 'ulucamii:ibadet:cihaz:v1' };
+  const dolu = () => new BellekDepo({
+    [k('bilgi', OZET)]: JSON.stringify({ v: 1, maddeler: { kuran: '13' } }),
+    [k('okuma', OZET)]: JSON.stringify({ v: 1, maddeler: { o1: '1ab' } }),
+    [k('ibadet', OZET)]: JSON.stringify({ v: 1, maddeler: { abdest: '33' } }),
+    [ANONIM.bilgi]: JSON.stringify({ v: 1, maddeler: { itikat: '1' } }),
+    [ANONIM.okuma]: JSON.stringify({ v: 1, maddeler: { o2: '2cd' } }),
+    [ANONIM.ibadet]: JSON.stringify({ v: 1, maddeler: { namaz: '1' } }),
+    [m.OTURUM_ANAHTARI]: OZET,
+  });
+  // Eşitlenemez (çevrim dışı): hiçbir kopya silinmez, çıkış engellenir.
+  const d1 = dolu();
+  const s1 = sahteFirebase();
+  assert.deepEqual(await m.cikisYap(s1.f, { depo: d1, cevrimici: () => false }), { ok: false, neden: 'esitlenmedi' });
+  for (const ad of ['bilgi', 'okuma', 'ibadet']) assert.ok(d1.getItem(k(ad, OZET)), `${ad} kopyası kaldı`);
+  // Eşitlenir: buluta gider, cihaz kopyaları kalkar, anonim olanlar durur.
+  const d2 = dolu();
+  const s2 = sahteFirebase();
+  assert.deepEqual(await m.cikisYap(s2.f, { depo: d2, cevrimici: () => true }), { ok: true });
+  assert.deepEqual(s2.bulut.get('kullanicilar/u-deneme-1/calisma/bilgi').maddeler, { kuran: '13' });
+  assert.deepEqual(s2.bulut.get('kullanicilar/u-deneme-1/calisma/okuma').maddeler, { o1: '1ab' });
+  assert.deepEqual(s2.bulut.get('kullanicilar/u-deneme-1/calisma/ibadet').maddeler, { abdest: '33' });
+  for (const ad of ['bilgi', 'okuma', 'ibadet']) {
+    assert.equal(d2.getItem(k(ad, OZET)), null, `${ad} hesap kopyası silindi`);
+    assert.ok(d2.getItem(ANONIM[ad]), `${ad} anonim kopya kaldı`);
+  }
+});
