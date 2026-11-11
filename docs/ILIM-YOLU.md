@@ -354,6 +354,13 @@ Uygulama düzeni:
 - **Metin doğrulaması** (`--dogrula --kuran <kuran_arapca.json>`; tam Kur'an metni depo dışı: `D:\app\Ihtisas2027\data-prep\kaynak\`): Arapça metin Diyanet kaydından OLDUĞU GİBİ alındı. Kanonik karşılaştırma yalnız yazılış biçimini eler (elif/hemze, hançer elif, işaret kodlaması); ünsüz/hareke/şedde/sükûn farkı eşitsizliktir. Âyetler Ezber Kilimi metniyle sıkı kipte karşılaştırıldı (Bakara 1–5 için depoda kaynak yok: tam metne karşı). Tecvid «yazılışı» örnekleri tam metinde kelime sınırlarında aranıp sûre:âyet'i kaydedildi; «okunuşu» maddeleri eşiyle ≤ 3 harf farkla DOLAYLI kabul edildi (Kur'an'da aynen geçmez); hurûf-u mukattaa sûre başlangıçlarıyla ve harf adı açılımıyla.
 - **Alınmayanlar:** 156 tecvid örneğinden 51'i (23 maddede Arapça metin yok; 14 «Mushaflarda yer alan işaretler» maddesinin metni Türkçe açıklama; 12 «tenvinli kelimelerden geçiş» fonetik yeniden yazım; 1 zamir ve 1 lâzım örneği tam metinde bulunamadı). Ayrıca Bakara 1–141 (metin kaynağı yok), 115 Türkçe ders sesi, 25 etiket sesi, ihfâ/idğâm/iklâb/kalkale uygulamalarının 43 âyet parçası (sonraki tur adayı).
 
+## Durum (11 Kasım 2026, öğleden sonra): ana sayfada kişisel yol, egitim gizlilik sayfası, Kur'an kartlarına mini sınav CANLI
+
+- Ana sayfa (girişli): Bugün = en son çalışılan kart yolunun sıradaki kartı; Kaldığınız yer ve Yolunuz Ezber/kart yolu arasında en yeniye gider; başlanmış 5 plan yolu kartı (kilim şeridi) ve rozet sayısı. Cihazdaki «son kart» kaydı (`ulucamii:bilgi:son:v1`) yalnız cihazda, çıkışta silinir. Yeni Müslüman yolu ana sayfada iz bırakmaz (testle sabit). Ziyaretçi görünümü değişmedi.
+- `/<dil>/gizlilik/`: `src/content/sayfalar/<dil>/gizlilik.md` tek kaynak (`src/lib/gizlilik-bolumleri.ts` iki dilim keser; çapa düşerse derleme ve `tests/egitim/gizlilik-bolum.test.mjs` kırılır). Dizine girer, kendi kanonik adresi var; alt bilgi, hesap ve kayıt sayfaları buraya bağlanır.
+- 75 `ku-*` kartına 93 mini soru (5 dil, 3 şıklı); artık sorusuz kart yok. Kaynak alanı «claude»; terimler imam onayında.
+- Canlı: egitim:canli 110/110; ayrıntı ve koşu bağlantıları `YAYIN-KAYITLARI.md`.
+
 ## Durum (11 Kasım 2026, akşam): güvenlik ve gizlilik gözden geçirmesinin kalanı (G-03…G-12)
 
 Kaynak: `D:	mpilim-yolu-arastirmaguvenlik-gizlilik-gozden-gecirme-20261111.md`. Daha önce kapananlar: G-01 (iş bölme), G-02, G-04, G-13, G-14, G-15. Her madde ayrı commit.
