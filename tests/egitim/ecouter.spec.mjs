@@ -35,12 +35,12 @@ test.beforeEach(async ({ context }) => {
 const tasmaYok = (page) => page.evaluate(() => document.documentElement.scrollWidth <= innerWidth);
 
 for (const yol of ['/e/', '/e/fatiha/', '/e/alphabet/']) {
-  test(`${yol}: Fransızca, noindex, kanonik ulucamii.be, CSP 0, taşmasız, iki temada axe`, async ({ page }) => {
+  test(`${yol}: Fransızca, dizine açık, kanonik egitim, CSP 0, taşmasız, iki temada axe`, async ({ page }) => {
     const yanit = await page.goto(yol);
     expect(yanit.status()).toBe(200);
     await expect(page.locator('html')).toHaveAttribute('lang', /^fr/);
-    await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /noindex/);
-    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://ulucamii.be${yol}`);
+    await expect(page.locator('meta[name="robots"][content*="noindex"]')).toHaveCount(0);
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://egitim.ulucamii.be${yol}`);
     await expect(page.locator('main h1')).toHaveCount(1);
     await expect(page.locator('.ec-sayfa')).toBeVisible();
     await page.evaluate(() => document.fonts.ready);

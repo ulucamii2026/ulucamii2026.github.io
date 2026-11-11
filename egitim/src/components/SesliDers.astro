@@ -44,11 +44,13 @@ const yedekler = [
   ...ogeler.map((p, i) => ({ ad: parcaAdi(p, i + 1, true), ses: p.ses })),
 ].filter((y): y is { ad: string; ses: string } => Boolean(y.ses));
 const surumVar = veri.surum;
-/* Basılı karekodlar ulucamii.be/e/<kod>/ adresindedir ve orada kalır; egitim'deki sayfa şimdilik ikinci bir yoldur (kanonik: ulucamii.be). Sesler de ulucamii.be'den gelir. */
+/* Basılı karekodlar ulucamii.be/e/<kod>/ adresine gider ve oradaki yönlendirme sayfası egitim'e yollar (Dilim 4 geçişi): asıl adres burasıdır (dizine açık, kanonik kendi adresi).
+   Yalnız ulucamii.be'ye yönlenen kod (`test` → seviye testi) noindex kalır ve eski kanonik adresini korur. Sesler ulucamii.be'den gelir. */
 const hedef = icerik.yonlendir ? ANA_SITE + icerik.yonlendir : '';
+const kanonik = hedef ? `${ANA_SITE}/e/${kod}/` : new URL(`/e/${kod}/`, Astro.site).toString();
 const sesYolu = (y: string) => ANA_SITE + y;
 ---
-<Taban dil={dil} baslik={icerik.baslik} aciklama={aciklama} noindex kanonik={`${ANA_SITE}/e/${kod}/`}>
+<Taban dil={dil} baslik={icerik.baslik} aciklama={aciklama} noindex={Boolean(hedef)} kanonik={kanonik}>
   <Fragment slot="head">
     <link rel="manifest" href="/manifest.webmanifest" />
     <script is:inline src="/ecouter/js-isareti.js"></script>

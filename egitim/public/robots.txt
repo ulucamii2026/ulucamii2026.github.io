@@ -2,7 +2,5 @@ User-agent: *
 Allow: /
 Disallow: /hoca/
 Disallow: /*/veli/
-Disallow: /*/kurs/
-Disallow: /e/
 
 Sitemap: https://egitim.ulucamii.be/sitemap-index.xml

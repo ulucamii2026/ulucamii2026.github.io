@@ -156,10 +156,15 @@ test('Site haritası: beş dil sayfası ve hreflang; kök yönlendirme ve 404 yo
   assert.match(readFileSync(dist('sitemap-index.xml'), 'utf8'), /<loc>https:\/\/egitim\.ulucamii\.be\/sitemap-0\.xml<\/loc>/);
   const harita = readFileSync(dist('sitemap-0.xml'), 'utf8');
   const adresler = [...harita.matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, a]) => a).sort();
-  assert.deepEqual(adresler, dilYollari.map((y) => `${SITE}/${y}`).sort());
+  // Dilim 4 geçişi: kurs sayfaları (5 dil × 5) ve basılı karekod sesli dersleri (73 + dizin; `test` kodu hariç) haritadadır; veli/hoca değildir.
+  const kursHarita = DILLER.flatMap((d) => ['kurs/', 'kurs/mufredat/', 'kurs/yillik-plan/', 'kurs/materyaller/', 'kurs/gunluk/'].map((y) => `${d}/${y}`));
+  const eHarita = ['e/', ...JSON.parse(oku('tests/fixtures/e-kodlari-basili.json')).kodlar.filter((k) => k !== 'test').map((k) => `e/${k}/`)];
+  assert.deepEqual(adresler, [...dilYollari, ...kursHarita, ...eHarita].map((y) => `${SITE}/${y}`).sort());
   for (const url of harita.split('<url>').slice(1)) {
     const diller = [...url.matchAll(/hreflang="([^"]+)"/g)].map(([, h]) => h);
-    assert.deepEqual(diller, ['tr', 'fr-BE', 'en', 'nl-BE', 'de-BE', 'x-default']);
+    // /e/ sayfaları tek dillidir (Fransızca) ve dil öneki taşımaz: hreflang kümesi yok.
+    if (url.includes(`<loc>${SITE}/e/`)) assert.deepEqual(diller, [], 'e/: hreflang yok');
+    else assert.deepEqual(diller, ['tr', 'fr-BE', 'en', 'nl-BE', 'de-BE', 'x-default']);
   }
   assert.match(oku('egitim/public/robots.txt'), /^Sitemap: https:\/\/egitim\.ulucamii\.be\/sitemap-index\.xml$/m);
 });

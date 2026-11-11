@@ -25,7 +25,7 @@ const tasmaYok = (page) => page.evaluate(() => document.documentElement.scrollWi
 
 for (const dil of DILLER) {
   for (const s of SAYFALAR) {
-    test(`${dil}/kurs/${s}: noindex, kanonik ulucamii.be, bloklar, CSP 0, konsol 0, taşmasız${AXE(dil, s) ? ', iki temada axe' : ''}`, async ({ page }) => {
+    test(`${dil}/kurs/${s}: dizine açık, kanonik egitim + hreflang, bloklar, CSP 0, konsol 0, taşmasız${AXE(dil, s) ? ', iki temada axe' : ''}`, async ({ page }) => {
       const hatalar = [];
       page.on('pageerror', (e) => hatalar.push(e.message));
       page.on('console', (m) => { if (m.type() === 'error' && !/net::ERR_FAILED|Failed to load resource/.test(m.text())) hatalar.push(m.text()); });
@@ -34,9 +34,9 @@ for (const dil of DILLER) {
       const yanit = await page.goto(`/${dil}/kurs/${s}`);
       expect(yanit.status()).toBe(200);
       await expect(page.locator('html')).toHaveAttribute('lang', new RegExp(`^${dil}`));
-      await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /noindex/);
-      await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', new RegExp(`^https://ulucamii\\.be/${dil}/[a-z-]+/$`));
-      await expect(page.locator('link[rel="alternate"][hreflang]')).toHaveCount(0);
+      await expect(page.locator('meta[name="robots"][content*="noindex"]')).toHaveCount(0);
+      await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', new RegExp(`^https://egitim\\.ulucamii\\.be/${dil}/kurs/[a-z-/]*$`));
+      await expect(page.locator('link[rel="alternate"][hreflang]')).toHaveCount(6);
       await expect(page.locator('main h1')).toHaveCount(1);
       await expect(page.locator('main h1')).toBeVisible();
       await expect(page.locator('main h2').first()).toBeAttached();

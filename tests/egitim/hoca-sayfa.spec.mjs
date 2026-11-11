@@ -31,7 +31,7 @@ test('/hoca/: noindex, hoca-veri biçimi, giriş ekranı, CSP 0, taşmasız, iki
   expect(Object.keys(veri).sort()).toEqual(['ceviriUcu', 'donem', 'gunler', 'materyalGunleri', 'materyalYolu', 'veliYollari']);
   expect(veri.ceviriUcu).toMatch(/^https:\/\/script\.google\.com\/macros\/s\/[\w-]+\/exec$/);
   expect(veri.veliYollari).toEqual({ tr: '/tr/veli/', fr: '/fr/veli/', en: '/en/veli/', nl: '/nl/veli/', de: '/de/veli/' });
-  expect(veri.materyalYolu).toMatch(/^https:\/\/ulucamii\.be\//);
+  expect(veri.materyalYolu).toBe('/tr/kurs/materyaller/'); // Dilim 4 / P7b: ders materyalleri artık egitim'de
   expect(veri.gunler.length).toBeGreaterThan(20);
 
   await expect(page.locator('#hoca-ekrani form[data-form="giris"]')).toBeVisible();

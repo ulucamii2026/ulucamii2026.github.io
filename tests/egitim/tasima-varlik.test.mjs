@@ -35,9 +35,12 @@ test('veli manifestleri beş dilde /<dil>/veli/ kapsamında ve Kilim renklerinde
   }
 });
 
-test('robots.txt veli ve hoca sayfalarını yasaklar; site haritası ve ana bağlantılar onları anmaz', () => {
+test('robots.txt veli ve hoca sayfalarını yasaklar; üst/alt bilgi veli portalına bağlanır (Dilim 4 geçişi), hoca ekranına HİÇ bağlanmaz', () => {
   const r = oku('egitim/public/robots.txt');
   assert.match(r, /^Disallow: \/hoca\/$/m);
   assert.match(r, /^Disallow: \/\*\/veli\/$/m);
-  for (const f of ['egitim/src/components/UstBilgi.astro', 'egitim/src/components/AltBilgi.astro']) assert.doesNotMatch(oku(f), /\/veli\/|\/hoca\//, `${f} henüz veli/hoca'ya bağlanmamalı`);
+  for (const f of ['egitim/src/components/UstBilgi.astro', 'egitim/src/components/AltBilgi.astro']) {
+    assert.match(oku(f), /\/veli\//, `${f}: veli bağlantısı`);
+    assert.doesNotMatch(oku(f), /\/hoca\//, `${f}: hoca ekranına bağlanmamalı`);
+  }
 });

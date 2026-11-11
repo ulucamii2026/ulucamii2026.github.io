@@ -1,6 +1,6 @@
 /**
  * Dilim 4 / P5 + P6: Kur'an kursu sayfaları (egitim.ulucamii.be/<dil>/kurs/…) ve sesli dersler (/e/, /e/<kod>/) — derlenmiş çıktı ve kaynak taraması.
- * Sayfalar ulucamii.be'deki sayfaların ikinci yoludur: aynı içerik kaynağı, noindex, kanonik adres ulucamii.be, hiçbir yerden bağlı değil, robots.txt'te yasak.
+ * Dilim 4 geçişinden beri (11 Kasım 2026) asıl adres egitim'dedir: aynı içerik kaynağı, dizine açık, kanonik kendi adresi + hreflang, üst/alt bilgiden bağlı, site haritasında.
  * Önce `npm run egitim:build` (derleme yoksa atlanır). Ağ kullanmaz.
  */
 import test from 'node:test';
@@ -17,15 +17,15 @@ const KODLAR = JSON.parse(oku('tests/fixtures/e-kodlari-basili.json')).kodlar;
 const kursYollari = DILLER.flatMap((d) => SAYFALAR.map((s) => `${d}/kurs/${s}`));
 const eYollari = ['e/', ...KODLAR.map((k) => `e/${k}/`)];
 
-test('Kurs sayfaları: beş dilde beş sayfa, noindex, kanonik adres ulucamii.be, hreflang yok', { skip: atla }, () => {
+test('Kurs sayfaları: beş dilde beş sayfa, dizine açık, kanonik kendi adresi, hreflang beş dil + x-default', { skip: atla }, () => {
   for (const y of kursYollari) {
     const html = oku(dist(`${y}index.html`));
-    assert.match(html, /<meta name="robots" content="noindex, nofollow"/, `${y}: noindex`);
+    assert.doesNotMatch(html, /<meta name="robots" content="[^"]*noindex/, `${y}: dizine açık`);
     const kan = [...html.matchAll(/<link rel="canonical" href="([^"]+)"/g)].map((m) => m[1]);
     assert.equal(kan.length, 1, `${y}: tek kanonik`);
-    assert.match(kan[0], new RegExp(`^https://ulucamii\\.be/${y.slice(0, 2)}/[a-z-]+/$`), `${y}: kanonik ana sitede`);
-    assert.equal(/rel="alternate" hreflang/.test(html), false, `${y}: hreflang yok`);
-    assert.equal(/property="og:url"/.test(html), false, `${y}: og:url yok`);
+    assert.equal(kan[0], `https://egitim.ulucamii.be/${y}`, `${y}: kanonik egitim`);
+    assert.equal((html.match(/<link rel="alternate" hreflang=/g) || []).length, 6, `${y}: hreflang beş dil + x-default`);
+    assert.match(html, /property="og:url"/, `${y}: og:url`);
   }
   // Çapalar (ders kitapları bağlantısı): tr #ders-kitaplari, diğer diller #manuels
   assert.match(oku(dist('tr/kurs/index.html')), /id="ders-kitaplari"/);
@@ -93,12 +93,22 @@ test('Kişisel veri yok: günlük sayfası e-posta, öğrenci referansı ya da t
   assert.deepEqual(postalar, [], 'günlükte kişisel e-posta adresi');
 });
 
-test('Hiçbir yerden bağlanmaz: robots.txt yasaklar, üst/alt bilgi anmaz, site haritasında yok', () => {
+test('Geçiş: robots.txt kurs ve /e/ yasağını kaldırdı (veli/hoca yasak kalır); üst/alt bilgi kurs ve veliye bağlanır; site haritasında kurs ve /e/ var, veli/hoca yok', () => {
   const r = oku('egitim/public/robots.txt');
-  assert.match(r, /^Disallow: \/\*\/kurs\/$/m);
-  assert.match(r, /^Disallow: \/e\/$/m);
-  for (const f of ['egitim/src/components/UstBilgi.astro', 'egitim/src/components/AltBilgi.astro']) assert.doesNotMatch(oku(f), /\/kurs\/|\/e\//, `${f} henüz kurs/e sayfalarına bağlanmamalı`);
-  if (derlendi) for (const s of readdirSync('egitim/dist').filter((f) => /^sitemap-\d+\.xml$/.test(f))) assert.doesNotMatch(oku(dist(s)), /\/kurs\/|\/e\//, 'site haritasında kurs/e yok');
+  assert.doesNotMatch(r, /Disallow: \/\*\/kurs\/|Disallow: \/e\//);
+  assert.match(r, /^Disallow: \/hoca\/$/m);
+  assert.match(r, /^Disallow: \/\*\/veli\/$/m);
+  for (const f of ['egitim/src/components/UstBilgi.astro', 'egitim/src/components/AltBilgi.astro']) {
+    assert.match(oku(f), /\/kurs\//, `${f}: kurs bağlantısı`);
+    assert.match(oku(f), /\/veli\//, `${f}: veli bağlantısı`);
+  }
+  if (derlendi) {
+    const harita = readdirSync('egitim/dist').filter((f) => /^sitemap-\d+\.xml$/.test(f)).map((s) => oku(dist(s))).join('\n');
+    for (const y of kursYollari) assert.ok(harita.includes(`<loc>https://egitim.ulucamii.be/${y}</loc>`), `haritada yok: ${y}`);
+    for (const y of eYollari.filter((x) => x !== 'e/test/')) assert.ok(harita.includes(`<loc>https://egitim.ulucamii.be/${y}</loc>`), `haritada yok: ${y}`);
+    assert.equal(harita.includes('/e/test/'), false, 'test kodu haritada olmamalı');
+    assert.equal(/\/veli\/|\/hoca\//.test(harita), false, 'veli/hoca haritada olmamalı');
+  }
 });
 
 test('Kaynak: kurs sayfaları ana sitenin içerik ve veri dosyalarını kullanır (kopya yok)', () => {

@@ -29,12 +29,12 @@ interface Props {
   yol?: string;
   noindex?: boolean;
   /** Üst bilgide hangi menü öğesi geçerli. */
-  sayfa?: 'ana' | 'ezber' | 'diger';
+  sayfa?: 'ana' | 'ezber' | 'kurs' | 'veli' | 'diger';
   /** Ziyaretçi ana sayfasındaki büyük kapak kilimini de yükle. */
   kapak?: boolean;
   oturum?: boolean;
   sade?: boolean;
-  /** noindex sayfada bile basılacak kanonik adres: taşınan sayfaların ulucamii.be'deki asıl adresi (Dilim 4; arama motoru yinelenen içerik görmesin). */
+  /** Açık kanonik adres (dil öneki taşımayan sayfalar: /e/…). Dilim 4 geçişinden beri kurs ve /e/ sayfaları kendi adresini gösterir; yalnız ulucamii.be'ye yönlenen /e/test/ eski adresini korur. */
   kanonik?: string;
 }
 const { dil, baslik, aciklama, yol, noindex = false, sayfa = 'diger', kapak = false, oturum = true, sade = false, kanonik } = Astro.props;

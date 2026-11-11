@@ -2,11 +2,12 @@
 /**
  * Kur’an kursu sayfa kabuğu (Dilim 4 / P5): ana sitedeki `Base` + `SayfaBasligi` yerine İlim Yolu iskeleti (Taban) + başlık bloğu.
  * Sayfa gövdeleri ana sitedekiyle aynı biçimde yazılıdır (`.kapsayici`, `.kart`, `.dugme` vb. sınıflar styles/kurs.css'te `.kurs` altında tanımlı,
- * Tailwind yok). Henüz hiçbir yerden bağlanmaz: noindex; kanonik adres ulucamii.be'deki asıl sayfadır (arama motoru yinelenen içerik görmesin).
+ * Tailwind yok). Dilim 4 geçişinden beri (11 Kasım 2026) asıl adres burasıdır: dizine açık, kanonik kendi adresi, hreflang beş dil (Taban `yol`dan), site haritasında;
+ * ulucamii.be'deki eski adresler yönlendirme sayfasıdır.
  */
 import type { Dil } from '@ortak/i18n/ui';
 import Taban from '../layouts/Taban.astro';
-import { KURS_YOLLARI, anaAdres } from '../lib/kurs-yollari';
+import { KURS_YOLLARI } from '../lib/kurs-yollari';
 import '../styles/uyum-jetonlari.css';
 import '../styles/kurs.css';
 
@@ -23,7 +24,7 @@ const { dil, anahtar, baslik, aciklama, etiket, altBaslik } = Astro.props;
 const yol = KURS_YOLLARI[anahtar];
 if (!yol) throw new Error(`kurs yolu tanımsız: ${anahtar}`);
 ---
-<Taban dil={dil} baslik={baslik} aciklama={aciklama} yol={yol} noindex kanonik={anaAdres(dil, anahtar)}>
+<Taban dil={dil} baslik={baslik} aciklama={aciklama} yol={yol} sayfa="kurs">
   <header class="uyum-baslik kurs-baslik">
     <div class="icerik">
       {etiket && <p class="etiket etiket-vurgu">{etiket}</p>}

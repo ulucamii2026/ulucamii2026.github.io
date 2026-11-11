@@ -35,6 +35,8 @@ const takvim = takvimMetinleri(dil);
       <p>{kursAdi(dil)}</p>
       <p class="don"><a href={`${ANA_SITE}/${dil}/`}>{m.anaSiteyeDon}</a></p>
       <p class="don"><a href={`/${dil}/ezber/`}>{KILIM_METINLERI.baslik[dil]}</a></p>
+      <p class="don"><a href={`/${dil}/kurs/`}>{ceviri(dil)('nav.kurankursu')}</a></p>
+      <p class="don"><a href={`/${dil}/veli/`}>{ceviri(dil)('nav.veli')}</a></p>
       <p class="don"><a href={`/${dil}/calisma-belgesi/`}>{belge.baglanti}</a></p>
       <p class="don"><a href={`/${dil}/kilimim/`}>{kilimim.baglanti}</a></p>
       <p class="don"><a href={`/${dil}/takvim/`}>{takvim.baglanti}</a></p>

@@ -1,6 +1,7 @@
 /**
  * Dilim 4 / P6: sesli ders sayfaları egitim.ulucamii.be/e/<kod>/ — basılı Fransızca ders kitabındaki 74 kare kodun HEPSİ. Kodlar kâğıtta basılıdır ve
- * ulucamii.be/e/<kod>/ adresine gider (orada olduğu gibi kalır); egitim'deki sayfalar ikinci yoldur (noindex, kanonik ulucamii.be). Liste dondurulmuştur:
+ * ulucamii.be/e/<kod>/ adresine gider; orası (Dilim 4 geçişinden beri) egitim'e yönlendirir, asıl sayfa egitim'dedir (dizine açık, kanonik kendi adresi; yalnız
+ * ulucamii.be'ye yönlenen `test` kodu noindex ve eski kanonik adresinde kalır). Liste dondurulmuştur:
  * tests/fixtures/e-kodlari-basili.json. Önce `npm run egitim:build` (derleme yoksa derleme sınamaları atlanır). Ağ kullanmaz.
  */
 import test from 'node:test';
@@ -20,15 +21,21 @@ test('Dondurulmuş liste: 74 kod, hepsi hâlâ ses verisinde (basılı bir kod h
   assert.ok(KODLAR.includes('test') && KODLAR.includes('fatiha') && KODLAR.includes('alphabet'));
 });
 
-test('74 basılı kodun hepsi egitim’de var (noindex, kanonik ulucamii.be/e/<kod>/); dizin sayfası da', { skip: atla }, () => {
+test('74 basılı kodun hepsi egitim’de var (73 dizine açık, kanonik kendi adresi; `test` noindex + eski kanonik); dizin sayfası da', { skip: atla }, () => {
   for (const k of KODLAR) {
     const html = oku(dist(`e/${k}/index.html`));
-    assert.match(html, /<meta name="robots" content="noindex, nofollow"/, `${k}: noindex`);
-    assert.match(html, new RegExp(`<link rel="canonical" href="https://ulucamii\\.be/e/${k}/"`), `${k}: kanonik`);
+    if (k === 'test') {
+      assert.match(html, /<meta name="robots" content="noindex, nofollow"/, 'test: noindex');
+      assert.match(html, /<link rel="canonical" href="https:\/\/ulucamii\.be\/e\/test\/"/, 'test: eski kanonik');
+    } else {
+      assert.doesNotMatch(html, /<meta name="robots" content="[^"]*noindex/, `${k}: dizine açık`);
+      assert.match(html, new RegExp(`<link rel="canonical" href="https://egitim\\.ulucamii\\.be/e/${k}/"`), `${k}: kanonik egitim`);
+    }
     assert.equal(/rel="alternate" hreflang/.test(html), false, `${k}: hreflang yok`);
   }
   const dizin = oku(dist('e/index.html'));
-  assert.match(dizin, /<link rel="canonical" href="https:\/\/ulucamii\.be\/e\/"/);
+  assert.match(dizin, /<link rel="canonical" href="https:\/\/egitim\.ulucamii\.be\/e\/"/);
+  assert.doesNotMatch(dizin, /<meta name="robots" content="[^"]*noindex/);
   for (const k of KODLAR.filter((x) => x !== 'test')) assert.match(dizin, new RegExp(`href="/e/${k}/"`), `dizinde ${k}`);
 });
 

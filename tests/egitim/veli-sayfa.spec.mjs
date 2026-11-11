@@ -42,7 +42,10 @@ for (const dil of DILLER) {
     expect(veri.gunler.length).toBeGreaterThan(20);
     expect(Object.keys(veri.gunler[0]).sort()).toEqual(['dersler', 'hafta', 'tarih']);
     expect(veri.dilYollari).toEqual({ tr: '/tr/veli/', fr: '/fr/veli/', en: '/en/veli/', nl: '/nl/veli/', de: '/de/veli/' });
-    for (const k of ['materyalYolu', 'gizlilikYolu', 'kursYolu']) expect(veri[k]).toMatch(/^https:\/\/ulucamii\.be\/(tr|fr|en|nl|de)\//);
+    // Dilim 4 / P7b: kurs ve materyal sayfaları egitim'de (göreli), gizlilik sayfası ulucamii.be'de kalır.
+    expect(veri.materyalYolu).toBe(`/${dil}/kurs/materyaller/`);
+    expect(veri.kursYolu).toBe(`/${dil}/kurs/`);
+    expect(veri.gizlilikYolu).toMatch(/^https:\/\/ulucamii\.be\/(tr|fr|en|nl|de)\//);
     expect(Object.keys(veri.hadisSesleri)).toEqual(['ar', 'tr', 'fr', 'en']);
     expect(veri.hadisSesleri.tr.length).toBeGreaterThan(0);
 

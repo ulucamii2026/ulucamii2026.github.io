@@ -106,7 +106,7 @@ export function veliKilimKarti(ez: VeliEzberi | null, onek: string, y: KartYardi
 /** Öğrenci kipi: çocuk kendi kilimine bakar; dinleme geçmişi ve liste yok. */
 export function ogrenciKilimKarti(ez: VeliEzberi, onek: string, y: KartYardimi): string {
   const dil = y.dil;
-  return `<section class="bolum r-kiremit genis kilim-kart kilimim" data-ezber-kilim="ogrenci">
+  return `<section class="bolum r-kiremit genis kilim-kart" data-ezber-kilim="ogrenci">
     ${y.bas('kilim', K.kilimim[dil])}
     <div class="kilim-duzen">
       <div class="kilim-cizim">${kilimSvg(ez.ogeler, { onek, dil, baslik: K.kilimim[dil] })}</div>
