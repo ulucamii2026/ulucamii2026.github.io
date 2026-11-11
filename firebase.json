@@ -36,6 +36,14 @@
           ]
         },
         {
+          "source": "/hoca/**",
+          "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
+        },
+        {
+          "source": "/*/veli/**",
+          "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
+        },
+        {
           "regex": "^(.*/|.*\\.html)$",
           "headers": [{ "key": "Cache-Control", "value": "no-cache" }]
         },

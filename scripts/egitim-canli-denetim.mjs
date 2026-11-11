@@ -95,12 +95,12 @@ const robots = await getir('/robots.txt');
 const robotsMetni = await robots.text();
 kontrol('robots.txt site haritasını gösterir', robots.status === 200 && robotsMetni.includes('Sitemap: https://egitim.ulucamii.be/sitemap-index.xml'), robots.status);
 // Geçiş: kurs ve /e/ Disallow'u kalktı (kalırsa Google noindex yerine eski adresi tutar); veli ve hoca yasak kalır.
-kontrol('robots.txt: kurs ve /e/ serbest, veli ve hoca yasak', !/Disallow: \/\*\/kurs\/|Disallow: \/e\//.test(robotsMetni) && /Disallow: \/hoca\//.test(robotsMetni) && /Disallow: \/\*\/veli\//.test(robotsMetni), 'robots.txt');
+kontrol('robots.txt: kurs, /e/, veli ve hoca serbest (veli/hoca noindex başlığıyla çıkar, G-12)', !/Disallow: \/\*\/kurs\/|Disallow: \/e\/|Disallow: \/hoca\/|Disallow: \/\*\/veli\//.test(robotsMetni), 'robots.txt');
 // Taşınan sayfalar (Dilim 4): veli portalı 5 dil + hoca ekranı (noindex, veri bloğu, no-cache); kurs sayfaları dizine açık + kendi kanoniği; 74 basılı kod 200.
 for (const [yol, bloklar] of [...DILLER.map((d) => [`/${d}/veli/`, 'veli-veri']), ['/hoca/', 'hoca-veri']]) {
   const y = await getir(yol);
   const h = await y.text();
-  kontrol(`${yol} 200, noindex, ${bloklar} bloğu, no-cache`, y.status === 200 && /<meta name="robots" content="noindex, nofollow">/.test(h) && h.includes(`id="${bloklar}"`) && y.headers.get('cache-control') === 'no-cache', `${y.status} ${y.headers.get('cache-control')}`);
+  kontrol(`${yol} 200, noindex, ${bloklar} bloğu, no-cache`, y.status === 200 && /<meta name="robots" content="noindex, nofollow">/.test(h) && h.includes(`id="${bloklar}"`) && y.headers.get('cache-control') === 'no-cache' && /noindex/.test(y.headers.get('x-robots-tag') ?? ''), `${y.status} ${y.headers.get('cache-control')} ${y.headers.get('x-robots-tag')}`);
 }
 for (const d of DILLER) {
   const y = await getir(`/${d}/kurs/`);

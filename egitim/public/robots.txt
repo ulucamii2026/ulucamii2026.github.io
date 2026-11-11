@@ -1,6 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /hoca/
-Disallow: /*/veli/
 
 Sitemap: https://egitim.ulucamii.be/sitemap-index.xml

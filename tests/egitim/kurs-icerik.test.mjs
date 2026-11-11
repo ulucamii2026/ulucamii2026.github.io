@@ -96,8 +96,7 @@ test('Kişisel veri yok: günlük sayfası e-posta, öğrenci referansı ya da t
 test('Geçiş: robots.txt kurs ve /e/ yasağını kaldırdı (veli/hoca yasak kalır); üst/alt bilgi kurs ve veliye bağlanır; site haritasında kurs ve /e/ var, veli/hoca yok', () => {
   const r = oku('egitim/public/robots.txt');
   assert.doesNotMatch(r, /Disallow: \/\*\/kurs\/|Disallow: \/e\//);
-  assert.match(r, /^Disallow: \/hoca\/$/m);
-  assert.match(r, /^Disallow: \/\*\/veli\/$/m);
+  assert.doesNotMatch(r, /Disallow: \/hoca\/|Disallow: \/\*\/veli\//); // G-12: veli/hoca noindex başlığıyla (firebase.json) dizinden çıkar, robots.txt ile değil
   for (const f of ['egitim/src/components/UstBilgi.astro', 'egitim/src/components/AltBilgi.astro']) {
     assert.match(oku(f), /\/kurs\//, `${f}: kurs bağlantısı`);
     assert.match(oku(f), /\/veli\//, `${f}: veli bağlantısı`);

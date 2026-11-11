@@ -35,10 +35,14 @@ test('veli manifestleri beş dilde /<dil>/veli/ kapsamında ve Kilim renklerinde
   }
 });
 
-test('robots.txt veli ve hoca sayfalarını yasaklar; üst/alt bilgi veli portalına bağlanır (Dilim 4 geçişi), hoca ekranına HİÇ bağlanmaz', () => {
+test('veli ve hoca sayfaları robots.txt ile DEĞİL, noindex başlığıyla dizinden çıkar (G-12: yasaklı adres meta noindex\'i göstermez); üst/alt bilgi veli portalına bağlanır (Dilim 4 geçişi), hoca ekranına HİÇ bağlanmaz', () => {
   const r = oku('egitim/public/robots.txt');
-  assert.match(r, /^Disallow: \/hoca\/$/m);
-  assert.match(r, /^Disallow: \/\*\/veli\/$/m);
+  assert.doesNotMatch(r, /Disallow: \/hoca\/|Disallow: \/\*\/veli\//);
+  const basliklar = JSON.parse(oku('firebase.json')).hosting.find((h) => h.site === 'ulucamii-egitim').headers;
+  for (const kaynak of ['/hoca/**', '/*/veli/**']) {
+    const k = basliklar.find((b) => b.source === kaynak);
+    assert.deepEqual(k?.headers, [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }], kaynak);
+  }
   for (const f of ['egitim/src/components/UstBilgi.astro', 'egitim/src/components/AltBilgi.astro']) {
     assert.match(oku(f), /\/veli\//, `${f}: veli bağlantısı`);
     assert.doesNotMatch(oku(f), /\/hoca\//, `${f}: hoca ekranına bağlanmamalı`);
