@@ -4,6 +4,21 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 11 Kasım 2026 (öğleye doğru) — egitim OTOMATİK YAYIN hattı kuruldu ve üç tetikle kanıtlandı (içerik değişikliği YOK)
+
+- Zaman: 11 Kasım 2026, 07.20–07.40 (Brüksel). Kapsam: `.github/workflows/egitim-yayinla.yml`, `scripts/egitim-{ses-getir,dist-denetle}.mjs` + `egitim-dist-taban.json`, iki düğüm testi, docs. Yayınlanan içerik, commit `e291f453`'in egitim derlemesidir (önceki yerel yayınla aynı kaynak; 2913 dosya).
+- Google tarafı (dernek hesabı, REST): servis hesabı `egitim-ci-yayin`, roller `firebasehosting.admin` + `serviceusage.serviceUsageConsumer`; WIF havuzu `github-actions`, sağlayıcı `github-oidc` (koşul: depo + depo/sahip kimliği + `refs/heads/main`); `workloadIdentityUser` yalnız bu depo; `sts.googleapis.com` etkinleştirildi. JSON anahtar yok, GitHub'a sır eklenmedi. Ayrıntı: EGITIM-PLATFORMU «Otomatik yayın».
+- Koşular (hepsi success; Hosting yayını `egitim-ci-yayin` kimliğiyle, 2913 dosya, FINALIZED):
+  - push: [42972037507](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/42972037507) 06:25 UTC (ses önbelleği ilk kez boş: 684 dosya canlıdan indirildi, sorun 0; düğüm testleri 68/68; dist 2911 dosya; `egitim:canli` 100/100; canlıdaki 684 ses bayt+sha256 tamam).
+  - push'tan doğan `workflow_run` (ana site yayını push ile başladı): [42972342859](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/42972342859) **skipped** (beklenen: çift yayın yok).
+  - `workflow_dispatch`: [42972516501](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/42972516501) 06:28 UTC (ses önbelleği isabet: indirilen 0, önbellekten 684; `egitim:canli` 100/100).
+  - `workflow_run` (namaz işinin kullandığı `gh workflow run deploy.yml` taklidi, Pages [42972922188](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/42972922188) success): [42973162077](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/42973162077) 06:34 UTC success, `egitim:canli` 100/100.
+- Bağımsız canlı doğrulama (yerelden, 06:36 UTC): `egitim:canli` 100/100; ses örnekleri 200 + sha256 manifestle aynı (`kart/tr/ah-001`, `kart/fr/ah-001`, `okuma/yeni/hurufu-mukattaa/…/1`); `/tr/ /fr/kurs/ /tr/kurs/gunluk/ /tr/kurs/yillik-plan/ /tr/veli/ /hoca/ /e/fatiha/ /tr/okuma/ /tr/ogren/ah-001/` hepsi 200; Hosting sürüm listesinde CI sürümleri (`CI e291f453 (push|workflow_dispatch|workflow_run)`).
+- Olumsuz yollar (canlıya dokunmadan): eksik/bozuk ses ve çok düşük dosya sayısı betiklerde çıkış 1 (`tests/egitim/ses-getir.test.mjs`, `dist-denetle.test.mjs`; ayrıca CLI'da elle bozulmuş manifest ve yarım dist ile sınandı).
+- Yerel kapılar: `design:check` geçti, `check` 0 hata, `egitim:build` tamam, node testleri 68/68. Çalıştırılmayanlar: `test:web`, Playwright egitim testleri (bu değişiklik sayfaları etkilemez).
+- Açık sınırlar: otomatik geri alma yok (yayın sonrası denetim düşerse insan karar verir); yeni ses CI'dan girmez (önce yerel yayın); kayıt commit'i `[skip ci]`.
+- Doğal tetik: namaz vakitleri `GITHUB_TOKEN` commit'i (02:47 UTC) deploy'u başlatmaz; 03:30 ve 23:11 UTC Pages koşuları (schedule) ve 11:23 UTC namaz işinin `gh workflow run deploy.yml`'i başarıyla bitince egitim kendiliğinden yenilenir (`workflow_run`, olay ≠ push). İlk doğal zamanlanmış koşuda doğrulanacak: bkz. sonraki kayıt.
+
 ## 11 Kasım 2026 (sabah) — İlim Yolu Dilim 4 (P5a+P5b+P6): kurs sayfaları ve sesli dersler egitim.ulucamii.be'de AÇIK (bağlantısız, duyurusuz)
 
 - Zaman: Europe/Brussels (CET), 11 Kasım 2026 ≈ 07.10. Dayanak: Dilim 4 taşıma planı (`D:	mpilim-yolu-arastirmadilim4-tasima-plani.md`); eklemeli, ulucamii.be'ye dokunulmadı.
