@@ -129,8 +129,12 @@ export function sifreGoster(dugme: HTMLButtonElement, girdi: HTMLInputElement, v
   });
 }
 
-/** Evet/hayır paneli (`[data-soru]`): metni yazar, odağı ilk düğmeye alır ve seçimi bekler. */
-export function evetHayir(panel: HTMLElement, o: { metin: string; not?: string; evet: string; hayir: string }): Promise<boolean> {
+/**
+ * Evet/hayır paneli (`[data-soru]`): metni yazar, odağı ilk düğmeye alır ve seçimi bekler. `odak: 'hayir'` (silme gibi geri alınamaz işlerde) odağı
+ * vazgeç düğmesine verir; Esc her zaman «hayır» demektir. Cevaptan sonra odak `donus` öğesine (yoksa panelden önce odakta olana) döner.
+ */
+export function evetHayir(panel: HTMLElement, o: { metin: string; not?: string; evet: string; hayir: string; odak?: 'hayir'; donus?: HTMLElement | null }): Promise<boolean> {
+  const onceki = document.activeElement instanceof HTMLElement ? document.activeElement : null;
   const metin = sor<HTMLElement>('[data-soru-metin]', panel);
   const not = sor<HTMLElement>('[data-soru-not]', panel);
   const evet = sor<HTMLButtonElement>('[data-soru-evet]', panel);
@@ -141,18 +145,23 @@ export function evetHayir(panel: HTMLElement, o: { metin: string; not?: string; 
   evet.textContent = o.evet;
   hayir.textContent = o.hayir;
   panel.hidden = false;
-  evet.focus();
+  (o.odak === 'hayir' ? hayir : evet).focus();
   return new Promise((coz) => {
     const bitir = (cevap: boolean) => {
       evet.removeEventListener('click', e1);
       hayir.removeEventListener('click', h1);
+      panel.removeEventListener('keydown', k1);
       panel.hidden = true;
+      const hedef = o.donus ?? onceki;
+      if (hedef?.isConnected) hedef.focus();
       coz(cevap);
     };
     const e1 = () => bitir(true);
     const h1 = () => bitir(false);
+    const k1 = (e: KeyboardEvent) => { if (e.key === 'Escape') { e.stopPropagation(); bitir(false); } };
     evet.addEventListener('click', e1);
     hayir.addEventListener('click', h1);
+    panel.addEventListener('keydown', k1);
   });
 }
 

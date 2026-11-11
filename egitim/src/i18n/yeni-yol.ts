@@ -61,6 +61,22 @@ export interface YeniYolMetinleri {
   jsGerek: string;
   /** Dizin kartındaki düğme. */
   yolaBak: string;
+  /** Giriş sonrası «cihazdaki işaretleri hesaba ekleyelim mi?» teklifi ve «işaretlerimi sil» onayı. */
+  teklifSor: string;
+  teklifNot: string;
+  teklifEvet: string;
+  teklifSimdilik: string;
+  teklifEklendi: string;
+  teklifBekler: string;
+  teklifErtelendi: string;
+  silDugme: string;
+  silSor: string;
+  silNotYerel: string;
+  silNotHesap: string;
+  silEvet: string;
+  silVazgec: string;
+  silTamam: string;
+  silTamamBekler: string;
 }
 
 const TR: YeniYolMetinleri = {
@@ -110,6 +126,21 @@ const TR: YeniYolMetinleri = {
   bitisBaslik: 'On iki hafta tamam',
   bitisMetin: 'Öğrendiklerinizi toparladınız. Sıradaki küçük hedefi seçerken yakınınızdaki bir din görevlisiyle konuşabilirsiniz.',
   jsGerek: 'İşaretlemek ve ilerlemenizi görmek için JavaScript gerekir; metinler onsuz da okunur.',
+  teklifSor: 'Bu cihazdaki işaretleri hesabınıza ekleyelim mi?',
+  teklifNot: 'Yalnız bu yolun işaretleri eklenir; hesabınızdakiler silinmez. Bu cihazı başkaları da kullanıyorsa işaretler size ait olmayabilir: emin değilseniz «Şimdi değil» deyin.',
+  teklifEvet: 'Evet, ekleyin',
+  teklifSimdilik: 'Şimdi değil',
+  teklifEklendi: 'İşaretler hesabınıza eklendi.',
+  teklifBekler: 'İşaretler hesabınıza eklenmek üzere hazır; bağlantı gelince gönderilecek.',
+  teklifErtelendi: 'Tamam, işaretler yalnız bu cihazda kalıyor.',
+  silDugme: 'Bu cihazdaki izleri silin',
+  silSor: 'Bu cihazdaki izler silinsin mi?',
+  silNotYerel: 'Bu cihazdaki işaretleriniz ve bu yolun önbellekteki sayfa kopyaları silinir. Tarayıcı geçmişi silinmez. Bu geri alınamaz.',
+  silNotHesap: 'Bu cihazdaki işaretleriniz ve sayfa kopyaları ile hesabınızdaki işaretler silinir. Tarayıcı geçmişi silinmez. Bu geri alınamaz.',
+  silEvet: 'Evet, silin',
+  silVazgec: 'Vazgeçin',
+  silTamam: 'Bu cihazdaki izler silindi.',
+  silTamamBekler: 'Bu cihazdaki izler silindi. Hesabınızdaki işaretler bağlantı gelince silinecek.',
   yolaBak: 'Yola bakın',
 };
 
@@ -160,6 +191,21 @@ const FR: YeniYolMetinleri = {
   bitisBaslik: 'Les douze semaines sont terminées',
   bitisMetin: 'Vous avez fait le tour de ce que vous avez appris. Pour choisir le prochain petit objectif, vous pouvez en parler avec un agent du culte près de chez vous.',
   jsGerek: 'JavaScript est nécessaire pour cocher et voir votre progression ; les textes se lisent sans lui.',
+  teklifSor: 'Ajouter à votre compte les repères de cet appareil ?',
+  teklifNot: 'Seuls les repères de ce parcours sont ajoutés ; ceux de votre compte ne sont jamais supprimés. Si d’autres personnes utilisent cet appareil, ces repères ne sont peut-être pas les vôtres : en cas de doute, choisissez « Pas maintenant ».',
+  teklifEvet: 'Oui, ajouter',
+  teklifSimdilik: 'Pas maintenant',
+  teklifEklendi: 'Les repères ont été ajoutés à votre compte.',
+  teklifBekler: 'Les repères sont prêts à être ajoutés à votre compte ; ils seront envoyés dès que la connexion reviendra.',
+  teklifErtelendi: 'D’accord, les repères restent uniquement sur cet appareil.',
+  silDugme: 'Effacer les traces sur cet appareil',
+  silSor: 'Effacer les traces sur cet appareil ?',
+  silNotYerel: 'Vos repères sur cet appareil et les copies en cache des pages de ce parcours seront supprimés. L’historique du navigateur n’est pas effacé. Cette action est irréversible.',
+  silNotHesap: 'Vos repères et les copies en cache sur cet appareil, ainsi que les repères de votre compte, seront supprimés. L’historique du navigateur n’est pas effacé. Cette action est irréversible.',
+  silEvet: 'Oui, supprimer',
+  silVazgec: 'Annuler',
+  silTamam: 'Les traces sur cet appareil ont été effacées.',
+  silTamamBekler: 'Les traces sur cet appareil ont été effacées. Les repères de votre compte le seront dès que la connexion reviendra.',
   yolaBak: 'Voir le chemin',
 };
 
@@ -210,6 +256,21 @@ const EN: YeniYolMetinleri = {
   bitisBaslik: 'Twelve weeks done',
   bitisMetin: 'You have gathered what you learned. When choosing the next small goal, you can talk with an imam near you.',
   jsGerek: 'JavaScript is needed to tick items and see your progress; the texts can be read without it.',
+  teklifSor: 'Add the marks on this device to your account?',
+  teklifNot: 'Only the marks of this path are added; the ones in your account are never deleted. If others also use this device, the marks may not be yours: if you are not sure, choose “Not now”.',
+  teklifEvet: 'Yes, add them',
+  teklifSimdilik: 'Not now',
+  teklifEklendi: 'The marks were added to your account.',
+  teklifBekler: 'The marks are ready to be added to your account; they will be sent once you are back online.',
+  teklifErtelendi: 'OK, the marks stay on this device only.',
+  silDugme: 'Delete traces on this device',
+  silSor: 'Delete the traces on this device?',
+  silNotYerel: 'Your marks on this device and the cached copies of this path’s pages will be deleted. Browser history is not deleted. This cannot be undone.',
+  silNotHesap: 'Your marks and cached page copies on this device, and the marks in your account, will be deleted. Browser history is not deleted. This cannot be undone.',
+  silEvet: 'Yes, delete',
+  silVazgec: 'Cancel',
+  silTamam: 'The traces on this device were deleted.',
+  silTamamBekler: 'The traces on this device were deleted. The marks in your account will be deleted once you are back online.',
   yolaBak: 'See the path',
 };
 
@@ -260,6 +321,21 @@ const NL: YeniYolMetinleri = {
   bitisBaslik: 'Twaalf weken klaar',
   bitisMetin: 'U hebt samengevat wat u geleerd hebt. Voor het volgende kleine doel kunt u met een imam bij u in de buurt praten.',
   jsGerek: 'JavaScript is nodig om af te vinken en uw voortgang te zien; de teksten zijn ook zonder te lezen.',
+  teklifSor: 'Wilt u de markeringen op dit toestel aan uw account toevoegen?',
+  teklifNot: 'Alleen de markeringen van deze route worden toegevoegd; die van uw account worden nooit verwijderd. Gebruiken ook anderen dit toestel, dan zijn de markeringen misschien niet van u: twijfelt u, kies dan “Nu niet”.',
+  teklifEvet: 'Ja, toevoegen',
+  teklifSimdilik: 'Nu niet',
+  teklifEklendi: 'De markeringen zijn aan uw account toegevoegd.',
+  teklifBekler: 'De markeringen staan klaar voor uw account en worden verstuurd zodra er weer verbinding is.',
+  teklifErtelendi: 'Prima, de markeringen blijven alleen op dit toestel.',
+  silDugme: 'Sporen op dit toestel verwijderen',
+  silSor: 'De sporen op dit toestel verwijderen?',
+  silNotYerel: 'Uw markeringen op dit toestel en de gecachete kopieën van de pagina’s van deze route worden verwijderd. De browsergeschiedenis blijft bestaan. Dit kan niet ongedaan worden gemaakt.',
+  silNotHesap: 'Uw markeringen en gecachete paginakopieën op dit toestel en de markeringen in uw account worden verwijderd. De browsergeschiedenis blijft bestaan. Dit kan niet ongedaan worden gemaakt.',
+  silEvet: 'Ja, verwijderen',
+  silVazgec: 'Annuleren',
+  silTamam: 'De sporen op dit toestel zijn verwijderd.',
+  silTamamBekler: 'De sporen op dit toestel zijn verwijderd. De markeringen in uw account volgen zodra er weer verbinding is.',
   yolaBak: 'Bekijk de weg',
 };
 
@@ -310,6 +386,21 @@ const DE: YeniYolMetinleri = {
   bitisBaslik: 'Zwölf Wochen geschafft',
   bitisMetin: 'Sie haben das Gelernte zusammengefasst. Für das nächste kleine Ziel können Sie mit einem Imam in Ihrer Nähe sprechen.',
   jsGerek: 'Zum Abhaken und für die Fortschrittsanzeige ist JavaScript nötig; die Texte lassen sich auch ohne lesen.',
+  teklifSor: 'Sollen die Markierungen auf diesem Gerät Ihrem Konto hinzugefügt werden?',
+  teklifNot: 'Es werden nur die Markierungen dieses Weges hinzugefügt; die in Ihrem Konto werden nie gelöscht. Wenn auch andere dieses Gerät nutzen, gehören die Markierungen vielleicht nicht Ihnen: Wählen Sie im Zweifel „Jetzt nicht“.',
+  teklifEvet: 'Ja, hinzufügen',
+  teklifSimdilik: 'Jetzt nicht',
+  teklifEklendi: 'Die Markierungen wurden Ihrem Konto hinzugefügt.',
+  teklifBekler: 'Die Markierungen sind für Ihr Konto vorgemerkt und werden gesendet, sobald wieder eine Verbindung besteht.',
+  teklifErtelendi: 'In Ordnung, die Markierungen bleiben nur auf diesem Gerät.',
+  silDugme: 'Spuren auf diesem Gerät löschen',
+  silSor: 'Die Spuren auf diesem Gerät löschen?',
+  silNotYerel: 'Ihre Markierungen auf diesem Gerät und die zwischengespeicherten Seitenkopien dieses Weges werden gelöscht. Der Browserverlauf bleibt bestehen. Das lässt sich nicht rückgängig machen.',
+  silNotHesap: 'Ihre Markierungen und zwischengespeicherten Seitenkopien auf diesem Gerät sowie die Markierungen in Ihrem Konto werden gelöscht. Der Browserverlauf bleibt bestehen. Das lässt sich nicht rückgängig machen.',
+  silEvet: 'Ja, löschen',
+  silVazgec: 'Abbrechen',
+  silTamam: 'Die Spuren auf diesem Gerät wurden gelöscht.',
+  silTamamBekler: 'Die Spuren auf diesem Gerät wurden gelöscht. Die Markierungen in Ihrem Konto folgen, sobald wieder eine Verbindung besteht.',
   yolaBak: 'Weg ansehen',
 };
 

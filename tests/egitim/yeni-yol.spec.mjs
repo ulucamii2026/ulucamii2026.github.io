@@ -13,7 +13,7 @@ import { readFileSync } from 'node:fs';
 
 const KOK = 'http://127.0.0.1:4402';
 const DILLER = ['tr', 'fr', 'en', 'nl', 'de'];
-const ANAHTAR = 'ulucamii:yeniyol:cihaz:v1';
+const ANAHTAR = 'ilim:y12:v1';
 const yol = JSON.parse(readFileSync('paylasilan/ogrenme-yolu/icerik.json', 'utf8'));
 const H01 = yol.haftalar.find((h) => h.id === 'h01');
 const H12 = yol.haftalar.find((h) => h.id === 'h12');
@@ -222,6 +222,7 @@ test.describe('video', () => {
     await expect(cerceve).toHaveCount(1);
     await expect(cerceve).toHaveAttribute('src', new RegExp(`^https://www\\.youtube-nocookie\\.com/embed/${yol.haftalar[0].video.tr}\\?`));
     await expect(cerceve).toHaveAttribute('title', /.+/);
+    await expect(cerceve).toHaveAttribute('sandbox', 'allow-scripts allow-same-origin allow-presentation');
     await expect.poll(() => istekler.some((u) => u.startsWith('https://www.youtube-nocookie.com/embed/'))).toBe(true);
     expect(istekler.every((u) => new URL(u).hostname === 'www.youtube-nocookie.com')).toBe(true);
     expect(await page.evaluate(() => window.__csp)).toEqual([]);

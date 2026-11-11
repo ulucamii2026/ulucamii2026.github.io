@@ -13,7 +13,11 @@
  */
 import type { Depo } from '../ezber/cihaz';
 
-export const ANAHTAR = 'ulucamii:yeniyol:cihaz:v1';
+/** Cihaz anahtarı. Adı bilerek yolu söylemez (ortak cihazda depoya bakan kişi konuyu görmesin); ilk sürümün adı `ESKI_ANAHTAR`dı. */
+export const ANAHTAR = 'ilim:y12:v1';
+export const ESKI_ANAHTAR = 'ulucamii:yeniyol:cihaz:v1';
+/** Yeni cihaz anahtarının eski adı (`ANAHTAR` ya da `ANAHTAR:u:<özet>`); `oku` bir kez okuyup taşır ve siler. */
+export const eskiAnahtar = (anahtar: string): string => ESKI_ANAHTAR + anahtar.slice(ANAHTAR.length);
 /** `kullanicilar/{uid}/ozel/{BELGE}` (calisma/ değil: calisma listesi kursun hocasına açıktır). */
 export const BELGE = 'yol12';
 export const TAMAM = 1;
@@ -97,7 +101,17 @@ export function kullaniciAnahtari(uidOzeti: string): string {
 
 export function oku(depo: Depo | null | undefined, anahtar: string = ANAHTAR): YolIlerleme {
   try {
-    const ham = depo?.getItem(anahtar);
+    let ham = depo?.getItem(anahtar);
+    if (!ham && anahtar.startsWith(ANAHTAR)) {
+      const eski = eskiAnahtar(anahtar);
+      ham = depo?.getItem(eski);
+      if (ham) {
+        // Bir kereye mahsus taşıma: yeni adla yaz, ancak yazılabildiyse eskiyi sil.
+        const t = temizle(JSON.parse(ham));
+        if (yaz(depo, t, anahtar)) depo?.removeItem?.(eski);
+        return t;
+      }
+    }
     return ham ? temizle(JSON.parse(ham)) : bos();
   } catch {
     return bos();
@@ -127,3 +141,44 @@ export function haftaDurumu(il: YolIlerleme, hafta: Hafta): { tamam: boolean; do
 }
 
 export const tamamlananHafta = (il: YolIlerleme): number => HAFTALAR.filter((h) => haftaDurumu(il, h).tamam).length;
+
+/** `anonim`deki işaretlerden hesapta henüz bulunmayan çalışma-bit sayısı (birleştirmenin hesaba gerçekten katacağı şey; 0 = teklif edilecek bir şey yok). */
+export function eklenecekSayisi(anonim: YolIlerleme, hesap: YolIlerleme): number {
+  let n = 0;
+  for (const h of HAFTALAR) {
+    const a = anonim.maddeler[h] ?? '';
+    const b = hesap.maddeler[h] ?? '';
+    for (let i = 0; i < AZAMI_UZUNLUK; i++) if ((harf(a, i) & ~harf(b, i)) !== 0) n++;
+  }
+  return n;
+}
+
+/**
+ * Hesap başına küçük cihaz durumu (`ilim:y12:d:v1:u:<özet>`): YALNIZ iki sayı/bayrak, işaret içermez.
+ *  - `s`: «Şimdi değil» denildiğinde teklif edilen sayı; sayı bundan fazlaysa teklif yeniden çıkar (aynı sayıda tekrar sorulmaz).
+ *  - `sil`: «İşaretlerimi silin» cihazda yapıldı ama hesaptaki belge henüz silinemedi; sonraki eşitleme önce belgeyi siler, birleştirmez
+ *    (yoksa bulut kopyası cihaza geri yazılırdı).
+ */
+export interface YolDurum { readonly s?: number; readonly sil?: true }
+export function durumAnahtari(uidOzeti: string): string {
+  return kullaniciAnahtari(uidOzeti).replace(`${ANAHTAR}:u:`, 'ilim:y12:d:v1:u:');
+}
+export function durumOku(depo: Depo | null | undefined, anahtar: string): YolDurum {
+  try {
+    const ham = depo?.getItem(anahtar);
+    const o = ham ? (JSON.parse(ham) as { s?: unknown; sil?: unknown }) : {};
+    return { ...(Number.isInteger(o.s) && (o.s as number) > 0 ? { s: o.s as number } : {}), ...(o.sil === true ? { sil: true as const } : {}) };
+  } catch {
+    return {};
+  }
+}
+export function durumYaz(depo: Depo | null | undefined, anahtar: string, d: YolDurum): boolean {
+  try {
+    if (!depo) return false;
+    if (d.s === undefined && !d.sil) depo.removeItem?.(anahtar);
+    else depo.setItem(anahtar, JSON.stringify({ ...(d.s ? { s: d.s } : {}), ...(d.sil ? { sil: true } : {}) }));
+    return true;
+  } catch {
+    return false;
+  }
+}

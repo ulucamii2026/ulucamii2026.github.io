@@ -14,6 +14,7 @@ import type { User } from 'firebase/auth';
 import { kullaniciAnahtari, type Depo } from '@ortak/lib/ezber/cihaz';
 import type { IlimFirebase } from '../firebase-istemci';
 import { esitle } from './esitle';
+import { yolCihazTemizle, yolEsitle } from './yeni-yol-esitle';
 import { isaretKaldir, isaretKoy, oturumOzeti, tarayiciDeposu, uidOzeti } from './isaret';
 
 export interface Kullanici {
@@ -160,7 +161,7 @@ export async function yonlendirmeSonucu(f: IlimFirebase, o?: { depo?: Depo | nul
 /**
  * Açık çıkış: önce son bir eşitleme denenir. Olmazsa (çevrim dışı, hata) `{ ok: false, neden: 'esitlenmedi' }` döner ve sayfa
  * «Bu cihazdaki gönderilmemiş çalışma silinecek, yine de çıkılsın mı?» diye sorar; evet derse `zorla: true` ile yeniden çağırır.
- * Sonra kullanıcının cihaz kopyası ve oturum işareti silinir, oturum kapanır. Anonim kayda dokunulmaz.
+ * Sonra kullanıcının cihaz kopyaları (ezber ve Yeni Müslüman yolu işaretleri) ve oturum işareti silinir, oturum kapanır. Anonim kayda dokunulmaz.
  */
 export async function cikisYap(
   f: IlimFirebase,
@@ -172,9 +173,13 @@ export async function cikisYap(
     if (!o.zorla) {
       const s = await esitle(f, { depo, cevrimici: o.cevrimici });
       if (s.durum !== 'tamam') return { ok: false, neden: 'esitlenmedi' };
+      // Yeni Müslüman yolunun işaretleri de önce gönderilir (ortak cihazda çıkış sonrası cihazda kalmaması için aşağıda silinir).
+      const y = await yolEsitle(f, { depo, cevrimici: o.cevrimici });
+      if (y.durum !== 'tamam') return { ok: false, neden: 'esitlenmedi' };
     }
-    const anahtar = kullaniciAnahtari(await uidOzeti(u.uid));
-    try { depo?.removeItem?.(anahtar); } catch { /* depo kapalı */ }
+    const ozet = await uidOzeti(u.uid);
+    try { depo?.removeItem?.(kullaniciAnahtari(ozet)); } catch { /* depo kapalı */ }
+    yolCihazTemizle(depo, ozet);
   }
   isaretKaldir(depo);
   await f.a.signOut(f.auth);

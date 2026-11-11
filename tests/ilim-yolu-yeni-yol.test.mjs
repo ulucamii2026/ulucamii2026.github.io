@@ -21,7 +21,7 @@ async function paketle(giris, ad) {
 const m = await paketle('src/lib/ilim-yolu/yeni-yol-ilerleme.ts', 'yeni-yol-ilerleme-test');
 const v = await paketle('egitim/src/lib/yeni-yol.ts', 'yeni-yol-veri-test');
 const yollar = await paketle('src/lib/ilim-yolu/yollar.ts', 'yeni-yol-yollar-test');
-const esitle = await yukle('yeni-yol-esitle-test', ['hesap/yeni-yol-esitle', 'hesap/isaret']);
+const esitle = await yukle('yeni-yol-esitle-test', ['hesap/yeni-yol-esitle', 'hesap/isaret', 'hesap/oturum']);
 const DIL = ['tr', 'fr', 'en', 'nl', 'de'];
 const YASAK = /m[uü][sş]avir|sosyal i[sş]ler|b[uü]y[uü]kel[cç]i|el[cç]ilik|konsolos|ambassade|affaires sociales|conseill|sociale zaken|raadgever|botschaft|embassy|consulat|consulaat|konsulat|social affairs|counsel/i;
 const TELEFON = /\+?\d[\d ./-]{7,}\d/;
@@ -112,6 +112,169 @@ test('eşitleme: ozel/yol12 ile birleşir; değişiklik yoksa yazmaz; calisma/ a
   const s2 = sahteFirebase({ user: kullanici('u-deneme-2') });
   await esitle.yolEsitle(s2.f, { depo: depo2, cevrimici: () => true });
   assert.equal(s2.bulut.size, 0, 'hesapsız kopya buluta gitmedi');
+});
+
+const ON = () => true;
+const OFF = () => false;
+const YOL = (uid) => `kullanicilar/${uid}/ozel/yol12`;
+/** Girişli bir cihaz: oturum işareti + (isteğe bağlı) anonim ve hesap kopyası + bulut belgesi. */
+async function kur({ anonim, hesap, bulutMaddeler, uid = 'u-deneme-1' } = {}) {
+  const ozet = await esitle.uidOzeti(uid);
+  const depo = new BellekDepo();
+  esitle.isaretKoy(depo, ozet);
+  if (anonim) m.yaz(depo, anonim);
+  if (hesap) m.yaz(depo, hesap, m.kullaniciAnahtari(ozet));
+  const belgeler = bulutMaddeler ? { [YOL(uid)]: { v: 1, maddeler: bulutMaddeler, guncelleme: 'eski' } } : {};
+  const sahte = sahteFirebase({ user: kullanici(uid), belgeler });
+  return { depo, ozet, anahtar: m.kullaniciAnahtari(ozet), dk: m.durumAnahtari(ozet), ...sahte, uid };
+}
+const isr = (...l) => l.reduce((il, [h, s, b = 1]) => m.isaretle(il, h, s, b), m.bos());
+
+test('teklif: eklenecek sayısı yalnız hesapta olmayan bitleri sayar; sıfırsa teklif yok', () => {
+  const a = isr(['h01', 's1'], ['h01', 'yap'], ['h02', 'tamam', 3]);
+  assert.equal(m.eklenecekSayisi(a, m.bos()), 3);
+  assert.equal(m.eklenecekSayisi(a, a), 0);
+  assert.equal(m.eklenecekSayisi(a, m.birlestir(a, isr(['h05', 's1']))), 0, 'hesapta fazlası olması sayıyı artırmaz');
+  assert.equal(m.eklenecekSayisi(isr(['h02', 'tamam', 1]), isr(['h02', 'tamam', 3])), 0);
+  assert.equal(m.eklenecekSayisi(isr(['h02', 'tamam', 3]), isr(['h02', 'tamam', 1])), 1, 'yalnız hatasız biti eksik');
+  assert.equal(m.eklenecekSayisi(m.bos(), a), 0);
+});
+
+test('teklif: sorulmadan HİÇBİR şey yazılmaz; evet = birleşim, anonim silinir, hesaptaki işaret silinmez; ikinci kez sorulmaz', async () => {
+  const c = await kur({ anonim: isr(['h01', 's1'], ['h03', 'yap']), hesap: isr(['h02', 'tamam']), bulutMaddeler: { h02: '0001', h09: '1' } });
+  const t = await esitle.yolTeklif(c.f, { depo: c.depo, cevrimici: ON });
+  assert.equal(t.tur, 'sor');
+  assert.equal(t.n, 2);
+  assert.equal(c.k.yazimlar.length, 0, 'soru sırasında buluta yazılmadı');
+  assert.equal(c.bulut.get(YOL(c.uid)).maddeler.h01, undefined);
+  assert.equal(m.durum(m.oku(c.depo), 'h01', 's1'), 1, 'anonim kopya yerinde');
+  const s = await t.cevapla(true);
+  assert.equal(s.durum, 'tamam');
+  const bulut = c.bulut.get(YOL(c.uid)).maddeler;
+  assert.deepEqual({ h01: bulut.h01, h02: bulut.h02, h03: bulut.h03, h09: bulut.h09 }, { h01: '1', h02: '0001', h03: '001', h09: '1' }, 'birleşim; h02 ve h09 silinmedi');
+  assert.equal(c.depo.getItem(m.ANAHTAR), null, 'anonim kopya hesaba katıldıktan sonra silindi');
+  assert.equal(m.durum(m.oku(c.depo, c.anahtar), 'h03', 'yap'), 1);
+  assert.equal((await esitle.yolTeklif(c.f, { depo: c.depo, cevrimici: ON })).tur, 'yok', 'idempotent: bir daha sorulmaz');
+});
+
+test('teklif: «şimdi değil» hatırlanır (aynı sayıda yeniden sorulmaz), anonim kopya kalır, yeni işaret gelirse yeniden sorulur; durum anahtarı işaret taşımaz', async () => {
+  const c = await kur({ anonim: isr(['h01', 's1'], ['h01', 's2']) });
+  const t = await esitle.yolTeklif(c.f, { depo: c.depo, cevrimici: ON });
+  assert.equal(t.n, 2);
+  assert.equal(await t.cevapla(false), null);
+  assert.equal(c.k.yazimlar.length, 0);
+  assert.equal(c.bulut.size, 0, 'hiçbir şey yüklenmedi');
+  assert.equal(m.durum(m.oku(c.depo), 'h01', 's2'), 1, 'anonim kopya kaldı');
+  assert.deepEqual(JSON.parse(c.depo.getItem(c.dk)), { s: 2 });
+  assert.equal((await esitle.yolTeklif(c.f, { depo: c.depo, cevrimici: ON })).tur, 'yok', 'nag yok');
+  // Başka bir hesap aynı cihazda: karar hesap başınadır.
+  esitle.isaretKoy(c.depo, await esitle.uidOzeti('u-deneme-2'));
+  assert.equal((await esitle.yolTeklif(sahteFirebase({ user: kullanici('u-deneme-2') }).f, { depo: c.depo, cevrimici: ON })).tur, 'sor');
+  esitle.isaretKoy(c.depo, c.ozet);
+  m.yaz(c.depo, isr(['h01', 's1'], ['h01', 's2'], ['h04', 'yap']));
+  assert.equal((await esitle.yolTeklif(c.f, { depo: c.depo, cevrimici: ON })).n, 3, 'daha fazla işaret → yeniden sorulur');
+});
+
+test('teklif: çevrim dışı «evet» cihazda birleşir, anonim silinir, buluta yazılmaz; sonraki eşitleme gönderir; oturum yoksa ya da anonim boşsa teklif yok', async () => {
+  const c = await kur({ anonim: isr(['h06', 'tamam']) });
+  const t = await esitle.yolTeklif(c.f, { depo: c.depo, cevrimici: OFF });
+  assert.equal(t.tur, 'sor');
+  assert.equal((await t.cevapla(true)).durum, 'cevrimdisi');
+  assert.equal(c.k.yazimlar.length, 0);
+  assert.equal(c.depo.getItem(m.ANAHTAR), null);
+  assert.equal(m.durum(m.oku(c.depo, c.anahtar), 'h06', 'tamam'), 1, 'cihazdaki hesap kopyasında');
+  assert.equal((await esitle.yolEsitle(c.f, { depo: c.depo, cevrimici: ON })).yazildi, true);
+  assert.equal(c.bulut.get(YOL(c.uid)).maddeler.h06, '0001');
+  assert.equal((await esitle.yolTeklif(sahteFirebase({ user: null }).f, { depo: c.depo })).tur, 'yok');
+  assert.equal((await esitle.yolTeklif((await kur()).f, { depo: new BellekDepo() })).tur, 'yok');
+});
+
+test('silme: çevrimiçi girişli → anonim + hesap kopyası + bulut belgesi silinir; bekleyen bayrak kalmaz', async () => {
+  const c = await kur({ anonim: isr(['h01', 's1']), hesap: isr(['h02', 'tamam']), bulutMaddeler: { h02: '0001' } });
+  m.durumYaz(c.depo, c.dk, { s: 1 });
+  const r = await esitle.yolSil(c.f, { depo: c.depo, cevrimici: ON });
+  assert.deepEqual(r, { bulut: 'silindi' });
+  assert.equal(c.depo.getItem(m.ANAHTAR), null);
+  assert.equal(c.depo.getItem(c.anahtar), null);
+  assert.equal(c.depo.getItem(c.dk), null, 'ne bekleyen silme ne «şimdi değil» kaldı');
+  assert.equal(c.bulut.has(YOL(c.uid)), false);
+  assert.deepEqual(c.k.yazimlar.map((y) => y.tur), ['delete']);
+  assert.equal(m.tamamlananHafta(m.oku(c.depo, c.anahtar)), 0);
+});
+
+test('silme: çevrim dışı → cihaz hemen temiz, bulut BEKLER; sonraki eşitleme önce bulutu siler, silinen işaret geri gelmez; yeni işaretler korunur', async () => {
+  const c = await kur({ hesap: isr(['h02', 'tamam']), bulutMaddeler: { h02: '0001', h07: '0003' } });
+  assert.deepEqual(await esitle.yolSil(c.f, { depo: c.depo, cevrimici: OFF }), { bulut: 'bekliyor' });
+  assert.equal(c.depo.getItem(c.anahtar), null);
+  assert.deepEqual(JSON.parse(c.depo.getItem(c.dk)), { sil: true });
+  assert.equal(c.bulut.has(YOL(c.uid)), true, 'bulut henüz silinmedi');
+  assert.equal((await esitle.yolEsitle(c.f, { depo: c.depo, cevrimici: OFF })).durum, 'cevrimdisi');
+  assert.notEqual(c.depo.getItem(c.dk), null);
+  // Bu arada yeni bir işaret yapılır; sonra bağlantı gelir.
+  m.yaz(c.depo, isr(['h01', 's1']), c.anahtar);
+  const s = await esitle.yolEsitle(c.f, { depo: c.depo, cevrimici: ON });
+  assert.equal(s.durum, 'tamam');
+  assert.deepEqual(c.bulut.get(YOL(c.uid)).maddeler, { h01: '1' }, 'eski bulut işaretleri geri gelmedi, yeni işaret gitti');
+  assert.deepEqual(m.oku(c.depo, c.anahtar).maddeler, { h01: '1' }, 'cihaza da eski işaret dönmedi');
+  assert.equal(c.depo.getItem(c.dk), null, 'bayrak kalktı');
+  assert.equal(c.k.yazimlar.filter((y) => y.tur === 'delete').length, 1);
+});
+
+test('silme: bulut silinemezse bekler ve eşitleme birleştirmez; hesapsız cihazda yalnız cihaz silinir ve iz kalmaz', async () => {
+  const c = await kur({ hesap: isr(['h02', 'tamam']), bulutMaddeler: { h02: '0001' } });
+  const eski = c.f.fs.deleteDoc;
+  c.f.fs.deleteDoc = async () => { throw Object.assign(new Error('x'), { code: 'unavailable' }); };
+  assert.deepEqual(await esitle.yolSil(c.f, { depo: c.depo, cevrimici: ON }), { bulut: 'bekliyor' });
+  assert.equal((await esitle.yolEsitle(c.f, { depo: c.depo, cevrimici: ON })).durum, 'cevrimdisi');
+  assert.equal(c.bulut.get(YOL(c.uid)).maddeler.h02, '0001');
+  assert.equal(c.depo.getItem(c.anahtar), null, 'cihaza birleştirilmedi');
+  c.f.fs.deleteDoc = eski;
+  assert.equal((await esitle.yolEsitle(c.f, { depo: c.depo, cevrimici: ON })).durum, 'tamam');
+  assert.equal(c.bulut.has(YOL(c.uid)), false);
+  const depo = new BellekDepo();
+  m.yaz(depo, isr(['h01', 's1']));
+  assert.deepEqual(await esitle.yolSil(null, { depo }), { bulut: 'yok' });
+  assert.deepEqual(depo.anahtarlar(), [], 'hesapsız silmede hiçbir iz kalmaz');
+});
+
+test('çıkış: işaretler önce hesaba gider, sonra cihazdan KALKAR (hesaptan gelen hiçbir işaret yerelde kalmaz); eşitlenemezse sormadan silmez', async () => {
+  const c = await kur({ hesap: isr(['h02', 'tamam'], ['h03', 's1']), bulutMaddeler: { h09: '1' } });
+  m.durumYaz(c.depo, c.dk, { s: 2 });
+  const hesapKopya = c.depo.getItem(c.anahtar);
+  assert.deepEqual(await esitle.cikisYap(c.f, { depo: c.depo, cevrimici: OFF }), { ok: false, neden: 'esitlenmedi' });
+  assert.equal(c.depo.getItem(c.anahtar), hesapKopya, 'çevrim dışıyken silinmedi (gönderilmemiş işaret kaybolmasın)');
+  assert.deepEqual(await esitle.cikisYap(c.f, { depo: c.depo, cevrimici: ON }), { ok: true });
+  assert.deepEqual(c.bulut.get(YOL(c.uid)).maddeler, { h02: '0001', h03: '1', h09: '1' }, 'önce hesaba gitti');
+  assert.deepEqual(c.depo.anahtarlar(), [c.dk], 'cihazda yalnız sayı/bayrak durumu kaldı');
+  assert.doesNotMatch(c.depo.getItem(c.dk), /maddeler|h\d\d/, 'durum işaret taşımaz');
+  assert.equal(m.oku(c.depo).maddeler.h02, undefined, 'çıkış sonrası anonim okuma hesabın işaretini görmez');
+  assert.equal(m.oku(c.depo, c.anahtar).maddeler.h02, undefined);
+  const c2 = await kur({ hesap: isr(['h02', 'tamam']) });
+  assert.deepEqual(await esitle.cikisYap(c2.f, { depo: c2.depo, zorla: true }), { ok: true });
+  assert.deepEqual(c2.depo.anahtarlar(), []);
+  const c3 = await kur({ anonim: isr(['h01', 's1']), hesap: isr(['h02', 'tamam']) });
+  await esitle.cikisYap(c3.f, { depo: c3.depo, cevrimici: ON });
+  assert.equal(m.durum(m.oku(c3.depo), 'h01', 's1'), 1, 'hesapsız yapılan işaretler çıkıştan etkilenmez');
+});
+
+test('anahtar: nötr ad (yolu söylemez); eski ad bir kez okunup taşınır ve silinir; çıkış ve silme eski adı da temizler', async () => {
+  assert.equal(m.ANAHTAR, 'ilim:y12:v1');
+  for (const a of [m.ANAHTAR, m.kullaniciAnahtari('a'.repeat(32)), m.durumAnahtari('a'.repeat(32))]) assert.doesNotMatch(a, /yeni|musluman|yol|ulucamii/i, a);
+  const ozet = await esitle.uidOzeti('u-deneme-1');
+  const ak = m.kullaniciAnahtari(ozet);
+  const depo = new BellekDepo({ [m.ESKI_ANAHTAR]: JSON.stringify({ v: 1, maddeler: { h01: '1' } }), [m.eskiAnahtar(ak)]: JSON.stringify({ v: 1, maddeler: { h02: '0001' } }) });
+  assert.equal(m.eskiAnahtar(ak), `ulucamii:yeniyol:cihaz:v1:u:${ozet}`);
+  assert.equal(m.oku(depo).maddeler.h01, '1');
+  assert.equal(depo.getItem(m.ESKI_ANAHTAR), null, 'eski ad silindi');
+  assert.deepEqual(JSON.parse(depo.getItem(m.ANAHTAR)).maddeler, { h01: '1' });
+  assert.equal(m.oku(depo, ak).maddeler.h02, '0001');
+  assert.equal(depo.getItem(m.eskiAnahtar(ak)), null);
+  assert.deepEqual(depo.anahtarlar().sort(), [m.ANAHTAR, ak].sort());
+  // Çıkış ve silme eski adı da süpürür.
+  esitle.isaretKoy(depo, ozet);
+  depo.setItem(m.eskiAnahtar(ak), '{}');
+  await esitle.yolSil(null, { depo });
+  assert.deepEqual(depo.anahtarlar().filter((a) => /ulucamii:yeniyol|ilim:y12:v1/.test(a)), []);
 });
 
 test('veri: 12 hafta, 8 adım, 5 dil; hepsi onayli; sayfa kimlikleri 20; aynı kaynak dosya', () => {

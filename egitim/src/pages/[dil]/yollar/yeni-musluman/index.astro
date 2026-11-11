@@ -6,18 +6,17 @@
  */
 import type { Dil } from '@ortak/i18n/ui';
 import { dilListesi } from '@ortak/i18n/utils';
-import CevrimdisiKutu from '../../../../components/CevrimdisiKutu.astro';
 import Ikon from '../../../../components/Ikon.astro';
+import SoruPaneli from '../../../../components/SoruPaneli.astro';
 import TaslakEtiketi from '../../../../components/TaslakEtiketi.astro';
 import { ilimMetinleri } from '../../../../i18n/ilim';
 import { doldur } from '../../../../i18n/ibadet';
 import { yeniYolMetinleri } from '../../../../i18n/yeni-yol';
-import { ADIMLAR, HAFTALAR, SAYFA_KIMLIKLERI, YOL, adimHaftalari, adimKimligi, adimaGore } from '../../../../lib/yeni-yol';
+import { ADIMLAR, HAFTALAR, YOL, adimHaftalari, adimKimligi, adimaGore } from '../../../../lib/yeni-yol';
 import Taban from '../../../../layouts/Taban.astro';
 import '../../../../styles/ilim.css';
 import '../../../../styles/yollar.css';
 import '../../../../styles/yeni-yol.css';
-import '../../../../styles/cevrimdisi.css';
 
 export function getStaticPaths() {
   return dilListesi.map((dil) => ({ params: { dil } }));
@@ -27,8 +26,8 @@ const dil = Astro.params.dil as Dil;
 const y = yeniYolMetinleri(dil);
 const il = ilimMetinleri(dil);
 const taban = `/${dil}/yollar/yeni-musluman/`;
-const veri = { m: { ilerleme: y.ilerleme, soruSayim: y.soruSayim, tamamlandi: y.tamamlandi, baslanmadi: y.baslanmadi }, toplam: HAFTALAR.length };
-const cevrimdisiYollari = SAYFA_KIMLIKLERI.map((k) => `${taban}${k}/`);
+const { ilerleme, soruSayim, tamamlandi, baslanmadi, teklifSor, teklifNot, teklifEvet, teklifSimdilik, teklifEklendi, teklifBekler, teklifErtelendi, silSor, silNotYerel, silNotHesap, silEvet, silVazgec, silTamam, silTamamBekler } = y;
+const veri = { m: { ilerleme, soruSayim, tamamlandi, baslanmadi, teklifSor, teklifNot, teklifEvet, teklifSimdilik, teklifEklendi, teklifBekler, teklifErtelendi, silSor, silNotYerel, silNotHesap, silEvet, silVazgec, silTamam, silTamamBekler }, toplam: HAFTALAR.length };
 ---
 <Taban dil={dil} baslik={y.ad} aciklama={y.aciklama} yol="yollar/yeni-musluman">
   <div class="icerik yl-sayfa yy-sayfa" data-yy-indeks data-veri={JSON.stringify(veri)}>
@@ -44,6 +43,10 @@ const cevrimdisiYollari = SAYFA_KIMLIKLERI.map((k) => `${taban}${k}/`);
     <div class="yy-ozet">
       <p class="yl-ilerleme" id="yy-ilerleme-yazi" data-yy-ilerleme>{doldur(y.ilerleme, { n: 0, m: HAFTALAR.length })}</p>
       <progress max={HAFTALAR.length} value="0" aria-labelledby="yy-ilerleme-yazi" data-yy-cubuk></progress>
+      <div data-yy-teklif><SoruPaneli kimlik="yy-teklif-baslik" /></div>
+      <div data-yy-sil-panel><SoruPaneli kimlik="yy-sil-baslik" /></div>
+      <p class="yl-not" role="status" tabindex="-1" data-yy-bilgi></p>
+      <p><button type="button" class="dugme ikincil" data-yy-sil>{y.silDugme}</button></p>
     </div>
 
     <section class="iy-bolum" aria-labelledby="haftalar-baslik">
@@ -82,12 +85,10 @@ const cevrimdisiYollari = SAYFA_KIMLIKLERI.map((k) => `${taban}${k}/`);
       </ol>
     </section>
 
-    <CevrimdisiKutu dil={dil} ozel={{ id: 'yeni-musluman', ad: y.ad, yol: taban, ek: cevrimdisiYollari, sesler: [] }} />
   </div>
 </Taban>
 
 <script>
   import '../../../../scripts/dil';
   import '../../../../scripts/yeni-yol';
-  import '../../../../scripts/cevrimdisi';
 </script>

@@ -8,7 +8,9 @@
  */
 import { HATASIZ, HAFTALAR, TAMAM, durum, haftaDurumu, haftaMi, tamamlananHafta, type Hafta, type Slot, type YolIlerleme } from '@ortak/lib/ilim-yolu/yeni-yol-ilerleme';
 import { doldur } from './kip-ortak';
-import { bulutlaEsitle, yolIsaretle, yolOku } from './yeni-yol-ortak';
+import { oturumVar, tarayiciDeposu } from '../lib/hesap/isaret';
+import { evetHayir } from './hesap-ortak';
+import { bulutlaEsitle, yolIsaretle, yolOku, yolSilme, yolTeklifi } from './yeni-yol-ortak';
 
 const sor = <T extends HTMLElement>(kok: ParentNode, s: string): T | null => kok.querySelector<T>(s);
 const hepsi = <T extends HTMLElement>(kok: ParentNode, s: string): T[] => [...kok.querySelectorAll<T>(s)];
@@ -16,7 +18,11 @@ function veriOku<T>(kok: HTMLElement): T | null {
   try { return JSON.parse(kok.dataset.veri ?? '') as T; } catch { return null; }
 }
 
-interface ListeM { ilerleme: string; soruSayim: string; tamamlandi: string; baslanmadi: string }
+interface ListeM {
+  ilerleme: string; soruSayim: string; tamamlandi: string; baslanmadi: string;
+  teklifSor: string; teklifNot: string; teklifEvet: string; teklifSimdilik: string; teklifEklendi: string; teklifBekler: string; teklifErtelendi: string;
+  silSor: string; silNotYerel: string; silNotHesap: string; silEvet: string; silVazgec: string; silTamam: string; silTamamBekler: string;
+}
 
 /** Bir hafta satırının durum metni: tamam / «n / 2 soru doğru» / başlanmadı. */
 function durumMetni(il: YolIlerleme, hafta: Hafta, m: ListeM): string {
@@ -47,6 +53,39 @@ function listeKur(kok: HTMLElement) {
   };
   cizim();
   void bulutlaEsitle(cizim);
+  if (kok.hasAttribute('data-yy-indeks')) hesapKur(kok, v.m, cizim);
+}
+
+/**
+ * Yalnız dizinde: (1) girişli kullanıcıya, bu cihazdaki işaretler hesapta yoksa, BİR kez «hesabınıza ekleyelim mi?» sorulur (sessiz yükleme yok:
+ * ortak cihazda işaretler başkasına ait olabilir); (2) «İşaretlerimi silin» onaydan sonra cihazı ve girişliyse hesabı temizler.
+ */
+function hesapKur(kok: HTMLElement, m: ListeM, cizim: () => void) {
+  const bilgi = sor(kok, '[data-yy-bilgi]');
+  const duyur = (metin: string) => { if (bilgi) { bilgi.textContent = metin; bilgi.focus(); } };
+  void (async () => {
+    const t = await yolTeklifi();
+    const panel = sor(kok, '[data-yy-teklif] [data-soru]');
+    if (!t || t.tur !== 'sor' || !panel) return;
+    const ekle = await evetHayir(panel, { metin: m.teklifSor, not: m.teklifNot, evet: m.teklifEvet, hayir: m.teklifSimdilik, donus: bilgi });
+    const s = await t.cevapla(ekle);
+    cizim();
+    duyur(!ekle ? m.teklifErtelendi : s?.durum === 'tamam' ? m.teklifEklendi : m.teklifBekler);
+  })();
+
+  const sil = sor<HTMLButtonElement>(kok, '[data-yy-sil]');
+  const silPanel = sor(kok, '[data-yy-sil-panel] [data-soru]');
+  sil?.addEventListener('click', () => {
+    void (async () => {
+      if (!silPanel || !silPanel.hidden) return;
+      const girisli = oturumVar(tarayiciDeposu());
+      const evet = await evetHayir(silPanel, { metin: m.silSor, not: girisli ? m.silNotHesap : m.silNotYerel, evet: m.silEvet, hayir: m.silVazgec, odak: 'hayir', donus: sil });
+      if (!evet) return;
+      const r = await yolSilme();
+      cizim();
+      duyur(r.bulut === 'bekliyor' ? m.silTamamBekler : m.silTamam);
+    })();
+  });
 }
 
 // ——— Hafta sayfası ———
@@ -144,6 +183,7 @@ function haftaKur(kok: HTMLElement) {
       const cerceve = document.createElement('iframe');
       cerceve.src = `https://www.youtube-nocookie.com/embed/${id}?rel=0&autoplay=1`;
       cerceve.title = dugme.dataset.baslik ?? '';
+      cerceve.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-presentation');
       cerceve.allow = 'encrypted-media; picture-in-picture; fullscreen';
       cerceve.allowFullscreen = true;
       cerceve.referrerPolicy = 'strict-origin-when-cross-origin';
