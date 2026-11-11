@@ -80,7 +80,7 @@ Yöntem: başka bir modelin 75 bulgusu iddia sayıldı, tek tek doğrulandı; ay
 - **Dil hataları:** TR ku-019-1 («harekeyi»), ku-014-1, ku-056-2 («doldururuz»); FR ku-010, 021, 034, 057, 024 (şık); NL ku-002, 048 (başlık), 049, 050 (başlık), 053-2, 061; DE ku-001, 005, 033 (özet), 049 (özet), 054; EN ku-033 (özet), 045; `ilim.ts` DE «Hören».
 - **Reddedilenler:** ku-001 FR «regarder à» (geçerli Fransızca), ku-006 FR «son son» (üslup), `ilim.ts` NL «Eén» (Groene Boekje: büyük harf aksan almaz).
 - **Dokunulmadı:** tecvid/Arapça terimler (imam incelemesi bekliyor); tüm TR/FR başlık ve özetler (kart sesleri metinle eşleşik kalsın).
-- **Ses yenilemesi gerekir (TR/FR metni değişecek, ses yeniden üretilmeli):**
+- **Ses yenilemesi YAPILDI (11 Kasım 2026 gece, commit `a0a65bcf`; metin ve ses birlikte canlı):**
   1. ku-056 TR özet son cümle: «Sınıf hatim çizelgesini birlikte doldururuz.» (şimdi «dolduruz»)
   2. ku-019 FR özet: «Nous répétons la lecture du fatha, du kasra et du damma sans les confondre, avec le bon son et la bonne forme de bouche.» (şimdi «de la fatha»)
   3. ku-024 FR başlık: «Consolidation du soukoun et de la chadda» (şimdi «Consolidation de la sukûn»)

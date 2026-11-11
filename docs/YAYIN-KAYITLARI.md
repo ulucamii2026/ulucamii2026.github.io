@@ -4,6 +4,15 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 11 Kasım 2026 (gece) — İlim Yolu: üç kartın metni ve seslendirmesi birlikte yenilendi
+
+- Zaman: 11 Kasım 2026, 19.12–19.50 (Brüksel). Kapsam: `ku-056` TR özet son cümle («doldururuz»), `ku-019` FR özet («du fatha»), `ku-024` FR başlık («Consolidation du soukoun et de la chadda»). Başka metin/ses değişmedi. İçerik commit'i (main, `85c4dbff..a0a65bcf`): `a0a65bcf` (`kuran.json` 3 satır + `kart-ses.json` 3 kayıt).
+- Ses: özgün üretici `D:/sesli-anlatim/ilim-yolu-kartlar/araclar/uret.py` aynen kullanıldı (Gemini `gemini-3.1-flash-tts-preview`, ses Charon, Vertex `vertex-global`, dernek projesi; aynı stil istemi, 24 kHz PCM → loudnorm -16 LUFS → mono 64 kbps MP3). Süre eski→yeni: tr ku-056 13,80→14,92 sn; fr ku-019 18,80→14,68 sn; fr ku-024 15,16→15,80 sn. Whisper large-v3 dökümü metinle uyumlu (ku-056 1,000; ku-019 0,968; ku-024 0,920; farklar yalnız Whisper'ın «domma», «chaddah» yazımları).
+- sha256 (bayt): tr/ku-056 `19fd16565c7257876951a292c08cae2fd7e1ad0a1e740593113d4361f01cc390` (120044); fr/ku-019 `1356138e8c7bafdfcbc11b8f6e4f96c2d6ea4977284bfa3b14107db327da229e` (118124); fr/ku-024 `68e501d1c5738c39a2385c012b72fb0b2db6ca74cbf377c0fa5aef8f0384cd90` (127148). Kaynak klasörde eski üç MP3 ve eski MANIFEST `_yedek-20261111/` altında canlı doğrulamaya kadar tutuldu, doğrulama geçince silindi.
+- Sıra: yerel `npm run egitim:yayinla` (derleme bekçisi + `test:egitim` 1128 geçti + Hosting `ulucamii-egitim` release complete) → commit → fast-forward push → koşular: Pages [43080307095](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/43080307095) success; egitim push [43080307349](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/43080307349) success; egitim workflow_run [43080690824](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/43080690824) skipped.
+- Canlı: `npm run egitim:canli -- https://egitim.ulucamii.be` 110/110. Üç MP3 `https://egitim.ulucamii.be/media/ses/kart/<dil>/<kimlik>.mp3` 200, bayt ve sha256 yukarıdakilerle birebir (`X-Cache: MISS`, eski kopya sunulmadı). `/tr/ogren/ku-056/`, `/fr/ogren/ku-019/`, `/fr/ogren/ku-024/` düzeltilmiş metni içeriyor, eski yazımlar yok (curl). Yerel kapılar: kart/ses testleri 18/18, `npm run check` 0 hata.
+- Açık sınırlar: bu üç dosyayı daha önce dinlemiş tarayıcılar yerel önbellekten (`max-age=604800`) en geç bir haftada yenisini alır; kulakla dinleme yapılmadı (yalnız süre, ses seviyesi, Whisper).
+
 ## 11 Kasım 2026 (akşam) — İlim Yolu: Kur'an kartlarında dil denetimi düzeltmeleri
 
 - Zaman: 11 Kasım 2026, 19.02–19.10 (Brüksel). İçerik commit'i (main, `cb1aba00..46371e9f`): `46371e9f` (`kuran.json` 87 kart / 117 mini soru, 5 dil + `egitim/src/i18n/ilim.ts` 1 satır). 75 bulgudan 71 satır uygulandı, 3 reddedildi, 1 ses yenilemesine bekliyor; özetten çıkmayan 7 soru yeniden yazıldı (özetlere bilgi eklenmedi); TR/FR başlık ve özetler değişmedi.
