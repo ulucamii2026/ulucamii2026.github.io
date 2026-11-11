@@ -23,7 +23,43 @@
         "de": "Wir unterscheiden die Buchstaben der Alif-Gruppe nach Form und Klang. Zuerst erkennen wir das Aussehen, dann den richtigen Laut von seinem Artikulationsort."
       },
       "kitap": "Elifbâ / Kur'an-ı Kerim",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-001-1",
+          "soru": {
+            "tr": "Elif grubundaki harfleri neye bakarak birbirinden ayırırız?",
+            "fr": "À quoi regardons-nous pour distinguer les lettres du groupe Alif ?",
+            "en": "What do we look at to tell the letters of the Alif group apart?",
+            "nl": "Waarop letten we om de letters van de Alif-groep te onderscheiden?",
+            "de": "Woran erkennen wir die Buchstaben der Alif-Gruppe voneinander?"
+          },
+          "siklar": [
+            {
+              "tr": "Şekline ve sesine",
+              "fr": "À leur forme et à leur son",
+              "en": "Their shape and sound",
+              "nl": "Op vorm en klank",
+              "de": "An Form und Klang"
+            },
+            {
+              "tr": "Yalnız rengine",
+              "fr": "À leur couleur seulement",
+              "en": "Their colour only",
+              "nl": "Alleen op kleur",
+              "de": "Nur an der Farbe"
+            },
+            {
+              "tr": "Yalnız sırasına",
+              "fr": "À leur ordre seulement",
+              "en": "Their order only",
+              "nl": "Alleen op volgorde",
+              "de": "Nur an der Reihenfolge"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -54,7 +90,43 @@
         "de": "Wir lernen, die Buchstaben der Ḥā-Gruppe vom richtigen Artikulationsort (Machradsch) zu lesen. Wir hören jeden Laut an und unterscheiden ihn von ähnlichen."
       },
       "kitap": "Elifbâ / Kur'an-ı Kerim",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-002-1",
+          "soru": {
+            "tr": "Hı grubundaki harfleri hangi yerden okumayı öğreniriz?",
+            "fr": "Depuis quel endroit apprenons-nous à lire les lettres du groupe Hâ ?",
+            "en": "From which place do we learn to read the letters of the Ḥā group?",
+            "nl": "Vanuit welke plek leren we de letters van de Ḥā-groep lezen?",
+            "de": "Von welchem Ort aus lernen wir, die Buchstaben der Ḥā-Gruppe zu lesen?"
+          },
+          "siklar": [
+            {
+              "tr": "Rastgele bir yerden",
+              "fr": "Depuis un endroit quelconque",
+              "en": "From any random place",
+              "nl": "Vanuit een willekeurige plek",
+              "de": "Von irgendeinem beliebigen Ort"
+            },
+            {
+              "tr": "Doğru çıkış yerinden (mahreç)",
+              "fr": "Depuis leur bon point d’articulation (makhraj)",
+              "en": "From their correct place of articulation (makhraj)",
+              "nl": "Vanuit de juiste uitspraakplaats (makhradj)",
+              "de": "Vom richtigen Artikulationsort (Machradsch)"
+            },
+            {
+              "tr": "Hiçbir yerden",
+              "fr": "Depuis aucun endroit",
+              "en": "From no place at all",
+              "nl": "Vanuit geen enkele plek",
+              "de": "Von gar keinem Ort"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -85,7 +157,43 @@
         "de": "Wir erkennen die Buchstaben der Schīn-Gruppe und achten auf dunkle und helle Laute. Beim Sehen oder Hören eines Buchstabens bilden wir den richtigen Laut."
       },
       "kitap": "Elifbâ / Kur'an-ı Kerim",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-003-1",
+          "soru": {
+            "tr": "Şîn grubunda hangi seslerin farkına dikkat ederiz?",
+            "fr": "À quelle différence de sons faisons-nous attention dans le groupe Shîn ?",
+            "en": "Which difference in sounds do we pay attention to in the Shīn group?",
+            "nl": "Op welk verschil in klanken letten we bij de Shīn-groep?",
+            "de": "Auf welchen Unterschied der Laute achten wir bei der Schīn-Gruppe?"
+          },
+          "siklar": [
+            {
+              "tr": "Yalnız yüksek seslerin",
+              "fr": "Entre sons forts seulement",
+              "en": "Loud sounds only",
+              "nl": "Alleen harde klanken",
+              "de": "Nur auf laute Laute"
+            },
+            {
+              "tr": "Yalnız alçak seslerin",
+              "fr": "Entre sons graves seulement",
+              "en": "Low sounds only",
+              "nl": "Alleen lage klanken",
+              "de": "Nur auf tiefe Laute"
+            },
+            {
+              "tr": "Kalın ve ince seslerin",
+              "fr": "Entre sons épais et sons fins",
+              "en": "Heavy and light sounds",
+              "nl": "Zware en lichte klanken",
+              "de": "Auf dunkle und helle Laute"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -116,7 +224,43 @@
         "de": "Wir ordnen die Buchstaben der ʿAyn-Gruppe beim Hören und Sehen richtig zu. Wir üben, den Laut sauber aus der Kehle zu bilden und ihn nicht zu verwechseln."
       },
       "kitap": "Elifbâ / Kur'an-ı Kerim",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-004-1",
+          "soru": {
+            "tr": "Ayn grubundaki harflerin sesini nereden temiz çıkarmayı çalışırız?",
+            "fr": "D’où essayons-nous d’émettre proprement le son des lettres du groupe ʿAyn ?",
+            "en": "From where do we practise producing the sound of the ʿAyn group cleanly?",
+            "nl": "Waaruit oefenen we de klank van de letters van de ʿAyn-groep zuiver te maken?",
+            "de": "Woher üben wir, den Laut der Buchstaben der ʿAyn-Gruppe sauber zu bilden?"
+          },
+          "siklar": [
+            {
+              "tr": "Boğazdan",
+              "fr": "De la gorge",
+              "en": "From the throat",
+              "nl": "Uit de keel",
+              "de": "Aus der Kehle"
+            },
+            {
+              "tr": "Burundan",
+              "fr": "Du nez",
+              "en": "From the nose",
+              "nl": "Uit de neus",
+              "de": "Aus der Nase"
+            },
+            {
+              "tr": "Dudaktan",
+              "fr": "Des lèvres",
+              "en": "From the lips",
+              "nl": "Uit de lippen",
+              "de": "Aus den Lippen"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -147,7 +291,43 @@
         "de": "Wir sprechen die Buchstaben der Lām-Gruppe aus und achten auf ihre Artikulationsorte. Wir versuchen zu spüren, aus welchem Teil von Zunge und Lippen jeder Laut kommt."
       },
       "kitap": "Elifbâ / Kur'an-ı Kerim",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-005-1",
+          "soru": {
+            "tr": "Lâm grubundaki harflerin hangi bölgelerden çıktığını hissetmeye çalışırız?",
+            "fr": "De quelles zones sentons-nous sortir les lettres du groupe Lâm ?",
+            "en": "From which parts do we try to feel the letters of the Lām group coming?",
+            "nl": "Uit welke delen proberen we de letters van de Lām-groep te voelen komen?",
+            "de": "Aus welchen Teilen versuchen wir, die Buchstaben der Lām-Gruppe kommen zu spüren?"
+          },
+          "siklar": [
+            {
+              "tr": "Elin ve ayağın",
+              "fr": "De la main et du pied",
+              "en": "The hand and foot",
+              "nl": "Uit hand en voet",
+              "de": "Aus Hand und Fuß"
+            },
+            {
+              "tr": "Dilin ve dudağın",
+              "fr": "De la langue et des lèvres",
+              "en": "The tongue and lips",
+              "nl": "Uit tong en lippen",
+              "de": "Aus Zunge und Lippen"
+            },
+            {
+              "tr": "Gözün ve kaşın",
+              "fr": "De l’œil et du sourcil",
+              "en": "The eye and eyebrow",
+              "nl": "Uit oog en wenkbrauw",
+              "de": "Aus Auge und Braue"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -178,7 +358,43 @@
         "de": "Wir versuchen, alle gelernten Buchstaben in gemischter Reihenfolge lückenlos zu erkennen. Erst nennen wir den Namen, dann bilden wir den Laut."
       },
       "kitap": "Elifbâ / Kur'an-ı Kerim",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-006-1",
+          "soru": {
+            "tr": "Harf tanıma pekiştirmesinde bir harfi görünce önce ne yaparız?",
+            "fr": "Dans la consolidation, que faisons-nous d’abord en voyant une lettre ?",
+            "en": "In letter recognition practice, what do we do first when we see a letter?",
+            "nl": "Wat doen we eerst als we bij het oefenen een letter zien?",
+            "de": "Was tun wir beim Festigen zuerst, wenn wir einen Buchstaben sehen?"
+          },
+          "siklar": [
+            {
+              "tr": "Sesini hiç çıkarmayız",
+              "fr": "Nous ne produisons jamais son son",
+              "en": "We never produce its sound",
+              "nl": "We maken nooit de klank",
+              "de": "Wir bilden nie den Laut"
+            },
+            {
+              "tr": "Harfi atlarız",
+              "fr": "Nous sautons la lettre",
+              "en": "We skip the letter",
+              "nl": "We slaan de letter over",
+              "de": "Wir überspringen den Buchstaben"
+            },
+            {
+              "tr": "Adını söyleriz",
+              "fr": "Nous disons son nom",
+              "en": "We name it",
+              "nl": "We noemen de naam",
+              "de": "Wir nennen den Namen"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -209,7 +425,43 @@
         "de": "Arabische Buchstaben haben am Wortanfang eine andere Form. Wir erkennen und unterscheiden diese Anfangsformen."
       },
       "kitap": "Elifbâ s. 6",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-007-1",
+          "soru": {
+            "tr": "Arap harfleri kelimenin başında nasıl görünür?",
+            "fr": "Comment les lettres arabes apparaissent-elles en début de mot ?",
+            "en": "How do Arabic letters look at the start of a word?",
+            "nl": "Hoe zien Arabische letters eruit aan het begin van een woord?",
+            "de": "Wie sehen arabische Buchstaben am Wortanfang aus?"
+          },
+          "siklar": [
+            {
+              "tr": "Farklı bir şekil alır",
+              "fr": "Elles prennent une forme différente",
+              "en": "They take a different shape",
+              "nl": "Ze krijgen een andere vorm",
+              "de": "Sie nehmen eine andere Form an"
+            },
+            {
+              "tr": "Her zaman aynı kalır",
+              "fr": "Elles restent toujours identiques",
+              "en": "They always stay the same",
+              "nl": "Ze blijven altijd gelijk",
+              "de": "Sie bleiben immer gleich"
+            },
+            {
+              "tr": "Hiç yazılmaz",
+              "fr": "Elles ne s’écrivent jamais",
+              "en": "They are never written",
+              "nl": "Ze worden nooit geschreven",
+              "de": "Sie werden nie geschrieben"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -240,7 +492,43 @@
         "de": "Auch in der Wortmitte sehen Buchstaben anders aus. Wir lernen, ihre Mittelformen richtig zu unterscheiden."
       },
       "kitap": "Elifbâ s. 6",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-008-1",
+          "soru": {
+            "tr": "Harfler kelimenin ortasında nasıl görünür?",
+            "fr": "Comment les lettres apparaissent-elles au milieu du mot ?",
+            "en": "How do letters look in the middle of a word?",
+            "nl": "Hoe zien letters eruit in het midden van een woord?",
+            "de": "Wie sehen Buchstaben in der Wortmitte aus?"
+          },
+          "siklar": [
+            {
+              "tr": "Hiç değişmez",
+              "fr": "Elles ne changent jamais",
+              "en": "They never change",
+              "nl": "Ze veranderen nooit",
+              "de": "Sie ändern sich nie"
+            },
+            {
+              "tr": "Farklı görünür",
+              "fr": "Elles ont un aspect différent",
+              "en": "They look different",
+              "nl": "Ze zien er anders uit",
+              "de": "Sie sehen anders aus"
+            },
+            {
+              "tr": "Görünmez olur",
+              "fr": "Elles deviennent invisibles",
+              "en": "They become invisible",
+              "nl": "Ze worden onzichtbaar",
+              "de": "Sie werden unsichtbar"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -271,7 +559,43 @@
         "de": "Am Wortende nehmen Buchstaben wieder eine andere Form an. Wir versuchen, die Endformen beim Lesen zu erkennen."
       },
       "kitap": "Elifbâ s. 6",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-009-1",
+          "soru": {
+            "tr": "Kelimenin sonunda harfler ne olur?",
+            "fr": "Que deviennent les lettres en fin de mot ?",
+            "en": "What happens to letters at the end of a word?",
+            "nl": "Wat gebeurt er met letters aan het eind van een woord?",
+            "de": "Was geschieht mit Buchstaben am Wortende?"
+          },
+          "siklar": [
+            {
+              "tr": "Hiç yazılmaz",
+              "fr": "Elles ne s’écrivent jamais",
+              "en": "They are never written",
+              "nl": "Ze worden nooit geschreven",
+              "de": "Sie werden nie geschrieben"
+            },
+            {
+              "tr": "Başta olduğu gibi kalır",
+              "fr": "Elles restent comme au début",
+              "en": "They stay as at the start",
+              "nl": "Ze blijven zoals aan het begin",
+              "de": "Sie bleiben wie am Anfang"
+            },
+            {
+              "tr": "Yine başka bir şekil alır",
+              "fr": "Elles prennent encore une autre forme",
+              "en": "They take yet another shape",
+              "nl": "Ze krijgen weer een andere vorm",
+              "de": "Sie nehmen wieder eine andere Form an"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -302,7 +626,43 @@
         "de": "Die meisten Buchstaben verbinden sich mit dem folgenden. Wir lesen, indem wir die verbundenen Buchstaben im Wort richtig verfolgen."
       },
       "kitap": "Elifbâ s. 6",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-010-1",
+          "soru": {
+            "tr": "Çoğu harf kendinden sonraki harfe ne yapar?",
+            "fr": "Que fait la plupart des lettres avec la lettre suivante ?",
+            "en": "What do most letters do with the letter that follows?",
+            "nl": "Wat doen de meeste letters met de volgende letter?",
+            "de": "Was tun die meisten Buchstaben mit dem folgenden Buchstaben?"
+          },
+          "siklar": [
+            {
+              "tr": "Bitişir",
+              "fr": "Elles s’y lient",
+              "en": "They join to it",
+              "nl": "Ze verbinden ermee",
+              "de": "Sie verbinden sich mit ihm"
+            },
+            {
+              "tr": "Bitişmez",
+              "fr": "Elles ne s’y lient pas",
+              "en": "They do not join to it",
+              "nl": "Ze verbinden er niet mee",
+              "de": "Sie verbinden sich nicht mit ihm"
+            },
+            {
+              "tr": "Üstüne yazılır",
+              "fr": "Elles s’écrivent par-dessus",
+              "en": "They are written on top of it",
+              "nl": "Ze worden erop geschreven",
+              "de": "Sie werden darübergeschrieben"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -333,7 +693,43 @@
         "de": "Manche Buchstaben verbinden sich nicht mit dem nächsten. Wir erkennen sie im Wort und trennen sie beim Lesen an der richtigen Stelle."
       },
       "kitap": "Elifbâ s. 6",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-011-1",
+          "soru": {
+            "tr": "Bazı harfler kendilerinden sonraki harfe ne yapar?",
+            "fr": "Que font certaines lettres avec la lettre suivante ?",
+            "en": "What do some letters do with the next letter?",
+            "nl": "Wat doen sommige letters met de volgende letter?",
+            "de": "Was tun manche Buchstaben mit dem nächsten Buchstaben?"
+          },
+          "siklar": [
+            {
+              "tr": "Her zaman bitişir",
+              "fr": "Elles s’y lient toujours",
+              "en": "They always join to it",
+              "nl": "Ze verbinden er altijd mee",
+              "de": "Sie verbinden sich immer mit ihm"
+            },
+            {
+              "tr": "Bitişmez",
+              "fr": "Elles ne s’y lient pas",
+              "en": "They do not join to it",
+              "nl": "Ze verbinden er niet mee",
+              "de": "Sie verbinden sich nicht mit ihm"
+            },
+            {
+              "tr": "Silinir",
+              "fr": "Elles s’effacent",
+              "en": "They are erased",
+              "nl": "Ze worden gewist",
+              "de": "Sie werden gelöscht"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -364,7 +760,43 @@
         "de": "Wir ordnen Buchstaben nach ihrer Stellung im Wort: Anfang, Mitte, Ende und einzeln. So merken wir uns alle Formen eines Buchstabens zusammen."
       },
       "kitap": "Elifbâ s. 4–6 (tekrar)",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-012-1",
+          "soru": {
+            "tr": "Harfleri kelimedeki yerine göre hangi dört gruba ayırırız?",
+            "fr": "En quels quatre groupes classons-nous les lettres selon leur place dans le mot ?",
+            "en": "Into which four groups do we sort letters by their position in the word?",
+            "nl": "In welke vier groepen ordenen we letters naar hun plaats in het woord?",
+            "de": "In welche vier Gruppen ordnen wir Buchstaben nach ihrer Stellung im Wort?"
+          },
+          "siklar": [
+            {
+              "tr": "Kalın, ince, uzun ve kısa",
+              "fr": "Épaisse, fine, longue et courte",
+              "en": "Heavy, light, long and short",
+              "nl": "Zwaar, licht, lang en kort",
+              "de": "Dunkel, hell, lang und kurz"
+            },
+            {
+              "tr": "Büyük, küçük, siyah ve beyaz",
+              "fr": "Grande, petite, noire et blanche",
+              "en": "Big, small, black and white",
+              "nl": "Groot, klein, zwart en wit",
+              "de": "Groß, klein, schwarz und weiß"
+            },
+            {
+              "tr": "Başta, ortada, sonda ve tek başına",
+              "fr": "Initiale, médiane, finale et isolée",
+              "en": "Initial, medial, final and isolated",
+              "nl": "Begin, midden, eind en los",
+              "de": "Anfang, Mitte, Ende und einzeln"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -395,7 +827,43 @@
         "de": "Wir erkennen das Lām-Alif, das heißt das vokallose Dehnungs-Alif auf einer Lām-Stütze, in Wörtern und lesen es richtig."
       },
       "kitap": "Elifbâ s. 4–6",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-013-1",
+          "soru": {
+            "tr": "Lâmelif nedir?",
+            "fr": "Qu’est-ce que le lâm-alif ?",
+            "en": "What is lām-alif?",
+            "nl": "Wat is lām-alif?",
+            "de": "Was ist das Lām-Alif?"
+          },
+          "siklar": [
+            {
+              "tr": "Lâm desteğine yazılmış sâkin med elifi",
+              "fr": "L’alif d’allongement sans voyelle écrit sur le support du lâm",
+              "en": "The vowel-less lengthening alif written on a lām support",
+              "nl": "De klinkerloze verlengings-alif op een lām-steun",
+              "de": "Das vokallose Dehnungs-Alif auf einer Lām-Stütze"
+            },
+            {
+              "tr": "Elif desteğine yazılmış sâkin bir lâm",
+              "fr": "Un lâm sans voyelle écrit sur le support de l’alif",
+              "en": "A vowel-less lām written on an alif support",
+              "nl": "Een klinkerloze lām op een alif-steun",
+              "de": "Ein vokalloses Lām auf einer Alif-Stütze"
+            },
+            {
+              "tr": "Kelimenin başına konan bir işaret",
+              "fr": "Un signe placé au début du mot",
+              "en": "A mark placed at the start of a word",
+              "nl": "Een teken aan het begin van een woord",
+              "de": "Ein Zeichen am Wortanfang"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -426,7 +894,43 @@
         "de": "Das Hamza begegnet uns in verschiedenen Schreibweisen. Wir erkennen sie und sprechen das Hamza richtig aus."
       },
       "kitap": "Elifbâ s. 4–5",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-014-1",
+          "soru": {
+            "tr": "Hemze bizimle nasıl karşılaşır?",
+            "fr": "Comment le hamza se présente-t-il ?",
+            "en": "How does the hamza appear?",
+            "nl": "Hoe komt de hamza voor?",
+            "de": "Wie begegnet uns das Hamza?"
+          },
+          "siklar": [
+            {
+              "tr": "Hep aynı yazılışla",
+              "fr": "Toujours sous la même écriture",
+              "en": "Always in the same writing",
+              "nl": "Altijd in dezelfde schrijfwijze",
+              "de": "Immer in derselben Schreibweise"
+            },
+            {
+              "tr": "Farklı yazılışlarla",
+              "fr": "Sous plusieurs écritures",
+              "en": "In different writings",
+              "nl": "In verschillende schrijfwijzen",
+              "de": "In verschiedenen Schreibweisen"
+            },
+            {
+              "tr": "Hiç yazılmaz",
+              "fr": "Il n’est jamais écrit",
+              "en": "It is never written",
+              "nl": "Hij wordt nooit geschreven",
+              "de": "Es wird nie geschrieben"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -457,7 +961,78 @@
         "de": "Die Fatha ist ein kleiner Strich über dem Buchstaben. Wir lesen Buchstaben mit Fatha richtig mit einem kurzen „a“-Laut."
       },
       "kitap": "Elifbâ s. 7",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-015-1",
+          "soru": {
+            "tr": "Üstünlü harfleri hangi kısa sesle okuruz?",
+            "fr": "Par quel son bref lisons-nous les lettres avec fatha ?",
+            "en": "With which short sound do we read letters with fatḥa?",
+            "nl": "Met welke korte klank lezen we letters met fatḥa?",
+            "de": "Mit welchem kurzen Laut lesen wir Buchstaben mit Fatha?"
+          },
+          "siklar": [
+            {
+              "tr": "«i» sesiyle",
+              "fr": "Par un son « i »",
+              "en": "An “i” sound",
+              "nl": "Met een “i”-klank",
+              "de": "Mit einem „i“-Laut"
+            },
+            {
+              "tr": "«u» sesiyle",
+              "fr": "Par un son « ou »",
+              "en": "A “u” sound",
+              "nl": "Met een “oe”-klank",
+              "de": "Mit einem „u“-Laut"
+            },
+            {
+              "tr": "«e/a» sesiyle",
+              "fr": "Par un son « a »",
+              "en": "An “a” sound",
+              "nl": "Met een “a”-klank",
+              "de": "Mit einem „a“-Laut"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "claude"
+        },
+        {
+          "id": "ku-015-2",
+          "soru": {
+            "tr": "Üstün nerede durur?",
+            "fr": "Où se place le fatha ?",
+            "en": "Where is the fatḥa placed?",
+            "nl": "Waar staat de fatḥa?",
+            "de": "Wo steht die Fatha?"
+          },
+          "siklar": [
+            {
+              "tr": "Harfin üstünde",
+              "fr": "Au-dessus de la lettre",
+              "en": "Above the letter",
+              "nl": "Boven de letter",
+              "de": "Über dem Buchstaben"
+            },
+            {
+              "tr": "Harfin altında",
+              "fr": "Sous la lettre",
+              "en": "Below the letter",
+              "nl": "Onder de letter",
+              "de": "Unter dem Buchstaben"
+            },
+            {
+              "tr": "Harfin yanında",
+              "fr": "À côté de la lettre",
+              "en": "Beside the letter",
+              "nl": "Naast de letter",
+              "de": "Neben dem Buchstaben"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -488,7 +1063,78 @@
         "de": "Die Kasra ist ein kleiner Strich unter dem Buchstaben. Wir unterscheiden Buchstaben mit Kasra von denen mit Fatha und lesen sie mit einem kurzen „i“-Laut."
       },
       "kitap": "Elifbâ s. 10",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-016-1",
+          "soru": {
+            "tr": "Esre nerede durur?",
+            "fr": "Où se place le kasra ?",
+            "en": "Where is the kasra placed?",
+            "nl": "Waar staat de kasra?",
+            "de": "Wo steht die Kasra?"
+          },
+          "siklar": [
+            {
+              "tr": "Harfin üstünde",
+              "fr": "Au-dessus de la lettre",
+              "en": "Above the letter",
+              "nl": "Boven de letter",
+              "de": "Über dem Buchstaben"
+            },
+            {
+              "tr": "Harfin altında",
+              "fr": "Sous la lettre",
+              "en": "Below the letter",
+              "nl": "Onder de letter",
+              "de": "Unter dem Buchstaben"
+            },
+            {
+              "tr": "Harfin yanında",
+              "fr": "À côté de la lettre",
+              "en": "Beside the letter",
+              "nl": "Naast de letter",
+              "de": "Neben dem Buchstaben"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "claude"
+        },
+        {
+          "id": "ku-016-2",
+          "soru": {
+            "tr": "Esreli harfleri hangi kısa sesle okuruz?",
+            "fr": "Par quel son bref lisons-nous les lettres avec kasra ?",
+            "en": "With which short sound do we read letters with kasra?",
+            "nl": "Met welke korte klank lezen we letters met kasra?",
+            "de": "Mit welchem kurzen Laut lesen wir Buchstaben mit Kasra?"
+          },
+          "siklar": [
+            {
+              "tr": "«a» sesiyle",
+              "fr": "Par un son « a »",
+              "en": "An “a” sound",
+              "nl": "Met een “a”-klank",
+              "de": "Mit einem „a“-Laut"
+            },
+            {
+              "tr": "«u» sesiyle",
+              "fr": "Par un son « ou »",
+              "en": "A “u” sound",
+              "nl": "Met een “oe”-klank",
+              "de": "Mit einem „u“-Laut"
+            },
+            {
+              "tr": "«i» sesiyle",
+              "fr": "Par un son « i »",
+              "en": "An “i” sound",
+              "nl": "Met een “i”-klank",
+              "de": "Mit einem „i“-Laut"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -519,7 +1165,78 @@
         "de": "Die Damma sieht aus wie ein kleines „Wāw“ über dem Buchstaben. Wir lesen Buchstaben mit Damma mit gerundeten Lippen und einem kurzen „u“-Laut."
       },
       "kitap": "Elifbâ s. 11",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-017-1",
+          "soru": {
+            "tr": "Ötre neye benzer?",
+            "fr": "À quoi ressemble le damma ?",
+            "en": "What does the ḍamma look like?",
+            "nl": "Waar lijkt de ḍamma op?",
+            "de": "Wie sieht die Damma aus?"
+          },
+          "siklar": [
+            {
+              "tr": "Harfin üstündeki küçük bir «vav» gibi",
+              "fr": "À un petit « wâw » au-dessus de la lettre",
+              "en": "A small “wāw” above the letter",
+              "nl": "Op een kleine “wāw” boven de letter",
+              "de": "Wie ein kleines „Wāw“ über dem Buchstaben"
+            },
+            {
+              "tr": "Harfin altındaki küçük bir çizgi gibi",
+              "fr": "À un petit trait sous la lettre",
+              "en": "A small stroke below the letter",
+              "nl": "Op een klein streepje onder de letter",
+              "de": "Wie ein kleiner Strich unter dem Buchstaben"
+            },
+            {
+              "tr": "Harfin yanındaki bir nokta gibi",
+              "fr": "À un point à côté de la lettre",
+              "en": "A dot beside the letter",
+              "nl": "Op een punt naast de letter",
+              "de": "Wie ein Punkt neben dem Buchstaben"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "claude"
+        },
+        {
+          "id": "ku-017-2",
+          "soru": {
+            "tr": "Ötreli harfleri okurken dudaklarımızı ne yaparız?",
+            "fr": "Que faisons-nous de nos lèvres en lisant une lettre avec damma ?",
+            "en": "What do we do with our lips when reading letters with ḍamma?",
+            "nl": "Wat doen we met onze lippen als we letters met ḍamma lezen?",
+            "de": "Was tun wir mit den Lippen beim Lesen von Buchstaben mit Damma?"
+          },
+          "siklar": [
+            {
+              "tr": "Geniş açarız",
+              "fr": "Nous les ouvrons grand",
+              "en": "We open them wide",
+              "nl": "We openen ze wijd",
+              "de": "Wir öffnen sie weit"
+            },
+            {
+              "tr": "Yuvarlarız",
+              "fr": "Nous les arrondissons",
+              "en": "We round them",
+              "nl": "We ronden ze af",
+              "de": "Wir runden sie"
+            },
+            {
+              "tr": "Sıkıca kapatırız",
+              "fr": "Nous les fermons fort",
+              "en": "We close them tightly",
+              "nl": "We sluiten ze stevig",
+              "de": "Wir schließen sie fest"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -550,7 +1267,43 @@
         "de": "Wir beginnen, kurze Wörter mit Fatha, Kasra und Damma als Ganzes zu lesen, nicht Buchstabe für Buchstabe."
       },
       "kitap": "Elifbâ s. 8–9",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-018-1",
+          "soru": {
+            "tr": "Harekeli kısa kelimeleri nasıl okumaya başlarız?",
+            "fr": "Comment commençons-nous à lire les mots courts avec voyelles brèves ?",
+            "en": "How do we begin to read short words with short vowels?",
+            "nl": "Hoe beginnen we korte woorden met korte klinkers te lezen?",
+            "de": "Wie beginnen wir, kurze Wörter mit Kurzvokalen zu lesen?"
+          },
+          "siklar": [
+            {
+              "tr": "Harf harf",
+              "fr": "Lettre par lettre",
+              "en": "Letter by letter",
+              "nl": "Letter voor letter",
+              "de": "Buchstabe für Buchstabe"
+            },
+            {
+              "tr": "Yalnız ilk harfini okuyarak",
+              "fr": "En lisant seulement la première lettre",
+              "en": "By reading only the first letter",
+              "nl": "Door alleen de eerste letter te lezen",
+              "de": "Indem wir nur den ersten Buchstaben lesen"
+            },
+            {
+              "tr": "Bütün olarak",
+              "fr": "Comme un tout",
+              "en": "As a whole",
+              "nl": "Als geheel",
+              "de": "Als Ganzes"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -581,7 +1334,43 @@
         "de": "Wir wiederholen das Lesen von Fatha, Kasra und Damma ohne Verwechslung, mit dem richtigen Laut und der richtigen Mundform."
       },
       "kitap": "Elifbâ s. 5; s. 10–11 (tekrar)",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-019-1",
+          "soru": {
+            "tr": "Hareke pekiştirmesinde hangi üç hareketi karıştırmadan okuruz?",
+            "fr": "Quelles trois voyelles brèves lisons-nous sans les confondre dans cette consolidation ?",
+            "en": "Which three short vowels do we read without mixing them up in this practice?",
+            "nl": "Welke drie korte klinkers lezen we bij deze oefening zonder verwarring?",
+            "de": "Welche drei Kurzvokale lesen wir bei dieser Übung ohne Verwechslung?"
+          },
+          "siklar": [
+            {
+              "tr": "Üstün, esre ve ötre",
+              "fr": "Fatha, kasra et damma",
+              "en": "Fatḥa, kasra and ḍamma",
+              "nl": "Fatḥa, kasra en ḍamma",
+              "de": "Fatha, Kasra und Damma"
+            },
+            {
+              "tr": "Cezm, şedde ve med",
+              "fr": "Soukoun, chadda et madd",
+              "en": "Sukūn, shadda and madd",
+              "nl": "Sukūn, shadda en madd",
+              "de": "Sukun, Schadda und Madd"
+            },
+            {
+              "tr": "Elif, vâv ve yâ",
+              "fr": "Alif, wâw et yâ",
+              "en": "Alif, wāw and yā’",
+              "nl": "Alif, wāw en yā’",
+              "de": "Alif, Wāw und Yā’"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -612,7 +1401,78 @@
         "de": "Das Sukun zeigt, dass ein Buchstabe keinen Vokal trägt. Wir lesen den vokallosen Buchstaben, indem wir ihn an den vorherigen binden."
       },
       "kitap": "Elifbâ s. 12–13",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-020-1",
+          "soru": {
+            "tr": "Cezm neyi gösterir?",
+            "fr": "Qu’indique le soukoun ?",
+            "en": "What does the sukūn show?",
+            "nl": "Wat toont de sukūn?",
+            "de": "Was zeigt das Sukun?"
+          },
+          "siklar": [
+            {
+              "tr": "Harfin hareke taşıdığını",
+              "fr": "Que la lettre porte une voyelle",
+              "en": "That a letter carries a vowel",
+              "nl": "Dat een letter een klinker draagt",
+              "de": "Dass ein Buchstabe einen Vokal trägt"
+            },
+            {
+              "tr": "Harfin hareke taşımadığını",
+              "fr": "Que la lettre ne porte pas de voyelle",
+              "en": "That a letter carries no vowel",
+              "nl": "Dat een letter geen klinker draagt",
+              "de": "Dass ein Buchstabe keinen Vokal trägt"
+            },
+            {
+              "tr": "Harfin kelimenin başında olduğunu",
+              "fr": "Que la lettre est en début de mot",
+              "en": "That a letter is at the start of a word",
+              "nl": "Dat een letter aan het begin van een woord staat",
+              "de": "Dass ein Buchstabe am Wortanfang steht"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "claude"
+        },
+        {
+          "id": "ku-020-2",
+          "soru": {
+            "tr": "Cezmli harfi nasıl okuruz?",
+            "fr": "Comment lisons-nous la lettre portant un soukoun ?",
+            "en": "How do we read a letter with sukūn?",
+            "nl": "Hoe lezen we een letter met sukūn?",
+            "de": "Wie lesen wir einen Buchstaben mit Sukun?"
+          },
+          "siklar": [
+            {
+              "tr": "Kendinden sonraki harften ayırarak",
+              "fr": "En la séparant de la lettre suivante",
+              "en": "By separating it from the letter after it",
+              "nl": "Door hem van de volgende letter te scheiden",
+              "de": "Indem wir ihn vom folgenden trennen"
+            },
+            {
+              "tr": "Hiç okumayarak",
+              "fr": "En ne la lisant pas du tout",
+              "en": "By not reading it at all",
+              "nl": "Door hem helemaal niet te lezen",
+              "de": "Indem wir ihn gar nicht lesen"
+            },
+            {
+              "tr": "Kendinden önceki harfe bağlayarak",
+              "fr": "En l’appuyant sur la lettre précédente",
+              "en": "By linking it to the letter before it",
+              "nl": "Door hem aan de voorgaande letter te koppelen",
+              "de": "Indem wir ihn an den vorherigen Buchstaben binden"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -643,7 +1503,43 @@
         "de": "Wir versuchen, Wörter mit Sukun ohne Stocken zu entziffern. Wir hören, wie sich der vokallose Buchstabe an den vorherigen lehnt."
       },
       "kitap": "Elifbâ s. 13",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-021-1",
+          "soru": {
+            "tr": "Cezmli kelimeyi okurken sâkin harfin ne yaptığını duyarız?",
+            "fr": "Que entendons-nous faire la lettre sans voyelle dans un mot avec soukoun ?",
+            "en": "What do we hear the vowel-less letter do in a word with sukūn?",
+            "nl": "Wat horen we de klinkerloze letter doen in een woord met sukūn?",
+            "de": "Was hören wir den vokallosen Buchstaben in einem Wort mit Sukun tun?"
+          },
+          "siklar": [
+            {
+              "tr": "Önceki harfe yaslandığını",
+              "fr": "Elle s’appuie sur la précédente",
+              "en": "Lean on the one before it",
+              "nl": "Op de vorige leunen",
+              "de": "Sich an den vorherigen lehnen"
+            },
+            {
+              "tr": "Sonraki harfe yaslandığını",
+              "fr": "Elle s’appuie sur la suivante",
+              "en": "Lean on the one after it",
+              "nl": "Op de volgende leunen",
+              "de": "Sich an den nächsten lehnen"
+            },
+            {
+              "tr": "Sesinin hiç çıkmadığını",
+              "fr": "Son son ne sort jamais",
+              "en": "Make no sound at all",
+              "nl": "Helemaal geen klank maken",
+              "de": "Gar keinen Laut machen"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -674,7 +1570,78 @@
         "de": "Die Schadda zeigt, dass ein Buchstabe doppelt gesprochen wird: erst ohne, dann mit Vokal. Wir lesen den verdoppelten Buchstaben mit Blick auf seinen Doppelwert."
       },
       "kitap": "Elifbâ s. 20–21",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-022-1",
+          "soru": {
+            "tr": "Şedde harfin kaç kez okunacağını gösterir?",
+            "fr": "Combien de fois la chadda indique-t-elle que la lettre se prononce ?",
+            "en": "How many times does the shadda show that a letter is pronounced?",
+            "nl": "Hoe vaak toont de shadda dat een letter wordt uitgesproken?",
+            "de": "Wie oft zeigt die Schadda, dass ein Buchstabe gesprochen wird?"
+          },
+          "siklar": [
+            {
+              "tr": "Bir kez",
+              "fr": "Une fois",
+              "en": "Once",
+              "nl": "Eenmaal",
+              "de": "Einmal"
+            },
+            {
+              "tr": "İki kez",
+              "fr": "Deux fois",
+              "en": "Twice",
+              "nl": "Tweemaal",
+              "de": "Zweimal"
+            },
+            {
+              "tr": "Hiç okunmayacağını",
+              "fr": "Jamais",
+              "en": "Never",
+              "nl": "Nooit",
+              "de": "Nie"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "claude"
+        },
+        {
+          "id": "ku-022-2",
+          "soru": {
+            "tr": "Şeddeli harf iki kez okunurken sıra nasıldır?",
+            "fr": "Dans quel ordre se prononce la lettre à chadda ?",
+            "en": "In what order is a letter with shadda pronounced twice?",
+            "nl": "In welke volgorde wordt een letter met shadda tweemaal uitgesproken?",
+            "de": "In welcher Reihenfolge wird ein Buchstabe mit Schadda doppelt gesprochen?"
+          },
+          "siklar": [
+            {
+              "tr": "Önce harekeli, sonra sâkin",
+              "fr": "D’abord avec voyelle, puis sans voyelle",
+              "en": "First with a vowel, then without one",
+              "nl": "Eerst met klinker, daarna zonder klinker",
+              "de": "Erst mit, dann ohne Vokal"
+            },
+            {
+              "tr": "İkisi de harekeli",
+              "fr": "Les deux fois avec voyelle",
+              "en": "Both times with a vowel",
+              "nl": "Beide keren met klinker",
+              "de": "Beide Male mit Vokal"
+            },
+            {
+              "tr": "Önce sâkin, sonra harekeli",
+              "fr": "D’abord sans voyelle, puis avec voyelle",
+              "en": "First without a vowel, then with one",
+              "nl": "Eerst zonder klinker, daarna met klinker",
+              "de": "Erst ohne, dann mit Vokal"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -705,7 +1672,43 @@
         "de": "Wir lesen Wörter mit Schadda mit richtiger Betonung und flüssig. Auf dem verdoppelten Buchstaben hören wir ein kurzes Halten und einen festen Laut."
       },
       "kitap": "Elifbâ s. 21–22",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-023-1",
+          "soru": {
+            "tr": "Şeddeli harfte ne duyarız?",
+            "fr": "Qu’entendons-nous sur la lettre doublée par la chadda ?",
+            "en": "What do we hear on a letter with shadda?",
+            "nl": "Wat horen we op een letter met shadda?",
+            "de": "Was hören wir auf einem Buchstaben mit Schadda?"
+          },
+          "siklar": [
+            {
+              "tr": "Kısa bir bekleme ve güçlü bir ses",
+              "fr": "Une courte retenue et un son appuyé",
+              "en": "A short hold and a firm sound",
+              "nl": "Een korte aanhouding en een stevige klank",
+              "de": "Ein kurzes Halten und einen festen Laut"
+            },
+            {
+              "tr": "Hiç ses duymayız",
+              "fr": "Aucun son",
+              "en": "No sound at all",
+              "nl": "Helemaal geen klank",
+              "de": "Gar keinen Laut"
+            },
+            {
+              "tr": "Çok uzun bir uzatma",
+              "fr": "Un très long allongement",
+              "en": "A very long lengthening",
+              "nl": "Een heel lange verlenging",
+              "de": "Eine sehr lange Dehnung"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -736,7 +1739,43 @@
         "de": "Wir wenden Beispiele mit Sukun und Schadda gemeinsam richtig an. Wir achten darauf, die beiden Zeichen nicht zu verwechseln."
       },
       "kitap": "Elifbâ s. 14",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-024-1",
+          "soru": {
+            "tr": "Sâkinlik pekiştirmesinde hangi iki işareti karıştırmamaya çalışırız?",
+            "fr": "Quels deux signes essayons-nous de ne pas confondre dans cette consolidation ?",
+            "en": "Which two signs do we try not to mix up in this practice?",
+            "nl": "Welke twee tekens proberen we bij deze oefening niet te verwarren?",
+            "de": "Welche zwei Zeichen versuchen wir bei dieser Übung nicht zu verwechseln?"
+          },
+          "siklar": [
+            {
+              "tr": "Üstün ve esre",
+              "fr": "La fatha et le kasra",
+              "en": "Fatḥa and kasra",
+              "nl": "Fatḥa en kasra",
+              "de": "Fatha und Kasra"
+            },
+            {
+              "tr": "Cezim ve şedde",
+              "fr": "Le soukoun et la chadda",
+              "en": "Sukūn and shadda",
+              "nl": "Sukūn en shadda",
+              "de": "Sukun und Schadda"
+            },
+            {
+              "tr": "Elif ve vâv",
+              "fr": "L’alif et le wâw",
+              "en": "Alif and wāw",
+              "nl": "Alif en wāw",
+              "de": "Alif und Wāw"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -767,7 +1806,43 @@
         "de": "Die doppelte Fatha (Tanwīn) gibt am Wortende einen „-an“-Laut. Wir lesen Wörter mit doppelter Fatha mit dem richtigen Lautwert."
       },
       "kitap": "Elifbâ s. 23",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-025-1",
+          "soru": {
+            "tr": "İki üstün (tenvin) harfin sonunda hangi sesi verir?",
+            "fr": "Quel son le double fatha (tanwîn) donne-t-il à la fin du mot ?",
+            "en": "Which sound does the double fatḥa (tanwīn) give at the end of a word?",
+            "nl": "Welke klank geeft de dubbele fatḥa (tanwīn) aan het woordeinde?",
+            "de": "Welchen Laut gibt die doppelte Fatha (Tanwīn) am Wortende?"
+          },
+          "siklar": [
+            {
+              "tr": "«-in» sesi",
+              "fr": "Un son « -in »",
+              "en": "An “-in” sound",
+              "nl": "Een “-in”-klank",
+              "de": "Einen „-in“-Laut"
+            },
+            {
+              "tr": "«-un» sesi",
+              "fr": "Un son « -oun »",
+              "en": "An “-un” sound",
+              "nl": "Een “-oen”-klank",
+              "de": "Einen „-un“-Laut"
+            },
+            {
+              "tr": "«-an» sesi",
+              "fr": "Un son « -an »",
+              "en": "An “-an” sound",
+              "nl": "Een “-an”-klank",
+              "de": "Einen „-an“-Laut"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -798,7 +1873,43 @@
         "de": "Die doppelte Kasra (Tanwīn) gibt am Wortende einen „-in“-Laut. Wir lesen Wörter mit doppelter Kasra und bewahren den Tanwīn-Klang."
       },
       "kitap": "Elifbâ s. 24",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-026-1",
+          "soru": {
+            "tr": "İki esre (tenvin) harfin sonunda hangi sesi verir?",
+            "fr": "Quel son le double kasra (tanwîn) donne-t-il à la fin du mot ?",
+            "en": "Which sound does the double kasra (tanwīn) give at the end of a word?",
+            "nl": "Welke klank geeft de dubbele kasra (tanwīn) aan het woordeinde?",
+            "de": "Welchen Laut gibt die doppelte Kasra (Tanwīn) am Wortende?"
+          },
+          "siklar": [
+            {
+              "tr": "«-in» sesi",
+              "fr": "Un son « -in »",
+              "en": "An “-in” sound",
+              "nl": "Een “-in”-klank",
+              "de": "Einen „-in“-Laut"
+            },
+            {
+              "tr": "«-an» sesi",
+              "fr": "Un son « -an »",
+              "en": "An “-an” sound",
+              "nl": "Een “-an”-klank",
+              "de": "Einen „-an“-Laut"
+            },
+            {
+              "tr": "«-un» sesi",
+              "fr": "Un son « -oun »",
+              "en": "An “-un” sound",
+              "nl": "Een “-oen”-klank",
+              "de": "Einen „-un“-Laut"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -829,7 +1940,43 @@
         "de": "Die doppelte Damma (Tanwīn) gibt am Wortende einen „-un“-Laut. Wir lesen Wörter mit doppelter Damma mit der richtigen Lippenbewegung."
       },
       "kitap": "Elifbâ s. 25",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-027-1",
+          "soru": {
+            "tr": "İki ötre (tenvin) harfin sonunda hangi sesi verir?",
+            "fr": "Quel son le double damma (tanwîn) donne-t-il à la fin du mot ?",
+            "en": "Which sound does the double ḍamma (tanwīn) give at the end of a word?",
+            "nl": "Welke klank geeft de dubbele ḍamma (tanwīn) aan het woordeinde?",
+            "de": "Welchen Laut gibt die doppelte Damma (Tanwīn) am Wortende?"
+          },
+          "siklar": [
+            {
+              "tr": "«-an» sesi",
+              "fr": "Un son « -an »",
+              "en": "An “-an” sound",
+              "nl": "Een “-an”-klank",
+              "de": "Einen „-an“-Laut"
+            },
+            {
+              "tr": "«-un» sesi",
+              "fr": "Un son « -oun »",
+              "en": "An “-un” sound",
+              "nl": "Een “-oen”-klank",
+              "de": "Einen „-un“-Laut"
+            },
+            {
+              "tr": "«-in» sesi",
+              "fr": "Un son « -in »",
+              "en": "An “-in” sound",
+              "nl": "Een “-in”-klank",
+              "de": "Einen „-in“-Laut"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -860,7 +2007,43 @@
         "de": "Wir lesen die drei Arten des Tanwīn (doppelte Fatha, Kasra, Damma) in Wörtern und unterscheiden sie richtig."
       },
       "kitap": "Elifbâ s. 23–25 (tekrar)",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-028-1",
+          "soru": {
+            "tr": "Üç tenvin çeşidi hangileridir?",
+            "fr": "Quelles sont les trois sortes de tanwîn ?",
+            "en": "Which are the three kinds of tanwīn?",
+            "nl": "Welke zijn de drie soorten tanwīn?",
+            "de": "Welche sind die drei Arten des Tanwīn?"
+          },
+          "siklar": [
+            {
+              "tr": "İki cezm, iki şedde, iki med",
+              "fr": "Double soukoun, double chadda, double madd",
+              "en": "Double sukūn, double shadda, double madd",
+              "nl": "Dubbele sukūn, dubbele shadda, dubbele madd",
+              "de": "Doppeltes Sukun, Schadda und Madd"
+            },
+            {
+              "tr": "Üç elif, üç vâv, üç yâ",
+              "fr": "Trois alif, trois wâw, trois yâ",
+              "en": "Three alifs, three wāws, three yā’s",
+              "nl": "Drie alifs, drie wāws, drie yā’s",
+              "de": "Drei Alifs, drei Wāws, drei Yā’s"
+            },
+            {
+              "tr": "İki üstün, iki esre, iki ötre",
+              "fr": "Double fatha, double kasra, double damma",
+              "en": "Double fatḥa, double kasra, double ḍamma",
+              "nl": "Dubbele fatḥa, dubbele kasra, dubbele ḍamma",
+              "de": "Doppelte Fatha, Kasra und Damma"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -891,7 +2074,43 @@
         "de": "Wir üben durch Wiederholung, um Wörter mit Tanwīn fehlerfrei und zügig zu lesen."
       },
       "kitap": "Elifbâ s. 23–25 (tekrar)",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-029-1",
+          "soru": {
+            "tr": "Tenvinli kelimeleri hatasız ve seri okumak için ne yaparız?",
+            "fr": "Que faisons-nous pour lire sans faute et rapidement les mots avec tanwîn ?",
+            "en": "What do we do to read words with tanwīn without mistakes and at a good speed?",
+            "nl": "Wat doen we om woorden met tanwīn foutloos en vlot te lezen?",
+            "de": "Was tun wir, um Wörter mit Tanwīn fehlerfrei und zügig zu lesen?"
+          },
+          "siklar": [
+            {
+              "tr": "Tekrar çalışması yaparız",
+              "fr": "Nous nous exerçons en répétant",
+              "en": "We practise by repetition",
+              "nl": "We oefenen door herhaling",
+              "de": "Wir üben durch Wiederholung"
+            },
+            {
+              "tr": "Bir kez okuyup geçeriz",
+              "fr": "Nous lisons une fois et passons",
+              "en": "We read once and move on",
+              "nl": "We lezen één keer en gaan verder",
+              "de": "Wir lesen einmal und gehen weiter"
+            },
+            {
+              "tr": "Kelimeleri atlarız",
+              "fr": "Nous sautons les mots",
+              "en": "We skip the words",
+              "nl": "We slaan de woorden over",
+              "de": "Wir überspringen die Wörter"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -1024,7 +2243,43 @@
         "de": "In Wörtern mit Madd finden wir die Stelle der Dehnung richtig. Wir dehnen weder zu kurz noch zu lang, jedes Mal gleich lang."
       },
       "kitap": "Elifbâ s. 19",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-031-1",
+          "soru": {
+            "tr": "Medli kelimelerde uzatmayı nasıl yaparız?",
+            "fr": "Comment faisons-nous l’allongement dans les mots avec madd ?",
+            "en": "How do we make the lengthening in words with madd?",
+            "nl": "Hoe maken we de verlenging in woorden met madd?",
+            "de": "Wie machen wir die Dehnung in Wörtern mit Madd?"
+          },
+          "siklar": [
+            {
+              "tr": "Her seferinde başka bir sürede",
+              "fr": "Chaque fois d’une durée différente",
+              "en": "A different length each time",
+              "nl": "Elke keer anders van duur",
+              "de": "Jedes Mal unterschiedlich lang"
+            },
+            {
+              "tr": "Ne eksik ne fazla, her seferinde aynı sürede",
+              "fr": "Ni trop court ni trop long, toujours de la même durée",
+              "en": "Neither too short nor too long, the same length each time",
+              "nl": "Niet te kort of te lang, steeds even lang",
+              "de": "Weder zu kurz noch zu lang, jedes Mal gleich lang"
+            },
+            {
+              "tr": "Olabildiğince uzun",
+              "fr": "Le plus long possible",
+              "en": "As long as possible",
+              "nl": "Zo lang mogelijk",
+              "de": "So lang wie möglich"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -1055,7 +2310,43 @@
         "de": "Lafẓ al-Dschalāla ist der Name „Allah“. Wir lernen, ihn je nach vorherigem Vokal dunkel oder hell zu lesen, und hören Beispiele aufmerksam an."
       },
       "kitap": "Elifbâ s. 31",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-032-1",
+          "soru": {
+            "tr": "Lafza-i Celâl’i neye göre kalın veya ince okuruz?",
+            "fr": "Selon quoi disons-nous le lafẓ al-jalâla épais ou fin ?",
+            "en": "According to what do we read lafẓ al-jalāla heavy or light?",
+            "nl": "Waarnaar lezen we lafẓ al-djalāla zwaar of licht?",
+            "de": "Wonach lesen wir Lafẓ al-Dschalāla dunkel oder hell?"
+          },
+          "siklar": [
+            {
+              "tr": "Kelimenin uzunluğuna göre",
+              "fr": "Selon la longueur du mot",
+              "en": "The length of the word",
+              "nl": "Naar de lengte van het woord",
+              "de": "Nach der Länge des Wortes"
+            },
+            {
+              "tr": "Sesimizin yüksekliğine göre",
+              "fr": "Selon la hauteur de notre voix",
+              "en": "How loud our voice is",
+              "nl": "Naar hoe hard onze stem klinkt",
+              "de": "Nach der Lautstärke unserer Stimme"
+            },
+            {
+              "tr": "Kendinden önceki harekeye göre",
+              "fr": "Selon la voyelle qui le précède",
+              "en": "The vowel before it",
+              "nl": "Naar de klinker ervoor",
+              "de": "Nach dem vorherigen Vokal"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -1086,7 +2377,78 @@
         "de": "Wir lesen und unterscheiden anhand von Beispielen das Lām des Artikels, das manchmal gesprochen (Mondbuchstabe) und manchmal im nächsten Buchstaben aufgeht (Sonnenbuchstabe)."
       },
       "kitap": "Elifbâ s. 29–30",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-033-1",
+          "soru": {
+            "tr": "Elif-lâm takısındaki lâm sonraki harfe katılıyorsa buna ne denir?",
+            "fr": "Comment appelle-t-on le lâm de l’article quand il s’assimile à la lettre suivante ?",
+            "en": "What is the lām of the article called when it merges into the next letter?",
+            "nl": "Hoe heet de lām van het lidwoord als hij in de volgende letter opgaat?",
+            "de": "Wie heißt das Lām des Artikels, wenn es im nächsten Buchstaben aufgeht?"
+          },
+          "siklar": [
+            {
+              "tr": "Şemsî",
+              "fr": "Solaire",
+              "en": "Solar",
+              "nl": "Zon",
+              "de": "Sonnenbuchstabe"
+            },
+            {
+              "tr": "Kamerî",
+              "fr": "Lunaire",
+              "en": "Lunar",
+              "nl": "Maan",
+              "de": "Mondbuchstabe"
+            },
+            {
+              "tr": "Lâmelif",
+              "fr": "Lâm-alif",
+              "en": "Lām-alif",
+              "nl": "Lām-alif",
+              "de": "Lām-Alif"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "claude"
+        },
+        {
+          "id": "ku-033-2",
+          "soru": {
+            "tr": "Elif-lâm takısındaki lâm okunuyorsa buna ne denir?",
+            "fr": "Comment appelle-t-on le lâm de l’article quand il est prononcé ?",
+            "en": "What is the lām of the article called when it is pronounced?",
+            "nl": "Hoe heet de lām van het lidwoord als hij wordt uitgesproken?",
+            "de": "Wie heißt das Lām des Artikels, wenn es gesprochen wird?"
+          },
+          "siklar": [
+            {
+              "tr": "Şemsî",
+              "fr": "Solaire",
+              "en": "Solar",
+              "nl": "Zon",
+              "de": "Sonnenbuchstabe"
+            },
+            {
+              "tr": "Kamerî",
+              "fr": "Lunaire",
+              "en": "Lunar",
+              "nl": "Maan",
+              "de": "Mondbuchstabe"
+            },
+            {
+              "tr": "Lâmelif",
+              "fr": "Lâm-alif",
+              "en": "Lām-alif",
+              "nl": "Lām-alif",
+              "de": "Lām-Alif"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -1117,7 +2479,78 @@
         "de": "Die Zeichen zeigen, wo wir anhalten (Waqf) oder weiterlesen (Wasl) sollen. Je nach Zeichen machen wir eine Pause oder lesen flüssig weiter."
       },
       "kitap": "Elifbâ s. 48",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-034-1",
+          "soru": {
+            "tr": "Vakf ne demektir?",
+            "fr": "Que signifie le waqf ?",
+            "en": "What does waqf mean?",
+            "nl": "Wat betekent waqf?",
+            "de": "Was bedeutet Waqf?"
+          },
+          "siklar": [
+            {
+              "tr": "Okurken devam etmek",
+              "fr": "Continuer en lisant",
+              "en": "Continuing while reading",
+              "nl": "Doorgaan tijdens het lezen",
+              "de": "Beim Lesen weiterlesen"
+            },
+            {
+              "tr": "Sesi uzatmak",
+              "fr": "Allonger le son",
+              "en": "Lengthening the sound",
+              "nl": "De klank verlengen",
+              "de": "Den Laut dehnen"
+            },
+            {
+              "tr": "Okurken durmak",
+              "fr": "S’arrêter en lisant",
+              "en": "Stopping while reading",
+              "nl": "Stoppen tijdens het lezen",
+              "de": "Beim Lesen anhalten"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "claude"
+        },
+        {
+          "id": "ku-034-2",
+          "soru": {
+            "tr": "Okurken durup durmayacağımızı nereden anlarız?",
+            "fr": "D’où savons-nous si nous devons nous arrêter en lisant ?",
+            "en": "How do we know whether to stop or continue while reading?",
+            "nl": "Waaraan zien we of we moeten stoppen of doorgaan?",
+            "de": "Woran erkennen wir, ob wir anhalten oder weiterlesen sollen?"
+          },
+          "siklar": [
+            {
+              "tr": "İşaretlerden",
+              "fr": "Des signes",
+              "en": "From the marks",
+              "nl": "Aan de tekens",
+              "de": "An den Zeichen"
+            },
+            {
+              "tr": "Satırın uzunluğundan",
+              "fr": "De la longueur de la ligne",
+              "en": "From the length of the line",
+              "nl": "Aan de lengte van de regel",
+              "de": "An der Länge der Zeile"
+            },
+            {
+              "tr": "Tahmin ederek",
+              "fr": "En devinant",
+              "en": "By guessing",
+              "nl": "Door te raden",
+              "de": "Durch Raten"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -1148,7 +2581,43 @@
         "de": "Wir gehen dazu über, kurze Sätze als Ganzes zu lesen, indem wir die gelernten Wörter verbinden."
       },
       "kitap": "Elifbâ s. 26–27",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-035-1",
+          "soru": {
+            "tr": "Kelimeden cümleye geçerken ne yaparız?",
+            "fr": "Que faisons-nous en passant des mots aux phrases ?",
+            "en": "What do we do when moving from words to sentences?",
+            "nl": "Wat doen we bij de overgang van woorden naar zinnen?",
+            "de": "Was tun wir beim Übergang von Wörtern zu Sätzen?"
+          },
+          "siklar": [
+            {
+              "tr": "Harfleri baştan öğreniriz",
+              "fr": "Nous réapprenons les lettres depuis le début",
+              "en": "We relearn the letters from the start",
+              "nl": "We leren de letters opnieuw",
+              "de": "Wir lernen die Buchstaben von vorn"
+            },
+            {
+              "tr": "Kelimeleri birleştirip kısa cümleler okuruz",
+              "fr": "Nous relions les mots et lisons de courtes phrases",
+              "en": "We join words and read short sentences",
+              "nl": "We koppelen woorden en lezen korte zinnen",
+              "de": "Wir verbinden Wörter und lesen kurze Sätze"
+            },
+            {
+              "tr": "Yalnız tek kelime okuruz",
+              "fr": "Nous ne lisons qu’un seul mot",
+              "en": "We read only a single word",
+              "nl": "We lezen maar één woord",
+              "de": "Wir lesen nur ein einzelnes Wort"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -1179,7 +2648,43 @@
         "de": "Wir lesen kurze Koransätze in der richtigen Reihenfolge und in gleichmäßigem Tempo."
       },
       "kitap": "Elifbâ s. 28",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-036-1",
+          "soru": {
+            "tr": "Kısa Kur’an cümlelerini nasıl okuruz?",
+            "fr": "Comment lisons-nous de courtes phrases coraniques ?",
+            "en": "How do we read short Qur’anic sentences?",
+            "nl": "Hoe lezen we korte Koranzinnen?",
+            "de": "Wie lesen wir kurze Koransätze?"
+          },
+          "siklar": [
+            {
+              "tr": "Karışık sırayla ve çok hızlı",
+              "fr": "Dans le désordre et très vite",
+              "en": "In mixed order and very fast",
+              "nl": "In willekeurige volgorde en heel snel",
+              "de": "In gemischter Reihenfolge und sehr schnell"
+            },
+            {
+              "tr": "Sondan başa doğru",
+              "fr": "De la fin vers le début",
+              "en": "From the end to the beginning",
+              "nl": "Van achteren naar voren",
+              "de": "Vom Ende zum Anfang"
+            },
+            {
+              "tr": "Doğru sırayla ve düzgün bir tempoyla",
+              "fr": "Dans le bon ordre et à un rythme régulier",
+              "en": "In the right order and at a steady pace",
+              "nl": "In de juiste volgorde en in een gelijkmatig tempo",
+              "de": "In der richtigen Reihenfolge und in gleichmäßigem Tempo"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -1210,7 +2715,43 @@
         "de": "Wir folgen einer Zeile des Korans mit den Augen, ohne die Stelle zu verlieren, und lesen sie."
       },
       "kitap": "Elifbâ s. 32",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-037-1",
+          "soru": {
+            "tr": "Kur’an’ın bir satırını okurken ne yaparız?",
+            "fr": "Que faisons-nous en lisant une ligne du Coran ?",
+            "en": "What do we do when reading a line of the Qur’an?",
+            "nl": "Wat doen we als we een regel van de Koran lezen?",
+            "de": "Was tun wir beim Lesen einer Koranzeile?"
+          },
+          "siklar": [
+            {
+              "tr": "Gözümüzle takip eder, karıştırmadan okuruz",
+              "fr": "Nous la suivons des yeux sans nous perdre",
+              "en": "We follow it with our eyes without losing our place",
+              "nl": "We volgen hem met onze ogen zonder het spoor bijster te raken",
+              "de": "Wir folgen ihr mit den Augen, ohne die Stelle zu verlieren"
+            },
+            {
+              "tr": "Gözümüzü kapatırız",
+              "fr": "Nous fermons les yeux",
+              "en": "We close our eyes",
+              "nl": "We sluiten onze ogen",
+              "de": "Wir schließen die Augen"
+            },
+            {
+              "tr": "Satırı atlarız",
+              "fr": "Nous sautons la ligne",
+              "en": "We skip the line",
+              "nl": "We slaan de regel over",
+              "de": "Wir überspringen die Zeile"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -1241,7 +2782,43 @@
         "de": "Wir lesen kurze Zeilen aus Dschuz’ ʿAmma mit Blick in den Mushaf."
       },
       "kitap": "Elifbâ s. 32–33",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-038-1",
+          "soru": {
+            "tr": "Amme cüzünden kısa satırları neye bakarak okuruz?",
+            "fr": "Que regardons-nous pour lire de courtes lignes du Juz’ ʿAmma ?",
+            "en": "What do we look at to read short lines from Juz’ ʿAmma?",
+            "nl": "Waar kijken we naar om korte regels uit Djoez’ ʿAmma te lezen?",
+            "de": "Worauf schauen wir, um kurze Zeilen aus Dschuz’ ʿAmma zu lesen?"
+          },
+          "siklar": [
+            {
+              "tr": "Ezberden, hiçbir şeye bakmadan",
+              "fr": "Rien, par cœur",
+              "en": "Nothing, from memory",
+              "nl": "Nergens naar, uit het hoofd",
+              "de": "Auf nichts, auswendig"
+            },
+            {
+              "tr": "Mushafa bakarak",
+              "fr": "Le mushaf",
+              "en": "The mushaf",
+              "nl": "Naar de mushaf",
+              "de": "Auf den Mushaf"
+            },
+            {
+              "tr": "Tahtaya bakarak",
+              "fr": "Le tableau",
+              "en": "The board",
+              "nl": "Naar het bord",
+              "de": "Auf die Tafel"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -1272,7 +2849,43 @@
         "de": "Wir üben, kurze Suren-Zeilen laut aus dem Mushaf nach den gelernten Leseregeln zu lesen."
       },
       "kitap": "Elifbâ s. 33",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-039-1",
+          "soru": {
+            "tr": "Yüzünden okuma alıştırmasında kısa sure satırlarını neye uygun seslendiririz?",
+            "fr": "À quoi nos lectures de lignes de sourates doivent-elles se conformer dans cet exercice ?",
+            "en": "What do we follow when reading short surah lines aloud from the mushaf?",
+            "nl": "Waaraan houden we ons bij het hardop lezen van korte soeraregels uit de mushaf?",
+            "de": "Woran halten wir uns beim lauten Lesen kurzer Suren-Zeilen aus dem Mushaf?"
+          },
+          "siklar": [
+            {
+              "tr": "Kendi bildiğimiz gibi",
+              "fr": "À ce que chacun croit savoir",
+              "en": "Whatever we feel like",
+              "nl": "Aan wat we zelf denken",
+              "de": "An das, was wir selbst meinen"
+            },
+            {
+              "tr": "Rastgele",
+              "fr": "Au hasard",
+              "en": "Chance",
+              "nl": "Aan het toeval",
+              "de": "An den Zufall"
+            },
+            {
+              "tr": "Öğrendiğimiz okuma kurallarına",
+              "fr": "Aux règles de lecture apprises",
+              "en": "The reading rules we have learned",
+              "nl": "Aan de geleerde leesregels",
+              "de": "An die gelernten Leseregeln"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -1303,7 +2916,43 @@
         "de": "Wir wiederholen kurze Koransätze, um uns dem flüssigen Lesen ohne Buchstabieren zu nähern."
       },
       "kitap": "Elifbâ s. 32–33 (tekrar)",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-040-1",
+          "soru": {
+            "tr": "Akıcı okumaya yaklaşmak için kısa Kur’an satırlarını ne yaparız?",
+            "fr": "Que faisons-nous des courtes lignes du Coran pour approcher d’une lecture fluide ?",
+            "en": "What do we do with short lines of the Qur’an to get closer to fluent reading?",
+            "nl": "Wat doen we met korte regels van de Koran om dichter bij vlot lezen te komen?",
+            "de": "Was tun wir mit kurzen Koranzeilen, um dem flüssigen Lesen näherzukommen?"
+          },
+          "siklar": [
+            {
+              "tr": "Tekrarlarız",
+              "fr": "Nous les répétons",
+              "en": "We repeat them",
+              "nl": "We herhalen ze",
+              "de": "Wir wiederholen sie"
+            },
+            {
+              "tr": "Bir kez okuyup bırakırız",
+              "fr": "Nous les lisons une fois et arrêtons",
+              "en": "We read once and stop",
+              "nl": "We lezen ze één keer en stoppen",
+              "de": "Wir lesen sie einmal und hören auf"
+            },
+            {
+              "tr": "Hecelemeye devam ederiz",
+              "fr": "Nous continuons à épeler",
+              "en": "We keep spelling out syllables",
+              "nl": "We blijven spellen",
+              "de": "Wir buchstabieren weiter"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -1334,7 +2983,78 @@
         "de": "Wir lesen kurze Versabschnitte und planen unseren Atem im Voraus. Wir halten an einer passenden Stelle an, nicht erst wenn uns die Luft ausgeht."
       },
       "kitap": "Elifbâ s. 48",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-041-1",
+          "soru": {
+            "tr": "Nefes kontrolünde nerede dururuz?",
+            "fr": "Où nous arrêtons-nous dans la maîtrise du souffle ?",
+            "en": "Where do we stop in breath control?",
+            "nl": "Waar stoppen we bij ademcontrole?",
+            "de": "Wo halten wir bei der Atemkontrolle an?"
+          },
+          "siklar": [
+            {
+              "tr": "Yalnız nefesimiz bitince",
+              "fr": "Seulement quand le souffle manque",
+              "en": "Only when we run out of air",
+              "nl": "Alleen als we geen adem meer hebben",
+              "de": "Nur wenn uns die Luft ausgeht"
+            },
+            {
+              "tr": "Uygun bir yerde",
+              "fr": "À un endroit adapté",
+              "en": "At a suitable place",
+              "nl": "Op een geschikte plek",
+              "de": "An einer passenden Stelle"
+            },
+            {
+              "tr": "Hiç durmayız",
+              "fr": "Nous ne nous arrêtons jamais",
+              "en": "We never stop",
+              "nl": "We stoppen nooit",
+              "de": "Wir halten nie an"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "claude"
+        },
+        {
+          "id": "ku-041-2",
+          "soru": {
+            "tr": "Kısa âyet parçalarını okurken nefesimizi ne zaman planlarız?",
+            "fr": "Quand planifions-nous notre souffle en lisant de courts passages ?",
+            "en": "When do we plan our breath while reading short verse segments?",
+            "nl": "Wanneer plannen we onze adem bij korte versfragmenten?",
+            "de": "Wann planen wir beim Lesen kurzer Versabschnitte unseren Atem?"
+          },
+          "siklar": [
+            {
+              "tr": "Okuduktan sonra",
+              "fr": "Après avoir lu",
+              "en": "After reading",
+              "nl": "Na het lezen",
+              "de": "Nach dem Lesen"
+            },
+            {
+              "tr": "Hiç planlamayız",
+              "fr": "Jamais",
+              "en": "We never plan it",
+              "nl": "Nooit",
+              "de": "Nie"
+            },
+            {
+              "tr": "Önceden",
+              "fr": "À l’avance",
+              "en": "Ahead of time",
+              "nl": "Vooraf",
+              "de": "Im Voraus"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -1365,7 +3085,78 @@
         "de": "Wir lesen eine unserem Niveau entsprechende Koranzeile unter Aufsicht des Lehrers. Wir hören uns zu, bemerken Fehler und verbessern sie."
       },
       "kitap": "Elifbâ s. 32–33 (tekrar)",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-042-1",
+          "soru": {
+            "tr": "Okuma değerlendirmesinde Kur’an satırını kimin kontrolünde okuruz?",
+            "fr": "Sous le contrôle de qui lisons-nous la ligne du Coran lors de l’évaluation ?",
+            "en": "Under whose supervision do we read the Qur’an line in the reading assessment?",
+            "nl": "Onder wiens toezicht lezen we de regel van de Koran bij de leesevaluatie?",
+            "de": "Unter wessen Aufsicht lesen wir bei der Leseauswertung die Koranzeile?"
+          },
+          "siklar": [
+            {
+              "tr": "Hocamızın",
+              "fr": "De notre enseignant",
+              "en": "Our teacher’s",
+              "nl": "Van onze leraar",
+              "de": "Unter der unseres Lehrers"
+            },
+            {
+              "tr": "Arkadaşımızın",
+              "fr": "De notre camarade",
+              "en": "Our friend’s",
+              "nl": "Van onze vriend",
+              "de": "Unter der unseres Freundes"
+            },
+            {
+              "tr": "Kimsenin",
+              "fr": "De personne",
+              "en": "Nobody’s",
+              "nl": "Van niemand",
+              "de": "Unter niemandes"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "claude"
+        },
+        {
+          "id": "ku-042-2",
+          "soru": {
+            "tr": "Okuma değerlendirmesinde kendimizi dinleyince ne yaparız?",
+            "fr": "Que faisons-nous en nous écoutant lors de l’évaluation de la lecture ?",
+            "en": "What do we do when we listen to ourselves in the reading assessment?",
+            "nl": "Wat doen we als we bij de leesevaluatie naar onszelf luisteren?",
+            "de": "Was tun wir, wenn wir uns bei der Leseauswertung zuhören?"
+          },
+          "siklar": [
+            {
+              "tr": "Hatalarımızı saklarız",
+              "fr": "Nous cachons nos erreurs",
+              "en": "We hide our mistakes",
+              "nl": "We verbergen onze fouten",
+              "de": "Wir verstecken unsere Fehler"
+            },
+            {
+              "tr": "Hatalarımızı fark eder ve düzeltiriz",
+              "fr": "Nous repérons et corrigeons nos erreurs",
+              "en": "We notice our mistakes and correct them",
+              "nl": "We merken fouten op en verbeteren ze",
+              "de": "Wir bemerken Fehler und verbessern sie"
+            },
+            {
+              "tr": "Hiçbir şey yapmayız",
+              "fr": "Nous ne faisons rien",
+              "en": "We do nothing",
+              "nl": "We doen niets",
+              "de": "Wir tun nichts"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -2266,7 +4057,78 @@
         "de": "Wir rezitieren die ersten fünf Verse der Sure al-ʿAlaq auswendig und mit richtigem Tadschwīd. Zu zweit hören wir einander zu und geben freundliche Rückmeldung."
       },
       "kitap": "Camiye Gidiyorum 2 s. 76–77 (tekrar) (Ramazan özel programı)",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-052-1",
+          "soru": {
+            "tr": "Alak suresinin kaç âyetini ezbere okuruz?",
+            "fr": "Combien de versets d’al-ʿAlaq récitons-nous par cœur ?",
+            "en": "How many verses of Surat al-ʿAlaq do we recite by heart?",
+            "nl": "Hoeveel verzen van soera al-ʿAlaq reciteren we uit het hoofd?",
+            "de": "Wie viele Verse der Sure al-ʿAlaq sprechen wir auswendig?"
+          },
+          "siklar": [
+            {
+              "tr": "İlk üç âyetini",
+              "fr": "Les trois premiers",
+              "en": "The first three",
+              "nl": "De eerste drie",
+              "de": "Die ersten drei"
+            },
+            {
+              "tr": "İlk on âyetini",
+              "fr": "Les dix premiers",
+              "en": "The first ten",
+              "nl": "De eerste tien",
+              "de": "Die ersten zehn"
+            },
+            {
+              "tr": "İlk beş âyetini",
+              "fr": "Les cinq premiers",
+              "en": "The first five",
+              "nl": "De eerste vijf",
+              "de": "Die ersten fünf"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "claude"
+        },
+        {
+          "id": "ku-052-2",
+          "soru": {
+            "tr": "İkişerli eşleşince birbirimize ne yaparız?",
+            "fr": "Que faisons-nous les uns pour les autres une fois par deux ?",
+            "en": "What do we do for each other once we are in pairs?",
+            "nl": "Wat doen we voor elkaar als we in paren zitten?",
+            "de": "Was tun wir füreinander, wenn wir zu zweit sind?"
+          },
+          "siklar": [
+            {
+              "tr": "Dinler ve nazikçe değerlendiririz",
+              "fr": "Nous nous écoutons et nous évaluons avec gentillesse",
+              "en": "We listen and give kind feedback",
+              "nl": "We luisteren en geven vriendelijke feedback",
+              "de": "Wir hören zu und geben freundliche Rückmeldung"
+            },
+            {
+              "tr": "Sırtımızı döneriz",
+              "fr": "Nous nous tournons le dos",
+              "en": "We turn our backs",
+              "nl": "We keren elkaar de rug toe",
+              "de": "Wir drehen uns den Rücken zu"
+            },
+            {
+              "tr": "Sert eleştiririz",
+              "fr": "Nous critiquons durement",
+              "en": "We criticise harshly",
+              "nl": "We bekritiseren hard",
+              "de": "Wir kritisieren hart"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -2297,7 +4159,78 @@
         "de": "Wir lesen die Sure al-Qadr richtig und sagen die Hauptidee ihrer Bedeutung mit eigenen Worten. Wir gestalten die Bedeutung der Sure als Bildstreifen."
       },
       "kitap": "Temel Dinî Bilgiler s. 182–183 (Ramazan özel programı)",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-053-1",
+          "soru": {
+            "tr": "Kadir suresinin mealinin neyini kendi sözlerimizle söyleriz?",
+            "fr": "Que disons-nous avec nos propres mots du sens de la sourate al-Qadr ?",
+            "en": "What do we say in our own words about the meaning of Surat al-Qadr?",
+            "nl": "Wat vertellen we in eigen woorden over de betekenis van soera al-Qadr?",
+            "de": "Was sagen wir mit eigenen Worten zur Bedeutung der Sure al-Qadr?"
+          },
+          "siklar": [
+            {
+              "tr": "Yazıldığı kâğıdın rengini",
+              "fr": "La couleur du papier",
+              "en": "The colour of the paper",
+              "nl": "De kleur van het papier",
+              "de": "Die Farbe des Papiers"
+            },
+            {
+              "tr": "Ana fikrini",
+              "fr": "Son idée principale",
+              "en": "Its main idea",
+              "nl": "Het hoofdidee",
+              "de": "Die Hauptidee"
+            },
+            {
+              "tr": "Sayfa numarasını",
+              "fr": "Le numéro de page",
+              "en": "The page number",
+              "nl": "Het paginanummer",
+              "de": "Die Seitenzahl"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "claude"
+        },
+        {
+          "id": "ku-053-2",
+          "soru": {
+            "tr": "Kadir suresinin mealini ne hâline getiririz?",
+            "fr": "En quoi mettons-nous le sens de la sourate al-Qadr ?",
+            "en": "What do we turn the meaning of Surat al-Qadr into?",
+            "nl": "Waarvan maken we de betekenis van soera al-Qadr?",
+            "de": "Was gestalten wir aus der Bedeutung der Sure al-Qadr?"
+          },
+          "siklar": [
+            {
+              "tr": "Bir şarkı",
+              "fr": "Une chanson",
+              "en": "A song",
+              "nl": "Een lied",
+              "de": "Ein Lied"
+            },
+            {
+              "tr": "Bir harita",
+              "fr": "Une carte",
+              "en": "A map",
+              "nl": "Een kaart",
+              "de": "Eine Landkarte"
+            },
+            {
+              "tr": "Resimli bir şerit",
+              "fr": "Une bande illustrée",
+              "en": "An illustrated strip",
+              "nl": "Een geïllustreerde strook",
+              "de": "Einen Bildstreifen"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -2328,7 +4261,43 @@
         "de": "Wir rezitieren die Sure al-Qadr auswendig. Im Kreis sagt jeder der Reihe nach einen Vers."
       },
       "kitap": "Temel Dinî Bilgiler s. 182–183 (tekrar) (Ramazan özel programı)",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-054-1",
+          "soru": {
+            "tr": "Ezber halkasında Kadir suresini nasıl okuruz?",
+            "fr": "Comment récitons-nous la sourate al-Qadr dans le cercle de mémorisation ?",
+            "en": "How do we recite Surat al-Qadr in the memorisation circle?",
+            "nl": "Hoe reciteren we soera al-Qadr in de memorisatiekring?",
+            "de": "Wie rezitieren wir die Sure al-Qadr im Auswendiglern-Kreis?"
+          },
+          "siklar": [
+            {
+              "tr": "Sırayla birer âyet",
+              "fr": "Chacun un verset à tour de rôle",
+              "en": "Each one verse in turn",
+              "nl": "Ieder om de beurt een vers",
+              "de": "Jeder der Reihe nach einen Vers"
+            },
+            {
+              "tr": "Hepimiz aynı anda",
+              "fr": "Tous en même temps",
+              "en": "All at the same time",
+              "nl": "Allemaal tegelijk",
+              "de": "Alle gleichzeitig"
+            },
+            {
+              "tr": "Yalnız biri okur",
+              "fr": "Un seul récite",
+              "en": "Only one person recites",
+              "nl": "Slechts één persoon reciteert",
+              "de": "Nur einer rezitiert"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -2461,7 +4430,78 @@
         "de": "Wenn wir in der Gruppe an der Reihe sind, lesen wir flüssig und richtig. Gemeinsam füllen wir die Khatm-Tabelle der Klasse aus."
       },
       "kitap": "Elifbâ s. 32–33 (tekrar) (Ramazan özel programı)",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-056-1",
+          "soru": {
+            "tr": "Mukabele uygulamasında grup içinde sırası gelince nasıl okuruz?",
+            "fr": "Comment lisons-nous quand vient notre tour dans le groupe ?",
+            "en": "How do we read when it is our turn in the group?",
+            "nl": "Hoe lezen we als we in de groep aan de beurt zijn?",
+            "de": "Wie lesen wir, wenn wir in der Gruppe an der Reihe sind?"
+          },
+          "siklar": [
+            {
+              "tr": "Fısıltıyla",
+              "fr": "En chuchotant",
+              "en": "In a whisper",
+              "nl": "Fluisterend",
+              "de": "Flüsternd"
+            },
+            {
+              "tr": "Akıcı ve doğru",
+              "fr": "De façon fluide et correcte",
+              "en": "Fluently and correctly",
+              "nl": "Vlot en correct",
+              "de": "Flüssig und richtig"
+            },
+            {
+              "tr": "Hiç okumayız",
+              "fr": "Nous ne lisons pas",
+              "en": "We do not read",
+              "nl": "We lezen niet",
+              "de": "Wir lesen nicht"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "claude"
+        },
+        {
+          "id": "ku-056-2",
+          "soru": {
+            "tr": "Sınıf hatim çizelgesini nasıl dolduruz?",
+            "fr": "Comment remplissons-nous le tableau de khatm de la classe ?",
+            "en": "How do we fill in the class khatm chart?",
+            "nl": "Hoe vullen we het khatm-schema van de klas in?",
+            "de": "Wie füllen wir die Khatm-Tabelle der Klasse aus?"
+          },
+          "siklar": [
+            {
+              "tr": "Yalnız hocamız",
+              "fr": "Seulement l’enseignant",
+              "en": "Only the teacher",
+              "nl": "Alleen de leraar",
+              "de": "Nur der Lehrer"
+            },
+            {
+              "tr": "Hiç doldurmayız",
+              "fr": "Nous ne le remplissons pas",
+              "en": "We do not fill it in",
+              "nl": "We vullen het niet in",
+              "de": "Wir füllen sie nicht aus"
+            },
+            {
+              "tr": "Birlikte",
+              "fr": "Ensemble",
+              "en": "Together",
+              "nl": "Samen",
+              "de": "Gemeinsam"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -2492,7 +4532,78 @@
         "de": "Wir wiederholen, die im Gebet gelesenen Suren fehlerfrei zu lesen. Wir spielen ein Zuordnungsspiel mit Suren-Karten."
       },
       "kitap": "Temel Dinî Bilgiler s. 325–330 (Ramazan özel programı)",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-057-1",
+          "soru": {
+            "tr": "Sure kartlarıyla hangi oyunu oynarız?",
+            "fr": "Quel jeu jouons-nous avec les cartes de sourates ?",
+            "en": "Which game do we play with surah cards?",
+            "nl": "Welk spel spelen we met soerakaarten?",
+            "de": "Welches Spiel spielen wir mit den Suren-Karten?"
+          },
+          "siklar": [
+            {
+              "tr": "Eşleştirme oyunu",
+              "fr": "Un jeu d’association",
+              "en": "A matching game",
+              "nl": "Een koppelspel",
+              "de": "Ein Zuordnungsspiel"
+            },
+            {
+              "tr": "Saklambaç",
+              "fr": "Cache-cache",
+              "en": "Hide and seek",
+              "nl": "Verstoppertje",
+              "de": "Verstecken"
+            },
+            {
+              "tr": "Yarış oyunu",
+              "fr": "Une course",
+              "en": "A race",
+              "nl": "Een wedstrijd",
+              "de": "Ein Wettrennen"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "claude"
+        },
+        {
+          "id": "ku-057-2",
+          "soru": {
+            "tr": "Namazda okuduğumuz sureleri nasıl okumayı tekrar ederiz?",
+            "fr": "Comment répétons-nous la lecture des sourates récitées dans la prière ?",
+            "en": "How do we repeat reading the surahs we recite in prayer?",
+            "nl": "Hoe herhalen we het lezen van de soera’s die we in het gebed reciteren?",
+            "de": "Wie wiederholen wir das Lesen der im Gebet gelesenen Suren?"
+          },
+          "siklar": [
+            {
+              "tr": "Çok hızlı",
+              "fr": "Très vite",
+              "en": "Very fast",
+              "nl": "Heel snel",
+              "de": "Sehr schnell"
+            },
+            {
+              "tr": "Hatasız",
+              "fr": "Sans faute",
+              "en": "Without mistakes",
+              "nl": "Foutloos",
+              "de": "Fehlerfrei"
+            },
+            {
+              "tr": "Fısıltıyla",
+              "fr": "En chuchotant",
+              "en": "In a whisper",
+              "nl": "Fluisterend",
+              "de": "Flüsternd"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -2523,7 +4634,78 @@
         "de": "Wir sprechen das in der Nacht der Bestimmung gebetete Bittgebet auswendig. Wir schreiben auch unser eigenes Gebet für die Nachtwache."
       },
       "kitap": "Temel Dinî Bilgiler s. 182–183 (tekrar) (Ramazan özel programı)",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-058-1",
+          "soru": {
+            "tr": "Kadir Gecesi’nde okunan duayı nasıl okuruz?",
+            "fr": "Comment récitons-nous l’invocation dite la Nuit du Destin ?",
+            "en": "How do we recite the prayer said on the Night of Power?",
+            "nl": "Hoe reciteren we de smeekbede van de Nacht van de Beschikking?",
+            "de": "Wie sprechen wir das in der Nacht der Bestimmung gebetete Bittgebet?"
+          },
+          "siklar": [
+            {
+              "tr": "Yalnız kâğıttan",
+              "fr": "Seulement sur le papier",
+              "en": "Only from paper",
+              "nl": "Alleen van papier",
+              "de": "Nur vom Papier"
+            },
+            {
+              "tr": "Hiç okumayız",
+              "fr": "Nous ne la récitons pas",
+              "en": "We do not recite it",
+              "nl": "We reciteren hem niet",
+              "de": "Wir sprechen es nicht"
+            },
+            {
+              "tr": "Ezbere",
+              "fr": "Par cœur",
+              "en": "By heart",
+              "nl": "Uit het hoofd",
+              "de": "Auswendig"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "claude"
+        },
+        {
+          "id": "ku-058-2",
+          "soru": {
+            "tr": "Gecenin ihyası için ayrıca ne yazarız?",
+            "fr": "Qu’écrivons-nous aussi pour la veillée ?",
+            "en": "What do we also write for the night’s vigil?",
+            "nl": "Wat schrijven we ook voor het waken?",
+            "de": "Was schreiben wir außerdem für die Nachtwache?"
+          },
+          "siklar": [
+            {
+              "tr": "Kendi duamızı",
+              "fr": "Notre propre invocation",
+              "en": "Our own prayer",
+              "nl": "Onze eigen smeekbede",
+              "de": "Unser eigenes Gebet"
+            },
+            {
+              "tr": "Bir şiir",
+              "fr": "Un poème",
+              "en": "A poem",
+              "nl": "Een gedicht",
+              "de": "Ein Gedicht"
+            },
+            {
+              "tr": "Bir alışveriş listesi",
+              "fr": "Une liste de courses",
+              "en": "A shopping list",
+              "nl": "Een boodschappenlijstje",
+              "de": "Eine Einkaufsliste"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -2554,7 +4736,78 @@
         "de": "Wir sprechen das Festtakbir mit richtiger Aussprache auswendig. Wir üben es gemeinsam in der Gruppe und nehmen es auf."
       },
       "kitap": "Temel Dinî Bilgiler s. 140 (Ramazan özel programı)",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-059-1",
+          "soru": {
+            "tr": "Bayram tekbirini nasıl okuruz?",
+            "fr": "Comment récitons-nous le takbîr de la fête ?",
+            "en": "How do we recite the festival takbir?",
+            "nl": "Hoe reciteren we de feesttakbīr?",
+            "de": "Wie sprechen wir das Festtakbir?"
+          },
+          "siklar": [
+            {
+              "tr": "Telaffuza bakmadan",
+              "fr": "Sans souci de prononciation",
+              "en": "Without caring about pronunciation",
+              "nl": "Zonder op uitspraak te letten",
+              "de": "Ohne auf die Aussprache zu achten"
+            },
+            {
+              "tr": "Doğru telaffuzla, ezbere",
+              "fr": "Par cœur, avec une bonne prononciation",
+              "en": "By heart, with correct pronunciation",
+              "nl": "Uit het hoofd, met juiste uitspraak",
+              "de": "Auswendig, mit richtiger Aussprache"
+            },
+            {
+              "tr": "Yalnız kâğıttan",
+              "fr": "Seulement sur le papier",
+              "en": "Only from paper",
+              "nl": "Alleen van papier",
+              "de": "Nur vom Papier"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "claude"
+        },
+        {
+          "id": "ku-059-2",
+          "soru": {
+            "tr": "Toplu tekbir çalışmasında ne alırız?",
+            "fr": "Que faisons-nous pendant l’entraînement collectif au takbîr ?",
+            "en": "What do we make during the group takbir practice?",
+            "nl": "Wat maken we tijdens het gezamenlijk oefenen van de takbīr?",
+            "de": "Was machen wir bei der gemeinsamen Takbir-Übung?"
+          },
+          "siklar": [
+            {
+              "tr": "Fotoğraf",
+              "fr": "Une photo",
+              "en": "A photo",
+              "nl": "Een foto",
+              "de": "Ein Foto"
+            },
+            {
+              "tr": "Hediye",
+              "fr": "Un cadeau",
+              "en": "A gift",
+              "nl": "Een cadeau",
+              "de": "Ein Geschenk"
+            },
+            {
+              "tr": "Ses kaydı",
+              "fr": "Un enregistrement",
+              "en": "A recording",
+              "nl": "Een opname",
+              "de": "Eine Aufnahme"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -2585,7 +4838,43 @@
         "de": "Wir gehen das fehlerfreie Lesen aller im Ramadan gelernten Texte durch. Gemeinsam legen wir die Reihenfolge der Rezitationen für das Festprogramm fest."
       },
       "kitap": "Elifbâ s. 32–33 (tekrar) (Ramazan özel programı)",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-060-1",
+          "soru": {
+            "tr": "Bayram programı için neyi birlikte belirleriz?",
+            "fr": "Que fixons-nous ensemble pour le programme de la fête ?",
+            "en": "What do we decide together for the festival programme?",
+            "nl": "Wat bepalen we samen voor het feestprogramma?",
+            "de": "Was legen wir gemeinsam für das Festprogramm fest?"
+          },
+          "siklar": [
+            {
+              "tr": "Ezber sırasını",
+              "fr": "L’ordre des récitations",
+              "en": "The order of recitations",
+              "nl": "De volgorde van de recitaties",
+              "de": "Die Reihenfolge der Rezitationen"
+            },
+            {
+              "tr": "Yemek listesini",
+              "fr": "La liste des repas",
+              "en": "The menu",
+              "nl": "Het menu",
+              "de": "Das Menü"
+            },
+            {
+              "tr": "Hava durumunu",
+              "fr": "La météo",
+              "en": "The weather",
+              "nl": "Het weer",
+              "de": "Das Wetter"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -2616,7 +4905,43 @@
         "de": "Nach dem Ramadan rufen wir die Leseregeln in Erinnerung und finden wieder in den Unterricht. Wir gehen das Gelernte mit kurzen Beispielen durch."
       },
       "kitap": "Elifbâ s. 49 (tekrar)",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-061-1",
+          "soru": {
+            "tr": "Ramazan’dan sonra neyi yeniden hatırlarız?",
+            "fr": "Que rappelons-nous après le Ramadan ?",
+            "en": "What do we recall after Ramadan?",
+            "nl": "Wat herinneren we na Ramadan?",
+            "de": "Woran erinnern wir uns nach dem Ramadan?"
+          },
+          "siklar": [
+            {
+              "tr": "Yalnız sure isimlerini",
+              "fr": "Seulement les noms des sourates",
+              "en": "Only the names of surahs",
+              "nl": "Alleen de namen van soera’s",
+              "de": "Nur an die Namen der Suren"
+            },
+            {
+              "tr": "Okuma kurallarını",
+              "fr": "Les règles de lecture",
+              "en": "The reading rules",
+              "nl": "De leesregels",
+              "de": "An die Leseregeln"
+            },
+            {
+              "tr": "Hiçbir şeyi",
+              "fr": "Rien",
+              "en": "Nothing",
+              "nl": "Niets",
+              "de": "An nichts"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -2647,7 +4972,78 @@
         "de": "Wir sprechen das Tauhid-Wort und das Schahāda-Wort auswendig. Diese Formeln fassen den Grundglauben des Islam in Worte."
       },
       "kitap": "Camiye Gidiyorum 1 s. 18–19",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-062-1",
+          "soru": {
+            "tr": "Tevhid ifadeleri olarak hangi iki ifadeyi ezbere okuruz?",
+            "fr": "Quelles deux formules du tawḥîd récitons-nous par cœur ?",
+            "en": "Which two tawhid phrases do we recite by heart?",
+            "nl": "Welke twee tawhīd-uitdrukkingen reciteren we uit het hoofd?",
+            "de": "Welche zwei Tauhid-Formeln sprechen wir auswendig?"
+          },
+          "siklar": [
+            {
+              "tr": "Ezan ve kâmet",
+              "fr": "L’adhân et l’iqâma",
+              "en": "The adhan and iqama",
+              "nl": "De adhān en iqāma",
+              "de": "Adhān und Iqāma"
+            },
+            {
+              "tr": "Fâtiha ve İhlâs",
+              "fr": "Al-Fâtiha et al-Ikhlâs",
+              "en": "Al-Fātiḥa and al-Ikhlāṣ",
+              "nl": "Al-Fātiḥa en al-Ikhlāṣ",
+              "de": "Al-Fātiḥa und al-Ikhlās"
+            },
+            {
+              "tr": "Kelime-i Tevhid ve Kelime-i Şehâdet",
+              "fr": "La formule du tawḥîd et celle de la shahâda",
+              "en": "The Kalima of Tawhid and the Kalima of Shahada",
+              "nl": "De Kalima van Tawhīd en de Kalima van Shahāda",
+              "de": "Das Tauhid-Wort und das Schahāda-Wort"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "claude"
+        },
+        {
+          "id": "ku-062-2",
+          "soru": {
+            "tr": "Tevhid ifadeleri İslam’ın neyini söyler?",
+            "fr": "Que disent les formules du tawḥîd de l’islam ?",
+            "en": "What do the tawhid phrases state about Islam?",
+            "nl": "Wat brengen de tawhīd-uitdrukkingen van de islam onder woorden?",
+            "de": "Was fassen die Tauhid-Formeln vom Islam in Worte?"
+          },
+          "siklar": [
+            {
+              "tr": "Temel inancını",
+              "fr": "Sa croyance fondamentale",
+              "en": "Its basic belief",
+              "nl": "Het basisgeloof",
+              "de": "Den Grundglauben"
+            },
+            {
+              "tr": "Namaz vakitlerini",
+              "fr": "Les heures de prière",
+              "en": "The prayer times",
+              "nl": "De gebedstijden",
+              "de": "Die Gebetszeiten"
+            },
+            {
+              "tr": "Oruç günlerini",
+              "fr": "Les jours de jeûne",
+              "en": "The fasting days",
+              "nl": "De vastendagen",
+              "de": "Die Fastentage"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -2678,7 +5074,78 @@
         "de": "Wir sprechen das Āmantu abschnittsweise in der richtigen Reihenfolge. Jeder Abschnitt nennt einen Glaubensartikel."
       },
       "kitap": "Elifbâ s. 39",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-063-1",
+          "soru": {
+            "tr": "Âmentü’nün her bölümünde ne söyleriz?",
+            "fr": "Qu’énonce chaque partie de l’Âmentü ?",
+            "en": "What does each section of the Āmantu name?",
+            "nl": "Wat noemt elk deel van de Āmantu?",
+            "de": "Was nennt jeder Abschnitt des Āmantu?"
+          },
+          "siklar": [
+            {
+              "tr": "Bir namaz vaktini",
+              "fr": "Une heure de prière",
+              "en": "A prayer time",
+              "nl": "Een gebedstijd",
+              "de": "Eine Gebetszeit"
+            },
+            {
+              "tr": "Bir iman esasını",
+              "fr": "Un article de foi",
+              "en": "One article of faith",
+              "nl": "Een geloofsartikel",
+              "de": "Einen Glaubensartikel"
+            },
+            {
+              "tr": "Bir sure adını",
+              "fr": "Un nom de sourate",
+              "en": "The name of a surah",
+              "nl": "De naam van een soera",
+              "de": "Einen Surennamen"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "claude"
+        },
+        {
+          "id": "ku-063-2",
+          "soru": {
+            "tr": "Âmentü duasını nasıl okuruz?",
+            "fr": "Comment récitons-nous l’Âmentü ?",
+            "en": "How do we recite the Āmantu?",
+            "nl": "Hoe reciteren we de Āmantu?",
+            "de": "Wie sprechen wir das Āmantu?"
+          },
+          "siklar": [
+            {
+              "tr": "Karışık sırayla",
+              "fr": "Dans le désordre",
+              "en": "In mixed order",
+              "nl": "In willekeurige volgorde",
+              "de": "In gemischter Reihenfolge"
+            },
+            {
+              "tr": "Yalnız son bölümünü",
+              "fr": "Seulement la dernière partie",
+              "en": "Only the last section",
+              "nl": "Alleen het laatste deel",
+              "de": "Nur den letzten Abschnitt"
+            },
+            {
+              "tr": "Bölümler hâlinde, doğru sırayla",
+              "fr": "Par parties, dans le bon ordre",
+              "en": "In sections, in the right order",
+              "nl": "In delen, in de juiste volgorde",
+              "de": "Abschnittsweise in der richtigen Reihenfolge"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -2709,7 +5176,43 @@
         "de": "Wir sprechen das Subḥānaka-Gebet auswendig und sagen, wo es im Gebet vorkommt."
       },
       "kitap": "Elifbâ s. 34; Temel Dinî Bilgiler s. 321",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-064-1",
+          "soru": {
+            "tr": "Sübhâneke duasını ezbere okurken ayrıca neyi söyleriz?",
+            "fr": "Que disons-nous aussi en récitant Subḥânaka par cœur ?",
+            "en": "What else do we say when reciting the Subḥānaka prayer by heart?",
+            "nl": "Wat zeggen we ook als we de Subḥānaka-smeekbede uit het hoofd reciteren?",
+            "de": "Was sagen wir außerdem, wenn wir das Subḥānaka-Gebet auswendig sprechen?"
+          },
+          "siklar": [
+            {
+              "tr": "Namazdaki yerini",
+              "fr": "Sa place dans la prière",
+              "en": "Where it comes in the ritual prayer",
+              "nl": "Waar ze in het gebed voorkomt",
+              "de": "Wo es im Gebet vorkommt"
+            },
+            {
+              "tr": "Yazıldığı yılı",
+              "fr": "L’année où elle fut écrite",
+              "en": "The year it was written",
+              "nl": "Het jaar waarin ze werd geschreven",
+              "de": "In welchem Jahr es geschrieben wurde"
+            },
+            {
+              "tr": "Kaç harften oluştuğunu",
+              "fr": "Son nombre de lettres",
+              "en": "How many letters it has",
+              "nl": "Uit hoeveel letters ze bestaat",
+              "de": "Aus wie vielen Buchstaben es besteht"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -2740,7 +5243,78 @@
         "de": "Wir sprechen die Sure al-Fātiḥa auswendig, kennen ihren Platz im Gebet und achten auf den Tadschwīd."
       },
       "kitap": "Elifbâ s. 32; Temel Dinî Bilgiler s. 325",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-065-1",
+          "soru": {
+            "tr": "Fâtiha suresini okurken neye dikkat ederiz?",
+            "fr": "À quoi faisons-nous attention en récitant al-Fâtiha ?",
+            "en": "What do we pay attention to when reciting Surat al-Fātiḥa?",
+            "nl": "Waarop letten we bij het reciteren van soera al-Fātiḥa?",
+            "de": "Worauf achten wir beim Sprechen der Sure al-Fātiḥa?"
+          },
+          "siklar": [
+            {
+              "tr": "Yalnız hıza",
+              "fr": "À la vitesse seulement",
+              "en": "Speed only",
+              "nl": "Alleen op snelheid",
+              "de": "Nur auf die Geschwindigkeit"
+            },
+            {
+              "tr": "Tecvid kurallarına",
+              "fr": "Au tajwîd",
+              "en": "Tajwīd",
+              "nl": "Op tajwīd",
+              "de": "Auf den Tadschwīd"
+            },
+            {
+              "tr": "Yalnız ses yüksekliğine",
+              "fr": "Au volume seulement",
+              "en": "Loudness only",
+              "nl": "Alleen op luidheid",
+              "de": "Nur auf die Lautstärke"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "claude"
+        },
+        {
+          "id": "ku-065-2",
+          "soru": {
+            "tr": "Fâtiha suresini ezbere okurken hangi bilgiyi de bilmemiz gerekir?",
+            "fr": "Quelle information devons-nous aussi connaître en récitant al-Fâtiha par cœur ?",
+            "en": "What else must we know when reciting Surat al-Fātiḥa by heart?",
+            "nl": "Wat moeten we ook weten als we soera al-Fātiḥa uit het hoofd reciteren?",
+            "de": "Was müssen wir außerdem wissen, wenn wir die Sure al-Fātiḥa auswendig sprechen?"
+          },
+          "siklar": [
+            {
+              "tr": "Kaç sayfa olduğunu",
+              "fr": "Son nombre de pages",
+              "en": "How many pages it has",
+              "nl": "Hoeveel bladzijden ze heeft",
+              "de": "Wie viele Seiten sie hat"
+            },
+            {
+              "tr": "Hangi yıl yazıldığını",
+              "fr": "L’année où elle fut écrite",
+              "en": "The year it was written",
+              "nl": "Het jaar waarin ze werd geschreven",
+              "de": "In welchem Jahr sie geschrieben wurde"
+            },
+            {
+              "tr": "Namazdaki yerini",
+              "fr": "Sa place dans la prière",
+              "en": "Its place in the prayer",
+              "nl": "Haar plaats in het gebed",
+              "de": "Ihren Platz im Gebet"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -2771,7 +5345,43 @@
         "de": "Wir sprechen das At-Tahiyyāt-Gebet und sagen, in welchem Sitzen es gelesen wird."
       },
       "kitap": "Elifbâ s. 34; Temel Dinî Bilgiler s. 322",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-066-1",
+          "soru": {
+            "tr": "Ettehiyyâtü duası için hangi bilgiyi söyleriz?",
+            "fr": "Quelle information donnons-nous sur la prière at-Tahiyyât ?",
+            "en": "What do we say about the At-Tahiyyāt prayer?",
+            "nl": "Wat zeggen we over het At-Tahiyyāt-gebed?",
+            "de": "Was sagen wir über das At-Tahiyyāt-Gebet?"
+          },
+          "siklar": [
+            {
+              "tr": "Hangi oturuşta okunduğunu",
+              "fr": "À quelle position assise elle se récite",
+              "en": "In which sitting it is read",
+              "nl": "Bij welke zit het gelezen wordt",
+              "de": "In welchem Sitzen es gelesen wird"
+            },
+            {
+              "tr": "Yılda kaç kez okunduğunu",
+              "fr": "Combien de fois par an elle se lit",
+              "en": "How many times a year it is read",
+              "nl": "Hoe vaak per jaar het gelezen wordt",
+              "de": "Wie oft im Jahr es gelesen wird"
+            },
+            {
+              "tr": "Hangi renkte yazıldığını",
+              "fr": "De quelle couleur elle s’écrit",
+              "en": "In which colour it is written",
+              "nl": "In welke kleur het geschreven wordt",
+              "de": "In welcher Farbe es geschrieben wird"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -2802,7 +5412,43 @@
         "de": "Wir sprechen die Gebete Allāhumma ṣalli und Allāhumma bārik der Reihe nach auswendig."
       },
       "kitap": "Elifbâ s. 34–35; Temel Dinî Bilgiler s. 322–323",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-067-1",
+          "soru": {
+            "tr": "Salavat duaları olarak hangi iki duayı ezbere okuruz?",
+            "fr": "Quelles deux invocations de ṣalawât récitons-nous par cœur ?",
+            "en": "Which two salawat prayers do we recite by heart?",
+            "nl": "Welke twee salawāt-smeekbeden reciteren we uit het hoofd?",
+            "de": "Welche zwei Salawāt-Gebete sprechen wir auswendig?"
+          },
+          "siklar": [
+            {
+              "tr": "Rabbenâ Âtinâ ve Rabbenağfirlî",
+              "fr": "Rabbanâ âtinâ et Rabbanâghfir lî",
+              "en": "Rabbanā ātinā and Rabbanāghfir lī",
+              "nl": "Rabbanā ātinā en Rabbanāghfir lī",
+              "de": "Rabbanā ātinā und Rabbanāghfir lī"
+            },
+            {
+              "tr": "Allâhümme Salli ve Allâhümme Bârik",
+              "fr": "Allâhumma ṣalli et Allâhumma bârik",
+              "en": "Allāhumma ṣalli and Allāhumma bārik",
+              "nl": "Allāhumma ṣalli en Allāhumma bārik",
+              "de": "Allāhumma ṣalli und Allāhumma bārik"
+            },
+            {
+              "tr": "Sübhâneke ve Ettehiyyâtü",
+              "fr": "Subḥânaka et at-Tahiyyât",
+              "en": "Subḥānaka and At-Tahiyyāt",
+              "nl": "Subḥānaka en At-Tahiyyāt",
+              "de": "Subḥānaka und At-Tahiyyāt"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -2833,7 +5479,43 @@
         "de": "Wir sprechen die Gebete Rabbanā ātinā und Rabbanāghfir lī in der richtigen Reihenfolge auswendig."
       },
       "kitap": "Elifbâ s. 35; Temel Dinî Bilgiler s. 323",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-068-1",
+          "soru": {
+            "tr": "Rabbenâ dualarından hangi ikisini ezbere okuruz?",
+            "fr": "Quelles deux invocations Rabbanâ récitons-nous par cœur ?",
+            "en": "Which two Rabbana prayers do we recite by heart?",
+            "nl": "Welke twee Rabbanā-smeekbeden reciteren we uit het hoofd?",
+            "de": "Welche zwei Rabbanā-Gebete sprechen wir auswendig?"
+          },
+          "siklar": [
+            {
+              "tr": "Allâhümme Salli ve Allâhümme Bârik",
+              "fr": "Allâhumma ṣalli et Allâhumma bârik",
+              "en": "Allāhumma ṣalli and Allāhumma bārik",
+              "nl": "Allāhumma ṣalli en Allāhumma bārik",
+              "de": "Allāhumma ṣalli und Allāhumma bārik"
+            },
+            {
+              "tr": "Sübhâneke ve Ettehiyyâtü",
+              "fr": "Subḥânaka et at-Tahiyyât",
+              "en": "Subḥānaka and At-Tahiyyāt",
+              "nl": "Subḥānaka en At-Tahiyyāt",
+              "de": "Subḥānaka und At-Tahiyyāt"
+            },
+            {
+              "tr": "Rabbenâ Âtinâ ve Rabbenağfirlî",
+              "fr": "Rabbanâ âtinâ et Rabbanâghfir lî",
+              "en": "Rabbanā ātinā and Rabbanāghfir lī",
+              "nl": "Rabbanā ātinā en Rabbanāghfir lī",
+              "de": "Rabbanā ātinā und Rabbanāghfir lī"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -2864,7 +5546,43 @@
         "de": "Wir sprechen die Qunūt-Gebete auswendig und lernen ihren Platz im Witr-Gebet."
       },
       "kitap": "Elifbâ s. 35–36; Temel Dinî Bilgiler s. 323–324",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-069-1",
+          "soru": {
+            "tr": "Kunut dualarının yerini hangi namazda öğreniriz?",
+            "fr": "Dans quelle prière apprenons-nous la place des invocations du qunût ?",
+            "en": "In which prayer do we learn the place of the qunut prayers?",
+            "nl": "In welk gebed leren we de plaats van de qunūt-smeekbeden?",
+            "de": "In welchem Gebet lernen wir den Platz der Qunūt-Gebete?"
+          },
+          "siklar": [
+            {
+              "tr": "Vitir namazında",
+              "fr": "Dans la prière du witr",
+              "en": "The witr prayer",
+              "nl": "In het witr-gebed",
+              "de": "Im Witr-Gebet"
+            },
+            {
+              "tr": "Cuma namazında",
+              "fr": "Dans la prière du vendredi",
+              "en": "The Friday prayer",
+              "nl": "In het vrijdagsgebed",
+              "de": "Im Freitagsgebet"
+            },
+            {
+              "tr": "Bayram namazında",
+              "fr": "Dans la prière de la fête",
+              "en": "The festival prayer",
+              "nl": "In het feestgebed",
+              "de": "Im Festgebet"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -2895,7 +5613,43 @@
         "de": "Wir sprechen die Texte von Adhān und Iqāma auswendig und behalten die Reihenfolge bei."
       },
       "kitap": "Elifbâ s. 36–37",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-070-1",
+          "soru": {
+            "tr": "Ezan ve kâmet metinlerini nasıl okuruz?",
+            "fr": "Comment récitons-nous les textes de l’adhân et de l’iqâma ?",
+            "en": "How do we recite the texts of the adhan and iqama?",
+            "nl": "Hoe reciteren we de teksten van de adhān en iqāma?",
+            "de": "Wie sprechen wir die Texte von Adhān und Iqāma?"
+          },
+          "siklar": [
+            {
+              "tr": "Sırasını değiştirerek",
+              "fr": "En changeant leur ordre",
+              "en": "Changing their order",
+              "nl": "Met een andere volgorde",
+              "de": "Mit veränderter Reihenfolge"
+            },
+            {
+              "tr": "Sırasını koruyarak, ezbere",
+              "fr": "Par cœur, en gardant leur ordre",
+              "en": "By heart, keeping their order",
+              "nl": "Uit het hoofd, met behoud van de volgorde",
+              "de": "Auswendig und in ihrer Reihenfolge"
+            },
+            {
+              "tr": "Yalnız bir bölümünü",
+              "fr": "Seulement une partie",
+              "en": "Only one part",
+              "nl": "Slechts één deel",
+              "de": "Nur einen Teil"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -2926,7 +5680,43 @@
         "de": "Wir tragen unserem Lehrer die gelernten Grundgebete fehlerfrei vor."
       },
       "kitap": "Elifbâ s. 34–39 (tekrar)",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-071-1",
+          "soru": {
+            "tr": "Öğrendiğimiz temel duaları kime hatasız dinletiriz?",
+            "fr": "À qui récitons-nous sans faute les invocations de base apprises ?",
+            "en": "To whom do we recite the basic prayers we have learned without mistakes?",
+            "nl": "Aan wie dragen we de geleerde basissmeekbeden foutloos voor?",
+            "de": "Wem tragen wir die gelernten Grundgebete fehlerfrei vor?"
+          },
+          "siklar": [
+            {
+              "tr": "Yalnız kendimize",
+              "fr": "À nous seuls",
+              "en": "Only ourselves",
+              "nl": "Alleen aan onszelf",
+              "de": "Nur uns selbst"
+            },
+            {
+              "tr": "Kimseye",
+              "fr": "À personne",
+              "en": "Nobody",
+              "nl": "Aan niemand",
+              "de": "Niemandem"
+            },
+            {
+              "tr": "Hocamıza",
+              "fr": "À notre enseignant",
+              "en": "Our teacher",
+              "nl": "Aan onze leraar",
+              "de": "Unserem Lehrer"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -2957,7 +5747,43 @@
         "de": "Wir sprechen die Suren an-Nās und al-Falaq in der richtigen Reihenfolge auswendig."
       },
       "kitap": "Temel Dinî Bilgiler s. 330",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-072-1",
+          "soru": {
+            "tr": "Muavvizeteyn sureleri hangileridir?",
+            "fr": "Quelles sont les deux sourates de protection ?",
+            "en": "Which are the two protection surahs?",
+            "nl": "Welke zijn de twee beschermingssoera’s?",
+            "de": "Welche sind die beiden Schutzsuren?"
+          },
+          "siklar": [
+            {
+              "tr": "Felak ve Nâs",
+              "fr": "Al-Falaq et an-Nâs",
+              "en": "Al-Falaq and an-Nās",
+              "nl": "Al-Falaq en an-Nās",
+              "de": "Al-Falaq und an-Nās"
+            },
+            {
+              "tr": "Kevser ve Asr",
+              "fr": "Al-Kawthar et al-ʿAṣr",
+              "en": "Al-Kawthar and al-ʿAṣr",
+              "nl": "Al-Kawthar en al-ʿAṣr",
+              "de": "Al-Kauthar und al-ʿAṣr"
+            },
+            {
+              "tr": "Kâfirûn ve Mâûn",
+              "fr": "Al-Kâfirûn et al-Mâʿûn",
+              "en": "Al-Kāfirūn and al-Māʿūn",
+              "nl": "Al-Kāfirūn en al-Māʿūn",
+              "de": "Al-Kāfirūn und al-Māʿūn"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -2988,7 +5814,43 @@
         "de": "Wir sprechen die Sure al-Ikhlās auswendig und achten auf die Pausen."
       },
       "kitap": "Temel Dinî Bilgiler s. 329",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-073-1",
+          "soru": {
+            "tr": "İhlâs suresini ezberlerken neye dikkat ederiz?",
+            "fr": "À quoi faisons-nous attention en mémorisant al-Ikhlâs ?",
+            "en": "What do we pay attention to when memorising Surat al-Ikhlāṣ?",
+            "nl": "Waarop letten we bij het memoriseren van soera al-Ikhlāṣ?",
+            "de": "Worauf achten wir beim Auswendiglernen der Sure al-Ikhlās?"
+          },
+          "siklar": [
+            {
+              "tr": "Yalnız hızına",
+              "fr": "À la vitesse seulement",
+              "en": "Speed only",
+              "nl": "Alleen op snelheid",
+              "de": "Nur auf die Geschwindigkeit"
+            },
+            {
+              "tr": "Duraklarına",
+              "fr": "Aux arrêts",
+              "en": "The stops",
+              "nl": "Op de pauzes",
+              "de": "Auf die Pausen"
+            },
+            {
+              "tr": "Yalnız ses yüksekliğine",
+              "fr": "Au volume seulement",
+              "en": "Loudness only",
+              "nl": "Alleen op luidheid",
+              "de": "Nur auf die Lautstärke"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -3019,7 +5881,43 @@
         "de": "Wir sprechen die Suren al-Kauthar, al-ʿAṣr und an-Naṣr, ohne sie zu verwechseln."
       },
       "kitap": "Temel Dinî Bilgiler s. 328",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-074-1",
+          "soru": {
+            "tr": "Kevser, Asr ve Nasr surelerini nasıl okuruz?",
+            "fr": "Comment récitons-nous les sourates al-Kawthar, al-ʿAṣr et an-Naṣr ?",
+            "en": "How do we recite Surat al-Kawthar, al-ʿAṣr and an-Naṣr?",
+            "nl": "Hoe reciteren we soera al-Kawthar, al-ʿAṣr en an-Naṣr?",
+            "de": "Wie sprechen wir die Suren al-Kauthar, al-ʿAṣr und an-Naṣr?"
+          },
+          "siklar": [
+            {
+              "tr": "Tek sure gibi birleştirerek",
+              "fr": "En les fondant en une seule",
+              "en": "Joined together as one surah",
+              "nl": "Samengevoegd als één soera",
+              "de": "Zusammengefügt als eine Sure"
+            },
+            {
+              "tr": "Yalnız ilk âyetlerini",
+              "fr": "Seulement leurs premiers versets",
+              "en": "Only their first verses",
+              "nl": "Alleen hun eerste verzen",
+              "de": "Nur ihre ersten Verse"
+            },
+            {
+              "tr": "Birbirine karıştırmadan",
+              "fr": "Sans les confondre",
+              "en": "Without mixing them up",
+              "nl": "Zonder ze te verwarren",
+              "de": "Ohne sie zu verwechseln"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -3050,7 +5948,43 @@
         "de": "Wir sprechen die Sure Tabbat auswendig und achten auf Artikulationsorte und Pausen."
       },
       "kitap": "Temel Dinî Bilgiler s. 329",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-075-1",
+          "soru": {
+            "tr": "Tebbet suresini ezbere okurken neye dikkat ederiz?",
+            "fr": "À quoi faisons-nous attention en récitant la sourate Tabbat par cœur ?",
+            "en": "What do we pay attention to when reciting Surat Tabbat by heart?",
+            "nl": "Waarop letten we bij het reciteren van soera Tabbat uit het hoofd?",
+            "de": "Worauf achten wir beim Auswendigsprechen der Sure Tabbat?"
+          },
+          "siklar": [
+            {
+              "tr": "Çıkış yerlerine ve duraklara",
+              "fr": "Aux points d’articulation et aux arrêts",
+              "en": "Articulation points and stops",
+              "nl": "Op uitspraakplaatsen en pauzes",
+              "de": "Auf Artikulationsorte und Pausen"
+            },
+            {
+              "tr": "Yalnız hıza",
+              "fr": "À la vitesse seulement",
+              "en": "Speed only",
+              "nl": "Alleen op snelheid",
+              "de": "Nur auf die Geschwindigkeit"
+            },
+            {
+              "tr": "Yalnız ses yüksekliğine",
+              "fr": "Au volume seulement",
+              "en": "Loudness only",
+              "nl": "Alleen op luidheid",
+              "de": "Nur auf die Lautstärke"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -3081,7 +6015,43 @@
         "de": "Wir sprechen die Sure al-Kāfirūn auswendig, ohne die Reihenfolge der Verse zu ändern."
       },
       "kitap": "Temel Dinî Bilgiler s. 328",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-076-1",
+          "soru": {
+            "tr": "Kâfirûn suresini ezbere okurken neyi bozmayız?",
+            "fr": "Que ne changeons-nous pas en récitant al-Kâfirûn par cœur ?",
+            "en": "What do we not change when reciting Surat al-Kāfirūn by heart?",
+            "nl": "Wat veranderen we niet bij het reciteren van soera al-Kāfirūn uit het hoofd?",
+            "de": "Was ändern wir beim Auswendigsprechen der Sure al-Kāfirūn nicht?"
+          },
+          "siklar": [
+            {
+              "tr": "Okuma hızını",
+              "fr": "La vitesse de lecture",
+              "en": "The reading speed",
+              "nl": "De leessnelheid",
+              "de": "Die Lesegeschwindigkeit"
+            },
+            {
+              "tr": "Âyet sırasını",
+              "fr": "L’ordre des versets",
+              "en": "The order of the verses",
+              "nl": "De volgorde van de verzen",
+              "de": "Die Reihenfolge der Verse"
+            },
+            {
+              "tr": "Sesimizin rengini",
+              "fr": "La couleur de notre voix",
+              "en": "The colour of our voice",
+              "nl": "De kleur van onze stem",
+              "de": "Die Farbe unserer Stimme"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -3112,7 +6082,43 @@
         "de": "Wir sprechen die Sure al-Māʿūn auswendig mit richtiger Aussprache und Pausen."
       },
       "kitap": "Temel Dinî Bilgiler s. 327",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-077-1",
+          "soru": {
+            "tr": "Mâûn suresini nasıl ezbere okuruz?",
+            "fr": "Comment récitons-nous la sourate al-Mâʿûn par cœur ?",
+            "en": "How do we recite Surat al-Māʿūn by heart?",
+            "nl": "Hoe reciteren we soera al-Māʿūn uit het hoofd?",
+            "de": "Wie sprechen wir die Sure al-Māʿūn auswendig?"
+          },
+          "siklar": [
+            {
+              "tr": "Telaffuza bakmadan",
+              "fr": "Sans souci de prononciation",
+              "en": "Without caring about pronunciation",
+              "nl": "Zonder op uitspraak te letten",
+              "de": "Ohne auf die Aussprache zu achten"
+            },
+            {
+              "tr": "Duraksız ve çok hızlı",
+              "fr": "Sans arrêts et très vite",
+              "en": "Without stops and very fast",
+              "nl": "Zonder pauzes en heel snel",
+              "de": "Ohne Pausen und sehr schnell"
+            },
+            {
+              "tr": "Doğru telaffuz ve duraklarla",
+              "fr": "Avec une bonne prononciation et les arrêts",
+              "en": "With correct pronunciation and stops",
+              "nl": "Met juiste uitspraak en pauzes",
+              "de": "Mit richtiger Aussprache und Pausen"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -3143,7 +6149,43 @@
         "de": "Wir sprechen die Suren Quraisch und al-Fīl auswendig als zwei getrennte Suren."
       },
       "kitap": "Temel Dinî Bilgiler s. 326",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-078-1",
+          "soru": {
+            "tr": "Kureyş ve Fîl surelerini nasıl ezbere okuruz?",
+            "fr": "Comment récitons-nous les sourates Quraysh et al-Fîl ?",
+            "en": "How do we recite Surat Quraysh and Surat al-Fīl?",
+            "nl": "Hoe reciteren we soera Qoeraisj en soera al-Fīl?",
+            "de": "Wie sprechen wir die Suren Quraisch und al-Fīl?"
+          },
+          "siklar": [
+            {
+              "tr": "Ayrı sureler olarak",
+              "fr": "Comme deux sourates distinctes",
+              "en": "As two separate surahs",
+              "nl": "Als twee aparte soera’s",
+              "de": "Als zwei getrennte Suren"
+            },
+            {
+              "tr": "Tek bir sure gibi",
+              "fr": "Comme une seule sourate",
+              "en": "As a single surah",
+              "nl": "Als één soera",
+              "de": "Als eine einzige Sure"
+            },
+            {
+              "tr": "Yalnız Kureyş’i",
+              "fr": "Seulement Quraysh",
+              "en": "Only Quraysh",
+              "nl": "Alleen Qoeraisj",
+              "de": "Nur Quraisch"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -3174,7 +6216,43 @@
         "de": "Wir sprechen die gelernten kurzen Suren auswendig, sobald ihr Name genannt wird."
       },
       "kitap": "Temel Dinî Bilgiler s. 325–330 (tekrar)",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-079-1",
+          "soru": {
+            "tr": "Sure değerlendirmesinde kısa sureleri ne zaman ezbere okuruz?",
+            "fr": "Quand récitons-nous par cœur les courtes sourates lors du bilan ?",
+            "en": "When do we recite the short surahs by heart in the surah review?",
+            "nl": "Wanneer reciteren we bij de soera-evaluatie de korte soera’s uit het hoofd?",
+            "de": "Wann sprechen wir bei der Suren-Auswertung die kurzen Suren auswendig?"
+          },
+          "siklar": [
+            {
+              "tr": "Yalnız kendimiz istediğimizde",
+              "fr": "Seulement quand nous le voulons",
+              "en": "Only when we want to",
+              "nl": "Alleen als we dat zelf willen",
+              "de": "Nur wenn wir selbst wollen"
+            },
+            {
+              "tr": "Adı söylendiğinde",
+              "fr": "Dès que leur nom est cité",
+              "en": "When their name is called",
+              "nl": "Zodra hun naam wordt genoemd",
+              "de": "Sobald ihr Name genannt wird"
+            },
+            {
+              "tr": "Hiç okumayız",
+              "fr": "Jamais",
+              "en": "Never",
+              "nl": "Nooit",
+              "de": "Nie"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -3205,7 +6283,43 @@
         "de": "Wir sprechen die Sure al-Humaza auswendig und verringern Artikulationsfehler."
       },
       "kitap": "Elifbâ / Kur'an-ı Kerim",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-080-1",
+          "soru": {
+            "tr": "Hümeze suresini ezbere okurken neyi azaltmaya çalışırız?",
+            "fr": "Que cherchons-nous à réduire en récitant al-Humaza par cœur ?",
+            "en": "What do we try to reduce when reciting Surat al-Humaza by heart?",
+            "nl": "Wat proberen we te verminderen bij het reciteren van soera al-Humaza uit het hoofd?",
+            "de": "Was versuchen wir beim Auswendigsprechen der Sure al-Humaza zu verringern?"
+          },
+          "siklar": [
+            {
+              "tr": "Âyet sayısını",
+              "fr": "Le nombre de versets",
+              "en": "The number of verses",
+              "nl": "Het aantal verzen",
+              "de": "Die Anzahl der Verse"
+            },
+            {
+              "tr": "Sure adını",
+              "fr": "Le nom de la sourate",
+              "en": "The name of the surah",
+              "nl": "De naam van de soera",
+              "de": "Den Namen der Sure"
+            },
+            {
+              "tr": "Mahreç hatalarını",
+              "fr": "Les erreurs de points d’articulation",
+              "en": "Articulation mistakes",
+              "nl": "Fouten in de uitspraakplaats",
+              "de": "Artikulationsfehler"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -3338,7 +6452,43 @@
         "de": "Wir sprechen die Sure at-Takāthur auswendig und achten auf die Pausen."
       },
       "kitap": "Elifbâ / Kur'an-ı Kerim",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-082-1",
+          "soru": {
+            "tr": "Tekâsür suresini ezbere okurken neye dikkat ederiz?",
+            "fr": "À quoi faisons-nous attention en récitant at-Takâthur par cœur ?",
+            "en": "What do we pay attention to when reciting Surat at-Takāthur by heart?",
+            "nl": "Waarop letten we bij het reciteren van soera at-Takāthur uit het hoofd?",
+            "de": "Worauf achten wir beim Auswendigsprechen der Sure at-Takāthur?"
+          },
+          "siklar": [
+            {
+              "tr": "Duraklara",
+              "fr": "Aux arrêts",
+              "en": "The stops",
+              "nl": "Op de pauzes",
+              "de": "Auf die Pausen"
+            },
+            {
+              "tr": "Yalnız hıza",
+              "fr": "À la vitesse seulement",
+              "en": "Speed only",
+              "nl": "Alleen op snelheid",
+              "de": "Nur auf die Geschwindigkeit"
+            },
+            {
+              "tr": "Yalnız ses yüksekliğine",
+              "fr": "Au volume seulement",
+              "en": "Loudness only",
+              "nl": "Alleen op luidheid",
+              "de": "Nur auf die Lautstärke"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -3369,7 +6519,43 @@
         "de": "Wir sprechen die Sure al-Qāriʿa auswendig und verbinden ihre Abschnitte."
       },
       "kitap": "Elifbâ / Kur'an-ı Kerim",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-083-1",
+          "soru": {
+            "tr": "Kâria suresini ezbere okurken bölümleri ne yaparız?",
+            "fr": "Que faisons-nous des parties d’al-Qâriʿa en la récitant par cœur ?",
+            "en": "What do we do with the sections of Surat al-Qāriʿa when reciting it by heart?",
+            "nl": "Wat doen we met de delen van soera al-Qāriʿa als we haar uit het hoofd reciteren?",
+            "de": "Was tun wir mit den Abschnitten der Sure al-Qāriʿa beim Auswendigsprechen?"
+          },
+          "siklar": [
+            {
+              "tr": "Atlarız",
+              "fr": "Nous les sautons",
+              "en": "We skip them",
+              "nl": "We slaan ze over",
+              "de": "Wir überspringen sie"
+            },
+            {
+              "tr": "Birleştiririz",
+              "fr": "Nous les relions",
+              "en": "We join them together",
+              "nl": "We voegen ze samen",
+              "de": "Wir verbinden sie"
+            },
+            {
+              "tr": "Ayrı ayrı bırakırız",
+              "fr": "Nous les laissons séparées",
+              "en": "We leave them apart",
+              "nl": "We laten ze los van elkaar",
+              "de": "Wir lassen sie getrennt"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -3400,7 +6586,43 @@
         "de": "Wir sprechen die Sure al-ʿĀdiyāt auswendig und behalten die Reihenfolge der Verse bei."
       },
       "kitap": "Elifbâ / Kur'an-ı Kerim",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-084-1",
+          "soru": {
+            "tr": "Âdiyât suresini ezbere okurken neyi koruruz?",
+            "fr": "Que gardons-nous en récitant al-ʿÂdiyât par cœur ?",
+            "en": "What do we keep when reciting Surat al-ʿĀdiyāt by heart?",
+            "nl": "Wat houden we aan bij het reciteren van soera al-ʿĀdiyāt uit het hoofd?",
+            "de": "Was behalten wir beim Auswendigsprechen der Sure al-ʿĀdiyāt bei?"
+          },
+          "siklar": [
+            {
+              "tr": "Sayfa rengini",
+              "fr": "La couleur de la page",
+              "en": "The colour of the page",
+              "nl": "De kleur van de pagina",
+              "de": "Die Farbe der Seite"
+            },
+            {
+              "tr": "Kitap boyutunu",
+              "fr": "Le format du livre",
+              "en": "The size of the book",
+              "nl": "De grootte van het boek",
+              "de": "Die Größe des Buches"
+            },
+            {
+              "tr": "Âyet sırasını",
+              "fr": "L’ordre des versets",
+              "en": "The order of the verses",
+              "nl": "De volgorde van de verzen",
+              "de": "Die Reihenfolge der Verse"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -3431,7 +6653,43 @@
         "de": "Wir sprechen die Sure az-Zalzala auswendig und achten auf Pausen und Dehnungen."
       },
       "kitap": "Elifbâ / Kur'an-ı Kerim",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-085-1",
+          "soru": {
+            "tr": "Zilzâl suresini ezbere okurken hangi iki şeye dikkat ederiz?",
+            "fr": "À quelles deux choses faisons-nous attention en récitant az-Zalzala par cœur ?",
+            "en": "Which two things do we pay attention to when reciting Surat az-Zalzala by heart?",
+            "nl": "Op welke twee dingen letten we bij het reciteren van soera az-Zalzala uit het hoofd?",
+            "de": "Auf welche zwei Dinge achten wir beim Auswendigsprechen der Sure az-Zalzala?"
+          },
+          "siklar": [
+            {
+              "tr": "Durak ve uzatmalara",
+              "fr": "Aux arrêts et aux allongements",
+              "en": "Stops and lengthening",
+              "nl": "Op pauzes en verlengingen",
+              "de": "Auf Pausen und Dehnungen"
+            },
+            {
+              "tr": "Yalnız hız ve ses yüksekliğine",
+              "fr": "À la vitesse et au volume seulement",
+              "en": "Speed and loudness only",
+              "nl": "Alleen op snelheid en luidheid",
+              "de": "Nur auf Geschwindigkeit und Lautstärke"
+            },
+            {
+              "tr": "Sayfa ve satır sayısına",
+              "fr": "Au nombre de pages et de lignes",
+              "en": "The number of pages and lines",
+              "nl": "Op het aantal pagina’s en regels",
+              "de": "Auf Seiten- und Zeilenzahl"
+            }
+          ],
+          "dogru": 0,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -3462,7 +6720,43 @@
         "de": "Wir folgen der Sure al-Bayyina abschnittsweise und beginnen, sie auswendig zu lernen."
       },
       "kitap": "Elifbâ / Kur'an-ı Kerim",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-086-1",
+          "soru": {
+            "tr": "Beyyine suresini nasıl takip ederiz?",
+            "fr": "Comment suivons-nous la sourate al-Bayyina ?",
+            "en": "How do we follow Surat al-Bayyina?",
+            "nl": "Hoe volgen we soera al-Bayyina?",
+            "de": "Wie folgen wir der Sure al-Bayyina?"
+          },
+          "siklar": [
+            {
+              "tr": "Tek nefeste",
+              "fr": "D’un seul souffle",
+              "en": "In a single breath",
+              "nl": "In één adem",
+              "de": "In einem Atemzug"
+            },
+            {
+              "tr": "Bölümler hâlinde",
+              "fr": "Par parties",
+              "en": "In sections",
+              "nl": "In delen",
+              "de": "Abschnittsweise"
+            },
+            {
+              "tr": "Sondan başa",
+              "fr": "De la fin vers le début",
+              "en": "From the end to the beginning",
+              "nl": "Van achteren naar voren",
+              "de": "Vom Ende zum Anfang"
+            }
+          ],
+          "dogru": 1,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
@@ -3493,7 +6787,43 @@
         "de": "Am Jahresende zeigen wir unserem Lehrer unsere Fortschritte im Koranlesen und Auswendiglernen."
       },
       "kitap": "Temel Dinî Bilgiler s. 325–330 (tekrar)",
-      "sorular": [],
+      "sorular": [
+        {
+          "id": "ku-087-1",
+          "soru": {
+            "tr": "Yıl sonu değerlendirmesinde neyi hocamıza gösteririz?",
+            "fr": "Que montrons-nous à notre enseignant lors du bilan de fin d’année ?",
+            "en": "What do we show our teacher at the end-of-year review?",
+            "nl": "Wat tonen we onze leraar bij de evaluatie aan het eind van het jaar?",
+            "de": "Was zeigen wir unserem Lehrer bei der Auswertung zum Jahresende?"
+          },
+          "siklar": [
+            {
+              "tr": "Resim defterimizi",
+              "fr": "Notre cahier de dessin",
+              "en": "Our drawing book",
+              "nl": "Ons tekenschrift",
+              "de": "Unser Zeichenheft"
+            },
+            {
+              "tr": "Spor kıyafetimizi",
+              "fr": "Notre tenue de sport",
+              "en": "Our sports clothes",
+              "nl": "Onze sportkleren",
+              "de": "Unsere Sportkleidung"
+            },
+            {
+              "tr": "Okuma ve ezber kazanımlarımızı",
+              "fr": "Nos acquis de lecture et de mémorisation",
+              "en": "What we achieved in reading and memorisation",
+              "nl": "Wat we bereikten in lezen en memoriseren",
+              "de": "Unsere Fortschritte im Lesen und Auswendiglernen"
+            }
+          ],
+          "dogru": 2,
+          "kaynak": "claude"
+        }
+      ],
       "durum": {
         "tr": "onayli",
         "fr": "onayli",
