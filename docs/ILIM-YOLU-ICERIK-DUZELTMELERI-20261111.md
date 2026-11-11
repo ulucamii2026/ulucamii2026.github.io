@@ -67,3 +67,21 @@ listeliyordu; yalnız h03 uygulandı.
 - Lokmân 31/14–15 künyesi (h09-2) güvenlik sorusu için dolaylı; Bakara 2/256 yeterli olabilir (tercih, hata değil; değişmedi).
 - Hafta sırası ile adım numaraları farkı bilinçli tasarım (giriş «sırayı değiştirebilirsiniz» diyor).
 - Bu içerik ulucamii.be sayfalarında gösterilmez; yalnız ihtida.ulucamii.be (12 hafta · 8 adım sayfaları) ondan beslenir.
+
+## 3. Kur'an bilgi kartları: dil denetimi düzeltmeleri (akşam, 11 Kasım 2026)
+
+Kapsam: `src/data/ilim-yolu/kartlar/kuran.json` (87 kart, 117 mini soru), `egitim/src/i18n/ilim.ts`. Commit `46371e9f`.
+Yöntem: başka bir modelin 75 bulgusu iddia sayıldı, tek tek doğrulandı; ayrıntılı karar tablosu (depo dışı):
+`D:\tmp\ilim-yolu-arastirma\dil-denetimi-uygulama-20261111.md`. Sonuç: 71 satır uygulandı, 3 reddedildi, 1 ses yenilemesine bekliyor.
+
+- **Özetten çıkmayan sorular (7 soru, 5 dilde) yeniden yazıldı:** ku-045-2, 048-1, 048-2, 050-2, 055-1, 055-2, 081-2.
+  Özetlere bilgi EKLENMEDİ. Yeni sorular özetteki cümleyle cevaplanır (ör. ku-048: «hangi kuralları gösteririz?», ku-055: «hangi anahtar kelimeleri buluruz?»).
+- **Şıklar:** ku-030-1, 043-1, 050-1, 051-2 doğru şıkkı kısaltıldı/dengelendi; ku-049-2 ve ku-081-1'den özette olmayan ek kısım atıldı.
+- **Dil hataları:** TR ku-019-1 («harekeyi»), ku-014-1, ku-056-2 («doldururuz»); FR ku-010, 021, 034, 057, 024 (şık); NL ku-002, 048 (başlık), 049, 050 (başlık), 053-2, 061; DE ku-001, 005, 033 (özet), 049 (özet), 054; EN ku-033 (özet), 045; `ilim.ts` DE «Hören».
+- **Reddedilenler:** ku-001 FR «regarder à» (geçerli Fransızca), ku-006 FR «son son» (üslup), `ilim.ts` NL «Eén» (Groene Boekje: büyük harf aksan almaz).
+- **Dokunulmadı:** tecvid/Arapça terimler (imam incelemesi bekliyor); tüm TR/FR başlık ve özetler (kart sesleri metinle eşleşik kalsın).
+- **Ses yenilemesi gerekir (TR/FR metni değişecek, ses yeniden üretilmeli):**
+  1. ku-056 TR özet son cümle: «Sınıf hatim çizelgesini birlikte doldururuz.» (şimdi «dolduruz»)
+  2. ku-019 FR özet: «Nous répétons la lecture du fatha, du kasra et du damma sans les confondre, avec le bon son et la bonne forme de bouche.» (şimdi «de la fatha»)
+  3. ku-024 FR başlık: «Consolidation du soukoun et de la chadda» (şimdi «Consolidation de la sukûn»)
+- İmama gözlem: birkaç soruda doğru şık hâlâ çeldiricilerden ~1,6 kat uzun (ör. ku-037-1, 062-1, 087-1); sonraki turda dengelenebilir.

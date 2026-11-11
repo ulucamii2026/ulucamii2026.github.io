@@ -4,6 +4,14 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 11 Kasım 2026 (akşam) — İlim Yolu: Kur'an kartlarında dil denetimi düzeltmeleri
+
+- Zaman: 11 Kasım 2026, 19.02–19.10 (Brüksel). İçerik commit'i (main, `cb1aba00..46371e9f`): `46371e9f` (`kuran.json` 87 kart / 117 mini soru, 5 dil + `egitim/src/i18n/ilim.ts` 1 satır). 75 bulgudan 71 satır uygulandı, 3 reddedildi, 1 ses yenilemesine bekliyor; özetten çıkmayan 7 soru yeniden yazıldı (özetlere bilgi eklenmedi); TR/FR başlık ve özetler değişmedi.
+- Koşular: Pages [43074070712](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/43074070712) success; egitim push koşusu [43074070662](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/43074070662) success (Hosting yayını); ikinci egitim koşusu [43074449561](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/43074449561) skipped.
+- Canlı: `npm run egitim:canli -- https://egitim.ulucamii.be` 110/110. `https://egitim.ulucamii.be/nl/ogren/ku-049/` yeni «Deze Ramadan schrijven we ons Korandoel» metnini, `/de/ogren/ku-005/` yeni «Woher kommen die Buchstaben der Lām-Gruppe?» sorusunu içeriyor (curl).
+- Yerel kapılar: `tests/ilim-yolu-bilgi-kartlari.test.mjs` geçti, `npm run check` 0 hata, `test:ilim-yolu` 105/106 (1 atlanan), `egitim:build` (astro check 0 hata, kart/okuma ses denetimi, `--dist` denetimi) geçti, Playwright (`yollar`, `kartlar`, `kart`, `bilgi`) 223 geçti, 11 atlandı, 0 başarısız. Derlenmiş sitede nl ku-049/050 ve de ku-005 sayfalarının derlenmiş HTML'inde yeni metin doğrulandı (görsel ekran görüntüsü alınmadı).
+- Açık sınırlar: ses yenilemesi gereken 3 TR/FR metin (ku-056 TR özet, ku-019 FR özet, ku-024 FR başlık) `docs/ILIM-YOLU-ICERIK-DUZELTMELERI-20261111.md` §3'te; tecvid terimleri imam incelemesinde; bazı sorularda doğru şık hâlâ uzun. `test:egitim` düğüm testleri ve diğer Playwright dosyaları bu koşuda yeniden koşulmadı (yalnız kartla ilgili olanlar).
+
 ## 11 Kasım 2026 (öğleden sonra, ikinci) — İlim Yolu: ana sayfada kişisel yol, egitim gizlilik sayfası, 75 Kur'an kartına mini sınav
 
 - Zaman: 11 Kasım 2026, 15.15–15.55 (Brüksel). İçerik commit'leri (main, `5d9fbdec..3b85c604`): `c66c5924` (ana sayfa: Bugün sıradaki kart, Kaldığınız yer/Yolunuz en yeni çalışmaya, başlanmış kart yolları kartları + kilim şeridi, rozet sayısı), `2c424829` (`/<dil>/gizlilik/`: tek kaynak `gizlilik.md`, kopya yok; alt bilgi/hesap/kayıt bağlantıları; canlı denetim + çapa testi), `9eeceeaa` (75 `ku-*` karta 93 mini soru, 5 dil; yalnız boş `sorular`; `ku-035-1` doğru şık kısaltıldı), `3b85c604` (sorusuz kart testi artık atlanır: sorusuz kart kalmadı).
