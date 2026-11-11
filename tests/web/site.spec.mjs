@@ -61,7 +61,8 @@ for (const lang of ['tr', 'fr', 'en', 'nl', 'de']) {
   });
 
   test(`${lang}: temel sayfalar ve yerel bağlantılar`, async ({ page }) => {
-    for (const slug of pages[lang]) {
+    // Dilim 4 / P7: kurs sayfası (3. kayıt) egitim.ulucamii.be'ye yönlendirme sayfası oldu; orası tests/egitim ve tests/tasima-yonlendirme ile sınanır.
+    for (const slug of pages[lang].slice(0, 2)) {
       const response = await page.goto(`/${lang}/${slug}/`);
       expect(response.status(), slug).toBe(200);
       await expect(page.locator('html')).toHaveAttribute('lang', htmlLang[lang]);
@@ -90,13 +91,7 @@ for (const lang of ['tr', 'fr', 'en', 'nl', 'de']) {
     await expect(madde).toBeVisible();
     await expect(madde).toHaveAccessibleName(`${egitimAdi[lang]} (egitim.ulucamii.be)`);
     await expect(page.locator(`footer a[href="${hedef}"]`)).toHaveText(/^egitim\.ulucamii\.be/);
-    // Kur'an kursu sayfasının yan sütununda kart: başlık platformla aynı, düğme alan adını gösterir.
-    await page.goto(`/${lang}/${pages[lang][2]}/`);
-    const kart = page.locator(`main a[href="${hedef}"]`);
-    await expect(kart).toHaveCount(1);
-    await expect(kart).toBeVisible();
-    await expect(page.locator('main aside')).toContainText(egitimAdi[lang]);
-    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
+    // (Kur'an kursu yan sütun kartı Dilim 4 / P7'de kalktı: sayfa egitim'e yönlendirir.)
   });
 
   /* Fransızca ve Felemenkçede gün ve ay adları küçük yazılır, yalnız cümle başı büyür (27 Eylül 2026): CSS «capitalize»
@@ -107,7 +102,7 @@ for (const lang of ['tr', 'fr', 'en', 'nl', 'de']) {
       ? 'Janvier|Février|Mars|Avril|Mai|Juin|Juillet|Août|Septembre|Octobre|Novembre|Décembre'
       : 'Januari|Februari|Maart|April|Mei|Juni|Juli|Augustus|September|Oktober|November|December';
     const buyukAy = new RegExp(`\\d{1,2}\\s(${aylar})\\b`);
-    for (const yolu of [`/${lang}/`, `/${lang}/${pages[lang][0]}/`, `/${lang}/${lang === 'fr' ? 'supports-de-cours' : 'lesmateriaal'}/`]) {
+    for (const yolu of [`/${lang}/`, `/${lang}/${pages[lang][0]}/`]) { // ders materyalleri sayfası egitim'e taşındı (P7)
       expect((await page.goto(yolu)).status(), yolu).toBe(200);
       expect(await page.locator('main').innerText(), yolu).not.toMatch(buyukAy);
     }

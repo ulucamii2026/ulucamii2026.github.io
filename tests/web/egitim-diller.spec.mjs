@@ -6,11 +6,13 @@ import {yollar} from '../../src/i18n/ui.ts';
 import {readFileSync} from 'node:fs';
 const veri=JSON.parse(readFileSync(new URL('../../src/data/ecouter.json',import.meta.url),'utf8'));
 const langs=['tr','fr','en','nl','de'];
+// Dilim 4 / P7: Fransızca dersler /e/<kod>/ adresindedir; o adresler egitim.ulucamii.be'ye yönlendirme sayfası oldu (tests/egitim/ecouter.spec, e-kodlar, tasima-yonlendirme kapsar).
+const anaLangs=langs.filter(d=>d!=='fr');
 test.beforeEach(async({context})=>{
   await context.route('**/*',r=>new URL(r.request().url()).origin==='http://127.0.0.1:4401'?r.continue():r.abort());
   await context.routeWebSocket(/.*/,s=>s.close());
 });
-for(const dil of langs){
+for(const dil of anaLangs){
   test(`${dil}: kendi dilinde arama, ders, ses, hata ve geri dönüş`,async({page})=>{
     await page.addInitScript(()=>{
       window.__sesler=[];
@@ -60,7 +62,7 @@ test('Dil değiştirme aynı derste kalır; 73 dersin beş dilde adresi ve sesle
     const target=dersYolu(dil,'fatiha');
     await expect(page.locator(`header a[href="${target}"]`).first()).toHaveAttribute('href',target);
   }
-  for(const dil of langs) for(const [kod,ders] of Object.entries(veri.kodlar).filter(([,d])=>!d.yonlendir)){
+  for(const dil of anaLangs) for(const [kod,ders] of Object.entries(veri.kodlar).filter(([,d])=>!d.yonlendir)){
     const response=await request.get(dersYolu(dil,kod));
     expect(response.status(),`${dil}/${kod}`).toBe(200);
     const body=await response.text();
@@ -87,7 +89,7 @@ test('Yerelleştirilmiş ders JavaScript kapalıyken Arapça metni ve ses bağla
   const context=await browser.newContext({javaScriptEnabled:false});
   await context.route('**/*',r=>new URL(r.request().url()).origin==='http://127.0.0.1:4401'?r.continue():r.abort());
   const page=await context.newPage();
-  for(const dil of langs){
+  for(const dil of anaLangs){
     await page.goto(`http://127.0.0.1:4401${dersYolu(dil,'fatha')}`);
     await expect(page.locator('.ec-noscript a')).toHaveCount(28);
     await expect(page.locator('.ec-noscript')).toContainText(DINLEME[dil].noscript);

@@ -5,7 +5,7 @@ import { mektepAc } from './helpers/mektep.mjs';
 /* Ezber Kilimi Faz 1d (27 Eyl 2026) — veli portalında «Ezber Kilimi», öğrenci kipinde «Kilimim».
    İnceleme odakları: (1) geçiş betiği koşmadan önce veli eski listesini görmeye devam eder, (2) okuma reddedilince
    sayfa çökmez, eski liste kalır, (3) olaylar zamana göre yeniden eskiye ve sınırlı gelir, geçiş olayı görünmez,
-   (4) velinin dili Fransızcaysa her satır Fransızca, (5) telefonda taşma yok. Sahte lite SDK: tests/web/helpers/mektep.mjs. */
+   (4) velinin dili Fransızcaysa her satır Fransızca, (5) telefonda taşma yok. Sahte lite SDK: tests/egitim/helpers/mektep.mjs. */
 
 const oge = (basamak, sonrakiKontrol = '', ek = {}) => ({ basamak, kalite: '', notlar: [], sonrakiKontrol, surum: 1, ...ek });
 const olay = (id, ezber, tur, zaman, ek = {}) => ({

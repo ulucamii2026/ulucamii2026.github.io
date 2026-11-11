@@ -45,7 +45,7 @@ for (const lang of ['tr', 'fr', 'en']) {
       for (const link of await page.locator('.ana-hizli a').all()) {
         const box = await link.boundingBox();
         expect(box.height).toBeGreaterThanOrEqual(44);
-        expect(await link.getAttribute('href')).toMatch(new RegExp(`^/${lang}/`));
+        expect(await link.getAttribute('href')).toMatch(new RegExp(`^(/|https://egitim\.ulucamii\.be/)${lang}/`)); // Kur'an kursu bağlantısı egitim'de (P7)
       }
     }
   });

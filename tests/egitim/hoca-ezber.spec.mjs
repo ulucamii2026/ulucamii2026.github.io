@@ -5,7 +5,7 @@ import { mektepAc } from './helpers/mektep.mjs';
 /* Ezber Kilimi Faz 1c (27 Eyl 2026) — hoca «Ezber» sekmesi. Plan: docs/superpowers/plans/2026-09-27-ezber-kilimi-faz-1c-hoca.md
    İnceleme odakları: (1) bağlantı yokken dokunuş kaybolmaz, (2) yanlış düğme «Geri al» ile iz bırakmadan döner,
    (3) iki telefon aynı maddede: eski ekran çakışma alır, (4) ilerleme kaydı eski `ezber` alanını silmez,
-   (5) yoklama boşken «Bugün» boş kalmaz. Sahte tam SDK: tests/web/helpers/mektep.mjs (firestoreTam). */
+   (5) yoklama boşken «Bugün» boş kalmaz. Sahte tam SDK: tests/egitim/helpers/mektep.mjs (firestoreTam). */
 
 const students = [
   { ref: 'TEST-1', ad: 'Örnek', soyad: 'Talebe' },

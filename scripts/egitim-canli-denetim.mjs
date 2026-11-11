@@ -32,6 +32,8 @@ const katalog = JSON.parse(readFileSync(new URL('../src/data/ezber/katalog.json'
 // İlim Yolu (10 Kasım 2026): kart sayfaları (/ogren/<kart>/) ve yol sayfaları (/yollar/…) site haritasındadır; kimlikler depodaki kart verisinden ve derlenen yol klasörlerinden gelir.
 const kartKimlikleri = readdirSync(new URL('../src/data/ilim-yolu/kartlar/', import.meta.url)).flatMap((d) => JSON.parse(readFileSync(new URL(`../src/data/ilim-yolu/kartlar/${d}`, import.meta.url), 'utf8')).kartlar.map((k) => k.id));
 const yolSayfalari = readdirSync(new URL('../egitim/dist/tr/yollar/', import.meta.url), { withFileTypes: true }).filter((e) => e.isDirectory()).map((e) => e.name);
+// Dilim 4: basılı Fransızca ders kitabındaki 74 kare kodun dondurulmuş listesi (tests/fixtures/e-kodlari-basili.json): hepsi egitim'de 200 olmalı.
+const BASILI_KODLAR = JSON.parse(readFileSync(new URL('../tests/fixtures/e-kodlari-basili.json', import.meta.url), 'utf8')).kodlar;
 const sesliler = katalog.ogeler.filter((o) => o.ses?.tam || o.ses?.parcalar?.length || o.kuran || o.bilgiMetni || o.metinli);
 const bilgiOgeleri = katalog.ogeler.filter((o) => o.bilgiMetni);
 const firebase = JSON.parse(readFileSync(new URL('../firebase.json', import.meta.url), 'utf8'));
@@ -90,14 +92,40 @@ for (const dil of DILLER) {
     y.headers.get('cache-control') === 'no-cache' && h.includes('data-cd-sayfa'), `${y.status} ${y.headers.get('cache-control')}`);
 }
 const robots = await getir('/robots.txt');
-kontrol('robots.txt site haritasını gösterir', robots.status === 200 && (await robots.text()).includes('Sitemap: https://egitim.ulucamii.be/sitemap-index.xml'), robots.status);
+const robotsMetni = await robots.text();
+kontrol('robots.txt site haritasını gösterir', robots.status === 200 && robotsMetni.includes('Sitemap: https://egitim.ulucamii.be/sitemap-index.xml'), robots.status);
+// Geçiş: kurs ve /e/ Disallow'u kalktı (kalırsa Google noindex yerine eski adresi tutar); veli ve hoca yasak kalır.
+kontrol('robots.txt: kurs ve /e/ serbest, veli ve hoca yasak', !/Disallow: \/\*\/kurs\/|Disallow: \/e\//.test(robotsMetni) && /Disallow: \/hoca\//.test(robotsMetni) && /Disallow: \/\*\/veli\//.test(robotsMetni), 'robots.txt');
+// Taşınan sayfalar (Dilim 4): veli portalı 5 dil + hoca ekranı (noindex, veri bloğu, no-cache); kurs sayfaları dizine açık + kendi kanoniği; 74 basılı kod 200.
+for (const [yol, bloklar] of [...DILLER.map((d) => [`/${d}/veli/`, 'veli-veri']), ['/hoca/', 'hoca-veri']]) {
+  const y = await getir(yol);
+  const h = await y.text();
+  kontrol(`${yol} 200, noindex, ${bloklar} bloğu, no-cache`, y.status === 200 && /<meta name="robots" content="noindex, nofollow">/.test(h) && h.includes(`id="${bloklar}"`) && y.headers.get('cache-control') === 'no-cache', `${y.status} ${y.headers.get('cache-control')}`);
+}
+for (const d of DILLER) {
+  const y = await getir(`/${d}/kurs/`);
+  const h = await y.text();
+  kontrol(`/${d}/kurs/ 200, dizine açık, kanonik kendi adresi, 6 hreflang`, y.status === 200 && !/<meta name="robots" content="[^"]*noindex/.test(h) && h.includes(`<link rel="canonical" href="https://egitim.ulucamii.be/${d}/kurs/">`) && (h.match(/<link rel="alternate" hreflang=/g) ?? []).length === 6, `${y.status}`);
+}
+{
+  const kotu = [];
+  for (const k of BASILI_KODLAR) {
+    const y = await getir(`/e/${k}/`);
+    if (y.status !== 200) kotu.push(`${k}:${y.status}`);
+  }
+  kontrol(`basılı ${BASILI_KODLAR.length} karekodun hepsi /e/<kod>/ 200`, kotu.length === 0, kotu.join(' ') || 'tamam');
+}
 const harita = await getir('/sitemap-0.xml');
 const locs = [...(await harita.text()).matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, a]) => a).sort();
 const beklenen = DILLER.flatMap((d) => [`https://egitim.ulucamii.be/${d}/`, `https://egitim.ulucamii.be/${d}/ezber/`, `https://egitim.ulucamii.be/${d}/calisma-belgesi/`, `https://egitim.ulucamii.be/${d}/kilimim/`, `https://egitim.ulucamii.be/${d}/kartlar/`, `https://egitim.ulucamii.be/${d}/takvim/`, `https://egitim.ulucamii.be/${d}/yollar/`,
   ...['ibadet', 'ibadet/abdest', 'ibadet/namaz', ...['sabah', 'ogle', 'ikindi', 'aksam', 'yatsi'].map((v) => `ibadet/namaz/${v}`), 'okuma', 'yarisma', ...[1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => `okuma/o${n}`)].map((y) => `https://egitim.ulucamii.be/${d}/${y}/`),
   ...yolSayfalari.map((y) => `https://egitim.ulucamii.be/${d}/yollar/${y}/`),
   ...kartKimlikleri.map((k) => `https://egitim.ulucamii.be/${d}/ogren/${k}/`),
-  ...sesliler.map((o) => `https://egitim.ulucamii.be/${d}/calis/${o.id}/`)]).sort();
+  ...sesliler.map((o) => `https://egitim.ulucamii.be/${d}/calis/${o.id}/`),
+  // Dilim 4 geçişi (11 Kasım 2026): Kur'an kursu sayfaları (5 dil × 5) site haritasındadır; veli/hoca değildir.
+  ...['kurs', 'kurs/mufredat', 'kurs/yillik-plan', 'kurs/materyaller', 'kurs/gunluk'].map((y) => `https://egitim.ulucamii.be/${d}/${y}/`)]).concat(
+  // Basılı karekod sesli dersleri: dizin + 73 kod (`test` ulucamii.be'de kalır, egitim'de noindex, haritada yok).
+  ['https://egitim.ulucamii.be/e/', ...BASILI_KODLAR.filter((k) => k !== 'test').map((k) => `https://egitim.ulucamii.be/e/${k}/`)]).sort();
 kontrol(`site haritası ${beklenen.length} adres`, harita.status === 200 && JSON.stringify(locs) === JSON.stringify(beklenen), `${harita.status}, ${locs.length} adres`);
 // Hesap sayfaları ve kart girişi (2 Kasım 2026): 200, noindex, önbelleksiz; site haritasında yok (yukarıdaki eşitlik).
 for (const yol of ['/tr/hesap/', '/tr/hesap/giris/', '/tr/hesap/kayit/', '/k/']) {

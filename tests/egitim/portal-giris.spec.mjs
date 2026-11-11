@@ -40,10 +40,10 @@ async function bundle(kind) {
 }
 
 async function start(page, context, kind, lang, blocked = false, emailLink = false) {
-  await context.route('**/*', r => new URL(r.request().url()).origin === 'http://127.0.0.1:4401' ? r.continue() : r.abort());
+  await context.route('**/*', r => new URL(r.request().url()).origin === 'http://127.0.0.1:4402' ? r.continue() : r.abort());
   await context.routeWebSocket(/.*/, s => s.close());
   // Boş, yerel sayfa: gerçek uygulamanın Firebase başlatıcısı çalışmaz.
-  await context.route('http://127.0.0.1:4401/portal-test/', r => r.fulfill({ contentType:'text/html', body:'<!doctype html><html><body></body></html>' }));
+  await context.route('http://127.0.0.1:4402/portal-test/', r => r.fulfill({ contentType:'text/html', body:'<!doctype html><html><body></body></html>' }));
   await page.goto('/portal-test/');
   await page.evaluate(({kind,lang,blocked,emailLink}) => {
     window.__emailLink = emailLink;

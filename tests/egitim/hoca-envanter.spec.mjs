@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs';
 import { mektepAc } from './helpers/mektep.mjs';
 
 /* Online envanter (1 Kasım 2026) — hoca «Envanter» sekmesi. Şartname: ONLINE-ENVANTER-SPEC.md (kurs projesi, belgeler/bireysel-plan-2026-2027).
-   Sahte tam SDK: tests/web/helpers/mektep.mjs (firestoreTam; veri window.__records, her toplu yazım window.__ezberYazimlar).
+   Sahte tam SDK: tests/egitim/helpers/mektep.mjs (firestoreTam; veri window.__records, her toplu yazım window.__ezberYazimlar).
    İnceleme odakları: (1) kâğıttan aktarılan belge açılınca değerleri gösterir ve aynı belgeye yazar, (2) öğrenci kipi kilitli ve
    yalnız 2 saniyelik basılı tutma çıkarır, (3) yazımlar birleşir ve sürüm artar, (4) program yalnız onaylıysa çocuğa görünür,
    (5) çakışma sessizce ezmez, (6) 360 px genişlikte dokunma hedefi ≥ 56 px. */

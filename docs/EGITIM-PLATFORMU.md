@@ -94,6 +94,8 @@ Her bölümde: ulucamii.be'deki eski adreslerde sorgu ve hash'i koruyan yönlend
 yetişkin kitabındaki basılı `ulucamii.be/e/<kod>/` kare kodları sonsuza dek çalışır; Apps Script kaynak denetimi yeni
 alan adına göre güncellenir; veliye bir kez yeniden giriş duyurusu (onayla); yayın `YAYIN-KAYITLARI.md`'ye işlenir.
 
+**Dilim 4 geçişi (1 + 2 + `/e/`) — hazır, yayınlanmadı (11 Kasım 2026, dal `dilim4-p7`).** Yayınlandığında egitim tarafında değişenler: kurs sayfaları ve `/e/` sayfaları dizine açılır (`noindex` ve ulucamii.be kanoniği kalkar, kanonik kendi adresi, hreflang beş dil; `/e/test/` ulucamii.be'ye yönlendiği için noindex kalır), robots'tan `Disallow: /*/kurs/` ve `/e/` çıkar (kalırsa Google `noindex`'i göremez, eski adresi tutar), site haritasına girerler; veli portalı ve hoca ekranı `noindex` + Disallow KALIR; üst/alt bilgiye «Kur'an Kursu» ve «Veli portalı» bağlantıları gelir (hoca ekranına bağlanılmaz). Ana sitede eski adresler yönlendirme sayfasıdır (sayaçsız, `no-referrer`); tek anahtar `src/lib/egitim-tasima.ts` `TASIMA_ACIK`. Ayrıntı, geri alma ve sıra: `docs/ILIM-YOLU.md` «Dilim 4 · geçiş».
+
 ## Taşınmayanlar — bağlayıcı
 
 - **İhtida** (sayfa, form, EK-9, EK-10) ulucamii.be'de kalır.

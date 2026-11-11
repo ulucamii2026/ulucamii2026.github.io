@@ -5,7 +5,7 @@ import { kareKodYolu } from '../../src/lib/ezber/kare-kod.ts';
 import { mektepAc } from './helpers/mektep.mjs';
 
 /* İlim Yolu hesapları — hoca ekranı «İlim Yolu» sekmesi (2 Kasım 2026, docs/ILIM-YOLU.md Dilim 1, «Ortak kararlar» 4).
-   Callable'lar sahte: tests/web/helpers/mektep.mjs (`firebase/functions` → window.__callables, çağrılar window.__cagrilar).
+   Callable'lar sahte: tests/egitim/helpers/mektep.mjs (`firebase/functions` → window.__callables, çağrılar window.__cagrilar).
    İnceleme odakları: (1) şifre yalnız bir kez gösterilir ve pencere kapanınca DOM'dan silinir, (2) hiçbir sır tarayıcı
    deposuna (localStorage/sessionStorage/IndexedDB) yazılmaz, (3) kart baskısı A4'e 8 kart, saf SVG kare kod (img yok) ve kod
    kart adresini birebir taşır, (4) yıkıcı işlemler sayfanın kendi penceresiyle onay ister (window.confirm yok), (5) hatalar sade Türkçe. */

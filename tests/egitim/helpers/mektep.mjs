@@ -220,12 +220,12 @@ async function bundle(hoca=false) {
 }
 
 export async function mektepAc(page, context, { hoca=false, cloud={}, cloudError=false, dil = 'tr', ogrenci = true, records = {}, tarih = '2026-09-13T10:00:00Z', students = [{ref:'TEST-1',ad:'Örnek',soyad:'Talebe'}] } = {}) {
-  await context.route('**/*', r => new URL(r.request().url()).origin === 'http://127.0.0.1:4401' ? r.continue() : r.abort());
+  await context.route('**/*', r => new URL(r.request().url()).origin === 'http://127.0.0.1:4402' ? r.continue() : r.abort());
   await context.routeWebSocket(/.*/, s => s.close());
-  const yol = hoca?'hoca':{ tr: 'tr/veli-portali', fr: 'fr/portail-parents', en: 'en/parents-portal' }[dil];
+  const yol = hoca?'hoca':{ tr: 'tr/veli', fr: 'fr/veli', en: 'en/veli' }[dil]; // Dilim 4: sayfalar egitim'de (egitim/dist); ulucamii.be'deki eski adresler yönlendirme sayfasıdır
   // Derlenmiş gerçek CSS ve iskelet, sahte aile/öğrenci, dış ağ yok.
-  const html = readFileSync(`dist/${yol}/index.html`, 'utf8').replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, '');
-  await context.route('http://127.0.0.1:4401/mektep-test/', r => r.fulfill({ contentType: 'text/html', body: html }));
+  const html = readFileSync(`egitim/dist/${yol}/index.html`, 'utf8').replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, '');
+  await context.route('http://127.0.0.1:4402/mektep-test/', r => r.fulfill({ contentType: 'text/html', body: html }));
   await page.clock.install({ time: new Date(tarih) });
   await page.goto('/mektep-test/');
   const ids = [...readFileSync('src/lib/hadis-verisi.ts', 'utf8').matchAll(/id: '([^']+)'/g)].map(m => m[1]);
@@ -260,7 +260,7 @@ export async function mektepAc(page, context, { hoca=false, cloud={}, cloudError
     if (window.speechSynthesis) window.speechSynthesis.speak = u => window.__tts.push(u.text);
     const data = document.createElement('script');
     data.id = hoca?'hoca-veri':'veli-veri'; data.type = 'application/json';
-    data.textContent = JSON.stringify({ hadisSesleri, veliYollari:{}, materyalYolu:'/', donem: '2026-2027', ceviriUcu: 'http://127.0.0.1:4401/ceviri-test', dilYollari: {}, materyalGunleri: [], gunler: [
+    data.textContent = JSON.stringify({ hadisSesleri, veliYollari:{}, materyalYolu:'/', donem: '2026-2027', ceviriUcu: 'http://127.0.0.1:4402/ceviri-test', dilYollari: {}, materyalGunleri: [], gunler: [
       { tarih: '2026-09-12', hafta: 2, dersler: [{ no: 1, kod: 'kuran', alan: 'Kur’an', konu: 'Cumartesi konusu', ezber: ['Cumartesi tekrarı'] }] },
       { tarih: '2026-09-13', hafta: 2, dersler: [{ no: 1, kod: 'kuran', alan: 'Kur’an', konu: 'Pazar konusu', ezber: ['Pazar tekrarı'] }] },
       /* Gerçek ders günü üç derstir; tek dersli günler yukarıdaki eski sınamaları bozmasın diye

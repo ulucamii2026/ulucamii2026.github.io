@@ -39,6 +39,11 @@ jobs:
           yokla "Web sitesi"     "https://ulucamii.be/tr/"   "Ulu Camii"
           yokla "Kayıt formu"    "https://ulucamii.be/kayit/" "ulucamii"
           yokla "Eğitim sitesi"  "https://egitim.ulucamii.be/tr/" "Ezber"
+          # Dilim 4 geçişi: veli portalı egitim'de (Cuma e-postası planı bu sayfadaki veli-veri bloğundan okur: Apps Script veli-cuma.gs),
+          # basılı karekodlar egitim'de, eski ulucamii.be adresi yönlendirme sayfası (curl meta/JS yönlendirmesi izlemez: gövdede hedef aranır).
+          yokla "Veli portalı + Cuma planı (egitim)" "https://egitim.ulucamii.be/tr/veli/" 'id="veli-veri"'
+          yokla "Sesli ders (egitim /e/)" "https://egitim.ulucamii.be/e/fatiha/" "ec-sayfa"
+          yokla "Eski veli adresi yönlendiriyor" "https://ulucamii.be/tr/veli-portali/" "egitim.ulucamii.be/tr/veli/"
           yokla "Kayıt arka ucu" "https://script.google.com/macros/s/AKfycbz2cgLbdHmx9ejuk4euzybGbpDro0UAEjzjwl86tMdRtz05Pp5WI1JUZT374y_lb4J8BQ/exec?islem=saglik" '"ok":true' 5 60
           if [ -n "$hatalar" ]; then
             printf 'hatalar<<SON\n%b\nSON\n' "$hatalar" >> "$GITHUB_OUTPUT"

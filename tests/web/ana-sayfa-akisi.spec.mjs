@@ -28,8 +28,8 @@ const kanonikYollar = {
   cenaze: { tr: '/tr/cenaze-hizmetleri/', fr: '/fr/services-funeraires/', en: '/en/funeral-services/' },
   konsolosluk: { tr: '/tr/konsolosluk/', fr: '/fr/consulat/', en: '/en/consulate/' },
   uyelik: { tr: '/tr/uyelik/', fr: '/fr/adhesion/', en: '/en/membership/' },
-  kurankursu: { tr: '/tr/kuran-kursu/', fr: '/fr/ecole-coranique/', en: '/en/quran-school/' },
-  veli: { tr: '/tr/veli-portali/', fr: '/fr/portail-parents/', en: '/en/parents-portal/' },
+  kurankursu: { tr: 'https://egitim.ulucamii.be/tr/kurs/', fr: 'https://egitim.ulucamii.be/fr/kurs/', en: 'https://egitim.ulucamii.be/en/kurs/' }, // P7: Kur'an kursu egitim'de
+  veli: { tr: 'https://egitim.ulucamii.be/tr/veli/', fr: 'https://egitim.ulucamii.be/fr/veli/', en: 'https://egitim.ulucamii.be/en/veli/' }, // Dilim 4 / P7: veli portalı egitim'de
   irsat: { tr: '/tr/irsat-programi/', fr: '/fr/programme-femmes-et-jeunes-filles/', en: '/en/women-and-girls-programme/' },
   adab: { tr: '/tr/cami-adabi/', fr: '/fr/adab-de-la-mosquee/', en: '/en/mosque-etiquette/' },
   hakkimizda: { tr: '/tr/hakkimizda/', fr: '/fr/a-propos/', en: '/en/about/' },
@@ -115,7 +115,7 @@ for (const lang of ['tr', 'fr', 'en']) {
 
       // Veli portalı kontrolü (veli-portali veya portal)
       const veliMatched = allLinks.some((h) =>
-        h.includes('veli-portal') || h.includes('portail-parents') || h.includes('parents-portal') || h.includes('portal')
+        h.includes('veli-portal') || h.includes('portail-parents') || h.includes('parents-portal') || h.includes('portal') || h.includes('egitim.ulucamii.be') && h.includes('/veli')
       );
       expect(veliMatched, 'Veli portalı bağlantısı bulunamadı').toBe(true);
 

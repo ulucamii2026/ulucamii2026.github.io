@@ -12,7 +12,7 @@ for(const [lang,paths] of Object.entries(yollar))test(`${lang}: bilgi listeleri 
  test.setTimeout(90000);
  await context.route('**/*',r=>new URL(r.request().url()).origin==='http://127.0.0.1:4401'?r.continue():r.abort());
  await context.routeWebSocket(/.*/,s=>s.close());
- for(const path of paths){
+ for(const path of paths.filter((_,i)=>i!==4)){ // i=4 müfredat sayfası: Dilim 4 / P7'de egitim'e yönlendirme sayfası oldu
   await page.goto(`/${lang}/${path}/`);
   await expect(page.locator('main')).toBeVisible();
   for(const theme of ['light','dark']){

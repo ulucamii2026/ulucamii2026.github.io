@@ -6,9 +6,10 @@ import { parse } from 'yaml';
 const site = parse(readFileSync('src/content/ayarlar/site.yaml', 'utf8')).site;
 const ozelTelefon = String(site.telefon.dinGorevlisi).replace(/\D/g, '');
 const yollar = {
-  tr: ['yonetim-kurulu', 'kurs-gunlugu', 'cenaze-hizmetleri', 'duyurular/2027-hac-kayitlari-devam-ediyor'],
-  fr: ['conseil-administration', 'journal-des-cours', 'services-funeraires', 'annonces/2027-hac-kayitlari-devam-ediyor'],
-  en: ['board', 'course-journal', 'funeral-services'],
+// Dilim 4 / P7: kurs-gunlugu / journal-des-cours / course-journal egitim.ulucamii.be'ye taşındı (ana sitede yönlendirme sayfası).
+  tr: ['yonetim-kurulu', 'cenaze-hizmetleri', 'duyurular/2027-hac-kayitlari-devam-ediyor'],
+  fr: ['conseil-administration', 'services-funeraires', 'annonces/2027-hac-kayitlari-devam-ediyor'],
+  en: ['board', 'funeral-services'],
 };
 
 test.beforeEach(async ({ context }) => {

@@ -41,8 +41,13 @@ kalıcı kuraldır; işlem günlüğü ayrı dosyada tutulur.
 - Sayfa/içerik: `src/pages`, `src/content`, `src/content.config.ts`.
 - Dil/yollar: `src/i18n`; TR, FR ve EN akışlarını birlikte kontrol et.
 - CMS: `public/admin/icerik/config.yml`; içerik şeması değişirse Astro şemasıyla eşleştir.
-- Veli/hoca portalı: `src/scripts/veli-portali.ts`, `src/scripts/hoca-ekrani.ts`,
-  `src/lib/firebase.ts`, `src/pages/hoca`, `firebase/`.
+- Veli/hoca portalı: betikler `src/scripts/veli-portali.ts`, `src/scripts/hoca-ekrani.ts` (ortak, `@ortak`), `src/lib/firebase.ts`, `firebase/`.
+  Dilim 4'ten beri sayfalar **egitim.ulucamii.be**'dedir (`egitim/src/pages/[dil]/veli`, `egitim/src/pages/hoca`, `egitim/src/styles/uyum-jetonlari.css`);
+  Kur'an kursu sayfaları `egitim/src/pages/[dil]/kurs`, `egitim/src/sayfalar/`, `egitim/src/styles/kurs.css`; sesli dersler `egitim/src/pages/e`
+  (basılı karekodlar). ulucamii.be'deki eski adresler yönlendirme sayfasıdır (`src/lib/egitim-tasima.ts` tek anahtar `TASIMA_ACIK`,
+  `src/lib/egitim-yonlendir-html.ts`, `astro.config.mjs` entegrasyonu `egitim-yonlendirme`); eski sayfa bileşenleri (`src/sayfalar/Veli.astro`, KuranKursu,
+  Mufredat, YillikPlan, DersMateryalleri, KursGunlugu, `src/pages/hoca`, `src/pages/e`) bir hafta sonra silinir. Taşıma/geri alma: `docs/ILIM-YOLU.md` «Dilim 4 · geçiş».
+  Ekran testleri `tests/egitim/` (ana site `tests/web/`); yönlendirme testi `npm run test:tasima`.
 - Form backend'i: `scripts/apps-script/`; yerel sürüm numarası canlı sürüm kanıtı değildir.
 - Kur'an kursu yıllık planı/müfredatı değişirse (24 Eylül 2026 kitap-sayfa revizyonu dahil) önce
   `docs/MUFREDAT-VE-YILLIK-PLAN.md`: plan JSON'u elle düzenlenmez; bağımlı dosyalar ve sıra oradadır.
