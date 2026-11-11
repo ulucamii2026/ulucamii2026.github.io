@@ -96,7 +96,7 @@ const robots = await getir('/robots.txt');
 kontrol('robots.txt site haritasını gösterir', robots.status === 200 && (await robots.text()).includes('Sitemap: https://egitim.ulucamii.be/sitemap-index.xml'), robots.status);
 const harita = await getir('/sitemap-0.xml');
 const locs = [...(await harita.text()).matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, a]) => a).sort();
-const beklenen = DILLER.flatMap((d) => [`https://egitim.ulucamii.be/${d}/`, `https://egitim.ulucamii.be/${d}/ezber/`, `https://egitim.ulucamii.be/${d}/calisma-belgesi/`, `https://egitim.ulucamii.be/${d}/kilimim/`, `https://egitim.ulucamii.be/${d}/kartlar/`, `https://egitim.ulucamii.be/${d}/takvim/`, `https://egitim.ulucamii.be/${d}/yollar/`,
+const beklenen = DILLER.flatMap((d) => [`https://egitim.ulucamii.be/${d}/`, `https://egitim.ulucamii.be/${d}/ezber/`, `https://egitim.ulucamii.be/${d}/calisma-belgesi/`, `https://egitim.ulucamii.be/${d}/kilimim/`, `https://egitim.ulucamii.be/${d}/kartlar/`, `https://egitim.ulucamii.be/${d}/takvim/`, `https://egitim.ulucamii.be/${d}/gizlilik/`, `https://egitim.ulucamii.be/${d}/yollar/`,
   ...['ibadet', 'ibadet/abdest', 'ibadet/namaz', ...['sabah', 'ogle', 'ikindi', 'aksam', 'yatsi'].map((v) => `ibadet/namaz/${v}`), 'okuma', 'yarisma', ...[1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => `okuma/o${n}`)].map((y) => `https://egitim.ulucamii.be/${d}/${y}/`),
   ...yolSayfalari.map((y) => `https://egitim.ulucamii.be/${d}/yollar/${y}/`),
   ...yeniYolSayfalari.map((k) => `https://egitim.ulucamii.be/${d}/yollar/yeni-musluman/${k}/`),
@@ -108,6 +108,14 @@ for (const yol of ['/tr/hesap/', '/tr/hesap/giris/', '/tr/hesap/kayit/', '/k/'])
   const y = await getir(yol);
   const h = await y.text();
   kontrol(`${yol} 200, noindex, no-cache`, y.status === 200 && /<meta name="robots" content="noindex, nofollow">/.test(h) && y.headers.get('cache-control') === 'no-cache', `${y.status} ${y.headers.get('cache-control')}`);
+}
+// Gizlilik sayfası (11 Kasım 2026): dizine girer, kendi kanonik adresi, #ezber-kilimi çapası, tam metne bağlantı, yalnız cami hattı ve info@ (din görevlisinin telefonu yok).
+for (const d of DILLER) {
+  const y = await getir(`/${d}/gizlilik/`);
+  const h = await y.text();
+  kontrol(`/${d}/gizlilik/ 200, dizine girer, kanonik, çapa, tam metin bağlantısı, iletişim`, y.status === 200 && !/<meta name="robots" content="[^"]*noindex/.test(h)
+    && h.includes(`<link rel="canonical" href="https://egitim.ulucamii.be/${d}/gizlilik/">`) && h.includes('id="ezber-kilimi"')
+    && /href="https:\/\/ulucamii\.be\/[a-z]{2}\/[a-z-]+\/"/.test(h) && h.includes('info@ulucamii.be') && h.includes('+32 472 98 50 73'), `${y.status}`);
 }
 // Yeni Müslüman yolu: hafta sayfası 200; video yalnız tr/en'de ve tıklamadan önce iframe yok (CSP'ye uygun, üçüncü tarafa istek yok).
 for (const d of DILLER) {

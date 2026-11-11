@@ -14,7 +14,6 @@ import { hesapMetinleri, RIZA_SURUMU } from '../../../i18n/hesap';
 import { ilimMetinleri } from '../../../i18n/ilim';
 import { sablonlar } from '../../../i18n/sablon';
 import Taban from '../../../layouts/Taban.astro';
-import { ANA_SITE } from '../../../lib/kimlik';
 import '../../../styles/ilim.css';
 
 export function getStaticPaths() {
@@ -24,7 +23,7 @@ export function getStaticPaths() {
 const dil = Astro.params.dil as Dil;
 const m = hesapMetinleri(dil);
 const il = ilimMetinleri(dil);
-const gizlilik = `${ANA_SITE}/${dil}/gizlilik/#ezber-kilimi`;
+const gizlilik = `/${dil}/gizlilik/#ezber-kilimi`;
 const veri = { dil, yerel: yerelKodu[dil], m: sablonlar(m), ek: { rizaSurumu: RIZA_SURUMU, gizlilik } };
 // «Şehir — Cami adı», şehre göre sıralı (BDV camileri listesi; public/data/belcika-camileri.json).
 const secenekler = [...camiler.camiler]

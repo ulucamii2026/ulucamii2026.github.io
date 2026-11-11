@@ -6,7 +6,7 @@
  */
 import type { Dil } from '@ortak/i18n/ui';
 import { KILIM_METINLERI } from '@ortak/lib/ezber/metinler';
-import { ceviri, yol } from '@ortak/i18n/utils';
+import { ceviri } from '@ortak/i18n/utils';
 import { belgeMetinleri } from '../i18n/belge';
 import { cevrimdisiMetinleri } from '../i18n/cevrimdisi';
 import { kartlarMetinleri } from '../i18n/kartlar';
@@ -55,7 +55,7 @@ const takvim = takvimMetinleri(dil);
       <ul>
         <li>{m.kaynakDiyanet} <a href="https://kuran.diyanet.gov.tr">{m.diyanetAdi}</a></li>
         <li>{m.yaziTipleri}</li>
-        <li><a href={`${ANA_SITE}${yol(dil, 'gizlilik')}#ezber-kilimi`}>{ceviri(dil)('footer.gizlilik')}</a></li>
+        <li><a href={`/${dil}/gizlilik/`}>{ceviri(dil)('footer.gizlilik')}</a></li>
       </ul>
     </div>
     <p class="kucuk">{hukukiSatir(dil)}</p>

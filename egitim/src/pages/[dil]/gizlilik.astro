@@ -1,0 +1,65 @@
+---
+/**
+ * İlim Yolu gizlilik sayfası (11 Kasım 2026): ulucamii.be'deki tam gizlilik metninin İlim Yolu'nu, Ezber Kilimi'ni ve hesapları ilgilendiren bölümleri.
+ * Metin KOPYALANMAZ: src/content/sayfalar/<dil>/gizlilik.md tek kaynaktır; egitim/src/content.config.ts'teki `gizlilikBolumleri` koleksiyonu iki dilim keser
+ * (veri sorumlusu; `#ezber-kilimi` çapasından sona: İlim Yolu, haklar, veri ihlali, şikâyet). Dizine girer, kendi kanonik adresi vardır; tam metne açık bağlantı verir.
+ * Görünüm kurs sayfalarındakiyle aynıdır (`.kurs`, `.duz-yazi`; styles/kurs.css).
+ */
+import { getEntry, render } from 'astro:content';
+import type { Dil } from '@ortak/i18n/ui';
+import { dilListesi, yol } from '@ortak/i18n/utils';
+import AnaSiteBaglantili from '../../components/AnaSiteBaglantili.astro';
+import { gizlilikMetinleri } from '../../i18n/gizlilik';
+import { ilimMetinleri } from '../../i18n/ilim';
+import Taban from '../../layouts/Taban.astro';
+import { ANA_SITE, ILETISIM } from '../../lib/kimlik';
+import '../../styles/uyum-jetonlari.css';
+import '../../styles/kurs.css';
+
+export function getStaticPaths() {
+  return dilListesi.map((dil) => ({ params: { dil } }));
+}
+
+const dil = Astro.params.dil as Dil;
+const g = gizlilikMetinleri(dil);
+const il = ilimMetinleri(dil);
+const tamMetin = ANA_SITE + yol(dil, 'gizlilik');
+const kontrolcu = await getEntry('gizlilikBolumleri', `${dil}-kontrolcu`);
+const ilim = await getEntry('gizlilikBolumleri', `${dil}-ilim`);
+if (!kontrolcu || !ilim) throw new Error(`gizlilik bölümleri yok: ${dil}`);
+const { Content: Kontrolcu } = await render(kontrolcu);
+const { Content: Ilim } = await render(ilim);
+---
+<Taban dil={dil} baslik={g.baslik} aciklama={g.aciklama} yol="gizlilik">
+  <header class="uyum-baslik kurs-baslik">
+    <div class="icerik">
+      <p class="etiket etiket-vurgu">{il.marka}</p>
+      <h1>{g.baslik}</h1>
+      <p class="uyum-alt">{g.giris}</p>
+    </div>
+  </header>
+  <div class="kurs">
+    <div class="kapsayici py-10">
+      <article class="duz-yazi">
+        <p><a class="dugme birincil" href={tamMetin}>{g.tamMetin}</a></p>
+        <p>{g.tamMetinNot}</p>
+        <AnaSiteBaglantili><Kontrolcu /></AnaSiteBaglantili>
+        <section aria-labelledby="gizlilik-iletisim">
+          <h2 id="gizlilik-iletisim">{g.iletisimBaslik}</h2>
+          <p>{g.iletisimNot}</p>
+          <ul>
+            <li>{ILETISIM.adres}</li>
+            <li><a href={`mailto:${ILETISIM.eposta}`}>{ILETISIM.eposta}</a></li>
+            <li><a href={`tel:${ILETISIM.telefon.e164}`}>{ILETISIM.telefon.goster}</a></li>
+          </ul>
+        </section>
+        <AnaSiteBaglantili><Ilim /></AnaSiteBaglantili>
+        <p><a href={tamMetin}>{g.tamMetin}</a></p>
+      </article>
+    </div>
+  </div>
+</Taban>
+
+<script>
+  import '../../scripts/dil';
+</script>
