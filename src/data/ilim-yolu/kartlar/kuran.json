@@ -31,7 +31,7 @@
             "fr": "À quoi regardons-nous pour distinguer les lettres du groupe Alif ?",
             "en": "What do we look at to tell the letters of the Alif group apart?",
             "nl": "Waarop letten we om de letters van de Alif-groep te onderscheiden?",
-            "de": "Woran erkennen wir die Buchstaben der Alif-Gruppe voneinander?"
+            "de": "Woran unterscheiden wir die Buchstaben der Alif-Gruppe voneinander?"
           },
           "siklar": [
             {
@@ -86,7 +86,7 @@
         "tr": "Hı grubundaki harfleri doğru çıkış yerinden (mahreç) okumayı öğreniriz. Her harfin sesini ayrı ayrı dinler, benzerlerinden ayırırız.",
         "fr": "Nous apprenons à lire les lettres du groupe Hâ depuis leur bon point d’articulation (makhraj). Nous écoutons chaque son et le distinguons de ses voisins.",
         "en": "We learn to read the letters of the Ḥā group from their correct place of articulation (makhraj). We listen to each sound and tell it from similar ones.",
-        "nl": "We leren de letters van de Ḥā-groep vanuit de juiste uitspraakplaats (makhradj) te lezen. We luisteren naar elke klank en onderscheiden hem van lijkende klanken.",
+        "nl": "We leren de letters van de Ḥā-groep vanuit de juiste uitspraakplaats (makhradj) te lezen. We luisteren naar elke klank en onderscheiden hem van op hem lijkende klanken.",
         "de": "Wir lernen, die Buchstaben der Ḥā-Gruppe vom richtigen Artikulationsort (Machradsch) zu lesen. Wir hören jeden Laut an und unterscheiden ihn von ähnlichen."
       },
       "kitap": "Elifbâ / Kur'an-ı Kerim",
@@ -299,7 +299,7 @@
             "fr": "De quelles zones sentons-nous sortir les lettres du groupe Lâm ?",
             "en": "From which parts do we try to feel the letters of the Lām group coming?",
             "nl": "Uit welke delen proberen we de letters van de Lām-groep te voelen komen?",
-            "de": "Aus welchen Teilen versuchen wir, die Buchstaben der Lām-Gruppe kommen zu spüren?"
+            "de": "Woher kommen die Buchstaben der Lām-Gruppe? Das versuchen wir zu spüren."
           },
           "siklar": [
             {
@@ -631,7 +631,7 @@
           "id": "ku-010-1",
           "soru": {
             "tr": "Çoğu harf kendinden sonraki harfe ne yapar?",
-            "fr": "Que fait la plupart des lettres avec la lettre suivante ?",
+            "fr": "Que font la plupart des lettres avec la lettre suivante ?",
             "en": "What do most letters do with the letter that follows?",
             "nl": "Wat doen de meeste letters met de volgende letter?",
             "de": "Was tun die meisten Buchstaben mit dem folgenden Buchstaben?"
@@ -898,7 +898,7 @@
         {
           "id": "ku-014-1",
           "soru": {
-            "tr": "Hemze bizimle nasıl karşılaşır?",
+            "tr": "Hemze karşımıza nasıl çıkar?",
             "fr": "Comment le hamza se présente-t-il ?",
             "en": "How does the hamza appear?",
             "nl": "Hoe komt de hamza voor?",
@@ -1338,7 +1338,7 @@
         {
           "id": "ku-019-1",
           "soru": {
-            "tr": "Hareke pekiştirmesinde hangi üç hareketi karıştırmadan okuruz?",
+            "tr": "Hareke pekiştirmesinde hangi üç harekeyi karıştırmadan okuruz?",
             "fr": "Quelles trois voyelles brèves lisons-nous sans les confondre dans cette consolidation ?",
             "en": "Which three short vowels do we read without mixing them up in this practice?",
             "nl": "Welke drie korte klinkers lezen we bij deze oefening zonder verwarring?",
@@ -1508,7 +1508,7 @@
           "id": "ku-021-1",
           "soru": {
             "tr": "Cezmli kelimeyi okurken sâkin harfin ne yaptığını duyarız?",
-            "fr": "Que entendons-nous faire la lettre sans voyelle dans un mot avec soukoun ?",
+            "fr": "Dans un mot avec soukoun, que fait la lettre sans voyelle, d’après ce que nous entendons ?",
             "en": "What do we hear the vowel-less letter do in a word with sukūn?",
             "nl": "Wat horen we de klinkerloze letter doen in een woord met sukūn?",
             "de": "Was hören wir den vokallosen Buchstaben in einem Wort mit Sukun tun?"
@@ -1752,7 +1752,7 @@
           "siklar": [
             {
               "tr": "Üstün ve esre",
-              "fr": "La fatha et le kasra",
+              "fr": "Le fatha et le kasra",
               "en": "Fatḥa and kasra",
               "nl": "Fatḥa en kasra",
               "de": "Fatha und Kasra"
@@ -2153,11 +2153,11 @@
           },
           "siklar": [
             {
-              "tr": "Harfin sesini harekesi yönünde uzatmak",
-              "fr": "Allonger le son de la lettre dans le sens de sa voyelle",
-              "en": "Lengthening a letter’s sound in the direction of its vowel",
-              "nl": "De klank van een letter verlengen in de richting van haar klinker",
-              "de": "Den Laut des Buchstabens in Richtung seines Vokals zu dehnen"
+              "tr": "Harfin sesini uzatmak",
+              "fr": "Allonger le son d’une lettre",
+              "en": "Lengthening a letter’s sound",
+              "nl": "De klank van een letter verlengen",
+              "de": "Den Laut eines Buchstabens zu dehnen"
             },
             {
               "tr": "Harfi hiç okumamak",
@@ -2372,9 +2372,9 @@
       "ozet": {
         "tr": "Elif-lâm takısındaki lâmın bazen okunduğunu (kamerî), bazen sonraki harfe katıldığını (şemsî) örneklerle ayırt ederek okuruz.",
         "fr": "Nous lisons en distinguant par des exemples le lâm de l’article, tantôt prononcé (lunaire), tantôt assimilé à la lettre suivante (solaire).",
-        "en": "We read, telling by examples the lām of the article that is sometimes pronounced (lunar) and sometimes merged into the next letter (solar).",
+        "en": "We read and tell apart, using examples, the lām of the article that is sometimes pronounced (lunar) and sometimes merged into the next letter (solar).",
         "nl": "We lezen en onderscheiden aan de hand van voorbeelden de lām van het lidwoord die soms uitgesproken wordt (maan) en soms in de volgende letter opgaat (zon).",
-        "de": "Wir lesen und unterscheiden anhand von Beispielen das Lām des Artikels, das manchmal gesprochen (Mondbuchstabe) und manchmal im nächsten Buchstaben aufgeht (Sonnenbuchstabe)."
+        "de": "Wir lesen und unterscheiden anhand von Beispielen das Lām des Artikels, das manchmal gesprochen wird (Mondbuchstabe) und manchmal im nächsten Buchstaben aufgeht (Sonnenbuchstabe)."
       },
       "kitap": "Elifbâ s. 29–30",
       "sorular": [
@@ -2519,7 +2519,7 @@
           "id": "ku-034-2",
           "soru": {
             "tr": "Okurken durup durmayacağımızı nereden anlarız?",
-            "fr": "D’où savons-nous si nous devons nous arrêter en lisant ?",
+            "fr": "Comment savons-nous si nous devons nous arrêter ou continuer en lisant ?",
             "en": "How do we know whether to stop or continue while reading?",
             "nl": "Waaraan zien we of we moeten stoppen of doorgaan?",
             "de": "Woran erkennen wir, ob wir anhalten oder weiterlesen sollen?"
@@ -2527,14 +2527,14 @@
           "siklar": [
             {
               "tr": "İşaretlerden",
-              "fr": "Des signes",
+              "fr": "Grâce aux signes",
               "en": "From the marks",
               "nl": "Aan de tekens",
               "de": "An den Zeichen"
             },
             {
               "tr": "Satırın uzunluğundan",
-              "fr": "De la longueur de la ligne",
+              "fr": "Grâce à la longueur de la ligne",
               "en": "From the length of the line",
               "nl": "Aan de lengte van de regel",
               "de": "An der Länge der Zeile"
@@ -3199,11 +3199,11 @@
           },
           "siklar": [
             {
-              "tr": "Hemze ya da sükûn gibi sebep olmadan, yalnız med harfiyle yapılan uzatmayla",
-              "fr": "Par l’allongement fait par la seule lettre de madd, sans cause comme hamza ou soukoun",
-              "en": "By lengthening with the madd letter alone, with no cause such as hamza or sukūn",
-              "nl": "Door verlenging met alleen de madd-letter, zonder oorzaak zoals hamza of sukūn",
-              "de": "Durch die Dehnung allein mit dem Madd-Buchstaben, ohne Ursache wie Hamza oder Sukun"
+              "tr": "Yalnız med harfiyle, bir sebep olmadan",
+              "fr": "Par la seule lettre de madd, sans cause",
+              "en": "With the madd letter alone, with no cause",
+              "nl": "Met alleen de madd-letter, zonder oorzaak",
+              "de": "Allein mit dem Madd-Buchstaben, ohne Ursache"
             },
             {
               "tr": "Hemzeden sonra yapılan çok uzun uzatmayla",
@@ -3397,7 +3397,7 @@
           "soru": {
             "tr": "İzhâr harfleri kaç tanedir ve hangi gruptandır?",
             "fr": "Combien y a-t-il de lettres d’iẓhâr, et de quel groupe ?",
-            "en": "How many iẓhār letters are there, and which group are they?",
+            "en": "How many iẓhār letters are there, and which group do they belong to?",
             "nl": "Hoeveel iẓhār-letters zijn er en tot welke groep behoren ze?",
             "de": "Wie viele Idhār-Buchstaben gibt es, und zu welcher Gruppe gehören sie?"
           },
@@ -3430,21 +3430,33 @@
         {
           "id": "ku-045-2",
           "soru": {
-            "tr": "Hangisi izhâr (boğaz) harflerinden biridir?",
-            "fr": "Laquelle est une lettre d’iẓhâr (de la gorge) ?",
-            "en": "Which is one of the iẓhār (throat) letters?",
-            "nl": "Welke is een iẓhār-letter (keelletter)?",
-            "de": "Welcher ist ein Idhār-Buchstabe (Kehlbuchstabe)?"
+            "tr": "İzhârda nûn sesi nasıl çıkarılır?",
+            "fr": "Comment le nûn est-il prononcé dans l’iẓhâr ?",
+            "en": "How is the nūn pronounced in iẓhār?",
+            "nl": "Hoe wordt de nūn uitgesproken bij iẓhār?",
+            "de": "Wie wird das Nūn beim Idhār gesprochen?"
           },
           "siklar": [
             {
-              "ar": "ب"
+              "tr": "Gizlenerek",
+              "fr": "Voilé",
+              "en": "Veiled",
+              "nl": "Versluierd",
+              "de": "Verhüllt"
             },
             {
-              "ar": "ع"
+              "tr": "Açıkça",
+              "fr": "Clairement",
+              "en": "Clearly",
+              "nl": "Duidelijk",
+              "de": "Klar"
             },
             {
-              "ar": "م"
+              "tr": "Mim sesine çevrilerek",
+              "fr": "Changé en « mîm »",
+              "en": "Changed into a “mīm”",
+              "nl": "Veranderd in een “mīm”",
+              "de": "Zu einem „Mīm“ verwandelt"
             }
           ],
           "dogru": 1,
@@ -3638,7 +3650,7 @@
         "tr": "Tecvid aşama değerlendirmesi",
         "fr": "Bilan d’étape du tajwîd",
         "en": "Tajwīd checkpoint",
-        "nl": "Tajwīd-tussentijdse evaluatie",
+        "nl": "Tussentijdse tajwīd-evaluatie",
         "de": "Tadschwīd-Zwischenstand"
       },
       "ozet": {
@@ -3653,33 +3665,33 @@
         {
           "id": "ku-048-1",
           "soru": {
-            "tr": "Sâkin nûn ve tenvinin kaç hükmü vardır?",
-            "fr": "Combien de règles y a-t-il pour le nûn sans voyelle et le tanwîn ?",
-            "en": "How many rules are there for vowel-less nūn and tanwīn?",
-            "nl": "Hoeveel regels zijn er voor klinkerloze nūn en tanwīn?",
-            "de": "Wie viele Regeln gibt es für vokalloses Nūn und Tanwīn?"
+            "tr": "Tecvid aşama değerlendirmesinde bir metin üzerinde hangi kuralları gösteririz?",
+            "fr": "Quelles règles montrons-nous sur un texte lors du bilan d’étape du tajwîd ?",
+            "en": "Which rules do we show on a text in the tajwīd checkpoint?",
+            "nl": "Welke regels tonen we op een tekst bij de tussentijdse tajwīd-evaluatie?",
+            "de": "Welche Regeln zeigen wir im Tadschwīd-Zwischenstand an einem Text?"
           },
           "siklar": [
             {
-              "tr": "Dört: iklâb, idğâm, izhâr, ihfâ",
-              "fr": "Quatre : iqlâb, idghâm, iẓhâr, ikhfâ’",
-              "en": "Four: iqlāb, idghām, iẓhār, ikhfāʾ",
-              "nl": "Vier: iqlāb, idghām, iẓhār, ikhfāʾ",
-              "de": "Vier: Iqlāb, Idghām, Idhār, Ichfā’"
+              "tr": "Med, ihfâ, izhâr, iklâb ve idğâm",
+              "fr": "Madd, ikhfâ’, iẓhâr, iqlâb et idghâm",
+              "en": "Madd, ikhfāʾ, iẓhār, iqlāb and idghām",
+              "nl": "Madd, ikhfāʾ, iẓhār, iqlāb en idghām",
+              "de": "Madd, Ichfā’, Idhār, Iqlāb und Idghām"
             },
             {
-              "tr": "İki",
-              "fr": "Deux",
-              "en": "Two",
-              "nl": "Twee",
-              "de": "Zwei"
+              "tr": "Yalnız üstün, esre ve ötre",
+              "fr": "Seulement le fatha, le kasra et le damma",
+              "en": "Only fatḥa, kasra and ḍamma",
+              "nl": "Alleen fatḥa, kasra en ḍamma",
+              "de": "Nur Fatha, Kasra und Damma"
             },
             {
-              "tr": "Yedi",
-              "fr": "Sept",
-              "en": "Seven",
-              "nl": "Zeven",
-              "de": "Sieben"
+              "tr": "Yalnız cezm ile şedde",
+              "fr": "Seulement le soukoun et la chadda",
+              "en": "Only sukūn and shadda",
+              "nl": "Alleen sukūn en shadda",
+              "de": "Nur Sukun und Schadda"
             }
           ],
           "dogru": 0,
@@ -3688,33 +3700,33 @@
         {
           "id": "ku-048-2",
           "soru": {
-            "tr": "Ğunne nedir?",
-            "fr": "Qu’est-ce que la ghunna ?",
-            "en": "What is ghunna?",
-            "nl": "Wat is ghunna?",
-            "de": "Was ist Ghunna?"
+            "tr": "Tecvid aşama değerlendirmesinde neyi fark etmeye çalışırız?",
+            "fr": "Que cherchons-nous à repérer lors du bilan d’étape du tajwîd ?",
+            "en": "What do we try to notice in the tajwīd checkpoint?",
+            "nl": "Wat proberen we op te merken bij de tussentijdse tajwīd-evaluatie?",
+            "de": "Was versuchen wir im Tadschwīd-Zwischenstand zu erkennen?"
           },
           "siklar": [
             {
-              "tr": "Genizden (burundan) gelen ses",
-              "fr": "Le son qui vient du nez (nasal)",
-              "en": "The sound that comes from the nose (nasal sound)",
-              "nl": "De klank die uit de neus komt (neusklank)",
-              "de": "Der Laut aus der Nase (Nasenlaut)"
+              "tr": "Hangi kuralın nerede geçtiğini",
+              "fr": "Quelle règle apparaît où",
+              "en": "Which rule appears where",
+              "nl": "Welke regel waar voorkomt",
+              "de": "Welche Regel wo vorkommt"
             },
             {
-              "tr": "Boğazdan gelen sert ses",
-              "fr": "Un son dur venant de la gorge",
-              "en": "A harsh sound from the throat",
-              "nl": "Een harde klank uit de keel",
-              "de": "Ein harter Laut aus der Kehle"
+              "tr": "Sayfanın kaç satır olduğunu",
+              "fr": "Le nombre de lignes de la page",
+              "en": "How many lines the page has",
+              "nl": "Hoeveel regels de pagina heeft",
+              "de": "Wie viele Zeilen die Seite hat"
             },
             {
-              "tr": "Dudakla çıkan ses",
-              "fr": "Un son fait avec les lèvres",
-              "en": "A sound made with the lips",
-              "nl": "Een klank met de lippen",
-              "de": "Ein Lippenlaut"
+              "tr": "Harflerin hangi renkte yazıldığını",
+              "fr": "La couleur des lettres",
+              "en": "What colour the letters are",
+              "nl": "Welke kleur de letters hebben",
+              "de": "Welche Farbe die Buchstaben haben"
             }
           ],
           "dogru": 0,
@@ -3747,8 +3759,8 @@
         "tr": "Ramazan, Kur’an’ın indirilmeye başlandığı aydır; Bakara 185. âyet bunu bildirir. Kur’an insanlara rehberdir ve doğruyu eğriden ayıran açıklamalar içerir. Bu Ramazan’da Kur’an hedefimizi bir kartta yazarız.",
         "fr": "Le Ramadan est le mois où le Coran a commencé à être révélé ; le verset 185 d’al-Baqara l’indique. Le Coran guide les gens et contient des éclaircissements qui distinguent le vrai du faux. Ce Ramadan, nous écrivons notre objectif coranique sur une carte.",
         "en": "Ramadan is the month in which the Qur’an began to be revealed; verse 185 of al-Baqara says so. The Qur’an guides people and contains clear teachings that separate right from wrong. This Ramadan we write our Qur’an goal on a card.",
-        "nl": "Ramadan is de maand waarin de Koran begon geopenbaard te worden; vers 185 van al-Baqara zegt dat. De Koran leidt de mensen en bevat duidelijke uitleg die goed van kwaad onderscheidt. Dit Ramadan schrijven we ons Koran-doel op een kaart.",
-        "de": "Der Ramadan ist der Monat, in dem der Koran zu offenbaren begann; Vers 185 der Sure al-Baqara sagt es. Der Koran leitet die Menschen und enthält klare Erläuterungen, die Recht von Unrecht trennen. Diesen Ramadan schreiben wir unser Koranziel auf eine Karte."
+        "nl": "Ramadan is de maand waarin de Koran begon geopenbaard te worden; vers 185 van al-Baqara zegt dat. De Koran leidt de mensen en bevat duidelijke uitleg die goed van kwaad onderscheidt. Deze Ramadan schrijven we ons Korandoel op een kaart.",
+        "de": "Der Ramadan ist der Monat, in dem die Offenbarung des Korans begann; Vers 185 der Sure al-Baqara sagt es. Der Koran leitet die Menschen und enthält klare Erläuterungen, die Recht von Unrecht trennen. Diesen Ramadan schreiben wir unser Koranziel auf eine Karte."
       },
       "kitap": "Camiye Gidiyorum 1 s. 106 (tekrar) (Ramazan özel programı)",
       "sorular": [
@@ -3798,11 +3810,11 @@
           },
           "siklar": [
             {
-              "tr": "Doğruyu eğriden ayırma ve gidilecek yolu bulma",
-              "fr": "La distinction entre le vrai et le faux et le chemin à suivre",
-              "en": "Telling right from wrong and finding the way to follow",
-              "nl": "Het onderscheid tussen goed en kwaad en het vinden van de weg",
-              "de": "Das Unterscheiden von Recht und Unrecht und das Finden des Weges"
+              "tr": "Doğruyu eğriden ayırma",
+              "fr": "La distinction entre le vrai et le faux",
+              "en": "Telling right from wrong",
+              "nl": "Het onderscheid tussen goed en kwaad",
+              "de": "Das Unterscheiden von Recht und Unrecht"
             },
             {
               "tr": "Yalnızca hava durumu",
@@ -3842,7 +3854,7 @@
         "tr": "Mukabele nedir, nasıl yapılır?",
         "fr": "Qu’est-ce que la mukabele et comment la faire ?",
         "en": "What is mukabele and how is it done?",
-        "nl": "Wat is mukabele en hoe doe je het?",
+        "nl": "Wat is mukabele en hoe wordt het gedaan?",
         "de": "Was ist Mukabele und wie wird sie gemacht?"
       },
       "ozet": {
@@ -3865,25 +3877,25 @@
           },
           "siklar": [
             {
-              "tr": "Bir hâfızın okuyuşunu takip ederek hatim indirme geleneği",
-              "fr": "La tradition de suivre la lecture d’un hâfiz pour achever le Coran",
-              "en": "The tradition of completing the Qur’an by following a hafiz’s reading",
-              "nl": "De traditie om de Koran uit te lezen door de lezing van een ḥāfiẓ te volgen",
-              "de": "Die Tradition, den Koran zu vollenden, indem man der Lesung eines Hāfiz folgt"
+              "tr": "Hâfızı takip ederek hatim indirme",
+              "fr": "Suivre la récitation d’un hâfiz pour achever le Coran",
+              "en": "Completing the Qur’an by following a hafiz",
+              "nl": "Een ḥāfiẓ volgen om de Koran uit te lezen",
+              "de": "Einem Hāfiz folgen, um den Koran zu vollenden"
             },
             {
-              "tr": "Bir çeşit yarış",
+              "tr": "Bir çeşit okuma yarışı",
               "fr": "Une sorte de compétition",
               "en": "A kind of competition",
-              "nl": "Een soort wedstrijd",
-              "de": "Eine Art Wettbewerb"
+              "nl": "Een soort leeswedstrijd",
+              "de": "Eine Art Wettbewerb unter Schülern"
             },
             {
-              "tr": "Yalnızca bayram kutlaması",
+              "tr": "Yalnızca bir bayram kutlaması",
               "fr": "Seulement une célébration de la fête",
               "en": "Only a festival celebration",
-              "nl": "Alleen een feestviering",
-              "de": "Nur eine Festfeier"
+              "nl": "Alleen een feestelijke viering",
+              "de": "Nur eine Feier zum Festtag"
             }
           ],
           "dogru": 0,
@@ -3892,33 +3904,33 @@
         {
           "id": "ku-050-2",
           "soru": {
-            "tr": "Mukabele okuyuşu nasıl bir hızda yapılması tavsiye edilmiştir?",
-            "fr": "À quelle vitesse la lecture de la mukabele est-elle recommandée ?",
-            "en": "At what pace is the mukabele reading recommended?",
-            "nl": "Met welk tempo wordt de mukabele-lezing aanbevolen?",
-            "de": "In welchem Tempo wird die Mukabele-Lesung empfohlen?"
+            "tr": "Mukabelede dinleyici olarak nasıl davranırız?",
+            "fr": "Comment nous comportons-nous en tant qu’auditeurs pendant la mukabele ?",
+            "en": "How do we behave as listeners during mukabele?",
+            "nl": "Hoe gedragen we ons als luisteraar tijdens de mukabele?",
+            "de": "Wie verhalten wir uns als Zuhörer bei der Mukabele?"
           },
           "siklar": [
             {
-              "tr": "Çok hızlı",
-              "fr": "Très rapide",
-              "en": "Very fast",
-              "nl": "Heel snel",
-              "de": "Sehr schnell"
+              "tr": "Yüksek sesle konuşuruz",
+              "fr": "Nous parlons à voix haute",
+              "en": "We talk loudly",
+              "nl": "We praten luid",
+              "de": "Wir sprechen laut"
             },
             {
-              "tr": "Orta hızla, tane tane (tertîl)",
-              "fr": "À allure moyenne, posément (tartîl)",
-              "en": "At a medium pace, clearly (tartīl)",
-              "nl": "In gematigd tempo, helder (tartīl)",
-              "de": "In mittlerem Tempo, deutlich (Tartīl)"
+              "tr": "Sessiz ve dikkatli oluruz",
+              "fr": "Nous restons silencieux et attentifs",
+              "en": "We stay quiet and attentive",
+              "nl": "We zijn stil en aandachtig",
+              "de": "Wir sind still und aufmerksam"
             },
             {
-              "tr": "Çok yavaş, bir günde bir âyet",
-              "fr": "Très lent, un verset par jour",
-              "en": "Very slow, one verse a day",
-              "nl": "Heel langzaam, één vers per dag",
-              "de": "Sehr langsam, ein Vers pro Tag"
+              "tr": "Sınıftan çıkarız",
+              "fr": "Nous quittons la classe",
+              "en": "We leave the class",
+              "nl": "We verlaten de klas",
+              "de": "Wir verlassen die Klasse"
             }
           ],
           "dogru": 1,
@@ -4002,11 +4014,11 @@
           },
           "siklar": [
             {
-              "tr": "«Yaratan Rabbinin adıyla oku!»",
-              "fr": "« Lis, au nom de ton Seigneur qui a créé ! »",
-              "en": "“Read in the name of your Lord who created!”",
-              "nl": "“Lees in de naam van je Heer die schiep!”",
-              "de": "„Lies im Namen deines Herrn, der erschuf!“"
+              "tr": "«Oku!»",
+              "fr": "« Lis ! »",
+              "en": "“Read!”",
+              "nl": "“Lees!”",
+              "de": "„Lies!“"
             },
             {
               "tr": "«Yalnız yaz!»",
@@ -4201,7 +4213,7 @@
             "tr": "Kadir suresinin mealini ne hâline getiririz?",
             "fr": "En quoi mettons-nous le sens de la sourate al-Qadr ?",
             "en": "What do we turn the meaning of Surat al-Qadr into?",
-            "nl": "Waarvan maken we de betekenis van soera al-Qadr?",
+            "nl": "Wat maken we van de betekenis van soera al-Qadr?",
             "de": "Was gestalten wir aus der Bedeutung der Sure al-Qadr?"
           },
           "siklar": [
@@ -4269,7 +4281,7 @@
             "fr": "Comment récitons-nous la sourate al-Qadr dans le cercle de mémorisation ?",
             "en": "How do we recite Surat al-Qadr in the memorisation circle?",
             "nl": "Hoe reciteren we soera al-Qadr in de memorisatiekring?",
-            "de": "Wie rezitieren wir die Sure al-Qadr im Auswendiglern-Kreis?"
+            "de": "Wie rezitieren wir die Sure al-Qadr im Kreis?"
           },
           "siklar": [
             {
@@ -4332,33 +4344,33 @@
         {
           "id": "ku-055-1",
           "soru": {
-            "tr": "Bakara 183’e göre oruç kimlere de farz kılınmıştı?",
-            "fr": "Selon al-Baqara 183, à qui le jeûne avait-il aussi été prescrit ?",
-            "en": "According to al-Baqara 183, for whom was fasting also prescribed?",
-            "nl": "Voor wie was het vasten volgens al-Baqara 183 ook voorgeschreven?",
-            "de": "Wem war das Fasten nach al-Baqara 183 ebenfalls vorgeschrieben?"
+            "tr": "Âyet mealinden hangi anahtar kelimeleri buluruz?",
+            "fr": "Quels mots clés trouvons-nous dans le sens des versets ?",
+            "en": "Which key words do we find in the meaning of the verses?",
+            "nl": "Welke sleutelwoorden zoeken we in de betekenis van de verzen?",
+            "de": "Welche Schlüsselwörter suchen wir in der Bedeutung der Verse?"
           },
           "siklar": [
             {
-              "tr": "Sizden öncekilere de",
-              "fr": "Aux générations avant vous aussi",
-              "en": "For those before you as well",
-              "nl": "Ook voor wie vóór jullie kwamen",
-              "de": "Auch denen vor euch"
+              "tr": "Oruç, takva, kolaylık, Ramazan",
+              "fr": "Jeûne, piété, facilité, Ramadan",
+              "en": "Fasting, piety, ease, Ramadan",
+              "nl": "Vasten, godvrezendheid, gemak, Ramadan",
+              "de": "Fasten, Gottesbewusstsein, Erleichterung, Ramadan"
             },
             {
-              "tr": "Yalnızca bu ümmete",
-              "fr": "Seulement à cette communauté",
-              "en": "Only for this community",
-              "nl": "Alleen voor deze gemeenschap",
-              "de": "Nur dieser Gemeinschaft"
+              "tr": "Harita, oyun, yarış, resim",
+              "fr": "Carte, jeu, course, image",
+              "en": "Map, game, race, picture",
+              "nl": "Kaart, spel, wedstrijd, plaatje",
+              "de": "Landkarte, Brettspiel, Wettlauf, Zeichnung"
             },
             {
-              "tr": "Hiç kimseye",
-              "fr": "À personne",
-              "en": "For no one",
-              "nl": "Voor niemand",
-              "de": "Niemandem"
+              "tr": "Yağmur, dağ, deniz, bulut",
+              "fr": "Pluie, montagne, mer, nuage",
+              "en": "Rain, mountain, sea, cloud",
+              "nl": "Regen, berg, zee, wolk",
+              "de": "Regen, Gebirge, Meer, Wolkenhimmel"
             }
           ],
           "dogru": 0,
@@ -4367,33 +4379,33 @@
         {
           "id": "ku-055-2",
           "soru": {
-            "tr": "Hasta veya yolcu olan kişi orucunu nasıl tamamlar?",
-            "fr": "Comment une personne malade ou en voyage complète-t-elle son jeûne ?",
-            "en": "How does a sick person or traveller make up the fast?",
-            "nl": "Hoe maakt een zieke of reiziger het vasten in?",
-            "de": "Wie holt ein Kranker oder Reisender das Fasten nach?"
+            "tr": "Bakara 183-185. âyetler oruçla ilgili ne bildirir?",
+            "fr": "Que montrent les versets 183 à 185 d’al-Baqara au sujet du jeûne ?",
+            "en": "What do verses 183 to 185 of al-Baqara show about fasting?",
+            "nl": "Wat tonen vers 183 tot 185 van al-Baqara over het vasten?",
+            "de": "Was zeigen die Verse 183 bis 185 der Sure al-Baqara über das Fasten?"
           },
           "siklar": [
             {
-              "tr": "Hiç tutmaz",
-              "fr": "Il ne jeûne jamais",
-              "en": "Never fasts",
-              "nl": "Vast nooit",
-              "de": "Fastet nie"
+              "tr": "Kur’an’da yasaklandığını",
+              "fr": "Qu’il est interdit dans le Coran",
+              "en": "That it is forbidden in the Qur’an",
+              "nl": "Dat het in de Koran is verboden",
+              "de": "Dass es im Koran verboten ist"
             },
             {
-              "tr": "Başka günlerde sayısınca tutar",
-              "fr": "Il jeûne un nombre égal de jours à d’autres moments",
-              "en": "Fasts the same number of days at other times",
-              "nl": "Vast hetzelfde aantal dagen op andere dagen",
-              "de": "Fastet die gleiche Zahl von Tagen an anderen Tagen"
+              "tr": "Kur’an’da farz kılındığını",
+              "fr": "Qu’il est prescrit dans le Coran",
+              "en": "That it is prescribed in the Qur’an",
+              "nl": "Dat het in de Koran is voorgeschreven",
+              "de": "Dass es im Koran vorgeschrieben ist"
             },
             {
-              "tr": "Yalnızca bir gün tutar",
-              "fr": "Il jeûne un seul jour",
-              "en": "Fasts only one day",
-              "nl": "Vast slechts één dag",
-              "de": "Fastet nur einen Tag"
+              "tr": "Kur’an’da hiç anılmadığını",
+              "fr": "Qu’il n’est jamais mentionné dans le Coran",
+              "en": "That it is never mentioned in the Qur’an",
+              "nl": "Dat het in de Koran nooit wordt genoemd",
+              "de": "Dass es im Koran nie erwähnt wird"
             }
           ],
           "dogru": 1,
@@ -4469,7 +4481,7 @@
         {
           "id": "ku-056-2",
           "soru": {
-            "tr": "Sınıf hatim çizelgesini nasıl dolduruz?",
+            "tr": "Sınıf hatim çizelgesini nasıl doldururuz?",
             "fr": "Comment remplissons-nous le tableau de khatm de la classe ?",
             "en": "How do we fill in the class khatm chart?",
             "nl": "Hoe vullen we het khatm-schema van de klas in?",
@@ -4537,7 +4549,7 @@
           "id": "ku-057-1",
           "soru": {
             "tr": "Sure kartlarıyla hangi oyunu oynarız?",
-            "fr": "Quel jeu jouons-nous avec les cartes de sourates ?",
+            "fr": "À quel jeu jouons-nous avec les cartes de sourates ?",
             "en": "Which game do we play with surah cards?",
             "nl": "Welk spel spelen we met soerakaarten?",
             "de": "Welches Spiel spielen wir mit den Suren-Karten?"
@@ -4901,7 +4913,7 @@
         "tr": "Ramazan’dan sonra okuma kurallarını yeniden hatırlar, derse tekrar alışırız. Öğrendiklerimizi kısa örneklerle gözden geçiririz.",
         "fr": "Après le Ramadan, nous rappelons les règles de lecture et reprenons le rythme des cours. Nous révisons ce que nous avons appris avec de courts exemples.",
         "en": "After Ramadan we recall the reading rules and settle back into lessons. We review what we have learned with short examples.",
-        "nl": "Na Ramadan herinneren we de leesregels en komen we weer in het ritme van de lessen. We bekijken wat we leerden met korte voorbeelden.",
+        "nl": "Na Ramadan herinneren we ons de leesregels en komen we weer in het ritme van de lessen. We bekijken wat we leerden met korte voorbeelden.",
         "de": "Nach dem Ramadan rufen wir die Leseregeln in Erinnerung und finden wieder in den Unterricht. Wir gehen das Gelernte mit kurzen Beispielen durch."
       },
       "kitap": "Elifbâ s. 49 (tekrar)",
@@ -4912,7 +4924,7 @@
             "tr": "Ramazan’dan sonra neyi yeniden hatırlarız?",
             "fr": "Que rappelons-nous après le Ramadan ?",
             "en": "What do we recall after Ramadan?",
-            "nl": "Wat herinneren we na Ramadan?",
+            "nl": "Wat herinneren we ons na Ramadan?",
             "de": "Woran erinnern wir uns nach dem Ramadan?"
           },
           "siklar": [
@@ -6362,11 +6374,11 @@
           },
           "siklar": [
             {
-              "tr": "Rabbi için namaz kılması ve kurban kesmesi",
-              "fr": "Prier pour son Seigneur et sacrifier",
-              "en": "To pray for his Lord and to sacrifice",
-              "nl": "Voor zijn Heer te bidden en te offeren",
-              "de": "Für seinen Herrn zu beten und zu opfern"
+              "tr": "Namaz kılması ve kurban kesmesi",
+              "fr": "Prier et sacrifier",
+              "en": "To pray and to sacrifice",
+              "nl": "Te bidden en te offeren",
+              "de": "Zu beten und zu opfern"
             },
             {
               "tr": "Yalnızca ticaret yapması",
@@ -6389,33 +6401,33 @@
         {
           "id": "ku-081-2",
           "soru": {
-            "tr": "Kevser suresinin ilk âyetinde Allah Hz. Peygamber’e ne verdiğini bildirir?",
-            "fr": "Que dit Allah au premier verset d’al-Kawthar avoir donné au Prophète ?",
-            "en": "What does Allah say He gave the Prophet in the first verse of Surat al-Kawthar?",
-            "nl": "Wat zegt Allah het eerste vers van soera al-Kawthar aan de Profeet gegeven te hebben?",
-            "de": "Was gibt Allah im ersten Vers der Sure al-Kauthar dem Propheten, wie Er sagt?"
+            "tr": "Kevser suresiyle ilgili hangi bağlantıyı açıklarız?",
+            "fr": "Quel lien expliquons-nous à propos de la sourate al-Kawthar ?",
+            "en": "Which link do we explain for Surat al-Kawthar?",
+            "nl": "Welk verband leggen we uit bij soera al-Kawthar?",
+            "de": "Welchen Bezug erklären wir bei der Sure al-Kauthar?"
           },
           "siklar": [
             {
-              "tr": "Bitip tükenmez nimetler",
-              "fr": "Des bienfaits intarissables",
-              "en": "Never-ending blessings",
-              "nl": "Onuitputtelijke weldaden",
-              "de": "Unerschöpfliche Gaben"
+              "tr": "Kurbanla ilişkisini",
+              "fr": "Son lien avec le sacrifice",
+              "en": "Its link with sacrifice",
+              "nl": "Het verband met het offer",
+              "de": "Den Bezug zum Opfer"
             },
             {
-              "tr": "Hiçbir şey",
-              "fr": "Rien",
-              "en": "Nothing",
-              "nl": "Niets",
-              "de": "Nichts"
+              "tr": "Alışverişle ilişkisini",
+              "fr": "Son lien avec le commerce",
+              "en": "Its link with shopping",
+              "nl": "Het verband met winkelen",
+              "de": "Den Bezug zum Einkaufen"
             },
             {
-              "tr": "Yalnızca bir kitap",
-              "fr": "Seulement un livre",
-              "en": "Only a book",
-              "nl": "Alleen een boek",
-              "de": "Nur ein Buch"
+              "tr": "Hava durumuyla ilişkisini",
+              "fr": "Son lien avec la météo",
+              "en": "Its link with the weather",
+              "nl": "Het verband met het weer",
+              "de": "Den Bezug zum Wetter"
             }
           ],
           "dogru": 0,

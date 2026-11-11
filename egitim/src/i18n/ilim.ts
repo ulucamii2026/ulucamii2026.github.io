@@ -471,7 +471,7 @@ const ILIM: Record<Dil, IlimMetinleri> = {
     hazirlaniyor: 'In Vorbereitung',
     yolEzberAd: 'Memorier-Kelim',
     yolEzberRozet: (n) => `${n} Inhalte`,
-    yolEzberMetin: 'Von den Gebetssuren bis zum Juz’ Amma: hören Sie mit Text und Rezitation der Diyanet zu, wiederholen Sie und tragen Sie Ihrer Lehrkraft vor.',
+    yolEzberMetin: 'Von den Gebetssuren bis zum Juz’ Amma: Hören Sie mit Text und Rezitation der Diyanet zu, wiederholen Sie und tragen Sie Ihrer Lehrkraft vor.',
     yolKursAd: 'Kursthemen',
     yolKursRozet: 'Themen des Jahresplans',
     yolKursMetin: 'Die Themen des Koran-Kurses; jedes mit einer Karte und einer kurzen Frage.',
