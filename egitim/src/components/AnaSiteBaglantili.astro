@@ -1,0 +1,10 @@
+---
+/**
+ * Markdown gövdesi ana sitenin içeriğidir (src/content/sayfalar/*.md, kopyalanmaz) ve kök göreli bağlantılar taşır (/tr/gizlilik…): egitim'de bu adresler
+ * yoktur. Çıktıdaki `href="/…"` bağlantıları ulucamii.be'ye çevrilir; kaynak dosya değişmez. (P7'de taşınan sayfalar ayrıca bağlanır.)
+ */
+import { ANA_SITE } from '../lib/kimlik';
+const html = await Astro.slots.render('default');
+const cevrilmis = html.replace(/(<a\b[^>]*?\shref=")\/(?!\/)/g, `$1${ANA_SITE}/`);
+---
+<Fragment set:html={cevrilmis} />

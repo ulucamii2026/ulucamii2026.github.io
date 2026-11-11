@@ -1,0 +1,102 @@
+/* Kur'an kursu sayfaları (Dilim 4 / P5, 10 Kasım 2026): ana sitenin sayfa gövdeleri Tailwind + global.css sınıflarıyla yazılıdır; egitim'de Tailwind yoktur.
+   Bu dosya yalnız `.kurs` kabuğunun (components/KursSayfasi.astro) içinde geçerli, ana sitedeki aynı adlı sınıfların egitim karşılığıdır:
+   (1) Tailwind ön ayarının (preflight) bu sayfaların dayandığı kısmı, (2) ana sitedeki kap/kart/yazı sınıfları, (3) sayfalarda kullanılan Tailwind
+   yardımcı sınıfları (adları sadeleştirilmiştir: lg:grid-cols-[…] → lg-gc-300 …). Renk ve ölçüler uyum-jetonlari.css'in jetonlarıdır (Kilim'e bağlı).
+   Satır içi stil ve data: adresi yok (sıkı CSP). */
+
+/* (1) Ön ayar: egitim'in tabanı liste imi, tablo ve düğme biçimlerini sıfırlamaz */
+:where(.kurs) :where(ul, ol) { list-style: none; margin: 0; padding: 0; }
+:where(.kurs) :where(dl, dd, figure, blockquote, pre) { margin: 0; }
+:where(.kurs) :where(img) { height: auto; }
+:where(.kurs) :where(button, input, select, textarea) { font: inherit; color: inherit; letter-spacing: inherit; }
+:where(.kurs) :where(button) { background: none; border: 0; padding: 0; cursor: pointer; }
+:where(.kurs) :where(summary) { display: list-item; }
+:where(.kurs) :where(table) { border-collapse: collapse; width: 100%; }
+:where(.kurs) :where(th, td) { border-bottom: 1px solid var(--cizgi); padding: 0.55rem 0.75rem; text-align: left; vertical-align: top; }
+:where(.kurs) :where(th) { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: var(--tracking-etiket); text-transform: uppercase; color: var(--metin-2); font-weight: 500; }
+:where(.kurs) :where(a, code) { overflow-wrap: anywhere; }
+:where(.kurs) :where(p, li, dd, figcaption, blockquote) { text-wrap: pretty; }
+:where(.kurs) :where([lang="ar"], .arabic) { font-family: var(--font-arabic); direction: rtl; font-size: 1.35em; line-height: 1.9; }
+:where(.kurs) :where(.mono) { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.kurs { font-size: 1.0625rem; line-height: 1.6; }
+.kurs, .kurs-baslik { overflow-wrap: break-word; }   /* ana sitede body'de; ızgara sütunları uzun sözcükle genişlemesin (nl/de, 320 px) */
+/* Ana sitenin sabit toprak tonları (tema ile değişmez): uyum-jetonlari bunları Kilim jetonlarına bağlar; ders alanı çubukları ve rozetleri koyu yazı için bu tonlara dayanır. */
+.kurs { --color-ochre: #c98a2e; --color-ceviz: #4a3728; --color-ceviz-koyu: #2f221a; }
+.kurs footer a:not(.dugme), .kurs aside a:not(.dugme) { display: inline-block; padding-block: 0.3rem; }
+
+/* (2) Kap, kart, düğme eki ve yazı sınıfları */
+.kurs .kapsayici { width: min(100% - 2rem, 72rem); margin-inline: auto; }
+@media (min-width: 48rem) { .kurs .kapsayici { width: min(100% - 4rem, 72rem); } }
+.kurs .kart { background: var(--zemin-2); border: 1px solid var(--cizgi); border-radius: var(--radius-kose); box-shadow: var(--shadow-kart); }
+.kurs .kart-kagit { background: var(--zemin); border: 1px solid var(--cizgi); border-radius: var(--radius-kose); }
+.kurs .bolum { padding-block: 0; }   /* kilim.css `.bolum` ana sayfa bölümü: burada yalnız sayfaların kendi boşlukları geçerli */
+.kurs a.dugme { text-decoration: none; }
+.kurs .dugme { font-size: 0.95rem; line-height: 1.4; }
+.kurs .duz-yazi table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.kurs .duz-yazi { max-width: 68ch; }
+.kurs .duz-yazi > * + * { margin-top: 1rem; }
+.kurs .duz-yazi h2 { margin-top: 2.5rem; }
+.kurs .duz-yazi h3 { margin-top: 1.75rem; }
+.kurs .duz-yazi ul { list-style: square; padding-left: 1.25rem; }
+.kurs .duz-yazi ol { list-style: decimal; padding-left: 1.25rem; }
+.kurs .duz-yazi li + li { margin-top: 0.35rem; }
+.kurs .duz-yazi blockquote { border-left: 1px solid var(--color-ochre); padding-left: 1.25rem; color: var(--metin-2); font-style: italic; }
+.kurs .duz-yazi .ayet { margin: 2rem 0; padding: 1.7rem 1.5rem 1.3rem; text-align: center; background: var(--zemin-2); border: 1px solid var(--cizgi); border-radius: var(--radius-kose); position: relative; }
+.kurs .duz-yazi .ayet::before { content: ''; position: absolute; top: -1px; left: 50%; transform: translateX(-50%); width: 76px; height: 3px; background: var(--vurgu); border-radius: 0 0 3px 3px; }
+.kurs .duz-yazi .ayet p { margin: 0; }
+.kurs .duz-yazi .ayet [lang='ar'] { direction: rtl; unicode-bidi: isolate; font-family: 'Amiri', 'Scheherazade New', 'Traditional Arabic', 'Noto Naskh Arabic', serif; font-size: 1.5rem; line-height: 2.2; color: var(--metin); }
+.kurs .duz-yazi .ayet [lang='ar'] + [lang='ar'] { margin-top: 0.35rem; }
+.kurs .duz-yazi .ayet .meal { margin-top: 0.8rem; font-style: italic; color: var(--metin-2); }
+.kurs .duz-yazi .ayet .okunus { margin-top: 0.7rem; font-family: var(--font-mono); font-size: 0.9rem; line-height: 1.6; color: var(--metin); }
+.kurs .duz-yazi .ayet figcaption { margin-top: 0.7rem; }
+.kurs .duz-yazi .tanim-listesi { border: 1px solid var(--cizgi); border-radius: var(--radius-kose); overflow: hidden; margin: 1.4rem 0; }
+.kurs .duz-yazi .tanim-listesi > div { display: grid; grid-template-columns: 230px minmax(0,1fr); gap: 0.15rem 1.25rem; padding: 0.7rem 1.1rem; }
+.kurs .duz-yazi .tanim-listesi > div + div { border-top: 1px solid var(--cizgi); }
+.kurs .duz-yazi .tanim-listesi > div:nth-child(even) { background: var(--zemin-2); }
+.kurs .duz-yazi .tanim-listesi dd { margin: 0; overflow-wrap: anywhere; }
+@media (max-width: 640px) { .kurs .duz-yazi .tanim-listesi > div { grid-template-columns: 1fr; } }
+.kurs .duz-yazi strong { font-weight: 650; }
+.kurs .duz-yazi code { font-family: var(--font-mono); font-size: 0.9em; background: var(--zemin-3); padding: 0.1em 0.35em; border-radius: 2px; }
+.kurs .uyari { border: 1px solid var(--color-ochre); background: rgb(201 138 46 / 0.10); padding: 0.9rem 1.1rem; border-radius: var(--radius-kose); }
+.kurs .bilgi { border: 1px solid var(--color-iznik); background: rgb(31 95 139 / 0.08); padding: 0.9rem 1.1rem; border-radius: var(--radius-kose); }
+.kurs .gorsel-cerceve { border: 1px solid var(--cizgi); padding: 6px; background: var(--zemin-2); border-radius: var(--radius-kose); }
+.kurs .gorsel-cerceve img { display: block; width: 100%; height: auto; filter: sepia(0.08) saturate(1.05); }
+.kurs .duz-yazi p a, .kurs .duz-yazi li a, .kurs .duz-yazi td a { padding-block: 0.4rem; }
+
+/* (3) Tailwind yardımcı sınıfları (yalnız bu sayfalarda kullanılanlar) */
+.kurs .grid { display: grid; }
+.kurs .hidden { display: none; }
+.kurs .inline-flex { display: inline-flex; }
+.kurs .items-center { align-items: center; }
+.kurs .justify-center { justify-content: center; }
+.kurs .content-start { align-content: start; }
+.kurs .min-w-0 { min-width: 0; }
+.kurs .min-h-11 { min-height: 2.75rem; }
+.kurs .w-full { width: 100%; }
+.kurs .w-24 { width: 6rem; } .kurs .h-24 { height: 6rem; }
+.kurs .w-28 { width: 7rem; } .kurs .h-28 { height: 7rem; }
+.kurs .mx-auto { margin-inline: auto; }
+.kurs .neg-my-2 { margin-block: -0.5rem; }
+.kurs .text-center { text-align: center; }
+.kurs .text-sm { font-size: 0.875rem; line-height: 1.43; }
+.kurs .yazi-2 { color: var(--metin-2); }
+.kurs .gap-1 { gap: 0.25rem; } .kurs .gap-2 { gap: 0.5rem; } .kurs .gap-5 { gap: 1.25rem; } .kurs .gap-10 { gap: 2.5rem; }
+.kurs .mt-1 { margin-top: 0.25rem; } .kurs .mt-2 { margin-top: 0.5rem; } .kurs .mt-3 { margin-top: 0.75rem; }
+.kurs .mt-4 { margin-top: 1rem; } .kurs .mt-10 { margin-top: 2.5rem; }
+.kurs .py-2 { padding-block: 0.5rem; } .kurs .py-8 { padding-block: 2rem; } .kurs .py-10 { padding-block: 2.5rem; }
+.kurs .p-5 { padding: 1.25rem; }
+.kurs .gc-1 { grid-template-columns: minmax(0, 1fr); }
+.kurs .gc-auto { grid-template-columns: minmax(0, 1fr) auto; }
+@media (min-width: 40rem) { .kurs .sm-p6 { padding: 1.5rem; } }
+@media (min-width: 64rem) {
+  .kurs .lg-gc-300 { grid-template-columns: minmax(0, 1fr) 300px; }
+  .kurs .lg-gc-360 { grid-template-columns: minmax(0, 1fr) 360px; }
+  .kurs .lg-gizli { display: none; }
+  .kurs .lg-blok { display: block; }
+  .kurs .lg-yapiskan { position: sticky; top: 6rem; }
+}
+
+/* Koyu tema: ana sitedeki aynı adlı `.kart` gölgesi yok; kilim jetonları kendiliğinden koyulur (uyum-jetonlari.css). */
+@media print { .kurs .lg-gizli { display: none; } }
+.kurs-baslik .kunye > * { min-width: 0; }   /* künye ızgarası (müfredat): 1fr sütunlar uzun nl/de metniyle taşmasın (320 px) */
+.kurs-baslik .kunye dd { overflow-wrap: anywhere; }

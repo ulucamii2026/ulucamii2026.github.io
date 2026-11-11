@@ -34,8 +34,10 @@ interface Props {
   kapak?: boolean;
   oturum?: boolean;
   sade?: boolean;
+  /** noindex sayfada bile basılacak kanonik adres: taşınan sayfaların ulucamii.be'deki asıl adresi (Dilim 4; arama motoru yinelenen içerik görmesin). */
+  kanonik?: string;
 }
-const { dil, baslik, aciklama, yol, noindex = false, sayfa = 'diger', kapak = false, oturum = true, sade = false } = Astro.props;
+const { dil, baslik, aciklama, yol, noindex = false, sayfa = 'diger', kapak = false, oturum = true, sade = false, kanonik } = Astro.props;
 const m = metin(dil);
 const il = ilimMetinleri(dil);
 const sayfaBasligi = baslik ?? KILIM_METINLERI.baslik[dil];
@@ -54,6 +56,7 @@ const ogKart = new URL(`/og/ezber-kilimi-${dil}.png`, Astro.site).toString();
     <meta name="description" content={aciklama} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     {yol !== undefined && !noindex && <link rel="canonical" href={adres(dil)} />}
+    {kanonik && <link rel="canonical" href={kanonik} />}
     {yol !== undefined && !noindex && dilListesi.map((d) => <link rel="alternate" hreflang={hreflangKodu(d)} href={adres(d)} />)}
     {yol !== undefined && !noindex && <link rel="alternate" hreflang="x-default" href={adres('tr')} />}
     <meta name="referrer" content="strict-origin-when-cross-origin" />

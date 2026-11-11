@@ -1,0 +1,55 @@
+---
+/** Markdown gövdeli içerik sayfası: başlık bloğu + gövde + sağ sütun (slot="yan") + alt slot */
+import { render } from 'astro:content';
+import KursSayfasi from '../components/KursSayfasi.astro';
+import AnaSiteBaglantili from '../components/AnaSiteBaglantili.astro';
+import { ceviri, tarihBicimle } from '@ortak/i18n/utils';
+import type { Dil, SayfaAnahtari } from '@ortak/i18n/ui';
+import { sayfa } from '@ortak/lib/icerik';
+interface Props { dil: Dil; anahtar: SayfaAnahtari; etiket?: string; icindekiler?: boolean }
+const { dil, anahtar, etiket, icindekiler = false } = Astro.props;
+const t = ceviri(dil);
+const entry = await sayfa(dil, anahtar);
+if (!entry) throw new Error(`İçerik yok: src/content/sayfalar/${dil}/${anahtar}.md`);
+const { Content, headings } = await render(entry);
+const yanVar = Astro.slots.has('yan');
+
+/* İçindekiler — uzun bilgi sayfalarında (ihtida gövdesi mobilde ~12.000 px) okuyucu aradığı
+   başlığa tek dokunuşta gitsin diye. Yalnız h2'ler; Astro markdown başlıklara kendi id'sini verir. */
+const TOC_BASLIK = { tr: 'İçindekiler', fr: 'Sommaire', en: 'Contents', nl: 'Inhoud', de: 'Inhalt' } as const;
+const bolumler = icindekiler ? headings.filter((h) => h.depth === 2 && h.slug) : [];
+---
+<KursSayfasi dil={dil} anahtar={anahtar} baslik={entry.data.baslik} aciklama={entry.data.aciklama ?? entry.data.altBaslik ?? entry.data.baslik} etiket={etiket ?? t('site.kisa')} altBaslik={entry.data.altBaslik}>
+  <slot name="ust" />
+  <div class:list={['kapsayici py-10 grid gap-10', yanVar && 'lg-gc-360']}>
+    <article class="duz-yazi">
+      {bolumler.length > 2 && (
+        <nav class="icindekiler kart-kagit" aria-label={TOC_BASLIK[dil]}>
+          <p class="etiket etiket-vurgu">{TOC_BASLIK[dil]}</p>
+          <ol>
+            {bolumler.map((h) => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}
+          </ol>
+        </nav>
+      )}
+      <AnaSiteBaglantili><Content /></AnaSiteBaglantili>
+      {entry.data.guncelleme && <p class="etiket mt-10">{t('genel.guncelleme')}: {tarihBicimle(entry.data.guncelleme, dil)}</p>}
+    </article>
+    {yanVar && <aside class="grid gap-5 content-start lg-yapiskan"><slot name="yan" /></aside>}
+  </div>
+  <slot name="alt" />
+</KursSayfasi>
+
+<style>
+  /* Yapışkan başlık (sticky) çapaya atlanan başlığı örtmesin. */
+  .duz-yazi :global(h2[id]), .duz-yazi :global(h3[id]) { scroll-margin-top: 6rem; }
+  .icindekiler { padding: 1.1rem 1.3rem 1.2rem; margin-bottom: 2.2rem; }
+  .icindekiler ol { list-style: none; padding: 0; margin: 0.7rem 0 0; display: grid; gap: 0.15rem; }
+  .icindekiler li { margin: 0; }
+  .icindekiler a { display: block; padding: 0.42rem 0; font-size: 0.95rem; text-decoration: none;
+    color: var(--metin-2); border-bottom: 1px solid transparent; }
+  .icindekiler a:hover { color: var(--vurgu); }
+  .icindekiler a:focus-visible { outline: 2px solid var(--vurgu); outline-offset: 2px; border-radius: var(--radius-kose); }
+  @media (min-width: 46rem) {
+    .icindekiler ol { grid-template-columns: 1fr 1fr; gap: 0.15rem 1.6rem; }
+  }
+</style>

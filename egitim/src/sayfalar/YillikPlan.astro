@@ -1,0 +1,469 @@
+---
+/**
+ * Gün gün yıllık ders planı — Kur'an Kursu 2026-2027.
+ *
+ * Veri (src/data/yillik-plan-2026-2027.json) elle yazılmaz: OneDrive'daki Word
+ * planı ile özetli HTML sunumundan D:\app\marche-cami-sitesi\mufredat\yillik-plan-cikar.py
+ * üretir. İki kaynak çaprazlanmadan veri yazılmaz.
+ *
+ * Sayfanın işi tek bir soruya beş saniyede cevap vermek: "bu hafta ne işlenecek?".
+ * Ders içerikleri öğretim dili olan Türkçedir (lang="tr"); FR/EN sayfalarda
+ * yalnızca başlık, kısa not ve arayüz etiketleri o dile çevrilir.
+ */
+import KursSayfasi from '../components/KursSayfasi.astro';
+import { ceviri, yerelKodu } from '@ortak/i18n/utils';
+import { yol } from '../lib/kurs-yollari';
+import { ANA_SITE } from '../lib/kimlik';
+import type { Dil } from '@ortak/i18n/ui';
+import plan from '@ortak/data/yillik-plan-2026-2027.json';
+import materyal from '@ortak/data/ders-materyalleri.json';
+const materyalGunleri = new Set((materyal.gunler as { tarih: string }[]).map((g) => g.tarih));
+interface Props { dil: Dil }
+/* Açık tür: bu dosyada derleyici Props bağını kuramıyor (dil sessizce any oluyordu); METIN[dil] tip güvenliği buna bağlı. */
+const { dil } = Astro.props as Props;
+const t = ceviri(dil);
+
+const PDF = ANA_SITE + '/belgeler/kuran-kursu/Ulu-Camii-Kuran-Kursu-Mufredat-2026-2027.pdf';
+
+type Ders = { sira: number; no: number; saat: string; alan: string; kod: string; konu: string;
+              kaynak: string; kazanim: string[]; ozet: string[]; etkinlik: string[]; ezber: string[] };
+type Rozet = { tur: string; metin: string };
+type Gun = { tarih: string; hafta: number; gun: string; not?: string; tatil?: boolean;
+             rozetler: Rozet[]; saatModu: string; dersler: Ders[] };
+const gunler = plan.gunler as Gun[];
+
+const KODLAR = ['kuran', 'itikat', 'ibadet', 'siyer', 'ahlak'] as const;
+/* Çipler ders rozetleriyle görsel olarak eşleşmeli: alan adları Türkçe kalır. */
+const ALAN_ADI: Record<string, string> = {
+  kuran: 'Kur’an', itikat: 'İtikat', ibadet: 'İbadet', siyer: 'Siyer', ahlak: 'Ahlak',
+};
+
+const bicim = (iso: string, secenek: Intl.DateTimeFormatOptions) =>
+  new Intl.DateTimeFormat(yerelKodu[dil], { timeZone: 'UTC', ...secenek }).format(new Date(iso + 'T12:00:00Z'));
+
+/* Ay bölümleri + ay başına sayımlar (filtre açıkken başlık yalan söylemesin diye
+   her ders alanının kendi sayısı da veriye gömülür). */
+const aylar = gunler.reduce((liste: { anahtar: string; ad: string; gunler: Gun[] }[], g) => {
+  const anahtar = g.tarih.slice(0, 7);
+  if (liste.at(-1)?.anahtar !== anahtar) {
+    liste.push({ anahtar, ad: bicim(g.tarih, { month: 'long', year: 'numeric' }), gunler: [] });
+  }
+  liste.at(-1)!.gunler.push(g);
+  return liste;
+}, []);
+
+const kodlariniAl = (gs: Gun[]) => [...new Set(gs.flatMap((g) => g.dersler.map((d) => d.kod)))].join(' ');
+const dersSay = (gs: Gun[], kod: string) => gs.reduce((n, g) => n + g.dersler.filter((d) => d.kod === kod).length, 0);
+
+/* Derleme anındaki Brüksel tarihi. Site her gün 03:30 UTC yeniden derlendiği için
+   "sıradaki ders günü" kartı kendiliğinden ilerler. */
+const bugun = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Brussels', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
+const dersGunleri = gunler.filter((g) => g.dersler.length > 0);
+const ilkGun = dersGunleri[0];
+const sonraki = dersGunleri.find((g) => g.tarih >= bugun);
+const durum = !sonraki ? 'bitti' : sonraki.tarih === bugun ? 'bugun' : bugun < ilkGun.tarih ? 'baslangic' : 'sonraki';
+
+const toplamDers = dersGunleri.reduce((n, g) => n + g.dersler.length, 0);
+
+const METIN = {
+  tr: {
+  baslik: 'Gün Gün Yıllık Ders Planı 2026-2027',
+  alt: `${dersGunleri.length} ders günü, ${toplamDers} ders. Her dersin konusu, kazanımı, konu özeti ve etkinlik önerisi.`,
+  aciklama: `Ulu Camii Kur’an Kursu 2026-2027 yıllık ders planı: ${dersGunleri.length} ders günü, ${toplamDers} ders, gün gün konular ve kazanımlar.`,
+  not: '',
+  siradaki: 'Sıradaki ders günü', bugunEt: 'Bugün ders var', baslangicEt: 'Dersler başlıyor',
+  bitti: '2026-2027 dönemi tamamlandı', bittiA: 'Yeni dönemin planı hazırlandığında bu sayfada yayımlanacak.',
+  gunuGor: 'Günün ayrıntısı',
+  ayEt: 'Ay', alanEt: 'Ders alanı', tumu: 'Tümü',
+  dersGunu: (n: number) => `${n} ders günü`, dersAdet: (n: number) => `${n} ders`,
+  hafta: (n: number) => `Hafta ${n}`, derssiz: 'Ders yapılmayacak',
+  bloklar: { kazanim: 'Kazanım', ozet: 'Konu özeti', etkinlik: 'Etkinlik önerisi', ezber: 'Ezber' },
+  materyal: 'Ders materyalleri: plan (PDF) ve sesli sunumlar →',
+  kaynakEt: 'Kaynak', mufredat: 'Müfredat sayfası', pdf: 'PDF indir (A4)',
+  kitapNot: 'Ders kitapları velilerce temin edilir', kitapBag: 'temin bilgileri', kitapCapa: '#ders-kitaplari',
+  },
+  en: {
+  baslik: 'Day-by-Day Lesson Plan 2026-2027',
+  alt: `${dersGunleri.length} teaching days, ${toplamDers} lessons. Topic, learning outcome, summary and suggested activity for every lesson.`,
+  aciklama: `Ulu Camii Qur’an School 2026-2027 day-by-day lesson plan: ${dersGunleri.length} teaching days, ${toplamDers} lessons.`,
+  not: 'The lesson content is in Turkish, the language of instruction. The subject names on the filter buttons match the coloured badges on each lesson.',
+  siradaki: 'Next teaching day', bugunEt: 'Lessons today', baslangicEt: 'Lessons begin',
+  bitti: 'The 2026-2027 term has ended', bittiA: 'The plan for the new term will be published here once it is ready.',
+  gunuGor: 'See the day',
+  ayEt: 'Month', alanEt: 'Subject', tumu: 'All',
+  dersGunu: (n: number) => `${n} teaching days`, dersAdet: (n: number) => `${n} lessons`,
+  hafta: (n: number) => `Week ${n}`, derssiz: 'No lessons',
+  bloklar: { kazanim: 'Kazanım', ozet: 'Konu özeti', etkinlik: 'Etkinlik önerisi', ezber: 'Ezber' },
+  materyal: 'Lesson materials: plan (PDF) and audio decks →',
+  kaynakEt: 'Kaynak', mufredat: 'Curriculum page', pdf: 'Download PDF (A4)',
+  kitapNot: 'Textbooks are obtained by the parents', kitapBag: 'how to obtain', kitapCapa: '#manuels',
+  },
+  fr: {
+  baslik: 'Plan annuel des cours 2026-2027, jour par jour',
+  alt: `${dersGunleri.length} jours de cours, ${toplamDers} leçons. Sujet, acquis, résumé et activité proposée pour chaque leçon.`,
+  aciklama: `École coranique Ulu Camii, plan annuel 2026-2027 jour par jour : ${dersGunleri.length} jours de cours, ${toplamDers} leçons.`,
+  not: 'Le contenu des leçons est en turc, langue d’enseignement. Les noms des matières sur les boutons de filtre correspondent aux pastilles colorées de chaque leçon.',
+  siradaki: 'Prochain jour de cours', bugunEt: 'Cours aujourd’hui', baslangicEt: 'Début des cours',
+  bitti: 'L’année 2026-2027 est terminée', bittiA: 'Le plan de la nouvelle année sera publié ici dès qu’il sera prêt.',
+  gunuGor: 'Voir la journée',
+  ayEt: 'Mois', alanEt: 'Matière', tumu: 'Toutes',
+  dersGunu: (n: number) => `${n} jours de cours`, dersAdet: (n: number) => `${n} leçons`,
+  hafta: (n: number) => `Semaine ${n}`, derssiz: 'Pas de cours',
+  bloklar: { kazanim: 'Kazanım', ozet: 'Konu özeti', etkinlik: 'Etkinlik önerisi', ezber: 'Ezber' },
+  materyal: 'Supports de cours : plan (PDF) et présentations sonores →',
+  kaynakEt: 'Kaynak', mufredat: 'Page du programme', pdf: 'Télécharger le PDF (A4)',
+  kitapNot: 'Les manuels sont à la charge des parents', kitapBag: 'où se les procurer', kitapCapa: '#manuels',
+  },
+  nl: {
+  baslik: 'Jaarplanning van de lessen 2026-2027, dag per dag',
+  alt: `${dersGunleri.length} lesdagen, ${toplamDers} lessen. Onderwerp, leerdoel, samenvatting en voorgestelde activiteit voor elke les.`,
+  aciklama: `Jaarplanning 2026-2027 van de koranschool Ulu Camii, dag per dag: ${dersGunleri.length} lesdagen, ${toplamDers} lessen.`,
+  not: 'De inhoud van de lessen is in het Turks, de onderwijstaal. De vaknamen op de filterknoppen komen overeen met de gekleurde badges bij elke les.',
+  siradaki: 'Eerstvolgende lesdag', bugunEt: 'Vandaag les', baslangicEt: 'De lessen beginnen',
+  bitti: 'Het schooljaar 2026-2027 is afgelopen', bittiA: 'De planning van het nieuwe schooljaar wordt hier gepubliceerd zodra ze klaar is.',
+  gunuGor: 'Bekijk de dag',
+  ayEt: 'Maand', alanEt: 'Vak', tumu: 'Alle',
+  dersGunu: (n: number) => `${n} lesdagen`, dersAdet: (n: number) => `${n} lessen`,
+  hafta: (n: number) => `Week ${n}`, derssiz: 'Geen les',
+  bloklar: { kazanim: 'Kazanım', ozet: 'Konu özeti', etkinlik: 'Etkinlik önerisi', ezber: 'Ezber' },
+  materyal: 'Lesmateriaal: plan (PDF) en presentaties met geluid →',
+  kaynakEt: 'Kaynak', mufredat: 'Programmapagina', pdf: 'PDF downloaden (A4)',
+  kitapNot: 'De handboeken worden door de ouders aangeschaft', kitapBag: 'waar verkrijgbaar', kitapCapa: '#manuels',
+  },
+  de: {
+  baslik: 'Jahresplan des Unterrichts 2026-2027, Tag für Tag',
+  alt: `${dersGunleri.length} Unterrichtstage, ${toplamDers} Lektionen. Thema, Lernziel, Zusammenfassung und Aktivitätsvorschlag für jede Lektion.`,
+  aciklama: `Jahresplan 2026-2027 der Koranschule Ulu Camii, Tag für Tag: ${dersGunleri.length} Unterrichtstage, ${toplamDers} Lektionen.`,
+  not: 'Der Inhalt des Unterrichts ist auf Türkisch, der Unterrichtssprache. Die Fachnamen auf den Filterschaltflächen entsprechen den farbigen Abzeichen bei jeder Lektion.',
+  siradaki: 'Nächster Unterrichtstag', bugunEt: 'Heute Unterricht', baslangicEt: 'Der Unterricht beginnt',
+  bitti: 'Das Schuljahr 2026-2027 ist beendet', bittiA: 'Der Plan des neuen Schuljahres wird hier veröffentlicht, sobald er fertig ist.',
+  gunuGor: 'Den Tag ansehen',
+  ayEt: 'Monat', alanEt: 'Fach', tumu: 'Alle',
+  dersGunu: (n: number) => `${n} Unterrichtstage`, dersAdet: (n: number) => `${n} Lektionen`,
+  hafta: (n: number) => `Woche ${n}`, derssiz: 'Kein Unterricht',
+  bloklar: { kazanim: 'Kazanım', ozet: 'Konu özeti', etkinlik: 'Etkinlik önerisi', ezber: 'Ezber' },
+  materyal: 'Unterrichtsmaterial: Plan (PDF) und Präsentationen mit Ton →',
+  kaynakEt: 'Kaynak', mufredat: 'Lehrplanseite', pdf: 'PDF herunterladen (A4)',
+  kitapNot: 'Die Lehrbücher werden von den Eltern besorgt', kitapBag: 'wo erhältlich', kitapCapa: '#manuels',
+  },
+} satisfies Record<Dil, unknown>;
+const m = METIN[dil];
+
+const BLOK: [keyof typeof m.bloklar, string][] = [
+  ['kazanim', 'kazanim'], ['ozet', 'ozet'], ['etkinlik', 'etkinlik'], ['ezber', 'ezber'],
+];
+---
+<KursSayfasi dil={dil} anahtar="yillikplan" baslik={m.baslik} aciklama={m.aciklama} etiket={t('nav.kurankursu')} altBaslik={m.alt}>
+
+  <div class="kapsayici py-8">
+    {m.not && <p class="not" lang={dil}>{m.not}</p>}
+
+    {/* ——— Sıradaki ders günü ——— */}
+    <section class="kart simdi p-5 sm-p6" aria-labelledby="simdi-b">
+      {durum === 'bitti' ? (
+        <>
+          <p class="etiket etiket-vurgu">{plan.donem}</p>
+          <h2 id="simdi-b" class="simdi-baslik">{m.bitti}</h2>
+          <p class="mt-2 yazi-2" lang={dil}>{m.bittiA}</p>
+        </>
+      ) : (
+        <>
+          <p class="etiket etiket-vurgu">
+            {durum === 'bugun' ? m.bugunEt : durum === 'baslangic' ? m.baslangicEt : m.siradaki}
+          </p>
+          <h2 id="simdi-b" class="simdi-baslik">
+            <time datetime={sonraki!.tarih}>
+              {bicim(sonraki!.tarih, { day: 'numeric', month: 'long', year: 'numeric', weekday: 'long' })}
+            </time>
+          </h2>
+          <p class="mt-1 etiket">{m.hafta(sonraki!.hafta)}{sonraki!.not && <> · <span lang="tr">{sonraki!.not}</span></>}</p>
+          <ol class="simdi-liste" lang="tr">
+            {sonraki!.dersler.map((d) => (
+              <li>
+                <span class="saat">{d.saat}</span>
+                <span class:list={['alan-rozet', 'a-' + d.kod]}>{d.alan}</span>
+                <span class="konu">{d.konu}</span>
+              </li>
+            ))}
+          </ol>
+          <a href={`#g-${sonraki!.tarih}`} class="dugme dugme-ikincil mt-4">{m.gunuGor}<span aria-hidden="true"> ↓</span></a>
+        </>
+      )}
+    </section>
+
+    {/* ——— Gezinme: aylar + ders alanı filtresi ——— */}
+    <div class="cubuk" id="cubuk">
+      <div class="cubuk-satir">
+        <span class="etiket cubuk-et" id="ay-et">{m.ayEt}</span>
+        {/* Çipler bir gezinme kümesi: role="listitem" bağlantı anlamını siliyordu. */}
+        <nav class="cipler" aria-labelledby="ay-et">
+          {aylar.map((a) => (
+            <a class="cip" href={`#ay-${a.anahtar}`} data-ay={a.anahtar}>{a.ad}</a>
+          ))}
+        </nav>
+      </div>
+      <div class="cubuk-satir" id="filtre" hidden>
+        <span class="etiket cubuk-et" id="alan-et">{m.alanEt}</span>
+        <div class="cipler" role="group" aria-labelledby="alan-et">
+          <button type="button" class="cip" data-kod="" aria-pressed="true">{m.tumu}</button>
+          {KODLAR.map((k) => (
+            <button type="button" class:list={['cip', 'cip-' + k]} data-kod={k} aria-pressed="false">
+              <span class="cip-nokta" aria-hidden="true"></span><span lang="tr">{ALAN_ADI[k]}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    {/* ——— Aylar ——— */}
+    <div class="plan" id="plan">
+      {aylar.map((a) => (
+        <section class="ay-bolum" id={`ay-${a.anahtar}`} data-kk={kodlariniAl(a.gunler)}
+                 data-s-kuran={m.dersAdet(dersSay(a.gunler, 'kuran'))}
+                 data-s-itikat={m.dersAdet(dersSay(a.gunler, 'itikat'))}
+                 data-s-ibadet={m.dersAdet(dersSay(a.gunler, 'ibadet'))}
+                 data-s-siyer={m.dersAdet(dersSay(a.gunler, 'siyer'))}
+                 data-s-ahlak={m.dersAdet(dersSay(a.gunler, 'ahlak'))}>
+          {/* Ad ile sayı arasındaki boşluk gerçek bir metin düğümü: esnek yerleşimde
+              görünmez ama ekran okuyucu "Eylül 20268 ders günü" demez. */}
+          <h2 class="ay-baslik">
+            {a.ad}{' '}
+            <span class="ay-say" data-varsayilan={m.dersGunu(a.gunler.filter((g) => g.dersler.length).length)}
+            >{m.dersGunu(a.gunler.filter((g) => g.dersler.length).length)}</span>
+          </h2>
+
+          {a.gunler.map((g) => (
+            <article class:list={['gun', g.tatil && 'gun-tatil']} id={`g-${g.tarih}`}
+                     data-kk={g.dersler.map((d) => d.kod).join(' ')}>
+              <div class="gun-bas">
+                <p class="gun-tarih">
+                  <time datetime={g.tarih}>
+                    <b>{bicim(g.tarih, { day: 'numeric' })}</b>
+                    <span>{bicim(g.tarih, { month: 'short' })}<br />{bicim(g.tarih, { weekday: 'long' })}</span>
+                  </time>
+                </p>
+                <p class="gun-bilgi">
+                  <span class="etiket">{m.hafta(g.hafta)}</span>
+                  {g.rozetler.map((r) => (
+                    <span class:list={['rozet', 'r-' + r.tur]} lang="tr">{r.metin}</span>
+                  ))}
+                </p>
+              </div>
+
+              {g.tatil
+                ? <p class="tatil-notu" lang="tr"><b>{m.derssiz}.</b> {g.not}</p>
+                : g.dersler.map((d) => (
+                    /* Dersin tamamı (başlık satırı da, gövde de) öğretim dili Türkçe:
+                       lang tek yerde durur, her satıra tekrar yazılmaz. */
+                    <details class="ders" data-k={d.kod} lang="tr">
+                      <summary>
+                        <span class="saat">{d.saat}</span>
+                        <span class:list={['alan-rozet', 'a-' + d.kod]}>{d.alan}</span>
+                        <span class="konu">{d.konu}</span>
+                        {d.kaynak && <span class="kaynak">{d.kaynak}</span>}
+                      </summary>
+                      {/* Blok sarmalayıcısı yok: başlık + gövde doğrudan .ic içinde
+                          durur, aradaki boşluğu h3'ün üst kenarı verir. 261 ders ×
+                          dört blok = bin sarmalayıcı eksik. */}
+                      <div class="ic">
+                        {BLOK.map(([anahtar]) => d[anahtar].length > 0 && (
+                          <>
+                            <h3>{m.bloklar[anahtar]}</h3>
+                            {d[anahtar].length === 1
+                              ? <p>{d[anahtar][0]}</p>
+                              : <ul>{d[anahtar].map((s) => <li>{s}</li>)}</ul>}
+                          </>
+                        ))}
+                      </div>
+                    </details>
+                  ))}
+              {materyalGunleri.has(g.tarih) && <a href={`${yol(dil, 'dersmateryalleri')}#g-${g.tarih}`} class="materyal-bag">{m.materyal}</a>}
+            </article>
+          ))}
+        </section>
+      ))}
+    </div>
+
+    <p class="alt-baglantilar">
+      <a href={yol(dil, 'mufredat')} class="dugme dugme-ikincil">{m.mufredat}</a>
+      <a href={PDF} class="dugme dugme-ikincil" download>{m.pdf}</a>
+    </p>
+    <p class="kitap-not">{m.kitapNot} — <a href={yol(dil, 'kurankursu') + m.kitapCapa}>{m.kitapBag}</a></p>
+  </div>
+</KursSayfasi>
+
+<style>
+  .materyal-bag { display: inline-flex; margin-top: 0.7rem; font-size: 0.9rem; font-weight: 600; color: var(--vurgu); }
+  .not { margin: 0 0 1.5rem; padding: 0.9rem 1.1rem; background: var(--zemin-2); border: 1px solid var(--cizgi); border-radius: var(--radius-kose); color: var(--metin-2); font-size: 0.95rem; }
+
+  /* ——— Sıradaki ders günü ——— */
+  .simdi { border-top: 2px solid var(--vurgu); }
+  .simdi-baslik { margin-top: 0.35rem; font-size: clamp(1.4rem, 1.1rem + 1.3vw, 2rem); }
+  .simdi-liste { list-style: none; margin: 1.1rem 0 0; padding: 0; display: grid; gap: 0.1rem; }
+  .simdi-liste li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem 0.7rem; padding: 0.5rem 0; border-top: 1px solid var(--cizgi); }
+  .simdi-liste .konu { font-weight: 600; }
+
+  /* ——— Yapışkan gezinme çubuğu ——— */
+  .cubuk { position: sticky; top: var(--yp-ust, 79px); z-index: 20; margin: 1.75rem 0 0; padding: 0.5rem 0; background: var(--zemin); border-top: 1px solid var(--cizgi); border-bottom: 1px solid var(--cizgi); }
+  .cubuk-satir { display: flex; align-items: center; gap: 0.75rem; min-width: 0; }
+  .cubuk-satir + .cubuk-satir { margin-top: 0.4rem; padding-top: 0.4rem; border-top: 1px dotted var(--cizgi); }
+  .cubuk-et { flex: none; }
+  /* Çipler kendi içinde kayar; sayfa yatayda taşmaz (min-width:0 şart). */
+  .cipler { display: flex; gap: 0.35rem; min-width: 0; overflow-x: auto; scrollbar-width: thin; padding-bottom: 2px; scroll-snap-type: x proximity; }
+  /* min-height: dokunma hedefi 32 px'in altına düşmesin (ölçülen 31 px idi). */
+  .cip { flex: none; scroll-snap-align: start; display: inline-flex; align-items: center; min-height: 2.125rem; gap: 0.4rem; padding: 0.34rem 0.7rem; border: 1px solid var(--cizgi); border-radius: var(--radius-kose); background: var(--zemin-2); color: var(--metin); font-size: 0.85rem; line-height: 1.3; white-space: nowrap; text-decoration: none; cursor: pointer; transition: background-color .15s ease-out, border-color .15s ease-out, color .15s ease-out; }
+  .cip:hover { border-color: var(--cizgi-etkilesim); color: var(--metin); }
+  .cip[aria-current='true'] { border-color: var(--vurgu); color: var(--vurgu); font-weight: 600; }
+  .cip[aria-pressed='true'] { background: var(--metin); border-color: var(--metin); color: var(--zemin); font-weight: 600; }
+  .cip-nokta { width: 9px; height: 9px; border: 1px solid var(--cizgi-etkilesim); border-radius: 1px; }
+  .cip-kuran .cip-nokta { background: color-mix(in oklab, #f6e9e0 var(--renk-oran, 100%), var(--zemin)); } .cip-itikat .cip-nokta { background: color-mix(in oklab, #e6eef5 var(--renk-oran, 100%), var(--zemin)); }
+  .cip-ibadet .cip-nokta { background: color-mix(in oklab, #e9f0e3 var(--renk-oran, 100%), var(--zemin)); } .cip-siyer .cip-nokta { background: color-mix(in oklab, #f8eed9 var(--renk-oran, 100%), var(--zemin)); }
+  .cip-ahlak .cip-nokta { background: color-mix(in oklab, #efe6ea var(--renk-oran, 100%), var(--zemin)); }
+
+  /* ——— Ay bölümleri ——— */
+  .ay-bolum { scroll-margin-top: calc(var(--yp-ust, 79px) + var(--yp-cubuk, 104px) + 0.75rem); }
+  .ay-baslik { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.35rem 0.85rem; margin: 2.5rem 0 1rem; padding-top: 0.7rem; border-top: 2px solid var(--vurgu); color: var(--vurgu); font-size: clamp(1.3rem, 1.05rem + 1vw, 1.8rem); }
+  .ay-say { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: var(--tracking-etiket); text-transform: uppercase; color: var(--metin-2); }
+
+  /* ——— Gün kartı ——— */
+  .gun { background: var(--zemin); border: 1px solid var(--cizgi); border-radius: var(--radius-kose); padding: 0.9rem 1rem; scroll-margin-top: calc(var(--yp-ust, 79px) + var(--yp-cubuk, 104px) + 0.75rem); }
+  .gun + .gun { margin-top: 0.7rem; }
+  .gun-bas { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 0.5rem 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--cizgi); }
+  .gun-tarih { margin: 0; }
+  .gun-tarih time { display: flex; align-items: baseline; gap: 0.5rem; }
+  .gun-tarih b { font-family: var(--font-serif); font-size: 1.9rem; font-weight: 600; line-height: 1; }
+  .gun-tarih span { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--metin-2); line-height: 1.35; }
+  .gun-bilgi { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem 0.6rem; margin: 0.2rem 0 0; }
+  .rozet { padding: 0.16rem 0.5rem; border: 1px solid var(--cizgi-etkilesim); border-radius: var(--radius-kose); font-size: 0.74rem; line-height: 1.35; color: var(--metin-2); }
+  .r-tatil { border-color: var(--color-adacayi); color: var(--color-adacayi-koyu); }
+  .r-ramazan { border-color: var(--color-iznik); color: var(--color-iznik); }
+  .r-bayram, .r-pazartesi, .r-kandil { border-color: var(--color-ochre); color: var(--color-ceviz); }
+  .gun-tatil { background: var(--zemin-2); }
+  .tatil-notu { margin: 0.7rem 0 0; color: var(--metin-2); font-size: 0.95rem; }
+
+  /* ——— Ders ——— */
+  .ders { border-top: 1px solid var(--cizgi); }
+  .ders:first-of-type { border-top: 0; }
+  .ders > summary { display: grid; grid-template-columns: 5.25rem 8rem minmax(0, 1fr); gap: 0.3rem 0.7rem; align-items: baseline; padding: 0.6rem 1.5rem 0.6rem 0; cursor: pointer; list-style: none; position: relative; }
+  .ders > summary::-webkit-details-marker { display: none; }
+  .ders > summary::after { content: '+'; position: absolute; right: 0.1rem; top: 0.55rem; font-family: var(--font-mono); color: var(--metin-2); }
+  .ders[open] > summary::after { content: '−'; }
+  .ders > summary:hover { background: var(--zemin-2); }
+  .ders > summary:focus-visible { outline-offset: -3px; }
+  .saat { font-family: var(--font-mono); font-size: 0.8rem; color: var(--metin-2); white-space: nowrap; }
+  .alan-rozet { justify-self: start; padding: 0.12rem 0.45rem; border: 1px solid var(--cizgi); border-radius: var(--radius-kose); font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap; color: var(--metin); }
+  .ders .konu { font-weight: 600; }
+  .kaynak { grid-column: 3; font-size: 0.8rem; color: var(--metin-2); }
+  /* açılış: yalnız opaklık — yükseklik animasyonu yok, düzen tetiklenmez */
+  .ic { padding: 0.2rem 0 1rem 6rem; max-width: 74ch; }
+  .ders[open] > .ic { animation: ic-ac 150ms ease-out; }
+  @keyframes ic-ac { from { opacity: 0; } }
+  .ic h3 { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: var(--tracking-etiket); text-transform: uppercase; color: var(--vurgu); margin: 0.9rem 0 0.25rem; }
+  .ic h3:first-child { margin-top: 0; }
+  .ic p { margin: 0; color: var(--metin-2); }
+  .ic ul { margin: 0; padding-left: 1.1rem; list-style: square; color: var(--metin-2); }
+  .ic li + li { margin-top: 0.3rem; }
+
+  /* Ders alanı renkleri: baskı sürümü ve müfredat sayfasıyla aynı; koyu temada karartılır. */
+  .a-kuran { background: color-mix(in oklab, #f6e9e0 var(--renk-oran, 100%), var(--zemin)); }
+  .a-itikat { background: color-mix(in oklab, #e6eef5 var(--renk-oran, 100%), var(--zemin)); }
+  .a-ibadet { background: color-mix(in oklab, #e9f0e3 var(--renk-oran, 100%), var(--zemin)); }
+  .a-siyer { background: color-mix(in oklab, #f8eed9 var(--renk-oran, 100%), var(--zemin)); }
+  .a-ahlak { background: color-mix(in oklab, #efe6ea var(--renk-oran, 100%), var(--zemin)); }
+  /* Koyu temada rozet metinleri: koyu ceviz zemin üzerinde 4,5:1'i geçen aydınlık
+     tonlar. Ramazan rozeti atlanmıştı; İznik mavisi zeminde 2,25:1 kalıyordu. */
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']) .plan, :root:not([data-theme='light']) .simdi, :root:not([data-theme='light']) .cubuk { --renk-oran: 22%; }
+    :root:not([data-theme='light']) .r-tatil { border-color: var(--color-adacayi-acik); color: var(--color-adacayi-acik); }
+    :root:not([data-theme='light']) .r-ramazan { border-color: var(--color-iznik-acik); color: var(--color-iznik-acik); }
+    :root:not([data-theme='light']) .r-bayram, :root:not([data-theme='light']) .r-pazartesi, :root:not([data-theme='light']) .r-kandil { border-color: var(--color-ochre-acik); color: var(--color-ochre-acik); }
+  }
+  :root[data-theme='dark'] .plan, :root[data-theme='dark'] .simdi, :root[data-theme='dark'] .cubuk { --renk-oran: 22%; }
+  :root[data-theme='dark'] .r-tatil { border-color: var(--color-adacayi-acik); color: var(--color-adacayi-acik); }
+  :root[data-theme='dark'] .r-ramazan { border-color: var(--color-iznik-acik); color: var(--color-iznik-acik); }
+  :root[data-theme='dark'] .r-bayram, :root[data-theme='dark'] .r-pazartesi, :root[data-theme='dark'] .r-kandil { border-color: var(--color-ochre-acik); color: var(--color-ochre-acik); }
+
+  /* ——— Filtre: JS yalnızca data-f'i değiştirir, gizlemeyi CSS yapar ——— */
+  .plan[data-f='kuran'] .ders:not([data-k='kuran']), .plan[data-f='kuran'] .gun:not([data-kk~='kuran']), .plan[data-f='kuran'] .ay-bolum:not([data-kk~='kuran']) { display: none; }
+  .plan[data-f='itikat'] .ders:not([data-k='itikat']), .plan[data-f='itikat'] .gun:not([data-kk~='itikat']), .plan[data-f='itikat'] .ay-bolum:not([data-kk~='itikat']) { display: none; }
+  .plan[data-f='ibadet'] .ders:not([data-k='ibadet']), .plan[data-f='ibadet'] .gun:not([data-kk~='ibadet']), .plan[data-f='ibadet'] .ay-bolum:not([data-kk~='ibadet']) { display: none; }
+  .plan[data-f='siyer'] .ders:not([data-k='siyer']), .plan[data-f='siyer'] .gun:not([data-kk~='siyer']), .plan[data-f='siyer'] .ay-bolum:not([data-kk~='siyer']) { display: none; }
+  .plan[data-f='ahlak'] .ders:not([data-k='ahlak']), .plan[data-f='ahlak'] .gun:not([data-kk~='ahlak']), .plan[data-f='ahlak'] .ay-bolum:not([data-kk~='ahlak']) { display: none; }
+
+  .alt-baglantilar { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 2.5rem 0 0; padding-top: 1.5rem; border-top: 1px solid var(--cizgi); }
+  .kitap-not { margin: 0.9rem 0 0; font-size: 0.85rem; color: var(--metin-2); }
+
+  @media (max-width: 640px) {
+    .ders > summary { grid-template-columns: 5.25rem minmax(0, 1fr); }
+    .ders .konu, .kaynak { grid-column: 1 / -1; }
+    .ic { padding-left: 0; }
+    .gun { padding: 0.8rem 0.75rem; }
+  }
+  @media print {
+    .cubuk, .alt-baglantilar { display: none; }
+    .gun, .ders { break-inside: avoid; }
+    .ay-baslik { break-after: avoid; }
+  }
+</style>
+
+<script>
+  const plan = document.getElementById('plan');
+  const cubuk = document.getElementById('cubuk');
+  const filtre = document.getElementById('filtre');
+  if (plan && cubuk && filtre) {
+    // Yapışkan çubuk site başlığının altına oturmalı; yükseklikler dile ve
+    // ekran genişliğine göre değiştiği için ölçülerek yazılır.
+    const kok = document.documentElement;
+    const olc = () => {
+      const bas = document.querySelector<HTMLElement>('body > header');
+      kok.style.setProperty('--yp-ust', (bas ? bas.offsetHeight : 79) + 'px');
+      kok.style.setProperty('--yp-cubuk', cubuk.offsetHeight + 'px');
+    };
+    olc();
+    addEventListener('resize', olc, { passive: true });
+
+    // ——— Ders alanı filtresi
+    filtre.hidden = false;
+    olc();
+    const dugmeler = [...filtre.querySelectorAll('button[data-kod]')];
+    filtre.addEventListener('click', (e) => {
+      const d = (e.target as HTMLElement).closest('button[data-kod]') as HTMLButtonElement | null;
+      if (!d) return;
+      const kod = d.dataset.kod || '';
+      plan.dataset.f = kod;
+      for (const b of dugmeler) b.setAttribute('aria-pressed', String(b === d));
+      // Ay başlığı filtreye göre doğru sayıyı gösterir.
+      for (const bolum of plan.querySelectorAll<HTMLElement>('.ay-bolum')) {
+        const say = bolum.querySelector<HTMLElement>('.ay-say');
+        if (say) say.textContent = (kod ? bolum.dataset['s' + kod.charAt(0).toUpperCase() + kod.slice(1)] : say.dataset.varsayilan) || '';
+      }
+    });
+
+    // ——— Etkin ay çipi
+    const cipler = new Map<string, Element>();
+    for (const c of cubuk.querySelectorAll('[data-ay]')) cipler.set((c as HTMLElement).dataset.ay!, c);
+    const gozlemci = new IntersectionObserver(
+      (girisler) => {
+        for (const g of girisler) {
+          if (!g.isIntersecting) continue;
+          const anahtar = g.target.id.slice(3);
+          for (const [k, c] of cipler) c.setAttribute('aria-current', String(k === anahtar));
+          cipler.get(anahtar)?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+        }
+      },
+      { rootMargin: '-30% 0px -60% 0px' },
+    );
+    for (const b of plan.querySelectorAll('.ay-bolum')) gozlemci.observe(b);
+
+    // ——— Yazdırma: her ders açılır, sonra eski hâline döner
+    let acilanlar: HTMLDetailsElement[] = [];
+    addEventListener('beforeprint', () => {
+      acilanlar = [...plan.querySelectorAll<HTMLDetailsElement>('details:not([open])')];
+      for (const d of acilanlar) d.open = true;
+    });
+    addEventListener('afterprint', () => {
+      for (const d of acilanlar) d.open = false;
+      acilanlar = [];
+    });
+  }
+</script>

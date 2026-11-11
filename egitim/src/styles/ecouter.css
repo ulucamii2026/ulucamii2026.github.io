@@ -1,0 +1,168 @@
+/* egitim kopyası (Dilim 4 / P6): ana sitedeki src/styles/ecouter.css ile aynı; fark yalnız data: maskeleri (sıkı CSP img-src 'self') → /ecouter/*.svg dosyaları ve Tailwind ön ayarı eşdeğeri.
+   Dinleme sayfaları (/e/<kod>/) — kare kodu okutup dinlemeye gelen yetişkin için.
+   Ad alanı .ec- · iskelet: src/pages/e/[kod].astro · davranış: src/scripts/ecouter.ts
+   Kural: telefon önce (dar sütun, 44 px dokunma hedefi), renk tek başına bilgi taşımaz,
+   durum değişimi düzeni kaydırmaz, bütün renkler mevcut jetonlardan gelir — böylece
+   iki koyu tema kanalı (işletim sistemi tercihi ve elle seçim) ek kural istemez. */
+
+/* Tailwind ön ayarı eşdeğeri (egitim'de Tailwind yok): liste imi, düğme ve başlık sıfırlaması; Taban'ın serit ızgarası ana sitedeki çizgiye döner. */
+:where(.ec-sayfa) :where(ul, ol) { list-style: none; margin: 0; padding: 0; }
+:where(.ec-sayfa) :where(dl, dd, figure) { margin: 0; }
+:where(.ec-sayfa) :where(button, input) { font: inherit; color: inherit; letter-spacing: inherit; }
+:where(.ec-sayfa) :where(button) { background: none; border: 0; padding: 0; cursor: pointer; text-align: inherit; }
+:where(.ec-sayfa) :where(img) { height: auto; }
+:where(.ec-sayfa) :where([lang="ar"], .arabic) { font-family: var(--font-arabic); direction: rtl; font-size: 1.35em; line-height: 1.9; }
+:where(.ec-sayfa) :where(.mono) { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.ec-sayfa { font-size: 1.0625rem; line-height: 1.6; }
+.ec-sayfa .serit { display: block; width: 2.5rem; height: 2px; margin-top: 0.6rem; background: var(--vurgu); grid-template-columns: none; gap: 0; }
+.ec-sayfa a.dugme { text-decoration: none; }
+
+.ec-sayfa { width: min(100% - 2rem, 40rem); margin-inline: auto; padding-block: 1.5rem 2.5rem; }
+.ec-geri { margin-bottom: 1.25rem; }
+.ec-geri a { display: inline-flex; align-items: center; min-height: 2.75rem; }
+.ec-catalogue { max-width: 48rem; width: min(100% - 2rem, 48rem); }
+.ec-rubriques { display: flex; flex-wrap: wrap; gap: .5rem; margin-block: 1.5rem; }
+.ec-recherche label { display: block; font-weight: 600; margin-bottom: .5rem; }
+.ec-recherche input { width: 100%; min-height: 3rem; padding: .65rem .8rem; border: 1px solid var(--cizgi-etkilesim); border-radius: var(--radius-kose); background: var(--zemin); color: var(--metin); font: inherit; }
+.ec-recherche p { margin-top: .5rem; color: var(--metin-2); }
+.ec-section { margin-block: 2.5rem; scroll-margin-top: 7rem; }
+.ec-section h2 { font-size: 1.6rem; }
+.ec-cours { list-style: none; padding: 0; margin-top: 1rem; }
+.ec-cours li { border-bottom: 1px solid var(--cizgi); }
+.ec-cours a { display: block; padding-block: .85rem; line-height: 1.5; text-underline-offset: .2em; }
+.ec-catalogue [hidden] { display: none; }
+.eg-yol > p, .eg-rutin p, .eg-ders-icerik, .eg-soru p { line-height: 1.75; }
+.eg-takip { margin-block: 1.5rem; padding: 1rem; background: var(--zemin-2); }
+.eg-takip progress { display: block; width: 100%; height: .65rem; margin-block: .6rem; accent-color: var(--vurgu); }
+.eg-takip button { margin-top: .75rem; }
+.eg-ders { border-top: 1px solid var(--cizgi); scroll-margin-top: 7rem; }
+.eg-ders:last-child { border-bottom: 1px solid var(--cizgi); }
+.eg-ders summary { display: list-item; padding: 1.1rem .25rem; cursor: pointer; }
+.eg-ders summary h3 { display: inline; font-family: var(--font-sans); font-size: 1.1rem; line-height: 1.6; }
+.eg-sira { display: inline; margin-inline-end: .7rem; color: var(--metin-2); font-family: var(--font-mono); font-size: .85rem; }
+.eg-ders-icerik { padding: 0 .25rem 1.5rem; }
+.eg-ders-icerik ul, .eg-rutin ol { list-style: revert; padding-inline-start: 1.35rem; margin-block: 1rem; }
+.eg-ders-icerik li, .eg-rutin li { margin-block: .6rem; }
+.eg-uygulama { padding: 1rem; margin-block: 1.25rem; background: var(--zemin-2); }
+.eg-uygulama h4, .eg-ders-icerik > h4 { font-family: var(--font-sans); font-size: 1rem; font-weight: 700; }
+.eg-baglar a { display: inline-block; padding-block: .5rem; text-underline-offset: .2em; }
+.eg-isaret { display: flex; align-items: center; gap: .8rem; min-height: 2.75rem; cursor: pointer; }
+.eg-isaret input { flex: none; width: 1.4rem; height: 1.4rem; accent-color: var(--vurgu); }
+.eg-format { font-family: var(--font-mono); font-size: .8rem; white-space: nowrap; color: var(--metin-2); }
+.eg-soru { border-bottom: 1px solid var(--cizgi); padding-block: .5rem; }
+.eg-soru summary { padding-block: .65rem; cursor: pointer; font-weight: 600; line-height: 1.6; }
+.eg-soru p { padding-bottom: .75rem; }
+
+/* ——— Üst blok ——— */
+.ec-ust { margin-bottom: 1.4rem; }
+.ec-ust h1 { font-size: clamp(1.6rem, 1.2rem + 2vw, 2.3rem); }
+.ec-altbaslik { margin-top: .45rem; color: var(--metin-2); font-size: 1rem; line-height: 1.55; }
+.ec-ust .serit { margin-top: .8rem; }
+
+/* ——— Büyük «tamamını dinle» düğmesi ——— */
+.ec-tam { margin-bottom: 1.25rem; }
+.ec-tam-dugme { width: 100%; min-height: 3.5rem; font-size: 1.02rem; }
+/* Etiket durum değişince DEĞİŞMEZ: yalnız simge ve aria-pressed döner (düzen kaymaz). */
+.ec-simge { width: 1.15rem; height: 1.15rem; flex: none; background: currentColor;
+  mask: url("/ecouter/oynat.svg") center / contain no-repeat; }
+[aria-pressed="true"] > .ec-simge {
+  mask-image: url("/ecouter/duraklat.svg"); }
+
+/* İlerleme: yeri baştan ayrılmıştır, çalmaya başlayınca hiçbir şey yer değiştirmez. */
+.ec-ilerleme { margin-top: .6rem; }
+.ec-cubuk { height: 6px; border-radius: 999px; background: var(--zemin-3); overflow: hidden; }
+.ec-cubuk > span { display: block; width: 100%; height: 100%; background: var(--vurgu); transform: scaleX(0); transform-origin: left; }
+.ec-sure { display: flex; justify-content: space-between; gap: .5rem; margin-top: .35rem; font-size: .82rem; color: var(--metin-2); }
+.ec-sure > span:nth-child(2) { opacity: .6; }
+
+/* ——— Kipler: hız, tekrar, kesintisiz ——— */
+.ec-kontroller { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin-bottom: .6rem; }
+.ec-hiz { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; }
+.ec-hiz-etiket { margin-right: .15rem; }
+.ec-cip { display: inline-flex; align-items: center; justify-content: center; min-height: 2.75rem; padding: .5rem .9rem;
+  border: 1px solid var(--cizgi-etkilesim); border-radius: 999px; background: var(--zemin); color: var(--metin);
+  font-size: .9rem; font-weight: 600; line-height: 1.3; cursor: pointer; }
+.ec-cip:hover { border-color: var(--metin); }
+/* Seçili kip yalnız renkle değil, onay imiyle de belli olur (WCAG 1.4.1). İmin yeri baştan
+   ayrılmıştır; yalnız görünürlüğü değişir, böylece düğme açılıp kapanırken düzen kaymaz. */
+.ec-cip[aria-pressed="true"] { background: var(--color-kiremit); border-color: var(--color-kiremit); color: #fff; }
+.ec-cip-genis::before { content: '✓'; margin-right: .4rem; font-size: .95em; opacity: 0; }
+.ec-cip-genis[aria-pressed="true"]::before { opacity: 1; }
+.ec-ipucu { margin: 0 0 1.1rem; color: var(--metin-2); font-size: .85rem; line-height: 1.55; }
+
+/* ——— Satır satır (sûre, dua) ——— */
+.ec-satir, .ec-kare { scroll-margin-block-start: 7rem; scroll-margin-block-end: 1rem; }
+.ec-satirlar { display: grid; gap: .55rem; margin: 0 0 1.2rem; padding: 0; list-style: none; }
+.ec-satir { min-width: 0; background: var(--zemin-2); border: 1px solid var(--cizgi);
+  border-radius: var(--radius-kose); transition: background .18s ease-out, border-color .18s ease-out; }
+.ec-satir[data-caliyor] { background: color-mix(in srgb, var(--vurgu) 12%, var(--zemin-2)); border-color: var(--vurgu); }
+.ec-satir-metin, .ec-satir-dugme { min-width: 0; padding: 1rem; }
+.ec-satir-dugme { display: block; width: 100%; border: 0; border-radius: inherit; background: transparent; color: var(--metin); text-align: start; font: inherit; cursor: pointer; }
+.ec-satir-dugme:hover { background: color-mix(in srgb, var(--vurgu) 6%, transparent); }
+.ec-satir-dugme:focus-visible { outline: 3px solid var(--vurgu); outline-offset: 3px; }
+.ec-satir-ust { display: flex; align-items: center; justify-content: space-between; gap: .75rem; min-height: 1.5rem; }
+.ec-satir-ust .ec-simge { color: var(--vurgu); }
+.ec-besmele-etiket { font-size: .85rem; font-weight: 600; color: var(--metin-2); }
+.ec-satir-dugme[aria-pressed="true"] .ec-simge { mask-image: url("/ecouter/duraklat.svg"); }
+.ec-satir-dugme > .ec-okunus, .ec-satir-dugme > .ec-fr { display: block; }
+.ec-no { display: inline-block; margin-bottom: .2rem; padding: .05rem .45rem; border: 1px solid var(--cizgi-etkilesim);
+  border-radius: 999px; font-size: .72rem; color: var(--metin-2); }
+/* Arapça: tam Amiri (`.arabic`) — Kur'an işaretlerini taşımayan alt küme (.arabic-ana) BURADA KULLANILMAZ. */
+.ec-ar { display: block; text-align: center; white-space: pre-line; margin: .5rem 0 .85rem; font-size: clamp(1.65rem, 1.1rem + 2.4vw, 2.2rem); line-height: 2.1; color: var(--metin); }
+.ec-no:empty { visibility: hidden; }
+.ec-okunus { margin: 0; font-family: var(--font-mono); font-size: .88rem; line-height: 1.6; color: var(--metin); }
+.ec-fr { margin: .3rem 0 0; font-size: .95rem; line-height: 1.55; color: var(--metin-2); }
+
+/* Satırın çal düğmesi — kare, 48 px, etiketi gizli (adı sr-only metindedir) */
+.ec-cal { display: inline-flex; align-items: center; justify-content: center; width: 3rem; height: 3rem; flex: none;
+  border: 1px solid var(--cizgi-etkilesim); border-radius: 999px; background: var(--zemin); color: var(--metin); cursor: pointer; }
+.ec-cal:hover { border-color: var(--metin); }
+.ec-cal[aria-pressed="true"] { background: var(--color-kiremit); border-color: var(--color-kiremit); color: #fff; }
+/* Sesi olmayan satırda düğme yerine boşluk: liste hizası bozulmaz, ses gelince düzen aynı kalır. */
+.ec-sessiz { display: block; width: 3rem; height: 3rem; flex: none; border: 1px dashed var(--cizgi); border-radius: 999px; }
+
+/* ——— Kare ızgara (Elifbâ heceleri) — sağdan sola ——— */
+.ec-izgara { display: grid; grid-template-columns: repeat(auto-fill, minmax(4.75rem, 1fr)); gap: .5rem;
+  margin: 0 0 1.2rem; padding: 0; list-style: none; }
+.ec-kare { min-width: 0; }
+.ec-kare-dugme { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .15rem;
+  width: 100%; min-height: 5.25rem; padding: .5rem .25rem; border: 1px solid var(--cizgi-etkilesim);
+  border-radius: var(--radius-kose); background: var(--zemin-2); color: var(--metin); cursor: pointer; }
+.ec-kare-dugme:hover { border-color: var(--metin); }
+.ec-kare[data-caliyor] .ec-kare-dugme { background: var(--color-kiremit); border-color: var(--color-kiremit); color: #fff; }
+.ec-kare-sessiz { cursor: default; border-style: dashed; color: var(--metin-2); }
+.ec-ar-kare { font-size: 2rem; line-height: 1.6; }
+.ec-izgara.ec-izgara-cift { grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr)); }
+.ec-izgara-cift .ec-ar-kare { white-space: nowrap; }
+.ec-kare-okunus { font-size: .8rem; color: inherit; }
+/* Rehberli sûrelerde bir âyet tek satır genişliğini kullanır; hece kutusuna sıkışmaz. */
+.ec-izgara.ec-izgara-sure { grid-template-columns: minmax(0, 1fr); }
+.ec-izgara-sure .ec-kare-dugme { padding: 1rem; }
+.ec-izgara-sure .ec-ar-kare { width: 100%; text-align: center; font-size: clamp(1.65rem, 1.1rem + 2.4vw, 2.2rem); line-height: 2.1; }
+
+/* ——— Durum, yönlendirme, betiksiz yedek, künye ——— */
+.ec-durum { min-height: 1.5rem; margin: 0 0 .5rem; color: var(--vurgu-metin); font-size: .9rem; font-weight: 600; line-height: 1.5; }
+.ec-yonlendir { padding: 1.25rem 1.1rem; }
+.ec-yonlendir p { margin: 0; color: var(--metin-2); }
+.ec-yonlendir-eylem { margin-top: .9rem !important; }
+.ec-noscript { padding: 1rem; background: var(--zemin-2); border: 1px solid var(--cizgi); border-radius: var(--radius-kose); }
+.ec-noscript audio { width: 100%; margin: .8rem 0; }
+.ec-noscript-liste { margin: .4rem 0 0; padding-left: 1.1rem; list-style: square; }
+.ec-kaynak { display: flex; flex-direction: column; gap: .15rem; margin-top: 1.6rem; padding-top: .9rem;
+  border-top: 1px solid var(--cizgi); color: var(--metin-2); font-size: .8rem; line-height: 1.5; }
+
+/* Betik yoksa etkisiz düğme gösterilmez; <noscript> bloğu sesleri düz bağlantı olarak verir.
+   `.js` sınıfı Base.astro'da boyamadan önce eklenir — bu yüzden geçiş düzen kaydırmaz. */
+html:not(.js) .ec-tam, html:not(.js) .ec-kontroller, html:not(.js) .ec-ipucu,
+html:not(.js) .ec-cal, html:not(.js) .ec-sessiz, html:not(.js) .ec-durum { display: none; }
+html:not(.js) .ec-kare-dugme { cursor: default; }
+html:not(.js) .ec-satir-dugme { cursor: default; pointer-events: none; }
+html:not(.js) .ec-satir-ust .ec-simge { visibility: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ec-satir, .ec-cubuk > span { transition-duration: 0ms; }
+}
+
+@media (min-width: 30rem) {
+  .ec-izgara { grid-template-columns: repeat(auto-fill, minmax(5.5rem, 1fr)); }
+}

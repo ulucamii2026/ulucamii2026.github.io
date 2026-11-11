@@ -1,0 +1,185 @@
+---
+import Taban from '../layouts/Taban.astro';
+import { ANA_SITE } from '../lib/kimlik';
+import { ecParcaAdi, type EcouterKod, type EcouterVeri, type EcouterParca } from '@ortak/lib/ecouter';
+import ham from '@ortak/data/ecouter.json';
+import '../styles/uyum-jetonlari.css';
+import '../styles/ecouter.css';
+
+const veri = ham as unknown as EcouterVeri;
+
+import { DINLEME, dersIcerigi } from '@ortak/i18n/dinleme';
+
+import type { Dil } from '@ortak/i18n/ui';
+interface Props { kod: string; dil: Dil; icerik: EcouterKod }
+const { kod, dil, icerik: asil } = Astro.props;
+const icerik = dersIcerigi(dil, kod, asil);
+const m = DINLEME[dil];
+const parcaAdi = (p: Parameters<typeof ecParcaAdi>[0], i: number, kare: boolean) => ecParcaAdi(p, i, kare, m);
+const asilSatirlar = icerik.satirlar ?? [];
+// Bölüm kaydı yoksa bütün duayı/âyeti tek hücre yap: hücrede yazan ile duyulan aynı olsun.
+const butunMetin = asilSatirlar.length > 0 && !asilSatirlar.some(s => s.ses) && icerik.tam;
+const satirlar: EcouterParca[] = butunMetin ? [{
+  ar: asilSatirlar.map(s => s.ar).filter(Boolean).join('\n'),
+  okunus: asilSatirlar.map(s => s.okunus).filter(Boolean).join(' '),
+  fr: asilSatirlar.map(s => s.fr).filter(Boolean).join(' '),
+  ses: icerik.metinSesi ?? icerik.tam!.ses,
+}] : asilSatirlar;
+const gorunenSatirlar = [
+  ...(icerik.besmele ? [{ ...icerik.besmele, ad: m.besmeleCal, etiket: m.besmele, besmele: true }] : []),
+  ...satirlar.map((s, i) => ({ ...s, ad: butunMetin ? m.metinCal : parcaAdi(s, i + 1, false), etiket: s.no, besmele: false })),
+];
+const ogeler = icerik.ogeler ?? [];
+const rehberliSure = ['e76', 'e81', 'e85', 'e86'].includes(kod);
+/** Gerçekten çalınabilen parça sayısı: «Lecture continue» ancak ikisi varsa anlamlıdır. */
+const calinabilir = [...gorunenSatirlar, ...ogeler].filter((p) => p.ses).length;
+/** Satırların bir kısmı sesliyse sessiz satıra boş yer bırakılır (hiza bozulmasın);
+    hiçbirinde ses yoksa sütun tamamen kalkar — boş halka gösterilmez. */
+const calarVar = calinabilir > 0 || Boolean(icerik.tam);
+const aciklama = [icerik.baslik, icerik.altbaslik].filter(Boolean).join(' — ');
+/** Betiksiz erişim listesi: her ses en azından düz bağlantı olarak açılabilir. */
+const yedekler = [
+  ...(icerik.tam ? [{ ad: icerik.tam.etiket ?? m.tamEtiket, ses: icerik.tam.ses }] : []),
+  ...gorunenSatirlar.map((p) => ({ ad: p.ad, ses: p.ses })),
+  ...ogeler.map((p, i) => ({ ad: parcaAdi(p, i + 1, true), ses: p.ses })),
+].filter((y): y is { ad: string; ses: string } => Boolean(y.ses));
+const surumVar = veri.surum;
+/* Basılı karekodlar ulucamii.be/e/<kod>/ adresindedir ve orada kalır; egitim'deki sayfa şimdilik ikinci bir yoldur (kanonik: ulucamii.be). Sesler de ulucamii.be'den gelir. */
+const hedef = icerik.yonlendir ? ANA_SITE + icerik.yonlendir : '';
+const sesYolu = (y: string) => ANA_SITE + y;
+---
+<Taban dil={dil} baslik={icerik.baslik} aciklama={aciklama} noindex kanonik={`${ANA_SITE}/e/${kod}/`}>
+  <Fragment slot="head">
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <script is:inline src="/ecouter/js-isareti.js"></script>
+    {/* Yönlendirme kodu: betiksiz tarayıcıda da çalışsın diye meta ile. Gecikme 0 —
+        gecikmeli yenileme WCAG 2.2.1'e takılır; düğme yenileme çalışmazsa yedektir. */}
+    {hedef && <meta http-equiv="refresh" content={`0;url=${hedef}`} />}
+  </Fragment>
+
+  <div class="ec-sayfa">
+    <nav class="ec-geri" aria-label={m.gezinme}><a href="/e/">{m.geri}</a></nav>
+    <header class="ec-ust">
+      <p class="etiket etiket-vurgu">{m.etiket}</p>
+      <h1>{icerik.baslik}</h1>
+      {icerik.altbaslik && <p class="ec-altbaslik">{icerik.altbaslik}</p>}
+      <span class="serit" aria-hidden="true"></span>
+    </header>
+
+    {icerik.yonlendir ? (
+      <section class="ec-yonlendir kart" data-ec-yonlendir={hedef}>
+        <p>{m.yonlendirMetin}</p>
+        <p class="ec-yonlendir-eylem">
+          <a class="dugme dugme-birincil" href={hedef}>{m.yonlendirDugme}</a>
+        </p>
+      </section>
+    ) : (
+      <section class="ec-govde" data-ecouter data-surum={surumVar} data-hata={m.hata} data-ses-kok={ANA_SITE}>
+        {icerik.tam && (
+          <div class="ec-tam">
+            {/* Etiket durum değişiminde DEĞİŞMEZ (düzen kaymasın); durumu simge ve aria-pressed taşır. */}
+            <button type="button" class="dugme dugme-birincil ec-tam-dugme" data-ec-tam data-ses={icerik.tam.ses} aria-pressed="false">
+              <span class="ec-simge" aria-hidden="true"></span>
+              <span>{icerik.tam.etiket ?? m.tamEtiket}</span>
+            </button>
+            <div class="ec-ilerleme" aria-hidden="true">
+              <div class="ec-cubuk"><span data-ec-dolgu></span></div>
+              <p class="ec-sure"><span class="mono" data-ec-gecen>{m.sureSifir}</span><span> / </span><span class="mono" data-ec-toplam>{m.sureBos}</span></p>
+            </div>
+          </div>
+        )}
+
+        {calarVar && (
+          <div class="ec-kontroller" role="group" aria-label={m.kontroller}>
+            <div class="ec-hiz" role="group" aria-label={m.hizBaslik}>
+              <span class="etiket ec-hiz-etiket">{m.hizBaslik}</span>
+              <button type="button" class="ec-cip" data-ec-hiz="0.75" aria-pressed="false" aria-label={m.hizYavasAd}>{m.hizYavas}</button>
+              <button type="button" class="ec-cip" data-ec-hiz="1" aria-pressed="true" aria-label={m.hizNormalAd}>{m.hizNormal}</button>
+            </div>
+            <button type="button" class="ec-cip ec-cip-genis" data-ec-tekrar aria-pressed="false">{m.tekrar}</button>
+            {calinabilir > 1 && (
+              <button type="button" class="ec-cip ec-cip-genis" data-ec-zincir aria-pressed="false">{m.zincir}</button>
+            )}
+          </div>
+        )}
+        {calarVar && <p class="ec-ipucu">{m.tekrarIpucu}</p>}
+
+        {dil !== 'fr' && <p class="ec-altbaslik">{m.frNotu}</p>}
+
+        {gorunenSatirlar.length > 0 && (
+          <p class="ec-ipucu">{m.dokun}</p>
+          <ul class="ec-satirlar" role="list">
+            {gorunenSatirlar.map((s) => (
+              <li class="ec-satir" data-ec-parca data-ec-besmele={s.besmele || undefined}>
+                {s.ses ? (
+                  <button type="button" class="ec-satir-dugme" data-ec-cal data-ses={s.ses} aria-pressed="false" aria-label={s.ad}>
+                    <span class="ec-satir-ust" aria-hidden="true"><span class:list={[s.besmele ? 'ec-besmele-etiket' : 'ec-no mono']}>{s.etiket}</span><span class="ec-simge"></span></span>
+                    {s.ar && <span class="arabic ec-ar" lang="ar" dir="rtl">{s.ar}</span>}
+                    {s.okunus && <span class="ec-okunus" lang="fr">{s.okunus}</span>}
+                    {s.fr && <span class="ec-fr" lang="fr">{s.fr}</span>}
+                  </button>
+                ) : (
+                  <div class="ec-satir-metin">
+                    {s.etiket != null && <span class:list={[s.besmele ? 'ec-besmele-etiket' : 'ec-no mono']}>{s.etiket}</span>}
+                    {s.ar && <p class="arabic ec-ar" lang="ar" dir="rtl">{s.ar}</p>}
+                    {s.okunus && <p class="ec-okunus" lang="fr">{s.okunus}</p>}
+                    {s.fr && <p class="ec-fr" lang="fr">{s.fr}</p>}
+                  </div>
+                )}
+              </li>
+            ))}
+          </ul>
+        )}
+
+        {ogeler.length > 0 && (
+          <ul class:list={['ec-izgara', rehberliSure && 'ec-izgara-sure', ogeler.some((o) => o.ar?.includes('—')) && 'ec-izgara-cift']} role="list" dir="rtl">
+            {ogeler.map((o, i) => (
+              <li class="ec-kare" data-ec-parca>
+                {o.ses ? (
+                  <button type="button" class="ec-kare-dugme" data-ec-cal data-ses={o.ses} aria-pressed="false">
+                    {o.ar && <span class="arabic ec-ar-kare" lang="ar" dir="rtl">{o.ar}</span>}
+                    <span class="sr-only">{parcaAdi(o, i + 1, true)}</span>
+                    {o.okunus && <span class="ec-okunus ec-kare-okunus" lang="fr" dir="ltr" aria-hidden="true">{o.okunus}</span>}
+                  </button>
+                ) : (
+                  <span class="ec-kare-dugme ec-kare-sessiz">
+                    {o.ar && <span class="arabic ec-ar-kare" lang="ar" dir="rtl">{o.ar}</span>}
+                    {o.okunus && <span class="ec-okunus ec-kare-okunus" lang="fr" dir="ltr">{o.okunus}</span>}
+                  </span>
+                )}
+              </li>
+            ))}
+          </ul>
+        )}
+
+        {/* Yeri baştan ayrılmıştır: hata iletisi geldiğinde sayfa kaymaz. */}
+        <p class="ec-durum" data-ec-durum role="status" aria-live="polite"></p>
+
+        <noscript>
+          <div class="ec-noscript">
+            <p>{m.noscript}</p>
+            {icerik.tam && <audio controls preload="none" src={`${sesYolu(icerik.tam.ses)}?v=${surumVar}`}></audio>}
+            {yedekler.length > 0 && (
+              <>
+                <p class="etiket">{m.noscriptListe}</p>
+                <ul class="ec-noscript-liste" role="list">
+                  {yedekler.map((y) => <li><a href={`${sesYolu(y.ses)}?v=${surumVar}`}>{y.ad}</a></li>)}
+                </ul>
+              </>
+            )}
+          </div>
+        </noscript>
+      </section>
+    )}
+
+    <footer class="ec-kaynak">
+      {icerik.kaynak && <span lang="fr">{icerik.kaynak}</span>}
+      <span>{m.kurum}</span>
+    </footer>
+  </div>
+</Taban>
+
+<script>
+  import { dinlemeyiBaslat } from '@ortak/scripts/ecouter';
+  dinlemeyiBaslat();
+</script>

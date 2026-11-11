@@ -150,7 +150,8 @@ export function dinlemeyiBaslat(): void {
     const ses = calarAl();
     if (toplamKutu && dugme === tamDugme) toplamKutu.textContent = EC_METIN.sureBos;
     // Düzeltilmiş kaydı daha önceki yanlış sesin tarayıcı önbelleğinden ayır.
-    const sesUrl = new URL(kaynak, window.location.origin);
+    // `data-ses-kok` (egitim kabuğu): ses dosyaları ulucamii.be'de durur; yoksa eski davranış (aynı köken).
+    const sesUrl = new URL(kaynak, kok?.dataset.sesKok || window.location.origin);
     sesUrl.searchParams.set('v', kok?.dataset.surum ?? '1');
     ses.src = sesUrl.href;
     ses.playbackRate = tercih.hiz;

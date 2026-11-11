@@ -1,0 +1,14 @@
+---
+/**
+ * Sesli ders sayfası — egitim.ulucamii.be/e/<kod>/ (Dilim 4 / P6). Basılı Fransızca ders kitabındaki kare kodlar ulucamii.be/e/<kod>/ adresine gider ve orada
+ * kalır; bu, aynı 74 kodun egitim'deki ikinci yoludur (şimdilik bağlantısız, noindex, kanonik: ulucamii.be). Veri ana sitenin src/data/ecouter.json'u.
+ */
+import SesliDers from '../../components/SesliDers.astro';
+import ham from '@ortak/data/ecouter.json';
+import type { EcouterVeri, EcouterKod } from '@ortak/lib/ecouter';
+export function getStaticPaths() {
+  return Object.entries((ham as unknown as EcouterVeri).kodlar).map(([kod, icerik]) => ({ params: { kod }, props: { kod, icerik } }));
+}
+const { kod, icerik } = Astro.props as { kod: string; icerik: EcouterKod };
+---
+<SesliDers kod={kod} dil="fr" icerik={icerik} />

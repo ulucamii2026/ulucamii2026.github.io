@@ -1,0 +1,11 @@
+---
+/** Kur'an kursu — egitim.ulucamii.be/<dil>/kurs/materyaller… (Dilim 4 / P5): ulucamii.be'deki sayfanın ikinci yolu; aynı içerik kaynağı, noindex, kanonik ulucamii.be (bkz. components/KursSayfasi.astro). */
+import type { Dil } from '@ortak/i18n/ui';
+import { dilListesi } from '@ortak/i18n/utils';
+import DersMateryalleri from '../../../sayfalar/DersMateryalleri.astro';
+export function getStaticPaths() {
+  return dilListesi.map((dil) => ({ params: { dil } }));
+}
+const dil = Astro.params.dil as Dil;
+---
+<DersMateryalleri dil={dil} />
