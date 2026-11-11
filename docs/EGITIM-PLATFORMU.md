@@ -74,6 +74,14 @@ Neden: egitim, kurs sayfalarının (haftalık materyal, günlük, yıllık plan)
 
 **Dosya sayısı tabanı**: site bilerek %5'ten fazla küçülürse (sayfa/ses kaldırma) `node scripts/egitim-dist-denetle.mjs --yaz` ile taban güncellenir ve commit iletisine nedeni yazılır; sayfa/ses eklenince taban kendiliğinden eskir (kapı gevşemez, yalnız oran büyür) — yılda birkaç kez `--yaz` yeterli.
 
+**Üç işli akış (12 Kasım 2026, güvenlik gözden geçirmesi G-01):** yukarıdaki sıra artık üç işe bölünmüştür; Google belirteci depo/npm kodunun çalıştığı işe hiç verilmez.
+- `derle` (`contents: read`, id-token YOK): checkout, `npm ci --ignore-scripts`, sesler, derleme, dist kapısı, düğüm testleri; çıktıyı (`egitim/dist`, `firebase.json`, `.firebaserc`) 1 gün saklanan `egitim-yayin-paketi` artifact'ı olarak yükler (`upload-artifact` v4.6.2, SHA ile sabit).
+- `yayinla` (`needs: derle`; `contents: read` + `id-token: write`): artifact'ı indirir (`download-artifact` v4.3.0, SHA ile sabit), WIF girişi, yalnız sabit sürümlü `firebase-tools` ile `deploy --only hosting:ulucamii-egitim`. Depo çıkışı ve `npm ci` YOK.
+- `canli` (`needs: yayinla`; yalnız `contents: read`): `egitim:canli` + canlı ses doğrulaması (depo betiği ve Playwright gerekir, belirteç gerekmez). `uyari` üç işe de bakar.
+- Tetik, `concurrency`, çatal/ref koruması ve hata e-postası değişmedi.
+
+**Açık kalemler (kararla ertelendi, 12 Kasım 2026):** (1) `yayinla` işine zorunlu onaylayıcılı bir Environment EKLENMEDİ: otomatik veri tazelemeyi (workflow_run) bloklardı; istenirse onaysız bir Environment + dal koşulu ayrı karar. (2) Google tarafı IAM değişmedi (sağlayıcı koşulu yalnız depo + main; iş/iş akışı dosyası ya da Environment'a daraltma ayrı tur).
+
 **Kimlik (Workload Identity Federation, anahtar YOK)** — hepsi `ulucamii-portal` projesinde, dernek hesabıyla kuruldu (11 Kasım 2026):
 - Servis hesabı `egitim-ci-yayin@ulucamii-portal.iam.gserviceaccount.com` (anahtarı yok, oluşturulmaz). Proje rolleri YALNIZ: `roles/firebasehosting.admin`, `roles/serviceusage.serviceUsageConsumer`.
 - Workload Identity havuzu `github-actions` (global) + OIDC sağlayıcısı `github-oidc` (yayıncı `https://token.actions.githubusercontent.com`). Eşleme: `google.subject=assertion.sub`, `attribute.repository`, `attribute.ref`. **Öznitelik koşulu:** `assertion.repository == 'ulucamii2026/ulucamii2026.github.io' && assertion.repository_id == '1343136441' && assertion.repository_owner_id == '319955067' && assertion.ref == 'refs/heads/main'`.
