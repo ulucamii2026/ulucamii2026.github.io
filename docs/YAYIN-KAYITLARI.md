@@ -4,6 +4,14 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 11 Kasım 2026 (öğleden sonra) — Yeni Müslüman yolu: hesaba ekleme teklifi, «bu cihazdaki izleri silin», önbellek ve anahtar gizliliği; yayın akışı üç işe bölündü
+
+- Zaman: 11 Kasım 2026, 12.30–12.55 (Brüksel). İçerik commit'leri: `c0de17f6` (özellik), `276b0f8e` (akış bölme + G-13/G-14), `19b198d9` (canli işine artifact). Kapsam: `egitim/src/{lib,scripts,sw,i18n,pages}`, `src/lib/ilim-yolu/yeni-yol-ilerleme.ts`, testler, `.github/workflows/egitim-yayinla.yml`, `docs/EGITIM-PLATFORMU.md`. Firestore kuralları, Functions, CSP, `firebase.json` DEĞİŞMEDİ.
+- Özellik koşusu: [43013694194](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/43013694194) success (derle+yayın tek işte; Hosting `release complete`); `egitim:canli` 105/105. Canlı (girişsiz): dizinde denetim düğmesi beş dilde var, çevrim dışı kutusu yok, CSP 0, konsol 0, canlı `sw.js` yeni-musluman dışlamasını içeriyor.
+- Akış bölme: `276b0f8e` koşusu [43014258984](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/43014258984): derle ve yayinla success (Hosting yayını yapıldı), `canli` işi FAILURE (neden: `egitim:canli` `egitim/dist` okur, artifact indirilmemişti; Hosting'e zarar yok, canlı içerik doğruydu). İleri düzeltme `19b198d9`: koşu [43014786147](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/43014786147) derle/yayinla/canli success, uyarı atlandı; Pages [43014786279](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/43014786279) success. `derle` işinde `npm ci --ignore-scripts` KALDI (derleme geçti). `yayinla` işinde depo çıkışı ve npm yok.
+- Yerel kapılar: design:check, check, egitim:build, test:egitim (1150 Playwright + düğüm), test:ilim-yolu, test:hesap, test:kurallar hepsi EXIT 0. test:web çalıştırılmadı (yalnız egitim'e ait dosyalar; ana sitenin paylaştığı `src/` dosyası değişmedi).
+- Açık sınırlar: gerçek Auth/Firestore ile girişli akış yalnız sahte istemciyle (`page.route`) sınandı; ezber/bilgi/okuma/ibadet cihaz kopyaları çıkışta hâlâ silinmiyor (yalnız ezber ve yol); Environment ve IAM daraltması ertelendi (EGITIM-PLATFORMU). Duyuru YOK.
+
 ## 11 Kasım 2026 (öğleye doğru) — egitim OTOMATİK YAYIN hattı kuruldu ve üç tetikle kanıtlandı (içerik değişikliği YOK)
 
 - Zaman: 11 Kasım 2026, 07.20–07.40 (Brüksel). Kapsam: `.github/workflows/egitim-yayinla.yml`, `scripts/egitim-{ses-getir,dist-denetle}.mjs` + `egitim-dist-taban.json`, iki düğüm testi, docs. Yayınlanan içerik, commit `e291f453`'in egitim derlemesidir (önceki yerel yayınla aynı kaynak; 2913 dosya).

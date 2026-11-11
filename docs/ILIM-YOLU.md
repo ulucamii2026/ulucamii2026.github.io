@@ -363,6 +363,14 @@ Uygulama düzeni:
 - **Çevrim dışı:** dizinde `CevrimdisiKutu` (20 sayfa birlikte, ses yok). Site haritası, hreflang, canonical, `egitim-canli-denetim`, `egitim-dist-taban.json` (taban 3020) güncellendi.
 - **Testler:** `tests/ilim-yolu-yeni-yol.test.mjs` (node), `tests/egitim/yeni-yol.spec.mjs` (Playwright: akış, video tıklama, CSP 0, axe, 320–1280 px).
 
+## Durum (11 Kasım 2026, öğleden sonra): Yeni Müslüman yolu — hesap, silme ve cihaz izi
+
+- **Hesaba ekleme:** girişli kullanıcı dizini açtığında cihazdaki (hesapsız) işaretler hesapta yoksa BİR kez sorulur (`yolTeklif`; sessiz yükleme yok). Evet: birleşim (VEYA), anonim kopya hesabın cihaz kopyasına katılıp silinir, bulutla eşitlenir; hesaptaki hiçbir işaret silinmez. «Şimdi değil»: `ilim:y12:d:v1:u:<özet>` içinde yalnız sayı tutulur, aynı sayıda yeniden sorulmaz.
+- **«Bu cihazdaki izleri silin»:** onay paneli (odak «Vazgeçin»de, Esc iptal; alert/confirm yok): cihaz anahtarları (yeni + eski ad), Cache API kopyaları ve girişliyse `ozel/yol12` silinir. Bulut silinemezse `{sil:true}` bayrağı kalır; sonraki `yolEsitle` önce belgeyi siler, birleştirmez (silinen işaret geri gelmez).
+- **Çıkış kuralı:** `cikisYap` önce yol işaretlerini de hesaba gönderir (olmazsa mevcut «yine de çıkılsın mı?» sorusu), sonra hesabın cihaz kopyasını siler; cihazda yalnız durum anahtarı (sayı/bayrak, işaret yok) kalır; hesapsız (anonim) işaretlere dokunulmaz. Not: ezber dışındaki bölümlerin (bilgi, okuma, ibadet) cihaz kopyaları çıkışta hâlâ silinmiyor (ayrı iş).
+- **Gizlilik sertleştirmesi (G-04, G-15):** depo anahtarı `ilim:y12:v1` (eski `ulucamii:yeniyol:cihaz:v1` bir kez okunup taşınır ve silinir); `/<dil>/yollar/yeni-musluman/` sayfaları service worker tarafından ÖNBELLEĞE ALINMAZ, etkinleşmede eski kopyalar silinir; dizindeki çevrim dışı kutusu kalktı; YouTube iframe'inde `sandbox="allow-scripts allow-same-origin allow-presentation"` (gerçek ağda oynatıcı yükleniyor).
+- **Testler:** `tests/ilim-yolu-yeni-yol.test.mjs` (teklif, idempotent, bekleyen silme, çıkış, anahtar taşıma), `tests/egitim/cevrimdisi.test.mjs`, `tests/egitim/yeni-yol-hesap.spec.mjs` (emülatörsüz sahte Auth + Firestore REST).
+
 ## Durum (11 Kasım 2026): egitim OTOMATİK YAYIN (P7 öncesi engel kalktı)
 
 - `.github/workflows/egitim-yayinla.yml`: main'de egitim'i ilgilendiren push'ta, başarılı ana site yayınından sonra (zamanlanmış/namaz tetikli koşular) ve elle derler, kapılardan geçirir, Hosting'e (`hosting:ulucamii-egitim`, başka hiçbir şey) yayınlar ve canlıyı denetler. Kimlik: Workload Identity Federation, JSON anahtar yok. Tüm kurallar, IAM nesneleri ve geri alma: `docs/EGITIM-PLATFORMU.md` «Otomatik yayın».
