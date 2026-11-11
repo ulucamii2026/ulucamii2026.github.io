@@ -164,3 +164,21 @@ test('abonelikCik sonrası haftalikKuyruk o kullanıcıyı artık kuyruğa almaz
   await calistir();
   assert.deepEqual(await kuyruk(), {});
 });
+
+test('G-11: abonelikCik her yanıtta (200, 302, 400, 405) kendi güvenlik başlıklarını yazar', async () => {
+  await kullanici('u1', { dil: 'nl', tercihler: { haftalik: true } });
+  const k = tokenUret('u1', SIRR, Date.now());
+  const yanitlar = [
+    await git(k), // 200
+    await fetch(`${ISLEV('abonelikCik')}?k=${encodeURIComponent(k)}`, { redirect: 'manual' }), // 302
+    await git('cop', { yontem: 'GET' }), // 400
+    await fetch(`${ISLEV('abonelikCik')}?k=${encodeURIComponent(k)}`, { method: 'PUT' }), // 405
+  ];
+  assert.deepEqual(yanitlar.map((y) => y.status), [200, 302, 400, 405]);
+  for (const y of yanitlar) {
+    assert.equal(y.headers.get('x-frame-options'), 'DENY', String(y.status));
+    assert.match(y.headers.get('content-security-policy'), /^default-src 'none'/, String(y.status));
+    assert.equal(y.headers.get('x-content-type-options'), 'nosniff', String(y.status));
+    assert.equal(y.headers.get('referrer-policy'), 'no-referrer', String(y.status));
+  }
+});
