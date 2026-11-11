@@ -159,7 +159,20 @@ jobs:
         with:
           name: egitim-yayin-paketi
       - name: Canlı denetim için tarayıcı
-        run: npx playwright install --with-deps chromium
+        # 11 Kasım 2026: `--with-deps` (apt) koşucudaki geçici ağ/DNS hatasında üç kez işi düşürdü. Önce yalnız tarayıcı
+        # indirilir ve açılıp açılmadığı denenir; açılmazsa sistem kitaplıkları en çok üç denemeyle kurulur.
+        run: |
+          npx playwright install chromium
+          if node -e "import('@playwright/test').then(async (p) => { const b = await p.chromium.launch(); await b.close(); })"; then
+            echo "tarayıcı hazır (apt gerekmedi)"
+          else
+            for deneme in 1 2 3; do
+              npx playwright install --with-deps chromium && break
+              echo "kurulum denemesi $deneme başarısız; 30 sn sonra yeniden"
+              sleep 30
+            done
+            node -e "import('@playwright/test').then(async (p) => { const b = await p.chromium.launch(); await b.close(); })"
+          fi
       - name: Canlı denetim (egitim:canli)
         run: node scripts/egitim-canli-denetim.mjs https://egitim.ulucamii.be
       - name: Canlıdaki tüm sesler yerinde mi (bayt + sha256)
