@@ -21,6 +21,7 @@ const AD = 'Çağla Örnek-Deneme';
 const EPOSTA = 'cagla.deneme@ihtida.test';
 const DOGUM = '1990-05-17';
 const SIZMAZ = ['SIZMAZ-tel', 'SIZMAZ-adres', 'SIZMAZ-sebep', 'SIZMAZ-anne', 'SIZMAZ-baba', 'SIZMAZ-meslek', 'SIZMAZ-sahit', 'SIZMAZ-pdf', 'SIZMAZ-anahtar', 'SIZMAZ-yeni-isim', 'SIZMAZ-not'];
+const brukselFark = d => { const m = /GMT([+-])(\d{2}):(\d{2})/.exec(new Intl.DateTimeFormat('en-US', { timeZone: 'Europe/Brussels', timeZoneName: 'longOffset' }).formatToParts(d).find(x => x.type === 'timeZoneName').value); return m ? m[1] + m[2] + m[3] : '+0000'; };
 const brukselGunu = d => new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Brussels', year: 'numeric', month: '2-digit', day: '2-digit' }).format(d);
 
 /** Sahte Google altyapısı + kod. `saat` değişkeni sahte saattir (ihtidaPanelSaat geçersiz kılınır). */
@@ -29,7 +30,7 @@ function ortam({ acik = true, ayar = true, props: ek = {} } = {}) {
   if (acik) props.set('PANEL_YANSIT', '1');
   if (ayar) { props.set('PANEL_YANSIT_URL', URL_); props.set('PANEL_YANSIT_SIR', SIR); }
   for (const [k, v] of Object.entries(ek)) props.set(k, v);
-  const k = { saat: Date.parse('2026-11-12T10:00:00Z'), yanitlar: [], kilit: 0, kilitFetchte: [] };
+  const k = { saat: Date.parse('2026-11-12T10:00:00Z'), yanitlar: [], yanitFn: null, kilit: 0, kilitVerme: false, kilitFetchte: [], fetchKancasi: null };
   const yaz = (...a) => log.push(a.map(String).join(' '));
   const ctx = vm.createContext({
     console: { log: yaz, error: yaz, warn: yaz, info: yaz },
@@ -38,19 +39,26 @@ function ortam({ acik = true, ayar = true, props: ek = {} } = {}) {
       deleteProperty: p => { props.delete(p); }, getProperties: () => Object.fromEntries(props),
     }) },
     Utilities: {
-      formatDate: (d, _tz, bicim) => bicim === 'yyyy-MM-dd' ? brukselGunu(new Date(d)) : '12.11.2026 10:00',
-      // Apps Script gibi: metin UTF-8 baytlarına çevrilir, sonuç işaretli bayt dizisidir.
-      computeHmacSha256Signature: (deger, anahtar) => [...createHmac('sha256', Buffer.from(anahtar, 'utf8')).update(Buffer.from(deger, 'utf8')).digest()].map(b => b > 127 ? b - 256 : b),
+      formatDate: (d, _tz, bicim) => bicim === 'yyyy-MM-dd' ? brukselGunu(new Date(d)) : bicim === 'Z' ? brukselFark(new Date(d)) : '12.11.2026 10:00',
+      Charset: { UTF_8: 'UTF_8', US_ASCII: 'US_ASCII' },
+      // Apps Script gibi iki aşırı yükleme: (değer, anahtar) US_ASCII kullanır ve ASCII dışı karakteri '?' yapar (KAYIPLI); (değer, anahtar, karakterKümesi) verilen kümeyi kullanır.
+      // Sonuç işaretli bayt dizisidir.
+      computeHmacSha256Signature: (deger, anahtar, kume) => {
+        const bayt = m => kume === 'UTF_8' ? Buffer.from(m, 'utf8') : Buffer.from(Array.from(m, c => (c.codePointAt(0) < 128 ? c.codePointAt(0) : 63)));
+        return [...createHmac('sha256', bayt(anahtar)).update(bayt(deger)).digest()].map(b => b > 127 ? b - 256 : b);
+      },
       getUuid: randomUUID,
     },
     UrlFetchApp: { fetch: (url, o) => {
       istekler.push({ url, ...o });
       k.kilitFetchte.push(k.kilit);
-      const y = k.yanitlar.shift();
+      if (k.fetchKancasi) k.fetchKancasi(url, o);
+      const y = k.yanitlar.length ? k.yanitlar.shift() : (k.yanitFn ? k.yanitFn(o) : 200);
       if (y === 'ag') throw new Error('ag-hatasi');
-      return { getResponseCode: () => y ?? 200 };
+      const kod = typeof y === 'object' && y !== null ? y.kod : y, govde = typeof y === 'object' && y !== null ? y.govde ?? '' : '';
+      return { getResponseCode: () => kod ?? 200, getContentText: () => govde };
     } },
-    LockService: { getScriptLock: () => ({ waitLock() { k.kilit++; }, releaseLock() { k.kilit--; } }) },
+    LockService: { getScriptLock: () => ({ waitLock() { k.kilit++; }, tryLock() { if (k.kilitVerme) return false; k.kilit++; return true; }, releaseLock() { k.kilit--; } }) },
     CacheService: { getScriptCache: () => ({ get: () => null, put() {} }) },
     SpreadsheetApp: { flush() {} },
   });
@@ -88,7 +96,8 @@ const kur = (ctx, ek, simdi = Date.parse('2026-11-12T10:00:00Z')) => {
   return JSON.parse(JSON.stringify(ctx.ihtidaPanelGovdeKur(k, simdi)));
 };
 const q = (e, ref) => { const h = e.props.get('PANEL_YANSIT_KUYRUK_' + ref); return h ? JSON.parse(h) : null; };
-const sonuc = (e, ref) => e.props.get('PANEL_YANSIT_SONUC_' + ref) ?? null;
+const sonuc = (e, ref) => e.ctx.ihtidaPanelSonucOku(ref) || null; // dikkat listesindeki kod, kesin bitmişse 'tamam'
+const ozet = e => JSON.parse(e.props.get('PANEL_YANSIT_OZET') ?? '{"s":{},"r":[]}');
 
 /* ───────────── 1. Ana anahtar ───────────── */
 
@@ -212,7 +221,9 @@ test('GAS imzası, panelin kendi doğrulayıcısından geçer (UTF-8 ad dahil); 
   assert.match(ist.basliklar['x-ihtida-imza'], /^[0-9a-f]{64}$/);
   const b = { zaman: ist.basliklar['x-ihtida-zaman'], nonce: ist.basliklar['x-ihtida-nonce'], imza: ist.basliklar['x-ihtida-imza'] };
   assert.equal(imzaDogrula(SIR, b, ist.metin, simdi).ok, true);
-  assert.ok(ist.metin.includes('Çağla'), 'ad ham UTF-8 olarak gövdede');
+  assert.ok(/^[\x00-\x7f]*$/.test(ist.metin), 'tel üzerindeki gövde saf ASCII (B-02)');
+  assert.ok(ist.metin.includes('\\u00c7ag\\u0142a') || ist.metin.includes('\\u00c7a\\u011fla'), 'ad \\uXXXX olarak kaçışlı');
+  assert.equal(JSON.parse(ist.metin).ad, AD, 'sunucu tarafı JSON.parse özgün adı verir');
   assert.equal(imzaDogrula(SIR, b, ist.metin + ' ', simdi).ok, false);
   assert.equal(imzaDogrula(SIR + 'x', b, ist.metin, simdi).ok, false);
   assert.equal(imzaDogrula(SIR, b, ist.metin, simdi + 6 * DK).neden, 'zaman-penceresi');
@@ -251,7 +262,7 @@ test('gönderilen HTTP isteği: POST, JSON, yönlendirme izlenmez, yalnız üç 
   e.ctx.ihtidaPaneleYansitKuyrukCalistir(e.k.saat);
   assert.equal(e.istekler.length, 1);
   const i = e.istekler[0];
-  assert.equal(i.url, URL_); assert.equal(i.method, 'post'); assert.equal(i.contentType, 'application/json');
+  assert.equal(i.url, URL_); assert.equal(i.method, 'post'); assert.equal(i.contentType, 'application/json; charset=utf-8');
   assert.equal(i.followRedirects, false); assert.equal(i.muteHttpExceptions, true);
   assert.deepEqual(Object.keys(i.headers).sort(), ['x-ihtida-imza', 'x-ihtida-nonce', 'x-ihtida-zaman']);
   assert.equal(basvuruKapisi({ anahtar: SIR, basliklar: i.headers, ham: i.payload, simdiMs: e.k.saat }).durum, 200);
@@ -271,14 +282,14 @@ const REF = 'IH-2026-0001';
 test('200: kuyruktan çıkar, sonuç «ok»; tekrar sıraya alınmaz (ref ile idempotent)', () => {
   const e = kuyrukluOrtam();
   assert.equal(tur(e, 200).ok, 1);
-  assert.equal(q(e, REF), null); assert.equal(sonuc(e, REF), 'ok');
+  assert.equal(q(e, REF), null); assert.equal(sonuc(e, REF), 'tamam'); assert.equal(ozet(e).s.ok, 1);
   assert.equal(e.ctx.ihtidaPaneleYansitKuyrugaAl(REF), false);
   tur(e); assert.equal(e.istekler.length, 1);
 });
 test('422: kapsam dışı — kuyruktan çıkar, işaretlenir, yeniden denenmez', () => {
   const e = kuyrukluOrtam({}, { 'Cami kimliği': 'anderlecht-merkez-camii-anderlecht' });
   assert.equal(tur(e, 422).kapsamDisi, 1);
-  assert.equal(q(e, REF), null); assert.equal(sonuc(e, REF), 'kapsam-disi');
+  assert.equal(q(e, REF), null); assert.equal(sonuc(e, REF), 'tamam'); assert.equal(ozet(e).s['kapsam-disi'], 1);
   e.k.saat += 10 * 24 * 60 * DK; tur(e); assert.equal(e.istekler.length, 1);
   assert.equal(e.ctx.ihtidaPaneleYansitKuyrugaAl(REF), false);
 });
@@ -325,7 +336,7 @@ test('401: 5 denemede bırakılır, TEK operatör uyarısı; uyarıda kişisel v
   const e = kuyrukluOrtam();
   for (let n = 1; n <= 5; n++) {
     const s = tur(e, 401);
-    assert.equal(s.diger, 1, 'imza hatası turu bitirir');
+    assert.equal(s.imza, 1, 'imza reddi sayılır');
     const kayit = q(e, REF); if (kayit) e.k.saat = kayit.s;
   }
   assert.equal(e.istekler.length, 5);
@@ -345,7 +356,7 @@ test('401 ilk denemelerde geri çekilmeyle bekler (sır düzelirse sonraki denem
   const e = kuyrukluOrtam();
   tur(e, 401); assert.equal(q(e, REF).i, 1);
   e.k.saat = q(e, REF).s; tur(e, 200);
-  assert.equal(sonuc(e, REF), 'ok');
+  assert.equal(sonuc(e, REF), 'tamam'); assert.equal(ozet(e).s.ok, 1);
 });
 test('400: panel biçimi reddetti — yeniden denenmez, işaretlenir, tek uyarı (başvuru numarası var, kişisel veri yok)', () => {
   const e = kuyrukluOrtam({}, { 'Cami kimliği': KATALOG_PANELDE_YOK[0] });
@@ -359,7 +370,8 @@ test('satır atlanır: küçük / eksik doğum / rıza yok → panele İSTEK Gİ
     const e = kuyrukluOrtam({}, ek);
     tur(e);
     assert.equal(e.istekler.length, 0, neden);
-    assert.equal(sonuc(e, REF), 'atlandi-' + neden); assert.equal(q(e, REF), null);
+    assert.equal(ozet(e).s['atlandi-' + neden], 1, 'sayaçlarda görünür'); assert.equal(q(e, REF), null);
+    assert.equal(sonuc(e, REF), neden === 'dogum-eksik' ? 'atlandi-dogum-eksik' : null, 'beklenen küçük/rıza yok dikkat listesine girmez, eksik doğum girer');
   }
 });
 test('satır defterde yoksa atlanır; zamanı gelmemiş öğe beklenir', () => {
@@ -469,7 +481,7 @@ test('kanca: anahtar kapalıyken yanıt aynı ve hiçbir özellik yazılmaz; yin
 
 test('geri doldurma: varsayılan KURU KOŞU — yalnız sayaç; `false` verilse bile anahtar kapalıysa kuru; gerçek koşu yalnız ikisiyle', () => {
   const satirlar = [{}, { 'Referans': 'IH-2026-0002', 'Doğum tarihi': '2012-01-01' }, { 'Referans': 'IH-2026-0003', 'Doğum tarihi': '' }, { 'Referans': 'IH-2026-0004' }, { 'Referans': 'IH-2026-0005' }];
-  const hazirla = acik => { const e = ortam({ acik }); defter(e.ctx, satirlar); e.props.set('PANEL_YANSIT_SONUC_IH-2026-0004', 'ok'); e.props.set('PANEL_YANSIT_KUYRUK_IH-2026-0005', JSON.stringify({ d: 0, i: 0, s: 0 })); return e; };
+  const hazirla = acik => { const e = ortam({ acik }); defter(e.ctx, satirlar); e.props.set('PANEL_YANSIT_TAMAM', JSON.stringify({ 2026: [4, 4] })); e.props.set('PANEL_YANSIT_KUYRUK_IH-2026-0005', JSON.stringify({ d: 0, i: 0, s: 0 })); return e; };
   const e = hazirla(true);
   const onceki = JSON.stringify([...e.props]);
   const kuru = JSON.parse(JSON.stringify(e.ctx.ihtidaPaneleGeriDoldur()));
@@ -482,7 +494,7 @@ test('geri doldurma: varsayılan KURU KOŞU — yalnız sayaç; `false` verilse 
   const g = JSON.parse(JSON.stringify(e.ctx.ihtidaPaneleGeriDoldur(false)));
   assert.equal(g.kip, 'gercek'); assert.equal(g.eklenecek, 1);
   assert.ok(q(e, 'IH-2026-0001')); assert.equal(q(e, 'IH-2026-0002'), null);
-  assert.equal(sonuc(e, 'IH-2026-0004'), 'ok', 'kesin sonuca dokunulmaz');
+  assert.equal(sonuc(e, 'IH-2026-0004'), 'tamam', 'kesin sonuca dokunulmaz');
   assert.ok(!JSON.stringify(g).includes(AD) && !JSON.stringify(g).includes(EPOSTA), 'yalnız sayaç döner');
 });
 
@@ -496,7 +508,252 @@ test('günlük, özellikler, uyarı e-postaları ve geri dönüşlerde ad / e-po
   donusler.push(tur(e, 500, 'ag', 401));
   e.k.saat += 24 * 60 * DK; donusler.push(tur(e, 400, 422, 200));
   e.ctx.ihtidaPaneleGeriDoldur(); donusler.push(e.ctx.ihtidaPaneleGeriDoldur(false));
-  const hepsi = JSON.stringify([e.log, [...e.props].filter(([k]) => /^PANEL_YANSIT_(KUYRUK|SONUC|UYARI)_/.test(k)), e.mailler, donusler]);
+  const hepsi = JSON.stringify([e.log, [...e.props].filter(([k]) => /^PANEL_YANSIT_(KUYRUK_|OZET|TAMAM|UYARI_|TUR_KILIT)/.test(k)), e.mailler, donusler]);
   for (const yasak of ['Çağla', 'Örnek', 'cagla', 'ihtida.test', DOGUM, '1990', 'SIZMAZ', SIR, 'panel.example.test']) assert.ok(!hepsi.includes(yasak), `sızdı: ${yasak}`);
   assert.ok(e.log.length > 0, 'günlük hata kodları yazdı (kişisel veri olmadan)');
+});
+
+/* ───────────── 11. B-02: kodlama önemsiz (UTF-8 imza + saf ASCII gövde) ───────────── */
+
+/** Fetch'i panelin KENDİ kapısına bağlar: her istek basvuruKapisi'ndan geçer; yanıt = {kod, govde:{ok, alan}}. */
+function kapiyaBagla(e) {
+  const kapilar = [], nonce = new Set();
+  e.k.yanitFn = o => {
+    const r = basvuruKapisi({ anahtar: SIR, basliklar: o.headers, ham: o.payload, simdiMs: e.k.saat, kullanilmisNonce: nonce });
+    kapilar.push(r);
+    return { kod: r.durum, govde: JSON.stringify({ ok: r.durum === 200, alan: r.alan }) };
+  };
+  return kapilar;
+}
+const ADLAR = ['Ömer Çağlar-Şahin', 'François-Hélène Dupré', 'Jürgen Weiß-Äpfel', "Zoë D'Ürsel", 'İsmail Işık', '𝒜nna Örnek 𝔅'];
+
+test('B-02: Türkçe/Fransızca/Almanca/astral adlar — gövde saf ASCII, imza panel kapısından geçer, sunucu özgün adı çözer', () => {
+  for (const ad of ADLAR) {
+    const e = ortam();
+    defter(e.ctx, [{ 'Adı Soyadı': ad }]);
+    const kapilar = kapiyaBagla(e);
+    e.ctx.ihtidaPaneleYansitKuyrugaAl(REF);
+    assert.equal(tur(e).ok, 1, ad);
+    const i = e.istekler[0];
+    assert.ok(/^[\x00-\x7f]*$/.test(i.payload), `ASCII dışı bayt gitti: ${ad}`);
+    assert.equal(i.contentType, 'application/json; charset=utf-8');
+    assert.equal(kapilar[0].durum, 200, ad);
+    assert.equal(kapilar[0].veri.ad, ad.normalize('NFC'), 'sunucu tarafı JSON.parse özgün adı verir');
+    assert.equal(sonuc(e, REF), 'tamam');
+  }
+});
+test('B-02: kodun US_ASCII (iki bağımsız değişkenli) aşırı yüklemeye BAĞIMLILIĞI yok; kayıplı aşırı yükleme gerçekten bozuk imza üretirdi', () => {
+  const e = ortam();
+  const m = kur(e.ctx, { 'Adı Soyadı': 'Çağla Örnek-Şahin' });
+  const ist = JSON.parse(JSON.stringify(e.ctx.ihtidaPanelIstekKur(m.govde, SIR, e.k.saat)));
+  const b = { zaman: ist.basliklar['x-ihtida-zaman'], nonce: ist.basliklar['x-ihtida-nonce'], imza: ist.basliklar['x-ihtida-imza'] };
+  assert.equal(imzaDogrula(SIR, b, ist.metin, e.k.saat).ok, true, 'UTF-8 aşırı yükleme + ASCII gövde: geçer');
+  // Aynı gövdeyi ham (kaçışsız) UTF-16 metin olarak iki bağımsız değişkenli (kayıplı) yolla imzalamak panelde 'imza' hatası verirdi:
+  const ham = JSON.stringify(m.govde), lossy = e.ctx.ihtidaPanelHex(e.ctx.Utilities.computeHmacSha256Signature(b.zaman + '\n' + b.nonce + '\n' + ham, SIR));
+  assert.equal(imzaDogrula(SIR, { ...b, imza: lossy }, ham, e.k.saat).neden, 'imza', 'kayıplı yol bozuk imza');
+  // ASCII gövde + kayıplı yol bile geçerdi (ASCII'de kayıp yok): kodlamaya iki kat güvence
+  const asciiLossy = e.ctx.ihtidaPanelHex(e.ctx.Utilities.computeHmacSha256Signature(b.zaman + '\n' + b.nonce + '\n' + ist.metin, SIR));
+  assert.equal(asciiLossy, b.imza);
+  // saf kaçış: astral karakter vekil çift olarak gider ve geri çözülür
+  const j = e.ctx.ihtidaPanelJsonAscii({ x: '😀 é ü ç 𝒜 ı' });
+  assert.ok(/^[\x00-\x7f]*$/.test(j)); assert.equal(JSON.parse(j).x, '😀 é ü ç 𝒜 ı');
+});
+
+/* ───────────── 12. B-02: imza reddi kuyruğu tıkamaz ───────────── */
+
+const uc = (n, ek = i => ({})) => Array.from({ length: n }, (_, i) => ({ 'Referans': 'IH-2026-' + String(i + 1).padStart(4, '0'), ...ek(i) }));
+const refOf = o => JSON.parse(o.payload).ref;
+function coklu(n, yanitFn) {
+  const e = ortam();
+  defter(e.ctx, uc(n));
+  for (let i = 1; i <= n; i++) e.ctx.ihtidaPaneleYansitKuyrugaAl('IH-2026-' + String(i).padStart(4, '0'));
+  e.k.yanitFn = yanitFn;
+  return e;
+}
+test('401: tek bozuk başvuru kuyruğu tıkamaz — aynı turda sıradakilere geçilir, deneme başvuru başına sayılır, 5. denemede TEK uyarıyla bırakılır', () => {
+  const e = coklu(4, o => (refOf(o) === 'IH-2026-0002' ? 401 : 200));
+  const s = tur(e);
+  assert.equal(e.istekler.length, 4, 'dört başvurunun hepsi aynı turda denendi');
+  assert.deepEqual([s.ok, s.imza, s.durdu], [3, 1, '']);
+  assert.deepEqual([sonuc(e, 'IH-2026-0001'), sonuc(e, 'IH-2026-0003'), sonuc(e, 'IH-2026-0004')], ['tamam', 'tamam', 'tamam']);
+  assert.equal(q(e, 'IH-2026-0002').i, 1);
+  for (let n = 2; n <= 5; n++) { e.k.saat = q(e, 'IH-2026-0002')?.s ?? e.k.saat; tur(e); }
+  assert.equal(sonuc(e, 'IH-2026-0002'), 'imza-red'); assert.equal(q(e, 'IH-2026-0002'), null);
+  assert.equal(e.mailler.length, 1, 'tek operatör uyarısı');
+  assert.equal(e.istekler.filter(i => refOf(i) === 'IH-2026-0002').length, 5);
+});
+test('401: art arda 3 FARKLI başvuru imzadan reddedilirse tur durur (sistemik), TEK uyarı; sonraki turlarda ikinci uyarı yok', () => {
+  const e = coklu(6, () => 401);
+  const s = tur(e);
+  assert.equal(e.istekler.length, 3, 'üçüncü ret turu durdurdu');
+  assert.deepEqual([s.imza, s.durdu], [3, 'imza-sistemik']);
+  assert.equal(e.mailler.length, 1);
+  assert.ok(!/Çağla|cagla|ihtida\.test/i.test(JSON.stringify(e.mailler[0])));
+  assert.deepEqual([4, 5, 6].map(n => q(e, 'IH-2026-000' + n).d), [0, 0, 0], 'dokunulmayanlar deneme hakkını yemedi');
+  for (let n = 0; n < 40; n++) { e.k.saat += 6 * 60 * DK; tur(e); }
+  assert.equal(e.mailler.length, 1, 'tek uyarı');
+  assert.equal([1, 2, 3, 4, 5, 6].every(n => sonuc(e, 'IH-2026-000' + n) === 'imza-red'), true, 'hepsi sonunda bırakıldı');
+});
+test('401: araya sağlam başvuru girerse (401, 200, 401, 401, 200, 401) sistemik sayılmaz, tur sürer', () => {
+  const sira = [401, 200, 401, 401, 200, 401];
+  const e = coklu(6, o => sira[Number(refOf(o).slice(-2)) - 1]);
+  const s = tur(e);
+  assert.equal(e.istekler.length, 6); assert.equal(s.durdu, ''); assert.equal(e.mailler.length, 0);
+});
+
+/* ───────────── 13. B-03 (Apps Script yarısı): başvuru günü zorunlu ───────────── */
+
+test('zaman damgası: tarih nesnesi ve metin biçimleri çözülür; panel gövdesinde Brüksel anı olarak gider', () => {
+  const e = ortam();
+  const z = ek => kur(e.ctx, { 'Zaman damgası': ek }).govde?.zaman;
+  assert.equal(z(new Date('2026-11-12T08:30:00Z')), '2026-11-12T08:30:00.000Z');
+  assert.equal(z('12.11.2026 09:30'), '2026-11-12T08:30:00.000Z', 'kış saati +01:00');
+  assert.equal(z('2026-11-12T08:30:00Z'), '2026-11-12T08:30:00.000Z');
+  assert.equal(z('2026-11-12T09:30:00+01:00'), '2026-11-12T08:30:00.000Z');
+  assert.equal(z('2026-07-01 14:00'), '2026-07-01T12:00:00.000Z', 'yaz saati +02:00');
+  assert.equal(z('2026-11-12'), '2026-11-12T11:00:00.000Z', 'saatsiz metin = öğlen');
+});
+test('zaman damgası yok/çözülemez → panele GİTMEZ (zaman-eksik); «bugün»e DÜŞÜLMEZ', () => {
+  const e = ortam();
+  for (const g of ['', null, undefined, '   ', 'dün', 'abc', '31.02.2026 10:00', '2026-13-01', '12.11.2026 25:00', new Date('x'), 12345]) {
+    const m = kur(e.ctx, { 'Zaman damgası': g });
+    assert.deepEqual([m.ok, m.neden], [false, 'zaman-eksik'], String(g));
+  }
+  // yetişkin de olsa, küçük de olsa: gün bilinmiyorsa neden zaman-eksik (bugüne göre yetişkin sayıp göndermez)
+  assert.equal(kur(e.ctx, { 'Zaman damgası': '', 'Doğum tarihi': '2008-11-13' }).neden, 'zaman-eksik');
+  // kuyruk: istek GİTMEZ, sayaçlarda görünür
+  const k = kuyrukluOrtam({}, { 'Zaman damgası': 'bilinmiyor' });
+  const s = tur(k);
+  assert.equal(k.istekler.length, 0); assert.deepEqual(s.nedenler, { 'zaman-eksik': 1 }); assert.equal(sonuc(k, REF), 'atlandi-zaman-eksik');
+});
+test('geri doldurma: eski satırda 17 yaşında başvurmuş, bugün 18+ → küçük (Date da metin de); pencere dışı eski küçük de elenir; gelecek tarihli küçük bugüne göre', () => {
+  const e = ortam();
+  const sonra = (zaman, dogum) => kur(e.ctx, { 'Zaman damgası': zaman, 'Doğum tarihi': dogum });
+  assert.equal(sonra(new Date('2025-05-03T08:00:00Z'), '2007-11-01').neden, 'kucuk', 'Date: o gün 17, bugün 19');
+  assert.equal(sonra('03.05.2025 10:00', '2007-11-01').neden, 'kucuk', 'metin: aynı');
+  assert.equal(sonra('2024-01-15', '2007-01-20').neden, 'kucuk', '400 günden eski (pencere dışı) küçük de elenir');
+  assert.equal(sonra('2025-05-03 10:00', '2007-05-03').ok, true, 'başvuru gününde tam 18');
+  assert.equal(sonra('2025-05-03 10:00', '2000-01-01').govde.zaman, undefined, 'pencere dışı yetişkin: zaman alanı atlanır, gönderilir');
+  assert.equal(sonra(new Date('2026-11-20T08:00:00Z'), '2008-11-15').neden, 'kucuk', 'gelecek tarihli satır en çok bugüne göre');
+  // geri doldurma sayaçları
+  defter(e.ctx, uc(3, i => [{ 'Zaman damgası': '03.05.2025 10:00', 'Doğum tarihi': '2007-11-01' }, { 'Zaman damgası': '' }, {}][i]));
+  e.props.set('PANEL_YANSIT_URL', URL_);
+  const g = JSON.parse(JSON.stringify(e.ctx.ihtidaPaneleGeriDoldur()));
+  assert.deepEqual([g.eklenecek, g.atlanacak, g.nedenler], [1, 2, { kucuk: 1, 'zaman-eksik': 1 }]);
+});
+
+/* ───────────── 14. B-11: cinsiyet, kilit, sınırlı özellikler ───────────── */
+
+test('cinsiyet: Kadın/kadın/KADIN/Kadin/KADİN/Erkek/ERKEK yerel-duyarlı eşlenir; bilinmeyen → atlanır, nedeni sayaçlarda görünür', () => {
+  const e = ortam();
+  for (const g of ['Kadın', 'kadın', 'KADIN', 'Kadin', 'KADİN', ' kadin ']) assert.equal(kur(e.ctx, { 'Cinsiyet': g }).govde.cinsiyet, 'K', g);
+  for (const g of ['Erkek', 'erkek', 'ERKEK', ' Erkek ']) assert.equal(kur(e.ctx, { 'Cinsiyet': g }).govde.cinsiyet, 'E', g);
+  const k = ortam();
+  defter(k.ctx, uc(3, i => ({ 'Cinsiyet': ['Kadın', 'Bay', ''][i] })));
+  for (let i = 1; i <= 3; i++) k.ctx.ihtidaPaneleYansitKuyrugaAl('IH-2026-000' + i);
+  const s = tur(k);
+  assert.deepEqual([s.ok, s.atlanan, s.nedenler], [1, 2, { 'cinsiyet-gecersiz': 2 }]);
+  assert.equal(ozet(k).s['atlandi-cinsiyet-gecersiz'], 2);
+  assert.equal(sonuc(k, 'IH-2026-0002'), 'atlandi-cinsiyet-gecersiz');
+  assert.deepEqual(JSON.parse(JSON.stringify(k.ctx.ihtidaPaneleGeriDoldur())).nedenler, { 'cinsiyet-gecersiz': 2 });
+});
+test('kilit: kira alınamazsa tur sessizce çıkar; çalışan tur varken ikinci tur ve gerçek geri doldurma hiçbir şey göndermez/yazmaz', () => {
+  const e = kuyrukluOrtam();
+  e.k.kilitVerme = true; // betik kilidi başkasında
+  let s = tur(e);
+  assert.deepEqual([s.kilitli, s.denenen, e.istekler.length], [true, 0, 0]);
+  assert.ok(q(e, REF), 'kuyruk korundu');
+  e.k.kilitVerme = false;
+  // eşzamanlı: ilk turun fetch'i sırasında ikinci tur + gerçek geri doldurma çalışır
+  let ic = null, gd = null;
+  e.k.fetchKancasi = () => { e.k.fetchKancasi = null; ic = JSON.parse(JSON.stringify(e.ctx.ihtidaPaneleYansitKuyrukCalistir(e.k.saat))); gd = JSON.parse(JSON.stringify(e.ctx.ihtidaPaneleGeriDoldur(false))); };
+  s = tur(e, 200);
+  assert.equal(e.istekler.length, 1, 'aynı ref iki kez gönderilmedi');
+  assert.deepEqual([ic.kilitli, ic.denenen], [true, 0]);
+  assert.equal(gd.kip, 'kilitli');
+  assert.equal(e.props.has('PANEL_YANSIT_TUR_KILIT'), false, 'kira turun sonunda bırakıldı');
+  // başka turun taze kirası engeller; süresi dolmuş kira engellemez; kilit fetch süresince TUTULMAZ
+  const a = kuyrukluOrtam();
+  a.props.set('PANEL_YANSIT_TUR_KILIT', 'baska|' + (a.k.saat + 60 * DK));
+  assert.equal(tur(a).kilitli, true); assert.equal(a.istekler.length, 0);
+  a.props.set('PANEL_YANSIT_TUR_KILIT', 'baska|' + (a.k.saat - 1));
+  assert.equal(tur(a, 200).ok, 1);
+  assert.deepEqual(a.k.kilitFetchte, [0], 'fetch sırasında betik kilidi yok (form işleyicisini bekletmez)');
+  // kuru koşu kira gerektirmez
+  const b = kuyrukluOrtam(); b.props.set('PANEL_YANSIT_TUR_KILIT', 'baska|' + (b.k.saat + 60 * DK));
+  assert.equal(b.ctx.ihtidaPaneleGeriDoldur().kip, 'kuru');
+});
+test('kira turda hata olsa da bırakılır', () => {
+  const e = kuyrukluOrtam();
+  e.ctx.ihtidaPanelBirini = () => { throw new Error('beklenmedik'); };
+  tur(e);
+  assert.equal(e.props.has('PANEL_YANSIT_TUR_KILIT'), false);
+});
+test('özellik büyümesi sınırlı: 2 000 başvuru (ok / küçük / katalog / kapsam dışı / eksik doğum) — kuyruk boşalır, toplam boyut Script Properties sınırlarının çok altında', () => {
+  const N = 2000, e = ortam();
+  const tip = i => i % 10;
+  defter(e.ctx, uc(N, i => [{ 'Doğum tarihi': '2012-01-01' }, { 'Cami kimliği': KATALOG_PANELDE_YOK[0] }, { 'Cami kimliği': 'anderlecht-merkez-camii-anderlecht' }, { 'Doğum tarihi': '' }][tip(i)] ?? {}));
+  const kapilar = kapiyaBagla(e);
+  const boyut = () => [...e.props].filter(([k]) => /^PANEL_YANSIT_/.test(k)).reduce((t, [k, v]) => t + k.length + String(v).length, 0);
+  for (let i = 1; i <= N; i++) e.ctx.ihtidaPaneleYansitKuyrugaAl('IH-2026-' + String(i).padStart(4, '0'));
+  const tepe = boyut();
+  assert.ok(tepe < 250_000, `2 000 yoldaki başvuruda bile toplam ${tepe} karakter (sınır 500 KB)`);
+  const s = tur(e);
+  assert.equal(s.denenen, N);
+  assert.equal([...e.props.keys()].filter(k => k.startsWith('PANEL_YANSIT_KUYRUK_')).length, 0, 'kuyruk boşaldı');
+  const kalan = [...e.props].filter(([k]) => /^PANEL_YANSIT_/.test(k));
+  assert.deepEqual(kalan.map(([k]) => k).sort().filter(k => !/^PANEL_YANSIT_(URL|SIR)$/.test(k)), ['PANEL_YANSIT_OZET', 'PANEL_YANSIT_TAMAM', 'PANEL_YANSIT_UYARI_katalog-de-koepel-camii-borgerhout'].sort(), 'başvuru başına özellik kalmadı');
+  const sonBoyut = boyut();
+  assert.ok(sonBoyut < 20_000, `bitince toplam ${sonBoyut} karakter`);
+  for (const [k, v] of kalan) assert.ok(String(v).length < 9000, `${k} tek değer sınırının (9 KB) altında`);
+  const o = ozet(e);
+  assert.ok(o.r.length <= 50, 'dikkat listesi sınırlı');
+  assert.ok(o.r.every(x => x.length === 2 && /^IH-/.test(x[0])), 'yalnız ref ve kod');
+  assert.equal(JSON.stringify(o).match(/Çağla|cagla|ihtida\.test|1990/), null);
+  assert.deepEqual([o.s.ok, o.s['kapsam-disi'], o.s['kapsam-disi-katalog'], o.s['atlandi-kucuk'], o.s['atlandi-dogum-eksik']], [1200, 200, 200, 200, 200]);
+  assert.equal(e.mailler.length, 1, 'katalog kayması: cami kimliği başına TEK uyarı (200 başvuru olsa da)');
+  assert.ok(kapilar.filter(k => k.durum === 400).every(k => k.alan === 'camiId'));
+  // kesin biten başvuru tekrar sıraya alınmaz; başarısız olanlar alınır
+  assert.equal(e.ctx.ihtidaPaneleYansitKuyrugaAl('IH-2026-0005'), false);
+  assert.equal(e.ctx.ihtidaPaneleYansitKuyrugaAl('IH-2026-0002'), true, 'katalog sınıfı kesin değil: eşitlenince geri doldurma alır');
+});
+test('«tamam» aralıkları: ardışık numaralar birleşir; en kötü durumda (hep tek tek) özellik sınırlı kalır, en yeniler korunur, en eskiler unutulur', () => {
+  const e = ortam();
+  for (let n = 1; n <= 3000; n++) e.ctx.ihtidaPanelTamamEkle('IH-2026-' + String(n).padStart(4, '0'));
+  assert.equal(e.props.get('PANEL_YANSIT_TAMAM'), '{"2026":[1,3000]}');
+  const w = ortam();
+  for (let n = 2; n <= 9998; n += 2) w.ctx.ihtidaPanelTamamEkle('IH-2026-' + String(n).padStart(4, '0')); // hiç birleşmez
+  assert.ok(w.props.get('PANEL_YANSIT_TAMAM').length <= 6000, 'ham sınır: ' + w.props.get('PANEL_YANSIT_TAMAM').length);
+  assert.equal(w.ctx.ihtidaPanelTamamMi('IH-2026-9998'), true, 'en yeni korunur');
+  assert.equal(w.ctx.ihtidaPanelTamamMi('IH-2026-0002'), false, 'en eski unutulur (güvenli yön: panel yinelenene 200 döner)');
+  assert.equal(w.ctx.ihtidaPanelTamamMi('IH-2026-9997'), false);
+});
+
+/* ───────────── 15. Katalog kayması: «kapsam dışı / katalog» ───────────── */
+
+test('panel camiId\'yi tanımıyorsa (400, alan camiId): kapsam-disi-katalog, yeniden denenmez, cami kimliği başına TEK uyarı', () => {
+  const X = 'merkez-camii-bif-genk', Y = 'ulucamii-marche';
+  const e = ortam();
+  defter(e.ctx, uc(4, i => ({ 'Cami kimliği': i < 3 ? X : Y })));
+  for (let i = 1; i <= 4; i++) e.ctx.ihtidaPaneleYansitKuyrugaAl('IH-2026-000' + i);
+  e.k.yanitFn = o => (JSON.parse(o.payload).camiId === X ? { kod: 400, govde: '{"ok":false,"hata":"gecersiz-istek","alan":"camiId"}' } : { kod: 400, govde: '{"ok":false,"hata":"gecersiz-istek","alan":"ad"}' });
+  const s = tur(e);
+  assert.deepEqual([s.katalog, s.diger], [3, 1], 'üçü katalog, biri sıradan 400');
+  assert.equal(sonuc(e, 'IH-2026-0001'), 'kapsam-disi-katalog'); assert.equal(sonuc(e, 'IH-2026-0004'), 'red-400');
+  assert.equal(e.mailler.length, 2, 'katalog için 1 + sıradan 400 için 1');
+  assert.ok(e.mailler.some(m => m.subject.includes(X)) && e.mailler.some(m => /400/.test(m.subject) && !m.subject.includes(X)));
+  const kat = e.mailler.find(m => m.subject.includes(X));
+  assert.ok(!/Çağla|cagla|ihtida\.test/i.test(JSON.stringify(kat)) && /belcika-camileri\.json/.test(kat.body));
+  tur(e); e.k.saat += 60 * DK; tur(e);
+  assert.equal(e.istekler.length, 4, 'yeniden denenmedi'); assert.equal(e.mailler.length, 2);
+  // ikinci FARKLI cami: ayrı uyarı
+  const Z = 'baska-camii-yok';
+  defter(e.ctx, uc(1, () => ({ 'Cami kimliği': Z, 'Referans': 'IH-2026-0009' })));
+  e.ctx.ihtidaPaneleYansitKuyrugaAl('IH-2026-0009');
+  e.k.yanitFn = () => ({ kod: 400, govde: '{"alan":"camiId"}' });
+  tur(e);
+  assert.equal(e.mailler.length, 3);
+  // gövdesiz 400 (eski panel) sıradan 400 sayılır
+  const f = kuyrukluOrtam(); tur(f, 400);
+  assert.equal(sonuc(f, REF), 'red-400');
 });

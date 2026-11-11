@@ -4,6 +4,10 @@
  * Yalnız silinebilir TypeScript tür bildirimleri çıkarıldı ve cami kataloğu bu sitenin kataloğundan okunur; mantık satır satır aynıdır.
  * Panelde bu mantık değişirse bu dosya GÜNCELLENİR (iki taraf birlikte yürümeli); testler gerçek Firebase'e bağlanmaz.
  *
+ * Bekleyen sunucu değişikliği (WP5/B-03): sunucu yaşı yakında başvuru anında (`min(zaman, şimdi)`) hesaplayacak; aşağıdaki `basvuruAyikla` hâlâ
+ * `simdiMs` kullanır. İstemci (Apps Script) yaşı zaten başvuru gününe göre denetleyip küçükleri HİÇ göndermez, yani iki yöntem uyumludur;
+ * sunucu değişince bu kopya güncellenir.
+ *
  * Bilinen kayma (katalog): bu sitenin kataloğunda olup panel kataloğunda OLMAYAN kimlikler KATALOG_PANELDE_YOK'ta;
  * panel onları 400 (camiId) ile reddeder.
  */
