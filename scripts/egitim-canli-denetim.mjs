@@ -113,7 +113,7 @@ for (const yol of ['/tr/hesap/', '/tr/hesap/giris/', '/tr/hesap/kayit/', '/k/'])
 for (const d of DILLER) {
   const y = await getir(`/${d}/yollar/yeni-musluman/h01/`);
   const h = await y.text();
-  const videoVar = /data-yy-video="[w-]{11}"/.test(h);
+  const videoVar = /data-yy-video="?[\w-]{11}/.test(h);
   kontrol(`/${d}/yollar/yeni-musluman/h01/ 200, video ${d === 'tr' || d === 'en' ? 'var' : 'yok'}, iframe yok`, y.status === 200 && videoVar === (d === 'tr' || d === 'en') && !/<iframe/i.test(h), `${y.status} video=${videoVar}`);
 }
 for (const [yol, tur] of [['/favicon.ico', /icon/], ['/favicon.svg', /svg/], ['/apple-touch-icon.png', /png/],
