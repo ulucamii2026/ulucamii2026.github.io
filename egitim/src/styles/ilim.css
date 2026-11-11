@@ -96,6 +96,16 @@
 .iy-yol.kurs .iy-yol-motif, .iy-yol.okuma .iy-yol-motif { background: var(--safran-soluk); }
 .iy-yol.seviye .iy-yol-motif { background: var(--yesil-soluk); }
 .iy-yol.yeni .iy-yol-motif { background: var(--cizgi); }
+.iy-yol.bilgi .iy-yol-motif { background: var(--yesil-soluk); }
+.iy-yol[hidden], .iy-rozet-satiri[hidden] { display: none; }
+/* Başlanmış bilgi yolu kartı: kilim şeridi ilerleme kadar dolar (genişlik SVG özniteliğiyle; CSP'ye aykırı satır içi stil yok). */
+.iy-yol-serit { height: 0.9rem; max-width: 22rem; border: 1.5px solid var(--murekkep); background: var(--yun); }
+.iy-rozet-satiri { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem 0.6rem; font-weight: 650; }
+.iy-rozet-satiri svg { width: 1.2rem; height: 1.2rem; flex: none; color: var(--yesil); }
+.iy-rozet-satiri a { min-height: 2.75rem; display: inline-flex; align-items: center; color: var(--kokboya-yazi); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .iy-rozet-satiri svg { color: #7FCBA9; } :root:not([data-theme="light"]) .iy-rozet-satiri a { color: #F0A090; } }
+:root[data-theme="dark"] .iy-rozet-satiri svg { color: #7FCBA9; }
+:root[data-theme="dark"] .iy-rozet-satiri a { color: #F0A090; }
 .iy-yol-metin { display: grid; gap: 0.3rem; }
 .iy-yol h3 { font-size: 1.35rem; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.75rem; }
 .iy-yol h3 small { font: 700 0.9rem/1.2 var(--font); color: var(--kokboya-yazi); letter-spacing: 0; }

@@ -14,6 +14,8 @@ import type { Dil } from '@ortak/i18n/ui';
 import { dilListesi, yerelKodu } from '@ortak/i18n/utils';
 import { KATALOG, calismaSayfasiVar } from '@ortak/lib/ezber/katalog';
 import { kendiLejanti, kilimSvg } from '@ortak/lib/ezber/kilim';
+import { KODLAR } from '@ortak/lib/ilim-yolu/bilgi-ilerleme';
+import { ALANLAR, yolKartlari } from '@ortak/lib/ilim-yolu/yollar';
 import Ikon from '../../components/Ikon.astro';
 import OkumaSatiri from '../../components/OkumaSatiri.astro';
 import { ilimMetinleri } from '../../i18n/ilim';
@@ -24,6 +26,9 @@ import { kilimimMetinleri } from '../../i18n/kilimim';
 import { metin } from '../../i18n/metinler';
 import { sablonlar } from '../../i18n/sablon';
 import { tekrarMetinleri } from '../../i18n/sina';
+import { yollarMetinleri } from '../../i18n/yollar';
+import { KARTLAR } from '../../lib/bilgi-karti-verisi';
+import { BILGI_ID_LISTESI } from '../../lib/bilgi-yolu';
 import { ezberKapagi } from '../../lib/yol-kapaklari';
 import Taban from '../../layouts/Taban.astro';
 import '../../styles/ilim.css';
@@ -47,6 +52,11 @@ const sira = sayfali.map((o) => o.id);
 const sayfaSet = new Set(sira);
 const n = tum.length;
 const yolMotifleri = ['m-goz', 'm-yildiz', 'm-sevron', 'm-mihrap'] as const;
+const yo = yollarMetinleri(dil);
+// Bilgi yolları (giriş yapmış görünümü): beş plan yolu kartlarda ve «Bugün»de, yedi seviye alanı yalnız rozet sayımında. «Yeni Müslüman yolu» BİLEREK yok (gizlilik).
+const planYollari = KODLAR.map((kod, n) => ({ id: `plan-${kod}`, ad: yo.planAd[kod], motif: yolMotifleri[n % 4], idler: yolKartlari(KARTLAR, `plan-${kod}`).map((k) => k.id) }));
+const alanYollari = ALANLAR.map((alan) => ({ id: `alan-${alan}`, idler: yolKartlari(KARTLAR, `alan-${alan}`).map((k) => k.id) }));
+const doldurAd = (s: string, d: Record<string, string | number>) => s.replace(/\{(\w+)\}/g, (_, k: string) => String(d[k] ?? ''));
 
 // Giriş yapmış görünümündeki kendi kilimim (Kilimim sayfasıyla aynı çizici ve aynı dokular; dokuları scripts/ana.ts cihazdan doldurur).
 const secenek = {
@@ -67,7 +77,16 @@ const veri = {
     devamEt: il.devamEt, yolDurumEzber: il.yolDurumEzber, yolDurumYok: il.yolDurumYok, tekrarBos: il.tekrarBos, tekrarAlt: il.tekrarAlt,
     tekrarla: il.tekrarla, hocaYok: il.hocaYok, hocaSeritler: il.hocaSeritler, hocaSon: il.hocaSon, birlesikBaslik: il.birlesikBaslik, birlesikOzet: il.birlesikOzet,
     kaldiginBos: il.kaldiginBos, kilimBos: il.kilimBos, hocaBaslik: il.hocaBaslik, hocaAciklama: il.hocaAciklama,
+    bugunKartAlt: il.bugunKartAlt, bugunKartGit: il.bugunKartGit, rozetSayisi: il.rozetSayisi, yolaBak: il.yolaBak, yolEzberAd: il.yolEzberAd,
   }),
+  bilgi: {
+    plan: planYollari,
+    alan: alanYollari,
+    bilgiIdler: [...BILGI_ID_LISTESI],
+    kartAdlari: Object.fromEntries(KARTLAR.map((k) => [k.id, k.baslik[dil]])),
+    sayim: yo.sayim,
+    rozetKazanildi: yo.rozetKazanildi,
+  },
   tm: { hafta1: tm.hafta1, haftaN: tm.haftaN },
   km: { doku: km.doku, dokuMadde: km.dokuMadde, ozetBasladi: km.ozetBasladi, ozetTakvim: km.ozetTakvim, ozetGun: km.ozetGun, sayfasiz: km.sayfasiz },
   baslik: km.baslik,
@@ -205,7 +224,7 @@ const veri = {
         <h1 id="selam-baslik" data-baslik>{il.baslikBos}</h1>
         <p class="iy-yolun">
           <span>{il.yolun}</span>
-          <a class="iy-yolun-isaret" href={`/${dil}/ezber/`}><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><use href="#m-goz" /></svg>{il.yolEzberAd}</a>
+          <a class="iy-yolun-isaret" href={`/${dil}/ezber/`} data-yolun-baglanti><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><use href="#m-goz" data-yolun-motif /></svg><span data-yolun-ad>{il.yolEzberAd}</span></a>
         </p>
       </section>
 
@@ -216,6 +235,16 @@ const veri = {
         </div>
         <ul class="iy-tekrar-liste" data-tekrar-liste aria-label={tm.liste} hidden></ul>
         <p class="iy-tekrar-bos" data-tekrar-bos>{il.tekrarBos}</p>
+        <ul class="iy-tekrar-liste" data-bugun-kart-liste aria-label={il.bugunKartGit} hidden>
+          <li class="iy-tekrar">
+            <span class="iy-tekrar-isaret" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><use href="#i-kitap" /></svg></span>
+            <div>
+              <h3 data-bugun-kart-ad></h3>
+              <p class="iy-tekrar-ust" data-bugun-kart-alt></p>
+            </div>
+            <a class="dugme birincil kucuk" href="#" data-bugun-kart-baglanti><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-kitap" /></svg><span class="dar-gizle">{il.bugunKartGit}</span></a>
+          </li>
+        </ul>
         <p class="iy-tekrar-hafta" data-tekrar-hafta hidden></p>
         <OkumaSatiri dil={dil} esitle />
         <template data-tekrar-satir>
@@ -261,6 +290,11 @@ const veri = {
       <div class="iy-bolum-bas">
         <p class="iy-ust-yazi">{il.yollarimUst}</p>
         <h2 id="yollarim-baslik">{il.yollarimBaslik}</h2>
+        <p class="iy-rozet-satiri" data-rozet-satiri hidden>
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-tik" /></svg>
+          <span data-rozet-sayisi></span>
+          <a href={`/${dil}/yollar/rozetler/`}>{yo.rozetBaglanti}</a>
+        </p>
       </div>
       <div class="iy-yollar">
         <article class="iy-yol ezber">
@@ -274,6 +308,19 @@ const veri = {
             <a class="dugme birincil kucuk" href={`/${dil}/ezber/`}>{il.ezbereGit}</a>
           </div>
         </article>
+        {planYollari.map((p) => (
+          <article class="iy-yol bilgi" data-bilgi-yol={p.id} hidden>
+            <div class="iy-yol-motif" aria-hidden="true"><svg viewBox="0 0 100 100"><use href={`#${p.motif}`} /></svg></div>
+            <div class="iy-yol-metin">
+              <h3>{p.ad} <small>{doldurAd(yo.kartSayisi, { n: p.idler.length })}</small></h3>
+              <svg class="kilim-serit iy-yol-serit" aria-hidden="true" focusable="false"><rect width="0" height="100%" fill="url(#serit)" data-serit /></svg>
+            </div>
+            <div class="iy-yol-sag">
+              <p class="durum" data-bilgi-durum></p>
+              <a class="dugme birincil kucuk" href={`/${dil}/yollar/${p.id}/`} data-bilgi-baglanti>{il.devamEt}</a>
+            </div>
+          </article>
+        ))}
         <article class="iy-yol kurs">
           <div class="iy-yol-motif" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#m-yildiz" /></svg></div>
           <div class="iy-yol-metin"><h3>{il.yolKursAd} <small>{il.yolKursRozet}</small></h3><p class="acik">{il.yolKursMetin}</p></div>
