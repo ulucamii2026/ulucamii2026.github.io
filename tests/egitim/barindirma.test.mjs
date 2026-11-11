@@ -77,6 +77,7 @@ test('Hosting: bütün yanıtlarda sıkı CSP ve güvenlik başlıkları', () =>
   assert.deepEqual(yonerge['script-src'], ["'self'", 'https://apis.google.com']);
   // Sesler ana siteden gelir (Diyanet kayıtları; egitim/src/lib/kimlik.ts ANA_SITE). `blob:` yalnız «Kendini sına»da çocuğun
   // kendi kaydını sayfa belleğinden çalmak içindir (2d); ağdan bir şey getirmez, başka köken eklenmedi.
+  const APPS_SCRIPT = oku('src/scripts/hoca-ekrani.ts').match(/const GAS = '([^']+)'/)[1];
   const anaSite = oku('egitim/src/lib/kimlik.ts').match(/ANA_SITE = '([^']+)'/)[1];
   assert.deepEqual(yonerge['media-src'], ["'self'", anaSite, 'blob:']); // 'self': İlim Yolu kart seslendirmesi egitim Hosting'in kendi alanından çalar
   // connect-src: sayfa ve service worker yalnız kendi kökeninden ve ana siteden (ses) okur; «İnternetsiz çalışmak için kaydet» sesi fetch ile
@@ -84,7 +85,12 @@ test('Hosting: bütün yanıtlarda sıkı CSP ve güvenlik başlıkları', () =>
   // Hesap (Dilim 0): Firestore, Kimlik Araç Seti, Token ve Apps Script (script.google.com → script.googleusercontent.com yönlendirmesi) kökenleri açık yazılır.
   assert.deepEqual(yonerge['connect-src'], ["'self'", anaSite, 'https://firestore.googleapis.com', 'https://identitytoolkit.googleapis.com',
     'https://securetoken.googleapis.com',
-    'https://europe-west1-ulucamii-portal.cloudfunctions.net', 'https://script.google.com', 'https://script.googleusercontent.com']);
+    'https://europe-west1-ulucamii-portal.cloudfunctions.net', APPS_SCRIPT, 'https://script.googleusercontent.com']);
+  // G-10: Apps Script yalnız TEK dağıtımın tam adresine açıktır (yol sabit); hoca ekranının GAS sabiti ve site.yaml'ın basvuru adresi aynı adrestir.
+  // Dağıtım değişirse ikisi ve bu başlık birlikte güncellenir; yoksa hoca ekranı çevirisi/listesi CSP'ye takılır.
+  assert.match(APPS_SCRIPT, /^https:\/\/script\.google\.com\/macros\/s\/[\w-]+\/exec$/);
+  assert.equal(oku('src/scripts/hoca-ekrani.ts').match(/const GAS = '([^']+)'/)[1], APPS_SCRIPT);
+  assert.equal(oku('src/content/ayarlar/site.yaml').match(/^\s*basvuru:\s*"([^"]+)"/m)[1], APPS_SCRIPT);
   // Çevrim dışı çalışma: service worker yalnız aynı kökenden (/sw.js), uygulama bildirimi yalnız aynı kökenden. Üçü dışında CSP değişmedi.
   assert.deepEqual(Object.keys(yonerge).sort(), ['base-uri', 'connect-src', 'default-src', 'font-src', 'form-action', 'frame-ancestors', 'frame-src', 'img-src', 'manifest-src', 'media-src', 'object-src', 'script-src', 'style-src', 'worker-src']);
   assert.doesNotMatch(csp, /unsafe-|\*|data:|http:/);
