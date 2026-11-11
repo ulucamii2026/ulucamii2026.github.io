@@ -1,3 +1,7 @@
+/* v48 (HAZIRLIK — canlıya alınmadı; canlı v47). Dilim 4 taşıması (P7b): veli portalı, Kur'an kursu sayfaları ve /e/ sesli dersleri egitim.ulucamii.be'de. Değişen yalnız adresler: ders kitabı
+   ve müfredat sayfası bağlantıları (KITAPLAR, MUFREDAT → egitim /<dil>/kurs/…), veli-cuma.gs (plan egitim /tr/veli/ sayfasından okunur, eski adres yedek;
+   portal ve materyal bağlantıları egitim; kimlik-sabitler.gs'a DOKUNULMADI — kimlik.json asıl kaynağı depo dışı). Müfredat PDF'i ulucamii.be'de kalır. Başka davranış değişmedi.
+   Yayın sırası: docs/ILIM-YOLU.md «Dilim 4 · geçiş» ve p7-yayin-adimlari.md (D:/tmp/ilim-yolu-arastirma/). */
 /* v44 (29 Eki 2026): veli e-postalarına Cc (Script Property VELI_CC; kayıt onayı kopyası + cuma bülteni; Rıdvan 18 Eki kararı).
    Cuma bülteninin boş replyTo hatası (v31 silinen dinGorevlisi) ve LanguageApp'in değiştirmeden döndürdüğü başlıkta durması
    (23 Eki «cuma-ceviri-eksik») düzeltildi: Fransızca ders başlıkları önce sitenin konular-fr.json sözlüğünden gelir (veli-cuma.gs). */
@@ -105,7 +109,7 @@
  * bu KASITLI: PDF artık istemciden gelmez, eski gövde biçimi zaten geçersizdir.)
  */
 
-var SURUM = 47;
+var SURUM = 48;
 /* 21 Eyl 2026: Sitenin ve formların dilleri TEK listede. Gönderilen form dilinin («dil» alanı) ve
    ?islem=pdf-ornek önizlemesinin geçerli değerleri buradan okunur; ["tr","fr","en"] artık hiçbir yere yazılmaz.
    DİKKAT — bu liste FORM dilidir: velinin kalıcı İLETİŞİM dili (veli.iletisimDili) ve tören dili
@@ -1564,8 +1568,8 @@ var KITAPLAR = {
   uygulama: "https://play.google.com/store/apps/details?id=com.ditib.camiyegidiyorum",
   temelDiniBilgiler: "https://dijital.diyanet.gov.tr/e-kitap/temel-dini-bilgiler/seyfettin-yazici/ilmihal-fikih/4218",
   elifba: "https://egitimhizmetleri.diyanet.gov.tr/Documents/Elif-Ba.pdf",
-  sayfaTr: "https://ulucamii.be/tr/kuran-kursu/#ders-kitaplari",
-  sayfaFr: "https://ulucamii.be/fr/ecole-coranique/#manuels"
+  sayfaTr: "https://egitim.ulucamii.be/tr/kurs/#ders-kitaplari",
+  sayfaFr: "https://egitim.ulucamii.be/fr/kurs/#manuels"
 };
 
 function kitapSatirlari(dil) {
@@ -1612,8 +1616,8 @@ function kitapSatirlari(dil) {
 /* MÜFREDAT EKİ (v13'ten AYNEN korunmuştur) */
 var MUFREDAT = {
   pdf: "https://ulucamii.be/belgeler/kuran-kursu/Ulu-Camii-Kuran-Kursu-Mufredat-2026-2027.pdf",
-  sayfa: "https://ulucamii.be/tr/kuran-kursu-mufredati/",
-  sayfaFr: "https://ulucamii.be/fr/programme-ecole-coranique/",
+  sayfa: "https://egitim.ulucamii.be/tr/kurs/mufredat/",
+  sayfaFr: "https://egitim.ulucamii.be/fr/kurs/mufredat/",
   dosyaAdi: "Ulu Camii Kuran Kursu 2026-2027 Mufredat.pdf"
 };
 

@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import vm from 'node:vm';
-import {readFileSync} from 'node:fs';
+import {existsSync,readFileSync} from 'node:fs';
 const source=['kimlik-sabitler.gs','veli-eposta-sablon.gs','veli-cuma.gs'].map(ad=>readFileSync(new URL('../scripts/apps-script/'+ad,import.meta.url),'utf8')).join('\n');
 const c=vm.createContext({console});vm.runInContext(source,c);
 const plan={donem:'2026-2027',gunler:[{tarih:'2026-09-12',dersler:[{kod:'kuran',konu:'Harfler'}]},{tarih:'2026-09-13',dersler:[{kod:'ahlak',konu:'Yardımlaşma'}]}]};
@@ -27,7 +27,7 @@ test('Yayımlanmamış, çok eski ve sonraki haftanın ödevleri e-postaya alın
  assert.equal(m.odev.odev.tr,'Tekrar');assert.doesNotMatch(c.veliCumaIcerik(m,'tr',translate).body,/GİZLİ|SONRA|ESKİ/);
 });
 test('Fransızca velide konu, gövde, düğme, dersler ve bağlantı Fransızcadır',()=>{
- const r=c.veliCumaIcerik(model(),'fr',translate);assert.match(r.subject,/Bon vendredi/);assert.match(r.htmlBody,/Les lettres/);assert.match(r.htmlBody,/Ouvrir le portail des parents/);assert.match(r.body,/\/fr\/portail-parents\//);assert.doesNotMatch(r.htmlBody,/Harfler|Yardımlaşma|Hayırlı|Değerli velimiz/);
+ const r=c.veliCumaIcerik(model(),'fr',translate);assert.match(r.subject,/Bon vendredi/);assert.match(r.htmlBody,/Les lettres/);assert.match(r.htmlBody,/Ouvrir le portail des parents/);assert.match(r.body,/https:\/\/egitim\.ulucamii\.be\/fr\/veli\//);assert.match(r.body,/https:\/\/egitim\.ulucamii\.be\/fr\/kurs\/materyaller\//);assert.doesNotMatch(r.body,/portail-parents|supports-de-cours/);assert.doesNotMatch(r.htmlBody,/Harfler|Yardımlaşma|Hayırlı|Değerli velimiz/);
 });
 test('Fransızca ödev eksikse Türkçe ayrıntı Fransızca e-postaya sızmaz',()=>{
  const m=model();m.odev={tarih:'2026-09-05',odev:{tr:'Türkçe özel ödev'},ezber:{tr:'Türkçe ezber'}};
@@ -81,4 +81,39 @@ test('v44: Fransızca başlık önce sitenin konu sözlüğünden gelir; makine 
  const x=vm.createContext({console,LanguageApp:{translate:t=>{ceviri++;return t;}}});vm.runInContext(source,x);x.veliPortalHash=s=>s;
  assert.equal(x.veliCumaCevir("Benim dinim İslam'dır",fr),fr["Benim dinim İslam'dır"]);assert.equal(x.veliCumaCevir("Benim dinim İslam'dır (1/2)",fr),fr["Benim dinim İslam'dır"]+' (1/2)');assert.equal(ceviri,0);
  assert.throws(()=>x.veliCumaCevir('Sözlükte olmayan başlık',fr),/cuma-ceviri-eksik/,'değişmeden dönen makine çevirisi yine yarım kampanya başlatmaz');
+});
+// Dilim 4 (P7b, v48): plan egitim /tr/veli/ sayfasındaki <script id="veli-veri"> bloğundan okunur; eski ulucamii.be adresi yedektir.
+function planOkuBaglami(yanitlar){
+ const istekler=[];
+ const x=vm.createContext({console,UrlFetchApp:{fetch:(u)=>{istekler.push(u);const y=yanitlar(u);return {getResponseCode:()=>y.kod,getContentText:()=>y.metin};}}});
+ vm.runInContext(source,x);return {x,istekler};
+}
+const sayfa=(p)=>'<html><body><script type="application/json" id="veli-veri">'+JSON.stringify(p)+'</script></body></html>';
+const kitapPlan={donem:'2026-2027',gunler:[]};
+const hamKitap=JSON.stringify({donem:'2026-2027',gunler:[]});
+test('Cuma planı önce egitim sayfasından okunur (eski adrese hiç gidilmez)',()=>{
+ const {x,istekler}=planOkuBaglami((u)=>u.startsWith('https://raw.githubusercontent.com/')?{kod:200,metin:hamKitap}:{kod:200,metin:sayfa(kitapPlan)});
+ const p=x.veliCumaPlanOku();assert.equal(p.donem,'2026-2027');
+ assert.equal(istekler[0],'https://egitim.ulucamii.be/tr/veli/');assert.equal(istekler.some(u=>u.includes('veli-portali')),false);
+});
+test('egitim yanıt vermezse eski adres yedek olur; ikisi de blok taşımazsa cuma-plan-yok / cuma-plan-http',()=>{
+ let b=planOkuBaglami((u)=>u.includes('egitim.ulucamii.be')?{kod:503,metin:''}:u.startsWith('https://raw.githubusercontent.com/')?{kod:200,metin:hamKitap}:{kod:200,metin:sayfa(kitapPlan)});
+ assert.equal(b.x.veliCumaPlanOku().donem,'2026-2027');assert.deepEqual(b.istekler.slice(0,2),['https://egitim.ulucamii.be/tr/veli/','https://ulucamii.be/tr/veli-portali/']);
+ // Eski sayfa yönlendirme olduktan sonra blok taşımaz: egitim da kapalıysa hata kodu açık kalır.
+ b=planOkuBaglami((u)=>u.includes('egitim.ulucamii.be')?{kod:503,metin:''}:{kod:200,metin:'<html>yönlendirme</html>'});
+ assert.throws(()=>b.x.veliCumaPlanOku(),/cuma-plan-yok/);
+ b=planOkuBaglami(()=>({kod:500,metin:''}));assert.throws(()=>b.x.veliCumaPlanOku(),/cuma-plan-http/);
+ b=planOkuBaglami((u)=>u.includes('egitim.ulucamii.be')?{kod:200,metin:sayfa({donem:'bozuk',gunler:[]})}:{kod:200,metin:''});assert.throws(()=>b.x.veliCumaPlanOku(),/cuma-donem-gecersiz/);
+});
+test('Gerçek egitim /tr/veli/ çıktısındaki veli-veri bloğu planı verir (derleme varsa)',{skip:!existsSync('egitim/dist/tr/veli/index.html')&&'önce npm run egitim:build'},()=>{
+ const html=readFileSync('egitim/dist/tr/veli/index.html','utf8');
+ const {x}=planOkuBaglami((u)=>u.startsWith('https://raw.githubusercontent.com/')?{kod:200,metin:readFileSync(`src/data/yillik-plan-2026-2027.json`,'utf8')}:{kod:200,metin:html});
+ const p=x.veliCumaPlanOku();assert.match(p.donem,/^\d{4}-\d{4}$/);assert.ok(p.gunler.length>10);
+});
+test('v48: ders kitabı ve müfredat sayfası bağlantıları egitim adresinde; müfredat PDF’i ulucamii.be’de kalır',()=>{
+ const a=readFileSync(new URL('../scripts/apps-script/ulucamii-Kod-v48.gs',import.meta.url),'utf8');
+ for(const u of ['https://egitim.ulucamii.be/tr/kurs/#ders-kitaplari','https://egitim.ulucamii.be/fr/kurs/#manuels','https://egitim.ulucamii.be/tr/kurs/mufredat/','https://egitim.ulucamii.be/fr/kurs/mufredat/'])assert.ok(a.includes(u),u);
+ for(const u of ['/tr/kuran-kursu/','/fr/ecole-coranique/','/tr/kuran-kursu-mufredati/','/fr/programme-ecole-coranique/'])assert.equal(a.includes('https://ulucamii.be'+u),false,u);
+ assert.ok(a.includes('https://ulucamii.be/belgeler/kuran-kursu/Ulu-Camii-Kuran-Kursu-Mufredat-2026-2027.pdf'));
+ assert.match(a,/^var SURUM = 48;$/m);
 });
