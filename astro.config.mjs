@@ -1,11 +1,14 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import preact from '@astrojs/preact';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 import { swDamgala } from './scripts/ekran-damga.mjs';
+import { TASIMA_ACIK, yonlendirmeler } from './src/lib/egitim-tasima.ts';
+import { yonlendirmeSayfasi } from './src/lib/egitim-yonlendir-html.ts';
+import { diller, yollar } from './src/i18n/ui.ts';
 
 // https://astro.build/config
 export default defineConfig({
@@ -28,6 +31,25 @@ export default defineConfig({
   },
   integrations: [
     preact({ compat: false }),
+    // Dilim 4 (P7a): veli portalı, hoca ekranı, Kur'an kursu sayfaları ve basılı /e/<kod>/ karekodları egitim.ulucamii.be'ye taşındı. Eski sayfalar
+    // yerinde derlenir (geri alma: src/lib/egitim-tasima.ts → TASIMA_ACIK=false); çıktıları derleme SONUNDA, site haritasından ÖNCE yönlendirme sayfasıyla
+    // değişir. Sayfa Astro dışı saf HTML'dir: sayaç/harici betik/CSS yok (src/lib/egitim-yonlendir-html.ts). Hooks, dizi sırasıyla koşar.
+    {
+      name: 'egitim-yonlendirme',
+      hooks: {
+        'astro:build:done': ({ dir, logger }) => {
+          if (!TASIMA_ACIK) { logger.info('egitim yönlendirmesi KAPALI (TASIMA_ACIK=false): eski sayfalar olduğu gibi yayınlanır'); return; }
+          const kodlar = JSON.parse(readFileSync(new URL('./src/data/ecouter.json', import.meta.url), 'utf8')).kodlar;
+          const liste = yonlendirmeler(yollar, Object.keys(diller), kodlar);
+          for (const y of liste) {
+            const dosya = fileURLToPath(new URL(y.dosya, dir));
+            if (!existsSync(dosya)) throw new Error(`egitim yönlendirmesi: derlenmiş sayfa yok (adres değişmiş olabilir): ${y.dosya}`);
+            writeFileSync(dosya, yonlendirmeSayfasi(y.hedef, y.dil, y.hesap));
+          }
+          logger.info(`${liste.length} sayfa egitim.ulucamii.be yönlendirmesine çevrildi`);
+        },
+      },
+    },
     sitemap({
       // Sitemap'e yalnız dizine girebilen sayfalar konur. Slug listesi tutmak yerine sayfanın
       // KENDİ <meta name="robots"> etiketi okunur (tek doğruluk kaynağı) — slug değişince
