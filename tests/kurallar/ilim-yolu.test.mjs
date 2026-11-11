@@ -415,3 +415,51 @@ test('ihtida/ozet ve ozel/hassas: YALNIZ sahibi okur — hoca, başka kullanıc�
   // Hoca yalnız calisma'yı okuyabilir; üst belge listelemesi altkoleksiyon verisini getirmez.
   await assertSucceeds(oku(hocaA(), 'kullanicilar/u1/calisma/ezber'));
 });
+
+// ── 11 Kasım 2026: 12 haftalık yolun ilerlemesi `ozel/yol12` (calisma/ DEĞİL: calisma listesi hocaya açık) ──
+test('ozel/yol12: YALNIZ sahibi okur/yazar/siler; biçim: v, maddeler (h01…h12), guncelleme = sunucu zamanı; hoca/başka/çocuk/anonim hiçbir şey yapamaz', async () => {
+  const yol = 'kullanicilar/u1/ozel/yol12';
+  await env.withSecurityRulesDisabled(async (ctx) => {
+    const d = ctx.firestore();
+    await setDoc(doc(d, 'kullanicilar/u1'), { ad: 'ali', tur: 'kursYetiskin', ref: 'R2', dil: 'tr', olusturma: ESKI }); // hoca kursaBagli() true
+    await setDoc(doc(d, 'paylasimlar/u1'), { hocalar: ['hoca-a'], zaman: ESKI });
+    await setDoc(doc(d, yol), { v: 1, maddeler: { h01: '31' }, guncelleme: ESKI });
+  });
+  const u1 = kisi('u1');
+  await assertSucceeds(oku(u1, yol));
+  // Başkaları: okuma, yazma, silme, liste — hepsi kapalı (kursa bağlı hoca ve paylaşılan hoca dahil).
+  for (const db of [hocaA(), hocaB(), kisi('u2'), kisi('y1', { ref: 'R2' }), cocuk(), anonim()]) {
+    await assertFails(oku(db, yol));
+    await assertFails(setDoc(doc(db, yol), { v: 1, maddeler: {}, guncelleme: serverTimestamp() }));
+    await assertFails(deleteDoc(doc(db, yol)));
+    await assertFails(getDocs(collection(db, 'kullanicilar/u1/ozel')));
+  }
+  await assertFails(getDocs(collection(u1, 'kullanicilar/u1/ozel'))); // sahibi de listeleyemez
+  // Hocanın calisma listesi bu belgeyi getirmez (ayrı altkoleksiyon).
+  await assertSucceeds(getDocs(collection(hocaA(), 'kullanicilar/u1/calisma')));
+  // Geçerli yazım.
+  const u3 = kisi('u3');
+  const y3 = 'kullanicilar/u3/ozel/yol12';
+  await assertSucceeds(setDoc(doc(u3, y3), { v: 1, maddeler: { h01: '31', h12: '1' }, guncelleme: serverTimestamp() }));
+  await assertSucceeds(setDoc(doc(u3, y3), { maddeler: {}, guncelleme: serverTimestamp() }));
+  const hepsi = Object.fromEntries(Array.from({ length: 12 }, (_, i) => ['h' + String(i + 1).padStart(2, '0'), '3333']));
+  await assertSucceeds(setDoc(doc(u3, y3), { v: 1, maddeler: hepsi, guncelleme: serverTimestamp() }));
+  // Geçersiz yazımlar: fazla alan, eski zaman, yanlış tür, h13, ek anahtar, zamansız, başka ad.
+  for (const kotu of [
+    { v: 1, maddeler: {}, guncelleme: serverTimestamp(), ad: 'x' },
+    { v: 1, maddeler: {}, guncelleme: serverTimestamp(), muhtedi: true },
+    { v: 1, maddeler: {}, guncelleme: ESKI },
+    { v: 1, maddeler: 'x', guncelleme: serverTimestamp() },
+    { v: 'a', maddeler: {}, guncelleme: serverTimestamp() },
+    { v: 1, maddeler: { h13: '1' }, guncelleme: serverTimestamp() },
+    { v: 1, maddeler: { yeniMusluman: '1' }, guncelleme: serverTimestamp() },
+    { v: 1, maddeler: {} },
+    { v: 1, guncelleme: serverTimestamp() },
+  ]) {
+    await assertFails(setDoc(doc(u3, y3), kotu), JSON.stringify(Object.keys(kotu)));
+  }
+  await assertFails(setDoc(doc(u3, 'kullanicilar/u3/ozel/yol13'), { v: 1, maddeler: {}, guncelleme: serverTimestamp() }));
+  await assertSucceeds(deleteDoc(doc(u3, y3)));
+  // calisma/ içine bu verinin adı yazılamaz (yeni ad açılmadı).
+  await assertFails(setDoc(doc(u3, 'kullanicilar/u3/calisma/yol12'), calisma()));
+});

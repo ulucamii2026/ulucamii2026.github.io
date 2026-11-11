@@ -32,6 +32,9 @@ const katalog = JSON.parse(readFileSync(new URL('../src/data/ezber/katalog.json'
 // İlim Yolu (10 Kasım 2026): kart sayfaları (/ogren/<kart>/) ve yol sayfaları (/yollar/…) site haritasındadır; kimlikler depodaki kart verisinden ve derlenen yol klasörlerinden gelir.
 const kartKimlikleri = readdirSync(new URL('../src/data/ilim-yolu/kartlar/', import.meta.url)).flatMap((d) => JSON.parse(readFileSync(new URL(`../src/data/ilim-yolu/kartlar/${d}`, import.meta.url), 'utf8')).kartlar.map((k) => k.id));
 const yolSayfalari = readdirSync(new URL('../egitim/dist/tr/yollar/', import.meta.url), { withFileTypes: true }).filter((e) => e.isDirectory()).map((e) => e.name);
+// Yeni Müslüman yolu (11 Kasım 2026): 12 hafta + 8 adım sayfası, kimlikler paylaşılan içerikten.
+const yeniYol = JSON.parse(readFileSync(new URL('../paylasilan/ogrenme-yolu/icerik.json', import.meta.url), 'utf8'));
+const yeniYolSayfalari = [...yeniYol.haftalar.map((h) => h.id), ...yeniYol.adimlar.map((a) => `adim-${a.no}`)];
 const sesliler = katalog.ogeler.filter((o) => o.ses?.tam || o.ses?.parcalar?.length || o.kuran || o.bilgiMetni || o.metinli);
 const bilgiOgeleri = katalog.ogeler.filter((o) => o.bilgiMetni);
 const firebase = JSON.parse(readFileSync(new URL('../firebase.json', import.meta.url), 'utf8'));
@@ -96,6 +99,7 @@ const locs = [...(await harita.text()).matchAll(/<loc>([^<]+)<\/loc>/g)].map(([,
 const beklenen = DILLER.flatMap((d) => [`https://egitim.ulucamii.be/${d}/`, `https://egitim.ulucamii.be/${d}/ezber/`, `https://egitim.ulucamii.be/${d}/calisma-belgesi/`, `https://egitim.ulucamii.be/${d}/kilimim/`, `https://egitim.ulucamii.be/${d}/kartlar/`, `https://egitim.ulucamii.be/${d}/takvim/`, `https://egitim.ulucamii.be/${d}/yollar/`,
   ...['ibadet', 'ibadet/abdest', 'ibadet/namaz', ...['sabah', 'ogle', 'ikindi', 'aksam', 'yatsi'].map((v) => `ibadet/namaz/${v}`), 'okuma', 'yarisma', ...[1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => `okuma/o${n}`)].map((y) => `https://egitim.ulucamii.be/${d}/${y}/`),
   ...yolSayfalari.map((y) => `https://egitim.ulucamii.be/${d}/yollar/${y}/`),
+  ...yeniYolSayfalari.map((k) => `https://egitim.ulucamii.be/${d}/yollar/yeni-musluman/${k}/`),
   ...kartKimlikleri.map((k) => `https://egitim.ulucamii.be/${d}/ogren/${k}/`),
   ...sesliler.map((o) => `https://egitim.ulucamii.be/${d}/calis/${o.id}/`)]).sort();
 kontrol(`site haritası ${beklenen.length} adres`, harita.status === 200 && JSON.stringify(locs) === JSON.stringify(beklenen), `${harita.status}, ${locs.length} adres`);
@@ -104,6 +108,13 @@ for (const yol of ['/tr/hesap/', '/tr/hesap/giris/', '/tr/hesap/kayit/', '/k/'])
   const y = await getir(yol);
   const h = await y.text();
   kontrol(`${yol} 200, noindex, no-cache`, y.status === 200 && /<meta name="robots" content="noindex, nofollow">/.test(h) && y.headers.get('cache-control') === 'no-cache', `${y.status} ${y.headers.get('cache-control')}`);
+}
+// Yeni Müslüman yolu: hafta sayfası 200; video yalnız tr/en'de ve tıklamadan önce iframe yok (CSP'ye uygun, üçüncü tarafa istek yok).
+for (const d of DILLER) {
+  const y = await getir(`/${d}/yollar/yeni-musluman/h01/`);
+  const h = await y.text();
+  const videoVar = /data-yy-video="[w-]{11}"/.test(h);
+  kontrol(`/${d}/yollar/yeni-musluman/h01/ 200, video ${d === 'tr' || d === 'en' ? 'var' : 'yok'}, iframe yok`, y.status === 200 && videoVar === (d === 'tr' || d === 'en') && !/<iframe/i.test(h), `${y.status} video=${videoVar}`);
 }
 for (const [yol, tur] of [['/favicon.ico', /icon/], ['/favicon.svg', /svg/], ['/apple-touch-icon.png', /png/],
   ['/icon-192.png', /png/], ['/icon-512.png', /png/], ['/icon-maskable-512.png', /png/],

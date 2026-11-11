@@ -202,9 +202,9 @@ test.describe('yerleştirme testi (tarayıcıda, hiçbir şey gönderilmez)', ()
 
 test.describe('yol dizini, yol sayfası, rozet ve belge', () => {
   for (const dil of DILLER) {
-    test(`${dil}: dizin 13 yol gösterir, taşmaz, hreflang var`, async ({ page }) => {
+    test(`${dil}: dizin 14 yol kartı gösterir (13 bilgi yolu + Yeni Müslüman yolu), taşmaz, hreflang var`, async ({ page }) => {
       await page.goto(`/${dil}/yollar/`);
-      await expect(page.locator('.yl-yol')).toHaveCount(13);
+      await expect(page.locator('.yl-yol')).toHaveCount(14);
       await expect(page.locator('link[rel="alternate"][hreflang]')).toHaveCount(6);
       expect(await tasmaYok(page)).toBe(true);
       await page.goto(`/${dil}/`);

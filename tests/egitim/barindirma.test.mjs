@@ -69,7 +69,9 @@ test('Hosting: bütün yanıtlarda sıkı CSP ve güvenlik başlıkları', () =>
   const csp = deger(genel, 'Content-Security-Policy');
   const yonerge = Object.fromEntries(csp.split(';').map((y) => y.trim().split(/\s+/)).map(([ad, ...d]) => [ad, d]));
   assert.deepEqual(yonerge['default-src'], ["'none'"]);
-  for (const ad of ['style-src', 'img-src', 'font-src', 'worker-src', 'manifest-src', 'frame-src', 'frame-ancestors']) assert.deepEqual(yonerge[ad], ["'self'"], ad);
+  for (const ad of ['style-src', 'img-src', 'font-src', 'worker-src', 'manifest-src', 'frame-ancestors']) assert.deepEqual(yonerge[ad], ["'self'"], ad);
+  // Yeni Müslüman yolu (11 Kasım 2026): Diyanet videoları tıklanınca youtube-nocookie.com çerçevesinde açılır; frame-src'ye YALNIZ bu köken eklendi.
+  assert.deepEqual(yonerge['frame-src'], ["'self'", 'https://www.youtube-nocookie.com']);
   for (const ad of ['base-uri', 'form-action', 'object-src']) assert.deepEqual(yonerge[ad], ["'none'"], ad);
   // Google ile giriş: yalnız Google'ın giriş betiği (gapi) dış betik kaynağıdır.
   assert.deepEqual(yonerge['script-src'], ["'self'", 'https://apis.google.com']);
@@ -128,7 +130,10 @@ const sesliler = JSON.parse(oku('src/data/ezber/katalog.json')).ogeler.filter((o
 // İlim Yolu Dilim 2: bilgi yolları dizini, 13 yol, yerleştirme, rozetler ve her bilgi kartı (src/data/ilim-yolu/kartlar).
 const KART_IDLERI = ['kuran', 'itikat', 'ibadet', 'siyer', 'ahlak'].flatMap((k) => JSON.parse(readFileSync(new URL(`src/data/ilim-yolu/kartlar/${k}.json`, KOK), 'utf8')).kartlar.map((c) => c.id));
 const YOL_IDLERI = ['plan-kuran', 'plan-itikat', 'plan-ibadet', 'plan-siyer', 'plan-ahlak', ...['okuma', 'kuranBilgi', 'itikat', 'namaz', 'ibadet', 'siyer', 'ahlak'].map((a) => `alan-${a}`), 'bilgi'];
-const dilYollari = DILLER.flatMap((d) => [`${d}/`, `${d}/ezber/`, `${d}/calisma-belgesi/`, `${d}/kilimim/`, `${d}/kartlar/`, `${d}/takvim/`, `${d}/yollar/`, `${d}/yollar/rozetler/`, `${d}/yollar/yerlestirme/`, `${d}/ibadet/`, `${d}/ibadet/abdest/`, `${d}/ibadet/namaz/`, ...['sabah', 'ogle', 'ikindi', 'aksam', 'yatsi'].map((v) => `${d}/ibadet/namaz/${v}/`), `${d}/okuma/`, `${d}/yarisma/`, ...[1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => `${d}/okuma/o${n}/`), ...YOL_IDLERI.map((y) => `${d}/yollar/${y}/`), ...KART_IDLERI.map((i) => `${d}/ogren/${i}/`), ...sesliler.map((o) => `${d}/calis/${o.id}/`)]);
+// Yeni Müslüman yolu (11 Kasım 2026): 12 hafta + 8 adım sayfası, kimlikler paylaşılan içerikten.
+const YENI_YOL = JSON.parse(readFileSync(new URL('../../paylasilan/ogrenme-yolu/icerik.json', import.meta.url), 'utf8'));
+const YENI_YOL_SAYFALARI = [...YENI_YOL.haftalar.map((h) => h.id), ...YENI_YOL.adimlar.map((a) => `adim-${a.no}`)];
+const dilYollari = DILLER.flatMap((d) => [`${d}/`, `${d}/ezber/`, `${d}/calisma-belgesi/`, `${d}/kilimim/`, `${d}/kartlar/`, `${d}/takvim/`, `${d}/yollar/`, `${d}/yollar/rozetler/`, `${d}/yollar/yerlestirme/`, `${d}/ibadet/`, `${d}/ibadet/abdest/`, `${d}/ibadet/namaz/`, ...['sabah', 'ogle', 'ikindi', 'aksam', 'yatsi'].map((v) => `${d}/ibadet/namaz/${v}/`), `${d}/okuma/`, `${d}/yarisma/`, ...[1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => `${d}/okuma/o${n}/`), ...YOL_IDLERI.map((y) => `${d}/yollar/${y}/`), `${d}/yollar/yeni-musluman/`, ...YENI_YOL_SAYFALARI.map((k) => `${d}/yollar/yeni-musluman/${k}/`), ...KART_IDLERI.map((i) => `${d}/ogren/${i}/`), ...sesliler.map((o) => `${d}/calis/${o.id}/`)]);
 // Çevrim dışı çalışma sayfaları (noindex, site haritasında yok) satır içi betik denetimine girer: service worker bunları önyükler.
 const cevrimdisiYollari = DILLER.map((d) => `${d}/cevrimdisi/`);
 // Hesap sayfaları ve kart girişi (2 Kasım 2026): noindex, site haritasında ve önbellekte yok; yine de CSP’ye uyar (satır içi betik yok).

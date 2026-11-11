@@ -490,8 +490,20 @@ service cloud.firestore {
                  && d.riza.metinSurum is string && d.riza.metinSurum.size() >= 1 && d.riza.metinSurum.size() <= 40)
               || (d.muhtedi == false && !('riza' in d)));
         }
-        allow get, delete: if belge == 'hassas' && sahip(uid);
-        allow create, update: if belge == 'hassas' && sahip(uid) && canli(uid) && !cocukOturumu() && hassasGecerli();
+        /* 12 haftalık yolun ilerlemesi (11 Kasım 2026): hafta başına dört işaret, başka hiçbir şey. calisma/ DEĞİL, burada: calisma listesini kursun
+           hocası okuyabilir, bu belgeyi YALNIZ sahibi okur (hoca, haftalık e-posta, veli ve rapor görünümleri dışarıda). Biçim: v, maddeler (en çok
+           h01…h12), guncelleme = sunucu zamanı; değerlerin içeriğini kural denetlemez (4 haneli '0'…'3' dizesi; istemci temizler). */
+        function yol12Gecerli() {
+          let d = request.resource.data;
+          return d.keys().hasOnly(['v', 'maddeler', 'guncelleme']) && d.keys().hasAll(['maddeler', 'guncelleme'])
+            && d.maddeler is map && d.maddeler.size() <= 12
+            && d.maddeler.keys().hasOnly(['h01', 'h02', 'h03', 'h04', 'h05', 'h06', 'h07', 'h08', 'h09', 'h10', 'h11', 'h12'])
+            && (!('v' in d) || d.v is int)
+            && d.guncelleme == request.time;
+        }
+        allow get, delete: if (belge == 'hassas' || belge == 'yol12') && sahip(uid);
+        allow create, update: if (belge == 'hassas' && sahip(uid) && canli(uid) && !cocukOturumu() && hassasGecerli())
+          || (belge == 'yol12' && sahip(uid) && canli(uid) && yol12Gecerli());
         allow list: if false;
       }
 

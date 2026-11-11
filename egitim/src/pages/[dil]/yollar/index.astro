@@ -11,6 +11,7 @@ import { ALANLAR, yolKartlari } from '@ortak/lib/ilim-yolu/yollar';
 import Ikon from '../../../components/Ikon.astro';
 import { ilimMetinleri } from '../../../i18n/ilim';
 import { alanAdlari, yollarMetinleri } from '../../../i18n/yollar';
+import { yeniYolMetinleri } from '../../../i18n/yeni-yol';
 import { BILGI_ID_LISTESI } from '../../../lib/bilgi-yolu';
 import { yolKapagi } from '../../../lib/yol-kapaklari';
 import { KARTLAR } from '../../../lib/bilgi-karti-verisi';
@@ -25,6 +26,7 @@ export function getStaticPaths() {
 const dil = Astro.params.dil as Dil;
 const y = yollarMetinleri(dil);
 const il = ilimMetinleri(dil);
+const yy = yeniYolMetinleri(dil);
 const alanlar = alanAdlari(dil);
 const motifler = ['m-goz', 'm-yildiz', 'm-sevron', 'm-mihrap'] as const;
 const doldur = (s: string, d: Record<string, string | number>) => s.replace(/\{(\w+)\}/g, (_, k: string) => String(d[k] ?? ''));
@@ -54,6 +56,22 @@ const veri = {
         <p>{y.yerMetin}</p>
         <a class="dugme birincil" href={`/${dil}/yollar/yerlestirme/`}>{y.yerDugme} <Ikon ad="ok" /></a>
       </div>
+    </section>
+
+    <section class="iy-bolum" id="yeni-musluman" aria-labelledby="yeni-baslik">
+      <div class="iy-bolum-bas">
+        <h2 id="yeni-baslik">{yy.ad}</h2>
+        <p>{yy.aciklama}</p>
+      </div>
+      <ul class="yl-yollar">
+        <li class="yl-yol">
+          <div class="yl-yol-motif" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#m-mihrap" /></svg></div>
+          <div class="yl-yol-metin">
+            <h3><a href={`/${dil}/yollar/yeni-musluman/`}>{yy.ad}</a></h3>
+            <p class="yl-sayi">{yy.kartOzet}</p>
+          </div>
+        </li>
+      </ul>
     </section>
 
     <section class="iy-bolum" id="plan" aria-labelledby="plan-baslik">

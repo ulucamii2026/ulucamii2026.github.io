@@ -7,7 +7,7 @@
  * giriş yapmış görünümü scripts/ana.ts doldurur ve oturum varsa Firebase'i o zaman yükler. JS kapalıysa ya da işaret yoksa ziyaretçi görünümü kalır.
  *
  * Eski Ezber Kilimi girişi 2 Kasım 2026'dan beri /[dil]/ezber/ adresindedir; bu sayfadaki eski bağlantı çapaları (#seritler, #m-…) o sayfaya
- * yönlendirilir (scripts/ana.ts). Dört yoldan Ezber Kilimi, kurs bilgileri ve seviye yolu hazır (Dilim 2: /[dil]/yollar/); Yeni Müslüman yolu sonraki dilimde
+ * yönlendirilir (scripts/ana.ts). Dört yoldan Ezber Kilimi, kurs bilgileri ve seviye yolu hazır (Dilim 2: /[dil]/yollar/); Yeni Müslüman yolu 11 Kasım 2026'dan beri açık (/[dil]/yollar/yeni-musluman/)
  * açılır, o zamana dek «Hazırlanıyor» yazar ve ölü bağlantı konmaz.
  */
 import type { Dil } from '@ortak/i18n/ui';
@@ -155,7 +155,7 @@ const veri = {
             <h3>{il.yolYeniAd} <small>{il.yolYeniRozet}</small></h3>
             <p class="acik">{il.yolYeniMetin}</p>
           </div>
-          <div class="iy-yol-sag"><p class="durum">{il.hazirlaniyor}</p></div>
+          <div class="iy-yol-sag"><a class="dugme ikincil kucuk" href={`/${dil}/yollar/yeni-musluman/`}>{il.yolaBak}</a></div>
         </article>
       </div>
     </section>
@@ -287,7 +287,7 @@ const veri = {
         <article class="iy-yol yeni">
           <div class="iy-yol-motif" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#m-mihrap" /></svg></div>
           <div class="iy-yol-metin"><h3>{il.yolYeniAd} <small>{il.yolYeniRozet}</small></h3><p class="acik">{il.yolYeniMetin}</p></div>
-          <div class="iy-yol-sag"><p class="durum">{il.hazirlaniyor}</p></div>
+          <div class="iy-yol-sag"><a class="dugme ikincil kucuk" href={`/${dil}/yollar/yeni-musluman/`}>{il.yolaBak}</a></div>
         </article>
       </div>
     </section>
