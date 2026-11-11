@@ -2287,6 +2287,7 @@ function ihtidaPostIsleV2(v) {
       onceki = anahtar ? ihtidaV2AnahtarBul(sayfaV2, anahtar) : null;
       if (onceki) {
         ihtidaPaketKuyrugaAl(onceki.ref); // Satır kaydolup kuyruk yazımı kesilmişse tamamla.
+        if (typeof ihtidaPaneleYansitKuyrugaAlGuvenli === "function") ihtidaPaneleYansitKuyrugaAlGuvenli(onceki.ref); // WP4: panel yansıtması (anahtar kapalıysa etkisiz; hata yanıtı etkilemez)
         return json({ ok: true, ref: onceki.ref, tekrar: true, paket: "sirada" });
       }
 
@@ -2323,6 +2324,7 @@ function ihtidaPostIsleV2(v) {
       ]);
       SpreadsheetApp.flush();
       ihtidaPaketKuyrugaAl(ref);
+      if (typeof ihtidaPaneleYansitKuyrugaAlGuvenli === "function") ihtidaPaneleYansitKuyrugaAlGuvenli(ref); // WP4: panel yansıtması (anahtar kapalıysa etkisiz; hata yanıtı etkilemez)
       if (typeof ihtidaDefteriKirlet === "function") ihtidaDefteriKirlet(ref);
       if (anahtar) ihtidaV2AnahtarKaydet(anahtar, ref);
     } finally {

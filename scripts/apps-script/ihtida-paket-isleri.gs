@@ -154,6 +154,8 @@ async function ihtidaPaketKuyrukCalistir() {
       try { ihtidaPaketHucre(refs[i], "Paket durumu", "Paket iş kaydı okunamadı; yönetici kontrolü gerekiyor."); } catch (_) {}
     }
   }
+  // WP4: PDF paket işinden SONRA, başvuru kilidi dışında, kendi zaman bütçesiyle panel yansıtması (anahtar kapalıysa etkisiz).
+  try { if (typeof ihtidaPaneleYansitKuyrukCalistir === "function") ihtidaPaneleYansitKuyrukCalistir(bas); } catch (_) { console.error("panel-yansit-tur-hatasi"); }
 }
 function ihtidaPaketKaynaklari() {
   var kaynak = {};
