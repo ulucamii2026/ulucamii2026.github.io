@@ -12,7 +12,7 @@ const t = ceviri(dil);
 /** `dis`: başka alan adına giden madde (eğitim platformu) — ↗ işareti ve ekran okuyucuya alan adı eklenir. */
 type Madde = { href: string; ad: string; aciklama?: string; dis?: boolean };
 type Grup = { ad: string; maddeler: Madde[] };
-const L = (anahtar: SayfaAnahtari, ad?: string): Madde => ({ href: yol(dil, anahtar), ad: ad ?? t(`nav.${anahtar}` as any) });
+const L = (anahtar: SayfaAnahtari, ad?: string): Madde => { const href = yol(dil, anahtar); return { href, ad: ad ?? t(`nav.${anahtar}` as any), dis: href.startsWith('http') || undefined }; };
 /* Eğitim platformunun (egitim.ulucamii.be) şimdilik tek bölümü Ezber Kilimi: madde adı oradaki başlıkla aynı kaynaktan. */
 const egitim: Madde = { href: egitimBaglantisi(dil), ad: KILIM_METINLERI.baslik[dil], dis: true };
 /** Gruplu menü: 4 açılır grup + 2 doğrudan bağlantı; mobilde aynı gruplar başlıklı listeler olur.

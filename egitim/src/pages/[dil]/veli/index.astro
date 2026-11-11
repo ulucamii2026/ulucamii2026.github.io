@@ -7,7 +7,8 @@
  * Ses ve şifreli kitap: ulucamii.be'den (src/lib/ses-koken.ts); resimler: bu kökenin /media/mektep/ klasörü.
  */
 import type { Dil } from '@ortak/i18n/ui';
-import { ceviri, dilListesi, yol } from '@ortak/i18n/utils';
+import { ceviri, dilListesi, yol as anaYol } from '@ortak/i18n/utils';
+import { yol } from '../../../lib/kurs-yollari';
 import { veliMetni } from '@ortak/i18n/veli';
 import { AHLAK_HADISLERI } from '@ortak/lib/hadis-verisi';
 import plan from '@ortak/data/yillik-plan-2026-2027.json';
@@ -40,16 +41,16 @@ const gunler = (plan as { gunler: PlanGun[] }).gunler.map((g) => ({
 const materyalGunleri = (materyal.gunler as { tarih: string }[]).map((g) => g.tarih);
 const kok = anaPublic();
 const hadisSesleri = Object.fromEntries(['ar', 'tr', 'fr', 'en'].map((d) => [d, AHLAK_HADISLERI.filter((h) => existsSync(`${kok}/media/ses/hadisler/${d}/${h.id}.mp3`)).map((h) => h.id)]));
-// Kurs, materyal ve gizlilik sayfaları henüz ulucamii.be'dedir (P5/P7'de egitim'e taşınınca bu üç adres /<dil>/kurs/… olur).
+// Kurs ve materyal sayfaları egitim'dedir (/<dil>/kurs/…, Dilim 4 / P7b); gizlilik sayfası ulucamii.be'de kalır.
 const veri = {
   donem: (plan as { donem: string }).donem, gunler, hadisSesleri, materyalGunleri,
-  materyalYolu: ANA_SITE + yol(dil, 'dersmateryalleri'),
-  gizlilikYolu: ANA_SITE + yol(dil, 'gizlilik'),
-  kursYolu: ANA_SITE + yol(dil, 'kurankursu'),
+  materyalYolu: yol(dil, 'dersmateryalleri'),
+  gizlilikYolu: ANA_SITE + anaYol(dil, 'gizlilik'),
+  kursYolu: yol(dil, 'kurankursu'),
   dilYollari: Object.fromEntries(dilListesi.map((d) => [d, `/${d}/veli/`])),
 };
 ---
-<Taban dil={dil} baslik={t('nav.veli')} aciklama={m.altBaslik} yol="veli" noindex oturum={false}>
+<Taban dil={dil} baslik={t('nav.veli')} aciklama={m.altBaslik} yol="veli" noindex oturum={false} sayfa="veli">
   {/* Portal telefona kurulabilir olsun: her dilin kendi manifesti (start_url + kapsam /<dil>/veli/). */}
   <link slot="head" rel="manifest" href={`/portal/veli-${dil}.webmanifest`} />
   <meta slot="head" name="mobile-web-app-capable" content="yes" />

@@ -5,12 +5,11 @@
  * bağlanmaz. noindex, robots.txt'te yasak, site haritasında ve çevrim dışı önbellekte yok. Kimlik: Firebase Authentication (hocalar/{uid} belgesi
  * olan hesaplar; ilim uygulaması + egitim alanı, src/lib/firebase.ts egitim bayrağı); veri: Firestore, kurallar firebase/firestore.rules.
  */
-import { yol } from '@ortak/i18n/utils';
+import { yol } from '../../lib/kurs-yollari';
 import plan from '@ortak/data/yillik-plan-2026-2027.json';
 import materyal from '@ortak/data/ders-materyalleri.json';
 import siteYaml from '@ortak/content/ayarlar/site.yaml?raw';
 import { parse } from 'yaml';
-import { ANA_SITE } from '../../lib/kimlik';
 import Taban from '../../layouts/Taban.astro';
 import '@ortak/styles/haftalik-bulten.css';
 import '@ortak/styles/ders-defteri.css';
@@ -34,7 +33,7 @@ const ceviriUcu = (parse(siteYaml) as { site: { servisler: { basvuru: string } }
 const veliYollari = { tr: '/tr/veli/', fr: '/fr/veli/', en: '/en/veli/', nl: '/nl/veli/', de: '/de/veli/' };
 const veri = {
   donem: (plan as { donem: string }).donem, gunler, materyalGunleri,
-  materyalYolu: ANA_SITE + yol('tr', 'dersmateryalleri'), // ders materyalleri sayfası henüz ulucamii.be'dedir (P5b'de egitim'e taşınınca /tr/kurs/materyaller/)
+  materyalYolu: yol('tr', 'dersmateryalleri'), // /tr/kurs/materyaller/ (Dilim 4 / P7b: artık egitim'de)
   veliYollari,
   ceviriUcu,
 };

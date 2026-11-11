@@ -1,4 +1,5 @@
 import { ui, diller, varsayilanDil, yollar, type Dil, type Anahtar, type SayfaAnahtari } from './ui';
+import { TASIMA_ACIK, egitimAdresi } from '../lib/egitim-tasima';
 
 /** Sitenin dilleri — tek kaynak `diller` (ui.ts). Sıra, dil değiştiricide ve hreflang listesinde görünen sıradır. */
 export const dilListesi = Object.keys(diller) as Dil[];
@@ -20,8 +21,14 @@ export function ceviri(dil: Dil) {
   };
 }
 
-/** Yerel sayfa URL'si üretir: yol('fr','bagis') → /fr/don/ */
+/** Yerel sayfa URL'si üretir: yol('fr','bagis') → /fr/don/
+    Dilim 4: veli portalı ve Kur'an kursu sayfaları egitim.ulucamii.be'ye taşındı (lib/egitim-tasima.ts, TASIMA_ACIK); onlar için TAM egitim adresi döner
+    (sonu `/`; çapa/sorgu çağıran tarafta eklenir). Taşınmayan sayfalar ve `alt` verilen çağrılar eskisi gibi yerel yol verir. */
 export function yol(dil: Dil, sayfa: SayfaAnahtari, alt?: string): string {
+  if (TASIMA_ACIK && !alt) {
+    const egitim = egitimAdresi(dil, sayfa);
+    if (egitim) return egitim;
+  }
   const seg = yollar[sayfa][dil];
   const parca = [dil, seg, alt].filter(Boolean).join('/');
   return `/${parca}/`.replace(/\/+/g, '/');

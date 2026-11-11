@@ -4,7 +4,7 @@
  * Sayfa dosyaları ana sitedekiyle aynı kalsın diye `yol` adı korunur.
  */
 import type { Dil } from '@ortak/i18n/ui';
-import { yol as anaYol } from '@ortak/i18n/utils';
+import { yollar } from '@ortak/i18n/ui';
 import { ANA_SITE } from './kimlik';
 
 /** Ana site sayfa anahtarı → egitim yolu (dil önekinden sonrası). */
@@ -18,7 +18,8 @@ export const KURS_YOLLARI: Record<string, string> = {
 };
 
 /** Bu sayfanın ulucamii.be'deki (eski ve şimdilik kanonik) adresi. */
-export const anaAdres = (dil: Dil, anahtar: string): string => ANA_SITE + anaYol(dil, anahtar as Parameters<typeof anaYol>[1]);
+// `yollar` doğrudan: ana sitenin yol()'u (i18n/utils.ts) Dilim 4'ten beri taşınan sayfalar için egitim adresi verir; bu işlev ulucamii.be'deki ESKİ adrestir.
+export const anaAdres = (dil: Dil, anahtar: string): string => `${ANA_SITE}/${dil}/${(yollar as Record<string, Record<Dil, string>>)[anahtar][dil]}/`;
 
 export function yol(dil: Dil, anahtar: string): string {
   const y = KURS_YOLLARI[anahtar];

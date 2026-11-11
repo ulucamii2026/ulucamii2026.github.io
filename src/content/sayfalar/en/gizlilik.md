@@ -91,7 +91,7 @@ When you join the association, a member record is kept about you. This register 
 
 ## Parents’ Portal (Qur’an School) and Future Member Portal
 
-The Qur’an school **parents’ portal** has been live since 6 September 2026: [/en/parents-portal/](/en/parents-portal/). The member portal is not yet open; the principles below apply to both.
+The Qur’an school **parents’ portal** has been live since 6 September 2026: [egitim.ulucamii.be/en/veli/](https://egitim.ulucamii.be/en/veli/). The member portal is not yet open; the principles below apply to both.
 
 **Digital lesson journal:** Work, homework, reading, self-reflection and next-step notes entered by a teacher for each pupil and lesson are restricted to teachers. Text copied from the paper workbook is identified as such; no drawing or handwritten signature image is collected. The teacher may review and publish a weekly summary in the guardians’ bulletin. The portal retention periods and administrative review and deletion procedures below also apply to these notes.
 
