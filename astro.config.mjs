@@ -40,7 +40,7 @@ export default defineConfig({
         'astro:build:done': ({ dir, logger }) => {
           if (!TASIMA_ACIK) { logger.info('egitim yönlendirmesi KAPALI (TASIMA_ACIK=false): eski sayfalar olduğu gibi yayınlanır'); return; }
           const kodlar = JSON.parse(readFileSync(new URL('./src/data/ecouter.json', import.meta.url), 'utf8')).kodlar;
-          const liste = yonlendirmeler(yollar, Object.keys(diller), kodlar);
+          const liste = yonlendirmeler(yollar, /** @type {(keyof typeof diller)[]} */ (Object.keys(diller)), kodlar);
           for (const y of liste) {
             const dosya = fileURLToPath(new URL(y.dosya, dir));
             if (!existsSync(dosya)) throw new Error(`egitim yönlendirmesi: derlenmiş sayfa yok (adres değişmiş olabilir): ${y.dosya}`);
