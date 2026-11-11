@@ -1,11 +1,11 @@
 {
-  "dosya": 2911,
+  "dosya": 3020,
   "zorunlu": [
     "index.html", "404.html", "sw.js", "sitemap-index.xml", "manifest.webmanifest", "robots.txt",
     "tr/index.html", "fr/index.html", "en/index.html", "nl/index.html", "de/index.html",
     "tr/veli/index.html", "fr/veli/index.html", "hoca/index.html", "e/index.html", "e/fatiha/index.html", "e/alphabet/index.html",
     "tr/kurs/index.html", "fr/kurs/index.html", "tr/kurs/gunluk/index.html", "tr/kurs/materyaller/index.html", "tr/kurs/yillik-plan/index.html", "tr/kurs/mufredat/index.html",
-    "tr/okuma/index.html", "tr/yollar/index.html", "tr/ogren/ah-001/index.html",
+    "tr/okuma/index.html", "tr/yollar/index.html", "tr/yollar/yeni-musluman/index.html", "tr/yollar/yeni-musluman/h01/index.html", "tr/yollar/yeni-musluman/adim-1/index.html", "de/yollar/yeni-musluman/h12/index.html", "tr/ogren/ah-001/index.html",
     "media/ses/kart/tr/ah-001.mp3"
   ]
 }

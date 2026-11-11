@@ -17,7 +17,7 @@
  */
 import {
   KABUK_ONEKI, KAYIT_ONBELLEGI, ONYUKLEME_SAYFALARI, SES_ONBELLEGI, YENILENEN_SURUM,
-  aralikCoz, cevrimdisiYolu, dilSec, kayitAnahtariMi, kaydedilebilirYolMu, sayfaAnahtari, sesAdresiMi, sesTuru, statikMi, varlikAdresleri, onbellekDisiYolMu,
+  aralikCoz, cevrimdisiYolu, dilSec, kayitAnahtariMi, kaydedilebilirYolMu, sayfaAnahtari, sesAdresiMi, sesTuru, statikMi, varlikAdresleri, onbellekDisiYolMu, yeniYolKaydiMi,
   type Kayit,
 } from '../lib/cevrimdisi-ortak';
 
@@ -123,6 +123,12 @@ sw.addEventListener('install', (e: UzatilabilirOlay) => {
 sw.addEventListener('activate', (e: UzatilabilirOlay) => {
   e.waitUntil((async () => {
     for (const ad of await caches.keys()) if (ad.startsWith(KABUK_ONEKI) && ad !== KABUK) await caches.delete(ad);
+    // Yeni Müslüman yolu artık önbelleğe alınmaz: eski sürümlerin bıraktığı sayfa kopyaları ve kaydet künyesi de kalkar.
+    for (const ad of await caches.keys()) {
+      if (!ad.startsWith(KABUK_ONEKI) && ad !== KAYIT_ONBELLEGI) continue;
+      const c = await caches.open(ad);
+      for (const istek of await c.keys()) if (yeniYolKaydiMi(istek.url)) await c.delete(istek);
+    }
     await sw.clients.claim();
   })());
 });

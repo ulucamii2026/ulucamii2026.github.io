@@ -1,0 +1,182 @@
+---
+/**
+ * «Yeni Müslüman yolu» hafta ve adım sayfaları (İlim Yolu, 11 Kasım 2026): `h01`…`h12` hafta, `adim-1`…`adim-8` adım. Hafta sayfasında metin,
+ * uygulama, (yalnız TR ve EN'de) Diyanet videosu, iki soru, kaynaklar ve «Haftayı tamamladım» vardır. İçerik paylasilan/ogrenme-yolu/icerik.json'dan
+ * gelir; dinî metin burada düzenlenmez. Video tıklanana kadar YouTube'dan hiçbir şey yüklenmez (scripts/yeni-yol.ts, youtube-nocookie.com).
+ * Durum ve işaretler scripts/yeni-yol.ts cihaz kaydından doldurulur; sorular radyo düğmeleriyle yerelde denetlenir.
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import { dilListesi } from '@ortak/i18n/utils';
+import Ikon from '../../../../components/Ikon.astro';
+import TaslakEtiketi from '../../../../components/TaslakEtiketi.astro';
+import { ilimMetinleri } from '../../../../i18n/ilim';
+import { ibadetMetinleri, doldur } from '../../../../i18n/ibadet';
+import { okumaMetinleri } from '../../../../i18n/okuma';
+import { yeniYolMetinleri } from '../../../../i18n/yeni-yol';
+import { yollarMetinleri } from '../../../../i18n/yollar';
+import {
+  ADIMLAR, HAFTALAR, PLATFORM_BAGLANTILARI, SAYFA_KIMLIKLERI, adimBul, adimHaftalari, adimKimligi, adimaGore, guvenliBaglanti, haftaBul, platformAdresi, videoKimligi,
+} from '../../../../lib/yeni-yol';
+import Taban from '../../../../layouts/Taban.astro';
+import '../../../../styles/ilim.css';
+import '../../../../styles/yollar.css';
+import '../../../../styles/yeni-yol.css';
+
+export function getStaticPaths() {
+  return dilListesi.flatMap((dil) => SAYFA_KIMLIKLERI.map((sayfa) => ({ params: { dil, sayfa } })));
+}
+
+const dil = Astro.params.dil as Dil;
+const sayfa = Astro.params.sayfa as string;
+const y = yeniYolMetinleri(dil);
+const il = ilimMetinleri(dil);
+const taban = `/${dil}/yollar/yeni-musluman/`;
+const h = haftaBul(sayfa);
+const adim = h ? adimaGore(h) : adimBul(sayfa)!;
+const sira = h ? HAFTALAR.indexOf(h) : -1;
+const onceki = h ? HAFTALAR[sira - 1] : undefined;
+const sonraki = h ? HAFTALAR[sira + 1] : undefined;
+const video = h ? videoKimligi(h, dil) : undefined;
+const baglanti = h ? PLATFORM_BAGLANTILARI[h.id] : undefined;
+const platform = baglanti && h ? {
+  href: `/${dil}/${platformAdresi(baglanti)}`,
+  ad: baglanti.tur === 'plan' ? yollarMetinleri(dil).planAd[baglanti.kod]
+    : baglanti.tur === 'ibadet-abdest' ? ibadetMetinleri(dil).abdestBaslik
+    : baglanti.tur === 'ibadet-namaz' ? ibadetMetinleri(dil).namazBaslik
+    : okumaMetinleri(dil).anaKart.ad,
+} : null;
+const baslik = h ? h.baslik[dil] : adim.baslik[dil];
+const veri = h ? {
+  dil, hafta: h.id, m: { dogru: y.dogru, yanlis: y.yanlis, secimYok: y.secimYok, dogruBulundu: y.dogruBulundu, tamamlandi: y.haftaTamamlandi, yapildi: y.yapildi,
+    soruSayim: y.soruSayim, baslanmadi: y.baslanmadi, durumTamam: y.tamamlandi },
+} : { dil, adim: adim.no, haftalar: adimHaftalari(adim.no).map((x) => x.id), m: { ilerleme: y.ilerleme, soruSayim: y.soruSayim, tamamlandi: y.tamamlandi, baslanmadi: y.baslanmadi } };
+---
+<Taban dil={dil} baslik={`${baslik} — ${y.ad}`} aciklama={h ? h.hedef[dil] : y.adimlarGiris} yol={`yollar/yeni-musluman/${sayfa}`}>
+  {h ? (
+    <div class="icerik yy-hafta" data-yy-hafta={h.id} data-veri={JSON.stringify(veri)}>
+      <p><a class="yl-geri-baglanti" href={taban}><Ikon ad="geri" /> {y.ad}</a></p>
+      <header class="yl-bas">
+        <p class="iy-ust-yazi">{y.haftaEtiketi} {sira + 1} / {HAFTALAR.length} · {y.adimEtiketi} {adim.no}</p>
+        <h1>{h.baslik[dil]}</h1>
+        <p class="yy-hedef-satir"><span class="gorunmez">{y.hedef}: </span>{h.hedef[dil]}</p>
+        <p class="yl-not">{y.adimaBagli}: <a href={`${taban}${adimKimligi(adim.no)}/`}>{y.adimEtiketi} {adim.no} · {adim.baslik[dil]}</a></p>
+        <p class="yy-durum" role="status" data-yy-durum>{y.baslanmadi}</p>
+        <TaslakEtiketi dil={dil} durum={h.durum[dil]} />
+        <noscript><p class="yl-not">{y.jsGerek}</p></noscript>
+      </header>
+
+      <div class="yy-metin"><p>{h.metin[dil]}</p></div>
+
+      <section class="yy-kutu" aria-labelledby="yap-baslik">
+        <h2 id="yap-baslik">{y.yap}</h2>
+        <p>{h.yap[dil]}</p>
+        <button type="button" class="dugme ikincil yy-isaret-dugme" data-yy-yap aria-pressed="false"><Ikon ad="onay" /> <span data-yy-yap-yazi>{y.yapildiDugme}</span></button>
+      </section>
+
+      {video && (
+        <section aria-labelledby="video-baslik" class="yl-sinav">
+          <h2 id="video-baslik">{y.videoBaslik}</h2>
+          <div class="yy-video" data-yy-video-kutu>
+            <button type="button" class="yy-video-dugme" data-yy-video={video} data-baslik={`${y.videoBaslik} — ${h.baslik[dil]}`}>
+              <span class="yy-video-oynat" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M8 5v14l11-7z" /></svg></span>
+              <span>{y.videoYukle}</span>
+            </button>
+          </div>
+          <p class="yl-not">{y.videoNot} <a href={`https://www.youtube.com/watch?v=${video}`} rel="noopener noreferrer" target="_blank">{y.videoBaglanti}</a></p>
+        </section>
+      )}
+
+      <section aria-labelledby="sorular-baslik">
+        <h2 id="sorular-baslik">{y.sorular}</h2>
+        <p class="yl-not">{y.sorularGiris}</p>
+        <ol class="yy-sorular">
+          {h.sorular.map((s, n) => (
+            <li class="yy-soru" data-yy-soru={s.id} data-slot={n === 0 ? 's1' : 's2'}>
+              <fieldset>
+                <legend><span class="no">{n + 1} / {h.sorular.length}</span>{s.soru[dil]}</legend>
+                {s.siklar.map((sik, j) => (
+                  <label class="yl-sik">
+                    <input type="radio" name={s.id} value={String(j)} data-dogru={j === s.dogru ? '' : undefined} />
+                    <span class="yazi">{sik[dil]}</span>
+                  </label>
+                ))}
+              </fieldset>
+              <div class="yy-soru-eylem">
+                <button type="button" class="dugme birincil" data-yy-denetle>{y.denetle}</button>
+                <p class="yl-geri" role="status" aria-live="polite" data-geri></p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      {platform && (
+        <section class="yy-platform" aria-labelledby="platform-baslik">
+          <h2 id="platform-baslik">{y.platformdaCalisin}</h2>
+          <a class="dugme ikincil" href={platform.href}>{platform.ad} <Ikon ad="ok" /></a>
+        </section>
+      )}
+
+      <section aria-labelledby="kaynak-baslik">
+        <h2 id="kaynak-baslik">{y.kaynaklar}</h2>
+        <ul class="yy-kaynaklar">
+          {h.kaynaklar.filter((q) => guvenliBaglanti(q.url)).map((q) => (
+            <li><a href={q.url} rel="noopener noreferrer" target="_blank">{q.ad[dil]}</a></li>
+          ))}
+        </ul>
+        <p class="yl-not">{y.kaynakNotu}</p>
+      </section>
+
+      <section class="yy-kutu" aria-labelledby="tamam-baslik">
+        <h2 id="tamam-baslik" class="gorunmez">{y.haftaEtiketi} {sira + 1} / {HAFTALAR.length}</h2>
+        <p class="yl-not">{y.haftaIpucu}</p>
+        <button type="button" class="dugme birincil yy-isaret-dugme" data-yy-tamamla aria-pressed="false"><Ikon ad="onay" /> <span data-yy-tamamla-yazi>{y.haftayiTamamla}</span></button>
+        <p class="yl-durum-satir" role="status" aria-live="polite" data-yy-tamam-not></p>
+      </section>
+
+      {!sonraki && (
+        <section class="yy-bitis" data-yy-bitis hidden aria-labelledby="bitis-baslik">
+          <h2 id="bitis-baslik">{y.bitisBaslik}</h2>
+          <p>{y.bitisMetin}</p>
+        </section>
+      )}
+
+      <p class="yl-not">{y.saklamaNotu}</p>
+
+      <nav class="yy-gezinti" aria-label={y.ad}>
+        {onceki ? <a class="dugme ikincil" href={`${taban}${onceki.id}/`} rel="prev"><Ikon ad="geri" /> {y.onceki}</a> : <a class="dugme ikincil" href={taban}><Ikon ad="geri" /> {y.tumHaftalar}</a>}
+        {sonraki ? <a class="dugme ikincil" href={`${taban}${sonraki.id}/`} rel="next">{y.sonraki} <Ikon ad="ok" /></a> : <a class="dugme ikincil" href={taban}>{y.tumHaftalar} <Ikon ad="ok" /></a>}
+      </nav>
+    </div>
+  ) : (
+    <div class="icerik yl-sayfa yy-sayfa" data-yy-adim data-veri={JSON.stringify(veri)}>
+      <p><a class="yl-geri-baglanti" href={taban}><Ikon ad="geri" /> {y.ad}</a></p>
+      <header class="yl-bas">
+        <p class="iy-ust-yazi">{y.adimEtiketi} {adim.no} / {ADIMLAR.length} · {il.marka}</p>
+        <h1>{adim.baslik[dil]}</h1>
+        <p class="yl-ilerleme" data-yy-ilerleme>{doldur(y.ilerleme, { n: 0, m: adimHaftalari(adim.no).length })}</p>
+      </header>
+      <section class="iy-bolum" aria-labelledby="adim-haftalar">
+        <div class="iy-bolum-bas"><h2 id="adim-haftalar">{y.adimdakiHaftalar}</h2></div>
+        <ol class="yl-yollar iki">
+          {adimHaftalari(adim.no).map((x) => (
+            <li class="yl-yol yy-yol" data-hafta={x.id}>
+              <div class="yl-yol-motif yy-karo" aria-hidden="true"><span class="yy-no">{String(HAFTALAR.indexOf(x) + 1).padStart(2, '0')}</span></div>
+              <div class="yl-yol-metin">
+                <h3><a href={`${taban}${x.id}/`}><span class="gorunmez">{y.haftaEtiketi} {HAFTALAR.indexOf(x) + 1}: </span>{x.baslik[dil]}</a></h3>
+                <p class="yy-hedef">{x.hedef[dil]}</p>
+                <p class="yy-durum" data-yy-durum>{y.baslanmadi}</p>
+                <TaslakEtiketi dil={dil} kisa durum={x.durum[dil]} />
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+    </div>
+  )}
+</Taban>
+
+<script>
+  import '../../../../scripts/dil';
+  import '../../../../scripts/yeni-yol';
+</script>

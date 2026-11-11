@@ -69,12 +69,15 @@ test('Hosting: bütün yanıtlarda sıkı CSP ve güvenlik başlıkları', () =>
   const csp = deger(genel, 'Content-Security-Policy');
   const yonerge = Object.fromEntries(csp.split(';').map((y) => y.trim().split(/\s+/)).map(([ad, ...d]) => [ad, d]));
   assert.deepEqual(yonerge['default-src'], ["'none'"]);
-  for (const ad of ['style-src', 'img-src', 'font-src', 'worker-src', 'manifest-src', 'frame-src', 'frame-ancestors']) assert.deepEqual(yonerge[ad], ["'self'"], ad);
+  for (const ad of ['style-src', 'img-src', 'font-src', 'worker-src', 'manifest-src', 'frame-ancestors']) assert.deepEqual(yonerge[ad], ["'self'"], ad);
+  // Yeni Müslüman yolu (11 Kasım 2026): Diyanet videoları tıklanınca youtube-nocookie.com çerçevesinde açılır; frame-src'ye YALNIZ bu köken eklendi.
+  assert.deepEqual(yonerge['frame-src'], ["'self'", 'https://www.youtube-nocookie.com']);
   for (const ad of ['base-uri', 'form-action', 'object-src']) assert.deepEqual(yonerge[ad], ["'none'"], ad);
   // Google ile giriş: yalnız Google'ın giriş betiği (gapi) dış betik kaynağıdır.
   assert.deepEqual(yonerge['script-src'], ["'self'", 'https://apis.google.com']);
   // Sesler ana siteden gelir (Diyanet kayıtları; egitim/src/lib/kimlik.ts ANA_SITE). `blob:` yalnız «Kendini sına»da çocuğun
   // kendi kaydını sayfa belleğinden çalmak içindir (2d); ağdan bir şey getirmez, başka köken eklenmedi.
+  const APPS_SCRIPT = oku('src/scripts/hoca-ekrani.ts').match(/const GAS = '([^']+)'/)[1];
   const anaSite = oku('egitim/src/lib/kimlik.ts').match(/ANA_SITE = '([^']+)'/)[1];
   assert.deepEqual(yonerge['media-src'], ["'self'", anaSite, 'blob:']); // 'self': İlim Yolu kart seslendirmesi egitim Hosting'in kendi alanından çalar
   // connect-src: sayfa ve service worker yalnız kendi kökeninden ve ana siteden (ses) okur; «İnternetsiz çalışmak için kaydet» sesi fetch ile
@@ -82,7 +85,12 @@ test('Hosting: bütün yanıtlarda sıkı CSP ve güvenlik başlıkları', () =>
   // Hesap (Dilim 0): Firestore, Kimlik Araç Seti, Token ve Apps Script (script.google.com → script.googleusercontent.com yönlendirmesi) kökenleri açık yazılır.
   assert.deepEqual(yonerge['connect-src'], ["'self'", anaSite, 'https://firestore.googleapis.com', 'https://identitytoolkit.googleapis.com',
     'https://securetoken.googleapis.com',
-    'https://europe-west1-ulucamii-portal.cloudfunctions.net', 'https://script.google.com', 'https://script.googleusercontent.com']);
+    'https://europe-west1-ulucamii-portal.cloudfunctions.net', APPS_SCRIPT, 'https://script.googleusercontent.com']);
+  // G-10: Apps Script yalnız TEK dağıtımın tam adresine açıktır (yol sabit); hoca ekranının GAS sabiti ve site.yaml'ın basvuru adresi aynı adrestir.
+  // Dağıtım değişirse ikisi ve bu başlık birlikte güncellenir; yoksa hoca ekranı çevirisi/listesi CSP'ye takılır.
+  assert.match(APPS_SCRIPT, /^https:\/\/script\.google\.com\/macros\/s\/[\w-]+\/exec$/);
+  assert.equal(oku('src/scripts/hoca-ekrani.ts').match(/const GAS = '([^']+)'/)[1], APPS_SCRIPT);
+  assert.equal(oku('src/content/ayarlar/site.yaml').match(/^\s*basvuru:\s*"([^"]+)"/m)[1], APPS_SCRIPT);
   // Çevrim dışı çalışma: service worker yalnız aynı kökenden (/sw.js), uygulama bildirimi yalnız aynı kökenden. Üçü dışında CSP değişmedi.
   assert.deepEqual(Object.keys(yonerge).sort(), ['base-uri', 'connect-src', 'default-src', 'font-src', 'form-action', 'frame-ancestors', 'frame-src', 'img-src', 'manifest-src', 'media-src', 'object-src', 'script-src', 'style-src', 'worker-src']);
   assert.doesNotMatch(csp, /unsafe-|\*|data:|http:/);
@@ -128,7 +136,10 @@ const sesliler = JSON.parse(oku('src/data/ezber/katalog.json')).ogeler.filter((o
 // İlim Yolu Dilim 2: bilgi yolları dizini, 13 yol, yerleştirme, rozetler ve her bilgi kartı (src/data/ilim-yolu/kartlar).
 const KART_IDLERI = ['kuran', 'itikat', 'ibadet', 'siyer', 'ahlak'].flatMap((k) => JSON.parse(readFileSync(new URL(`src/data/ilim-yolu/kartlar/${k}.json`, KOK), 'utf8')).kartlar.map((c) => c.id));
 const YOL_IDLERI = ['plan-kuran', 'plan-itikat', 'plan-ibadet', 'plan-siyer', 'plan-ahlak', ...['okuma', 'kuranBilgi', 'itikat', 'namaz', 'ibadet', 'siyer', 'ahlak'].map((a) => `alan-${a}`), 'bilgi'];
-const dilYollari = DILLER.flatMap((d) => [`${d}/`, `${d}/ezber/`, `${d}/calisma-belgesi/`, `${d}/kilimim/`, `${d}/kartlar/`, `${d}/takvim/`, `${d}/yollar/`, `${d}/yollar/rozetler/`, `${d}/yollar/yerlestirme/`, `${d}/ibadet/`, `${d}/ibadet/abdest/`, `${d}/ibadet/namaz/`, ...['sabah', 'ogle', 'ikindi', 'aksam', 'yatsi'].map((v) => `${d}/ibadet/namaz/${v}/`), `${d}/okuma/`, `${d}/yarisma/`, ...[1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => `${d}/okuma/o${n}/`), ...YOL_IDLERI.map((y) => `${d}/yollar/${y}/`), ...KART_IDLERI.map((i) => `${d}/ogren/${i}/`), ...sesliler.map((o) => `${d}/calis/${o.id}/`)]);
+// Yeni Müslüman yolu (11 Kasım 2026): 12 hafta + 8 adım sayfası, kimlikler paylaşılan içerikten.
+const YENI_YOL = JSON.parse(readFileSync(new URL('../../paylasilan/ogrenme-yolu/icerik.json', import.meta.url), 'utf8'));
+const YENI_YOL_SAYFALARI = [...YENI_YOL.haftalar.map((h) => h.id), ...YENI_YOL.adimlar.map((a) => `adim-${a.no}`)];
+const dilYollari = DILLER.flatMap((d) => [`${d}/`, `${d}/ezber/`, `${d}/calisma-belgesi/`, `${d}/kilimim/`, `${d}/kartlar/`, `${d}/takvim/`, `${d}/yollar/`, `${d}/yollar/rozetler/`, `${d}/yollar/yerlestirme/`, `${d}/ibadet/`, `${d}/ibadet/abdest/`, `${d}/ibadet/namaz/`, ...['sabah', 'ogle', 'ikindi', 'aksam', 'yatsi'].map((v) => `${d}/ibadet/namaz/${v}/`), `${d}/okuma/`, `${d}/yarisma/`, ...[1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => `${d}/okuma/o${n}/`), ...YOL_IDLERI.map((y) => `${d}/yollar/${y}/`), `${d}/yollar/yeni-musluman/`, ...YENI_YOL_SAYFALARI.map((k) => `${d}/yollar/yeni-musluman/${k}/`), ...KART_IDLERI.map((i) => `${d}/ogren/${i}/`), ...sesliler.map((o) => `${d}/calis/${o.id}/`)]);
 // Çevrim dışı çalışma sayfaları (noindex, site haritasında yok) satır içi betik denetimine girer: service worker bunları önyükler.
 const cevrimdisiYollari = DILLER.map((d) => `${d}/cevrimdisi/`);
 // Hesap sayfaları ve kart girişi (2 Kasım 2026): noindex, site haritasında ve önbellekte yok; yine de CSP’ye uyar (satır içi betik yok).

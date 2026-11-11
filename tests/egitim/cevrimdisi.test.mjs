@@ -91,6 +91,27 @@ test('onbellekDisiYolMu: hesap, veli, hoca sayfaları ve /k/ önbelleğe alınma
   assert.equal(m.kaydedilebilirYolMu('/tr/ezber/'), true);
 });
 
+test('yeni müslüman yolu: önbelleğe ALINMAZ ve kaydedilemez (dizin, hafta, adım; 5 dil); komşu sayfalar etkilenmez; eski kayıtlar tanınır', () => {
+  for (const d of ['tr', 'fr', 'en', 'nl', 'de']) for (const s of ['', 'h01/', 'h12/', 'adim-3/']) {
+    const y = `/${d}/yollar/yeni-musluman/${s}`;
+    assert.equal(m.onbellekDisiYolMu(y), true, y);
+    assert.equal(m.kaydedilebilirYolMu(y), false, y);
+    assert.equal(m.yeniYolKaydiMi(`https://egitim.ulucamii.be${y}`), true, y);
+  }
+  assert.equal(m.onbellekDisiYolMu('/tr/yollar/yeni-musluman'), true);
+  for (const y of ['/tr/yollar/', '/tr/yollar/rozetler/', '/tr/yollar/yeni-muslumanlar/', '/tr/ibadet/', '/xx/yollar/yeni-musluman/']) assert.equal(m.onbellekDisiYolMu(y), false, y);
+  assert.equal(m.yeniYolKaydiMi('https://egitim.ulucamii.be/cevrimdisi-kayit/tr/yeni-musluman'), true, 'eski «kaydet» künyesi');
+  assert.equal(m.yeniYolKaydiMi('https://egitim.ulucamii.be/cevrimdisi-kayit/tr/s-ihlas'), false);
+  assert.equal(m.yeniYolKaydiMi('https://egitim.ulucamii.be/tr/ezber/'), false);
+  assert.equal(m.yeniYolKaydiMi('bozuk'), false);
+});
+
+test('SW kaynağı: etkinleşmede kabuk ve kayıt önbelleğinden yeni müslüman yolu kayıtları silinir; gezinme isteğinde SW karışmaz', () => {
+  const sw = readFileSync('egitim/src/sw/sw.ts', 'utf8');
+  assert.match(sw, /yeniYolKaydiMi\(istek\.url\)\) await c\.delete\(istek\)/);
+  assert.match(sw, /if \(onbellekDisiYolMu\(u\.pathname\)\) return;/);
+});
+
 test('statikMi: yapı dosyaları, yazı tipleri, logo ve simgeler; sayfa, sw.js, manifest ve ses değil', () => {
   for (const y of ['/_astro/Taban.abc.css', '/fonts/atkinson-next.woff2', '/logo/kuran-kursu-yatay.svg', '/favicon.svg', '/favicon.ico', '/apple-touch-icon.png', '/icon-192.png', '/icon-512.png', '/icon-maskable-512.png', '/oturum-isareti.js'])
     assert.equal(m.statikMi(y), true, y);

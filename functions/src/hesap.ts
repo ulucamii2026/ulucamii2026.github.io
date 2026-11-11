@@ -26,12 +26,31 @@ export function adMusait(snap: DocumentSnapshot, uid: string, simdi: number): bo
   return Boolean(snap.get('birakildi')) && bitis instanceof Timestamp && bitis.toMillis() <= simdi;
 }
 
+const AD_SORGU_SINIRI = 30; // uid başına 24 saatte en çok bu kadar ad denemesi (G-08: «ad-alinmis» yoklamasını sınırlar)
+/** Günlük deneme sayacı: gizli/giris/ipler/kad_{uid} (TTL ilkesi `bitis` alanında; hesap silinince kendiliğinden kalkar). */
+async function adSorguSiniri(uid: string): Promise<void> {
+  const ref = db.doc(`gizli/giris/ipler/kad_${uid}`);
+  const bitis = await db.runTransaction(async (tx) => {
+    const s = await tx.get(ref);
+    const simdi = Date.now();
+    const pencere = s.get('pencere');
+    const acik = pencere instanceof Timestamp && pencere.toMillis() + GUN > simdi;
+    const bas = acik ? pencere.toMillis() : simdi;
+    const sayi = (acik ? Number(s.get('sayi')) || 0 : 0) + 1;
+    if (sayi > AD_SORGU_SINIRI) return bas + GUN;
+    tx.set(ref, { sayi, pencere: Timestamp.fromMillis(bas), bitis: Timestamp.fromMillis(bas + GUN) });
+    return 0;
+  });
+  if (bitis) throw new HttpsError('resource-exhausted', 'ad-sorgu-sinirli', { sonraki: new Date(bitis).toISOString() });
+}
+
 export const kullaniciAdiAl = onCall(CAGRI, async (istek) => {
   const { uid } = yetiskinGerekli(istek);
   const sonuc = gecerliMi(String((istek.data as { ad?: unknown } | null)?.ad ?? ''));
   if (!sonuc.ok) throw new HttpsError('invalid-argument', 'gecersiz-ad', { neden: sonuc.neden });
   const yeni = sonuc.ad;
   if (ayrilmisMi(yeni)) throw new HttpsError('invalid-argument', 'gecersiz-ad', { neden: 'ayrilmis' });
+  await adSorguSiniri(uid);
 
   await db.runTransaction(async (tx) => {
     const simdi = Date.now();

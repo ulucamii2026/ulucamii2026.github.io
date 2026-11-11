@@ -109,10 +109,20 @@ test('8 hatalı şifre → 15 dk kilit (doğru şifre de 429); kilit bitince gir
   const kalan = Date.parse(sekiz.govde.bitis) - Date.now();
   assert.ok(kalan > 14 * 60_000 && kalan <= 15 * 60_000, String(kalan));
   assert.equal((await giris('cocukGiris', { kullaniciAdi, sifre })).durum, 429, 'kilitliyken doğru şifre de reddedilir');
-  await db.doc(`gizli/cocuk/hesaplar/${uid}`).update({ kilitBitis: Timestamp.fromMillis(Date.now() - 1000) });
+  // Kilit (ad + IP) sayaç belgelerindedir; pencereler 16 dk öncesine alınınca kilit biter.
+  await pencereleriKaydir(16 * 60_000);
   assert.equal((await giris('cocukGiris', { kullaniciAdi, sifre })).durum, 200);
-  assert.equal((await db.doc(`gizli/cocuk/hesaplar/${uid}`).get()).get('hatalar'), 0);
+  assert.ok(uid);
 });
+
+/** Bütün sayaç belgelerinin pencere başlangıcını `ms` kadar geriye alır (zaman geçmiş gibi). */
+async function pencereleriKaydir(ms, sayi) {
+  for (const d of (await db.collection('gizli/giris/ipler').get()).docs) {
+    const p = d.get('pencere').toMillis() - ms;
+    await d.ref.update({ pencere: Timestamp.fromMillis(p), bitis: Timestamp.fromMillis(p + 3_600_000), ...(sayi === undefined ? {} : { sayi }) });
+  }
+}
+const ipBasligi = (ip) => ({ basliklar: { 'Fastly-Client-IP': ip } });
 
 test('IP başına saatte 30 hatalı deneme → 429; IP yalnız özet olarak saklanır', async () => {
   const { kullaniciAdi, sifre } = await hesapAc();
@@ -120,10 +130,14 @@ test('IP başına saatte 30 hatalı deneme → 429; IP yalnız özet olarak sakl
   const g = await giris('cocukGiris', { kullaniciAdi, sifre });
   assert.equal(g.durum, 429);
   assert.equal(g.govde.hata, 'kilit');
+  // IP belgesi + her ad için (ad+IP) ve (ad) sayaçları; hepsi HMAC özeti, düz IP ya da ad yok.
   const ipler = await db.collection('gizli/giris/ipler').get();
-  assert.equal(ipler.size, 1);
-  assert.match(ipler.docs[0].id, /^[0-9a-f]{64}$/);
-  assert.ok(!JSON.stringify(ipler.docs[0].data()).includes('127.0.0.1'));
+  assert.ok(ipler.size >= 1);
+  for (const d of ipler.docs) {
+    assert.match(d.id, /^[0-9a-f]{64}$/);
+    assert.ok(!JSON.stringify(d.data()).includes('127.0.0.1'));
+  }
+  assert.equal(Math.max(...ipler.docs.map((d) => d.get('sayi'))), 30, 'IP sayacı 30');
 });
 
 test('kartla giriş; kart yenilenince eski kart geçersiz, sürüm artar', async () => {
@@ -210,18 +224,19 @@ test('F-03: çocuğa sonradan bağlanan e-posta/şifre kimliği kart yenilemede 
 
 test('F-02: hata penceresi 15 dk; eski hatalar kilide birikmez, pencere içindeki 8. hata kilitler, kilit uzamaz', async () => {
   const { uid, kullaniciAdi } = await hesapAc();
-  const g = db.doc(`gizli/cocuk/hesaplar/${uid}`);
+  assert.equal((await giris('cocukGiris', { kullaniciAdi, sifre: 'yanlis-0' })).durum, 401); // sayaç belgeleri oluşur
   // 7 hata ama ilk hata 16 dk önce: pencere kapandı, bu hata sayacı 1'den başlatır (kilit yok).
-  await g.update({ hatalar: 7, ilkHata: Timestamp.fromMillis(Date.now() - 16 * 60_000) });
+  await pencereleriKaydir(16 * 60_000, 7);
   assert.equal((await giris('cocukGiris', { kullaniciAdi, sifre: 'yanlis-a' })).durum, 401);
-  assert.equal((await g.get()).get('hatalar'), 1);
+  assert.deepEqual((await db.collection('gizli/giris/ipler').get()).docs.map((d) => d.get('sayi')).sort((a, b) => a - b), [1, 1, 8]); // ad, ad+IP: 1; IP (1 saatlik pencere): 8
   // 7 hata, ilk hata 1 dk önce: 8. hata kilitler.
-  await g.update({ hatalar: 7, ilkHata: Timestamp.fromMillis(Date.now() - 60_000) });
+  await pencereleriKaydir(60_000, 7);
   const kilit = await giris('cocukGiris', { kullaniciAdi, sifre: 'yanlis-b' });
   assert.equal(kilit.durum, 429);
-  const bitis = (await g.get()).get('kilitBitis').toMillis();
+  const onceki = (await db.collection('gizli/giris/ipler').get()).docs.map((d) => d.get('sayi')).sort((a, b) => a - b);
   assert.equal((await giris('cocukGiris', { kullaniciAdi, sifre: 'yanlis-c' })).durum, 429);
-  assert.equal((await g.get()).get('kilitBitis').toMillis(), bitis, 'kilitliyken yeni hata kilidi uzatmaz (sınırlı pencere)');
+  assert.deepEqual((await db.collection('gizli/giris/ipler').get()).docs.map((d) => d.get('sayi')).sort((a, b) => a - b), onceki, 'kilitliyken yeni hata sayacı ve kilidi uzatmaz');
+  assert.ok(uid);
   // Kart girişi şifre kilidinden etkilenmez; hoca şifre yenileyince kilit kalkar.
   assert.equal((await giris('kartGiris', kartAyir((await basarili('kartYenile', { ref: 'R1' }, await hocaAc('hoca-z'))).kartUrl))).durum, 200);
   const { sifre } = await basarili('cocukSifreYenile', { ref: 'R1' }, await hocaAc('hoca-y'));
@@ -243,12 +258,48 @@ test('F-01: X-Forwarded-For\'un soldaki (istemci) girdisini değiştirmek IP sı
   for (let n = 0; n < 30; n++) assert.equal((await giris('cocukGiris', { kullaniciAdi: `yok${n}`, sifre: 'bir-iki-12' }, sahte())).durum, 401);
   const g = await giris('cocukGiris', { kullaniciAdi, sifre }, sahte());
   assert.equal(g.durum, 429, 'sol girdiyi her seferinde değiştirmek yeni IP sayılmadı');
-  assert.equal((await db.collection('gizli/giris/ipler').get()).size, 1);
+  assert.equal((await db.collection('gizli/giris/ipler').get()).docs.filter((d) => d.get('sayi') === 30).length, 1, 'tek IP sayacı 30 değerine ulaştı');
+});
+
+test('G-03: dışarıdaki biri çocuğu kilitleyemez: kilit (ad + IP) çiftinedir; başka IP üzerinden doğru şifre girer', async () => {
+  const { kullaniciAdi, sifre } = await hesapAc();
+  for (let i = 1; i < 8; i++) assert.equal((await giris('cocukGiris', { kullaniciAdi, sifre: `yanlis-${i}` }, ipBasligi('203.0.113.10'))).durum, 401);
+  assert.equal((await giris('cocukGiris', { kullaniciAdi, sifre: 'yanlis-8' }, ipBasligi('203.0.113.10'))).durum, 429);
+  assert.equal((await giris('cocukGiris', { kullaniciAdi, sifre }, ipBasligi('203.0.113.10'))).durum, 429, 'saldırganın IP si kilitli');
+  const sahip = await giris('cocukGiris', { kullaniciAdi, sifre }, ipBasligi('203.0.113.77'));
+  assert.equal(sahip.durum, 200, 'çocuk kendi IP sinden girer');
+});
+
+test('G-08: kilitli gerçek ad ile bilinmeyen ad dışarıdan ayırt edilmez (8. hatada aynı 429 + aynı süre; öncesinde aynı 401)', async () => {
+  const { kullaniciAdi } = await hesapAc();
+  const sonuc = async (ad) => {
+    const liste = [];
+    for (let i = 1; i <= 9; i++) liste.push(await giris('cocukGiris', { kullaniciAdi: ad, sifre: `yanlis-${i}` }, ipBasligi('203.0.113.20')));
+    return liste;
+  };
+  const gercek = await sonuc(kullaniciAdi);
+  const yok = await sonuc('hayalet99');
+  assert.deepEqual(gercek.map((y) => y.durum), yok.map((y) => y.durum), 'durum dizisi aynı');
+  assert.deepEqual(gercek.map((y) => y.govde.hata), yok.map((y) => y.govde.hata));
+  assert.equal(gercek[7].durum, 429);
+  assert.ok(Math.abs(Date.parse(gercek[7].govde.bitis) - Date.parse(yok[7].govde.bitis)) < 5_000, 'kilit süresi de aynı');
+});
+
+test('G-03: yedek tavan: dağıtık (her istekte yeni IP) 40 yanlış tahmin aynı adı 15 dk kilitler; kilit sahibine de 429 verir ama kart yolu açıktır', async () => {
+  const { kullaniciAdi, sifre, kartUrl } = await hesapAc();
+  let kilit = 0;
+  for (let n = 0; n < 40; n++) {
+    const y = await giris('cocukGiris', { kullaniciAdi, sifre: `yanlis-${n}` }, ipBasligi(`192.0.2.${n + 1}`));
+    if (y.durum === 429) { kilit = n + 1; break; }
+  }
+  assert.equal(kilit, 40, '40. hata ada bağlı sayacı doldurur (IP başına 1 hata: çift sayacı dolmaz)');
+  assert.equal((await giris('cocukGiris', { kullaniciAdi, sifre }, ipBasligi('192.0.2.200'))).durum, 429);
+  assert.equal((await giris('kartGiris', kartAyir(kartUrl), ipBasligi('192.0.2.201'))).durum, 200, 'kart yolu şifre kilidinden etkilenmez');
 });
 
 // En sonda: pencere (1 dk) dolana dek bekler ki sonraki dosyaların girişleri etkilenmesin.
 test('F-01: IP sahteciliği (her istekte yeni Fastly-Client-IP) örnek başına yük tavanını aşamaz; pencere dolunca giriş açılır', { timeout: 240_000 }, async () => {
-  const { kullaniciAdi, sifre } = await hesapAc();
+  const { kullaniciAdi, sifre, kartUrl } = await hesapAc();
   let tavan;
   // Ardışık: emülatör eşzamanlı isteklere ayrı işçi süreçleri açar ve sayaç süreç başınadır; ardışıkta tek işçi sayar.
   for (let n = 0; n < 500 && !tavan; n++) {
@@ -257,6 +308,8 @@ test('F-01: IP sahteciliği (her istekte yeni Fastly-Client-IP) örnek başına 
   }
   assert.ok(tavan, 'tavan devreye girdi (IP başına sınır tek başına yetmezdi: her istek yeni IP)');
   assert.equal(tavan.govde.hata, 'kilit');
+  // G-03: kart yolu bu yük tavanından muaftır (şifre taşkını kart girişini kapatmaz).
+  assert.equal((await giris('kartGiris', kartAyir(kartUrl), { basliklar: { 'Fastly-Client-IP': '198.51.100.249' } })).durum, 200);
   const dogru = { kullaniciAdi, sifre };
   assert.equal((await giris('cocukGiris', dogru, { basliklar: { 'Fastly-Client-IP': '198.51.100.250' } })).durum, 429);
   await bekle(async () => (await giris('cocukGiris', dogru, { basliklar: { 'Fastly-Client-IP': '198.51.100.251' } })).durum === 200, 90_000);

@@ -84,6 +84,8 @@ export const haftalikKuyruk = onSchedule(
 export const abonelikCik = onRequest({ cors: false, region: 'europe-west1', maxInstances: 2, secrets: [ABONELIK_SIRRI] }, async (istek, yanit) => {
   yanit.set({
     'Cache-Control': 'no-store', 'Referrer-Policy': 'no-referrer', 'X-Robots-Tag': 'noindex', 'X-Content-Type-Options': 'nosniff',
+    // G-11: Hosting başlıkları bu yanıtta (özellikle hata yanıtlarında) görünmeyebilir; çerçevelenme ve içerik yükleme işlevin kendisinden kapatılır.
+    'X-Frame-Options': 'DENY', 'Content-Security-Policy': "default-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'",
     'Content-Type': 'text/html; charset=utf-8',
   });
   if (istek.method !== 'GET' && istek.method !== 'POST') { yanit.set('Allow', 'GET, POST').status(405).send(abonelikSayfasi('tr', 'gecersiz')); return; }

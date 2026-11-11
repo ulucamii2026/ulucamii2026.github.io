@@ -10,6 +10,9 @@ name: egitim yayını (İlim Yolu, Firebase Hosting)
 #    ana site yayınları atlanır (yol süzgeci egitim'e dokunan push'ları doğrudan yakalar). Bu, «bugün» hesabını da günlük tazeler.
 #  - workflow_dispatch: elle.
 # Güvenlik: yalnız bu depo ve main; çatal/PR yok; Hosting dışında hiçbir şey yayınlanmaz (--only hosting:ulucamii-egitim).
+# Üç iş (12 Kasım 2026, güvenlik gözden geçirmesi G-01): `derle` depo/npm kodunu çalıştırır ama OIDC belirteci YOK (id-token verilmez);
+# `yayinla` yalnız derlenmiş çıktıyı indirir, depo kodu ve bağımlılık kurmadan sabit sürümlü firebase-tools ile yayınlar (tek id-token burada);
+# `canli` canlı denetimi belirteçsiz çalıştırır.
 on:
   push:
     branches: [main]
@@ -56,7 +59,7 @@ env:
   HIZMET_HESABI: egitim-ci-yayin@ulucamii-portal.iam.gserviceaccount.com
 
 jobs:
-  yayinla:
+  derle:
     if: >-
       github.repository == 'ulucamii2026/ulucamii2026.github.io' &&
       github.ref == 'refs/heads/main' &&
@@ -68,7 +71,6 @@ jobs:
     timeout-minutes: 30
     permissions:
       contents: read
-      id-token: write
     steps:
       - name: Depoyu al
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -79,7 +81,7 @@ jobs:
           node-version: 24
           cache: npm
       - name: Bağımlılıkları kur
-        run: npm ci
+        run: npm ci --ignore-scripts
 
       # Sesler git'te yok (≈ 116 MB). Canlı sitenin kendisinden geri alınır, manifest/künye ile bayt+sha256 doğrulanır;
       # eksik ya da uyuşmayan tek dosya işi burada durdurur (aksi halde yayın canlıdaki sesleri silerdi).
@@ -98,9 +100,31 @@ jobs:
       # Tarayıcısız, ağsız, deterministik düğüm testleri (test:egitim'in node --test bölümü + CI kapıları). Playwright bölümü yerelde çalışır.
       - name: Düğüm testleri
         run: node --test tests/egitim/pano.test.mjs tests/egitim/barindirma.test.mjs tests/egitim/cevrimdisi.test.mjs tests/egitim/firebase-uyg.test.mjs tests/egitim/tasima-varlik.test.mjs tests/egitim/kurs-icerik.test.mjs tests/egitim/e-kodlar.test.mjs tests/egitim/ses-getir.test.mjs tests/egitim/dist-denetle.test.mjs
-      - name: Canlı denetim için tarayıcı
-        run: npx playwright install --with-deps chromium
+      # Yayına giden her şey: derlenmiş çıktı + `firebase deploy`in okuduğu iki yapılandırma dosyası. Kısa ömürlü.
+      - name: Yayın paketini yükle
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: egitim-yayin-paketi
+          path: |
+            egitim/dist
+            firebase.json
+            .firebaserc
+          retention-days: 1
+          if-no-files-found: error
 
+  yayinla:
+    needs: derle
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      # Depo çıkışı ve `npm ci` YOK: bu işte yalnız indirilen çıktı ve sabit sürümlü firebase-tools çalışır.
+      - name: Yayın paketini indir
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        with:
+          name: egitim-yayin-paketi
       # Kimlik: Workload Identity Federation (uzun ömürlü anahtar YOK). Sağlayıcı yalnız bu depo + refs/heads/main kabul eder.
       - name: Google'a OIDC ile giriş
         uses: google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093 # v3
@@ -111,6 +135,31 @@ jobs:
       - name: Hosting'e yayınla (yalnız hosting:ulucamii-egitim)
         run: npx --yes firebase-tools@${FIREBASE_TOOLS} deploy --only hosting:ulucamii-egitim --project ulucamii-portal --non-interactive --message "CI ${GITHUB_SHA::8} (${GITHUB_EVENT_NAME})"
 
+  # Yayın sonrası denetim belirteçsiz çalışır (depo betiği + Playwright gerekir; id-token yok).
+  canli:
+    needs: yayinla
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    steps:
+      - name: Depoyu al
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 24
+          cache: npm
+      - name: Bağımlılıkları kur
+        run: npm ci --ignore-scripts
+      # Canlı denetim yayımlanan çıktıyla (egitim/dist) karşılaştırır: aynı artifact.
+      - name: Yayın paketini indir
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        with:
+          name: egitim-yayin-paketi
+      - name: Canlı denetim için tarayıcı
+        run: npx playwright install --with-deps chromium
       - name: Canlı denetim (egitim:canli)
         run: node scripts/egitim-canli-denetim.mjs https://egitim.ulucamii.be
       - name: Canlıdaki tüm sesler yerinde mi (bayt + sha256)
@@ -118,7 +167,7 @@ jobs:
 
   # Yayın zinciri sessizce kırılmasın (deploy.yml'deki uyarı ile aynı kalıp: Date + Message-ID başlıkları şart).
   uyari:
-    needs: yayinla
+    needs: [derle, yayinla, canli]
     if: failure()
     runs-on: ubuntu-latest
     timeout-minutes: 5

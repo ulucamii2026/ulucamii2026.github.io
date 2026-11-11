@@ -1,0 +1,94 @@
+---
+/**
+ * «Yeni Müslüman yolu» dizini (İlim Yolu, 11 Kasım 2026): 12 hafta ve 8 adım. Metinler paylasilan/ogrenme-yolu/icerik.json'dan (tek kaynak) gelir.
+ * Sunucu iskeleti çizer; her haftanın durumunu ve genel ilerlemeyi scripts/yeni-yol.ts cihaz kaydından (girişliyse yalnız sahibinin okuduğu
+ * `ozel/yol12` belgesiyle eşitlenmiş kopyadan) doldurur. Puan, sıralama ve zaman yoktur.
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import { dilListesi } from '@ortak/i18n/utils';
+import Ikon from '../../../../components/Ikon.astro';
+import SoruPaneli from '../../../../components/SoruPaneli.astro';
+import TaslakEtiketi from '../../../../components/TaslakEtiketi.astro';
+import { ilimMetinleri } from '../../../../i18n/ilim';
+import { doldur } from '../../../../i18n/ibadet';
+import { yeniYolMetinleri } from '../../../../i18n/yeni-yol';
+import { ADIMLAR, HAFTALAR, YOL, adimHaftalari, adimKimligi, adimaGore } from '../../../../lib/yeni-yol';
+import Taban from '../../../../layouts/Taban.astro';
+import '../../../../styles/ilim.css';
+import '../../../../styles/yollar.css';
+import '../../../../styles/yeni-yol.css';
+
+export function getStaticPaths() {
+  return dilListesi.map((dil) => ({ params: { dil } }));
+}
+
+const dil = Astro.params.dil as Dil;
+const y = yeniYolMetinleri(dil);
+const il = ilimMetinleri(dil);
+const taban = `/${dil}/yollar/yeni-musluman/`;
+const { ilerleme, soruSayim, tamamlandi, baslanmadi, teklifSor, teklifNot, teklifEvet, teklifSimdilik, teklifEklendi, teklifBekler, teklifErtelendi, silSor, silNotYerel, silNotHesap, silEvet, silVazgec, silTamam, silTamamBekler } = y;
+const veri = { m: { ilerleme, soruSayim, tamamlandi, baslanmadi, teklifSor, teklifNot, teklifEvet, teklifSimdilik, teklifEklendi, teklifBekler, teklifErtelendi, silSor, silNotYerel, silNotHesap, silEvet, silVazgec, silTamam, silTamamBekler }, toplam: HAFTALAR.length };
+---
+<Taban dil={dil} baslik={y.ad} aciklama={y.aciklama} yol="yollar/yeni-musluman">
+  <div class="icerik yl-sayfa yy-sayfa" data-yy-indeks data-veri={JSON.stringify(veri)}>
+    <p><a class="yl-geri-baglanti" href={`/${dil}/yollar/`}><Ikon ad="geri" /> {y.yollarBaglantisi}</a></p>
+    <header class="yl-bas">
+      <p class="iy-ust-yazi">{y.ustEtiket} · {il.marka}</p>
+      <h1>{y.ad}</h1>
+      <p class="yy-giris">{YOL.giris[dil]}</p>
+      <p class="yl-not">{y.saklamaNotu}</p>
+      <noscript><p class="yl-not">{y.jsGerek}</p></noscript>
+    </header>
+
+    <div class="yy-ozet">
+      <p class="yl-ilerleme" id="yy-ilerleme-yazi" data-yy-ilerleme>{doldur(y.ilerleme, { n: 0, m: HAFTALAR.length })}</p>
+      <progress max={HAFTALAR.length} value="0" aria-labelledby="yy-ilerleme-yazi" data-yy-cubuk></progress>
+      <div data-yy-teklif><SoruPaneli kimlik="yy-teklif-baslik" /></div>
+      <div data-yy-sil-panel><SoruPaneli kimlik="yy-sil-baslik" /></div>
+      <p class="yl-not" role="status" tabindex="-1" data-yy-bilgi></p>
+      <p><button type="button" class="dugme ikincil" data-yy-sil>{y.silDugme}</button></p>
+    </div>
+
+    <section class="iy-bolum" aria-labelledby="haftalar-baslik">
+      <div class="iy-bolum-bas"><h2 id="haftalar-baslik">{y.haftalarBaslik}</h2></div>
+      <ol class="yl-yollar iki">
+        {HAFTALAR.map((h, i) => (
+          <li class="yl-yol yy-yol" data-hafta={h.id}>
+            <div class="yl-yol-motif yy-karo" aria-hidden="true"><span class="yy-no">{String(i + 1).padStart(2, '0')}</span></div>
+            <div class="yl-yol-metin">
+              <p class="yy-adim-etiket">{y.adimEtiketi} {h.adim} · {adimaGore(h).baslik[dil]}</p>
+              <h3><a href={`${taban}${h.id}/`}><span class="gorunmez">{y.haftaEtiketi} {i + 1}: </span>{h.baslik[dil]}</a></h3>
+              <p class="yy-hedef">{h.hedef[dil]}</p>
+              <p class="yy-durum" data-yy-durum>{y.baslanmadi}</p>
+              <TaslakEtiketi dil={dil} kisa durum={h.durum[dil]} />
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="iy-bolum" aria-labelledby="adimlar-baslik">
+      <div class="iy-bolum-bas">
+        <h2 id="adimlar-baslik">{y.adimlarBaslik}</h2>
+        <p>{y.adimlarGiris}</p>
+      </div>
+      <ol class="yy-adimlar">
+        {ADIMLAR.map((a) => (
+          <li class="yy-adim">
+            <span class="yy-adim-no" aria-hidden="true">{a.no}</span>
+            <div>
+              <a href={`${taban}${adimKimligi(a.no)}/`}><span class="gorunmez">{y.adimEtiketi} {a.no}: </span>{a.baslik[dil]}</a>
+              <p class="yl-sayi">{adimHaftalari(a.no).map((h) => `${y.haftaEtiketi} ${HAFTALAR.indexOf(h) + 1}`).join(' · ')}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+  </div>
+</Taban>
+
+<script>
+  import '../../../../scripts/dil';
+  import '../../../../scripts/yeni-yol';
+</script>

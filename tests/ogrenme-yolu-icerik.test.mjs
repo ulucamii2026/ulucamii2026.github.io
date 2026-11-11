@@ -30,7 +30,7 @@ test('beş dil her yerde dolu; uzunluk sınırları', () => {
   for (const h of yol.haftalar) {
     for (const alan of ['baslik', 'hedef', 'metin', 'yap']) metinOk(h[alan], `${h.id}.${alan}`);
     for (const d of DIL) assert.ok(h.metin[d].length <= 900, `${h.id}.metin.${d} > 900 (${h.metin[d].length})`);
-    for (const d of DIL) assert.equal(h.durum[d], 'taslak');
+    for (const d of DIL) assert.equal(h.durum[d], 'onayli', `${h.id}.${d} durum onayli olmali`);
     assert.ok(h.kaynaklar.length >= 1 && h.kaynaklar.length <= 4, `${h.id} kaynak sayısı`);
     for (const k of h.kaynaklar) metinOk(k.ad, `${h.id}.kaynak.ad`);
   }
@@ -60,6 +60,19 @@ test('bağlantılar yalnız izinli sunuculara', () => {
       (u.hostname === 'sunnah.com' && sunnah.has(decodeURIComponent(u.pathname)));
     assert.ok(ok, `izinsiz bağlantı: ${k.url}`);
   }
+});
+
+test('terim kuralları: Allah (Dieu/God/Gott yok), namaz adları, Imam, tek abdest etiketi (11 Kasım 2026 denetimi)', () => {
+  const sec = (re, ne) => { for (const h of yol.haftalar) for (const d of Object.keys(re)) for (const alan of [h.baslik, h.hedef, h.metin, h.yap, ...h.sorular.flatMap((s) => [s.soru, ...s.siklar])]) {
+    const m = alan[d].replace(/keinen Gott außer/g, '');
+    assert.ok(!re[d].test(m), `${ne}: ${h.id}.${d} «${alan[d].match(re[d])?.[0]}»`);
+  } };
+  sec({ fr: /\bDieu\b/, en: /\bGod('s|’s)?\b/, nl: /\bGods?\b/, de: /\bGott(?:es)?\b/ }, 'Allah yerine genel ad');
+  sec({ de: /Religionsbeauftrag|Gebetswaschung|Lehrperson/ }, 'de terimleri');
+  const ad = { fr: ['fajr', 'dhuhr', '‘asr', 'maghrib', '‘ichâ’'], en: ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'], nl: ['Fadjr', 'Dhoehr', 'Asr', 'Maghrib', 'Isja'], de: ['Fadschr', 'Dhuhr', 'Asr', 'Maghrib', 'Ischa'] };
+  const h06 = yol.haftalar.find((h) => h.id === 'h06');
+  for (const [d, liste] of Object.entries(ad)) for (const x of liste) assert.ok(h06.metin[d].includes(x), `h06.${d} namaz adı ${x}`);
+  assert.ok(h06.metin.tr.includes('örtünme (setr-i avret)') && h06.metin.tr.includes('Hanefî'));
 });
 
 test('telefon, e-posta ve kurum adı yok', () => {

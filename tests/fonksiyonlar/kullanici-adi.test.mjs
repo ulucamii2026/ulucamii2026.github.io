@@ -86,3 +86,15 @@ test('oturumsuz ve çocuk hesabı ad alamaz', async () => {
   assert.equal(c.hata.status, 'PERMISSION_DENIED');
   assert.equal((await ad('kullaniciAdlari/cocuk.ad')).exists, false);
 });
+
+test('G-08: uid başına günlük ad denemesi sınırı (30): sonrası 429 ad-sorgu-sinirli; başka kullanıcı etkilenmez', async () => {
+  await basarili('kullaniciAdiAl', { ad: 'yildiz' }, await kullaniciAc('u1'));
+  const t2 = await kullaniciAc('u2');
+  for (let i = 0; i < 30; i++) assert.equal((await cagir('kullaniciAdiAl', { ad: 'yildiz' }, t2)).durum, 409, `deneme ${i + 1}`);
+  const sinir = await cagir('kullaniciAdiAl', { ad: 'yildiz' }, t2);
+  assert.equal(sinir.durum, 429);
+  assert.equal(sinir.hata.status, 'RESOURCE_EXHAUSTED');
+  assert.equal(sinir.hata.message, 'ad-sorgu-sinirli');
+  assert.ok(Date.parse(sinir.hata.details.sonraki) > Date.now() + 23 * 3_600_000);
+  assert.deepEqual(await basarili('kullaniciAdiAl', { ad: 'baska.ad' }, await kullaniciAc('u3')), { ad: 'baska.ad' });
+});

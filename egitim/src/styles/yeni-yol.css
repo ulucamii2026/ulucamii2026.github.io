@@ -1,0 +1,77 @@
+/* İlim Yolu «Yeni Müslüman yolu» (11 Kasım 2026): dizin, adım sayfası, hafta sayfası. yollar.css'in kartlarını, soru kutularını ve düğmelerini
+   yeniden kullanır; burada yalnız hafta rakamı karosu, hafta metni, uygulama kutusu, video çerçevesi ve gezinti vardır.
+   Kilim dili (egitim/DESIGN.md): köşe 2 px, gölge ve eğri yok, renk ikinci işaret (her durumun bir metni vardır). Piksel görsel yok. */
+
+.yy-sayfa { padding-block: 2rem 4rem; }
+.yy-giris { max-width: 46rem; padding: 0.9rem 1.1rem; border: 1.5px solid var(--cizgi-koyu); border-inline-start: 6px solid var(--safran-yazi); background: var(--yuz); border-radius: var(--r); line-height: 1.6; }
+
+.yy-ozet { margin-top: 1.4rem; max-width: 46rem; display: grid; gap: 0.55rem; padding: 1rem 1.1rem; background: var(--yuz); border: 1.5px solid var(--cizgi-koyu); border-radius: var(--r); }
+.yy-ozet progress { width: 100%; height: 0.85rem; accent-color: var(--yesil); }
+.yy-ozet .yl-ilerleme { font-size: 1.05rem; }
+
+/* Hafta karosu: Kilim'de rakamlı, çerçeveli kare (motif yerine) */
+.yy-no { font: 800 1.9rem/1 var(--baslik); letter-spacing: -0.02em; color: var(--murekkep); }
+.yl-yol[data-tamam="1"] .yy-no { color: var(--yesil); }
+.yy-yol { grid-template-columns: 4.5rem minmax(0, 1fr); }
+.yy-yol .yl-yol-metin p { margin: 0; }
+.yy-hedef { color: var(--murekkep-2); font-size: 0.97rem; }
+.yy-adim-etiket { font: 650 0.82rem/1.4 var(--baslik); letter-spacing: 0.03em; color: var(--kokboya-yazi); }
+.yy-durum { font-weight: 650; font-size: 0.95rem; }
+.yl-yol[data-tamam="1"] .yy-durum { color: var(--yesil); font-weight: 700; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .yl-yol[data-tamam="1"] .yy-durum, :root:not([data-theme="light"]) .yl-yol[data-tamam="1"] .yy-no { color: #CFE8DB; } }
+:root[data-theme="dark"] .yl-yol[data-tamam="1"] .yy-durum, :root[data-theme="dark"] .yl-yol[data-tamam="1"] .yy-no { color: #CFE8DB; }
+
+/* Adım listesi */
+.yy-adimlar { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
+@media (min-width: 40rem) { .yy-adimlar { grid-template-columns: 1fr 1fr; } }
+.yy-adim { display: grid; grid-template-columns: 3rem minmax(0, 1fr); gap: 0.2rem 0.9rem; align-items: start; padding: 0.8rem 0.9rem; background: var(--yuz); border: 1.5px solid var(--cizgi-koyu); border-radius: var(--r); }
+.yy-adim-no { width: 3rem; height: 3rem; display: grid; place-items: center; font: 800 1.35rem/1 var(--baslik); border: 1.5px solid var(--murekkep); background: var(--yesil-soluk); }
+.yy-adim a { color: var(--murekkep); font-weight: 700; text-underline-offset: 0.2em; text-decoration-thickness: 2px; overflow-wrap: anywhere; }
+.yy-adim a:hover { color: var(--kokboya-yazi); }
+.yy-adim .yl-sayi { margin: 0; }
+
+/* Hafta sayfası */
+.yy-hafta { display: grid; gap: 1.5rem; max-width: 46rem; padding-block: 2rem 4rem; }
+.yy-hafta h1 { font-size: clamp(1.8rem, 1.3rem + 2vw, 2.6rem); letter-spacing: -0.02em; line-height: 1.1; }
+.yy-hedef-satir { font-size: 1.15rem; line-height: 1.6; font-weight: 600; }
+.yy-metin { font-size: 1.1rem; line-height: 1.75; max-width: 42em; }
+.yy-kutu { display: grid; gap: 0.7rem; padding: 1.1rem; background: var(--yuz); border: 1.5px solid var(--cizgi-koyu); border-inline-start: 6px solid var(--yesil); border-radius: var(--r); }
+.yy-kutu h2 { font-size: 1.3rem; }
+.yy-kutu p { margin: 0; line-height: 1.65; }
+.yy-kutu .dugme { justify-self: start; }
+.yy-isaret-dugme[aria-pressed="true"] { background: var(--yesil); border-color: var(--yesil); color: var(--krem-yazi); }
+.yy-isaret-dugme[aria-pressed="true"]:hover { background: var(--yesil-2); border-color: var(--yesil-2); }
+.yy-isaret-dugme[disabled] { cursor: default; }
+
+/* Video: tıklayana kadar yalnız yerel kapak düğmesi (3. taraf isteği yok) */
+.yy-video { position: relative; aspect-ratio: 16 / 9; border: 1.5px solid var(--murekkep); border-radius: var(--r); background: var(--murekkep); overflow: hidden; }
+.yy-video-dugme { position: absolute; inset: 0; width: 100%; height: 100%; display: grid; place-content: center; justify-items: center; gap: 0.7rem; padding: 1rem; text-align: center;
+  color: #fff; background: repeating-linear-gradient(45deg, rgba(255,255,255,0.05) 0 10px, transparent 10px 20px), var(--murekkep); border: 0; border-radius: 0; cursor: pointer; font: 700 1.1rem/1.3 var(--baslik); }
+.yy-video-dugme:hover { background-color: var(--kokboya-2); }
+.yy-video-dugme:focus-visible { outline: 3px solid #fff; outline-offset: -6px; }
+.yy-video-oynat { width: 4rem; height: 4rem; display: grid; place-items: center; border: 2px solid #fff; background: var(--kokboya); }
+.yy-video-oynat svg { width: 1.7rem; height: 1.7rem; fill: #fff; }
+.yy-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+.yy-sorular { display: grid; gap: 1rem; padding: 0; margin: 0; list-style: none; }
+.yy-soru { display: grid; gap: 0.6rem; padding: 1rem; background: var(--yuz); border: 1.5px solid var(--cizgi-koyu); border-radius: var(--r); }
+.yy-soru[data-tamam="1"] { border-color: var(--yesil); border-width: 2px; }
+.yy-soru fieldset { margin: 0; padding: 0; border: 0; min-width: 0; display: grid; gap: 0.5rem; }
+.yy-soru legend { padding: 0; font-weight: 700; font-size: 1.05rem; line-height: 1.45; }
+.yy-soru legend .no { display: block; font: 700 0.8rem/1.4 var(--baslik); letter-spacing: 0.12em; text-transform: uppercase; color: var(--kokboya-yazi); }
+.yy-soru-eylem { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 1rem; }
+
+.yy-kaynaklar { margin: 0; padding-inline-start: 1.2rem; display: grid; gap: 0.35rem; }
+.yy-kaynaklar a { color: var(--kokboya-yazi); font-weight: 600; overflow-wrap: anywhere; }
+.yy-platform { display: grid; gap: 0.4rem; }
+.yy-platform a { justify-self: start; }
+
+.yy-bitis { padding: 1rem 1.1rem; border: 2px solid var(--yesil); background: var(--yesil-soluk); border-radius: var(--r); max-width: 46rem; }
+.yy-bitis[hidden] { display: none; }
+.yy-bitis h2 { font-size: 1.3rem; }
+
+.yy-gezinti { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.6rem; }
+.yy-gezinti .dugme { text-decoration: none; }
+
+@media (prefers-reduced-motion: reduce) { .yy-sayfa *, .yy-hafta * { transition: none !important; animation: none !important; } }
+@media (max-width: 29.99rem) { .yy-yol { grid-template-columns: 3.5rem minmax(0, 1fr); } .yy-no { font-size: 1.5rem; } .yl-yol-motif.yy-karo { width: 3.5rem; height: 3.5rem; } }

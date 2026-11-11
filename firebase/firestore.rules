@@ -467,7 +467,27 @@ service cloud.firestore {
             && (!('gunler' in d) || (d.gunler is list && d.gunler.size() <= 60))
             && (!('v' in d) || d.v is int)
             && (!('ar' in d) || (d.ar is int && d.ar >= 0 && d.ar <= 4))
+            && calismaDegerleri(d)
             && d.guncelleme == request.time;
+        }
+        /* Değer sınırları (G-06, 11 Kasım 2026): bilgi, okuma ve ibadet belgelerinde her anahtar bilinen ve değeri kısa bir dizedir
+           (istemci: src/lib/ilim-yolu/bilgi-ilerleme.ts ≤ 400 karakter, src/lib/okuma/ilerleme.ts ≤ 3 × 400 = 1200, ibadet-ilerleme.ts ≤ 5;
+           sınırlar 2 kat ve üstü payla konuldu). ezber ve yol belgelerinde değerler iç içe nesnedir; kurallar döngü bilmediğinden orada
+           yalnız madde sayısı sınırlıdır (değişmedi). */
+        function dizeSinirli(m, k, n) { return !(k in m) || (m[k] is string && m[k].size() <= n); }
+        function calismaDegerleri(d) {
+          return ad == 'bilgi' ? (d.maddeler.keys().hasOnly(['kuran', 'itikat', 'ibadet', 'siyer', 'ahlak'])
+                && dizeSinirli(d.maddeler, 'kuran', 800) && dizeSinirli(d.maddeler, 'itikat', 800) && dizeSinirli(d.maddeler, 'ibadet', 800)
+                && dizeSinirli(d.maddeler, 'siyer', 800) && dizeSinirli(d.maddeler, 'ahlak', 800))
+            : ad == 'okuma' ? (d.maddeler.keys().hasOnly(['o1', 'o2', 'o3', 'o4', 'o5', 'o6', 'o7', 'o8', 'o9'])
+                && dizeSinirli(d.maddeler, 'o1', 2400) && dizeSinirli(d.maddeler, 'o2', 2400) && dizeSinirli(d.maddeler, 'o3', 2400)
+                && dizeSinirli(d.maddeler, 'o4', 2400) && dizeSinirli(d.maddeler, 'o5', 2400) && dizeSinirli(d.maddeler, 'o6', 2400)
+                && dizeSinirli(d.maddeler, 'o7', 2400) && dizeSinirli(d.maddeler, 'o8', 2400) && dizeSinirli(d.maddeler, 'o9', 2400))
+            : ad == 'ibadet' ? (d.maddeler.keys().hasOnly(['abdest', 'namaz', 'sabah', 'ogle', 'ikindi', 'aksam', 'yatsi'])
+                && dizeSinirli(d.maddeler, 'abdest', 16) && dizeSinirli(d.maddeler, 'namaz', 16) && dizeSinirli(d.maddeler, 'sabah', 16)
+                && dizeSinirli(d.maddeler, 'ogle', 16) && dizeSinirli(d.maddeler, 'ikindi', 16) && dizeSinirli(d.maddeler, 'aksam', 16)
+                && dizeSinirli(d.maddeler, 'yatsi', 16))
+            : true;
         }
         allow get: if calismaAdi() && (sahip(uid) || (hoca() && kursaBagli()) || (ad == 'yol' && hoca() && paylasildi()));
         // Liste sorgusunda belge adı (ad) bağlı değildir; yazım üç adla sınırlı olduğundan sahibi ve kursun hocası listeleyebilir.
@@ -490,8 +510,28 @@ service cloud.firestore {
                  && d.riza.metinSurum is string && d.riza.metinSurum.size() >= 1 && d.riza.metinSurum.size() <= 40)
               || (d.muhtedi == false && !('riza' in d)));
         }
-        allow get, delete: if belge == 'hassas' && sahip(uid);
-        allow create, update: if belge == 'hassas' && sahip(uid) && canli(uid) && !cocukOturumu() && hassasGecerli();
+        /* 12 haftalık yolun ilerlemesi (11 Kasım 2026): hafta başına dört işaret, başka hiçbir şey. calisma/ DEĞİL, burada: calisma listesini kursun
+           hocası okuyabilir, bu belgeyi YALNIZ sahibi okur (hoca, haftalık e-posta, veli ve rapor görünümleri dışarıda). Biçim: v, maddeler (en çok
+           h01…h12), guncelleme = sunucu zamanı; değerler ≤ 16 karakterlik dizedir (istemci 4 haneli '0'…'3' yazar). */
+        function yol12Gecerli() {
+          let d = request.resource.data;
+          return d.keys().hasOnly(['v', 'maddeler', 'guncelleme']) && d.keys().hasAll(['maddeler', 'guncelleme'])
+            && d.maddeler is map && d.maddeler.size() <= 12
+            && d.maddeler.keys().hasOnly(['h01', 'h02', 'h03', 'h04', 'h05', 'h06', 'h07', 'h08', 'h09', 'h10', 'h11', 'h12'])
+            && (!('v' in d) || d.v is int)
+            && yol12Degerleri(d.maddeler)
+            && d.guncelleme == request.time;
+        }
+        /* Değer sınırı (G-06): her hafta ≤ 16 karakterlik dize (istemci ≤ 4, '0'…'3'). */
+        function yol12Degerleri(m) {
+          return dizeSinirli16(m, 'h01') && dizeSinirli16(m, 'h02') && dizeSinirli16(m, 'h03') && dizeSinirli16(m, 'h04')
+            && dizeSinirli16(m, 'h05') && dizeSinirli16(m, 'h06') && dizeSinirli16(m, 'h07') && dizeSinirli16(m, 'h08')
+            && dizeSinirli16(m, 'h09') && dizeSinirli16(m, 'h10') && dizeSinirli16(m, 'h11') && dizeSinirli16(m, 'h12');
+        }
+        function dizeSinirli16(m, k) { return !(k in m) || (m[k] is string && m[k].size() <= 16); }
+        allow get, delete: if (belge == 'hassas' || belge == 'yol12') && sahip(uid);
+        allow create, update: if (belge == 'hassas' && sahip(uid) && canli(uid) && !cocukOturumu() && hassasGecerli())
+          || (belge == 'yol12' && sahip(uid) && canli(uid) && yol12Gecerli());
         allow list: if false;
       }
 

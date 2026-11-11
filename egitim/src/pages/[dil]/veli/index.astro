@@ -70,7 +70,7 @@ const veri = {
       <p class="not">{m.yukleniyor}</p>
       <noscript><p class="not">Bu sayfa JavaScript gerektirir. · Cette page nécessite JavaScript. · This page requires JavaScript. · Deze pagina vereist JavaScript. · Diese Seite benötigt JavaScript.</p></noscript>
     </div>
-    <script is:inline type="application/json" id="veli-veri" set:html={JSON.stringify(veri)} />
+    <script is:inline type="application/json" id="veli-veri" set:html={JSON.stringify(veri).replace(/</g, '\\u003c')} />
     <p class="alt-baglantilar">
       <a href={veri.kursYolu} class="dugme dugme-ikincil">{m.kurs}</a>
       <a href={veri.gizlilikYolu} class="dugme dugme-ikincil">{m.gizlilik}</a>

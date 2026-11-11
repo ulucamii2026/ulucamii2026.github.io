@@ -211,7 +211,8 @@ test('Hassas belge: yalnız sahibi; muhtedi true her yazımda sunucu zamanlı r�
 
 test('Çalışma belgeleri: üç ad, ≤ 120 madde, guncelleme = sunucu zamanı; yalnız sahibi yazar', async () => {
   const u1 = kisi('u1');
-  for (const ad of ['ezber', 'bilgi', 'yol', 'okuma']) await assertSucceeds(setDoc(doc(u1, `kullanicilar/u1/calisma/${ad}`), calisma()));
+  for (const ad of ['ezber', 'yol']) await assertSucceeds(setDoc(doc(u1, `kullanicilar/u1/calisma/${ad}`), calisma()));
+  await assertSucceeds(setDoc(doc(u1, 'kullanicilar/u1/calisma/bilgi'), calisma({ maddeler: { kuran: '13', itikat: '1' } })));
   // Kur'an Okuma (okuma): adım başına tek sıkıştırılmış dize; hoca (kursa bağlı) okur, başkası yazamaz/okuyamaz.
   await assertSucceeds(setDoc(doc(u1, 'kullanicilar/u1/calisma/okuma'), calisma({ maddeler: { o1: '1ab2ab', o7: '3zz' } })));
   await assertFails(setDoc(doc(kisi('u2'), 'kullanicilar/u1/calisma/okuma'), calisma()));
@@ -414,4 +415,105 @@ test('ihtida/ozet ve ozel/hassas: YALNIZ sahibi okur — hoca, başka kullanıc�
   await assertFails(setDoc(doc(kisi('u1'), 'kullanicilar/u1/ihtida/ozet'), { durum: 'x' })); // sahibi de yazamaz (sunucu yazar)
   // Hoca yalnız calisma'yı okuyabilir; üst belge listelemesi altkoleksiyon verisini getirmez.
   await assertSucceeds(oku(hocaA(), 'kullanicilar/u1/calisma/ezber'));
+});
+
+// ── 11 Kasım 2026: 12 haftalık yolun ilerlemesi `ozel/yol12` (calisma/ DEĞİL: calisma listesi hocaya açık) ──
+test('ozel/yol12: YALNIZ sahibi okur/yazar/siler; biçim: v, maddeler (h01…h12), guncelleme = sunucu zamanı; hoca/başka/çocuk/anonim hiçbir şey yapamaz', async () => {
+  const yol = 'kullanicilar/u1/ozel/yol12';
+  await env.withSecurityRulesDisabled(async (ctx) => {
+    const d = ctx.firestore();
+    await setDoc(doc(d, 'kullanicilar/u1'), { ad: 'ali', tur: 'kursYetiskin', ref: 'R2', dil: 'tr', olusturma: ESKI }); // hoca kursaBagli() true
+    await setDoc(doc(d, 'paylasimlar/u1'), { hocalar: ['hoca-a'], zaman: ESKI });
+    await setDoc(doc(d, yol), { v: 1, maddeler: { h01: '31' }, guncelleme: ESKI });
+  });
+  const u1 = kisi('u1');
+  await assertSucceeds(oku(u1, yol));
+  // Başkaları: okuma, yazma, silme, liste — hepsi kapalı (kursa bağlı hoca ve paylaşılan hoca dahil).
+  for (const db of [hocaA(), hocaB(), kisi('u2'), kisi('y1', { ref: 'R2' }), cocuk(), anonim()]) {
+    await assertFails(oku(db, yol));
+    await assertFails(setDoc(doc(db, yol), { v: 1, maddeler: {}, guncelleme: serverTimestamp() }));
+    await assertFails(deleteDoc(doc(db, yol)));
+    await assertFails(getDocs(collection(db, 'kullanicilar/u1/ozel')));
+  }
+  await assertFails(getDocs(collection(u1, 'kullanicilar/u1/ozel'))); // sahibi de listeleyemez
+  // Hocanın calisma listesi bu belgeyi getirmez (ayrı altkoleksiyon).
+  await assertSucceeds(getDocs(collection(hocaA(), 'kullanicilar/u1/calisma')));
+  // Geçerli yazım.
+  const u3 = kisi('u3');
+  const y3 = 'kullanicilar/u3/ozel/yol12';
+  await assertSucceeds(setDoc(doc(u3, y3), { v: 1, maddeler: { h01: '31', h12: '1' }, guncelleme: serverTimestamp() }));
+  await assertSucceeds(setDoc(doc(u3, y3), { maddeler: {}, guncelleme: serverTimestamp() }));
+  const hepsi = Object.fromEntries(Array.from({ length: 12 }, (_, i) => ['h' + String(i + 1).padStart(2, '0'), '3333']));
+  await assertSucceeds(setDoc(doc(u3, y3), { v: 1, maddeler: hepsi, guncelleme: serverTimestamp() }));
+  // Geçersiz yazımlar: fazla alan, eski zaman, yanlış tür, h13, ek anahtar, zamansız, başka ad.
+  for (const kotu of [
+    { v: 1, maddeler: {}, guncelleme: serverTimestamp(), ad: 'x' },
+    { v: 1, maddeler: {}, guncelleme: serverTimestamp(), muhtedi: true },
+    { v: 1, maddeler: {}, guncelleme: ESKI },
+    { v: 1, maddeler: 'x', guncelleme: serverTimestamp() },
+    { v: 'a', maddeler: {}, guncelleme: serverTimestamp() },
+    { v: 1, maddeler: { h13: '1' }, guncelleme: serverTimestamp() },
+    { v: 1, maddeler: { yeniMusluman: '1' }, guncelleme: serverTimestamp() },
+    { v: 1, maddeler: {} },
+    { v: 1, guncelleme: serverTimestamp() },
+  ]) {
+    await assertFails(setDoc(doc(u3, y3), kotu), JSON.stringify(Object.keys(kotu)));
+  }
+  await assertFails(setDoc(doc(u3, 'kullanicilar/u3/ozel/yol13'), { v: 1, maddeler: {}, guncelleme: serverTimestamp() }));
+  await assertSucceeds(deleteDoc(doc(u3, y3)));
+  // calisma/ içine bu verinin adı yazılamaz (yeni ad açılmadı).
+  await assertFails(setDoc(doc(u3, 'kullanicilar/u3/calisma/yol12'), calisma()));
+});
+
+// ── 11 Kasım 2026 (G-06, G-07): okuma/ibadet/bilgi belgeleri ve değer sınırları ──
+const dizi = (n, c = '1') => c.repeat(n);
+const yazimlar = {
+  // İstemcinin bugün yazdığı en büyük yükler (src/lib/**/…-ilerleme.ts): bilgi ≤ 400, okuma ≤ 3 × 400, ibadet ≤ 5; v ve guncelleme dışında alan yok.
+  bilgi: { v: 1, maddeler: Object.fromEntries(['kuran', 'itikat', 'ibadet', 'siyer', 'ahlak'].map((k) => [k, dizi(400, '3')])), guncelleme: serverTimestamp() },
+  okuma: { v: 1, maddeler: Object.fromEntries(['o1', 'o2', 'o3', 'o4', 'o5', 'o6', 'o7', 'o8', 'o9'].map((k) => [k, dizi(1200, '5a')])), guncelleme: serverTimestamp() },
+  ibadet: { v: 1, maddeler: Object.fromEntries(['abdest', 'namaz', 'sabah', 'ogle', 'ikindi', 'aksam', 'yatsi'].map((k) => [k, '33333'])), guncelleme: serverTimestamp() },
+};
+test('calisma/okuma, ibadet, bilgi: bugünkü en büyük yükler geçer (başka sürüm uyumu); sahibi dışında kimse yazamaz; yol13 yok', async () => {
+  const u1 = kisi('u1');
+  for (const [ad, yuk] of Object.entries(yazimlar)) {
+    const yol = `kullanicilar/u1/calisma/${ad}`;
+    await assertSucceeds(setDoc(doc(u1, yol), { ...yuk, guncelleme: serverTimestamp() }), ad);
+    // Eski istemcinin ilk yükü: yalnız maddeler + guncelleme (v yok) ya da boş maddeler.
+    await assertSucceeds(setDoc(doc(u1, yol), { maddeler: {}, guncelleme: serverTimestamp() }), ad + ' bos');
+    await assertSucceeds(setDoc(doc(u1, yol), { v: 1, maddeler: { ...yuk.maddeler }, guncelleme: serverTimestamp() }), ad);
+    // Başkaları yazamaz, silemez; çocuk (kendi uid'i başkası) yazamaz; hoca yalnız okur.
+    for (const db of [kisi('u2'), hocaA(), cocuk(), anonim()]) {
+      await assertFails(setDoc(doc(db, yol), { ...yuk, guncelleme: serverTimestamp() }), ad);
+      await assertFails(deleteDoc(doc(db, yol)), ad);
+    }
+    await assertFails(oku(kisi('u2'), yol), ad);
+  }
+  // Sahibi çocuk kendi okuma/ibadet belgesini yazar; başka çocuğunkine yazamaz.
+  await assertSucceeds(setDoc(doc(cocuk(), 'kullanicilar/c_cocuk1/calisma/ibadet'), { ...yazimlar.ibadet, guncelleme: serverTimestamp() }));
+  await assertFails(setDoc(doc(cocuk('c_cocuk2', 'R2'), 'kullanicilar/c_cocuk1/calisma/okuma'), { ...yazimlar.okuma, guncelleme: serverTimestamp() }));
+  await assertFails(setDoc(doc(u1, 'kullanicilar/u1/calisma/yol13'), calisma({ maddeler: {} })));
+  await assertFails(setDoc(doc(u1, 'kullanicilar/u1/calisma/okuma2'), calisma({ maddeler: {} })));
+  // Değer sınırları: tür, boyut, bilinmeyen anahtar.
+  const kotular = {
+    bilgi: [{ kuran: 'x'.repeat(801) }, { kuran: 5 }, { kuran: { a: 1 } }, { kuran: ['1'] }, { baska: '1' }, { 's-fatiha': { son: 1 } }],
+    okuma: [{ o1: 'x'.repeat(2401) }, { o1: 3 }, { o1: null }, { o10: '1ab' }, { o0: '1ab' }, { 'o1-2': '1ab' }],
+    ibadet: [{ abdest: 'x'.repeat(17) }, { abdest: 3 }, { abdest: true }, { baska: '1' }, { sabah1: '1' }],
+  };
+  for (const [ad, liste] of Object.entries(kotular)) {
+    for (const maddeler of liste) {
+      await assertFails(setDoc(doc(u1, `kullanicilar/u1/calisma/${ad}`), { v: 1, maddeler, guncelleme: serverTimestamp() }), ad + JSON.stringify(Object.keys(maddeler)));
+    }
+  }
+  // Hoca (kursa bağlı) okuma/ibadet/bilgi belgelerini okur.
+  await assertSucceeds(oku(hocaA(), 'kullanicilar/c_cocuk1/calisma/ibadet'));
+  await assertFails(setDoc(doc(hocaA(), 'kullanicilar/c_cocuk1/calisma/ibadet'), { ...yazimlar.ibadet, guncelleme: serverTimestamp() }));
+});
+
+test('ozel/yol12: değerler ≤ 16 karakterlik dize; sayı, nesne, uzun dize reddedilir; bugünkü yük geçer', async () => {
+  const u5 = kisi('u5');
+  const y = 'kullanicilar/u5/ozel/yol12';
+  await assertSucceeds(setDoc(doc(u5, y), { v: 1, maddeler: { h01: '3333', h12: '1' }, guncelleme: serverTimestamp() }));
+  for (const maddeler of [{ h01: 3 }, { h01: ['1'] }, { h01: { a: 1 } }, { h01: null }, { h01: true }, { h05: 'x'.repeat(17) }, { h12: 'x'.repeat(10000) }]) {
+    await assertFails(setDoc(doc(u5, y), { v: 1, maddeler, guncelleme: serverTimestamp() }), JSON.stringify(maddeler).slice(0, 40));
+  }
 });

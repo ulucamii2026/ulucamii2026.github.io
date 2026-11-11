@@ -79,13 +79,20 @@ test('Kurs sayfaları arasındaki bağlantılar egitim’in kendi adreslerine gi
 });
 
 test('Kişisel veri yok: günlük sayfası e-posta, öğrenci referansı ya da telefon içermez; din görevlisi numarası yalnız wa.me bağlantısında', { skip: atla }, () => {
-  const imamNo = /32471794682/;
+  // Numaralar tek kaynaktan (src/content/ayarlar/site.yaml) okunur; metne gömülü sabit yok.
+  const ayar = readFileSync('src/content/ayarlar/site.yaml', 'utf8');
+  const numara = (alan) => (ayar.match(new RegExp(`^\\s+${alan}:\\s*"([^"]+)"`, 'm')) ?? [])[1]?.replace(/\D/g, '');
+  const imamRakam = numara('dinGorevlisi');
+  const camiRakam = numara('cami');
+  assert.match(imamRakam ?? '', /^\d{9,}$/, 'site.yaml dinGorevlisi');
+  assert.match(camiRakam ?? '', /^\d{9,}$/, 'site.yaml cami');
+  const imamNo = new RegExp(imamRakam);
   for (const y of kursYollari) {
     const html = oku(dist(`${y}index.html`));
     assert.equal(/UC-\d{4}-\d{4}/.test(html), false, `${y}: öğrenci referansı`);
     const telefonlar = [...html.matchAll(/href="tel:([^"]+)"/g)].map((m) => m[1]);
-    assert.deepEqual(telefonlar.filter((t) => t !== '+32472985073'), [], `${y}: yalnız cami hattı tel: olabilir`);
-    for (const m of html.matchAll(new RegExp(`.{0,40}${imamNo.source}.{0,20}`, 'g'))) assert.match(m[0], /wa\.me\/32471794682/, `${y}: din görevlisi numarası yalnız wa.me bağlantısında`);
+    assert.deepEqual(telefonlar.filter((t) => t !== `+${camiRakam}`), [], `${y}: yalnız cami hattı tel: olabilir`);
+    for (const m of html.matchAll(new RegExp(`.{0,40}${imamNo.source}.{0,20}`, 'g'))) assert.match(m[0], new RegExp(`wa\\.me/${imamRakam}`), `${y}: din görevlisi numarası yalnız wa.me bağlantısında`);
     assert.equal(/0471[\s.]?79[\s.]?46[\s.]?82|\+32[\s.]?471[\s.]?79/.test(html), false, `${y}: din görevlisi numarası metin olarak`);
   }
   const gunluk = oku(dist('tr/kurs/gunluk/index.html')).replace(/<script[\s\S]*?<\/script>/g, '');
