@@ -145,12 +145,18 @@ for (const d of DILLER) {
     && h.includes(`<link rel="canonical" href="https://egitim.ulucamii.be/${d}/gizlilik/">`) && h.includes('id="ezber-kilimi"')
     && /href="https:\/\/ulucamii\.be\/[a-z]{2}\/[a-z-]+\/"/.test(h) && h.includes('info@ulucamii.be') && h.includes('+32 472 98 50 73'), `${y.status}`);
 }
-// Yeni Müslüman yolu: hafta sayfası 200; video yalnız tr/en'de ve tıklamadan önce iframe yok (CSP'ye uygun, üçüncü tarafa istek yok).
+// Yeni Müslüman yolu: hafta sayfası 200; video her dilde (fr/nl/de'de İngilizce, görünür notlu, lang="en" başlıklı; h12'de yok) ve tıklamadan önce iframe yok (CSP'ye uygun, üçüncü tarafa istek yok).
 for (const d of DILLER) {
   const y = await getir(`/${d}/yollar/yeni-musluman/h01/`);
   const h = await y.text();
   const videoVar = /data-yy-video="?[\w-]{11}/.test(h);
-  kontrol(`/${d}/yollar/yeni-musluman/h01/ 200, video ${d === 'tr' || d === 'en' ? 'var' : 'yok'}, iframe yok`, y.status === 200 && videoVar === (d === 'tr' || d === 'en') && !/<iframe/i.test(h), `${y.status} video=${videoVar}`);
+  const yedek = d !== 'tr' && d !== 'en';
+  const not = { fr: 'Vidéo en anglais', nl: 'Video in het Engels', de: 'Video auf Englisch' }[d];
+  const notVar = h.includes('data-yy-video-not') && h.includes(not ?? ' ') && /class="yy-video-ad"[^>]*lang="en"|lang="en"[^>]*class="yy-video-ad"/.test(h);
+  kontrol(`/${d}/yollar/yeni-musluman/h01/ 200, video var${yedek ? ' (İngilizce yedek, notlu, lang="en")' : ''}, iframe yok`,
+    y.status === 200 && videoVar && notVar === yedek && (!yedek || h.includes('data-yy-video-dil="en"')) && !/<iframe/i.test(h), `${y.status} video=${videoVar} not=${notVar}`);
+  const y12 = await getir(`/${d}/yollar/yeni-musluman/h12/`);
+  kontrol(`/${d}/yollar/yeni-musluman/h12/ 200, video yok`, y12.status === 200 && !/data-yy-video=/.test(await y12.text()), `${y12.status}`);
 }
 for (const [yol, tur] of [['/favicon.ico', /icon/], ['/favicon.svg', /svg/], ['/apple-touch-icon.png', /png/],
   ['/icon-192.png', /png/], ['/icon-512.png', /png/], ['/icon-maskable-512.png', /png/],

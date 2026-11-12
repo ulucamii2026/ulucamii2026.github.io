@@ -183,6 +183,7 @@ function haftaKur(kok: HTMLElement) {
       const cerceve = document.createElement('iframe');
       cerceve.src = `https://www.youtube-nocookie.com/embed/${id}?rel=0&autoplay=1`;
       cerceve.title = dugme.dataset.baslik ?? '';
+      if (dugme.dataset.yyVideoDil) cerceve.lang = dugme.dataset.yyVideoDil; // İngilizce yedek video (fr, nl, de sayfaları)
       cerceve.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-presentation');
       cerceve.allow = 'encrypted-media; picture-in-picture; fullscreen';
       cerceve.allowFullscreen = true;

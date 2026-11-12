@@ -4,6 +4,7 @@
  * eşleşen çalışma bağlantıları ve sayfa kimlikleri vardır. Doğrulama: tests/ilim-yolu-yeni-yol.test.mjs.
  */
 import ham from '../../../paylasilan/ogrenme-yolu/icerik.json';
+import enVideolar from '../../../src/data/diyanet-videolar-en.json';
 import type { Adim, Hafta, Yol } from '../../../paylasilan/ogrenme-yolu/tipler';
 
 export const YOL = ham as unknown as Yol;
@@ -19,11 +20,18 @@ export const adimBul = (id: string): Adim | undefined => ADIMLAR.find((a) => adi
 export const adimHaftalari = (no: number): Hafta[] => HAFTALAR.filter((h) => h.adim === no);
 export const adimaGore = (h: Hafta): Adim => ADIMLAR.find((a) => a.no === h.adim)!;
 
-/** Haftanın sayfa dilindeki videosu (içerikte yalnız TR ve EN için tanımlıdır; başka dilde video gösterilmez). */
+/**
+ * Haftanın sayfa dilindeki videosu. Diyanet'in resmî videosu yalnız TR ve EN'dedir; fr, nl ve de sayfaları İngilizce videoyu gösterir
+ * (imamın kararı, 12 Kasım 2026) ve sayfada «video İngilizce» notu yazar (`videoIngilizceMi`). Videosu olmayan hafta (h12) hiçbir dilde video göstermez.
+ */
 export function videoKimligi(h: Hafta, dil: string): string | undefined {
-  const id = dil === 'tr' || dil === 'en' ? h.video?.[dil] : undefined;
+  const id = h.video?.[dil === 'tr' ? 'tr' : 'en'];
   return id && /^[\w-]{11}$/.test(id) ? id : undefined;
 }
+/** Sayfa dili TR ya da EN değilse video İngilizce yedeğidir: sayfa notu ve lang="en" etiketi bunu izler. */
+export const videoIngilizceMi = (dil: string): boolean => dil !== 'tr' && dil !== 'en';
+/** Diyanet'in İngilizce videosunun kendi başlığı (src/data/diyanet-videolar-en.json); İngilizce yedekte lang="en" etiketiyle gösterilir. */
+export const videoIngilizceBasligi = (id: string): string | undefined => (enVideolar.bolumler as readonly { id: string; baslik: string }[]).find((b) => b.id === id)?.baslik;
 /** Dış bağlantılar yalnız https olur. */
 export const guvenliBaglanti = (url: string): boolean => /^https:\/\//.test(url);
 
