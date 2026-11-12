@@ -32,7 +32,9 @@ import {
   type OgeDurumu,
 } from '../lib/ezber/durum';
 import { EZBER_CAKISMA, ezberDeposu, type EzberDokunusu } from '../lib/ezber/depo';
-import { BASAMAK_ADLARI, KALITE_ETIKETI, NOT_KALIPLARI, defterCumlesi } from '../lib/ezber/metinler';
+import { BASAMAK_ADLARI, NOT_KALIPLARI, defterCumlesi, type NotKalibi } from '../lib/ezber/metinler';
+import { hocaDili, hocaYerel } from '../i18n/hoca';
+import { EZBER, tZ } from '../i18n/hoca-metin/ezber';
 import { ogrenciOnerisi } from '../lib/ezber/oneri';
 import { basamakIsareti } from '../lib/ezber/isaret';
 import { bekleyenCikar, bekleyenEkle, bekleyenler, kayiplar, kayiplariBul, kayiplariKapat, type BekleyenYazim } from '../lib/ezber/bekleyen';
@@ -43,9 +45,18 @@ type Sinif = Record<string, Record<string, OgeDurumu>>;
 
 const esc = (s: unknown) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c] as string);
 const gunYaz = (iso: string, sec: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'long' }) =>
-  iso ? new Intl.DateTimeFormat('tr-TR', { timeZone: 'Europe/Brussels', ...sec }).format(new Date(`${iso}T12:00:00Z`)) : '';
+  iso ? new Intl.DateTimeFormat(hocaYerel(), { timeZone: 'Europe/Brussels', ...sec }).format(new Date(`${iso}T12:00:00Z`)) : '';
 const gunFarki = (a: string, b: string) => Math.round((Date.parse(`${b}T12:00:00Z`) - Date.parse(`${a}T12:00:00Z`)) / 864e5);
 const adSoyad = (o: EzberOgrencisi) => `${o.ad} ${o.soyad}`;
+/** Basamak adı hoca ekranının dilinde (metinler.ts BASAMAK_ADLARI beş dilli; tr çıktısı aynı). */
+const basamakAdi = (b: Basamak) => BASAMAK_ADLARI[b][hocaDili()];
+/** Kalite düğmesi etiketi (arayüz); bilinmeyen kalite `yedek` döner. */
+const kaliteAdi = (k: string, yedek = '') => ((KALITELER as readonly string[]).includes(k) ? tZ(`ezber.kalite.${k as Kalite}`) : yedek);
+/** Not çipi adı (arayüz); sözlükte olmayan anahtar özgün Türkçe etiketiyle gösterilir. Firestore'a giden anahtardır. */
+const notEtiketi = (n: NotKalibi) => {
+  const k = `ezber.not.et.${n.anahtar}` as keyof typeof EZBER.tr;
+  return k in EZBER.tr ? tZ(k) : n.etiket;
+};
 /** Basamak işareti; kontrol günü gelen maddede köşede kiremit nokta (CSS). */
 const isaret = (b: Basamak, vadeli = false) => `<span class="ez-isaret-kap${vadeli ? ' vadeli' : ''}">${basamakIsareti(b)}</span>`;
 
@@ -66,11 +77,11 @@ const simge = (ad: string) => `<svg class="simge" width="1em" height="1em" viewB
 
 const kodu = (e: unknown) => (e as { code?: string } | null)?.code || '';
 export function ezberHataMetni(e: unknown): string {
-  if ((e as Error)?.message === EZBER_CAKISMA) return 'Bu madde o arada başka bir cihazda değişti; ekrandaki güncel durum geçerli. Gerekirse yeniden dinleyin.';
+  if ((e as Error)?.message === EZBER_CAKISMA) return tZ('ezber.hata.cakisma');
   const k = kodu(e);
-  if (k === 'permission-denied') return 'Kaydedilemedi: yetki yok (öğrencinin kaydı idari olarak kilitlenmiş olabilir).';
-  if (k === 'unavailable') return 'Kaydedilemedi: sunucuya ulaşılamadı. Bağlantı gelince yeniden deneyin.';
-  return `Kaydedilemedi: ${k || (e as Error)?.message || 'bilinmeyen hata'}.`;
+  if (k === 'permission-denied') return tZ('ezber.hata.yetki');
+  if (k === 'unavailable') return tZ('ezber.hata.ulasilamadi');
+  return tZ('ezber.hata.genel', { neden: k || (e as Error)?.message || tZ('ezber.hata.bilinmeyen') });
 }
 
 /* ───────────────────────────── sınıf deposu (tek örnek) ───────────────────────────── */
@@ -262,7 +273,7 @@ interface Katman {
 }
 
 const SEVIYE_ADI = (s: string) => {
-  if (s === 'kenar') return 'Kenar suyu';
+  if (s === 'kenar') return tZ('ezber.kenar');
   const t = KATALOG.seviyeler.find((x) => String(x.kimlik) === s);
   return t ? `${s} · ${t.ad.tr}` : s;
 };
@@ -305,24 +316,24 @@ function dinlemeKatmani(o: {
   const kontrolMetni = (d: OgeDurumu | undefined) => {
     if (!d || !d.sonrakiKontrol) return '';
     const fark = gunFarki(bugun, d.sonrakiKontrol);
-    if (fark > 0) return `kontrol ${gunYaz(d.sonrakiKontrol)} (${fark} gün sonra)`;
-    if (fark === 0) return 'kontrol günü bugün';
-    return `kontrol günü ${-fark} gün önce geldi`;
+    if (fark > 0) return tZ('ezber.kontrol.sonra', { tarih: gunYaz(d.sonrakiKontrol), n: fark });
+    if (fark === 0) return tZ('ezber.kontrol.bugun');
+    return tZ('ezber.kontrol.gecmis', { n: -fark });
   };
   const ozet = (d: Dokunus) => {
     const g = d.gecis;
     const ad = ezberBul(d.id)?.ad.tr || d.id;
     const olay = g.olay;
     if (olay.tur === 'dinleme') {
-      const k = KALITE_ETIKETI[olay.kalite as Kalite] || '';
+      const k = kaliteAdi(olay.kalite as string);
       if (g.islem === 'yaz') {
         const sk = g.durum.sonrakiKontrol;
-        return `${ad}: ${k} → ${BASAMAK_ADLARI[g.durum.basamak].tr}${sk ? ` · sonraki kontrol ${gunYaz(sk)}` : ''}`;
+        return `${tZ('ezber.ozet.yaz', { ad, kalite: k, basamak: basamakAdi(g.durum.basamak) })}${sk ? ` · ${tZ('ezber.ozet.sonraki', { tarih: gunYaz(sk) })}` : ''}`;
       }
-      return `${ad}: ${k} · basamak değişmedi (${BASAMAK_ADLARI[olay.basamakOnce].tr})`;
+      return tZ('ezber.ozet.degismedi', { ad, kalite: k, basamak: basamakAdi(olay.basamakOnce) });
     }
-    if (olay.tur === 'atama') return `${ad}: çalışmaya başladı`;
-    return g.islem === 'sil' ? `${ad}: kaydı kaldırıldı` : `${ad}: basamak elle «${BASAMAK_ADLARI[olay.basamakSonra].tr}» yapıldı`;
+    if (olay.tur === 'atama') return tZ('ezber.ozet.atama', { ad });
+    return g.islem === 'sil' ? tZ('ezber.ozet.sil', { ad }) : tZ('ezber.ozet.elle', { ad, basamak: basamakAdi(olay.basamakSonra) });
   };
   /**
    * Defter cümlesi dinlemenin kaydını izler (inceleme D2): dinleme kayıtlıysa (reddedilmedi, geri alınmadı ya da geri
@@ -353,18 +364,18 @@ function dinlemeKatmani(o: {
       d.cumle = defterCumlesi(gecis.olay.ezber, gecis.olay.kalite as Kalite).tr;
       cumleEsitle(d);
     }
-    o.degisti(`${depo.durum().onbellekten ? 'Telefonda tutuluyor' : 'Kaydedildi'}: ${ozet(d)}.`, `geri-${ref}`);
+    o.degisti(tZ(depo.durum().onbellekten ? 'ezber.duyuru.telefonda' : 'ezber.duyuru.kaydedildi', { ozet: ozet(d) }), `geri-${ref}`);
   };
 
   const oneriHtml = (ref: string, s: Secim) => {
     const ogeler = ogeleri(ref);
     const on = ogrenciOnerisi(ogeler, bugun, hedefler);
     const liste: { id: string; etiket: string }[] = [
-      ...on.kontrol.map((id) => ({ id, etiket: 'kontrol' })),
-      ...on.calisiyor.map((id) => ({ id, etiket: 'çalışıyor' })),
-      ...(on.siradaki ? [{ id: on.siradaki, etiket: 'sıradaki' }] : []),
+      ...on.kontrol.map((id) => ({ id, etiket: tZ('ezber.et.kontrol') })),
+      ...on.calisiyor.map((id) => ({ id, etiket: tZ('ezber.et.calisiyor') })),
+      ...(on.siradaki ? [{ id: on.siradaki, etiket: tZ('ezber.et.siradaki') }] : []),
     ].slice(0, 6);
-    if (s.id && !liste.some((x) => x.id === s.id)) liste.unshift({ id: s.id, etiket: 'seçilen' });
+    if (s.id && !liste.some((x) => x.id === s.id)) liste.unshift({ id: s.id, etiket: tZ('ezber.et.secilen') });
     return liste.map((x) => {
       const m = ezberBul(x.id);
       const b = gorunenBasamak(ogeler, x.id);
@@ -373,23 +384,23 @@ function dinlemeKatmani(o: {
   };
   const baskaHtml = (ref: string, s: Secim) => {
     const ogeler = ogeleri(ref);
-    return `<select data-ez-baska="${esc(ref)}" data-odak="baska-${esc(ref)}"><option value="">Katalogdan seçin…</option>${SEVIYE_SIRASI.map((sv) => `<optgroup label="${esc(SEVIYE_ADI(String(sv)))}">${seviyeOgeleri(sv).map((m) => {
+    return `<select data-ez-baska="${esc(ref)}" data-odak="baska-${esc(ref)}"><option value="">${tZ('ezber.katalogdan')}</option>${SEVIYE_SIRASI.map((sv) => `<optgroup label="${esc(SEVIYE_ADI(String(sv)))}">${seviyeOgeleri(sv).map((m) => {
       const b = gorunenBasamak(ogeler, m.id);
-      return `<option value="${esc(m.id)}"${m.id === s.id ? ' selected' : ''}>${esc(m.ad.tr)}${b ? ` — ${esc(BASAMAK_ADLARI[b].tr)}` : ''}</option>`;
+      return `<option value="${esc(m.id)}"${m.id === s.id ? ' selected' : ''}>${esc(m.ad.tr)}${b ? ` — ${esc(basamakAdi(b))}` : ''}</option>`;
     }).join('')}</optgroup>`).join('')}</select>`;
   };
   const sonucHtml = (ref: string, d: Dokunus, s: Secim, buyuk: boolean) => {
     const st = depo.durum();
     const baslik = d.durum === 'hata' ? d.hata
-      : d.durum === 'gidiyor' ? (st.onbellekten ? 'Telefonda tutuluyor; bağlantı gelince gönderilecek.' : 'Kaydediliyor…')
-      : d.durum === 'yazildi' ? 'Kaydedildi.'
-      : d.durum === 'geri-aliniyor' ? `Geri alındı; ${st.onbellekten ? 'bağlantı gelince gönderilecek.' : 'gönderiliyor…'}`
-      : 'Geri alındı.';
+      : d.durum === 'gidiyor' ? (st.onbellekten ? tZ('ezber.sonuc.telefonda') : tZ('ezber.sonuc.kaydediliyor'))
+      : d.durum === 'yazildi' ? tZ('ezber.sonuc.kaydedildi')
+      : d.durum === 'geri-aliniyor' ? (st.onbellekten ? tZ('ezber.sonuc.geriBaglanti') : tZ('ezber.sonuc.geriGonderiliyor'))
+      : tZ('ezber.sonuc.geri');
     const tur = d.durum === 'hata' ? 'hata' : d.durum.startsWith('geri') ? 'geri' : 'tamam';
     const ikon = simge(tur === 'hata' ? 'uyari' : tur === 'geri' ? 'geri' : 'onay');
     const dugmeler = [
-      d.durum === 'gidiyor' || d.durum === 'yazildi' ? `<button type="button" class="ez-ikincil" data-ez-geri="${esc(ref)}" data-odak="geri-${esc(ref)}">${simge('geri')}Geri al</button>` : '',
-      buyuk && !s.yeniden && (d.durum === 'gidiyor' || d.durum === 'yazildi') ? `<button type="button" class="ez-ikincil" data-ez-yeniden="${esc(ref)}" data-odak="yeniden-${esc(ref)}">Aynı maddeyi yeniden dinle</button>` : '',
+      d.durum === 'gidiyor' || d.durum === 'yazildi' ? `<button type="button" class="ez-ikincil" data-ez-geri="${esc(ref)}" data-odak="geri-${esc(ref)}">${simge('geri')}${tZ('ezber.dugme.geriAl')}</button>` : '',
+      buyuk && !s.yeniden && (d.durum === 'gidiyor' || d.durum === 'yazildi') ? `<button type="button" class="ez-ikincil" data-ez-yeniden="${esc(ref)}" data-odak="yeniden-${esc(ref)}">${tZ('ezber.dugme.yeniden')}</button>` : '',
     ].join('');
     return `<div class="ez-sonuc ${tur}${buyuk ? ' buyuk' : ''}" data-ez-sonuc="${esc(ref)}">
       <p class="ez-sonuc-metin">${ikon}<span><b>${esc(baslik)}</b>${d.durum === 'hata' ? '' : ` ${esc(ozet(d))}`}</span></p>
@@ -416,31 +427,31 @@ function dinlemeKatmani(o: {
       const sonucGoster = son && (ayni || son.durum === 'gidiyor' || son.durum === 'yazildi' || son.durum === 'hata');
       return `<div class="ez-dinle-ic" data-ez-dinle="${esc(ref)}">
         <div class="ez-bolum">
-          <p class="ez-etiket" id="ez-madde-${esc(ref)}">Madde<span class="sr-only"> · ${esc(ad)}</span></p>
-          <div class="ez-oneriler" role="group" aria-labelledby="ez-madde-${esc(ref)}">${oneriHtml(ref, s) || '<span class="kucuk">Önerilecek madde kalmadı; katalogdan seçin.</span>'}</div>
-          <label class="ez-baska"><span>Başka madde</span>${baskaHtml(ref, s)}</label>
+          <p class="ez-etiket" id="ez-madde-${esc(ref)}">${tZ('ezber.madde')}<span class="sr-only"> · ${esc(ad)}</span></p>
+          <div class="ez-oneriler" role="group" aria-labelledby="ez-madde-${esc(ref)}">${oneriHtml(ref, s) || `<span class="kucuk">${tZ('ezber.oneriYok')}</span>`}</div>
+          <label class="ez-baska"><span>${tZ('ezber.baska')}</span>${baskaHtml(ref, s)}</label>
         </div>
-        ${m ? `<p class="ez-madde-durum">${isaret(gorunen, vadeli)}<span><b>${esc(m.ad.tr)}</b> · ${esc(BASAMAK_ADLARI[gorunen].tr)}${kapsayan ? ` <span class="kucuk">(${esc(ezberBul(kapsayan)?.ad.tr || kapsayan)} kaydından)</span>` : ''}${kontrolMetni(d) ? ` · <span class="${vadeli ? 'ez-vade' : ''}">${esc(kontrolMetni(d))}</span>` : ''}</span></p>
+        ${m ? `<p class="ez-madde-durum">${isaret(gorunen, vadeli)}<span><b>${esc(m.ad.tr)}</b> · ${esc(basamakAdi(gorunen))}${kapsayan ? ` <span class="kucuk">${tZ('ezber.kapsayan', { ad: esc(ezberBul(kapsayan)?.ad.tr || kapsayan) })}</span>` : ''}${kontrolMetni(d) ? ` · <span class="${vadeli ? 'ez-vade' : ''}">${esc(kontrolMetni(d))}</span>` : ''}</span></p>
         ${sonucGoster && son ? sonucHtml(ref, son, s, bekleyenOnay) : ''}
-        ${bekleyenOnay ? '' : `${erken ? `<label class="ez-zorla"><input type="checkbox" data-ez-zorla="${esc(ref)}" data-odak="zorla-${esc(ref)}"${s.zorla ? ' checked' : ''}><span>Kontrol günü (${esc(gunYaz(d!.sonrakiKontrol))}) gelmedi; «Tam» ve «Az hatalı» yine de ilerletsin</span></label>` : ''}
-        <fieldset class="ez-notlar"><legend class="ez-etiket">Veliye not <span class="ez-etiket-ek">isteğe bağlı · en çok ${NOT_SINIRI}</span></legend>
+        ${bekleyenOnay ? '' : `${erken ? `<label class="ez-zorla"><input type="checkbox" data-ez-zorla="${esc(ref)}" data-odak="zorla-${esc(ref)}"${s.zorla ? ' checked' : ''}><span>${tZ('ezber.zorla', { tarih: esc(gunYaz(d!.sonrakiKontrol)), tam: kaliteAdi('tam'), az: kaliteAdi('az') })}</span></label>` : ''}
+        <fieldset class="ez-notlar"><legend class="ez-etiket">${tZ('ezber.not.baslik')} <span class="ez-etiket-ek">${tZ('ezber.not.ek', { n: NOT_SINIRI })}</span></legend>
           <div class="ez-not-cipler">${NOT_KALIPLARI.map((n) => {
             const secili = s.notlar.includes(n.anahtar);
-            return `<button type="button" class="ez-not" aria-pressed="${secili}" data-ez-not="${esc(n.anahtar)}" data-ref="${esc(ref)}" data-odak="not-${esc(ref)}-${esc(n.anahtar)}"${!secili && notDolu ? ' disabled' : ''} title="${esc(n.metin.tr)}">${secili ? simge('onay') : ''}${esc(n.etiket)}</button>`;
+            return `<button type="button" class="ez-not" aria-pressed="${secili}" data-ez-not="${esc(n.anahtar)}" data-ref="${esc(ref)}" data-odak="not-${esc(ref)}-${esc(n.anahtar)}"${!secili && notDolu ? ' disabled' : ''} title="${esc(n.metin[hocaDili()])}">${secili ? simge('onay') : ''}${esc(notEtiketi(n))}</button>`;
           }).join('')}</div>
-          ${secilenNotlar.length ? `<p class="ez-not-onizleme">Veli görecek: ${secilenNotlar.map((n) => `«${esc(n.metin.tr)}»`).join(' ')}</p>` : ''}
+          ${secilenNotlar.length ? `<p class="ez-not-onizleme">${tZ('ezber.not.goruntu', { notlar: secilenNotlar.map((n) => tZ('ezber.not.alinti', { metin: esc(n.metin[hocaDili()]) })).join(' ') })}</p>` : ''}
         </fieldset>
-        <div class="ez-kaliteler" role="group" aria-label="Dinleme sonucu — dokununca kaydedilir">${KALITELER.map((k) => {
+        <div class="ez-kaliteler" role="group" aria-label="${tZ('ezber.kalite.aria')}">${KALITELER.map((k) => {
           const g = onizle(ref, id!, k);
-          const alt = !g ? '' : g.islem === 'yaz' ? `→ ${BASAMAK_ADLARI[g.durum.basamak].tr}` : g.olay.basamakOnce === 4 ? 'Kalıcı; kayda düşülür' : 'Basamak değişmez';
-          return `<button type="button" class="ez-k ${k}" data-ez-kalite="${k}" data-ref="${esc(ref)}" data-odak="kalite-${esc(ref)}-${k}"><span class="ez-k-ad">${esc(KALITE_ETIKETI[k])}</span><span class="ez-k-alt">${esc(alt)}</span></button>`;
+          const alt = !g ? '' : g.islem === 'yaz' ? `→ ${basamakAdi(g.durum.basamak)}` : g.olay.basamakOnce === 4 ? tZ('ezber.alt.kalici') : tZ('ezber.alt.degismez');
+          return `<button type="button" class="ez-k ${k}" data-ez-kalite="${k}" data-ref="${esc(ref)}" data-odak="kalite-${esc(ref)}-${k}"><span class="ez-k-ad">${esc(kaliteAdi(k))}</span><span class="ez-k-alt">${esc(alt)}</span></button>`;
         }).join('')}</div>`}
         <div class="ez-alt-eylem">
-          ${gorunen === 0 && !d && !bekleyenOnay ? `<button type="button" class="ez-ikincil" data-ez-ata="${esc(ref)}" data-odak="ata-${esc(ref)}">${simge('ata')}Dinlemeden çalışmaya başlat</button>` : ''}
-          <details class="ez-elle" data-ez-elle-kutu="${esc(ref)}"${s.elleAcik ? ' open' : ''}><summary data-odak="elleac-${esc(ref)}">Basamağı elle düzelt</summary>
-            <div class="ez-elle-ic"><label><span>Yeni basamak</span><select data-ez-elle-sec="${esc(ref)}" data-odak="ellesec-${esc(ref)}">${([4, 3, 2, 1, 0] as Basamak[]).map((b) => `<option value="${b}"${b === (d?.basamak ?? 0) ? ' selected' : ''}>${b === 0 ? 'Kaydı kaldır (Başlanmadı)' : esc(BASAMAK_ADLARI[b].tr)}</option>`).join('')}</select></label>
-            <button type="button" class="ez-ikincil" data-ez-elle="${esc(ref)}" data-odak="elle-${esc(ref)}">Uygula</button>
-            <p class="kucuk">Dinleme sayılmaz; kontrol günü basamaktan yeniden hesaplanır (Hocaya okudu +7, Pekişti +30 gün). Veli geçmişinde «düzeltme» olarak görünür.</p></div>
+          ${gorunen === 0 && !d && !bekleyenOnay ? `<button type="button" class="ez-ikincil" data-ez-ata="${esc(ref)}" data-odak="ata-${esc(ref)}">${simge('ata')}${tZ('ezber.ata')}</button>` : ''}
+          <details class="ez-elle" data-ez-elle-kutu="${esc(ref)}"${s.elleAcik ? ' open' : ''}><summary data-odak="elleac-${esc(ref)}">${tZ('ezber.elle.ozet')}</summary>
+            <div class="ez-elle-ic"><label><span>${tZ('ezber.elle.yeni')}</span><select data-ez-elle-sec="${esc(ref)}" data-odak="ellesec-${esc(ref)}">${([4, 3, 2, 1, 0] as Basamak[]).map((b) => `<option value="${b}"${b === (d?.basamak ?? 0) ? ' selected' : ''}>${b === 0 ? tZ('ezber.elle.kaldir', { basamak: basamakAdi(0) }) : esc(basamakAdi(b))}</option>`).join('')}</select></label>
+            <button type="button" class="ez-ikincil" data-ez-elle="${esc(ref)}" data-odak="elle-${esc(ref)}">${tZ('ezber.elle.uygula')}</button>
+            <p class="kucuk">${tZ('ezber.elle.not', { b2: basamakAdi(2), b3: basamakAdi(3) })}</p></div>
           </details>
         </div>` : ''}
       </div>`;
@@ -477,7 +488,7 @@ function dinlemeKatmani(o: {
             depo.geriAl(d, () => cumleEsitle(d));
             cumleEsitle(d);
             s.yeniden = false;
-            o.degisti(`Geri alındı: ${ozet(d)}.`, `kalite-${ref}-tam`);
+            o.degisti(tZ('ezber.duyuru.geriAlindi', { ozet: ozet(d) }), `kalite-${ref}-tam`);
           }
           return true;
         }
@@ -494,7 +505,7 @@ function dinlemeKatmani(o: {
           if (g) kaydet(ref, g);
           else {
             s.elleAcik = false;
-            o.degisti('Basamak zaten böyle; değişiklik yok.', `elleac-${ref}`);
+            o.degisti(tZ('ezber.duyuru.zatenBoyle'), `elleac-${ref}`);
           }
           return true;
         }
@@ -562,12 +573,12 @@ function yenidenCiz(kok: HTMLElement, html: string, odakIste: string | null) {
 
 function baglantiHtml(depo: SinifDeposu): string {
   const st = depo.durum();
-  const [tur, ikon, metin] = st.hata ? ['hata', 'uyari', 'Ezber kayıtları okunamadı']
-    : !st.hazir ? ['', 'saat', 'Yükleniyor…']
-    : st.bekleyen && st.onbellekten ? ['bekliyor', 'bulutYok', `Bağlantı yok · ${st.bekleyen} kayıt telefonda bekliyor`]
-    : st.bekleyen ? ['', 'bulut', `${st.bekleyen} kayıt gönderiliyor…`]
-    : st.onbellekten ? ['bekliyor', 'bulutYok', 'Bağlantı yok · kayıtlar telefonda tutulur']
-    : ['tamam', 'bulut', 'Bütün kayıtlar gönderildi'];
+  const [tur, ikon, metin] = st.hata ? ['hata', 'uyari', tZ('ezber.rozet.okunamadi')]
+    : !st.hazir ? ['', 'saat', tZ('ezber.rozet.yukleniyor')]
+    : st.bekleyen && st.onbellekten ? ['bekliyor', 'bulutYok', tZ('ezber.rozet.baglantiYokBekliyor', { n: st.bekleyen })]
+    : st.bekleyen ? ['', 'bulut', tZ('ezber.rozet.gonderiliyor', { n: st.bekleyen })]
+    : st.onbellekten ? ['bekliyor', 'bulutYok', tZ('ezber.rozet.baglantiYok')]
+    : ['tamam', 'bulut', tZ('ezber.rozet.tamam')];
   return `<span class="ez-baglanti ${tur}">${simge(ikon)}<span>${esc(metin)}</span></span>`;
 }
 
@@ -649,10 +660,10 @@ export function ezberPaneli(kok: HTMLElement, s: EzberPaneliSecenek): { temizle(
   })();
 
   const gunBasligi = gun
-    ? `${gunYaz(s.bugun, { weekday: 'long', day: 'numeric', month: 'long' })} · ${gun.hafta}. hafta`
+    ? `${gunYaz(s.bugun, { weekday: 'long', day: 'numeric', month: 'long' })} · ${tZ('ezber.hafta', { n: gun.hafta })}`
     : gunYaz(s.bugun, { weekday: 'long', day: 'numeric', month: 'long' });
   const { ciz, canliCiz, duyur } = iskelet(kok, `<div class="ez-ust">
-      <h2>${simge('ezber')}Ezber <span class="kucuk ez-gun">${esc(gunBasligi)}</span></h2>
+      <h2>${simge('ezber')}${tZ('ezber.baslik')} <span class="kucuk ez-gun">${esc(gunBasligi)}</span></h2>
       <p class="ez-baglanti-kap" data-ez-baglanti></p>
     </div>`, () => govdeHtml(), depo, ac.signal);
   const katman = dinlemeKatmani({ depo, bugun: s.bugun, hedefler, degisti: (d, odak) => { ciz(odak ?? null); if (d) duyur(d); } });
@@ -675,7 +686,7 @@ export function ezberPaneli(kok: HTMLElement, s: EzberPaneliSecenek): { temizle(
       <button type="button" class="ez-kart-bas" data-ez-ac="${esc(o.ref)}" aria-expanded="${acikMi}" aria-controls="ez-d-${esc(o.ref)}" data-odak="ac-${esc(o.ref)}">
         <span class="ez-kart-ad">${esc(adSoyad(o))}${etiket ? ` <span class="ez-etiket-yan">${esc(etiket)}</span>` : ''}</span>
         <span class="ez-kart-alt">${alt}</span>
-        ${vade ? `<span class="ez-rozet">${simge('saat')}${vade} kontrol</span>` : ''}
+        ${vade ? `<span class="ez-rozet">${simge('saat')}${tZ('ezber.kartRozet', { n: vade })}</span>` : ''}
         <span class="ez-kart-ok">${simge('ok')}</span>
       </button>
       <div class="ez-dinle" id="ez-d-${esc(o.ref)}"${acikMi ? '' : ' hidden'}>${acikMi ? katman.html(o.ref, adSoyad(o)) : ''}</div>
@@ -684,43 +695,43 @@ export function ezberPaneli(kok: HTMLElement, s: EzberPaneliSecenek): { temizle(
   const altSatir = (ref: string) => {
     const on = ogrenciOnerisi(depo.sinif[ref] || {}, s.bugun, hedefler);
     const liste = (ids: readonly string[]) => `${ids.slice(0, 2).map(maddeAdi).join(', ')}${ids.length > 2 ? ` +${ids.length - 2}` : ''}`;
-    if (on.kontrol.length) return `Kontrol: ${liste(on.kontrol)}`;
-    if (on.calisiyor.length) return `Çalışıyor: ${liste(on.calisiyor)}`;
-    return on.siradaki ? `Sıradaki: ${maddeAdi(on.siradaki)}` : 'Katalog tamam';
+    if (on.kontrol.length) return tZ('ezber.alt.kontrol', { liste: liste(on.kontrol) });
+    if (on.calisiyor.length) return tZ('ezber.alt.calisiyor', { liste: liste(on.calisiyor) });
+    return on.siradaki ? tZ('ezber.alt.siradaki', { madde: maddeAdi(on.siradaki) }) : tZ('ezber.alt.tamam');
   };
 
   const bugunHtml = () => {
     const aktif = s.ogrenciler();
-    if (!aktif.length) return `<p class="bos">${simge('ezber')}<span>Aktif öğrenci yok.</span></p>`;
+    if (!aktif.length) return `<p class="bos">${simge('ezber')}<span>${tZ('ezber.ogrenciYok')}</span></p>`;
     let liste = aktif;
     let not = '';
-    if (!gun) not = 'Bugün ders günü değil; bütün aktif öğrenciler gösteriliyor.';
-    else if (yoklama === undefined) not = 'Yoklama okunuyor…';
-    else if (!yoklamaVar()) not = 'Bugünün yoklaması henüz işaretlenmedi; bütün aktif öğrenciler gösteriliyor.';
+    if (!gun) not = tZ('ezber.bugun.dersGunuDegil');
+    else if (yoklama === undefined) not = tZ('ezber.bugun.yoklamaOkunuyor');
+    else if (!yoklamaVar()) not = tZ('ezber.bugun.yoklamaYok');
     else {
       liste = aktif.filter((o) => geldi(o.ref));
       const gelmeyen = aktif.length - liste.length;
-      if (gelmeyen) not = `Yoklamaya göre ${liste.length} öğrenci geldi; gelmeyen ${gelmeyen} öğrencinin kontrolleri «Tekrar»da.`;
+      if (gelmeyen) not = tZ('ezber.bugun.gelmeyen', { n: liste.length, gelmeyen });
     }
     const ekler = acik && !liste.some((o) => o.ref === acik) ? aktif.filter((o) => o.ref === acik) : [];
     return `${not ? `<p class="ez-bilgi">${esc(not)}</p>` : ''}
-      <ul class="ez-liste">${[...ekler.map((o) => kartHtml(o, altSatir(o.ref), 'yoklamada yok')), ...liste.map((o) => kartHtml(o, altSatir(o.ref)))].join('')}</ul>`;
+      <ul class="ez-liste">${[...ekler.map((o) => kartHtml(o, altSatir(o.ref), tZ('ezber.etiket.yoklamadaYok'))), ...liste.map((o) => kartHtml(o, altSatir(o.ref)))].join('')}</ul>`;
   };
   const tekrarHtml = () => {
     const ilk = (x: { o: EzberOgrencisi; ids: string[] }) => depo.sinif[x.o.ref][x.ids[0]].sonrakiKontrol;
     const v = vadeliler().sort((a, b) => ilk(a).localeCompare(ilk(b)));
-    if (!v.length) return `<p class="bos">${simge('onay')}<span>Kontrol günü gelen ezber yok.</span></p>`;
-    return `<p class="ez-bilgi">Kontrol günü gelen maddeler, en eskisi önce. Karta dokununca ilk madde seçili açılır.</p>
+    if (!v.length) return `<p class="bos">${simge('onay')}<span>${tZ('ezber.tekrar.bos')}</span></p>`;
+    return `<p class="ez-bilgi">${tZ('ezber.tekrar.bilgi')}</p>
       <ul class="ez-liste">${v.map(({ o, ids }) => {
         const og = depo.sinif[o.ref];
         const alt = ids.slice(0, 3).map((id) => `${maddeAdi(id)} <span class="ez-tarih">${esc(gunYaz(og[id].sonrakiKontrol, { day: 'numeric', month: 'short' }))}</span>`).join(', ') + (ids.length > 3 ? ` +${ids.length - 3}` : '');
-        return kartHtml(o, alt, yoklamaVar() && !geldi(o.ref) ? 'bugün yok' : '');
+        return kartHtml(o, alt, yoklamaVar() && !geldi(o.ref) ? tZ('ezber.etiket.bugunYok') : '');
       }).join('')}</ul>`;
   };
   const seritAdi = (x: Bolum) => {
     if (x.durak !== undefined) {
       const kisa = (id: string) => (ezberBul(id)?.ad.tr || id).replace(/ Sûresi$/, '');
-      return `8.${x.durak} · Amme ${x.durak}. durak (${kisa(x.ogeler[0])} – ${kisa(x.ogeler[x.ogeler.length - 1])})`;
+      return tZ('ezber.serit.amme', { durak: x.durak, ilk: kisa(x.ogeler[0]), son: kisa(x.ogeler[x.ogeler.length - 1]) });
     }
     return SEVIYE_ADI(String(x.seviye));
   };
@@ -730,52 +741,52 @@ export function ezberPaneli(kok: HTMLElement, s: EzberPaneliSecenek): { temizle(
     const maddeler = b.ogeler.map((id) => ezberBul(id)).filter((m): m is NonNullable<typeof m> => Boolean(m));
     const h = tabloHucre;
     return `<div class="ez-tablo-ust">
-        <label class="ez-serit"><span>Şerit</span><select data-ez-serit data-odak="serit">${TABLO_BOLUMLERI.map((x) => `<option value="${esc(x.anahtar)}"${x.anahtar === b.anahtar ? ' selected' : ''}>${esc(seritAdi(x))}</option>`).join('')}</select></label>
-        <ul class="ez-lejant" aria-label="İşaretlerin anlamı">${([0, 1, 2, 3, 4] as Basamak[]).map((x) => `<li>${isaret(x)}<span>${esc(BASAMAK_ADLARI[x].tr)}</span></li>`).join('')}<li>${isaret(2, true)}<span>Kontrol günü geldi</span></li></ul>
+        <label class="ez-serit"><span>${tZ('ezber.serit.etiket')}</span><select data-ez-serit data-odak="serit">${TABLO_BOLUMLERI.map((x) => `<option value="${esc(x.anahtar)}"${x.anahtar === b.anahtar ? ' selected' : ''}>${esc(seritAdi(x))}</option>`).join('')}</select></label>
+        <ul class="ez-lejant" aria-label="${tZ('ezber.lejant.aria')}">${([0, 1, 2, 3, 4] as Basamak[]).map((x) => `<li>${isaret(x)}<span>${esc(basamakAdi(x))}</span></li>`).join('')}<li>${isaret(2, true)}<span>${tZ('ezber.lejant.vade')}</span></li></ul>
       </div>
-      ${aktif.length ? `<div class="ez-tablo-kap" data-kaydirma="tablo" role="region" aria-label="${esc(seritAdi(b))}: öğrenci ve madde tablosu" tabindex="0">
+      ${aktif.length ? `<div class="ez-tablo-kap" data-kaydirma="tablo" role="region" aria-label="${tZ('ezber.tablo.aria', { serit: esc(seritAdi(b)) })}" tabindex="0">
         <table class="ez-tablo">
-          <thead><tr><th scope="col" class="ez-tablo-ogr">Öğrenci</th>${maddeler.map((m) => `<th scope="col" title="${esc(m.ad.tr)}"><span>${sutunAdi(m.ad.tr)}</span></th>`).join('')}</tr></thead>
+          <thead><tr><th scope="col" class="ez-tablo-ogr">${tZ('ezber.tablo.ogrenci')}</th>${maddeler.map((m) => `<th scope="col" title="${esc(m.ad.tr)}"><span>${sutunAdi(m.ad.tr)}</span></th>`).join('')}</tr></thead>
           <tbody>${aktif.map((o) => {
             const og = depo.sinif[o.ref] || {};
             return `<tr><th scope="row" class="ez-tablo-ogr">${esc(adSoyad(o))}</th>${maddeler.map((m) => {
               const g = gorunenBasamak(og, m.id);
               const vade = kontrolGeldi(og[m.id], s.bugun) && og[m.id].basamak < 4;
               const secili = h?.ref === o.ref && h.id === m.id;
-              return `<td><button type="button" class="ez-hucre" aria-pressed="${secili}" data-ez-hucre="${esc(o.ref)}" data-id="${esc(m.id)}" data-odak="hucre-${esc(o.ref)}-${esc(m.id)}" aria-label="${esc(`${adSoyad(o)} — ${m.ad.tr}: ${BASAMAK_ADLARI[g].tr}${vade ? ', kontrol günü geldi' : ''}`)}">${isaret(g, vade)}</button></td>`;
+              return `<td><button type="button" class="ez-hucre" aria-pressed="${secili}" data-ez-hucre="${esc(o.ref)}" data-id="${esc(m.id)}" data-odak="hucre-${esc(o.ref)}-${esc(m.id)}" aria-label="${esc(tZ(vade ? 'ezber.hucre.ariaVade' : 'ezber.hucre.aria', { ogrenci: adSoyad(o), madde: m.ad.tr, basamak: basamakAdi(g) }))}">${isaret(g, vade)}</button></td>`;
             }).join('')}</tr>`;
           }).join('')}</tbody>
-        </table></div>` : `<p class="bos">${simge('ezber')}<span>Aktif öğrenci yok.</span></p>`}
+        </table></div>` : `<p class="bos">${simge('ezber')}<span>${tZ('ezber.ogrenciYok')}</span></p>`}
       ${h ? `<div class="ez-tablo-dinle" id="ez-tablo-dinle">
-          <div class="ez-tablo-dinle-bas"><h3>${esc(adi(h.ref))}</h3><button type="button" class="ez-ikincil" data-ez-hucre-kapat data-odak="hucrekapat">${simge('kapat')}Kapat</button></div>
+          <div class="ez-tablo-dinle-bas"><h3>${esc(adi(h.ref))}</h3><button type="button" class="ez-ikincil" data-ez-hucre-kapat data-odak="hucrekapat">${simge('kapat')}${tZ('ezber.kapat')}</button></div>
           <div class="ez-dinle">${katman.html(h.ref, adi(h.ref))}</div>
-        </div>` : '<p class="ez-bilgi">Bir hücreye dokunun: o öğrencinin o maddesi için dinleme ve elle düzeltme aşağıda açılır.</p>'}`;
+        </div>` : `<p class="ez-bilgi">${tZ('ezber.tablo.ipucu')}</p>`}`;
   };
   const govdeHtml = () => {
     const st = depo.durum();
     const vadeSayi = st.hazir ? vadeliler().reduce((t, x) => t + x.ids.length, 0) : 0;
-    const dugme = (g: Gorunum, ad: string, sayi = 0) => `<button type="button" class="ez-gorunum-dugme" aria-pressed="${gorunum === g}" data-ez-gorunum="${g}" data-odak="gorunum-${g}">${ad}${sayi ? `<span class="ez-sayi"><span class="sr-only">, kontrolü gelen madde: </span>${sayi}</span>` : ''}</button>`;
+    const dugme = (g: Gorunum, ad: string, sayi = 0) => `<button type="button" class="ez-gorunum-dugme" aria-pressed="${gorunum === g}" data-ez-gorunum="${g}" data-odak="gorunum-${g}">${ad}${sayi ? `<span class="ez-sayi"><span class="sr-only">${tZ('ezber.gorunum.sayi')}</span>${sayi}</span>` : ''}</button>`;
     for (const h of katman.yeniHatalar()) duyur(h);
-    const icerik = st.hata ? `<p class="not hata">Ezber kayıtları okunamadı (${esc(st.hata)}). Bağlantınızı kontrol edip sekmeyi yeniden açın.</p>`
-      : !st.hazir ? '<p class="ez-bilgi">Ezber kayıtları yükleniyor…</p>'
+    const icerik = st.hata ? `<p class="not hata">${tZ('ezber.hata.okunamadi', { hata: esc(st.hata) })}</p>`
+      : !st.hazir ? `<p class="ez-bilgi">${tZ('ezber.yukleniyor')}</p>`
       : gorunum === 'bugun' ? bugunHtml() : gorunum === 'tekrar' ? tekrarHtml() : tabloHtml();
-    return `${kayipHtml()}<div class="ez-gorunum" role="group" aria-label="Görünüm">${dugme('bugun', 'Bugün')}${dugme('tekrar', 'Tekrar', vadeSayi)}${dugme('tablo', 'Tablo')}</div>${icerik}`;
+    return `${kayipHtml()}<div class="ez-gorunum" role="group" aria-label="${tZ('ezber.gorunum.aria')}">${dugme('bugun', tZ('ezber.gorunum.bugun'))}${dugme('tekrar', tZ('ezber.gorunum.tekrar'), vadeSayi)}${dugme('tablo', tZ('ezber.gorunum.tablo'))}</div>${icerik}`;
   };
   /** Önceki oturumdan sunucuya ulaşmamış yazımlar (inceleme D1): öğrenci adı ve madde ile, «Anladım» deyince kalkar. */
   const kayipHtml = () => {
     const l = depo.kayiplar();
     if (!l.length) return '';
-    const ne = (y: BekleyenYazim) => (y.tur === 'dinleme' ? `dinleme (${KALITE_ETIKETI[y.kalite as Kalite] || y.kalite})`
-      : y.tur === 'atama' ? 'çalışmaya başladı' : 'elle düzeltme');
+    const ne = (y: BekleyenYazim) => (y.tur === 'dinleme' ? tZ('ezber.kayip.dinleme', { kalite: kaliteAdi(y.kalite as string, y.kalite) })
+      : y.tur === 'atama' ? tZ('ezber.kayip.atama') : tZ('ezber.kayip.elle'));
     const ogr = (ref: string) => s.ogrenciler().find((x) => x.ref === ref);
-    const zaman = (ms: number) => new Intl.DateTimeFormat('tr-TR', { timeZone: 'Europe/Brussels', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' }).format(new Date(ms));
+    const zaman = (ms: number) => new Intl.DateTimeFormat(hocaYerel(), { timeZone: 'Europe/Brussels', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' }).format(new Date(ms));
     return `<div class="ez-sonuc hata ez-kayip" data-ez-kayip>
-      <p class="ez-sonuc-metin">${simge('uyari')}<span><b>Önceki bir oturumdan ${l.length} ezber kaydı sunucuya ulaşmadı.</b> O arada başka bir cihazda değişmiş ya da öğrencinin kaydı kilitlenmiş olabilir; gerekirse yeniden dinleyip işleyin.</span></p>
+      <p class="ez-sonuc-metin">${simge('uyari')}<span><b>${tZ('ezber.kayip.baslik', { n: l.length })}</b> ${tZ('ezber.kayip.aciklama')}</span></p>
       <ul class="ez-kayip-liste">${l.map((y) => {
         const o = ogr(y.ref);
-        return `<li>${esc(o ? adSoyad(o) : 'Kaydı silinmiş öğrenci')} — ${esc(ezberBul(y.id)?.ad.tr || y.id)} · ${esc(ne(y))} · <span class="ez-tarih">${esc(zaman(y.zaman))}</span></li>`;
+        return `<li>${esc(o ? adSoyad(o) : tZ('ezber.kayip.silinmis'))} — ${esc(ezberBul(y.id)?.ad.tr || y.id)} · ${esc(ne(y))} · <span class="ez-tarih">${esc(zaman(y.zaman))}</span></li>`;
       }).join('')}</ul>
-      <div class="ez-sonuc-dugmeler"><button type="button" class="ez-ikincil" data-ez-kayip-kapat data-odak="kayip-kapat">${simge('onay')}Anladım</button></div>
+      <div class="ez-sonuc-dugmeler"><button type="button" class="ez-ikincil" data-ez-kayip-kapat data-odak="kayip-kapat">${simge('onay')}${tZ('ezber.kayip.anladim')}</button></div>
     </div>`;
   };
 
@@ -868,16 +879,16 @@ export function ezberDinlemesi(kap: HTMLElement, s: EzberDinlemesiSecenek): { te
   let kapali = false;
   const ref = s.ogrenci.ref;
   const { ciz, canliCiz, duyur } = iskelet(kap, `<div class="ez-ust ez-ust-kucuk">
-      <h3>${simge('ezber')}Ezber dinleme · ${esc(adSoyad(s.ogrenci))}</h3>
+      <h3>${simge('ezber')}${tZ('ezber.dinleme.baslik', { ad: esc(adSoyad(s.ogrenci)) })}</h3>
       <p class="ez-baglanti-kap" data-ez-baglanti></p>
-      <button type="button" class="ez-ikincil" data-ez-kapat>${simge('kapat')}Kapat</button>
+      <button type="button" class="ez-ikincil" data-ez-kapat>${simge('kapat')}${tZ('ezber.kapat')}</button>
     </div>`, () => {
     const st = depo.durum();
     for (const h of katman.yeniHatalar()) duyur(h);
-    if (st.hata) return `<p class="not hata">Ezber kayıtları okunamadı (${esc(st.hata)}).</p>`;
-    if (!st.hazir) return '<p class="ez-bilgi">Ezber kayıtları yükleniyor…</p>';
+    if (st.hata) return `<p class="not hata">${tZ('ezber.hata.okunamadiKisa', { hata: esc(st.hata) })}</p>`;
+    if (!st.hazir) return `<p class="ez-bilgi">${tZ('ezber.yukleniyor')}</p>`;
     const kayip = depo.kayiplar().length;
-    return `${kayip ? `<p class="not hata">Önceki bir oturumdan ${kayip} ezber kaydı sunucuya ulaşmadı; ayrıntısı «Ezber» sekmesinde.</p>` : ''}<div class="ez-dinle">${katman.html(ref, adSoyad(s.ogrenci))}</div><p class="ez-bilgi">Kaydedilen dinleme deftere bir cümle olarak eklenir; defteri yine «Kaydet» ile kaydedin.</p>`;
+    return `${kayip ? `<p class="not hata">${tZ('ezber.kayip.defter', { n: kayip })}</p>` : ''}<div class="ez-dinle">${katman.html(ref, adSoyad(s.ogrenci))}</div><p class="ez-bilgi">${tZ('ezber.dinleme.not')}</p>`;
   }, depo, ac.signal);
   const katman = dinlemeKatmani({ depo, bugun: s.bugun, hedefler, degisti: (d, odak) => { ciz(odak ?? null); if (d) duyur(d); }, cumleEklendi: s.cumleEklendi, cumleKaldirildi: s.cumleKaldirildi });
   kap.addEventListener('click', (ev) => {
