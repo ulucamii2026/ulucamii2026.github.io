@@ -66,7 +66,7 @@ for (const dil of DILLER) {
         for (const g of m.meal.tr.gruplar) expect(bosluksuz(sayfaMetni), `${id}: Türkçe anlam`).toContain(bosluksuz(g.metin));
       } else if (m.meal.fr && dil === 'fr') {
         for (const g of m.meal.fr.gruplar) expect(bosluksuz(sayfaMetni), `${id}: resmî Fransızca anlam`).toContain(bosluksuz(g.metin));
-        await expect(page.locator('.kaynak-satiri'), id).toContainText('Je vais à la mosquée');
+        await expect(page.locator('.kaynak-satiri'), id).toContainText(/Je vais à la mosquée|Sur les traces du Prophète Muhammad/);
       } else if (m.meal[dil]) {
         // en/nl/de: Diyanet'in basılı kitabından resmî anlam (docs/ILIM-YOLU-CEVIRI-KAYNAKLARI.md): metin ve künye sayfada, Türkçe sızmaz.
         for (const g of m.meal[dil].gruplar) expect(bosluksuz(sayfaMetni), `${id}: resmî ${dil} anlam`).toContain(bosluksuz(g.metin));

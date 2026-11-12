@@ -20,6 +20,18 @@
     }
    ]
   },
+  "fr": {
+   "kaynak": "Initiation au Coran — 1, T.C. Diyanet İşleri Başkanlığı (Présidence des Affaires Religieuses), Ankara, 2020, s. 58 (ISBN 978-625-7779-58-6)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Mon Seigneur, Le Très Grand, est exempt de toutes imperfections."
+    }
+   ]
+  },
   "en": {
    "kaynak": "Islam Through Hadiths 2, Diyanet İşleri Başkanlığı (Presidency of Religious Affairs), İstanbul, 2020, s. 183",
    "gruplar": [
@@ -38,7 +50,7 @@
   "url": "https://namaz.diyanet.gov.tr/namaz/html/sureler-dualar.html",
   "alindi": "2026-10-24"
  },
- "ozet": "ae1353db6aefa1253f83c59853768880e3e767a6427bbdf6cdb9777bea1b0c98",
+ "ozet": "81cc132ba856294c7573d9676ead616df7508acdd99cbe3c448d4066ecb76bfe",
  "okunus": {
   "tr": [
    {

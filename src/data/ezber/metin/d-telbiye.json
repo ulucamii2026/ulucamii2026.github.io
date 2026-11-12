@@ -46,6 +46,39 @@
     }
    ]
   },
+  "fr": {
+   "kaynak": "Principes fondamentaux de l’Islam, T.C. Diyanet İşleri Başkanlığı (Présidence des Affaires Religieuses), Ankara, 2020, s. 103 (ISBN 978-625-7779-61-6)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Me voici à ton service Seigneur, me voici."
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "Me voici, Tu n'as pas d'associé."
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "La louange et la grâce t'appartiennent ainsi que la royauté."
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Tu n'as pas d'associés."
+    }
+   ]
+  },
   "en": {
    "kaynak": "Essentials of Islam — A Textbook for High School Students, Presidency of Religious Affairs (Diyanet İşleri Başkanlığı), Ankara, 2017, s. 107",
    "gruplar": [
@@ -78,6 +111,18 @@
      "metin": "You have no partner."
     }
    ]
+  },
+  "nl": {
+   "kaynak": "ISN Vrijdagpreek (khuṭba) 30 mei 2025, Islamitische Stichting Nederland (ISN) / Hollanda Diyanet Vakfı, diyanet.nl",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      4
+     ],
+     "metin": "“Hier ben ik, o Allah, hier ben ik! Hier ben ik, U heeft geen deelgenoot, hier ben ik! Voorwaar, alle lof en gunst zijn voor U, evenals het koningschap. U heeft geen deelgenoot.”"
+    }
+   ]
   }
  },
  "kaynak": {
@@ -85,7 +130,7 @@
   "url": "https://diniyayinlar.diyanet.gov.tr/",
   "alindi": "2026-10-24"
  },
- "ozet": "9f8949f09af8a13471fd0c97dc6df75c2ba7438855d9b03a477b47be571f4469",
+ "ozet": "b20666ca41c603190da5268d7833bee4fa9a2f6d61acf5e8c536733110cdc7ce",
  "okunus": {
   "tr": [
    {

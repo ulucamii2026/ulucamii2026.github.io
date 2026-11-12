@@ -205,7 +205,7 @@ test('Çok kısımlı maddede kısım seçilince tur yalnız o kısmın bloklar�
 });
 
 test('Oyun kurulamayan madde: tek meâl blokluk sûrede (TR Felak) düğme çıkmaz; FR’de çıkar', async ({ page }) => {
-  expect(oyunMeali('s-felak', 'tr').gruplar).toHaveLength(1);
+  expect(metin('s-felak').meal.tr.gruplar).toHaveLength(1);
   await page.goto('/tr/calis/s-felak/');
   await page.locator('#kip-sekme-sina').click();
   await expect(page.locator(`${SINA} .sina-oyunlar button`)).toHaveCount(4);

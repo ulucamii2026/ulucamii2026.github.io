@@ -133,7 +133,12 @@ test('Felemenkçe meâl: 14 madde Diyanet kitabından, taslak değil, künyeli v
 });
 
 test('Dua anlamları (en, nl, de, fr): yalnız Diyanet’in basılı kitaplarından, künyeli, taslak değil, kısaltmasız', () => {
-  const KITAP = { en: /Islam Through Hadiths|Essentials of Islam/, nl: /Basiskennis over Islam.*Diyanet/, de: /Was ist der Islam\?.*Diyanet/, fr: /Guide pratique des adorations|Je vais à la mosquée/ };
+  const KITAP = {
+    en: /Islam Through Hadiths|Essentials of Islam|Introduction to the Holy Qur’an 1.*Diyanet/,
+    nl: /Basiskennis over Islam.*Diyanet|Ik leer Qur’an reciteren.*Islamitische Stichting Nederland|ISN Vrijdagpreek.*Islamitische Stichting Nederland/,
+    de: /Was ist der Islam\?.*Diyanet|Auf den Spuren des Propheten.*Diyanet/,
+    fr: /Guide pratique des adorations|Je vais à la mosquée|Initiation au Coran — 1.*Diyanet|Principes fondamentaux de l’Islam.*Diyanet|Sur les traces du Prophète Muhammad.*Diyanet/,
+  };
   const say = { en: 0, nl: 0, de: 0, fr: 0 };
   for (const [id, m] of metinler) {
     if (m.kuran) continue;
@@ -146,9 +151,25 @@ test('Dua anlamları (en, nl, de, fr): yalnız Diyanet’in basılı kitapların
       for (const g of meal.gruplar) assert.ok(g.metin.trim() && !/…|\.\.\./.test(g.metin), `${id}/${dil}: kısaltılmış ya da boş anlam resmî metin sayılmaz`);
     }
   }
-  assert.deepEqual(say, { en: 10, nl: 10, de: 1, fr: 8 }, 'beklenen kapsam (fr: 3 DİTİB + 5 Diyanet kılavuzu)');
+  assert.deepEqual(say, { en: 14, nl: 12, de: 2, fr: 16 }, 'beklenen kapsam (fr: 3 DİTİB + 13 Diyanet kitabı)');
   // Baskı hatalı ya da kısaltılmış, parçası başka rivayete ait olanlar eklenmez (docs/ILIM-YOLU-CEVIRI-KAYNAKLARI.md).
   for (const id of ['d-salli', 'd-barik', 'd-kunut-1', 'd-kunut-2', 'd-secde-tesbihi', 'd-tesrik-tekbiri', 'd-subhaneke']) assert.equal(metinler.get(id).meal.en, undefined, `${id}: en eklenmemeli`);
+});
+
+test('İkinci tur: ezan ve kamet anlamı TR gibi sekiz grup (basılı tablonun satırları); eksik ya da izinsiz karşılıklar eklenmedi', () => {
+  for (const [id, dil] of [['d-ezan', 'en'], ['d-kamet', 'en'], ['d-kamet', 'fr']]) {
+    const g = metinler.get(id).meal[dil].gruplar;
+    assert.deepEqual(g.map((x) => x.ayetler), Array.from({ length: 8 }, (_, i) => [i + 1, i + 1]), id + '/' + dil + ': TR ile aynı grup yapısı');
+  }
+  assert.equal(metinler.get('d-ezan').meal.en.gruplar[5].metin, 'Prayer is better than sleep.');
+  assert.equal(metinler.get('d-kamet').meal.en.gruplar[5].metin, 'Prayer has started.');
+  assert.equal(metinler.get('d-kamet').meal.fr.gruplar[5].metin, 'La prière a commencé.');
+  // d-ezan nl: Felemenkçe broşürde sabah satırı yok; d-selam / d-tesmi-tahmid fr: kitabın Fransızcası veri Arapçasından farklı (baraka eklenir, «Rabbena» yerine «Allah»).
+  assert.equal(metinler.get('d-ezan').meal.nl, undefined);
+  assert.equal(metinler.get('d-selam').meal.fr, undefined);
+  assert.equal(metinler.get('d-tesmi-tahmid').meal.fr, undefined);
+  // DİTİB hutbeleri yazılı izin ister: Almanca karşılıkları izin kararına kadar eklenmez.
+  for (const id of ['d-salli', 'd-barik', 'd-telbiye', 'd-kelime-i-sehadet']) assert.equal(metinler.get(id).meal.de, undefined, id + ': de eklenmemeli (DİTİB izin kararı bekliyor)');
 });
 
 test('Meâl grupları her dilde maddenin bütün âyetlerini boşluksuz ve örtüşmesiz kaplar', () => {
@@ -173,7 +194,7 @@ test('Fransızca meâl: Chiadmi (Diyanet) ya da Hamidullah, künyeyle aynı çev
   for (const [id, m] of metinler) {
     if (m.kuran) assert.ok(m.meal.fr, `${id}: FR meâl yok (node scripts/ezber-meal-fr.mjs)`);
     // Kur'an dışı kitap duasında FR anlam DİTİB'in resmî Fransızca yayınından gelir (Camiye Gidiyorum – Je vais à la mosquée).
-    if (m.meal.fr) assert.match(m.meal.fr.kaynak, m.kuran ? cevirmen : /Je vais à la mosquée|Guide pratique des adorations/, `${id}: FR meâl sayfadaki künyeyle aynı çevirmenden olmalı (${kunye})`);
+    if (m.meal.fr) assert.match(m.meal.fr.kaynak, m.kuran ? cevirmen : /Je vais à la mosquée|Guide pratique des adorations|Initiation au Coran|Principes fondamentaux de l’Islam|Sur les traces du Prophète Muhammad/, `${id}: FR meâl sayfadaki künyeyle aynı çevirmenden olmalı (${kunye})`);
     for (const [dil, satirlar] of Object.entries(m.okunus ?? {})) {
       assert.deepEqual(satirlar.map((x) => x.no), m.bolumler.map((b) => b.no), `${id}/okunus-${dil}`);
     }

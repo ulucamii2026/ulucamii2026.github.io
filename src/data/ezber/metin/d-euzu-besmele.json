@@ -30,6 +30,49 @@
      "metin": "Rahmân (Bağışlayıcı) ve Rahîm (Esirgeyici) olan Allah’ın adıyla"
     }
    ]
+  },
+  "fr": {
+   "kaynak": "Initiation au Coran — 1, T.C. Diyanet İşleri Başkanlığı (Présidence des Affaires Religieuses), Ankara, 2020, s. 50 (ISBN 978-625-7779-58-6)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      2
+     ],
+     "metin": "Je cherche protection auprès d'Allah contre Satan le maudit. Au nom d'Allah, le plus Compatissant, le plus Miséricordieux."
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "Introduction to the Holy Qur’an 1 — A Textbook for High School Students, Presidency of Religious Affairs (Diyanet İşleri Başkanlığı), Ankara, 2017 (2nd edition), s. 50 (Diyanet yayını no. 1168, ISBN 978-975-19-6440-3)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      2
+     ],
+     "metin": "I seek refuge in Allah from the accursed Satan. In the name of Allah, the Most Compassionate, the Most Merciful."
+    }
+   ]
+  },
+  "nl": {
+   "kaynak": "Ik leer Qur’an reciteren (met tadjwid), Islamitische Stichting Nederland (ISN) / Presidium voor Religieuze Zaken, Den Haag, 2017, s. 11 (ISN publicatie nr 63)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "“Ik zoek mijn toevlucht bij Allah tegen de verworpen Satan”"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "“In naam van Allah, de Erbarmer, de meest Barmhartige.”"
+    }
+   ]
   }
  },
  "kaynak": {
@@ -37,7 +80,7 @@
   "url": "https://kuran.diyanet.gov.tr/mushaf",
   "alindi": "2026-10-24"
  },
- "ozet": "5a188428fa0f0efab7bc372414ea985f57be2aee2eac5d09cdbb761ab6f59678",
+ "ozet": "86819de807e157a234c4bb9b084c180bfb1c60f3a6d2da3a8b1aa82d015f422c",
  "okunus": {
   "tr": [
    {
