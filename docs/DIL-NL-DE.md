@@ -120,3 +120,9 @@ untranslated on purpose.
   ve telefon görünür metin veya başlık ipucuna taşınmaz; etiket yalnız WhatsApp, telefon yalnız sohbet hedefidir.
 - Bu işin tarihli yerel test kanıtı ve 360/768/1280 piksel açık/koyu matrisi `.codex/agy-dil-nl-de/RAPOR.md`
   dosyasındadır. Yerel doğrulama yayın anlamına gelmez; bu oturumda commit/push/yayın yapılmadı.
+
+## İlim Yolu kurs bölümü içerik çevirisi (12 Kasım 2026)
+
+`/<dil>/kurs/…` sayfalarının içerik katmanı (konu başlığı, sunum başlığı, kazanım, hafta notu, rozet, kalıcı materyal) en/nl/de'de
+artık kendi dilinde; çevirisi olmayan yeni öğe Fransızcaya (yoksa Türkçeye) düşer, doğru `lang` ve görünür dil etiketiyle.
+Mekanizma, haftalık akış ve durum (makine destekli, ana dil okuması yok): [KURS-CEVIRISI.md](KURS-CEVIRISI.md).

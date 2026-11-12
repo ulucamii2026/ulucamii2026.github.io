@@ -120,3 +120,28 @@ test('Kaynak: kurs sayfaları ana sitenin içerik ve veri dosyalarını kullanı
     assert.equal(/\sstyle=\{?["`]/.test(s.replace(/<style[\s\S]*?<\/style>/g, '')), false, `${f}: satır içi stil`);
   }
 });
+
+test('Kurs sayfaları en/nl/de: bindirme çevirisi sayfada (başlık, konu, kazanım), Fransızca düşüşü yok; çevrilmemiş öğe etiketli', { skip: atla }, () => {
+  const coz = (h) => h.replace(/&#39;/g, "'").replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
+  const defter = JSON.parse(oku('src/data/ders-defteri-2026-2027.json'));
+  const mat = JSON.parse(oku('src/data/ders-materyalleri.json'));
+  const ilkSunum = mat.gunler[0].sunumlar[0];
+  for (const d of ['en', 'nl', 'de']) {
+    const b = JSON.parse(oku(`src/data/kurs-ceviri/${d}.json`));
+    const materyal = coz(oku(dist(`${d}/kurs/materyaller/index.html`)));
+    assert.ok(materyal.includes(b.baslik[ilkSunum.baslik.tr]), `${d}: sunum başlığı çevirisi sayfada yok`);
+    assert.ok(materyal.includes(b.sunumKonu[ilkSunum.konu]), `${d}: sunum konu satırı çevirisi sayfada yok`);
+    assert.ok(materyal.includes(b.kalici['temel-dini-bilgiler'].baslik), `${d}: kalıcı materyal başlığı çevirisi sayfada yok`);
+    assert.equal(materyal.includes(ilkSunum.konuFr), false, `${d}: çevirisi olan sunum konusu Fransızca düşmüş`);
+    const gunluk = coz(oku(dist(`${d}/kurs/gunluk/index.html`)));
+    const ilk = defter[0];
+    assert.ok(gunluk.includes(b.hedef[ilk.goal_tr]), `${d}: kazanım çevirisi günlükte yok`);
+    assert.equal(gunluk.includes(ilk.goal_fr), false, `${d}: çevirisi olan kazanım Fransızca düşmüş`);
+    const konu = JSON.parse(oku(d === 'en' ? 'src/data/konular-en.json' : `src/data/konular-${d}.json`))[ilk.konu];
+    assert.ok(gunluk.includes(konu), `${d}: konu başlığı çevirisi günlükte yok`);
+    const plan = coz(oku(dist(`${d}/kurs/yillik-plan/index.html`)));
+    assert.match(plan, /<h3 lang="[a-z]{2}"[^>]*>[^<]+<\/h3>/, `${d}: yıllık plan blok başlıkları dil işaretli olmalı`);
+    // Dil etiketi kalıbı: etiket yalnız sayfa dilinden farklı metinde çıkar (ekran okuyucu cümlesi sayfa dilinde).
+    for (const html of [materyal, gunluk, plan]) for (const m of html.matchAll(/<span class="dil-et[^"]*"[^>]*><span[^>]*>(FR|TR)<\/span><span class="sr-only" lang="([a-z]{2})">/g)) assert.equal(m[2], d, `${d}: dil etiketi sayfa dilinde okunmalı`);
+  }
+});
