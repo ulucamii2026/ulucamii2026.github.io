@@ -3,8 +3,6 @@ import { basiliDefterSayfasi } from "../lib/basili-defter";
 import {
   defterDeposu,
   defterAlanlari,
-  dersDurumlari,
-  ozDurumlari,
   gunYoklamasi,
   gunDefterOzeti,
   topluGelmediYaz,
@@ -20,6 +18,9 @@ import {
   type DersKaydi,
 } from "../lib/ders-defteri";
 import { bultenEsc as e, baskiAlaniYazdir } from "./bulten-gorunumu";
+import { hocaDili, hocaYerel } from "../i18n/hoca";
+import { tD } from "../i18n/hoca-metin/defter";
+import { hazirKayitAciklamasi, hazirKayitEtiketi, kalipEtiketi, kalipGrupAdi } from "../i18n/hoca-metin/defter-kaliplari";
 import {
   ceviriDeposu,
   ceviriGuncel,
@@ -41,6 +42,28 @@ import {
 } from "../lib/defter-kaliplari";
 
 type Ogr = { ref: string; ad: string; soyad: string; durum?: string };
+/* Arayüz adları (12 Kasım 2026): enum değerleri (islendi, yok, …) olduğu gibi kalır, yalnız ekranda görünen ad çevrilir.
+   Dil sayfa yüklenirken sabitlenir; bu sabitler modül yüklenirken güvenle hesaplanır. */
+const DURUM_ADI: Record<string, string> = {
+  islendi: tD("durum.islendi"),
+  kismen: tD("durum.kismen"),
+  ertelendi: tD("durum.ertelendi"),
+  gelmedi: tD("durum.gelmedi"),
+  mazeretli: tD("durum.mazeretli"),
+};
+const OZ_ADI: Record<string, string> = { "": tD("oz.bos"), tekrar: tD("oz.tekrar"), destek: tD("oz.destek"), kendim: tD("oz.kendim") };
+const YOK_ADI: Record<string, string> = { var: tD("yok.var"), yok: tD("yok.yok"), mazeret: tD("yok.mazeret"), gec: tD("yok.gec") };
+const ALAN_ADI: Record<keyof typeof defterAlanlari, string> = {
+  calisma: tD("alan.calisma"),
+  okunan: tD("alan.okunan"),
+  dikkat: tD("alan.dikkat"),
+  odev: tD("alan.odev"),
+  sonraki: tD("alan.sonraki"),
+};
+const YONTEM_ADI = { kalip: tD("ceviri.yontem.kalip"), makine: tD("ceviri.yontem.makine"), karma: tD("ceviri.yontem.karma") } as const;
+const CEVRILIYOR = tD("ceviri.cevriliyor");
+/** «N. ders» (tek anahtar: liste, başlık, yazdırma). */
+const dersNo = (n: number) => tD("ders.sira", { n });
 export function dersDefteri(
   root: HTMLElement,
   opt: {
@@ -174,18 +197,18 @@ export function dersDefteri(
     const yeni = ta.value.trim() ? `${ta.value.trim()} ${tr}` : tr;
     if (yeni.length > ta.maxLength) {
       const p = root.querySelector("[data-dd-durum]");
-      if (p) p.textContent = "Ezber kaydedildi; ancak «Bugün sınıfta» alanı dolu olduğu için cümle eklenemedi. Notu kısaltıp elle ekleyin.";
+      if (p) p.textContent = tD("ezber.sigmadi");
       return;
     }
     ta.value = yeni;
-    calismaDegisti(ta, "Ezber cümlesi deftere eklendi. Defteri kaydetmeyi unutmayın.");
+    calismaDegisti(ta, tD("ezber.eklendi"));
   };
   const ezberCumlesiCikar = (tr: string) => {
     const ta = calismaAlani();
     const i = ta ? ta.value.lastIndexOf(tr) : -1;
     if (!ta || i < 0) return;
     ta.value = `${ta.value.slice(0, i)} ${ta.value.slice(i + tr.length)}`.replace(/\s{2,}/g, " ").trim();
-    calismaDegisti(ta, "Ezber cümlesi defterden çıkarıldı.");
+    calismaDegisti(ta, tD("ezber.cikarildi"));
   };
   /** Metin alanı içeriğe göre uzar; çipler eklerken kaydırma çubuğu çıkmaz. */
   const buyut = (ta: HTMLTextAreaElement) => {
@@ -204,13 +227,12 @@ export function dersDefteri(
   const yakinGun = gunler.includes(opt.bugun) ? opt.bugun : gunler.findLast((g) => g < opt.bugun) || gunler[0];
   const ogrAramaSonuclari = () => {
     const liste = ogrEslesenler();
-    return `<p class="kucuk" role="status">${liste.length ? `${liste.length} öğrenci bulundu. Açmak için adına dokunun.` : "Öğrenci bulunamadı. Adı veya soyadını değiştirin."}</p>${liste.map((o) => `<button type="button" class="kucuk-dugme" data-dd-ogr-git="${e(o.ref)}" ${mesgul ? "disabled" : ""}>${e(o.ad + " " + o.soyad)}</button>`).join("")}`;
+    return `<p class="kucuk" role="status">${liste.length ? tD("arama.sayi", { n: liste.length }) : tD("arama.yok")}</p>${liste.map((o) => `<button type="button" class="kucuk-dugme" data-dd-ogr-git="${e(o.ref)}" ${mesgul ? "disabled" : ""}>${e(o.ad + " " + o.soyad)}</button>`).join("")}`;
   };
   const secimGezintisi = (tur: "ogr" | "gun") => {
     const liste = tur === "ogr" ? opt.ogrenciler.map((o) => o.ref) : gunler;
     const i = liste.indexOf(tur === "ogr" ? ref : tarih);
-    const etiket = tur === "ogr" ? "öğrenci" : "ders günü";
-    return `<div class="dd-gezinti" role="group" aria-label="${tur === "ogr" ? "Öğrenci" : "Ders günü"} geçişleri"><button type="button" class="kucuk-dugme" data-dd-${tur}-git="${e(liste[i - 1] || "")}" ${mesgul || i <= 0 ? "disabled" : ""}>Önceki ${etiket}</button><button type="button" class="kucuk-dugme" data-dd-${tur}-git="${e(liste[i + 1] || "")}" ${mesgul || i >= liste.length - 1 ? "disabled" : ""}>Sonraki ${etiket}</button>${tur === "gun" && yakinGun ? `<button type="button" class="kucuk-dugme" data-dd-gun-git="${yakinGun}" ${mesgul || tarih === yakinGun ? "disabled" : ""}>${yakinGun === opt.bugun ? "Bugünün dersi" : "Son ders günü"}</button>` : ""}</div>`;
+    return `<div class="dd-gezinti" role="group" aria-label="${tD(tur === "ogr" ? "gez.ogr.aria" : "gez.gun.aria")}"><button type="button" class="kucuk-dugme" data-dd-${tur}-git="${e(liste[i - 1] || "")}" ${mesgul || i <= 0 ? "disabled" : ""}>${tD(tur === "ogr" ? "gez.ogr.onceki" : "gez.gun.onceki")}</button><button type="button" class="kucuk-dugme" data-dd-${tur}-git="${e(liste[i + 1] || "")}" ${mesgul || i >= liste.length - 1 ? "disabled" : ""}>${tD(tur === "ogr" ? "gez.ogr.sonraki" : "gez.gun.sonraki")}</button>${tur === "gun" && yakinGun ? `<button type="button" class="kucuk-dugme" data-dd-gun-git="${yakinGun}" ${mesgul || tarih === yakinGun ? "disabled" : ""}>${yakinGun === opt.bugun ? tD("gez.bugun") : tD("gez.songun")}</button>` : ""}</div>`;
   };
   let tarih = gunler.find((t) => t >= opt.bugun) || gunler.at(-1) || "";
   if (opt.baslangicTarih && gunler.includes(opt.baslangicTarih)) tarih = opt.baslangicTarih;
@@ -235,15 +257,15 @@ export function dersDefteri(
     defterTazele = false,
     kuyrukAktif = false;
   let kuyruk: EksikKayit[] = [];
-  const YOK_ETIKET: Record<string, string> = { var: "Var", yok: "Yok", mazeret: "Mazeretli", gec: "Geç" };
+  const YOK_ETIKET = YOK_ADI;
   const aktifler = () => opt.ogrenciler.filter((o) => o.durum !== "pasif");
   const ogrAdi = (r: string) => {
     const o = opt.ogrenciler.find((x) => x.ref === r);
     return o ? `${o.ad} ${o.soyad}` : r;
   };
   const gunEtiketi = (t: string) =>
-    new Date(`${t}T12:00:00`).toLocaleDateString("tr-TR", { weekday: "long", day: "numeric", month: "long" });
-  const gunKisa = (t: string) => new Date(`${t}T12:00:00`).toLocaleDateString("tr-TR", { day: "numeric", month: "short" });
+    new Date(`${t}T12:00:00`).toLocaleDateString(hocaYerel(), { weekday: "long", day: "numeric", month: "long" });
+  const gunKisa = (t: string) => new Date(`${t}T12:00:00`).toLocaleDateString(hocaYerel(), { day: "numeric", month: "short" });
   const eksikleriYukle = async () => {
     eksikMesgul = true;
     eksikHata = "";
@@ -254,7 +276,7 @@ export function dersDefteri(
       eksik = e2;
       opt.eksikDegisti?.(e2);
     } catch {
-      if (!kapali) eksikHata = "Eksikler hesaplanamadı. Bağlantınızı kontrol edip «Yenile» deyin.";
+      if (!kapali) eksikHata = tD("eksik.hesaplanamadi");
     } finally {
       if (!kapali) {
         eksikMesgul = false;
@@ -301,11 +323,11 @@ export function dersDefteri(
   };
   const eksikSatiri = () => {
     const sonrakiEksik = kuyruk[0];
-    return `<p class="dd-eksik-satir" data-dd-eksik-satir><button type="button" class="kucuk-dugme" data-dd-eksikler-ac ${mesgul ? "disabled" : ""}>Doldurulmamış defterler${eksik ? ` <b>${eksik.toplam}</b>` : ""}</button>${
+    return `<p class="dd-eksik-satir" data-dd-eksik-satir><button type="button" class="kucuk-dugme" data-dd-eksikler-ac ${mesgul ? "disabled" : ""}>${tD("eksik.ac")}${eksik ? ` <b>${eksik.toplam}</b>` : ""}</button>${
       kuyrukAktif
         ? sonrakiEksik
-          ? `<span>Sıradaki eksik: <b>${e(ogrAdi(sonrakiEksik.ref))}</b> · ${e(gunKisa(sonrakiEksik.tarih))} · ${sonrakiEksik.sira}. ders</span><button type="button" class="kucuk-dugme" data-dd-kuyruk-sonraki ${mesgul ? "disabled" : ""}>Sıradakine geç</button>`
-          : `<span>Eksik kuyruğu bitti ✓</span>`
+          ? `<span>${tD("kuyruk.siradakiHtml", { ad: e(ogrAdi(sonrakiEksik.ref)), tarih: e(gunKisa(sonrakiEksik.tarih)), ders: dersNo(sonrakiEksik.sira) })}</span><button type="button" class="kucuk-dugme" data-dd-kuyruk-sonraki ${mesgul ? "disabled" : ""}>${tD("kuyruk.sonraki")}</button>`
+          : `<span>${tD("kuyruk.bitti")}</span>`
         : ""
     }</p>`;
   };
@@ -313,18 +335,18 @@ export function dersDefteri(
     const ek = eksik;
     const kilit = eksikMesgul ? "disabled" : "";
     let govde = "";
-    if (!ek) govde = eksikHata ? `<p class="dd-uyari" role="status">${e(eksikHata)}</p>` : `<p class="not" role="status">Doldurulmamış defterler hesaplanıyor…</p>`;
-    else if (!ek.toplam) govde = `<p class="not" role="status">Bütün ders günlerinin defteri tam ✓ — geçmiş ${ek.gunler.length} ders gününde eksik kayıt yok.</p>`;
+    if (!ek) govde = eksikHata ? `<p class="dd-uyari" role="status">${e(eksikHata)}</p>` : `<p class="not" role="status">${tD("eksik.hesaplaniyor")}</p>`;
+    else if (!ek.toplam) govde = `<p class="not" role="status">${tD("eksik.tam", { n: ek.gunler.length })}</p>`;
     else
       govde = ek.gunler
         .filter((g) => g.eksikler.length)
         .map((g) => {
           const gelmeyen = g.eksikler.filter((x) => x.yoklama === "yok" || x.yoklama === "mazeret").length;
           const ogrenciler = [...new Set(g.eksikler.map((x) => x.ref))];
-          return `<section class="dd-eksik-gun" data-dd-eksik-gun="${e(g.tarih)}"><h4>${e(gunEtiketi(g.tarih))} · ${g.hafta}. hafta <small>${g.dolu}/${g.beklenen} dolu · ${g.eksikler.length} eksik</small></h4>${
-            !g.yoklamaVar ? `<p class="kucuk">Bu günün yoklaması girilmemiş; önce yoklamayı işaretlerseniz gelmeyenlerin kaydı tek dokunuşla açılır.</p>` : ""
+          return `<section class="dd-eksik-gun" data-dd-eksik-gun="${e(g.tarih)}"><h4>${e(gunEtiketi(g.tarih))} · ${tD("hafta.no", { n: g.hafta })} <small>${tD("eksik.gunOzet", { dolu: g.dolu, beklenen: g.beklenen, eksik: g.eksikler.length })}</small></h4>${
+            !g.yoklamaVar ? `<p class="kucuk">${tD("eksik.yoklamaYok")}</p>` : ""
           }${
-            gelmeyen ? `<p><button type="button" class="kucuk-dugme" data-dd-eksik-toplu="${e(g.tarih)}" ${kilit}>Gelmeyenlerin ${gelmeyen} kaydını aç</button> <span class="kucuk">Yoklamada «Yok»/«Mazeretli» olanlar; durum ve standart not yazılır.</span></p>` : ""
+            gelmeyen ? `<p><button type="button" class="kucuk-dugme" data-dd-eksik-toplu="${e(g.tarih)}" ${kilit}>${tD("eksik.topluAc", { n: gelmeyen })}</button> <span class="kucuk">${tD("eksik.topluNot")}</span></p>` : ""
           }<ul class="dd-eksik-liste">${ogrenciler
             .map(
               (r) =>
@@ -332,7 +354,7 @@ export function dersDefteri(
                   .filter((x) => x.ref === r)
                   .map(
                     (x) =>
-                      `<button type="button" class="dd-eksik-ders${x.yoklama ? ` dd-yok-${e(x.yoklama)}` : ""}" data-dd-eksik="${e(x.ref)}" data-dd-eksik-ders="${e(x.id)}" ${kilit}><span>${x.sira}. ders · ${e(x.konu)}</span><small>${x.yoklama ? `Yoklama: ${e(YOK_ETIKET[x.yoklama] || x.yoklama)}` : "Yoklama işaretsiz"}</small></button>`,
+                      `<button type="button" class="dd-eksik-ders${x.yoklama ? ` dd-yok-${e(x.yoklama)}` : ""}" data-dd-eksik="${e(x.ref)}" data-dd-eksik-ders="${e(x.id)}" ${kilit}><span>${dersNo(x.sira)} · ${e(x.konu)}</span><small>${x.yoklama ? tD("eksik.yoklama", { durum: e(YOK_ETIKET[x.yoklama] || x.yoklama) }) : tD("eksik.yoklamaIsaretsiz")}</small></button>`,
                   )
                   .join("")}</div></li>`,
             )
@@ -340,14 +362,14 @@ export function dersDefteri(
         })
         .join("");
     const bosGunler = ek?.bosGunler.length
-      ? `<p class="kucuk" data-dd-eksik-bos>Kaydı ve yoklaması hiç olmayan günler: ${ek.bosGunler.map((t) => e(gunEtiketi(t))).join(", ")} — ders yapılmadıysa yok sayın; yapıldıysa önce o günün yoklamasını girin, eksikler burada görünür.</p>`
+      ? `<p class="kucuk" data-dd-eksik-bos>${tD("eksik.bosGunler", { gunler: ek.bosGunler.map((g) => e(gunEtiketi(g))).join(", ") })}</p>`
       : "";
     const ozet = ek
-      ? `<b>${ek.toplam} eksik kayıt</b><span>${ek.gunler.filter((g) => g.eksikler.length).length} ders günü</span><span>${ek.ogrenciler.length} öğrenci</span>${ek.gelmeyen ? `<span>${ek.gelmeyen} yoklamada gelmedi</span>` : ""}`
+      ? `<b>${tD("eksik.ozetKayit", { n: ek.toplam })}</b><span>${tD("eksik.ozetGun", { n: ek.gunler.filter((g) => g.eksikler.length).length })}</span><span>${tD("say.ogrenci", { n: ek.ogrenciler.length })}</span>${ek.gelmeyen ? `<span>${tD("eksik.ozetGelmedi", { n: ek.gelmeyen })}</span>` : ""}`
       : "";
-    return `<h2>Ders Defteri</h2><div class="dd-eksik-bas"><h3>Doldurulmamış defterler</h3><p class="kucuk">Geçmiş ders günlerinde kaydı olmayan dersler, gün ve öğrenci sırasıyla. Bir derse dokunun: defter o öğrenci, o gün ve o dersle açılır; «Kaydet ve sonraki» listedeki bir sonraki eksiğe götürür.</p></div><div class="dd-eksik-ozet" data-dd-eksik-ozet>${ozet}<span class="dd-eksik-eylemler">${
-      ek && ek.toplam ? `<button type="button" class="kucuk-dugme" data-dd-eksik-basla ${kilit}>Sırayla doldur</button>` : ""
-    }<button type="button" class="kucuk-dugme" data-dd-eksik-yenile ${kilit}>Yenile</button><button type="button" class="kucuk-dugme" data-dd-eksik-kapat ${kilit}>Deftere dön</button></span></div>${
+    return `<h2>${tD("baslik")}</h2><div class="dd-eksik-bas"><h3>${tD("eksik.ac")}</h3><p class="kucuk">${tD("eksik.aciklama")}</p></div><div class="dd-eksik-ozet" data-dd-eksik-ozet>${ozet}<span class="dd-eksik-eylemler">${
+      ek && ek.toplam ? `<button type="button" class="kucuk-dugme" data-dd-eksik-basla ${kilit}>${tD("eksik.basla")}</button>` : ""
+    }<button type="button" class="kucuk-dugme" data-dd-eksik-yenile ${kilit}>${tD("eksik.yenile")}</button><button type="button" class="kucuk-dugme" data-dd-eksik-kapat ${kilit}>${tD("eksik.kapat")}</button></span></div>${
       eksikNot || (ek && eksikHata) ? `<p class="dd-durum" role="status" data-dd-eksik-durum>${e(eksikNot || eksikHata)}</p>` : ""
     }${govde}${bosGunler}`;
   };
@@ -364,7 +386,6 @@ export function dersDefteri(
   const ders = () => opt.katalog.find((x) => x.id === id);
   /* ── Çeviri (14 Eyl 2026): kalıp cümleler yerel Fransızca, serbest cümleler makine; yarım çeviri yazılmaz. ── */
   let ceviriler: DefterCevirisi[] = [];
-  const YONTEM_ADI = { kalip: "kalıp cümleler", makine: "makine çevirisi", karma: "kalıp + makine" } as const;
   const hedefDil = () => (ref && opt.ceviri ? opt.ceviri.hedefDil(ref) : null);
   const ceviriSatiri = () => {
     const dil = hedefDil();
@@ -372,10 +393,9 @@ export function dersDefteri(
     const k = kayitlar.find((x) => x.id === id);
     const c = ceviriler.find((x) => x.id === `${id}_${dil}`);
     const guncel = !!k && !!c && ceviriGuncel(k, c);
-    const durum = !k ? "kaydedince yapılır" : guncel ? `kayıtlı ✓ (${YONTEM_ADI[c!.yontem]})` : c ? "eski — kayıt değişti" : "yok";
-    return `<span>Veli dili <b>Fransızca</b> · çeviri: ${e(durum)}</span>${k && !guncel ? `<button type="button" class="kucuk-dugme" data-dd-cevir ${mesgul ? "disabled" : ""}>Şimdi çevir</button>` : ""}`;
+    const durum = !k ? tD("ceviri.kaydedinceYapilir") : guncel ? tD("ceviri.kayitli", { yontem: YONTEM_ADI[c!.yontem] }) : c ? tD("ceviri.eski") : tD("ceviri.yok");
+    return `<span>${tD("ceviri.veliDiliHtml", { durum: e(durum) })}</span>${k && !guncel ? `<button type="button" class="kucuk-dugme" data-dd-cevir ${mesgul ? "disabled" : ""}>${tD("ceviri.simdi")}</button>` : ""}`;
   };
-  const CEVRILIYOR = "Çevriliyor…";
   const ceviriNotu = (m: string) => {
     mesaj = mesaj && mesaj !== CEVRILIYOR ? `${mesaj} ${m}` : m;
     const p = root.querySelector("[data-dd-durum]");
@@ -393,17 +413,17 @@ export function dersDefteri(
       await ceviriDeposu(opt.db, r).kaydet(c);
       if (kapali) return;
       if (r === ref) ceviriler = [...ceviriler.filter((x) => x.id !== c.id), c];
-      ceviriNotu(`Fransızca çevirisi kaydedildi (${YONTEM_ADI[c.yontem]}).`);
+      ceviriNotu(tD("ceviri.kaydedildi", { yontem: YONTEM_ADI[c.yontem] }));
     } catch {
       if (kapali) return;
-      ceviriNotu("Fransızca çevirisi yapılamadı; «Şimdi çevir» ile ya da bülten aktarımında yeniden denenir.");
+      ceviriNotu(tD("ceviri.yapilamadi"));
     }
   };
   const ayrilabilir = () =>
     !mesgul &&
     (!kirli ||
       confirm(
-        "Kaydedilmemiş ders notu var. Kaydetmeden ayrılmak istiyor musunuz?",
+        tD("ayrilma.onay"),
       ));
   const secenek = (values: Record<string, string>, sec: string) =>
     Object.entries(values)
@@ -479,13 +499,18 @@ export function dersDefteri(
     const kalipSatiri = (key: KalipAlani, deger: string) => {
       const gruplar = kaliplar?.[key] || [];
       if (!gruplar.length || gelmedi) return "";
-      return `<div class="dd-kaliplar" role="group" aria-label="${e(defterAlanlari[key].ad)} için hazır kalıplar">${gruplar
+      /* Türkçe dışı arayüzde: çevrilmiş etiket + altında KAYDEDİLECEK Türkçe cümle (soluk, lang="tr"). Türkçede çıktı eskisiyle aynı. */
+      const kalipIci = (x: { etiket: string; metin: string }) =>
+        hocaDili() === "tr"
+          ? e(x.etiket)
+          : `<span class="dd-kalip-govde"><span>${e(kalipEtiketi(x.etiket))}</span><span class="dd-kalip-tr" lang="tr">${e(x.metin)}</span></span>`;
+      return `<div class="dd-kaliplar" role="group" aria-label="${tD("kalip.aria", { alan: e(ALAN_ADI[key]) })}">${gruplar
         .map(
           (g) =>
-            `<div class="dd-kalip-grup"><span class="dd-kalip-ad">${e(g.ad)}</span>${sayacaGoreSirala(g.kaliplar, sayac)
+            `<div class="dd-kalip-grup"><span class="dd-kalip-ad">${e(kalipGrupAdi(g.ad))}</span>${sayacaGoreSirala(g.kaliplar, sayac)
               .map(
                 (x) =>
-                  `<button type="button" class="dd-kalip" data-dd-kalip="${key}" data-metin="${e(x.metin)}" aria-pressed="${kalipVar(deger, x.metin)}" title="${e(x.metin)}">${e(x.etiket)}</button>`,
+                  `<button type="button" class="dd-kalip" data-dd-kalip="${key}" data-metin="${e(x.metin)}" aria-pressed="${kalipVar(deger, x.metin)}" title="${e(x.metin)}">${kalipIci(x)}</button>`,
               )
               .join("")}</div>`,
         )
@@ -497,33 +522,35 @@ export function dersDefteri(
       const zorunlu = key === "calisma" && !gelmedi;
       const ipucu =
         key === "calisma" && gelmedi
-          ? `Boş bırakabilirsiniz: «${GELMEDI_NOTU[k!.durum]}» yazılır.`
+          ? tD("alan.ipucuGelmediBos", { not: GELMEDI_NOTU[k!.durum] ?? "" })
           : gelmedi
-            ? "Kısa notunuzu yazın…"
-            : "Aşağıdaki kalıplara dokunun ya da kendi notunuzu yazın…";
+            ? tD("alan.ipucuGelmedi")
+            : tD("alan.ipucu");
       const deger = String(k?.[key] || "");
       const ezberSatiri =
         key === "calisma" && !gelmedi && opt.ezberDinle
-          ? `<div class="dd-kaliplar dd-ezber-satir"><div class="dd-kalip-grup"><span class="dd-kalip-ad">Ezber</span><button type="button" class="dd-kalip dd-ezber-dugme" data-dd-ezber aria-expanded="false" aria-controls="dd-ezber-kap">Ezber dinlendi…</button></div></div><div class="ez-kok ez-gomulu" id="dd-ezber-kap" data-dd-ezber-kap hidden></div>`
+          ? `<div class="dd-kaliplar dd-ezber-satir"><div class="dd-kalip-grup"><span class="dd-kalip-ad">${tD("ezber.etiket")}</span><button type="button" class="dd-kalip dd-ezber-dugme" data-dd-ezber aria-expanded="false" aria-controls="dd-ezber-kap">${tD("ezber.dugme")}</button></div></div><div class="ez-kok ez-gomulu" id="dd-ezber-kap" data-dd-ezber-kap hidden></div>`
           : "";
-      return `<label>${f.ad}<textarea name="${key}" maxlength="${f.max}" ${zorunlu ? "required" : ""} rows="${key === "calisma" ? 4 : 2}" placeholder="${e(ipucu)}">${e(deger)}</textarea></label>${kalipSatiri(key, deger)}${ezberSatiri}`;
+      return `<label>${ALAN_ADI[key]}<textarea name="${key}" maxlength="${f.max}" ${zorunlu ? "required" : ""} rows="${key === "calisma" ? 4 : 2}" placeholder="${e(ipucu)}">${e(deger)}</textarea></label>${kalipSatiri(key, deger)}${ezberSatiri}`;
     };
     /* Hazır kayıt: tek dokunuşla durum + standart notlar (yalnız boş alanlar). «Son kayıtla aynı»
        bu ders için en son kaydedilen notları kopyalar — sınıfın ortak ödevi bir kez yazılır. */
     const hazirBar = () =>
       gelmedi || !hazirlar.length
         ? ""
-        : `<div class="dd-hazir" role="group" aria-label="Hazır kayıt"><span class="dd-kalip-ad">Hazır kayıt</span><div class="dd-hazir-dugmeler">${hazirlar
+        : `<div class="dd-hazir" role="group" aria-label="${tD("hazir.baslik")}"><span class="dd-kalip-ad">${tD("hazir.baslik")}</span><div class="dd-hazir-dugmeler">${hazirlar
             .map(
               (h) =>
-                `<button type="button" class="dd-hazir-dugme" data-dd-hazir="${e(h.id)}" title="${e(h.aciklama)}">${e(h.etiket)}</button>`,
+                `<button type="button" class="dd-hazir-dugme" data-dd-hazir="${e(h.id)}" title="${e(hazirKayitAciklamasi(h, sonrakiDers(d!)?.konu))}">${e(hazirKayitEtiketi(h))}</button>`,
             )
             .join("")}${
             sonKayit && !gelmediMi(sonKayit.durum || "")
-              ? `<button type="button" class="dd-hazir-dugme dd-hazir-onceki" data-dd-oncekinden title="Bu ders için en son kaydedilen notları (durum, çalışma, ödev, sonraki adım) boş alanlara kopyalar.">Son kayıtla aynı</button>`
+              ? `<button type="button" class="dd-hazir-dugme dd-hazir-onceki" data-dd-oncekinden title="${tD("hazir.oncekiAcik")}">${tD("hazir.onceki")}</button>`
               : ""
-          }</div><p class="kucuk">Tek dokunuşla durum ve standart notlar gelir; dolu alanlara dokunulmaz. Sonra istediğinizi düzenleyin.</p></div>`;
-    const YOK_ADI: Record<string, string> = { var: "Var", yok: "Yok", mazeret: "Mazeretli", gec: "Geç" };
+          }</div><p class="kucuk">${tD("hazir.not")}</p></div>`;
+    /** Yoklama ile defter durumu çelişiyorsa (lib karar verir) çevrilmiş uyarı metni; çelişki yoksa boş. */
+    const celiskiMetni = (durum: string, y: string | undefined) =>
+      yoklamaCelismesi(durum, y) ? tD("celiski", { yoklama: YOK_ADI[y!] ?? "", ders: DURUM_ADI[durum] ?? "" }) : "";
     const yokRozet = (sira: number) => {
       const y = yoklamaDurumu(ref, sira);
       return y ? `<span class="dd-yok dd-yok-${y}">${YOK_ADI[y] || y}</span>` : "";
@@ -531,19 +558,19 @@ export function dersDefteri(
     const topluDugme = () => {
       const n = gelmeyenDersler().length;
       if (!n || yoklamaHatasi) return "";
-      return `<div class="dd-toplu"><button type="button" data-dd-toplu ${mesgul ? "disabled" : ""}>Gelmeyenlerin defterini doldur <small>${n} ders</small></button><p class="kucuk">Yoklamada «Yok» veya «Mazeretli» işaretli dersler için kayıt açar. Zaten kaydı olan derse dokunmaz.</p></div>`;
+      return `<div class="dd-toplu"><button type="button" data-dd-toplu ${mesgul ? "disabled" : ""}>${tD("toplu.dugme")} <small>${tD("say.ders", { n })}</small></button><p class="kucuk">${tD("toplu.aciklama")}</p></div>`;
     };
 
-    root.innerHTML = `<h2>Ders Defteri</h2><p>Kâğıttaki notlarınız, aynı dersin dijital kaydında.</p>${eksikSatiri()}<div class="dd-secim"><div class="dd-secim-alan"><label>Öğrenci ara<input type="search" data-dd-ara value="${e(ogrArama)}" placeholder="Ad veya soyad yazın" autocomplete="off" ${mesgul ? "disabled" : ""}></label><div class="dd-arama-sonuc" data-dd-arama-sonuc ${ogrArama.trim() ? "" : "hidden"}>${ogrArama.trim() ? ogrAramaSonuclari() : ""}</div><label>Öğrenci<select data-dd-ogr ${mesgul ? "disabled" : ""}><option value="">Öğrenci seçin</option>${opt.ogrenciler.map((o) => { const y = [1, 2, 3].map((s) => yoklama[o.ref]?.[String(s)] || "").filter(Boolean); const hepsi = y.length === 3 && y.every((x) => x === y[0]) ? y[0] : ""; const dz = ogrDurumu(o.ref); const isaret = dz === "tamam" ? " ✓" : dz === "kismen" ? ` ◐ ${(gunDefter[o.ref] || []).length}/${gunDersSayisi()}` : ""; return `<option value="${e(o.ref)}" ${ref === o.ref ? "selected" : ""}>${e(o.ad + " " + o.soyad)}${isaret}${hepsi && hepsi !== "var" ? ` — ${e(YOK_ADI[hepsi] || hepsi)}` : ""}</option>`; }).join("")}</select></label>${secimGezintisi("ogr")}</div><div class="dd-secim-alan"><label>Ders günü<select data-dd-gun ${mesgul ? "disabled" : ""}>${gunler.map((t) => `<option value="${t}" ${t === tarih ? "selected" : ""}>${new Intl.DateTimeFormat("tr-TR", { day: "numeric", month: "long", weekday: "short" }).format(new Date(t + "T12:00:00Z"))}</option>`).join("")}</select></label>${secimGezintisi("gun")}<p class="kucuk">Yalnız plandaki ders günleri listelenir.</p></div></div>${(() => { if (!gunDefterTarihi || !gunDersSayisi()) return ""; const say = { tamam: 0, kismen: 0, bos: 0 }; opt.ogrenciler.forEach((o) => { say[ogrDurumu(o.ref)]++; }); const eksik = siradakiEksik(); return `<p class="dd-gun-ozet" data-dd-gun-ozet><span><b>${say.tamam}/${opt.ogrenciler.length}</b> öğrencinin günlük defteri tamam</span>${say.kismen ? `<span>${say.kismen} kısmen</span>` : ""}${say.bos ? `<span>${say.bos} başlanmadı</span>` : ""}${eksik ? `<button type="button" class="kucuk-dugme" data-dd-siradaki ${mesgul ? "disabled" : ""}>Sıradaki eksik: ${e(eksik.ad)}</button>` : '<span class="rozet var">Günün defteri tamam</span>'}</p>`; })()}<p data-dd-durum role="status" tabindex="-1">${e(mesaj)}</p>${yoklamaHatasi ? '<p class="dd-uyari" data-dd-yoklama-hata>Bu günün yoklaması okunamadı; durum kendiliğinden doldurulmadı.</p>' : ""}${topluDugme()}${ref && !yuklendi && !mesgul ? '<button type="button" data-dd-yenile>Yeniden dene</button>' : ""}${ref && yuklendi ? `<nav class="dd-dersler" aria-label="Günün dersleri">${gun.map((x) => `<button type="button" data-dd-ders="${x.id}" aria-pressed="${x.id === id}" ${mesgul ? "disabled" : ""}>${x.sira}. ders <span>${e(x.konu)}</span><small>${kayitlar.some((k) => k.id === x.id) ? "Kayıtlı" : "Henüz kayıt yok"}</small>${yokRozet(x.sira)}</button>`).join("")}</nav>` : ""}${
+    root.innerHTML = `<h2>${tD("baslik")}</h2><p>${tD("giris.aciklama")}</p>${eksikSatiri()}<div class="dd-secim"><div class="dd-secim-alan"><label>${tD("ara.etiket")}<input type="search" data-dd-ara value="${e(ogrArama)}" placeholder="${tD("ara.yerTutucu")}" autocomplete="off" ${mesgul ? "disabled" : ""}></label><div class="dd-arama-sonuc" data-dd-arama-sonuc ${ogrArama.trim() ? "" : "hidden"}>${ogrArama.trim() ? ogrAramaSonuclari() : ""}</div><label>${tD("sec.ogrenci")}<select data-dd-ogr ${mesgul ? "disabled" : ""}><option value="">${tD("sec.ogrenciSec")}</option>${opt.ogrenciler.map((o) => { const y = [1, 2, 3].map((s) => yoklama[o.ref]?.[String(s)] || "").filter(Boolean); const hepsi = y.length === 3 && y.every((x) => x === y[0]) ? y[0] : ""; const dz = ogrDurumu(o.ref); const isaret = dz === "tamam" ? " ✓" : dz === "kismen" ? ` ◐ ${(gunDefter[o.ref] || []).length}/${gunDersSayisi()}` : ""; return `<option value="${e(o.ref)}" ${ref === o.ref ? "selected" : ""}>${e(o.ad + " " + o.soyad)}${isaret}${hepsi && hepsi !== "var" ? ` — ${e(YOK_ADI[hepsi] || hepsi)}` : ""}</option>`; }).join("")}</select></label>${secimGezintisi("ogr")}</div><div class="dd-secim-alan"><label>${tD("sec.gun")}<select data-dd-gun ${mesgul ? "disabled" : ""}>${gunler.map((t) => `<option value="${t}" ${t === tarih ? "selected" : ""}>${new Intl.DateTimeFormat(hocaYerel(), { day: "numeric", month: "long", weekday: "short" }).format(new Date(t + "T12:00:00Z"))}</option>`).join("")}</select></label>${secimGezintisi("gun")}<p class="kucuk">${tD("sec.gunNot")}</p></div></div>${(() => { if (!gunDefterTarihi || !gunDersSayisi()) return ""; const say = { tamam: 0, kismen: 0, bos: 0 }; opt.ogrenciler.forEach((o) => { say[ogrDurumu(o.ref)]++; }); const eksik = siradakiEksik(); return `<p class="dd-gun-ozet" data-dd-gun-ozet><span>${tD("gunozet.tamamHtml", { tamam: say.tamam, toplam: opt.ogrenciler.length })}</span>${say.kismen ? `<span>${tD("gunozet.kismen", { n: say.kismen })}</span>` : ""}${say.bos ? `<span>${tD("gunozet.baslanmadi", { n: say.bos })}</span>` : ""}${eksik ? `<button type="button" class="kucuk-dugme" data-dd-siradaki ${mesgul ? "disabled" : ""}>${tD("gunozet.siradaki", { ad: e(eksik.ad) })}</button>` : `<span class="rozet var">${tD("gunozet.tamam")}</span>`}</p>`; })()}<p data-dd-durum role="status" tabindex="-1">${e(mesaj)}</p>${yoklamaHatasi ? `<p class="dd-uyari" data-dd-yoklama-hata>${tD("yoklama.okunamadi")}</p>` : ""}${topluDugme()}${ref && !yuklendi && !mesgul ? `<button type="button" data-dd-yenile>${tD("yeniden.dene")}</button>` : ""}${ref && yuklendi ? `<nav class="dd-dersler" aria-label="${tD("dersler.aria")}">${gun.map((x) => `<button type="button" data-dd-ders="${x.id}" aria-pressed="${x.id === id}" ${mesgul ? "disabled" : ""}>${dersNo(x.sira)} <span>${e(x.konu)}</span><small>${kayitlar.some((k) => k.id === x.id) ? tD("dersler.kayitli") : tD("dersler.kayitYok")}</small>${yokRozet(x.sira)}</button>`).join("")}</nav>` : ""}${
       ref && yuklendi && d && k
-        ? `<div class="dd-baslik"><h3>${e(d.konu)}</h3>${(() => { const y = yoklamaDurumu(ref, d.sira); return y ? `<p class="dd-yoklama dd-yok-${y}" data-dd-yoklama>Yoklama: <strong>${e(YOK_ADI[y] || y)}</strong>${gelmedi ? " · dersin durumu buna göre seçildi" : ""}</p>` : ""; })()}${hedefDil() ? `<p class="dd-ceviri" data-dd-ceviri>${ceviriSatiri()}</p>` : ""}<p>Basılı defter: <strong>${basiliDefterSayfasi(d)}. sayfa</strong> · ${d.hafta}. hafta · Ders no: ${d.no}</p><details><summary>Basılı plandaki hedef ve etkinlik</summary><p>${e(d.goal_tr)}</p><p lang="fr">${e(d.goal_fr)}</p><p>${e(d.prompt_tr)}</p><p lang="fr">${e(d.prompt_fr)}</p>${d.hedef_a_tr ? `<p><strong>A grubu · ${e(d.hedef_a_tr)}</strong></p><p lang="fr">${e(d.hedef_a_fr)}</p>` : ""}<p>Kaynak: ${e(d.kaynak)}</p><p>Basılı plan dersin işlendiği veya öğrencinin başardığı anlamına gelmez.</p></details></div><form data-dd-form><fieldset ${mesgul ? "disabled" : ""}><legend class="sr-only">${e(adi())} ders kaydı</legend>${hazirBar()}${gelmedi ? "" : '<p class="dd-aciklama">Birbiriyle çelişen kalıplarda son seçiminiz geçerlidir. Seçili kalıba yeniden dokunarak kaldırabilirsiniz.</p>'}<label class="dd-durum-secim">Dersin durumu<select name="durum" required>${secenek({ "": "Seçin…", ...dersDurumlari }, k.durum)}</select></label>${(() => { const c = yoklamaCelismesi(k.durum, yoklamaDurumu(ref, d.sira)); return c ? `<p class="dd-uyari" data-dd-celiski>${e(c)} Kaydetmenizi engellemez; hangisi doğruysa onu düzeltin.</p>` : ""; })()}${alan("calisma")}${alan("odev")}<details class="dd-ayrinti"><summary>Diğer defter alanları · isteğe bağlı</summary><label>Notun kaynağı<select name="giris">${secenek({ dijital: "Doğrudan dijitale yazıyorum", kagit: "Kâğıt defterden aktarıyorum" }, k.giris)}</select></label>${d.kod === "kuran" ? `<label>Bugünkü grubu<select name="grup">${secenek({ "": "İşaretlenmedi", A: "A grubu", B: "B grubu" }, k.grup)}</select></label>${alan("okunan")}${alan("dikkat")}` : '<input type="hidden" name="grup" value=""><input type="hidden" name="okunan" value=""><input type="hidden" name="dikkat" value="">'}${alan("sonraki")}<label>Öğrencinin “Bugün nasıl ilerledim?” işareti<select name="oz">${secenek(ozDurumlari, k.oz)}</select></label><p class="dd-aciklama">Öğrencinin kâğıttaki beyanını aktarın. Bu alan öğretmen başarı notu veya yoklama değildir. Yoklama ve ilerleme kendi menülerinde tutulur.</p></details><div class="dd-kaydet"><button type="submit" value="kaydet">Kaydet</button><button type="submit" value="sonraki">Kaydet ve sonraki<span class="dd-uzun"> derse geç</span></button></div></fieldset></form><div class="bulten-eylemler"><button type="button" data-dd-yenile ${mesgul ? "disabled" : ""}>Sunucudaki kaydı yeniden yükle</button><button type="button" data-dd-kopyala ${mesgul ? "disabled" : ""}>Notları kopyala</button></div><details class="dd-arsiv"><summary>Dijital arşiv · ${kayitlar.length} kayıt</summary><p>Yalnız ${e(adi())} için kaydedilmiş dersler. Kayıtlar hoca ekranına özeldir; veliye paylaşmak için Bülten · İdare bölümünde haftanın notlarını aktarın.</p><div class="bulten-eylemler"><button type="button" data-dd-indir>Arşivi indir (JSON)</button><button type="button" data-dd-yazdir>Kaydedilmiş dersleri yazdır / PDF</button></div><ul>${
+        ? `<div class="dd-baslik"><h3>${e(d.konu)}</h3>${(() => { const y = yoklamaDurumu(ref, d.sira); return y ? `<p class="dd-yoklama dd-yok-${y}" data-dd-yoklama>${tD("yoklama.etiketHtml", { durum: e(YOK_ADI[y] || y) })}${gelmedi ? ` · ${tD("yoklama.durumSecildi")}` : ""}</p>` : ""; })()}${hedefDil() ? `<p class="dd-ceviri" data-dd-ceviri>${ceviriSatiri()}</p>` : ""}<p>${tD("baski.satirHtml", { sayfa: basiliDefterSayfasi(d), hafta: d.hafta, no: d.no })}</p><details><summary>${tD("plan.ozet")}</summary><p>${e(d.goal_tr)}</p><p lang="fr">${e(d.goal_fr)}</p><p>${e(d.prompt_tr)}</p><p lang="fr">${e(d.prompt_fr)}</p>${d.hedef_a_tr ? `<p><strong>${tD("plan.agrubu", { hedef: e(d.hedef_a_tr) })}</strong></p><p lang="fr">${e(d.hedef_a_fr)}</p>` : ""}<p>${tD("kaynak.satir", { kaynak: e(d.kaynak) })}</p><p>${tD("plan.uyari")}</p></details></div><form data-dd-form><fieldset ${mesgul ? "disabled" : ""}><legend class="sr-only">${tD("form.legend", { ad: e(adi()) })}</legend>${hazirBar()}${gelmedi ? "" : `<p class="dd-aciklama">${tD("form.cakismaNot")}</p>${hocaDili() === "tr" ? "" : `<p class="dd-aciklama">${tD("kalip.turkceNot")}</p>`}`}<label class="dd-durum-secim">${tD("form.durum")}<select name="durum" required>${secenek({ "": tD("durum.sec"), ...DURUM_ADI }, k.durum)}</select></label>${(() => { const c = celiskiMetni(k.durum, yoklamaDurumu(ref, d.sira)); return c ? `<p class="dd-uyari" data-dd-celiski>${e(c)} ${tD("celiski.not")}</p>` : ""; })()}${alan("calisma")}${alan("odev")}<details class="dd-ayrinti"><summary>${tD("form.ayrinti")}</summary><label>${tD("form.kaynak")}<select name="giris">${secenek({ dijital: tD("form.giris.dijital"), kagit: tD("form.giris.kagit") }, k.giris)}</select></label>${d.kod === "kuran" ? `<label>${tD("form.grup")}<select name="grup">${secenek({ "": tD("oz.bos"), A: tD("form.grup.a"), B: tD("form.grup.b") }, k.grup)}</select></label>${alan("okunan")}${alan("dikkat")}` : '<input type="hidden" name="grup" value=""><input type="hidden" name="okunan" value=""><input type="hidden" name="dikkat" value="">'}${alan("sonraki")}<label>${tD("form.oz")}<select name="oz">${secenek(OZ_ADI, k.oz)}</select></label><p class="dd-aciklama">${tD("form.ozNot")}</p></details><div class="dd-kaydet"><button type="submit" value="kaydet">${tD("form.kaydet")}</button><button type="submit" value="sonraki">${tD("form.kaydetSonraki")}<span class="dd-uzun"> ${tD("form.derseGec")}</span></button></div></fieldset></form><div class="bulten-eylemler"><button type="button" data-dd-yenile ${mesgul ? "disabled" : ""}>${tD("form.yenile")}</button><button type="button" data-dd-kopyala ${mesgul ? "disabled" : ""}>${tD("form.kopyala")}</button></div><details class="dd-arsiv"><summary>${tD("arsiv.baslik", { n: kayitlar.length })}</summary><p>${tD("arsiv.aciklama", { ad: e(adi()) })}</p><div class="bulten-eylemler"><button type="button" data-dd-indir>${tD("arsiv.indir")}</button><button type="button" data-dd-yazdir>${tD("arsiv.yazdir")}</button></div><ul>${
             [...kayitlar]
               .reverse()
               .map(
                 (x) =>
-                  `<li><button type="button" data-dd-arsiv="${e(x.id)}">${e(x.tarih)} · ${x.sira}. ders · ${e(x.konu)}<small>${dersDurumlari[x.durum]} · sürüm ${x.surum}</small></button></li>`,
+                  `<li><button type="button" data-dd-arsiv="${e(x.id)}">${e(x.tarih)} · ${dersNo(x.sira)} · ${e(x.konu)}<small>${tD("arsiv.altSatir", { durum: DURUM_ADI[x.durum], surum: x.surum })}</small></button></li>`,
               )
-              .join("") || "<li>İlk kayıttan sonra burada görünecek.</li>"
+              .join("") || `<li>${tD("arsiv.bos")}</li>`
           }</ul></details>`
         : ""
     }`;
@@ -554,7 +581,7 @@ export function dersDefteri(
     const gun = tarih;
     mesgul = true;
     yuklendi = false;
-    mesaj = ref ? "Ders defteri yükleniyor…" : "Ders günü yoklaması okunuyor…";
+    mesaj = ref ? tD("yukleniyor.defter") : tD("yukleniyor.yoklama");
     ciz();
     try {
       // Yoklama okunamazsa defter yine açılır; yalnız otomatik doldurma devre dışı kalır.
@@ -587,12 +614,12 @@ export function dersDefteri(
       mesaj = !ref
         ? ""
         : r.some((k) => k.id === id)
-          ? "Sunucudaki kayıt açıldı."
-          : "Bu ders için henüz kayıt yok.";
+          ? tD("yuklendi.var")
+          : tD("yuklendi.yok");
     } catch {
       if (t === token)
         mesaj =
-          "Kayıtlar alınamadı. Bağlantınızı kontrol edip yeniden deneyin.";
+          tD("yukle.hata");
     } finally {
       if (t === token) {
         mesgul = false;
@@ -630,7 +657,7 @@ export function dersDefteri(
       if ((ev.target as HTMLElement).closest("[data-dd-form]")) {
         kirli = true;
         const p = root.querySelector("[data-dd-durum]");
-        if (p) p.textContent = "Kaydedilmemiş değişiklik var.";
+        if (p) p.textContent = tD("kirli");
         const ta = ev.target as HTMLTextAreaElement;
         if (ta.tagName === "TEXTAREA") {
           buyut(ta);
@@ -702,14 +729,14 @@ export function dersDefteri(
         }
         const benim = ++ezberSayac;
         kap.hidden = false;
-        kap.innerHTML = '<p class="ez-bilgi" role="status">Ezber dinleme açılıyor…</p>';
+        kap.innerHTML = `<p class="ez-bilgi" role="status">${tD("ezber.aciliyor")}</p>`;
         b.setAttribute("aria-expanded", "true");
         try {
           const g = await opt.ezberDinle(kap, o, { tarih, cumleEklendi: ezberCumlesiEkle, cumleKaldirildi: ezberCumlesiCikar, kapat: () => { ezberKapat(); b.focus(); } });
           if (benim !== ezberSayac || !kap.isConnected) g.temizle();
           else ezberGomulu = g;
         } catch {
-          if (benim === ezberSayac && kap.isConnected) kap.innerHTML = '<p class="not hata" role="status">Ezber dinleme açılamadı; bağlantınızı kontrol edip yeniden deneyin.</p>';
+          if (benim === ezberSayac && kap.isConnected) kap.innerHTML = `<p class="not hata" role="status">${tD("ezber.acilamadi")}</p>`;
         }
         return;
       }
@@ -738,7 +765,7 @@ export function dersDefteri(
         const sonuc = mantikliKalipSec(ta.value, secilen, kaliplar, ALAN_BICIMI[key]);
         if (sonuc.metin.length > ta.maxLength) {
           const p = root.querySelector("[data-dd-durum]");
-          if (p) p.textContent = "Bu alanın uzunluk sınırına ulaşıldı. Önce notu kısaltın.";
+          if (p) p.textContent = tD("kalip.sinir");
           return;
         }
         ta.value = sonuc.metin;
@@ -749,8 +776,8 @@ export function dersDefteri(
         buyut(ta);
         const p = root.querySelector("[data-dd-durum]");
         if (p) p.textContent = sonuc.kaldirilan.length
-          ? `${sonuc.kaldirilan.join(", ")} yerine ${secilen.etiket} seçildi. Kaydetmeyi unutmayın.`
-          : "Kaydedilmemiş değişiklik var.";
+          ? tD("kalip.yerine", { eski: sonuc.kaldirilan.map(kalipEtiketi).join(", "), yeni: kalipEtiketi(secilen.etiket) })
+          : tD("kirli");
         return;
       }
       if (b.dataset.ddHazir || b.hasAttribute("data-dd-oncekinden")) {
@@ -762,15 +789,16 @@ export function dersDefteri(
           : (() => {
               const s = sonKayitOku(d.id);
               return s && s.durum && !gelmediMi(s.durum)
-                ? { id: "onceki", etiket: "Son kayıtla aynı", aciklama: "", durum: s.durum, alanlar: { calisma: s.calisma || "", odev: s.odev || "", sonraki: s.sonraki || "", okunan: s.okunan || "", dikkat: s.dikkat || "" } }
+                ? { id: "onceki", etiket: tD("hazir.onceki"), aciklama: "", durum: s.durum, alanlar: { calisma: s.calisma || "", odev: s.odev || "", sonraki: s.sonraki || "", okunan: s.okunan || "", dikkat: s.dikkat || "" } }
                 : undefined;
             })();
         if (!hazir) return;
         const { taslak, atlanan } = hazirKaydiUygula(k, hazir);
         kirli = true;
+        const hazirAdi = hazirKayitEtiketi(hazir);
         mesaj = atlanan.length
-          ? `${hazir.etiket}: uygulandı; dolu alanlara dokunulmadı (${atlanan.map((a) => defterAlanlari[a].ad.split(" ·")[0]).join(", ")}). Kaydetmeyi unutmayın.`
-          : `${hazir.etiket}: uygulandı. Gerekirse düzenleyip kaydedin.`;
+          ? tD("hazir.uygulandiDolu", { etiket: hazirAdi, alanlar: atlanan.map((a) => ALAN_ADI[a].split(" ·")[0]).join(", ") })
+          : tD("hazir.uygulandi", { etiket: hazirAdi });
         ciz(taslak);
         root.querySelector<HTMLElement>("[name=calisma]")?.focus();
         return;
@@ -857,7 +885,7 @@ export function dersDefteri(
         const kisi = new Set(girdiler.map((x) => x.ref)).size;
         if (
           !confirm(
-            `${girdiler.length} ders kaydı açılacak (${kisi} öğrenci). Yoklamada «Yok»/«Mazeretli» işaretli ve kaydı olmayan dersler için durum ve standart not yazılır. Devam edilsin mi?`,
+            tD("eksik.onay", { n: girdiler.length, ogr: tD("say.ogrenci", { n: kisi }) }),
           )
         )
           return;
@@ -883,10 +911,10 @@ export function dersDefteri(
           for (const x of girdiler) eksikDus(x.ref, x.ders.id);
           gunDefterTarihi = "";
           defterTazele = true;
-          eksikNot = `${girdiler.length} ders kaydı açıldı (${kisi} öğrenci). Var olan kayıtlara dokunulmadı.`;
+          eksikNot = tD("toplu.acildi", { n: girdiler.length, ogr: tD("say.ogrenci", { n: kisi }) });
         } catch {
           if (kapali) return;
-          eksikHata = "Kayıtlar açılamadı; belki başka bir ekranda yazıldı. «Yenile» ile listeyi tazeleyin.";
+          eksikHata = tD("eksik.topluHata");
         } finally {
           if (!kapali) {
             eksikMesgul = false;
@@ -914,7 +942,7 @@ export function dersDefteri(
         if (!hepsi.length) return;
         const t = ++token;
         mesgul = true;
-        mesaj = "Gelmeyenlerin kayıtları kontrol ediliyor…";
+        mesaj = tD("toplu.kontrol");
         ciz();
         try {
           // Var olan kayda ASLA dokunulmaz: önce her adayın kayıtları okunur, yalnız
@@ -936,7 +964,7 @@ export function dersDefteri(
           );
           if (!yazilacak.length) {
             mesgul = false;
-            mesaj = "Gelmeyen derslerin hepsinin kaydı zaten var; hiçbir şey yazılmadı.";
+            mesaj = tD("toplu.hepsiVar");
             ciz();
             root.querySelector<HTMLElement>("[data-dd-durum]")?.focus();
             return;
@@ -944,9 +972,7 @@ export function dersDefteri(
           const kisi = new Set(yazilacak.map((x) => x.ref)).size;
           if (
             !confirm(
-              `${yazilacak.length} ders kaydı açılacak (${kisi} öğrenci). ` +
-                "Yoklamada «Yok»/«Mazeretli» işaretli ve henüz kaydı olmayan dersler için " +
-                "durum ve standart not yazılır. Var olan kayıtlara dokunulmaz. Devam edilsin mi?",
+              tD("toplu.onay", { n: yazilacak.length, ogr: tD("say.ogrenci", { n: kisi }) }),
             )
           ) {
             mesgul = false;
@@ -954,7 +980,7 @@ export function dersDefteri(
             ciz();
             return;
           }
-          mesaj = "Kayıtlar açılıyor…";
+          mesaj = tD("toplu.aciliyor");
           ciz();
           await topluGelmediYaz(
             opt.db,
@@ -975,7 +1001,7 @@ export function dersDefteri(
           }
           if (t !== token || kapali) return;
           mesgul = false;
-          const ozet = `${yazilacak.length} ders kaydı açıldı (${kisi} öğrenci). Var olan kayıtlara dokunulmadı.`;
+          const ozet = tD("toplu.acildi", { n: yazilacak.length, ogr: tD("say.ogrenci", { n: kisi }) });
           gunDefterTarihi = ""; // günün ilerlemesi yeniden okunur (açılan kayıtlar sayıma girsin)
           await yukle(); // açılan kayıtlar seçili öğrencide ve günün özetinde görünsün
           if (kapali) return;
@@ -986,7 +1012,7 @@ export function dersDefteri(
           if (t !== token || kapali) return;
           mesgul = false;
           mesaj =
-            "Toplu doldurma tamamlanamadı; hiçbir kayıt yazılmamış olabilir. Sayfayı yenileyip yeniden deneyin.";
+            tD("toplu.hata");
           ciz();
         }
       }
@@ -996,12 +1022,12 @@ export function dersDefteri(
         try {
           await navigator.clipboard.writeText(
             Object.entries(defterAlanlari)
-              .map(([key, f]) => `${f.ad}: ${k[key as keyof DersKaydi]}`)
+              .map(([key]) => `${ALAN_ADI[key as keyof typeof defterAlanlari]}: ${k[key as keyof DersKaydi]}`)
               .join("\n"),
           );
-          mesaj = "Notlar panoya kopyalandı.";
+          mesaj = tD("kopya.tamam");
         } catch {
-          mesaj = "Kopyalanamadı. Metin alanından seçerek kopyalayabilirsiniz.";
+          mesaj = tD("kopya.hata");
         }
         const p = root.querySelector("[data-dd-durum]");
         if (p) p.textContent = mesaj;
@@ -1041,7 +1067,7 @@ export function dersDefteri(
         (ev as SubmitEvent).submitter?.getAttribute("value") === "sonraki";
       const t = token;
       mesgul = true;
-      mesaj = "Kaydediliyor…";
+      mesaj = tD("kayit.kaydediliyor");
       ciz(k);
       try {
         const saved = await defterDeposu(opt.db, ref).kaydet(k, k.surum);
@@ -1052,7 +1078,7 @@ export function dersDefteri(
         sonKayitYaz(saved); // «Son kayıtla aynı» için: aynı dersin en son notları cihazda kalır
         if (gunDefterTarihi === saved.tarih && !(gunDefter[ref] || []).includes(saved.id)) gunDefter[ref] = [...(gunDefter[ref] || []), saved.id].sort();
         kirli = false;
-        mesaj = "Dijital ders defterine kaydedildi.";
+        mesaj = tD("kayit.tamam");
         eksikDus(ref, saved.id);
         void ceviriYaz(saved, ref); // veli dili Fransızca ise; kaydetmeyi ve «sonraki»ye geçişi bekletmez
         if (sonraki && kuyrukAktif) {
@@ -1066,13 +1092,13 @@ export function dersDefteri(
             mesgul = false;
             await yukle();
             if (kapali) return;
-            mesaj = `Kaydedildi. Sıradaki eksik: ${adi()} · ${gunKisa(n.tarih)} · ${n.sira}. ders.`;
+            mesaj = tD("kayit.siradakiEksik", { ad: adi(), tarih: gunKisa(n.tarih), ders: dersNo(n.sira) });
             ciz();
             root.querySelector<HTMLElement>("[name=durum]")?.focus();
             return;
           }
           kuyrukAktif = false;
-          mesaj = "Kaydedildi. Eksik kuyruğu bitti; listedeki bütün eksikler tamamlandı.";
+          mesaj = tD("kayit.kuyrukBitti");
         } else if (sonraki) {
           /* 12 Eyl 2026: gün bitince ertesi güne değil, AYNI günün ilk dersinde SONRAKİ
              ÖĞRENCİye geçilir. Hocanın gerçek iş birimi «bir ders günü, on beş öğrenci»;
@@ -1090,12 +1116,12 @@ export function dersDefteri(
               mesgul = false;
               await yukle(); // sonraki öğrencinin kayıtları
               if (kapali) return;
-              mesaj = `Kaydedildi. Sıradaki öğrenci: ${adi()}.`;
+              mesaj = tD("kayit.siradakiOgrenci", { ad: adi() });
               ciz();
               root.querySelector<HTMLElement>("[name=durum]")?.focus();
               return;
             }
-            mesaj = "Kaydedildi. Bu günün son kaydı tamamlandı.";
+            mesaj = tD("kayit.gunBitti");
           }
         }
         mesgul = false;
@@ -1109,9 +1135,10 @@ export function dersDefteri(
         if (kapali || token !== t) return;
         mesgul = false;
         kirli = true;
+        /* Çakışma iletisi lib'den Türkçe gelir (aynı metin sözlükte `kayit.cakisma`); eşleştirme metne bağlı kaldığı için dokunulmadı. */
         mesaj = (err as Error).message?.includes("başka bir ekranda")
-          ? (err as Error).message
-          : "Kaydedilemedi. Notlarınız ekranda duruyor; bağlantınızı kontrol edip tekrar kaydedin.";
+          ? tD("kayit.cakisma")
+          : tD("kayit.hata");
         ciz(k);
       }
     },
@@ -1144,23 +1171,23 @@ export function defterYazdir(kayitlar: DersKaydi[], ad: string) {
   if (!kayitlar.length) return;
   baskiAlaniYazdir(
     "baski-defter",
-    `<h1>Dijital ders defteri</h1><h2>${e(ad)}</h2><p>2026–2027 · ${kayitlar.length} kayıtlı ders</p><p>Bu çıktı dijitale girilmiş notları içerir. Kâğıttaki çizimlerin ve ıslak imzaların taraması değildir.</p>${kayitlar
+    `<h1>${tD("yazdir.baslik")}</h1><h2>${e(ad)}</h2><p>${tD("yazdir.ozet", { n: kayitlar.length })}</p><p>${tD("yazdir.not")}</p>${kayitlar
       .map(
         (k) =>
-          `<article class="ders"><h2>${e(k.konu)}</h2><p class="bilgi">${e(k.tarih)} · ${k.sira}. ders · Basılı sayfa ${basiliDefterSayfasi(k)} · ${dersDurumlari[k.durum]} · Sürüm ${k.surum}<br>${k.giris === "kagit" ? "Kâğıttan aktarıldı" : "Dijital giriş"}${k.grup ? " · Grup " + e(k.grup) : ""}</p>${Object.entries(
+          `<article class="ders"><h2>${e(k.konu)}</h2><p class="bilgi">${tD("yazdir.bilgi", { tarih: e(k.tarih), ders: dersNo(k.sira), sayfa: basiliDefterSayfasi(k), durum: DURUM_ADI[k.durum], surum: k.surum })}<br>${k.giris === "kagit" ? tD("yazdir.kagit") : tD("yazdir.dijital")}${k.grup ? " · " + tD("yazdir.grup", { g: e(k.grup) }) : ""}</p>${Object.entries(
             defterAlanlari,
           )
             .filter(([key]) => k[key as keyof DersKaydi])
             .map(
-              ([key, f]) =>
-                `<section><h3>${f.ad}</h3><p>${e(k[key as keyof DersKaydi])}</p></section>`,
+              ([key]) =>
+                `<section><h3>${ALAN_ADI[key as keyof typeof defterAlanlari]}</h3><p>${e(k[key as keyof DersKaydi])}</p></section>`,
             )
             .join(
               "",
-            )}<p>Öğrencinin işareti: ${ozDurumlari[k.oz]}</p><p>Kaynak: ${e(k.kaynak)}</p></article>`,
+            )}<p>${tD("yazdir.isaret", { oz: OZ_ADI[k.oz] })}</p><p>${tD("kaynak.satir", { kaynak: e(k.kaynak) })}</p></article>`,
       )
       .join("")}`,
-    "tr",
-    `Ders Defteri — ${ad}`,
+    hocaDili(),
+    tD("yazdir.pencere", { ad }),
   );
 }

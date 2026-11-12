@@ -303,6 +303,17 @@
   outline: 2px solid var(--vurgu);
   outline-offset: 2px;
 }
+/* Türkçe dışı arayüz (12 Kasım 2026): çevrilmiş etiketin altında kaydedilecek Türkçe cümle, soluk. */
+.ders-defteri .dd-kalip-govde {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+.ders-defteri .dd-kalip-tr {
+  font-size: 0.74rem;
+  font-weight: 400;
+  color: var(--metin-2);
+}
 @media (pointer: coarse) {
   .ders-defteri .dd-kalip {
     min-height: 2.75rem;
