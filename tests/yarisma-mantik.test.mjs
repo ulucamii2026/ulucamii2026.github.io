@@ -11,7 +11,7 @@ import { build } from 'esbuild';
 
 mkdirSync('node_modules/.cache', { recursive: true });
 const modul = async (ad, giris) => {
-  const cikti = resolve(`node_modules/.cache/yarisma-${ad}-test.mjs`);
+  const cikti = resolve(`node_modules/.cache/yarisma-mantik-${ad}-test.mjs`);
   await build({ entryPoints: [giris], outfile: cikti, bundle: true, platform: 'node', format: 'esm', packages: 'external', logLevel: 'silent' });
   return import(pathToFileURL(cikti).href);
 };
