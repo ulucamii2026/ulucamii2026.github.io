@@ -4,6 +4,14 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 12 Kasım 2026 (sabah) — İlim Yolu: resmî Felemenkçe/İngilizce/Almanca/Fransızca anlamlar (ezber ve bilgi maddeleri)
+
+- Zaman: 12 Kasım 2026, 02.36–02.41 (Brüksel, CET). Kapsam: 14 ezber maddesinde Felemenkçe meâl Diyanet «Basiskennis over Islam» kitabından (taslak işareti kalktı); dua anlamları en/nl/de/fr Diyanet'in basılı kitaplarından; bilgi maddelerinde en/nl/de resmî karşılıklar, taslak durumu kaynağa bağlı; `docs/ILIM-YOLU-CEVIRI-KAYNAKLARI.md`; sessiz dua testi. İçerik commit'leri (main, `d1a68fba..3c7d235f`, fast-forward, 5 commit): `e115bd6d`, `35ffc399`, `5121bb20`, `7ffa2895`, `3c7d235f`.
+- Koşular: Pages [43135709781](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/43135709781) success (2 dk 11 sn); egitim push [43135709747](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/43135709747) derle 1 dk 12, yayinla 29 sn, canli 1 dk 45 sn, hepsi success; egitim workflow_run [43135966348](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/43135966348) skipped.
+- Canlı (curl, `https://egitim.ulucamii.be`): `/nl/calis/s-fatiha/` ve `/nl/calis/s-ihlas/` «Vertaling: Basiskennis over Islam, Presidium voor Religieuze Zaken (Diyanet İşleri Başkanlığı)» künyeli, taslak notu yok; `/nl/calis/d-ezan/` hâlâ «De betekenis in deze taal volgt binnenkort.»; `/en/calis/d-ettehiyyatu/` «Meaning in English: Islam Through Hadiths 2, Diyanet İşleri Başkanlığı»; `/nl/calis/d-subhaneke/` «Betekenis in het Nederlands: Basiskennis over Islam»; `/fr/calis/d-subhaneke/` Fransızca anlam ve «traduction» künyesi (Diyanet İşleri Başkanlığı, Ankara, 2013, s. 218); `/en|nl|de/calis/b-imanin-sartlari/` taslak rozeti/notu yok; `/nl|de/calis/b-secme-hadisler/` taslak notu hâlâ var.
+- Yerel kapılar: `test:ezber` 236/236, `test:ilim-yolu` 107 geçti, `egitim:build` 2144 sayfa.
+- Açık sınırlar: Playwright paketi yerelde çalıştırılmadı; Felemenkçe anlamlar 31 maddede hâlâ taslak/gizli; kalan boşluklar `docs/ILIM-YOLU-CEVIRI-KAYNAKLARI.md` içinde.
+
 ## 12 Kasım 2026 (gece) — İlim Yolu: beş dilli uygulama manifesti ve veli portalı Fransızca düzeltmesi
 
 - Zaman: 12 Kasım 2026, 02.10–02.18 (Brüksel, CET). Kapsam: `src/i18n/veli.ts` Fransızca blokta eksik iki anahtar + beş dilin anahtar eşitliği testi (`tests/veli-metin-esitlik.test.mjs`); `egitim/public/manifest.fr|en|nl|de.webmanifest` yeni, `manifest.webmanifest` (Türkçe) eski adresinde kaldı; her dilin sayfası kendi manifestine bağlanıyor. İçerik commit'leri (main, `364e26d8..396e413f`, fast-forward): `56a73af4` (veli.ts + test), `396e413f` (manifestler).
@@ -11,6 +19,7 @@ Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI
 - Canlı (curl): `https://egitim.ulucamii.be/manifest.webmanifest` (tr, start_url `/`, 1000 bayt, sha256 `35550c4bdcae…`), `manifest.fr.webmanifest` (`/fr/`, 1055, `61ff9033f66b…`), `.en` (`/en/`, 1013, `1e77a9d1da83…`), `.nl` (`/nl/`, 1010, `8bd745796c95…`), `.de` (`/de/`, 1012, `73d6266c6934…`) hepsi 200, `lang`/`start_url` dile uygun, bayt ve sha256 `egitim/public/` dosyalarıyla birebir. `/fr/`, `/en/`, `/nl/`, `/de/`, `/tr/` kendi manifestini bağlıyor. `https://ulucamii.be/fr/portail-parents/` betiği `Veli.astro_astro_type_script_index_0_lang.COEp5tNL.js` içinde «Question suivante» var.
 - Yerel kapılar: node test kümesi 71/71, `egitim:build` 2144 sayfa, dist kapısı 3031 dosya, yeni eşitlik testi 2/2.
 - Açık sınırlar: Playwright paketi ve gerçek cihazda PWA kurulumu çalıştırılmadı; `egitim-canli-denetim.mjs` yeni manifestleri henüz denetlemiyor ve çevrim dışı sayfa beklentisi eski (canli işi bu yüzden kırmızı, düzeltilecek); Fransızca `short_name` 16 karakter.
+- Sonuç (12 Kasım 2026, 02.40): canlı denetim düzeltmesi `d1a68fba` (yerel 115/115) push'uyla egitim [43133873531](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/43133873531) derle, yayinla ve canli success (4 dk 02 sn); Pages [43133873563](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/43133873563) success. Yukarıdaki kırmızı canli işi giderildi.
 
 ## 11 Kasım 2026 (gece) — İlim Yolu: üç kartın metni ve seslendirmesi birlikte yenilendi
 
