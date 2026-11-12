@@ -19,6 +19,7 @@ import plan from '@ortak/data/yillik-plan-2026-2027.json';
 import materyal from '@ortak/data/ders-materyalleri.json';
 import GunNotu from '../components/GunNotu.astro';
 import DilEtiketi from '../components/DilEtiketi.astro';
+import TaslakEtiketi from '../components/TaslakEtiketi.astro';
 import { kursCevirici } from '../lib/kurs-ceviri-yukle';
 const materyalGunleri = new Set((materyal.gunler as { tarih: string }[]).map((g) => g.tarih));
 interface Props { dil: Dil }
@@ -90,7 +91,7 @@ const METIN = {
   baslik: 'Day-by-Day Lesson Plan 2026-2027',
   alt: `${dersGunleri.length} teaching days, ${toplamDers} lessons. Topic, learning outcome, summary and suggested activity for every lesson.`,
   aciklama: `Ulu Camii Qur’an School 2026-2027 day-by-day lesson plan: ${dersGunleri.length} teaching days, ${toplamDers} lessons.`,
-  not: 'The lesson content is in Turkish, the language of instruction. The subject names on the filter buttons match the coloured badges on each lesson.',
+  not: 'Lesson texts are written in Turkish, the language of instruction. Lesson titles and the English passages (marked “Draft” in each lesson) are machine-assisted translations that no native speaker has reviewed yet; all other passages stay in Turkish. The subject names on the filter buttons match the coloured badges on each lesson.',
   siradaki: 'Next teaching day', bugunEt: 'Lessons today', baslangicEt: 'Lessons begin',
   bitti: 'The 2026-2027 term has ended', bittiA: 'The plan for the new term will be published here once it is ready.',
   gunuGor: 'See the day',
@@ -106,7 +107,7 @@ const METIN = {
   baslik: 'Plan annuel des cours 2026-2027, jour par jour',
   alt: `${dersGunleri.length} jours de cours, ${toplamDers} leçons. Sujet, acquis, résumé et activité proposée pour chaque leçon.`,
   aciklama: `École coranique Ulu Camii, plan annuel 2026-2027 jour par jour : ${dersGunleri.length} jours de cours, ${toplamDers} leçons.`,
-  not: 'Le contenu des leçons est en turc, langue d’enseignement. Les noms des matières sur les boutons de filtre correspondent aux pastilles colorées de chaque leçon.',
+  not: 'Les textes des leçons sont rédigés en turc, langue d’enseignement. Les titres des leçons et les passages en français (marqués « Brouillon » dans chaque leçon) sont des traductions assistées par machine, pas encore relues par un francophone natif. Tous les autres passages restent en turc. Les noms des matières sur les boutons de filtre correspondent aux pastilles colorées de chaque leçon.',
   siradaki: 'Prochain jour de cours', bugunEt: 'Cours aujourd’hui', baslangicEt: 'Début des cours',
   bitti: 'L’année 2026-2027 est terminée', bittiA: 'Le plan de la nouvelle année sera publié ici dès qu’il sera prêt.',
   gunuGor: 'Voir la journée',
@@ -122,7 +123,7 @@ const METIN = {
   baslik: 'Jaarplanning van de lessen 2026-2027, dag per dag',
   alt: `${dersGunleri.length} lesdagen, ${toplamDers} lessen. Onderwerp, leerdoel, samenvatting en voorgestelde activiteit voor elke les.`,
   aciklama: `Jaarplanning 2026-2027 van de koranschool Ulu Camii, dag per dag: ${dersGunleri.length} lesdagen, ${toplamDers} lessen.`,
-  not: 'De inhoud van de lessen is in het Turks, de onderwijstaal. De vaknamen op de filterknoppen komen overeen met de gekleurde badges bij elke les.',
+  not: 'De lesteksten zijn geschreven in het Turks, de onderwijstaal. Lestitels en de Nederlandse passages (in elke les gemarkeerd als “Concept”) zijn machinaal ondersteunde vertalingen die nog niet door een moedertaalspreker zijn nagelezen; alle andere passages blijven Turks. De vaknamen op de filterknoppen komen overeen met de gekleurde badges bij elke les.',
   siradaki: 'Eerstvolgende lesdag', bugunEt: 'Vandaag les', baslangicEt: 'De lessen beginnen',
   bitti: 'Het schooljaar 2026-2027 is afgelopen', bittiA: 'De planning van het nieuwe schooljaar wordt hier gepubliceerd zodra ze klaar is.',
   gunuGor: 'Bekijk de dag',
@@ -138,7 +139,7 @@ const METIN = {
   baslik: 'Jahresplan des Unterrichts 2026-2027, Tag für Tag',
   alt: `${dersGunleri.length} Unterrichtstage, ${toplamDers} Lektionen. Thema, Lernziel, Zusammenfassung und Aktivitätsvorschlag für jede Lektion.`,
   aciklama: `Jahresplan 2026-2027 der Koranschule Ulu Camii, Tag für Tag: ${dersGunleri.length} Unterrichtstage, ${toplamDers} Lektionen.`,
-  not: 'Der Inhalt des Unterrichts ist auf Türkisch, der Unterrichtssprache. Die Fachnamen auf den Filterschaltflächen entsprechen den farbigen Abzeichen bei jeder Lektion.',
+  not: 'Die Unterrichtstexte sind auf Türkisch verfasst, der Unterrichtssprache. Lektionstitel und die deutschen Passagen (in jeder Lektion als „Entwurf“ gekennzeichnet) sind maschinell unterstützte Übersetzungen, die noch nicht von Muttersprachlern geprüft wurden; alle übrigen Passagen bleiben auf Türkisch. Die Fachnamen auf den Filterschaltflächen entsprechen den farbigen Abzeichen bei jeder Lektion.',
   siradaki: 'Nächster Unterrichtstag', bugunEt: 'Heute Unterricht', baslangicEt: 'Der Unterricht beginnt',
   bitti: 'Das Schuljahr 2026-2027 ist beendet', bittiA: 'Der Plan des neuen Schuljahres wird hier veröffentlicht, sobald er fertig ist.',
   gunuGor: 'Den Tag ansehen',
@@ -156,6 +157,13 @@ const m = METIN[dil];
 const BLOK: [keyof typeof m.bloklar, string][] = [
   ['kazanim', 'kazanim'], ['ozet', 'ozet'], ['etkinlik', 'etkinlik'], ['ezber', 'ezber'],
 ];
+/* 12 Kasım 2026: başlık ve gövde bindirmeden (src/data/kurs-ceviri/<dil>.json → plan, konular-<dil>.json). Çevrilmemiş öğe Türkçe kalır
+   (lang="tr"); çevrilmiş gövdeli derste «Taslak» etiketi görünür (makine destekli, ana dili o dil olan biri okumadı). */
+const konuMetin = (k: string) => (dil === 'tr' ? k : cv.konu(k).m);
+const konuDil = (k: string) => (dil === 'tr' ? undefined : cv.konu(k).d);
+const govdeMetin = (p: string) => (dil === 'tr' ? p : cv.govde(p).m);
+const govdeDil = (p: string) => { const d = dil === 'tr' ? 'tr' : cv.govde(p).d; return d === 'tr' ? undefined : d; };
+const govdeVar = (d: Ders) => dil !== 'tr' && BLOK.some(([a]) => d[a].some((p) => cv.govde(p).d === dil));
 ---
 <KursSayfasi dil={dil} anahtar="yillikplan" baslik={m.baslik} aciklama={m.aciklama} etiket={t('nav.kurankursu')} altBaslik={m.alt}>
 
@@ -186,7 +194,7 @@ const BLOK: [keyof typeof m.bloklar, string][] = [
               <li>
                 <span class="saat">{d.saat}</span>
                 <span class:list={['alan-rozet', 'a-' + d.kod]}>{d.alan}</span>
-                <span class="konu">{d.konu}</span>
+                <span class="konu" lang={konuDil(d.konu)}>{konuMetin(d.konu)}</span>
               </li>
             ))}
           </ol>
@@ -265,19 +273,20 @@ const BLOK: [keyof typeof m.bloklar, string][] = [
                       <summary>
                         <span class="saat">{d.saat}</span>
                         <span class:list={['alan-rozet', 'a-' + d.kod]}>{d.alan}</span>
-                        <span class="konu">{d.konu}</span>
+                        <span class="konu" lang={konuDil(d.konu)}>{konuMetin(d.konu)}</span>
                         {d.kaynak && <span class="kaynak">{d.kaynak}</span>}
                       </summary>
                       {/* Blok sarmalayıcısı yok: başlık + gövde doğrudan .ic içinde
                           durur, aradaki boşluğu h3'ün üst kenarı verir. 261 ders ×
                           dört blok = bin sarmalayıcı eksik. */}
                       <div class="ic">
+                        {govdeVar(d) && <p class="taslak-satir" lang={dil}><TaslakEtiketi dil={dil} durum="taslak" /></p>}
                         {BLOK.map(([anahtar]) => d[anahtar].length > 0 && (
                           <>
                             <h3 lang={dil === 'tr' ? undefined : dil}>{m.bloklar[anahtar]}</h3>
                             {d[anahtar].length === 1
-                              ? <p>{d[anahtar][0]}</p>
-                              : <ul>{d[anahtar].map((s) => <li>{s}</li>)}</ul>}
+                              ? <p lang={govdeDil(d[anahtar][0])}>{govdeMetin(d[anahtar][0])}</p>
+                              : <ul>{d[anahtar].map((s) => <li lang={govdeDil(s)}>{govdeMetin(s)}</li>)}</ul>}
                           </>
                         ))}
                       </div>
@@ -366,6 +375,11 @@ const BLOK: [keyof typeof m.bloklar, string][] = [
   @keyframes ic-ac { from { opacity: 0; } }
   .ic h3 { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: var(--tracking-etiket); text-transform: uppercase; color: var(--vurgu); margin: 0.9rem 0 0.25rem; }
   .ic h3:first-child { margin-top: 0; }
+  .taslak-satir { margin: 0 0 0.2rem; }
+  .taslak-satir :global(.yl-taslak) { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.6rem; }
+  .taslak-satir :global(.yl-taslak-ad) { display: inline-block; padding: 0.05rem 0.5rem; border: 1px dashed var(--cizgi-etkilesim); border-radius: var(--radius-kose); font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: var(--tracking-etiket); text-transform: uppercase; color: var(--metin-2); }
+  .taslak-satir :global(.yl-taslak-not) { font-size: 0.9rem; color: var(--metin-2); }
+
   .ic p { margin: 0; color: var(--metin-2); }
   .ic ul { margin: 0; padding-left: 1.1rem; list-style: square; color: var(--metin-2); }
   .ic li + li { margin-top: 0.3rem; }

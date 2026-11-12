@@ -12,6 +12,8 @@
  *       rozet      takvim rozeti / gün notu parçası (Türkçe → çeviri)
  *       hafta      «tarih|odev» ve «tarih|ezber»  → { h: Türkçe metnin özeti, t: çeviri }
  *       kalici     materyal dosya adı (slug)      → { h: Türkçe başlığın özeti, baslik, aciklama }
+ *       plan       yıllık plan GÖVDESİ (kazanım/özet/etkinlik/ezber paragrafı) (Türkçe paragraf → çeviri); en/nl/de/fr (fr.json yalnız bu bölümü taşır).
+ *                  Bilerek KISMİ: kapsama «eksik» sayılmaz (tests/yillik-plan-ceviri.test.mjs); çevrilmemiş paragraf Türkçe kalır ve lang="tr" ile görünür.
  *       bekleyen   bilerek çevrilmeyenler (bölüm → [anahtar…]); neden docs/KURS-CEVIRISI.md'de
  * Kaynak metin değişirse anahtar tutmaz (ya da özet uyuşmaz): sayfa o öğede Fransızcaya/Türkçeye düşer ve etiketler;
  * tests/kurs-ceviri.test.mjs eksik/eski girdileri listeler.
@@ -75,6 +77,10 @@ export function kaynakOgeleri(veri) {
   return { konu, baslik, sunumKonu, hedef, hafta, rozet, kalici: kaliciOge };
 }
 
+/** Yıllık plan gövdesindeki tekil Türkçe paragraflar (kazanım, özet, etkinlik, ezber) — plan bindirmesinin anahtar kümesi. */
+export const PLAN_BLOKLARI = ['kazanim', 'ozet', 'etkinlik', 'ezber'];
+export const planParagraflari = (plan) => [...new Set(plan.gunler.flatMap((g) => g.dersler.flatMap((d) => PLAN_BLOKLARI.flatMap((b) => d[b] ?? []))))];
+
 /** src/content/materyaller/*.md ön yazıları (taslaklar hariç) → [{ slug, baslik, aciklama }]; betik ve test için. */
 export function kaliciMateryaller(dizin) {
   return readdirSync(dizin).filter((f) => f.endsWith('.md')).map((f) => {
@@ -117,6 +123,8 @@ export function cevirici(dil, { bindirme = {}, konular = {}, konularFr = {} } = 
     sunumKonu: (s) => tara('sunumKonu', s.konu, s.konu, s.konuFr),
     hedef: (d) => tara('hedef', d.goal_tr, d.goal_tr, d.goal_fr),
     rozet: (metin) => tara('rozet', metin, metin, ''),
+    /** Yıllık plan gövdesi: tr dışındaki dillerde bindirme.plan[Türkçe paragraf] kendi dilinin adayıdır (fr dâhil); yoksa Türkçe. */
+    govde: (p) => sec(dil === 'tr' ? { tr: p } : { tr: p, [dil]: bindirme.plan?.[p] }),
     /** Hafta notu: yalnız Türkçe metnin özeti bindirmedeki özetle uyuşuyorsa çeviri kullanılır. */
     hafta: (tarih, alan, not) => {
       const o = bindirme.hafta?.[`${tarih}${OZET_AYIRAC}${alan}`];
