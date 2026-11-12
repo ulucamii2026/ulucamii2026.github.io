@@ -51,8 +51,12 @@ test('faktörlü hesap: şifreden sonra 6 haneli kod istenir; yanlış kod hata 
   const hata = page.locator('[data-mfa-giris] [data-mesaj]');
   await expect(hata).toContainText('Kod yanlış ya da süresi dolmuş');
   await expect(hata).toHaveAttribute('role', 'alert');
+  await expect(kod).toHaveAttribute('aria-invalid', 'true');
   await expect(kod).toHaveValue('');
   await expect(kod).toBeFocused();
+  await kod.pressSequentially('1');
+  await expect(kod).not.toHaveAttribute('aria-invalid', 'true'); // düzeltmeye başlayınca kalkar
+  await kod.fill('');
   await expect(page.locator('[data-sekme=odev]')).toHaveCount(0);
 
   await kod.fill('123 456'); // uygulamalar «123 456» gösterir
@@ -159,3 +163,81 @@ for (const d of ['de', 'fr']) {
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
   });
 }
+
+const kod6 = '123456';
+async function kodGir(page, kod) {
+  await page.locator('[data-mfa-giris] input[name=kod]').fill(kod);
+  await page.locator('[data-mfa-giris] button[type=submit]').click();
+}
+
+test('e-posta bağlantısıyla giriş + faktör: kod ekranı açılır, bağlantı adresten silinir; yanlış kod hata, doğru kod girişi tamamlar', async ({ page, context }) => {
+  await context.addInitScript(() => { try { localStorage.setItem('hocaEposta', 'hoca@example.test'); } catch {} });
+  await mektepAc(page, context, { hoca: true, oturumYok: true, students: ogrenciler, records: {}, mfa: { baglanti: true, girisIster: true, dogruKod: kod6 } });
+  await expect(page.locator('[data-sekme=odev]')).toHaveCount(0); // kod girilmeden ekran açılmaz
+  expect(page.url()).not.toContain('oobCode'); // tek kullanımlık bağlantı adreste kalmaz (yenilemede yeniden denenmesin)
+  await kodGir(page, '000000');
+  await expect(page.locator('[data-mfa-giris] [data-mesaj]')).toContainText('Kod yanlış ya da süresi dolmuş');
+  await expect(page.locator('[data-sekme=odev]')).toHaveCount(0);
+  await kodGir(page, kod6);
+  await expect(page.locator('[data-sekme=odev]')).toBeVisible();
+  const cagri = await page.evaluate(() => window.__mfa.cagrilar.filter((c) => c[0] === 'resolveSignIn').map((c) => c[1]));
+  expect(cagri.map((c) => c.kod)).toEqual(['000000', kod6]);
+});
+
+test('ikinci adım oturumu dolmuşsa (auth/invalid-multi-factor-session): açık ileti, girişe dönülür, kod yazdırılmaz', async ({ page, context }) => {
+  await mektepAc(page, context, { hoca: true, oturumYok: true, students: ogrenciler, records: {}, mfa: { girisIster: true, dogruKod: kod6, oturumDoldu: true } });
+  await girisYap(page);
+  await kodGir(page, kod6);
+  await expect(page.locator('[data-form=giris]')).toBeVisible();
+  await expect(page.locator('[data-mfa-giris]')).toHaveCount(0);
+  const not = page.locator('[data-giris-notu]');
+  await expect(not).toContainText('Doğrulama süresi doldu');
+  await expect(not).not.toHaveClass(/basari/); // güvenlik bildirimi başarı biçiminde değil
+  await expect(page.locator('body')).not.toContainText('auth/invalid-multi-factor-session');
+});
+
+test('kod doğru ama ekran yüklenemedi: yükleme hatası gösterilir, «kod yanlış» denmez ve kod formu yeniden kurulmaz', async ({ page, context }) => {
+  await mektepAc(page, context, { hoca: true, oturumYok: true, students: ogrenciler, records: {}, mfa: { girisIster: true, dogruKod: kod6, yuklemeHatasi: true } });
+  await girisYap(page);
+  await kodGir(page, kod6);
+  const hata = page.locator('p.not.hata');
+  await expect(hata).toContainText('permission-denied');
+  await expect(hata).not.toContainText('Kod yanlış');
+  await expect(page.locator('[data-mfa-giris]')).toHaveCount(0);
+  await expect(page.locator('[data-eylem=cikis]')).toBeVisible();
+});
+
+test('faktörü kapatırken oturum düşerse (auth/user-token-expired): giriş ekranı + yansız bildirim; sonraki ziyarette bildirim yinelenmez', async ({ page, context }) => {
+  await mektepAc(page, context, { hoca: true, students: ogrenciler, records: {}, mfa: { dogruKod: kod6, kayitli: [faktor], unenrollHata: 'auth/user-token-expired' } });
+  await hesapSekmesi(page);
+  const bolum = page.locator('[data-mfa]');
+  await bolum.locator('[data-mfa-kapat]').click();
+  await bolum.locator('[data-mfa-kapat-onay]').click();
+  await expect(page.locator('[data-form=giris]')).toBeVisible();
+  const not = page.locator('[data-giris-notu]');
+  await expect(not).toContainText('oturumunuz kapandı');
+  await expect(not).not.toHaveClass(/basari/);
+  await page.evaluate(() => window.__authCb(null)); // sonraki çıkış/oturum olayı giriş ekranını yeniden çizer
+  await expect(page.locator('[data-form=giris]')).toBeVisible();
+  await expect(page.locator('[data-giris-notu]')).toHaveCount(0);
+});
+
+test('Hesap sekmesi yeniden çizilince yarım kalan kayıt açıkça bildirilir: kapalı duruma dönülür, gizli anahtar kalmaz', async ({ page, context }) => {
+  await mektepAc(page, context, { hoca: true, students: ogrenciler, records: {}, mfa: { dogruKod: kod6, kayitli: [] } });
+  await hesapSekmesi(page);
+  let bolum = page.locator('[data-mfa]');
+  await bolum.locator('[data-mfa-ac]').click();
+  await expect(bolum.locator('[data-mfa-anahtar]')).toBeVisible();
+  await page.locator('[role=tab][data-sekme=odev]').click(); // sekme değişimi bölümü yeniden kurar
+  await hesapSekmesi(page);
+  bolum = page.locator('[data-mfa]');
+  await expect(bolum.locator('[data-mesaj]')).toContainText('Kayıt yarım kaldığı için gizli anahtar silindi');
+  await expect(bolum.locator('[data-mesaj]')).not.toHaveClass(/basari|hata/);
+  await expect(bolum.locator('[data-mfa-ac]')).toBeVisible();
+  await expect(bolum.locator('[data-mfa-anahtar]')).toHaveCount(0);
+  expect(await page.evaluate(() => JSON.stringify(localStorage).includes('JBSW'))).toBe(false);
+  // bildirim bir kez: normal ziyarette görünmez
+  await page.locator('[role=tab][data-sekme=odev]').click();
+  await hesapSekmesi(page);
+  await expect(page.locator('[data-mfa] [data-mesaj]')).toBeHidden();
+});

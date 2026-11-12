@@ -39,8 +39,14 @@ SMS değil: maliyet, bölge izni ve SIM değiştirme riski yok. **Bu aşama yaln
 
 ## Telefon kaybolursa (kurtarma)
 
-- Tek hoca hesabı olduğundan **zorlamadan önce bu yol denenmiş olmalıdır**. Yönetici, dernek araçlarıyla hesabın kayıtlı faktörlerini temizler (Admin SDK `updateUser` ile
-  `multiFactor.enrolledFactors = []` ya da Console'dan kullanıcının MFA'sını silme). Hesap yeniden yalnız şifreyle girer; imam yeni telefonda 3. adımı yineler.
+- Tek hoca hesabı olduğundan **zorlamadan önce bu yol denenmiş olmalıdır**. Yönetici, dernek araçlarıyla hesabın kayıtlı faktörlerini temizler.
+  - **Resmî belgede yazan** (https://firebase.google.com/docs/auth/admin/manage-mfa-users, «Removing a secondary factor», Admin SDK Node.js): ikinci adımları tümüyle kaldırmak için
+    `updateUser(uid, { multiFactor: { enrolledFactors: null } })`; belge «`null` ya da boş dizi» der. `enrolledFactors` listesi verilince kullanıcının mevcut ikinci
+    adımlarının hepsi silinip liste ile değiştirilir. SDK API başvurusunda (`MultiFactorUpdateSettings`) alan `UpdateMultiFactorInfoRequest[] | null` türündedir; `null` temizlemedir.
+  - **Doğrulanmadı — ilk denemede test hesabıyla sınanacak:** belgedeki örnekler telefon (SMS) faktörüne göredir; TOTP faktörünün aynı çağrıyla kaldırıldığı belgede ayrıca
+    yazmıyor. Python Admin SDK ya da `portal-yonetim.py` yoluyla aynı işlemin yapılıp yapılamayacağı da doğrulanmadı.
+  - **Doğrulanmadı:** Firebase Console'da kullanıcı başına ikinci adımı silen bir düğme olduğuna dair belge bulunamadı; bu yola güvenilmez.
+  - Hesap yeniden yalnız şifreyle girer; imam yeni telefonda 3. adımı yineler.
 - Faktör kaldırmak son faktörse Firebase oturumu düşürebilir (`auth/user-token-expired`): ekran giriş ekranına döner ve iletiyi orada gösterir.
 - Zorlama açıldıktan sonra yönetici betiği (`portal-yonetim.py`, Admin API) çalışmaya devam eder; imam ise bu temizlik olmadan giremez. Zorlamayı açmadan önce bu temizliği
   **test hesabında** deneyin (canlı hesapta değil).
@@ -50,4 +56,4 @@ SMS değil: maliyet, bölge izni ve SIM değiştirme riski yok. **Bu aşama yaln
 - Kural zorlaması, SMS, yedek (ikinci) faktör ekranı, kurtarma kodları, veli portalı ve egitim ilim uygulaması için ikinci adım: yok.
 - Canlı projenin MFA/Identity Platform durumu okunmadı; TOTP'nin e-posta bağlantısıyla girişte istenip istenmediği ve gerçek SDK akışı canlıda sınanmadı.
 - Gizli anahtar ekranda düz metin olarak görünür (kare kodla aynı bilgi); ekran görüntüsü alınıp saklanmamalıdır.
-- Not: faktör kaydı Firebase'in tüm açık oturumlarını düşürür; imam telefon ve bilgisayardaki oturumları yeniden açmak zorunda kalabilir.
+- Not: faktör kaydı sırasında Firebase açık oturumları kapatabilir (SDK bunu arka uç kararına bağlar: «oturumlar iptal edilebilir»); imam telefon ve bilgisayardaki oturumları yeniden açmak zorunda kalabilir. Kesin davranış canlıda sınanmadı.

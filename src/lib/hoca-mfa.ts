@@ -28,7 +28,7 @@ export const mfaGerekli = (e: unknown): boolean => (e as { code?: string } | nul
 /** Kullanıcıya yazılan kodu temizler: boşluk/tire düşer (uygulamalar «123 456» gösterir). */
 export const kodTemizle = (s: string): string => s.replace(/[\s-]/g, '');
 
-export type MfaHataTuru = 'kod' | 'yenidenGiris' | 'eposta' | 'kapali' | 'oturum' | 'yogun' | 'ag' | 'genel';
+export type MfaHataTuru = 'kod' | 'yenidenGiris' | 'eposta' | 'kapali' | 'oturum' | 'sure' | 'yogun' | 'ag' | 'genel';
 
 /** Firebase hata kodunu arayüz iletisi türüne çevirir. */
 export function mfaHataTuru(e: unknown): MfaHataTuru {
@@ -39,6 +39,7 @@ export function mfaHataTuru(e: unknown): MfaHataTuru {
     case 'auth/unverified-email': return 'eposta';
     case 'auth/operation-not-allowed': case 'auth/admin-restricted-operation': case 'auth/unsupported-tenant-operation': return 'kapali';
     case 'auth/user-token-expired': case 'auth/user-disabled': case 'auth/invalid-user-token': return 'oturum';
+    case 'auth/invalid-multi-factor-session': case 'auth/missing-multi-factor-session': return 'sure'; // ikinci adım oturumu (bekleyen kimlik bilgisi) kısa ömürlüdür
     case 'auth/too-many-requests': return 'yogun';
     case 'auth/network-request-failed': return 'ag';
     default: return 'genel';

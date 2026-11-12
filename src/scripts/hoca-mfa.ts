@@ -17,7 +17,7 @@ const esc = (s: unknown) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '
 
 const HATA_METNI: Record<Exclude<MfaHataTuru, 'genel'>, Parameters<typeof t>[0]> = {
   kod: 'mfa.hataKod', yenidenGiris: 'mfa.hataYenidenGiris', eposta: 'mfa.hataEposta', kapali: 'mfa.hataKapali',
-  oturum: 'mfa.hataOturum', yogun: 'mfa.hataYogun', ag: 'mfa.hataAg',
+  oturum: 'mfa.hataOturum', sure: 'mfa.hataSure', yogun: 'mfa.hataYogun', ag: 'mfa.hataAg',
 };
 /** Hata iletisi: bilinen türler çevrilmiş açıklama; bilinmeyen yalnız Firebase hata KODUNU gösterir (ileti metni değil). */
 export function mfaHataMetni(e: unknown): string {
@@ -27,7 +27,16 @@ export function mfaHataMetni(e: unknown): string {
 
 const mesgul = (b: HTMLButtonElement, d: boolean) => { b.disabled = d; if (d) b.dataset.mesgul = '1'; else delete b.dataset.mesgul; };
 const kodAlani = (govde: string, id: string) => `<label>${govde}<input type="text" name="kod" id="${id}" inputmode="numeric" pattern="[0-9 ]*" autocomplete="one-time-code" maxlength="10" required aria-describedby="${id}-mesaj"></label>`;
-const mesajYaz = (p: HTMLElement | null, metin: string, tur: 'hata' | 'basari' = 'hata') => { if (!p) return; p.textContent = metin; p.className = 'not ' + tur; p.hidden = !metin; };
+type IletiTuru = 'hata' | 'basari' | 'bilgi'; // bilgi: yansız görünüm (başarı ya da hata biçimi taşımaz)
+const iletiSinifi = (tur?: IletiTuru) => 'not' + (tur === 'hata' || tur === 'basari' ? ' ' + tur : '');
+/** İletiyi yazar; aynı formdaki kod girdisine hata varken aria-invalid koyar, ileti silinince kaldırır. */
+const mesajYaz = (p: HTMLElement | null, metin: string, tur: IletiTuru = 'hata') => {
+  if (!p) return; p.textContent = metin; p.className = iletiSinifi(tur); p.hidden = !metin;
+  const g = p.closest('form')?.querySelector<HTMLInputElement>('input[name=kod]');
+  if (g) { if (metin && tur === 'hata') g.setAttribute('aria-invalid', 'true'); else g.removeAttribute('aria-invalid'); }
+};
+/** Yazmaya başlanınca (düzeltilince) aria-invalid kalkar. */
+const duzeltinceTemizle = (g: HTMLInputElement) => g.addEventListener('input', () => g.removeAttribute('aria-invalid'));
 
 /* ---------------------------------------------------------------- giriş sınaması */
 export type KodEkraniSecenek = {
@@ -35,8 +44,10 @@ export type KodEkraniSecenek = {
   cozumleyici: GirisCozumleyici | null;
   /** Giriş tamamlanınca (hoca ekranını yükler). */
   devam: (user: { uid: string }) => Promise<void>;
-  /** «Girişe dön». */
-  geri: () => void;
+  /** «Girişe dön»; ileti verilirse (ikinci adım oturumu doldu) giriş ekranında yansız bilgi olarak görünür. */
+  geri: (ileti?: string) => void;
+  /** Kod doğru girildi ama ekran yüklenemedi: hoca ekranının mevcut yükleme hatası yolu (kod hatası olarak gösterilmez). */
+  yuklemeHatasi: (e: unknown) => void;
 };
 
 /** Şifre (ya da e-posta bağlantısı) doğrulandıktan sonra 6 haneli kodu isteyen küçük adım. `kok` içeriğini değiştirir. */
@@ -44,7 +55,7 @@ export function mfaKodEkrani(kok: HTMLElement, o: KodEkraniSecenek): void {
   if (!o.cozumleyici) {
     kok.innerHTML = `<div class="kutu ps-form-dar" data-mfa-giris><h2>${t('mfa.giris.baslik')}</h2><p class="not hata" role="alert">${t('mfa.giris.destek')}</p>
       <div class="satir-dugmeler"><button type="button" class="dugme dugme-ikincil" data-mfa-geri>${t('mfa.giris.geri')}</button></div></div>`;
-    kok.querySelector('[data-mfa-geri]')?.addEventListener('click', o.geri, { once: true });
+    kok.querySelector('[data-mfa-geri]')?.addEventListener('click', () => o.geri(), { once: true });
     return;
   }
   const coz = o.cozumleyici;
@@ -57,7 +68,8 @@ export function mfaKodEkrani(kok: HTMLElement, o: KodEkraniSecenek): void {
   const form = kok.querySelector<HTMLFormElement>('form[data-mfa-giris]')!;
   const girdi = form.querySelector<HTMLInputElement>('input[name=kod]')!;
   const mesaj = form.querySelector<HTMLElement>('[data-mesaj]');
-  form.querySelector('[data-mfa-geri]')?.addEventListener('click', o.geri, { once: true });
+  form.querySelector('[data-mfa-geri]')?.addEventListener('click', () => o.geri(), { once: true });
+  duzeltinceTemizle(girdi);
   girdi.focus();
   form.addEventListener('submit', async (ev) => {
     ev.preventDefault();
@@ -66,12 +78,16 @@ export function mfaKodEkrani(kok: HTMLElement, o: KodEkraniSecenek): void {
     const dugmeler = form.querySelectorAll<HTMLButtonElement>('button'); dugmeler.forEach((b) => mesgul(b, true));
     mesajYaz(mesaj, '');
     try {
-      const kb = await coz.coz(kod);
-      await o.devam(kb.user);
-    } catch (e) {
-      if (!form.isConnected) return;
-      mesajYaz(mesaj, mfaHataMetni(e));
-      girdi.value = ''; girdi.focus();
+      let kb: { user: { uid: string } };
+      try { kb = await coz.coz(kod); }
+      catch (e) { // yalnız kod/ikinci adım hataları burada; yükleme hatası aşağıda ayrı
+        if (!form.isConnected) return;
+        if (mfaHataTuru(e) === 'sure') { o.geri(mfaHataMetni(e)); return; } // oturum doldu: kod yazdırmak boşuna, girişe dön
+        mesajYaz(mesaj, mfaHataMetni(e));
+        girdi.value = ''; girdi.focus();
+        return;
+      }
+      try { await o.devam(kb.user); } catch (e) { if (form.isConnected) o.yuklemeHatasi(e); } // kod doğruydu: yanlış-kod iletisi gösterilmez
     } finally {
       if (form.isConnected) dugmeler.forEach((b) => mesgul(b, false));
     }
@@ -104,11 +120,17 @@ const anahtarYaz = (s: string) => s.replace(/(.{4})/g, '$1 ').trim();
  * Hesap sekmesindeki ilk bölümün (`panel`) ardına «İki adımlı doğrulama» bölümünü ekler. Auth modülü çoklu faktör yüzeyini
  * vermiyorsa ya da kayıtlı faktörler okunamıyorsa hiçbir şey eklemez (sayfa eskisi gibi kalır).
  */
+let sonBolum: { bolum: HTMLElement; uid: string; kayitta: () => boolean } | null = null;
 export function mfaHesapBolumu(panel: HTMLElement, o: HesapBolumuSecenek): void {
   const kullanici = o.a.currentUser;
   if (!kullanici) return;
   let faktorler: KayitliFaktor[];
   try { faktorler = kayitliFaktorler(o.m, kullanici); } catch { return; }
+
+  /* Yarım kalan kayıt (Hesap sekmesi yeniden çizilince bölüm sıfırlanır): gizli anahtar bilerek bellekte TUTULMAZ; sessizce yutulmasın diye
+     bir sonraki bölüm açılışında açıkça bildirilir. */
+  const onceki = sonBolum;
+  const yarimKaldi = !!onceki && !onceki.bolum.isConnected && onceki.kayitta() && onceki.uid === kullanici.uid;
 
   const bolum = document.createElement('section');
   bolum.className = 'bolum';
@@ -119,11 +141,13 @@ export function mfaHesapBolumu(panel: HTMLElement, o: HesapBolumuSecenek): void 
   let evre: Evre = 'ozet';
   let taslak: KayitTaslagi | null = null;
   let kareKod = '';
-  let ileti: { metin: string; tur: 'hata' | 'basari' } | null = null;
+  let ileti: { metin: string; tur: IletiTuru } | null = null;
   let isNo = 0; // eski (iptal edilmiş) isteklerin ekranı bozmaması için
+  sonBolum = { bolum, uid: kullanici.uid, kayitta: () => evre === 'kayit' || evre === 'hazirlaniyor' };
+  if (yarimKaldi) ileti = { metin: t('mfa.yarimKaldi'), tur: 'bilgi' };
 
   const ciz = (odak = '') => {
-    const iletiHtml = `<p id="mfa-mesaj" data-mesaj class="not ${ileti?.tur ?? ''}" role="${ileti?.tur === 'hata' ? 'alert' : 'status'}" ${ileti ? '' : 'hidden'}>${esc(ileti?.metin ?? '')}</p>`;
+    const iletiHtml = `<p id="mfa-mesaj" data-mesaj class="${iletiSinifi(ileti?.tur)}" role="${ileti?.tur === 'hata' ? 'alert' : 'status'}" ${ileti ? '' : 'hidden'}>${esc(ileti?.metin ?? '')}</p>`;
     let govde = `<h2>${t('mfa.baslik')}</h2><p class="kucuk">${t('mfa.aciklama')}</p>`;
     if (evre === 'kayit' && taslak) {
       govde += `<p>${t('mfa.adim1')}</p>
@@ -152,10 +176,12 @@ export function mfaHesapBolumu(panel: HTMLElement, o: HesapBolumuSecenek): void 
           : `<button type="button" class="dugme dugme-ikincil" data-mfa-ac>${t('mfa.ac')}</button>`}</div>`;
     }
     bolum.innerHTML = govde;
+    const kg = bolum.querySelector<HTMLInputElement>('input[name=kod]'); if (kg) duzeltinceTemizle(kg);
+    if (ileti?.tur === 'hata') kg?.setAttribute('aria-invalid', 'true');
     if (odak) bolum.querySelector<HTMLElement>(odak)?.focus();
   };
 
-  const bitir = (metin = '', tur: 'hata' | 'basari' = 'basari') => { evre = 'ozet'; taslak = null; kareKod = ''; ileti = metin ? { metin, tur } : null; };
+  const bitir = (metin = '', tur: IletiTuru = 'basari') => { evre = 'ozet'; taslak = null; kareKod = ''; ileti = metin ? { metin, tur } : null; };
 
   bolum.addEventListener('click', async (ev) => {
     const el = (ev.target as HTMLElement).closest<HTMLButtonElement>('button[data-mfa-ac],button[data-mfa-kapat],button[data-mfa-kapat-onay],button[data-mfa-vazgec]');

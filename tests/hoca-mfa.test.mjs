@@ -78,6 +78,8 @@ test('hata kodları ileti türlerine çevrilir; bilinmeyen «genel»', () => {
   assert.equal(tur('auth/operation-not-allowed'), 'kapali'); // TOTP proje düzeyinde açılmadı → «henüz açılmadı»
   assert.equal(tur('auth/admin-restricted-operation'), 'kapali');
   assert.equal(tur('auth/user-token-expired'), 'oturum');
+  assert.equal(tur('auth/invalid-multi-factor-session'), 'sure'); // ikinci adım oturumu doldu → girişe dön
+  assert.equal(tur('auth/missing-multi-factor-session'), 'sure');
   assert.equal(tur('auth/too-many-requests'), 'yogun');
   assert.equal(tur('auth/network-request-failed'), 'ag');
   assert.equal(tur('auth/baska'), 'genel');

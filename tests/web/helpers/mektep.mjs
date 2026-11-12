@@ -8,8 +8,13 @@ const auth = `
 const user = { uid:'TEST-HOCA', email: 'veli@example.test', getIdToken: async () => 'test-id-token' }; // getIdToken: çeviri ucu (14 Eyl 2026)
 let callback;
 export const getAuth = () => ({ get currentUser() { return window.__oturumYok ? null : user; } });
-export const isSignInWithEmailLink = () => false;
-export const onAuthStateChanged = (_a, cb) => {callback=cb;cb(window.__oturumYok ? null : user);};
+/* __mfa.baglanti: sayfa e-posta bağlantısıyla açılmış gibi (tek kullanımlık oobCode adreste durur; hoca ekranı onu adresten silmeli). */
+export const isSignInWithEmailLink = () => { if (window.__mfa?.baglanti) { history.replaceState(null, '', '/mektep-test/?oobCode=TEST'); return true; } return false; };
+export const signInWithEmailLink = async () => {
+  if (window.__mfa?.girisIster) throw Object.assign(new Error('mfa'), { code: 'auth/multi-factor-auth-required' });
+  window.__oturumYok = false; callback?.(user); return { user };
+};
+export const onAuthStateChanged = (_a, cb) => {callback=cb;window.__authCb=cb;cb(window.__oturumYok ? null : user);};
 export const signOut = async () => {callback?.(null);};
 /* İki adımlı doğrulama sahtesi (12 Kasım 2026; tests/web/hoca-mfa.spec.mjs). Auth emülatörü TOTP'yi desteklemez, bu yüzden Auth modülü sahtedir.
    window.__mfa yoksa (eski sınamalar) multiFactor fırlatır: hoca ekranı Hesap sekmesine bölüm eklemez, çizim eskisi gibi kalır.
@@ -23,6 +28,7 @@ export const getMultiFactorResolver = () => ({
   hints: window.__mfa.ipuclari || [{ uid: 'F1', factorId: 'totp', displayName: 'Authenticator' }], session: {},
   resolveSignIn: async (asr) => {
     mfaCagri('resolveSignIn', asr);
+    if (window.__mfa.oturumDoldu) throw Object.assign(new Error('x'), { code: 'auth/invalid-multi-factor-session' }); // bekleyen kimlik bilgisi süresi doldu
     if (asr.kod !== window.__mfa.dogruKod) throw Object.assign(new Error('x'), { code: 'auth/invalid-verification-code' });
     window.__oturumYok = false; callback?.(user); return { user };
   },
@@ -47,7 +53,10 @@ export const multiFactor = () => {
       if (asr.kod !== m.dogruKod) throw Object.assign(new Error('x'), { code: 'auth/invalid-verification-code' });
       (m.kayitli ||= []).push({ uid: 'F-YENI', factorId: 'totp', displayName: ad });
     },
-    unenroll: async (uid) => { mfaCagri('unenroll', uid); m.kayitli = (m.kayitli || []).filter((f) => f.uid !== uid); },
+    unenroll: async (uid) => {
+      mfaCagri('unenroll', uid);
+      if (m.unenrollHata) { window.__oturumYok = true; callback?.(null); throw Object.assign(new Error('x'), { code: m.unenrollHata }); } // SDK: geçersiz belirteçte oturumu kapatır
+      m.kayitli = (m.kayitli || []).filter((f) => f.uid !== uid); },
   };
 };
 `;
@@ -63,6 +72,7 @@ export const query = (ref, ...filters) => ({ ...ref, filters });
 const ezberHatasi = ref => { if (window.__ezberHata && ref.col.startsWith('ezberDurum')) throw Object.assign(Error('Missing or insufficient permissions.'), { code: 'permission-denied' }); };
 export const getDoc = async ref => {
  ezberHatasi(ref);
+ if(window.__mfa?.yuklemeHatasi && ref.col==='hocalar')throw Object.assign(Error('x'),{code:'permission-denied'}); // kod doğru, ama ekran verisi okunamıyor
  if(window.__dataError && (ref.col.startsWith('bultenler/')||ref.col.startsWith('dersDefteri/')))throw Error('offline');
  if(ref.col.startsWith('evCalismalari/')){const data=decode(window.__cloud[ref.col]?.[ref.id]);return{id:ref.id,exists:()=>!!data,data:()=>data};}
  const stored=(window.__records[ref.col]||[]).find(d=>d.id===ref.id);
@@ -315,7 +325,7 @@ export async function mektepAc(page, context, { hoca=false, cloud={}, cloudError
   }, { dil, records, hadisSesleri, students,cloud,cloudError,hoca,ceviriOrigin: ORIGIN,oturumYok,mfa });
   await page.addScriptTag({ content: await bundle(hoca) });
   await page.evaluate(hoca => hoca?window.MektepTest.hocaEkrani():window.MektepTest.veliPortali(),hoca);
-  if(hoca){if(oturumYok){await expect(page.locator('[data-form=giris]')).toBeVisible();return;}await expect(page.locator('[data-sekme=odev]')).toBeVisible();return;}
+  if(hoca){if(mfa?.baglanti){await expect(page.locator('[data-mfa-giris]')).toBeVisible();return;}if(oturumYok){await expect(page.locator('[data-form=giris]')).toBeVisible();return;}await expect(page.locator('[data-sekme=odev]')).toBeVisible();return;}
   await expect(page.locator('[data-eylem="ogrenciModu"]')).toBeVisible();
   if (ogrenci) await page.locator('[data-eylem="ogrenciModu"]').click();
 }

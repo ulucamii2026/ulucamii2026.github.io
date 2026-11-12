@@ -129,7 +129,8 @@ export async function hocaEkrani(): Promise<void> {
   /* ---------------------------------------------------------------- giriş */
   let girisNotu = ''; // oturum güvenlik gereği kapandıysa (örn. iki adımlı doğrulama kapatılınca) giriş ekranında gösterilen ileti
   const girisEkrani = (onMesaj = girisNotu) => {
-    kok.innerHTML = `${onMesaj ? `<p class="not basari">${esc(onMesaj)}</p>` : ''}
+    girisNotu = ''; // bildirim bir kez gösterilir: sonraki çıkış/girişte yinelenmez
+    kok.innerHTML = `${onMesaj ? `<p class="not" role="status" data-giris-notu>${esc(onMesaj)}</p>` : ''}
       <div class="giris-izgara">
         <form class="kutu" data-form="giris" novalidate>
           <h2>${t('giris.baslik')}</h2>
@@ -681,10 +682,12 @@ export async function hocaEkrani(): Promise<void> {
     portalTercihleri.setItem('hocaEposta', eposta); history.replaceState(null, '', sayfaAdresi);
     await bagSonrasi(kb.user);
   };
+  /** Yükleme hatası ekranı (kod doğru, ekran açılamadı; onAuthStateChanged yolu ile aynı). */
+  const yuklemeHatasi = (e: unknown) => { kok.innerHTML = `<p class="not hata">${esc(hata(e))}</p><button type="button" class="dugme dugme-ikincil" data-eylem="cikis">${t('ortak.cikis')}</button>`; };
   /** İki adımlı doğrulama (TOTP) sınaması: şifre/bağlantı doğrulandı ama hesapta kayıtlı faktör var → 6 haneli kod ekranı. */
   const mfaIste = async (hataNesnesi: unknown, devam: (user: { uid: string }) => Promise<void>) => {
     const m = await import('./hoca-mfa');
-    m.mfaKodEkrani(kok, { cozumleyici: girisCozumleyici(auth, a, hataNesnesi), devam, geri: () => girisEkrani() });
+    m.mfaKodEkrani(kok, { cozumleyici: girisCozumleyici(auth, a, hataNesnesi), devam, geri: (ileti) => girisEkrani(ileti ?? ''), yuklemeHatasi });
   };
   /** Oturum kapandı (ör. son iki adımlı doğrulama faktörü kaldırılınca Firebase oturumu düşürür): paneller kapanır, ileti giriş ekranında görünür. */
   const oturumSonu = (ileti: string) => { girisNotu = ileti; bultenTemizle?.(); kitaplariTemizle?.(); odevKapat(); defterKapat(); ezberKapat(); envanterKapat(); ilimKapat(); S = null; girisEkrani(); };
@@ -949,5 +952,5 @@ export async function hocaEkrani(): Promise<void> {
     if (kayitli) { try { await bagIleGir(kayitli); return; } catch (e) { girisEkrani(); mesaj(kok.querySelector('form[data-form=bag]'), hata(e), 'hata'); return; } }
     bagTamamlaEkrani(); return;
   }
-  auth.onAuthStateChanged(a, (user) => { if (user) { if (!S) yukle(user).catch((e) => { kok.innerHTML = `<p class="not hata">${esc(hata(e))}</p><button type="button" class="dugme dugme-ikincil" data-eylem="cikis">${t('ortak.cikis')}</button>`; }); } else { bultenTemizle?.(); kitaplariTemizle?.(); odevKapat(); defterKapat(); ezberKapat(); ilimKapat(); S = null; girisEkrani(); } });
+  auth.onAuthStateChanged(a, (user) => { if (user) { if (!S) yukle(user).catch(yuklemeHatasi); } else { bultenTemizle?.(); kitaplariTemizle?.(); odevKapat(); defterKapat(); ezberKapat(); ilimKapat(); S = null; girisEkrani(); } });
 }
