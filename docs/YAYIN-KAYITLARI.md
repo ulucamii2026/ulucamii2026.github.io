@@ -4,6 +4,14 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 12 Kasım 2026 (öğle) — İlim Yolu: dua anlamları 2. tur ve bilgi maddeleri (en/fr/nl/de)
+
+- Zaman: 12 Kasım 2026, 03.11–03.20 (Brüksel, CET). Kapsam: dua anlamları 2. tur (en 4, fr 8, nl 2, de 1) Diyanet kitaplarından ve ISN hutbe metninden; bilgi maddeleri (Felemenkçe hadisler, en/de ulü'l-azm, de bir hadis); `docs/ILIM-YOLU-CEVIRI-KAYNAKLARI.md`. İçerik commit'leri (main, `1cf70511..42e06335`, fast-forward, 3 commit): `93a18d59`, `72aad9e6`, `42e06335`.
+- Koşular: Pages [43139674573](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/43139674573) success (2 dk 41 sn); egitim push [43139674486](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/43139674486) success (4 dk 20 sn, derle/yayinla/canli); egitim workflow_run [43139992155](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/43139992155) skipped.
+- Canlı (curl, `https://egitim.ulucamii.be`): `/en/calis/d-ezan/` «Introduction to the Holy Qur’an 1» künyeli; `/fr/calis/d-yemek-duasi/` «Louanges à Allah qui nous a nourris, nous a abreuvés et…» ve «Sur les traces du Prophète Muhammad» künyesi; `/nl/calis/b-kuran-fazileti-hadisleri/` üç Felemenkçe hadis, taslak notu yok; `/de/calis/b-ulul-azm/` taslak rozeti yok; `/de/calis/b-secme-hadisler/` «Entwurf, übersetzt aus den türkischen und französischen Quellen…» notu hâlâ var; `/nl/calis/d-ezan/` hâlâ «volgt binnenkort».
+- Yerel kapılar: `test:ezber` 237/237, `test:ilim-yolu` 107 geçti, `test:tipografi` 7/7, Playwright `bilgi`+`anlam`+`sessiz-metin` 40/40, `egitim:build` 2144 sayfa.
+- Açık sınırlar: dokuz Almanca madde izin kararını bekliyor (DİTİB hutbeleri); dil başına kalan boşluklar `docs/ILIM-YOLU-CEVIRI-KAYNAKLARI.md` içinde.
+
 ## 12 Kasım 2026 (sabah) — İlim Yolu: resmî Felemenkçe/İngilizce/Almanca/Fransızca anlamlar (ezber ve bilgi maddeleri)
 
 - Zaman: 12 Kasım 2026, 02.36–02.41 (Brüksel, CET). Kapsam: 14 ezber maddesinde Felemenkçe meâl Diyanet «Basiskennis over Islam» kitabından (taslak işareti kalktı); dua anlamları en/nl/de/fr Diyanet'in basılı kitaplarından; bilgi maddelerinde en/nl/de resmî karşılıklar, taslak durumu kaynağa bağlı; `docs/ILIM-YOLU-CEVIRI-KAYNAKLARI.md`; sessiz dua testi. İçerik commit'leri (main, `d1a68fba..3c7d235f`, fast-forward, 5 commit): `e115bd6d`, `35ffc399`, `5121bb20`, `7ffa2895`, `3c7d235f`.
