@@ -4,6 +4,43 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 12 Kasım 2026 (akşam, üçüncü) — vaaz: «İhlâs ve Samimiyet» (13 Kasım 2026 Cuma vaazı) beş dilde + duyuru
+
+- Zaman: 12 Kasım 2026, Europe/Brussels (CET). İki aşama:
+  - Türkçe: push 19.47 (`5226e235..25ebb881`), Pages
+    [run 43283490105](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/43283490105) **success**,
+    Türkçe sunum Release ≈19.54, canlı doğrulama 19.55.
+  - Çeviriler + duyurular: push 20.10 (`25ebb881..e1fecd70`), Pages
+    [run 43287492077](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/43287492077) **success**,
+    canlı doğrulama 20.16. **Yayımlandı ve canlı doğrulandı.**
+- Dayanak: kullanıcının isteği («geçtiğimiz haftalarda … paylaştığımız vaazlar gibi vaaz hazırla … full otonom ilerle,
+  bütün yetki ve karar sende»).
+- Kapsam:
+  - TR sayfa `src/content/vaazlar/ihlas-ve-samimiyet.md`: 19 temsilî sahne × 4 boy + `kapak-og.webp` (77 WebP), dört
+    ana fikir, 14 duraklı vaaz haritası, 29 Arapça blok, dokuz vektör şema, ihlâs sözleşmesi ve «Gündelik hayatta 40
+    niyet» eki.
+  - FR/EN/NL/DE çevirileri `src/content/vaaz-cevirileri/<dil>/ihlas-ve-samimiyet.md`.
+  - Beş dilde Word/PDF `public/vaazlar/…`: 15 sayfa; PDF'ler 0,88–1,06 MB.
+  - TR/FR duyuru `src/content/duyurular/{tr,fr}/cuma-vaazi-ihlas-ve-samimiyet.md` (FR duyuru bu hafta Fransızca
+    Word/PDF/sunuma bağlanır).
+- Release `vaaz-ihlas-ve-samimiyet` (Latest yapılmadı): 10 dosya (5 dil × PowerPoint + sunum PDF, 112 slayt).
+  Türkçe sunum ≈19.54, FR/EN/NL/DE sunumları 21.13'te eklendi; canlı denetimde on dosyanın SHA-256'sı yerel teslimle
+  eşit (21.15). 20.16–21.13 arasında çeviri sayfalarındaki sunum bağlantıları henüz boştu.
+- İçerik commit'leri `25ebb881` (80 dosya) ve `e1fecd70` (14 dosya), dernek kimliği.
+- Kalite:
+  - `npm run dogrula`: 29 aşamanın 28'i geçti (derleme 1995 sayfa, `test:vaaz-pdf` dâhil). Düşen tek aşama
+    `test:okuma`'nın ses dosyası denetimi (165 «dosya yok»): okuma sesleri Git'te değildir, yayın çalışma kopyasında
+    yoktur; vaazla ilgisi yok. Zincir orada durduğu için kalan `test:ibadet`, `test:yarisma`, `test:hoca-mfa` ayrıca
+    çalıştırıldı: üçü de çıkış 0.
+  - `web/web_kontrol.mjs` yerel: beş dil 22 görünüm, axe 0, 87 dosya SHA-256 eşit. Canlı (21.15): beş dil 22
+    görünüm, axe 0, 87 dosya ve 10 sunum dosyası SHA-256 eşit.
+  - Çeviri denetimi fr/en/nl/de: HATA 0 (word, web, sunum, figur). Word 5 dil 15 sayfa, yazım 0.
+  - Sunum 5 dil 112 slayt, taşma 0, yazım 0, çakışma 0. Çeviri sunumlarının ek slaytlarında «40 niyet» maddeleri
+    slayta sığması için kısaltıldı; Word ve web'de tam hâlleri yayımlandı.
+  - Meâl kapısı: 32 âyet meâli + 1 kudsî hadis kaynak kaydının birebir dilimi.
+- Açık sınırlar: `npm run test:web` bu yayında çalıştırılmadı (geçen haftaki Cuma bandı testleri vaazdan bağımsız
+  düşüyordu). Sahne görselleri yapay zekâ üretimi temsilî illüstrasyondur.
+
 ## 12 Kasım 2026 (akşam, ikinci) — Hoca ekranı: isteğe bağlı iki adımlı doğrulama (TOTP) istemcisi; henüz hiçbir hesapta etkin değil
 
 Din görevlisinin 12 Kasım 2026 kararıyla yayınlandı (isteğe bağlı, yalnız istemci). Europe/Brussels: push yaklaşık 17.25 (CET). Canlı Firebase projesinde, kurallarda, işlevlerde ve hesaplarda hiçbir değişiklik yapılmadı; hiçbir gerçek hesapla giriş yapılmadı.
