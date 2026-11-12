@@ -27,6 +27,8 @@ import { statSync } from 'node:fs';
 import { getCollection } from 'astro:content';
 import KursSayfasi from '../components/KursSayfasi.astro';
 import DersGunuKarti from '../components/DersGunuKarti.astro';
+import DilEtiketi from '../components/DilEtiketi.astro';
+import { kursCevirici } from '../lib/kurs-ceviri-yukle';
 import type { Gun, Metin } from '../components/DersGunuKarti.astro';
 import { ceviri, ilkHarfBuyuk, tarihBicimle, yerelKodu } from '@ortak/i18n/utils';
 import { yol } from '../lib/kurs-yollari';
@@ -218,15 +220,13 @@ const m = METIN[dil];
 const kartMetni: Metin = m;
 const mb = (b: number) => new Intl.NumberFormat(yerelKodu[dil], { maximumFractionDigits: 1 }).format(b / 1048576) + ' MB';
 const tarih = (iso: string, secenek: Intl.DateTimeFormatOptions) => tarihBicimle(new Date(iso + 'T12:00:00'), dil, secenek);
-/* İçerik (kalıcı materyal başlığı/açıklaması) yalnız TR+FR (nadiren EN) girilir (bkz. content.config.ts →
-   materyaller şeması); nl/de bugün EN'in de düştüğü Fransızcaya düşer (docs/DIL-NL-DE.md içerik geriye düşüş kuralı). */
-const uclu = (o: { tr?: string; fr?: string; en?: string } | undefined) => {
-  if (!o) return '';
-  const zincir: Record<Dil, (string | undefined)[]> = {
-    tr: [o.tr], fr: [o.fr, o.tr], en: [o.en, o.fr, o.tr], nl: [o.fr, o.tr], de: [o.fr, o.tr],
-  };
-  return zincir[dil].find(Boolean) ?? '';
-};
+/* İçerik (kalıcı materyal başlığı/açıklaması): CMS'te TR+FR (kimi zaman EN) girilir. en/nl/de için çeviri
+   src/data/kurs-ceviri/<dil>.json → kalici (dosya adına bağlı, Türkçe başlığın özetiyle eskime denetimli); elle girilmiş EN bindirmeden önce gelir.
+   Çevirisi olmayan öğe Fransızcaya/Türkçeye düşer; sonuçtaki `d` metnin gerçek dilidir (lang + görünür etiket). 12 Kasım 2026. */
+const cv = kursCevirici(dil);
+const kalMetin = (e: { id: string; data: { baslik: { tr: string; fr?: string; en?: string }; aciklama?: { tr?: string; fr?: string; en?: string } } }, alan: 'baslik' | 'aciklama') =>
+  cv.kalici(e.id, alan, e.data);
+const dilOz = (d: string) => (d !== dil ? d : undefined);
 
 /* Öne çıkan grubun başlık tarihi: tek gün ise «12 Eylül Cumartesi», iki gün ise «12 – 13 Eylül».
    Ay sınırını aşan hafta sonlarında (30 Eylül – 1 Ekim) iki ay adı da yazılır. */
@@ -325,9 +325,9 @@ const grupTarihi = (() => {
               <li class="satir" data-satir="kalici" data-kod={e.data.alan}>
                 <span class="satir-ad">
                   <span class="tur">{kategoriAdi[dil][e.data.kategori]}</span>
-                  <b>{uclu(e.data.baslik)}</b>
+                  <b lang={dilOz(kalMetin(e, 'baslik').d)}>{kalMetin(e, 'baslik').m}</b><DilEtiketi sayfa={dil} kaynak={kalMetin(e, 'baslik').d} />
                   {e.data.alan !== 'genel' && <span class="konu">{alanAdi[dil][e.data.alan]}</span>}
-                  {uclu(e.data.aciklama) && <span class="konu">{uclu(e.data.aciklama)}</span>}
+                  {kalMetin(e, 'aciklama').m && <span class="konu" lang={dilOz(kalMetin(e, 'aciklama').d)}>{kalMetin(e, 'aciklama').m}<DilEtiketi sayfa={dil} kaynak={kalMetin(e, 'aciklama').d} /></span>}
                   <span class="kucuk">{tarih(e.data.tarih.toISOString().slice(0, 10), { day: 'numeric', month: 'short', year: 'numeric' })}{boyut > 0 && ` · ${mb(boyut)}`}</span>
                 </span>
                 <a href={href} class="dugme dugme-ikincil dugme-kucuk" download={!disBag} target={disBag ? '_blank' : undefined} rel={disBag ? 'noopener' : undefined}>{disBag ? m.ac : m.indir}</a>

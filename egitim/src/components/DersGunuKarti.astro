@@ -15,6 +15,8 @@
 import { tarihBicimle, yerelKodu } from '@ortak/i18n/utils';
 import { yol } from '../lib/kurs-yollari';
 import type { Dil } from '@ortak/i18n/ui';
+import { kursCevirici } from '../lib/kurs-ceviri-yukle';
+import DilEtiketi from './DilEtiketi.astro';
 export type Dosya = { dosya: string; url: string; boyut: number };
 export type Sunum = Dosya & { no: number; saat: string; alan: string; kod: string; konu: string; konuFr?: string;
   baslik: { tr: string; fr: string }; slayt: number; pdf?: Dosya };
@@ -30,13 +32,22 @@ interface Props { g: Gun; dil: Dil; m: Metin; bugun: string; acik?: boolean }
 const { g, dil, m, bugun, acik = false } = Astro.props;
 const mb = (b: number) => new Intl.NumberFormat(yerelKodu[dil], { maximumFractionDigits: 1 }).format(b / 1048576) + ' MB';
 const tarih = (secenek: Intl.DateTimeFormatOptions) => tarihBicimle(new Date(g.tarih + 'T12:00:00'), dil, secenek);
-const konuMetni = (s: Sunum) => (dil === 'tr' ? s.konu : (s.konuFr || s.konu));
-const baslikMetni = (s: Sunum) => (dil === 'tr' ? s.baslik.tr : (s.baslik.fr || s.baslik.tr));
-const ekBaslik = (e: Ek) => (dil === 'tr' ? e.baslik.tr : (e.baslik.fr || e.baslik.tr));
+/* Çeviri (12 Kasım 2026): en/nl/de için src/data/kurs-ceviri/<dil>.json; çevirisi olmayan öğe Fransızcaya/Türkçeye düşer ve
+   sonuçtaki `d` metnin GERÇEK dilidir (lang özniteliği ve görünür dil etiketi ondan). tr/fr sayfaları eskisiyle aynı metni üretir. */
+const cv = kursCevirici(dil);
+const konuS = (s: Sunum) => cv.sunumKonu({ konu: s.konu, konuFr: s.konuFr });
+const baslikS = (b: { tr: string; fr?: string }) => cv.baslik(b);
+const konuMetni = (s: Sunum) => konuS(s).m;
+const baslikMetni = (s: Sunum) => baslikS(s.baslik).m;
+const ekBaslik = (e: Ek) => baslikS(e.baslik).m;
+/* Bir öğenin dili sayfa dilinden farklıysa lang yazılır (başlıkta/ekte yoktu: yanlış dilde okunuyordu). */
+const dilOz = (d: string) => (d !== dil ? d : undefined);
 const kodlar = [...new Set(g.sunumlar.map((s) => s.kod).filter(Boolean))].join(' ');
 const bugunMu = g.tarih === bugun;
 
 const ozet = g.sunumlar.map((s) => baslikMetni(s)).join(' · ');
+/* Özet satırında bir başlık sayfa dilinde değilse (çeviri bekliyor) her başlık kendi lang'ıyla ayrı yazılır; aksi hâlde düz metin kalır. */
+const ozetKarisik = g.sunumlar.some((s) => baslikS(s.baslik).d !== dil);
 const dosyaSayisi = (g.plan ? 1 : 0) + g.sunumlar.reduce((n, s) => n + 1 + (s.pdf ? 1 : 0), 0) + (g.ekler?.length ?? 0);
 /* Arama kutusu bu dizeyi tarar: tarih, hafta, ders başlıkları, konular ve alan adları. */
 const aranabilir = [
@@ -53,7 +64,9 @@ const aranabilir = [
         <span class="tarih-gun">{tarih({ weekday: 'long' })}</span></time>
     </span>
     <span class="orta">
-      <span class="ozet">{ozet}</span>
+      <span class="ozet">{ozetKarisik
+        ? g.sunumlar.map((s, i) => <>{i > 0 && ' · '}<span lang={baslikS(s.baslik).d}>{baslikMetni(s)}</span></>)
+        : ozet}</span>
       <span class="meta">{m.hafta(g.hafta)} · {m.dosyaSay(dosyaSayisi)}{bugunMu && <span class="bugun">{m.bugun}</span>}</span>
     </span>
     <span class="ok" aria-hidden="true"></span>
@@ -72,8 +85,8 @@ const aranabilir = [
         <li class="satir" data-satir="sunum" data-kod={s.kod}>
           <span class="satir-ad">
             <span class="etiket">{m.ders(s.no)} · {s.saat}</span>
-            <b class={'alan a-' + s.kod}>{baslikMetni(s)}</b>
-            <span class="konu" lang={dil === 'tr' || !s.konuFr ? 'tr' : 'fr'}>{konuMetni(s)}</span>
+            <b class={'alan a-' + s.kod} lang={dilOz(baslikS(s.baslik).d)}>{baslikMetni(s)}</b><DilEtiketi sayfa={dil} kaynak={baslikS(s.baslik).d} />
+            <span class="konu" lang={dil === 'tr' || dil === 'fr' ? (dil === 'tr' || !s.konuFr ? 'tr' : 'fr') : konuS(s).d}>{konuMetni(s)}</span><DilEtiketi sayfa={dil} kaynak={konuS(s).d} />
             <span class="kucuk">{m.slayt(s.slayt)}</span>
           </span>
           <span class="dugmeler">
@@ -90,7 +103,7 @@ const aranabilir = [
         <ul class="sunum-liste" role="list">
           {g.ekler!.map((e) => (
             <li class="satir" data-satir="ek">
-              <span class="satir-ad"><span class="tur">{e.tur}</span><b>{ekBaslik(e)}</b><span class="kucuk">{mb(e.boyut)}</span></span>
+              <span class="satir-ad"><span class="tur">{e.tur}</span><b lang={dilOz(baslikS(e.baslik).d)}>{ekBaslik(e)}</b><DilEtiketi sayfa={dil} kaynak={baslikS(e.baslik).d} /><span class="kucuk">{mb(e.boyut)}</span></span>
               <a href={e.url} class="dugme dugme-ikincil dugme-kucuk" download>{m.indir}</a>
             </li>
           ))}

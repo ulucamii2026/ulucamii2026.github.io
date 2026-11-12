@@ -17,9 +17,12 @@ import type { Dil } from '@ortak/i18n/ui';
 import govdeHam from '@ortak/data/mufredat-2026-2027.html?raw';
 import plan from '@ortak/data/yillik-plan-2026-2027.json';
 import meta from '@ortak/data/mufredat-meta.json';
+import DilEtiketi from '../components/DilEtiketi.astro';
+import { kursCevirici } from '../lib/kurs-ceviri-yukle';
 interface Props { dil: Dil }
 const { dil } = Astro.props;
 const t = ceviri(dil);
+const cv = kursCevirici(dil);
 
 const PDF = ANA_SITE + '/belgeler/kuran-kursu/Ulu-Camii-Kuran-Kursu-Mufredat-2026-2027.pdf';
 const HTML = ANA_SITE + '/belgeler/kuran-kursu/mufredat-2026-2027.html';
@@ -93,7 +96,13 @@ const ROZET: Record<string, { fr: string; en: string; nl: string; de: string }> 
   'Kurban Bayramı arifesi': { fr: "Veille de l'Aïd al-Adha", en: 'Eve of Eid al-Adha', nl: 'Vooravond van het Offerfeest', de: 'Vorabend des Opferfests' },
   'Bayram tatili': { fr: "Congé de l'Aïd", en: 'Eid holiday', nl: 'Feestvakantie', de: 'Festferien' },
 };
-const rozetAdi = (r: Rozet) => (dil === 'tr' ? r.metin.replace(/\s*\([^)]*\)\s*$/, '') : (ROZET[r.metin]?.[dil] ?? r.metin));
+/* Rozet adı + dili (12 Kasım 2026): tr kısa Türkçe ad; diğer dillerde önce elle yazılmış ROZET tablosu, sonra src/data/kurs-ceviri/<dil>.json,
+   çevirisi olmayan Türkçe kalır ve `d: 'tr'` ile işaretlenir (eskiden lang=dil içinde Türkçe duruyordu). */
+const rozetAdi = (r: Rozet): { ad: string; d: string } => {
+  if (dil === 'tr') return { ad: r.metin.replace(/\s*\([^)]*\)\s*$/, ''), d: 'tr' };
+  const el = ROZET[r.metin]?.[dil as 'fr' | 'en' | 'nl' | 'de'];
+  return el ? { ad: el, d: dil } : { ad: cv.rozet(r.metin).m, d: cv.rozet(r.metin).d };
+};
 
 const METIN = {
   tr: {
@@ -245,7 +254,7 @@ const SAAT_MODU: Record<string, Record<Dil, string>> = {
 
 type AyGun = { tarih: string; tur: 'normal' | 'pazartesi' | 'ramazan' | 'tatil'; ad: string; gecti: boolean; bugun: boolean; dersYok: boolean };
 type Ay = { anahtar: string; ad: string; dersGunu: number; ders: number; pazartesi: number; buAy: boolean;
-  rozetler: { tur: string; ad: string }[]; saatGecis?: string; gunler: AyGun[] };
+  rozetler: { tur: string; ad: string; d: string }[]; saatGecis?: string; gunler: AyGun[] };
 const aylar: Ay[] = [];
 let oncekiMod = '';
 for (const g of gunler) {
@@ -262,8 +271,8 @@ for (const g of gunler) {
   if (dersVar && g.gun === 'Pazartesi') ay.pazartesi++;
   for (const r of g.rozetler) {
     if (r.tur === 'pazartesi') continue;
-    const ad = rozetAdi(r);
-    if (!ay.rozetler.some((x) => x.ad === ad)) ay.rozetler.push({ tur: r.tur, ad });
+    const { ad, d } = rozetAdi(r);
+    if (!ay.rozetler.some((x) => x.ad === ad)) ay.rozetler.push({ tur: r.tur, ad, d });
   }
   if (oncekiMod && g.saatModu !== oncekiMod) ay.saatGecis = m.saatGecis(SAAT_MODU[g.saatModu]?.[dil] ?? g.saatModu, bicim(g.tarih, { day: 'numeric', month: 'long' }));
   oncekiMod = g.saatModu;
@@ -308,11 +317,11 @@ const surumMetni = bicim(meta.belgeSurumu, { day: 'numeric', month: 'long', year
           <ol class="toc-liste">
             {bolumler.map((b) => (
               <li>
-                <a href={'#' + b.ust.id} data-ad={`${b.ust.no} ${b.ust.ad}`}><span class="no">{b.ust.no}</span>{b.ust.ad}</a>
+                <a href={'#' + b.ust.id} data-ad={`${b.ust.no} ${b.ust.ad}`}><span class="no">{b.ust.no}</span>{dil === 'tr' ? b.ust.ad : <span lang="tr">{b.ust.ad}</span>}</a>
                 {b.alt.length > 0 && (
                   <ol>
                     {b.alt.map((a) => (
-                      <li><a href={'#' + a.id} data-ad={`${a.no} ${a.ad}`}><span class="no">{a.no}</span>{kodu(a.id) && <i class={'nokta n-' + kodu(a.id)} aria-hidden="true"></i>}{a.ad}</a></li>
+                      <li><a href={'#' + a.id} data-ad={`${a.no} ${a.ad}`}><span class="no">{a.no}</span>{kodu(a.id) && <i class={'nokta n-' + kodu(a.id)} aria-hidden="true"></i>}{dil === 'tr' ? a.ad : <span lang="tr">{a.ad}</span>}</a></li>
                     ))}
                   </ol>
                 )}
@@ -373,7 +382,7 @@ const surumMetni = bicim(meta.belgeSurumu, { day: 'numeric', month: 'long', year
               </ol>
               {(a.rozetler.length > 0 || a.pazartesi > 0 || a.saatGecis) && (
                 <ul class="ay-rozetler">
-                  {a.rozetler.map((r) => <li class={'rozet r-' + r.tur}>{r.ad}</li>)}
+                  {a.rozetler.map((r) => <li class={'rozet r-' + r.tur} lang={r.d !== dil ? r.d : undefined}>{r.ad}<DilEtiketi sayfa={dil} kaynak={r.d} /></li>)}
                   {a.pazartesi > 0 && <li class="rozet r-pazartesi">{m.pazartesi(a.pazartesi)}</li>}
                   {a.saatGecis && <li class="rozet r-saat">{a.saatGecis}</li>}
                 </ul>
@@ -401,11 +410,11 @@ const surumMetni = bicim(meta.belgeSurumu, { day: 'numeric', month: 'long', year
         <ol class="toc-liste">
           {bolumler.map((b) => (
             <li>
-              <a href={'#' + b.ust.id} data-ad={`${b.ust.no} ${b.ust.ad}`}><span class="no">{b.ust.no}</span>{b.ust.ad}</a>
+              <a href={'#' + b.ust.id} data-ad={`${b.ust.no} ${b.ust.ad}`}><span class="no">{b.ust.no}</span>{dil === 'tr' ? b.ust.ad : <span lang="tr">{b.ust.ad}</span>}</a>
               {b.alt.length > 0 && (
                 <ol>
                   {b.alt.map((a) => (
-                    <li><a href={'#' + a.id} data-ad={`${a.no} ${a.ad}`}><span class="no">{a.no}</span>{kodu(a.id) && <i class={'nokta n-' + kodu(a.id)} aria-hidden="true"></i>}{a.ad}</a></li>
+                    <li><a href={'#' + a.id} data-ad={`${a.no} ${a.ad}`}><span class="no">{a.no}</span>{kodu(a.id) && <i class={'nokta n-' + kodu(a.id)} aria-hidden="true"></i>}{dil === 'tr' ? a.ad : <span lang="tr">{a.ad}</span>}</a></li>
                   ))}
                 </ol>
               )}

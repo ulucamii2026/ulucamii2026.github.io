@@ -1,0 +1,27 @@
+---
+/**
+ * Dil etiketi (12 Kasım 2026): bir öğenin çevirisi henüz yoksa sayfa metni Fransızca/Türkçe gösterir; bu küçük etiket bunu görünür kılar.
+ * Metnin kendisi doğru `lang` ile işaretlenir (çağıran taraf); etiket yalnız `kaynak` sayfa dilinden farklıysa çıkar, yoksa hiçbir şey yazmaz.
+ * Ekran okuyucu tam cümleyi sayfa dilinde okur; görünen kısım yalnız dil kodudur.
+ */
+import type { Dil } from '@ortak/i18n/ui';
+interface Props { sayfa: Dil; kaynak: string }
+const { sayfa, kaynak } = Astro.props;
+const ADLAR: Record<string, Record<string, string>> = {
+  en: { fr: 'French', tr: 'Turkish' },
+  nl: { fr: 'het Frans', tr: 'het Turks' },
+  de: { fr: 'Französisch', tr: 'Türkisch' },
+};
+const CUMLE: Record<string, (ad: string) => string> = {
+  en: (ad) => `Not yet translated into English; text in ${ad}`,
+  nl: (ad) => `Nog niet vertaald naar het Nederlands; tekst in ${ad}`,
+  de: (ad) => `Noch nicht ins Deutsche übersetzt; Text auf ${ad}`,
+};
+const goster = (sayfa === 'en' || sayfa === 'nl' || sayfa === 'de') && kaynak !== sayfa && ADLAR[sayfa]?.[kaynak] && CUMLE[sayfa];
+const tam = goster ? CUMLE[sayfa](ADLAR[sayfa][kaynak]) : '';
+---
+{goster && <span class="dil-et" title={tam}><span aria-hidden="true">{kaynak.toUpperCase()}</span><span class="sr-only" lang={sayfa}>{tam}</span></span>}
+
+<style>
+  .dil-et { display: inline-block; margin-inline-start: 0.4em; padding: 0 0.35em; border: 1px solid var(--cizgi); border-radius: 3px; font-family: var(--font-mono); font-size: 0.68em; font-weight: 500; letter-spacing: 0.06em; line-height: 1.5; color: var(--metin-2); vertical-align: 0.1em; white-space: nowrap; }
+</style>

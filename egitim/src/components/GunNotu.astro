@@ -1,0 +1,18 @@
+---
+/**
+ * Yıllık plandaki gün notu / rozet (« · » ile birleşik Türkçe parçalar): tr ve fr sayfalarında eskisi gibi tek `lang="tr"` aralığı;
+ * en/nl/de sayfalarında her parça src/data/kurs-ceviri/<dil>.json → rozet ile çevrilir, çevirisi olmayan parça Türkçe kalır ve etiketlenir (12 Kasım 2026).
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import { kursCevirici } from '../lib/kurs-ceviri-yukle';
+import { notParcalari } from '@ortak/lib/kurs-ceviri.mjs';
+import DilEtiketi from './DilEtiketi.astro';
+interface Props { dil: Dil; not: string }
+const { dil, not } = Astro.props;
+const cv = kursCevirici(dil);
+const eskiBicim = dil === 'tr' || dil === 'fr';
+const parcalar = eskiBicim ? [] : notParcalari(not).map((p) => ({ ...cv.rozet(p) }));
+---
+{eskiBicim
+  ? <span lang="tr">{not}</span>
+  : <>{parcalar.map((p, i) => <>{i > 0 && ' · '}<span lang={p.d}>{p.m}</span><DilEtiketi sayfa={dil} kaynak={p.d} /></>)}</>}

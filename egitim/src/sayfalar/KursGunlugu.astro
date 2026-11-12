@@ -12,11 +12,12 @@
  *  - ders-defteri-2026-2027.json → 261 dersin konusu, kaynağı ve «…edebilirim» kazanımı
  *  - ders-ilerleme.json          → dersin durumu + haftanın evde tekrar/ezber notu
  *                                  (scripts/ders-ilerleme-uret.py haftalık üretir)
- *  - konular-fr.json / konular-en.json → konu başlıklarının FR/EN karşılığı
+ *  - konular-fr/en/nl/de.json   → konu başlıklarının karşılığı; src/data/kurs-ceviri/<dil>.json → en/nl/de kazanım, hafta notu, rozet
+ *                                  (12 Kasım 2026; çevirisi olmayan öğe Fransızcaya/Türkçeye düşer, doğru lang + dil etiketiyle; docs/KURS-CEVIRISI.md)
  *  - ders-materyalleri.json      → yalnız bağlantılar (plan PDF, sunum PDF)
  *
- * Ders içerikleri öğretim dili olan Türkçedir: kaynak adları ve rozet metinleri FR/EN
- * sayfalarda da Türkçe kalır (lang="tr"); kazanım cümlesi Fransızca yazılmıştır (lang="fr").
+ * Ders içerikleri öğretim dili olan Türkçedir: kaynak adları (kitap, sayfa) diğer dil sayfalarında da Türkçe kalır (lang="tr");
+ * konu başlığı, kazanım, hafta notu ve rozet sayfa dilindedir, çevirisi yoksa etiketli Fransızca/Türkçe.
  * «bugün» derleme anında Brüksel saatiyle hesaplanır; site her gece yeniden derlenir.
  */
 import KursSayfasi from '../components/KursSayfasi.astro';
@@ -28,8 +29,9 @@ import plan from '@ortak/data/yillik-plan-2026-2027.json';
 import defter from '@ortak/data/ders-defteri-2026-2027.json';
 import ilerleme from '@ortak/data/ders-ilerleme.json';
 import materyal from '@ortak/data/ders-materyalleri.json';
-import konularFr from '@ortak/data/konular-fr.json';
-import konularEn from '@ortak/data/konular-en.json';
+import DilEtiketi from '../components/DilEtiketi.astro';
+import GunNotu from '../components/GunNotu.astro';
+import { kursCevirici } from '../lib/kurs-ceviri-yukle';
 
 interface Props { dil: Dil }
 const { dil } = Astro.props;
@@ -70,18 +72,11 @@ const sayi = (n: number) => new Intl.NumberFormat(yerelKodu[dil]).format(n);
 /* Derleme anındaki Brüksel tarihi: «geçmiş / bugün / gelecek» ayrımının tek ölçütü. */
 const bugun = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Brussels', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
 
-/* ——— Konu başlığı: tr → konu, fr → sözlük FR, en → sözlük EN (yoksa FR, yoksa tr).
-   nl/de için ayrı bir sözlük yok: konu yalnız TR+FR (+kısmen EN) çevrilmiştir; nl/de bugün
-   en'in de düştüğü Fransızcaya düşer (docs/DIL-NL-DE.md içerik geriye düşüş kuralı). */
-const sozlukFr = konularFr as Record<string, string>;
-const sozlukEn = konularEn as Record<string, string>;
-const konuBasligi = (konu: string) => {
-  const zincir: Record<Dil, (string | undefined)[]> = {
-    tr: [konu], fr: [sozlukFr[konu], konu], en: [sozlukEn[konu], sozlukFr[konu], konu],
-    nl: [sozlukFr[konu], konu], de: [sozlukFr[konu], konu],
-  };
-  return zincir[dil].find(Boolean) ?? konu;
-};
+/* ——— Çeviri (12 Kasım 2026): konu başlığı, kazanım, hafta notu ve rozetler src/lib/kurs-ceviri.mjs ile gelir.
+   tr → kaynak, fr → kaynağın Fransızcası, en/nl/de → konular-<dil>.json + src/data/kurs-ceviri/<dil>.json; çevirisi olmayan öğe
+   Fransızcaya (yoksa Türkçeye) düşer. Her sonuç { m, d }: d metnin gerçek dili — lang özniteliği ve görünür dil etiketi ondan. ——— */
+const cv = kursCevirici(dil);
+const dilOz = (d: string) => (d !== dil ? d : undefined);
 
 /* ——— Saat: yıllık plandan (gün bazında yaz/kış saati zaten doğru) ——— */
 const saatler = new Map<string, string>();
@@ -141,7 +136,7 @@ const cumartesiBul = (hafta: number) => {
 const haftalar = haftaSiralari.map((hafta) => {
   const kendiGunleri = gecmisGunler.filter((g) => g.hafta === hafta).sort((a, b) => a.tarih.localeCompare(b.tarih));
   const cumartesi = cumartesiBul(hafta);
-  return { hafta, gunler: kendiGunleri, not: haftaNotlari[cumartesi] ?? null };
+  return { hafta, gunler: kendiGunleri, not: haftaNotlari[cumartesi] ?? null, notKey: cumartesi };
 });
 /* «Tamamlanan hafta»: bütün ders günleri geçmişte kalan haftalar. */
 const tamamlananHafta = [...new Set(dersGunleri.map((g) => g.hafta))]
@@ -164,8 +159,8 @@ const TUR_ADI: Record<Dil, Record<string, string>> = {
   nl: { tatil: 'Vakantie', bayram: 'Feest (Bayram)', kandil: 'Gezegende nacht', ramazan: 'Ramadan', pazartesi: 'Extra maandagles' },
   de: { tatil: 'Ferien', bayram: 'Fest (Bayram)', kandil: 'Gesegnete Nacht', ramazan: 'Ramadan', pazartesi: 'Zusätzliche Montagsstunde' },
 };
-const takvimNotlari = rozetler.slice(0, 4).map((r) => ({ tarih: r.tarih, etiket: TUR_ADI[dil][r.tur] ?? '', metin: r.metin, tr: true }));
-if (kisGunu && bugun <= kisGunu) takvimNotlari.push({ tarih: kisGunu, etiket: '', metin: '', tr: false });
+const takvimNotlari = rozetler.slice(0, 4).map((r) => ({ tarih: r.tarih, etiket: TUR_ADI[dil][r.tur] ?? '', metin: r.metin, ...cv.rozet(r.metin), tr: true }));
+if (kisGunu && bugun <= kisGunu) takvimNotlari.push({ tarih: kisGunu, etiket: '', metin: '', m: '', d: dil, tr: false });
 takvimNotlari.sort((a, b) => a.tarih.localeCompare(b.tarih));
 
 /* ——— Bir günün ders satırları ——— */
@@ -177,9 +172,9 @@ const satirlar = (g: PlanGun) =>
     saat: saatler.get(`${g.tarih}_${d.sira}`) ?? '',
     kod: d.kod,
     konuTr: d.konu,
-    baslik: konuBasligi(d.konu),
+    baslik: cv.konu(d.konu),
     kaynak: d.kaynak,
-    hedef: dil === 'tr' ? d.goal_tr : d.goal_fr,
+    hedef: cv.hedef(d),
     durum: durumOku(d.id),
     sunum: sunumPdf(g.tarih, d.sira),
   }));
@@ -384,13 +379,13 @@ const ilerlemeMetni = `${sayi(gecmisGunler.length)} / ${sayi(toplamGun)} · ${or
         <h2 id="sonraki-b" class="sonraki-baslik">
           <time datetime={sonrakiGun.tarih}>{bicim(sonrakiGun.tarih, { day: 'numeric', month: 'long', year: 'numeric', weekday: 'long' })}</time>
         </h2>
-        <p class="mt-1 etiket">{m.hafta(sonrakiGun.hafta)}{sonrakiGun.not && <> · <span lang="tr">{sonrakiGun.not}</span></>}</p>
+        <p class="mt-1 etiket">{m.hafta(sonrakiGun.hafta)}{sonrakiGun.not && <> · <GunNotu dil={dil} not={sonrakiGun.not} /></>}</p>
         <ol class="sonraki-liste" role="list">
           {satirlar(sonrakiGun).map((d) => (
             <li>
               <span class="saat mono">{d.saat}</span>
               <span class:list={['alan-rozet', 'a-' + d.kod]}>{ALAN_ADI[dil][d.kod]}</span>
-              <span class="konu">{d.baslik}</span>
+              <span class="konu" lang={dilOz(d.baslik.d)}>{d.baslik.m}</span><DilEtiketi sayfa={dil} kaynak={d.baslik.d} />
               {d.kaynak && <span class="kaynak" lang="tr">{d.kaynak}</span>}
             </li>
           ))}
@@ -424,10 +419,10 @@ const ilerlemeMetni = `${sayi(gecmisGunler.length)} / ${sayi(toplamGun)} · ${or
                     <span class="saat mono">{d.saat}</span>
                     <span class:list={['alan-rozet', 'a-' + d.kod]}>{ALAN_ADI[dil][d.kod]}</span>
                     <span class="ders-govde">
-                      <b class="konu">{d.baslik}</b>
+                      <b class="konu" lang={dilOz(d.baslik.d)}>{d.baslik.m}</b><DilEtiketi sayfa={dil} kaynak={d.baslik.d} />
                       {dil !== 'tr' && <small class="konu-tr" lang="tr">{d.konuTr}</small>}
                       {d.kaynak && <small class="kaynak" lang="tr">{d.kaynak}</small>}
-                      {d.hedef && <small class="hedef" lang={dil === 'tr' ? undefined : 'fr'}>{d.hedef}</small>}
+                      {d.hedef.m && <small class="hedef" lang={dil === 'tr' ? undefined : d.hedef.d}>{d.hedef.m}<DilEtiketi sayfa={dil} kaynak={d.hedef.d} /></small>}
                     </span>
                     <span class="ders-durum">
                       {d.durum && <span class:list={['durum', 'd-' + d.durum]}>{DURUM_ADI[dil][d.durum]}</span>}
@@ -465,10 +460,10 @@ const ilerlemeMetni = `${sayi(gecmisGunler.length)} / ${sayi(toplamGun)} · ${or
                       <span class="saat mono">{d.saat}</span>
                       <span class:list={['alan-rozet', 'a-' + d.kod]}>{ALAN_ADI[dil][d.kod]}</span>
                       <span class="ders-govde">
-                        <b class="konu">{d.baslik}</b>
+                        <b class="konu" lang={dilOz(d.baslik.d)}>{d.baslik.m}</b><DilEtiketi sayfa={dil} kaynak={d.baslik.d} />
                         {dil !== 'tr' && <small class="konu-tr" lang="tr">{d.konuTr}</small>}
                         {d.kaynak && <small class="kaynak" lang="tr">{d.kaynak}</small>}
-                        {d.hedef && <small class="hedef" lang={dil === 'tr' ? undefined : 'fr'}>{d.hedef}</small>}
+                        {d.hedef.m && <small class="hedef" lang={dil === 'tr' ? undefined : d.hedef.d}>{d.hedef.m}<DilEtiketi sayfa={dil} kaynak={d.hedef.d} /></small>}
                       </span>
                       <span class="ders-durum">
                         <span class:list={['durum', d.durum ? 'd-' + d.durum : 'd-bekliyor']}>
@@ -482,23 +477,28 @@ const ilerlemeMetni = `${sayi(gecmisGunler.length)} / ${sayi(toplamGun)} · ${or
               </article>
             ))}
 
-            {h.not && (dil === 'tr' ? (h.not.odev?.tr || h.not.ezber?.tr) : (h.not.odev?.fr || h.not.ezber?.fr)) && (
-              <div class="hafta-not">
-                <h4>{m.notBaslik}</h4>
-                {(dil === 'tr' ? h.not.odev?.tr : h.not.odev?.fr) && (
-                  <>
-                    <p class="etiket">{m.notOdev}</p>
-                    <p class="not-metin" lang={dil === 'tr' ? undefined : 'fr'}>{dil === 'tr' ? h.not.odev!.tr : h.not.odev!.fr}</p>
-                  </>
-                )}
-                {(dil === 'tr' ? h.not.ezber?.tr : h.not.ezber?.fr) && (
-                  <>
-                    <p class="etiket">{m.notEzber}</p>
-                    <p class="not-metin" lang={dil === 'tr' ? undefined : 'fr'}>{dil === 'tr' ? h.not.ezber!.tr : h.not.ezber!.fr}</p>
-                  </>
-                )}
-              </div>
-            )}
+            {(h.not?.odev || h.not?.ezber) && (() => {
+              const odev = cv.hafta(h.notKey, 'odev', h.not!.odev);
+              const ezber = cv.hafta(h.notKey, 'ezber', h.not!.ezber);
+              const dilNot = (x: { d: string }) => (dil === 'tr' ? undefined : x.d);
+              return (odev.m || ezber.m) && (
+                <div class="hafta-not">
+                  <h4>{m.notBaslik}</h4>
+                  {odev.m && (
+                    <>
+                      <p class="etiket">{m.notOdev}</p>
+                      <p class="not-metin" lang={dilNot(odev)}>{odev.m}<DilEtiketi sayfa={dil} kaynak={odev.d} /></p>
+                    </>
+                  )}
+                  {ezber.m && (
+                    <>
+                      <p class="etiket">{m.notEzber}</p>
+                      <p class="not-metin" lang={dilNot(ezber)}>{ezber.m}<DilEtiketi sayfa={dil} kaynak={ezber.d} /></p>
+                    </>
+                  )}
+                </div>
+              );
+            })()}
           </div>
         </details>
       ))}
@@ -538,7 +538,7 @@ const ilerlemeMetni = `${sayi(gecmisGunler.length)} / ${sayi(toplamGun)} · ${or
           <li>
             <time datetime={r.tarih} class="mono">{bicim(r.tarih, { day: 'numeric', month: 'short' })}</time>
             {r.tr
-              ? <span>{r.etiket && <b class="takvim-tur">{r.etiket} · </b>}<span lang="tr">{r.metin}</span></span>
+              ? <span>{r.etiket && <b class="takvim-tur">{r.etiket} · </b>}<span lang={dil === 'tr' || dil === 'fr' ? 'tr' : r.d}>{r.m}</span><DilEtiketi sayfa={dil} kaynak={r.d} /></span>
               : <span>{m.kis(bicim(r.tarih, { day: 'numeric', month: 'long', year: 'numeric' }))}</span>}
           </li>
         ))}
