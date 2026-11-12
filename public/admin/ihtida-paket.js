@@ -157,8 +157,8 @@ export async function ihtidaPaketiUret(g) {
   if (uyarilar.includes('vesikalik-gomulemedi')) throw new Error('Vesikalık fotoğraf okunamadı. JPEG veya PNG yükleyin.');
   if (uyarilar.includes('alan-kisaltildi') || uyarilar.includes('yazi-kucuk')) throw new Error('Bazı bilgiler EK-9 alanına okunur biçimde sığmıyor. Bilgileri kontrol ederek ayrı EK-9 oluşturun.');
 
-  // Dilekçe, töreni ve tarihini beyan eder: ön başvuruda ihtida tarihi ve yer-tarih boş kalır (tören henüz bilinmiyor);
-  // son nüshada yer ve tarih törenin yeri ve günüdür (Koordinatörlük emsali).
+  // Dilekçe, töreni ve tarihini beyan eder: ön başvuruda ihtida tarihi boş kalır (tören henüz bilinmiyor).
+  // «Yer ve tarih» satırı ise imza tarihidir (karar 2 Kasım 2026): her nüshada EK-10 ile aynı beyan tarihi.
   // İMZA (Rıdvan'ın 23 Eki 2026 kararı: «bundan sonra tek bir imza hem belgeye hem dilekçeye hem de açık rıza
   // metninin olduğu ek belgeye otomatik basılsın»): başvuran ekranda imza attıysa ve izin verdiyse (izin, imzalı
   // gönderimde zorunludur) AYNI imza ön başvuruda da, son nüshada da EK-9'a, dilekçeye ve EK-10'a basılır.
@@ -169,7 +169,8 @@ export async function ihtidaPaketiUret(g) {
     sablonAdresBytes: g.dilekceAdresSablonBytes,
     // v.dilekce: başvuranın kendi beyanı (son nüsha ekranındaki EK-9 düzeltmeleri dilekçeye girmez).
     veri: { ...v, ...(v.dilekce || {}), ihtidaTarihi: sonNusha ? v.ihtidaTarihi : '' },
-    yerTarih: sonNusha ? `${cami.sehir || 'Marche-en-Famenne'}, ${v.ihtidaTarihi}` : '',
+    // KARAR 2 Kasım 2026: «Yer ve tarih» imza tarihidir (EK-10 ile aynı v.beyanTarihi); ihtida tarihi değil.
+    yerTarih: `${cami.sehir || 'Marche-en-Famenne'}, ${v.beyanTarihi}`,
     imza: aktarim ? imza.basvuranImza : '', imzaVektor: aktarim ? imza.basvuranImzaVektor : '',
     imzaAktarimIzni: aktarim,
   });

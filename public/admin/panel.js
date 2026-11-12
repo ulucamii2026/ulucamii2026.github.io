@@ -1218,7 +1218,8 @@ async function dilekceUretimi(dugme) {
       pdfLib: ek9Modul.pdfLib, fontkit: ek9Modul.fontkit,
       fontBytes: ek9Kaynak.font, kalemFontBytes: ek9Kaynak.kalem, sablonBytes: ek9Kaynak.dilekceSablon,
       sablonAdresBytes: ek9Kaynak.dilekceAdresSablon,
-      yerTarih: torenTarihi ? `${camiBilgisi.sehir}, ${torenTarihi}` : '',
+      // «Yer ve tarih» imza tarihidir (karar 2 Kasım 2026; paket yolundaki EK-10 ile aynı kaynak), ihtida tarihi değil.
+      yerTarih: `${camiBilgisi.sehir}, ${ham ? ek9Tarih(k['Zaman damgası']) : bugunTR()}`,
       imzaAktarimIzni: Boolean(imza),
       imzaVektor: imza ? (j.basvuranImzaVektor || j.gorseller?.imzaVektor || '') : '',
       veri: {

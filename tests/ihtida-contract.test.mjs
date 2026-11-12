@@ -316,6 +316,15 @@ test('Tam paket Müşavirlik sırasıyla yedi sayfadır; kalem yazısı, vektör
   const dilekceMetni = (yol) => metin(yol, 3).replace(/[ 	]+/g, '');
   assert.ok(!dilekceMetni(onYol).includes('08/09/2026'), 'ön başvuruda tören tarihi uydurulmaz');
   assert.ok(dilekceMetni(imzaliYol).includes('08/09/2026'), 'son nüshada tören tarihi dilekçededir');
+  // Karar 2 Kasım 2026: dilekçedeki «Yer ve tarih» imza tarihidir (EK-10 ile aynı), ihtida tarihi değil; EK-9 ihtida tarihini korur.
+  // Fikstür: beyan 09/09/2026 ≠ ihtida 08/09/2026.
+  for (const [ad, yol] of [['son nüsha', imzaliYol], ['ön başvuru', onYol]]) {
+    const d = dilekceMetni(yol), e10 = metin(yol, 5).replace(/[ \t]+/g, '');
+    assert.ok(d.includes('Marche-en-Famenne,09/09/2026'), ad + ': yer-tarih satırı imza tarihi');
+    assert.ok(!d.includes('Marche-en-Famenne,08/09/2026'), ad + ': yer-tarih satırında ihtida tarihi olmaz');
+    assert.ok(e10.includes('09/09/2026'), ad + ': EK-10 aynı imza tarihini taşır');
+  }
+  assert.ok(metin(imzaliYol, 2).replace(/\s+/g, '').includes('08/09/2026'), 'EK-9 ihtida tarihini korur');
   // Ekranda imza atmayan başvuran (elle imza): ön başvuruda da hiçbir belgeye imza basılmaz.
   const onImzasiz = await ihtidaPaketiUret({ ...g, onBasvuru: true, veri: { ...g.veri, ihtidaTarihi: '' }, basvuranImza: '', basvuranImzaVektor: '', imzasiz: true, ek10Onayi: false, imzaAktarimIzni: false });
   const oi = await pdfLib.PDFDocument.load(onImzasiz);
@@ -360,7 +369,7 @@ test('Tam paket Müşavirlik sırasıyla yedi sayfadır; kalem yazısı, vektör
   const namur = metin(namurYol, 3).replace(/[ \t]+/g, '');
   assert.ok(namur.includes('NamurCamii'), 'dilekçede başvuru camisi');
   assert.ok(namur.includes('RueDenisGeorgesBayar13,5000Namur'), 'cami adresi «adres, posta kodu şehir»');
-  assert.ok(namur.includes('Namur,08/09/2026'), 'yer ve tarih törenin yeri ve günü');
+  assert.ok(namur.includes('Namur,09/09/2026') && !namur.includes('Namur,08/09/2026'), 'yer ve tarih: başvuru camisinin şehri ve imza tarihi (ihtida tarihi değil)');
   assert.ok(namur.includes('RueduTest12,6900,Marche-en-Famenne,Belçika'), 'eve teslimde dönüş adresi başvuranın adresi');
   // 21 Eki 2026: eve teslimde formun «adrese teslim» baskısı: dönüş bölümü «adres · Alıcı», «cami» değil.
   // Bölüm başlıkları metin katmanında büyük harf ve harf aralıklı gelir (boşluklar atıldı).
