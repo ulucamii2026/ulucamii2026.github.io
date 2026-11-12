@@ -87,9 +87,14 @@ for (const i of bildirim?.icons ?? []) {
   kontrol(`bildirim simgesi ${i.src}`, y.status === 200 && (i.type ? new RegExp(i.type.split('/')[1].split('+')[0]).test(y.headers.get('content-type') ?? '') : true), `${y.status} ${y.headers.get('content-type')}`);
 }
 for (const dil of DILLER) {
+  // 12 Kasım 2026: her dil kendi bildirimini bağlar (Türkçe eski adresinde kaldı); dosyanın kendisi de denetlenir.
+  const bildirimYolu = dil === 'tr' ? '/manifest.webmanifest' : `/manifest.${dil}.webmanifest`;
+  const by = await getir(bildirimYolu);
+  const b = await by.json().catch(() => null);
+  kontrol(`${bildirimYolu} 200, dil ve başlangıç adresi`, by.status === 200 && b?.lang === dil && b?.scope === '/' && (dil === 'tr' ? b?.start_url === '/' : b?.start_url === `/${dil}/`), `${by.status} ${b?.lang ?? 'yok'} ${b?.start_url ?? 'yok'}`);
   const y = await getir(`/${dil}/cevrimdisi/`);
   const h = await y.text();
-  kontrol(`/${dil}/cevrimdisi/ 200, noindex, manifest bağlantılı, no-cache`, y.status === 200 && /<meta name="robots" content="noindex, nofollow">/.test(h) && h.includes('<link rel="manifest" href="/manifest.webmanifest">') &&
+  kontrol(`/${dil}/cevrimdisi/ 200, noindex, manifest bağlantılı, no-cache`, y.status === 200 && /<meta name="robots" content="noindex, nofollow">/.test(h) && h.includes(`<link rel="manifest" href="${bildirimYolu}">`) &&
     y.headers.get('cache-control') === 'no-cache' && h.includes('data-cd-sayfa'), `${y.status} ${y.headers.get('cache-control')}`);
 }
 const robots = await getir('/robots.txt');
