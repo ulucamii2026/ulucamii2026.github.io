@@ -1,3 +1,4 @@
+import { hocaDiliBaslat } from './hoca-dil';
 import { hocaOdevi } from './hoca-odev';
 import { kitaplarHtml, hocaKitaplari } from './hoca-kitaplari';
 import { ETKINLIKLER } from '../lib/ogrenme-icerigi';
@@ -84,6 +85,7 @@ export async function hocaEkrani(): Promise<void> {
   const kok = document.getElementById('hoca-ekrani');
   const veriEl = document.getElementById('hoca-veri');
   if (!kok || !veriEl) return;
+  hocaDiliBaslat(kok); // 12 Kasım 2026: arayüz dili (tr varsayılan) + dil seçici; metinler src/i18n/hoca-metin/
   const veri = JSON.parse(veriEl.textContent || '{}') as Veri;
   const kuranSirasi = veri.gunler.flatMap((g) => g.dersler.filter((x) => x.kod === 'kuran').map((x) => ({ tarih: g.tarih, konu: x.konu }))).filter((x, i, d) => d.findIndex((y) => y.konu === x.konu) === i); // her Kur'an konusu bir adım (ilk işlendiği gün)
   const haftalar = odevHaftalari(veri.gunler); // Tek kayıt anahtarı: haftanın ilk gerçek ders günü.
