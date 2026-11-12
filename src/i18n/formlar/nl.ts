@@ -226,7 +226,10 @@ export const nl: FormMetinleri = {
     kimlikNotu: 'Om het bekeringsattest (EK-9) te kunnen opmaken, zijn een pasfoto, de voor- en achterkant van uw identiteitsbewijs en uw handtekening nodig; u laadt ze op in onderdeel 5 en tekent uw handtekening op het scherm. U hoeft uw rijksregisternummer niet apart in te vullen. Alle gegevens en documenten van uw aanvraag worden zowel in onze moskee als bij de bevoegde dienst van het Presidium voor Godsdienstzaken (Diyanet) in België bewaard; ze worden nooit gepubliceerd en alleen bevoegde medewerkers zien ze.',
     bolum: { kisi: 'Persoonlijke gegevens', durum: 'Situatie', iletisim: 'Contactgegevens', ihtida: 'Bekering en plechtigheid', belgeler: 'Documenten en handtekening', riza: 'Toestemming en verklaring', ozet: 'Overzicht en verzending' },
     kisi: {
-      adSoyad: 'Uw naam en voornaam', adSoyadYardim: 'Zoals op uw identiteitsbewijs; deze naam komt op het attest.',
+      ad: 'Voornaam', soyad: 'Achternaam', adSoyadYardim: 'Zoals op uw identiteitsbewijs; deze naam komt op het attest.',
+      // 12 Kas 2026: 18 yaşından küçükler çevrim içi başvuru yapamaz (din görevlisi kararı); metin yalnız bu çevrim içi başvuruyla ilgilidir.
+      yasAltiKisa: 'Deze online aanvraag is bedoeld voor personen die 18 jaar of ouder zijn.',
+      yasAltiBilgi: 'Deze online aanvraag is bedoeld voor personen die 18 jaar of ouder zijn. Bent u jonger dan 18, dan kunnen wij uw aanvraag hier helaas niet in ontvangst nemen. Voor vragen kunt u onze moskee bezoeken of schrijven naar info@ulucamii.be; wij helpen u graag.',
       cinsiyet: 'Geslacht', kadin: 'Vrouw', erkek: 'Man',
       dogumTarihi: 'Geboortedatum', dogumYeri: 'Geboorteplaats', dogumYeriYardim: 'Stad en land', uyruk: 'Nationaliteit',
       anneAdi: 'Voornaam van de moeder', babaAdi: 'Voornaam van de vader',

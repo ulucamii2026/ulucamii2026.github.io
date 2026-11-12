@@ -18,8 +18,8 @@ import { ek10SurumuCoz } from '../public/admin/ek10.js';
 import { adBicimleri } from '../public/admin/kalem.js';
 import { pdfMetni } from './yardim/pdf-metin.mjs';
 
-const source = ['kimlik-sabitler.gs', 'veli-eposta-sablon.gs', 'ulucamii-Kod-v47.gs'].map(ad => readFileSync(new URL('../scripts/apps-script/' + ad, import.meta.url), 'utf8')).join('\n');
-function backend() { const ctx = vm.createContext({ console, PropertiesService: { getScriptProperties: () => ({ getProperty: () => null }) } }); vm.runInContext(source, ctx); ctx.IhtidaPdf = { camiCoz, imzaVektorCoz }; return ctx; }
+const source = ['kimlik-sabitler.gs', 'veli-eposta-sablon.gs', 'ulucamii-Kod-v48.gs'].map(ad => readFileSync(new URL('../scripts/apps-script/' + ad, import.meta.url), 'utf8')).join('\n');
+function backend() { const ctx = vm.createContext({ console, PropertiesService: { getScriptProperties: () => ({ getProperty: () => null }) }, Utilities: { formatDate: (d, tz, f) => f === 'yyyy-MM-dd' ? new Intl.DateTimeFormat('en-CA', { timeZone: tz, year: 'numeric', month: '2-digit', day: '2-digit' }).format(d) : '' } }); vm.runInContext(source, ctx); ctx.IhtidaPdf = { camiCoz, imzaVektorCoz }; return ctx; }
 const govde = () => ({
   sir: 'ULUCAMII-IHTIDA-2026', dil: 'tr', gonderimAnahtari: 'test-islem-2099-9999',
   basvuran: { adSoyad: 'Deniz Örnek', cinsiyet: 'kadin', dogumTarihi: '1990-05-20', dogumYeri: 'Namur', uyruk: 'Belçika', anneAdi: 'Anne', babaAdi: 'Baba', medeniHali: 'bekar', ogrenimDurumu: 'Lisans', meslek: 'Öğretmen', oncekiDin: 'Belirtilen inanç', eposta: 'deniz@example.test', telefon: '+32470000000', adres: 'Rue du Test 12, 6900, Marche-en-Famenne, Belçika', adresSokak: 'Rue du Test 12', postaKodu: '6900', sehir: 'Marche-en-Famenne', ulke: 'Belçika', torenDili: 'tr' },
@@ -177,7 +177,7 @@ test('Defter ve bildirim teslim seçimini kaybetmez; eski sütun sırası deği�
   c.ihtidaPaketKuyrugaAl = () => {}; c.ihtidaPaketIsle = async () => {};
   c.v1SayfaBulTablo = () => null; c.referansMaxBul = () => 9999;
   c.LockService = { getScriptLock: () => ({ waitLock() {}, releaseLock() {} }) };
-  c.Utilities = { formatDate: () => '08.09.2026 12:00' };
+  c.Utilities = { formatDate: (_d, _tz, f) => f === 'yyyy-MM-dd' ? '2026-09-08' : '08.09.2026 12:00' };
   c.htmlPdfUret = () => ({}); c.ihtidaGorselleriKaydet = () => [];
   c.satirEkle = (_, s) => { satir = s; }; c.SpreadsheetApp = { flush() {} };
   c.epostaGonder = m => mesajlar.push(m); c.ihtidaKopyaGonderV2 = () => {};

@@ -224,7 +224,10 @@ export const tr: FormMetinleri = {
     kimlikNotu: 'İhtida Belgesi’nin (EK-9) düzenlenebilmesi için bir vesikalık fotoğraf, kimlik belgenizin ön ve arka yüzü ve imzanız gerekir; bunları formun 5. bölümünde yükler, imzanızı ekranda çizersiniz. Kimlik numaranızı ayrıca yazmanız gerekmez. Başvurunuza ilişkin her türlü bilgi ve belge hem camimizde hem de Diyanet İşleri Başkanlığı’nın Belçika’daki yetkili biriminde saklanır; yayımlanmaz, yalnız yetkili görevliler görür.',
     bolum: { kisi: 'Kişisel bilgiler', durum: 'Durum', iletisim: 'İletişim', ihtida: 'İhtida ve tören', belgeler: 'Belgeler ve imza', riza: 'Rıza ve beyan', ozet: 'Özet ve gönderim' },
     kisi: {
-      adSoyad: 'Adınız ve soyadınız', adSoyadYardim: 'Kimlik belgenizde yazdığı gibi; belgeye bu ad basılır.',
+      ad: 'Ad', soyad: 'Soyad', adSoyadYardim: 'Kimlik belgenizde yazdığı gibi; belgeye bu ad basılır.',
+      // 12 Kas 2026: 18 yaşından küçükler çevrim içi başvuru yapamaz (din görevlisi kararı); metin yalnız bu çevrim içi başvuruyla ilgilidir.
+      yasAltiKisa: 'Bu çevrim içi başvuru 18 yaşını doldurmuş kişiler içindir.',
+      yasAltiBilgi: 'Bu çevrim içi başvuru 18 yaşını doldurmuş kişiler içindir. 18 yaşından küçükseniz başvurunuzu buradan alamıyoruz. Sorularınız için camimize gelebilir veya info@ulucamii.be adresine yazabilirsiniz; size memnuniyetle yardımcı oluruz.',
       cinsiyet: 'Cinsiyet', kadin: 'Kadın', erkek: 'Erkek',
       dogumTarihi: 'Doğum tarihi', dogumYeri: 'Doğum yeri', dogumYeriYardim: 'Şehir ve ülke', uyruk: 'Uyruk',
       anneAdi: 'Anne adı', babaAdi: 'Baba adı',

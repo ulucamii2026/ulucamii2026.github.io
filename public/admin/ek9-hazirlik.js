@@ -143,6 +143,28 @@ export function sahitUnvani(ad, camiId = 'ulucamii-marche') {
   return camiId === 'ulucamii-marche' && anahtar === 'ercan' ? 'Dernek Başkanı' : '';
 }
 
+/* 12 Kas 2026 (din görevlisi kararı: «18 yaşından küçükler başvuru yapamasın»): yeni çevrim içi başvurular 18 yaşından küçüklere
+   kapalıdır (istemci src/lib/ihtida-yas.ts, sunucu v48). Defterde önceden kalmış bir kayıt silinmez ya da yeniden doğrulanmaz; belge
+   üretimi çalışmaya devam eder. Görevli kaydı açınca yalnız UYARI görür. Kural istemcidekiyle aynıdır: yaş, başvuru gününe göre;
+   29 Şubat doğumlu kişi, 18. yılı artık yıl değilse 1 Mart'ta 18 olur. Tarihler «gg.aa.yyyy», «gg/aa/yyyy» ya da «yyyy-aa-gg» gelebilir. */
+export const IHTIDA_ASGARI_YAS = 18;
+const tarihParcala = (deger) => {
+  const t = String(deger ?? '').trim();
+  const e = /^(\d{2})[./](\d{2})[./](\d{4})/.exec(t) || /^(\d{4})-(\d{2})-(\d{2})/.exec(t);
+  if (!e) return '';
+  return t[2] === '.' || t[2] === '/' ? `${e[3]}-${e[2]}-${e[1]}` : `${e[1]}-${e[2]}-${e[3]}`;
+};
+export function ihtidaYasUyarisi(kayit) {
+  const dogum = tarihParcala(kayit?.['Doğum tarihi']), basvuru = tarihParcala(kayit?.['Zaman damgası']);
+  if (!dogum || !basvuru) return '';
+  const yil = Number(dogum.slice(0, 4)) + IHTIDA_ASGARI_YAS;
+  let ay = dogum.slice(5, 7), gun = dogum.slice(8, 10);
+  const artik = (yil % 4 === 0 && yil % 100 !== 0) || yil % 400 === 0;
+  if (ay === '02' && gun === '29' && !artik) { ay = '03'; gun = '01'; }
+  if (basvuru >= `${yil}-${ay}-${gun}`) return '';
+  return 'Dikkat: kayda göre başvuran, başvuru tarihinde 18 yaşından küçük. Çevrim içi başvuruda 18 yaş sınırı vardır (12 Kasım 2026 kararı); bu kayıt kararın öncesinden kalmış olabilir. Belgeyi hazırlamadan önce din görevlisine danışın.';
+}
+
 export function ek9HazirlikAc(kayit, imzalar = {}, secenekler = {}) {
   return new Promise(coz => {
     const oncekiOdak = document.activeElement;
@@ -153,6 +175,7 @@ export function ek9HazirlikAc(kayit, imzalar = {}, secenekler = {}) {
     pencere.innerHTML = `<form>
       <h2 id="ek9-hazirlik-baslik">EK-9 belgesini hazırlayın</h2>
       <p data-basvuran></p>
+      <p class="not ek9-uyari" role="status" data-yas-uyari hidden></p>
       <label for="ek9-belge-adi">Belgeye yazılacak ad soyad (kimlikteki gibi)</label>
       <input id="ek9-belge-adi" name="adSoyad" type="text" maxlength="120" required autocomplete="off" />
       <label for="ek9-isim-yazisi">İlk sayfadaki isim</label>
@@ -181,6 +204,8 @@ export function ek9HazirlikAc(kayit, imzalar = {}, secenekler = {}) {
     </form>`;
     const form = pencere.querySelector('form');
     pencere.querySelector('[data-basvuran]').textContent = String(kayit['Adı Soyadı'] || '');
+    const yasUyarisi = ihtidaYasUyarisi(kayit), yasUyariYeri = pencere.querySelector('[data-yas-uyari]');
+    if (yasUyarisi) { yasUyariYeri.textContent = yasUyarisi; yasUyariYeri.hidden = false; }
     const belgeAdi = form.elements.namedItem('adSoyad');
     belgeAdi.value = String(kayit['Adı Soyadı'] || '');
     const adiDogrula = () => belgeAdi.setCustomValidity(belgeAdi.value.trim() ? '' : 'Kimlikteki ad ve soyadı yazın.');

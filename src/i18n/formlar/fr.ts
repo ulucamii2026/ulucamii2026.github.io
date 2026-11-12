@@ -225,7 +225,10 @@ export const fr: FormMetinleri = {
     kimlikNotu: 'Pour établir l’attestation de conversion (EK-9), il faut une photo d’identité, le recto et le verso de votre pièce d’identité et votre signature : vous les ajoutez à la section 5 et vous signez à l’écran. Vous ne devez pas recopier votre numéro de registre national. Toutes les informations et pièces de votre demande sont conservées à la fois par notre mosquée et par le service compétent de la Présidence des Affaires religieuses (Diyanet) en Belgique ; elles ne sont jamais publiées et ne sont vues que par les responsables habilités.',
     bolum: { kisi: 'Informations personnelles', durum: 'Situation', iletisim: 'Contact', ihtida: 'Conversion et cérémonie', belgeler: 'Documents et signature', riza: 'Consentement et déclaration', ozet: 'Récapitulatif et envoi' },
     kisi: {
-      adSoyad: 'Vos nom et prénom', adSoyadYardim: 'Comme indiqué sur votre pièce d’identité ; ce nom figurera sur l’attestation.',
+      ad: 'Prénom', soyad: 'Nom', adSoyadYardim: 'Comme indiqué sur votre pièce d’identité ; ce nom figurera sur l’attestation.',
+      // 12 Kas 2026: 18 yaşından küçükler çevrim içi başvuru yapamaz (din görevlisi kararı); metin yalnız bu çevrim içi başvuruyla ilgilidir.
+      yasAltiKisa: 'Cette demande en ligne est destinée aux personnes ayant atteint l’âge de 18 ans.',
+      yasAltiBilgi: 'Cette demande en ligne est destinée aux personnes ayant atteint l’âge de 18 ans. Si vous avez moins de 18 ans, nous ne pouvons pas recevoir votre demande ici. Pour toute question, vous pouvez vous rendre à notre mosquée ou écrire à info@ulucamii.be ; nous serons heureux de vous aider.',
       cinsiyet: 'Sexe', kadin: 'Femme', erkek: 'Homme',
       dogumTarihi: 'Date de naissance', dogumYeri: 'Lieu de naissance', dogumYeriYardim: 'Ville et pays', uyruk: 'Nationalité',
       anneAdi: 'Prénom de la mère', babaAdi: 'Prénom du père',

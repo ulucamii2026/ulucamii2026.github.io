@@ -291,3 +291,5 @@ Form doldurulup imzalandığında ön başvuru paketi otomatik hazırlanır, adm
 ## 1 Kasım 2026 — tek şahit kuralı (yukarıdaki «yalnız Ulu Camii Marche'de» kuralını değiştirir)
 
 Din görevlisi «Rıdvan KAYAHAN» her başvuruda 2. şahittir ve kayıtlı imzası her camide basılır; «Ercan MOLA» imzası yalnız Ulu Camii Marche'de ya da yedek şahit rızasıyla basılır. Başvuran en çok bir şahit (1.) ekler. Ayrıntı: [IHTIDA-SAHITLER-2026-09-09.md](IHTIDA-SAHITLER-2026-09-09.md).
+
+- **12 Kasım 2026 (v48, dalda hazır, yayınlanmadı):** 18 yaşından küçükler yeni başvuru yapamaz (sunucu ref ayırmadan reddeder: `yas-siniri`) ve «Ad Soyad» iki alana bölündü (sunucu «Ad SOYAD» değerini kurar, eski tek alanlı gövde kabul edilir). Ayrıntı: `docs/IHTIDA-YAS-VE-AD-v48.md`.

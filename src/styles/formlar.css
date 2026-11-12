@@ -164,6 +164,10 @@
 .ucf-mesaj[data-tur="hata"] { background: var(--form-hata-zemin); border: 1.5px solid var(--form-hata-cizgi); color: var(--form-hata); }
 .ucf-mesaj[data-tur="bilgi"] { background: var(--color-adacayi-acik); border: 1.5px solid var(--color-adacayi); color: var(--metin); }
 .ucf-mesaj[hidden] { display: none; }
+/* 12 Kas 2026: 18 yaşından küçükler için nazik bilgi kutusu (ihtida doğum tarihi alanı); açık/koyu tema bilgi kutusunun renklerini kullanır. */
+.ucf-yas-bilgi { margin-top: 0.7rem; font-weight: 500; }
+:root[data-theme="dark"] .ucf-yas-bilgi { background: rgb(164 181 140 / 0.14); border-color: var(--color-adacayi-acik); color: var(--metin); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .ucf-yas-bilgi { background: rgb(164 181 140 / 0.14); border-color: var(--color-adacayi-acik); color: var(--metin); } }
 .ucf-taslak { display: flex; flex-wrap: wrap; gap: 0.6rem 1rem; align-items: center; padding: 0.7rem 0.95rem; font-size: 0.88rem;
   background: var(--color-ochre-acik); border: 1px solid var(--color-ochre); border-radius: calc(var(--radius-kose) * 0.6); }
 .ucf-taslak button { font: inherit; font-weight: 600; text-decoration: underline; text-underline-offset: 2px; background: none; border: 0; color: var(--metin); cursor: pointer; padding: 0; }

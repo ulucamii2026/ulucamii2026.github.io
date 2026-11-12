@@ -534,7 +534,7 @@ Yayın sırası: `test:kurallar` + `test:hesap` → `scripts/firebase-cami.ps1 d
 - **Çıkış:** `abonelikCik` = `/api/abonelik-cik?k=<token>` (GET ve POST, `firebase.json` yönlendirmesi eklendi); sıkı CSP ile uyumlu düz sayfa, 5 dil.
 - **Kurallar:** `epostaKuyrugu` istemciye tamamen kapalı. Sınavlar: `test:hesap` 47/47, `test:kurallar` 73/73.
 - **Apps Script (v47, yerel):** `scripts/apps-script/ilim-yolu-eposta.gs` (10 dakikada bir; kilitle-gönder-işaretle; günlük sınır 120);
-  `brevoGonder` artık `headers` taşır. Sürüm numarası ve dosya adı (v46 → v47) canlıya alınırken değişir: `git mv`, `SURUM = 47`,
+  `brevoGonder` artık `headers` taşır. Sürüm numarası ve dosya adı (v46 → v47; ihtida işi için dosya sonradan v48 oldu, İlim Yolu dalları v49 olmalı) canlıya alınırken değişir: `git mv`, `SURUM = 47`,
   `v46` dosyasına ve `surum, 46` değerine bakan testler, `scripts/ihtida-gas-derle.mjs` paket listesine yeni dosya.
 - **Canlı adımlar:** (1) `ABONELIK_SIRRI` Functions secret'ı (≥ 32 rastgele karakter); (2) Firestore TTL: `epostaKuyrugu.bitis`;
   (3) functions + kurallar + egitim Hosting dağıtımı; (4) Apps Script v47 dağıtımı, düzenleyicide bir kez `ilimYoluEpostaKur()`

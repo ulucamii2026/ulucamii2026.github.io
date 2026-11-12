@@ -42,6 +42,8 @@
 .ek9-hazirlik .ek9-eylemler { display: flex; gap: .65rem; flex-wrap: wrap; margin-top: 1rem; }
 .ek9-hazirlik p { overflow-wrap: anywhere; }
 .ek9-hazirlik .not { color: var(--metin-2); font-size: .875rem; }
+.ek9-hazirlik .ek9-uyari { padding: .6rem .75rem; border-left: 4px solid var(--metin-2); color: var(--murekkep); background: var(--zemin-kart); font-weight: 600; }
+.ek9-hazirlik .ek9-uyari[hidden] { display: none; }
 .ek9-hazirlik .ek9-onay { display: flex; align-items: flex-start; gap: .65rem; padding: .4rem 0; }
 .ek9-hazirlik input[type="checkbox"] { flex: 0 0 auto; width: 1.25rem; height: 1.25rem; }
 .ek9-eylemler { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: .75rem; margin-top: 1.5rem; }

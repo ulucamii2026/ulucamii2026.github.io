@@ -33,15 +33,17 @@ const torenOn = torenDiliOnSecim[dil];
 const bugun = new Date();
 const tarihStr = (d: Date) => d.toISOString().slice(0, 10);
 const dogumMin = tarihStr(new Date(bugun.getFullYear() - 110, 0, 1));
-const dogumMax = tarihStr(new Date(bugun.getFullYear() - 16, bugun.getMonth(), bugun.getDate()));
 
 const metinJson = JSON.stringify({
   // v40 (23 Eyl 2026): sunucu hacim sınırının üç kodu aynı yerelleştirilmiş iletiye düşer (başvuru gönderilmemiştir).
-  hata: { ...o.hata, 'sunucu:gunluk-sinir': o.hata.yogunluk, 'sunucu:eposta-gunluk-sinir': o.hata.yogunluk, 'sunucu:cok-sik': o.hata.yogunluk },
+  // v48 (12 Kas 2026): sunucu "yas-siniri" kodu aynı bilgi metnine, geçersiz doğum tarihi alanın kendi iletisine düşer.
+  hata: { ...o.hata, 'sunucu:yas-siniri': h.kisi.yasAltiBilgi, 'sunucu:basvuran-dogum-tarihi-gecersiz': o.hata.tarih, 'sunucu:gunluk-sinir': o.hata.yogunluk, 'sunucu:eposta-gunluk-sinir': o.hata.yogunluk, 'sunucu:cok-sik': o.hata.yogunluk },
   basari: { gonderiliyor: o.gonderiliyor, epostaGitti: h.paketBildirimi },
   taslakGeriYuklendi: o.taslakGeriYuklendi, taslakSilindi: o.taslakSilindi, evet: o.evet, hayir: o.hayir, bosDeger: o.bosDeger,
 });
 
+// 12 Kas 2026: 18 yaşından küçükler çevrim içi başvuru yapamaz; kısa alan hatası + bilgi kutusu metni (ihtida-form.ts).
+const yasJson = JSON.stringify({ kisa: h.kisi.yasAltiKisa, bilgi: h.kisi.yasAltiBilgi });
 const b = h.belgeler;
 // 23 Ekim 2026: şahit imzası alanının betik metinleri (ihtida-sahit-imza.ts); {no} bileşende 1 | 2 olur.
 const sahitImzaJson = JSON.stringify({ hataRiza: h.ihtida.sahitImzaRizaHata, hataAd: h.ihtida.sahitImzaAdHata, imzali: h.ihtida.sahitImzali });
@@ -66,12 +68,13 @@ const gorselKutulari = [
 </div>
 
 <form class="ucf mt-8" data-form="ihtida" data-dil={dil} data-uc={uc} data-sir="ULUCAMII-IHTIDA-2026"
-      data-asgari-servis-surumu="27"
+      data-asgari-servis-surumu="48"
       data-taslak="ulucamii:ihtida:v2" data-eposta-alani="basvuran.eposta" data-evet={o.evet} data-hayir={o.hayir}
       novalidate autocomplete="on" aria-describedby="i-giris-not">
   <script is:inline type="application/json" data-metin set:html={metinJson} />
   <script is:inline type="application/json" data-metin-belge set:html={belgeJson} />
   <script is:inline type="application/json" data-metin-sahit-imza set:html={sahitImzaJson} />
+  <script is:inline type="application/json" data-metin-yas set:html={yasJson} />
 
   <!-- Honeypot: botlara görünür, gerçek kullanıcıya görünmez alan (spam süzgeci) -->
   <div style="position:absolute; left:-9999px; top:-9999px; width:1px; height:1px; overflow:hidden;" aria-hidden="true">
@@ -94,12 +97,18 @@ const gorselKutulari = [
     <h2 id="h-kisi"><span class="no">1</span>{h.bolum.kisi}</h2>
     <p id="i-giris-not" class="bolum-not"><span class="zorunlu">*</span> {o.zorunluIsaret}</p>
     <div class="ucf-izgara">
-      <div data-alan class="tam">
-        <label for="i-ad">{h.kisi.adSoyad} <span class="zorunlu" aria-hidden="true">*</span></label>
-        <input id="i-ad" name="basvuran.adSoyad" type="text" required maxlength="80" autocomplete="name" autocapitalize="words" />
-        <p class="yardim">{h.kisi.adSoyadYardim}</p>
+      <!-- 12 Kas 2026: «Ad Soyad» iki alana bölündü; belgelere giden «Ad SOYAD» değerini sunucu kurar (ihtidaAdSoyadHazirla). -->
+      <div data-alan>
+        <label for="i-ad">{h.kisi.ad} <span class="zorunlu" aria-hidden="true">*</span></label>
+        <input id="i-ad" name="basvuran.ad" type="text" required maxlength="50" autocomplete="given-name" autocapitalize="words" aria-describedby="i-ad-yardim" />
         <p class="hata" aria-live="polite" hidden></p>
       </div>
+      <div data-alan>
+        <label for="i-soyad">{h.kisi.soyad} <span class="zorunlu" aria-hidden="true">*</span></label>
+        <input id="i-soyad" name="basvuran.soyad" type="text" required maxlength="50" autocomplete="family-name" autocapitalize="words" aria-describedby="i-ad-yardim" />
+        <p class="hata" aria-live="polite" hidden></p>
+      </div>
+      <p id="i-ad-yardim" class="yardim tam">{h.kisi.adSoyadYardim}</p>
       <fieldset data-alan>
         <legend>{h.kisi.cinsiyet} <span class="zorunlu" aria-hidden="true">*</span></legend>
         <div class="secenekler">
@@ -110,8 +119,10 @@ const gorselKutulari = [
       </fieldset>
       <div data-alan>
         <label for="i-dogum">{h.kisi.dogumTarihi} <span class="zorunlu" aria-hidden="true">*</span></label>
-        <input id="i-dogum" name="basvuran.dogumTarihi" type="date" required data-tur="tarih" data-yas-min="16" data-yas-max="110" min={dogumMin} max={dogumMax} autocomplete="bday" />
+        <input id="i-dogum" name="basvuran.dogumTarihi" type="date" required data-tur="tarih" data-yas-max="110" min={dogumMin} autocomplete="bday" aria-describedby="i-yas-bilgi" />
         <p class="hata" aria-live="polite" hidden></p>
+        <!-- 18 yaşından küçükler: sunucu da aynı denetimi yapar. Kap hep sayfada durur (ekran okuyucu eklenen metni duyurur); kutu yalnız gerektiğinde açılır. -->
+        <div id="i-yas-bilgi" role="status" aria-live="polite" data-yas-kap><div class="ucf-mesaj ucf-yas-bilgi" data-tur="bilgi" data-yas-kutu hidden></div></div>
       </div>
       <div data-alan>
         <label for="i-dogum-yeri">{h.kisi.dogumYeri} <span class="zorunlu" aria-hidden="true">*</span></label>
@@ -399,7 +410,7 @@ const gorselKutulari = [
       </div>
       <div data-alan class="tam">
         <label for="i-beyan">{h.riza.beyanEtiket} <span class="zorunlu" aria-hidden="true">*</span></label>
-        <input id="i-beyan" name="onay.beyan" type="text" required maxlength="80" data-esle="basvuran.adSoyad" autocomplete="off" autocapitalize="words" />
+        <input id="i-beyan" name="onay.beyan" type="text" required maxlength="80" data-esle="basvuran.ad basvuran.soyad" autocomplete="off" autocapitalize="words" />
         <p class="yardim">{h.riza.beyanYardim}</p>
         <p class="hata" aria-live="polite" hidden></p>
       </div>
