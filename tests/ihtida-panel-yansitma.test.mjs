@@ -2,7 +2,7 @@
  *
  *  Kod Node'da `vm` içinde çalışır; Sheets, Properties, UrlFetchApp, Utilities, e-posta sahtedir (canlı ağ / gönderim imkânsız).
  *  İmza çapraz denetimi: GAS kod yolu imzayı üretir, panelin KENDİ doğrulayıcı mantığı (tests/fixtures/ihtida-panel-sozlesme.mjs,
- *  kaynak: panel deposu commit d92c79ec) doğrular. Bütün kişi verisi uydurmadır (.test adresleri).
+ *  kaynak: panel deposu commit c33cd96) doğrular. Bütün kişi verisi uydurmadır (.test adresleri).
  */
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -521,7 +521,7 @@ function kapiyaBagla(e) {
   e.k.yanitFn = o => {
     const r = basvuruKapisi({ anahtar: SIR, basliklar: o.headers, ham: o.payload, simdiMs: e.k.saat, kullanilmisNonce: nonce });
     kapilar.push(r);
-    return { kod: r.durum, govde: JSON.stringify({ ok: r.durum === 200, alan: r.alan }) };
+    return { kod: r.durum, govde: JSON.stringify({ ok: r.durum === 200, hata: r.hata, alan: r.alan }) };
   };
   return kapilar;
 }
@@ -756,4 +756,49 @@ test('panel camiId\'yi tanımıyorsa (400, alan camiId): kapsam-disi-katalog, ye
   // gövdesiz 400 (eski panel) sıradan 400 sayılır
   const f = kuyrukluOrtam(); tur(f, 400);
   assert.equal(sonuc(f, REF), 'red-400');
+});
+
+/* ───────────── 12. Gerçek sunucu sözleşmesiyle hizalama (panel c33cd96) ───────────── */
+
+test('sunucu yaşı BAŞVURU ANINA göre (min(zaman, şimdi)); küçük saklanmaz ama yanıt 200; zaman hatası yaştan önce 400', () => {
+  const simdi = Date.parse('2026-11-12T10:00:00Z');
+  const govde = ek => JSON.stringify({ ref: 'IH-2026-0001', dil: 'fr', cinsiyet: 'K', dogumTarihi: '2008-12-01', uyruk: 'be', camiId: 'ulucamii-marche', torenDili: 'tr', rizaSurum: '2026-10', ad: AD, eposta: EPOSTA, ...ek });
+  const e = ortam();
+  const ayikla = (ham, ms = simdi) => { const ist = JSON.parse(JSON.stringify(e.ctx.ihtidaPanelIstekKur(JSON.parse(ham), SIR, ms))); return basvuruKapisi({ anahtar: SIR, basliklar: ist.basliklar, ham: ist.metin, simdiMs: ms }); };
+  // Doğum 2008-12-01: bugün (12.11.2026) 17 yaş → küçük. Başvuru 2026-12-01 gününe yazılmış (gelecek, ≤ 1 gün değil) → zaman hatası.
+  assert.deepEqual(ayikla(govde({})), { durum: 200, saklandi: false }, '17 yaş: saklanmaz, yanıt yine 200');
+  assert.equal(ayikla(govde({ zaman: '2026-12-01T10:00:00Z' })).alan, 'zaman', 'zaman bozuksa yaştan ÖNCE 400');
+  // Başvuru anı geçmişte: 2026-12-02 doğumlu biri 2027'de başvuruyu gösteremez (ölçüt min(zaman, şimdi): gelecek zaman yaşı büyütmez).
+  assert.equal(ayikla(govde({ dogumTarihi: '2008-11-13', zaman: '2026-11-13T00:00:00Z' })).saklandi, false, 'gelecek (≤1 gün) zaman damgası yaşı büyütmez');
+  assert.equal(ayikla(govde({ dogumTarihi: '2008-11-12' })).saklandi, true, 'tam 18: saklanır');
+});
+
+test('panel kapısı: içerik türü ve hata gövdeleri gerçek sunucuyla aynı (415, imza = 401 «imza», kapalı = 503 «kapali», kapsam = 422 «kapsam-disi»)', () => {
+  const e = ortam(), simdi = e.k.saat;
+  const m = kur(e.ctx, {});
+  const ist = JSON.parse(JSON.stringify(e.ctx.ihtidaPanelIstekKur(m.govde, SIR, simdi)));
+  const kapi = (ek = {}) => basvuruKapisi({ anahtar: SIR, basliklar: ist.basliklar, ham: ist.metin, simdiMs: simdi, kullanilmisNonce: new Set(), ...ek });
+  assert.equal(kapi({ icerikTuru: 'application/x-www-form-urlencoded' }).durum, 415);
+  assert.equal(kapi({ icerikTuru: 'text/plain' }).durum, 200);
+  assert.equal(kapi({ anahtar: SIR + 'x' }).hata, 'imza');
+  assert.equal(kapi({ acik: false }).hata, 'kapali');
+  const k = new Set(); kapi({ kullanilmisNonce: k });
+  assert.deepEqual([kapi({ kullanilmisNonce: k }).durum, kapi({ kullanilmisNonce: k }).hata], [401, 'imza'], 'nonce tekrarı de aynı 401 imza');
+});
+
+test('18 yaş altı satır modülden HİÇ gitmez ve gürültü yapmaz; sunucu yine de 200 dönerse sonuç «ok» (yüksek sesle hata yok, uyarı yok)', () => {
+  const e = ortam();
+  defter(e.ctx, [{ 'Doğum tarihi': '2010-03-01' }]); // form 16 yaşından kabul eder
+  e.ctx.ihtidaPaneleYansitKuyrugaAl('IH-2026-0001');
+  const s = e.ctx.ihtidaPaneleYansitKuyrukCalistir(e.k.saat);
+  assert.equal(e.istekler.length, 0, 'ağa hiçbir şey çıkmaz');
+  assert.equal(s.atlanan, 1); assert.equal(s.nedenler.kucuk, 1);
+  assert.equal(e.mailler.length, 0, 'uyarı e-postası yok');
+  assert.deepEqual(ozet(e).r, [], '«dikkat» listesine girmez (beklenen sonuç)');
+  assert.equal(e.props.has('PANEL_YANSIT_KUYRUK_IH-2026-0001'), false, 'kuyruktan çıkar, yeniden denenmez');
+  // Sunucu tarafı küçüğe 200 döner (saklamadan): modül bunu başarı sayar.
+  const e2 = ortam(); defter(e2.ctx);
+  e2.k.yanitlar.push(200);
+  e2.ctx.ihtidaPaneleYansitKuyrugaAl('IH-2026-0001');
+  assert.equal(e2.ctx.ihtidaPaneleYansitKuyrukCalistir(e2.k.saat).ok, 1);
 });

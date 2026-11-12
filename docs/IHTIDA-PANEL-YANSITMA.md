@@ -2,7 +2,7 @@
 
 Form arka ucu (Apps Script) yeni ihtida başvurusunu defterine yazdıktan sonra, panelin `basvuruAl` ucuna **imzalı** bir istekle yansıtır.
 Kod: `scripts/apps-script/ihtida-panel-yansitma.gs` (derlemeye `scripts/ihtida-gas-derle.mjs` parça listesinde eklenir).
-Test: `npm run test:yansitma` (`tests/ihtida-panel-yansitma.test.mjs`; panel doğrulayıcısının kopyası `tests/fixtures/ihtida-panel-sozlesme.mjs`, kaynak panel deposu commit `d92c79ec`).
+Test: `npm run test:yansitma` (`tests/ihtida-panel-yansitma.test.mjs`; panel doğrulayıcısının kopyası `tests/fixtures/ihtida-panel-sozlesme.mjs`, kaynak panel deposu commit `c33cd96`).
 
 **Sürüm:** bu özellik v48'e DEĞİL, v48'den sonraki ilk sürüm numarasıyla yayına girer (başka bir oturumun «hatıra» modülü de numara bekliyor; sıra `p7-yayin-adimlari.md` §7). `SURUM` bu çalışmada değişmedi.
 

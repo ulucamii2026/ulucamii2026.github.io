@@ -1,12 +1,12 @@
 /**
  * Ihtida panelinin `basvuruAl` sözleşmesinin DOĞRULAYICI tarafı: test sabitesi (fixture).
- * Kaynak: panel deposu D:/tmp/ihtida-dilim5, commit d92c79ec (functions/src/dosya-saf.ts + saf.ts + enumlar.ts + basvuru.ts).
+ * Kaynak: panel deposu D:/tmp/ihtida-dilim5, commit c33cd96 (dal dilim5; functions/src/dosya-saf.ts + saf.ts + enumlar.ts + basvuru.ts).
  * Yalnız silinebilir TypeScript tür bildirimleri çıkarıldı ve cami kataloğu bu sitenin kataloğundan okunur; mantık satır satır aynıdır.
  * Panelde bu mantık değişirse bu dosya GÜNCELLENİR (iki taraf birlikte yürümeli); testler gerçek Firebase'e bağlanmaz.
  *
- * Bekleyen sunucu değişikliği (WP5/B-03): sunucu yaşı yakında başvuru anında (`min(zaman, şimdi)`) hesaplayacak; aşağıdaki `basvuruAyikla` hâlâ
- * `simdiMs` kullanır. İstemci (Apps Script) yaşı zaten başvuru gününe göre denetleyip küçükleri HİÇ göndermez, yani iki yöntem uyumludur;
- * sunucu değişince bu kopya güncellenir.
+ * Yaş kuralı (sunucu c33cd96): yaş BAŞVURU ANINA göre, ölçüt min(zaman, şimdi); 18 yaş altı SAKLANMAZ ama yanıt yine 200 {ok:true}
+ * (başarıdan ayırt edilemez, gönderen yeniden denemesin). Form 16 yaşından kabul eder; Apps Script modülü küçükleri HİÇ göndermez.
+ * Doğrulama sırası: ref → zaman → doğum/yaş → dil, cinsiyet, uyruk, torenDili → camiId → rizaSurum → ad → eposta → kapsam.
  *
  * Bilinen kayma (katalog): bu sitenin kataloğunda olup panel kataloğunda OLMAYAN kimlikler KATALOG_PANELDE_YOK'ta;
  * panel onları 400 (camiId) ile reddeder.
@@ -100,18 +100,26 @@ export function basvuruAyikla(govde, simdiMs) {
   const refDeger = al('ref');
   if (typeof refDeger !== 'string' || !BASVURU_REF.test(refDeger)) throw new GirdiHatasi('ref');
   const ref = refDeger;
+  let zamanMs = simdiMs;
+  const z = al('zaman');
+  if (z !== undefined) {
+    const ms = typeof z === 'string' && /^\d{4}-\d{2}-\d{2}T/.test(z) ? Date.parse(z) : NaN;
+    if (!Number.isFinite(ms) || ms > simdiMs + 86_400_000 || ms < simdiMs - 400 * 86_400_000) throw new GirdiHatasi('zaman');
+    zamanMs = ms;
+  }
+  const olcutMs = Math.min(zamanMs, simdiMs);
   let yil; let yas = null;
   const t = al('dogumTarihi'); const y0 = al('dogumYili');
   if (t !== undefined) {
     if (typeof t !== 'string') throw new GirdiHatasi('dogumTarihi');
     const [ty, ta, tg] = dogumTarihiCoz(t);
     if (y0 !== undefined && y0 !== ty) throw new GirdiHatasi('dogumYili');
-    yil = ty; yas = yasHesapla(ty, ta, tg, simdiMs);
+    yil = ty; yas = yasHesapla(ty, ta, tg, olcutMs);
   } else {
     if (typeof y0 !== 'number' || !Number.isInteger(y0)) throw new GirdiHatasi('dogumYili');
     yil = y0;
   }
-  const buYil = Number(bugunGun(simdiMs).slice(0, 4));
+  const buYil = Number(bugunGun(olcutMs).slice(0, 4));
   if (yil < 1900 || yil > buYil) throw new GirdiHatasi('dogumYili');
   const kucuk = yas !== null ? yas < 18 : buYil - yil < 19;
   if (kucuk) return { kucuk: true, ref };
@@ -123,14 +131,7 @@ export function basvuruAyikla(govde, simdiMs) {
   if (typeof camiId !== 'string' || !CAMILER.has(camiId)) throw new GirdiHatasi('camiId');
   const rizaSurum = al('rizaSurum');
   if (typeof rizaSurum !== 'string' || !/^[A-Za-z0-9._-]{1,32}$/.test(rizaSurum)) throw new GirdiHatasi('rizaSurum');
-  let zamanMs = simdiMs;
-  const z = al('zaman');
-  if (z !== undefined) {
-    const ms = typeof z === 'string' && /^\d{4}-\d{2}-\d{2}T/.test(z) ? Date.parse(z) : NaN;
-    if (!Number.isFinite(ms) || ms > simdiMs + 86_400_000 || ms < simdiMs - 400 * 86_400_000) throw new GirdiHatasi('zaman');
-    zamanMs = ms;
-  }
-  const ad = tamAdAl(al('ad'));
+  const ad =tamAdAl(al('ad'));
   const eposta = epostaAl(al('eposta'));
   const c = CAMILER.get(camiId);
   if (bolgeTuret(c.postaKodu) === null) return { kucuk: false, kapsamDisi: true };
@@ -141,16 +142,17 @@ export function basvuruAyikla(govde, simdiMs) {
  * Panelin HTTP kapısının (basvuru.ts) saf özeti: gövde boyutu, imza, sonra gövde ayıklama → durum kodu.
  * Kill-switch (503) ve nonce tekrarı (401) panelin veritabanına bağlıdır; burada `acik` ve `kullanilmisNonce` ile taklit edilir.
  */
-export function basvuruKapisi({ anahtar, basliklar, ham, simdiMs, acik = true, kullanilmisNonce = new Set() }) {
-  if (Buffer.byteLength(ham) > EN_BUYUK_GOVDE) return { durum: 413 };
+export function basvuruKapisi({ anahtar, basliklar, ham, simdiMs, acik = true, kullanilmisNonce = new Set(), icerikTuru = 'application/json; charset=utf-8' }) {
+  if (!/^(application\/json|text\/plain)(\s*;.*)?$/i.test(icerikTuru)) return { durum: 415, hata: 'icerik-turu' };
+  if (Buffer.byteLength(ham) > EN_BUYUK_GOVDE) return { durum: 413, hata: 'boyut' };
   const im = imzaDogrula(anahtar, { zaman: basliklar['x-ihtida-zaman'], nonce: basliklar['x-ihtida-nonce'], imza: basliklar['x-ihtida-imza'] }, ham, simdiMs);
-  if (!im.ok) return { durum: 401, neden: im.neden };
-  if (!acik) return { durum: 503 };
-  if (kullanilmisNonce.has(im.nonce)) return { durum: 401, neden: 'nonce' };
+  if (!im.ok) return { durum: 401, hata: 'imza', neden: im.neden };
+  if (!acik) return { durum: 503, hata: 'kapali' };
+  if (kullanilmisNonce.has(im.nonce)) return { durum: 401, hata: 'imza', neden: 'nonce' };
   kullanilmisNonce.add(im.nonce);
   let s;
-  try { s = basvuruAyikla(JSON.parse(ham), simdiMs); } catch (e) { if (e instanceof GirdiHatasi) return { durum: 400, alan: e.alan }; return { durum: 400, alan: 'govde' }; }
-  if (s.kucuk) return { durum: 200, saklandi: false };
-  if (s.kapsamDisi) return { durum: 422 };
+  try { s = basvuruAyikla(JSON.parse(ham), simdiMs); } catch (e) { if (e instanceof GirdiHatasi) return { durum: 400, hata: 'gecersiz-istek', alan: e.alan }; return { durum: 400, hata: 'gecersiz-istek', alan: 'govde' }; }
+  if (s.kucuk) return { durum: 200, saklandi: false }; // sunucuda yanıt, saklanan başvuruyla AYNI {ok:true}
+  if (s.kapsamDisi) return { durum: 422, hata: 'kapsam-disi' };
   return { durum: 200, saklandi: true, veri: s.veri };
 }
