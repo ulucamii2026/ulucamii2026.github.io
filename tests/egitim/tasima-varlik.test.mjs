@@ -48,3 +48,19 @@ test('veli ve hoca sayfaları robots.txt ile DEĞİL, noindex başlığıyla diz
     assert.doesNotMatch(oku(f), /\/hoca\//, `${f}: hoca ekranına bağlanmamalı`);
   }
 });
+
+test('uygulama manifesti beş dilde: Türkçe eski adında, diğerleri manifest.<dil>.webmanifest; aynı anahtarlar, id/kapsam/simge/renk aynı, metinler dilde', () => {
+  const yol = (d) => `egitim/public/manifest${d === 'tr' ? '' : `.${d}`}.webmanifest`;
+  const tr = JSON.parse(oku(yol('tr')));
+  const metinler = new Set();
+  for (const d of ['tr', 'fr', 'en', 'nl', 'de']) {
+    const m = JSON.parse(oku(yol(d)));
+    assert.deepEqual(Object.keys(m), Object.keys(tr), `${d}: anahtarlar`);
+    assert.equal(m.lang, d);
+    assert.equal(m.start_url, d === 'tr' ? '/' : `/${d}/`);
+    for (const k of ['id', 'scope', 'display', 'theme_color', 'background_color', 'icons']) assert.deepEqual(m[k], tr[k], `${d}: ${k}`);
+    assert.ok(m.name.length > m.short_name.length && m.short_name && m.description, `${d}: metinler`);
+    for (const k of ['name', 'short_name', 'description']) metinler.add(m[k]);
+  }
+  assert.equal(metinler.size, 15, 'üç metin × beş dil birbirinden farklı olmalı');
+});

@@ -19,6 +19,30 @@
      "metin": "Ulu Rabbim, her türlü kusurdan münezzehtir."
     }
    ]
+  },
+  "fr": {
+   "kaynak": "Initiation au Coran — 1, T.C. Diyanet İşleri Başkanlığı (Présidence des Affaires Religieuses), Ankara, 2020, s. 58 (ISBN 978-625-7779-58-6)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Mon Seigneur, Le Très Grand, est exempt de toutes imperfections."
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "Islam Through Hadiths 2, Diyanet İşleri Başkanlığı (Presidency of Religious Affairs), İstanbul, 2020, s. 183",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Praise be to my Mighty Lord"
+    }
+   ]
   }
  },
  "kaynak": {
@@ -26,7 +50,7 @@
   "url": "https://namaz.diyanet.gov.tr/namaz/html/sureler-dualar.html",
   "alindi": "2026-10-24"
  },
- "ozet": "1e6be84e984b1486fb15939127b3dcabd81d870f91cfd395f5054eac410cf504",
+ "ozet": "81cc132ba856294c7573d9676ead616df7508acdd99cbe3c448d4066ecb76bfe",
  "okunus": {
   "tr": [
    {

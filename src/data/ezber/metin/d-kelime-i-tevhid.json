@@ -49,6 +49,42 @@
      "metin": "Muhammed est le Messager d'Allah."
     }
    ]
+  },
+  "en": {
+   "kaynak": "Essentials of Islam — A Textbook for High School Students, Presidency of Religious Affairs (Diyanet İşleri Başkanlığı), Ankara, 2017, s. 41",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      2
+     ],
+     "metin": "“There is no God but Allah and Muhammad is the Messenger of Allah.”"
+    }
+   ]
+  },
+  "nl": {
+   "kaynak": "Basiskennis over Islam, Presidium voor Religieuze Zaken (Diyanet İşleri Başkanlığı), Den Haag / Ankara, 2017, s. 27 (Publicatie nr 1346; vertaling Drs. Ahmed Bulut)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      2
+     ],
+     "metin": "“Er is geen andere god dan Allah. Mohammed (vrede zij met hem) is de boodschapper van Allah.”"
+    }
+   ]
+  },
+  "de": {
+   "kaynak": "Was ist der Islam? (Broschüre), Diyanet İşleri Başkanlığı, Dini Yayınlar Genel Müdürlüğü, Yabancı Dil ve Lehçelerde Yayınlar Daire Başkanlığı, Ankara, ohne Jahresangabe, PDF-Seite 11–12",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      2
+     ],
+     "metin": "„Es gibt keine Gottheit außer Allah und Muhammed (s) ist der Gesandte Allahs.“"
+    }
+   ]
   }
  },
  "kaynak": {
@@ -56,7 +92,7 @@
   "url": "https://diniyayinlar.diyanet.gov.tr/",
   "alindi": "2026-10-24"
  },
- "ozet": "1530ee01180909b4a120e226b3c85cefdd38849c5731ee7b8c69f2a69cc3dbd5",
+ "ozet": "52ad8f7961c6eab86f0aac4a384d11955ed0a53bf6ff7f7288bd035de25d8bfb",
  "okunus": {
   "tr": [
    {

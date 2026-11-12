@@ -79,6 +79,11 @@ export interface IlimMetinleri {
   ezbereGit: string;
   yolDurumEzber: (n: number) => string;
   yolDurumYok: string;
+  /** «Bugün» kartındaki bilgi kartı satırı: `{yol}` yol adıyla doldurulur. */
+  bugunKartAlt: string;
+  bugunKartGit: string;
+  /** `{n}` kazanılan rozet sayısıyla doldurulur (çoğul biçimi gerekmesin diye iki noktalı kalıp). */
+  rozetSayisi: string;
   cikis: string;
 
   // Çocuk / kurs kaydına bağlı hesap: hocanın kaydı + kendi çalışması aynı kilimde
@@ -167,6 +172,9 @@ const ILIM: Record<Dil, IlimMetinleri> = {
     ezbereGit: 'Ezber Kilimi’ne gidin',
     yolDurumEzber: (n) => `${n} madde kiliminize dokundu`,
     yolDurumYok: 'Henüz başlamadınız',
+    bugunKartAlt: '{yol} · sıradaki kart',
+    bugunKartGit: 'Kartı açın',
+    rozetSayisi: 'Kazandığınız rozet: {n}',
     cikis: 'Çıkış yapın',
     hocaBaslik: 'Hocanın kilimi',
     hocaAciklama: 'Hocanın verdiği basamak dolgudur; kendi çalışmanız üstüne yeşil dokuyla biner.',
@@ -251,6 +259,9 @@ const ILIM: Record<Dil, IlimMetinleri> = {
     ezbereGit: 'Aller au kilim de mémorisation',
     yolDurumEzber: (n) => `${n} contenus tissés dans votre kilim`,
     yolDurumYok: 'Pas encore commencé',
+    bugunKartAlt: '{yol} · fiche suivante',
+    bugunKartGit: 'Ouvrir la fiche',
+    rozetSayisi: 'Insignes obtenus : {n}',
     cikis: 'Se déconnecter',
     hocaBaslik: 'Le kilim de l’enseignant',
     hocaAciklama: 'L’étape donnée par l’enseignant forme le fond ; votre propre travail s’y superpose en vert.',
@@ -335,6 +346,9 @@ const ILIM: Record<Dil, IlimMetinleri> = {
     ezbereGit: 'Go to the memorisation kilim',
     yolDurumEzber: (n) => `${n} texts woven into your kilim`,
     yolDurumYok: 'Not started yet',
+    bugunKartAlt: '{yol} · next card',
+    bugunKartGit: 'Open the card',
+    rozetSayisi: 'Badges earned: {n}',
     cikis: 'Sign out',
     hocaBaslik: 'The teacher’s kilim',
     hocaAciklama: 'The stage your teacher gave is the fill; your own practice is woven on top in green.',
@@ -419,6 +433,9 @@ const ILIM: Record<Dil, IlimMetinleri> = {
     ezbereGit: 'Naar de memorisatiekelim',
     yolDurumEzber: (n) => `${n} onderdelen in uw kelim geweven`,
     yolDurumYok: 'Nog niet begonnen',
+    bugunKartAlt: '{yol} · volgende kaart',
+    bugunKartGit: 'Open de kaart',
+    rozetSayisi: 'Behaalde insignes: {n}',
     cikis: 'Uitloggen',
     hocaBaslik: 'De kelim van de leerkracht',
     hocaAciklama: 'De stap die uw leerkracht gaf is de vulling; uw eigen oefening wordt er in het groen overheen geweven.',
@@ -454,7 +471,7 @@ const ILIM: Record<Dil, IlimMetinleri> = {
     hazirlaniyor: 'In Vorbereitung',
     yolEzberAd: 'Memorier-Kelim',
     yolEzberRozet: (n) => `${n} Inhalte`,
-    yolEzberMetin: 'Von den Gebetssuren bis zum Juz’ Amma: hören Sie mit Text und Rezitation der Diyanet zu, wiederholen Sie und tragen Sie Ihrer Lehrkraft vor.',
+    yolEzberMetin: 'Von den Gebetssuren bis zum Juz’ Amma: Hören Sie mit Text und Rezitation der Diyanet zu, wiederholen Sie und tragen Sie Ihrer Lehrkraft vor.',
     yolKursAd: 'Kursthemen',
     yolKursRozet: 'Themen des Jahresplans',
     yolKursMetin: 'Die Themen des Koran-Kurses; jedes mit einer Karte und einer kurzen Frage.',
@@ -503,6 +520,9 @@ const ILIM: Record<Dil, IlimMetinleri> = {
     ezbereGit: 'Zum Memorier-Kelim',
     yolDurumEzber: (n) => `${n} Inhalte in Ihren Kelim gewebt`,
     yolDurumYok: 'Noch nicht begonnen',
+    bugunKartAlt: '{yol} · nächste Karte',
+    bugunKartGit: 'Karte öffnen',
+    rozetSayisi: 'Erhaltene Abzeichen: {n}',
     cikis: 'Abmelden',
     hocaBaslik: 'Der Kelim der Lehrkraft',
     hocaAciklama: 'Die von der Lehrkraft vergebene Stufe ist die Füllung; Ihr eigenes Üben wird in Grün darübergewebt.',

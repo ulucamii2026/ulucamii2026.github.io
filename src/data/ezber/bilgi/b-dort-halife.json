@@ -48,7 +48,6 @@
     "de": "Die, die zwischen 632 und 661 nach dem Tod des Propheten nacheinander Kalif wurden (Hulefâ-yi Râşidîn). Die Bücher „Camiye Gidiyorum“ enthalten keine eigene Liste der vier Kalifen."
   },
   "taslak": [
-    "en",
     "nl",
     "de"
   ],
@@ -62,6 +61,11 @@
       "rol": "fr",
       "ad": "Je vais à la mosquée 2",
       "sayfa": "123"
+    },
+    {
+      "rol": "en",
+      "ad": "Kalam (Diyanet, 2017)",
+      "sayfa": "62"
     },
     {
       "rol": "dogrulama",

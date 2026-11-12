@@ -82,7 +82,7 @@ test('v44: Fransızca başlık önce sitenin konu sözlüğünden gelir; makine 
  assert.equal(x.veliCumaCevir("Benim dinim İslam'dır",fr),fr["Benim dinim İslam'dır"]);assert.equal(x.veliCumaCevir("Benim dinim İslam'dır (1/2)",fr),fr["Benim dinim İslam'dır"]+' (1/2)');assert.equal(ceviri,0);
  assert.throws(()=>x.veliCumaCevir('Sözlükte olmayan başlık',fr),/cuma-ceviri-eksik/,'değişmeden dönen makine çevirisi yine yarım kampanya başlatmaz');
 });
-// Dilim 4 (P7b, v48): plan egitim /tr/veli/ sayfasındaki <script id="veli-veri"> bloğundan okunur; eski ulucamii.be adresi yedektir.
+// Dilim 4 (P7b, v49): plan egitim /tr/veli/ sayfasındaki <script id="veli-veri"> bloğundan okunur; eski ulucamii.be adresi yedektir.
 function planOkuBaglami(yanitlar){
  const istekler=[];
  const x=vm.createContext({console,UrlFetchApp:{fetch:(u)=>{istekler.push(u);const y=yanitlar(u);return {getResponseCode:()=>y.kod,getContentText:()=>y.metin};}}});
@@ -110,10 +110,10 @@ test('Gerçek egitim /tr/veli/ çıktısındaki veli-veri bloğu planı verir (d
  const {x}=planOkuBaglami((u)=>u.startsWith('https://raw.githubusercontent.com/')?{kod:200,metin:readFileSync(`src/data/yillik-plan-2026-2027.json`,'utf8')}:{kod:200,metin:html});
  const p=x.veliCumaPlanOku();assert.match(p.donem,/^\d{4}-\d{4}$/);assert.ok(p.gunler.length>10);
 });
-test('v48: ders kitabı ve müfredat sayfası bağlantıları egitim adresinde; müfredat PDF’i ulucamii.be’de kalır',()=>{
- const a=readFileSync(new URL('../scripts/apps-script/ulucamii-Kod-v48.gs',import.meta.url),'utf8');
+test('v49: ders kitabı ve müfredat sayfası bağlantıları egitim adresinde; müfredat PDF’i ulucamii.be’de kalır',()=>{
+ const a=readFileSync(new URL('../scripts/apps-script/ulucamii-Kod-v49.gs',import.meta.url),'utf8');
  for(const u of ['https://egitim.ulucamii.be/tr/kurs/#ders-kitaplari','https://egitim.ulucamii.be/fr/kurs/#manuels','https://egitim.ulucamii.be/tr/kurs/mufredat/','https://egitim.ulucamii.be/fr/kurs/mufredat/'])assert.ok(a.includes(u),u);
  for(const u of ['/tr/kuran-kursu/','/fr/ecole-coranique/','/tr/kuran-kursu-mufredati/','/fr/programme-ecole-coranique/'])assert.equal(a.includes('https://ulucamii.be'+u),false,u);
  assert.ok(a.includes('https://ulucamii.be/belgeler/kuran-kursu/Ulu-Camii-Kuran-Kursu-Mufredat-2026-2027.pdf'));
- assert.match(a,/^var SURUM = 48;$/m);
+ assert.match(a,/^var SURUM = 49;$/m);
 });

@@ -8,7 +8,7 @@
         "tr": "Yüzü yıkamak",
         "fr": "Laver le visage",
         "en": "Washing the face",
-        "nl": "Het gezicht wassen",
+        "nl": "Het eenmaal wassen van het gezicht.",
         "de": "Das Gesicht waschen"
       }
     },
@@ -17,7 +17,7 @@
         "tr": "Elleri, kolları ve dirsekleri birlikte yıkamak",
         "fr": "Laver les mains, les bras et les coudes ensemble",
         "en": "Washing the hands and arms together with the elbows",
-        "nl": "De handen en armen samen met de ellebogen wassen",
+        "nl": "Het eenmaal wassen van de armen inclusief handen en elleboog.",
         "de": "Die Hände und Arme samt den Ellbogen waschen"
       }
     },
@@ -25,8 +25,8 @@
       "ad": {
         "tr": "Başın dörtte birine meshetmek",
         "fr": "Essuyer le quart de la tête",
-        "en": "Wiping a quarter of the head with the wet hand (masah)",
-        "nl": "Een kwart van het hoofd met de natte hand afstrijken (mash)",
+        "en": "wiping a quarter of the head with a wet hand",
+        "nl": "Mash; het eenmaal bestrijken van één vierde deel van het hoofd.",
         "de": "Ein Viertel des Kopfes mit der nassen Hand bestreichen (Masah)"
       }
     },
@@ -34,15 +34,14 @@
       "ad": {
         "tr": "Ayakları topuklarla birlikte yıkamak",
         "fr": "Laver les pieds avec les chevilles",
-        "en": "Washing the feet together with the ankles",
-        "nl": "De voeten samen met de enkels wassen",
+        "en": "washing the feet",
+        "nl": "Het eenmaal wassen van de voeten inclusief de enkels.",
         "de": "Die Füße samt den Knöcheln waschen"
       }
     }
   ],
   "taslak": [
     "en",
-    "nl",
     "de"
   ],
   "kaynaklar": [
@@ -55,6 +54,16 @@
       "rol": "fr",
       "ad": "Je vais à la mosquée 2",
       "sayfa": "252"
+    },
+    {
+      "rol": "en",
+      "ad": "Essentials of Islam (Diyanet, 2017)",
+      "sayfa": "84"
+    },
+    {
+      "rol": "nl",
+      "ad": "Basiskennis over Islam (Diyanet, 2017; vertaling Drs. Ahmed Bulut)",
+      "sayfa": "96"
     },
     {
       "rol": "dogrulama",

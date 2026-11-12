@@ -3,9 +3,12 @@
  * Şema tek yerde: src/lib/icerik-semalari.ts (ana sitenin src/content.config.ts'i de oradan alır). Yalnız bu üç koleksiyon egitim'e gerekir;
  * duyuru, etkinlik, cami ekranı vb. ana sitede kalır.
  */
-import { defineCollection } from 'astro:content';
+import { defineCollection, z } from 'astro:content';
 import { glob, file } from 'astro/loaders';
+import { readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import { parse as yamlParse } from 'yaml';
+import { gizlilikBolumleri as gizlilikDilimleri } from '../../src/lib/gizlilik-bolumleri.ts';
 import { sayfalarSemasi, ayarlarSemasi, materyallerSemasi } from '../../src/lib/icerik-semalari.ts';
 
 const sayfalar = defineCollection({
@@ -23,4 +26,26 @@ const materyaller = defineCollection({
   schema: materyallerSemasi,
 });
 
-export const collections = { sayfalar, ayarlar, materyaller };
+// Gizlilik sayfasının İlim Yolu bölümleri (11 Kasım 2026): aynı `gizlilik.md`'den iki dilim (veri sorumlusu; İlim Yolu + haklar), metin kopyalanmaz.
+// Kimlik `<dil>-kontrolcu` / `<dil>-ilim`; dilimleme src/lib/gizlilik-bolumleri.ts'te (çapa düşerse derleme kırılır).
+const gizlilikBolumleri = defineCollection({
+  loader: {
+    name: 'gizlilik-bolumleri',
+    load: async ({ store, renderMarkdown, parseData, generateDigest, config, watcher }) => {
+      store.clear();
+      for (const dil of ['tr', 'fr', 'en', 'nl', 'de']) {
+        const dosya = new URL(`../src/content/sayfalar/${dil}/gizlilik.md`, config.root);
+        watcher?.add(fileURLToPath(dosya));
+        const kaynak = readFileSync(dosya, 'utf8');
+        for (const [bolum, govde] of Object.entries(gizlilikDilimleri(kaynak))) {
+          const id = `${dil}-${bolum}`;
+          const data = await parseData({ id, data: { dil, bolum } });
+          store.set({ id, data, body: govde, rendered: await renderMarkdown(govde, { fileURL: dosya }), digest: generateDigest(govde) });
+        }
+      }
+    },
+  },
+  schema: z.object({ dil: z.string(), bolum: z.enum(['kontrolcu', 'ilim']) }),
+});
+
+export const collections = { sayfalar, ayarlar, materyaller, gizlilikBolumleri };

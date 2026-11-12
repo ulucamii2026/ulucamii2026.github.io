@@ -224,7 +224,10 @@ export const en: FormMetinleri = {
     kimlikNotu: 'To issue the conversion certificate (EK-9), a passport photo, the front and back of your identity document and your signature are needed: you add them in section 5 and sign on screen. You do not have to type your national registry number. All information and documents relating to your application are kept both by our mosque and by the competent unit of the Presidency of Religious Affairs (Diyanet) in Belgium; they are never published and are seen only by authorised officials.',
     bolum: { kisi: 'Personal information', durum: 'Status', iletisim: 'Contact', ihtida: 'Conversion and ceremony', belgeler: 'Documents and signature', riza: 'Consent and declaration', ozet: 'Summary and submission' },
     kisi: {
-      adSoyad: 'Your full name', adSoyadYardim: 'As shown on your ID; this name will be printed on the certificate.',
+      ad: 'First name', soyad: 'Surname', adSoyadYardim: 'As shown on your ID; this name will be printed on the certificate.',
+      // 12 Kas 2026: 18 yaşından küçükler çevrim içi başvuru yapamaz (din görevlisi kararı); metin yalnız bu çevrim içi başvuruyla ilgilidir.
+      yasAltiKisa: 'This online application is for people who have turned 18.',
+      yasAltiBilgi: 'This online application is for people who have turned 18. If you are under 18, we are unable to accept your application here. For any questions, you are welcome to visit our mosque or write to info@ulucamii.be; we will gladly help you.',
       cinsiyet: 'Sex', kadin: 'Female', erkek: 'Male',
       dogumTarihi: 'Date of birth', dogumYeri: 'Place of birth', dogumYeriYardim: 'City and country', uyruk: 'Nationality',
       anneAdi: 'Mother’s first name', babaAdi: 'Father’s first name',

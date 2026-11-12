@@ -1,7 +1,14 @@
-/* v48 (HAZIRLIK — canlıya alınmadı; canlı v47). Dilim 4 taşıması (P7b): veli portalı, Kur'an kursu sayfaları ve /e/ sesli dersleri egitim.ulucamii.be'de. Değişen yalnız adresler: ders kitabı
+/* v49 (HAZIRLIK — canlıya alınmadı; canlı v48). Dilim 4 taşıması (P7b): veli portalı, Kur'an kursu sayfaları ve /e/ sesli dersleri egitim.ulucamii.be'de. Değişen yalnız adresler: ders kitabı
    ve müfredat sayfası bağlantıları (KITAPLAR, MUFREDAT → egitim /<dil>/kurs/…), veli-cuma.gs (plan egitim /tr/veli/ sayfasından okunur, eski adres yedek;
-   portal ve materyal bağlantıları egitim; kimlik-sabitler.gs'a DOKUNULMADI — kimlik.json asıl kaynağı depo dışı). Müfredat PDF'i ulucamii.be'de kalır. Başka davranış değişmedi.
+   portal ve materyal bağlantıları egitim; kimlik-sabitler.gs'a DOKUNULMADI — kimlik.json asıl kaynağı depo dışı). Müfredat PDF'i ulucamii.be'de kalır. Başka davranış değişmedi (v48 ihtida yaş sınırı ve Ad/Soyad aynen).
    Yayın sırası: docs/ILIM-YOLU.md «Dilim 4 · geçiş» ve p7-yayin-adimlari.md (D:/tmp/ilim-yolu-arastirma/). */
+/* v48 (12 Kas 2026): İHTİDA başvurusu — (1) 18 yaşından küçükler yeni başvuru yapamaz (din görevlisi kararı, 12 Kas 2026): yaş, başvuru günü
+   (Europe/Brussels) esas alınarak ihtidaYasKontrol ile denetlenir; hata kodu "yas-siniri", geçersiz/eksik doğum tarihi
+   "basvuran-dogum-tarihi-gecersiz". Denetim ihtidaDogrulaV2 içindedir, yani ref (IH-YYYY-NNNN) ayrılmadan, defter satırı, Drive dosyası,
+   PDF ve e-posta üretilmeden önce. Var olan kayıtlara ve belge yenilemeye dokunulmaz (ihtidaDogrulaV2 yalnız yeni başvuruda çağrılır).
+   (2) «Ad Soyad» iki alana bölündü: yeni sayfa basvuran.ad + basvuran.soyad gönderir, sunucu «Ad SOYAD» değerini TEK yerde
+   (ihtidaAdSoyadHazirla → soyadBuyuk) kurar; eski önbellekli sayfanın yalnız basvuran.adSoyad gönderen gövdesi aynen kabul edilir.
+   Defter sütunları değişmedi. */
 /* v44 (29 Eki 2026): veli e-postalarına Cc (Script Property VELI_CC; kayıt onayı kopyası + cuma bülteni; Rıdvan 18 Eki kararı).
    Cuma bülteninin boş replyTo hatası (v31 silinen dinGorevlisi) ve LanguageApp'in değiştirmeden döndürdüğü başlıkta durması
    (23 Eki «cuma-ceviri-eksik») düzeltildi: Fransızca ders başlıkları önce sitenin konular-fr.json sözlüğünden gelir (veli-cuma.gs). */
@@ -109,7 +116,7 @@
  * bu KASITLI: PDF artık istemciden gelmez, eski gövde biçimi zaten geçersizdir.)
  */
 
-var SURUM = 48;
+var SURUM = 49;
 /* 21 Eyl 2026: Sitenin ve formların dilleri TEK listede. Gönderilen form dilinin («dil» alanı) ve
    ?islem=pdf-ornek önizlemesinin geçerli değerleri buradan okunur; ["tr","fr","en"] artık hiçbir yere yazılmaz.
    DİKKAT — bu liste FORM dilidir: velinin kalıcı İLETİŞİM dili (veli.iletisimDili) ve tören dili
@@ -163,7 +170,7 @@ function doGet(e) {
     }
   }
   var paketSurumu = PropertiesService.getScriptProperties().getProperty("IHTIDA_PAKET_KURULU");
-  return json({ ok: true, servis: "ulucamii-alici", surum: SURUM, kayitKimlik: true, kayitImza: true, kayitBelgeleriZorunlu: true, kayitDuzelt: true, defterCeviri: true, basvuruSiniri: true, ceviriMotoru: ceviriMotoru(), veliEpostaDili: "kayit-tercihi-20260909", veliCc: typeof veliCc === "function" && !!veliCc(),
+  return json({ ok: true, servis: "ulucamii-alici", surum: SURUM, kayitKimlik: true, kayitImza: true, kayitBelgeleriZorunlu: true, kayitDuzelt: true, defterCeviri: true, basvuruSiniri: true, ihtidaAsgariYas: IHTIDA_ASGARI_YAS, ceviriMotoru: ceviriMotoru(), veliEpostaDili: "kayit-tercihi-20260909", veliCc: typeof veliCc === "function" && !!veliCc(),
     veliMailListesiOtomatik: typeof veliMailListesiZamanli === "function" && PropertiesService.getScriptProperties().getProperty("VELI_PORTAL_KURULU") === VELI_PORTAL_SURUM,
     ihtidaPaketHazir: typeof IhtidaPdf !== "undefined" && paketSurumu === "28",
     ihtidaDefteriHazir: typeof IhtidaDefteri !== "undefined" && PropertiesService.getScriptProperties().getProperty("IHTIDA_DEFTERI_KURULU") === "28",
@@ -1006,6 +1013,31 @@ function yasDogrula(iso, minYas, maxYas) {
   return "tamam";
 }
 
+/** İhtida başvurusunda en küçük yaş (12 Kas 2026, din görevlisi kararı: «18 yaşından küçükler başvuru yapamasın»).
+    İstemcideki karşılığı: src/lib/ihtida-yas.ts (IHTIDA_ASGARI_YAS). */
+var IHTIDA_ASGARI_YAS = 18;
+var IHTIDA_AZAMI_YAS = 120;
+
+/** Doğum günü kuralı: kişi 18. yaş gününde 18 sayılır (gün dâhil). 29 Şubat doğumlu, 18. yılı artık yıl değilse 1 Mart'ta 18 olur.
+    Karşılaştırma «yyyy-MM-dd» metinleriyle yapılır (saat dilimi kayması olmaz). */
+function ihtidaYasGunu(dogumIso, yas) {
+  var yil = +dogumIso.slice(0, 4) + yas, ay = dogumIso.slice(5, 7), gun = dogumIso.slice(8, 10);
+  var artik = (yil % 4 === 0 && yil % 100 !== 0) || yil % 400 === 0;
+  if (ay === "02" && gun === "29" && !artik) { ay = "03"; gun = "01"; }
+  return ("0000" + yil).slice(-4) + "-" + ay + "-" + gun;
+}
+
+/** "tamam" | "format" | "gelecek" | "cok-yasli" | "yas-siniri". bugunIso: başvuru günü, Europe/Brussels (varsayılan: şimdi). */
+function ihtidaYasKontrol(dogumIso, bugunIso) {
+  if (!tarihGecerliMi(dogumIso)) return "format";
+  var dogum = String(dogumIso).trim();
+  var bugun = bugunIso || Utilities.formatDate(new Date(), "Europe/Brussels", "yyyy-MM-dd");
+  if (dogum > bugun) return "gelecek";
+  if (bugun >= ihtidaYasGunu(dogum, IHTIDA_AZAMI_YAS + 1)) return "cok-yasli";
+  if (bugun < ihtidaYasGunu(dogum, IHTIDA_ASGARI_YAS)) return "yas-siniri";
+  return "tamam";
+}
+
 var SINIFLAR_GECERLI = ["M1", "M2", "M3", "P1", "P2", "P3", "P4", "P5", "P6", "S1", "S2", "S3", "S4", "S5", "S6", "S7", "diger"];
 
 function h(kod) { return { tamam: false, kod: kod }; }
@@ -1083,16 +1115,34 @@ function kayitKimlikOzeti(kimlik) {
 
 var TOREN_DILLERI_GECERLI = ["tr", "fr", "en", "ar"];
 
+/** v48: «Ad SOYAD» değerinin TEK kurulduğu yer. Yeni sayfa basvuran.ad + basvuran.soyad gönderir; soyad soyadBuyuk ile (yerel-duyarlı)
+    büyük harfe çevrilir ve basvuran.adSoyad olarak yazılır — PDF, defter, e-posta, beyan eşleşmesi hep bunu okur. İkisi de boşsa
+    eski önbellekli sayfanın gönderdiği basvuran.adSoyad olduğu gibi kalır (geriye uyum). Yalnız biri doluysa "basvuran-adsoyad-eksik".
+    Hata kodu ya da null döner. */
+function ihtidaAdSoyadHazirla(v) {
+  var b = v.basvuran || {};
+  var ad = b.ad == null ? "" : String(b.ad).replace(/\s+/g, " ").trim();
+  var soyad = b.soyad == null ? "" : String(b.soyad).replace(/\s+/g, " ").trim();
+  if (!ad && !soyad) return null;
+  if (!ad || !soyad || ad.length > 50 || soyad.length > 50) return "basvuran-adsoyad-eksik";
+  b.adSoyad = ad + " " + soyadBuyuk(soyad, v.dil);
+  return null;
+}
+
 function ihtidaDogrulaV2(v) {
   if (!v || typeof v !== "object") return h("bos-istek");
   if (v.sir !== AYAR2_IHTIDA.ortakSir) return h("yetkisiz");
   var b = v.basvuran || {}, onay = v.onay || {};
 
+  var adKodu = ihtidaAdSoyadHazirla(v);
+  if (adKodu) return h(adKodu);
   if (!metinDolu(b.adSoyad) || !uzunlukTamam(b.adSoyad, 120)) return h("basvuran-adsoyad-eksik");
   if (["kadin", "erkek"].indexOf(b.cinsiyet) === -1) return h("basvuran-cinsiyet-gecersiz");
-  var yasSonuc = yasDogrula(b.dogumTarihi, 16, 120);
+  // v48: yaş denetimi başvuru gününe (Europe/Brussels) göre; ref ayrılmadan önce (ihtidaPostIsleV2 doğrulamayı en başta çağırır).
+  var yasSonuc = ihtidaYasKontrol(b.dogumTarihi);
   if (yasSonuc === "format") return h("basvuran-dogum-tarihi-gecersiz");
-  if (yasSonuc === "aralik") return h("basvuran-yas-disi");
+  if (yasSonuc === "yas-siniri") return h("yas-siniri");
+  if (yasSonuc !== "tamam") return h("basvuran-yas-disi");
   if (!metinDolu(b.dogumYeri) || !uzunlukTamam(b.dogumYeri, 120)) return h("basvuran-dogum-yeri-eksik");
   if (!metinDolu(b.uyruk) || !uzunlukTamam(b.uyruk, 80)) return h("basvuran-uyruk-eksik");
   if (!metinDolu(b.anneAdi) || !uzunlukTamam(b.anneAdi, 80)) return h("basvuran-anne-adi-eksik");

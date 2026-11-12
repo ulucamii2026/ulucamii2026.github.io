@@ -3,16 +3,18 @@
  * doldurur (öğrenci kipi: kilitli, tam ekran, tek dokunuş), 5–8 yaşı hoca sorar ve çocuk adına işaretler. Hoca kipi: «Hoca»
  * sütunu, okuma basamağı, notlar, «Bu sayfayı dinledim», isteğe bağlı parmak çizimi. Bugün: `hocaGunSirasi/{tarih}` kuyruğu.
  * Yazım yalnız `s../lib/ogrenci-envanteri/depo.ts` ile (tam SDK, kalıcı önbellek; her dokunuş saniyede en çok bir toplu yazım).
- * Hoca ekranı yalnız Türkçe; öğrenci kipinin her metni Türkçe + Fransızca. Değişken her değer `esc` ile kaçırılır.
+ * Hoca arayüzü beş dilli (src/i18n/hoca-metin/envanter.ts); envanter içeriği (maddeler.json), öğrenci kipi ve ev kipi Türkçe + Fransızca kalır. Değişken her değer `esc` ile kaçırılır.
  * Şartname: D:\ulu-camii-kuran-kursu\belgeler\bireysel-plan-2026-2027\ONLINE-ENVANTER-SPEC.md. Kişisel veri koda girmez.
  */
 import type { FirebaseApp } from 'firebase/app';
 import { tamFirestore } from '../lib/firebase-tam';
 import { ENVANTER_CAKISMA, envanterDeposu, type DepoYollari, type Oturum } from '../lib/ogrenci-envanteri/depo';
 import {
-  GRUPLAR, MADDELER, ROZET_ADI, TEST_REF, enYeni, grupAdi, ilerleme, rozet, sayfaSatirlari,
+  GRUPLAR, MADDELER, TEST_REF, enYeni, ilerleme, rozet, sayfaSatirlari,
   type Bolum, type Grup, type Ikili, type Kutu, type MetinAlani, type Program, type Sayfa, type Satir,
 } from '../lib/ogrenci-envanteri/model';
+import { hocaYerel } from '../i18n/hoca';
+import { tV, tTr } from '../i18n/hoca-metin/envanter';
 
 export type EnvanterOgrencisi = { ref: string; ad: string; soyad: string; durum?: string };
 export interface EnvanterPaneliSecenek {
@@ -31,7 +33,7 @@ export interface EvKipi { ref: string; ad: string; grup: Grup; dil: 'tr' | 'fr' 
 
 const esc = (s: unknown) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c] as string);
 const gunYaz = (iso: string, sec: Intl.DateTimeFormatOptions = { weekday: 'long', day: 'numeric', month: 'long' }) =>
-  iso ? new Intl.DateTimeFormat('tr-TR', { timeZone: 'Europe/Brussels', ...sec }).format(new Date(`${iso}T12:00:00Z`)) : '';
+  iso ? new Intl.DateTimeFormat(hocaYerel(), { timeZone: 'Europe/Brussels', ...sec }).format(new Date(`${iso}T12:00:00Z`)) : '';
 /** Fransızca noktalama öncesi kesilmez boşluk (kâğıt formla aynı kural; JSON'daki metinler zaten düzeltilmiş). */
 const fr = (s: string) => esc(s);
 
@@ -49,7 +51,9 @@ const SIMGE: Record<string, string> = {
 };
 const simge = (ad: string) => `<svg class="simge" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${SIMGE[ad] || ''}</svg>`;
 
-const IS_ADI: Record<string, string> = { form: 'Form', dogrulama: 'Doğrulama', hedef: 'Program konuşması', ezber: 'Ezber', not: 'Not' };
+const IS_ADI: Record<string, string> = { form: tV('is.form'), dogrulama: tV('is.dogrulama'), hedef: tV('is.hedef'), ezber: tV('is.ezber'), not: tV('is.not') };
+const grupAdi = (g: Grup) => tV(g === '5-8' ? 'grup.58' : 'grup.913');
+const ROZET_ADI: Record<string, string> = { eksik: tV('rozet.eksik'), dogrulanacak: tV('rozet.dogrulanacak'), dolu: tV('rozet.dolu') };
 const KAYDIRMA = (): ScrollBehavior => (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth');
 const CIZIM_SINIRI = 200_000; // veri adresi uzunluğu ≈ 150 kB PNG (kural 210 000)
 const EV_YARDIM_ANAHTARI = 'ulucamii-envanter-ev-yardim'; // yardım kartının açık/kapalı durumu (localStorage, isteğe bağlı)
@@ -95,7 +99,7 @@ type Gorunum = 'bugun' | 'liste';
 type Sutun = 'ikisi' | 'hoca' | 'ben';
 type Filtre = 'kalan' | 'tumu' | 'tamam';
 type OgrDurum = 'yok' | 'yarim' | 'tamam';
-const OGR_DURUM_ADI: Record<OgrDurum, string> = { yok: 'başlanmadı', yarim: 'yarım', tamam: 'tamam' };
+const OGR_DURUM_ADI: Record<OgrDurum, string> = { yok: tV('liste.durum.yok'), yarim: tV('liste.durum.yarim'), tamam: tV('liste.durum.tamam') };
 /** Arama için: küçük harf, aksan ve Türkçe i/ı farkı yok (örn. «ozge» ↔ «Özge», «ibrahim» ↔ «Ibrahim»). */
 const arama = (x: string) => x.toLocaleLowerCase('tr').replace(/ı/g, 'i').normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 type FormDurumu = {
@@ -122,6 +126,8 @@ export function envanterPaneli(kok: HTMLElement, s: EnvanterPaneliSecenek): { te
   const ev = s.ev;
   /** Ev kipinde sayfa dili Fransızca olabilir; Türkçe etiketler yine de tr diye işaretlenir (ekran okuyucu). Hoca ekranında boş. */
   const trL = ev ? ' lang="tr"' : '';
+  /** Ev kipi velinin ekranıdır (içerik TR + FR): ortak çizim kodundaki arayüz metni orada Türkçe kalır. Hoca ekranında seçili dil. */
+  const T = ev ? tTr : tV;
   let yardimAcik = true;
   let evSonBekleniyor = false;
   try { const k = localStorage.getItem(SUTUN_ANAHTARI); if (k === 'hoca' || k === 'ben') sutun = k; } catch { /* depolama yok: iki sütun */ }
@@ -131,7 +137,7 @@ export function envanterPaneli(kok: HTMLElement, s: EnvanterPaneliSecenek): { te
   }
 
   const ogrenciAdi = (ref: string) => {
-    if (ref === TEST_REF) return 'Deneme öğrenci';
+    if (ref === TEST_REF) return tV('ogr.deneme');
     const o = s.ogrenciler().find((x) => x.ref === ref);
     return o ? `${o.ad} ${o.soyad}` : ref;
   };
@@ -139,51 +145,53 @@ export function envanterPaneli(kok: HTMLElement, s: EnvanterPaneliSecenek): { te
   for (const g of GRUPLAR) for (const sy of MADDELER.gruplar[g].sayfalar) for (const b of sy.bolumler) for (const st of b.satirlar) satirBilgisi.set(st.id, { satir: st, bolum: b });
 
   /* ───────────── yardımcılar ───────────── */
-  const bagliDurum = () => {
+  type BagAnahtar = 'baglan.limit' | 'baglan.hata' | 'baglan.yukleniyor' | 'baglan.bekliyorKayit' | 'baglan.gonderiliyor' | 'baglan.bekliyorTutulur' | 'baglan.tamam';
+  const bagliDurum = (): [string, string, BagAnahtar] => {
     const d = depo.durum();
     const bekle = depo.bekleyenVar();
-    if (d.hata) return ['hata', 'uyari', d.hataKodu === 'resource-exhausted' ? 'Günlük okuma sınırı doldu · saat 09.00’dan sonra yenileyin' : 'Envanter kayıtları okunamadı (bağlantı ya da yetki)'];
-    if (!d.hazir) return ['', 'saat', 'Yükleniyor…'];
-    if (bekle && d.onbellekten) return ['bekliyor', 'bulutYok', 'Bağlantı yok · kayıtlar telefonda bekliyor'];
-    if (bekle) return ['', 'bulut', 'Kayıt gönderiliyor…'];
-    if (d.onbellekten) return ['bekliyor', 'bulutYok', 'Bağlantı yok · kayıtlar telefonda tutulur'];
-    return ['tamam', 'bulut', 'Bütün kayıtlar gönderildi'];
+    if (d.hata) return ['hata', 'uyari', d.hataKodu === 'resource-exhausted' ? 'baglan.limit' : 'baglan.hata'];
+    if (!d.hazir) return ['', 'saat', 'baglan.yukleniyor'];
+    if (bekle && d.onbellekten) return ['bekliyor', 'bulutYok', 'baglan.bekliyorKayit'];
+    if (bekle) return ['', 'bulut', 'baglan.gonderiliyor'];
+    if (d.onbellekten) return ['bekliyor', 'bulutYok', 'baglan.bekliyorTutulur'];
+    return ['tamam', 'bulut', 'baglan.tamam'];
   };
-  const rozetHtml = () => {
-    const [tur, ikon, metin] = bagliDurum();
-    return `<span class="env-baglanti ${tur}">${simge(ikon)}<span>${esc(metin)}</span></span>`;
+  /** trKip: veli (ev kipi) ve öğrenci kipi ekranları Türkçe kalır; hoca ekranı seçili dilde. */
+  const rozetHtml = (trKip = Boolean(ev)) => {
+    const [tur, ikon, anahtar] = bagliDurum();
+    return `<span class="env-baglanti ${tur}">${simge(ikon)}<span>${esc((trKip ? tTr : tV)(anahtar))}</span></span>`;
   };
   /** Yapışkan çubuktaki kısa kayıt durumu (telefonda uzun metin sığmaz); ekran okuyucuya canlı bölge. */
   const kisaHtml = () => {
-    const [tur, ikon, metin] = bagliDurum();
-    const kisa = tur === 'hata' ? 'Hata' : tur === 'bekliyor' ? 'Telefonda bekliyor' : metin.startsWith('Kayıt gönder') ? 'Gönderiliyor…' : metin.startsWith('Yükleniyor') ? 'Yükleniyor…' : 'Kaydedildi';
+    const [tur, ikon, anahtar] = bagliDurum();
+    const kisa = tur === 'hata' ? tV('baglan.kHata') : tur === 'bekliyor' ? tV('baglan.kBekliyor') : anahtar === 'baglan.gonderiliyor' ? tV('baglan.kGonderiliyor') : anahtar === 'baglan.yukleniyor' ? tV('baglan.yukleniyor') : tV('baglan.kTamam');
     return `<span class="env-baglanti ${tur}">${simge(ikon)}<span>${esc(kisa)}</span></span>`;
   };
   const durumGuncelle = () => {
-    for (const el of document.querySelectorAll<HTMLElement>('[data-env-baglanti]')) if (kok.contains(el) || overlay?.contains(el)) el.innerHTML = rozetHtml();
+    for (const el of document.querySelectorAll<HTMLElement>('[data-env-baglanti]')) if (kok.contains(el) || overlay?.contains(el)) el.innerHTML = rozetHtml(Boolean(ev) || Boolean(overlay?.contains(el)));
     for (const el of kok.querySelectorAll<HTMLElement>('[data-env-baglanti-kisa]')) el.innerHTML = kisaHtml();
   };
   const bilgiYaz = (m: string, tur = '') => { bilgi = m; bilgiTur = tur; const el = kok.querySelector<HTMLElement>('[data-env-bilgi]'); if (el) { el.textContent = m; el.className = `env-bilgi ${tur}`; el.hidden = !m; } };
   const hataMetni = (e: Error) => (e.message === ENVANTER_CAKISMA
-    ? 'Bu form başka bir cihazda değişti; son hâli yüklendi. Son dokunuşunuzu yeniden yapın.'
-    : 'Kayıt gönderilemedi; telefonda tutuluyor, bağlantı gelince yeniden denenecek.');
+    ? T('hata.cakisma')
+    : T('hata.gonderilemedi'));
 
   /* ───────────── görünümler ───────────── */
   const bugunHtml = () => {
     const sira = depo.gunSirasi();
-    if (!sira || !sira.adimlar.length) return `<p class="env-bos">${simge('form')}<span>${gunYaz(s.bugun)} için hazırlanmış bir sıra yok. «Öğrenciler» görünümünden form açabilirsiniz.</span></p><button type="button" class="env-dugme birincil" data-env-gorunum="liste">Öğrenci listesini aç</button>`;
+    if (!sira || !sira.adimlar.length) return `<p class="env-bos">${simge('form')}<span>${tV('bugun.bos', { gun: gunYaz(s.bugun) })}</span></p><button type="button" class="env-dugme birincil" data-env-gorunum="liste">${tV('bugun.listeAc')}</button>`;
     const yapilan = sira.adimlar.filter((a) => sira.yapildi[a.id]).length;
     const hazir = depo.durum().hazir;
     const adimlar = [...sira.adimlar].sort((x, y) => x.saat.localeCompare(y.saat) || x.ders - y.ders);
-    return `<p class="env-ozet"><b>${yapilan}/${sira.adimlar.length}</b> adım tamam</p><ol class="env-sira">${adimlar.map((a) => {
+    return `<p class="env-ozet"><b>${yapilan}/${sira.adimlar.length}</b> ${tV('bugun.adimTamam')}</p><ol class="env-sira">${adimlar.map((a) => {
       const bitti = Boolean(sira.yapildi[a.id]);
       const ad = a.ref ? ogrenciAdi(a.ref) : '';
       const eylem = a.ref && (a.is === 'form' || a.is === 'dogrulama' || a.is === 'hedef')
-        ? `<button type="button" class="env-dugme" data-env-ac="${esc(a.ref)}" data-grup="${a.grup ?? ''}" data-env-is="${esc(a.is)}"${hazir ? '' : ' disabled'}>${simge(a.is === 'hedef' ? 'hedef' : 'form')}${a.is === 'hedef' ? 'Programı aç' : 'Formu aç'}</button>` : '';
+        ? `<button type="button" class="env-dugme" data-env-ac="${esc(a.ref)}" data-grup="${a.grup ?? ''}" data-env-is="${esc(a.is)}"${hazir ? '' : ' disabled'}>${simge(a.is === 'hedef' ? 'hedef' : 'form')}${a.is === 'hedef' ? tV('bugun.programAc') : tV('bugun.formAc')}</button>` : '';
       return `<li class="env-adim${bitti ? ' bitti' : ''}" data-env-adim="${esc(a.id)}">
-        <button type="button" class="env-tik" data-env-tik="${esc(a.id)}" aria-pressed="${bitti}" aria-label="${esc(`${a.saat} ${ad} ${a.aciklama_tr}`)} — tamam">${simge('onay')}</button>
-        <div class="env-adim-govde"><p class="env-adim-ust"><b>${esc(a.saat)}</b> · ${a.ders}. ders · ${esc(IS_ADI[a.is] || a.is)}${a.sure_dk ? ` · ${a.sure_dk} dk` : ''}</p>
-          <p class="env-adim-ad">${esc(ad || 'Sınıf')}${a.grup ? ` <span class="env-grup">${esc(grupAdi(a.grup))}</span>` : ''}</p>
+        <button type="button" class="env-tik" data-env-tik="${esc(a.id)}" aria-pressed="${bitti}" aria-label="${tV('bugun.tikAria', { ozet: esc(`${a.saat} ${ad} ${a.aciklama_tr}`) })}">${simge('onay')}</button>
+        <div class="env-adim-govde"><p class="env-adim-ust"><b>${esc(a.saat)}</b> · ${tV('bugun.ders', { n: a.ders })} · ${esc(IS_ADI[a.is] || a.is)}${a.sure_dk ? ` · ${tV('bugun.dk', { n: a.sure_dk })}` : ''}</p>
+          <p class="env-adim-ad">${esc(ad || tV('ogr.sinif'))}${a.grup ? ` <span class="env-grup">${esc(grupAdi(a.grup))}</span>` : ''}</p>
           <p class="env-adim-not">${esc(a.aciklama_tr)}</p>${eylem}</div></li>`;
     }).join('')}</ol>`;
   };
@@ -203,26 +211,26 @@ export function envanterPaneli(kok: HTMLElement, s: EnvanterPaneliSecenek): { te
     const gorunen = tum
       .filter((o) => (filtre === 'tumu' ? true : filtre === 'tamam' ? o.d === 'tamam' : o.d !== 'tamam') && (!q || arama(o.ad).includes(q)))
       .sort((a, b) => SIRA_DURUM[a.d] - SIRA_DURUM[b.d]);
-    const deneme = filtre === 'tumu' && !q ? [{ ref: TEST_REF, ad: 'Deneme öğrenci (kayıt tutulmaz, silinebilir)', d: ogrDurumu(TEST_REF) }] : [];
+    const deneme = filtre === 'tumu' && !q ? [{ ref: TEST_REF, ad: tV('ogr.denemeUzun'), d: ogrDurumu(TEST_REF) }] : [];
     const kart = (o: { ref: string; ad: string; d: OgrDurum }) => {
       const belgeler = GRUPLAR.map((g) => ({ g, b: enYeni(depo.belgeler().values(), o.ref, g) }));
       const var_ = belgeler.filter((x) => x.b);
       const rozetler = var_.map(({ g, b }) => {
         const r = rozet(b, g); const i = ilerleme(b, g);
-        return `<button type="button" class="env-rozet r-${r}" data-env-ac="${esc(o.ref)}" data-grup="${g}" aria-label="${esc(`${o.ad} ${grupAdi(g)} formunu aç: ${ROZET_ADI[r]}`)}">
-          <b>${esc(grupAdi(g))}</b><span>${ROZET_ADI[r]}</span><small>öğrenci ${i.ben}/${i.toplam} · hoca ${i.hoca}/${i.toplam}</small></button>`;
+        return `<button type="button" class="env-rozet r-${r}" data-env-ac="${esc(o.ref)}" data-grup="${g}" aria-label="${esc(tV('liste.rozetAria', { ad: o.ad, grup: grupAdi(g), durum: ROZET_ADI[r] }))}">
+          <b>${esc(grupAdi(g))}</b><span>${ROZET_ADI[r]}</span><small>${tV('liste.rozetIlerleme', { ben: i.ben, toplam: i.toplam, hoca: i.hoca })}</small></button>`;
       }).join('');
-      const baslat = var_.length ? '' : GRUPLAR.map((g) => `<button type="button" class="env-rozet r-yok" data-env-ac="${esc(o.ref)}" data-grup="${g}"><b>${esc(grupAdi(g))}</b><span>başlat</span></button>`).join('');
+      const baslat = var_.length ? '' : GRUPLAR.map((g) => `<button type="button" class="env-rozet r-yok" data-env-ac="${esc(o.ref)}" data-grup="${g}"><b>${esc(grupAdi(g))}</b><span>${tV('liste.baslat')}</span></button>`).join('');
       return `<li class="env-ogr-kart d-${o.d}" data-env-ogr="${esc(o.ref)}" data-env-ogr-durum="${o.d}"><p class="env-ogr-ad">${esc(o.ad)} <span class="env-ogr-durum d-${o.d}">${OGR_DURUM_ADI[o.d]}</span></p><div class="env-rozetler">${rozetler}${baslat}</div></li>`;
     };
-    const bos = !gorunen.length && !deneme.length ? `<p class="env-bos">${simge('form')}<span>${q ? 'Bu ada uygun öğrenci yok.' : filtre === 'kalan' ? 'Kalan öğrenci yok. Hepsi tamam.' : 'Bu süzgece uyan öğrenci yok.'}</span></p>` : '';
-    return `<p class="env-ozet" role="status" aria-live="polite" data-env-liste-ozet><b>${tum.length}</b> öğrenci: <b>${say.tamam}</b> tamam · <b>${say.yarim}</b> yarım · <b>${say.yok}</b> başlanmadı</p>${bos}<ul class="env-liste">${[...gorunen, ...deneme].map(kart).join('')}</ul>`;
+    const bos = !gorunen.length && !deneme.length ? `<p class="env-bos">${simge('form')}<span>${q ? tV('liste.bosAd') : filtre === 'kalan' ? tV('liste.bosKalan') : tV('liste.bosSuzgec')}</span></p>` : '';
+    return `<p class="env-ozet" role="status" aria-live="polite" data-env-liste-ozet><b>${tum.length}</b> ${tV('liste.ozetOgrenci', { n: tum.length })} <b>${say.tamam}</b> ${tV('liste.durum.tamam')} · <b>${say.yarim}</b> ${tV('liste.durum.yarim')} · <b>${say.yok}</b> ${tV('liste.durum.yok')}</p>${bos}<ul class="env-liste">${[...gorunen, ...deneme].map(kart).join('')}</ul>`;
   };
   const listeHtml = () => {
-    if (!depo.durum().hazir) return `<p class="env-bos">${simge('saat')}<span>Envanter kayıtları yükleniyor…</span></p>`;
+    if (!depo.durum().hazir) return `<p class="env-bos">${simge('saat')}<span>${tV('liste.yukleniyor')}</span></p>`;
     const f = (k: Filtre, ad: string) => `<button type="button" class="env-filtre" data-env-filtre="${k}" aria-pressed="${filtre === k}">${ad}</button>`;
-    return `<div class="env-arac"><div class="env-filtreler" role="group" aria-label="Süzgeç">${f('kalan', 'Kalan')}${f('tumu', 'Tümü')}${f('tamam', 'Tamam')}</div>
-      <label class="env-ara"><span class="env-gizli">Öğrenci ara</span><input type="search" data-env-ara placeholder="Öğrenci ara" autocomplete="off" enterkeyhint="search" value="${esc(aranan)}"></label></div>
+    return `<div class="env-arac"><div class="env-filtreler" role="group" aria-label="${tV('liste.suzgec')}">${f('kalan', tV('liste.kalan'))}${f('tumu', tV('liste.tumu'))}${f('tamam', tV('liste.tamam'))}</div>
+      <label class="env-ara"><span class="env-gizli">${tV('liste.ara')}</span><input type="search" data-env-ara placeholder="${tV('liste.ara')}" autocomplete="off" enterkeyhint="search" value="${esc(aranan)}"></label></div>
       <div data-env-liste-kap>${listeIcerikHtml()}</div>`;
   };
   const listeYenile = () => { const kap = kok.querySelector<HTMLElement>('[data-env-liste-kap]'); if (kap) kap.innerHTML = listeIcerikHtml(); };
@@ -241,8 +249,8 @@ export function envanterPaneli(kok: HTMLElement, s: EnvanterPaneliSecenek): { te
     const benSira = [0, 1, 2].map((i) => yuzDugmesi(st, bolum, i, 'ben', b.ben[st.id], ogrenciKipi)).join('');
     if (ogrenciKipi) return `<section class="env-satir" data-satir="${esc(st.id)}">${ad}<div class="env-yuzler" role="group" aria-label="${esc(st.tr)}">${benSira}</div></section>`;
     const hocaSira = [0, 1, 2].map((i) => yuzDugmesi(st, bolum, i, 'hoca', b.hoca[st.id], false)).join('');
-    const benBlok = `<p class="env-sutun">Öğrenci${form!.grup === '5-8' ? ' (çocuk adına işaretle)' : ''}</p><div class="env-yuzler" role="group" aria-label="${esc(st.tr)} — öğrenci">${benSira}</div>`;
-    const hocaBlok = `<p class="env-sutun hoca">Hoca (dinledim / gördüm)</p><div class="env-yuzler" role="group" aria-label="${esc(st.tr)} — hoca">${hocaSira}</div>`;
+    const benBlok = `<p class="env-sutun">${form!.grup === '5-8' ? tV('sutun.ogrenciCocuk') : tV('form.ozOgr')}</p><div class="env-yuzler" role="group" aria-label="${esc(tV('sutun.ogrAria', { satir: st.tr }))}">${benSira}</div>`;
+    const hocaBlok = `<p class="env-sutun hoca">${tV('sutun.hoca')}</p><div class="env-yuzler" role="group" aria-label="${esc(tV('sutun.hocaAria', { satir: st.tr }))}">${hocaSira}</div>`;
     return `<section class="env-satir" data-satir="${esc(st.id)}">${ad}${sutun !== 'hoca' ? benBlok : ''}${sutun !== 'ben' ? hocaBlok : ''}</section>`;
   };
   const bolumHtml = (b: Bolum, ogrenciKipi: boolean) => `<div class="env-bolum"><h3 class="env-bolum-bas"><span${trL}>${esc(b.tr)}</span><span class="env-fr" lang="fr">${fr(b.fr)}</span></h3>${b.satirlar.map((st) => satirHtml(st, b, ogrenciKipi)).join('')}</div>`;
@@ -267,13 +275,13 @@ export function envanterPaneli(kok: HTMLElement, s: EnvanterPaneliSecenek): { te
   /* ───────────── hoca formu ───────────── */
   const programHtml = () => {
     const f = form!;
-    if (f.program === undefined) return '<p class="env-bilgi">Program okunuyor…</p>';
-    if (!f.program) return '<p class="env-bilgi">Bu öğrenci için kişisel program henüz hazır değil.</p>';
+    if (f.program === undefined) return `<p class="env-bilgi">${tV('program.okunuyor')}</p>`;
+    if (!f.program) return `<p class="env-bilgi">${tV('program.yok')}</p>`;
     const p = f.program;
-    return `<div class="env-program"><p class="env-ozet"><span class="env-grup ${p.durum}">${p.durum === 'onayli' ? 'onaylı' : 'taslak'}</span> ${esc(p.donem)}</p>
+    return `<div class="env-program"><p class="env-ozet"><span class="env-grup ${p.durum}">${p.durum === 'onayli' ? tV('program.onayli') : tV('program.taslak')}</span> ${esc(p.donem)}</p>
       ${p.ogrenciye_tr ? `<blockquote class="env-ogrenciye"><p lang="tr">${esc(p.ogrenciye_tr)}</p><p lang="fr">${fr(p.ogrenciye_fr)}</p></blockquote>` : ''}
       ${p.hedefler.map((h) => `<section class="env-hedef"><h4>${esc(h.baslik_tr)} <span class="env-fr" lang="fr">${fr(h.baslik_fr)}</span></h4><p class="env-neden">${esc(h.neden_tr)}</p>
-        <ul>${h.haftalar.map((w) => `<li><b>${esc(gunYaz(w.tarih, { day: 'numeric', month: 'long' }))}</b> · derste: ${esc(w.derste_tr)} · evde: ${esc(w.evde_tr)}${w.hoca_dinler_tr ? ` · <em>hoca dinler: ${esc(w.hoca_dinler_tr)}</em>` : ''}</li>`).join('')}</ul></section>`).join('')}</div>`;
+        <ul>${h.haftalar.map((w) => `<li><b>${esc(gunYaz(w.tarih, { day: 'numeric', month: 'long' }))}</b> · ${tV('program.derste')} ${esc(w.derste_tr)} · ${tV('program.evde')} ${esc(w.evde_tr)}${w.hoca_dinler_tr ? ` · <em>${tV('program.hocaDinler')} ${esc(w.hoca_dinler_tr)}</em>` : ''}</li>`).join('')}</ul></section>`).join('')}</div>`;
   };
 
   const okumaHocaHtml = (g: Grup) => {
@@ -282,30 +290,30 @@ export function envanterPaneli(kok: HTMLElement, s: EnvanterPaneliSecenek): { te
     const dugmeler = (anahtar: string, bas: number, secili: number | undefined) => Array.from({ length: n - bas + 1 }, (_, i) => i + bas)
       .map((i) => `<button type="button" class="env-secenek kucuk${secili === i ? ' secili' : ''}" ${anahtar}="${i}" aria-pressed="${secili === i}"><b>${i}</b></button>`).join('');
     const ticked = (b.kutular.okuma || []).map(Number).filter((x) => x >= 1 && x <= n).sort();
-    return `<section class="env-okuma-hoca"><h3 class="env-bolum-bas"><span>Okuma · hoca</span></h3>
-      <p class="env-sutun hoca">Dinlediğim en yüksek basamak (0 = henüz yok)</p><div class="env-secenekler">${dugmeler('data-okuma-bas', 0, b.okuma.basamak)}</div>
-      <p class="env-sutun hoca">Sıradaki hedef basamak</p><div class="env-secenekler">${dugmeler('data-okuma-sonraki', 1, b.okuma.sonraki)}</div>
-      ${b.metin.hoca_basamak ? `<p class="env-bilgi">Kâğıttan: ${esc(b.metin.hoca_basamak)}</p>` : ''}
-      ${ticked.map((i) => `<label class="env-alan"><span>Basamak ${i} notu</span><input type="text" maxlength="80" data-okuma-not="${i}" value="${esc(b.okuma_notlari[String(i)] ?? '')}"></label>`).join('')}</section>`;
+    return `<section class="env-okuma-hoca"><h3 class="env-bolum-bas"><span>${tV('okuma.baslik')}</span></h3>
+      <p class="env-sutun hoca">${tV('okuma.dinledigim')}</p><div class="env-secenekler">${dugmeler('data-okuma-bas', 0, b.okuma.basamak)}</div>
+      <p class="env-sutun hoca">${tV('okuma.sonraki')}</p><div class="env-secenekler">${dugmeler('data-okuma-sonraki', 1, b.okuma.sonraki)}</div>
+      ${b.metin.hoca_basamak ? `<p class="env-bilgi">${tV('okuma.kagit')} ${esc(b.metin.hoca_basamak)}</p>` : ''}
+      ${ticked.map((i) => `<label class="env-alan"><span>${tV('okuma.not', { n: i })}</span><input type="text" maxlength="80" data-okuma-not="${i}" value="${esc(b.okuma_notlari[String(i)] ?? '')}"></label>`).join('')}</section>`;
   };
 
   const notlarHtml = () => {
     const b = form!.oturum.belge;
     const t = (a: string) => (typeof b.metin[a] === 'string' ? (b.metin[a] as string) : '');
-    return `<section class="env-notlar"><h3 class="env-bolum-bas"><span>Hocanın notu</span><span class="env-fr" lang="fr">Note de l’enseignant</span></h3>
-      <label class="env-alan"><span>Türkçe (güçlü yön, somut gözlem, tek sonraki adım)</span><textarea rows="4" maxlength="800" data-metin="hoca_notu">${esc(t('hoca_notu'))}</textarea></label>
-      <label class="env-alan"><span>Fransızca</span><textarea rows="3" maxlength="800" data-metin="hoca_notu_fr" lang="fr">${esc(t('hoca_notu_fr'))}</textarea></label>
-      <label class="env-alan"><span>Doğrulama tarihi</span><input type="text" inputmode="text" maxlength="10" data-metin="dogrulama_tarihi" value="${esc(t('dogrulama_tarihi'))}" placeholder="${esc(s.bugun)}"></label>
-      <div class="env-satir-dugmeler"><button type="button" class="env-dugme" data-env-dogrulama-bugun>Doğrulama tarihi: bugün</button>
-        <button type="button" class="env-dugme birincil${b.durum === 'tamam' ? ' secili' : ''}" data-env-tamam aria-pressed="${b.durum === 'tamam'}">${simge('onay')}${b.durum === 'tamam' ? 'Form tamam (geri al)' : 'Formu tamamlandı say'}</button></div></section>`;
+    return `<section class="env-notlar"><h3 class="env-bolum-bas"><span>${tV('not.baslik')}</span><span class="env-fr" lang="fr">Note de l’enseignant</span></h3>
+      <label class="env-alan"><span>${tV('not.turkce')}</span><textarea rows="4" maxlength="800" data-metin="hoca_notu">${esc(t('hoca_notu'))}</textarea></label>
+      <label class="env-alan"><span>${tV('not.fransizca')}</span><textarea rows="3" maxlength="800" data-metin="hoca_notu_fr" lang="fr">${esc(t('hoca_notu_fr'))}</textarea></label>
+      <label class="env-alan"><span>${tV('not.dogrulamaTarihi')}</span><input type="text" inputmode="text" maxlength="10" data-metin="dogrulama_tarihi" value="${esc(t('dogrulama_tarihi'))}" placeholder="${esc(s.bugun)}"></label>
+      <div class="env-satir-dugmeler"><button type="button" class="env-dugme" data-env-dogrulama-bugun>${tV('not.dogrulamaBugun')}</button>
+        <button type="button" class="env-dugme birincil${b.durum === 'tamam' ? ' secili' : ''}" data-env-tamam aria-pressed="${b.durum === 'tamam'}">${simge('onay')}${b.durum === 'tamam' ? tV('not.tamamGeri') : tV('not.tamamYap')}</button></div></section>`;
   };
 
   const cizimHtml = (sy: Sayfa) => {
     if (!sy.cizim) return '';
     const b = form!.oturum.belge;
     return `<section class="env-cizim"><h3 class="env-bolum-bas"><span${trL}>${esc(sy.cizim.tr)}</span><span class="env-fr" lang="fr">${fr(sy.cizim.fr)}</span></h3>
-      <canvas class="env-tuval" width="640" height="360" data-env-tuval aria-label="Çocuğun çizimi (parmakla)"></canvas>
-      <div class="env-satir-dugmeler"><button type="button" class="env-dugme" data-env-cizim-sil><span>Çizimi sil</span>${ev ? `<span class="env-fr" lang="fr">Effacer le dessin</span>` : ''}</button></div>${b.cizim ? '' : ''}</section>`;
+      <canvas class="env-tuval" width="640" height="360" data-env-tuval aria-label="${T('cizim.aria')}"></canvas>
+      <div class="env-satir-dugmeler"><button type="button" class="env-dugme" data-env-cizim-sil><span>${T('cizim.sil')}</span>${ev ? `<span class="env-fr" lang="fr">Effacer le dessin</span>` : ''}</button></div>${b.cizim ? '' : ''}</section>`;
   };
 
   const sayfaHtml = (sy: Sayfa, g: Grup) => {
@@ -319,10 +327,10 @@ export function envanterPaneli(kok: HTMLElement, s: EnvanterPaneliSecenek): { te
       ${sayfaSatirlari(sy).length ? sy.bolumler.map((bl) => bolumHtml(bl, false)).join('') : ''}
       ${kutular.map(kutuHtml).join('')}${sy.metin.map(metinHtml).join('')}${okumaKutu.map(kutuHtml).join('')}${cizimHtml(sy)}
       ${son ? notlarHtml() : ''}
-      <button type="button" class="env-dugme dinledim${dinledi ? ' secili' : ''}" data-env-dinledim="${sy.no}" aria-pressed="${dinledi}">${simge('onay')}Bu sayfayı dinledim${dinledi ? ' ✓' : ''}</button>
-      <div class="env-sayfa-gez">${sy.no > 1 ? `<button type="button" class="env-dugme" data-env-onceki>${simge('geri')}Önceki sayfa</button>` : ''}${son
-        ? `<button type="button" class="env-dugme birincil" data-env-geri>${simge('onay')}Listeye dön</button>`
-        : `<button type="button" class="env-dugme birincil" data-env-sonraki>Sonraki sayfa${simge('ok')}</button>`}</div>`;
+      <button type="button" class="env-dugme dinledim${dinledi ? ' secili' : ''}" data-env-dinledim="${sy.no}" aria-pressed="${dinledi}">${simge('onay')}${tV('sayfa.dinledim')}${dinledi ? ' ✓' : ''}</button>
+      <div class="env-sayfa-gez">${sy.no > 1 ? `<button type="button" class="env-dugme" data-env-onceki>${simge('geri')}${tV('sayfa.onceki')}</button>` : ''}${son
+        ? `<button type="button" class="env-dugme birincil" data-env-geri>${simge('onay')}${tV('sayfa.listeyeDon')}</button>`
+        : `<button type="button" class="env-dugme birincil" data-env-sonraki>${tV('sayfa.sonraki')}${simge('ok')}</button>`}</div>`;
   };
 
   const formHtml = () => {
@@ -331,15 +339,15 @@ export function envanterPaneli(kok: HTMLElement, s: EnvanterPaneliSecenek): { te
     const sy = sayfalar.find((x) => x.no === f.sayfa) || sayfalar[0];
     const i = ilerleme(f.oturum.belge, f.grup);
     return `<div class="env-form">
-      <div class="env-bar"><button type="button" class="env-dugme geri" data-env-geri>${simge('geri')}Liste</button>
+      <div class="env-bar"><button type="button" class="env-dugme geri" data-env-geri>${simge('geri')}${tV('form.liste')}</button>
         <p class="env-baslik"><b>${esc(ogrenciAdi(f.ref))}</b> <span class="env-grup">${esc(grupAdi(f.grup))}</span></p>
         <span class="env-kisa" role="status" aria-live="polite" data-env-baglanti-kisa>${kisaHtml()}</span></div>
-      <p class="env-ozet">Öğrenci <b>${i.ben}/${i.toplam}</b> · hoca <b>${i.hoca}/${i.toplam}</b> · sayfa dinlenen <b>${i.dinlenen}/${i.sayfa}</b>${f.oturum.belge.kaynak !== 'online' ? ' · kâğıt formdan aktarılmış' : ''}</p>
-      <div class="env-kipler">${f.grup === '9-13' ? `<button type="button" class="env-dugme birincil" data-env-ogr-ac>${simge('kilit')}Öğrenci kipine geç</button>` : '<span class="env-bilgi">5–8 yaş: soruları siz sorun, çocuk adına işaretleyin.</span>'}
-        <button type="button" class="env-dugme${f.programAcik ? ' secili' : ''}" data-env-program aria-pressed="${f.programAcik}">${simge('hedef')}Kişisel program</button></div>
+      <p class="env-ozet">${tV('form.ozOgr')} <b>${i.ben}/${i.toplam}</b> · ${tV('form.ozHoca')} <b>${i.hoca}/${i.toplam}</b> · ${tV('form.ozSayfa')} <b>${i.dinlenen}/${i.sayfa}</b>${f.oturum.belge.kaynak !== 'online' ? ` · ${tV('form.ozKagit')}` : ''}</p>
+      <div class="env-kipler">${f.grup === '9-13' ? `<button type="button" class="env-dugme birincil" data-env-ogr-ac>${simge('kilit')}${tV('form.ogrKipi')}</button>` : `<span class="env-bilgi">${tV('form.kucuk')}</span>`}
+        <button type="button" class="env-dugme${f.programAcik ? ' secili' : ''}" data-env-program aria-pressed="${f.programAcik}">${simge('hedef')}${tV('form.program')}</button></div>
       ${f.programAcik ? programHtml() : ''}
-      <div class="env-sutun-sec" role="group" aria-label="Gösterilecek sütun"><span class="env-sutun-etiket">Göster:</span>${([['ikisi', 'İkisi'], ['hoca', 'Yalnız hoca'], ['ben', 'Yalnız öğrenci']] as const).map(([k, ad]) => `<button type="button" class="env-dugme env-sutun-dugme" data-env-sutun="${k}" aria-pressed="${sutun === k}">${ad}</button>`).join('')}</div>
-      <nav class="env-sayfalar" aria-label="Form sayfaları">${sayfalar.map((x) => `<button type="button" class="env-sayfa-dugme${x.no === sy.no ? ' secili' : ''}" data-env-sayfa="${x.no}" aria-current="${x.no === sy.no}">${x.no}${f.oturum.belge.sayfaDinlendi[String(x.no)] ? ' ✓' : ''}</button>`).join('')}</nav>
+      <div class="env-sutun-sec" role="group" aria-label="${tV('form.sutunAria')}"><span class="env-sutun-etiket">${tV('form.goster')}</span>${([['ikisi', tV('form.sutunIkisi')], ['hoca', tV('form.sutunHoca')], ['ben', tV('form.sutunOgr')]] as const).map(([k, ad]) => `<button type="button" class="env-dugme env-sutun-dugme" data-env-sutun="${k}" aria-pressed="${sutun === k}">${ad}</button>`).join('')}</div>
+      <nav class="env-sayfalar" aria-label="${tV('form.sayfalarAria')}">${sayfalar.map((x) => `<button type="button" class="env-sayfa-dugme${x.no === sy.no ? ' secili' : ''}" data-env-sayfa="${x.no}" aria-current="${x.no === sy.no}">${x.no}${f.oturum.belge.sayfaDinlendi[String(x.no)] ? ' ✓' : ''}</button>`).join('')}</nav>
       ${sayfaHtml(sy, f.grup)}</div>`;
   };
 
@@ -506,7 +514,7 @@ export function envanterPaneli(kok: HTMLElement, s: EnvanterPaneliSecenek): { te
         k.getContext('2d')?.drawImage(tuval, 0, 0, k.width, k.height);
         url = k.toDataURL('image/png');
       }
-      if (url.length > CIZIM_SINIRI) { bilgiYaz('Çizim kaydedilemeyecek kadar büyük; silip daha sade çizin.', 'hata'); return; }
+      if (url.length > CIZIM_SINIRI) { bilgiYaz(T('cizim.cokBuyuk'), 'hata'); return; }
       f.oturum.ayarla(['cizim'], url); durumGuncelle();
     };
     tuval.addEventListener('pointerup', bitir, { signal: ac.signal });
@@ -517,9 +525,9 @@ export function envanterPaneli(kok: HTMLElement, s: EnvanterPaneliSecenek): { te
   const govdeHtml = () => {
     if (ev) return evHtml();
     if (form) return formHtml();
-    return `<div class="env-gorunum" role="group" aria-label="Görünüm">
-        <button type="button" class="env-gorunum-dugme" data-env-gorunum="bugun" aria-pressed="${gorunum === 'bugun'}">Bugün</button>
-        <button type="button" class="env-gorunum-dugme" data-env-gorunum="liste" aria-pressed="${gorunum === 'liste'}">Öğrenciler</button></div>
+    return `<div class="env-gorunum" role="group" aria-label="${tV('gorunum.aria')}">
+        <button type="button" class="env-gorunum-dugme" data-env-gorunum="bugun" aria-pressed="${gorunum === 'bugun'}">${tV('gorunum.bugun')}</button>
+        <button type="button" class="env-gorunum-dugme" data-env-gorunum="liste" aria-pressed="${gorunum === 'liste'}">${tV('gorunum.ogrenciler')}</button></div>
       ${gorunum === 'bugun' ? bugunHtml() : listeHtml()}`;
   };
   const ciz = () => {
@@ -538,7 +546,7 @@ export function envanterPaneli(kok: HTMLElement, s: EnvanterPaneliSecenek): { te
   kok.innerHTML = ev
     ? `<div class="env-ust"><h2 class="env-ev-baslik">${simge('form')}<span lang="tr">Neler biliyorum? · ${esc(ev.ad)}</span> <span class="env-ev-ayrac" aria-hidden="true">/</span> <span class="env-fr" lang="fr">Ce que je sais</span></h2><p class="env-baglanti-kap" data-env-baglanti>${rozetHtml()}</p></div>
     <p class="env-bilgi" data-env-bilgi role="status" aria-live="polite" hidden></p><div class="env-govde" data-env-govde></div>`
-    : `<div class="env-ust"><h2>${simge('form')}Envanter <span class="kucuk env-gun">${esc(gunYaz(s.bugun))}</span></h2><p class="env-baglanti-kap" data-env-baglanti>${rozetHtml()}</p></div>
+    : `<div class="env-ust"><h2>${simge('form')}${tV('baslik')} <span class="kucuk env-gun">${esc(gunYaz(s.bugun))}</span></h2><p class="env-baglanti-kap" data-env-baglanti>${rozetHtml()}</p></div>
     <p class="env-bilgi" data-env-bilgi role="status" aria-live="polite" hidden></p><div class="env-govde" data-env-govde></div>`;
 
   const formAc = (ref: string, grup: Grup, hedefIs = '') => {
@@ -593,7 +601,7 @@ export function envanterPaneli(kok: HTMLElement, s: EnvanterPaneliSecenek): { te
     if (d.envGorunum) { gorunum = d.envGorunum as Gorunum; gorunumSecildi = true; ciz(); return; }
     if (d.envFiltre) { filtre = d.envFiltre as Filtre; ciz(); return; }
     if (d.envSutun) { sutun = d.envSutun as Sutun; try { localStorage.setItem(SUTUN_ANAHTARI, sutun); } catch { /* yoksay */ } ciz(); return; }
-    if (d.envTik) { await depo.adimIsaretle(d.envTik, el.getAttribute('aria-pressed') !== 'true').catch(() => bilgiYaz('İşaret kaydedilemedi; yeniden deneyin.', 'hata')); ciz(); return; }
+    if (d.envTik) { await depo.adimIsaretle(d.envTik, el.getAttribute('aria-pressed') !== 'true').catch(() => bilgiYaz(tV('hata.isaret'), 'hata')); ciz(); return; }
     if (d.envAc !== undefined) {
       const grup = (d.grup === '5-8' || d.grup === '9-13' ? d.grup : null) ?? (GRUPLAR.find((g) => enYeni(depo.belgeler().values(), d.envAc!, g)) ?? '9-13');
       formAc(d.envAc, grup, d.envIs || '');

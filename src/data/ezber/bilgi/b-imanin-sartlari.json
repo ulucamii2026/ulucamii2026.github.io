@@ -8,8 +8,8 @@
         "tr": "Allah’a iman",
         "fr": "La foi en Allah",
         "en": "Belief in Allah",
-        "nl": "Geloof in Allah",
-        "de": "Der Glaube an Allah"
+        "nl": "Het geloven in Allah",
+        "de": "An den einen Gott"
       },
       "ar": "بِاللّٰهِ"
     },
@@ -17,9 +17,9 @@
       "ad": {
         "tr": "Meleklere iman",
         "fr": "La foi aux anges",
-        "en": "Belief in the angels",
-        "nl": "Geloof in de engelen",
-        "de": "Der Glaube an die Engel"
+        "en": "Belief in Angels",
+        "nl": "Het geloven in de Engelen",
+        "de": "An die Engel"
       },
       "ar": "وَمَلٰٓئِكَتِه۪"
     },
@@ -27,9 +27,9 @@
       "ad": {
         "tr": "Kitaplara iman",
         "fr": "La foi aux livres",
-        "en": "Belief in the books",
-        "nl": "Geloof in de boeken",
-        "de": "Der Glaube an die Bücher"
+        "en": "Belief in the Sacred Books",
+        "nl": "Het geloven in de Boeken",
+        "de": "An die Heiligen Bücher"
       },
       "ar": "وَكُتُبِه۪"
     },
@@ -37,9 +37,9 @@
       "ad": {
         "tr": "Peygamberlere iman",
         "fr": "La foi aux prophètes",
-        "en": "Belief in the prophets",
-        "nl": "Geloof in de profeten",
-        "de": "Der Glaube an die Propheten"
+        "en": "Belief in the Prophets",
+        "nl": "Het geloven in de Profeten",
+        "de": "An die Propheten"
       },
       "ar": "وَرُسُلِه۪"
     },
@@ -48,8 +48,8 @@
         "tr": "Ahirete iman",
         "fr": "La foi en l’au-delà",
         "en": "Belief in the Hereafter",
-        "nl": "Geloof in het hiernamaals",
-        "de": "Der Glaube an das Jenseits"
+        "nl": "Het geloven in de Dag des Oordeels",
+        "de": "An die Wiederauferstehung"
       },
       "ar": "وَالْيَوْمِ الْاٰخِرِ"
     },
@@ -57,18 +57,14 @@
       "ad": {
         "tr": "Kadere iman",
         "fr": "La foi au destin",
-        "en": "Belief in destiny (qadar)",
-        "nl": "Geloof in het lot (qadar)",
-        "de": "Der Glaube an die Vorherbestimmung (Qadar)"
+        "en": "Belief in Fate and Predestination",
+        "nl": "Het geloven in de qadar (lotsbeschikking van de mens) en dat zowel het goede als het kwade door Allah is geschapen",
+        "de": "An die Vorherbestimmung und an „das Schicksal“ als die Verfügungsgewalt Allahs"
       },
       "ar": "وَبِالْقَدَرِ"
     }
   ],
-  "taslak": [
-    "en",
-    "nl",
-    "de"
-  ],
+  "taslak": [],
   "kaynaklar": [
     {
       "rol": "metin",
@@ -79,6 +75,21 @@
       "rol": "fr",
       "ad": "Je vais à la mosquée 1",
       "sayfa": "87–89"
+    },
+    {
+      "rol": "en",
+      "ad": "Essentials of Islam (Diyanet, 2017)",
+      "sayfa": "7"
+    },
+    {
+      "rol": "nl",
+      "ad": "Basiskennis over Islam (Diyanet, 2017; vertaling Drs. Ahmed Bulut)",
+      "sayfa": "29"
+    },
+    {
+      "rol": "de",
+      "ad": "Was ist der Islam? (Diyanet-Broschüre, ohne Jahresangabe)",
+      "bolum": "PDF-Seite 6–10"
     },
     {
       "rol": "ar",

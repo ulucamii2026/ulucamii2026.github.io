@@ -1,3 +1,4 @@
+import { hocaDiliBaslat } from './hoca-dil';
 import { hocaOdevi } from './hoca-odev';
 import { kitaplarHtml, hocaKitaplari } from './hoca-kitaplari';
 import { ETKINLIKLER } from '../lib/ogrenme-icerigi';
@@ -11,6 +12,9 @@ import { mazeretKuraliniUygula, MAZERET_KURALI, defterEksikleri, katalogGunleri,
 import { ezberDurumuOku, katalogSirasi, kontrolSirasi, type OgeDurumu } from '../lib/ezber/durum';
 import { ezberBul } from '../lib/ezber/katalog';
 import { BASAMAK_ADLARI } from '../lib/ezber/metinler';
+import { hocaDili, hocaYerel } from '../i18n/hoca';
+import { tE as t } from '../i18n/hoca-metin/ekran';
+import { tc } from '../i18n/hoca-metin/cekirdek';
 /**
  * Hoca ekranı tarayıcı uygulaması (6 Eyl 2026) — yalnız Türkçe. Firebase Auth + Firestore (lite), sunucu yok.
  * Yetki: hocalar/{uid} belgesi (firebase/firestore.rules → hoca()). Bu ekran veli portalının (veli-portali.ts) veri
@@ -34,24 +38,26 @@ type Yok = { ref: string; tarih: string; dersler?: Record<string, string>; durum
 type Ilerleme = { kuranAdim?: number; ezber?: Record<string, string>; alanlar?: Record<string, number>; hocaNotu?: string; guncelleme?: string; rozet?: string };
 type Kayit = Record<string, unknown> & { id: string };
 
-const ALANLAR: Record<string, string> = { kuran: 'Kur’an-ı Kerim', itikat: 'İtikat', ibadet: 'İbadet', siyer: 'Siyer', ahlak: 'Ahlak', genel: 'Genel' };
-const DURUMLAR: Record<string, string> = { var: 'Var', yok: 'Yok', mazeret: 'Mazeretli', gec: 'Geç' };
-const DERECE: Record<string, string> = { '0': '—', '1': 'Zayıf', '2': 'Gelişmeli', '3': 'Orta', '4': 'İyi', '5': 'Çok iyi' }; // kurs yoklama-değerlendirme şablonuyla aynı ölçek (1 = zayıf … 5 = çok iyi)
+const ALANLAR: Record<string, string> = { kuran: t('alan.kuran'), itikat: t('alan.itikat'), ibadet: t('alan.ibadet'), siyer: t('alan.siyer'), ahlak: t('alan.ahlak'), genel: t('alan.genel') };
+const DURUMLAR: Record<string, string> = { var: t('durum.var'), yok: t('durum.yok'), mazeret: t('durum.mazeret'), gec: t('durum.gec') };
+const DERECE: Record<string, string> = { '0': '—', '1': t('derece.1'), '2': t('derece.2'), '3': t('derece.3'), '4': t('derece.4'), '5': t('derece.5') }; // kurs yoklama-değerlendirme şablonuyla aynı ölçek (1 = zayıf … 5 = çok iyi)
 const OLCUTLER = ['Mahreç', 'Hareke / Med', 'Tecvid', 'Akıcılık', 'Ezber', 'Harf tanıma', 'Hece okuma', 'Dua / sure ezberi'];
-const TUR: Record<string, string> = { mazeret: 'Mazeret', iletisim: 'İletişim', soru: 'Soru' };
-const KITAP_ADI: Record<string, string> = { var: 'kitabı var', satin: 'satın alacak', fotokopi: 'fotokopi · 10 €' };
-const DIL_ADI: Record<string, string> = { tr: 'Türkçe', fr: 'Fransızca', en: 'İngilizce' };
+const TUR: Record<string, string> = { mazeret: t('tur.mazeret'), iletisim: t('tur.iletisim'), soru: t('tur.soru') };
+const KITAP_ADI: Record<string, string> = { var: t('kitap.var'), satin: t('kitap.satin'), fotokopi: t('kitap.fotokopi') };
+const DIL_ADI: Record<string, string> = { tr: t('dilad.tr'), fr: t('dilad.fr'), en: t('dilad.en') };
+/** Veli mazereti kuralı iletisi: Türkçe metin kaynağı src/lib/ders-defteri.ts (paylaşılan); diğer diller sözlükten. */
+const mazeretKurali = () => (hocaDili() === 'tr' ? MAZERET_KURALI : t('yk.mazeretKurali'));
 const GAS = 'https://script.google.com/macros/s/AKfycbz2cgLbdHmx9ejuk4euzybGbpDro0UAEjzjwl86tMdRtz05Pp5WI1JUZT374y_lb4J8BQ/exec';
 
 const esc = (s: unknown) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c] as string);
 const bugunISO = () => new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Brussels' }).format(new Date());
 const tarihYaz = (iso: string, sec: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'short', year: 'numeric' }) =>
-  iso ? new Intl.DateTimeFormat('tr-TR', { timeZone: 'Europe/Brussels', ...sec }).format(new Date(iso.slice(0, 10) + 'T12:00:00')) : '';
+  iso ? new Intl.DateTimeFormat(hocaYerel(), { timeZone: 'Europe/Brussels', ...sec }).format(new Date(iso.slice(0, 10) + 'T12:00:00')) : '';
 const trBuyuk = (s: string) => s.replace(/i/g, 'İ').replace(/ı/g, 'I').toUpperCase();
 const trBaslik = (s: string) => s.split(/\s+/).filter(Boolean).map((w) => { const k = w === trBuyuk(w) ? w.replace(/I/g, 'ı').replace(/İ/g, 'i').toLowerCase() : w; return k.charAt(0).replace('i', 'İ').toUpperCase() + k.slice(1); }).join(' ');
 const secenekler = (o: Record<string, string>, secili: string) => Object.entries(o).map(([k, v]) => `<option value="${esc(k)}" ${k === secili ? 'selected' : ''}>${esc(v)}</option>`).join('');
 const zamanMs = (z: unknown) => { const t = z as { toDate?: () => Date } | string | undefined; return typeof t === 'string' ? Date.parse(t) : t?.toDate ? t.toDate().getTime() : 0; };
-const zamanYaz = (z: unknown) => { const ms = zamanMs(z); return ms ? new Intl.DateTimeFormat('tr-TR', { timeZone: 'Europe/Brussels', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }).format(new Date(ms)) : ''; };
+const zamanYaz = (z: unknown) => { const ms = zamanMs(z); return ms ? new Intl.DateTimeFormat(hocaYerel(), { timeZone: 'Europe/Brussels', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }).format(new Date(ms)) : ''; };
 
 /* çizili tek-çizgi ikonlar (currentColor; craft: emoji/glyph değil) */
 const SIMGELER: Record<string, string> = {
@@ -84,6 +90,7 @@ export async function hocaEkrani(): Promise<void> {
   const kok = document.getElementById('hoca-ekrani');
   const veriEl = document.getElementById('hoca-veri');
   if (!kok || !veriEl) return;
+  hocaDiliBaslat(kok); // 12 Kasım 2026: arayüz dili (tr varsayılan) + dil seçici; metinler src/i18n/hoca-metin/
   const veri = JSON.parse(veriEl.textContent || '{}') as Veri;
   const kuranSirasi = veri.gunler.flatMap((g) => g.dersler.filter((x) => x.kod === 'kuran').map((x) => ({ tarih: g.tarih, konu: x.konu }))).filter((x, i, d) => d.findIndex((y) => y.konu === x.konu) === i); // her Kur'an konusu bir adım (ilk işlendiği gün)
   const haftalar = odevHaftalari(veri.gunler); // Tek kayıt anahtarı: haftanın ilk gerçek ders günü.
@@ -103,7 +110,7 @@ export async function hocaEkrani(): Promise<void> {
   a.languageCode = 'tr';
   const db = fs.getFirestore(app);
   const sayfaAdresi = location.origin + location.pathname;
-  const hata = (e: unknown) => { const kod = (e as { code?: string })?.code || ''; return kod ? `Hata: ${kod}` : `Hata: ${(e as Error)?.message || e}`; };
+  const hata = (e: unknown) => { const kod = (e as { code?: string })?.code || ''; return kod ? t('ortak.hata', { ayrinti: kod }) : t('ortak.hata', { ayrinti: String((e as Error)?.message || e) }); };
   const mesaj = (form: HTMLElement | null, metin: string, tur: 'hata' | 'basari' | '' = '') => {
     const p = form?.querySelector<HTMLElement>('[data-mesaj]'); if (!p) { if (metin) ustMesaj(metin, tur); return; }
     p.textContent = metin; p.className = 'not ' + tur; p.hidden = !metin;
@@ -123,18 +130,18 @@ export async function hocaEkrani(): Promise<void> {
     kok.innerHTML = `${onMesaj ? `<p class="not basari">${esc(onMesaj)}</p>` : ''}
       <div class="giris-izgara">
         <form class="kutu" data-form="giris" novalidate>
-          <h2>Hoca girişi</h2>
-          <label>E-posta<input type="email" name="eposta" required autocomplete="username"></label>
-          <label>Şifre<input type="password" name="sifre" required autocomplete="current-password"></label>
+          <h2>${t('giris.baslik')}</h2>
+          <label>${t('giris.eposta')}<input type="email" name="eposta" required autocomplete="username"></label>
+          <label>${t('giris.sifre')}<input type="password" name="sifre" required autocomplete="current-password"></label>
           <p data-mesaj hidden class="not"></p>
-          <div class="satir-dugmeler"><button type="submit" class="dugme dugme-birincil">Giriş yap</button><button type="button" class="dugme dugme-ikincil" data-eylem="sifremiUnuttum">Şifremi unuttum</button></div>
+          <div class="satir-dugmeler"><button type="submit" class="dugme dugme-birincil">${t('giris.gir')}</button><button type="button" class="dugme dugme-ikincil" data-eylem="sifremiUnuttum">${t('giris.unuttum')}</button></div>
         </form>
         <form class="kutu" data-form="bag" novalidate>
-          <h2>İlk giriş (şifresiz)</h2>
-          <p class="kucuk">E-postanıza tek kullanımlık giriş bağlantısı gönderilir; açınca şifrenizi belirlersiniz. Şifreniz varsa soldaki formu ve «Şifremi unuttum»u kullanın (Google günde en fazla 5 giriş bağlantısı gönderir).</p>
-          <label>E-posta<input type="email" name="eposta" required autocomplete="username"></label>
+          <h2>${t('giris.bagBaslik')}</h2>
+          <p class="kucuk">${t('giris.bagAciklama', { unuttum: t('giris.unuttum') })}</p>
+          <label>${t('giris.eposta')}<input type="email" name="eposta" required autocomplete="username"></label>
           <p data-mesaj hidden class="not"></p>
-          <div class="satir-dugmeler"><button type="submit" class="dugme dugme-ikincil">Bağlantı gönder</button></div>
+          <div class="satir-dugmeler"><button type="submit" class="dugme dugme-ikincil">${t('giris.bagGonder')}</button></div>
         </form>
       </div>`;
     const kayitli = portalTercihleri.getItem('hocaEposta');
@@ -142,18 +149,18 @@ export async function hocaEkrani(): Promise<void> {
   };
   const bagTamamlaEkrani = () => {
     kok.innerHTML = `<form class="kutu ps-form-dar" data-form="bagTamamla" novalidate>
-      <h2>Girişi tamamla</h2><p class="kucuk">Bağlantıyı başka bir cihazda açtınız; e-postanızı yazın.</p>
-      <label>E-posta<input type="email" name="eposta" required autocomplete="username"></label>
+      <h2>${t('giris.tamamla')}</h2><p class="kucuk">${t('giris.baskaCihaz')}</p>
+      <label>${t('giris.eposta')}<input type="email" name="eposta" required autocomplete="username"></label>
       <p data-mesaj hidden class="not"></p>
-      <div class="satir-dugmeler"><button type="submit" class="dugme dugme-birincil">Devam</button></div></form>`;
+      <div class="satir-dugmeler"><button type="submit" class="dugme dugme-birincil">${t('giris.devam')}</button></div></form>`;
   };
   const sifreEkrani = () => {
     kok.innerHTML = `<form class="kutu ps-form-dar" data-form="sifreBelirle" novalidate>
-      <h2>Şifre belirle</h2><p class="kucuk">Sonraki girişlerde e-posta + bu şifre kullanılır (en az 8 karakter).</p>
-      <label>Şifre<input type="password" name="sifre" required minlength="8" autocomplete="new-password"></label>
-      <label>Şifre (tekrar)<input type="password" name="sifre2" required minlength="8" autocomplete="new-password"></label>
+      <h2>${t('giris.sifreBelirle')}</h2><p class="kucuk">${t('giris.sifreAciklama')}</p>
+      <label>${t('giris.sifre')}<input type="password" name="sifre" required minlength="8" autocomplete="new-password"></label>
+      <label>${t('giris.sifreTekrar')}<input type="password" name="sifre2" required minlength="8" autocomplete="new-password"></label>
       <p data-mesaj hidden class="not"></p>
-      <div class="satir-dugmeler"><button type="submit" class="dugme dugme-birincil">Kaydet</button><button type="button" class="dugme dugme-ikincil" data-eylem="atla">Şimdilik atla</button></div></form>`;
+      <div class="satir-dugmeler"><button type="submit" class="dugme dugme-birincil">${t('ortak.kaydet')}</button><button type="button" class="dugme dugme-ikincil" data-eylem="atla">${t('giris.atla')}</button></div></form>`;
   };
 
   /* ---------------------------------------------------------------- durum */
@@ -213,9 +220,9 @@ export async function hocaEkrani(): Promise<void> {
      defter paneli aynı veriyi alır ve her kayıtta geri bildirir. Katalog tembel yüklenir (defter sekmesiyle aynı parça). */
   const heroEksikHtml = () => {
     const e = S?.eksikler;
-    if (!e) return '<span data-hero-eksik>Defter eksikleri hesaplanıyor…</span>';
-    if (!e.toplam) return '<span data-hero-eksik>Ders defteri eksiksiz ✓</span>';
-    return `<button type="button" class="baglanti-dugme" data-defter-eksik data-hero-eksik>${e.toplam} doldurulmamış defter kaydı (${e.gunler.filter((g) => g.eksikler.length).length} gün · ${e.ogrenciler.length} öğrenci)</button>`;
+    if (!e) return `<span data-hero-eksik>${t('hero.eksikHesap')}</span>`;
+    if (!e.toplam) return `<span data-hero-eksik>${t('hero.eksikYok')}</span>`;
+    return `<button type="button" class="baglanti-dugme" data-defter-eksik data-hero-eksik>${t('hero.eksikVar', { n: e.toplam, gun: e.gunler.filter((g) => g.eksikler.length).length, ogr: e.ogrenciler.length })}</button>`;
   };
   const heroEksikCiz = () => { const el = kok.querySelector<HTMLElement>('[data-hero-eksik]'); if (el) el.outerHTML = heroEksikHtml(); };
   const eksikleriHesapla = async () => {
@@ -225,11 +232,11 @@ export async function hocaEkrani(): Promise<void> {
       const e = await defterEksikleri(db, durum.ogrenciler.filter((o) => o.durum !== 'pasif').map((o) => o.ref), katalogGunleri(katalog), bugunISO());
       if (S !== durum) return;
       durum.eksikler = e; heroEksikCiz();
-    } catch { const el = kok.querySelector<HTMLElement>('[data-hero-eksik]'); if (el && S === durum) el.textContent = 'Defter eksikleri hesaplanamadı; defter sekmesinde «Yenile» deyin.'; }
+    } catch { const el = kok.querySelector<HTMLElement>('[data-hero-eksik]'); if (el && S === durum) el.textContent = t('hero.eksikHata'); }
   };
   const yukle = async (user: { uid: string }) => {
     const h = await fs.getDoc(fs.doc(db, 'hocalar', user.uid));
-    if (!h.exists()) { kok.innerHTML = `<p class="not hata">Bu hesap hoca olarak tanımlı değil. Yönetici (info@ulucamii.be) hesabınızı tanımladıktan sonra tekrar girin.</p><button type="button" class="dugme dugme-ikincil" data-eylem="cikis">Çıkış</button>`; return; }
+    if (!h.exists()) { kok.innerHTML = `<p class="not hata">${t('hata.hocaDegil')}</p><button type="button" class="dugme dugme-ikincil" data-eylem="cikis">${t('ortak.cikis')}</button>`; return; }
     const [ogr, aile] = await Promise.all([kayitlar('ogrenciler'), kayitlar('aileler')]);
     S = {
       uid: user.uid, ad: String((h.data() as { ad?: string }).ad || ''), sekme: 'yoklama',
@@ -305,7 +312,7 @@ export async function hocaEkrani(): Promise<void> {
   /* Sıra = ders gününün iş akışı (14 Eyl 2026): yoklama → defter → haftalık ödev → veli bildirimleri (rozetli);
      sonra daha seyrek işler. */
   /* 27 Eyl 2026: «Ezber» sekmesi defterden hemen sonra (sınıfta dinleme); eski «Ezber · Ödev» haftalık ödevdir. */
-  const SEKMELER: Record<string, string> = { yoklama: 'Yoklama', defter: 'Ders Defteri', ezber: 'Ezber', envanter: 'Envanter', odev: 'Haftalık ödev', kitaplar: 'Ders kitapları', bildirim: 'Veli bildirimleri', ogrenci: 'Öğrenciler', ilim: 'İlim Yolu', bulten: 'Bülten · İdare', duyuru: 'Duyurular', aile: 'Aileler · Davet', hesap: 'Hesap' };
+  const SEKMELER: Record<string, string> = { yoklama: t('sekme.yoklama'), defter: t('sekme.defter'), ezber: t('sekme.ezber'), envanter: t('sekme.envanter'), odev: t('sekme.odev'), kitaplar: t('sekme.kitaplar'), bildirim: t('sekme.bildirim'), ogrenci: t('sekme.ogrenci'), ilim: t('sekme.ilim'), bulten: t('sekme.bulten'), duyuru: t('sekme.duyuru'), aile: t('sekme.aile'), hesap: t('sekme.hesap') };
   /** Günün canlı yoklama özeti (14 Eyl 2026): kaç ders işaretli, dağılım, kaç ders boş. */
   const yoklamaOzeti = (gunDersler: Ders[]) => {
     if (!S || !gunDersler.length) return '';
@@ -314,7 +321,7 @@ export async function hocaEkrani(): Promise<void> {
     let isaretli = 0; const toplam = aktif.length * gunDersler.length;
     for (const o of aktif) for (const d of gunDersler) { const v = S.yoklama[o.ref]?.dersler[String(d.no)] || ''; if (v) { isaretli++; say[v] = (say[v] || 0) + 1; } }
     const eksik = toplam - isaretli;
-    return `<span><b>${isaretli}/${toplam}</b> ders işaretli</span>${Object.entries(DURUMLAR).map(([k, v]) => `<span>${esc(v)} <b>${say[k] || 0}</b></span>`).join('')}${eksik ? `<span class="eksik">İşaretsiz <b>${eksik}</b></span>` : '<span class="tamam">Hepsi işaretli ✓</span>'}`;
+    return `<span>${t('yk.ozetIsaretliHtml', { isaretli, toplam })}</span>${Object.entries(DURUMLAR).map(([k, v]) => `<span>${esc(v)} <b>${say[k] || 0}</b></span>`).join('')}${eksik ? `<span class="eksik">${t('yk.ozetIsaretsizHtml', { n: eksik })}</span>` : `<span class="tamam">${t('yk.ozetTamam')}</span>`}`;
   };
   const ciz = () => {
     if (!S || envanterKilitli() || ilimKilitli()) return; /* öğrenci kipi / tek seferlik pencere açıkken arka plan yeniden çizimi kapatmasın */
@@ -329,116 +336,116 @@ export async function hocaEkrani(): Promise<void> {
       const g = veri.gunler.find((x) => x.tarih === S!.tarih);
       const gunDersler = g ? g.dersler : [];
       govde = `<section class="bolum">
-        <h2>${simge('takvim')}Yoklama</h2>
+        <h2>${simge('takvim')}${t('sekme.yoklama')}</h2>
         <div class="izgara-2">
-          <label>Ders günü<select data-yoklama-tarih>${veri.gunler.map((x) => `<option value="${x.tarih}" ${x.tarih === S!.tarih ? 'selected' : ''}>${esc(tarihYaz(x.tarih, { weekday: 'short', day: 'numeric', month: 'short' }))} · ${x.hafta}. hafta${S!.mazeretGunleri.includes(x.tarih) ? ' · veli mazereti' : ''}</option>`).join('')}</select></label>
-          <div><label>&nbsp;</label><button type="button" class="dugme dugme-ikincil" data-eylem="hepsiVar">Tümünü «geldi» işaretle</button></div>
+          <label>${t('yk.dersGunu')}<select data-yoklama-tarih>${veri.gunler.map((x) => `<option value="${x.tarih}" ${x.tarih === S!.tarih ? 'selected' : ''}>${esc(tarihYaz(x.tarih, { weekday: 'short', day: 'numeric', month: 'short' }))} · ${t('hero.hafta', { n: x.hafta })}${S!.mazeretGunleri.includes(x.tarih) ? ' · ' + t('yk.veliMazereti') : ''}</option>`).join('')}</select></label>
+          <div><label>&nbsp;</label><button type="button" class="dugme dugme-ikincil" data-eylem="hepsiVar">${t('yk.hepsiVar')}</button></div>
         </div>
-        ${gunDersler.length ? `<p class="kucuk">${gunDersler.map((d) => `<b>${esc(String(d.no))}.</b> ${esc(ALANLAR[d.kod] || d.kod)}: ${esc(d.konu)}`).join(' · ')}</p><p class="kucuk">İlk dersi işaretleyince öğrencinin boş kalan diğer dersleri de aynı işaretlenir («Geç» → sonrakiler «Var»); gerekirse tek tek değiştirin. Yalnız işaretlenen dersler kaydedilir.</p><p class="yk-ozet" data-yk-ozet aria-live="polite">${yoklamaOzeti(gunDersler)}</p>` : '<p class="kucuk">Bu gün ders yok (tatil).</p>'}
-        ${S.yukleniyor ? '<p class="not">Yükleniyor…</p>' : ''}
+        ${gunDersler.length ? `<p class="kucuk">${gunDersler.map((d) => `<b>${esc(String(d.no))}.</b> ${esc(ALANLAR[d.kod] || d.kod)}: ${esc(d.konu)}`).join(' · ')}</p><p class="kucuk">${t('yk.ipucu', { gec: DURUMLAR.gec, var: DURUMLAR.var })}</p><p class="yk-ozet" data-yk-ozet aria-live="polite">${yoklamaOzeti(gunDersler)}</p>` : `<p class="kucuk">${t('yk.gunYok')}</p>`}
+        ${S.yukleniyor ? `<p class="not">${tc('yukleniyor')}</p>` : ''}
         ${!S.yukleniyor && S.gunMazeretleri.length ? `<div class="mazeret-serit" data-mazeret-serit>
-          <h3>${simge('zarf')}Bu ders günü için ${S.gunMazeretleri.length} veli mazereti</h3>
-          <p class="kucuk"><b>Kalıcı kural:</b> veliden gelen mazeret her zaman kabul edilir. Bu öğrencilerin günün dersleri kendiliğinden «Mazeretli» işaretlenir; gerekirse aşağıdan tek tek değiştirebilirsiniz. Yanıt yazmak için «Veli bildirimleri» sekmesini kullanın.</p>
-          ${S.mazeretKuraliDegisen.length ? `<p class="mazeret-oto" data-mazeret-oto>${esc(MAZERET_KURALI)} <b>${S.mazeretKuraliDegisen.length} öğrenci</b> — henüz kaydedilmedi, «Yoklamayı kaydet» deyin.</p>` : ''}
+          <h3>${simge('zarf')}${t('yk.mazeretBaslik', { n: S.gunMazeretleri.length })}</h3>
+          <p class="kucuk"><b>${t('yk.kalici')}</b> ${t('yk.kaliciMetin', { mazeret: DURUMLAR.mazeret, sekme: SEKMELER.bildirim })}</p>
+          ${S.mazeretKuraliDegisen.length ? `<p class="mazeret-oto" data-mazeret-oto>${esc(mazeretKurali())} <b>${t('yk.ogrSay', { n: S.mazeretKuraliDegisen.length })}</b> — ${t('yk.kaydedilmedi', { kaydet: t('yk.kaydet') })}</p>` : ''}
           <ul class="liste">${S.gunMazeretleri.map((m) => { const r = String(m.ref || ''); const hepsiMazeret = gunDersler.length > 0 && gunDersler.every((d) => (S!.yoklama[r]?.dersler || {})[String(d.no)] === 'mazeret'); return `<li>
-            <div><b>${esc(ogrAdi(r))}</b>${m.okundu ? '' : '<span class="rozet">okunmadı</span>'}<span class="kucuk"> · ${esc(zamanYaz(m.zaman))}</span></div>
+            <div><b>${esc(ogrAdi(r))}</b>${m.okundu ? '' : `<span class="rozet">${t('yk.okunmadi')}</span>`}<span class="kucuk"> · ${esc(zamanYaz(m.zaman))}</span></div>
             <p class="mazeret-metin">${esc(String(m.metin || ''))}</p>
-            <button type="button" class="dugme dugme-ikincil" data-mazeret-uygula="${esc(r)}" ${hepsiMazeret ? 'disabled' : ''}>${hepsiMazeret ? 'Mazeretli işaretlendi' : 'Günün derslerini mazeretli işaretle'}</button>
+            <button type="button" class="dugme dugme-ikincil" data-mazeret-uygula="${esc(r)}" ${hepsiMazeret ? 'disabled' : ''}>${hepsiMazeret ? t('yk.isaretlendi') : t('yk.gunuIsaretle')}</button>
           </li>`; }).join('')}</ul>
         </div>` : ''}
         <div ${S.yukleniyor ? 'hidden' : ''}>${aktif.map((o) => { const y = S!.yoklama[o.ref] || { dersler: {}, not: '' }; return `<div class="yk-satir">
             <div class="yk-ogr"><b>${esc(o.ad)} ${esc(o.soyad)}</b> ${o.grup ? `<span class="kucuk">${esc(o.grup)}</span>` : ''}</div>
             ${gunDersler.map((d) => { const sr = String(d.no); return `<div class="yk-ders">
               <span class="yk-ders-et"><span class="yk-ders-no">${esc(sr)}</span>${esc(ALANLAR[d.kod] || d.kod)}</span>
-              <div class="yk-dugmeler">${Object.entries(DURUMLAR).map(([k, v]) => `<button type="button" class="yk-dugme ${k}" aria-pressed="${y.dersler[sr] === k}" data-yok="${esc(o.ref)}" data-ders="${esc(sr)}" data-durum="${k}" aria-label="${esc(o.ad)} ${esc(o.soyad)} — ${esc(sr)}. ders — ${esc(v)}">${v}</button>`).join('')}</div>
+              <div class="yk-dugmeler">${Object.entries(DURUMLAR).map(([k, v]) => `<button type="button" class="yk-dugme ${k}" aria-pressed="${y.dersler[sr] === k}" data-yok="${esc(o.ref)}" data-ders="${esc(sr)}" data-durum="${k}" aria-label="${t('yk.dugmeAria', { ad: `${esc(o.ad)} ${esc(o.soyad)}`, no: esc(sr), durum: esc(v) })}">${v}</button>`).join('')}</div>
             </div>`; }).join('')}
-            <details class="yk-not"${y.not ? ' open' : ''}><summary>Gün notu${y.not ? '' : ' ekle'}</summary><input type="text" placeholder="Gün için not (isteğe bağlı)" data-yok-not="${esc(o.ref)}" value="${esc(y.not)}" maxlength="200" aria-label="${esc(o.ad)} ${esc(o.soyad)} — gün notu"></details>
+            <details class="yk-not"${y.not ? ' open' : ''}><summary>${y.not ? t('yk.gunNotu') : t('yk.gunNotuEkle')}</summary><input type="text" placeholder="${t('yk.notYer')}" data-yok-not="${esc(o.ref)}" value="${esc(y.not)}" maxlength="200" aria-label="${t('yk.notAria', { ad: `${esc(o.ad)} ${esc(o.soyad)}` })}"></details>
           </div>`; }).join('')}</div>
-        ${aktif.length ? '' : bosDurum('ogrenci', 'Aktif öğrenci yok.')}
-        <div class="satir-dugmeler yk-kaydet"><button type="button" class="dugme dugme-birincil" data-eylem="yoklamaKaydet">Yoklamayı kaydet</button><span class="kucuk">Hiç ders işaretlenmemiş öğrenci için kayıt yazılmaz.</span></div>
+        ${aktif.length ? '' : bosDurum('ogrenci', t('yk.aktifYok'))}
+        <div class="satir-dugmeler yk-kaydet"><button type="button" class="dugme dugme-birincil" data-eylem="yoklamaKaydet">${t('yk.kaydet')}</button><span class="kucuk">${t('yk.kayitYazilmaz')}</span></div>
       </section>`;
     } else if (S.sekme === 'ogrenci') {
       const o = S.ogrenciler.find((x) => x.ref === S!.secili);
       const pasifSay = S.ogrenciler.filter((x) => x.durum === 'pasif').length;
-      govde = `<section class="bolum"><h2>${simge('ogrenci')}Öğrenciler <span class="kucuk">(${S.ogrenciler.length - pasifSay} aktif${pasifSay ? ` · ${pasifSay} pasif` : ''})</span></h2>
-        <ul class="liste ogr-liste">${S.ogrenciler.map((x) => `<li class="${x.ref === S!.secili ? 'secili' : ''}"><button type="button" class="baglanti-dugme buyu ogr-ad" data-ogr="${esc(x.ref)}"${x.ref === S!.secili ? ' aria-current="true"' : ''}><b>${esc(x.ad)} ${esc(x.soyad)}</b></button>${x.grup ? `<span class="rozet grup">${esc(x.grup)}</span>` : ''}<span class="kucuk">${(x.veliler || []).length} veli</span>${x.durum === 'pasif' ? '<span class="rozet">pasif</span>' : ''}<span class="kucuk ogr-ref">${esc(x.ref)}</span></li>`).join('')}</ul>
-        <p class="kucuk ps-ust-06">Bir öğrenciyi seçince ilerleme, değerlendirme ve notları açılır. Yeni öğrenci: «Aileler · Davet» → «Kayıt defterinden yenile».</p></section>`;
+      govde = `<section class="bolum"><h2>${simge('ogrenci')}${t('sekme.ogrenci')} <span class="kucuk">(${t('ogr.aktifSay', { n: S.ogrenciler.length - pasifSay })}${pasifSay ? ` · ${t('ogr.pasifSay', { n: pasifSay })}` : ''})</span></h2>
+        <ul class="liste ogr-liste">${S.ogrenciler.map((x) => `<li class="${x.ref === S!.secili ? 'secili' : ''}"><button type="button" class="baglanti-dugme buyu ogr-ad" data-ogr="${esc(x.ref)}"${x.ref === S!.secili ? ' aria-current="true"' : ''}><b>${esc(x.ad)} ${esc(x.soyad)}</b></button>${x.grup ? `<span class="rozet grup">${esc(x.grup)}</span>` : ''}<span class="kucuk">${t('ogr.veliSay', { n: (x.veliler || []).length })}</span>${x.durum === 'pasif' ? `<span class="rozet">${t('ogr.pasif')}</span>` : ''}<span class="kucuk ogr-ref">${esc(x.ref)}</span></li>`).join('')}</ul>
+        <p class="kucuk ps-ust-06">${t('ogr.ipucu', { sekme: SEKMELER.aile, dugme: t('aile.iceAktar') })}</p></section>`;
       if (o) {
         const ile = S.ilerleme || {};
         /* Ezber özeti (27 Eyl 2026): basamak sayıları + kontrol günü gelenler; dinleme ve düzeltme «Ezber» sekmesinde. */
         const ezberOzeti = (() => {
           const ez = S!.ezber;
-          if (ez === null) return '<span>Ezber kayıtları alınamadı; öğrenciyi yeniden seçin.</span>';
+          if (ez === null) return `<span>${t('ogr.ezberAlinamadi')}</span>`;
           const say = [0, 0, 0, 0, 0];
           for (const d of Object.values(ez)) say[d.basamak]++;
           const vade = kontrolSirasi(ez, bugunISO()).length;
-          if (!say.some(Boolean)) return '<span>Henüz ezber kaydı yok.</span>';
-          return ([1, 2, 3, 4] as const).map((b) => `<span>${esc(BASAMAK_ADLARI[b].tr)} <b>${say[b]}</b></span>`).join('') + (vade ? `<span class="ogr-ezber-vade"><b>${vade}</b> maddenin kontrol günü geldi</span>` : '');
+          if (!say.some(Boolean)) return `<span>${t('ogr.ezberYok')}</span>`;
+          return ([1, 2, 3, 4] as const).map((b) => `<span>${esc(BASAMAK_ADLARI[b][hocaDili()])} <b>${say[b]}</b></span>`).join('') + (vade ? `<span class="ogr-ezber-vade">${t('ogr.ezberVadeHtml', { n: vade })}</span>` : '');
         })();
         govde += `<section class="bolum" id="ogrenci-karti">
           <div class="ps-baslik-satir">
             <h2>${simge('ogrenci')}${esc(o.ad)} ${esc(o.soyad)} <span class="kucuk">${esc(o.ref)} · ${esc(DIL_ADI[o.dil || ''] || o.dil || '')}</span></h2>
             <button type="button" class="dugme dugme-ikincil kucuk-dugme" data-eylem="whatsappKarneKopyala" data-ogr="${esc(o.ref)}">
-              📱 WhatsApp Karnesi Kopyala
+              📱 ${t('ogr.karneKopyala')}
             </button>
           </div>
-          <p class="devam-satir" data-devam>${S.devam && S.devam.gun ? `<span><b>${S.devam.gun}</b> ders günü</span>${Object.entries(DURUMLAR).map(([k, v]) => `<span>${esc(v)} <b>${S!.devam![k] || 0}</b></span>`).join('')}` : '<span>Henüz yoklama kaydı yok.</span>'}<button type="button" class="kucuk-dugme" data-defter-ac="${esc(o.ref)}">${simge('kitap')}Ders defterini aç</button></p>
+          <p class="devam-satir" data-devam>${S.devam && S.devam.gun ? `<span>${t('ogr.devamGunHtml', { n: S.devam.gun })}</span>${Object.entries(DURUMLAR).map(([k, v]) => `<span>${esc(v)} <b>${S!.devam![k] || 0}</b></span>`).join('')}` : `<span>${t('ogr.yoklamaYok')}</span>`}<button type="button" class="kucuk-dugme" data-defter-ac="${esc(o.ref)}">${simge('kitap')}${t('ogr.defteriAc')}</button></p>
           <form data-form="ogrenciAyar" class="izgara-3">
-            <label>Durum<select name="durum">${secenekler({ aktif: 'Aktif', pasif: 'Pasif' }, o.durum === 'pasif' ? 'pasif' : 'aktif')}</select></label>
-            <label>Grup / sınıf<input type="text" name="grup" value="${esc(o.grup || '')}" maxlength="40"></label>
-            <div><label>&nbsp;</label><button type="submit" class="dugme dugme-ikincil">Kaydet</button></div>
+            <label>${t('ogr.durum')}<select name="durum">${secenekler({ aktif: t('ogr.durumAktif'), pasif: t('ogr.durumPasif') }, o.durum === 'pasif' ? 'pasif' : 'aktif')}</select></label>
+            <label>${t('ogr.grup')}<input type="text" name="grup" value="${esc(o.grup || '')}" maxlength="40"></label>
+            <div><label>&nbsp;</label><button type="submit" class="dugme dugme-ikincil">${t('ortak.kaydet')}</button></div>
             <p data-mesaj hidden class="not ps-izgara-tam"></p>
           </form>
 
-          <h3>${simge('aile')}Veliler (e-posta)</h3>
-          <ul class="liste">${(o.veliler || []).map((e) => `<li><span class="buyu">${esc(e)}</span><button type="button" class="baglanti-dugme" data-veli-sil="${esc(e)}">kaldır</button></li>`).join('') || '<li class="kucuk">Veli e-postası yok.</li>'}</ul>
-          <form data-form="veliEkle" class="satir-dugmeler"><input type="email" name="eposta" placeholder="veli@ornek.be" required class="ps-esnek-14"><button type="submit" class="dugme dugme-ikincil">Veli ekle</button><p data-mesaj hidden class="not ps-basis-tam"></p></form>
+          <h3>${simge('aile')}${t('ogr.veliler')}</h3>
+          <ul class="liste">${(o.veliler || []).map((e) => `<li><span class="buyu">${esc(e)}</span><button type="button" class="baglanti-dugme" data-veli-sil="${esc(e)}">${t('ogr.kaldir')}</button></li>`).join('') || `<li class="kucuk">${t('ogr.veliYok')}</li>`}</ul>
+          <form data-form="veliEkle" class="satir-dugmeler"><input type="email" name="eposta" placeholder="veli@ornek.be" required class="ps-esnek-14"><button type="submit" class="dugme dugme-ikincil">${t('ogr.veliEkle')}</button><p data-mesaj hidden class="not ps-basis-tam"></p></form>
 
-          <section class="bolum" data-ev-calismasi><h3>Evde çalışma · öz değerlendirme</h3><p class="kucuk">Öğrencinin veya ailesinin bildirimidir; öğretmen değerlendirmesi değildir. Her etkinliğin son çalışması gösterilir.</p>
-          ${S.evCalismasi===null?'<p class="not hata">Evde çalışma kayıtları alınamadı. Öğrenciyi yeniden seçerek deneyin.</p>':Object.keys(S.evCalismasi||{}).length?`<ul class="liste">${Object.entries(S.evCalismasi||{}).sort((a,b)=>b[1].son.localeCompare(a[1].son)).map(([id,r])=>`<li><span class="buyu"><b>${esc(ETKINLIKLER.find(e=>e.id===id)?.baslik.tr||id)}</b><br><span class="kucuk">${esc(tarihYaz(r.son))} · ${{destek:'Yardımla denedim',tekrar:'Biraz daha tekrar',rahat:'Rahatça hatırladım'}[r.cevap]}</span></span></li>`).join('')}</ul>`:'<p class="kucuk">Henüz hesapta çalışma kaydı yok. Bu durum öğrencinin evde çalışmadığı anlamına gelmez.</p>'}</section>
-          <h3>${simge('ezber')}Ezber</h3>
-          <p class="devam-satir" data-ogr-ezber>${ezberOzeti}<button type="button" class="kucuk-dugme" data-ezber-ac="${esc(o.ref)}">${simge('ezber')}Ezber sekmesinde aç</button></p>
-          <h3>${simge('kart')}İlim Yolu hesabı</h3>
-          <p class="devam-satir"><span>Çocuk hesabı, kare kodlu kart, şifre ve yetişkin bağlama kodu</span><button type="button" class="kucuk-dugme" data-ilim-ac="${esc(o.ref)}">${simge('kart')}İlim Yolu sekmesinde aç</button></p>
-          <h3>${simge('grafik')}İlerleme</h3>
+          <section class="bolum" data-ev-calismasi><h3>${t('ogr.evBaslik')}</h3><p class="kucuk">${t('ogr.evAciklama')}</p>
+          ${S.evCalismasi===null?`<p class="not hata">${t('ogr.evAlinamadi')}</p>`:Object.keys(S.evCalismasi||{}).length?`<ul class="liste">${Object.entries(S.evCalismasi||{}).sort((a,b)=>b[1].son.localeCompare(a[1].son)).map(([id,r])=>`<li><span class="buyu"><b>${esc(ETKINLIKLER.find(e=>e.id===id)?.baslik[hocaDili()]||id)}</b><br><span class="kucuk">${esc(tarihYaz(r.son))} · ${{destek:t('ogr.ev.destek'),tekrar:t('ogr.ev.tekrar'),rahat:t('ogr.ev.rahat')}[r.cevap]}</span></span></li>`).join('')}</ul>`:`<p class="kucuk">${t('ogr.evYok')}</p>`}</section>
+          <h3>${simge('ezber')}${t('sekme.ezber')}</h3>
+          <p class="devam-satir" data-ogr-ezber>${ezberOzeti}<button type="button" class="kucuk-dugme" data-ezber-ac="${esc(o.ref)}">${simge('ezber')}${t('ogr.ezberAc')}</button></p>
+          <h3>${simge('kart')}${t('ogr.ilimBaslik')}</h3>
+          <p class="devam-satir"><span>${t('ogr.ilimAciklama')}</span><button type="button" class="kucuk-dugme" data-ilim-ac="${esc(o.ref)}">${simge('kart')}${t('ogr.ilimAc')}</button></p>
+          <h3>${simge('grafik')}${t('ogr.ilerleme')}</h3>
           <form data-form="ilerleme">
-            <label>Kur’an’da gelinen adım<select name="kuranAdim"><option value="-1">—</option>${kuranSirasi.map((k, i) => `<option value="${i}" ${ile.kuranAdim === i ? 'selected' : ''}>${i + 1}. ${esc(k.konu)} (${esc(tarihYaz(k.tarih, { day: 'numeric', month: 'short' }))})</option>`).join('')}</select></label>
-            <label class="ps-ust-1">Alan değerlendirmesi <span class="kucuk">· 1 zayıf – 5 çok iyi</span></label>
+            <label>${t('ogr.kuranAdim')}<select name="kuranAdim"><option value="-1">—</option>${kuranSirasi.map((k, i) => `<option value="${i}" ${ile.kuranAdim === i ? 'selected' : ''}>${i + 1}. ${esc(k.konu)} (${esc(tarihYaz(k.tarih, { day: 'numeric', month: 'short' }))})</option>`).join('')}</select></label>
+            <label class="ps-ust-1">${t('ogr.alanDeg')} <span class="kucuk">${t('ogr.olcekIpucu')}</span></label>
             <div class="izgara-3">${['kuran', 'itikat', 'ibadet', 'siyer', 'ahlak'].map((k) => `<label>${esc(ALANLAR[k])}<select name="alan:${k}">${secenekler(DERECE, String((ile.alanlar || {})[k] || 0))}</select></label>`).join('')}</div>
-            <label class="ps-ust-08">Hocanın Tebrik / Takdir Rozeti <span class="kucuk">· Öğrenci odasında parlar</span>
+            <label class="ps-ust-08">${t('ogr.rozet')} <span class="kucuk">${t('ogr.rozetIpucu')}</span>
               <select name="rozet">
-                <option value="">— Rozet seçilmedi —</option>
-                <option value="yildiz" ${ile.rozet === 'yildiz' ? 'selected' : ''}>⭐ Haftanın Yıldız Talebesi</option>
-                <option value="ezber" ${ile.rozet === 'ezber' ? 'selected' : ''}>📖 Ezber &amp; Sûre Şampiyonu</option>
-                <option value="ahlak" ${ile.rozet === 'ahlak' ? 'selected' : ''}>🌸 Güzel Ahlâk ve Nezaket</option>
-                <option value="gayret" ${ile.rozet === 'gayret' ? 'selected' : ''}>🏆 Üstün Gayret ve Azim</option>
-                <option value="devam" ${ile.rozet === 'devam' ? 'selected' : ''}>🏅 Düzenli Devam ve Disiplin</option>
+                <option value="">${t('ogr.rozetYok')}</option>
+                <option value="yildiz" ${ile.rozet === 'yildiz' ? 'selected' : ''}>⭐ ${t('rozet.yildiz')}</option>
+                <option value="ezber" ${ile.rozet === 'ezber' ? 'selected' : ''}>📖 ${esc(t('rozet.ezber'))}</option>
+                <option value="ahlak" ${ile.rozet === 'ahlak' ? 'selected' : ''}>🌸 ${t('rozet.ahlak')}</option>
+                <option value="gayret" ${ile.rozet === 'gayret' ? 'selected' : ''}>🏆 ${t('rozet.gayret')}</option>
+                <option value="devam" ${ile.rozet === 'devam' ? 'selected' : ''}>🏅 ${t('rozet.devam')}</option>
               </select>
             </label>
-            <label>Hoca notu (veliye ve öğrenci odasına görünür)<textarea name="hocaNotu" maxlength="1000">${esc(ile.hocaNotu || '')}</textarea></label>
+            <label>${t('ogr.hocaNotu')}<textarea name="hocaNotu" maxlength="1000">${esc(ile.hocaNotu || '')}</textarea></label>
             <p data-mesaj hidden class="not"></p>
-            <div class="satir-dugmeler"><button type="submit" class="dugme dugme-birincil">İlerlemeyi kaydet</button>${ile.guncelleme ? `<span class="kucuk">Son güncelleme ${esc(tarihYaz(ile.guncelleme))}</span>` : ''}</div>
+            <div class="satir-dugmeler"><button type="submit" class="dugme dugme-birincil">${t('ogr.ilerlemeKaydet')}</button>${ile.guncelleme ? `<span class="kucuk">${t('ogr.sonGuncelleme', { tarih: esc(tarihYaz(ile.guncelleme)) })}</span>` : ''}</div>
           </form>
 
-          <h3>${simge('yildiz')}Değerlendirmeler</h3>
-          <ul class="liste">${S.degerlendirme.map((d) => `<li><span class="kucuk">${esc(tarihYaz(String(d.tarih)))}</span><b>${esc(ALANLAR[String(d.alan)] || d.alan)}</b><span class="buyu">${esc(d.olcut || '')}</span><span class="rozet">${esc(DERECE[String(d.derece)] || '')}</span><span class="kucuk">${esc(d.not || '')}</span><button type="button" class="baglanti-dugme" data-sil="degerlendirme" data-id="${esc(d.id)}">sil</button></li>`).join('') || '<li class="kucuk">Henüz değerlendirme yok.</li>'}</ul>
+          <h3>${simge('yildiz')}${t('ogr.degBaslik')}</h3>
+          <ul class="liste">${S.degerlendirme.map((d) => `<li><span class="kucuk">${esc(tarihYaz(String(d.tarih)))}</span><b>${esc(ALANLAR[String(d.alan)] || d.alan)}</b><span class="buyu">${esc(d.olcut || '')}</span><span class="rozet">${esc(DERECE[String(d.derece)] || '')}</span><span class="kucuk">${esc(d.not || '')}</span><button type="button" class="baglanti-dugme" data-sil="degerlendirme" data-id="${esc(d.id)}">${t('ortak.sil')}</button></li>`).join('') || `<li class="kucuk">${t('ogr.degYok')}</li>`}</ul>
           <form data-form="degerlendirme" class="izgara-3">
-            <label>Tarih<input type="date" name="tarih" value="${bugunISO()}" required></label>
-            <label>Alan<select name="alan">${secenekler(ALANLAR, 'kuran')}</select></label>
-            <label>Derece (1 zayıf – 5 çok iyi)<select name="derece">${secenekler(DERECE, '4')}</select></label>
-            <label class="ps-izgara-tam">Ölçüt / konu<input type="text" name="olcut" maxlength="120" list="olcut-listesi" placeholder="örn. Mahreç, Tecvid, Fâtiha ezberi"><datalist id="olcut-listesi">${OLCUTLER.map((o) => `<option value="${esc(o)}">`).join('')}</datalist></label>
-            <label class="ps-izgara-tam">Not<input type="text" name="not" maxlength="300"></label>
-            <div><button type="submit" class="dugme dugme-ikincil">Değerlendirme ekle</button></div>
+            <label>${t('ortak.tarih')}<input type="date" name="tarih" value="${bugunISO()}" required></label>
+            <label>${t('ogr.alan')}<select name="alan">${secenekler(ALANLAR, 'kuran')}</select></label>
+            <label>${t('ogr.derece')}<select name="derece">${secenekler(DERECE, '4')}</select></label>
+            <label class="ps-izgara-tam">${t('ogr.olcut')}<input type="text" name="olcut" maxlength="120" list="olcut-listesi" placeholder="${t('ogr.olcutYer')}"><datalist id="olcut-listesi">${OLCUTLER.map((o) => `<option value="${esc(o)}">`).join('')}</datalist></label>
+            <label class="ps-izgara-tam">${t('ortak.not')}<input type="text" name="not" maxlength="300"></label>
+            <div><button type="submit" class="dugme dugme-ikincil">${t('ogr.degEkle')}</button></div>
             <p data-mesaj hidden class="not ps-izgara-tam"></p>
           </form>
 
-          <h3>${simge('not')}Notlar</h3>
-          <ul class="liste">${S.notlar.map((n) => `<li><span class="kucuk">${esc(tarihYaz(String(n.tarih)))}</span><span class="buyu ps-satir-koru">${esc(n.metin)}</span><span class="rozet">${n.veliyeGorunur ? 'veliye görünür' : 'yalnız hoca'}</span><button type="button" class="baglanti-dugme" data-sil="notlar" data-id="${esc(n.id)}">sil</button></li>`).join('') || '<li class="kucuk">Henüz not yok.</li>'}</ul>
+          <h3>${simge('not')}${t('ogr.notlar')}</h3>
+          <ul class="liste">${S.notlar.map((n) => `<li><span class="kucuk">${esc(tarihYaz(String(n.tarih)))}</span><span class="buyu ps-satir-koru">${esc(n.metin)}</span><span class="rozet">${n.veliyeGorunur ? t('ogr.veliyeGorunur') : t('ogr.yalnizHoca')}</span><button type="button" class="baglanti-dugme" data-sil="notlar" data-id="${esc(n.id)}">${t('ortak.sil')}</button></li>`).join('') || `<li class="kucuk">${t('ogr.notYok')}</li>`}</ul>
           <form data-form="not">
-            <div class="izgara-2"><label>Tarih<input type="date" name="tarih" value="${bugunISO()}" required></label><label class="satir ps-ust-19"><input type="checkbox" name="veliyeGorunur" checked> Veliye görünür</label></div>
-            <label>Not<textarea name="metin" maxlength="1000" required></textarea></label>
+            <div class="izgara-2"><label>${t('ortak.tarih')}<input type="date" name="tarih" value="${bugunISO()}" required></label><label class="satir ps-ust-19"><input type="checkbox" name="veliyeGorunur" checked> ${t('ogr.veliyeGorunurBuyuk')}</label></div>
+            <label>${t('ortak.not')}<textarea name="metin" maxlength="1000" required></textarea></label>
             <p data-mesaj hidden class="not"></p>
-            <div class="satir-dugmeler"><button type="submit" class="dugme dugme-ikincil">Not ekle</button></div>
+            <div class="satir-dugmeler"><button type="submit" class="dugme dugme-ikincil">${t('ogr.notEkle')}</button></div>
           </form>
         </section>`;
       }
@@ -448,44 +455,44 @@ export async function hocaEkrani(): Promise<void> {
       const duz = duzenlenenDuyuru ? S.duyurular.find((d) => d.id === duzenlenenDuyuru) : null;
       const dBas = (duz?.baslik as Record<string, string>) || {}; const dMet = (duz?.metin as Record<string, string>) || {};
       const za = (ad: string, etiket: string, deger: string, gerekli = false) => `<div class="zengin-alan"><span class="za-et">${etiket}</span>
-        <div class="za-arac" role="group" aria-label="${etiket} biçimlendirme">
-          <button type="button" class="za-b" data-zk="bold" title="Kalın"><b>B</b></button><button type="button" class="za-b" data-zk="italic" title="İtalik"><i>I</i></button><button type="button" class="za-b" data-zk="underline" title="Altı çizili"><u>U</u></button>
+        <div class="za-arac" role="group" aria-label="${t('duy.bicimlendirme', { etiket })}">
+          <button type="button" class="za-b" data-zk="bold" title="${t('duy.kalin')}"><b>B</b></button><button type="button" class="za-b" data-zk="italic" title="${t('duy.italik')}"><i>I</i></button><button type="button" class="za-b" data-zk="underline" title="${t('duy.altiCizili')}"><u>U</u></button>
           <span class="za-ayr"></span>
-          <button type="button" class="za-b za-renk" data-zk="foreColor" data-renk="#b5452b" title="Kiremit">A</button><button type="button" class="za-b za-renk" data-zk="foreColor" data-renk="#1f5f8b" title="Mavi">A</button><button type="button" class="za-b za-renk" data-zk="foreColor" data-renk="#2f6d3c" title="Yeşil">A</button><button type="button" class="za-b za-renk" data-zk="foreColor" data-renk="#24201c" title="Varsayılan renk">A</button>
+          <button type="button" class="za-b za-renk" data-zk="foreColor" data-renk="#b5452b" title="${t('duy.kiremit')}">A</button><button type="button" class="za-b za-renk" data-zk="foreColor" data-renk="#1f5f8b" title="${t('duy.mavi')}">A</button><button type="button" class="za-b za-renk" data-zk="foreColor" data-renk="#2f6d3c" title="${t('duy.yesil')}">A</button><button type="button" class="za-b za-renk" data-zk="foreColor" data-renk="#24201c" title="${t('duy.varsayilanRenk')}">A</button>
           <span class="za-ayr"></span>
-          <button type="button" class="za-b" data-zk="createLink" title="Bağlantı ekle"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9.5 13.5a4 4 0 0 0 5.5 0l3-3a4 4 0 0 0-5.5-5.5l-1 1"/><path d="M14.5 10.5a4 4 0 0 0-5.5 0l-3 3a4 4 0 0 0 5.5 5.5l1-1"/></svg></button>
+          <button type="button" class="za-b" data-zk="createLink" title="${t('duy.baglantiEkle')}"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9.5 13.5a4 4 0 0 0 5.5 0l3-3a4 4 0 0 0-5.5-5.5l-1 1"/><path d="M14.5 10.5a4 4 0 0 0-5.5 0l-3 3a4 4 0 0 0 5.5 5.5l1-1"/></svg></button>
           <span class="za-ayr"></span>
-          ${['🕌', '📖', '📅', '✅', '⭐', '❗', '🤲', '🎉'].map((e) => `<button type="button" class="za-b za-emoji" data-zk="emoji" data-emoji="${e}" title="Ekle">${e}</button>`).join('')}
+          ${['🕌', '📖', '📅', '✅', '⭐', '❗', '🤲', '🎉'].map((e) => `<button type="button" class="za-b za-emoji" data-zk="emoji" data-emoji="${e}" title="${t('duy.ekle')}">${e}</button>`).join('')}
         </div>
         <div class="za-yaz" contenteditable="true" role="textbox" aria-multiline="true" aria-label="${etiket}" data-zengin="${ad}"${gerekli ? ' data-gerekli="1"' : ''}>${zenginMi(deger || '') ? temizleHtml(deger || '') : esc(deger || '').replace(/\n/g, '<br>')}</div>
       </div>`;
-      govde = `<section class="bolum"><h2>${simge('duyuru')}Duyurular</h2>
-        ${S.duyurular.map((d) => { const b = d.baslik as Record<string, string>; const m = d.metin as Record<string, string>; return `<div class="duyuru${d.id === duzenlenenDuyuru ? ' duzenlenen' : ''}"><div class="duyuru-ust"><span class="kucuk">${esc(tarihYaz(String(d.tarih)))}</span> <span class="rozet ${d.yayin ? 'var' : ''}">${d.yayin ? 'yayında' : 'taslak'}</span><span class="duyuru-eylem"><button type="button" class="baglanti-dugme" data-duyuru-duzelt="${esc(d.id)}">düzenle</button> <button type="button" class="baglanti-dugme" data-yayin="duyurular" data-id="${esc(d.id)}" data-deger="${d.yayin ? '0' : '1'}">${d.yayin ? 'yayından kaldır' : 'yayınla'}</button> <button type="button" class="baglanti-dugme" data-sil="duyurular" data-id="${esc(d.id)}">sil</button></span></div><b>${esc(b?.tr || '')}</b>${b?.fr ? ` <span class="kucuk">· ${esc(b.fr)}</span>` : ''}<p>${esc(zenginMi(m?.tr || '') ? metniSadelestir(m?.tr || '') : (m?.tr || ''))}</p></div>`; }).join('') || '<p class="kucuk">Henüz duyuru yok.</p>'}
-        <h3>${duz ? simge('kalem') + 'Duyuruyu düzenle' : simge('duyuru') + 'Yeni duyuru'}</h3>
+      govde = `<section class="bolum"><h2>${simge('duyuru')}${t('sekme.duyuru')}</h2>
+        ${S.duyurular.map((d) => { const b = d.baslik as Record<string, string>; const m = d.metin as Record<string, string>; return `<div class="duyuru${d.id === duzenlenenDuyuru ? ' duzenlenen' : ''}"><div class="duyuru-ust"><span class="kucuk">${esc(tarihYaz(String(d.tarih)))}</span> <span class="rozet ${d.yayin ? 'var' : ''}">${d.yayin ? t('duy.yayinda') : t('duy.taslak')}</span><span class="duyuru-eylem"><button type="button" class="baglanti-dugme" data-duyuru-duzelt="${esc(d.id)}">${t('duy.duzenle')}</button> <button type="button" class="baglanti-dugme" data-yayin="duyurular" data-id="${esc(d.id)}" data-deger="${d.yayin ? '0' : '1'}">${d.yayin ? t('duy.yayindanKaldir') : t('duy.yayinla')}</button> <button type="button" class="baglanti-dugme" data-sil="duyurular" data-id="${esc(d.id)}">${t('ortak.sil')}</button></span></div><b>${esc(b?.tr || '')}</b>${b?.fr ? ` <span class="kucuk">· ${esc(b.fr)}</span>` : ''}<p>${esc(zenginMi(m?.tr || '') ? metniSadelestir(m?.tr || '') : (m?.tr || ''))}</p></div>`; }).join('') || `<p class="kucuk">${t('duy.yok')}</p>`}
+        <h3>${duz ? simge('kalem') + t('duy.duzenleBaslik') : simge('duyuru') + t('duy.yeni')}</h3>
         <form data-form="duyuru" class="${duz ? 'duzenleme' : ''}">
-          ${duz ? `<p class="duzen-not">${simge('kalem')}<span>Var olan bir duyuruyu düzenliyorsunuz.</span></p>` : ''}
-          <label>Tarih<input type="date" name="tarih" value="${esc(duz ? String(duz.tarih) : bugunISO())}" required></label>
-          <div class="izgara-3"><label>Başlık (TR)<input type="text" name="baslikTr" maxlength="120" value="${esc(dBas.tr || '')}" required></label><label>Titre (FR)<input type="text" name="baslikFr" maxlength="120" value="${esc(dBas.fr || '')}"></label><label>Title (EN)<input type="text" name="baslikEn" maxlength="120" value="${esc(dBas.en || '')}"></label></div>
-          <div class="izgara-zengin">${za('metinTr', 'Metin (TR)', dMet.tr, true)}${za('metinFr', 'Texte (FR)', dMet.fr)}${za('metinEn', 'Text (EN)', dMet.en)}</div>
-          <label class="satir"><input type="checkbox" name="yayin" ${duz ? (duz.yayin ? 'checked' : '') : 'checked'}> ${duz ? 'Yayında' : 'Hemen yayınla'}</label>
-          <p class="kucuk">Fransızca/İngilizce boşsa velilere Türkçe metin gösterilir.</p>
+          ${duz ? `<p class="duzen-not">${simge('kalem')}<span>${t('duy.duzenliyorsunuz')}</span></p>` : ''}
+          <label>${t('ortak.tarih')}<input type="date" name="tarih" value="${esc(duz ? String(duz.tarih) : bugunISO())}" required></label>
+          <div class="izgara-3"><label>${t('duy.baslikTr')}<input type="text" name="baslikTr" maxlength="120" value="${esc(dBas.tr || '')}" required></label><label>${t('duy.baslikFr')}<input type="text" name="baslikFr" maxlength="120" value="${esc(dBas.fr || '')}"></label><label>${t('duy.baslikEn')}<input type="text" name="baslikEn" maxlength="120" value="${esc(dBas.en || '')}"></label></div>
+          <div class="izgara-zengin">${za('metinTr', t('duy.metinTr'), dMet.tr, true)}${za('metinFr', t('duy.metinFr'), dMet.fr)}${za('metinEn', t('duy.metinEn'), dMet.en)}</div>
+          <label class="satir"><input type="checkbox" name="yayin" ${duz ? (duz.yayin ? 'checked' : '') : 'checked'}> ${duz ? t('duy.yayindaBuyuk') : t('duy.hemenYayinla')}</label>
+          <p class="kucuk">${t('duy.dilIpucu')}</p>
           <p data-mesaj hidden class="not"></p>
-          <div class="satir-dugmeler"><button type="submit" class="dugme dugme-birincil">${duz ? 'Değişikliği kaydet' : 'Duyuruyu kaydet'}</button>${duz ? '<button type="button" class="dugme dugme-ikincil" data-eylem="duyuruVazgec">Vazgeç</button>' : ''}</div>
+          <div class="satir-dugmeler"><button type="submit" class="dugme dugme-birincil">${duz ? t('duy.degisiklikKaydet') : t('duy.kaydet')}</button>${duz ? `<button type="button" class="dugme dugme-ikincil" data-eylem="duyuruVazgec">${t('duy.vazgec')}</button>` : ''}</div>
         </form></section>`;
     } else if (S.sekme === 'bildirim') {
       const turRozet: Record<string, string> = { mazeret: 'mazeret', iletisim: 'var', soru: 'gec' };
       const okunmamis = S.bildirimler.filter((b) => !b.okundu).length;
-      govde = `<section class="bolum"><h2>${simge('zarf')}Veli bildirimleri <span class="kucuk">(${okunmamis} okunmamış · ${S.bildirimler.length} toplam)</span></h2>
+      govde = `<section class="bolum"><h2>${simge('zarf')}${t('sekme.bildirim')} <span class="kucuk">${t('bil.sayilar', { okunmamis, toplam: S.bildirimler.length })}</span></h2>
         ${S.bildirimler.map((b) => { const y = b.yanit ? String(b.yanit) : ''; return `<article class="bildirim-kart${b.okundu ? ' okundu' : ' yeni'}">
-          <div class="bk-ust"><span class="rozet ${turRozet[String(b.tur)] || ''}">${esc(TUR[String(b.tur)] || b.tur)}</span><b class="bk-ogr">${esc(ogrAdi(String(b.ref)))}</b>${b.tarih ? `<span class="rozet">${esc(tarihYaz(String(b.tarih), { weekday: 'short', day: 'numeric', month: 'short' }))}</span>` : ''}${b.okundu ? '' : '<span class="bk-nokta" title="okunmamış"></span>'}<span class="kucuk bk-zaman">${esc(zamanYaz(b.zaman))}</span></div>
+          <div class="bk-ust"><span class="rozet ${turRozet[String(b.tur)] || ''}">${esc(TUR[String(b.tur)] || b.tur)}</span><b class="bk-ogr">${esc(ogrAdi(String(b.ref)))}</b>${b.tarih ? `<span class="rozet">${esc(tarihYaz(String(b.tarih), { weekday: 'short', day: 'numeric', month: 'short' }))}</span>` : ''}${b.okundu ? '' : `<span class="bk-nokta" title="${t('bil.okunmamisTitle')}"></span>`}<span class="kucuk bk-zaman">${esc(zamanYaz(b.zaman))}</span></div>
           <p class="bk-metin">${esc(b.metin)}</p>
           <p class="kucuk bk-eposta">${simge('zarf')}<a href="mailto:${esc(b.eposta)}">${esc(b.eposta)}</a></p>
-          ${y ? `<div class="bk-yanit"><span class="bk-yanit-bas">${simge('gonder')}Yanıtınız · ${esc(zamanYaz(b.yanitZaman))}</span><p>${esc(y)}</p></div>` : ''}
+          ${y ? `<div class="bk-yanit"><span class="bk-yanit-bas">${simge('gonder')}${t('bil.yanitiniz', { zaman: esc(zamanYaz(b.yanitZaman)) })}</span><p>${esc(y)}</p></div>` : ''}
           <div class="bk-yanit-form">
-            <textarea aria-label="Veliye yanıt" data-yanit-metin="${esc(b.id)}" rows="2" maxlength="1000" placeholder="${y ? 'Yanıtı güncelleyin…' : 'Veliye kısa bir yanıt yazın…'}">${esc(y)}</textarea>
-            <div class="bk-eylem"><button type="button" class="dugme dugme-birincil" data-yanitla="${esc(b.id)}">${simge('gonder')}${y ? 'Yanıtı güncelle' : 'Yanıtla'}</button><button type="button" class="baglanti-dugme" data-okundu="${esc(b.id)}" data-deger="${b.okundu ? '0' : '1'}">${b.okundu ? 'okunmadı yap' : 'okundu işaretle'}</button><button type="button" class="baglanti-dugme sil-bag" data-sil="bildirimler" data-id="${esc(b.id)}">sil</button></div>
+            <textarea aria-label="${t('bil.yanitAria')}" data-yanit-metin="${esc(b.id)}" rows="2" maxlength="1000" placeholder="${y ? t('bil.yanitGuncelleYer') : t('bil.yanitYazYer')}">${esc(y)}</textarea>
+            <div class="bk-eylem"><button type="button" class="dugme dugme-birincil" data-yanitla="${esc(b.id)}">${simge('gonder')}${y ? t('bil.yanitGuncelle') : t('bil.yanitla')}</button><button type="button" class="baglanti-dugme" data-okundu="${esc(b.id)}" data-deger="${b.okundu ? '0' : '1'}">${b.okundu ? t('bil.okunmadiYap') : t('bil.okunduIsaretle')}</button><button type="button" class="baglanti-dugme sil-bag" data-sil="bildirimler" data-id="${esc(b.id)}">${t('ortak.sil')}</button></div>
           </div>
-        </article>`; }).join('') || bosDurum('zarf', 'Henüz veli bildirimi yok. Veliler mazeret, iletişim değişikliği ya da soru gönderdiğinde burada görünür.')}
+        </article>`; }).join('') || bosDurum('zarf', t('bil.yok'))}
       </section>`;
     } else if (S.sekme === 'aile') {
       const kitapSay = { var: 0, satin: 0, fotokopi: 0, yok: 0 };
@@ -493,34 +500,34 @@ export async function hocaEkrani(): Promise<void> {
         const v = (f.kitapSecim || {})[r];
         if (v && v.secim in kitapSay) kitapSay[v.secim as keyof typeof kitapSay]++; else kitapSay.yok++;
       }
-      govde = `<section class="bolum"><h2>${simge('aile')}Aileler <span class="kucuk">(${S.aileler.length})</span></h2>
-        <p class="kucuk"><b>Ders kitabı durumu:</b> ${kitapSay.var} kitabı var · ${kitapSay.satin} satın alacak · ${kitapSay.fotokopi} fotokopi (10 €) · ${kitapSay.yok} yanıt yok</p>
-        <p class="kucuk">«Davet gönder»: veliye kendi dilinde tek kullanımlık giriş bağlantısı e-postalanır; veli bağlantıyı açıp şifresini belirler. Google'ın ücretsiz planı günde en fazla <b>5</b> davet e-postası gönderir; toplu davet için yönetici betiği (info@ulucamii.be üzerinden) kullanılır.</p>
+      govde = `<section class="bolum"><h2>${simge('aile')}${t('aile.baslik')} <span class="kucuk">(${S.aileler.length})</span></h2>
+        <p class="kucuk"><b>${t('aile.kitapBaslik')}</b> ${t('aile.kitapDurumu', { v: kitapSay.var, s: kitapSay.satin, f: kitapSay.fotokopi, y: kitapSay.yok })}</p>
+        <p class="kucuk">${t('aile.davetAciklamaHtml', { dugme: t('aile.davetGonder') })}</p>
         <ul class="liste">${S.aileler.map((f) => `<li><span class="buyu"><b>${esc(f.eposta)}</b><br><span class="kucuk">${esc(f.adSoyad || '')} · ${esc(DIL_ADI[f.dil || ''] || f.dil || '')} · ${esc((f.ogrenciler || []).map(ogrAdi).join(', '))}</span></span>
-          <span class="rozet">${f.sifreVar ? 'şifre belirledi' : 'henüz girmedi'}</span>${f.sonGiris ? `<span class="kucuk">son giriş ${esc(tarihYaz(f.sonGiris))}</span>` : ''}
-          <span class="kucuk">${(f.ogrenciler || []).map((r) => { const v = (f.kitapSecim || {})[r]; return `${esc(ogrAdi(r))}: <span class="rozet ${v ? (v.secim === 'var' ? 'ogrendi' : v.secim === 'fotokopi' ? 'gec' : 'mazeret') : ''}">${esc(v ? (KITAP_ADI[v.secim] || v.secim) : 'kitap yanıtı yok')}</span>`; }).join(' · ')}</span>
-          <button type="button" class="dugme dugme-ikincil" data-davet="${esc(f.eposta)}" data-dil="${esc(f.iletisimDili || f.dil || '')}">Davet gönder</button></li>`).join('') || '<li class="kucuk">Aile yok.</li>'}</ul>
+          <span class="rozet">${f.sifreVar ? t('aile.sifreVar') : t('aile.girmedi')}</span>${f.sonGiris ? `<span class="kucuk">${t('aile.sonGiris', { tarih: esc(tarihYaz(f.sonGiris)) })}</span>` : ''}
+          <span class="kucuk">${(f.ogrenciler || []).map((r) => { const v = (f.kitapSecim || {})[r]; return `${esc(ogrAdi(r))}: <span class="rozet ${v ? (v.secim === 'var' ? 'ogrendi' : v.secim === 'fotokopi' ? 'gec' : 'mazeret') : ''}">${esc(v ? (KITAP_ADI[v.secim] || v.secim) : t('kitap.yok'))}</span>`; }).join(' · ')}</span>
+          <button type="button" class="dugme dugme-ikincil" data-davet="${esc(f.eposta)}" data-dil="${esc(f.iletisimDili || f.dil || '')}">${t('aile.davetGonder')}</button></li>`).join('') || `<li class="kucuk">${t('aile.yok')}</li>`}</ul>
         <p data-ust-mesaj hidden class="not"></p>
-        <h3>Kayıt defteri</h3>
-        <p class="kucuk">Online kayıt defterindeki güncel öğrencileri (ad, soyad, veli e-postası, dil) portala aktarır; başka veri aktarılmaz. Var olan kayıtlar korunur.</p>
-        <div class="satir-dugmeler"><button type="button" class="dugme dugme-ikincil" data-eylem="iceAktar">Kayıt defterinden yenile</button></div></section>`;
+        <h3>${t('aile.kayitDefteri')}</h3>
+        <p class="kucuk">${t('aile.kayitAciklama')}</p>
+        <div class="satir-dugmeler"><button type="button" class="dugme dugme-ikincil" data-eylem="iceAktar">${t('aile.iceAktar')}</button></div></section>`;
     } else if (S.sekme === 'envanter') {
-      govde = '<section class="bolum env-kok" data-hoca-envanter><p class="not" role="status">Envanter hazırlanıyor…</p></section>';
+      govde = `<section class="bolum env-kok" data-hoca-envanter><p class="not" role="status">${t('panel.envanterHazir')}</p></section>`;
     } else if (S.sekme === 'ezber') {
-      govde = '<section class="bolum ez-kok" data-hoca-ezber><p class="not" role="status">Ezber paneli hazırlanıyor…</p></section>';
+      govde = `<section class="bolum ez-kok" data-hoca-ezber><p class="not" role="status">${t('panel.ezberHazir')}</p></section>`;
     } else if (S.sekme === 'ilim') {
-      govde = '<section class="bolum iy-kok" data-hoca-ilim-yolu><p class="not" role="status">İlim Yolu hesapları hazırlanıyor…</p></section>';
+      govde = `<section class="bolum iy-kok" data-hoca-ilim-yolu><p class="not" role="status">${t('panel.ilimHazir')}</p></section>`;
     } else if (S.sekme === 'defter') {
-      govde = '<section class="haftalik-bulten ders-defteri" data-ders-defteri><p role="status">Ders defteri hazırlanıyor…</p></section>';
+      govde = `<section class="haftalik-bulten ders-defteri" data-ders-defteri><p role="status">${t('panel.defterHazir')}</p></section>`;
     } else if (S.sekme === 'bulten') {
       govde = '<section class="haftalik-bulten" data-hoca-bulten></section>';
     } else if (S.sekme === 'kitaplar') {
       govde = kitaplarHtml();
     } else if (S.sekme === 'hesap') {
-      govde = `<section class="bolum"><h2>${simge('ayar')}Hesap</h2><p>${esc(S.ad)} · <span class="kucuk">${esc(a.currentUser?.email || '')}</span></p>
-        <form data-form="sifreDegistir" class="ps-form-dar-28"><label>Yeni şifre<input type="password" name="sifre" minlength="8" required autocomplete="new-password"></label><p data-mesaj hidden class="not"></p>
-        <div class="satir-dugmeler"><button type="submit" class="dugme dugme-ikincil">Şifreyi değiştir</button></div></form>
-        <p class="kucuk ps-ust-1">Veli portalı: <a href="${esc(veri.veliYollari.tr)}">${esc(location.origin + veri.veliYollari.tr)}</a></p></section>`;
+      govde = `<section class="bolum"><h2>${simge('ayar')}${t('sekme.hesap')}</h2><p>${esc(S.ad)} · <span class="kucuk">${esc(a.currentUser?.email || '')}</span></p>
+        <form data-form="sifreDegistir" class="ps-form-dar-28"><label>${t('hesap.yeniSifre')}<input type="password" name="sifre" minlength="8" required autocomplete="new-password"></label><p data-mesaj hidden class="not"></p>
+        <div class="satir-dugmeler"><button type="submit" class="dugme dugme-ikincil">${t('hesap.degistir')}</button></div></form>
+        <p class="kucuk ps-ust-1">${t('hesap.veliPortali')} <a href="${esc(veri.veliYollari.tr)}">${esc(location.origin + veri.veliYollari.tr)}</a></p></section>`;
     }
     const SEKME_IKON: Record<string, string> = { yoklama: 'takvim', defter: 'kitap', ezber: 'ezber', envanter: 'kitap', kitaplar: 'kitap', ogrenci: 'ogrenci', ilim: 'kart', odev: 'kitap', duyuru: 'duyuru', bildirim: 'zarf', aile: 'aile', hesap: 'ayar' };
     /* Günün özeti (14 Eyl 2026): büyük sayfa başlığı yerine, hocanın ilk bakışta gördüğü şey — bugün (ya da sıradaki)
@@ -530,15 +537,15 @@ export async function hocaEkrani(): Promise<void> {
       const g = veri.gunler.find((x) => x.tarih === b) || veri.gunler.find((x) => x.tarih > b) || veri.gunler[veri.gunler.length - 1];
       if (!g) return '';
       const bugunMu = g.tarih === b;
-      return `<div class="hero-gun" data-hero-gun><p class="hg-tarih"><b>${esc(tarihYaz(g.tarih, { weekday: 'long', day: 'numeric', month: 'long' }))}</b> · ${g.hafta}. hafta<span class="rozet ${bugunMu ? 'var' : ''}">${bugunMu ? 'bugün ders var' : 'sıradaki ders günü'}</span></p>
+      return `<div class="hero-gun" data-hero-gun><p class="hg-tarih"><b>${esc(tarihYaz(g.tarih, { weekday: 'long', day: 'numeric', month: 'long' }))}</b> · ${t('hero.hafta', { n: g.hafta })}<span class="rozet ${bugunMu ? 'var' : ''}">${bugunMu ? t('hero.bugun') : t('hero.siradaki')}</span></p>
         <p class="hg-dersler">${g.dersler.map((d) => `<b>${esc(String(d.no))}.</b> ${esc(ALANLAR[d.kod] || d.kod)}: ${esc(d.konu)}`).join(' · ')}</p>
-        <p class="hg-sayilar"><span>${aktif.length} aktif öğrenci</span>${S!.okunmamis ? `<button type="button" class="baglanti-dugme" data-sekme="bildirim">${S!.okunmamis} okunmamış veli bildirimi</button>` : '<span>Okunmamış veli bildirimi yok</span>'}${heroEksikHtml()}</p></div>`;
+        <p class="hg-sayilar"><span>${t('hero.aktifOgr', { n: aktif.length })}</span>${S!.okunmamis ? `<button type="button" class="baglanti-dugme" data-sekme="bildirim">${t('hero.okunmamis', { n: S!.okunmamis })}</button>` : `<span>${t('hero.okunmamisYok')}</span>`}${heroEksikHtml()}</p></div>`;
     })();
     kok.innerHTML = `<div class="hoca-hero"><div class="hero-serit" aria-hidden="true"></div>
-        <div class="hero-ust"><div><p class="etiket etiket-vurgu">Kur’an kursu · ${esc(veri.donem)} dönemi</p><h1 class="hero-baslik">Hoca ekranı <span class="kucuk">· ${esc(S.ad)}</span></h1></div><button type="button" class="dugme dugme-ikincil" data-eylem="cikis">${simge('cikis')}Çıkış</button></div>
+        <div class="hero-ust"><div><p class="etiket etiket-vurgu">${t('hero.etiket', { donem: esc(veri.donem) })}</p><h1 class="hero-baslik">${t('hero.baslik')} <span class="kucuk">· ${esc(S.ad)}</span></h1></div><button type="button" class="dugme dugme-ikincil" data-eylem="cikis">${simge('cikis')}${t('ortak.cikis')}</button></div>
         ${gunBilgi}
       </div>
-      <div class="sekmeler" role="tablist" aria-label="Bölümler">${Object.entries(SEKMELER).map(([k, v]) => `<button type="button" role="tab" id="hoca-tab-${k}" class="sekme" aria-selected="${k === S!.sekme}" aria-controls="hoca-panel" tabindex="${k === S!.sekme ? '0' : '-1'}" data-sekme="${k}">${simge(SEKME_IKON[k] || 'ayar')}<span>${v}</span>${k === 'bildirim' && S!.okunmamis ? `<span class="sekme-sayi"><span class="sr-only">okunmamış: </span>${S!.okunmamis}</span>` : ''}</button>`).join('')}</div>
+      <div class="sekmeler" role="tablist" aria-label="${t('sekme.bolumler')}">${Object.entries(SEKMELER).map(([k, v]) => `<button type="button" role="tab" id="hoca-tab-${k}" class="sekme" aria-selected="${k === S!.sekme}" aria-controls="hoca-panel" tabindex="${k === S!.sekme ? '0' : '-1'}" data-sekme="${k}">${simge(SEKME_IKON[k] || 'ayar')}<span>${v}</span>${k === 'bildirim' && S!.okunmamis ? `<span class="sekme-sayi"><span class="sr-only">${t('sekme.okunmamis')}</span>${S!.okunmamis}</span>` : ''}</button>`).join('')}</div>
       <div id="hoca-panel" role="tabpanel" aria-labelledby="hoca-tab-${S.sekme}">${govde}</div>`;
     const kitapRoot=kok.querySelector<HTMLElement>('[data-hoca-kitaplari]');
     if(kitapRoot) kitaplariTemizle=hocaKitaplari(kitapRoot,async id=>{
@@ -579,7 +586,7 @@ export async function hocaEkrani(): Promise<void> {
           defterOnSecim='';defterOnTarih='';defterOnEksik=false;
         }catch{
           if(yukleme!==defterYukleme||!defterRoot.isConnected)return;
-          defterRoot.innerHTML='<p role="status">Ders defteri yüklenemedi. Bağlantınızı kontrol edip yeniden deneyin.</p><button type="button" data-defter-tekrar>Yeniden dene</button>';
+          defterRoot.innerHTML=`<p role="status">${t('panel.defterHata')}</p><button type="button" data-defter-tekrar>${t('ortak.yenidenDene')}</button>`;
           defterRoot.querySelector('[data-defter-tekrar]')?.addEventListener('click',()=>{void ac();},{once:true});
         }
       };void ac();
@@ -597,7 +604,7 @@ export async function hocaEkrani(): Promise<void> {
           ezberPanel = mod.ezberPaneli(ezberRoot, { app, ogrenciler: () => durum.ogrenciler.filter((o) => o.durum !== 'pasif'), yoklama: gununYoklamasi, gunler: veri.gunler, bugun: bugunISO(), baslangicRef: baslangicRef || undefined });
         } catch {
           if (yukleme !== ezberYukleme || !ezberRoot.isConnected) return;
-          ezberRoot.innerHTML = '<p class="not hata" role="status">Ezber paneli yüklenemedi. Bağlantınızı kontrol edip yeniden deneyin.</p><button type="button" class="dugme dugme-ikincil" data-ezber-tekrar>Yeniden dene</button>';
+          ezberRoot.innerHTML = `<p class="not hata" role="status">${t('panel.ezberHata')}</p><button type="button" class="dugme dugme-ikincil" data-ezber-tekrar>${t('ortak.yenidenDene')}</button>`;
           ezberRoot.querySelector('[data-ezber-tekrar]')?.addEventListener('click', () => { void ac(); }, { once: true });
         }
       };
@@ -616,7 +623,7 @@ export async function hocaEkrani(): Promise<void> {
         envanterPanel = mod.envanterPaneli(envanterRoot, { app, ogrenciler: () => durum.ogrenciler.filter((o) => o.durum !== 'pasif'), bugun: bugunISO(), uid: () => durum.uid });
       } catch {
         if (yukleme !== envanterYukleme || !envanterRoot.isConnected) return;
-        envanterRoot.innerHTML = '<p class="not hata" role="status">Envanter paneli yüklenemedi. Bağlantınızı kontrol edip yeniden deneyin.</p><button type="button" class="dugme dugme-ikincil" data-envanter-tekrar>Yeniden dene</button>';
+        envanterRoot.innerHTML = `<p class="not hata" role="status">${t('panel.envanterHata')}</p><button type="button" class="dugme dugme-ikincil" data-envanter-tekrar>${t('ortak.yenidenDene')}</button>`;
         envanterRoot.querySelector('[data-envanter-tekrar]')?.addEventListener('click', () => { void ac(); }, { once: true });
       }
     };
@@ -635,7 +642,7 @@ export async function hocaEkrani(): Promise<void> {
         ilimPanel = mod.ilimYoluPaneli(ilimRoot, { app, ogrenciler: () => durum.ogrenciler, baslangicRef: baslangicRef || undefined });
       } catch {
         if (yukleme !== ilimYukleme || !ilimRoot.isConnected) return;
-        ilimRoot.innerHTML = '<p class="not hata" role="status">İlim Yolu bölümü yüklenemedi. Bağlantınızı kontrol edip yeniden deneyin.</p><button type="button" class="dugme dugme-ikincil" data-ilim-tekrar>Yeniden dene</button>';
+        ilimRoot.innerHTML = `<p class="not hata" role="status">${t('panel.ilimHata')}</p><button type="button" class="dugme dugme-ikincil" data-ilim-tekrar>${t('ortak.yenidenDene')}</button>`;
         ilimRoot.querySelector('[data-ilim-tekrar]')?.addEventListener('click', () => { void ac(); }, { once: true });
       }
     };
@@ -658,7 +665,7 @@ export async function hocaEkrani(): Promise<void> {
     const h = await fs.getDoc(fs.doc(db, 'hocalar', kb.user.uid)).catch(() => null);
     if (h && h.exists() && !(h.data() as { sifreVar?: boolean }).sifreVar) sifreEkrani(); else await yukle(kb.user);
   };
-  const sekmeyeGec = async (ad: string, odevOnayli=false) => { if (!S || (!odevOnayli&&odevPanel&&!odevPanel.ayrilabilir()) || (defterPanel&&!defterPanel.ayrilabilir()) || envanterKilitli() || ilimKilitli()) { kok.querySelector<HTMLElement>('#hoca-tab-' + S?.sekme)?.focus(); return false; } bultenTemizle?.(); kitaplariTemizle?.(); odevKapat(); defterKapat(); ezberKapat(); envanterKapat(); ilimKapat(); S.sekme = ad; duzenlenenDuyuru = null; kok.innerHTML = '<p class="not">Yükleniyor…</p>'; await sekmeYukle(ad); ciz(); return true; };
+  const sekmeyeGec = async (ad: string, odevOnayli=false) => { if (!S || (!odevOnayli&&odevPanel&&!odevPanel.ayrilabilir()) || (defterPanel&&!defterPanel.ayrilabilir()) || envanterKilitli() || ilimKilitli()) { kok.querySelector<HTMLElement>('#hoca-tab-' + S?.sekme)?.focus(); return false; } bultenTemizle?.(); kitaplariTemizle?.(); odevKapat(); defterKapat(); ezberKapat(); envanterKapat(); ilimKapat(); S.sekme = ad; duzenlenenDuyuru = null; kok.innerHTML = `<p class="not">${tc('yukleniyor')}</p>`; await sekmeYukle(ad); ciz(); return true; };
 
   kok.addEventListener('mousedown', (ev) => { if ((ev.target as HTMLElement).closest('.za-arac')) ev.preventDefault(); });
   kok.addEventListener('click', async (ev) => {
@@ -669,9 +676,9 @@ export async function hocaEkrani(): Promise<void> {
       if (el.dataset.eylem === 'atla' && a.currentUser) { await yukle(a.currentUser); return; }
       if (el.dataset.eylem === 'sifremiUnuttum') {
         const form = el.closest('form') as HTMLFormElement; const ep = (form.querySelector('input[name=eposta]') as HTMLInputElement).value.trim().toLowerCase();
-        if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(ep)) { mesaj(form, 'Geçerli bir e-posta yazın.', 'hata'); return; }
+        if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(ep)) { mesaj(form, t('mesaj.epostaGecersiz'), 'hata'); return; }
         await auth.sendPasswordResetEmail(a, ep, { url: sayfaAdresi }); portalTercihleri.setItem('hocaEposta', ep);
-        mesaj(form, `Şifre sıfırlama bağlantısı gönderildi: ${ep}. Bağlantıyı açıp yeni şifrenizi belirleyin, sonra giriş yapın.`, 'basari'); return;
+        mesaj(form, t('mesaj.sifreSifirGitti', { ep }), 'basari'); return;
       }
       if (el.dataset.sekme) { const ad = el.dataset.sekme; if(await sekmeyeGec(ad))kok.querySelector<HTMLElement>('#hoca-tab-' + ad)?.focus(); return; }
       if (el.dataset.defterAc) { defterOnSecim = el.dataset.defterAc; if (await sekmeyeGec('defter')) kok.querySelector<HTMLElement>('#hoca-tab-defter')?.focus(); return; }
@@ -686,7 +693,7 @@ export async function hocaEkrani(): Promise<void> {
           const zk = el.dataset.zk;
           if (zk === 'emoji') document.execCommand('insertText', false, el.dataset.emoji || '');
           else if (zk === 'foreColor') document.execCommand('foreColor', false, el.dataset.renk || '#24201c');
-          else if (zk === 'createLink') { const u = (prompt('Bağlantı adresi (https://…):') || '').trim(); if (/^https?:\/\//i.test(u)) document.execCommand('createLink', false, u); }
+          else if (zk === 'createLink') { const u = (prompt(t('duy.baglantiSor')) || '').trim(); if (/^https?:\/\//i.test(u)) document.execCommand('createLink', false, u); }
           else document.execCommand(zk);
         } catch { /* execCommand desteklenmiyorsa yoksay */ }
         return;
@@ -709,7 +716,7 @@ export async function hocaEkrani(): Promise<void> {
         const oto = new Set(y.veliMazereti || []);
         (gun ? gun.dersler : []).forEach((d) => { y.dersler[String(d.no)] = 'mazeret'; oto.add(String(d.no)); });
         S.yoklama[ref] = { ...y, veliMazereti: [...oto].sort() }; ciz();
-        ustMesaj(`${ogrAdi(ref)} günün derslerinde mazeretli işaretlendi. Kaydetmeyi unutmayın.`);
+        ustMesaj(t('mesaj.mazeretIsaretli', { ad: ogrAdi(ref) }));
         return;
       }
       if (el.dataset.eylem === 'hepsiVar') { const gun = veri.gunler.find((x) => x.tarih === S!.tarih); const siras = (gun ? gun.dersler : []).map((d) => String(d.no)); S.ogrenciler.filter((o) => o.durum !== 'pasif').forEach((o) => { const ders: Record<string, string> = {}; siras.forEach((s) => { ders[s] = 'var'; }); S!.yoklama[o.ref] = { dersler: ders, not: S!.yoklama[o.ref]?.not || '', veliMazereti: S!.yoklama[o.ref]?.veliMazereti }; }); S.mazeretKuraliDegisen = []; ciz(); return; }
@@ -741,7 +748,7 @@ export async function hocaEkrani(): Promise<void> {
           await b.commit();
         }
         S.mazeretKuraliDegisen = []; ciz();
-        ustMesaj(`${n} öğrencinin yoklaması kaydedildi (${tarihYaz(S.tarih)}).`, 'basari'); return;
+        ustMesaj(t('mesaj.yoklamaKaydedildi', { n, tarih: tarihYaz(S.tarih) }), 'basari'); return;
       }
       // 27 Eyl 2026: karne düğmesi de data-ogr taşır; eylemli düğme öğrenci seçimi sayılmaz (karne hiç kopyalanmıyordu).
       if (el.dataset.ogr && !el.dataset.eylem) { kok.querySelector('#ogrenci-karti')?.remove(); await ogrenciYukle(el.dataset.ogr); ciz(); kok.querySelector('#ogrenci-karti')?.scrollIntoView({ block: 'start', behavior: 'smooth' }); return; }
@@ -775,36 +782,36 @@ export async function hocaEkrani(): Promise<void> {
 
         try {
           await navigator.clipboard.writeText(karneMetni);
-          ustMesaj(`${ogr.ad} ${ogr.soyad} için WhatsApp karnesi panoya kopyalandı!`, 'basari');
+          ustMesaj(t('mesaj.karneKopyalandi', { ad: `${ogr.ad} ${ogr.soyad}` }), 'basari');
         } catch {
           window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(karneMetni)}`, '_blank');
         }
         return;
       }
-      if (el.dataset.sil) { if (!confirm('Silinsin mi?')) return; await fs.deleteDoc(fs.doc(db, el.dataset.sil, el.dataset.id!));
-        if (S.sekme === 'ogrenci') await ogrenciYukle(S.secili); else await sekmeYukle(S.sekme); ciz(); ustMesaj('Silindi.', 'basari'); return; }
+      if (el.dataset.sil) { if (!confirm(t('mesaj.silinsinMi'))) return; await fs.deleteDoc(fs.doc(db, el.dataset.sil, el.dataset.id!));
+        if (S.sekme === 'ogrenci') await ogrenciYukle(S.secili); else await sekmeYukle(S.sekme); ciz(); ustMesaj(t('mesaj.silindi'), 'basari'); return; }
       if (el.dataset.yayin) { await fs.updateDoc(fs.doc(db, el.dataset.yayin, el.dataset.id!), { yayin: el.dataset.deger === '1' }); await sekmeYukle(S.sekme); ciz(); return; }
       if (el.dataset.okundu) { await fs.updateDoc(fs.doc(db, 'bildirimler', el.dataset.okundu), { okundu: el.dataset.deger === '1' }); await sekmeYukle('bildirim'); ciz(); return; }
       if (el.dataset.yanitla) { const kart = el.closest('.bildirim-kart'); const ta = kart?.querySelector<HTMLTextAreaElement>('[data-yanit-metin]'); const metin = (ta?.value || '').trim();
-        if (!metin) { ustMesaj('Önce yanıt metnini yazın.', 'hata'); ta?.focus(); return; }
+        if (!metin) { ustMesaj(t('bil.yanitYaz'), 'hata'); ta?.focus(); return; }
         mesgulYap(el as HTMLButtonElement, true);
         await fs.updateDoc(fs.doc(db, 'bildirimler', el.dataset.yanitla), { yanit: metin.slice(0, 1000), yanitZaman: fs.serverTimestamp(), okundu: true });
-        await sekmeYukle('bildirim'); ciz(); ustMesaj('Yanıt gönderildi; veli portalında görünecek.', 'basari'); return; }
+        await sekmeYukle('bildirim'); ciz(); ustMesaj(t('bil.yanitGitti'), 'basari'); return; }
       if (el.dataset.duyuruDuzelt) { duzenlenenDuyuru = el.dataset.duyuruDuzelt; ciz(); kok.querySelector('form[data-form=duyuru]')?.scrollIntoView({ block: 'center', behavior: 'smooth' }); return; }
       if (el.dataset.eylem === 'duyuruVazgec') { duzenlenenDuyuru = null; ciz(); return; }
       if (el.dataset.davet) {
         const ep = el.dataset.davet; const dil = el.dataset.dil || '';
-        if (!['tr', 'fr', 'en'].includes(dil)) { ustMesaj('Davet göndermeden önce velinin iletişim dilini doğrulayınız.', 'hata'); return; }
+        if (!['tr', 'fr', 'en'].includes(dil)) { ustMesaj(t('aile.davetDilSor'), 'hata'); return; }
         mesgulYap(el as HTMLButtonElement, true);
         a.languageCode = dil;
         try { await auth.sendSignInLinkToEmail(a, ep, { url: location.origin + (veri.veliYollari[dil] || veri.veliYollari.tr), handleCodeInApp: true }); }
         finally { a.languageCode = 'tr'; mesgulYap(el as HTMLButtonElement, false); }
         await fs.setDoc(fs.doc(db, 'aileler', ep), { davet: new Date().toISOString() }, { merge: true }).catch(() => {});
-        ustMesaj(`Davet gönderildi: ${ep} (${DIL_ADI[dil] || dil}).`, 'basari'); return;
+        ustMesaj(t('aile.davetGitti', { ep, dil: DIL_ADI[dil] || dil }), 'basari'); return;
       }
-      if (el.dataset.veliSil) { const ep = el.dataset.veliSil; const o = S.ogrenciler.find((x) => x.ref === S!.secili); if (!o || !confirm(`${ep} bu öğrenciden kaldırılsın mı?`)) return;
+      if (el.dataset.veliSil) { const ep = el.dataset.veliSil; const o = S.ogrenciler.find((x) => x.ref === S!.secili); if (!o || !confirm(t('mesaj.veliKaldirOnay', { ep }))) return;
         o.veliler = await portalVeliBagi(db,o.ref,ep,false); ciz(); return; }
-      if (el.dataset.eylem === 'iceAktar') { mesgulYap(el as HTMLButtonElement, true); ustMesaj('Kayıt defteri okunuyor…'); await iceAktar(); mesgulYap(el as HTMLButtonElement, false); return; }
+      if (el.dataset.eylem === 'iceAktar') { mesgulYap(el as HTMLButtonElement, true); ustMesaj(t('aile.okunuyor')); await iceAktar(); mesgulYap(el as HTMLButtonElement, false); return; }
     } catch (e) { ustMesaj(hata(e), 'hata'); }
   });
 
@@ -841,37 +848,37 @@ export async function hocaEkrani(): Promise<void> {
     try {
       switch (form.dataset.form) {
         case 'giris': { const ep = al('eposta').toLowerCase(); portalTercihleri.setItem('hocaEposta', ep); const kb = await auth.signInWithEmailAndPassword(a, ep, al('sifre')); await yukle(kb.user); break; }
-        case 'bag': { const ep = al('eposta').toLowerCase(); await auth.sendSignInLinkToEmail(a, ep, { url: sayfaAdresi, handleCodeInApp: true }); portalTercihleri.setItem('hocaEposta', ep); mesaj(form, `Bağlantı gönderildi: ${ep}. E-postanızı (gereksiz klasörü dâhil) kontrol edin.`, 'basari'); break; }
+        case 'bag': { const ep = al('eposta').toLowerCase(); await auth.sendSignInLinkToEmail(a, ep, { url: sayfaAdresi, handleCodeInApp: true }); portalTercihleri.setItem('hocaEposta', ep); mesaj(form, t('mesaj.bagGitti', { ep }), 'basari'); break; }
         case 'bagTamamla': await bagIleGir(al('eposta').toLowerCase()); break;
-        case 'sifreBelirle': { const s1 = al('sifre'); if (s1.length < 8 || s1 !== al('sifre2')) { mesaj(form, 'Şifreler uyuşmuyor ya da 8 karakterden kısa.', 'hata'); break; }
+        case 'sifreBelirle': { const s1 = al('sifre'); if (s1.length < 8 || s1 !== al('sifre2')) { mesaj(form, t('mesaj.sifreUyusmuyor'), 'hata'); break; }
           if (!a.currentUser) break; await auth.updatePassword(a.currentUser, s1); await fs.setDoc(fs.doc(db, 'hocalar', a.currentUser.uid), { sifreVar: true }, { merge: true }).catch(() => {}); await yukle(a.currentUser); break; }
         case 'sifreDegistir': { if (!a.currentUser) break;
-          try { await auth.updatePassword(a.currentUser, al('sifre')); mesaj(form, 'Şifre değiştirildi.', 'basari'); form.reset(); }
-          catch (e) { if ((e as { code?: string })?.code === 'auth/requires-recent-login') { await auth.sendPasswordResetEmail(a, a.currentUser.email || '', { url: sayfaAdresi }); mesaj(form, 'Güvenlik için şifre değişikliği e-posta üzerinden yapılır; e-postanıza şifre sıfırlama bağlantısı gönderildi.', 'basari'); } else throw e; }
+          try { await auth.updatePassword(a.currentUser, al('sifre')); mesaj(form, t('mesaj.sifreDegisti'), 'basari'); form.reset(); }
+          catch (e) { if ((e as { code?: string })?.code === 'auth/requires-recent-login') { await auth.sendPasswordResetEmail(a, a.currentUser.email || '', { url: sayfaAdresi }); mesaj(form, t('mesaj.sifreEposta'), 'basari'); } else throw e; }
           break; }
         case 'ogrenciAyar': { if (!S) break; const o = S.ogrenciler.find((x) => x.ref === S!.secili); if (!o) break;
-          await fs.updateDoc(fs.doc(db, 'ogrenciler', o.ref), { durum: al('durum'), grup: al('grup') }); o.durum = al('durum'); o.grup = al('grup'); mesaj(form, 'Kaydedildi.', 'basari'); break; }
-        case 'veliEkle': { if (!S) break; const o = S.ogrenciler.find((x) => x.ref === S!.secili); const ep = al('eposta').toLowerCase(); if (!o || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(ep)) { mesaj(form, 'Geçerli bir e-posta yazın.', 'hata'); break; }
-          o.veliler = await portalVeliBagi(db,o.ref,ep,true); ciz(); ustMesaj(`${ep} eklendi. «Aileler · Davet» sekmesinden davet gönderebilirsiniz.`, 'basari'); break; }
+          await fs.updateDoc(fs.doc(db, 'ogrenciler', o.ref), { durum: al('durum'), grup: al('grup') }); o.durum = al('durum'); o.grup = al('grup'); mesaj(form, t('mesaj.kaydedildi'), 'basari'); break; }
+        case 'veliEkle': { if (!S) break; const o = S.ogrenciler.find((x) => x.ref === S!.secili); const ep = al('eposta').toLowerCase(); if (!o || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(ep)) { mesaj(form, t('mesaj.epostaGecersiz'), 'hata'); break; }
+          o.veliler = await portalVeliBagi(db,o.ref,ep,true); ciz(); ustMesaj(t('mesaj.veliEklendi', { ep, sekme: SEKMELER.aile }), 'basari'); break; }
         case 'ilerleme': { if (!S) break; const ref = S.secili; const alanlar: Record<string, number> = {};
           /* 27 Eyl 2026 (Ezber Kilimi): eski ezber tablosu formdan kalktı. ilerleme/{ref}.ezber geçişin kaynağıdır ve salt
              okunur korunur; setDoc belgeyi bütün yazdığı için okunan değer aynen geri yazılır (docs/EZBER-KILIMI.md). */
           const ezber: Record<string, string> = { ...(S.ilerleme?.ezber || {}) };
           for (const [k, v] of fd.entries()) { const val = String(v); if (k.startsWith('alan:') && Number(val) > 0) alanlar[k.slice(5)] = Number(val); }
           const kayit: Ilerleme & { kaydeden: string } = { kuranAdim: Number(al('kuranAdim')), ezber, alanlar, hocaNotu: al('hocaNotu'), rozet: al('rozet'), guncelleme: bugunISO(), kaydeden: S.uid };
-          await fs.setDoc(fs.doc(db, 'ilerleme', ref), kayit); S.ilerleme = kayit; mesaj(form, 'İlerleme kaydedildi.', 'basari'); break; }
+          await fs.setDoc(fs.doc(db, 'ilerleme', ref), kayit); S.ilerleme = kayit; mesaj(form, t('mesaj.ilerlemeKaydedildi'), 'basari'); break; }
         case 'degerlendirme': { if (!S) break;
           await fs.addDoc(col('degerlendirme'), { ref: S.secili, tarih: al('tarih'), alan: al('alan'), olcut: al('olcut'), derece: Number(al('derece')) || 0, not: al('not'), kaydeden: S.uid, zaman: fs.serverTimestamp() });
-          await ogrenciYukle(S.secili); ciz(); ustMesaj('Değerlendirme eklendi.', 'basari'); break; }
+          await ogrenciYukle(S.secili); ciz(); ustMesaj(t('mesaj.degEklendi'), 'basari'); break; }
         case 'not': { if (!S) break;
           await fs.addDoc(col('notlar'), { ref: S.secili, tarih: al('tarih'), metin: al('metin'), veliyeGorunur: fd.get('veliyeGorunur') === 'on', kaydeden: S.uid, zaman: fs.serverTimestamp() });
-          await ogrenciYukle(S.secili); ciz(); ustMesaj('Not eklendi.', 'basari'); break; }
+          await ogrenciYukle(S.secili); ciz(); ustMesaj(t('mesaj.notEklendi'), 'basari'); break; }
         case 'duyuru': { if (!S) break;
           const zengin = (k: string) => { const el = form.querySelector<HTMLElement>(`[data-zengin="${k}"]`); return el ? temizleHtml(el.innerHTML) : ''; };
-          if (!metniSadelestir(zengin('metinTr'))) { mesaj(form, 'Türkçe metin gerekli.', 'hata'); break; }
+          if (!metniSadelestir(zengin('metinTr'))) { mesaj(form, t('duy.trGerekli'), 'hata'); break; }
           const duyuruVeri = { tarih: al('tarih'), baslik: { tr: al('baslikTr'), fr: al('baslikFr'), en: al('baslikEn') }, metin: { tr: zengin('metinTr'), fr: zengin('metinFr'), en: zengin('metinEn') }, yayin: fd.get('yayin') === 'on' };
-          if (duzenlenenDuyuru) { await fs.updateDoc(fs.doc(db, 'duyurular', duzenlenenDuyuru), { ...duyuruVeri, guncelleme: new Date().toISOString() }); duzenlenenDuyuru = null; await sekmeYukle('duyuru'); ciz(); ustMesaj('Duyuru güncellendi.', 'basari'); }
-          else { await fs.addDoc(col('duyurular'), { ...duyuruVeri, kaydeden: S.uid, zaman: fs.serverTimestamp() }); await sekmeYukle('duyuru'); ciz(); ustMesaj('Duyuru kaydedildi.', 'basari'); }
+          if (duzenlenenDuyuru) { await fs.updateDoc(fs.doc(db, 'duyurular', duzenlenenDuyuru), { ...duyuruVeri, guncelleme: new Date().toISOString() }); duzenlenenDuyuru = null; await sekmeYukle('duyuru'); ciz(); ustMesaj(t('duy.guncellendi'), 'basari'); }
+          else { await fs.addDoc(col('duyurular'), { ...duyuruVeri, kaydeden: S.uid, zaman: fs.serverTimestamp() }); await sekmeYukle('duyuru'); ciz(); ustMesaj(t('duy.kaydedildi'), 'basari'); }
           break; }
       }
     } catch (e) { mesaj(form, hata(e), 'hata'); }
@@ -885,9 +892,9 @@ export async function hocaEkrani(): Promise<void> {
     const anahtar = (ayar.data() as { gasAnahtari?: string } | undefined)?.gasAnahtari;
     const atlanan = new Set<string>(((ayar.data() as { atlanan?: string[] } | undefined)?.atlanan) || []); // ayarlar/portal.atlanan: mükerrer/deneme kayıtlar (portal-yonetim.py ile aynı)
     const epostaDuzelt = ((ayar.data() as { epostaDuzelt?: Record<string, string> } | undefined)?.epostaDuzelt) || {}; // defterde yanlış yazılmış veli e-postaları → doğrusu; '@'siz değer (ör. «gecersiz-geri-donuyor») = adres geri dönüyor, bağ kurulmaz (10 Eki 2026)
-    if (!anahtar) { ustMesaj('ayarlar/portal.gasAnahtari yok.', 'hata'); return; }
+    if (!anahtar) { ustMesaj(t('aile.gasYok'), 'hata'); return; }
     const j = await (await fetch(`${GAS}?islem=liste&anahtar=${encodeURIComponent(anahtar)}`)).json() as { ok?: boolean; kayitlar?: { basliklar: string[]; satirlar: string[][] } };
-    if (!j.ok || !j.kayitlar) { ustMesaj('Kayıt defteri okunamadı.', 'hata'); return; }
+    if (!j.ok || !j.kayitlar) { ustMesaj(t('aile.okunamadi'), 'hata'); return; }
     const ix: Record<string, number> = {}; j.kayitlar.basliklar.forEach((h, i) => { ix[h] = i; });
     const al = (s: string[], k: string) => String(s[ix[k]] ?? '').trim();
     const kokRef = (r: string) => r.replace(/-R\d+$/i, ''); const surum = (r: string) => Number((/-R(\d+)$/i.exec(r) || [])[1] || 1);
@@ -910,7 +917,7 @@ export async function hocaEkrani(): Promise<void> {
     await b.commit();
     const ogr = await kayitlar('ogrenciler');
     S.ogrenciler = ogr.map((o) => ({ ...(o as unknown as Ogr), ref: o.id })).sort((x, y) => (x.soyad + x.ad).localeCompare(y.soyad + y.ad, 'tr'));
-    await sekmeYukle('aile'); ciz(); ustMesaj(`Kayıt defteri aktarıldı: ${Object.keys(guncel).length} öğrenci (${yeni} yeni).`, 'basari');
+    await sekmeYukle('aile'); ciz(); ustMesaj(t('aile.aktarildi', { n: Object.keys(guncel).length, yeni }), 'basari');
   };
 
   /* ---------------------------------------------------------------- başlangıç */
@@ -919,5 +926,5 @@ export async function hocaEkrani(): Promise<void> {
     if (kayitli) { try { await bagIleGir(kayitli); return; } catch (e) { girisEkrani(); mesaj(kok.querySelector('form[data-form=bag]'), hata(e), 'hata'); return; } }
     bagTamamlaEkrani(); return;
   }
-  auth.onAuthStateChanged(a, (user) => { if (user) { if (!S) yukle(user).catch((e) => { kok.innerHTML = `<p class="not hata">${esc(hata(e))}</p><button type="button" class="dugme dugme-ikincil" data-eylem="cikis">Çıkış</button>`; }); } else { bultenTemizle?.(); kitaplariTemizle?.(); odevKapat(); defterKapat(); ezberKapat(); ilimKapat(); S = null; girisEkrani(); } });
+  auth.onAuthStateChanged(a, (user) => { if (user) { if (!S) yukle(user).catch((e) => { kok.innerHTML = `<p class="not hata">${esc(hata(e))}</p><button type="button" class="dugme dugme-ikincil" data-eylem="cikis">${t('ortak.cikis')}</button>`; }); } else { bultenTemizle?.(); kitaplariTemizle?.(); odevKapat(); defterKapat(); ezberKapat(); ilimKapat(); S = null; girisEkrani(); } });
 }

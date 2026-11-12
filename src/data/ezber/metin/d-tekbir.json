@@ -19,6 +19,30 @@
      "metin": "Allah en büyüktür"
     }
    ]
+  },
+  "fr": {
+   "kaynak": "Initiation au Coran — 1, T.C. Diyanet İşleri Başkanlığı (Présidence des Affaires Religieuses), Ankara, 2020, s. 58 (ISBN 978-625-7779-58-6)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Allah est le plus Grand."
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "Essentials of Islam — A Textbook for High School Students, Presidency of Religious Affairs (Diyanet İşleri Başkanlığı), Ankara, 2017, s. 90",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Allah is the greatest"
+    }
+   ]
   }
  },
  "kaynak": {
@@ -26,7 +50,7 @@
   "url": "https://diniyayinlar.diyanet.gov.tr/",
   "alindi": "2026-10-24"
  },
- "ozet": "6c29e8607302c45c8a84bcdcc31a8f39a8b3730e84325807c9c173d54d2540bb",
+ "ozet": "3150a05974acd0f48830c42b81baaa5a943227245ca461c8cada0b9e96e928d8",
  "okunus": {
   "tr": [
    {

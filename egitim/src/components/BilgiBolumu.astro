@@ -26,8 +26,8 @@ const arVar = gruplar.some((g) => g.maddeler.some((m) => m.ar));
 const sirala = siralamaVar(bilgi);
 const not = bilgi.not?.[dil];
 
-// Kaynak satırı: rol sırasıyla (metin, Fransızca, Arapça, karşılaştırılan); aynı roldeki kaynaklar «;» ile.
-const kaynakSatirlari = (['metin', 'fr', 'ar', 'dogrulama'] as KaynakRolu[]).flatMap((rol) => {
+// Kaynak satırı: rol sırasıyla (metin, Fransızca, İngilizce, Felemenkçe, Almanca, Arapça, karşılaştırılan); aynı roldeki kaynaklar «;» ile.
+const kaynakSatirlari = (['metin', 'fr', 'en', 'nl', 'de', 'ar', 'dogrulama'] as KaynakRolu[]).flatMap((rol) => {
   const l = kaynakSirasi(bilgi).filter((x) => x.rol === rol);
   return l.length ? [{ rol, yazi: l.map((x) => `${x.ad}, ${x.sayfa ? `${t.sayfa} ${x.sayfa}` : x.bolum}`).join('; ') }] : [];
 });

@@ -43,7 +43,7 @@ def taklit(route, request):
         except Exception: GONDERILEN.append({"HAM": request.post_data})
         route.fulfill(status=200, content_type="application/json", body=json.dumps({"ok": True, "ref": "UC-2026-9999", "tekrar": False, "kopyaGitti": KOPYA_GITTI}))
     else:
-        route.fulfill(status=200, content_type="application/json", body=json.dumps({"ok": True, "surum": 29, "ihtidaPaketHazir": True}))
+        route.fulfill(status=200, content_type="application/json", body=json.dumps({"ok": True, "surum": 48, "ihtidaPaketHazir": True}))
 
 def testPng(yol, en, boy, renk):
     """PIL olmadan geçerli bir RGB PNG üretir (görsel yükleme testleri için)."""
@@ -282,7 +282,7 @@ with sync_playwright() as p:
     pg.screenshot(path=f"{OUT}/ihtida-mobil.png", full_page=True)
     pg.click("button[type=submit]"); pg.wait_for_timeout(1500)
     kontrol("ihtida boş gönderim hataları", pg.locator(".hata:not([hidden])").count() >= 10)
-    pg.fill("#i-ad", "Jean Testoglu"); pg.check("#i-cins-erkek"); pg.fill("#i-dogum", "1990-05-20"); pg.fill("#i-dogum-yeri", "Namur, Belçika")
+    pg.fill("#i-ad", "Jean"); pg.fill("#i-soyad", "Testoglu"); pg.check("#i-cins-erkek"); pg.fill("#i-dogum", "1990-05-20"); pg.fill("#i-dogum-yeri", "Namur, Belçika")
     pg.fill("#i-uyruk", "Belçika"); pg.fill("#i-anne", "Marie"); pg.fill("#i-baba", "Pierre"); pg.select_option("#i-medeni", "bekar")
     pg.fill("#i-ogrenim", "Lisans"); pg.fill("#i-meslek", "Öğretmen"); pg.fill("#i-eposta", "jean@example.test"); pg.fill("#i-telefon", "+32 471 00 00 00")
     pg.fill("#i-adres", "Rue Haute 3"); pg.fill("#i-posta-kodu", "6900"); pg.fill("#i-sehir", "Marche-en-Famenne"); pg.fill("#i-ulke", "Belçika"); pg.fill("#i-onceki-din", "Katolik"); pg.select_option("#i-toren-dili", "fr")
@@ -324,7 +324,7 @@ with sync_playwright() as p:
     pg.click("button[type=submit]")
     pg.wait_for_selector("[data-basari]:not([hidden])", timeout=15000)
     g = GONDERILEN[-1]
-    kontrol("ihtida gövde", g.get("tur") == "ihtida" and g["basvuran"]["adSoyad"] == "Jean Testoglu" and g["sahitler"] == [] and g["sahitSecimi"] == "cami" and g["onay"]["acikRiza"] is True)
+    kontrol("ihtida gövde", g.get("tur") == "ihtida" and g["basvuran"]["ad"] == "Jean" and g["basvuran"]["soyad"] == "Testoglu" and "adSoyad" not in g["basvuran"] and g["sahitler"] == [] and g["sahitSecimi"] == "cami" and g["onay"]["acikRiza"] is True)
     kontrol("ihtida formSurumu 2 olarak korunur", g.get("formSurumu") == 2)
     kontrol("ihtida gövdesinde kimlik NUMARASI yok", not any(k in json.dumps(g) for k in ("tcKimlik", "ulusalNo", "kimlikNo", "rijksregister")))
     gors = g.get("gorseller") or {}
@@ -346,7 +346,7 @@ with sync_playwright() as p:
     pg.evaluate("() => localStorage.removeItem('ulucamii:ihtida:v2')")
     pg.reload(wait_until="networkidle")
     pg.click('[data-adim-tumu]')
-    pg.fill("#i-ad", "Anna Testoglu"); pg.check("#i-cins-kadin"); pg.fill("#i-dogum", "1988-03-02"); pg.fill("#i-dogum-yeri", "Liège, Belçika")
+    pg.fill("#i-ad", "Anna"); pg.fill("#i-soyad", "Testoglu"); pg.check("#i-cins-kadin"); pg.fill("#i-dogum", "1988-03-02"); pg.fill("#i-dogum-yeri", "Liège, Belçika")
     pg.fill("#i-uyruk", "Belçika"); pg.fill("#i-anne", "Sofie"); pg.fill("#i-baba", "Luc"); pg.select_option("#i-medeni", "evli")
     pg.fill("#i-ogrenim", "Lise"); pg.fill("#i-meslek", "Hemşire"); pg.fill("#i-eposta", "anna@example.test"); pg.fill("#i-telefon", "+32 471 00 00 01")
     pg.fill("#i-adres", "Rue Basse 1"); pg.fill("#i-posta-kodu", "6900"); pg.fill("#i-sehir", "Marche-en-Famenne"); pg.fill("#i-ulke", "Belçika"); pg.fill("#i-onceki-din", "Protestan"); pg.select_option("#i-toren-dili", "fr")

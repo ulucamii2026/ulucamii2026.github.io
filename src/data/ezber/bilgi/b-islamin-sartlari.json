@@ -7,45 +7,45 @@
       "ad": {
         "tr": "Kelime-i Şehadet getirmek",
         "fr": "Prononcer la profession de foi",
-        "en": "Declaring the testimony of faith (shahada)",
-        "nl": "De geloofsgetuigenis (shahada) uitspreken",
-        "de": "Das Glaubensbekenntnis (Schahada) sprechen"
+        "en": "To testify that there is no god but Allah and Muhammad is His Messenger",
+        "nl": "Het uitspreken van de shahāda (geloofsgetuigenis)",
+        "de": "Schahada (das Glaubensbekenntnis)"
       }
     },
     {
       "ad": {
         "tr": "Namaz kılmak",
         "fr": "Accomplir la prière",
-        "en": "Performing the prayer",
-        "nl": "Het gebed verrichten",
-        "de": "Das Gebet verrichten"
+        "en": "to offer prayers",
+        "nl": "Het verrichten van het gebed (salāt)",
+        "de": "Salah (das Pflichtgebet)"
       }
     },
     {
       "ad": {
         "tr": "Oruç tutmak",
         "fr": "Pratiquer le jeûne",
-        "en": "Fasting",
-        "nl": "Vasten",
-        "de": "Fasten"
+        "en": "and to observe the fast",
+        "nl": "Het vasten (sawm)",
+        "de": "Sawm (das Fasten)"
       }
     },
     {
       "ad": {
         "tr": "Zekât vermek",
         "fr": "Donner l’aumône légale (la zakat)",
-        "en": "Giving zakat (the obligatory alms)",
-        "nl": "Zakat geven (de verplichte aalmoes)",
-        "de": "Zakat entrichten (die Pflichtabgabe)"
+        "en": "to pay almsgiving",
+        "nl": "Het geven van armenbelasting (zakāt)",
+        "de": "Zakah (die Sozialsteuer)"
       }
     },
     {
       "ad": {
         "tr": "Hacca gitmek",
         "fr": "Faire le pèlerinage",
-        "en": "Going on pilgrimage (hajj)",
-        "nl": "Op bedevaart gaan (hadj)",
-        "de": "Die Pilgerfahrt (Hadsch) unternehmen"
+        "en": "to perform pilgrimage",
+        "nl": "Naar de hadj gaan (bedevaart naar Mekka)",
+        "de": "Hadsch (die Pilgerfahrt nach Mekka)"
       }
     }
   ],
@@ -56,11 +56,7 @@
     "nl": "De volgorde is die van “Camiye Gidiyorum 1” en “Temel Dinî Bilgiler”. De Diyanet İlmihali volgt de volgorde van de hadieth bij Moslim: geloofsgetuigenis, gebed, zakat, bedevaart, vasten.",
     "de": "Die Reihenfolge ist die von „Camiye Gidiyorum 1“ und „Temel Dinî Bilgiler“. Das Diyanet İlmihali folgt der Reihenfolge des Hadithes bei Muslim: Glaubensbekenntnis, Gebet, Zakat, Pilgerfahrt, Fasten."
   },
-  "taslak": [
-    "en",
-    "nl",
-    "de"
-  ],
+  "taslak": [],
   "kaynaklar": [
     {
       "rol": "metin",
@@ -71,6 +67,21 @@
       "rol": "fr",
       "ad": "Je vais à la mosquée 1",
       "sayfa": "22–23"
+    },
+    {
+      "rol": "en",
+      "ad": "Fiqh (Diyanet, 2017)",
+      "sayfa": "148"
+    },
+    {
+      "rol": "nl",
+      "ad": "Basiskennis over Islam (Diyanet, 2017; vertaling Drs. Ahmed Bulut)",
+      "sayfa": "87–88"
+    },
+    {
+      "rol": "de",
+      "ad": "Was ist der Islam? (Diyanet-Broschüre, ohne Jahresangabe)",
+      "bolum": "PDF-Seite 11–15"
     },
     {
       "rol": "dogrulama",

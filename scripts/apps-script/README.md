@@ -196,3 +196,5 @@ ilk çağrı Google'ın echo sunucusundan bir kez HTML 404 aldı (37 sn); panel 
 bir kez daha dener.
 
 Dağıtım: `D:\tmp\gas\dagit_v21.py` (v20'nin kopyası; «Nouvelle version»).
+
+- **Not (12 Kasım 2026):** ana kaynak `ulucamii-Kod-v48.gs` oldu, Dilim 4 taşıması (dilim4-p7, yayınlanmadı) dosyayı `ulucamii-Kod-v49.gs` yapar (ihtida 18 yaş sınırı + ayrı Ad/Soyad; `docs/IHTIDA-YAS-VE-AD-v48.md`). Yukarıdaki v43/v47 satırları tarihsel kayıttır.

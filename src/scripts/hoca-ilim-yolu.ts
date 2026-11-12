@@ -13,6 +13,8 @@
  */
 import type { FirebaseApp } from 'firebase/app';
 import { kareKodSvg, type KareKodMatrisi } from '../lib/ezber/kare-kod';
+import { hocaDili, hocaYerel } from '../i18n/hoca';
+import { tI as t } from '../i18n/hoca-metin/ilim';
 
 export type IlimOgrencisi = { ref: string; ad: string; soyad: string; dil?: string; durum?: string };
 /** `ogrenciHesaplariListe` satırı: kayıt varsa hesap vardır; `cocuk` false ise yetişkin kendi hesabını bağlamıştır. */
@@ -69,32 +71,31 @@ function kareKodcu(): Promise<(metin: string) => string> {
 }
 
 const HATA: Record<string, string> = {
-  'already-exists': 'Bu öğrencinin zaten bir İlim Yolu hesabı var. Listeyi yenileyin.',
-  'not-found': 'Öğrenci ya da hesabı bulunamadı. Listeyi yenileyip yeniden deneyin.',
-  'failed-precondition': 'Bu işlem bu öğrenci için şu an yapılamıyor (hesabı yok ya da yetişkin hesabı bağlı olabilir). Listeyi yenileyin.',
-  'permission-denied': 'Bu işlem için yetkiniz yok. Hoca hesabıyla girdiğinizden emin olun.',
-  unauthenticated: 'Oturumunuz sona ermiş. Çıkış yapıp yeniden girin.',
-  'resource-exhausted': 'Çok sık deneme yapıldı. Birkaç dakika bekleyip yeniden deneyin.',
-  'invalid-argument': 'Sunucu isteği kabul etmedi. Sayfayı yenileyip yeniden deneyin.',
-  unavailable: 'Sunucuya ulaşılamadı. İnternet bağlantınızı kontrol edip yeniden deneyin.',
-  'deadline-exceeded': 'Sunucu zamanında yanıt vermedi. Biraz sonra yeniden deneyin.',
-  // İstemci, ağ kopukluğunu da «internal» olarak bildirir.
-  internal: 'Sunucuya ulaşılamadı ya da sunucuda bir sorun oluştu. Bağlantınızı kontrol edip yeniden deneyin; sürerse yöneticiye (info@ulucamii.be) bildirin.',
+  'already-exists': t('hata.already-exists'),
+  'not-found': t('hata.not-found'),
+  'failed-precondition': t('hata.failed-precondition'),
+  'permission-denied': t('hata.permission-denied'),
+  'unauthenticated': t('hata.unauthenticated'),
+  'resource-exhausted': t('hata.resource-exhausted'),
+  'invalid-argument': t('hata.invalid-argument'),
+  'unavailable': t('hata.unavailable'),
+  'deadline-exceeded': t('hata.deadline-exceeded'),
+  'internal': t('hata.internal'),
 };
 /** Sunucu ya da ağ hatası → sade Türkçe. Hata ayrıntısı ekrana dökülmez (sunucu iletisi İngilizce ve teknik olabilir). */
 export function hataMetni(e: unknown): string {
   const kod = String((e as { code?: string })?.code || '').replace(/^functions\//, '');
-  if (kod === 'yanit') return 'Sunucudan beklenmeyen bir yanıt geldi. Sayfayı yenileyip yeniden deneyin.';
-  return HATA[kod] || 'Beklenmeyen bir hata oldu. Yeniden deneyin; sürerse yöneticiye (info@ulucamii.be) bildirin.';
+  if (kod === 'yanit') return t('hata.yanit');
+  return HATA[kod] || t('hata.bilinmeyen');
 }
 const yanitHatasi = () => Object.assign(new Error('beklenmeyen yanıt'), { code: 'yanit' });
 const metinMi = (v: unknown): v is string => typeof v === 'string' && v.length > 0;
 const kartAdresi = (v: unknown): string => { if (!metinMi(v) || !/^https:\/\/[^\s]+$/.test(v)) throw yanitHatasi(); return v; };
 
-const tarihYaz = (v: unknown) => {
+const tarihYaz = (v: unknown, yerel = hocaYerel()) => {
   const t = v as { toDate?: () => Date; seconds?: number; _seconds?: number } | string | number | undefined;
   const ms = typeof t === 'number' ? t : typeof t === 'string' ? Date.parse(t) : t?.toDate ? t.toDate().getTime() : (t?.seconds ?? t?._seconds ?? NaN) * 1000;
-  return Number.isFinite(ms) ? new Intl.DateTimeFormat('tr-TR', { timeZone: 'Europe/Brussels', day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(ms)) : '';
+  return Number.isFinite(ms) ? new Intl.DateTimeFormat(yerel, { timeZone: 'Europe/Brussels', day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(ms)) : '';
 };
 
 /* ───────────── yazdırma ───────────── */
@@ -123,7 +124,7 @@ type Kart = { ad: string; svg: string };
 export function kartSayfalariHtml(kartlar: readonly Kart[]): string {
   const sayfalar: Kart[][] = [];
   for (let i = 0; i < kartlar.length; i += KART_SAYFA) sayfalar.push(kartlar.slice(i, i + KART_SAYFA));
-  return sayfalar.map((s, i) => `<div class="iy-sayfa-kutu"><p class="iy-sayfa-etiket">Sayfa ${i + 1} / ${sayfalar.length} · ${s.length} kart</p>
+  return sayfalar.map((s, i) => `<div class="iy-sayfa-kutu"><p class="iy-sayfa-etiket">${t('sayfa.etiket', { i: i + 1, top: sayfalar.length, n: s.length })}</p>
     <div class="iy-sayfa"><div class="iy-izgara">${s.map((k) => `<div class="iy-hucre"><article class="iy-kart">
       ${KILIM_SERIT}
       <div class="iy-kart-govde">
@@ -159,11 +160,10 @@ export function ilimYoluPaneli(kok: HTMLElement, s: IlimYoluSecenek): { temizle(
   let canli = true;
   let sonOdak = ''; // son dokunulan denetim: yeniden çizimde ve pencere kapanınca odak oraya döner
 
-  kok.innerHTML = `<div class="iy-ust"><h2>${simge('kart')}İlim Yolu hesapları</h2>
-      <button type="button" class="kucuk-dugme" data-iy="yenile" data-odak="yenile">${simge('yenile')}Listeyi yenile</button></div>
-    <p class="iy-bilgi">Çocuklara hesabı hoca açar: kullanıcı adı + kısa şifre ve kare kodlu kart. Yetişkin öğrenci kendi hesabını açar ve
-      «Bağlama kodu» ile kurs kaydına bağlar. Şifre ve kart yalnız bir kez gösterilir; hiçbir yere kaydedilmez.</p>
-    <div data-iy-govde><p class="not" role="status">Hesaplar yükleniyor…</p></div>
+  kok.innerHTML = `<div class="iy-ust"><h2>${simge('kart')}${t('baslik')}</h2>
+      <button type="button" class="kucuk-dugme" data-iy="yenile" data-odak="yenile">${simge('yenile')}${t('yenile')}</button></div>
+    <p class="iy-bilgi">${t('bilgi')}</p>
+    <div data-iy-govde><p class="not" role="status">${t('yukleniyor')}</p></div>
     <p class="iy-mesaj" data-iy-mesaj role="status" aria-live="polite" hidden></p>`;
   const govde = kok.querySelector<HTMLElement>('[data-iy-govde]')!;
   const mesajEl = kok.querySelector<HTMLElement>('[data-iy-mesaj]')!;
@@ -181,18 +181,18 @@ export function ilimYoluPaneli(kok: HTMLElement, s: IlimYoluSecenek): { temizle(
     const kapali = islem ? ' disabled' : '';
     const dugme = (eylem: string, ikon: string, metin: string, ek = '') =>
       `<button type="button" class="kucuk-dugme${ek}" data-iy="${eylem}" data-ref="${esc(o.ref)}" data-odak="${eylem}-${esc(o.ref)}" aria-label="${esc(metin)} — ${ad}"${kapali}${islem === `${eylem}:${o.ref}` ? ' data-mesgul="1"' : ''}>${simge(ikon)}${esc(metin)}</button>`;
-    const durum = !h ? '<span class="rozet">Hesap yok</span>'
-      : h.cocuk ? `<span class="rozet var">Çocuk hesabı açık</span>${h.kullaniciAdi ? `<span class="iy-kullanici">@${esc(h.kullaniciAdi)}</span>` : ''}`
-        : `<span class="rozet gec">Yetişkin hesabı bağlı</span>${h.kullaniciAdi || h.yetiskinAd ? `<span class="iy-kullanici">@${esc(h.kullaniciAdi || h.yetiskinAd)}</span>` : ''}`;
+    const durum = !h ? `<span class="rozet">${t('rozet.yok')}</span>`
+      : h.cocuk ? `<span class="rozet var">${t('rozet.cocuk')}</span>${h.kullaniciAdi ? `<span class="iy-kullanici">@${esc(h.kullaniciAdi)}</span>` : ''}`
+        : `<span class="rozet gec">${t('rozet.yetiskin')}</span>${h.kullaniciAdi || h.yetiskinAd ? `<span class="iy-kullanici">@${esc(h.kullaniciAdi || h.yetiskinAd)}</span>` : ''}`;
     const eylemler = !h
-      ? dugme('ac', 'ekle', 'Çocuk hesabı aç') + dugme('bag', 'bag', 'Bağlama kodu (yetişkin)')
+      ? dugme('ac', 'ekle', t('dugme.ac')) + dugme('bag', 'bag', t('dugme.bag'))
       : h.cocuk
-        ? dugme('bas', 'yazici', 'Kartı bas') + dugme('kartYenile', 'yenile', 'Kartı yenile') + dugme('sifre', 'anahtar', 'Şifreyi yenile') + dugme('oturum', 'cikis', 'Oturumları kapat', ' iy-tehlike')
-        : '<span class="kucuk">Öğrenci kendi hesabıyla bağlandı.</span>';
+        ? dugme('bas', 'yazici', t('dugme.bas')) + dugme('kartYenile', 'yenile', t('dugme.kartYenile')) + dugme('sifre', 'anahtar', t('dugme.sifre')) + dugme('oturum', 'cikis', t('dugme.oturum'), ' iy-tehlike')
+        : `<span class="kucuk">${t('yetiskin.kendi')}</span>`;
     return `<li class="iy-satir${o.ref === vurgu ? ' secili' : ''}" data-iy-satir="${esc(o.ref)}">
       <div class="iy-kimlik">
-        ${h?.cocuk ? `<input type="checkbox" class="iy-sec" data-iy-sec="${esc(o.ref)}" data-odak="sec-${esc(o.ref)}" aria-label="Kart baskısına seç — ${ad}"${secili.has(o.ref) ? ' checked' : ''}${kapali}>` : '<span class="iy-sec-yer" aria-hidden="true"></span>'}
-        <span class="iy-ad"><b>${ad}</b>${o.durum === 'pasif' ? ' <span class="rozet">pasif</span>' : ''}<span class="kucuk ogr-ref">${esc(o.ref)}</span></span>
+        ${h?.cocuk ? `<input type="checkbox" class="iy-sec" data-iy-sec="${esc(o.ref)}" data-odak="sec-${esc(o.ref)}" aria-label="${t('sec.aria')} — ${ad}"${secili.has(o.ref) ? ' checked' : ''}${kapali}>` : '<span class="iy-sec-yer" aria-hidden="true"></span>'}
+        <span class="iy-ad"><b>${ad}</b>${o.durum === 'pasif' ? ` <span class="rozet">${t('rozet.pasif')}</span>` : ''}<span class="kucuk ogr-ref">${esc(o.ref)}</span></span>
         <span class="iy-durum">${durum}</span>
       </div>
       <div class="iy-eylemler">${eylemler}</div></li>`;
@@ -204,21 +204,21 @@ export function ilimYoluPaneli(kok: HTMLElement, s: IlimYoluSecenek): { temizle(
     const odak = aktif?.closest<HTMLElement>('[data-odak]')?.dataset.odak || (!aktif || aktif === document.body ? sonOdak : '');
     if (!hesaplar) {
       govde.innerHTML = listeHatasi
-        ? `<p class="not hata" role="alert">${esc(listeHatasi)}</p><button type="button" class="dugme dugme-ikincil" data-iy="yenile" data-odak="tekrar">Yeniden dene</button>`
-        : '<p class="not" role="status">Hesaplar yükleniyor…</p>';
+        ? `<p class="not hata" role="alert">${esc(listeHatasi)}</p><button type="button" class="dugme dugme-ikincil" data-iy="yenile" data-odak="tekrar">${t('tekrar')}</button>`
+        : `<p class="not" role="status">${t('yukleniyor')}</p>`;
     } else {
       const liste = gorunenler();
       for (const r of [...secili]) if (!cocukMu(r)) secili.delete(r);
       const cocuklar = liste.filter((o) => cocukMu(o.ref));
       const hepsi = cocuklar.length > 0 && cocuklar.every((o) => secili.has(o.ref));
       const say = { yok: liste.filter((o) => !hesaplar!.has(o.ref)).length, cocuk: cocuklar.length, yetiskin: liste.filter((o) => hesaplar!.get(o.ref)?.cocuk === false).length };
-      govde.innerHTML = `<p class="iy-ozet"><span><b>${say.cocuk}</b> çocuk hesabı</span><span><b>${say.yetiskin}</b> yetişkin bağlı</span><span><b>${say.yok}</b> hesapsız</span></p>
+      govde.innerHTML = `<p class="iy-ozet"><span><b>${say.cocuk}</b> ${t('ozet.cocuk', { n: say.cocuk })}</span><span><b>${say.yetiskin}</b> ${t('ozet.yetiskin', { n: say.yetiskin })}</span><span><b>${say.yok}</b> ${t('ozet.yok', { n: say.yok })}</span></p>
         <div class="iy-baski-arac">
-          <label class="iy-hepsi"><input type="checkbox" data-iy-hepsi data-odak="hepsi"${hepsi ? ' checked' : ''}${!cocuklar.length || islem ? ' disabled' : ''}> Bütün çocuk hesaplarını seç</label>
-          <button type="button" class="dugme dugme-birincil" data-iy="topluBas" data-odak="topluBas"${!secili.size || islem ? ' disabled' : ''}${islem === 'topluBas' ? ' data-mesgul="1"' : ''}>${simge('yazici')}Seçilenlerin kartını bas (${secili.size})</button>
-          <p class="kucuk">Her A4 sayfaya 8 kart sığar. Basılan her kart yenilenir: öğrencinin eski kartı hemen geçersiz olur.</p>
+          <label class="iy-hepsi"><input type="checkbox" data-iy-hepsi data-odak="hepsi"${hepsi ? ' checked' : ''}${!cocuklar.length || islem ? ' disabled' : ''}> ${t('hepsi')}</label>
+          <button type="button" class="dugme dugme-birincil" data-iy="topluBas" data-odak="topluBas"${!secili.size || islem ? ' disabled' : ''}${islem === 'topluBas' ? ' data-mesgul="1"' : ''}>${simge('yazici')}${t('toplu.dugme', { n: secili.size })}</button>
+          <p class="kucuk">${t('toplu.not')}</p>
         </div>
-        ${liste.length ? `<ul class="iy-liste">${liste.map(satirHtml).join('')}</ul>` : '<p class="kucuk">Aktif öğrenci yok.</p>'}`;
+        ${liste.length ? `<ul class="iy-liste">${liste.map(satirHtml).join('')}</ul>` : `<p class="kucuk">${t('liste.bos')}</p>`}`;
     }
     if (odak) govde.querySelector<HTMLElement>(`[data-odak="${CSS.escape(odak)}"]`)?.focus();
   };
@@ -232,8 +232,8 @@ export function ilimYoluPaneli(kok: HTMLElement, s: IlimYoluSecenek): { temizle(
       hesaplar = new Map(v.filter((x): x is OgrenciHesabi => Boolean(x) && metinMi((x as OgrenciHesabi).ref)).map((x) => [x.ref, { ...x, cocuk: x.cocuk === true }]));
       return true;
     } catch (e) {
-      if (!hesaplar) listeHatasi = `İlim Yolu hesapları alınamadı. ${hataMetni(e)}`;
-      else mesaj(`Liste yenilenemedi. ${hataMetni(e)}`, 'hata');
+      if (!hesaplar) listeHatasi = t('hata.liste', { hata: hataMetni(e) });
+      else mesaj(t('hata.yenilenemedi', { hata: hataMetni(e) }), 'hata');
       return false;
     }
   };
@@ -242,7 +242,7 @@ export function ilimYoluPaneli(kok: HTMLElement, s: IlimYoluSecenek): { temizle(
   const pencere = (html: string, sinif = ''): { d: HTMLDialogElement; id: string } => {
     const id = `iy-pencere-${++pencereSayac}`;
     const d = document.createElement('dialog');
-    d.className = `iy-dialog portal hoca ${sinif}`.trim(); d.lang = 'tr';
+    d.className = `iy-dialog portal hoca ${sinif}`.trim(); d.lang = hocaDili();
     d.setAttribute('aria-labelledby', `${id}-baslik`);
     d.innerHTML = html.replaceAll('{id}', id);
     document.body.append(d); acikPencereler.add(d);
@@ -258,7 +258,7 @@ export function ilimYoluPaneli(kok: HTMLElement, s: IlimYoluSecenek): { temizle(
   const onayla = (baslik: string, metin: string, evet: string): Promise<boolean> => new Promise((coz) => {
     const { d } = pencere(`<form method="dialog" class="iy-pencere-ic">
       <h2 id="{id}-baslik">${esc(baslik)}</h2><p>${esc(metin)}</p>
-      <div class="satir-dugmeler"><button type="submit" value="hayir" class="dugme dugme-ikincil" autofocus>Vazgeç</button>
+      <div class="satir-dugmeler"><button type="submit" value="hayir" class="dugme dugme-ikincil" autofocus>${t('pencere.vazgec')}</button>
       <button type="submit" value="evet" class="dugme dugme-birincil" data-iy-onay>${esc(evet)}</button></div></form>`, 'iy-onay');
     d.addEventListener('close', () => coz(d.returnValue === 'evet'), { once: true });
   });
@@ -270,9 +270,9 @@ export function ilimYoluPaneli(kok: HTMLElement, s: IlimYoluSecenek): { temizle(
       <dl class="iy-gizli">${o.satirlar.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd><code data-iy-gizli>${esc(v)}</code></dd></div>`).join('')}</dl>
       <p class="not iy-uyari" role="note">${esc(o.uyari)}</p>
       <div class="satir-dugmeler">
-        <button type="button" class="dugme dugme-ikincil" data-iy-p="yazdir">${simge('yazici')}Yazdır</button>
-        ${o.kart ? `<button type="button" class="dugme dugme-ikincil" data-iy-p="kart">${simge('kart')}Kartı bas</button>` : ''}
-        <button type="button" class="dugme dugme-birincil" data-iy-p="kapat" autofocus>Kapat</button>
+        <button type="button" class="dugme dugme-ikincil" data-iy-p="yazdir">${simge('yazici')}${t('pencere.yazdir')}</button>
+        ${o.kart ? `<button type="button" class="dugme dugme-ikincil" data-iy-p="kart">${simge('kart')}${t('dugme.bas')}</button>` : ''}
+        <button type="button" class="dugme dugme-birincil" data-iy-p="kapat" autofocus>${t('pencere.kapat')}</button>
       </div></div>`, 'iy-gizli-pencere');
     d.addEventListener('click', (ev) => {
       const b = (ev.target as HTMLElement).closest<HTMLElement>('[data-iy-p]');
@@ -291,13 +291,12 @@ export function ilimYoluPaneli(kok: HTMLElement, s: IlimYoluSecenek): { temizle(
   const baskiGoster = (kartlar: Kart[], basarisiz: string[]) => {
     const sayfaSayisi = Math.ceil(kartlar.length / KART_SAYFA);
     const { d } = pencere(`<div class="iy-pencere-ic">
-      <div class="iy-onizleme-ust"><h2 id="{id}-baslik">Kart baskısı · ${kartlar.length} kart · ${sayfaSayisi} sayfa</h2>
-        <div class="satir-dugmeler"><button type="button" class="dugme dugme-birincil" data-iy-p="yazdir" autofocus>${simge('yazici')}Yazdır</button>
-        <button type="button" class="dugme dugme-ikincil" data-iy-p="kapat">Kapat</button></div></div>
-      ${basarisiz.length ? `<p class="not hata" role="alert">${esc(basarisiz.length)} kart yenilenemedi; bu öğrencilerin eski kartı geçerli kalır: ${esc(basarisiz.join(' · '))}</p>` : ''}
-      <p class="not iy-uyari" role="note">Bu kartların eski kartları artık geçersiz. Kartlar yalnız şimdi basılabilir: pencere kapanınca kart bağlantıları silinir;
-        yeniden basmak için kartı yeniden yenilemek gerekir. Yazıcıda ölçek «%100 / gerçek boyut» olsun.</p>
-      <div class="iy-sayfalar">${kartSayfalariHtml(kartlar)}</div></div>`, 'iy-onizleme');
+      <div class="iy-onizleme-ust"><h2 id="{id}-baslik">${t('baski.baslik', { n: kartlar.length, sayfalar: t('sayfa.adet', { n: sayfaSayisi }) })}</h2>
+        <div class="satir-dugmeler"><button type="button" class="dugme dugme-birincil" data-iy-p="yazdir" autofocus>${simge('yazici')}${t('pencere.yazdir')}</button>
+        <button type="button" class="dugme dugme-ikincil" data-iy-p="kapat">${t('pencere.kapat')}</button></div></div>
+      ${basarisiz.length ? `<p class="not hata" role="alert">${esc(t('baski.basarisiz', { n: basarisiz.length, liste: basarisiz.join(' · ') }))}</p>` : ''}
+      <p class="not iy-uyari" role="note">${t('baski.uyari')}</p>
+      <div class="iy-sayfalar"${hocaDili() === 'tr' ? '' : ' lang="tr"'}>${kartSayfalariHtml(kartlar)}</div></div>`, 'iy-onizleme');
     d.addEventListener('click', (ev) => {
       const b = (ev.target as HTMLElement).closest<HTMLElement>('[data-iy-p]');
       if (!b) return;
@@ -339,10 +338,10 @@ export function ilimYoluPaneli(kok: HTMLElement, s: IlimYoluSecenek): { temizle(
       let svg = ''; // kart adresi ilk «Kartı bas»ta kare koda çevrilir ve bırakılır; pencere açıkken önizleme yeniden açılabilir
       hesaplar?.set(ref, { ref, kullaniciAdi: r.kullaniciAdi, cocuk: true, kartSurum: 1 });
       if (!canli) return;
-      mesaj(`${isim} için çocuk hesabı açıldı: @${r.kullaniciAdi}.`, 'basari');
+      mesaj(t('ac.mesaj', { isim, kullanici: r.kullaniciAdi }), 'basari');
       gizliGoster({
-        baslik: 'Çocuk hesabı açıldı', ad: isim, satirlar: [['Kullanıcı adı', r.kullaniciAdi], ['Şifre', r.sifre]],
-        uyari: 'Şifre yalnız şimdi gösterilir; bir daha gösterilmez ve hiçbir yere kaydedilmez. Yazdırın ya da not edin. Kartı da şimdi basın; pencere kapanınca kart bağlantısı silinir (sonra «Kartı bas» kartı yenileyerek basar). Şifre unutulursa «Şifreyi yenile».',
+        baslik: t('ac.baslik'), ad: isim, satirlar: [[t('etiket.kullanici'), r.kullaniciAdi], [t('etiket.sifre'), r.sifre]],
+        uyari: t('ac.uyari'),
         fis: sifreFisi(o, r.kullaniciAdi, r.sifre, 'Giriş bilgileri'),
         kart: kartUrl ? async () => {
           try { if (!svg) { const kod = await kareKodcu(); svg = kod(kartAdresi(kartUrl)); kartUrl = null; } baskiGoster([{ ad: isim, svg }], []); }
@@ -351,39 +350,39 @@ export function ilimYoluPaneli(kok: HTMLElement, s: IlimYoluSecenek): { temizle(
       });
     });
     else if (ad === 'sifre') {
-      if (!(await onayla('Şifre yenilensin mi?', `${isim}: eski şifre hemen geçersiz olur. Yeni şifre yalnız bir kez gösterilir. Kart girişi etkilenmez.`, 'Şifreyi yenile'))) return;
+      if (!(await onayla(t('sifre.onayBaslik'), t('sifre.onayMetin', { isim }), t('dugme.sifre')))) return;
       await calistir(`sifre:${ref}`, async () => {
         const c = await cagirici(s.app);
         const r = await c<{ sifre?: unknown }>('cocukSifreYenile', { ref });
         if (!metinMi(r?.sifre)) throw yanitHatasi();
         if (!canli) return;
         const kullaniciAdi = hesaplar?.get(ref)?.kullaniciAdi || '';
-        mesaj(`${isim} için yeni şifre oluşturuldu.`, 'basari');
+        mesaj(t('sifre.mesaj', { isim }), 'basari');
         gizliGoster({
-          baslik: 'Yeni şifre', ad: isim, satirlar: [...(kullaniciAdi ? [['Kullanıcı adı', kullaniciAdi] as [string, string]] : []), ['Şifre', r.sifre]],
-          uyari: 'Bu şifre yalnız şimdi gösterilir; bir daha gösterilmez ve hiçbir yere kaydedilmez. Yazdırın ya da not edin.',
+          baslik: t('sifre.baslik'), ad: isim, satirlar: [...(kullaniciAdi ? [[t('etiket.kullanici'), kullaniciAdi] as [string, string]] : []), [t('etiket.sifre'), r.sifre]],
+          uyari: t('sifre.uyari'),
           fis: sifreFisi(o, kullaniciAdi, r.sifre, 'Yeni giriş bilgileri'),
         });
       });
     } else if (ad === 'oturum') {
-      if (!(await onayla('Bütün oturumlar kapatılsın mı?', `${isim}: bütün cihazlardaki girişler kapanır (en geç bir saat içinde). Öğrenci yeniden girmek için kartını ya da şifresini kullanır.`, 'Oturumları kapat'))) return;
+      if (!(await onayla(t('oturum.onayBaslik'), t('oturum.onayMetin', { isim }), t('dugme.oturum')))) return;
       await calistir(`oturum:${ref}`, async () => {
         const c = await cagirici(s.app);
         const r = await c<{ ok?: unknown }>('cocukOturumKapat', { ref });
         if (r?.ok !== true) throw yanitHatasi();
-        mesaj(`${isim}: bütün oturumlar kapatıldı.`, 'basari');
+        mesaj(t('oturum.mesaj', { isim }), 'basari');
       });
     } else if (ad === 'kartYenile') {
-      if (!(await onayla('Kart yenilensin mi?', `${isim}: eski kart hemen geçersiz olur (kayıp kart böyle iptal edilir). Yeni kartı hemen basabilirsiniz; şifre değişmez.`, 'Kartı yenile'))) return;
+      if (!(await onayla(t('kartYenile.onayBaslik'), t('kartYenile.onayMetin', { isim }), t('dugme.kartYenile')))) return;
       await calistir(`kartYenile:${ref}`, async () => {
         const [c, kod] = await Promise.all([cagirici(s.app), kareKodcu()]);
         const k = await kartYenile(c, ref, kod);
         if (!canli) return;
-        mesaj(`${isim}: eski kart iptal edildi.`, 'basari');
-        const { d } = pencere(`<div class="iy-pencere-ic"><h2 id="{id}-baslik">Eski kart iptal edildi</h2><p class="iy-pencere-ad">${esc(isim)}</p>
-          <p class="not iy-uyari" role="note">Yeni kartı şimdi basın: pencere kapanınca yeni kartın bağlantısı silinir (gerekirse kartı yeniden yenileyip basarsınız).</p>
-          <div class="satir-dugmeler"><button type="button" class="dugme dugme-birincil" data-iy-p="kart" autofocus>${simge('yazici')}Yeni kartı bas</button>
-          <button type="button" class="dugme dugme-ikincil" data-iy-p="kapat">Kapat</button></div></div>`, 'iy-gizli-pencere');
+        mesaj(t('kartYenile.mesaj', { isim }), 'basari');
+        const { d } = pencere(`<div class="iy-pencere-ic"><h2 id="{id}-baslik">${t('kartYenile.baslik')}</h2><p class="iy-pencere-ad">${esc(isim)}</p>
+          <p class="not iy-uyari" role="note">${t('kartYenile.uyari')}</p>
+          <div class="satir-dugmeler"><button type="button" class="dugme dugme-birincil" data-iy-p="kart" autofocus>${simge('yazici')}${t('kartYenile.yeniBas')}</button>
+          <button type="button" class="dugme dugme-ikincil" data-iy-p="kapat">${t('pencere.kapat')}</button></div></div>`, 'iy-gizli-pencere');
         const kartlar = [k];
         d.addEventListener('click', (ev) => {
           const b = (ev.target as HTMLElement).closest<HTMLElement>('[data-iy-p]');
@@ -394,7 +393,7 @@ export function ilimYoluPaneli(kok: HTMLElement, s: IlimYoluSecenek): { temizle(
         d.addEventListener('close', () => { kartlar.length = 0; }, { once: true });
       });
     } else if (ad === 'bas') {
-      if (!(await onayla('Kart basılsın mı?', `${isim}: basmak için kart yenilenir; eski kart geçersiz olur. Şifre değişmez.`, 'Kartı yenile ve bas'))) return;
+      if (!(await onayla(t('bas.onayBaslik'), t('bas.onayMetin', { isim }), t('bas.evet')))) return;
       await calistir(`bas:${ref}`, async () => {
         const [c, kod] = await Promise.all([cagirici(s.app), kareKodcu()]);
         const k = await kartYenile(c, ref, kod);
@@ -406,10 +405,12 @@ export function ilimYoluPaneli(kok: HTMLElement, s: IlimYoluSecenek): { temizle(
       if (!metinMi(r?.kod)) throw yanitHatasi();
       if (!canli) return;
       const bitis = tarihYaz(r.bitis);
-      const satirlar: [string, string][] = [['Bağlama kodu', r.kod], ...(bitis ? [['Son geçerlilik', bitis] as [string, string]] : [])];
+      // Fiş basılı belgedir (aile okur): etiketleri ve tarihi Türkçe kalır; pencere (arayüz) etiketleri çevrilir.
+      const bitisFis = tarihYaz(r.bitis, 'tr-TR');
+      const satirlar: [string, string][] = [['Bağlama kodu', r.kod], ...(bitisFis ? [['Son geçerlilik', bitisFis] as [string, string]] : [])];
       gizliGoster({
-        baslik: 'Bağlama kodu', ad: isim, satirlar: [...satirlar],
-        uyari: 'Kod tek kullanımlıktır ve yalnız şimdi gösterilir. Yetişkin öğrenci egitim.ulucamii.be\'de kendi hesabıyla girip bu kodu yazınca hesabı kurs kaydına bağlanır.',
+        baslik: t('etiket.bagKodu'), ad: isim, satirlar: [[t('etiket.bagKodu'), r.kod], ...(bitis ? [[t('etiket.sonGecerlilik'), bitis] as [string, string]] : [])],
+        uyari: t('bag.uyari'),
         fis: {
           baslik: 'Kurs kaydını bağlama', ad: isim, satirlar: [...satirlar],
           yonerge: 'egitim.ulucamii.be adresinde kendi hesabınızla giriş yapın ve bu bağlama kodunu yazın. Kod tek kullanımlıktır.',
@@ -423,20 +424,20 @@ export function ilimYoluPaneli(kok: HTMLElement, s: IlimYoluSecenek): { temizle(
   const topluBas = async () => {
     const refler = gorunenler().map((o) => o.ref).filter((r) => secili.has(r) && cocukMu(r));
     if (!refler.length) return;
-    if (!(await onayla('Kartlar basılsın mı?', `${refler.length} öğrencinin kartı yenilenecek: eski kartlar hemen geçersiz olur. Şifreler değişmez. Kartlar ${Math.ceil(refler.length / KART_SAYFA)} A4 sayfaya basılır.`, 'Kartları yenile ve bas'))) return;
+    if (!(await onayla(t('toplu.onayBaslik'), t('toplu.onayMetin', { n: refler.length, sayfalar: t('sayfa.a4', { n: Math.ceil(refler.length / KART_SAYFA) }) }), t('toplu.evet')))) return;
     await calistir('topluBas', async () => {
       const [c, kod] = await Promise.all([cagirici(s.app), kareKodcu()]);
       const kartlar: Kart[] = []; const basarisiz: string[] = [];
       for (const [i, ref] of refler.entries()) {
         if (!canli) return;
-        mesaj(`Kartlar yenileniyor: ${i + 1}/${refler.length}…`);
+        mesaj(t('toplu.ilerleme', { i: i + 1, n: refler.length }));
         try { kartlar.push(await kartYenile(c, ref, kod)); }
         catch (e) { const o = ogrenci(ref); basarisiz.push(`${o ? adSoyad(o) : ref} (${hataMetni(e)})`); }
       }
       if (!canli) return;
       secili.clear();
-      if (!kartlar.length) { mesaj(`Hiçbir kart yenilenemedi. ${basarisiz.join(' · ')}`, 'hata'); return; }
-      mesaj(`${kartlar.length} kart yenilendi${basarisiz.length ? `, ${basarisiz.length} kart yenilenemedi` : ''}.`, basarisiz.length ? 'hata' : 'basari');
+      if (!kartlar.length) { mesaj(t('toplu.hicbiri', { liste: basarisiz.join(' · ') }), 'hata'); return; }
+      mesaj(basarisiz.length ? t('toplu.sonucKismi', { n: kartlar.length, m: basarisiz.length }) : t('toplu.sonuc', { n: kartlar.length }), basarisiz.length ? 'hata' : 'basari');
       baskiGoster(kartlar, basarisiz);
     });
   };
@@ -446,7 +447,7 @@ export function ilimYoluPaneli(kok: HTMLElement, s: IlimYoluSecenek): { temizle(
     if (!b || islem || (b as HTMLButtonElement).disabled) return;
     const ad = b.dataset.iy || '';
     sonOdak = b.dataset.odak || '';
-    if (ad === 'yenile') { listeHatasi = ''; void calistir('yenile', async () => { if (await listeYukle() && canli) mesaj('Liste yenilendi.', 'basari'); }); return; }
+    if (ad === 'yenile') { listeHatasi = ''; void calistir('yenile', async () => { if (await listeYukle() && canli) mesaj(t('liste.yenilendi'), 'basari'); }); return; }
     if (ad === 'topluBas') { void topluBas(); return; }
     if (b.dataset.ref) void eylem(ad, b.dataset.ref);
   }, { signal: ac.signal });

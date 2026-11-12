@@ -10,8 +10,8 @@
  *   node scripts/ezber-bilgi.mjs --onayla hepsi       onay kaydı: tarih = bugün, kapsam = tr
  *   node scripts/ezber-bilgi.mjs --onayla b-ulul-azm,b-dort-halife --kapsam tr,fr
  *
- * Onay dil dil verilir: hoca Türkçeyi okuduysa `tr`, Fransızcayı da okuduysa `tr,fr`. En, nl, de her zaman Türkçeden çevrilmiş
- * taslaktır; ana dili konuşan biri okuyup onaylamadıkça `--kapsam`a yazılmaz. Onay satırı silinirse (`onay: null`) sayfa yine
+ * Onay dil dil verilir: hoca Türkçeyi okuduysa `tr`, Fransızcayı da okuduysa `tr,fr`. En, nl, de Diyanet'in basılı kitabında resmî karşılığı bulunana dek Türkçeden çevrilmiş
+ * taslaktır (bulununca `kaynaklar`da dil rolüyle künyelenir); ana dili konuşan biri okuyup onaylamadıkça `--kapsam`a yazılmaz. Onay satırı silinirse (`onay: null`) sayfa yine
  * «hoca incelemesi bekleniyor» der. Yazı tipi (Ulu Nesih) HTML'e gömülür; ağ gerekmez.
  */
 import { mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';

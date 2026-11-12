@@ -45,6 +45,96 @@
      "metin": "Senin ortağın yoktur."
     }
    ]
+  },
+  "fr": {
+   "kaynak": "Principes fondamentaux de l’Islam, T.C. Diyanet İşleri Başkanlığı (Présidence des Affaires Religieuses), Ankara, 2020, s. 103 (ISBN 978-625-7779-61-6)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Me voici à ton service Seigneur, me voici."
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "Me voici, Tu n'as pas d'associé."
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "La louange et la grâce t'appartiennent ainsi que la royauté."
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "Tu n'as pas d'associés."
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "Essentials of Islam — A Textbook for High School Students, Presidency of Religious Affairs (Diyanet İşleri Başkanlığı), Ankara, 2017, s. 107",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Here I am at Your service O Lord, here I am."
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "Here I am at Your service and You have no partner."
+    },
+    {
+     "ayetler": [
+      3,
+      3
+     ],
+     "metin": "To You alone is All Praise and All Bounty and to Yours alone is The Sovereignty."
+    },
+    {
+     "ayetler": [
+      4,
+      4
+     ],
+     "metin": "You have no partner."
+    }
+   ]
+  },
+  "nl": {
+   "kaynak": "ISN Vrijdagpreek (khuṭba) 30 mei 2025, Islamitische Stichting Nederland (ISN) / Hollanda Diyanet Vakfı, diyanet.nl",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      4
+     ],
+     "metin": "“Hier ben ik, o Allah, hier ben ik! Hier ben ik, U heeft geen deelgenoot, hier ben ik! Voorwaar, alle lof en gunst zijn voor U, evenals het koningschap. U heeft geen deelgenoot.”"
+    }
+   ]
+  },
+  "de": {
+   "kaynak": "DİTİB Freitagspredigt Nr. 95 (05.10.2012), DİTİB (Diyanet İşleri Türk İslam Birliği), Köln, ditib.de (https://www.ditib.de/detail_predigt1.php?id=95&lang=de)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      4
+     ],
+     "metin": "„Hier bin ich o Allah! Ich stehe Dir zu Diensten! Du hast weder Deines Gleichen noch einen Teilhaber. Der Dank gebührt Dir, wie auch die Gaben Deine sind sowie aller Besitz. Du hast weder Deines Gleichen noch einen Teilhaber.“"
+    }
+   ]
   }
  },
  "kaynak": {
@@ -52,7 +142,7 @@
   "url": "https://diniyayinlar.diyanet.gov.tr/",
   "alindi": "2026-10-24"
  },
- "ozet": "1bfc0d66a3c1f3cb2932d9ca1cf4437148940a05e0f9f4bc158f8079968e077e",
+ "ozet": "9b7cb1165ce8783b9b25844f220ad51031d24ed409fb5ee77d229e20dc9505a4",
  "okunus": {
   "tr": [
    {

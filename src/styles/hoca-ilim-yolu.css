@@ -122,3 +122,8 @@ dialog.iy-onizleme { width: min(calc(100vw - 1rem), 56rem); }
   .iy-yazdirma .iy-sayfa { display: block; width: auto; height: auto; padding-top: 6mm; font-size: 4mm; border: 0; }
   .iy-yazdirma .iy-izgara { width: 170mm; margin: 0 auto; }
 }
+
+/* 12 Kasım 2026 — Hoca ekranı dil seçicisi (src/scripts/hoca-dil.ts): #hoca-ekrani'nın dışında, sağa yaslı küçük seçim kutusu. */
+.hoca-dil { display: flex; justify-content: flex-end; align-items: center; gap: 0.5rem; margin: 0 0 0.75rem; font-size: 0.85rem; }
+.hoca-dil label { font-weight: 600; color: var(--metin-2); }
+.hoca-dil select { font: inherit; min-height: 38px; padding: 0.3rem 0.6rem; border: 1px solid var(--cizgi-etkilesim); border-radius: var(--radius-kose); background: var(--zemin); color: var(--metin); }

@@ -12,7 +12,9 @@ interface MaddeMetinleri {
   yol: string; ayet: (n: number) => string; metinBaslik: string; metinBaslikYalniz: string; okunusGoster: string;
   ayetiDinle: (n: number) => string; dokun: string;
   mealYok: string; metinYok: string;
-  kunyeAr: string; kunyeMeal: string; gruplama: (g: string) => string; mealInceleme: string; okunusUsulu: string;
+  kunyeAr: string; kunyeMeal: string;
+  /** Yalnız NL: kaynaklı (resmî) meâlin künyesi; `kunyeMeal` ve `gruplama` taslak çeviriler içindir. */
+  kunyeMealKaynak?: (kaynak: string) => string; gruplama: (g: string) => string; mealInceleme: string; okunusUsulu: string;
   yolBaslik: string; adimlar: readonly { ad: string; metin: string; hazir: boolean }[]; yakinda: string;
   hocaBaslik: string; hocaMetin: string; veliBag: string;
   namazBaslik: string; durus: Record<Durus, string>; namazKaynak: string;
@@ -117,6 +119,7 @@ const METINLER: Record<Dil, MaddeMetinleri> = {
     mealYok: 'Een Nederlandse vertaling van de betekenis volgt binnenkort.', metinYok: 'De tekst van dit onderdeel wordt voorbereid. U kunt het nu al leren door te luisteren.',
     kunyeAr: 'Arabische tekst: Presidium voor Religieuze Zaken (Diyanet), kuran.diyanet.gov.tr.',
     kunyeMeal: 'Vertaling: vertaald uit de Turkse betekenisvertaling van de Diyanet, kuran.diyanet.gov.tr.',
+    kunyeMealKaynak: (k) => `Vertaling: ${k}.`,
     gruplama: (g) => `De vertaling volgt de versgroepering van de Diyanet (${g}).`,
     mealInceleme: 'Deze vertaling wordt nog nagelezen.', okunusUsulu: 'Transliteratie nagelezen door de leerkracht.',
     yolBaslik: 'Zo leert u het',

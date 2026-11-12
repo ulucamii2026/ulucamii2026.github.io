@@ -99,7 +99,7 @@ jobs:
         run: node scripts/egitim-dist-denetle.mjs
       # Tarayıcısız, ağsız, deterministik düğüm testleri (test:egitim'in node --test bölümü + CI kapıları). Playwright bölümü yerelde çalışır.
       - name: Düğüm testleri
-        run: node --test tests/egitim/pano.test.mjs tests/egitim/barindirma.test.mjs tests/egitim/cevrimdisi.test.mjs tests/egitim/firebase-uyg.test.mjs tests/egitim/tasima-varlik.test.mjs tests/egitim/kurs-icerik.test.mjs tests/egitim/e-kodlar.test.mjs tests/egitim/ses-getir.test.mjs tests/egitim/dist-denetle.test.mjs
+        run: node --test tests/egitim/pano.test.mjs tests/egitim/barindirma.test.mjs tests/egitim/cevrimdisi.test.mjs tests/egitim/firebase-uyg.test.mjs tests/egitim/tasima-varlik.test.mjs tests/egitim/kurs-icerik.test.mjs tests/egitim/e-kodlar.test.mjs tests/egitim/ses-getir.test.mjs tests/egitim/dist-denetle.test.mjs tests/yarisma-veri.test.mjs tests/yarisma-mantik.test.mjs
       # Yayına giden her şey: derlenmiş çıktı + `firebase deploy`in okuduğu iki yapılandırma dosyası. Kısa ömürlü.
       - name: Yayın paketini yükle
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
@@ -159,7 +159,20 @@ jobs:
         with:
           name: egitim-yayin-paketi
       - name: Canlı denetim için tarayıcı
-        run: npx playwright install --with-deps chromium
+        # 11 Kasım 2026: `--with-deps` (apt) koşucudaki geçici ağ/DNS hatasında üç kez işi düşürdü. Önce yalnız tarayıcı
+        # indirilir ve açılıp açılmadığı denenir; açılmazsa sistem kitaplıkları en çok üç denemeyle kurulur.
+        run: |
+          npx playwright install chromium
+          if node -e "import('@playwright/test').then(async (p) => { const b = await p.chromium.launch(); await b.close(); })"; then
+            echo "tarayıcı hazır (apt gerekmedi)"
+          else
+            for deneme in 1 2 3; do
+              npx playwright install --with-deps chromium && break
+              echo "kurulum denemesi $deneme başarısız; 30 sn sonra yeniden"
+              sleep 30
+            done
+            node -e "import('@playwright/test').then(async (p) => { const b = await p.chromium.launch(); await b.close(); })"
+          fi
       - name: Canlı denetim (egitim:canli)
         run: node scripts/egitim-canli-denetim.mjs https://egitim.ulucamii.be
       - name: Canlıdaki tüm sesler yerinde mi (bayt + sha256)

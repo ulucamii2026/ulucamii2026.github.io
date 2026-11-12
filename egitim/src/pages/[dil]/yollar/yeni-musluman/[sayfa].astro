@@ -1,7 +1,7 @@
 ---
 /**
  * «Yeni Müslüman yolu» hafta ve adım sayfaları (İlim Yolu, 11 Kasım 2026): `h01`…`h12` hafta, `adim-1`…`adim-8` adım. Hafta sayfasında metin,
- * uygulama, (yalnız TR ve EN'de) Diyanet videosu, iki soru, kaynaklar ve «Haftayı tamamladım» vardır. İçerik paylasilan/ogrenme-yolu/icerik.json'dan
+ * uygulama, Diyanet videosu (TR ve EN'de kendi dilinde, fr/nl/de'de İngilizce ve notlu), iki soru, kaynaklar ve «Haftayı tamamladım» vardır. İçerik paylasilan/ogrenme-yolu/icerik.json'dan
  * gelir; dinî metin burada düzenlenmez. Video tıklanana kadar YouTube'dan hiçbir şey yüklenmez (scripts/yeni-yol.ts, youtube-nocookie.com).
  * Durum ve işaretler scripts/yeni-yol.ts cihaz kaydından doldurulur; sorular radyo düğmeleriyle yerelde denetlenir.
  */
@@ -15,7 +15,7 @@ import { okumaMetinleri } from '../../../../i18n/okuma';
 import { yeniYolMetinleri } from '../../../../i18n/yeni-yol';
 import { yollarMetinleri } from '../../../../i18n/yollar';
 import {
-  ADIMLAR, HAFTALAR, PLATFORM_BAGLANTILARI, SAYFA_KIMLIKLERI, adimBul, adimHaftalari, adimKimligi, adimaGore, guvenliBaglanti, haftaBul, platformAdresi, videoKimligi,
+  ADIMLAR, HAFTALAR, PLATFORM_BAGLANTILARI, SAYFA_KIMLIKLERI, adimBul, adimHaftalari, adimKimligi, adimaGore, guvenliBaglanti, haftaBul, platformAdresi, videoIngilizceBasligi, videoIngilizceMi, videoKimligi,
 } from '../../../../lib/yeni-yol';
 import Taban from '../../../../layouts/Taban.astro';
 import '../../../../styles/ilim.css';
@@ -37,6 +37,9 @@ const sira = h ? HAFTALAR.indexOf(h) : -1;
 const onceki = h ? HAFTALAR[sira - 1] : undefined;
 const sonraki = h ? HAFTALAR[sira + 1] : undefined;
 const video = h ? videoKimligi(h, dil) : undefined;
+// fr, nl, de: Diyanet'in resmî videosu yalnız TR ve EN'dedir; İngilizce video görünür notla gösterilir (imamın kararı, 12 Kasım 2026).
+const videoEn = video !== undefined && videoIngilizceMi(dil);
+const videoEnBaslik = videoEn ? videoIngilizceBasligi(video!) : undefined;
 const baglanti = h ? PLATFORM_BAGLANTILARI[h.id] : undefined;
 const platform = baglanti && h ? {
   href: `/${dil}/${platformAdresi(baglanti)}`,
@@ -76,10 +79,12 @@ const veri = h ? {
       {video && (
         <section aria-labelledby="video-baslik" class="yl-sinav">
           <h2 id="video-baslik">{y.videoBaslik}</h2>
+          {videoEn && <p class="yl-not yy-video-dil" data-yy-video-not>{y.videoIngilizceNotu}</p>}
           <div class="yy-video" data-yy-video-kutu>
-            <button type="button" class="yy-video-dugme" data-yy-video={video} data-baslik={`${y.videoBaslik} — ${h.baslik[dil]}`}>
+            <button type="button" class="yy-video-dugme" data-yy-video={video} data-yy-video-dil={videoEn ? 'en' : undefined} data-baslik={`${y.videoBaslik} — ${h.baslik[dil]}`}>
               <span class="yy-video-oynat" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M8 5v14l11-7z" /></svg></span>
               <span>{y.videoYukle}</span>
+              {videoEnBaslik && <span class="yy-video-ad" lang="en">{videoEnBaslik}</span>}
             </button>
           </div>
           <p class="yl-not">{y.videoNot} <a href={`https://www.youtube.com/watch?v=${video}`} rel="noopener noreferrer" target="_blank">{y.videoBaglanti}</a></p>

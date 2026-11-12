@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 import vm from 'node:vm';
 import { readFileSync } from 'node:fs';
 
-const kaynak = ['kimlik-sabitler.gs', 'veli-eposta-sablon.gs', 'ulucamii-Kod-v48.gs', 'veli-mail-listesi.gs', 'ilim-yolu-eposta.gs']
+const kaynak = ['kimlik-sabitler.gs', 'veli-eposta-sablon.gs', 'ulucamii-Kod-v49.gs', 'veli-mail-listesi.gs', 'ilim-yolu-eposta.gs']
   .map((ad) => readFileSync(new URL('../../scripts/apps-script/' + ad, import.meta.url), 'utf8')).join('\n');
 
 const SAAT = 3_600_000;

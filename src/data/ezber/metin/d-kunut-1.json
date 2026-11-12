@@ -52,6 +52,18 @@
      "metin": "Nimetlerini inkâr eden ve sana karşı geleni bırakırız."
     }
    ]
+  },
+  "nl": {
+   "kaynak": "Basiskennis over Islam, Presidium voor Religieuze Zaken (Diyanet İşleri Başkanlığı), Den Haag / Ankara, 2017, s. 349 (Publicatie nr 1346; vertaling Drs. Ahmed Bulut)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      4
+     ],
+     "metin": "‘O mijn Allah! Wij vragen U om hulp, vergiffenis van onze zondes en ons te leiden tot hetgeen tot Uw tevredenheid leidt. Wij geloven in U en richten ons berouw tot U. Wij vertrouwen in U. Wij prijzen U met het goede, al Uw gunsten realiserende die U ons geeft. Wij loven U. Wij ontkennen geen enkele van Uw gunsten en wij kennen geen gunsten buiten de Uwe. Wij vermijden de ontkenners van Uw gunsten en degenen die zich verzetten tegen U.’"
+    }
+   ]
   }
  },
  "kaynak": {
@@ -71,7 +83,7 @@
    "neden": "Portalda elif üzerine sükûn, lâm üzerine harekesizlik yazılmış (basım hatası); ال takısı lâm sükûnuyla yazılır."
   }
  ],
- "ozet": "aaa4cb7337c478908a939f90bd22a6fcc2d46dde9f301bc6f744f3ce0f887b96",
+ "ozet": "c7482b737688e38fa685caf570673e4e513de5a209db0d6c844d845a3d5b8279",
  "okunus": {
   "tr": [
    {

@@ -23,6 +23,7 @@ import {
   type CeviriDili,
   type MakineCevirici,
 } from "../lib/defter-ceviri";
+import { tB } from "../i18n/hoca-metin/bulten";
 
 type Ogr = { ref: string; ad: string; soyad: string; durum?: string };
 type Gun = {
@@ -61,17 +62,17 @@ export function hocaBulteni(
   };
   const hedefDil = () => (ref && opt.ceviri ? opt.ceviri.hedefDil(ref) : null);
   const secici = () =>
-    `<div class="izgara-2"><label>Öğrenci<select data-hb-ogr ${mesgul ? "disabled" : ""}><option value="">Öğrenci seçin</option>${opt.ogrenciler.map((o) => `<option value="${e(o.ref)}" ${o.ref === ref ? "selected" : ""}>${e(o.ad + " " + o.soyad)}${o.durum === "pasif" ? " · pasif" : ""}</option>`).join("")}</select></label><label>Ders haftası<select data-hb-hafta ${mesgul ? "disabled" : ""}>${haftalar.map((h) => `<option value="${h.hafta}" ${h.hafta === hafta ? "selected" : ""}>${h.hafta}. hafta · ${h.tarih}</option>`).join("")}</select></label></div>`;
+    `<div class="izgara-2"><label>${tB("ogrenci")}<select data-hb-ogr ${mesgul ? "disabled" : ""}><option value="">${tB("ogrenciSec")}</option>${opt.ogrenciler.map((o) => `<option value="${e(o.ref)}" ${o.ref === ref ? "selected" : ""}>${e(o.ad + " " + o.soyad)}${o.durum === "pasif" ? " · " + tB("pasif") : ""}</option>`).join("")}</select></label><label>${tB("dersHaftasi")}<select data-hb-hafta ${mesgul ? "disabled" : ""}>${haftalar.map((h) => `<option value="${h.hafta}" ${h.hafta === hafta ? "selected" : ""}>${tB("haftaSecenek", { n: h.hafta, tarih: h.tarih })}</option>`).join("")}</select></label></div>`;
   const ciz = () => {
     if (kapali) return;
-    root.innerHTML = `<h2>Bülten · İdari işlemler</h2><p>Haftanın derslerini aileye aktarın; yazılı bülten ile portal takibini birlikte yürütün.</p>${secici()}${ref ? `<button type="button" data-hb-yenile ${mesgul ? "disabled" : ""}>Bülteni yeniden yükle</button>` : ""}<p data-hb-durum role="status">${e(mesaj)}</p>${
+    root.innerHTML = `<h2>${tB("baslik")}</h2><p>${tB("giris")}</p>${secici()}${ref ? `<button type="button" data-hb-yenile ${mesgul ? "disabled" : ""}>${tB("yenile")}</button>` : ""}<p data-hb-durum role="status">${e(mesaj)}</p>${
       b
-        ? `<form data-hb-form><fieldset ${mesgul ? "disabled" : ""}><legend>${e(ad())} · ${b.hafta}. hafta</legend><p>${b.surum ? `${b.yayin ? "Yayımlanmış" : "Taslak"} bülten · sürüm ${b.surum}` : "Yeni bülten · henüz kaydedilmedi"}</p><p class="bulten-aciklama">Ders planı Türkçe aktarılır. İçerik dilini değiştirdiğinizde metinleri de o dilde hazırlayın. Kayıtlı taslaklar kendiliğinden değişmez.</p><label>İçerik dili<select name="dil">${BULTEN_DILLERI.map((d) => `<option value="${d}" ${b!.dil === d ? "selected" : ""}>${{ tr: "Türkçe", fr: "Fransızca", en: "İngilizce" }[d]}</option>`).join("")}</select></label>${Object.entries(
+        ? `<form data-hb-form><fieldset ${mesgul ? "disabled" : ""}><legend>${tB("lejant", { ad: e(ad()), n: b.hafta })}</legend><p>${b.surum ? tB(b.yayin ? "surum.yayin" : "surum.taslak", { n: b.surum }) : tB("surum.yeni")}</p><p class="bulten-aciklama">${tB("aciklama1")}</p><label>${tB("icerikDili")}<select name="dil">${BULTEN_DILLERI.map((d) => `<option value="${d}" ${b!.dil === d ? "selected" : ""}>${tB(`dil.${d}`)}</option>`).join("")}</select></label>${Object.entries(
             {
-              ders: "Bu haftanın dersleri",
-              odev: "Evde birlikte tekrar · kitap / sayfa",
-              getir: "Getirilecek kitap ve malzemeler",
-              not: "Aileye kısa not · güçlü yön ve sonraki adım",
+              ders: tB("alan.ders"),
+              odev: tB("alan.odev"),
+              getir: tB("alan.getir"),
+              not: tB("alan.not"),
             },
           )
             .map(
@@ -80,20 +81,20 @@ export function hocaBulteni(
             )
             .join(
               "",
-            )}<div class="bulten-eylemler"><button type="button" data-hb-defter>Ders defterinden doldur</button>${hedefDil() === "fr" ? `<button type="button" data-hb-cevir>Metinleri Fransızcaya çevir</button>` : ""}<button type="button" data-hb-onizle>Önizle</button><button type="submit" name="islem" value="taslak">Taslak kaydet</button><button type="submit" name="islem" value="yayin">Kaydet ve veliye göster</button></div><p class="bulten-aciklama">Yayımlama yalnız portalda görünürlük sağlar; e-posta göndermez. Değişiklik yeni sürüm oluşturur ve yeniden okunması gerekir.</p></fieldset></form><details class="bulten-onizleme"><summary>Bülten önizlemesi ve çıktı</summary><div data-hb-onizleme>${bultenIcerik(b, ad(), b.dil)}</div><button type="button" data-hb-yazdir ${mesgul ? "disabled" : ""}>Yazdır / PDF kaydet</button></details><h3>Velilerin okuma durumu</h3>${
+            )}<div class="bulten-eylemler"><button type="button" data-hb-defter>${tB("defterdenDoldur")}</button>${hedefDil() === "fr" ? `<button type="button" data-hb-cevir>${tB("cevir")}</button>` : ""}<button type="button" data-hb-onizle>${tB("onizle")}</button><button type="submit" name="islem" value="taslak">${tB("taslakKaydet")}</button><button type="submit" name="islem" value="yayin">${tB("kaydetGoster")}</button></div><p class="bulten-aciklama">${tB("aciklama2")}</p></fieldset></form><details class="bulten-onizleme"><summary>${tB("onizlemeOzet")}</summary><div data-hb-onizleme>${bultenIcerik(b, ad(), b.dil)}</div><button type="button" data-hb-yazdir ${mesgul ? "disabled" : ""}>${tB("yazdir")}</button></details><h3>${tB("okuma.baslik")}</h3>${
             Object.keys(okumalar).length
               ? `<ul class="bulten-envanter">${Object.entries(okumalar)
                   .map(
                     ([ep, r]) =>
-                      `<li><span>${e(ep)}</span><span>${r.surum === b!.surum ? "Son sürümü okudu" : "Önceki sürümü okudu"}</span></li>`,
+                      `<li><span>${e(ep)}</span><span>${r.surum === b!.surum ? tB("okuma.son") : tB("okuma.onceki")}</span></li>`,
                   )
                   .join("")}</ul>`
-              : "<p>Bu bülten için henüz okuma bildirimi yok.</p>"
+              : `<p>${tB("okuma.yok")}</p>`
           }`
         : ""
     }${
       ref
-        ? `<details class="bulten-onizleme" data-hb-idare><summary>İdari kayıt dökümü ve temizlik</summary><p>Önce seçili öğrencinin kayıtlarını inceleyin. İndirilen dosya kişisel veriler içerir; yalnız dernek arşivinde saklayın.</p><button type="button" data-hb-tara ${mesgul ? "disabled" : ""}>Kayıt dökümünü yükle</button>${
+        ? `<details class="bulten-onizleme" data-hb-idare><summary>${tB("idare.ozet")}</summary><p>${tB("idare.giris")}</p><button type="button" data-hb-tara ${mesgul ? "disabled" : ""}>${tB("idare.yukle")}</button>${
             env
               ? `<h3>${e(ad())} · ${e(ref)}</h3><ul class="bulten-envanter">${Object.entries(
                   env.sayilar,
@@ -104,9 +105,9 @@ export function hocaBulteni(
                   )
                   .join(
                     "",
-                  )}</ul><p>${env.aileler.length} veli bağlantısı. Diğer öğrenciler ve ortak veli hesapları korunur.</p><button type="button" data-hb-indir>Seçili öğrencinin dökümünü indir</button><form data-hb-sil><fieldset ${mesgul ? "disabled" : ""}><legend>Kontrollü silme</legend><label>İşlem kapsamı<select name="kapsam"><option value="ev">Yalnız evde çalışma kayıtları</option><option value="tum">Öğrencinin tüm portal kayıtları ve veli bağlantıları</option></select></label><p>“Tüm portal kayıtları” öğrenci profilini, yoklama, ilerleme, değerlendirme, not, bildirim, ev çalışması, ders defteri ve bültenleri siler. Geri alma düğmesi yoktur. Google giriş hesabı, asıl kayıt defteri, gönderilmiş e-postalar ve cihazlardaki dosyalar bu işlemin kapsamı dışındadır. Asıl kayıt defteri değişmezse sonraki aktarım öğrenciyi yeniden oluşturabilir.</p><label>Onay için öğrenci kodunu yazın: ${e(ref)}<input name="onay" autocomplete="off" required></label><button type="submit" class="bulten-tehlike">İncelenen kayıtları sil</button></fieldset></form>`
+                  )}</ul><p>${tB("idare.veli", { n: env.aileler.length })}</p><button type="button" data-hb-indir>${tB("idare.indir")}</button><form data-hb-sil><fieldset ${mesgul ? "disabled" : ""}><legend>${tB("sil.baslik")}</legend><label>${tB("sil.kapsam")}<select name="kapsam"><option value="ev">${tB("sil.ev")}</option><option value="tum">${tB("sil.tum")}</option></select></label><p>${tB("sil.uyari")}</p><label>${tB("sil.kod", { kod: e(ref) })}<input name="onay" autocomplete="off" required></label><button type="submit" class="bulten-tehlike">${tB("sil.dugme")}</button></fieldset></form>`
               : ""
-          }<p class="bulten-aciklama">Kesilen bir işlem nedeniyle kayıtlar kilitli kaldıysa en az 15 dakika sonra kilidi kaldırıp dökümü yeniden inceleyin.</p><button type="button" data-hb-kilit ${mesgul ? "disabled" : ""}>Yarım kalan işlem kilidini kaldır</button></details>`
+          }<p class="bulten-aciklama">${tB("kilit.aciklama")}</p><button type="button" data-hb-kilit ${mesgul ? "disabled" : ""}>${tB("kilit.dugme")}</button></details>`
         : ""
     }`;
   };
@@ -132,7 +133,7 @@ export function hocaBulteni(
     b = null;
     env = null;
     okumalar = {};
-    mesaj = ref ? "Bülten yükleniyor…" : "";
+    mesaj = ref ? tB("mesaj.yukleniyor") : "";
     ciz();
     if (!ref) return;
     const r = ref,
@@ -184,8 +185,7 @@ export function hocaBulteni(
       ciz();
     } catch {
       if (token === istek && !kapali) {
-        mesaj =
-          "Bülten alınamadı. Öğrenciyi veya haftayı yeniden seçerek deneyin.";
+        mesaj = tB("mesaj.yuklenemedi");
         ciz();
       }
     }
@@ -215,14 +215,12 @@ export function hocaBulteni(
         const taslak = formOku();
         if (!taslak) return;
         if (
-          !confirm(
-            "Ders, ödev ve aile notu alanlarını bu haftanın ders defteri kayıtlarıyla doldurmak istiyor musunuz? Mevcut metinler değişir; getirilecekler alanı korunur.",
-          )
+          !confirm(tB("defter.onay"))
         )
           return;
         b = taslak;
         mesgul = true;
-        mesaj = "Ders defteri notları alınıyor…";
+        mesaj = tB("defter.aliniyor");
         const token = istek;
         ciz();
         try {
@@ -242,8 +240,8 @@ export function hocaBulteni(
             const fr = defterdenBultenFr(haftaKayitlari, ceviriler);
             b = { ...taslak, dil: "fr", metin: { ...taslak.metin, ders: fr.ders, odev: fr.odev, not: fr.not } };
             mesaj = fr.eksik.length
-              ? `Ders notları Fransızca aktarıldı; ${fr.eksik.length} dersin çevirisi yok ya da eski, o dersler Türkçe kaldı. Ders defterinde «Şimdi çevir» ile tamamlayıp yeniden aktarın.`
-              : "Ders notları Fransızca aktarıldı (velinin iletişim dili). Metinleri kontrol edip kaydedin. Henüz veliye gösterilmedi.";
+              ? tB("defter.frEksik", { n: fr.eksik.length })
+              : tB("defter.frTam");
           } else {
             b = {
               ...taslak,
@@ -252,15 +250,14 @@ export function hocaBulteni(
                 ...defterdenBulten(haftaKayitlari),
               },
             };
-            mesaj =
-              "Ders notları taslağa aktarıldı. İçerik dilini ve metinleri kontrol edip kaydedin. Henüz veliye gösterilmedi.";
+            mesaj = tB("defter.trTam");
           }
         } catch (err) {
           if (!kapali && token === istek)
             mesaj =
               err instanceof Error
                 ? err.message
-                : "Ders defteri alınamadı; mevcut metinler korundu.";
+                : tB("defter.hata");
         } finally {
           if (!kapali && token === istek) {
             mesgul = false;
@@ -283,7 +280,7 @@ export function hocaBulteni(
         if (!duz.length) return;
         b = taslak;
         mesgul = true;
-        mesaj = "Metinler Fransızcaya çevriliyor…";
+        mesaj = tB("cevir.suruyor");
         const token = istek;
         ciz();
         try {
@@ -295,9 +292,9 @@ export function hocaBulteni(
             metin[k] = paragraflar[j].map(() => cevrilen[i++]).join("\n\n");
           });
           b = { ...taslak, dil: "fr", metin, yayin: false };
-          mesaj = "Metinler Fransızcaya çevrildi; kontrol edip kaydedin. Henüz veliye gösterilmedi.";
+          mesaj = tB("cevir.tamam");
         } catch {
-          if (!kapali && token === istek) mesaj = "Çeviri yapılamadı; metinler değişmedi.";
+          if (!kapali && token === istek) mesaj = tB("cevir.hata");
         } finally {
           if (!kapali && token === istek) {
             mesgul = false;
@@ -366,15 +363,15 @@ export function hocaBulteni(
       if (t.hasAttribute("data-hb-tara") || t.hasAttribute("data-hb-kilit")) {
         b = formOku(b?.yayin) || b;
         mesgul = true;
-        mesaj = "İşlem sürüyor…";
+        mesaj = tB("islem.suruyor");
         ciz();
         try {
           if (t.hasAttribute("data-hb-kilit"))
             await portalKilitKaldir(opt.db, ref);
           env = await portalEnvanteri(opt.db, ref);
-          mesaj = "Kayıt dökümü hazır. Henüz hiçbir kayıt silinmedi.";
+          mesaj = tB("tara.hazir");
         } catch (err) {
-          mesaj = (err as Error).message || "Kayıt dökümü alınamadı.";
+          mesaj = (err as Error).message || tB("tara.hata");
         } finally {
           mesgul = false;
           ciz();
@@ -396,7 +393,7 @@ export function hocaBulteni(
       const token = istek;
       if (f.matches("[data-hb-sil]")) {
         if (!env || String(d.get("onay")).trim() !== ref) {
-          mesaj = "Öğrenci kodu eşleşmedi. Hiçbir kayıt silinmedi.";
+          mesaj = tB("sil.eslesmedi");
           const p = root.querySelector("[data-hb-durum]");
           if (p) p.textContent = mesaj;
           return;
@@ -404,18 +401,18 @@ export function hocaBulteni(
         const kapsam = d.get("kapsam") === "tum" ? "tum" : "ev";
         if (
           !confirm(
-            `${ad()} (${ref}): ${kapsam === "tum" ? "tüm portal kayıtları" : "evde çalışma kayıtları"} kalıcı olarak silinecek. Devam edilsin mi?`,
+            tB(kapsam === "tum" ? "sil.onayTum" : "sil.onayEv", { ad: ad(), kod: ref }),
           )
         )
           return;
         mesgul = true;
-        mesaj = "İncelenen kayıtlar işleniyor…";
+        mesaj = tB("sil.isleniyor");
         ciz();
         try {
           const n = await portalKayitlariniSil(opt.db, env, kapsam);
           if (kapali || token !== istek) return;
           env = null;
-          mesaj = `${n} kayıt silindi. Diğer öğrencilerin kayıtları korundu.`;
+          mesaj = tB("sil.bitti", { n });
           if (kapsam === "tum") {
             opt.silindi?.(ref);
             opt.ogrenciler = opt.ogrenciler.filter((o) => o.ref !== ref);
@@ -436,7 +433,7 @@ export function hocaBulteni(
       if (!yeni || !b) return;
       const beklenen = b.surum;
       mesgul = true;
-      mesaj = "Bülten kaydediliyor…";
+      mesaj = tB("kaydediliyor");
       b = yeni;
       ciz();
       try {
@@ -444,8 +441,8 @@ export function hocaBulteni(
         if (kapali || token !== istek) return;
         b = sonuc;
         mesaj = b.yayin
-          ? "Bülten yayımlandı; veli portalında görülebilir."
-          : "Taslak kaydedildi; veliye görünmez.";
+          ? tB("yayimlandi")
+          : tB("taslakKaydedildi");
       } catch (err) {
         mesaj = (err as Error).message;
       } finally {

@@ -63,6 +63,42 @@
      "metin": "Ve şahadet ederim ki Hazret-i Muhammed Allah’ın kulu ve Resûlüdür."
     }
    ]
+  },
+  "fr": {
+   "kaynak": "Guide pratique des adorations, T.C. Diyanet İşleri Başkanlığı, Ankara, 2013, s. 219 (Diyanet yayını no 942; traduction Vildan M. Sarıkan)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      5
+     ],
+     "metin": "“Toutes les adorations faites avec la langue, le corps et les biens sont pour Allâh. Salut à toi, ô Prophète! Ainsi que la grâce de Dieu et Sa bénédiction. Salut à nous et aux vertueux serviteurs de Dieu! J’atteste qu’il n’y a de dieu qu’Allâh et j’atteste que Muhammed est Son serviteur et Son messager.”"
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "Islam Through Hadiths 2, Diyanet İşleri Başkanlığı (Presidency of Religious Affairs), İstanbul, 2020, s. 184",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      5
+     ],
+     "metin": "“All the compliments, blessings (Ṣalawāt) and good things are due to Allah; peace be upon you, O Prophet, and Allah’s mercy and blessings [be upon you]. Peace be upon us and upon the pious servants of Allah. I testify that there is no deity [worthy of worship] but Allah, and I testify that Muhammad is His servant and His Messenger.”"
+    }
+   ]
+  },
+  "nl": {
+   "kaynak": "Basiskennis over Islam, Presidium voor Religieuze Zaken (Diyanet İşleri Başkanlığı), Den Haag / Ankara, 2017, s. 347 (Publicatie nr 1346; vertaling Drs. Ahmed Bulut)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      5
+     ],
+     "metin": "‘Alle eer, aanbiddingen en het goede zijn voor Allah. O Profeet! Vrede zij met u, moge de barmhartigheid en zegeningen van Allah aan u zijn. Vrede zij met ons en met de juiste en rechtgeschapen dienaren van Allah. Ik getuig dat er geen God is dan Allah en ik getuig dat Mohammed Zijn dienaar en Boodschapper is.’"
+    }
+   ]
   }
  },
  "kaynak": {
@@ -70,7 +106,7 @@
   "url": "https://namaz.diyanet.gov.tr/namaz/html/sureler-dualar.html",
   "alindi": "2026-10-24"
  },
- "ozet": "48a8ea24abb7ebbfbb5a854247200194e303baa42d720109cfcc0a92ac6cee34",
+ "ozet": "cb22763c95219f6640606c32619050b79fa1bfc6b61b308edcf26f7b80f1f633",
  "okunus": {
   "tr": [
    {

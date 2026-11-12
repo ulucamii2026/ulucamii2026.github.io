@@ -118,6 +118,7 @@ test('Hosting: önbellek — HTML her açılışta doğrulanır, özetli dosyala
     '/fonts/atkinson-next.woff2': 'public, max-age=604800',
     '/media/ses/okuma/yeni/zamir/uygulama/1.mp3': 'public, max-age=604800', // okuma tecvid + kısa âyet sesleri (o8, o9): bir hafta
     '/media/ses/kart/tr/ib-013.mp3': 'public, max-age=604800', // kart seslendirmesi: bir hafta (hatalı bir anlatım düzeltilirse en geç bir haftada herkese ulaşır)
+    '/media/ses/kart/en/ib-013.mp3': 'public, max-age=604800', '/media/ses/kart/nl/ib-013.mp3': 'public, max-age=604800', '/media/ses/kart/de/ib-013.mp3': 'public, max-age=604800', // en/nl/de (12 Kasım 2026) aynı kural
     '/favicon.ico': undefined, '/og/ezber-kilimi-tr.png': undefined, '/robots.txt': undefined, // Hosting varsayılanı (1 saat)
     '/manifest.webmanifest': undefined, '/icon-192.png': undefined, '/icon-maskable-512.png': undefined,
   };
@@ -139,7 +140,7 @@ const YOL_IDLERI = ['plan-kuran', 'plan-itikat', 'plan-ibadet', 'plan-siyer', 'p
 // Yeni Müslüman yolu (11 Kasım 2026): 12 hafta + 8 adım sayfası, kimlikler paylaşılan içerikten.
 const YENI_YOL = JSON.parse(readFileSync(new URL('../../paylasilan/ogrenme-yolu/icerik.json', import.meta.url), 'utf8'));
 const YENI_YOL_SAYFALARI = [...YENI_YOL.haftalar.map((h) => h.id), ...YENI_YOL.adimlar.map((a) => `adim-${a.no}`)];
-const dilYollari = DILLER.flatMap((d) => [`${d}/`, `${d}/ezber/`, `${d}/calisma-belgesi/`, `${d}/kilimim/`, `${d}/kartlar/`, `${d}/takvim/`, `${d}/yollar/`, `${d}/yollar/rozetler/`, `${d}/yollar/yerlestirme/`, `${d}/ibadet/`, `${d}/ibadet/abdest/`, `${d}/ibadet/namaz/`, ...['sabah', 'ogle', 'ikindi', 'aksam', 'yatsi'].map((v) => `${d}/ibadet/namaz/${v}/`), `${d}/okuma/`, `${d}/yarisma/`, ...[1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => `${d}/okuma/o${n}/`), ...YOL_IDLERI.map((y) => `${d}/yollar/${y}/`), `${d}/yollar/yeni-musluman/`, ...YENI_YOL_SAYFALARI.map((k) => `${d}/yollar/yeni-musluman/${k}/`), ...KART_IDLERI.map((i) => `${d}/ogren/${i}/`), ...sesliler.map((o) => `${d}/calis/${o.id}/`)]);
+const dilYollari = DILLER.flatMap((d) => [`${d}/`, `${d}/ezber/`, `${d}/calisma-belgesi/`, `${d}/kilimim/`, `${d}/kartlar/`, `${d}/takvim/`, `${d}/gizlilik/`, `${d}/yollar/`, `${d}/yollar/rozetler/`, `${d}/yollar/yerlestirme/`, `${d}/ibadet/`, `${d}/ibadet/abdest/`, `${d}/ibadet/namaz/`, ...['sabah', 'ogle', 'ikindi', 'aksam', 'yatsi'].map((v) => `${d}/ibadet/namaz/${v}/`), `${d}/okuma/`, `${d}/yarisma/`, ...[1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => `${d}/okuma/o${n}/`), ...YOL_IDLERI.map((y) => `${d}/yollar/${y}/`), `${d}/yollar/yeni-musluman/`, ...YENI_YOL_SAYFALARI.map((k) => `${d}/yollar/yeni-musluman/${k}/`), ...KART_IDLERI.map((i) => `${d}/ogren/${i}/`), ...sesliler.map((o) => `${d}/calis/${o.id}/`)]);
 // Çevrim dışı çalışma sayfaları (noindex, site haritasında yok) satır içi betik denetimine girer: service worker bunları önyükler.
 const cevrimdisiYollari = DILLER.map((d) => `${d}/cevrimdisi/`);
 // Hesap sayfaları ve kart girişi (2 Kasım 2026): noindex, site haritasında ve önbellekte yok; yine de CSP’ye uyar (satır içi betik yok).

@@ -15,7 +15,7 @@ async function ac(page, dil = 'tr') {
   await page.locator('[data-adim-tumu]').click();
 }
 async function doldur(page) {
-  for (const [id, value] of Object.entries({ ad: 'Deniz Örnek', dogum: '1990-05-20', 'dogum-yeri': 'Namur', uyruk: 'Belgique', anne: 'Anne Örnek', baba: 'Baba Örnek', ogrenim: 'Lisans', meslek: 'Öğretmen', eposta: 'deniz@example.test', telefon: '+32470000000', adres: 'Rue du Test 12', 'posta-kodu': '6900', sehir: 'Marche-en-Famenne', ulke: 'Belgique', 'onceki-din': 'Belirtilen inanç', beyan: 'Deniz Örnek' })) await page.locator(`#i-${id}`).fill(value);
+  for (const [id, value] of Object.entries({ ad: 'Deniz', soyad: 'Örnek', dogum: '1990-05-20', 'dogum-yeri': 'Namur', uyruk: 'Belgique', anne: 'Anne Örnek', baba: 'Baba Örnek', ogrenim: 'Lisans', meslek: 'Öğretmen', eposta: 'deniz@example.test', telefon: '+32470000000', adres: 'Rue du Test 12', 'posta-kodu': '6900', sehir: 'Marche-en-Famenne', ulke: 'Belgique', 'onceki-din': 'Belirtilen inanç', beyan: 'Deniz Örnek' })) await page.locator(`#i-${id}`).fill(value);
   await page.locator('#i-cins-kadin').check();
   await page.locator('#i-medeni').selectOption('bekar');
   await page.locator('#i-belge-pasaport').check();
@@ -65,7 +65,7 @@ test('Gönderim kilidi çift isteği engeller; başarıdan sonra taslak yeniden 
   const bekle = new Promise(resolve => { bitir = resolve; });
   await page.route('**/macros/**', async r => {
     if (r.request().method() === 'POST') { post++; await bekle; }
-    await r.fulfill({ json: { ok: true, surum: 28, ihtidaPaketHazir: true, ref: 'IH-2099-9999' } });
+    await r.fulfill({ json: { ok: true, surum: 48, ihtidaPaketHazir: true, ref: 'IH-2099-9999' } });
   });
   await ac(page); await doldur(page);
   await form(page).evaluate(f => { f.requestSubmit(); f.requestSubmit(); });
@@ -87,7 +87,7 @@ test('Ağ hatasından sonra yeniden deneme aynı başvuru anahtarını korur', a
       gelen.push(r.request().postDataJSON());
       if (gelen.length === 1) return r.abort();
     }
-    await r.fulfill({ json: { ok: true, surum: 28, ihtidaPaketHazir: true, ref: 'IH-2099-9999' } });
+    await r.fulfill({ json: { ok: true, surum: 48, ihtidaPaketHazir: true, ref: 'IH-2099-9999' } });
   });
   await ac(page); await doldur(page);
   await form(page).locator('[type=submit]').click();
@@ -112,7 +112,7 @@ test('Ekran daraltıldığında çizilmiş imzanın tamamı PDF gövdesinde koru
   let gelen;
   await page.route('**/macros/**', r => {
     if (r.request().method() === 'POST') gelen = r.request().postDataJSON();
-    return r.fulfill({ json: { ok: true, surum: 28, ihtidaPaketHazir: true, ref: 'IH-2099-9999' } });
+    return r.fulfill({ json: { ok: true, surum: 48, ihtidaPaketHazir: true, ref: 'IH-2099-9999' } });
   });
   await page.setViewportSize({ width: 1280, height: 900 });
   await ac(page); await doldur(page);
@@ -151,7 +151,7 @@ test('1. şahit din görevlisinin adı olamaz; Ulu Camii için de belge adımın
 });
 
 test('İmzasız taslak silinince imza alanı yeniden çizime açılır', async ({ page }) => {
-  await page.addInitScript(() => localStorage.setItem('ulucamii:ihtida:v2', JSON.stringify({ surum: 2, zaman: Date.now(), anahtar: 'test-reset-2099', alanlar: { 'basvuran.adSoyad': 'Deniz Örnek', imzaYok: '1' } })));
+  await page.addInitScript(() => localStorage.setItem('ulucamii:ihtida:v2', JSON.stringify({ surum: 2, zaman: Date.now(), anahtar: 'test-reset-2099', alanlar: { 'basvuran.ad': 'Deniz', 'basvuran.soyad': 'Örnek', imzaYok: '1' } })));
   await ac(page);
   await expect(page.locator('[data-imza] canvas')).toHaveAttribute('data-kapali', '1');
   await page.locator('[data-taslak-sil]').click();
@@ -186,7 +186,7 @@ test('İmza tuvali desteklenmiyorsa imzasız seçenek seçilmeden başvuru gönd
   let post = 0;
   await page.route('**/macros/**', r => {
     if (r.request().method() === 'POST') post++;
-    return r.fulfill({ json: { ok: true, surum: 28, ihtidaPaketHazir: true, ref: 'IH-2099-9999' } });
+    return r.fulfill({ json: { ok: true, surum: 48, ihtidaPaketHazir: true, ref: 'IH-2099-9999' } });
   });
   await ac(page); await doldur(page);
   await page.locator('#i-imza-yok').uncheck();
@@ -197,4 +197,18 @@ test('İmza tuvali desteklenmiyorsa imzasız seçenek seçilmeden başvuru gönd
   await page.locator('#i-imza-yok').check();
   await form(page).locator('[type=submit]').click();
   await expect(page.locator('[data-basari]')).toBeVisible();
+});
+
+test('Eski «Ad Soyad» tek alanlı taslak formu bozmaz: iki alan boş kalır, bölme tahmin edilmez', async ({ page }) => {
+  const hatalar = [];
+  page.on('pageerror', e => hatalar.push(e.message));
+  await page.addInitScript(() => localStorage.setItem('ulucamii:ihtida:v2', JSON.stringify({ surum: 2, zaman: Date.now(), anahtar: 'test-eski-ad-2099', alanlar: { 'basvuran.adSoyad': 'Eski Taslak Örnek', 'basvuran.dogumTarihi': '1990-05-20', 'basvuran.dogumYeri': 'Namur' } })));
+  await ac(page);
+  await expect(page.locator('#i-ad')).toHaveValue('');
+  await expect(page.locator('#i-soyad')).toHaveValue('');
+  await expect(page.locator('#i-dogum')).toHaveValue('1990-05-20');
+  await expect(page.locator('#i-dogum-yeri')).toHaveValue('Namur');
+  await page.locator('#i-ad').fill('Yeni'); await page.locator('#i-soyad').fill('Taslak');
+  await expect.poll(() => page.evaluate(() => { const a = JSON.parse(localStorage.getItem('ulucamii:ihtida:v2') || '{}').alanlar || {}; return [a['basvuran.ad'], a['basvuran.soyad'], 'basvuran.adSoyad' in a]; })).toEqual(['Yeni', 'Taslak', false]);
+  expect(hatalar).toEqual([]);
 });

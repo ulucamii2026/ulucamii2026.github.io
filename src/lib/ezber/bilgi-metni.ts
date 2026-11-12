@@ -6,13 +6,14 @@
  * (import.meta.glob). Kurallar ve Kur'an maddelerinden farkı: docs/EGITIM-FAZ2-DINLEME.md «Bilgi maddeleri».
  *
  * Dil durumu: `tr` kaynağın kendisidir; `fr` resmî Fransızca baskıdan gelir (madde bazında `taslak: ["fr"]` varsa o madde
- * çalışma çevirisidir); `en`, `nl`, `de` her zaman Türkçe metinden çevrilmiş TASLAKTIR ve sayfada öyle yazılır, resmî gibi
- * sunulmaz (docs/DIL-NL-DE.md). Hoca onayı `onay` ile dil dil verilir; onaysız metin sayfada «hoca incelemesi bekleniyor» der.
+ * çalışma çevirisidir); `en`, `nl`, `de` Diyanet'in basılı kitabında bütün maddeleri için resmî karşılık bulunana kadar Türkçe
+ * metinden çevrilmiş TASLAKTIR ve sayfada öyle yazılır; bulununca `kaynaklar`a dil rolüyle künyelenir ve dil `taslak`tan çıkar
+ * (docs/ILIM-YOLU-CEVIRI-KAYNAKLARI.md, docs/DIL-NL-DE.md). Hoca onayı `onay` ile dil dil verilir; onaysız metin sayfada «hoca incelemesi bekleniyor» der.
  */
 import type { Dil } from '../../i18n/ui';
 
 export type BesMetin = Readonly<Record<Dil, string>>;
-export type KaynakRolu = 'metin' | 'fr' | 'ar' | 'dogrulama';
+export type KaynakRolu = 'metin' | 'fr' | 'en' | 'nl' | 'de' | 'ar' | 'dogrulama';
 
 export interface BilgiGrubu { readonly kimlik: string; readonly ad: BesMetin }
 export interface BilgiMaddesi {
@@ -119,8 +120,8 @@ export function gosterimGruplari(b: BilgiMetni, dil: Dil): GosterimGrubu[] {
 /** Sırala oyunu: sıra anlamlıdır ve karıştırılacak en az üç madde vardır (iki maddede oyun anlamsız kalır). */
 export const siralamaVar = (b: BilgiMetni): boolean => b.sirali && gosterimGruplari(b, 'tr').some((g) => g.maddeler.length >= 3);
 
-/** Kaynakları rol sırasıyla (metin, Fransızca, Arapça, doğrulama) döndürür. */
+/** Kaynakları rol sırasıyla (metin, Fransızca, İngilizce, Felemenkçe, Almanca, Arapça, doğrulama) döndürür. */
 export function kaynakSirasi(b: BilgiMetni): BilgiKaynagi[] {
-  const sira: KaynakRolu[] = ['metin', 'fr', 'ar', 'dogrulama'];
+  const sira: KaynakRolu[] = ['metin', 'fr', 'en', 'nl', 'de', 'ar', 'dogrulama'];
   return [...b.kaynaklar].sort((a, c) => sira.indexOf(a.rol) - sira.indexOf(c.rol));
 }

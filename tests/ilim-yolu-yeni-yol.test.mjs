@@ -1,7 +1,7 @@
 /**
  * İlim Yolu «Yeni Müslüman yolu» (11 Kasım 2026). Bağlayıcı: (1) ilerleme modeli (src/lib/ilim-yolu/yeni-yol-ilerleme.ts): hafta başına dört bit işareti,
  * 12 anahtar, geri alınmaz, VEYA birleşir, buluta yalnız `v, maddeler, guncelleme` gider, belge `ozel/yol12`; (2) veri eşlemesi: 12 hafta × 8 adım × 5 dil
- * paylaşılan icerik.json'dan, hepsi `onayli`, platform bağlantılarının hedefleri var, video yalnız tr/en; (3) yasak terimler ve telefon yok;
+ * paylaşılan icerik.json'dan, hepsi `onayli`, platform bağlantılarının hedefleri var, video tr/en'de kendi dilinde, fr/nl/de'de İngilizce yedek ve notlu; (3) yasak terimler ve telefon yok;
  * (4) CSP yalnız youtube-nocookie.com çerçevesini ekler; (5) kurallarda `calisma` adları değişmedi, yol12 `ozel/` altında; (6) derlenmiş çıktı (varsa).
  */
 import test from 'node:test';
@@ -298,13 +298,23 @@ test('veri: 12 hafta, 8 adım, 5 dil; hepsi onayli; sayfa kimlikleri 20; aynı k
   assert.equal(v.haftaBul('h13'), undefined);
 });
 
-test('video: yalnız tr/en dilinde, 11 karakterli kimlik; diğer dillerde yok', () => {
+test('video: tr ve en kendi dilinde; fr, nl, de İngilizce kimliği alır (imamın kararı, 12 Kasım 2026); 11 karakterli kimlik; videosu olmayan hafta hiçbir dilde video göstermez', () => {
   for (const h of v.HAFTALAR) {
-    for (const d of ['fr', 'nl', 'de']) assert.equal(v.videoKimligi(h, d), undefined, `${h.id}.${d}`);
-    for (const d of ['tr', 'en']) { const id = v.videoKimligi(h, d); if (id !== undefined) assert.match(id, /^[\w-]{11}$/); }
+    for (const d of DIL) {
+      const id = v.videoKimligi(h, d);
+      if (h.video === undefined) { assert.equal(id, undefined, `${h.id}.${d}: videosuz hafta`); continue; }
+      assert.equal(id, h.video[d === 'tr' ? 'tr' : 'en'], `${h.id}.${d}`);
+      assert.match(id, /^[\w-]{11}$/);
+    }
+    for (const d of ['fr', 'nl', 'de']) assert.equal(v.videoKimligi(h, d), v.videoKimligi(h, 'en'), `${h.id}.${d} İngilizce yedek`);
   }
+  assert.equal(v.videoKimligi(v.haftaBul('h12'), 'tr'), undefined);
+  for (const d of DIL) assert.equal(v.videoKimligi(v.haftaBul('h12'), d), undefined, `h12.${d}`);
   assert.ok(v.HAFTALAR.some((h) => v.videoKimligi(h, 'tr')));
   assert.ok(v.HAFTALAR.some((h) => v.videoKimligi(h, 'en')));
+  // Not yalnız yedek dillerde: tr/en notsuz, fr/nl/de görünür notlu ve İngilizce başlıklı.
+  assert.deepEqual(DIL.filter((d) => v.videoIngilizceMi(d)), ['fr', 'nl', 'de']);
+  for (const h of v.HAFTALAR) if (h.video) assert.ok(v.videoIngilizceBasligi(h.video.en)?.trim(), `${h.id}: İngilizce video başlığı`);
   assert.equal(v.guvenliBaglanti('http://x.test'), false);
   assert.equal(v.guvenliBaglanti('https://x.test'), true);
 });
@@ -363,7 +373,7 @@ test('hoca, haftalık e-posta ve raporlar bu belgeye uzanmaz', () => {
   for (const d of hocaVeVeli) assert.doesNotMatch(readFileSync(d, 'utf8'), /yol12|yeni-yol|yeniyol/i, d);
 });
 
-test('derlenmiş çıktı (varsa): 5 dil × (dizin + 12 hafta + 8 adım) var, canonical + 6 hreflang (5 dil + x-default), telefon ve yasak terim yok, videoda yalnız tr/en, YouTube iframe\'i yok', { skip: !existsSync('egitim/dist/tr/yollar/yeni-musluman/index.html') }, () => {
+test('derlenmiş çıktı (varsa): 5 dil × (dizin + 12 hafta + 8 adım) var, canonical + 6 hreflang (5 dil + x-default), telefon ve yasak terim yok, videoda tr/en kendi dilinde, fr/nl/de İngilizce notlu, YouTube iframe\'i yok', { skip: !existsSync('egitim/dist/tr/yollar/yeni-musluman/index.html') }, () => {
   for (const d of DIL) {
     const ana = `egitim/dist/${d}/yollar/yeni-musluman/`;
     for (const s of ['', ...v.SAYFA_KIMLIKLERI.map((k) => `${k}/`)]) {
@@ -382,6 +392,16 @@ test('derlenmiş çıktı (varsa): 5 dil × (dizin + 12 hafta + 8 adım) var, ca
       assert.doesNotMatch(html, /youtube-nocookie\.com\/embed/i, 'gömme adresi sayfada yok');
     }
     const h01 = readFileSync(`${ana}h01/index.html`, 'utf8');
-    assert.equal(/data-yy-video=/.test(h01), d === 'tr' || d === 'en', `${d} video düğmesi`);
+    assert.match(h01, /data-yy-video="[\w-]{11}"/, `${d} video düğmesi`);
+    // fr, nl, de: İngilizce video kimliği + görünür not + lang="en" başlık; tr ve en notsuz.
+    const yedek = ['fr', 'nl', 'de'].includes(d);
+    assert.equal(h01.includes('data-yy-video-not'), yedek, `${d}: İngilizce notu`);
+    assert.equal(/data-yy-video-dil="en"/.test(h01), yedek, `${d}: yedek video işareti`);
+    assert.equal(/<span class="yy-video-ad"[^>]*lang="en"/.test(h01) || /<span[^>]*lang="en"[^>]*class="yy-video-ad"/.test(h01), yedek, `${d}: lang="en" video başlığı`);
+    if (yedek) assert.ok(h01.includes(`data-yy-video="${v.haftaBul('h01').video.en}"`), `${d}: İngilizce kimlik`);
+    const nots = { fr: 'Vidéo en anglais', nl: 'Video in het Engels', de: 'Video auf Englisch' };
+    if (yedek) assert.ok(h01.includes(nots[d]), `${d}: not metni`);
+    // h12'de video yok (hiçbir dilde).
+    assert.doesNotMatch(readFileSync(`${ana}h12/index.html`, 'utf8'), /data-yy-video=/, `${d} h12`);
   }
 });

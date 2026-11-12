@@ -19,6 +19,18 @@
      "metin": "Allah’ın selamı ve rahmeti üzerinize olsun"
     }
    ]
+  },
+  "en": {
+   "kaynak": "Islam Through Hadiths 2, Diyanet İşleri Başkanlığı (Presidency of Religious Affairs), İstanbul, 2020, s. 187",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Allah’s peace and mercy be upon you!"
+    }
+   ]
   }
  },
  "kaynak": {
@@ -26,7 +38,7 @@
   "url": "https://diniyayinlar.diyanet.gov.tr/",
   "alindi": "2026-10-24"
  },
- "ozet": "0d3252aaaee14b44b884cc2c52a7c3ae196c7d1ca946b2b1e5235d094cd309ad",
+ "ozet": "61aa265a9d7ea74f4e9b2c3b32edce04bffe9c47275210870f1c78b0ae9f76bf",
  "zor": [],
  "onay": null
 }

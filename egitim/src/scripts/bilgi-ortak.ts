@@ -6,7 +6,8 @@
 import { oku as ezberOku, type CihazDurumu, type Depo } from '@ortak/lib/ezber/cihaz';
 import { ayniMi, isaretle, oku, yaz, type BilgiIlerleme } from '@ortak/lib/ilim-yolu/bilgi-ilerleme';
 import { bilgiAnahtari, bilgiEsitle } from '../lib/hesap/bilgi-esitle';
-import { etkinAnahtar, oturumVar, tarayiciDeposu } from '../lib/hesap/isaret';
+import { SON_ANAHTAR, sonKullaniciAnahtari, sonOku, sonYaz, type SonKayit } from '@ortak/lib/ilim-yolu/ana-yol';
+import { etkinAnahtar, oturumOzeti, oturumVar, tarayiciDeposu } from '../lib/hesap/isaret';
 import { oturumDurumu } from './oturum-ortak';
 
 export const depoAl = (): Depo | null => tarayiciDeposu();
@@ -21,8 +22,20 @@ export const bilgiOku = (): BilgiIlerleme => {
 export function bilgiIsaretle(id: string, bit: number): { il: BilgiIlerleme; yazildi: boolean } {
   const d = depoAl();
   const il = isaretle(bilgiOku(), id, bit);
-  return { il, yazildi: yaz(d, il, bilgiAnahtari(d)) };
+  const yazildi = yaz(d, il, bilgiAnahtari(d));
+  if (yazildi) sonYaz(d, id, Date.now(), sonAnahtari(d));
+  return { il, yazildi };
 }
+
+/** «Son çalışılan kart» işaretinin anahtarı (ana sayfa «Kaldığınız yer»; yalnız bu cihaz, buluta gitmez). */
+const sonAnahtari = (d: Depo | null): string => {
+  const ozet = oturumOzeti(d);
+  return ozet ? sonKullaniciAnahtari(ozet) : SON_ANAHTAR;
+};
+export const bilgiSonOku = (): SonKayit | null => {
+  const d = depoAl();
+  return sonOku(d, sonAnahtari(d));
+};
 
 /** Ezber Kilimi'ndeki cihaz kaydı (bilgi maddelerinin «çalışıldı» durumu buradan okunur). */
 export const ezberOkuEtkin = (): CihazDurumu => {

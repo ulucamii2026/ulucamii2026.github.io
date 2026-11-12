@@ -9,7 +9,7 @@
  *  DOM sözleşmesi (Astro bileşenleri bunu üretir):
  *   <form data-form="kayit|ihtida" data-dil data-uc data-sir data-taslak novalidate>
  *     [data-alan]  → kapsayıcı; içinde name'li alan, .yardim ve .hata (aria-live)
- *     data-tur="eposta|telefon|tarih|metin|sayi"  data-esle="<başka alan adı>"  data-yas-min/max  data-asgari/azami (sayi)
+ *     data-tur="eposta|telefon|tarih|metin|sayi"  data-esle="<başka alan adı>[ <bir sonraki alan adı>…]"  data-yas-min/max  data-asgari/azami (sayi)
  *     [data-kosul="<alan>=<değer>"] → koşullu blok (gizliyken içindeki alanlar disabled)
  *     [data-kaydir] + [data-kaydir-kilit] → sonuna kadar kaydırılmadan işaretlenemeyen kutu
  *     [data-ozet] içindeki [data-ozet-alan="anahtar"] [data-ozet-deger]
@@ -194,7 +194,8 @@ export function alanDogrula(form: HTMLFormElement, alan: Alan, veriler: Veriler,
     if (yas < min || yas > max) return doldur(m.hata.yas, { min, max });
   }
   if (alan.dataset.esle) {
-    const hedef = String(deger(veriler, alan.dataset.esle) ?? '');
+    // data-esle birden çok alan adı alabilir (boşlukla ayrılır); değerler sırayla birleştirilir (ihtida: ad + soyad).
+    const hedef = alan.dataset.esle.split(/\s+/).map(ad => String(deger(veriler, ad) ?? '')).join(' ');
     if (adNormalle(hedef) !== adNormalle(v)) return m.hata.imzaEslesmiyor;
   }
   return null;

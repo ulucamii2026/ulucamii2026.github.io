@@ -11,6 +11,8 @@ import { bugunTekrar, haftaGunu, yerelGun } from '@ortak/lib/ezber/tekrar';
 import { kalipDoldur } from '../i18n/sablon';
 import { etkinAnahtar, tarayiciDeposu } from '../lib/hesap/isaret';
 import { profilGetir } from '../lib/hesap/profil';
+import { bilgiBolumu, type BilgiVeri } from './ana-bilgi';
+import { bilgiOku, bilgiSonOku, bulutlaEsitle as bilgiEsitle } from './bilgi-ortak';
 import { acilisEsitlemesi, adiGoster, oturumDurumu } from './oturum-ortak';
 
 export interface AnaVeri {
@@ -22,6 +24,7 @@ export interface AnaVeri {
   tm: { hafta1: string; haftaN: string };
   km: { doku: [string, string, string, string]; dokuMadde: [string, string, string, string]; ozetBasladi: string; ozetTakvim: string; ozetGun: string; sayfasiz: string };
   baslik: string;
+  bilgi: BilgiVeri;
 }
 
 // Eski Ezber Kilimi girişi bu adresteydi (#seritler, #m-…, #s-…): çapayla gelen eski bağlantılar yeni adrese gider. Yeni sayfanın kendi çapaları hariç.
@@ -105,6 +108,13 @@ async function baslat(kok: HTMLElement, veri: AnaVeri) {
     // Yollar
     sor(kok, '[data-yol-durum]').textContent = ozet.basladi ? kalipDoldur(il.yolDurumEzber, ozet.basladi) : il.yolDurumYok;
 
+    // Bilgi yolları (cihazdaki kart ilerlemesi): Bugün, Kaldığınız yer, Yolunuz (Ezber ya da kart yolu, hangisi daha yeni), yol kartları, rozet sayısı
+    try {
+      bilgiBolumu(kok, veri, veri.bilgi, bilgiOku(), bilgiSonOku(), d, son?.ms ?? 0, (ms) => tarihYaz(yerelGun(new Date(ms))));
+    } catch {
+      /* bilgi bölümü çizilemedi: Ezber bölümleri çalışmaya devam eder */
+    }
+
     // Kilim (kendi kipi; hocanın kaydı varsa ana-hoca.ts bunu birleşik kiple değiştirir)
     kilimiDoldur(kok, veri, maddeler, ozet.basladi, kalipDoldurAd(veri.km.ozetBasladi, { n: ozet.basladi, m: ozet.toplam }));
   };
@@ -120,6 +130,8 @@ async function baslat(kok: HTMLElement, veri: AnaVeri) {
     if (p?.ad) { ad = p.ad; adiGoster(p.ad); ciz(); }
   }).catch(() => undefined);
   void acilisEsitlemesi().then((s) => { if (s?.durum === 'tamam') ciz(); });
+  // Kart ilerlemesi de hesapla eşitlenir (tek ek okuma: calisma/bilgi; scripts/bilgi-ortak.ts); bulutta yeni bir şey çıkarsa yeniden çizilir.
+  void bilgiEsitle(ciz).catch(() => undefined);
 
   if (durum.k.ref) {
     try {

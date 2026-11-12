@@ -17,11 +17,15 @@ import { ANA_SITE } from '../lib/kimlik';
 import type { Dil } from '@ortak/i18n/ui';
 import plan from '@ortak/data/yillik-plan-2026-2027.json';
 import materyal from '@ortak/data/ders-materyalleri.json';
+import GunNotu from '../components/GunNotu.astro';
+import DilEtiketi from '../components/DilEtiketi.astro';
+import { kursCevirici } from '../lib/kurs-ceviri-yukle';
 const materyalGunleri = new Set((materyal.gunler as { tarih: string }[]).map((g) => g.tarih));
 interface Props { dil: Dil }
 /* Açık tür: bu dosyada derleyici Props bağını kuramıyor (dil sessizce any oluyordu); METIN[dil] tip güvenliği buna bağlı. */
 const { dil } = Astro.props as Props;
 const t = ceviri(dil);
+const cv = kursCevirici(dil);
 
 const PDF = ANA_SITE + '/belgeler/kuran-kursu/Ulu-Camii-Kuran-Kursu-Mufredat-2026-2027.pdf';
 
@@ -93,7 +97,7 @@ const METIN = {
   ayEt: 'Month', alanEt: 'Subject', tumu: 'All',
   dersGunu: (n: number) => `${n} teaching days`, dersAdet: (n: number) => `${n} lessons`,
   hafta: (n: number) => `Week ${n}`, derssiz: 'No lessons',
-  bloklar: { kazanim: 'Kazanım', ozet: 'Konu özeti', etkinlik: 'Etkinlik önerisi', ezber: 'Ezber' },
+  bloklar: { kazanim: 'Learning outcome', ozet: 'Topic summary', etkinlik: 'Suggested activity', ezber: 'Memorisation' },
   materyal: 'Lesson materials: plan (PDF) and audio decks →',
   kaynakEt: 'Kaynak', mufredat: 'Curriculum page', pdf: 'Download PDF (A4)',
   kitapNot: 'Textbooks are obtained by the parents', kitapBag: 'how to obtain', kitapCapa: '#manuels',
@@ -109,7 +113,7 @@ const METIN = {
   ayEt: 'Mois', alanEt: 'Matière', tumu: 'Toutes',
   dersGunu: (n: number) => `${n} jours de cours`, dersAdet: (n: number) => `${n} leçons`,
   hafta: (n: number) => `Semaine ${n}`, derssiz: 'Pas de cours',
-  bloklar: { kazanim: 'Kazanım', ozet: 'Konu özeti', etkinlik: 'Etkinlik önerisi', ezber: 'Ezber' },
+  bloklar: { kazanim: 'Acquis', ozet: 'Résumé du sujet', etkinlik: 'Activité proposée', ezber: 'Mémorisation' },
   materyal: 'Supports de cours : plan (PDF) et présentations sonores →',
   kaynakEt: 'Kaynak', mufredat: 'Page du programme', pdf: 'Télécharger le PDF (A4)',
   kitapNot: 'Les manuels sont à la charge des parents', kitapBag: 'où se les procurer', kitapCapa: '#manuels',
@@ -125,7 +129,7 @@ const METIN = {
   ayEt: 'Maand', alanEt: 'Vak', tumu: 'Alle',
   dersGunu: (n: number) => `${n} lesdagen`, dersAdet: (n: number) => `${n} lessen`,
   hafta: (n: number) => `Week ${n}`, derssiz: 'Geen les',
-  bloklar: { kazanim: 'Kazanım', ozet: 'Konu özeti', etkinlik: 'Etkinlik önerisi', ezber: 'Ezber' },
+  bloklar: { kazanim: 'Leerdoel', ozet: 'Samenvatting van het onderwerp', etkinlik: 'Voorgestelde activiteit', ezber: 'Memorisatie' },
   materyal: 'Lesmateriaal: plan (PDF) en presentaties met geluid →',
   kaynakEt: 'Kaynak', mufredat: 'Programmapagina', pdf: 'PDF downloaden (A4)',
   kitapNot: 'De handboeken worden door de ouders aangeschaft', kitapBag: 'waar verkrijgbaar', kitapCapa: '#manuels',
@@ -141,7 +145,7 @@ const METIN = {
   ayEt: 'Monat', alanEt: 'Fach', tumu: 'Alle',
   dersGunu: (n: number) => `${n} Unterrichtstage`, dersAdet: (n: number) => `${n} Lektionen`,
   hafta: (n: number) => `Woche ${n}`, derssiz: 'Kein Unterricht',
-  bloklar: { kazanim: 'Kazanım', ozet: 'Konu özeti', etkinlik: 'Etkinlik önerisi', ezber: 'Ezber' },
+  bloklar: { kazanim: 'Lernziel', ozet: 'Zusammenfassung des Themas', etkinlik: 'Aktivitätsvorschlag', ezber: 'Memorierung' },
   materyal: 'Unterrichtsmaterial: Plan (PDF) und Präsentationen mit Ton →',
   kaynakEt: 'Kaynak', mufredat: 'Lehrplanseite', pdf: 'PDF herunterladen (A4)',
   kitapNot: 'Die Lehrbücher werden von den Eltern besorgt', kitapBag: 'wo erhältlich', kitapCapa: '#manuels',
@@ -176,7 +180,7 @@ const BLOK: [keyof typeof m.bloklar, string][] = [
               {bicim(sonraki!.tarih, { day: 'numeric', month: 'long', year: 'numeric', weekday: 'long' })}
             </time>
           </h2>
-          <p class="mt-1 etiket">{m.hafta(sonraki!.hafta)}{sonraki!.not && <> · <span lang="tr">{sonraki!.not}</span></>}</p>
+          <p class="mt-1 etiket">{m.hafta(sonraki!.hafta)}{sonraki!.not && <> · <GunNotu dil={dil} not={sonraki!.not} /></>}</p>
           <ol class="simdi-liste" lang="tr">
             {sonraki!.dersler.map((d) => (
               <li>
@@ -245,13 +249,15 @@ const BLOK: [keyof typeof m.bloklar, string][] = [
                 <p class="gun-bilgi">
                   <span class="etiket">{m.hafta(g.hafta)}</span>
                   {g.rozetler.map((r) => (
-                    <span class:list={['rozet', 'r-' + r.tur]} lang="tr">{r.metin}</span>
+                    <span class:list={['rozet', 'r-' + r.tur]} lang={dil === 'tr' || dil === 'fr' ? 'tr' : cv.rozet(r.metin).d}>{dil === 'tr' || dil === 'fr' ? r.metin : cv.rozet(r.metin).m}</span><DilEtiketi sayfa={dil} kaynak={cv.rozet(r.metin).d} />
                   ))}
                 </p>
               </div>
 
               {g.tatil
-                ? <p class="tatil-notu" lang="tr"><b>{m.derssiz}.</b> {g.not}</p>
+                ? (dil === 'tr'
+                  ? <p class="tatil-notu" lang="tr"><b>{m.derssiz}.</b> {g.not}</p>
+                  : <p class="tatil-notu"><b lang={dil}>{m.derssiz}.</b> <GunNotu dil={dil} not={g.not ?? ''} /></p>)
                 : g.dersler.map((d) => (
                     /* Dersin tamamı (başlık satırı da, gövde de) öğretim dili Türkçe:
                        lang tek yerde durur, her satıra tekrar yazılmaz. */
@@ -268,7 +274,7 @@ const BLOK: [keyof typeof m.bloklar, string][] = [
                       <div class="ic">
                         {BLOK.map(([anahtar]) => d[anahtar].length > 0 && (
                           <>
-                            <h3>{m.bloklar[anahtar]}</h3>
+                            <h3 lang={dil === 'tr' ? undefined : dil}>{m.bloklar[anahtar]}</h3>
                             {d[anahtar].length === 1
                               ? <p>{d[anahtar][0]}</p>
                               : <ul>{d[anahtar].map((s) => <li>{s}</li>)}</ul>}

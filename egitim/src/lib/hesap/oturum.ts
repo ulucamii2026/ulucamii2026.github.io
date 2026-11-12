@@ -13,6 +13,7 @@
 import type { User } from 'firebase/auth';
 import { kullaniciAnahtari, type Depo } from '@ortak/lib/ezber/cihaz';
 import type { IlimFirebase } from '../firebase-istemci';
+import { sonKullaniciAnahtari } from '@ortak/lib/ilim-yolu/ana-yol';
 import { kullaniciAnahtari as bilgiAnahtari } from '@ortak/lib/ilim-yolu/bilgi-ilerleme';
 import { kullaniciAnahtari as ibadetAnahtari } from '@ortak/lib/ilim-yolu/ibadet-ilerleme';
 import { kullaniciAnahtari as okumaAnahtari } from '@ortak/lib/okuma/ilerleme';
@@ -189,7 +190,7 @@ export async function cikisYap(
       }
     }
     const ozet = await uidOzeti(u.uid);
-    for (const anahtar of [kullaniciAnahtari, bilgiAnahtari, okumaAnahtari, ibadetAnahtari]) {
+    for (const anahtar of [kullaniciAnahtari, bilgiAnahtari, sonKullaniciAnahtari, okumaAnahtari, ibadetAnahtari]) {
       try { depo?.removeItem?.(anahtar(ozet)); } catch { /* depo kapalı */ }
     }
     yolCihazTemizle(depo, ozet);

@@ -2,13 +2,14 @@ import { build } from 'esbuild';
 import { readFileSync, existsSync } from 'node:fs';
 import { expect } from '@playwright/test';
 
+const ORIGIN = 'http://127.0.0.1:' + (process.env.HOCA_PORT || 4402); // yerel paralel koşular için
 const kod={};
 const auth = `
 const user = { uid:'TEST-HOCA', email: 'veli@example.test', getIdToken: async () => 'test-id-token' }; // getIdToken: çeviri ucu (14 Eyl 2026)
 let callback;
-export const getAuth = () => ({ currentUser: user });
+export const getAuth = () => ({ currentUser: window.__oturumYok ? null : user });
 export const isSignInWithEmailLink = () => false;
-export const onAuthStateChanged = (_a, cb) => {callback=cb;cb(user);};
+export const onAuthStateChanged = (_a, cb) => {callback=cb;cb(window.__oturumYok ? null : user);};
 export const signOut = async () => {callback?.(null);};
 `;
 const firestore = `
@@ -219,19 +220,19 @@ async function bundle(hoca=false) {
   return kod[mode];
 }
 
-export async function mektepAc(page, context, { hoca=false, cloud={}, cloudError=false, dil = 'tr', ogrenci = true, records = {}, tarih = '2026-09-13T10:00:00Z', students = [{ref:'TEST-1',ad:'Örnek',soyad:'Talebe'}] } = {}) {
-  await context.route('**/*', r => new URL(r.request().url()).origin === 'http://127.0.0.1:4402' ? r.continue() : r.abort());
+export async function mektepAc(page, context, { hoca=false, cloud={}, cloudError=false, dil = 'tr', ogrenci = true, oturumYok = false, records = {}, tarih = '2026-09-13T10:00:00Z', students = [{ref:'TEST-1',ad:'Örnek',soyad:'Talebe'}] } = {}) {
+  await context.route('**/*', r => new URL(r.request().url()).origin === ORIGIN ? r.continue() : r.abort());
   await context.routeWebSocket(/.*/, s => s.close());
   const yol = hoca?'hoca':{ tr: 'tr/veli', fr: 'fr/veli', en: 'en/veli' }[dil]; // Dilim 4: sayfalar egitim'de (egitim/dist); ulucamii.be'deki eski adresler yönlendirme sayfasıdır
   // Derlenmiş gerçek CSS ve iskelet, sahte aile/öğrenci, dış ağ yok.
   const html = readFileSync(`egitim/dist/${yol}/index.html`, 'utf8').replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, '');
-  await context.route('http://127.0.0.1:4402/mektep-test/', r => r.fulfill({ contentType: 'text/html', body: html }));
+  await context.route(ORIGIN + '/mektep-test/', r => r.fulfill({ contentType: 'text/html', body: html }));
   await page.clock.install({ time: new Date(tarih) });
   await page.goto('/mektep-test/');
   const ids = [...readFileSync('src/lib/hadis-verisi.ts', 'utf8').matchAll(/id: '([^']+)'/g)].map(m => m[1]);
   const hadisSesleri = Object.fromEntries(['ar', 'tr', 'fr', 'en'].map(d => [d, ids.filter(id => existsSync(`public/media/ses/hadisler/${d}/${id}.mp3`))]));
-  await page.evaluate(({ dil, records, hadisSesleri, students,cloud,cloudError,hoca }) => {
-    window.__cloud=cloud;window.__cloudError=cloudError;window.__writes=[];
+  await page.evaluate(({ dil, records, hadisSesleri, students,cloud,cloudError,hoca,ceviriOrigin,oturumYok }) => {
+    window.__cloud=cloud;window.__cloudError=cloudError;window.__writes=[];window.__oturumYok=oturumYok;
     window.__students = students;
     window.__lang = dil;
     window.__records = records;
@@ -260,7 +261,7 @@ export async function mektepAc(page, context, { hoca=false, cloud={}, cloudError
     if (window.speechSynthesis) window.speechSynthesis.speak = u => window.__tts.push(u.text);
     const data = document.createElement('script');
     data.id = hoca?'hoca-veri':'veli-veri'; data.type = 'application/json';
-    data.textContent = JSON.stringify({ hadisSesleri, veliYollari:{}, materyalYolu:'/', donem: '2026-2027', ceviriUcu: 'http://127.0.0.1:4402/ceviri-test', dilYollari: {}, materyalGunleri: [], gunler: [
+    data.textContent = JSON.stringify({ hadisSesleri, veliYollari:{}, materyalYolu:'/', donem: '2026-2027', ceviriUcu: ceviriOrigin + '/ceviri-test', dilYollari: {}, materyalGunleri: [], gunler: [
       { tarih: '2026-09-12', hafta: 2, dersler: [{ no: 1, kod: 'kuran', alan: 'Kur’an', konu: 'Cumartesi konusu', ezber: ['Cumartesi tekrarı'] }] },
       { tarih: '2026-09-13', hafta: 2, dersler: [{ no: 1, kod: 'kuran', alan: 'Kur’an', konu: 'Pazar konusu', ezber: ['Pazar tekrarı'] }] },
       /* Gerçek ders günü üç derstir; tek dersli günler yukarıdaki eski sınamaları bozmasın diye
@@ -272,10 +273,10 @@ export async function mektepAc(page, context, { hoca=false, cloud={}, cloudError
       ] },
     ] });
     document.body.appendChild(data);
-  }, { dil, records, hadisSesleri, students,cloud,cloudError,hoca });
+  }, { dil, records, hadisSesleri, students,cloud,cloudError,hoca,ceviriOrigin: ORIGIN,oturumYok });
   await page.addScriptTag({ content: await bundle(hoca) });
   await page.evaluate(hoca => hoca?window.MektepTest.hocaEkrani():window.MektepTest.veliPortali(),hoca);
-  if(hoca){await expect(page.locator('[data-sekme=odev]')).toBeVisible();return;}
+  if(hoca){if(oturumYok){await expect(page.locator('[data-form=giris]')).toBeVisible();return;}await expect(page.locator('[data-sekme=odev]')).toBeVisible();return;}
   await expect(page.locator('[data-eylem="ogrenciModu"]')).toBeVisible();
   if (ogrenci) await page.locator('[data-eylem="ogrenciModu"]').click();
 }

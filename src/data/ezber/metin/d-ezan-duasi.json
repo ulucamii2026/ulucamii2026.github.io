@@ -52,6 +52,42 @@
      "metin": "(Sen vaadine muhalefet etmezsin)"
     }
    ]
+  },
+  "fr": {
+   "kaynak": "Guide pratique des adorations, T.C. Diyanet İşleri Başkanlığı, Ankara, 2013, s. 77 (Diyanet yayını no 942; traduction Vildan M. Sarıkan)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      4
+     ],
+     "metin": "“Ô Seigneur ! Toi qui es le Maître de ce parfait appel et de la prière qui va être là accomplie. Permets à Muhammed d’intercéder (le jour du Jugement), accorde-lui le rang que Tu n’accorderas qu’à un seul de Tes serviteurs au Paradis, et ressuscite-le à la noble place que Tu lui as promise.”"
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "Islam Through Hadiths 2, Diyanet İşleri Başkanlığı (Presidency of Religious Affairs), İstanbul, 2020, s. 364",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      4
+     ],
+     "metin": "O Allah! Lord of this perfect call and of the ritual prayer, which is going to be performed, give Muhammad all kinds of means and virtue that bring him closer to You. And make him reach the Praised Position (maqām maḥmūd) that You promised him"
+    }
+   ]
+  },
+  "nl": {
+   "kaynak": "Basiskennis over Islam, Presidium voor Religieuze Zaken (Diyanet İşleri Başkanlığı), Den Haag / Ankara, 2017, s. 122 (Publicatie nr 1346; vertaling Drs. Ahmed Bulut)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      4
+     ],
+     "metin": "“Oh Allah, Heer van deze perfecte oproep en het gebed dat wordt verricht, schenk Mohammed zijn recht van voorspraak, aanzien en de hoogste rang (in het Paradijs) en breng hem op het eerbiedwaardige niveau dat U hem heeft beloofd.”"
+    }
+   ]
   }
  },
  "kaynak": {
@@ -66,7 +102,7 @@
    "neden": "Portalda «mahmûden» kelimesine fazladan نِ eklenmiş (basım hatası; ikinci kaynaklar Tecrid-i Sarih ve İslam İlmihali مَحْمُودًا الَّذِى yazar); ayrıca ذ۪ى içindeki U+06EA işareti kesreye (U+0650) çevrilmiştir."
   }
  ],
- "ozet": "fa1234f3fdf225fa3a3aca71a4712124510018afe88f72567df24e8a2f80be71",
+ "ozet": "4bd65be693165ed4ae78ee1f40e10f81aa38182b6811e7f2016e9056fd4e2969",
  "okunus": {
   "tr": [
    {

@@ -18,8 +18,8 @@ import { ek10SurumuCoz } from '../public/admin/ek10.js';
 import { adBicimleri } from '../public/admin/kalem.js';
 import { pdfMetni } from './yardim/pdf-metin.mjs';
 
-const source = ['kimlik-sabitler.gs', 'veli-eposta-sablon.gs', 'ulucamii-Kod-v48.gs'].map(ad => readFileSync(new URL('../scripts/apps-script/' + ad, import.meta.url), 'utf8')).join('\n');
-function backend() { const ctx = vm.createContext({ console, PropertiesService: { getScriptProperties: () => ({ getProperty: () => null }) } }); vm.runInContext(source, ctx); ctx.IhtidaPdf = { camiCoz, imzaVektorCoz }; return ctx; }
+const source = ['kimlik-sabitler.gs', 'veli-eposta-sablon.gs', 'ulucamii-Kod-v49.gs'].map(ad => readFileSync(new URL('../scripts/apps-script/' + ad, import.meta.url), 'utf8')).join('\n');
+function backend() { const ctx = vm.createContext({ console, PropertiesService: { getScriptProperties: () => ({ getProperty: () => null }) }, Utilities: { formatDate: (d, tz, f) => f === 'yyyy-MM-dd' ? new Intl.DateTimeFormat('en-CA', { timeZone: tz, year: 'numeric', month: '2-digit', day: '2-digit' }).format(d) : '' } }); vm.runInContext(source, ctx); ctx.IhtidaPdf = { camiCoz, imzaVektorCoz }; return ctx; }
 const govde = () => ({
   sir: 'ULUCAMII-IHTIDA-2026', dil: 'tr', gonderimAnahtari: 'test-islem-2099-9999',
   basvuran: { adSoyad: 'Deniz Örnek', cinsiyet: 'kadin', dogumTarihi: '1990-05-20', dogumYeri: 'Namur', uyruk: 'Belçika', anneAdi: 'Anne', babaAdi: 'Baba', medeniHali: 'bekar', ogrenimDurumu: 'Lisans', meslek: 'Öğretmen', oncekiDin: 'Belirtilen inanç', eposta: 'deniz@example.test', telefon: '+32470000000', adres: 'Rue du Test 12, 6900, Marche-en-Famenne, Belçika', adresSokak: 'Rue du Test 12', postaKodu: '6900', sehir: 'Marche-en-Famenne', ulke: 'Belçika', torenDili: 'tr' },
@@ -177,7 +177,7 @@ test('Defter ve bildirim teslim seçimini kaybetmez; eski sütun sırası deği�
   c.ihtidaPaketKuyrugaAl = () => {}; c.ihtidaPaketIsle = async () => {};
   c.v1SayfaBulTablo = () => null; c.referansMaxBul = () => 9999;
   c.LockService = { getScriptLock: () => ({ waitLock() {}, releaseLock() {} }) };
-  c.Utilities = { formatDate: () => '08.09.2026 12:00' };
+  c.Utilities = { formatDate: (_d, _tz, f) => f === 'yyyy-MM-dd' ? '2026-09-08' : '08.09.2026 12:00' };
   c.htmlPdfUret = () => ({}); c.ihtidaGorselleriKaydet = () => [];
   c.satirEkle = (_, s) => { satir = s; }; c.SpreadsheetApp = { flush() {} };
   c.epostaGonder = m => mesajlar.push(m); c.ihtidaKopyaGonderV2 = () => {};
@@ -316,6 +316,15 @@ test('Tam paket Müşavirlik sırasıyla yedi sayfadır; kalem yazısı, vektör
   const dilekceMetni = (yol) => metin(yol, 3).replace(/[ 	]+/g, '');
   assert.ok(!dilekceMetni(onYol).includes('08/09/2026'), 'ön başvuruda tören tarihi uydurulmaz');
   assert.ok(dilekceMetni(imzaliYol).includes('08/09/2026'), 'son nüshada tören tarihi dilekçededir');
+  // Karar 2 Kasım 2026: dilekçedeki «Yer ve tarih» imza tarihidir (EK-10 ile aynı), ihtida tarihi değil; EK-9 ihtida tarihini korur.
+  // Fikstür: beyan 09/09/2026 ≠ ihtida 08/09/2026.
+  for (const [ad, yol] of [['son nüsha', imzaliYol], ['ön başvuru', onYol]]) {
+    const d = dilekceMetni(yol), e10 = metin(yol, 5).replace(/[ \t]+/g, '');
+    assert.ok(d.includes('Marche-en-Famenne,09/09/2026'), ad + ': yer-tarih satırı imza tarihi');
+    assert.ok(!d.includes('Marche-en-Famenne,08/09/2026'), ad + ': yer-tarih satırında ihtida tarihi olmaz');
+    assert.ok(e10.includes('09/09/2026'), ad + ': EK-10 aynı imza tarihini taşır');
+  }
+  assert.ok(metin(imzaliYol, 2).replace(/\s+/g, '').includes('08/09/2026'), 'EK-9 ihtida tarihini korur');
   // Ekranda imza atmayan başvuran (elle imza): ön başvuruda da hiçbir belgeye imza basılmaz.
   const onImzasiz = await ihtidaPaketiUret({ ...g, onBasvuru: true, veri: { ...g.veri, ihtidaTarihi: '' }, basvuranImza: '', basvuranImzaVektor: '', imzasiz: true, ek10Onayi: false, imzaAktarimIzni: false });
   const oi = await pdfLib.PDFDocument.load(onImzasiz);
@@ -360,7 +369,7 @@ test('Tam paket Müşavirlik sırasıyla yedi sayfadır; kalem yazısı, vektör
   const namur = metin(namurYol, 3).replace(/[ \t]+/g, '');
   assert.ok(namur.includes('NamurCamii'), 'dilekçede başvuru camisi');
   assert.ok(namur.includes('RueDenisGeorgesBayar13,5000Namur'), 'cami adresi «adres, posta kodu şehir»');
-  assert.ok(namur.includes('Namur,08/09/2026'), 'yer ve tarih törenin yeri ve günü');
+  assert.ok(namur.includes('Namur,09/09/2026') && !namur.includes('Namur,08/09/2026'), 'yer ve tarih: başvuru camisinin şehri ve imza tarihi (ihtida tarihi değil)');
   assert.ok(namur.includes('RueduTest12,6900,Marche-en-Famenne,Belçika'), 'eve teslimde dönüş adresi başvuranın adresi');
   // 21 Eki 2026: eve teslimde formun «adrese teslim» baskısı: dönüş bölümü «adres · Alıcı», «cami» değil.
   // Bölüm başlıkları metin katmanında büyük harf ve harf aralıklı gelir (boşluklar atıldı).

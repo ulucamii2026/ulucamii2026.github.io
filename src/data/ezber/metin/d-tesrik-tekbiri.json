@@ -41,6 +41,18 @@
      "metin": "Allah en büyüktür ve her türlü övgü Allah’ içindir"
     }
    ]
+  },
+  "fr": {
+   "kaynak": "Initiation au Coran — 1, T.C. Diyanet İşleri Başkanlığı (Présidence des Affaires Religieuses), Ankara, 2020, s. 50 (ISBN 978-625-7779-58-6; intitulé «Takbir» dans le livre)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      3
+     ],
+     "metin": "Allah est le plus Grand. Allah est le plus Grand. Il n'y a pas d'autre Dieu qu'Allah. Allah est le plus Grand. Allah est le plus Grand. Toutes les louanges sont à Allah."
+    }
+   ]
   }
  },
  "kaynak": {
@@ -48,7 +60,7 @@
   "url": "https://diniyayinlar.diyanet.gov.tr/",
   "alindi": "2026-10-24"
  },
- "ozet": "640e1399f18f69a3899a02d0104aeeb152781755e00973aadf858ff06d0ba0c7",
+ "ozet": "9fec47fff7cd778ba5b414b04e8fdf43fc3a8a13140e4b1a5d0977f053ce25e4",
  "okunus": {
   "tr": [
    {

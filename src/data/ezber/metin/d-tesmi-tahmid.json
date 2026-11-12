@@ -30,6 +30,25 @@
      "metin": "Rabbimiz, hamd senin içindir"
     }
    ]
+  },
+  "en": {
+   "kaynak": "Islam Through Hadiths 2, Diyanet İşleri Başkanlığı (Presidency of Religious Affairs), İstanbul, 2020, s. 183",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Allah hears the one who thanks Him"
+    },
+    {
+     "ayetler": [
+      2,
+      2
+     ],
+     "metin": "Our Lord, for You is the praise"
+    }
+   ]
   }
  },
  "kaynak": {
@@ -37,7 +56,7 @@
   "url": "https://diniyayinlar.diyanet.gov.tr/",
   "alindi": "2026-10-24"
  },
- "ozet": "332369d6fd4518ec8dd89c1e2901e012c7bd2ee79d43a78c8c8c793769eb896f",
+ "ozet": "d9aff7742f2993cb347f9a6f66af533604f20d9769202a5a947118f9cad957e7",
  "zor": [],
  "onay": null
 }

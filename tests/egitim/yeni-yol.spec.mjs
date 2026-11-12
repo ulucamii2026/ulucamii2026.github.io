@@ -4,7 +4,7 @@
  *  - dizin: 12 hafta + 8 adım, giriş uyarısı, saklama notu; beş dilde taşmasız, hreflang'lı; iki temada axe;
  *  - hafta akışı: soru yanlışta tekrar denenir, doğruda kaydedilir (ilk denemede hatasız bit), «Uygulamayı yaptım», «Haftayı tamamladım»; işaretler yenilemede kalır;
  *    cihaza YALNIZ hafta başına dört işaret yazılır (cevap metni, ad, zaman yok); klavyeyle yapılır;
- *  - video: yalnız tr/en'de; tıklamadan önce iframe ve YouTube isteği YOK; tıklayınca youtube-nocookie.com çerçevesi; CSP ihlali 0;
+ *  - video: tr/en kendi dilinde, fr/nl/de İngilizce yedek ve görünür notlu (h12'de hiçbir dilde video yok); tıklamadan önce iframe ve YouTube isteği YOK; tıklayınca youtube-nocookie.com çerçevesi; CSP ihlali 0;
  *  - son hafta tamamlanınca bitiş kutusu; adım sayfası haftaları ve durumu gösterir; platform bağlantısı doğru sayfaya gider.
  */
 import { test, expect } from '@playwright/test';
@@ -228,12 +228,38 @@ test.describe('video', () => {
     expect(await page.evaluate(() => window.__csp)).toEqual([]);
   });
 
-  test('en: kendi dilindeki video; fr, nl, de: video yok', async ({ page }) => {
-    await page.goto('/en/yollar/yeni-musluman/h01/');
-    await expect(page.locator('[data-yy-video]')).toHaveAttribute('data-yy-video', yol.haftalar[0].video.en);
+  test('en: kendi dilindeki video, notsuz; tr de notsuz', async ({ page }) => {
+    for (const dil of ['tr', 'en']) {
+      await page.goto(`/${dil}/yollar/yeni-musluman/h01/`);
+      await expect(page.locator('[data-yy-video]')).toHaveAttribute('data-yy-video', yol.haftalar[0].video[dil]);
+      await expect(page.locator('[data-yy-video-not]')).toHaveCount(0);
+      await expect(page.locator('.yy-video-ad')).toHaveCount(0);
+    }
+  });
+
+  test('fr, nl, de: İngilizce video, görünür not, lang="en" başlık; tıklamadan önce iframe ve dış istek yok; tıklayınca lang="en" çerçeve; h12\'de video yok', async ({ page }) => {
+    const notlar = { fr: 'Vidéo en anglais', nl: 'Video in het Engels', de: 'Video auf Englisch' };
     for (const dil of ['fr', 'nl', 'de']) {
       await page.goto(`/${dil}/yollar/yeni-musluman/h01/`);
+      const dugme = page.locator('[data-yy-video]');
+      await expect(dugme).toHaveAttribute('data-yy-video', yol.haftalar[0].video.en);
+      await expect(page.locator('[data-yy-video-not]')).toBeVisible();
+      await expect(page.locator('[data-yy-video-not]')).toHaveText(notlar[dil]);
+      await expect(page.locator('.yy-video-ad')).toHaveAttribute('lang', 'en');
+      await expect(page.locator('.yy-video-ad')).toBeVisible();
+      await expect(page.locator('iframe')).toHaveCount(0);
+      expect(istekler).toEqual([]);
+      await dugme.click();
+      const cerceve = page.locator('iframe');
+      await expect(cerceve).toHaveCount(1);
+      await expect(cerceve).toHaveAttribute('lang', 'en');
+      await expect(cerceve).toHaveAttribute('src', new RegExp(`^https://www\.youtube-nocookie\.com/embed/${yol.haftalar[0].video.en}\?`));
+      await expect(cerceve).toHaveAttribute('sandbox', 'allow-scripts allow-same-origin allow-presentation');
+      expect(await page.evaluate(() => window.__csp)).toEqual([]);
+      istekler.length = 0;
+      await page.goto(`/${dil}/yollar/yeni-musluman/h12/`);
       await expect(page.locator('[data-yy-video]')).toHaveCount(0);
+      await expect(page.locator('[data-yy-video-not]')).toHaveCount(0);
     }
   });
 

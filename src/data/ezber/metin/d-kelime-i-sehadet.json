@@ -49,6 +49,42 @@
      "metin": "et je témoigne que Muhammed est Son serviteur et Son Messager."
     }
    ]
+  },
+  "en": {
+   "kaynak": "Essentials of Islam — A Textbook for High School Students, Presidency of Religious Affairs (Diyanet İşleri Başkanlığı), Ankara, 2017, s. 41",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      2
+     ],
+     "metin": "“I bear witness that there is no god but Allah and that Prophet Muhammad is the slave and the Messenger of Allah.”"
+    }
+   ]
+  },
+  "nl": {
+   "kaynak": "Basiskennis over Islam, Presidium voor Religieuze Zaken (Diyanet İşleri Başkanlığı), Den Haag / Ankara, 2017, s. 28 (Publicatie nr 1346; vertaling Drs. Ahmed Bulut)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      2
+     ],
+     "metin": "“Ik getuig dat er geen god is dan Allah, en ik getuig dat Mohammed (vrede zij met hem) de dienaar en de boodschapper van Allah is.”"
+    }
+   ]
+  },
+  "de": {
+   "kaynak": "DİTİB (Diyanet İşleri Türk İslam Birliği), Köln, ditib.de, «Islam» > «Die Grundsäulen des Islam» (1. Das Glaubensbekenntnis; Webseite, abgerufen am 12.11.2026; https://www.ditib.de/default1.php?id=7&sid=23&lang=de)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      2
+     ],
+     "metin": "„Ich bezeuge, dass es keinen anderen Gott gibt außer ihm, und ich bezeuge, dass Muhammed sein Diener und Gesandter ist“"
+    }
+   ]
   }
  },
  "kaynak": {
@@ -56,7 +92,7 @@
   "url": "https://diniyayinlar.diyanet.gov.tr/",
   "alindi": "2026-10-24"
  },
- "ozet": "76356a3c3ae87d205e5a4b384561527d05c24499110cd6413badb4a3fd837d21",
+ "ozet": "85743080ed88e509cf6353cff119cd202cf711cb8738a353b1dc407872a0935f",
  "okunus": {
   "tr": [
    {

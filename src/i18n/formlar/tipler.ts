@@ -175,7 +175,7 @@ export interface IhtidaMetinler {
   kimlikNotu: string;              // 8 Eyl 2026: formda hangi belgelerin istendiğini ve nerede saklanacağını anlatır
   bolum: { kisi: string; durum: string; iletisim: string; ihtida: string; belgeler: string; riza: string; ozet: string };
   kisi: {
-    adSoyad: string; adSoyadYardim: string; cinsiyet: string; kadin: string; erkek: string;
+    ad: string; soyad: string; adSoyadYardim: string; yasAltiKisa: string; yasAltiBilgi: string; cinsiyet: string; kadin: string; erkek: string;
     dogumTarihi: string; dogumYeri: string; dogumYeriYardim: string; uyruk: string; anneAdi: string; babaAdi: string;
   };
   durum: {

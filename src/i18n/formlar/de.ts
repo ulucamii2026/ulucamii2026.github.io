@@ -226,7 +226,10 @@ export const de: FormMetinleri = {
     kimlikNotu: 'Damit die Konversionsbescheinigung (EK-9) ausgestellt werden kann, werden ein Passbild, die Vorder- und die Rückseite Ihres Ausweisdokuments und Ihre Unterschrift benötigt; Sie laden sie in Abschnitt 5 hoch und unterschreiben am Bildschirm. Ihre Nationalregisternummer müssen Sie nicht zusätzlich eintragen. Alle Angaben und Unterlagen zu Ihrem Antrag werden sowohl in unserer Moschee als auch bei der zuständigen Stelle des Präsidiums für Religionsangelegenheiten (Diyanet) in Belgien aufbewahrt; sie werden nie veröffentlicht und nur von befugten Mitarbeitenden eingesehen.',
     bolum: { kisi: 'Persönliche Angaben', durum: 'Situation', iletisim: 'Kontakt', ihtida: 'Konversion und Feier', belgeler: 'Dokumente und Unterschrift', riza: 'Einwilligung und Erklärung', ozet: 'Übersicht und Absenden' },
     kisi: {
-      adSoyad: 'Ihr Vor- und Nachname', adSoyadYardim: 'Wie in Ihrem Ausweisdokument; dieser Name wird auf die Bescheinigung gedruckt.',
+      ad: 'Vorname', soyad: 'Nachname', adSoyadYardim: 'Wie in Ihrem Ausweisdokument; dieser Name wird auf die Bescheinigung gedruckt.',
+      // 12 Kas 2026: 18 yaşından küçükler çevrim içi başvuru yapamaz (din görevlisi kararı); metin yalnız bu çevrim içi başvuruyla ilgilidir.
+      yasAltiKisa: 'Dieser Online-Antrag richtet sich an Personen, die das 18. Lebensjahr vollendet haben.',
+      yasAltiBilgi: 'Dieser Online-Antrag richtet sich an Personen, die das 18. Lebensjahr vollendet haben. Wenn Sie jünger als 18 Jahre sind, können wir Ihren Antrag hier leider nicht entgegennehmen. Bei Fragen können Sie gerne unsere Moschee besuchen oder an info@ulucamii.be schreiben; wir helfen Ihnen gern weiter.',
       cinsiyet: 'Geschlecht', kadin: 'Frau', erkek: 'Mann',
       dogumTarihi: 'Geburtsdatum', dogumYeri: 'Geburtsort', dogumYeriYardim: 'Stadt und Land', uyruk: 'Staatsangehörigkeit',
       anneAdi: 'Vorname der Mutter', babaAdi: 'Vorname des Vaters',

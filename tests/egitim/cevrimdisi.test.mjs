@@ -230,8 +230,11 @@ test('Her sayfa manifest ve tema rengiyle bağlı; manifest alanları, kapsamı 
     const html = readFileSync(s, 'utf8');
     // Veli portalı (/<dil>/veli/) kendi dil manifestini taşır (kapsam /<dil>/veli/); ortak manifest orada basılmaz.
     const veliDili = /[\\/](tr|fr|en|nl|de)[\\/]veli[\\/]index\.html$/.exec(s)?.[1];
-    const beklenen = veliDili ? `<link rel="manifest" href="/portal/veli-${veliDili}.webmanifest">` : '<link rel="manifest" href="/manifest.webmanifest">';
-    assert.equal(html.split(beklenen).length - 1, 1, `${s}: manifest bağlantısı`);
+    // Dil yolundaki sayfa kendi dilinin manifestini taşır (tr: manifest.webmanifest, diğerleri manifest.<dil>.webmanifest); dil yolu olmayan sayfa (/e/, /hoca/, 404) beş manifestten birini.
+    const dilKodu = /[\\/](tr|fr|en|nl|de)[\\/]/.exec(s.slice(DIST.length))?.[1];
+    const manifestAdi = (d) => `<link rel="manifest" href="/manifest${d && d !== 'tr' ? `.${d}` : ''}.webmanifest">`;
+    const adaylar = veliDili ? [`<link rel="manifest" href="/portal/veli-${veliDili}.webmanifest">`] : dilKodu ? [manifestAdi(dilKodu)] : ['tr', 'fr', 'en', 'nl', 'de'].map(manifestAdi);
+    assert.equal(adaylar.reduce((n, b) => n + html.split(b).length - 1, 0), 1, `${s}: manifest bağlantısı`);
     if (veliDili) assert.ok(!html.includes('/manifest.webmanifest'), `${s}: ortak manifest basılmamalı`);
     assert.ok(new RegExp(`<meta name="theme-color" content="${manifest.theme_color}">`).test(html), `${s}: tema rengi`);
   }

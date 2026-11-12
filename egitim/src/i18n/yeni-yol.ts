@@ -44,6 +44,8 @@ export interface YeniYolMetinleri {
   kaynakNotu: string;
   videoBaslik: string;
   videoYukle: string;
+  /** İngilizce yedek videonun görünür notu; TR ve EN sayfalarında boş (not gösterilmez). */
+  videoIngilizceNotu: string;
   videoNot: string;
   videoBaglanti: string;
   haftayiTamamla: string;
@@ -111,6 +113,7 @@ const TR: YeniYolMetinleri = {
   kaynakNotu: 'Bağlantılar dış sitelere gider ve yeni sekmede açılır.',
   videoBaslik: 'Diyanet videosu',
   videoYukle: 'Videoyu oynat',
+  videoIngilizceNotu: '',
   videoNot: 'Oynat düğmesine basana kadar YouTube’dan hiçbir şey yüklenmez.',
   videoBaglanti: 'YouTube’da aç',
   haftayiTamamla: 'Haftayı tamamladım',
@@ -176,6 +179,7 @@ const FR: YeniYolMetinleri = {
   kaynakNotu: 'Les liens mènent à des sites externes et s’ouvrent dans un nouvel onglet.',
   videoBaslik: 'Vidéo de la Diyanet',
   videoYukle: 'Lire la vidéo',
+  videoIngilizceNotu: 'Vidéo en anglais',
   videoNot: 'Rien n’est chargé depuis YouTube tant que vous n’avez pas appuyé sur le bouton de lecture.',
   videoBaglanti: 'Ouvrir sur YouTube',
   haftayiTamamla: 'J’ai terminé la semaine',
@@ -241,6 +245,7 @@ const EN: YeniYolMetinleri = {
   kaynakNotu: 'Links go to external sites and open in a new tab.',
   videoBaslik: 'Diyanet video',
   videoYukle: 'Play video',
+  videoIngilizceNotu: '',
   videoNot: 'Nothing is loaded from YouTube until you press play.',
   videoBaglanti: 'Open on YouTube',
   haftayiTamamla: 'I completed the week',
@@ -306,6 +311,7 @@ const NL: YeniYolMetinleri = {
   kaynakNotu: 'De links leiden naar externe sites en openen in een nieuw tabblad.',
   videoBaslik: 'Diyanet-video',
   videoYukle: 'Video afspelen',
+  videoIngilizceNotu: 'Video in het Engels',
   videoNot: 'Er wordt niets van YouTube geladen zolang u niet op afspelen drukt.',
   videoBaglanti: 'Openen op YouTube',
   haftayiTamamla: 'Ik heb de week afgerond',
@@ -371,6 +377,7 @@ const DE: YeniYolMetinleri = {
   kaynakNotu: 'Die Links führen zu externen Seiten und öffnen in einem neuen Tab.',
   videoBaslik: 'Diyanet-Video',
   videoYukle: 'Video abspielen',
+  videoIngilizceNotu: 'Video auf Englisch',
   videoNot: 'Von YouTube wird nichts geladen, bis Sie auf Abspielen drücken.',
   videoBaglanti: 'Auf YouTube öffnen',
   haftayiTamamla: 'Ich habe die Woche abgeschlossen',

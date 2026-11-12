@@ -113,11 +113,11 @@ for (const [dil, yol] of Object.entries(yollar)) {
 
   test(`${dil}: taslak saklanır; imza aktarım izni imzasız başvuruda görünmez`, async ({ page }) => {
     await page.goto(`/${dil}/${yol}/`);
-    await page.locator('#i-ad').fill('Taslak Adım Örneği');
+    await page.locator('#i-ad').fill('Taslak Adım');
     await expect.poll(() => page.evaluate(() =>
-      JSON.parse(localStorage.getItem('ulucamii:ihtida:v2') || '{}').alanlar?.['basvuran.adSoyad'])).toBe('Taslak Adım Örneği');
+      JSON.parse(localStorage.getItem('ulucamii:ihtida:v2') || '{}').alanlar?.['basvuran.ad'])).toBe('Taslak Adım');
     await page.reload();
-    await expect(page.locator('#i-ad')).toHaveValue('Taslak Adım Örneği');
+    await expect(page.locator('#i-ad')).toHaveValue('Taslak Adım');
 
     await page.locator('[data-adim-sec="4"]').click();
     const imzaIzni = page.locator('#i-onay-imza');
@@ -132,13 +132,13 @@ test('Varsayılan sihirbaz, belgeler-imza-rıza ile eksiksiz başvuruyu tek akı
   const gonderilen = [];
   await page.route('**/macros/**', route => {
     if (route.request().method() === 'POST') gonderilen.push(route.request().postDataJSON());
-    return route.fulfill({ json: { ok: true, surum: 27, ihtidaPaketHazir: true, ref: 'IH-2099-9999' } });
+    return route.fulfill({ json: { ok: true, surum: 48, ihtidaPaketHazir: true, ref: 'IH-2099-9999' } });
   });
   await page.goto('/tr/ihtida-basvurusu/');
   if (isMobile) await page.locator('[data-ihtida-adimlar]').screenshot({ path: info.outputPath('adim-0-mobil.png') });
 
   for (const [id, deger] of Object.entries({
-    ad: 'Deniz Örnek', dogum: '1990-05-20', 'dogum-yeri': 'Namur', uyruk: 'Belçika', anne: 'Anne Örnek', baba: 'Baba Örnek',
+    ad: 'Deniz', soyad: 'Örnek', dogum: '1990-05-20', 'dogum-yeri': 'Namur', uyruk: 'Belçika', anne: 'Anne Örnek', baba: 'Baba Örnek',
   })) await page.locator(`#i-${id}`).fill(deger);
   await page.locator('#i-cins-kadin').check();
   await ileriGit(page, 1);
@@ -210,7 +210,7 @@ test('Sihirbazdaki gizli adımlar yanlışlıkla form göndermez; gönderim tüm
   const gonderimler = [];
   await page.route('**/macros/**', route => {
     if (route.request().method() === 'POST') gonderimler.push(route.request().postData());
-    return route.fulfill({ json: { ok: true, surum: 27, ihtidaPaketHazir: true } });
+    return route.fulfill({ json: { ok: true, surum: 48, ihtidaPaketHazir: true } });
   });
   await page.goto('/tr/ihtida-basvurusu/');
   await expect(form(page).locator('button[type="submit"]:visible')).toHaveCount(0);

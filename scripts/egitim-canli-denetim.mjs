@@ -17,6 +17,7 @@
  *    Range'e doğru 206 verir) → kayıtsız adres yedek sayfayı açar → sil. Kayıt denetim tarayıcısının kendi geçici profilindedir; sunucuya yazılan bir şey yok.
  *  Hiçbir şey yazmaz, giriş yapmaz. Çıkış kodu: 0 hepsi geçti · 1 en az biri düştü.
  */
+import { createHash } from 'node:crypto';
 import { readdirSync, readFileSync } from 'node:fs';
 import { chromium } from '@playwright/test';
 
@@ -89,9 +90,14 @@ for (const i of bildirim?.icons ?? []) {
   kontrol(`bildirim simgesi ${i.src}`, y.status === 200 && (i.type ? new RegExp(i.type.split('/')[1].split('+')[0]).test(y.headers.get('content-type') ?? '') : true), `${y.status} ${y.headers.get('content-type')}`);
 }
 for (const dil of DILLER) {
+  // 12 Kasım 2026: her dil kendi bildirimini bağlar (Türkçe eski adresinde kaldı); dosyanın kendisi de denetlenir.
+  const bildirimYolu = dil === 'tr' ? '/manifest.webmanifest' : `/manifest.${dil}.webmanifest`;
+  const by = await getir(bildirimYolu);
+  const b = await by.json().catch(() => null);
+  kontrol(`${bildirimYolu} 200, dil ve başlangıç adresi`, by.status === 200 && b?.lang === dil && b?.scope === '/' && (dil === 'tr' ? b?.start_url === '/' : b?.start_url === `/${dil}/`), `${by.status} ${b?.lang ?? 'yok'} ${b?.start_url ?? 'yok'}`);
   const y = await getir(`/${dil}/cevrimdisi/`);
   const h = await y.text();
-  kontrol(`/${dil}/cevrimdisi/ 200, noindex, manifest bağlantılı, no-cache`, y.status === 200 && /<meta name="robots" content="noindex, nofollow">/.test(h) && h.includes('<link rel="manifest" href="/manifest.webmanifest">') &&
+  kontrol(`/${dil}/cevrimdisi/ 200, noindex, manifest bağlantılı, no-cache`, y.status === 200 && /<meta name="robots" content="noindex, nofollow">/.test(h) && h.includes(`<link rel="manifest" href="${bildirimYolu}">`) &&
     y.headers.get('cache-control') === 'no-cache' && h.includes('data-cd-sayfa'), `${y.status} ${y.headers.get('cache-control')}`);
 }
 const robots = await getir('/robots.txt');
@@ -120,7 +126,7 @@ for (const d of DILLER) {
 }
 const harita = await getir('/sitemap-0.xml');
 const locs = [...(await harita.text()).matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, a]) => a).sort();
-const beklenen = DILLER.flatMap((d) => [`https://egitim.ulucamii.be/${d}/`, `https://egitim.ulucamii.be/${d}/ezber/`, `https://egitim.ulucamii.be/${d}/calisma-belgesi/`, `https://egitim.ulucamii.be/${d}/kilimim/`, `https://egitim.ulucamii.be/${d}/kartlar/`, `https://egitim.ulucamii.be/${d}/takvim/`, `https://egitim.ulucamii.be/${d}/yollar/`,
+const beklenen = DILLER.flatMap((d) => [`https://egitim.ulucamii.be/${d}/`, `https://egitim.ulucamii.be/${d}/ezber/`, `https://egitim.ulucamii.be/${d}/calisma-belgesi/`, `https://egitim.ulucamii.be/${d}/kilimim/`, `https://egitim.ulucamii.be/${d}/kartlar/`, `https://egitim.ulucamii.be/${d}/takvim/`, `https://egitim.ulucamii.be/${d}/gizlilik/`, `https://egitim.ulucamii.be/${d}/yollar/`,
   ...['ibadet', 'ibadet/abdest', 'ibadet/namaz', ...['sabah', 'ogle', 'ikindi', 'aksam', 'yatsi'].map((v) => `ibadet/namaz/${v}`), 'okuma', 'yarisma', ...[1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => `okuma/o${n}`)].map((y) => `https://egitim.ulucamii.be/${d}/${y}/`),
   ...yolSayfalari.map((y) => `https://egitim.ulucamii.be/${d}/yollar/${y}/`),
   ...yeniYolSayfalari.map((k) => `https://egitim.ulucamii.be/${d}/yollar/yeni-musluman/${k}/`),
@@ -131,18 +137,54 @@ const beklenen = DILLER.flatMap((d) => [`https://egitim.ulucamii.be/${d}/`, `htt
   // Basılı karekod sesli dersleri: dizin + 73 kod (`test` ulucamii.be'de kalır, egitim'de noindex, haritada yok).
   ['https://egitim.ulucamii.be/e/', ...BASILI_KODLAR.filter((k) => k !== 'test').map((k) => `https://egitim.ulucamii.be/e/${k}/`)]).sort();
 kontrol(`site haritası ${beklenen.length} adres`, harita.status === 200 && JSON.stringify(locs) === JSON.stringify(beklenen), `${harita.status}, ${locs.length} adres`);
+// Kart seslendirmesi (12 Kasım 2026: beş dil): her dilde manifestten üç örnek — kart sayfasında oynatıcı düğmesi, MP3 200 + audio/mpeg, bayt ve sha256 manifestle aynı;
+// manifestte sesi olmayan kartta (tecvid ku-044, tr dışı) düğme yok ve dosya 404. Tüm dosyaların tam doğrulaması: node scripts/egitim-ses-getir.mjs --hedef <geçici klasör>.
+const sesManifest = JSON.parse(readFileSync(new URL('../src/data/ilim-yolu/kart-ses.json', import.meta.url), 'utf8'));
+for (const d of DILLER) {
+  const idler = Object.keys(sesManifest.kartlar).filter((id) => sesManifest.kartlar[id][d]);
+  for (const id of [idler[0], idler[Math.floor(idler.length / 2)], idler.at(-1)]) {
+    const k = sesManifest.kartlar[id][d];
+    const sayfaY = await getir(`/${d}/ogren/${id}/`);
+    const sayfaH = await sayfaY.text();
+    const mp3 = await getir(`${sesManifest.taban}/${d}/${id}.mp3`);
+    const govde = Buffer.from(await mp3.arrayBuffer());
+    kontrol(`kart sesi ${d}/${id}: sayfada oynatıcı, MP3 200 audio/mpeg, bayt + sha256 manifestle aynı`,
+      sayfaY.status === 200 && sayfaH.includes(`data-ses="${sesManifest.taban}/${d}/${id}.mp3"`) && mp3.status === 200 && /audio\/mpeg|audio\/mp3/.test(mp3.headers.get('content-type') ?? '')
+      && govde.length === k.bayt && createHash('sha256').update(govde).digest('hex') === k.sha256, `${sayfaY.status}/${mp3.status} ${govde.length}`);
+  }
+}
+for (const d of DILLER.filter((x) => x !== 'tr')) {
+  const sayfaY = await getir(`/${d}/ogren/ku-044/`);
+  const sayfaH = await sayfaY.text();
+  const mp3 = await getir(`${sesManifest.taban}/${d}/ku-044.mp3`, { method: 'HEAD' });
+  kontrol(`ku-044 ${d}: sesi yok, düğme yok, dosya 404 (imam onayı bekliyor)`, sayfaY.status === 200 && !sayfaH.includes('data-ses=') && mp3.status === 404, `${sayfaY.status}/${mp3.status}`);
+}
 // Hesap sayfaları ve kart girişi (2 Kasım 2026): 200, noindex, önbelleksiz; site haritasında yok (yukarıdaki eşitlik).
 for (const yol of ['/tr/hesap/', '/tr/hesap/giris/', '/tr/hesap/kayit/', '/k/']) {
   const y = await getir(yol);
   const h = await y.text();
   kontrol(`${yol} 200, noindex, no-cache`, y.status === 200 && /<meta name="robots" content="noindex, nofollow">/.test(h) && y.headers.get('cache-control') === 'no-cache', `${y.status} ${y.headers.get('cache-control')}`);
 }
-// Yeni Müslüman yolu: hafta sayfası 200; video yalnız tr/en'de ve tıklamadan önce iframe yok (CSP'ye uygun, üçüncü tarafa istek yok).
+// Gizlilik sayfası (11 Kasım 2026): dizine girer, kendi kanonik adresi, #ezber-kilimi çapası, tam metne bağlantı, yalnız cami hattı ve info@ (din görevlisinin telefonu yok).
+for (const d of DILLER) {
+  const y = await getir(`/${d}/gizlilik/`);
+  const h = await y.text();
+  kontrol(`/${d}/gizlilik/ 200, dizine girer, kanonik, çapa, tam metin bağlantısı, iletişim`, y.status === 200 && !/<meta name="robots" content="[^"]*noindex/.test(h)
+    && h.includes(`<link rel="canonical" href="https://egitim.ulucamii.be/${d}/gizlilik/">`) && h.includes('id="ezber-kilimi"')
+    && /href="https:\/\/ulucamii\.be\/[a-z]{2}\/[a-z-]+\/"/.test(h) && h.includes('info@ulucamii.be') && h.includes('+32 472 98 50 73'), `${y.status}`);
+}
+// Yeni Müslüman yolu: hafta sayfası 200; video her dilde (fr/nl/de'de İngilizce, görünür notlu, lang="en" başlıklı; h12'de yok) ve tıklamadan önce iframe yok (CSP'ye uygun, üçüncü tarafa istek yok).
 for (const d of DILLER) {
   const y = await getir(`/${d}/yollar/yeni-musluman/h01/`);
   const h = await y.text();
   const videoVar = /data-yy-video="?[\w-]{11}/.test(h);
-  kontrol(`/${d}/yollar/yeni-musluman/h01/ 200, video ${d === 'tr' || d === 'en' ? 'var' : 'yok'}, iframe yok`, y.status === 200 && videoVar === (d === 'tr' || d === 'en') && !/<iframe/i.test(h), `${y.status} video=${videoVar}`);
+  const yedek = d !== 'tr' && d !== 'en';
+  const not = { fr: 'Vidéo en anglais', nl: 'Video in het Engels', de: 'Video auf Englisch' }[d];
+  const notVar = h.includes('data-yy-video-not') && h.includes(not ?? ' ') && /class="yy-video-ad"[^>]*lang="en"|lang="en"[^>]*class="yy-video-ad"/.test(h);
+  kontrol(`/${d}/yollar/yeni-musluman/h01/ 200, video var${yedek ? ' (İngilizce yedek, notlu, lang="en")' : ''}, iframe yok`,
+    y.status === 200 && videoVar && notVar === yedek && (!yedek || h.includes('data-yy-video-dil="en"')) && !/<iframe/i.test(h), `${y.status} video=${videoVar} not=${notVar}`);
+  const y12 = await getir(`/${d}/yollar/yeni-musluman/h12/`);
+  kontrol(`/${d}/yollar/yeni-musluman/h12/ 200, video yok`, y12.status === 200 && !/data-yy-video=/.test(await y12.text()), `${y12.status}`);
 }
 for (const [yol, tur] of [['/favicon.ico', /icon/], ['/favicon.svg', /svg/], ['/apple-touch-icon.png', /png/],
   ['/icon-192.png', /png/], ['/icon-512.png', /png/], ['/icon-maskable-512.png', /png/],

@@ -15,7 +15,7 @@ test('Admin aynı arşiv PDF’sini ve her alıcının gerçek gönderim durumun
   let teslim = false;
   await page.route('https://script.google.com/**', route => {
     const islem = new URL(route.request().url()).searchParams.get('islem');
-    if (islem === 'liste') return route.fulfill({ json: { ok: true, surum: 27, kayitlar: { basliklar: [], satirlar: [] }, ihtidalar: {
+    if (islem === 'liste') return route.fulfill({ json: { ok: true, surum: 48, kayitlar: { basliklar: [], satirlar: [] }, ihtidalar: {
       basliklar: ['Zaman damgası', 'Referans', 'Adı Soyadı', 'E-posta', 'PDF bağlantısı', 'Durum', 'Tam paket PDF'],
       satirlar: [['09.09.2026 12:00', 'IH-2099-9999', 'Deniz Örnek', 'deniz@example.test', 'https://drive.google.com/file/d/test-summary-file-123/view', 'Yeni başvuru', 'https://drive.google.com/file/d/test-packet-file-12345/view']],
     } } });
@@ -59,7 +59,7 @@ async function formSayfasiniAc(page, url) {
 }
 
 async function doldur(page) {
-  const alanlar = { ad: 'Deniz Örnek', dogum: '1990-05-20', 'dogum-yeri': 'Namur', uyruk: 'Belçika', anne: 'Anne Örnek', baba: 'Baba Örnek', ogrenim: 'Lisans', meslek: 'Öğretmen', eposta: 'deniz@example.test', telefon: '+32 470 00 00 00', adres: 'Rue du Test 12, boîte 3', 'posta-kodu': '6900', sehir: 'Marche-en-Famenne', ulke: 'Belçika', 'onceki-din': 'Belirtilen inanç', beyan: 'Deniz Örnek' };
+  const alanlar = { ad: 'Deniz', soyad: 'Örnek', dogum: '1990-05-20', 'dogum-yeri': 'Namur', uyruk: 'Belçika', anne: 'Anne Örnek', baba: 'Baba Örnek', ogrenim: 'Lisans', meslek: 'Öğretmen', eposta: 'deniz@example.test', telefon: '+32 470 00 00 00', adres: 'Rue du Test 12, boîte 3', 'posta-kodu': '6900', sehir: 'Marche-en-Famenne', ulke: 'Belçika', 'onceki-din': 'Belirtilen inanç', beyan: 'Deniz Örnek' };
   for (const [id, value] of Object.entries(alanlar)) await page.locator(`#i-${id}`).fill(value);
   await page.locator('#i-cins-kadin').check();
   await page.locator('#i-medeni').selectOption('bekar');
@@ -79,7 +79,7 @@ for (const [dil, yol] of Object.entries(yollar)) {
     const gonderilen = [];
     await page.route('**/macros/**', route => {
       if (route.request().method() === 'POST') gonderilen.push(route.request().postDataJSON());
-      return route.fulfill({ json: { ok: true, surum: 27, ihtidaPaketHazir: true, ref: 'IH-2099-9999' } });
+      return route.fulfill({ json: { ok: true, surum: 48, ihtidaPaketHazir: true, ref: 'IH-2099-9999' } });
     });
     await formSayfasiniAc(page, `/${dil}/${yol}/`);
     await expect(page.locator('#i-sahit-ekle')).not.toBeChecked();
@@ -130,6 +130,10 @@ for (const [dil, yol] of Object.entries(yollar)) {
     expect(gonderilen).toHaveLength(1);
     const v = gonderilen[0];
     expect(v.teslimat).toEqual({ yontem: 'adres' });
+    // 12 Kas 2026: ad ve soyad ayrı gider; «Ad SOYAD» değerini sunucu kurar.
+    expect(v.basvuran.ad).toBe('Deniz');
+    expect(v.basvuran.soyad).toBe('Örnek');
+    expect('adSoyad' in v.basvuran).toBe(false);
     expect(v.basvuran.adres).toBe('Rue du Test 12, boîte 3, 6900, Marche-en-Famenne, Belçika');
     expect(v.sahitSecimi).toBe(dil === 'tr' ? 'cami' : 'kendi');
     expect(v.sahitler).toEqual(dil === 'tr' ? [] : [{ ad: 'Birinci Örnek Şahit' }, { ad: 'Rıdvan KAYAHAN' }]);
@@ -382,7 +386,7 @@ for (const [dil, yol] of Object.entries(yollar)) {
     const gonderilen = [];
     await page.route('**/macros/**', route => {
       if (route.request().method() === 'POST') gonderilen.push(JSON.parse(route.request().postData()));
-      return route.fulfill({ json: { ok: true, surum: 27, ihtidaPaketHazir: true, ihtidaCamiSecimi: true, ref: 'IH-2099-9999' } });
+      return route.fulfill({ json: { ok: true, surum: 48, ihtidaPaketHazir: true, ihtidaCamiSecimi: true, ref: 'IH-2099-9999' } });
     });
     await formSayfasiniAc(page, `/${dil}/${yol}/`); await doldur(page);
     const kimlik = page.locator('input[name="camiId"]');
@@ -470,7 +474,7 @@ async function sahitImzaCiz(page, no) {
 async function sahitliHazirla(page, gonderilen, dil = 'tr', yol = 'ihtida-basvurusu') {
   await page.route('**/macros/**', route => {
     if (route.request().method() === 'POST') gonderilen.push(route.request().postDataJSON());
-    return route.fulfill({ json: { ok: true, surum: 27, ihtidaPaketHazir: true, ihtidaSahitImzasi: true, ref: 'IH-2099-9999' } });
+    return route.fulfill({ json: { ok: true, surum: 48, ihtidaPaketHazir: true, ihtidaSahitImzasi: true, ref: 'IH-2099-9999' } });
   });
   await formSayfasiniAc(page, `/${dil}/${yol}/`);
   await doldur(page);
@@ -636,4 +640,68 @@ test('Vesikalık EK-9 kutusunun oranına kırpılır; uygun orandaki fotoğraf o
       return Math.round(i.naturalWidth / i.naturalHeight * 100) / 100;
     })).toBe(beklenen);
   }
+});
+
+/** 12 Kas 2026 (din görevlisi kararı): 18 yaşından küçükler çevrim içi başvuru yapamaz. Tarihler Brussels gününe göre hesaplanır. */
+const brukselGunu = () => new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Brussels', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
+function dogumTarihi(gunFarki) {            // 18 yıl önceki bugün + gunFarki gün (bugün 29 Şubat ise 28 Şubat esas alınır)
+  const [y, m, g] = brukselGunu().split('-').map(Number);
+  const d = new Date(Date.UTC(y - 18, m - 1, (m === 2 && g === 29 ? 28 : g) + gunFarki));
+  return d.toISOString().slice(0, 10);
+}
+const YAS_BILGI = {
+  tr: 'Bu çevrim içi başvuru 18 yaşını doldurmuş kişiler içindir.',
+  fr: 'Cette demande en ligne est destinée aux personnes ayant atteint l’âge de 18 ans.',
+  en: 'This online application is for people who have turned 18.',
+};
+for (const [dil, yol] of Object.entries(yollar)) {
+  test(`${dil}: 18 yaşından küçükler için bilgi kutusu görünür ve gönderimi engeller; tam 18 yaşında kutu kalkar`, async ({ page }, info) => {
+    const gonderilen = [];
+    await page.route('**/macros/**', route => {
+      if (route.request().method() === 'POST') gonderilen.push(route.request().postDataJSON());
+      return route.fulfill({ json: { ok: true, surum: 48, ihtidaPaketHazir: true, ref: 'IH-2099-9999' } });
+    });
+    await formSayfasiniAc(page, `/${dil}/${yol}/`);
+    await doldur(page);
+    const kutu = page.locator('[data-yas-kutu]'), dogum = page.locator('#i-dogum');
+    await expect(kutu).toBeHidden();
+    await expect(page.locator('#i-yas-bilgi')).toHaveAttribute('role', 'status');
+    await dogum.fill(dogumTarihi(1));                       // 18. yaş gününe bir gün var
+    await expect(kutu).toBeVisible();
+    await expect(kutu).toContainText(YAS_BILGI[dil]);
+    await expect(kutu).toContainText('info@ulucamii.be');
+    await expect(kutu).not.toContainText(/Müşavir|Büyükelçi|elçilik|konsolos|ambassad|consulat|embassy/i);
+    await expect(dogum).toHaveAttribute('aria-describedby', /i-yas-bilgi/);
+    await page.locator('form[data-form="ihtida"] button[type="submit"]').click();
+    await expect(page.locator('[data-basari]')).toBeHidden();
+    expect(gonderilen).toHaveLength(0);
+    await expect(dogum).toHaveAttribute('aria-invalid', 'true');
+    await expect(dogum).toBeFocused();
+    await page.screenshot({ path: info.outputPath(`yas-bilgi-${dil}-${info.project.name}.png`) });
+    for (const tema of ['light', 'dark']) {
+      if (tema === 'dark') await page.locator('#tema-dugme').click();
+      await page.evaluate(async () => Promise.all(document.getAnimations().filter(a => a.effect?.getComputedTiming().iterations !== Infinity).map(a => a.finished.catch(() => {}))));
+      const axe = await new AxeBuilder({ page }).include('#i-yas-bilgi').withTags(['wcag2a', 'wcag2aa']).analyze();
+      expect(axe.violations.filter(v => ['serious', 'critical'].includes(v.impact)).map(v => ({ id: v.id, targets: v.nodes.map(n => n.target) }))).toEqual([]);
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
+      await kutu.screenshot({ path: info.outputPath(`yas-kutu-${dil}-${tema}-${info.project.name}.png`) });
+    }
+    await dogum.fill(dogumTarihi(0));                       // tam 18. yaş günü
+    await expect(kutu).toBeHidden();
+    await page.locator('form[data-form="ihtida"] button[type="submit"]').click();
+    await expect(page.locator('[data-basari]')).toBeVisible();
+    expect(gonderilen).toHaveLength(1);
+    expect(gonderilen[0].basvuran.dogumTarihi).toBe(dogumTarihi(0));
+  });
+}
+
+test('Sunucu yas-siniri derse form aynı bilgi metnini gösterir ve başvuru başarılı sayılmaz', async ({ page }) => {
+  await page.route('**/macros/**', route => route.request().method() === 'POST'
+    ? route.fulfill({ json: { ok: false, hata: 'yas-siniri' } })
+    : route.fulfill({ json: { ok: true, surum: 48, ihtidaPaketHazir: true } }));
+  await formSayfasiniAc(page, '/tr/ihtida-basvurusu/'); await doldur(page);
+  await page.locator('form[data-form="ihtida"] button[type="submit"]').click();
+  await expect(page.locator('[data-mesaj]')).toContainText('Bu çevrim içi başvuru 18 yaşını doldurmuş kişiler içindir.');
+  await expect(page.locator('[data-mesaj]')).toContainText('info@ulucamii.be');
+  await expect(page.locator('[data-basari]')).toBeHidden();
 });

@@ -29,8 +29,8 @@
       "ad": {
         "tr": "Hadesten taharet",
         "fr": "Purification du Hadath",
-        "en": "Purity from ritual impurity (hadath)",
-        "nl": "Reinheid van rituele onreinheid (hadath)",
+        "en": "Taharah min al-Hadath (Spiritual Purification)",
+        "nl": "In staat van reinheid zijn: Het verrichten van de wudhu voor rituele reinheid of de ghusl indien dat nodig is.",
         "de": "Reinheit von ritueller Unreinheit (Hadath)"
       },
       "grup": "sart"
@@ -39,8 +39,8 @@
       "ad": {
         "tr": "Necasetten taharet",
         "fr": "Purification de la Najasah",
-        "en": "Purity from physical impurity (najasa)",
-        "nl": "Reinheid van fysieke onreinheid (nadjasa)",
+        "en": "Taharah min al-Najasah (Purification from physical impurities)",
+        "nl": "Vrij zijn van onreine substanties: Een persoon die het gebed gaat verrichten, mag geen vuil (najāsat) op zijn kleding of lichaam hebben. De plek waar hij wil bidden, dient ook rein te zijn.",
         "de": "Reinheit von körperlicher Unreinheit (Nadschasa)"
       },
       "grup": "sart"
@@ -49,8 +49,8 @@
       "ad": {
         "tr": "Setr-i avret",
         "fr": "Couvrir sa nudité",
-        "en": "Covering the parts of the body that must be covered (setr-i awrah)",
-        "nl": "De lichaamsdelen bedekken die bedekt moeten zijn (setr-i awra)",
+        "en": "Satr al-Awrah (Covering special parts of the body)",
+        "nl": "Bedekken van de ‘awrah: Bepaalde plekken van het lichaam moeten bedekt zijn. Mannen: bedekken zich minimaal tussen de navel tot en met hun knieschijven. Vrouwen: bedekken alles, met uitzondering van gezicht, handen en voeten.",
         "de": "Die zu bedeckenden Körperteile bedecken (Setr-i Awra)"
       },
       "grup": "sart"
@@ -59,8 +59,8 @@
       "ad": {
         "tr": "İstikbal-i kıble",
         "fr": "L’orientation vers la qibla",
-        "en": "Facing the qibla",
-        "nl": "Zich naar de qibla richten",
+        "en": "Istiqbal al-Qiblah (Turning towards the direction of the Ka’bah)",
+        "nl": "Wenden richting de qibla: Het gebed verricht je door je naar de qibla (Ka‘ba) te wenden. De Ka’ba is het eerste heiligdom op aarde, gebouwd met als doel om Allah te aanbidden. De Ka’ba is door Ibrāhīm en zijn zoon Ismā’īl gebouwd.",
         "de": "Sich zur Qibla ausrichten"
       },
       "grup": "sart"
@@ -69,8 +69,8 @@
       "ad": {
         "tr": "Vakit",
         "fr": "Le temps",
-        "en": "The prayer time",
-        "nl": "De gebedstijd",
+        "en": "Waqt (Time)",
+        "nl": "Tijdstip: Het gebed moet binnen haar tijdvak verricht worden. Eerder verrichten dan de ingangstijd maakt het gebed ongeldig.",
         "de": "Die Gebetszeit"
       },
       "grup": "sart"
@@ -79,8 +79,8 @@
       "ad": {
         "tr": "Niyet",
         "fr": "L’intention",
-        "en": "The intention",
-        "nl": "De intentie",
+        "en": "Niyyah (Declaration of the intention)",
+        "nl": "Intentie: Hij dient de intentie (niyat) voor dat gebed te hebben, minimaal in zijn hart (zonder dat hij deze uitspreekt). Het uitspreken ervan met de tong is een soenna.",
         "de": "Die Absicht"
       },
       "grup": "sart"
@@ -89,8 +89,8 @@
       "ad": {
         "tr": "İftitah tekbiri (Allahu ekber diyerek namaza başlamak)",
         "fr": "Le tekbir d’ouverture (commencer la prière en disant « Allâhu Ekber »)",
-        "en": "The opening takbir (starting the prayer by saying “Allahu akbar”)",
-        "nl": "De openingstakbir (het gebed beginnen met “Allahoe akbar”)",
+        "en": "Takbir al-Iftitah (Opening takbir)",
+        "nl": "Takbīratu’l-ihrām: het beginnen van het gebed met een takbīr.",
         "de": "Das Eröffnungs-Takbir (das Gebet mit „Allahu akbar“ beginnen)"
       },
       "grup": "rukun"
@@ -99,8 +99,8 @@
       "ad": {
         "tr": "Kıyam (Namazda ayakta durmak)",
         "fr": "La station debout (rester debout pendant la prière)",
-        "en": "Standing (qiyam): staying on one’s feet during the prayer",
-        "nl": "Staan (qiyam): tijdens het gebed rechtop blijven staan",
+        "en": "Qiyam (Standing)",
+        "nl": "Qiyām: het staan in het gebed.",
         "de": "Das Stehen (Qiyam): im Gebet aufrecht stehen"
       },
       "grup": "rukun"
@@ -109,8 +109,8 @@
       "ad": {
         "tr": "Kıraat (Namazda Kur’an okumak)",
         "fr": "La récitation (lire le Coran pendant la prière)",
-        "en": "Recitation (qira’ah): reciting the Qur’an in the prayer",
-        "nl": "Reciteren (qira’a): de Koran lezen tijdens het gebed",
+        "en": "Qiraah (Recitation)",
+        "nl": "Qirā’at: het reciteren van koranverzen tijdens het gebed.",
         "de": "Das Rezitieren (Qira’a): im Gebet den Koran lesen"
       },
       "grup": "rukun"
@@ -119,8 +119,8 @@
       "ad": {
         "tr": "Rükû (Namazda eğilmek)",
         "fr": "L’inclinaison (s’incliner pendant la prière)",
-        "en": "Bowing (ruku‘): bending forward in the prayer",
-        "nl": "Buigen (roekoe‘): zich voorover buigen tijdens het gebed",
+        "en": "Ruku‘ (Bowing)",
+        "nl": "Rukū‘: het naar voren buigen.",
         "de": "Die Verbeugung (Ruku‘): sich im Gebet vorbeugen"
       },
       "grup": "rukun"
@@ -129,8 +129,8 @@
       "ad": {
         "tr": "Secde",
         "fr": "La prosternation",
-        "en": "Prostration (sajdah)",
-        "nl": "De knieval (sadjda)",
+        "en": "Sajdah (Prostration)",
+        "nl": "Sujūd: het knielen, verrichten van de sajda.",
         "de": "Die Niederwerfung (Sadschda)"
       },
       "grup": "rukun"
@@ -139,8 +139,8 @@
       "ad": {
         "tr": "Ka’de-i ahîre (Son oturuş)",
         "fr": "La dernière assise le temps de réciter le Tahiyyat",
-        "en": "The last sitting (qa‘dah akhirah), long enough to recite the Tahiyyat",
-        "nl": "De laatste zit (qa‘da achira), lang genoeg om de Tahiyyat te reciteren",
+        "en": "Qadah al-Akhirah (The position of the last sitting)",
+        "nl": "Tashahhud: het zitten tijdens de laatste tashahhud aan het eind van het gebed, met als minimale duur de tijd die nodig is om de tahiyyāt te lezen.",
         "de": "Das letzte Sitzen (Qa‘da Achira), lange genug, um das Tahiyyat zu rezitieren"
       },
       "grup": "rukun"
@@ -154,8 +154,6 @@
     "de": "Das Gebet hat zwölf Pflichtteile: sechs liegen außerhalb des Gebets (die Bedingungen) und sechs innerhalb (die Säulen)."
   },
   "taslak": [
-    "en",
-    "nl",
     "de"
   ],
   "kaynaklar": [
@@ -168,6 +166,16 @@
       "rol": "fr",
       "ad": "Je vais à la mosquée 2",
       "sayfa": "253"
+    },
+    {
+      "rol": "en",
+      "ad": "Essentials of Islam (Diyanet, 2017)",
+      "sayfa": "89–91"
+    },
+    {
+      "rol": "nl",
+      "ad": "Basiskennis over Islam (Diyanet, 2017; vertaling Drs. Ahmed Bulut)",
+      "sayfa": "119–120"
     },
     {
       "rol": "dogrulama",

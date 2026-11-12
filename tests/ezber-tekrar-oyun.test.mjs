@@ -236,11 +236,20 @@ test('anlamBloklari: bölüm aralıklarına bağlanır, hepsi maddenin içinde v
 });
 
 test('anlamBloklari: NL taslak meâl her zaman dışarıda, inceleme işareti kalkmışsa içeride', () => {
-  const m = structuredClone(metinler.find((x) => x.id === 's-ihlas'));
+  // s-ihlas'ın NL meâli resmî (Diyanet kitabı) olduğundan taslak örnek olarak hâlâ taslak olan s-duha alınır.
+  const m = structuredClone(metinler.find((x) => x.id === 's-duha'));
   assert.equal(m.meal.nl.inceleme, true, 'veri değişmiş: NL taslak işareti kalkmışsa bu test elle güncellenir');
   assert.deepEqual(mmodul.anlamBloklari(m, 'nl'), []);
   delete m.meal.nl.inceleme;
   assert.ok(mmodul.anlamBloklari(m, 'nl').length >= 1, 'gözden geçirilmiş meâl oyuna girer');
+});
+
+test('anlamBloklari: kaynaklı NL meâl tek gruptur; tek blok döner (oyun düğmesi için en az iki blok gerekir, sayfa kendisi eler)', () => {
+  const m = metinler.find((x) => x.id === 's-ihlas');
+  assert.equal(m.meal.nl.inceleme, undefined);
+  const b = mmodul.anlamBloklari(m, 'nl');
+  assert.deepEqual(b.map((x) => [x.bas, x.son]), [[0, 4]]);
+  assert.ok(b[0].meal.includes('Allah is de Enige'));
 });
 
 test('anlamAdaylari: kısmı tam kapsayan bloklar; ikiden azsa maddenin bütün blokları; boş meâl elenir', () => {

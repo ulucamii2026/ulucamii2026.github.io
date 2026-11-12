@@ -1,0 +1,44 @@
+{
+  "id": "/",
+  "name": "Chemin du savoir · Ulu Camii",
+  "short_name": "Chemin du savoir",
+  "description": "La plateforme d’apprentissage d’Ulu Camii : le Kilim de mémorisation suit votre compte sur chaque appareil ; les éléments enregistrés s’ouvrent aussi hors ligne.",
+  "lang": "fr",
+  "dir": "ltr",
+  "start_url": "/fr/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#F6EEDF",
+  "background_color": "#F6EEDF",
+  "categories": [
+    "education"
+  ],
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

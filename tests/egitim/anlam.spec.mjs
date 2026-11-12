@@ -24,7 +24,8 @@ const ilkAyet = (arapca) => {
 /** Veriye göre bir dilin sayfada gösterilecek (gözden geçirilmiş) meâli; taslaksa ya da yoksa null. */
 const oyunMeali = (id, dil) => {
   const meal = metin(id).meal[dil];
-  return meal && !meal.inceleme ? meal : null;
+  // Tek gruplu resmî meâl (NL, Diyanet kitabı: sûre başına tek paragraf) en az iki blok gerekmesi yüzünden oyun kurmaz.
+  return meal && !meal.inceleme && meal.gruplar.length >= 2 ? meal : null;
 };
 
 test.beforeEach(async ({ context, page }) => {
@@ -67,7 +68,7 @@ async function dogruSiralar(page, id, dil) {
 
 for (const dil of DILLER) {
   const var_ = Boolean(oyunMeali('s-ihlas', dil));
-  test(`${dil}: Anlamla eşleştir ${var_ ? 'sunulur, çift çift eşleşir' : 'gözden geçirilmemiş meâlde sunulmaz'}; CSP ve iki temada erişilebilirlik`, async ({ page }) => {
+  test(`${dil}: Anlamla eşleştir ${var_ ? 'sunulur, çift çift eşleşir' : 'taslak ya da tek bloklu meâlde sunulmaz'}; CSP ve iki temada erişilebilirlik`, async ({ page }) => {
     const hatalar = [];
     page.on('pageerror', (e) => hatalar.push(e.message));
     await page.goto(`/${dil}/calis/s-ihlas/`);
@@ -204,7 +205,7 @@ test('Çok kısımlı maddede kısım seçilince tur yalnız o kısmın bloklar�
 });
 
 test('Oyun kurulamayan madde: tek meâl blokluk sûrede (TR Felak) düğme çıkmaz; FR’de çıkar', async ({ page }) => {
-  expect(oyunMeali('s-felak', 'tr').gruplar).toHaveLength(1);
+  expect(metin('s-felak').meal.tr.gruplar).toHaveLength(1);
   await page.goto('/tr/calis/s-felak/');
   await page.locator('#kip-sekme-sina').click();
   await expect(page.locator(`${SINA} .sina-oyunlar button`)).toHaveCount(4);

@@ -6,6 +6,7 @@ import { gorselleriBaslat, type BelgeMetinleri, type GorselYonetici } from './ih
 import { camiSeciminiBaslat } from './ihtida-cami';
 import { sahitImzalariniBaslat, DIN_GOREVLISI_SAHIT, type SahitImzaMetinleri } from './ihtida-sahit-imza';
 import { ihtidaAdimlariniBaslat } from './ihtida-adimlari';
+import { ihtidaYasDurumu } from '../lib/ihtida-yas';
 
 export function ihtidaFormuBaslat() {
   const form = document.querySelector<HTMLFormElement>('form[data-form="ihtida"]');
@@ -20,8 +21,25 @@ export function ihtidaFormuBaslat() {
   // Yerel reset tamamlandıktan sonra imzasız tercihini, görselleri ve şahit imzalarını birlikte sıfırla.
   form.addEventListener('reset', () => queueMicrotask(() => { gorseller?.sifirla(); sahitImzalari.sifirla(); }));
 
+  // 12 Kasım 2026: 18 yaşından küçükler çevrim içi başvuru yapamaz (din görevlisi kararı). Yaş, başvuru günü (Europe/Brussels)
+  // esas alınarak hesaplanır (src/lib/ihtida-yas.ts); sunucu aynı denetimi yapar ("yas-siniri").
+  const yasMetin = JSON.parse(form.querySelector('script[data-metin-yas]')?.textContent || '{}') as { kisa?: string; bilgi?: string };
+  const dogumAlani = form.querySelector<HTMLInputElement>('#i-dogum');
+  const yasKutusu = form.querySelector<HTMLElement>('[data-yas-kutu]');
+  const yasAltiMi = () => ihtidaYasDurumu(dogumAlani?.value.trim() ?? '') === 'yas-siniri';
+  const yasKutusunuGuncelle = () => {
+    if (!yasKutusu) return;
+    const goster = yasAltiMi();
+    if (goster) { if (yasKutusu.textContent !== yasMetin.bilgi) yasKutusu.textContent = yasMetin.bilgi ?? ''; }
+    else yasKutusu.textContent = '';
+    yasKutusu.hidden = !goster;
+  };
+  for (const olay of ['input', 'change']) dogumAlani?.addEventListener(olay, yasKutusunuGuncelle);
+  form.addEventListener('reset', () => queueMicrotask(yasKutusunuGuncelle));
+
   const cekirdek = formuBaslat(form, {
     hazir: () => {
+      yasKutusunuGuncelle();   // taslaktan gelen doğum tarihi de denetlensin
       cami.hazir();
       // Önceki sürümdeki taslakta yazılmış şahit adlarını görünür tut.
       const secim = form.querySelector<HTMLInputElement>('#i-sahit-ekle');
@@ -31,6 +49,7 @@ export function ihtidaFormuBaslat() {
       }
     },
     ekDogrula: (_v, _f, _m, bolumler) => [
+      ...(yasAltiMi() && (!bolumler || bolumler.some(b => b.id === 'b-kisi')) ? [['basvuran.dogumTarihi', yasMetin.kisa ?? ''] as [string, string]] : []),
       ...(!bolumler || bolumler.some(b => b.id === 'b-cami' || b.id === 'b-ihtida') ? cami.dogrula() : []),
       ...(!bolumler || bolumler.some(b => b.id === 'b-ihtida') ? sahitImzalari.dogrula() : []),
       ...(!bolumler || bolumler.some(b => b.id === 'b-belgeler') ? gorseller?.dogrula() ?? [] : []),
@@ -44,7 +63,8 @@ export function ihtidaFormuBaslat() {
       return {
         cami: cami.veri(),
         basvuran: {
-          adSoyad: b.adSoyad, cinsiyet: b.cinsiyet, dogumTarihi: b.dogumTarihi, dogumYeri: b.dogumYeri, uyruk: b.uyruk,
+          // 12 Kas 2026: ad ve soyad ayrı gider; «Ad SOYAD» değerini sunucu tek yerde kurar (ihtidaAdSoyadHazirla).
+          ad: b.ad, soyad: b.soyad, cinsiyet: b.cinsiyet, dogumTarihi: b.dogumTarihi, dogumYeri: b.dogumYeri, uyruk: b.uyruk,
           anneAdi: b.anneAdi, babaAdi: b.babaAdi, medeniHali: b.medeniHali, ogrenimDurumu: b.ogrenimDurumu, meslek: b.meslek,
           oncekiDin: b.oncekiDin, ihtidaSebebi: b.ihtidaSebebi ?? '', yeniIsim: b.yeniIsim ?? '',
           eposta: b.eposta, telefon: telefonNormalle(String(b.telefon ?? '')) ?? b.telefon, adres,
@@ -76,16 +96,17 @@ export function ihtidaFormuBaslat() {
         return inp ? (f.querySelector<HTMLLabelElement>(`label[for="${inp.id}"]`)?.textContent?.trim() ?? '') : '';
       };
       const secText = (ad: string) => { const s = f.querySelector<HTMLSelectElement>(`select[name="${ad}"]`); return s?.value ? s.selectedOptions[0]?.textContent?.trim() ?? '' : ''; };
+      const adSoyad = [b.ad, b.soyad].map(x => String(x ?? '').trim()).filter(Boolean).join(' ');
       const dogum = b.dogumTarihi ? String(b.dogumTarihi).split('-').reverse().join('.') : '';
       return {
         cami: cami.ozet(),
-        kisi: [b.adSoyad, etiket('basvuran.cinsiyet', b.cinsiyet)].filter(Boolean).join(' · '),
+        kisi: [adSoyad, etiket('basvuran.cinsiyet', b.cinsiyet)].filter(Boolean).join(' · '),
         dogum: [dogum, b.dogumYeri].filter(Boolean).join(' · '),
         uyruk: String(b.uyruk ?? ''),
         aile: [b.anneAdi, b.babaAdi].filter(Boolean).join(' / '),
         durum: [secText('basvuran.medeniHali'), b.ogrenimDurumu, b.meslek].filter(Boolean).join(' · '),
         iletisim: [b.telefon, b.eposta, b.adres, b.postaKodu, b.sehir, b.ulke].filter(Boolean).join(' · '),
-        teslimat: [etiket('teslimat.yontem', (v.teslimat as Veriler)?.yontem), ...((v.teslimat as Veriler)?.yontem === 'adres' ? [b.adSoyad, b.adres, b.postaKodu, b.sehir, b.ulke] : [])].filter(Boolean).join(' · '),
+        teslimat: [etiket('teslimat.yontem', (v.teslimat as Veriler)?.yontem), ...((v.teslimat as Veriler)?.yontem === 'adres' ? [adSoyad, b.adres, b.postaKodu, b.sehir, b.ulke] : [])].filter(Boolean).join(' · '),
         din: String(b.oncekiDin ?? ''),
         sebep: String(b.ihtidaSebebi ?? ''),
         yeniIsim: String(b.yeniIsim ?? ''),

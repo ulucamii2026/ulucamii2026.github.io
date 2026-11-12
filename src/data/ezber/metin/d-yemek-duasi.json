@@ -27,6 +27,42 @@
      "metin": "Bizi yediren, bizi içiren ve bizi Müslüman yapan Allah’a hamdolsun."
     }
    ]
+  },
+  "fr": {
+   "kaynak": "Sur les traces du Prophète Muhammad, T.C. Diyanet İşleri Başkanlığı (Présidence des Affaires Religieuses), Ankara, 2022, s. 187 (ISBN 978-625-435-086-3)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      3
+     ],
+     "metin": "Louanges à Allah qui nous a nourris, nous a abreuvés et fait de nous des musulmans"
+    }
+   ]
+  },
+  "en": {
+   "kaynak": "Islam Through Hadiths 1, Diyanet İşleri Başkanlığı, İstanbul, 2020, s. 209",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      3
+     ],
+     "metin": "“Praise be to Allah Who has given us food and drink and made us Muslims.”"
+    }
+   ]
+  },
+  "de": {
+   "kaynak": "Auf den Spuren des Propheten, Präsidium für Religionsangelegenheiten (Diyanet İşleri Başkanlığı), Ankara, 2022 (2. Ausgabe), s. 219 (Diyanet yayını no. 2041, ISBN 978-625-435-060-3; Übersetzung: DİTİB ZSU)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      3
+     ],
+     "metin": "Gepriesen sei Allah, Der uns dies zu essen und zu trinken gab und uns zu Muslimen gemacht hat."
+    }
+   ]
   }
  },
  "kaynak": {
@@ -34,7 +70,7 @@
   "url": "https://dijital.diyanet.gov.tr/Kitaplik/hadis-ve-siyer/hadislerle-islam-6",
   "alindi": "2026-10-24"
  },
- "ozet": "6b129e3e204c9263eeb961103f9456318e614236958332be0af311f404d6c84e",
+ "ozet": "6002d953c31ae11554ae697c2c658427cfca3a47e72c59edab0621ee25d6f67c",
  "zor": [],
  "onay": null
 }
