@@ -1,7 +1,7 @@
 {
   "dosya": 3020,
   "zorunlu": [
-    "index.html", "404.html", "sw.js", "sitemap-index.xml", "manifest.webmanifest", "robots.txt",
+    "index.html", "404.html", "sw.js", "sitemap-index.xml", "manifest.webmanifest", "manifest.fr.webmanifest", "manifest.en.webmanifest", "manifest.nl.webmanifest", "manifest.de.webmanifest", "robots.txt",
     "tr/index.html", "fr/index.html", "en/index.html", "nl/index.html", "de/index.html",
     "tr/veli/index.html", "hoca/index.html", "e/fatiha/index.html",
     "tr/kurs/index.html", "tr/kurs/gunluk/index.html", "tr/kurs/materyaller/index.html", "tr/kurs/yillik-plan/index.html", "tr/kurs/mufredat/index.html",

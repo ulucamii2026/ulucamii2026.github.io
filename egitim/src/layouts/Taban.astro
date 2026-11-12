@@ -38,6 +38,8 @@ interface Props {
   kanonik?: string;
 }
 const { dil, baslik, aciklama, yol, noindex = false, sayfa = 'diger', kapak = false, oturum = true, sade = false, kanonik } = Astro.props;
+// Türkçe manifest eski adında kalır (kurulu uygulamalar); diğer diller manifest.<dil>.webmanifest (id ve scope aynı).
+const manifestYolu = (d: Dil) => (d === "tr" ? "/manifest.webmanifest" : `/manifest.${d}.webmanifest`);
 const m = metin(dil);
 const il = ilimMetinleri(dil);
 const sayfaBasligi = baslik ?? KILIM_METINLERI.baslik[dil];
@@ -65,7 +67,7 @@ const ogKart = new URL(`/og/ezber-kilimi-${dil}.png`, Astro.site).toString();
     <meta name="theme-color" content="#F6EEDF" />
     <meta name="theme-color" content="#1A120E" media="(prefers-color-scheme: dark)" />
     {/* Sayfa kendi manifestini/başlık etiketlerini `slot="head"` ile verebilir (veli portalı: dil başına kurulabilir uygulama); o zaman ortak manifest basılmaz. */}
-    {!Astro.slots.has("head") && <link rel="manifest" href="/manifest.webmanifest" />}
+    {!Astro.slots.has("head") && <link rel="manifest" href={manifestYolu(dil)} />}
     <slot name="head" />
     <meta name="apple-mobile-web-app-title" content={il.siteAdi} />
     <link rel="preload" as="font" type="font/woff2" href="/fonts/atkinson-next.woff2" crossorigin />
