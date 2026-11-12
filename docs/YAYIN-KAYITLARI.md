@@ -4,6 +4,19 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 12 Kasım 2026 (öğleden sonra, dördüncü) — İlim Yolu: «Kur'an okumanın fazileti» listesine 4. ve 5. hadis
+
+Din görevlisinin açık onayıyla (12 Kasım 2026: «İkisi de eklensin» = eklenir ve yayımlanır) yayınlandı. Europe/Brussels: push yaklaşık 12.50 (CET).
+
+- **Kapsam:** `b-kuran-fazileti-hadisleri` üç hadisten beşe çıktı. 4. hadis: Buhârî, Tefsîr (Abese), 1; Müslim, Müsâfirîn, 244 (Hadislerle İslam c. 1). 5. hadis: Müslim, Müsâfirîn, 269 (Riyâzü's-Sâlihîn c. 2, no. 1000). Türkçe lafızlar Diyanet çevirisinden aynen. İngilizce 4. hadiste resmî (Islam Through Hadiths 1, s. 595, aynen); diğer her şey çalışma çevirisi.
+- **Değişen yollar:** `src/data/ezber/bilgi/b-kuran-fazileti-hadisleri.json`, `docs/ILIM-YOLU-CEVIRI-KAYNAKLARI.md`, `docs/EGITIM-FAZ2-DINLEME.md`, `docs/ezber-bilgi-inceleme/ezber-bilgi-inceleme.html` (üreteçle), `tests/ezber-bilgi.test.mjs`, `tests/egitim/bilgi.spec.mjs`.
+- **İçerik commit'i:** `62e1c2b3` (önceki yerel `239fdfbf`, `4e89a739` üzerine rebase); `main`: `4e89a739` → `62e1c2b3`, fast-forward, force yok.
+- **Koşular:** Pages [43212799798](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/43212799798) success; egitim push [43212799801](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/43212799801) success; `workflow_run` ile tetiklenen [43213152375](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/43213152375) skipped (olağan).
+- **Canlı (`https://egitim.ulucamii.be/{tr,fr,en,nl,de}/calis/b-kuran-fazileti-hadisleri/`):** beş dilde HTTP 200, her sayfada 5 madde; tr sayfada 4. ve 5. hadisin Türkçe metni onaylı lafızla karakter karakter aynı; en sayfada resmî 4. hadis metni var; «Müsâfirîn, 269» künyesi beş dilde var. `npm run egitim:canli -- https://egitim.ulucamii.be`: 139/139 geçti.
+- **Yerel kapılar:** `dogrula:codex`: `check` (astro check 0 hata), `design:check`, `dogrula`, `egitim:build` (+ dist denetimi), `test:egitim` (Playwright 1130 geçti, 34 atlandı), `test:kurallar`, `test:ilim-yolu` (109 test: 108 geçti, 0 başarısız, 1 atlandı), `test:hesap`, `test:veli-eposta`, `test:oto-kaydet`, `test:ogrenme` GEÇTİ; `test:web` 950 geçti, 4 başarısız (bilinen, ilgisiz: `cuma-hatirlatma` iki test × masaüstü/mobil, Perşembe tarih bağımlılığı), 120 atlandı. Elle bakış (derlenmiş sayfa tr ve nl, 360 px ve masaüstü): beş hadis sırayla, künyeler görünür, nl taslak uyarısı doğru, yatay taşma 0.
+- **Açık sınırlar:** (1) fr, nl, de metinleri (ve en 5. hadis) Türkçeden hazırlanmış çalışma çevirisidir, resmî değildir; nl dosya düzeyinde yeniden taslağa girdi (ilk üç nl hadis de taslak uyarısı altında). (2) Arapça eklenmedi: `ar` alanı 60 karakterle sınırlı; 5. hadisin Arapçası arşivde yok. (3) Hadis dereceleri arşiv kaynaklarında belirtilmediğinden sayfada yazılı değil. (4) 5. hadis için çocuk açıklaması yazılmadı. (5) Seslendirme bu maddeyi kapsamaz (bilgi maddelerinde ses yok); eskiyen ses dosyası yok. (6) fr/nl/de için resmî karşılık taraması yalnız mevcut kitap listeleriyle yapıldı.
+- **Geri alma:** `git revert 62e1c2b3` (tek içerik commit'i) ve normal push; egitim ve Pages kendiliğinden yeniden yayınlanır.
+
 ## 12 Kasım 2026 (öğleden sonra, üçüncü) — İhtida formu: 18 yaş altı engeli, Ad/Soyad ayrımı, dilekçe tarihi; Apps Script v48 CANLI
 
 Din görevlisinin açık onayıyla (12 Kasım 2026) yayınlandı. Europe/Brussels: v48 dağıtımı 10:38, site push 10:40.
