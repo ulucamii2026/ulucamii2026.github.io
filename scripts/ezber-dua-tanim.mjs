@@ -429,6 +429,7 @@ export const DUALAR = {
  */
 export function duaOzeti(m) {
   const { bolumler, meal, okunus, zor, duzeltmeler } = m;
-  // Fransızca anlam yalnız Diyanet-hattı kitaptan gelen dualarda (Camiye Gidiyorum) vardır; yoksa özet eskisiyle aynı kalır.
-  return createHash('sha256').update(JSON.stringify({ bolumler, meal: { tr: meal.tr, ...(meal.fr && { fr: meal.fr }) }, okunus, zor, duzeltmeler })).digest('hex');
+  // Fransızca anlam yalnız Diyanet-hattı kitaptan gelen dualarda (Camiye Gidiyorum) vardır; en/nl/de anlam Diyanet'in basılı kitaplarından
+  // elle işlenir (docs/ILIM-YOLU-CEVIRI-KAYNAKLARI.md). Yoksa özet eskisiyle aynı kalır.
+  return createHash('sha256').update(JSON.stringify({ bolumler, meal: { tr: meal.tr, ...(meal.fr && { fr: meal.fr }), ...(meal.en && { en: meal.en }), ...(meal.nl && { nl: meal.nl }), ...(meal.de && { de: meal.de }) }, okunus, zor, duzeltmeler })).digest('hex');
 }

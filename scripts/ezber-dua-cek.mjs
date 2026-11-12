@@ -182,7 +182,8 @@ for (const [id, { ar, tr, okunus, duzeltmeler, d, kitap }] of sonuc) {
     $schema: './metin.schema.json',
     id,
     bolumler: ar.map((a, i) => ({ no: i + 1, ar: a })),
-    meal: { tr: trMeali, ...(kitap?.fr && { fr: kitapMeali(kitap.fr) }) },
+    // Kitaptan gelen Fransızca (DİTİB) yeniden üretilir; Diyanet'in basılı kitaplarından elle işlenen fr/en/nl/de anlamlar önceki dosyadan korunur.
+    meal: { tr: trMeali, ...(kitap?.fr ? { fr: kitapMeali(kitap.fr) } : onceki?.meal.fr && { fr: onceki.meal.fr }), ...(onceki?.meal.en && { en: onceki.meal.en }), ...(onceki?.meal.nl && { nl: onceki.meal.nl }), ...(onceki?.meal.de && { de: onceki.meal.de }) },
     kaynak: { ar: kitap ? kitap.kaynakAr : d.kaynakAr, url: d.url ?? PORTAL, alindi: bugun },
     ...(duzeltmeler.length && { duzeltmeler }),
     ozet: '',

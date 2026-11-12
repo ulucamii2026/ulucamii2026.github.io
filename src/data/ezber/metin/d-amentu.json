@@ -89,6 +89,30 @@
      "metin": "Je témoigne qu'il n'y a de divinité qu'Allah. Et je témoigne que Muhammed est Son serviteur et Son messager."
     }
    ]
+  },
+  "en": {
+   "kaynak": "Essentials of Islam — A Textbook for High School Students, Presidency of Religious Affairs (Diyanet İşleri Başkanlığı), Ankara, 2017, s. 42",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      5
+     ],
+     "metin": "“I believe in Allah, in His angels, in His books, in His Messengers, in the Last Day (Day of Judgment) and in the fact that everything good or bad is decided by Allah the Almighty, and in the life after death, all of them are true. I witness that there is no god but Allah and I witness that Muhammad is His slave and Messenger.”"
+    }
+   ]
+  },
+  "nl": {
+   "kaynak": "Basiskennis over Islam, Presidium voor Religieuze Zaken (Diyanet İşleri Başkanlığı), Den Haag / Ankara, 2017, s. 29 (Publicatie nr 1346; vertaling Drs. Ahmed Bulut)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      5
+     ],
+     "metin": "“Ik geloof in Allah, in Zijn Engelen, in Zijn Boeken, in Zijn Profeten, in de Dag des Oordeels en Zijn qadar (de lotsbeschikking), dat zowel het goede als het slechte van Allah komt. De opwekking na de dood is waar. Ik getuig dat er geen God is dan Allah, en ik getuig dat Mohammed de dienaar en de boodschapper van Allah is.”"
+    }
+   ]
   }
  },
  "kaynak": {
@@ -96,7 +120,7 @@
   "url": "https://diniyayinlar.diyanet.gov.tr/",
   "alindi": "2026-10-24"
  },
- "ozet": "75e8be0bc8702462ce2bc18fcc08a0a61fff1088e3ecd206e01e96da958dbe88",
+ "ozet": "61e475a162cb572f800451dc94007f8925223fa9321a814b416502b0ed1a233c",
  "zor": [],
  "onay": null
 }

@@ -19,6 +19,18 @@
      "metin": "Allah en büyüktür"
     }
    ]
+  },
+  "en": {
+   "kaynak": "Essentials of Islam — A Textbook for High School Students, Presidency of Religious Affairs (Diyanet İşleri Başkanlığı), Ankara, 2017, s. 90",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      1
+     ],
+     "metin": "Allah is the greatest"
+    }
+   ]
   }
  },
  "kaynak": {
@@ -26,7 +38,7 @@
   "url": "https://diniyayinlar.diyanet.gov.tr/",
   "alindi": "2026-10-24"
  },
- "ozet": "6c29e8607302c45c8a84bcdcc31a8f39a8b3730e84325807c9c173d54d2540bb",
+ "ozet": "df2a9acd404f6bbbbd2c48fca9f12b35180f744edff0694555d3a51b9f1d920a",
  "okunus": {
   "tr": [
    {

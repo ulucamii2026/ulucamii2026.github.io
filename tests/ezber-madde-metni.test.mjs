@@ -117,19 +117,38 @@ test('Dua metinlerinin harf iskeleti ikinci Diyanet kaynağıyla aynı; bilinen 
 });
 
 const NL_RESMI = ['s-fatiha', 's-fil', 's-kureys', 's-maun', 's-kevser', 's-kafirun', 's-nasr', 's-tebbet', 's-ihlas', 's-felak', 's-nas', 's-ayetel-kursi', 'd-rabbena-atina', 'd-rabbenagfirli'];
-test('Felemenkçe meâl: 14 madde Diyanet kitabından, taslak değil, künyeli ve tek grup; diğer NL maddeler hâlâ taslak', () => {
+test('Felemenkçe meâl: 14 madde Diyanet kitabından, taslak değil, künyeli ve tek grup; diğer NL sûre maddeleri hâlâ taslak', () => {
   for (const id of NL_RESMI) {
     const nl = metinler.get(id).meal.nl;
     assert.equal(nl.inceleme, undefined, `${id}: resmî NL meâl taslak sayılmaz`);
     assert.match(nl.kaynak, /Basiskennis over Islam.*Diyanet İşleri Başkanlığı.*2017.*Publicatie nr 1346.*Ahmed Bulut/, `${id}: künye`);
     assert.match(nl.kaynak, /«Betekenis»|«Vertaling»/, `${id}: kitabın anlam paragrafı olduğu künyede yazılı`);
     assert.equal(nl.gruplar.length, 1, `${id}: kitap tek paragraf verir`);
-    assert.doesNotMatch(nl.gruplar[0].metin, /s$|^s|ss/, `${id}: boşluk`);
+    assert.doesNotMatch(nl.gruplar[0].metin, /\s$|^\s|\s\s/, `${id}: boşluk`);
   }
   for (const [id, m] of metinler) {
-    if (NL_RESMI.includes(id) || !m.meal.nl) continue;
+    if (!m.kuran || NL_RESMI.includes(id) || !m.meal.nl) continue;
     assert.equal(m.meal.nl.inceleme, true, `${id}: kaynaksız NL meâl taslak kalmalı`);
   }
+});
+
+test('Dua anlamları (en, nl, de, fr): yalnız Diyanet’in basılı kitaplarından, künyeli, taslak değil, kısaltmasız', () => {
+  const KITAP = { en: /Islam Through Hadiths|Essentials of Islam/, nl: /Basiskennis over Islam.*Diyanet/, de: /Was ist der Islam\?.*Diyanet/, fr: /Guide pratique des adorations|Je vais à la mosquée/ };
+  const say = { en: 0, nl: 0, de: 0, fr: 0 };
+  for (const [id, m] of metinler) {
+    if (m.kuran) continue;
+    for (const dil of Object.keys(KITAP)) {
+      const meal = m.meal[dil];
+      if (!meal) continue;
+      say[dil]++;
+      assert.equal(meal.inceleme, undefined, `${id}/${dil}`);
+      assert.match(meal.kaynak, KITAP[dil], `${id}/${dil}: künye Diyanet kitabını göstermeli`);
+      for (const g of meal.gruplar) assert.ok(g.metin.trim() && !/…|\.\.\./.test(g.metin), `${id}/${dil}: kısaltılmış ya da boş anlam resmî metin sayılmaz`);
+    }
+  }
+  assert.deepEqual(say, { en: 10, nl: 10, de: 1, fr: 8 }, 'beklenen kapsam (fr: 3 DİTİB + 5 Diyanet kılavuzu)');
+  // Baskı hatalı ya da kısaltılmış, parçası başka rivayete ait olanlar eklenmez (docs/ILIM-YOLU-CEVIRI-KAYNAKLARI.md).
+  for (const id of ['d-salli', 'd-barik', 'd-kunut-1', 'd-kunut-2', 'd-secde-tesbihi', 'd-tesrik-tekbiri', 'd-subhaneke']) assert.equal(metinler.get(id).meal.en, undefined, `${id}: en eklenmemeli`);
 });
 
 test('Meâl grupları her dilde maddenin bütün âyetlerini boşluksuz ve örtüşmesiz kaplar', () => {
@@ -154,7 +173,7 @@ test('Fransızca meâl: Chiadmi (Diyanet) ya da Hamidullah, künyeyle aynı çev
   for (const [id, m] of metinler) {
     if (m.kuran) assert.ok(m.meal.fr, `${id}: FR meâl yok (node scripts/ezber-meal-fr.mjs)`);
     // Kur'an dışı kitap duasında FR anlam DİTİB'in resmî Fransızca yayınından gelir (Camiye Gidiyorum – Je vais à la mosquée).
-    if (m.meal.fr) assert.match(m.meal.fr.kaynak, m.kuran ? cevirmen : /Je vais à la mosquée/, `${id}: FR meâl sayfadaki künyeyle aynı çevirmenden olmalı (${kunye})`);
+    if (m.meal.fr) assert.match(m.meal.fr.kaynak, m.kuran ? cevirmen : /Je vais à la mosquée|Guide pratique des adorations/, `${id}: FR meâl sayfadaki künyeyle aynı çevirmenden olmalı (${kunye})`);
     for (const [dil, satirlar] of Object.entries(m.okunus ?? {})) {
       assert.deepEqual(satirlar.map((x) => x.no), m.bolumler.map((b) => b.no), `${id}/okunus-${dil}`);
     }
@@ -200,8 +219,11 @@ test('Sayfa blokları: meâl grubuyla; meâlsiz dilde tek blok; FR yalnız Chiad
   assert.equal(mm.metinBloklari(onayli, 'fr')[0].okunus, undefined, 'FR sayfası FR usulünün onayını ister');
   // Dualar: meâlsiz dilde de her bölüm ayrı blok (Kur'an'daki kesintisiz akış duada ezber sınırlarını silerdi).
   const salli = metinler.get('d-salli');
-  assert.deepEqual(mm.metinBloklari(salli, 'fr').map((b) => b.ayetler), [[1, 1], [2, 2], [3, 3]]);
-  assert.ok(!('meal' in mm.metinBloklari(salli, 'fr')[0]));
+  const kunut = metinler.get('d-kunut-1'); // Fransızca resmî metni yok (kitaptaki söz dizimi başka)
+  assert.deepEqual(mm.metinBloklari(kunut, 'fr').map((b) => b.ayetler), [[1, 1], [2, 2], [3, 3], [4, 4]]);
+  assert.ok(!('meal' in mm.metinBloklari(kunut, 'fr')[0]));
+  // Resmî tek parça anlam (Diyanet'in «Guide pratique des adorations»ı): bölümler tek blokta, anlam bir kez.
+  assert.deepEqual(mm.metinBloklari(salli, 'fr').map((b) => [b.ayetler, b.bolumler.length, 'meal' in b]), [[[1, 3], 3, true]]);
   assert.equal(mm.metinBloklari(salli, 'tr')[1].meal, 'İbrahim’e ve İbrahim’in ümmetine rahmet ettiğin gibi.');
   assert.equal(mm.arapcaRakam(40), '٤٠');
   assert.equal(mm.aralikYaz([2, 4]), '2–4');

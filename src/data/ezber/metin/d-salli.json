@@ -41,6 +41,30 @@
      "metin": "Şüphesiz övülmeye lâyık yalnız sensin, şan ve şeref sahibi de sensin."
     }
    ]
+  },
+  "fr": {
+   "kaynak": "Guide pratique des adorations, T.C. Diyanet İşleri Başkanlığı, Ankara, 2013, s. 219 (Diyanet yayını no 942; traduction Vildan M. Sarıkan)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      3
+     ],
+     "metin": "“Ô Allâh ! Accorde Ta miséricorde à Muhammed et à sa famille comme Tu l’as accordée à Ibrâhîm et à sa famille. Tu es certainement digne de louange et de gloire.”"
+    }
+   ]
+  },
+  "nl": {
+   "kaynak": "Basiskennis over Islam, Presidium voor Religieuze Zaken (Diyanet İşleri Başkanlığı), Den Haag / Ankara, 2017, s. 347 (Publicatie nr 1346; vertaling Drs. Ahmed Bulut)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      3
+     ],
+     "metin": "‘O mijn Allah! Schenk Uw barmhartigheid aan Mohammed en de volgers (umma) van Mohammed; verhef zijn glorie, precies zoals U ook Uw barmhartigheid schonk aan Ibrāhīm en het volk van Ibrāhīm. U bent waarlijk de enige prijzenswaardige.’"
+    }
+   ]
   }
  },
  "kaynak": {
@@ -48,7 +72,7 @@
   "url": "https://namaz.diyanet.gov.tr/namaz/html/sureler-dualar.html",
   "alindi": "2026-10-24"
  },
- "ozet": "e8711462750aefcc6979c8d8f9d33a04574188a95c37ae6b4fbf429987c2bb3d",
+ "ozet": "95ce375a67832dc3f73d6a7d7c6eecf082693f8cc23a5fe1eccb12623489557e",
  "okunus": {
   "tr": [
    {

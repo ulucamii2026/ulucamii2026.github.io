@@ -27,6 +27,18 @@
      "metin": "Bizi yediren, bizi içiren ve bizi Müslüman yapan Allah’a hamdolsun."
     }
    ]
+  },
+  "en": {
+   "kaynak": "Islam Through Hadiths 1, Diyanet İşleri Başkanlığı, İstanbul, 2020, s. 209",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      3
+     ],
+     "metin": "“Praise be to Allah Who has given us food and drink and made us Muslims.”"
+    }
+   ]
   }
  },
  "kaynak": {
@@ -34,7 +46,7 @@
   "url": "https://dijital.diyanet.gov.tr/Kitaplik/hadis-ve-siyer/hadislerle-islam-6",
   "alindi": "2026-10-24"
  },
- "ozet": "6b129e3e204c9263eeb961103f9456318e614236958332be0af311f404d6c84e",
+ "ozet": "b86c35f9926c3f235d8676e6665ead9fc0095c875b13da8da892604050e1c158",
  "zor": [],
  "onay": null
 }

@@ -41,6 +41,30 @@
      "metin": "Senden başka ilâh yoktur."
     }
    ]
+  },
+  "fr": {
+   "kaynak": "Guide pratique des adorations, T.C. Diyanet İşleri Başkanlığı, Ankara, 2013, s. 218 (Diyanet yayını no 942; traduction Vildan M. Sarıkan)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      3
+     ],
+     "metin": "“Gloire et louange à toi, mon Dieu. Que Ton nom soit béni, que Ta grandeur soit exaltée, il n’y a pas d’autre divinité que Toi.”"
+    }
+   ]
+  },
+  "nl": {
+   "kaynak": "Basiskennis over Islam, Presidium voor Religieuze Zaken (Diyanet İşleri Başkanlığı), Den Haag / Ankara, 2017, s. 346 (Publicatie nr 1346; vertaling Drs. Ahmed Bulut)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      3
+     ],
+     "metin": "‘O mijn Allah! U bent vrij van alle tekortkomingen. Altijd verheerlijk en prijs ik U. Uw naam is heilig. Uw bestaan is superieur boven alles. Er is geen andere God dan U.’"
+    }
+   ]
   }
  },
  "kaynak": {
@@ -48,7 +72,7 @@
   "url": "https://namaz.diyanet.gov.tr/namaz/html/sureler-dualar.html",
   "alindi": "2026-10-24"
  },
- "ozet": "4371ff31db8a1afda0ec8abe18951efafd0a9c9a3d85639541ec1c52eefaf0da",
+ "ozet": "bfe021623caad96778ca89e5f2608c302af24e62537f74d6d4d42d05e2cf6482",
  "okunus": {
   "tr": [
    {
