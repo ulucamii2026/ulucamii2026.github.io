@@ -45,6 +45,11 @@ Kurs tarafındaki eşleri (aynı işte): `D:/ulu-camii-kuran-kursu/veri/yillik-p
 Yıllık plan gövdesinin en/nl/de/fr çevirisi üretilen JSON'a **yazılmaz**; `src/data/kurs-ceviri/<dil>.json` → `plan` bölümünde (anahtar: Türkçe paragraf). Plan yeniden üretildiğinde
 metni değişen paragrafın çevirisi eskir ve sayfa Türkçeye düşer; `node --test tests/yillik-plan-ceviri.test.mjs` sahipsiz anahtarı yakalar. Ayrıntı ve kapsam: [KURS-CEVIRISI.md](KURS-CEVIRISI.md).
 
+## Müfredat sayfası gövdesi çok dilli (12 Kasım 2026)
+
+Bölüm 1-2 gövdesinin fr/en/nl/de çevirisi de aynı bindirmede: `src/data/kurs-ceviri/<dil>.json` → `mufredat` (anahtar: Türkçe metin). `mufredat-uret.py` çıktısına dokunulmaz; metni
+değişen öğe Türkçeye düşer (`lang="tr"`). PDF ve yazdırılabilir HTML hâlâ yalnız Türkçe. Ayrıntı, kapsam ve PDF önerisi: [KURS-CEVIRISI.md](KURS-CEVIRISI.md).
+
 ## Tekrar yapılacaksa sıra
 
 1. Kaynak Word/HTML/`ozet-nihai.json` — klasör artık OneDrive'da değil:

@@ -13,12 +13,15 @@ import Base from '../layouts/Base.astro';
 import SayfaBasligi from '../components/SayfaBasligi.astro';
 import { ceviri, yerelKodu, yol } from '../i18n/utils';
 import type { Dil } from '../i18n/ui';
+import { kursCevirici } from '../lib/kurs-ceviri-yukle';
+import { mufredatCevir } from '../lib/kurs-ceviri.mjs';
 import govdeHam from '../data/mufredat-2026-2027.html?raw';
 import plan from '../data/yillik-plan-2026-2027.json';
 import meta from '../data/mufredat-meta.json';
 interface Props { dil: Dil }
 const { dil } = Astro.props;
 const t = ceviri(dil);
+const cv = kursCevirici(dil);
 
 const PDF = '/belgeler/kuran-kursu/Ulu-Camii-Kuran-Kursu-Mufredat-2026-2027.pdf';
 const HTML = '/belgeler/kuran-kursu/mufredat-2026-2027.html';
@@ -39,6 +42,14 @@ const bolum2 = govdeTam.slice(kes2, kes3);
 const h2b = bolum2.match(/<h2[^>]*>.*?<\/h2>/s)![0];
 const bolum2Govde = bolum2.slice(h2b.length);
 const h3b = govdeTam.slice(kes3).match(/<h2[^>]*>.*?<\/h2>/s)![0];
+
+/* Gövde çevirisi (12 Kasım 2026): src/data/kurs-ceviri/<dil>.json → mufredat bölümü (Türkçe metin → çeviri; taslak). Ayrıştırma (içindekiler, ders
+   dağılımı) Türkçe govdeTam üzerinde kalır; yalnız gösterilen HTML ve adlar çevrilir. Çevirisi olmayan parça lang="tr" alır. */
+const cevirili = dil !== 'tr' && Object.keys(cv.mufredatHaritasi).length > 0;
+const g = (h: string) => (cevirili ? mufredatCevir(h, cv.mufredatHaritasi, dil).html : h);
+const adC = (a: string) => (cevirili ? cv.mufredat(a) : { m: a, d: 'tr' });
+const kacis = (a: string) => a.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+const tocAd = (a: string) => { const r = adC(a); return dil !== 'tr' && r.d === 'tr' ? `<span lang="tr">${kacis(a)}</span>` : kacis(r.m); };
 
 /* ——— İçindekiler: gövdedeki başlıklardan (numara, ad, ek bilgi ayrı) ——— */
 type Baslik = { seviye: 2 | 3; id: string; no: string; ad: string; meta: string };
@@ -100,6 +111,7 @@ const METIN = {
   alt: 'Kur’an-ı Kerim, İtikat, İbadet, Siyer ve Ahlak derslerinin konuları, kaynak kitapları, kazanımları ve gün gün yıllık planı.',
   aciklama: 'Ulu Camii Kur’an Kursu 2026-2027 müfredatı ve yıllık ders planı: 87 ders günü, 261 ders saati, beş ders alanı.',
   not: '',
+  taslak: '', pdfDil: '',
   ozet: [
     ['Ders başlangıcı', '5 Eylül 2026 Cumartesi'], ['Ders bitişi', '6 Haziran 2027 Pazar'],
     ['Ders günleri', 'Cumartesi ve Pazar · tatil haftalarında Pazartesi de'],
@@ -127,7 +139,8 @@ const METIN = {
   baslik: 'Curriculum & Yearly Lesson Plan 2026-2027',
   alt: 'Topics, textbooks, learning outcomes and the day-by-day yearly plan for Qur’an, Creed, Worship, Sīrah and Ethics.',
   aciklama: 'Ulu Camii Qur’an School 2026-2027 curriculum and yearly lesson plan: 87 teaching days, 261 lessons, five subjects.',
-  not: 'The full document is in Turkish, the language of instruction. The key facts, the subject breakdown and the month-by-month overview are given in English; for questions, contact the imam.',
+  not: 'The curriculum text on this page is a machine-assisted English translation of the Turkish original (the language of instruction). It is a draft: no native English speaker has reviewed it yet, so the Turkish document remains the reference.',
+  taslak: 'Draft', pdfDil: 'The PDF and the printable version are currently available in Turkish only.',
   ozet: [
     ['Lessons start', 'Saturday 5 September 2026'], ['Lessons end', 'Sunday 6 June 2027'],
     ['Teaching days', 'Saturday and Sunday · also Monday during school holiday weeks'],
@@ -155,7 +168,8 @@ const METIN = {
   baslik: 'Programme et plan annuel des cours 2026-2027',
   alt: 'Sujets, manuels, acquis d’apprentissage et plan annuel jour par jour pour le Coran, la croyance, le culte, la Sīra et la morale.',
   aciklama: 'École coranique Ulu Camii, programme et plan annuel 2026-2027 : 87 jours de cours, 261 leçons, cinq matières.',
-  not: 'Le document complet est en turc, langue d’enseignement. L’essentiel, la répartition des matières et l’aperçu mois par mois sont donnés en français ; pour toute question, contactez l’imam.',
+  not: 'Le texte du programme sur cette page est une traduction française assistée par machine de l’original turc (langue d’enseignement). Il s’agit d’un brouillon : aucun francophone natif ne l’a encore relu, le document turc reste donc la référence.',
+  taslak: 'Brouillon', pdfDil: 'Le PDF et la version imprimable ne sont actuellement disponibles qu’en turc.',
   ozet: [
     ['Début des cours', 'samedi 5 septembre 2026'], ['Fin des cours', 'dimanche 6 juin 2027'],
     ['Jours de cours', 'samedi et dimanche · le lundi aussi pendant les semaines de congé scolaire'],
@@ -183,7 +197,8 @@ const METIN = {
   baslik: 'Leerplan en jaarplanning van de lessen 2026-2027',
   alt: 'Onderwerpen, handboeken, leerdoelen en de jaarplanning dag per dag voor Koran, geloofsleer, eredienst, Sīra en moraal.',
   aciklama: 'Leerplan en jaarplanning 2026-2027 van de koranschool Ulu Camii: 87 lesdagen, 261 lessen, vijf vakken.',
-  not: 'Het volledige document is in het Turks, de onderwijstaal. De belangrijkste gegevens, de verdeling van de vakken en het overzicht maand per maand worden in het Nederlands gegeven; voor vragen kunt u de imam contacteren.',
+  not: 'De tekst van het leerplan op deze pagina is een machinaal ondersteunde Nederlandse vertaling van het Turkse origineel (de onderwijstaal). Het is een concept: geen moedertaalspreker heeft het al nagelezen, dus het Turkse document blijft de referentie.',
+  taslak: 'Concept', pdfDil: 'De pdf en de afdrukbare versie zijn momenteel alleen in het Turks beschikbaar.',
   ozet: [
     ['Start van de lessen', 'zaterdag 5 september 2026'], ['Einde van de lessen', 'zondag 6 juni 2027'],
     ['Lesdagen', 'zaterdag en zondag · tijdens schoolvakantieweken ook maandag'],
@@ -211,7 +226,8 @@ const METIN = {
   baslik: 'Lehrplan und Jahresplan des Unterrichts 2026-2027',
   alt: 'Themen, Lehrbücher, Lernziele und der Tag-für-Tag-Jahresplan für Koran, Glaubenslehre, Gottesdienst, Sīra und Moral.',
   aciklama: 'Lehrplan und Jahresplan 2026-2027 der Koranschule Ulu Camii: 87 Unterrichtstage, 261 Lektionen, fünf Fächer.',
-  not: 'Das vollständige Dokument ist auf Türkisch, der Unterrichtssprache. Die wichtigsten Angaben, die Aufteilung der Fächer und der Monatsüberblick werden auf Deutsch gegeben; bei Fragen wenden Sie sich an den Imam.',
+  not: 'Der Lehrplantext auf dieser Seite ist eine maschinell unterstützte deutsche Übersetzung des türkischen Originals (der Unterrichtssprache). Er ist ein Entwurf: Noch kein Muttersprachler hat ihn geprüft, daher bleibt das türkische Dokument maßgeblich.',
+  taslak: 'Entwurf', pdfDil: 'Die PDF-Datei und die druckbare Fassung gibt es derzeit nur auf Türkisch.',
   ozet: [
     ['Unterrichtsbeginn', 'Samstag, 5. September 2026'], ['Unterrichtsende', 'Sonntag, 6. Juni 2027'],
     ['Unterrichtstage', 'Samstag und Sonntag · während der Schulferienwochen auch montags'],
@@ -293,8 +309,8 @@ const surumMetni = bicim(meta.belgeSurumu, { day: 'numeric', month: 'long', year
   {/* Tek sütunlu ızgarada da minmax(0,1fr): aksi hâlde geniş tablolar sütunu içerik
       genişliğine açıp sayfayı yatay kaydırıyordu (mobilde 449 px taşma). */}
   <div class="kapsayici py-10 grid gap-10 grid-cols-[minmax(0,1fr)] lg:grid-cols-[minmax(0,1fr)_300px]">
-    <article class="mufredat min-w-0" lang="tr" data-govde>
-      {m.not && <p class="not" lang={dil}>{m.not}</p>}
+    <article class="mufredat min-w-0" lang={cevirili ? dil : 'tr'} data-govde>
+      {m.not && <p class="not" lang={dil}>{cevirili && <span class="taslak-et">{m.taslak}</span>}{cevirili && ' '}{m.not}</p>}
 
       {/* Dar ekran: yapışkan, katlanır içindekiler; mevcut bölümün adı özet satırında güncellenir. */}
       <details class="toc-mobil lg:hidden" data-toc-mobil lang={dil}>
@@ -307,11 +323,11 @@ const surumMetni = bicim(meta.belgeSurumu, { day: 'numeric', month: 'long', year
           <ol class="toc-liste">
             {bolumler.map((b) => (
               <li>
-                <a href={'#' + b.ust.id} data-ad={`${b.ust.no} ${b.ust.ad}`}><span class="no">{b.ust.no}</span>{b.ust.ad}</a>
+                <a href={'#' + b.ust.id} data-ad={`${b.ust.no} ${adC(b.ust.ad).m}`}><span class="no">{b.ust.no}</span><Fragment set:html={tocAd(b.ust.ad)} /></a>
                 {b.alt.length > 0 && (
                   <ol>
                     {b.alt.map((a) => (
-                      <li><a href={'#' + a.id} data-ad={`${a.no} ${a.ad}`}><span class="no">{a.no}</span>{kodu(a.id) && <i class={'nokta n-' + kodu(a.id)} aria-hidden="true"></i>}{a.ad}</a></li>
+                      <li><a href={'#' + a.id} data-ad={`${a.no} ${adC(a.ad).m}`}><span class="no">{a.no}</span>{kodu(a.id) && <i class={'nokta n-' + kodu(a.id)} aria-hidden="true"></i>}<Fragment set:html={tocAd(a.ad)} /></a></li>
                     ))}
                   </ol>
                 )}
@@ -324,9 +340,9 @@ const surumMetni = bicim(meta.belgeSurumu, { day: 'numeric', month: 'long', year
         </nav>
       </details>
 
-      <Fragment set:html={bolum1} />
+      <Fragment set:html={g(bolum1)} />
 
-      <Fragment set:html={h2b} />
+      <Fragment set:html={g(h2b)} />
       <figure class="dagilim" lang={dil}>
         <figcaption><b>{m.dagilimBaslik}.</b> {m.dagilimAlt}</figcaption>
         <div class="cubuk" role="img" aria-label={dagilim.map((d) => `${m.alanAd[d.kod]}: ${d.toplam}`).join(', ')}>
@@ -344,9 +360,9 @@ const surumMetni = bicim(meta.belgeSurumu, { day: 'numeric', month: 'long', year
           ))}
         </ul>
       </figure>
-      <Fragment set:html={bolum2Govde} />
+      <Fragment set:html={g(bolum2Govde)} />
 
-      <Fragment set:html={h3b} />
+      <Fragment set:html={g(h3b)} />
       <section class="aylar" lang={dil} aria-label={m.planCta}>
         <p class="ay-giris">{m.ayGiris}</p>
         <ul class="gun-lejant" aria-hidden="true">
@@ -400,11 +416,11 @@ const surumMetni = bicim(meta.belgeSurumu, { day: 'numeric', month: 'long', year
         <ol class="toc-liste">
           {bolumler.map((b) => (
             <li>
-              <a href={'#' + b.ust.id} data-ad={`${b.ust.no} ${b.ust.ad}`}><span class="no">{b.ust.no}</span>{b.ust.ad}</a>
+              <a href={'#' + b.ust.id} data-ad={`${b.ust.no} ${adC(b.ust.ad).m}`}><span class="no">{b.ust.no}</span><Fragment set:html={tocAd(b.ust.ad)} /></a>
               {b.alt.length > 0 && (
                 <ol>
                   {b.alt.map((a) => (
-                    <li><a href={'#' + a.id} data-ad={`${a.no} ${a.ad}`}><span class="no">{a.no}</span>{kodu(a.id) && <i class={'nokta n-' + kodu(a.id)} aria-hidden="true"></i>}{a.ad}</a></li>
+                    <li><a href={'#' + a.id} data-ad={`${a.no} ${adC(a.ad).m}`}><span class="no">{a.no}</span>{kodu(a.id) && <i class={'nokta n-' + kodu(a.id)} aria-hidden="true"></i>}<Fragment set:html={tocAd(a.ad)} /></a></li>
                   ))}
                 </ol>
               )}
@@ -416,6 +432,7 @@ const surumMetni = bicim(meta.belgeSurumu, { day: 'numeric', month: 'long', year
         <img src="/media/logo/kuran-kursu-logo.svg" alt="" width="96" height="96" class="mx-auto h-24 w-24" loading="lazy" />
         <a href={PDF} class="dugme dugme-birincil mt-4 w-full justify-center" download>{m.pdf}</a>
         <p class="pdf-alt">{m.pdfAlt(meta.pdfSayfa, mbBicim)}</p>
+        {m.pdfDil && <p class="pdf-alt" lang={dil}>{m.pdfDil}</p>}
         <a href={HTML} class="dugme dugme-ikincil mt-2 w-full justify-center" target="_blank" rel="noopener">{m.yazdir}<span aria-hidden="true"> ↗</span></a>
         <a href={PLAN} class="dugme dugme-ikincil mt-2 w-full justify-center">{t('nav.yillikplan')}</a>
         <p class="surum"><span class="etiket">{m.surum}</span> <time datetime={meta.belgeSurumu}>{surumMetni}</time></p>
@@ -485,6 +502,7 @@ const surumMetni = bicim(meta.belgeSurumu, { day: 'numeric', month: 'long', year
   .kunye-simdi dd a:hover { text-decoration: underline; }
 
   .not { margin: 0 0 1.5rem; padding: 0.9rem 1.1rem; background: var(--zemin-2); border: 1px solid var(--cizgi); border-radius: var(--radius-kose); color: var(--metin-2); font-size: 0.95rem; }
+  .taslak-et { display: inline-block; margin-right: 0.3rem; padding: 0.05rem 0.5rem; border: 1px dashed var(--cizgi-etkilesim); border-radius: var(--radius-kose); font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: var(--tracking-etiket); text-transform: uppercase; color: var(--metin-2); }
   .kitap-not { margin: 0; font-size: 0.85rem; color: var(--metin-2); }
 
   /* ——— Yan sütun ——— */

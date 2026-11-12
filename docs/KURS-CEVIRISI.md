@@ -76,3 +76,21 @@ sayfanın dilinde görünür not taşır («ayrıntılı plan Türkçe»).
   Müfredat için `mufredat-uret.py` dil başına HTML (`mufredat-2026-2027.<dil>.html`) ve PDF çıkarır (şu an yalnız tr PDF, 41 sayfa).
   Her dil için ayrı Word çevirisi yerine paragraf düzeyinde bindirme önerilir: Word değişince yalnız eskiyen paragraflar yeniden çevrilir.
 - **Risk:** âyet/hadis/dua anlamları ve kitap sayfa künyeleri; üç dilde anlam gözden geçirmesi; hoca/veli onayı. Bu işte yapılmadı.
+
+## Müfredat sayfası gövdesi: dört dilde (12 Kasım 2026, imamın kararı; resmî olmayanlar taslak)
+
+- **Düzenek:** gövde (`src/data/mufredat-2026-2027.html`, bölüm 1 ve 2) üretilen dosyada **değişmedi**; çeviri `src/data/kurs-ceviri/<dil>.json` → `mufredat` bölümünde
+  (fr, en, nl, de): anahtar = yaprak öğenin (p, li, th, td, h2, h3) Türkçe düz metni; baştaki `<span class="no">`, sondaki `<span class="meta">` ve `<strong>` sarmalı ayrı ele
+  alınır, `td data-etiket` değerleri de anahtardır. Mantık `src/lib/kurs-ceviri.mjs` → `mufredatBirimleri`, `mufredatCevir`, `cevirici(dil).mufredat*`; iki sayfa
+  (`src/sayfalar/Mufredat.astro`, `egitim/src/sayfalar/Mufredat.astro`) çevrilmiş HTML'i derlemede basar. İçindekiler, ders dağılımı ve «belge ↔ plan» denetimi **Türkçe**
+  gövdeden okunur (çeviri bunları bozamaz).
+- **Kapsam:** her dilde 1129 tekil anahtarın 1129'u (ders konuları `konular-<dil>.json`'dan, kazanımlar yıllık plan çevirilerinden cümle cümle alındı = aynı terimler;
+  kalan ≈ 120 öğe yeni çevrildi). Kitap künyesi + sayfa («Camiye Gidiyorum 1 s. 55–58», 178 öğe) bilerek çevrilmez, anahtar da olmaz (`MUF_KUNYE`; yıllık plan sayfası da böyle).
+- **Taslak:** sayfa başında «Taslak/Brouillon/Draft/Concept/Entwurf» etiketi + beş dilde not (makine destekli, ana dili o dil olan biri okumadı; Türkçe belge esastır).
+  Çevirisi olmayan parça Türkçe kalır ve `lang="tr"` alır. Âyet/hadis/dua içeren öğelerde depodaki resmî metin (yalnız Kevser 108:2) aynen kullanıldı, diğerleri taslak.
+- **Yeniden üretim:** `mufredat-uret.py` gövdeyi yeniden üretince metni değişen öğenin çevirisi eskir → o öğe Türkçe görünür (`lang="tr"`), sayfa bozulmaz;
+  `node --test tests/mufredat-ceviri.test.mjs` sahipsiz anahtarı yakalar (kapsam bilgisi test çıktısında). Eksik öğeleri bulmak: `mufredatBirimleri(html)` − bindirme anahtarları.
+- **PDF ve yazdırılabilir HTML (`public/belgeler/kuran-kursu/`) hâlâ yalnız Türkçe** (A4, 41 sayfa; 261 satırlık yıllık plan tablosunu da içerir). Sayfa bunu kendi dilinde
+  yazar («PDF şimdilik yalnız Türkçe»). Neden bu işte yapılmadı: dil başına PDF için dış üretici `mufredat-uret.py` yalnız tek dil üretiyor; 261 satırlık tablo ve başlıklar için
+  ayrıca kurs projesindeki plan çevirisinin PDF zincirine bağlanması gerekir. Öneri: `mufredat-uret.py`'ye `--dil` bayrağı (bu depodaki `mufredat` + `plan` + `konular-<dil>.json`
+  bindirmelerini okuyup HTML'i çevirip aynı Chromium yazdırma adımını çalıştırır; çıktı `Ulu-Camii-Kuran-Kursu-Mufredat-2026-2027.<dil>.pdf`), sonra sayfada PDF düğmesi dile göre seçilir.

@@ -125,6 +125,9 @@ export function cevirici(dil, { bindirme = {}, konular = {}, konularFr = {} } = 
     rozet: (metin) => tara('rozet', metin, metin, ''),
     /** Yıllık plan gövdesi: tr dışındaki dillerde bindirme.plan[Türkçe paragraf] kendi dilinin adayıdır (fr dâhil); yoksa Türkçe. */
     govde: (p) => sec(dil === 'tr' ? { tr: p } : { tr: p, [dil]: bindirme.plan?.[p] }),
+    /** Müfredat sayfası gövdesi: bindirme.mufredat (Türkçe metin → çeviri); tr'de bindirme kullanılmaz. Ayrıntı: dosya sonundaki mufredatCevir. */
+    mufredatHaritasi: dil === 'tr' ? {} : (bindirme.mufredat ?? {}),
+    mufredat: (k) => (dil === 'tr' ? { m: k, d: 'tr' } : mufredatMetin(bindirme.mufredat, k, dil)),
     /** Hafta notu: yalnız Türkçe metnin özeti bindirmedeki özetle uyuşuyorsa çeviri kullanılır. */
     hafta: (tarih, alan, not) => {
       const o = bindirme.hafta?.[`${tarih}${OZET_AYIRAC}${alan}`];
@@ -139,4 +142,62 @@ export function cevirici(dil, { bindirme = {}, konular = {}, konularFr = {} } = 
       return sec(aday(kaynak.tr, kaynak.fr, dil === 'en' && dolu(kaynak.en) ? kaynak.en : guncel));
     },
   };
+}
+
+/* ——— Müfredat sayfası gövdesi (12 Kasım 2026) ———
+ * Gövde (src/data/mufredat-2026-2027.html) kurs projesindeki mufredat-uret.py ile Word belgesinden ÜRETİLİR; elle düzenlenmez.
+ * Çeviri bindirme.mufredat bölümünde: Türkçe metin → çeviri (anahtar: yaprak öğenin düz metni; <strong> sarmalı, baştaki
+ * <span class="no"> numara ve sondaki <span class="meta"> ayrı ele alınır; td data-etiket değerleri de anahtardır). Yeniden üretimde
+ * metni değişen öğe Türkçeye düşer ve lang="tr" ile işaretlenir; çeviri silinmez. Sayfa ve test aynı işlevleri kullanır. */
+const MUF_YAPRAK = /(<(li|p|th|td|h2|h3)\b[^>]*>)((?:(?!<\/?(?:ul|li|p|td|th|tr|table|div|h2|h3)\b)[\s\S])*?)(<\/\2>)/g;
+const MUF_NO = /^(<span class="no">[\s\S]*?<\/span>\s*)/;
+const MUF_META = /\s*<span class="meta">([\s\S]*?)<\/span>\s*$/;
+const MUF_STRONG = /^<strong>([^<]*)<\/strong>$/;
+const MUF_HARF = /\p{L}{3,}/u;
+/** Kitap künyesi + sayfa («Camiye Gidiyorum 1 s. 55–58»): kitap adı ve sayfa numarası bilerek olduğu gibi kalır (yıllık plan sayfası da böyle gösterir). */
+export const MUF_KUNYE = /^(?:(?:Camiye Gidiyorum [12]|Temel Dinî Bilgiler|Elifbâ)(?: s\. [\d–-]+(?:[;,] s\. [\d–-]+)*)?(?:; )?)+$/;
+const MUF_KACIS = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+/** Yaprak öğenin içeriğini { on, metin, strong, meta } parçalarına ayırır (on: baştaki numara span'ı, meta: sondaki ek bilgi). */
+function mufParcala(ic) {
+  let s = ic.trim(); let on = ''; let meta = '';
+  const n = s.match(MUF_NO); if (n) { on = n[1]; s = s.slice(n[1].length); }
+  const m = s.match(MUF_META); if (m) { meta = m[1].trim(); s = s.slice(0, m.index); }
+  s = s.trim();
+  const st = s.match(MUF_STRONG);
+  return { on, metin: st ? st[1].trim() : s, strong: Boolean(st), meta };
+}
+
+/** Çevrilmesi gereken Türkçe anahtarlar (harf içermeyen — saat, sayı, tire — çevrilmez). */
+export function mufredatBirimleri(html) {
+  const anahtar = new Set();
+  const ekle = (s) => { if (s && MUF_HARF.test(s) && !MUF_KUNYE.test(s)) anahtar.add(s); };
+  for (const m of html.matchAll(MUF_YAPRAK)) { const p = mufParcala(m[3]); ekle(p.metin); ekle(p.meta); }
+  for (const m of html.matchAll(/data-etiket="([^"]*)"/g)) ekle(m[1]);
+  return [...anahtar];
+}
+
+/** Tek Türkçe anahtarın karşılığı: { m, d } (harf içermeyen anahtar olduğu gibi; çevirisi yoksa Türkçe ve d: 'tr'). */
+export function mufredatMetin(harita, k, dil) {
+  if (!MUF_HARF.test(k) || MUF_KUNYE.test(k)) return { m: k, d: dil };
+  const v = harita?.[k];
+  return typeof v === 'string' && v.trim() ? { m: v, d: dil } : { m: k, d: 'tr' };
+}
+
+/** Gövde HTML'ini çevirir: { html, eksik: [anahtar…] }. Çevirisi olmayan parça <span lang="tr"> (meta ise lang="tr") alır. */
+export function mufredatCevir(html, harita = {}, dil = 'en') {
+  const eksik = new Set();
+  const cevir = (k) => { const r = mufredatMetin(harita, k, dil); if (r.d === 'tr' && MUF_HARF.test(k) && !MUF_KUNYE.test(k)) eksik.add(k); return r; };
+  let cikti = html.replace(MUF_YAPRAK, (tam, ac, _e, ic, kapa) => {
+    const p = mufParcala(ic);
+    if (!p.metin && !p.meta) return tam;
+    const a = p.metin ? cevir(p.metin) : { m: '', d: dil };
+    const b = p.meta ? cevir(p.meta) : { m: '', d: dil };
+    const kacis = (r) => (r.d === 'tr' ? r.m : MUF_KACIS(r.m));
+    const govde = a.d === 'tr' && MUF_HARF.test(p.metin) && !MUF_KUNYE.test(p.metin) ? `<span lang="tr">${a.m}</span>` : kacis(a);
+    const metaS = p.meta ? ` <span class="meta"${b.d === 'tr' && MUF_HARF.test(p.meta) ? ' lang="tr"' : ''}>${kacis(b)}</span>` : '';
+    return `${ac}${p.on}${p.strong ? `<strong>${govde}</strong>` : govde}${metaS}${kapa}`;
+  });
+  cikti = cikti.replace(/data-etiket="([^"]*)"/g, (_t, v) => `data-etiket="${mufredatMetin(harita, v, dil).m.replace(/"/g, '&quot;')}"`);
+  return { html: cikti, eksik: [...eksik] };
 }
