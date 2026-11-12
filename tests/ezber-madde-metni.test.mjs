@@ -116,6 +116,22 @@ test('Dua metinlerinin harf iskeleti ikinci Diyanet kaynağıyla aynı; bilinen 
   }
 });
 
+const NL_RESMI = ['s-fatiha', 's-fil', 's-kureys', 's-maun', 's-kevser', 's-kafirun', 's-nasr', 's-tebbet', 's-ihlas', 's-felak', 's-nas', 's-ayetel-kursi', 'd-rabbena-atina', 'd-rabbenagfirli'];
+test('Felemenkçe meâl: 14 madde Diyanet kitabından, taslak değil, künyeli ve tek grup; diğer NL maddeler hâlâ taslak', () => {
+  for (const id of NL_RESMI) {
+    const nl = metinler.get(id).meal.nl;
+    assert.equal(nl.inceleme, undefined, `${id}: resmî NL meâl taslak sayılmaz`);
+    assert.match(nl.kaynak, /Basiskennis over Islam.*Diyanet İşleri Başkanlığı.*2017.*Publicatie nr 1346.*Ahmed Bulut/, `${id}: künye`);
+    assert.match(nl.kaynak, /«Betekenis»|«Vertaling»/, `${id}: kitabın anlam paragrafı olduğu künyede yazılı`);
+    assert.equal(nl.gruplar.length, 1, `${id}: kitap tek paragraf verir`);
+    assert.doesNotMatch(nl.gruplar[0].metin, /s$|^s|ss/, `${id}: boşluk`);
+  }
+  for (const [id, m] of metinler) {
+    if (NL_RESMI.includes(id) || !m.meal.nl) continue;
+    assert.equal(m.meal.nl.inceleme, true, `${id}: kaynaksız NL meâl taslak kalmalı`);
+  }
+});
+
 test('Meâl grupları her dilde maddenin bütün âyetlerini boşluksuz ve örtüşmesiz kaplar', () => {
   for (const [id, m] of metinler) {
     const nolar = m.bolumler.map((b) => b.no);

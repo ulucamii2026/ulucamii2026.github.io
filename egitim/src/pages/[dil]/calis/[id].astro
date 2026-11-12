@@ -259,7 +259,7 @@ const sonraki = serit[sira + 1];
             <p class="kaynak-satiri">
               {dua
                 ? (dil !== 'tr' && meal ? mm.kunyeKaynakDil(mt.kaynak.ar, meal.kaynak) : mm.kunyeKaynak(mt.kaynak.ar, meal?.kaynak))
-                : <>{mm.kunyeAr}{meal && ` ${mm.kunyeMeal}${gruplu ? ` ${mm.gruplama(meal.gruplar.map((g) => aralikYaz(g.ayetler)).join(' · '))}` : ''}`}</>}
+                : <>{mm.kunyeAr}{meal && (!meal.inceleme && mm.kunyeMealKaynak ? ` ${mm.kunyeMealKaynak(meal.kaynak)}` : ` ${mm.kunyeMeal}${gruplu ? ` ${mm.gruplama(meal.gruplar.map((g) => aralikYaz(g.ayetler)).join(' · '))}` : ''}`)}</>}
               {meal?.inceleme && ` ${mm.mealInceleme}`}{okunus && ` ${mm.okunusUsulu}`}
             </p>
           </section>
