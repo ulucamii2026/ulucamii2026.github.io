@@ -7,7 +7,7 @@
       "ad": {
         "tr": "İnsanlara teşekkür etmesini bilmeyen, Allah’a şükretmesini bilmez.",
         "fr": "Celui qui ne sait pas remercier les gens ne sait pas être reconnaissant envers Allah.",
-        "en": "Whoever does not know how to thank people does not know how to be thankful to Allah.",
+        "en": "“Whoever is not grateful to the people is not grateful to Allah.”",
         "nl": "Wie niet weet hoe hij mensen moet bedanken, weet ook niet hoe hij Allah dankbaar moet zijn.",
         "de": "Wer Menschen nicht zu danken versteht, versteht auch nicht, Allah dankbar zu sein."
       },
@@ -22,7 +22,7 @@
       "ad": {
         "tr": "Kıskançlıktan uzak durun. Çünkü kıskançlık, ateşin odunu yakıp bitirdiği gibi iyilik ve sevapları yakıp, bitirir.",
         "fr": "Éloignez-vous de la jalousie. Car la jalousie consume et détruit les bonnes actions et les récompenses, tout comme le feu consume et détruit le bois.",
-        "en": "Stay away from jealousy. For jealousy burns up good deeds and rewards, just as fire burns up wood.",
+        "en": "“Avoid envy, for envy consumes good deeds just as fire consumes wood.”",
         "nl": "Blijf weg van jaloezie. Want jaloezie verbrandt goede daden en beloningen, zoals vuur hout verbrandt.",
         "de": "Haltet euch von der Eifersucht fern. Denn die Eifersucht verbrennt gute Taten und Belohnungen, so wie das Feuer Holz verbrennt."
       },
@@ -37,7 +37,7 @@
       "ad": {
         "tr": "İnsanlara merhamet etmeyene, Allah da merhamet etmez.",
         "fr": "Allah ne fait pas miséricorde à celui qui ne fait pas miséricorde aux gens.",
-        "en": "Allah does not show mercy to the one who does not show mercy to people.",
+        "en": "“Allah will not be merciful to those who are not merciful to humankind.”",
         "nl": "Allah is niet barmhartig voor wie geen barmhartigheid toont aan mensen.",
         "de": "Allah erbarmt sich dessen nicht, der sich der Menschen nicht erbarmt."
       },
@@ -52,7 +52,7 @@
       "ad": {
         "tr": "Kolaylaştırınız, zorlaştırmayınız, müjdeleyiniz, nefret ettirmeyiniz.",
         "fr": "Rendez les choses faciles et ne les rendez pas difficiles, annoncez de bonnes nouvelles et ne faites pas fuir.",
-        "en": "Make things easy and do not make them difficult; give good news and do not drive people away.",
+        "en": "“Make things easy for people, and do not make it hard for them, and give them good tidings and do not make them abhor it.”",
         "nl": "Maak de dingen gemakkelijk en niet moeilijk; breng goed nieuws en jaag mensen niet weg.",
         "de": "Erleichtert und erschwert nicht; verkündet frohe Botschaft und schreckt nicht ab."
       },
@@ -101,6 +101,26 @@
       "rol": "fr",
       "ad": "Je vais à la mosquée 2",
       "sayfa": "238"
+    },
+    {
+      "rol": "en",
+      "ad": "Islam Through Hadiths 2 (Diyanet, 2020)",
+      "sayfa": "75"
+    },
+    {
+      "rol": "en",
+      "ad": "Islam Through Hadiths 3 (Diyanet, 2020)",
+      "sayfa": "589"
+    },
+    {
+      "rol": "en",
+      "ad": "Islam Through Hadiths 3 (Diyanet, 2020)",
+      "sayfa": "101"
+    },
+    {
+      "rol": "en",
+      "ad": "Islam Through Hadiths 6 (Diyanet, 2020)",
+      "sayfa": "605"
     },
     {
       "rol": "dogrulama",

@@ -7,8 +7,8 @@
       "ad": {
         "tr": "Ağza su alıp çalkalamak",
         "fr": "Prendre de l’eau dans la bouche et la rincer",
-        "en": "Rinsing the mouth with water",
-        "nl": "De mond met water spoelen",
+        "en": "rinsing the mouth",
+        "nl": "De mond volledig spoelen met water, en het water gorgelen vanuit de keel.",
         "de": "Den Mund mit Wasser ausspülen"
       }
     },
@@ -16,8 +16,8 @@
       "ad": {
         "tr": "Buruna su çekip yıkamak",
         "fr": "Aspirer de l’eau dans le nez et le laver",
-        "en": "Drawing water into the nose and rinsing it",
-        "nl": "Water in de neus optrekken en de neus spoelen",
+        "en": "drawing water into the nose",
+        "nl": "Het stevig snuiven van water in de neus en deze reinigen.",
         "de": "Wasser in die Nase ziehen und sie ausspülen"
       }
     },
@@ -25,15 +25,13 @@
       "ad": {
         "tr": "Bütün vücudu yıkamak",
         "fr": "Laver tout le corps",
-        "en": "Washing the whole body",
-        "nl": "Het hele lichaam wassen",
+        "en": "washing the entire body without leaving any dry part",
+        "nl": "Het gehele lichaam wassen met water.",
         "de": "Den ganzen Körper waschen"
       }
     }
   ],
   "taslak": [
-    "en",
-    "nl",
     "de"
   ],
   "kaynaklar": [
@@ -46,6 +44,16 @@
       "rol": "fr",
       "ad": "Je vais à la mosquée 2",
       "sayfa": "252"
+    },
+    {
+      "rol": "en",
+      "ad": "Essentials of Islam (Diyanet, 2017)",
+      "sayfa": "84"
+    },
+    {
+      "rol": "nl",
+      "ad": "Basiskennis over Islam (Diyanet, 2017; vertaling Drs. Ahmed Bulut)",
+      "sayfa": "103"
     },
     {
       "rol": "dogrulama",

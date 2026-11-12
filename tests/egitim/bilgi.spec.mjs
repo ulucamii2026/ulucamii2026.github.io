@@ -98,7 +98,7 @@ test('Arapçası olmayan listede A− / A+ kutusu çıkmaz', async ({ page }) =>
   await expect(page.locator('[data-bilgi-ar-boyut]')).toHaveCount(0);
 });
 
-test('Taslak uyarısı: tr ve fr yalnız onay bekler; en, nl, de resmî olmayan taslak uyarısı da taşır; satır taslağı rozet alır', async ({ page }) => {
+test('Taslak uyarısı: tr ve fr yalnız onay bekler; resmî karşılığı bulunmayan bir listede en, nl, de resmî olmayan taslak uyarısı da taşır; satır taslağı rozet alır', async ({ page }) => {
   await page.goto('/tr/calis/b-kuran-fazileti-hadisleri/');
   await expect(page.locator('.onay-bekliyor')).toHaveCount(1);
   await expect(page.locator('.bilgi-rozet')).toHaveCount(0);
@@ -106,9 +106,13 @@ test('Taslak uyarısı: tr ve fr yalnız onay bekler; en, nl, de resmî olmayan 
   // Fransızca çeviri iki hadiste çalışma çevirisidir: satır rozeti görünür.
   await expect(page.locator('.bilgi-rozet')).toHaveCount(2);
   for (const [dil, kelime] of [['en', /draft/i], ['nl', /concept/i], ['de', /Entwurf/i]]) {
-    await page.goto(`/${dil}/calis/b-imanin-sartlari/`);
+    // Ülü'l-azm listesinde üç dilde de resmî karşılık yoktur; iman şartlarında vardır (taslak uyarısı yok, yalnız onay notu).
+    await page.goto(`/${dil}/calis/b-ulul-azm/`);
     await expect(page.locator('.onay-bekliyor')).toHaveCount(1);
     await expect(page.locator('.onay-bekliyor')).toContainText(kelime);
+    await page.goto(`/${dil}/calis/b-imanin-sartlari/`);
+    await expect(page.locator('.onay-bekliyor')).toHaveCount(1);
+    await expect(page.locator('.onay-bekliyor')).not.toContainText(kelime);
   }
 });
 

@@ -74,15 +74,44 @@ test('Kaynaklar: en az iki, biri metin biri karşılaştırma; her kaynak sayfa 
   }
 });
 
-test('Beş dil de dolu; en, nl ve de her zaman taslaktır, tr ve fr taslak değildir (satır bazında fr taslağı olabilir)', () => {
+// Resmî karşılığı kaynakta bulunan diller (docs/ILIM-YOLU-CEVIRI-KAYNAKLARI.md): dosya düzeyinde taslaktan çıkanlar ve çıkamayanlar.
+// Bir dil taslaktan YALNIZ dosyanın bütün maddeleri için Diyanet'in basılı kitabında karşılık bulunup künyelenince çıkar.
+const BEKLENEN_TASLAK = {
+  'b-imanin-sartlari': [], 'b-islamin-sartlari': [], 'b-namazin-farzlari': ['de'], 'b-abdestin-farzlari': ['en', 'de'],
+  'b-guslun-farzlari': ['de'], 'b-teyemmumun-farzlari': ['en', 'de'], 'b-dort-halife': ['nl', 'de'], 'b-ulul-azm': ['en', 'nl', 'de'],
+  'b-secme-hadisler': ['en', 'nl', 'de'], 'b-kuran-fazileti-hadisleri': ['en', 'nl', 'de'],
+};
+
+test('Beş dil de dolu; taslak durumu kayıtlı kaynak durumuyla aynıdır (en, nl, de: künyeli resmî kaynak yoksa taslak); tr ve fr taslak değildir (satır bazında fr taslağı olabilir)', () => {
   for (const [id, b] of veriler) {
     for (const x of b.maddeler) for (const d of DILLER) assert.ok(x.ad[d]?.trim(), `${id}: madde ${d} boş`);
     for (const g of b.gruplar ?? []) for (const d of DILLER) assert.ok(g.ad[d]?.trim(), `${id}: grup ${g.kimlik} ${d} boş`);
     if (b.not) for (const d of DILLER) assert.ok(b.not[d]?.trim(), `${id}: not ${d} boş`);
-    for (const d of ['en', 'nl', 'de']) assert.ok(b.taslak.includes(d), `${id}: ${d} taslak sayılmalı (resmî çeviri yok)`);
+    for (const d of ['en', 'nl', 'de']) {
+      const kunyeli = b.kaynaklar.some((k) => k.rol === d);
+      // Künyesiz dil taslaktır; taslaktan çıkan dilin künyesi olmak zorundadır. (Künyeli ama taslak: dosyanın yalnız bazı maddeleri resmî.)
+      if (!kunyeli) assert.ok(b.taslak.includes(d), `${id}: ${d} künyesiz, taslak sayılmalı (resmî çeviri yok)`);
+      if (!b.taslak.includes(d)) assert.ok(kunyeli, `${id}: ${d} taslaktan çıkmış ama resmî kaynağı künyelenmemiş`);
+    }
+    assert.deepEqual(b.taslak, BEKLENEN_TASLAK[id], `${id}: taslak listesi kayıtlı kaynak durumuyla uyuşmuyor`);
     for (const d of ['tr', 'fr']) assert.ok(!b.taslak.includes(d), `${id}: ${d} dosya düzeyinde taslak olamaz (satır bazında olur)`);
     for (const x of b.maddeler) for (const d of x.taslak ?? []) assert.ok(DILLER.includes(d), `${id}: bilinmeyen dil ${d}`);
   }
+});
+
+test('Resmî karşılıklar aynen ve doğru maddede: Almanca broşürün farklı sırası TR sırasına eşlenir; 5. seçme hadis (kısmen alıntı) eklenmez', () => {
+  const ad = (id, i, d) => veriler.get(id).maddeler[i].ad[d];
+  assert.equal(ad('b-imanin-sartlari', 5, 'nl'), 'Het geloven in de qadar (lotsbeschikking van de mens) en dat zowel het goede als het kwade door Allah is geschapen');
+  assert.deepEqual([0, 1, 2, 3, 4, 5].map((i) => ad('b-imanin-sartlari', i, 'de')),
+    ['An den einen Gott', 'An die Engel', 'An die Heiligen Bücher', 'An die Propheten', 'An die Wiederauferstehung', 'An die Vorherbestimmung und an „das Schicksal“ als die Verfügungsgewalt Allahs']);
+  assert.deepEqual([2, 3, 4].map((i) => ad('b-islamin-sartlari', i, 'en')), ['and to observe the fast', 'to pay almsgiving', 'to perform pilgrimage']);
+  assert.equal(ad('b-secme-hadisler', 2, 'en'), '“Allah will not be merciful to those who are not merciful to humankind.”');
+  // Kısmen alıntılanan (kitap hadisin tamamını verir) ve Hadislerle İslam'da başka rivayetle çevrilen hadis: eski taslak kalır.
+  assert.equal(ad('b-secme-hadisler', 4, 'en'), 'After doing a wrong, follow it with a good deed so that it wipes the wrong out.');
+  assert.equal(ad('b-kuran-fazileti-hadisleri', 1, 'en'), 'Whoever reads one letter of Allah’s Book, the Qur’an, will have one reward; and every reward will be multiplied tenfold.');
+  // Cümleden kesilmiş parçası bulunmayan abdest maddeleri (yüz ve kollar tek öbek) taslak kalır.
+  assert.equal(ad('b-abdestin-farzlari', 0, 'en'), 'Washing the face');
+  for (const [id, d] of [['b-teyemmumun-farzlari', 'en'], ['b-ulul-azm', 'nl'], ['b-namazin-farzlari', 'de']]) assert.ok(!veriler.get(id).kaynaklar.some((x) => x.rol === d), `${id}/${d}: künye olmamalı`);
 });
 
 test('Gruplar: her madde tanımlı bir gruba bağlıdır, boş grup yoktur; grupsuz listede grup alanı yoktur', () => {
@@ -185,7 +214,7 @@ test('Gerçek veride numaralama: kitaptaki sayılarla uyuşur', () => {
 test('Kaynak sırası rol sırasıyladır; kişisel veri, telefon ve yasak simge yoktur (herkese açık depo)', () => {
   for (const [id, b] of veriler) {
     const roller = m.kaynakSirasi(b).map((k) => k.rol);
-    assert.deepEqual(roller, [...roller].sort((p, q) => ['metin', 'fr', 'ar', 'dogrulama'].indexOf(p) - ['metin', 'fr', 'ar', 'dogrulama'].indexOf(q)), id);
+    assert.deepEqual(roller, [...roller].sort((p, q) => ['metin', 'fr', 'en', 'nl', 'de', 'ar', 'dogrulama'].indexOf(p) - ['metin', 'fr', 'en', 'nl', 'de', 'ar', 'dogrulama'].indexOf(q)), id);
     const hamMetin = readFileSync(`${KLASOR}/${id}.json`, 'utf8');
     assert.doesNotMatch(hamMetin, /🙏/, `${id}: katlanmış el simgesi yasak`);
     assert.doesNotMatch(hamMetin, /\+?\d[\d .\-/]{8,}\d/, `${id}: telefon benzeri sayı dizisi`);

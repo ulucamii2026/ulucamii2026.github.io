@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Ezber kilimi bilgi maddesinin listesi",
-  "description": "Bilgi maddesi başına bir dosya (24 Ekim 2026): imanın şartları, farzlar, Ülü'l-azm, dört halife, hadis seçkileri. Metin Camiye Gidiyorum 1-2'den (Türkçe + resmî Fransızca) alınır, Temel Dinî Bilgiler / Diyanet İlmihali / Dînî Kavramlar Sözlüğü / Hadislerle İslam / Riyâzü's-Sâlihîn ile karşılaştırılır; doğrulanamayan madde dosyaya girmez. Ses yoktur. Çapraz kurallar: tests/ezber-bilgi.test.mjs.",
+  "description": "Bilgi maddesi başına bir dosya (24 Ekim 2026): imanın şartları, farzlar, Ülü'l-azm, dört halife, hadis seçkileri. Metin Camiye Gidiyorum 1-2'den (Türkçe + resmî Fransızca) alınır; en/nl/de karşılıkları varsa Diyanet'in basılı kitaplarından aynen alınır ve `kaynaklar`da dil rolüyle künyelenir, Temel Dinî Bilgiler / Diyanet İlmihali / Dînî Kavramlar Sözlüğü / Hadislerle İslam / Riyâzü's-Sâlihîn ile karşılaştırılır; doğrulanamayan madde dosyaya girmez. Ses yoktur. Çapraz kurallar: tests/ezber-bilgi.test.mjs.",
   "type": "object",
   "additionalProperties": false,
   "required": ["id", "sirali", "maddeler", "taslak", "kaynaklar", "onay"],
@@ -54,7 +54,7 @@
       "type": "array",
       "uniqueItems": true,
       "items": { "enum": ["tr", "fr", "en", "nl", "de"] },
-      "description": "Türkçe metinden çevrilmiş çalışma metni olan diller; sayfa «taslak» der. en, nl ve de her zaman burada olmak zorundadır (tests/ezber-bilgi.test.mjs)."
+      "description": "Türkçe metinden çevrilmiş çalışma metni olan diller; sayfa «taslak» der. Bir en, nl ya da de dosyanın bütün maddeleri için Diyanet'in basılı kitabında resmî karşılık bulunup `kaynaklar`a o dilin rolüyle işlenince listeden çıkar; aksi hâlde burada kalır (tests/ezber-bilgi.test.mjs, docs/ILIM-YOLU-CEVIRI-KAYNAKLARI.md)."
     },
     "kaynaklar": {
       "type": "array",
@@ -65,7 +65,7 @@
         "required": ["rol", "ad"],
         "minProperties": 3,
         "properties": {
-          "rol": { "enum": ["metin", "fr", "ar", "dogrulama"] },
+          "rol": { "enum": ["metin", "fr", "en", "nl", "de", "ar", "dogrulama"] },
           "ad": { "type": "string", "minLength": 1, "maxLength": 120 },
           "sayfa": { "type": "string", "pattern": "^\\d+(–\\d+)?$" },
           "bolum": { "type": "string", "minLength": 1, "maxLength": 200 }

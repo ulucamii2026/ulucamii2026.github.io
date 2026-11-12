@@ -8,7 +8,7 @@
         "tr": "Niyet etmek",
         "fr": "Faire l’intention",
         "en": "Making the intention (niyyah)",
-        "nl": "De intentie (niyya) maken",
+        "nl": "Het verrichten van de intentie voor de tayammum.",
         "de": "Die Absicht (Niyya) fassen"
       }
     },
@@ -17,7 +17,7 @@
         "tr": "Elleri temiz bir toprağa veya toprak cinsinden bir şeye vurup, birinci vuruşta yüzü, ikinci vuruşta da kolları mesh etmek",
         "fr": "Frapper les mains sur une terre propre ou de même nature, essuyer le visage au premier coup et les bras au second",
         "en": "Striking the hands on clean earth or something of the same kind, then wiping the face with the first strike and the arms with the second",
-        "nl": "De handen op schone aarde of iets van dezelfde aard slaan en bij de eerste slag het gezicht, bij de tweede slag de armen afstrijken",
+        "nl": "Met beide handen slaan op schoon zand (of op ander afgeleid materiaal, zoals ruwe, onbewerkte kiezels of stenen) en vervolgens het bestrijken van de handen over het gezicht. Daarna nogmaals met beide handen slaan op schoon zand (of op een ander afgeleid materiaal) en daarna het bestrijken met de handen over beide armen (mash).",
         "de": "Die Hände auf reine Erde oder etwas Erdartiges schlagen und beim ersten Schlag das Gesicht, beim zweiten Schlag die Arme bestreichen"
       }
     }
@@ -31,7 +31,6 @@
   },
   "taslak": [
     "en",
-    "nl",
     "de"
   ],
   "kaynaklar": [
@@ -44,6 +43,11 @@
       "rol": "fr",
       "ad": "Je vais à la mosquée 2",
       "sayfa": "252"
+    },
+    {
+      "rol": "nl",
+      "ad": "Basiskennis over Islam (Diyanet, 2017; vertaling Drs. Ahmed Bulut)",
+      "sayfa": "108"
     },
     {
       "rol": "dogrulama",

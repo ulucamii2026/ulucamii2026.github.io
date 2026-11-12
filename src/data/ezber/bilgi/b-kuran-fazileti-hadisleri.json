@@ -7,7 +7,7 @@
       "ad": {
         "tr": "Sizin en hayırlınız, Kur’an’ı öğrenen ve öğretendir.",
         "fr": "Les meilleurs d’entre vous sont ceux qui apprennent le Coran et l’enseignent.",
-        "en": "The best among you are those who learn the Qur’an and teach it.",
+        "en": "“The best of you is he who learns the Qurʾan and teaches it.”",
         "nl": "De besten onder u zijn zij die de Koran leren en onderwijzen.",
         "de": "Die Besten unter euch sind diejenigen, die den Koran lernen und lehren."
       },
@@ -77,6 +77,11 @@
       "rol": "fr",
       "ad": "Je vais à la mosquée 1",
       "sayfa": "67"
+    },
+    {
+      "rol": "en",
+      "ad": "Islam Through Hadiths 1 (Diyanet, 2020)",
+      "sayfa": "595"
     },
     {
       "rol": "dogrulama",
