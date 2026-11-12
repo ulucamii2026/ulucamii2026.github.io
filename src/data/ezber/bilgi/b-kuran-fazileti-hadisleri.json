@@ -9,7 +9,7 @@
         "fr": "Les meilleurs d’entre vous sont ceux qui apprennent le Coran et l’enseignent.",
         "en": "“The best of you is he who learns the Qurʾan and teaches it.”",
         "nl": "“De besten onder jullie zijn degenen die de Koran leren en deze onderwijzen.”",
-        "de": "Die Besten unter euch sind diejenigen, die den Koran lernen und lehren."
+        "de": "“Der Beste unter euch ist der, der den Koran lernt und ihn lehrt.”"
       },
       "kunye": "Buhârî, Fedâilü’l-Kur’ân, 21; Tirmizî, Fedâilü’l-Kur’ân, 15",
       "dogrulama": {
@@ -42,7 +42,7 @@
         "fr": "Lisez le Coran, car il intercédera, au Jour de la Résurrection, en faveur de ceux qui le lisent.",
         "en": "Read the Qur’an, for on the Day of Resurrection it will intercede for those who read it.",
         "nl": "“Lees uit de Koran, want deze zal op de Dag des Oordeels als een vorm van voorspraak (shafa’ah) dienen voor degenen die de Koran hebben gereciteerd.”",
-        "de": "Lest den Koran, denn er wird am Tag der Auferstehung für diejenigen Fürsprache einlegen, die ihn lesen."
+        "de": "„Lest den Koran, denn er wird am Tag der Auferstehung als Fürsprecher für seinen Leser hervortreten.“"
       },
       "kunye": "Müslim, Müsâfirîn, 252",
       "taslak": [
@@ -86,6 +86,16 @@
       "rol": "nl",
       "ad": "Basiskennis over Islam (Diyanet, 2017; vertaling Drs. Ahmed Bulut)",
       "sayfa": "51"
+    },
+    {
+      "rol": "de",
+      "ad": "DİTİB Freitagspredigt Nr. 30 (5. August 2011), ditib.de",
+      "bolum": "Predigt 30; www.ditib.de/detail_predigt1.php?id=30"
+    },
+    {
+      "rol": "de",
+      "ad": "DİTİB Freitagspredigt Nr. 865 (7. August 2026), ditib.de",
+      "bolum": "Predigt 865; www.ditib.de/detail_predigt1.php?id=865"
     },
     {
       "rol": "dogrulama",

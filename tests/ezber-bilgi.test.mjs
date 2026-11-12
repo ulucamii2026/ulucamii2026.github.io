@@ -112,11 +112,19 @@ test('Resmî karşılıklar aynen ve doğru maddede: Almanca broşürün farklı
   // Cümleden kesilmiş parçası bulunmayan abdest maddeleri (yüz ve kollar tek öbek) taslak kalır.
   assert.equal(ad('b-abdestin-farzlari', 0, 'en'), 'Washing the face');
   // İkinci tur (12 Kas 2026): ISN hutbesi ve Diyanet kitapları. Kitap hadisin tamamını verip veri yalnız orta cümleyi alıyorsa (nl seçme hadis 5) eklenmez;
-  // DİTİB hutbeleri yazılı izin ister (docs/ILIM-YOLU-CEVIRI-KAYNAKLARI.md «İzin kararı bekleyenler»): de karşılıkları izne kadar eklenmez.
+  // DİTİB hutbeleri (imamın kararı, 12 Kas 2026: aynı kurum çatısı, künyeyle kullanılır): de seçme hadis 1-3 ve Kur'an fazileti 1 ve 3 aynen alınır;
+  // de seçme hadis 5 ve Kur'an fazileti 2 için resmî karşılık bulunamadığından çalışma metni kalır, iki dosya da de taslaktır.
   assert.equal(ad('b-secme-hadisler', 1, 'nl'), '‘Vermijd afgunst. Want voorwaar, afgunst verteert goedheid zoals vuur brandhout verteert.’');
   assert.equal(ad('b-secme-hadisler', 4, 'nl'), 'Laat op een slechte daad een goede daad volgen, zodat die de slechte uitwist.');
   assert.equal(ad('b-secme-hadisler', 3, 'de'), '„Erleichtert es, erschwert es nicht; bringt (den Menschen) frohe Kunde und schreckt (sie) nicht ab“');
-  assert.equal(ad('b-secme-hadisler', 0, 'de'), 'Wer Menschen nicht zu danken versteht, versteht auch nicht, Allah dankbar zu sein.');
+  assert.equal(ad('b-secme-hadisler', 0, 'de'), '„Wer den Menschen nicht dankt, dankt auch Allah nicht.“');
+  assert.equal(ad('b-secme-hadisler', 1, 'de'), '„Hütet euch vor Neid! Denn Neid verzehrt die guten Taten, so wie Feuer das Holz verzehrt.“');
+  assert.equal(ad('b-secme-hadisler', 2, 'de'), '“Allah wird demjenigen gegenüber auch nicht barmherzig sein, der gegenüber den Menschen nicht barmherzig ist.”');
+  assert.equal(ad('b-kuran-fazileti-hadisleri', 0, 'de'), '“Der Beste unter euch ist der, der den Koran lernt und ihn lehrt.”');
+  assert.equal(ad('b-kuran-fazileti-hadisleri', 2, 'de'), '„Lest den Koran, denn er wird am Tag der Auferstehung als Fürsprecher für seinen Leser hervortreten.“');
+  assert.equal(ad('b-kuran-fazileti-hadisleri', 1, 'de'), 'Wer einen Buchstaben aus dem Buch Allahs, dem Koran, liest, hat dafür eine Belohnung; und jede Belohnung wird zehnfach vergolten.', 'resmî karşılığı yok: çalışma metni kalır');
+  assert.equal(ad('b-secme-hadisler', 4, 'de'), 'Lass auf eine schlechte Tat eine gute folgen, damit sie die schlechte auslöscht.', 'resmî karşılığı yok: çalışma metni kalır');
+  for (const id of ['b-secme-hadisler', 'b-kuran-fazileti-hadisleri']) assert.ok(veriler.get(id).kaynaklar.filter((k) => k.rol === 'de' && /DİTİB Freitagspredigt Nr\. \d+ \(\d+\. [A-Za-z]+ \d{4}\), ditib\.de/.test(k.ad)).length >= 2, `${id}: DİTİB hutbe künyeleri`);
   assert.deepEqual([0, 1, 2, 3, 4].map((i) => ad('b-ulul-azm', i, 'en')), ['Nuh', 'Ibrahim', 'Musa', 'Isa', 'Muhammad (saw)']);
   assert.deepEqual([0, 1, 2, 3, 4].map((i) => ad('b-ulul-azm', i, 'de')), ['Nuh/Noah (a.s.)', 'Ibrahim/Abraham (a.s.)', 'Musa/Moses (a.s.)', 'Isa/Jesus (a.s.)', 'Muhammed (s.a.w.)']);
   assert.equal(ad('b-ulul-azm', 0, 'nl'), 'Profeet Noach (Nuh)');

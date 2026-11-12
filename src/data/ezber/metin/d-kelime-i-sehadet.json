@@ -73,6 +73,18 @@
      "metin": "“Ik getuig dat er geen god is dan Allah, en ik getuig dat Mohammed (vrede zij met hem) de dienaar en de boodschapper van Allah is.”"
     }
    ]
+  },
+  "de": {
+   "kaynak": "DİTİB (Diyanet İşleri Türk İslam Birliği), Köln, ditib.de, «Islam» > «Die Grundsäulen des Islam» (1. Das Glaubensbekenntnis; Webseite, abgerufen am 12.11.2026; https://www.ditib.de/default1.php?id=7&sid=23&lang=de)",
+   "gruplar": [
+    {
+     "ayetler": [
+      1,
+      2
+     ],
+     "metin": "„Ich bezeuge, dass es keinen anderen Gott gibt außer ihm, und ich bezeuge, dass Muhammed sein Diener und Gesandter ist“"
+    }
+   ]
   }
  },
  "kaynak": {
@@ -80,7 +92,7 @@
   "url": "https://diniyayinlar.diyanet.gov.tr/",
   "alindi": "2026-10-24"
  },
- "ozet": "85c8c4f320c33471a2d4796d7d134120ebd2f779b2a54706d11ab47ccf8b2d53",
+ "ozet": "85743080ed88e509cf6353cff119cd202cf711cb8738a353b1dc407872a0935f",
  "okunus": {
   "tr": [
    {

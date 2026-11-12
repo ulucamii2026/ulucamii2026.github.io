@@ -136,7 +136,7 @@ test('Dua anlamları (en, nl, de, fr): yalnız Diyanet’in basılı kitapların
   const KITAP = {
     en: /Islam Through Hadiths|Essentials of Islam|Introduction to the Holy Qur’an 1.*Diyanet/,
     nl: /Basiskennis over Islam.*Diyanet|Ik leer Qur’an reciteren.*Islamitische Stichting Nederland|ISN Vrijdagpreek.*Islamitische Stichting Nederland/,
-    de: /Was ist der Islam\?.*Diyanet|Auf den Spuren des Propheten.*Diyanet/,
+    de: /Was ist der Islam\?.*Diyanet|Auf den Spuren des Propheten.*Diyanet|DİTİB Freitagspredigt Nr\. \d+ \(\d\d\.\d\d\.\d{4}\), DİTİB.*ditib\.de|DİTİB \(Diyanet İşleri Türk İslam Birliği\), Köln, ditib\.de.*Die Grundsäulen des Islam/,
     fr: /Guide pratique des adorations|Je vais à la mosquée|Initiation au Coran — 1.*Diyanet|Principes fondamentaux de l’Islam.*Diyanet|Sur les traces du Prophète Muhammad.*Diyanet/,
   };
   const say = { en: 0, nl: 0, de: 0, fr: 0 };
@@ -151,7 +151,7 @@ test('Dua anlamları (en, nl, de, fr): yalnız Diyanet’in basılı kitapların
       for (const g of meal.gruplar) assert.ok(g.metin.trim() && !/…|\.\.\./.test(g.metin), `${id}/${dil}: kısaltılmış ya da boş anlam resmî metin sayılmaz`);
     }
   }
-  assert.deepEqual(say, { en: 14, nl: 12, de: 2, fr: 16 }, 'beklenen kapsam (fr: 3 DİTİB + 13 Diyanet kitabı)');
+  assert.deepEqual(say, { en: 14, nl: 12, de: 6, fr: 16 }, 'beklenen kapsam (fr: 3 DİTİB + 13 Diyanet kitabı; de: 2 Diyanet kitabı + 4 DİTİB metni)');
   // Baskı hatalı ya da kısaltılmış, parçası başka rivayete ait olanlar eklenmez (docs/ILIM-YOLU-CEVIRI-KAYNAKLARI.md).
   for (const id of ['d-salli', 'd-barik', 'd-kunut-1', 'd-kunut-2', 'd-secde-tesbihi', 'd-tesrik-tekbiri', 'd-subhaneke']) assert.equal(metinler.get(id).meal.en, undefined, `${id}: en eklenmemeli`);
 });
@@ -168,8 +168,16 @@ test('İkinci tur: ezan ve kamet anlamı TR gibi sekiz grup (basılı tablonun s
   assert.equal(metinler.get('d-ezan').meal.nl, undefined);
   assert.equal(metinler.get('d-selam').meal.fr, undefined);
   assert.equal(metinler.get('d-tesmi-tahmid').meal.fr, undefined);
-  // DİTİB hutbeleri yazılı izin ister: Almanca karşılıkları izin kararına kadar eklenmez.
-  for (const id of ['d-salli', 'd-barik', 'd-telbiye', 'd-kelime-i-sehadet']) assert.equal(metinler.get(id).meal.de, undefined, id + ': de eklenmemeli (DİTİB izin kararı bekliyor)');
+  // İmamın kararı (12 Kas 2026): DİTİB ile aynı kurum çatısı altında olduğumuzdan DİTİB hutbe ve web metinleri künyeyle kullanılır; salli ve bârik «ungefähre Bedeutung» olarak künyelenir.
+  for (const id of ['d-salli', 'd-barik', 'd-telbiye', 'd-kelime-i-sehadet']) {
+    const de = metinler.get(id).meal.de;
+    assert.match(de.kaynak, /DİTİB/, id + ': de künyesi DİTİB’i göstermeli');
+    assert.equal(de.inceleme, undefined, id);
+    assert.deepEqual(de.gruplar.map((g) => g.ayetler), [[1, metinler.get(id).bolumler.length]], id + ': tek paragraf anlam tek gruptur');
+  }
+  for (const id of ['d-salli', 'd-barik']) assert.match(metinler.get(id).meal.de.kaynak, /ungefähren Bedeutung/, id);
+  assert.match(metinler.get('d-telbiye').meal.de.gruplar[0].metin, /^„Hier bin ich o Allah! Ich stehe Dir zu Diensten!/);
+  assert.equal(metinler.get('d-kelime-i-sehadet').meal.de.gruplar[0].metin, '„Ich bezeuge, dass es keinen anderen Gott gibt außer ihm, und ich bezeuge, dass Muhammed sein Diener und Gesandter ist“');
 });
 
 test('Meâl grupları her dilde maddenin bütün âyetlerini boşluksuz ve örtüşmesiz kaplar', () => {
