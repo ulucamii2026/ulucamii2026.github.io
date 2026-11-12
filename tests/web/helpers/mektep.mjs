@@ -7,10 +7,49 @@ const kod={};
 const auth = `
 const user = { uid:'TEST-HOCA', email: 'veli@example.test', getIdToken: async () => 'test-id-token' }; // getIdToken: çeviri ucu (14 Eyl 2026)
 let callback;
-export const getAuth = () => ({ currentUser: window.__oturumYok ? null : user });
+export const getAuth = () => ({ get currentUser() { return window.__oturumYok ? null : user; } });
 export const isSignInWithEmailLink = () => false;
 export const onAuthStateChanged = (_a, cb) => {callback=cb;cb(window.__oturumYok ? null : user);};
 export const signOut = async () => {callback?.(null);};
+/* İki adımlı doğrulama sahtesi (12 Kasım 2026; tests/web/hoca-mfa.spec.mjs). Auth emülatörü TOTP'yi desteklemez, bu yüzden Auth modülü sahtedir.
+   window.__mfa yoksa (eski sınamalar) multiFactor fırlatır: hoca ekranı Hesap sekmesine bölüm eklemez, çizim eskisi gibi kalır.
+   __mfa = { girisIster, dogruKod, kayitli:[{uid,factorId,displayName}], kapali (generateSecret operation-not-allowed), ipuclari, cagrilar:[] } */
+const mfaCagri = (...a) => (window.__mfa.cagrilar ||= []).push(a);
+export const signInWithEmailAndPassword = async () => {
+  if (window.__mfa?.girisIster) throw Object.assign(new Error('mfa'), { code: 'auth/multi-factor-auth-required' });
+  window.__oturumYok = false; callback?.(user); return { user };
+};
+export const getMultiFactorResolver = () => ({
+  hints: window.__mfa.ipuclari || [{ uid: 'F1', factorId: 'totp', displayName: 'Authenticator' }], session: {},
+  resolveSignIn: async (asr) => {
+    mfaCagri('resolveSignIn', asr);
+    if (asr.kod !== window.__mfa.dogruKod) throw Object.assign(new Error('x'), { code: 'auth/invalid-verification-code' });
+    window.__oturumYok = false; callback?.(user); return { user };
+  },
+});
+export const TotpMultiFactorGenerator = {
+  FACTOR_ID: 'totp',
+  assertionForSignIn: (uid, kod) => ({ uid, kod }),
+  assertionForEnrollment: (gizli, kod) => ({ gizli, kod }),
+  generateSecret: async () => {
+    if (window.__mfa.kapali) throw Object.assign(new Error('x'), { code: 'auth/operation-not-allowed' });
+    return { secretKey: 'JBSWY3DPEHPK3PXPJBSWY3DPEHPK3PXP', generateQrCodeUrl: (hesap, veren) => 'otpauth://totp/' + veren + ':' + hesap + '?secret=JBSWY3DPEHPK3PXPJBSWY3DPEHPK3PXP&issuer=' + veren };
+  },
+};
+export const multiFactor = () => {
+  if (!window.__mfa) throw new Error('mfa-yok');
+  const m = window.__mfa;
+  return {
+    get enrolledFactors() { return m.kayitli ||= []; },
+    getSession: async () => ({}),
+    enroll: async (asr, ad) => {
+      mfaCagri('enroll', asr, ad);
+      if (asr.kod !== m.dogruKod) throw Object.assign(new Error('x'), { code: 'auth/invalid-verification-code' });
+      (m.kayitli ||= []).push({ uid: 'F-YENI', factorId: 'totp', displayName: ad });
+    },
+    unenroll: async (uid) => { mfaCagri('unenroll', uid); m.kayitli = (m.kayitli || []).filter((f) => f.uid !== uid); },
+  };
+};
 `;
 const firestore = `
 export const getFirestore = () => ({});
@@ -220,7 +259,7 @@ async function bundle(hoca=false) {
   return kod[mode];
 }
 
-export async function mektepAc(page, context, { hoca=false, cloud={}, cloudError=false, dil = 'tr', ogrenci = true, oturumYok = false, records = {}, tarih = '2026-09-13T10:00:00Z', students = [{ref:'TEST-1',ad:'Örnek',soyad:'Talebe'}] } = {}) {
+export async function mektepAc(page, context, { hoca=false, cloud={}, cloudError=false, dil = 'tr', ogrenci = true, oturumYok = false, mfa = null, records = {}, tarih = '2026-09-13T10:00:00Z', students = [{ref:'TEST-1',ad:'Örnek',soyad:'Talebe'}] } = {}) {
   await context.route('**/*', r => new URL(r.request().url()).origin === ORIGIN ? r.continue() : r.abort());
   await context.routeWebSocket(/.*/, s => s.close());
   const yol = hoca?'hoca':{ tr: 'tr/veli-portali', fr: 'fr/portail-parents', en: 'en/parents-portal' }[dil];
@@ -231,8 +270,8 @@ export async function mektepAc(page, context, { hoca=false, cloud={}, cloudError
   await page.goto('/mektep-test/');
   const ids = [...readFileSync('src/lib/hadis-verisi.ts', 'utf8').matchAll(/id: '([^']+)'/g)].map(m => m[1]);
   const hadisSesleri = Object.fromEntries(['ar', 'tr', 'fr', 'en'].map(d => [d, ids.filter(id => existsSync(`public/media/ses/hadisler/${d}/${id}.mp3`))]));
-  await page.evaluate(({ dil, records, hadisSesleri, students,cloud,cloudError,hoca,ceviriOrigin,oturumYok }) => {
-    window.__cloud=cloud;window.__cloudError=cloudError;window.__writes=[];window.__oturumYok=oturumYok;
+  await page.evaluate(({ dil, records, hadisSesleri, students,cloud,cloudError,hoca,ceviriOrigin,oturumYok,mfa }) => {
+    window.__mfa=mfa;window.__cloud=cloud;window.__cloudError=cloudError;window.__writes=[];window.__oturumYok=oturumYok;
     window.__students = students;
     window.__lang = dil;
     window.__records = records;
@@ -273,7 +312,7 @@ export async function mektepAc(page, context, { hoca=false, cloud={}, cloudError
       ] },
     ] });
     document.body.appendChild(data);
-  }, { dil, records, hadisSesleri, students,cloud,cloudError,hoca,ceviriOrigin: ORIGIN,oturumYok });
+  }, { dil, records, hadisSesleri, students,cloud,cloudError,hoca,ceviriOrigin: ORIGIN,oturumYok,mfa });
   await page.addScriptTag({ content: await bundle(hoca) });
   await page.evaluate(hoca => hoca?window.MektepTest.hocaEkrani():window.MektepTest.veliPortali(),hoca);
   if(hoca){if(oturumYok){await expect(page.locator('[data-form=giris]')).toBeVisible();return;}await expect(page.locator('[data-sekme=odev]')).toBeVisible();return;}

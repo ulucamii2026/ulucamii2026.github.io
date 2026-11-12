@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 const DOSYALAR=[
  'src/scripts/veli-portali.ts','src/scripts/hoca-ekrani.ts','src/scripts/hoca-envanter.ts','src/scripts/hoca-kitaplari.ts',
- 'src/scripts/ders-defteri.ts','src/scripts/bulten-gorunumu.ts','src/scripts/ogrenme-atolyesi.ts','src/scripts/hoca-bulten.ts',
+ 'src/scripts/ders-defteri.ts','src/scripts/bulten-gorunumu.ts','src/scripts/ogrenme-atolyesi.ts','src/scripts/hoca-bulten.ts','src/scripts/hoca-mfa.ts','src/lib/hoca-mfa.ts',
  'src/lib/zengin-metin.ts','src/lib/ses-koken.ts',
 ];
 const YASAK=[

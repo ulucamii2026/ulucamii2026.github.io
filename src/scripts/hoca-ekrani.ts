@@ -23,6 +23,7 @@ import { tc } from '../i18n/hoca-metin/cekirdek';
  */
 import { temizleHtml, metniSadelestir, zenginMi } from '../lib/zengin-metin';
 import { portalTercihleri } from '../lib/portal-tercihleri';
+import { mfaGerekli, girisCozumleyici } from '../lib/hoca-mfa'; // 12 Kasım 2026: isteğe bağlı iki adımlı doğrulama (TOTP); arayüz ./hoca-mfa tembel yüklenir
 
 type Ders = { no: number; kod: string; alan: string; konu: string; ezber: string[] };
 type PlanGun = { tarih: string; hafta: number; gun: string; dersler: Ders[] };
@@ -126,7 +127,8 @@ export async function hocaEkrani(): Promise<void> {
   };
 
   /* ---------------------------------------------------------------- giriş */
-  const girisEkrani = (onMesaj = '') => {
+  let girisNotu = ''; // oturum güvenlik gereği kapandıysa (örn. iki adımlı doğrulama kapatılınca) giriş ekranında gösterilen ileti
+  const girisEkrani = (onMesaj = girisNotu) => {
     kok.innerHTML = `${onMesaj ? `<p class="not basari">${esc(onMesaj)}</p>` : ''}
       <div class="giris-izgara">
         <form class="kutu" data-form="giris" novalidate>
@@ -547,6 +549,10 @@ export async function hocaEkrani(): Promise<void> {
       </div>
       <div class="sekmeler" role="tablist" aria-label="${t('sekme.bolumler')}">${Object.entries(SEKMELER).map(([k, v]) => `<button type="button" role="tab" id="hoca-tab-${k}" class="sekme" aria-selected="${k === S!.sekme}" aria-controls="hoca-panel" tabindex="${k === S!.sekme ? '0' : '-1'}" data-sekme="${k}">${simge(SEKME_IKON[k] || 'ayar')}<span>${v}</span>${k === 'bildirim' && S!.okunmamis ? `<span class="sekme-sayi"><span class="sr-only">${t('sekme.okunmamis')}</span>${S!.okunmamis}</span>` : ''}</button>`).join('')}</div>
       <div id="hoca-panel" role="tabpanel" aria-labelledby="hoca-tab-${S.sekme}">${govde}</div>`;
+    if (S.sekme === 'hesap') { // İki adımlı doğrulama bölümü (12 Kasım 2026): Hesap sekmesinin ilk bölümünün ardına eklenir; Auth çoklu faktör yüzeyi yoksa eklenmez
+      const bolum = kok.querySelector<HTMLElement>('#hoca-panel > section.bolum'), durum = S;
+      if (bolum) void import('./hoca-mfa').then((m) => { if (S === durum && bolum.isConnected) m.mfaHesapBolumu(bolum, { m: auth, a, oturumKapandi: oturumSonu }); }).catch(() => {});
+    }
     const kitapRoot=kok.querySelector<HTMLElement>('[data-hoca-kitaplari]');
     if(kitapRoot) kitaplariTemizle=hocaKitaplari(kitapRoot,async id=>{
       if(!S || !a.currentUser || a.currentUser.uid!==S.uid) throw new Error('hoca-oturumu');
@@ -659,12 +665,29 @@ export async function hocaEkrani(): Promise<void> {
   };
 
   /* ---------------------------------------------------------------- olaylar */
-  const bagIleGir = async (eposta: string) => {
-    const kb = await auth.signInWithEmailLink(a, eposta, location.href);
-    portalTercihleri.setItem('hocaEposta', eposta); history.replaceState(null, '', sayfaAdresi);
-    const h = await fs.getDoc(fs.doc(db, 'hocalar', kb.user.uid)).catch(() => null);
-    if (h && h.exists() && !(h.data() as { sifreVar?: boolean }).sifreVar) sifreEkrani(); else await yukle(kb.user);
+  /** E-posta bağlantısı ya da (iki adımlı doğrulamadan sonra) kod ile girişin ortak sonu: şifre henüz belirlenmediyse şifre ekranı, değilse ekran. */
+  const bagSonrasi = async (user: { uid: string }) => {
+    const h = await fs.getDoc(fs.doc(db, 'hocalar', user.uid)).catch(() => null);
+    if (h && h.exists() && !(h.data() as { sifreVar?: boolean }).sifreVar) sifreEkrani(); else await yukle(user);
   };
+  const bagIleGir = async (eposta: string) => {
+    let kb;
+    try { kb = await auth.signInWithEmailLink(a, eposta, location.href); }
+    catch (e) {
+      if (!mfaGerekli(e)) throw e;
+      portalTercihleri.setItem('hocaEposta', eposta); history.replaceState(null, '', sayfaAdresi); // bağlantı tek kullanımlıktır: yenilemede yeniden denenmesin
+      await mfaIste(e, bagSonrasi); return;
+    }
+    portalTercihleri.setItem('hocaEposta', eposta); history.replaceState(null, '', sayfaAdresi);
+    await bagSonrasi(kb.user);
+  };
+  /** İki adımlı doğrulama (TOTP) sınaması: şifre/bağlantı doğrulandı ama hesapta kayıtlı faktör var → 6 haneli kod ekranı. */
+  const mfaIste = async (hataNesnesi: unknown, devam: (user: { uid: string }) => Promise<void>) => {
+    const m = await import('./hoca-mfa');
+    m.mfaKodEkrani(kok, { cozumleyici: girisCozumleyici(auth, a, hataNesnesi), devam, geri: () => girisEkrani() });
+  };
+  /** Oturum kapandı (ör. son iki adımlı doğrulama faktörü kaldırılınca Firebase oturumu düşürür): paneller kapanır, ileti giriş ekranında görünür. */
+  const oturumSonu = (ileti: string) => { girisNotu = ileti; bultenTemizle?.(); kitaplariTemizle?.(); odevKapat(); defterKapat(); ezberKapat(); envanterKapat(); ilimKapat(); S = null; girisEkrani(); };
   const sekmeyeGec = async (ad: string, odevOnayli=false) => { if (!S || (!odevOnayli&&odevPanel&&!odevPanel.ayrilabilir()) || (defterPanel&&!defterPanel.ayrilabilir()) || envanterKilitli() || ilimKilitli()) { kok.querySelector<HTMLElement>('#hoca-tab-' + S?.sekme)?.focus(); return false; } bultenTemizle?.(); kitaplariTemizle?.(); odevKapat(); defterKapat(); ezberKapat(); envanterKapat(); ilimKapat(); S.sekme = ad; duzenlenenDuyuru = null; kok.innerHTML = `<p class="not">${tc('yukleniyor')}</p>`; await sekmeYukle(ad); ciz(); return true; };
 
   kok.addEventListener('mousedown', (ev) => { if ((ev.target as HTMLElement).closest('.za-arac')) ev.preventDefault(); });
@@ -844,10 +867,10 @@ export async function hocaEkrani(): Promise<void> {
       return k === 'sifre' || k === 'sifre2' ? deger : deger.trim();
     };
     const dugmeler = form.querySelectorAll<HTMLButtonElement>('button'); dugmeler.forEach((b) => mesgulYap(b, true));
-    mesaj(form, '');
+    mesaj(form, ''); girisNotu = '';
     try {
       switch (form.dataset.form) {
-        case 'giris': { const ep = al('eposta').toLowerCase(); portalTercihleri.setItem('hocaEposta', ep); const kb = await auth.signInWithEmailAndPassword(a, ep, al('sifre')); await yukle(kb.user); break; }
+        case 'giris': { const ep = al('eposta').toLowerCase(); portalTercihleri.setItem('hocaEposta', ep); try { const kb = await auth.signInWithEmailAndPassword(a, ep, al('sifre')); await yukle(kb.user); } catch (e) { if (!mfaGerekli(e)) throw e; await mfaIste(e, yukle); } break; }
         case 'bag': { const ep = al('eposta').toLowerCase(); await auth.sendSignInLinkToEmail(a, ep, { url: sayfaAdresi, handleCodeInApp: true }); portalTercihleri.setItem('hocaEposta', ep); mesaj(form, t('mesaj.bagGitti', { ep }), 'basari'); break; }
         case 'bagTamamla': await bagIleGir(al('eposta').toLowerCase()); break;
         case 'sifreBelirle': { const s1 = al('sifre'); if (s1.length < 8 || s1 !== al('sifre2')) { mesaj(form, t('mesaj.sifreUyusmuyor'), 'hata'); break; }

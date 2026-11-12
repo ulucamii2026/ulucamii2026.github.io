@@ -127,3 +127,8 @@ dialog.iy-onizleme { width: min(calc(100vw - 1rem), 56rem); }
 .hoca-dil { display: flex; justify-content: flex-end; align-items: center; gap: 0.5rem; margin: 0 0 0.75rem; font-size: 0.85rem; }
 .hoca-dil label { font-weight: 600; color: var(--metin-2); }
 .hoca-dil select { font: inherit; min-height: 38px; padding: 0.3rem 0.6rem; border: 1px solid var(--cizgi-etkilesim); border-radius: var(--radius-kose); background: var(--zemin); color: var(--metin); }
+
+/* ── iki adımlı doğrulama (12 Kasım 2026; src/scripts/hoca-mfa.ts) ── beyaz zeminli kare kod her temada okunur */
+.mfa-kare-kap { width: min(100%, 14rem); margin: 0.75rem 0; padding: 0.4rem; background: #fff; border: 1px solid var(--cizgi); border-radius: 0.4rem; }
+.mfa-kare { display: block; width: 100%; height: auto; }
+.mfa-anahtar { display: inline-block; max-width: 100%; overflow-wrap: anywhere; letter-spacing: 0.06em; font-size: 1rem; user-select: all; }
