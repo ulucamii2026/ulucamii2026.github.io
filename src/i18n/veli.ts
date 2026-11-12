@@ -290,6 +290,8 @@ export const VELI_METIN = {
     dogruCevapTebrik: 'Bravo ! Bonne réponse (+1 ⭐)',
     yanlisCevapIpucu: 'Presque ! Regarde la bonne explication :',
     quizTamamlandi: 'Félicitations ! Tu as complété toutes les questions de la semaine.',
+    sonrakiSoru: 'Question suivante →',
+    testiYenidenBaslat: 'Refaire le quiz 🔄',
     haftaninTestiBitti: 'Quiz hebdomadaire terminé ! 🏆',
     haftaninTestiNot: 'Excellent travail ! Tu as répondu à toutes les questions et tu es fin prêt pour le cours.',
     harekeliOkunuslar: 'Prononciation avec voyelles',
