@@ -64,7 +64,8 @@ function altinKarsilastir(sonuc) {
   }
   expect(existsSync(ALTIN)).toBe(true);
   const altin = JSON.parse(readFileSync(ALTIN, 'utf8'));
-  for (const k of Object.keys(sonuc)) expect(sonuc[k], `ekran: ${k}`).toBe(altin[k]);
+  const port = (s) => s.replace(/127\.0\.0\.1:\d+/g, '127.0.0.1:PORT'); // sunucu portu (yerel koşuya göre değişir)
+  for (const k of Object.keys(sonuc)) expect(port(sonuc[k]), `ekran: ${k}`).toBe(port(altin[k]));
 }
 
 test('Türkçe varsayılan: giriş ekranı altın kayıtla birebir aynı', async ({ page, context }) => {
