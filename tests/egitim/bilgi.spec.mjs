@@ -103,8 +103,8 @@ test('Taslak uyarısı: tr ve fr yalnız onay bekler; resmî karşılığı bulu
   await expect(page.locator('.onay-bekliyor')).toHaveCount(1);
   await expect(page.locator('.bilgi-rozet')).toHaveCount(0);
   await page.goto('/fr/calis/b-kuran-fazileti-hadisleri/');
-  // Fransızca çeviri iki hadiste çalışma çevirisidir: satır rozeti görünür.
-  await expect(page.locator('.bilgi-rozet')).toHaveCount(2);
+  // Fransızca çeviri dört hadiste (ikisi ilk üç hadisten, ikisi 12 Kasım 2026 eklenenler) çalışma çevirisidir: satır rozeti görünür.
+  await expect(page.locator('.bilgi-rozet')).toHaveCount(4);
   for (const [dil, kelime] of [['en', /draft/i], ['nl', /concept/i], ['de', /Entwurf/i]]) {
     // Seçme hadislerde üç dilde de bazı maddelerin resmî karşılığı yoktur; iman şartlarında hepsi vardır (taslak uyarısı yok, yalnız onay notu).
     await page.goto(`/${dil}/calis/b-secme-hadisler/`);
@@ -115,7 +115,7 @@ test('Taslak uyarısı: tr ve fr yalnız onay bekler; resmî karşılığı bulu
     await expect(page.locator('.onay-bekliyor')).not.toContainText(kelime);
   }
   // İkinci tur: Ülü'l-azm'da en ve de resmî (taslak uyarısı yok), nl hâlâ taslak; Kur'an fazileti hadislerinde nl resmî, en ve de taslak.
-  for (const [dosya, taslakDiller] of [['b-ulul-azm', ['nl']], ['b-kuran-fazileti-hadisleri', ['en', 'de']]]) {
+  for (const [dosya, taslakDiller] of [['b-ulul-azm', ['nl']], ['b-kuran-fazileti-hadisleri', ['en', 'nl', 'de']]]) {
     for (const [dil, kelime] of [['en', /draft/i], ['nl', /concept/i], ['de', /Entwurf/i]]) {
       await page.goto(`/${dil}/calis/${dosya}/`);
       await expect(page.locator('.onay-bekliyor')).toHaveCount(1);

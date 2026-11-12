@@ -72,6 +72,19 @@ Metin aynen alındı, künye hutbe numarası ve tarihiyle yazıldı; tamamlama, 
 - **Künye yeri:** hadislerde `kaynaklar` içinde `de` rolüyle (hutbe numarası ve tarihi, adres `bolum` alanında); dualarda `meal.de.kaynak` alanında (URL dâhil).
 - **Taslak:** `b-secme-hadisler` ve `b-kuran-fazileti-hadisleri` dosyalarında `de` taslak listesinde KALIR (seçme hadis 5 ve Kur'an fazileti hadis 2 için resmî Almanca karşılık yok); kural: bir dil, dosyanın bütün maddelerinin resmî karşılığı olunca listeden çıkar. İki dosyada sayfa satırları yine de resmî metni gösterir.
 
+## Kur'an fazileti: 4. ve 5. hadis (12 Kasım 2026, imamın onayıyla)
+
+İmam iki hadisin eklenmesini onayladı; `b-kuran-fazileti-hadisleri` üç hadisten beşe çıktı (kitaptaki yedi hadisten üçü + Diyanet yayınlarından iki).
+
+| Hadis | Künye | Türkçe kaynağı | en | fr, nl, de |
+|---|---|---|---|---|
+| #3 seçkin melekler / iki kat ecir | Buhârî, Tefsîr (Abese), 1; Müslim, Müsâfirîn, 244 | Hadislerle İslam c. 1 (B4937) | resmî: Islam Through Hadiths 1 s. 595, aynen | çalışma çevirisi (taslak) |
+| #4 nice toplumları yükseltir | Müslim, Müsâfirîn, 269 | Riyâzü's-Sâlihîn c. 2 no. 1000 (M1897) | çalışma çevirisi (taslak) | çalışma çevirisi (taslak) |
+
+- Arapça eklenmedi: bilgi maddesinin `ar` alanı en çok 60 karakterlik kısa terimler içindir (mevcut üç hadiste de yok); #3'ün Arapçası (Hadislerle İslam c. 1) bu alana sığmaz, #4'ünki arşivde yok.
+- Çalışma çevirileri Türkçeden hazırlandı, resmî gibi sunulmaz: madde fr için satır rozeti taşır, dosyada en, nl, de taslak kalır (nl yeniden taslağa girdi).
+- #4 için ayrıca kısa bir çocuk açıklaması yazılmadı (din yorumu eklenmez); gerekirse imam yazar.
+
 ## Hâlâ eksik (sonraki kaynak turu için; madde kimlikleri)
 
 **Kur'an meâli nl (31 madde, taslak ya da yok):** d-rabbisrahli, s-bakara-285-286, s-hasr-22-24, s-nebe, s-naziat, s-abese, s-tekvir, s-infitar, s-mutaffifin, s-insikak, s-buruc, s-tarik, s-ala, s-gasiye, s-fecr, s-beled, s-sems, s-leyl, s-duha, s-insirah, s-tin, s-alak, s-alak-1-5, s-kadir, s-beyyine, s-zilzal, s-adiyat, s-karia, s-tekasur, s-asr, s-humeze. (Kaynak: Diyanet Hollanda Vakfı'ndan tam meâl var mı sorulmalı; kitaptaki tek paragraf bu maddelerde yok.) Kur'an meâli fr: Hamidullah kalır, Diyanet Fransızca meâli yok.
@@ -85,10 +98,10 @@ Metin aynen alındı, künye hutbe numarası ve tarihiyle yazıldı; tamamlama, 
 
 **Bilgi maddeleri** (`#n` = dosyadaki madde sırası, 0'dan; taslak kalan dil dosya düzeyinde `taslak` listesindedir):
 
-- en (7 madde): b-abdestin-farzlari #0 #1; b-teyemmumun-farzlari #0 #1; b-secme-hadisler #4; b-kuran-fazileti-hadisleri #1 (hiçbir İngilizce Diyanet kitabında yok) #2 (yalnız «…» ile kısaltılmış biçim var)
-- nl (11 madde): b-dort-halife #0–#3; b-secme-hadisler #0 (Felemenkçe'de bulunamadı; yalnız Almanca'da DİTİB hutbesinde var), #4 (kaynak hadisin tamamı); b-ulul-azm #0–#4
-- de (27 madde): b-namazin-farzlari #0–#11; b-abdestin-farzlari #0–#3; b-guslun-farzlari #0–#2; b-teyemmumun-farzlari #0–#1; b-dort-halife #0–#3; b-secme-hadisler #4; b-kuran-fazileti-hadisleri #1 (seçme hadis 1-3 ve Kur'an fazileti 1, 3 DİTİB hutbelerinden alındı)
-- Dosya düzeyinde taslak kalan diller: b-ulul-azm nl; b-kuran-fazileti-hadisleri en, de; b-secme-hadisler en, nl, de (testte `BEKLENEN_TASLAK`). fr için bu kapsamda eksik madde yok.
+- en (7 madde): b-abdestin-farzlari #0 #1; b-teyemmumun-farzlari #0 #1; b-secme-hadisler #4; b-kuran-fazileti-hadisleri #1 (hiçbir İngilizce Diyanet kitabında yok) #2 (yalnız «…» ile kısaltılmış biçim var) #4 (Müslim 269, İngilizce Diyanet kitaplarında bulunamadı; #3 Islam Through Hadiths 1 s. 595'ten aynen alındı)
+- nl (13 madde): b-kuran-fazileti-hadisleri #3 #4 (12 Kasım 2026'da eklenen iki hadis); b-dort-halife #0–#3; b-secme-hadisler #0 (Felemenkçe'de bulunamadı; yalnız Almanca'da DİTİB hutbesinde var), #4 (kaynak hadisin tamamı); b-ulul-azm #0–#4
+- de (29 madde): b-kuran-fazileti-hadisleri #3 #4 (12 Kasım 2026'da eklenen iki hadis); b-namazin-farzlari #0–#11; b-abdestin-farzlari #0–#3; b-guslun-farzlari #0–#2; b-teyemmumun-farzlari #0–#1; b-dort-halife #0–#3; b-secme-hadisler #4; b-kuran-fazileti-hadisleri #1 (seçme hadis 1-3 ve Kur'an fazileti 1, 3 DİTİB hutbelerinden alındı)
+- Dosya düzeyinde taslak kalan diller: b-ulul-azm nl; b-kuran-fazileti-hadisleri en, nl, de (12 Kasım 2026'dan beri nl de: yeni #3 ve #4 için Felemenkçe resmî karşılık yok); b-secme-hadisler en, nl, de (testte `BEKLENEN_TASLAK`). fr için bu kapsamda eksik madde yok.
 
 Aranacak yayınlar: Hadislerle İslam'ın nl/de baskısı ve Riyâzü's-Sâlihîn (katalogda yok), Diyanet'in Almanca namaz/ilmihal kitabı, DİTİB «Ich gehe zur Moschee», Diyanet Hollanda Vakfı yayınları; Diyanet Din Hizmetleri Genel Müdürlüğü cuma hutbeleri (dinhizmetleri.diyanet.gov.tr, 2024 sonrası sekiz dilde PDF) 2. turda taranamadı: Almanca dua ve hadisler için sıradaki aday kaynak (DİTİB hutbeleri artık kullanılabildiğinden, 2007–2026 arşivinde kalan Almanca dua ve hadis aramaları da yeniden taranabilir).
 

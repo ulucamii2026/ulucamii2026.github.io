@@ -53,17 +53,54 @@
         "metin": "Kur’an okuyun, zira Kur’an, kıyamet gününde kendisini okuyanlara şefaatçi olarak gelir, buyurmuştur.",
         "fark": "Anlam aynı, ifade farklı: kitap «o … okuyanlara şefaat edecektir», Diyanet «Kur’an … şefaatçi olarak gelir» der. Camiye Gidiyorum’da bu hadis yok, bu yüzden Fransızca bu sayfada çalışma çevirisidir."
       }
+    },
+    {
+      "ad": {
+        "tr": "Kur’an’ı ezberleyip okuyan kişi, Allah katındaki seçkin meleklerle birlikte olacaktır. Kur’an’ı zorlanarak da olsa devamlı okumaya çalışan kişiye ise iki kat ecir vardır.",
+        "fr": "Celui qui apprend le Coran par cœur et le récite sera avec les anges élus auprès d’Allah. Celui qui s’efforce de lire le Coran sans cesse, même avec difficulté, aura une double récompense.",
+        "en": "“Whoever recites the Holy Quran and masters it by heart will be with the noble righteous scribes (in Heaven). And whoever exerts himself to learn the Quran by heart and recites it with great difficulty will have a double reward.”",
+        "nl": "“Wie de Koran uit het hoofd leert en reciteert, zal bij Allah samen zijn met de uitverkoren engelen. En wie zich inspant om de Koran voortdurend te lezen, ook al valt het hem zwaar, krijgt een dubbele beloning.”",
+        "de": "„Wer den Koran auswendig lernt und rezitiert, wird bei Allah mit den auserwählten Engeln zusammen sein. Wer sich bemüht, den Koran fortwährend zu lesen, auch wenn es ihm schwerfällt, erhält zweifachen Lohn.“"
+      },
+      "kunye": "Buhârî, Tefsîr (Abese), 1; Müslim, Müsâfirîn, 244",
+      "taslak": [
+        "fr"
+      ],
+      "dogrulama": {
+        "kaynak": "Hadislerle İslam c. 1, «ALLAH’IN KİTABI: SÖZLERİN EN GÜZELİ» (B4937 Buhârî, Tefsîr (Abese), 1); Riyâzü’s-Sâlihîn c. 2, «Kur’an-ı Kerim Okumanın Fazileti», no. 998 (M1862 Müslim, Müsâfirîn, 244)",
+        "metin": "Kur’an’ı ezberleyip okuyan kişi, Allah katındaki seçkin meleklerle birlikte olacaktır. Kur’an’ı zorlanarak da olsa devamlı okumaya çalışan kişiye ise iki kat ecir vardır.",
+        "fark": "Metin Hadislerle İslam c. 1’deki Diyanet çevirisinden aynen alındı (imam onayı, 12 Kasım 2026). Riyâzü’s-Sâlihîn no. 998 aynı hadisi başka lafızla verir; lafız bütünlüğü için tek kaynak seçildi. İngilizce: Islam Through Hadiths 1 (s. 595) aynen. Fransızca, Felemenkçe ve Almanca için resmî karşılık bulunamadı: çalışma çevirisidir."
+      }
+    },
+    {
+      "ad": {
+        "tr": "Allah, bu kitapla (Kur’an’la) nice toplumları yükseltir ve nicelerini de alçaltır.",
+        "fr": "Par ce Livre (le Coran), Allah élève de nombreux peuples et en abaisse beaucoup d’autres.",
+        "en": "Through this Book (the Qur’an), Allah raises many peoples and lowers many others.",
+        "nl": "Met dit Boek (de Koran) verheft Allah vele volkeren en vernedert Hij er vele anderen.",
+        "de": "Durch dieses Buch (den Koran) erhebt Allah viele Völker und erniedrigt viele andere."
+      },
+      "kunye": "Müslim, Müsâfirîn, 269",
+      "taslak": [
+        "fr"
+      ],
+      "dogrulama": {
+        "kaynak": "Riyâzü’s-Sâlihîn c. 2, «Kur’an-ı Kerim Okumanın Fazileti», no. 1000 (M1897 Müslim, Müsâfirîn, 269)",
+        "metin": "Allah, bu kitapla (Kur’an’la) nice toplumları yükseltir ve nicelerini de alçaltır.",
+        "fark": "Metin Riyâzü’s-Sâlihîn c. 2’deki Diyanet çevirisinden aynen alındı (imam onayı, 12 Kasım 2026). Arapça metin kaynakta yok, eklenmedi. Fransızca, İngilizce, Felemenkçe ve Almanca için resmî karşılık bulunamadı: çalışma çevirisidir."
+      }
     }
   ],
   "not": {
-    "tr": "Kitapta (s. 47) Kur’an okumanın fazileti hakkında yedi hadis vardır; öğrenci beşini seçip ezberler. Bu sayfada, kaynağı Diyanet hadis yayınlarında doğrulanan üçü yer alır; diğerleri doğrulanınca eklenecek.",
-    "fr": "Le livre (p. 47) contient sept hadiths sur le mérite de la lecture du Coran ; l’élève en choisit cinq à apprendre par cœur. Cette page présente les trois dont la source a été vérifiée dans les publications de hadiths de la Diyanet ; les autres seront ajoutés après vérification.",
-    "en": "The book (p. 47) contains seven hadiths on the virtue of reciting the Qur’an; the pupil chooses five to learn by heart. This page shows the three whose source has been verified in the Diyanet’s hadith publications; the others will be added once verified.",
-    "nl": "Het boek (p. 47) bevat zeven hadieth over de verdienste van het lezen van de Koran; de leerling kiest er vijf om uit het hoofd te leren. Op deze pagina staan de drie waarvan de bron is gecontroleerd in de hadieth-uitgaven van de Diyanet; de andere volgen na controle.",
-    "de": "Das Buch (S. 47) enthält sieben Hadithe über den Vorzug der Koranlesung; die Lernenden wählen fünf zum Auswendiglernen aus. Diese Seite zeigt die drei, deren Quelle in den Hadith-Veröffentlichungen der Diyanet überprüft wurde; die übrigen folgen nach der Prüfung."
+    "tr": "Kitapta (s. 47) yedi hadis vardır; öğrenci beşini seçip ezberler. Bu sayfada beş hadis yer alır: üçü kitaptandır, kaynağı Diyanet hadis yayınlarında doğrulanmıştır; ikisi imamın onayıyla (12 Kasım 2026) Diyanet yayınlarından eklenmiştir. Kitaptaki diğer dört hadis doğrulanamadığı için alınmadı.",
+    "fr": "Le livre (p. 47) contient sept hadiths ; l’élève en choisit cinq. Cette page en présente cinq : trois du livre, vérifiés dans les publications de la Diyanet, et deux ajoutés avec l’accord de l’imam (12 novembre 2026) à partir de ces publications. Les quatre autres hadiths du livre n’ont pas été repris, faute de vérification.",
+    "en": "The book (p. 47) contains seven hadiths; the pupil chooses five. This page shows five: three from the book, verified in the Diyanet’s hadith publications, and two added with the imam’s approval (12 November 2026) from those publications. The other four hadiths of the book were not included because they could not be verified.",
+    "nl": "Het boek (p. 47) bevat zeven hadieth; de leerling kiest er vijf. Op deze pagina staan er vijf: drie uit het boek, gecontroleerd in de uitgaven van de Diyanet, en twee die met goedkeuring van de imam (12 november 2026) uit die uitgaven zijn toegevoegd. De andere vier hadieth uit het boek zijn niet opgenomen, omdat ze niet konden worden gecontroleerd.",
+    "de": "Das Buch (S. 47) enthält sieben Hadithe; die Lernenden wählen fünf aus. Diese Seite zeigt fünf: drei aus dem Buch, in den Veröffentlichungen der Diyanet überprüft, und zwei, die mit Zustimmung des Imams (12. November 2026) aus diesen Veröffentlichungen ergänzt wurden. Die übrigen vier Hadithe des Buches wurden nicht aufgenommen, weil sie nicht überprüft werden konnten."
   },
   "taslak": [
     "en",
+    "nl",
     "de"
   ],
   "kaynaklar": [

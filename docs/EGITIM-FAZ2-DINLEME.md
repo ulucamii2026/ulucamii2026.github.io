@@ -529,7 +529,7 @@ karşılaştırıldı; ikisi uyuşmayan satır sayfaya alınmadı. Fransızca ya
 | `b-ulul-azm` | 5 | Camiye Gidiyorum 1 s. 151 | Dînî Kavramlar Sözlüğü s. 668 |
 | `b-dort-halife` | 4 | Dînî Kavramlar Sözlüğü s. 269 (Fransızca yazım: Camiye Gidiyorum 2 Fr. s. 123) | İlmihal c. 2 s. 278 |
 | `b-secme-hadisler` | 5 / 9 | Camiye Gidiyorum 2 s. 238 | Hadislerle İslam c. 2, 3, 6; Serlevha Hadisler; Riyâzü's-Sâlihîn c. 1 |
-| `b-kuran-fazileti-hadisleri` | 3 / 7 | Temel Dinî Bilgiler s. 47 (Fransızca: Camiye Gidiyorum 1 s. 67) | Hadislerle İslam c. 1 ve 7; Serlevha Hadisler; Riyâzü's-Sâlihîn c. 2 |
+| `b-kuran-fazileti-hadisleri` | 5 (kitaptan 3 + Diyanet yayınlarından 2, imam onayı 12 Kas 2026) / 7 | Temel Dinî Bilgiler s. 47 (Fransızca: Camiye Gidiyorum 1 s. 67) | Hadislerle İslam c. 1 ve 7; Serlevha Hadisler; Riyâzü's-Sâlihîn c. 2 |
 
 Notlar: (a) Teyemmümün farzı Camiye Gidiyorum'da iki, İlmihalde üç sayılabilir; sayfa notu bunu söyler. (b) İslâm'ın şartlarında kitap
 sırası (kelime-i şehâdet, namaz, oruç, zekât, hac) korundu; İlmihal Müslim hadisinin sırasını izler, sayfa notu bunu belirtir.
