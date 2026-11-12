@@ -52,10 +52,13 @@ export function odevKalibiSec(metin: OdevMetin, id: string): OdevMetin {
     return [dil, s];
   })) as OdevMetin;
 }
-export function odevHatasi(k: HaftalikOdev, etkinlikKimlikleri: string[]): string {
-  if (ODEV_DILLERI.some(d => k.ezber[d].length > 1000 || k.odev[d].length > 1000)) return 'Ezber ve ödev alanları en fazla 1000 karakter olabilir.';
-  if (k.etkinlikler.length > 3 || new Set(k.etkinlikler).size !== k.etkinlikler.length || k.etkinlikler.some(id => !etkinlikKimlikleri.includes(id))) return 'En fazla üç farklı etkinlik seçin.';
-  if (k.materyal && !/^https?:\/\//i.test(k.materyal)) return 'Materyal bağlantısı http:// veya https:// ile başlamalı.';
-  if (k.yayin && ![...Object.values(k.ezber), ...Object.values(k.odev), k.materyal, ...k.etkinlikler].some(x => x.trim())) return 'Yayımlamak için ezber, ödev, materyal veya etkinlik ekleyin.';
+/** Hata metinleri: varsayılan Türkçe; hoca ekranı kendi dilindeki metinleri verir (veli portalı bu işlevi çağırmaz). */
+export type OdevHataMetni = { uzun: string; etkinlik: string; materyal: string; bos: string };
+export const ODEV_HATA_TR: OdevHataMetni = { uzun: 'Ezber ve ödev alanları en fazla 1000 karakter olabilir.', etkinlik: 'En fazla üç farklı etkinlik seçin.', materyal: 'Materyal bağlantısı http:// veya https:// ile başlamalı.', bos: 'Yayımlamak için ezber, ödev, materyal veya etkinlik ekleyin.' };
+export function odevHatasi(k: HaftalikOdev, etkinlikKimlikleri: string[], m: OdevHataMetni = ODEV_HATA_TR): string {
+  if (ODEV_DILLERI.some(d => k.ezber[d].length > 1000 || k.odev[d].length > 1000)) return m.uzun;
+  if (k.etkinlikler.length > 3 || new Set(k.etkinlikler).size !== k.etkinlikler.length || k.etkinlikler.some(id => !etkinlikKimlikleri.includes(id))) return m.etkinlik;
+  if (k.materyal && !/^https?:\/\//i.test(k.materyal)) return m.materyal;
+  if (k.yayin && ![...Object.values(k.ezber), ...Object.values(k.odev), k.materyal, ...k.etkinlikler].some(x => x.trim())) return m.bos;
   return '';
 }

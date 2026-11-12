@@ -1,5 +1,7 @@
 import kitaplar from '../data/hoca-kitaplari.json';
 import { medyaYolu } from '../lib/ses-koken';
+import { tK, tKTr } from '../i18n/hoca-metin/kitaplar';
+import { hocaYerel } from '../i18n/hoca';
 
 type Kitap = (typeof kitaplar)[number];
 const hex = (bytes: ArrayBuffer) => Array.from(new Uint8Array(bytes), b => b.toString(16).padStart(2, '0')).join('');
@@ -9,19 +11,22 @@ const kac = (s: string) => s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','
 /** Ekran metinleri: hoca ekranı varsayılanı kullanır; /kitap/ paylaşım sayfası kendi metnini verir. */
 export type KitapMetni = { baslik: string; giris: string; bekle: string; hata: string };
 export const HOCA_METNI: KitapMetni = {
-  baslik: 'Ders kitapları',
-  giris: 'Camiye Gidiyorum kitaplarını ders hazırlığı için indirebilirsiniz. Büyük dosyalarda indirme biraz zaman alabilir.',
-  bekle: 'Hoca erişimi doğrulanıyor…',
-  hata: 'Kitap indirilemedi. Bağlantınızı ve hoca oturumunuzu kontrol edip yeniden deneyin.',
+  baslik: tK('baslik'),
+  giris: tK('giris'),
+  bekle: tK('bekle'),
+  hata: tK('hata'),
 };
+/** Hoca ekranı (HOCA_METNI) seçili arayüz dilini kullanır; /kitap/ paylaşım sayfası her zaman Türkçe kalır. */
+const dilTercihi = (m: KitapMetni) => (m === HOCA_METNI ? { t: tK, yerel: hocaYerel() } : { t: tKTr, yerel: 'tr-TR' });
 
 export function kitaplarHtml(m: KitapMetni = HOCA_METNI): string {
+  const { t, yerel } = dilTercihi(m);
   return `<section class="bolum" data-hoca-kitaplari><h2>${kac(m.baslik)}</h2>
     <p class="kucuk">${kac(m.giris)}</p>
-    <ul class="liste">${kitaplar.map(k => `<li><div class="buyu"><b>${kac(k.ad)}</b><p class="kucuk">${kac(k.surum)} · ${k.sayfa} sayfa · ${(k.bayt / 1024 / 1024).toLocaleString('tr-TR',{maximumFractionDigits:1})} MB · PDF</p></div>
-      <button type="button" class="dugme dugme-ikincil" data-kitap-indir="${k.id}" aria-label="${kac(k.ad + ' — ' + k.surum + ' PDF indir')}">PDF indir</button></li>`).join('')}</ul>
+    <ul class="liste">${kitaplar.map(k => `<li><div class="buyu"><b>${kac(k.ad)}</b><p class="kucuk">${kac(k.surum)} · ${t('sayfa', { n: k.sayfa })} · ${t('boyut', { mb: (k.bayt / 1024 / 1024).toLocaleString(yerel,{maximumFractionDigits:1}) })} · PDF</p></div>
+      <button type="button" class="dugme dugme-ikincil" data-kitap-indir="${k.id}" aria-label="${kac(t('indirAria', { ad: k.ad, surum: k.surum }))}">${t('pdfIndir')}</button></li>`).join('')}</ul>
     <p class="kucuk" role="status" aria-live="polite" data-kitap-durum></p>
-    <button type="button" class="kucuk-dugme" data-kitap-iptal hidden>İndirmeyi iptal et</button></section>`;
+    <button type="button" class="kucuk-dugme" data-kitap-iptal hidden>${t('iptalDugme')}</button></section>`;
 }
 
 /** Anahtar yalnız mevcut hoca oturumuyla sunucudan alınır; tarayıcıda kalıcı saklanmaz. */
@@ -48,6 +53,7 @@ export async function kitapCoz(k: Kitap, anahtar: string, signal: AbortSignal, i
 }
 
 export function hocaKitaplari(kok: HTMLElement, anahtariOku: (id:string)=>Promise<string>, m: KitapMetni = HOCA_METNI): ()=>void {
+  const { t } = dilTercihi(m);
   const durum=kok.querySelector<HTMLElement>('[data-kitap-durum]')!;
   const iptal=kok.querySelector<HTMLButtonElement>('[data-kitap-iptal]')!;
   let controller: AbortController | null=null;
@@ -63,14 +69,14 @@ export function hocaKitaplari(kok: HTMLElement, anahtariOku: (id:string)=>Promis
     durum.textContent=m.bekle;
     try {
       const key=await anahtariOku(kitap.id);task.signal.throwIfAborted();
-      const blob=await kitapCoz(kitap,key,task.signal,p=>{if(!kapali)durum.textContent=`${kitap.ad} indiriliyor… %${p}`;});
+      const blob=await kitapCoz(kitap,key,task.signal,p=>{if(!kapali)durum.textContent=t('ilerleme', { ad: kitap.ad, p });});
       task.signal.throwIfAborted();
       const url=URL.createObjectURL(blob);const a=document.createElement('a');
       a.href=url;a.download=kitap.dosyaAdi;document.body.append(a);a.click();a.remove();
       window.setTimeout(()=>URL.revokeObjectURL(url),60_000);
-      durum.textContent=`${kitap.ad} hazır. Dosyayı cihazınızın indirilenler bölümünden açabilirsiniz.`;
+      durum.textContent=t('hazir', { ad: kitap.ad });
     } catch {
-      if(!kapali)durum.textContent=task.signal.aborted?'İndirme iptal edildi.':m.hata;
+      if(!kapali)durum.textContent=task.signal.aborted?t('iptal'):m.hata;
     } finally {
       controller=null;
       if(!kapali){buttons.forEach(b=>b.disabled=false);iptal.hidden=true;}
