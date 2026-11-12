@@ -7,45 +7,45 @@
       "ad": {
         "tr": "Hz. Nuh (a.s.)",
         "fr": "Noé (Nouh)",
-        "en": "Prophet Nuh (Noah)",
+        "en": "Nuh",
         "nl": "Profeet Noach (Nuh)",
-        "de": "Prophet Noah (Nuh)"
+        "de": "Nuh/Noah (a.s.)"
       }
     },
     {
       "ad": {
         "tr": "Hz. İbrahim (a.s.)",
         "fr": "Abraham (Ibrahim)",
-        "en": "Prophet Ibrahim (Abraham)",
+        "en": "Ibrahim",
         "nl": "Profeet Abraham (Ibrahim)",
-        "de": "Prophet Abraham (Ibrahim)"
+        "de": "Ibrahim/Abraham (a.s.)"
       }
     },
     {
       "ad": {
         "tr": "Hz. Musa (a.s.)",
         "fr": "Moïse (Moussa)",
-        "en": "Prophet Musa (Moses)",
+        "en": "Musa",
         "nl": "Profeet Mozes (Moesa)",
-        "de": "Prophet Mose (Musa)"
+        "de": "Musa/Moses (a.s.)"
       }
     },
     {
       "ad": {
         "tr": "Hz. İsa (a.s.)",
         "fr": "Jésus (Issa)",
-        "en": "Prophet Isa (Jesus)",
+        "en": "Isa",
         "nl": "Profeet Jezus (Isa)",
-        "de": "Prophet Jesus (Isa)"
+        "de": "Isa/Jesus (a.s.)"
       }
     },
     {
       "ad": {
         "tr": "Hz. Muhammed (s.a.s.)",
         "fr": "Muhammed (s.a.s.)",
-        "en": "Prophet Muhammad (peace be upon him)",
+        "en": "Muhammad (saw)",
         "nl": "Profeet Mohammed (vrede zij met hem)",
-        "de": "Prophet Muhammad (Friede sei mit ihm)"
+        "de": "Muhammed (s.a.w.)"
       }
     }
   ],
@@ -57,9 +57,7 @@
     "de": "Ulu al-‘azm bedeutet „Träger von Entschlossenheit und Geduld“; der Ausdruck kommt in Vers 35 der Sure al-Ahqaf vor."
   },
   "taslak": [
-    "en",
-    "nl",
-    "de"
+    "nl"
   ],
   "kaynaklar": [
     {
@@ -71,6 +69,16 @@
       "rol": "fr",
       "ad": "Je vais à la mosquée 1",
       "sayfa": "151"
+    },
+    {
+      "rol": "en",
+      "ad": "On the Footsteps of the Prophet (Diyanet, 2023)",
+      "sayfa": "75"
+    },
+    {
+      "rol": "de",
+      "ad": "Auf den Spuren des Propheten (Diyanet, 2022)",
+      "sayfa": "86"
     },
     {
       "rol": "dogrulama",

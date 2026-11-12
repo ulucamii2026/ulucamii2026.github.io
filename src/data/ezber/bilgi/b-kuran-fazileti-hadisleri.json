@@ -8,7 +8,7 @@
         "tr": "Sizin en hayırlınız, Kur’an’ı öğrenen ve öğretendir.",
         "fr": "Les meilleurs d’entre vous sont ceux qui apprennent le Coran et l’enseignent.",
         "en": "“The best of you is he who learns the Qurʾan and teaches it.”",
-        "nl": "De besten onder u zijn zij die de Koran leren en onderwijzen.",
+        "nl": "“De besten onder jullie zijn degenen die de Koran leren en deze onderwijzen.”",
         "de": "Die Besten unter euch sind diejenigen, die den Koran lernen und lehren."
       },
       "kunye": "Buhârî, Fedâilü’l-Kur’ân, 21; Tirmizî, Fedâilü’l-Kur’ân, 15",
@@ -23,7 +23,7 @@
         "tr": "Kim Allah’ın kitabı Kur’an’dan bir harf okursa onun için bir sevap vardır. Her sevabın karşılığı da on kat verilecektir.",
         "fr": "Celui qui lit une lettre du Livre d’Allah, le Coran, aura une récompense ; et chaque récompense lui sera rendue au décuple.",
         "en": "Whoever reads one letter of Allah’s Book, the Qur’an, will have one reward; and every reward will be multiplied tenfold.",
-        "nl": "Wie één letter uit het Boek van Allah, de Koran, leest, heeft daarvoor één beloning; en elke beloning wordt tienvoudig vergoed.",
+        "nl": "“Eenieder die één letter uit het Boek van Allah leest, zal één beloning (hasanāt) krijgen. En die beloning zal met tien worden vermenigvuldigd.”",
         "de": "Wer einen Buchstaben aus dem Buch Allahs, dem Koran, liest, hat dafür eine Belohnung; und jede Belohnung wird zehnfach vergolten."
       },
       "kunye": "Tirmizî, Fedâilü’l-Kur’ân, 16",
@@ -41,7 +41,7 @@
         "tr": "Kur’an okuyunuz. Çünkü o, kıyamet günü okuyanlara şefaat edecektir.",
         "fr": "Lisez le Coran, car il intercédera, au Jour de la Résurrection, en faveur de ceux qui le lisent.",
         "en": "Read the Qur’an, for on the Day of Resurrection it will intercede for those who read it.",
-        "nl": "Lees de Koran, want op de Dag der Opstanding zal hij bemiddelen voor wie hem leest.",
+        "nl": "“Lees uit de Koran, want deze zal op de Dag des Oordeels als een vorm van voorspraak (shafa’ah) dienen voor degenen die de Koran hebben gereciteerd.”",
         "de": "Lest den Koran, denn er wird am Tag der Auferstehung für diejenigen Fürsprache einlegen, die ihn lesen."
       },
       "kunye": "Müslim, Müsâfirîn, 252",
@@ -64,7 +64,6 @@
   },
   "taslak": [
     "en",
-    "nl",
     "de"
   ],
   "kaynaklar": [
@@ -82,6 +81,11 @@
       "rol": "en",
       "ad": "Islam Through Hadiths 1 (Diyanet, 2020)",
       "sayfa": "595"
+    },
+    {
+      "rol": "nl",
+      "ad": "Basiskennis over Islam (Diyanet, 2017; vertaling Drs. Ahmed Bulut)",
+      "sayfa": "51"
     },
     {
       "rol": "dogrulama",

@@ -78,8 +78,8 @@ test('Kaynaklar: en az iki, biri metin biri karşılaştırma; her kaynak sayfa 
 // Bir dil taslaktan YALNIZ dosyanın bütün maddeleri için Diyanet'in basılı kitabında karşılık bulunup künyelenince çıkar.
 const BEKLENEN_TASLAK = {
   'b-imanin-sartlari': [], 'b-islamin-sartlari': [], 'b-namazin-farzlari': ['de'], 'b-abdestin-farzlari': ['en', 'de'],
-  'b-guslun-farzlari': ['de'], 'b-teyemmumun-farzlari': ['en', 'de'], 'b-dort-halife': ['nl', 'de'], 'b-ulul-azm': ['en', 'nl', 'de'],
-  'b-secme-hadisler': ['en', 'nl', 'de'], 'b-kuran-fazileti-hadisleri': ['en', 'nl', 'de'],
+  'b-guslun-farzlari': ['de'], 'b-teyemmumun-farzlari': ['en', 'de'], 'b-dort-halife': ['nl', 'de'], 'b-ulul-azm': ['nl'],
+  'b-secme-hadisler': ['en', 'nl', 'de'], 'b-kuran-fazileti-hadisleri': ['en', 'de'],
 };
 
 test('Beş dil de dolu; taslak durumu kayıtlı kaynak durumuyla aynıdır (en, nl, de: künyeli resmî kaynak yoksa taslak); tr ve fr taslak değildir (satır bazında fr taslağı olabilir)', () => {
@@ -111,6 +111,15 @@ test('Resmî karşılıklar aynen ve doğru maddede: Almanca broşürün farklı
   assert.equal(ad('b-kuran-fazileti-hadisleri', 1, 'en'), 'Whoever reads one letter of Allah’s Book, the Qur’an, will have one reward; and every reward will be multiplied tenfold.');
   // Cümleden kesilmiş parçası bulunmayan abdest maddeleri (yüz ve kollar tek öbek) taslak kalır.
   assert.equal(ad('b-abdestin-farzlari', 0, 'en'), 'Washing the face');
+  // İkinci tur (12 Kas 2026): ISN hutbesi ve Diyanet kitapları. Kitap hadisin tamamını verip veri yalnız orta cümleyi alıyorsa (nl seçme hadis 5) eklenmez;
+  // DİTİB hutbeleri yazılı izin ister (docs/ILIM-YOLU-CEVIRI-KAYNAKLARI.md «İzin kararı bekleyenler»): de karşılıkları izne kadar eklenmez.
+  assert.equal(ad('b-secme-hadisler', 1, 'nl'), '‘Vermijd afgunst. Want voorwaar, afgunst verteert goedheid zoals vuur brandhout verteert.’');
+  assert.equal(ad('b-secme-hadisler', 4, 'nl'), 'Laat op een slechte daad een goede daad volgen, zodat die de slechte uitwist.');
+  assert.equal(ad('b-secme-hadisler', 3, 'de'), '„Erleichtert es, erschwert es nicht; bringt (den Menschen) frohe Kunde und schreckt (sie) nicht ab“');
+  assert.equal(ad('b-secme-hadisler', 0, 'de'), 'Wer Menschen nicht zu danken versteht, versteht auch nicht, Allah dankbar zu sein.');
+  assert.deepEqual([0, 1, 2, 3, 4].map((i) => ad('b-ulul-azm', i, 'en')), ['Nuh', 'Ibrahim', 'Musa', 'Isa', 'Muhammad (saw)']);
+  assert.deepEqual([0, 1, 2, 3, 4].map((i) => ad('b-ulul-azm', i, 'de')), ['Nuh/Noah (a.s.)', 'Ibrahim/Abraham (a.s.)', 'Musa/Moses (a.s.)', 'Isa/Jesus (a.s.)', 'Muhammed (s.a.w.)']);
+  assert.equal(ad('b-ulul-azm', 0, 'nl'), 'Profeet Noach (Nuh)');
   for (const [id, d] of [['b-teyemmumun-farzlari', 'en'], ['b-ulul-azm', 'nl'], ['b-namazin-farzlari', 'de']]) assert.ok(!veriler.get(id).kaynaklar.some((x) => x.rol === d), `${id}/${d}: künye olmamalı`);
 });
 
