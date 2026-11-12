@@ -4,6 +4,14 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 12 Kasım 2026 (gece) — İlim Yolu: beş dilli uygulama manifesti ve veli portalı Fransızca düzeltmesi
+
+- Zaman: 12 Kasım 2026, 02.10–02.18 (Brüksel, CET). Kapsam: `src/i18n/veli.ts` Fransızca blokta eksik iki anahtar + beş dilin anahtar eşitliği testi (`tests/veli-metin-esitlik.test.mjs`); `egitim/public/manifest.fr|en|nl|de.webmanifest` yeni, `manifest.webmanifest` (Türkçe) eski adresinde kaldı; her dilin sayfası kendi manifestine bağlanıyor. İçerik commit'leri (main, `364e26d8..396e413f`, fast-forward): `56a73af4` (veli.ts + test), `396e413f` (manifestler).
+- Koşular: Pages [43132621419](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/43132621419) success; egitim push [43132621526](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/43132621526) derle ve yayinla başarılı (Hosting yayını tamam), canli işi FAILURE: `egitim:canli` 106/110, düşen dört denetim `/fr|en|nl|de/cevrimdisi/ … manifest bağlantılı` (`scripts/egitim-canli-denetim.mjs` satır 92 hâlâ `/manifest.webmanifest` bekliyor; sayfalar artık dilin manifestine bağlı, yani beklenti eskidi, yayın hatası değil); egitim workflow_run [43132933484](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/43132933484) skipped.
+- Canlı (curl): `https://egitim.ulucamii.be/manifest.webmanifest` (tr, start_url `/`, 1000 bayt, sha256 `35550c4bdcae…`), `manifest.fr.webmanifest` (`/fr/`, 1055, `61ff9033f66b…`), `.en` (`/en/`, 1013, `1e77a9d1da83…`), `.nl` (`/nl/`, 1010, `8bd745796c95…`), `.de` (`/de/`, 1012, `73d6266c6934…`) hepsi 200, `lang`/`start_url` dile uygun, bayt ve sha256 `egitim/public/` dosyalarıyla birebir. `/fr/`, `/en/`, `/nl/`, `/de/`, `/tr/` kendi manifestini bağlıyor. `https://ulucamii.be/fr/portail-parents/` betiği `Veli.astro_astro_type_script_index_0_lang.COEp5tNL.js` içinde «Question suivante» var.
+- Yerel kapılar: node test kümesi 71/71, `egitim:build` 2144 sayfa, dist kapısı 3031 dosya, yeni eşitlik testi 2/2.
+- Açık sınırlar: Playwright paketi ve gerçek cihazda PWA kurulumu çalıştırılmadı; `egitim-canli-denetim.mjs` yeni manifestleri henüz denetlemiyor ve çevrim dışı sayfa beklentisi eski (canli işi bu yüzden kırmızı, düzeltilecek); Fransızca `short_name` 16 karakter.
+
 ## 11 Kasım 2026 (gece) — İlim Yolu: üç kartın metni ve seslendirmesi birlikte yenilendi
 
 - Zaman: 11 Kasım 2026, 19.12–19.50 (Brüksel). Kapsam: `ku-056` TR özet son cümle («doldururuz»), `ku-019` FR özet («du fatha»), `ku-024` FR başlık («Consolidation du soukoun et de la chadda»). Başka metin/ses değişmedi. İçerik commit'i (main, `85c4dbff..a0a65bcf`): `a0a65bcf` (`kuran.json` 3 satır + `kart-ses.json` 3 kayıt).
