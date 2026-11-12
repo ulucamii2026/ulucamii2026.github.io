@@ -33,7 +33,7 @@ const sira = yolKartlari(KARTLAR, planYolu);
 const i = sira.findIndex((k) => k.id === kart.id);
 const onceki = i > 0 ? sira[i - 1] : null;
 const sonraki = i >= 0 && i < sira.length - 1 ? sira[i + 1] : null;
-// Seslendirme yalnız manifest bu kart ve dil için dosya listeliyorsa vardır (yalnız tr ve fr; manifest boşken ya da başka dilde sayfa değişmez).
+// Seslendirme yalnız manifest bu kart ve dil için dosya listeliyorsa vardır (beş dil; manifest boşken ya da başka dilde sayfa değişmez).
 // Dosya egitim Hosting'in kendi alanındadır (aynı kökenli adres; dosyalar git dışı, bkz. scripts/kart-ses-al.mjs).
 const sesAdresi = kartSesAdresi(manifest as KartSesManifesti, dil, kart.id);
 const sikMetni = (s: Sik): { yazi: string; ar: boolean } => ('ar' in s ? { yazi: s.ar, ar: true } : { yazi: s[dil], ar: false });

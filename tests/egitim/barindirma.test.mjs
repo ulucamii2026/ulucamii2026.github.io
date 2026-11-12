@@ -118,6 +118,7 @@ test('Hosting: önbellek — HTML her açılışta doğrulanır, özetli dosyala
     '/fonts/atkinson-next.woff2': 'public, max-age=604800',
     '/media/ses/okuma/yeni/zamir/uygulama/1.mp3': 'public, max-age=604800', // okuma tecvid + kısa âyet sesleri (o8, o9): bir hafta
     '/media/ses/kart/tr/ib-013.mp3': 'public, max-age=604800', // kart seslendirmesi: bir hafta (hatalı bir anlatım düzeltilirse en geç bir haftada herkese ulaşır)
+    '/media/ses/kart/en/ib-013.mp3': 'public, max-age=604800', '/media/ses/kart/nl/ib-013.mp3': 'public, max-age=604800', '/media/ses/kart/de/ib-013.mp3': 'public, max-age=604800', // en/nl/de (12 Kasım 2026) aynı kural
     '/favicon.ico': undefined, '/og/ezber-kilimi-tr.png': undefined, '/robots.txt': undefined, // Hosting varsayılanı (1 saat)
     '/manifest.webmanifest': undefined, '/icon-192.png': undefined, '/icon-maskable-512.png': undefined,
   };

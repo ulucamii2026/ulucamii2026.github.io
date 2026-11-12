@@ -8,10 +8,10 @@
  * Barındırma: sesler egitim Firebase Hosting'in kendi alanında, aynı kökenden çalar: `egitim/public/media/ses/kart/<dil>/<id>.mp3`.
  * O klasör git'te YOK (.gitignore; 98 MB); git'te yalnız `src/data/ilim-yolu/kart-ses.json` (kimlik, dil, süre, bayt, sha256) durur.
  * Temiz klonda dosyalar yoktur: `--denetle` açık iletiyle başarısız olur, egitim derlemesi/yayını durur; geri getirme: bu betik (`--kaynak` ile).
- * Kaynak (varsayılan `D:\sesli-anlatim\ilim-yolu-kartlar`): `MANIFEST.json` (dizi: {id, lang, file, seconds, bytes, sha256}) ve `{tr,fr}/<id>.mp3`.
- * Her kayıt doğrulanır (kart kimliği var, dil tr/fr, dosya MP3, bayt ve sha256 tutuyor), sonra kopyalanır; manifest hedef klasördeki dosyalardan
+ * Kaynak (varsayılan `D:\sesli-anlatim\ilim-yolu-kartlar`): `MANIFEST.json` (tr/fr) ve `MANIFEST-{en,nl,de}.json` (dizi: {id, lang, file, seconds, bytes, sha256}) ile `{tr,fr,en,nl,de}/<id>.mp3`.
+ * Her kayıt doğrulanır (kart kimliği var, dil tr/fr/en/nl/de, dosya MP3, bayt ve sha256 tutuyor), sonra kopyalanır; manifest hedef klasördeki dosyalardan
  * (sha256 ile) YENİDEN üretilir. Bozuk kayıt varsa hiçbir şey yazılmaz (çıkış 1). Kaynak klasöre dokunulmaz. `--kuru`: yalnız doğrular.
- * HARIC: imam onayı bekleyen üç tecvid kartının Fransızca sesi (Arapça terimlerin okunuşu) içe alınmaz; o kartlarda fr'de «Écouter» çıkmaz.
+ * HARIC: imam onayı bekleyen üç tecvid kartının (ku-044/047/048) fr/en/nl/de sesi (Arapça terimlerin okunuşu) içe alınmaz; o kartlarda bu dillerde «Dinleyin» çıkmaz (en/nl/de'de kaynakta zaten yok).
  * Test: tests/ilim-yolu-kart-ses.test.mjs (aynı işlevleri geçici klasörlerle sınar).
  */
 import { createHash } from 'node:crypto';
@@ -22,8 +22,8 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 const KOK = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const TABAN = '/media/ses/kart';
 const PUBLIC = ['egitim', 'public']; // ses dosyalarının yeri: egitim Hosting'in public klasörü (git dışı)
-export const HARIC = new Set(['fr/ku-044', 'fr/ku-047', 'fr/ku-048']);
-const DILLER = ['tr', 'fr'];
+export const HARIC = new Set(['fr', 'en', 'nl', 'de'].flatMap((d) => ['ku-044', 'ku-047', 'ku-048'].map((id) => `${d}/${id}`)));
+const DILLER = ['tr', 'fr', 'en', 'nl', 'de'];
 const KIMLIK = /^[a-z0-9-]+$/;
 
 const sha256 = (yol) => createHash('sha256').update(readFileSync(yol)).digest('hex');
@@ -50,8 +50,15 @@ export function kartKimlikleri(kok = KOK) {
 export function ice_al({ kaynak, kok = KOK, kartlar = kartKimlikleri(kok), kuru = false }) {
   const hedefKlasor = join(kok, ...PUBLIC, ...TABAN.split('/').filter(Boolean));
   const manifestYolu = join(kok, 'src/data/ilim-yolu/kart-ses.json');
-  const kaynakManifest = JSON.parse(readFileSync(join(kaynak, 'MANIFEST.json'), 'utf8'));
-  if (!Array.isArray(kaynakManifest)) throw new Error('MANIFEST.json bir dizi olmalı');
+  // tr/fr: MANIFEST.json; en/nl/de (12 Kasım 2026): MANIFEST-<dil>.json (ek alan `match` yoksayılır); olanlar okunur.
+  const kaynakManifest = [];
+  for (const ad of ['MANIFEST.json', ...DILLER.map((d) => `MANIFEST-${d}.json`)]) {
+    const yol = join(kaynak, ad);
+    if (ad !== 'MANIFEST.json' && !existsSync(yol)) continue;
+    const dizi = JSON.parse(readFileSync(yol, 'utf8'));
+    if (!Array.isArray(dizi)) throw new Error(`${ad} bir dizi olmalı`);
+    kaynakManifest.push(...dizi);
+  }
   const hatalar = [];
   const secilen = [];
   const goruldu = new Set();
@@ -59,7 +66,7 @@ export function ice_al({ kaynak, kok = KOK, kartlar = kartKimlikleri(kok), kuru 
     if (HARIC.has(`${k?.lang}/${k?.id}`)) continue;
     const ad =`${k?.lang}/${k?.id}`;
     if (!KIMLIK.test(String(k?.id)) || !kartlar.has(k.id)) { hatalar.push(`${ad}: kart kimliği yok`); continue; }
-    if (!DILLER.includes(k.lang)) { hatalar.push(`${ad}: dil tr/fr değil`); continue; }
+    if (!DILLER.includes(k.lang)) { hatalar.push(`${ad}: dil geçersiz (tr, fr, en, nl, de)`); continue; }
     if (goruldu.has(ad)) { hatalar.push(`${ad}: tekrarlı kayıt`); continue; }
     goruldu.add(ad);
     if (k.file !== `${k.lang}/${k.id}.mp3`) { hatalar.push(`${ad}: dosya yolu beklenen değil (${k.file})`); continue; }

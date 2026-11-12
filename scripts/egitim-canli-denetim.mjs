@@ -17,6 +17,7 @@
  *    Range'e doğru 206 verir) → kayıtsız adres yedek sayfayı açar → sil. Kayıt denetim tarayıcısının kendi geçici profilindedir; sunucuya yazılan bir şey yok.
  *  Hiçbir şey yazmaz, giriş yapmaz. Çıkış kodu: 0 hepsi geçti · 1 en az biri düştü.
  */
+import { createHash } from 'node:crypto';
 import { readdirSync, readFileSync } from 'node:fs';
 import { chromium } from '@playwright/test';
 
@@ -108,6 +109,28 @@ const beklenen = DILLER.flatMap((d) => [`https://egitim.ulucamii.be/${d}/`, `htt
   ...kartKimlikleri.map((k) => `https://egitim.ulucamii.be/${d}/ogren/${k}/`),
   ...sesliler.map((o) => `https://egitim.ulucamii.be/${d}/calis/${o.id}/`)]).sort();
 kontrol(`site haritası ${beklenen.length} adres`, harita.status === 200 && JSON.stringify(locs) === JSON.stringify(beklenen), `${harita.status}, ${locs.length} adres`);
+// Kart seslendirmesi (12 Kasım 2026: beş dil): her dilde manifestten üç örnek — kart sayfasında oynatıcı düğmesi, MP3 200 + audio/mpeg, bayt ve sha256 manifestle aynı;
+// manifestte sesi olmayan kartta (tecvid ku-044, tr dışı) düğme yok ve dosya 404. Tüm dosyaların tam doğrulaması: node scripts/egitim-ses-getir.mjs --hedef <geçici klasör>.
+const sesManifest = JSON.parse(readFileSync(new URL('../src/data/ilim-yolu/kart-ses.json', import.meta.url), 'utf8'));
+for (const d of DILLER) {
+  const idler = Object.keys(sesManifest.kartlar).filter((id) => sesManifest.kartlar[id][d]);
+  for (const id of [idler[0], idler[Math.floor(idler.length / 2)], idler.at(-1)]) {
+    const k = sesManifest.kartlar[id][d];
+    const sayfaY = await getir(`/${d}/ogren/${id}/`);
+    const sayfaH = await sayfaY.text();
+    const mp3 = await getir(`${sesManifest.taban}/${d}/${id}.mp3`);
+    const govde = Buffer.from(await mp3.arrayBuffer());
+    kontrol(`kart sesi ${d}/${id}: sayfada oynatıcı, MP3 200 audio/mpeg, bayt + sha256 manifestle aynı`,
+      sayfaY.status === 200 && sayfaH.includes(`data-ses="${sesManifest.taban}/${d}/${id}.mp3"`) && mp3.status === 200 && /audio\/mpeg|audio\/mp3/.test(mp3.headers.get('content-type') ?? '')
+      && govde.length === k.bayt && createHash('sha256').update(govde).digest('hex') === k.sha256, `${sayfaY.status}/${mp3.status} ${govde.length}`);
+  }
+}
+for (const d of DILLER.filter((x) => x !== 'tr')) {
+  const sayfaY = await getir(`/${d}/ogren/ku-044/`);
+  const sayfaH = await sayfaY.text();
+  const mp3 = await getir(`${sesManifest.taban}/${d}/ku-044.mp3`, { method: 'HEAD' });
+  kontrol(`ku-044 ${d}: sesi yok, düğme yok, dosya 404 (imam onayı bekliyor)`, sayfaY.status === 200 && !sayfaH.includes('data-ses=') && mp3.status === 404, `${sayfaY.status}/${mp3.status}`);
+}
 // Hesap sayfaları ve kart girişi (2 Kasım 2026): 200, noindex, önbelleksiz; site haritasında yok (yukarıdaki eşitlik).
 for (const yol of ['/tr/hesap/', '/tr/hesap/giris/', '/tr/hesap/kayit/', '/k/']) {
   const y = await getir(yol);

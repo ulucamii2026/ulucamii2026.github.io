@@ -50,7 +50,8 @@ test('manifest: biçim, taban ve her kayıt dosyayla tutar; klasörde manifestsi
 test('denetle (egitim:build kapısı): dosyalar manifestle tutuyor; HARIC kartlar manifestte yok', () => {
   assert.deepEqual(denetle(), []);
   for (const h of HARIC) { const [dil, id] = h.split('/'); assert.equal(manifest.kartlar[id]?.[dil], undefined, h); }
-  assert.deepEqual([...HARIC].sort(), ['fr/ku-044', 'fr/ku-047', 'fr/ku-048']);
+  assert.deepEqual([...HARIC].sort(), ['de', 'en', 'fr', 'nl'].flatMap((d) => ['ku-044', 'ku-047', 'ku-048'].map((id) => `${d}/${id}`)));
+  assert.equal(HARIC.size, 12);
 });
 
 test('adres: yalnız manifestte olan kart ve dil için, tek tabandan; boş manifestte hiçbiri', () => {
@@ -58,6 +59,7 @@ test('adres: yalnız manifestte olan kart ve dil için, tek tabandan; boş manif
   assert.equal(lib.kartSesAdresi(m, 'tr', 'ib-013', 'https://ulucamii.be'), 'https://ulucamii.be/media/ses/kart/tr/ib-013.mp3');
   assert.equal(lib.kartSesAdresi(m, 'fr', 'ib-013'), null);
   assert.equal(lib.kartSesAdresi(m, 'en', 'ib-013'), null);
+  assert.equal(lib.kartSesAdresi(m, 'es', 'ib-013'), null);
   assert.equal(lib.kartSesAdresi(m, 'tr', '../x'), null);
   for (const id of kartlar) for (const dil of ['tr', 'fr', 'en', 'nl', 'de']) {
     const a = lib.kartSesAdresi(manifest, dil, id);
@@ -110,8 +112,8 @@ test('içe alma: bozuk kayıt (sha256, bilinmeyen kart, dil, MP3 değil) hiçbir
     assert.throws(() => ice_al({ kaynak, kok, kartlar: ids }), /sha256 tutmuyor/);
     yaz([{ ...kayitlar[0], id: 'yok-001', file: 'tr/yok-001.mp3' }]);
     assert.throws(() => ice_al({ kaynak, kok, kartlar: ids }), /kart kimliği yok/);
-    yaz([{ ...kayitlar[0], lang: 'en', file: 'en/ib-013.mp3' }]);
-    assert.throws(() => ice_al({ kaynak, kok, kartlar: ids }), /dil tr\/fr değil/);
+    yaz([{ ...kayitlar[0], lang: 'es', file: 'es/ib-013.mp3' }]);
+    assert.throws(() => ice_al({ kaynak, kok, kartlar: ids }), /dil geçersiz/);
     writeFileSync(join(kaynak, 'tr/ib-013.mp3'), Buffer.from('metin dosyası'));
     yaz([{ ...kayitlar[0], bytes: 13, sha256: sha(Buffer.from('metin dosyası')) }]);
     assert.throws(() => ice_al({ kaynak, kok, kartlar: ids }), /MP3 değil/);
@@ -134,6 +136,24 @@ test('denetle: eksik dosya, bozuk içerik ve yetim dosya açık iletiyle bildiri
     assert.match(h, /tr\/ib-013\.mp3: sha256 tutmuyor/);
     assert.match(h, /fr\/ib-013\.mp3: dosya yok/);
     assert.match(h, /tr\/baska-001\.mp3: manifestte yok/);
+  } finally { rmSync(kok, { recursive: true, force: true }); }
+});
+
+test('içe alma: en/nl/de MANIFEST-<dil>.json okunur; HARIC kart yeni dillerde de alınmaz', () => {
+  const { kok, kaynak } = hazirla();
+  try {
+    const b = Buffer.concat([Buffer.from([0x49, 0x44, 0x33, 4, 0]), Buffer.alloc(25, 5)]);
+    mkdirSync(join(kaynak, 'de'), { recursive: true });
+    writeFileSync(join(kaynak, 'de/ib-013.mp3'), b);
+    writeFileSync(join(kaynak, 'de/ku-044.mp3'), b);
+    const k = (id) => ({ id, lang: 'de', file: `de/${id}.mp3`, seconds: 2.5, bytes: b.length, sha256: sha(b), match: 0.9 });
+    writeFileSync(join(kaynak, 'MANIFEST-de.json'), JSON.stringify([k('ib-013'), k('ku-044')]));
+    const s = ice_al({ kaynak, kok, kartlar: new Set(['ib-013', 'it-001', 'ku-044']) });
+    assert.equal(s.toplam, 4);
+    assert.deepEqual(Object.keys(s.manifest.kartlar['ib-013']), ['tr', 'fr', 'de']);
+    assert.equal(s.manifest.kartlar['ib-013'].de.sn, 2.5);
+    assert.equal(existsSync(join(kok, 'egitim/public/media/ses/kart/de/ku-044.mp3')), false);
+    assert.equal(s.manifest.kartlar['ku-044'], undefined);
   } finally { rmSync(kok, { recursive: true, force: true }); }
 });
 
