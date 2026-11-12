@@ -3674,25 +3674,25 @@
    },
    "secenekler": [
     {
-     "tr": "Bir hâfızın okuyuşunu takip ederek hatim indirme geleneği",
-     "fr": "La tradition de suivre la lecture d’un hâfiz pour achever le Coran",
-     "en": "The tradition of completing the Qur’an by following a hafiz’s reading",
-     "nl": "De traditie om de Koran uit te lezen door de lezing van een ḥāfiẓ te volgen",
-     "de": "Die Tradition, den Koran zu vollenden, indem man der Lesung eines Hāfiz folgt"
+     "tr": "Hâfızı takip ederek hatim indirme",
+     "fr": "Suivre la récitation d’un hâfiz pour achever le Coran",
+     "en": "Completing the Qur’an by following a hafiz",
+     "nl": "Een ḥāfiẓ volgen om de Koran uit te lezen",
+     "de": "Einem Hāfiz folgen, um den Koran zu vollenden"
     },
     {
-     "tr": "Bir çeşit yarış",
+     "tr": "Bir çeşit okuma yarışı",
      "fr": "Une sorte de compétition",
      "en": "A kind of competition",
-     "nl": "Een soort wedstrijd",
-     "de": "Eine Art Wettbewerb"
+     "nl": "Een soort leeswedstrijd",
+     "de": "Eine Art Wettbewerb unter Schülern"
     },
     {
-     "tr": "Yalnızca bayram kutlaması",
+     "tr": "Yalnızca bir bayram kutlaması",
      "fr": "Seulement une célébration de la fête",
      "en": "Only a festival celebration",
-     "nl": "Alleen een feestviering",
-     "de": "Nur eine Festfeier"
+     "nl": "Alleen een feestelijke viering",
+     "de": "Nur eine Feier zum Festtag"
     }
    ],
    "dogru": 0
@@ -3715,11 +3715,11 @@
    },
    "secenekler": [
     {
-     "tr": "«Yaratan Rabbinin adıyla oku!»",
-     "fr": "« Lis, au nom de ton Seigneur qui a créé ! »",
-     "en": "“Read in the name of your Lord who created!”",
-     "nl": "“Lees in de naam van je Heer die schiep!”",
-     "de": "„Lies im Namen deines Herrn, der erschuf!“"
+     "tr": "«Oku!»",
+     "fr": "« Lis ! »",
+     "en": "“Read!”",
+     "nl": "“Lees!”",
+     "de": "„Lies!“"
     },
     {
      "tr": "«Yalnız yaz!»",
@@ -3748,33 +3748,33 @@
     "ku-055-2"
    ],
    "soru": {
-    "tr": "Hasta veya yolcu olan kişi orucunu nasıl tamamlar?",
-    "fr": "Comment une personne malade ou en voyage complète-t-elle son jeûne ?",
-    "en": "How does a sick person or traveller make up the fast?",
-    "nl": "Hoe maakt een zieke of reiziger het vasten in?",
-    "de": "Wie holt ein Kranker oder Reisender das Fasten nach?"
+    "tr": "Bakara 183-185. âyetler oruçla ilgili ne bildirir?",
+    "fr": "Que montrent les versets 183 à 185 d’al-Baqara au sujet du jeûne ?",
+    "en": "What do verses 183 to 185 of al-Baqara show about fasting?",
+    "nl": "Wat tonen vers 183 tot 185 van al-Baqara over het vasten?",
+    "de": "Was zeigen die Verse 183 bis 185 der Sure al-Baqara über das Fasten?"
    },
    "secenekler": [
     {
-     "tr": "Hiç tutmaz",
-     "fr": "Il ne jeûne jamais",
-     "en": "Never fasts",
-     "nl": "Vast nooit",
-     "de": "Fastet nie"
+     "tr": "Kur’an’da yasaklandığını",
+     "fr": "Qu’il est interdit dans le Coran",
+     "en": "That it is forbidden in the Qur’an",
+     "nl": "Dat het in de Koran is verboden",
+     "de": "Dass es im Koran verboten ist"
     },
     {
-     "tr": "Başka günlerde sayısınca tutar",
-     "fr": "Il jeûne un nombre égal de jours à d’autres moments",
-     "en": "Fasts the same number of days at other times",
-     "nl": "Vast hetzelfde aantal dagen op andere dagen",
-     "de": "Fastet die gleiche Zahl von Tagen an anderen Tagen"
+     "tr": "Kur’an’da farz kılındığını",
+     "fr": "Qu’il est prescrit dans le Coran",
+     "en": "That it is prescribed in the Qur’an",
+     "nl": "Dat het in de Koran is voorgeschreven",
+     "de": "Dass es im Koran vorgeschrieben ist"
     },
     {
-     "tr": "Yalnızca bir gün tutar",
-     "fr": "Il jeûne un seul jour",
-     "en": "Fasts only one day",
-     "nl": "Vast slechts één dag",
-     "de": "Fastet nur einen Tag"
+     "tr": "Kur’an’da hiç anılmadığını",
+     "fr": "Qu’il n’est jamais mentionné dans le Coran",
+     "en": "That it is never mentioned in the Qur’an",
+     "nl": "Dat het in de Koran nooit wordt genoemd",
+     "de": "Dass es im Koran nie erwähnt wird"
     }
    ],
    "dogru": 1
@@ -3797,11 +3797,11 @@
    },
    "secenekler": [
     {
-     "tr": "Rabbi için namaz kılması ve kurban kesmesi",
-     "fr": "Prier pour son Seigneur et sacrifier",
-     "en": "To pray for his Lord and to sacrifice",
-     "nl": "Voor zijn Heer te bidden en te offeren",
-     "de": "Für seinen Herrn zu beten und zu opfern"
+     "tr": "Namaz kılması ve kurban kesmesi",
+     "fr": "Prier et sacrifier",
+     "en": "To pray and to sacrifice",
+     "nl": "Te bidden en te offeren",
+     "de": "Zu beten und zu opfern"
     },
     {
      "tr": "Yalnızca ticaret yapması",
@@ -3830,33 +3830,33 @@
     "ku-081-2"
    ],
    "soru": {
-    "tr": "Kevser suresinin ilk âyetinde Allah Hz. Peygamber’e ne verdiğini bildirir?",
-    "fr": "Que dit Allah au premier verset d’al-Kawthar avoir donné au Prophète ?",
-    "en": "What does Allah say He gave the Prophet in the first verse of Surat al-Kawthar?",
-    "nl": "Wat zegt Allah het eerste vers van soera al-Kawthar aan de Profeet gegeven te hebben?",
-    "de": "Was gibt Allah im ersten Vers der Sure al-Kauthar dem Propheten, wie Er sagt?"
+    "tr": "Kevser suresiyle ilgili hangi bağlantıyı açıklarız?",
+    "fr": "Quel lien expliquons-nous à propos de la sourate al-Kawthar ?",
+    "en": "Which link do we explain for Surat al-Kawthar?",
+    "nl": "Welk verband leggen we uit bij soera al-Kawthar?",
+    "de": "Welchen Bezug erklären wir bei der Sure al-Kauthar?"
    },
    "secenekler": [
     {
-     "tr": "Bitip tükenmez nimetler",
-     "fr": "Des bienfaits intarissables",
-     "en": "Never-ending blessings",
-     "nl": "Onuitputtelijke weldaden",
-     "de": "Unerschöpfliche Gaben"
+     "tr": "Kurbanla ilişkisini",
+     "fr": "Son lien avec le sacrifice",
+     "en": "Its link with sacrifice",
+     "nl": "Het verband met het offer",
+     "de": "Den Bezug zum Opfer"
     },
     {
-     "tr": "Hiçbir şey",
-     "fr": "Rien",
-     "en": "Nothing",
-     "nl": "Niets",
-     "de": "Nichts"
+     "tr": "Alışverişle ilişkisini",
+     "fr": "Son lien avec le commerce",
+     "en": "Its link with shopping",
+     "nl": "Het verband met winkelen",
+     "de": "Den Bezug zum Einkaufen"
     },
     {
-     "tr": "Yalnızca bir kitap",
-     "fr": "Seulement un livre",
-     "en": "Only a book",
-     "nl": "Alleen een boek",
-     "de": "Nur ein Buch"
+     "tr": "Hava durumuyla ilişkisini",
+     "fr": "Son lien avec la météo",
+     "en": "Its link with the weather",
+     "nl": "Het verband met het weer",
+     "de": "Den Bezug zum Wetter"
     }
    ],
    "dogru": 0
@@ -6858,18 +6858,18 @@
     },
     {
      "sol": {
-      "tr": "Ğunne nedir?",
-      "fr": "Qu’est-ce que la ghunna ?",
-      "en": "What is ghunna?",
-      "nl": "Wat is ghunna?",
-      "de": "Was ist Ghunna?"
+      "tr": "Tecvid aşama değerlendirmesinde neyi fark etmeye çalışırız?",
+      "fr": "Que cherchons-nous à repérer lors du bilan d’étape du tajwîd ?",
+      "en": "What do we try to notice in the tajwīd checkpoint?",
+      "nl": "Wat proberen we op te merken bij de tussentijdse tajwīd-evaluatie?",
+      "de": "Was versuchen wir im Tadschwīd-Zwischenstand zu erkennen?"
      },
      "sag": {
-      "tr": "Genizden (burundan) gelen ses",
-      "fr": "Le son qui vient du nez (nasal)",
-      "en": "The sound that comes from the nose (nasal sound)",
-      "nl": "De klank die uit de neus komt (neusklank)",
-      "de": "Der Laut aus der Nase (Nasenlaut)"
+      "tr": "Hangi kuralın nerede geçtiğini",
+      "fr": "Quelle règle apparaît où",
+      "en": "Which rule appears where",
+      "nl": "Welke regel waar voorkomt",
+      "de": "Welche Regel wo vorkommt"
      }
     },
     {
