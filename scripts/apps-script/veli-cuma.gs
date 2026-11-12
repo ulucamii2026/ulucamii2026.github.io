@@ -6,7 +6,7 @@
  * Properties 50'nin altında kalır, Apps Script ayar ekranı yeniden düzenlenebilir.
  */
 var VELI_CUMA_SURUM = "20260909-1";
-/* v48 (Dilim 4): veli portalı, plan sayfası ve ders materyalleri egitim.ulucamii.be'dedir. Plan önce egitim /tr/veli/ sayfasındaki <script id="veli-veri"> bloğundan
+/* v49 (Dilim 4): veli portalı, plan sayfası ve ders materyalleri egitim.ulucamii.be'dedir. Plan önce egitim /tr/veli/ sayfasındaki <script id="veli-veri"> bloğundan
    okunur; o alınamazsa (ağ, 5xx) eski ulucamii.be sayfası denenir — o sayfa yönlendirme olduktan sonra blok taşımaz ve yedek de hata verir (cuma-plan-yok). */
 var VELI_CUMA_EGITIM = "https://egitim.ulucamii.be";
 /* Site ve kapanış metinleri içerik hazırlanırken doğrudan KIMLIK üzerinden okunur. */
