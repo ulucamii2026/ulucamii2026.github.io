@@ -62,7 +62,7 @@ test('Yayımlanan tek haftalık kayıt veli portalı ve atölyede aynı içeriğ
  await p.locator('[name=yayin]').check();await p.locator('[type=submit]').click();
  await expect(p.locator('[data-ho-durum]')).toContainText('yayımlandı');
  const records=await page.evaluate(()=>window.__records);
- const ctx=await browser.newContext({baseURL:'http://127.0.0.1:4401'});const veli=await ctx.newPage();
+ const ctx=await browser.newContext({baseURL:'http://127.0.0.1:'+(process.env.HOCA_PORT||4401)});const veli=await ctx.newPage();
  try{
   await mektepAc(veli,ctx,{dil:'fr',records});
   await expect(veli.locator('body')).toContainText('Revoyez ensemble');

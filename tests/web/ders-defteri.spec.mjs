@@ -286,7 +286,7 @@ test('Günün ilerlemesi: kaç öğrencinin defteri tamam, seçenekte ◐/✓ i�
 const frStudents=[{ref:'TEST-1',ad:'Örnek',soyad:'Talebe'},{ref:'TEST-2',ad:'İkinci',soyad:'Örnek',dil:'fr'}];
 async function ceviriUcuKur(context){
  const durum={istekler:[],bozuk:false};
- await context.route('http://127.0.0.1:4401/ceviri-test',async r=>{const g=JSON.parse(r.request().postData()||'{}');durum.istekler.push(g);
+ await context.route('http://127.0.0.1:'+(process.env.HOCA_PORT||4401)+'/ceviri-test',async r=>{const g=JSON.parse(r.request().postData()||'{}');durum.istekler.push(g);
   if(durum.bozuk)return r.fulfill({contentType:'application/json',body:JSON.stringify({ok:false,hata:'ceviri-kapali'})});
   await r.fulfill({contentType:'application/json',body:JSON.stringify({ok:true,hedef:g.hedef,ceviriler:(g.metinler||[]).map(m=>`[FR] ${m}`)})});});
  return durum;
