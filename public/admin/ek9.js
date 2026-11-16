@@ -23,6 +23,8 @@ import { imzaHazirla, aktarimKutusu, kutuyaSigdir } from './imza-ciz.js';
    Eski düzen (1) ile ayrım ve eski/yeni koordinat tablosu: docs/EK9-IMZA-YERI-DUZENI.md. Dış araçlar (Mühtedi Koordinatörlüğü hattı)
    bu sürümü okuyup kendi sabitlerini buna göre seçer. */
 export const EK9_DUZEN = 2;
+/** Şablon PDF'inin adresi: düzen sürümü sorguya girer; tarayıcı/CDN önbelleğindeki ESKİ şablon YENİ koordinatlarla birleşemez. Şablon kodla çekilen her yerde bu sabit kullanılır. */
+export const EK9_SABLON_YOLU = '/belgeler/ihtida/ihtida-belgesi-ek9-ornek.pdf?d=' + EK9_DUZEN;
 export const EK9_DUZEN_KAYMA = { ust: -6.5, ingilizce: -10.25, yetkili: 8 };
 const KAYMA = EK9_DUZEN_KAYMA;
 /** Yetkilinin imza/mühür alanı (pt, üstten). tam: bütün yetkili sütunu boyunca boş şerit; cep: İngilizce son satır kısa kaldığı için

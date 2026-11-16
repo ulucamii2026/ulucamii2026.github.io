@@ -1045,12 +1045,12 @@ async function ek9Hazirla() {
     if (!window.PDFLib) await betikYukle('/vendor/pdf-lib.min.js');
     if (!window.fontkit) await betikYukle('/vendor/fontkit.umd.min.js');
     const modul = await import('/admin/ek9.js');
-    ek9Modul = { pdfLib: window.PDFLib, fontkit: window.fontkit, uret: modul.ek9Uret };
+    ek9Modul = { pdfLib: window.PDFLib, fontkit: window.fontkit, uret: modul.ek9Uret, sablonYolu: modul.EK9_SABLON_YOLU };
   }
   if (!ek9Kaynak) {
     const getirBaytlari = (u) => fetch(u).then((r) => { if (!r.ok) throw new Error(u + ' alınamadı'); return r.arrayBuffer(); }).then((b) => new Uint8Array(b));
     const [sablon, font, fontKalin, fontKaligrafi, fontElYazisi, kalem, dilekceSablon, dilekceAdresSablon] = await Promise.all([
-      getirBaytlari('/belgeler/ihtida/ihtida-belgesi-ek9-ornek.pdf'),
+      getirBaytlari(ek9Modul.sablonYolu),   // düzen sürümü sorguda (EK9_SABLON_YOLU): önbellekteki eski şablon yeni koordinatla birleşmez
       getirBaytlari('/fonts/Lora-Regular.ttf'),
       getirBaytlari('/fonts/Lora-Bold.ttf'),
       getirBaytlari('/fonts/GreatVibes-Regular.ttf'),

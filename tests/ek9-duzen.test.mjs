@@ -56,3 +56,11 @@ test('Düzen 2: ek9Uret yetkili adı/unvanını +8 pt aşağıya yazar; imza ceb
   // Basılı adın üstü (kapaktaki aksan dahil ≈ 12 pt) imza cebinin altından aşağıda başlar.
   assert.ok(SAYFA_H - adSatiri.y - 12 >= EK9_YETKILI_IMZA_ALANI.cep.alt - 1.5);
 });
+
+test('Düzen 2: şablon kodla yalnız düzen sürümlü adresle çekilir (önbellek)', async () => {
+  const { EK9_SABLON_YOLU } = await import('../public/admin/ek9.js');
+  assert.equal(EK9_SABLON_YOLU, '/belgeler/ihtida/ihtida-belgesi-ek9-ornek.pdf?d=' + EK9_DUZEN);
+  const panel = readFileSync(new URL('../public/admin/panel.js', import.meta.url), 'utf8');
+  assert.ok(panel.includes('ek9Modul.sablonYolu'), 'yönetim paneli şablonu EK9_SABLON_YOLU ile çekmeli');
+  assert.ok(!/getirBaytlari\('\/belgeler\/ihtida\/ihtida-belgesi-ek9-ornek\.pdf'\)/.test(panel), 'düz şablon adresi kalmamalı');
+});

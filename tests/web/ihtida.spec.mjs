@@ -328,11 +328,11 @@ test('Tarayıcıdaki yerel fontlarla EK-9 ve imzalı tam paket üretilir', async
   await page.addScriptTag({ url: '/vendor/pdf-lib.min.js' });
   await page.addScriptTag({ url: '/vendor/fontkit.umd.min.js' });
   const sonuc = await page.evaluate(async () => {
-    const { ek9Uret } = await import('/admin/ek9.js');
+    const { ek9Uret, EK9_SABLON_YOLU } = await import('/admin/ek9.js');
     const { ihtidaPaketiUret } = await import('/admin/ihtida-paket.js');
     const getir = async yol => { const r = await fetch(yol); if (!r.ok) throw new Error(yol); return new Uint8Array(await r.arrayBuffer()); };
     const [sablonBytes, fontBytes, fontKalinBytes, fontKaligrafiBytes, fontElYazisiBytes] = await Promise.all([
-      '/belgeler/ihtida/ihtida-belgesi-ek9-ornek.pdf', '/fonts/Lora-Regular.ttf', '/fonts/Lora-Bold.ttf', '/fonts/GreatVibes-Regular.ttf', '/fonts/Caveat-Medium.ttf',
+      EK9_SABLON_YOLU, '/fonts/Lora-Regular.ttf', '/fonts/Lora-Bold.ttf', '/fonts/GreatVibes-Regular.ttf', '/fonts/Caveat-Medium.ttf',
     ].map(getir));
     const kaynak = { pdfLib: window.PDFLib, fontkit: window.fontkit, sablonBytes, fontBytes, fontKalinBytes, fontKaligrafiBytes, fontElYazisiBytes,
       veri: { ref: 'IH-2099-9999', adSoyad: 'Deniz Élodie Örnek', anneAdi: 'İlknur', dogumYeri: 'Liège', dogumTarihi: '20/05/1990', adres: 'Rue du Test 12, 6900, Belçika', beyanTarihi: '09/09/2026', ihtidaTarihi: '08/09/2026', dil: 'fr' } };
