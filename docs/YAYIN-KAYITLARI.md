@@ -4,6 +4,20 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 16 Kasım 2026 akşam — EK-9 ön yüz düzeni 2 (yetkili imza ve mühür alanı); Apps Script v50 CANLI
+
+Rıdvan'ın emriyle (16.11.2026: «hem online formda … her yerde» düzeltilsin) yayınlandı. Europe/Brussels: v50 dağıtımı ≈20.41, site push ≈20.43. Sıra: önce Apps Script, sonra site.
+
+- **Kapsam:** basılı adın üstünde Müşavir imzası/mührü için boş alan; yalnız konum değişti. Ayrıntı ve koordinat tablosu `docs/EK9-IMZA-YERI-DUZENI.md`.
+- **Commitler:** `2658f7fd` (düzen 2, v50) + `05451b45` (şablon önbellek koruması); `main`: `484fd02e` → `05451b45` (hızlı ileri sarma, dal `ek9-imza-yeri`, ayrı çalışma ağacı).
+- **Önbellek koruması:** `EK9_SABLON_YOLU` (`public/admin/ek9.js`) = şablon adresi + `?d=EK9_DUZEN`; yönetim paneli (`panel.js`) şablonu yalnız bunla çeker, tarayıcı sınaması aynı sabiti kullanır, `tests/ek9-duzen.test.mjs` düz adresin geri gelmesini engeller. Apps Script şablonu pakete gömülü taşır (siteden çekmez): Apps Script ile site arasında sıra bağımlılığı yoktur; yalnız ek9.js'nin önbellekteki eski sürümü kalırsa EK9_DUZEN 2 sabiti yeni şablonla eşleşmez (şablon adresi düzen sürümünü ek9.js'den alır).
+- **Apps Script paketi:** `D:/tmp/gas/pkg50-ek9duzen.gs` 9.366.431 bayt, SHA-256 `bea8759f9bb8bc800d9250ce02a54d2902bc39d00c046ba54aab01eccfd9fa0f`. Canlı kaynak (v49) doğrulanmış v49 kopyasıyla birebir aynıydı; paket farkı yalnız beklenen satırlar (SURUM, açıklama, gömülü şablon). Yazım sonrası yeniden okunan kod paketle birebir aynı. Sürücü `D:/tmp/gas/dagit_v50_ek9duzen.py` (`GAS_FIREFOX` ile); mevcut dağıtıma yeni sürüm (adres değişmedi). Not: ilk iki deneme editör ekran görüntüsü zaman aşımıyla yazım öncesi durdu (canlı kaynağa dokunulmadı, `--kuru` ile v49 olarak teyit edildi); üçüncü deneme ekran görüntüsü zaman aşımı 120 sn ile geçti. Geri alma kopyası (v49) `D:\tmp\gas\v50ek9duzen-oncesi-dogrulanmis.gs`. Canlı sağlık: `surum: 50`.
+- **Site:** Pages çalıştırması https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/43941932588 — başarılı. Canlı: TR ve FR ihtida başvuru sayfaları `data-asgari-servis-surumu="50"`; canlı şablon PDF düzen dedektörüyle `2`; canlı `admin/ek9.js` `EK9_DUZEN = 2` ve `EK9_SABLON_YOLU`.
+- **Testler:** `npm run test:ihtida` 108/108, `npm run test:ek9`, `tests/ek9-duzen.test.mjs` 4/4 (yeni önbellek testi dâhil), `ihtida:gas-derle`, `npm run build` (1995 sayfa). Tarayıcı sınaması (`tests/web/ihtida.spec.mjs`) bu oturumda koşulmadı.
+- **Koordinatörlük hattı:** `D:\app\ulucamii-site` ana klasöründe `public/admin/ek9.js` ve şablon PDF yayımlanan sürümle eşitlendi (yalnız bu iki dosya).
+- **Açık sınır / UYARI:** `D:/tmp/gas/dagit_v49_p7.py` (Dilim 4 / P7b, dal `dilim4-p7`) hâlâ «v49» numarasını taşır ve v48 üzerine kuruludur; olduğu gibi çalıştırılırsa bugünkü hem v49 hem v50 değişikliklerini silerdi. v51 olarak yeniden numaralanmalı, v50 üzerine yeniden derlenmeli ve sürücüsünün `var SURUM = 50` doğrulama/«beklenen eski» kopyası `v50ek9duzen-yeniden-okunan.gs` olmalıdır.
+- **Geri alma:** Apps Script: `v50ek9duzen-oncesi-dogrulanmis.gs` (v49) aynı sürücü kalıbıyla yeniden dağıtılır; site: `git revert 05451b45 2658f7fd`. Sunucu v49'a dönerse istemci `data-asgari-servis-surumu="50"` bekler ve «sistem güncelleniyor» gösterir; ikisi birlikte geri alınmalıdır.
+
 ## 16 Kasım 2026 — İhtida formu: EK-9 alanları boş gitmesin (sebep zorunlu, yer tutucu reddi); Apps Script v49 CANLI
 
 Din görevlisinin açık onayıyla (16 Kasım 2026) yayınlandı. Europe/Brussels: v49 dağıtımı ≈12.59, site push 13.01. Sıra: önce Apps Script, sonra site.
