@@ -16,13 +16,33 @@ import { sahitUnvani } from './ek9-hazirlik.js';
 import { kalemKur, adBicimleri, KALEM_OZELLIKLERI, MUREKKEP } from './kalem.js';
 import { imzaHazirla, aktarimKutusu, kutuyaSigdir } from './imza-ciz.js';
 
+/* 16 Kas 2026 (Rıdvan KAYAHAN: «Müşavir Bey'in ıslak imzası ve mührü için gerçek yer»): ön yüz DÜZEN 2. Yetkilinin imzası artık
+   İngilizce paragrafın ALTINDA, basılı adın ÜSTÜNDE atılır; bunun için başlık bloğu, noktalı ad çizgisi, vesikalık, Türkçe paragraf ve
+   İngilizce paragraf şablonda yukarı kaydırıldı, yetkili ad/unvan/etiket satırları aşağı indi (sözcük ve punto aynı, yalnız konum).
+   Kayma değerleri TEK YERDE (pt, üstten; eksi = yukarı) ve scripts/ek9-duzen-kaydir.py şablonu aynı değerlerle kaydırır.
+   Eski düzen (1) ile ayrım ve eski/yeni koordinat tablosu: docs/EK9-IMZA-YERI-DUZENI.md. Dış araçlar (Mühtedi Koordinatörlüğü hattı)
+   bu sürümü okuyup kendi sabitlerini buna göre seçer. */
+export const EK9_DUZEN = 2;
+export const EK9_DUZEN_KAYMA = { ust: -6.5, ingilizce: -10.25, yetkili: 8 };
+const KAYMA = EK9_DUZEN_KAYMA;
+/** Yetkilinin imza/mühür alanı (pt, üstten). tam: bütün yetkili sütunu boyunca boş şerit; cep: İngilizce son satır kısa kaldığı için
+ *  sağındaki daha yüksek boşluk (sayısal imza kutusu bu cebe oturur). */
+export const EK9_YETKILI_IMZA_ALANI = {
+  tam: { x0: 320, x1: 535, ust: 381.5, alt: 397.5 },
+  cep: { x0: 372, x1: 535, ust: 361.5, alt: 397.5 },
+};
+
 // --- Şablon ölçüleri (pt, üstten) --------------------------------------------
 const S1 = {
-  foto: { x: 645, y: 203, g: 50, h: 66 },          // sağ üstteki boş çerçevenin içi
-  isim: { x0: 270, x1: 588, taban: 265 },          // kaligrafinin üst ve alt uzantıları için başlıkla metin arasındaki boşluk
-  sahitSol: { x0: 155, x1: 235, etiketTaban: 424 },
+  foto: { x: 645, y: 203 + KAYMA.ust, g: 50, h: 66 },          // sağ üstteki boş çerçevenin içi
+  isim: { x0: 270, x1: 588, taban: 265 + KAYMA.ust },          // kaligrafinin üst ve alt uzantıları için başlıkla metin arasındaki boşluk
+  sahitSol: { x0: 155, x1: 235, etiketTaban: 424 },            // şahit etiketleri ve imza kutuları YERİNDE
   sahitSag: { x0: 603, x1: 683, etiketTaban: 424 },
-  yetkili: { x0: 330, x1: 525, etiketTaban: 424 },
+  yetkili: {
+    x0: 330, x1: 525, etiketTaban: 424 + KAYMA.yetkili,
+    adTaban: 401 + KAYMA.yetkili, unvanTaban: 415 + KAYMA.yetkili,
+    imza: { x0: 376, y0: EK9_YETKILI_IMZA_ALANI.cep.ust + 1.5, g: 103, h: EK9_YETKILI_IMZA_ALANI.cep.alt - EK9_YETKILI_IMZA_ALANI.cep.ust - 3 },
+  },
 };
 
 // Sol sütun: [etiket sağ kenarı, TR satırının tabanı]
@@ -48,8 +68,8 @@ const S2_SAG_SINIR = 795;   // sağ sütun metinlerinin taşamayacağı x
    ve 0,8 pt kalınlık. Cinsiyet bilinmiyorsa hiçbir zamir çizilmez. Mühtedi Koordinatörlüğü hattı (ek9-tamamla.py) aynı ölçüleri
    kullanır. */
 export const EK9_ZAMIR_CIZIKLERI = {
-  erkek: [[578.3, 599.2, 350.9], [304.0, 324.4, 386.29]],
-  kadin: [[565.5, 581.2, 350.9], [288.1, 307.0, 386.29]],
+  erkek: [[578.3, 599.2, 350.9 + KAYMA.ingilizce], [304.0, 324.4, 386.29 + KAYMA.ingilizce]],
+  kadin: [[565.5, 581.2, 350.9 + KAYMA.ingilizce], [288.1, 307.0, 386.29 + KAYMA.ingilizce]],
 };
 const ZAMIR_KALINLIK = 0.8;
 export function ek9CinsiyetKodu(deger) {
@@ -279,12 +299,13 @@ export async function ek9Uret(girdi) {
   const resmiKalin = await belge.embedFont(girdi.fontKalinBytes || girdi.fontBytes, { subset: true });
   const yetkiliAd = girdi.yetkiliAd ?? 'Salih GÖR';
   const yetkiliUnvan = girdi.yetkiliUnvan ?? 'T.C. Brüksel Büyükelçiliği Sosyal İşler Müşaviri';
-  yazOrtali(s1, yetkiliAd, S1.yetkili.x0, S1.yetkili.x1, 401, siganBoyut(yetkiliAd, 12, 240, resmiKalin), ust1, resmiKalin, rgb(0, 0, 0));
-  yazOrtali(s1, yetkiliUnvan, S1.yetkili.x0, S1.yetkili.x1, 415, siganBoyut(yetkiliUnvan, 10, 255, resmi), ust1, resmi, rgb(0, 0, 0));
-  // Yalnız açıkça verilmiş bir yetkili imzası varsa kullanılır.
+  yazOrtali(s1, yetkiliAd, S1.yetkili.x0, S1.yetkili.x1, S1.yetkili.adTaban, siganBoyut(yetkiliAd, 12, 240, resmiKalin), ust1, resmiKalin, rgb(0, 0, 0));
+  yazOrtali(s1, yetkiliUnvan, S1.yetkili.x0, S1.yetkili.x1, S1.yetkili.unvanTaban, siganBoyut(yetkiliUnvan, 10, 255, resmi), ust1, resmi, rgb(0, 0, 0));
+  // Yalnız açıkça verilmiş bir yetkili imzası varsa kullanılır; düzen 2'de imza basılı adın ÜSTÜNDEKİ cebe oturur.
   if (girdi.yetkiliImza) {
     const im = await gorselGom(girdi.yetkiliImza);
-    if (im) kutuyaCiz(s1, im, S1.yetkili.x0 + 20, 437, S1.yetkili.x1 - S1.yetkili.x0 - 40, 24, ust1);
+    const yi = S1.yetkili.imza;
+    if (im) kutuyaCiz(s1, im, yi.x0, yi.y0, yi.g, yi.h, ust1);
   }
 
   // ---- Sayfa 2: künye ------------------------------------------------------
@@ -386,11 +407,11 @@ export async function ek9Uret(girdi) {
  * arka yüzün bütün değerleri kalemle; başvuranın imzası beyanın altında, kalem mürekkebiyle. Ölçüler pt, ÜST kenardan.
  * ------------------------------------------------------------------------------------------------------------- */
 const K = {
-  cerceve: { x0: 643.0, y0: 207.4, x1: 695.8, y1: 273.6 },      // şablonun foto çerçevesi
+  cerceve: { x0: 643.0, y0: 207.4 + KAYMA.ust, x1: 695.8, y1: 273.6 + KAYMA.ust },      // şablonun foto çerçevesi (düzen 2)
   cerceveRenk: [0.545, 0.431, 0.106],
   fotoBoy: 80.0,
   imzaYeri: [686.0, 372.0, 794.0, 410.0],                       // s.2: beyanın altı, tarihin üstü
-  isim: [270.0, 588.0, 265.0],
+  isim: [270.0, 588.0, 265.0 + KAYMA.ust],
   sahit: [[155.0, 235.0], [603.0, 683.0]],
   etiket: 424.0,
   // Şahit adı tabanı (unvanlı, unvansız): solda −21 (metnin son satırına binmesin), sağda −25 (Y kuyruğu unvana değmesin).
@@ -518,8 +539,8 @@ async function ek9KalemUret(girdi) {
   const sigan = (metin, boyut, en, font) => Math.min(boyut, en / Math.max(1, font.widthOfTextAtSize(String(metin || ''), 1)));
   const yetkiliAd = girdi.yetkiliAd ?? 'Salih GÖR';
   const yetkiliUnvan = girdi.yetkiliUnvan ?? 'T.C. Brüksel Büyükelçiliği Sosyal İşler Müşaviri';
-  ortali(s1, yetkiliAd, 330, 525, 401, sigan(yetkiliAd, 12, 240, resmiKalin), resmiKalin, rgb(0, 0, 0));
-  ortali(s1, yetkiliUnvan, 330, 525, 415, sigan(yetkiliUnvan, 10, 255, resmi), resmi, rgb(0, 0, 0));
+  ortali(s1, yetkiliAd, 330, 525, S1.yetkili.adTaban, sigan(yetkiliAd, 12, 240, resmiKalin), resmiKalin, rgb(0, 0, 0));
+  ortali(s1, yetkiliUnvan, 330, 525, S1.yetkili.unvanTaban, sigan(yetkiliUnvan, 10, 255, resmi), resmi, rgb(0, 0, 0));
 
   // ---- Arka yüz ----------------------------------------------------------------------------------------------
   const deger = { ...v, duzenleyen: v.duzenleyen || EK9_DUZENLEYEN };

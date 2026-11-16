@@ -200,3 +200,6 @@ Dağıtım: `D:\tmp\gas\dagit_v21.py` (v20'nin kopyası; «Nouvelle version»).
 - **Not (12 Kasım 2026):** ana kaynak `ulucamii-Kod-v48.gs` oldu (ihtida 18 yaş sınırı + ayrı Ad/Soyad; `docs/IHTIDA-YAS-VE-AD-v48.md`). Yukarıdaki v43/v47 satırları tarihsel kayıttır.
 
 - **Not (16 Kasım 2026, v49, dalda hazır, yayınlanmadı):** ana kaynak `ulucamii-Kod-v49.gs` oldu (v48 → v49). EK-9 arka yüzü DHYS'ye boş ulaşmasın diye: ihtida sebebi zorunlu (≥10 karakter, ≥5 harf); doğum yeri, uyruk, anne/baba adı, öğrenim, meslek, önceki din en az 2 Unicode harf («..», «-», «x» reddedilir, «Bilinmiyor» geçer); yönetim penceresinde sekiz EK-9 alanı ve sebep zorunlu, sunucu onayı da denetler (`ek9-alan-eksik`, `ek9-sebep-eksik`). Ayrıntı: `docs/IHTIDA-ZORUNLU-ALANLAR-v49.md`.
+
+
+- **Not (16 Kasım 2026, v50, dalda hazır, yayınlanmadı):** ana kaynak `ulucamii-Kod-v50.gs` oldu (v49 → v50). EK-9 ön yüzü «DÜZEN 2»: yetkilinin ıslak imzası ve mührü için basılı adın üstünde boş alan (şablon kaydırıldı, `public/admin/ek9.js` içinde `EK9_DUZEN = 2`; ayrıntı `docs/EK9-IMZA-YERI-DUZENI.md`). Sunucu mantığı değişmedi; sayfa `data-asgari-servis-surumu="50"` ister.

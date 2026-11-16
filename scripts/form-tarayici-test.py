@@ -43,7 +43,7 @@ def taklit(route, request):
         except Exception: GONDERILEN.append({"HAM": request.post_data})
         route.fulfill(status=200, content_type="application/json", body=json.dumps({"ok": True, "ref": "UC-2026-9999", "tekrar": False, "kopyaGitti": KOPYA_GITTI}))
     else:
-        route.fulfill(status=200, content_type="application/json", body=json.dumps({"ok": True, "surum": 49, "ihtidaPaketHazir": True}))
+        route.fulfill(status=200, content_type="application/json", body=json.dumps({"ok": True, "surum": 50, "ihtidaPaketHazir": True}))
 
 def testPng(yol, en, boy, renk):
     """PIL olmadan geçerli bir RGB PNG üretir (görsel yükleme testleri için)."""

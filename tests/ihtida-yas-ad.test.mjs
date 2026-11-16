@@ -18,7 +18,7 @@ import { build } from 'esbuild';
 // Dil dosyaları uzantısız içe aktarma kullanır (Astro/Vite çözer); Node için bellekte paketlenir, diske yazılmaz.
 const paket = await build({ stdin: { contents: "export { tr } from './src/i18n/formlar/tr'; export { fr } from './src/i18n/formlar/fr'; export { en } from './src/i18n/formlar/en'; export { nl } from './src/i18n/formlar/nl'; export { de } from './src/i18n/formlar/de';", resolveDir: fileURLToPath(new URL('..', import.meta.url)), loader: 'ts' }, bundle: true, write: false, format: 'esm', platform: 'node', logLevel: 'silent' });
 const { tr, fr, en, nl, de } = await import('data:text/javascript;base64,' + Buffer.from(paket.outputFiles[0].text).toString('base64'));
-const kaynak = ['kimlik-sabitler.gs', 'veli-eposta-sablon.gs', 'ulucamii-Kod-v49.gs']
+const kaynak = ['kimlik-sabitler.gs', 'veli-eposta-sablon.gs', 'ulucamii-Kod-v50.gs']
   .map(ad => readFileSync(new URL('../scripts/apps-script/' + ad, import.meta.url), 'utf8')).join('\n');
 const DILLER = ['tr', 'fr', 'en', 'nl', 'de'];
 const formMetinleri = dil => ({ tr, fr, en, nl, de })[dil];
@@ -249,7 +249,7 @@ test('Form işaretlemesi: iki zorunlu alan, doğru autocomplete, eski ad alanı 
   assert.match(html, /id="i-soyad" name="basvuran\.soyad" type="text" required[^>]*autocomplete="family-name"/);
   assert.doesNotMatch(html, /name="basvuran\.adSoyad"/);
   assert.match(html, /name="onay\.beyan"[^>]*data-esle="basvuran\.ad basvuran\.soyad"/);
-  assert.match(html, /data-asgari-servis-surumu="49"/);
+  assert.match(html, /data-asgari-servis-surumu="50"/);
   assert.match(html, /name="sahit\.1"/, 'şahit adı alanı bölünmedi');
   assert.match(html, /id="i-yas-bilgi" role="status" aria-live="polite"/);
 });

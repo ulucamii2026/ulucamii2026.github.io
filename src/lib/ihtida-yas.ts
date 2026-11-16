@@ -1,5 +1,5 @@
 /** İhtida başvurusunda en küçük yaş — istemci tarafı (12 Kasım 2026, din görevlisi kararı: «18 yaşından küçükler başvuru yapamasın»).
- *  Sunucudaki karşılığı: scripts/apps-script/ulucamii-Kod-v49.gs → IHTIDA_ASGARI_YAS / ihtidaYasKontrol (aynı kural, ayrı sabit).
+ *  Sunucudaki karşılığı: scripts/apps-script/ulucamii-Kod-v50.gs → IHTIDA_ASGARI_YAS / ihtidaYasKontrol (aynı kural, ayrı sabit).
  *  Yaş, başvuru günü (Europe/Brussels) esas alınarak hesaplanır; tarihler «yyyy-MM-dd» metni olarak karşılaştırılır, saat dilimi kayması olmaz. */
 export const IHTIDA_ASGARI_YAS = 18;
 

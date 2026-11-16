@@ -17,7 +17,7 @@ import { build } from 'esbuild';
 
 const paket = await build({ stdin: { contents: "export { tr } from './src/i18n/formlar/tr'; export { fr } from './src/i18n/formlar/fr'; export { en } from './src/i18n/formlar/en'; export { nl } from './src/i18n/formlar/nl'; export { de } from './src/i18n/formlar/de';", resolveDir: process.cwd(), loader: 'ts' }, bundle: true, write: false, format: 'esm', platform: 'node' });
 const dilMetinleri = await import('data:text/javascript;base64,' + Buffer.from(paket.outputFiles[0].text).toString('base64'));
-const kaynak = ['kimlik-sabitler.gs', 'veli-eposta-sablon.gs', 'ulucamii-Kod-v49.gs', 'ihtida-paket-isleri.gs']
+const kaynak = ['kimlik-sabitler.gs', 'veli-eposta-sablon.gs', 'ulucamii-Kod-v50.gs', 'ihtida-paket-isleri.gs']
   .map(ad => readFileSync(new URL('../scripts/apps-script/' + ad, import.meta.url), 'utf8')).join('\n');
 const astro = readFileSync(new URL('../src/components/formlar/IhtidaFormu.astro', import.meta.url), 'utf8');
 
@@ -119,11 +119,11 @@ test('Eski önbellekli sayfanın tek alanlı adSoyad gövdesi bozulmadı (ad/soy
 
 test('Sağlık yanıtı v49 ve yeni denetimi bildirir', () => {
   const c = arkaUc();
-  assert.equal(c.SURUM, 49);
+  assert.equal(c.SURUM, 50);
   const s = c.doGet({});
-  assert.equal(s.surum, 49);
+  assert.equal(s.surum, 50);
   assert.equal(s.ihtidaKisiMetniDenetimi, true);
-  assert.match(astro, /data-asgari-servis-surumu="49"/);
+  assert.match(astro, /data-asgari-servis-surumu="50"/);
 });
 
 // ---- yönetim penceresi ----------------------------------------------------------------------------------------------------------

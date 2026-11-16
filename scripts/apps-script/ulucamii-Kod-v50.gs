@@ -1,3 +1,6 @@
+/* v50 (16 Kas 2026, Rıdvan KAYAHAN): EK-9 ön yüz DÜZEN 2 — yetkilinin (Müşavir) ıslak imzası ve mührü için basılı adın ÜSTÜNDE boş alan. Başlık, vesikalık,
+   Türkçe ve İngilizce paragraf şablonda yukarı, yetkili ad/unvan/etiketleri aşağı kaydı; metin ve punto aynı, yalnız konum (public/admin/ek9.js EK9_DUZEN = 2,
+   docs/EK9-IMZA-YERI-DUZENI.md). Paket, kaydırılmış şablonu gömer. Sunucu mantığı değişmedi; istemci data-asgari-servis-surumu 50. */
 /* v49 (16 Kas 2026, Rıdvan KAYAHAN onayı): EK-9 arka yüz verisi DHYS'ye boş ulaşmasın (Vahi Bey 12 Kas bildirimi). (1) İhtida sebebi artık ZORUNLU
    (en az 10 karakter + 5 harf; "basvuran-sebep-eksik" / "basvuran-sebep-gecersiz"). (2) Doğum yeri, uyruk, anne/baba adı, öğrenim, meslek, önceki din:
    en az 2 Unicode harf (ihtidaKisiMetniTamam; «..», «-», «x» reddedilir, «Bilinmiyor» geçer; mevcut "-eksik" kodları). (3) Yönetim penceresinde
@@ -117,7 +120,7 @@
  * bu KASITLI: PDF artık istemciden gelmez, eski gövde biçimi zaten geçersizdir.)
  */
 
-var SURUM = 49;
+var SURUM = 50;
 /* 21 Eyl 2026: Sitenin ve formların dilleri TEK listede. Gönderilen form dilinin («dil» alanı) ve
    ?islem=pdf-ornek önizlemesinin geçerli değerleri buradan okunur; ["tr","fr","en"] artık hiçbir yere yazılmaz.
    DİKKAT — bu liste FORM dilidir: velinin kalıcı İLETİŞİM dili (veli.iletisimDili) ve tören dili

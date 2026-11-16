@@ -132,7 +132,7 @@ test('Varsayılan sihirbaz, belgeler-imza-rıza ile eksiksiz başvuruyu tek akı
   const gonderilen = [];
   await page.route('**/macros/**', route => {
     if (route.request().method() === 'POST') gonderilen.push(route.request().postDataJSON());
-    return route.fulfill({ json: { ok: true, surum: 49, ihtidaPaketHazir: true, ref: 'IH-2099-9999' } });
+    return route.fulfill({ json: { ok: true, surum: 50, ihtidaPaketHazir: true, ref: 'IH-2099-9999' } });
   });
   await page.goto('/tr/ihtida-basvurusu/');
   if (isMobile) await page.locator('[data-ihtida-adimlar]').screenshot({ path: info.outputPath('adim-0-mobil.png') });
@@ -210,7 +210,7 @@ test('Sihirbazdaki gizli adımlar yanlışlıkla form göndermez; gönderim tüm
   const gonderimler = [];
   await page.route('**/macros/**', route => {
     if (route.request().method() === 'POST') gonderimler.push(route.request().postData());
-    return route.fulfill({ json: { ok: true, surum: 49, ihtidaPaketHazir: true } });
+    return route.fulfill({ json: { ok: true, surum: 50, ihtidaPaketHazir: true } });
   });
   await page.goto('/tr/ihtida-basvurusu/');
   await expect(form(page).locator('button[type="submit"]:visible')).toHaveCount(0);
