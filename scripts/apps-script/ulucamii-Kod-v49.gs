@@ -1,3 +1,8 @@
+/* v49 (16 Kas 2026, Rıdvan KAYAHAN onayı): EK-9 arka yüz verisi DHYS'ye boş ulaşmasın (Vahi Bey 12 Kas bildirimi). (1) İhtida sebebi artık ZORUNLU
+   (en az 10 karakter + 5 harf; "basvuran-sebep-eksik" / "basvuran-sebep-gecersiz"). (2) Doğum yeri, uyruk, anne/baba adı, öğrenim, meslek, önceki din:
+   en az 2 Unicode harf (ihtidaKisiMetniTamam; «..», «-», «x» reddedilir, «Bilinmiyor» geçer; mevcut "-eksik" kodları). (3) Yönetim penceresinde
+   (EK-9 hazırlığı, ihtida-paket-isleri.gs) sekiz EK-9 alanı dolu olmadan nihai nüsha üretilmez ("ek9-alan-eksik:<alan>"). Başka davranış değişmedi;
+   istemci data-asgari-servis-surumu 49. */
 /* v48 (12 Kas 2026): İHTİDA başvurusu — (1) 18 yaşından küçükler yeni başvuru yapamaz (din görevlisi kararı, 12 Kas 2026): yaş, başvuru günü
    (Europe/Brussels) esas alınarak ihtidaYasKontrol ile denetlenir; hata kodu "yas-siniri", geçersiz/eksik doğum tarihi
    "basvuran-dogum-tarihi-gecersiz". Denetim ihtidaDogrulaV2 içindedir, yani ref (IH-YYYY-NNNN) ayrılmadan, defter satırı, Drive dosyası,
@@ -112,7 +117,7 @@
  * bu KASITLI: PDF artık istemciden gelmez, eski gövde biçimi zaten geçersizdir.)
  */
 
-var SURUM = 48;
+var SURUM = 49;
 /* 21 Eyl 2026: Sitenin ve formların dilleri TEK listede. Gönderilen form dilinin («dil» alanı) ve
    ?islem=pdf-ornek önizlemesinin geçerli değerleri buradan okunur; ["tr","fr","en"] artık hiçbir yere yazılmaz.
    DİKKAT — bu liste FORM dilidir: velinin kalıcı İLETİŞİM dili (veli.iletisimDili) ve tören dili
@@ -166,14 +171,14 @@ function doGet(e) {
     }
   }
   var paketSurumu = PropertiesService.getScriptProperties().getProperty("IHTIDA_PAKET_KURULU");
-  return json({ ok: true, servis: "ulucamii-alici", surum: SURUM, kayitKimlik: true, kayitImza: true, kayitBelgeleriZorunlu: true, kayitDuzelt: true, defterCeviri: true, basvuruSiniri: true, ihtidaAsgariYas: IHTIDA_ASGARI_YAS, ceviriMotoru: ceviriMotoru(), veliEpostaDili: "kayit-tercihi-20260909", veliCc: typeof veliCc === "function" && !!veliCc(),
+  return json({ ok: true, servis: "ulucamii-alici", surum: SURUM, kayitKimlik: true, kayitImza: true, kayitBelgeleriZorunlu: true, kayitDuzelt: true, defterCeviri: true, basvuruSiniri: true, ihtidaAsgariYas: IHTIDA_ASGARI_YAS, ihtidaKisiMetniDenetimi: true, ceviriMotoru: ceviriMotoru(), veliEpostaDili: "kayit-tercihi-20260909", veliCc: typeof veliCc === "function" && !!veliCc(),
     veliMailListesiOtomatik: typeof veliMailListesiZamanli === "function" && PropertiesService.getScriptProperties().getProperty("VELI_PORTAL_KURULU") === VELI_PORTAL_SURUM,
     ihtidaPaketHazir: typeof IhtidaPdf !== "undefined" && paketSurumu === "28",
     ihtidaDefteriHazir: typeof IhtidaDefteri !== "undefined" && PropertiesService.getScriptProperties().getProperty("IHTIDA_DEFTERI_KURULU") === "28",
     ihtidaCamiSecimi: typeof IhtidaPdf !== "undefined" && typeof IhtidaPdf.camiCoz === "function",
     ihtidaKalemBelgeleri: typeof IhtidaPdf !== "undefined" && typeof IhtidaPdf.imzaVektorCoz === "function" && IHTIDA_EK10_SURUMLERI.indexOf("2026-10") !== -1,
     // 21 Eki 2026: son nüshada düzeltilebilen EK-9 alanları + adrese teslim dilekçe şablonu.
-    ihtidaEk9Alanlari: typeof IhtidaPdf !== "undefined" && typeof IhtidaPdf.ek9AlanlariGecerli === "function",
+    ihtidaEk9Zorunlu: typeof IhtidaPdf !== "undefined" && typeof IhtidaPdf.ek9Eksikleri === "function", ihtidaEk9Alanlari: typeof IhtidaPdf !== "undefined" && typeof IhtidaPdf.ek9AlanlariGecerli === "function",
     ihtidaAdresDilekcesi: typeof IHTIDA_PDF_KAYNAKLARI !== "undefined" && Boolean(IHTIDA_PDF_KAYNAKLARI.dilekceAdresSablonBytes),
     // 23 Eki 2026: tek imza EK-9, dilekçe ve EK-10'a ön başvuruda da basılır; referans numaraları azalmaz (REF_SON_*).
     ihtidaTekImza: typeof IhtidaPdf !== "undefined" && IhtidaPdf.tekImza === true,
@@ -973,6 +978,13 @@ function pdfHtmlIhtida(veri, meta) {
    =================================================================== */
 
 function metinDolu(s) { return typeof s === "string" && s.trim().length > 0; }
+/** v49 (16 Kas 2026): DHYS boş alanı reddeder; «..», «-», «x» gibi yer tutucular EK-9'a «Bildirilmedi» olarak düşüyordu.
+    EK-9 kişisel metni için en az 2 Unicode HARF (her alfabe) gerekir; «Bilinmiyor», «Inconnu», «Onbekend» geçer.
+    İstemcideki karşılığı: src/lib/ihtida-metin.ts; yönetim penceresi: public/admin/ek9-hazirlik.js (aynı kural, ayrı kopya). */
+function ihtidaHarfSay(s) { var m = String(s == null ? "" : s).match(/\p{L}/gu); return m ? m.length : 0; }
+function ihtidaKisiMetniTamam(s) { return typeof s === "string" && ihtidaHarfSay(s) >= 2; }
+/** İhtida sebebi: en az 10 karakter (kırpılmış) ve en az 5 harf. */
+function ihtidaSebepTamam(s) { return typeof s === "string" && s.trim().length >= 10 && ihtidaHarfSay(s) >= 5; }
 function uzunlukTamam(s, maks) { return String(s == null ? "" : s).length <= maks; }
 function epostaGecerli(s) {
   // 13 Eyl 2026: Ön yüzle aynı, en az iki harfli alan adı sonunu zorunlu kılar.
@@ -1139,15 +1151,16 @@ function ihtidaDogrulaV2(v) {
   if (yasSonuc === "format") return h("basvuran-dogum-tarihi-gecersiz");
   if (yasSonuc === "yas-siniri") return h("yas-siniri");
   if (yasSonuc !== "tamam") return h("basvuran-yas-disi");
-  if (!metinDolu(b.dogumYeri) || !uzunlukTamam(b.dogumYeri, 120)) return h("basvuran-dogum-yeri-eksik");
-  if (!metinDolu(b.uyruk) || !uzunlukTamam(b.uyruk, 80)) return h("basvuran-uyruk-eksik");
-  if (!metinDolu(b.anneAdi) || !uzunlukTamam(b.anneAdi, 80)) return h("basvuran-anne-adi-eksik");
-  if (!metinDolu(b.babaAdi) || !uzunlukTamam(b.babaAdi, 80)) return h("basvuran-baba-adi-eksik");
+  if (!ihtidaKisiMetniTamam(b.dogumYeri) || !uzunlukTamam(b.dogumYeri, 120)) return h("basvuran-dogum-yeri-eksik");
+  if (!ihtidaKisiMetniTamam(b.uyruk) || !uzunlukTamam(b.uyruk, 80)) return h("basvuran-uyruk-eksik");
+  if (!ihtidaKisiMetniTamam(b.anneAdi) || !uzunlukTamam(b.anneAdi, 80)) return h("basvuran-anne-adi-eksik");
+  if (!ihtidaKisiMetniTamam(b.babaAdi) || !uzunlukTamam(b.babaAdi, 80)) return h("basvuran-baba-adi-eksik");
   if (["bekar", "evli", "dul", "bosanmis"].indexOf(b.medeniHali) === -1) return h("basvuran-medeni-hali-gecersiz");
-  if (!metinDolu(b.ogrenimDurumu) || !uzunlukTamam(b.ogrenimDurumu, 80)) return h("basvuran-ogrenim-eksik");
-  if (!metinDolu(b.meslek) || !uzunlukTamam(b.meslek, 80)) return h("basvuran-meslek-eksik");
-  if (!metinDolu(b.oncekiDin) || !uzunlukTamam(b.oncekiDin, 80)) return h("basvuran-onceki-din-eksik");
-  if (b.ihtidaSebebi && !uzunlukTamam(b.ihtidaSebebi, 600)) return h("basvuran-sebep-uzun");
+  if (!ihtidaKisiMetniTamam(b.ogrenimDurumu) || !uzunlukTamam(b.ogrenimDurumu, 80)) return h("basvuran-ogrenim-eksik");
+  if (!ihtidaKisiMetniTamam(b.meslek) || !uzunlukTamam(b.meslek, 80)) return h("basvuran-meslek-eksik");
+  if (!ihtidaKisiMetniTamam(b.oncekiDin) || !uzunlukTamam(b.oncekiDin, 80)) return h("basvuran-onceki-din-eksik");
+  if (!ihtidaSebepTamam(b.ihtidaSebebi)) return h(metinDolu(b.ihtidaSebebi) ? "basvuran-sebep-gecersiz" : "basvuran-sebep-eksik");
+  if (!uzunlukTamam(b.ihtidaSebebi, 600)) return h("basvuran-sebep-uzun");
   if (b.yeniIsim && !uzunlukTamam(b.yeniIsim, 120)) return h("basvuran-yeni-isim-uzun");
   if (!epostaGecerli(b.eposta)) return h("basvuran-eposta-gecersiz");
   if (!cepGecerli(b.telefon)) return h("basvuran-telefon-gecersiz");

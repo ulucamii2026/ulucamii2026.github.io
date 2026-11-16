@@ -6,7 +6,7 @@
  * kurum «kurs») epostaGonder → belgeyi «gonderildi» yapıp e-posta adresini siler. Belge TTL (bitis, 7 gün) dolana dek kalır;
  * böylece aynı hafta ikinci kez kuyruğa girmez. Firestore erişimi veli-mail-listesi.gs ile aynıdır: dernek hesabının OAuth belirteci
  * (datastore kapsamı), ek anahtar YOK. Bağımlılıklar: veli-mail-listesi.gs (VELI_PORTAL_API, veliPortalDegerCoz,
- * veliPortalKimlikDogrula), veli-eposta-sablon.gs, kimlik-sabitler.gs, ulucamii-Kod-v48.gs (epostaGonder + brevoGonder `headers`).
+ * veliPortalKimlikDogrula), veli-eposta-sablon.gs, kimlik-sabitler.gs, ulucamii-Kod-v49.gs (epostaGonder + brevoGonder `headers`).
  *
  * Güvenlik/sağlamlık:
  *  - En çok bir kez gönderim: önce «gonderiliyor» kilidi, sonra gönderim. Gönderim HATA verirse kilit geri alınır (deneme+1, 30 dk bekle,

@@ -177,15 +177,17 @@ export interface IhtidaMetinler {
   kisi: {
     ad: string; soyad: string; adSoyadYardim: string; yasAltiKisa: string; yasAltiBilgi: string; cinsiyet: string; kadin: string; erkek: string;
     dogumTarihi: string; dogumYeri: string; dogumYeriYardim: string; uyruk: string; anneAdi: string; babaAdi: string;
+    /** 16 Kas 2026 (v49): EK-9 metin alanı hata iletisi (en az 2 harf) ve anne/baba adı ipucu («Bilinmiyor» yazınız). */
+    metinHata: string; anneBabaYardim: string;
   };
   durum: {
     medeniHali: string; bekar: string; evli: string; dul: string; bosanmis: string;
-    ogrenim: string; ogrenimYardim: string; meslek: string;
+    ogrenim: string; ogrenimYardim: string; meslek: string; meslekYardim: string;
   };
   iletisim: { eposta: string; telefon: string; adres: string; adresYardim: string; postaKodu: string; sehir: string; ulke: string };
   teslimat: { baslik: string; aciklama: string; cami: string; adres: string; adresNotu: string };
   ihtida: {
-    oncekiDin: string; oncekiDinYardim: string; sebep: string; sebepYardim: string; yeniIsim: string; yeniIsimYardim: string;
+    oncekiDin: string; oncekiDinYardim: string; sebep: string; sebepYardim: string; sebepHata: string; yeniIsim: string; yeniIsimYardim: string;
     torenDili: string; dilTr: string; dilFr: string; dilEn: string; dilAr: string;
     torenTarihi: string; torenTarihiYardim: string;
     sahitler: string; sahitlerYardim: string; sahitEkle: string; sahitCami: string; sahit1: string; sahit2: string;

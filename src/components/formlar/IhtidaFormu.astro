@@ -37,7 +37,7 @@ const dogumMin = tarihStr(new Date(bugun.getFullYear() - 110, 0, 1));
 const metinJson = JSON.stringify({
   // v40 (23 Eyl 2026): sunucu hacim sınırının üç kodu aynı yerelleştirilmiş iletiye düşer (başvuru gönderilmemiştir).
   // v48 (12 Kas 2026): sunucu "yas-siniri" kodu aynı bilgi metnine, geçersiz doğum tarihi alanın kendi iletisine düşer.
-  hata: { ...o.hata, 'sunucu:yas-siniri': h.kisi.yasAltiBilgi, 'sunucu:basvuran-dogum-tarihi-gecersiz': o.hata.tarih, 'sunucu:gunluk-sinir': o.hata.yogunluk, 'sunucu:eposta-gunluk-sinir': o.hata.yogunluk, 'sunucu:cok-sik': o.hata.yogunluk },
+  hata: { ...o.hata, 'sunucu:yas-siniri': h.kisi.yasAltiBilgi, 'sunucu:basvuran-dogum-tarihi-gecersiz': o.hata.tarih, 'sunucu:basvuran-sebep-eksik': h.ihtida.sebepHata, 'sunucu:basvuran-sebep-gecersiz': h.ihtida.sebepHata, 'sunucu:basvuran-dogum-yeri-eksik': h.kisi.metinHata, 'sunucu:basvuran-uyruk-eksik': h.kisi.metinHata, 'sunucu:basvuran-anne-adi-eksik': h.kisi.metinHata, 'sunucu:basvuran-baba-adi-eksik': h.kisi.metinHata, 'sunucu:basvuran-ogrenim-eksik': h.kisi.metinHata, 'sunucu:basvuran-meslek-eksik': h.kisi.metinHata, 'sunucu:basvuran-onceki-din-eksik': h.kisi.metinHata, 'sunucu:gunluk-sinir': o.hata.yogunluk, 'sunucu:eposta-gunluk-sinir': o.hata.yogunluk, 'sunucu:cok-sik': o.hata.yogunluk },
   basari: { gonderiliyor: o.gonderiliyor, epostaGitti: h.paketBildirimi },
   taslakGeriYuklendi: o.taslakGeriYuklendi, taslakSilindi: o.taslakSilindi, evet: o.evet, hayir: o.hayir, bosDeger: o.bosDeger,
 });
@@ -68,7 +68,7 @@ const gorselKutulari = [
 </div>
 
 <form class="ucf mt-8" data-form="ihtida" data-dil={dil} data-uc={uc} data-sir="ULUCAMII-IHTIDA-2026"
-      data-asgari-servis-surumu="48"
+      data-asgari-servis-surumu="49"
       data-taslak="ulucamii:ihtida:v2" data-eposta-alani="basvuran.eposta" data-evet={o.evet} data-hayir={o.hayir}
       novalidate autocomplete="on" aria-describedby="i-giris-not">
   <script is:inline type="application/json" data-metin set:html={metinJson} />
@@ -126,22 +126,24 @@ const gorselKutulari = [
       </div>
       <div data-alan>
         <label for="i-dogum-yeri">{h.kisi.dogumYeri} <span class="zorunlu" aria-hidden="true">*</span></label>
-        <input id="i-dogum-yeri" name="basvuran.dogumYeri" type="text" required maxlength="80" placeholder={h.kisi.dogumYeriYardim} />
+        <input id="i-dogum-yeri" name="basvuran.dogumYeri" type="text" required data-tur="kisi-metni" data-hata-metni={h.kisi.metinHata} maxlength="80" placeholder={h.kisi.dogumYeriYardim} />
         <p class="hata" aria-live="polite" hidden></p>
       </div>
       <div data-alan>
         <label for="i-uyruk">{h.kisi.uyruk} <span class="zorunlu" aria-hidden="true">*</span></label>
-        <input id="i-uyruk" name="basvuran.uyruk" type="text" required maxlength="60" autocomplete="country-name" />
+        <input id="i-uyruk" name="basvuran.uyruk" type="text" required data-tur="kisi-metni" data-hata-metni={h.kisi.metinHata} maxlength="60" autocomplete="country-name" />
         <p class="hata" aria-live="polite" hidden></p>
       </div>
       <div data-alan>
         <label for="i-anne">{h.kisi.anneAdi} <span class="zorunlu" aria-hidden="true">*</span></label>
-        <input id="i-anne" name="basvuran.anneAdi" type="text" required maxlength="80" autocomplete="off" autocapitalize="words" />
+        <input id="i-anne" name="basvuran.anneAdi" type="text" required data-tur="kisi-metni" data-hata-metni={h.kisi.metinHata} maxlength="80" autocomplete="off" autocapitalize="words" aria-describedby="i-anne-yardim" />
+        <p id="i-anne-yardim" class="yardim">{h.kisi.anneBabaYardim}</p>
         <p class="hata" aria-live="polite" hidden></p>
       </div>
       <div data-alan>
         <label for="i-baba">{h.kisi.babaAdi} <span class="zorunlu" aria-hidden="true">*</span></label>
-        <input id="i-baba" name="basvuran.babaAdi" type="text" required maxlength="80" autocomplete="off" autocapitalize="words" />
+        <input id="i-baba" name="basvuran.babaAdi" type="text" required data-tur="kisi-metni" data-hata-metni={h.kisi.metinHata} maxlength="80" autocomplete="off" autocapitalize="words" aria-describedby="i-baba-yardim" />
+        <p id="i-baba-yardim" class="yardim">{h.kisi.anneBabaYardim}</p>
         <p class="hata" aria-live="polite" hidden></p>
       </div>
     </div>
@@ -164,12 +166,13 @@ const gorselKutulari = [
       </div>
       <div data-alan>
         <label for="i-ogrenim">{h.durum.ogrenim} <span class="zorunlu" aria-hidden="true">*</span></label>
-        <input id="i-ogrenim" name="basvuran.ogrenimDurumu" type="text" required maxlength="80" placeholder={h.durum.ogrenimYardim} />
+        <input id="i-ogrenim" name="basvuran.ogrenimDurumu" type="text" required data-tur="kisi-metni" data-hata-metni={h.kisi.metinHata} maxlength="80" placeholder={h.durum.ogrenimYardim} />
         <p class="hata" aria-live="polite" hidden></p>
       </div>
       <div data-alan class="tam">
         <label for="i-meslek">{h.durum.meslek} <span class="zorunlu" aria-hidden="true">*</span></label>
-        <input id="i-meslek" name="basvuran.meslek" type="text" required maxlength="80" autocomplete="organization-title" />
+        <input id="i-meslek" name="basvuran.meslek" type="text" required data-tur="kisi-metni" data-hata-metni={h.kisi.metinHata} maxlength="80" autocomplete="organization-title" aria-describedby="i-meslek-yardim" />
+        <p id="i-meslek-yardim" class="yardim">{h.durum.meslekYardim}</p>
         <p class="hata" aria-live="polite" hidden></p>
       </div>
     </div>
@@ -224,7 +227,7 @@ const gorselKutulari = [
     <div class="ucf-izgara">
       <div data-alan>
         <label for="i-onceki-din">{h.ihtida.oncekiDin} <span class="zorunlu" aria-hidden="true">*</span></label>
-        <input id="i-onceki-din" name="basvuran.oncekiDin" type="text" required maxlength="80" placeholder={h.ihtida.oncekiDinYardim} />
+        <input id="i-onceki-din" name="basvuran.oncekiDin" type="text" required data-tur="kisi-metni" data-hata-metni={h.kisi.metinHata} maxlength="80" placeholder={h.ihtida.oncekiDinYardim} />
         <p class="hata" aria-live="polite" hidden></p>
       </div>
       <div data-alan>
@@ -234,9 +237,9 @@ const gorselKutulari = [
         <p class="hata" aria-live="polite" hidden></p>
       </div>
       <div data-alan class="tam">
-        <label for="i-sebep">{h.ihtida.sebep} <span class="istege">({o.istegeBagli})</span></label>
-        <textarea id="i-sebep" name="basvuran.ihtidaSebebi" maxlength="600" rows="4"></textarea>
-        <p class="yardim">{h.ihtida.sebepYardim}</p>
+        <label for="i-sebep">{h.ihtida.sebep} <span class="zorunlu" aria-hidden="true">*</span></label>
+        <textarea id="i-sebep" name="basvuran.ihtidaSebebi" required data-tur="sebep" data-hata-metni={h.ihtida.sebepHata} minlength="10" maxlength="600" rows="4" aria-describedby="i-sebep-yardim"></textarea>
+        <p id="i-sebep-yardim" class="yardim">{h.ihtida.sebepYardim}</p>
         <p class="hata" aria-live="polite" hidden></p>
       </div>
       <div data-alan>

@@ -1106,7 +1106,7 @@ async function ek9Uretimi(dugme) {
       durumYaz('Paket arşive ve gönderim sırasına alınıyor…');
       const anahtar = paketOnayAnahtari(ref, hazirlik);
       const cevap = await gasPost({ tur: 'ihtida-paket-onay', ref, hazirlik, islemAnahtari: anahtar });
-      if (!cevap.ok) throw new Error(cevap.hata || 'Paket kaydedilemedi.');
+      if (!cevap.ok) throw new Error(cevap.hata === 'ek9-alan-eksik' ? 'EK-9 alanları eksik ya da yer tutucu (' + (cevap.alanlar || []).join(', ') + '). Her alanda en az 2 harf yazın.' : cevap.hata === 'ek9-sebep-eksik' ? 'İhtida sebebi en az 10 karakter ve 5 harf olmalıdır.' : (cevap.hata || 'Paket kaydedilemedi.'));
       await paketDurumAc(ref);
       durumYaz(eskiMetin);
       dugme.disabled = false;

@@ -9,7 +9,7 @@
  *  DOM sözleşmesi (Astro bileşenleri bunu üretir):
  *   <form data-form="kayit|ihtida" data-dil data-uc data-sir data-taslak novalidate>
  *     [data-alan]  → kapsayıcı; içinde name'li alan, .yardim ve .hata (aria-live)
- *     data-tur="eposta|telefon|tarih|metin|sayi"  data-esle="<başka alan adı>[ <bir sonraki alan adı>…]"  data-yas-min/max  data-asgari/azami (sayi)
+ *     data-tur="eposta|telefon|tarih|metin|sayi|kisi-metni|sebep"  data-esle="<başka alan adı>[ <bir sonraki alan adı>…]"  data-yas-min/max  data-asgari/azami (sayi)
  *     [data-kosul="<alan>=<değer>"] → koşullu blok (gizliyken içindeki alanlar disabled)
  *     [data-kaydir] + [data-kaydir-kilit] → sonuna kadar kaydırılmadan işaretlenemeyen kutu
  *     [data-ozet] içindeki [data-ozet-alan="anahtar"] [data-ozet-deger]
@@ -18,6 +18,7 @@
  */
 
 import { telefonAlaniniBagla } from './telefon-bicim';
+import { kisiMetniTamam, sebepTamam } from '../lib/ihtida-metin';
 
 export type Veriler = Record<string, unknown>;
 
@@ -182,6 +183,9 @@ export function alanDogrula(form: HTMLFormElement, alan: Alan, veriler: Veriler,
   if (maks > 0 && v.length > maks) return doldur(m.hata.uzun, { max: maks });
   if (tur === 'eposta' && !epostaGecerli(v)) return m.hata.eposta;
   if (tur === 'telefon' && !telefonNormalle(v)) return m.hata.telefon;
+  // 16 Kas 2026 (v49): EK-9 kişisel metinleri — «..», «-», «x» gibi yer tutucular DHYS'ye boş gider (en az 2 harf); ihtida sebebi en az 10 karakter + 5 harf.
+  if (tur === 'kisi-metni' && !kisiMetniTamam(v)) return alan.dataset.hataMetni || m.hata.zorunlu;
+  if (tur === 'sebep' && !sebepTamam(v)) return alan.dataset.hataMetni || m.hata.zorunlu;
   if (tur === 'sayi') {
     // Tam sayı (rakam); sınırlar data-asgari / data-azami (varsayılan 0–999). Özel metin data-hata-metni ile verilir.
     const asgari = Number(alan.dataset.asgari ?? 0), azami = Number(alan.dataset.azami ?? 999);

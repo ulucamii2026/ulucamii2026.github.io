@@ -1,6 +1,6 @@
 import { ihtidaPaketiUret, ihtidaPaketParcalari, suretFiligrani, DHYS_PARCALARI, DHYS_VESIKALIK, TEK_IMZA } from '../../public/admin/ihtida-paket.js';
 import { camiCoz } from '../../public/admin/cami-secimi.js';
-import { sahitOnerileri, ek9Degerleri, ek9AlanlariUygula, ek9AlanlariGecerli, sahitImzalariniBagla, sahitKendiImzalari } from '../../public/admin/ek9-hazirlik.js';
+import { sahitOnerileri, ek9Degerleri, ek9AlanlariUygula, ek9AlanlariGecerli, ek9Eksikleri, sahitImzalariniBagla, sahitKendiImzalari } from '../../public/admin/ek9-hazirlik.js';
 import { imzaVektorCoz, sahitImzaCoz } from '../../public/admin/imza-ciz.js';
 import { ek10SurumuCoz } from '../../public/admin/ek10.js';
 
@@ -82,7 +82,7 @@ export async function uret(k, gorseller, duzenleme, kaynaklar, pdfLib, fontkit, 
   });
 }
 
-export { camiCoz, imzaVektorCoz, sahitImzaCoz, ek9AlanlariGecerli };
+export { camiCoz, imzaVektorCoz, sahitImzaCoz, ek9AlanlariGecerli, ek9Eksikleri };
 export const tekImza = TEK_IMZA;   // sağlık cevabı: ihtidaTekImza
 export const sahitKendiImzasi = true;   // sağlık cevabı: ihtidaSahitKendiImzasi (mühtedinin kendi şahidinin formda attığı imza EK-9'a basılır)
 export const sahitImzasi = true;   // sağlık cevabı: ihtidaSahitImzasi (kayıtlı şahit imzaları özel depodan otomatik basılır)

@@ -18,7 +18,7 @@ import { build } from 'esbuild';
 // Dil dosyaları uzantısız içe aktarma kullanır (Astro/Vite çözer); Node için bellekte paketlenir, diske yazılmaz.
 const paket = await build({ stdin: { contents: "export { tr } from './src/i18n/formlar/tr'; export { fr } from './src/i18n/formlar/fr'; export { en } from './src/i18n/formlar/en'; export { nl } from './src/i18n/formlar/nl'; export { de } from './src/i18n/formlar/de';", resolveDir: fileURLToPath(new URL('..', import.meta.url)), loader: 'ts' }, bundle: true, write: false, format: 'esm', platform: 'node', logLevel: 'silent' });
 const { tr, fr, en, nl, de } = await import('data:text/javascript;base64,' + Buffer.from(paket.outputFiles[0].text).toString('base64'));
-const kaynak = ['kimlik-sabitler.gs', 'veli-eposta-sablon.gs', 'ulucamii-Kod-v48.gs']
+const kaynak = ['kimlik-sabitler.gs', 'veli-eposta-sablon.gs', 'ulucamii-Kod-v49.gs']
   .map(ad => readFileSync(new URL('../scripts/apps-script/' + ad, import.meta.url), 'utf8')).join('\n');
 const DILLER = ['tr', 'fr', 'en', 'nl', 'de'];
 const formMetinleri = dil => ({ tr, fr, en, nl, de })[dil];
@@ -40,7 +40,7 @@ function arkaUc(simdiIso = '2026-11-12T10:00:00Z') {
 
 const govde = (ek = {}, basvuran = {}) => ({
   sir: 'ULUCAMII-IHTIDA-2026', dil: 'tr', gonderimAnahtari: 'test-yas-2099-0001',
-  basvuran: { adSoyad: 'Deniz Testoglu', cinsiyet: 'kadin', dogumTarihi: '1990-05-20', dogumYeri: 'Namur', uyruk: 'Belçika', anneAdi: 'Anne', babaAdi: 'Baba', medeniHali: 'bekar', ogrenimDurumu: 'Lisans', meslek: 'Öğretmen', oncekiDin: 'Belirtilen inanç', eposta: 'deniz@example.test', telefon: '+32470000000', adres: 'Rue du Test 12, 6900, Marche-en-Famenne, Belçika', adresSokak: 'Rue du Test 12', postaKodu: '6900', sehir: 'Marche-en-Famenne', ulke: 'Belçika', torenDili: 'tr', ...basvuran },
+  basvuran: { adSoyad: 'Deniz Testoglu', cinsiyet: 'kadin', dogumTarihi: '1990-05-20', dogumYeri: 'Namur', uyruk: 'Belçika', anneAdi: 'Anne', babaAdi: 'Baba', medeniHali: 'bekar', ogrenimDurumu: 'Lisans', meslek: 'Öğretmen', oncekiDin: 'Belirtilen inanç', ihtidaSebebi: 'Kendi araştırmam sonucunda karar verdim.', eposta: 'deniz@example.test', telefon: '+32470000000', adres: 'Rue du Test 12, 6900, Marche-en-Famenne, Belçika', adresSokak: 'Rue du Test 12', postaKodu: '6900', sehir: 'Marche-en-Famenne', ulke: 'Belçika', torenDili: 'tr', ...basvuran },
   teslimat: { yontem: 'cami' }, sahitSecimi: 'cami', sahitler: [],
   fotografIzni: false, belgeTuru: 'pasaport', imzaYok: true,
   gorseller: { vesikalik: 'data:image/png;base64,' + 'A'.repeat(400), kimlikOn: 'data:image/png;base64,' + 'A'.repeat(400), kimlikArka: '', imza: '' },
@@ -243,13 +243,13 @@ test('Defter sütunları değişmedi: başlık listesi ve «Adı Soyadı» konum
   assert.equal(c.BASLIKLAR2_IHTIDA.includes('Soyad'), false);
 });
 
-test('Form işaretlemesi: iki zorunlu alan, doğru autocomplete, eski ad alanı yok, beyan ad+soyadla eşleşir, sunucu en az v48', () => {
+test('Form işaretlemesi: iki zorunlu alan, doğru autocomplete, eski ad alanı yok, beyan ad+soyadla eşleşir, sunucu en az v49', () => {
   const html = readFileSync(new URL('../src/components/formlar/IhtidaFormu.astro', import.meta.url), 'utf8');
   assert.match(html, /id="i-ad" name="basvuran\.ad" type="text" required[^>]*autocomplete="given-name"/);
   assert.match(html, /id="i-soyad" name="basvuran\.soyad" type="text" required[^>]*autocomplete="family-name"/);
   assert.doesNotMatch(html, /name="basvuran\.adSoyad"/);
   assert.match(html, /name="onay\.beyan"[^>]*data-esle="basvuran\.ad basvuran\.soyad"/);
-  assert.match(html, /data-asgari-servis-surumu="48"/);
+  assert.match(html, /data-asgari-servis-surumu="49"/);
   assert.match(html, /name="sahit\.1"/, 'şahit adı alanı bölünmedi');
   assert.match(html, /id="i-yas-bilgi" role="status" aria-live="polite"/);
 });
