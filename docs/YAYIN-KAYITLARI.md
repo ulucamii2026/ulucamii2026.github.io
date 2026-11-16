@@ -4,6 +4,19 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 16 Kasım 2026 — İhtida formu: EK-9 alanları boş gitmesin (sebep zorunlu, yer tutucu reddi); Apps Script v49 CANLI
+
+Din görevlisinin açık onayıyla (16 Kasım 2026) yayınlandı. Europe/Brussels: v49 dağıtımı ≈12.59, site push 13.01. Sıra: önce Apps Script, sonra site.
+
+- **Kapsam:** ihtida sebebi zorunlu (en az 10 karakter + 5 harf); doğum yeri, uyruk, anne/baba adı, öğrenim, meslek, önceki din en az 2 Unicode harf («..», «-» reddedilir, «Bilinmiyor» geçer); yönetim penceresi (EK-9 hazırlığı) sekiz alan dolu olmadan nihai nüsha üretmez. Tasarım notu: `docs/IHTIDA-ZORUNLU-ALANLAR-v49.md`.
+- **Commit:** `e0549e98`; `main`: `1a36164c` → `e0549e98` (hızlı ileri sarma, dal `ihtida-zorunlu-v49`, ayrı çalışma ağacı).
+- **Apps Script paketi:** `ulucamii-v49.gs` 9.817.229 bayt, SHA-256 `03f1e5af33a0a3c3000b5b8da4988519b94806be7d154ffdfa04539f09afcf31`. Salt okunan canlı kaynak (v48) son yeniden okunan kopyayla birebir aynıydı; paket farkı yalnız beklenen 44 satır. Yazım sonrası yeniden okunan kod paketle birebir aynı. Sürücü `D:/tmp/gas/dagit_v49_ihtida.py` (`GAS_FIREFOX` ile); mevcut dağıtıma yeni sürüm (adres değişmedi). Yedek `D:\tmp\gas\v49ihtida-oncesi-20261116-125913-862002.gs`. Canlı sağlık: `surum: 49`, `ihtidaEk9Zorunlu: true`, `ihtidaAsgariYas: 18`, `ihtidaPaketHazir: true`.
+- **Site:** «Siteyi yayınla (GitHub Pages)» run [43862811117](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/43862811117) başarılı.
+- **Canlı denetim (yalnız GET, başvuru gönderilmedi):** `/tr/ihtida-basvurusu/` ve `/fr/demande-de-conversion/`: HTTP 200, `data-asgari-servis-surumu="49"`, `ihtidaSebebi` alanı `required` + `minlength="10"`, yeni uyarı metinleri var.
+- **Testler:** `npm run test:ihtida` 104/104.
+- **Açık sınırlar:** gerçek başvuruyla uçtan uca sınama yapılmadı (canlıya gönderim yasak). UYARI: `D:/tmp/gas/dagit_v49_p7.py` (Dilim 4 / P7b, dal `dilim4-p7`) da «v49» numarasını taşır ve v48 üzerine kuruludur; çalıştırılırsa bu v49 değişikliğini silerdi. O paket v50 olarak yeniden numaralanmalı ve bu v49 üzerine yeniden derlenmelidir.
+- **Geri alma:** Apps Script: `v49ihtida-oncesi-dogrulanmis.gs` (v48) aynı sürücüyle yeniden dağıtılır; site: `git revert e0549e98`. Sunucu v48'e dönerse istemci `data-asgari-servis-surumu="49"` bekler ve «sistem güncelleniyor» gösterir; ikisi birlikte geri alınmalıdır.
+
 ## 12 Kasım 2026 (akşam, üçüncü) — vaaz: «İhlâs ve Samimiyet» (13 Kasım 2026 Cuma vaazı) beş dilde + duyuru
 
 - Zaman: 12 Kasım 2026, Europe/Brussels (CET). İki aşama:
