@@ -4,7 +4,7 @@ Durum: dalda hazır (`dilekce-tarih`), **yayınlanmadı**. Yayın sırası: önc
 
 ## 1. 18 yaşından küçükler başvuru yapamaz (din görevlisi kararı, 12 Kasım 2026)
 
-- Yaş sınırı tek sabit: istemci `src/lib/ihtida-yas.ts` → `IHTIDA_ASGARI_YAS`, sunucu `ulucamii-Kod-v49.gs` → `IHTIDA_ASGARI_YAS` (18).
+- Yaş sınırı tek sabit: istemci `src/lib/ihtida-yas.ts` → `IHTIDA_ASGARI_YAS`, sunucu `ulucamii-Kod-v51.gs` → `IHTIDA_ASGARI_YAS` (18).
 - Yaş, **başvuru günü (Europe/Brussels)** esas alınarak hesaplanır; tarihler `yyyy-MM-dd` metni olarak karşılaştırılır.
   Tam 18. yaş günü kabul, bir gün eksik ret. 29 Şubat doğumlu kişi, 18. yılı artık yıl değilse 1 Mart'ta 18 olur.
 - İstemci: geçerli bir doğum tarihi 18 yaşından küçük yaş gösterirse doğum tarihi alanının altında bilgi kutusu açılır

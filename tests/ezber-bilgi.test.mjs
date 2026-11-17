@@ -79,7 +79,7 @@ test('Kaynaklar: en az iki, biri metin biri karşılaştırma; her kaynak sayfa 
 const BEKLENEN_TASLAK = {
   'b-imanin-sartlari': [], 'b-islamin-sartlari': [], 'b-namazin-farzlari': ['de'], 'b-abdestin-farzlari': ['en', 'de'],
   'b-guslun-farzlari': ['de'], 'b-teyemmumun-farzlari': ['en', 'de'], 'b-dort-halife': ['nl', 'de'], 'b-ulul-azm': ['nl'],
-  'b-secme-hadisler': ['en', 'nl', 'de'], 'b-kuran-fazileti-hadisleri': ['en', 'de'],
+  'b-secme-hadisler': ['en', 'nl', 'de'], 'b-kuran-fazileti-hadisleri': ['en', 'nl', 'de'],
 };
 
 test('Beş dil de dolu; taslak durumu kayıtlı kaynak durumuyla aynıdır (en, nl, de: künyeli resmî kaynak yoksa taslak); tr ve fr taslak değildir (satır bazında fr taslağı olabilir)', () => {
@@ -124,6 +124,11 @@ test('Resmî karşılıklar aynen ve doğru maddede: Almanca broşürün farklı
   assert.equal(ad('b-kuran-fazileti-hadisleri', 2, 'de'), '„Lest den Koran, denn er wird am Tag der Auferstehung als Fürsprecher für seinen Leser hervortreten.“');
   assert.equal(ad('b-kuran-fazileti-hadisleri', 1, 'de'), 'Wer einen Buchstaben aus dem Buch Allahs, dem Koran, liest, hat dafür eine Belohnung; und jede Belohnung wird zehnfach vergolten.', 'resmî karşılığı yok: çalışma metni kalır');
   assert.equal(ad('b-secme-hadisler', 4, 'de'), 'Lass auf eine schlechte Tat eine gute folgen, damit sie die schlechte auslöscht.', 'resmî karşılığı yok: çalışma metni kalır');
+  // 12 Kas 2026, imam onayı: 4. ve 5. hadis. En 4. hadiste resmî (Islam Through Hadiths 1, s. 595); diğer diller ve 5. hadis en çalışma metni.
+  assert.equal(veriler.get('b-kuran-fazileti-hadisleri').maddeler.length, 5);
+  assert.equal(ad('b-kuran-fazileti-hadisleri', 3, 'en'), '“Whoever recites the Holy Quran and masters it by heart will be with the noble righteous scribes (in Heaven). And whoever exerts himself to learn the Quran by heart and recites it with great difficulty will have a double reward.”');
+  assert.equal(ad('b-kuran-fazileti-hadisleri', 4, 'tr'), 'Allah, bu kitapla (Kur’an’la) nice toplumları yükseltir ve nicelerini de alçaltır.');
+  for (const i of [3, 4]) assert.ok(veriler.get('b-kuran-fazileti-hadisleri').maddeler[i].taslak.includes('fr'), `madde ${i}: fr çalışma çevirisi`);
   for (const id of ['b-secme-hadisler', 'b-kuran-fazileti-hadisleri']) assert.ok(veriler.get(id).kaynaklar.filter((k) => k.rol === 'de' && /DİTİB Freitagspredigt Nr\. \d+ \(\d+\. [A-Za-z]+ \d{4}\), ditib\.de/.test(k.ad)).length >= 2, `${id}: DİTİB hutbe künyeleri`);
   assert.deepEqual([0, 1, 2, 3, 4].map((i) => ad('b-ulul-azm', i, 'en')), ['Nuh', 'Ibrahim', 'Musa', 'Isa', 'Muhammad (saw)']);
   assert.deepEqual([0, 1, 2, 3, 4].map((i) => ad('b-ulul-azm', i, 'de')), ['Nuh/Noah (a.s.)', 'Ibrahim/Abraham (a.s.)', 'Musa/Moses (a.s.)', 'Isa/Jesus (a.s.)', 'Muhammed (s.a.w.)']);

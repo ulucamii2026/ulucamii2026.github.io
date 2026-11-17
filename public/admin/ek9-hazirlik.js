@@ -4,7 +4,7 @@ import { imzaVektorCoz } from './imza-ciz.js';
 /* 21 Eki 2026: EK-9 arka yüzünün başvuru kaydından gelen değerleri tek yerden kurulur; panel (tek EK-9, son nüsha
    ekranı) ve sunucu paketi (ihtida-pdf-entry.js) aynı tabloyu kullanır. Kodlu seçimler Mühtedi Koordinatörlüğü
    emsalindeki gibi «Türkçe / Fransızca» yazılır (M-2026-02/-06: «Erkek / Homme»); serbest metin başvuranın yazdığı
-   gibi kalır, yalnız ilk harfi büyür. Boş alan belgede «Bildirilmedi / Non communiqué» olur (ek9.js). */
+   gibi kalır, yalnız ilk harfi büyür. Boş alan eski kayıtlarda belgede «Bildirilmedi / Non communiqué» olur (ek9.js); 16 Kas 2026 (v49) itibarıyla yeni son nüshada sekiz alan zorunludur (ek9Eksikleri). */
 export const EK9_ALANLARI = ['dogumYeri', 'uyruk', 'anneAdi', 'babaAdi', 'medeniHali', 'ogrenim', 'meslek', 'oncekiDin'];
 const EK9_ALAN_AZAMI = 120;
 const EK9_KODLAR = {
@@ -57,7 +57,7 @@ export function ek9Degerleri(kayit) {
   };
 }
 
-/** Son nüsha ekranında görevlinin düzelttiği değerler (yalnız EK9_ALANLARI). Boş değer «Bildirilmedi» demektir. */
+/** Son nüsha ekranında görevlinin düzelttiği değerler (yalnız EK9_ALANLARI). Biçim ve uzunluk denetler; BOŞ değer geçerli biçimdir ama sonuçta alan eksik kalıyorsa ek9Eksikleri yakalar (16 Kas 2026, v49). */
 export function ek9AlanlariGecerli(alanlar) {
   if (alanlar === undefined || alanlar === null) return true;
   if (typeof alanlar !== 'object' || Array.isArray(alanlar)) return false;
@@ -68,6 +68,24 @@ export function ek9AlanlariUygula(degerler, alanlar) {
   if (!alanlar || !ek9AlanlariGecerli(alanlar)) return sonuc;
   for (const a of EK9_ALANLARI) if (typeof alanlar[a] === 'string') sonuc[a] = ek9Sade(alanlar[a]);
   return sonuc;
+}
+
+/* 16 Kas 2026 (v49; Rıdvan KAYAHAN onayı): DHYS boş alanı reddeder, bu yüzden son nüshada sekiz EK-9 alanı ve ihtida sebebi zorunludur.
+   Kural: değerde en az 2 Unicode HARF («..», «-», «x», «?» geçmez; «Bilinmiyor», «Inconnu» geçer); sebep için en az 10 karakter + 5 harf.
+   Aynı kural: src/lib/ihtida-metin.ts (istemci formu) ve ulucamii-Kod-v51.gs (sunucu). Burada paylaşılır; sunucu paketi bu dosyayı da derler. */
+const ek9HarfSay = deger => (String(deger ?? '').match(/\p{L}/gu) || []).length;
+export const EK9_ASGARI_HARF = 2;
+export const EK9_SEBEP_ASGARI_KARAKTER = 10;
+export const EK9_SEBEP_ASGARI_HARF = 5;
+export const ek9AlanTamam = deger => ek9HarfSay(deger) >= EK9_ASGARI_HARF;
+export const ek9SebepTamam = deger => {
+  const d = String(deger ?? '').trim();
+  return d.length >= EK9_SEBEP_ASGARI_KARAKTER && ek9HarfSay(d) >= EK9_SEBEP_ASGARI_HARF;
+};
+/** Kayıt + görevlinin düzeltmeleri birleşince eksik/yer tutucu kalan EK-9 alanlarının adları (boş dizi = üretilebilir). */
+export function ek9Eksikleri(kayit, alanlar) {
+  const degerler = ek9AlanlariUygula(ek9Degerleri(kayit), alanlar);
+  return EK9_ALANLARI.filter(a => !ek9AlanTamam(degerler[a]));
 }
 
 /* 1 Kas 2026 (Rıdvan KAYAHAN: «Sadece bir şahit eklenebilsin. Şahitlerden birisi her zaman din görevlisi, yani imam, yani ben
@@ -194,8 +212,10 @@ export function ek9HazirlikAc(kayit, imzalar = {}, secenekler = {}) {
       <input id="ek9-gercek-tarih" name="tarih" type="date" />
       <p class="not">Tören henüz yapılmadıysa boş bırakın. Tarih tercihi bu alana aktarılmaz. Belge numarası, belge tarihi ve yetkili imzası Müşavirlik için boş bırakılır; düzenleyen birim «T.C. Brüksel Büyükelçiliği Sosyal İşler Müşavirliği» olarak yazılır. T.C. kimlik numarası gerekiyorsa basılı belgede elle tamamlanır.</p>
       <fieldset data-ek9-alanlar><legend>EK-9 arka yüzündeki bilgiler</legend>
-        <p class="not">Başvuranın formda yazdıkları gelir. Kodlu seçimler emsal belgelerdeki gibi «Türkçe / Fransızca» yazılır; serbest yazılanları isterseniz aynı biçime getirin (ör. «İtalya / Italie», «Emekli / Retraité»). Boş bıraktığınız alana «Bildirilmedi / Non communiqué» yazılır. Bu düzeltmeler yalnız EK-9’a girer; dilekçe başvuranın kendi beyanı olarak kalır, başvuru kaydı değişmez.</p>
+        <p class="not">Başvuranın formda yazdıkları gelir. Kodlu seçimler emsal belgelerdeki gibi «Türkçe / Fransızca» yazılır; serbest yazılanları isterseniz aynı biçime getirin (ör. «İtalya / Italie», «Emekli / Retraité»). Sekiz alanın hepsi zorunludur (en az 2 harf; «..», «-» kabul edilmez): DHYS boş alanı reddeder. Bilinmeyen için «Bilinmiyor / Inconnu», çalışmayan için «Çalışmıyor / Sans emploi» yazın. Bu düzeltmeler yalnız EK-9’a girer; dilekçe başvuranın kendi beyanı olarak kalır, başvuru kaydı değişmez.</p>
       </fieldset>
+      <label for="ek9-sebep">İhtida sebebi (zorunlu; başvuranın kendi ifadesi, en az 10 karakter)</label>
+      <textarea id="ek9-sebep" name="sebep" required minlength="10" maxlength="600" rows="2"></textarea>
       <div data-sebep-tr><label for="ek9-sebep-tr">İhtida sebebinin Türkçesi (EK-9 arka yüzünde sebebin altına yazılır)</label>
         <textarea id="ek9-sebep-tr" name="sebepTr" maxlength="600" rows="2"></textarea>
         <p class="not">Belgeyi Diyanet verir; resmî dili Türkçe olduğu için sebep iki dilli yazılır (25 Ekim 2026 kuralı). Alan Google Çeviri ile doldurulmuş gelir; kontrol edip düzeltin. Boş bırakırsanız sunucu kendisi çevirir. Sebep zaten Türkçeyse ikinci satır yazılmaz.</p></div>
@@ -223,8 +243,6 @@ export function ek9HazirlikAc(kayit, imzalar = {}, secenekler = {}) {
       const ek = document.createElement('div');
       ek.innerHTML = `<label for="ek9-tam-adres">Tam posta adresi (sokak, kapı, posta kodu, şehir, ülke)</label>
         <textarea id="ek9-tam-adres" name="tamAdres" required maxlength="400" rows="3"></textarea>
-        <label for="ek9-sebep">İhtida sebebi (isteğe bağlı, başvuranın kendi ifadesi)</label>
-        <textarea id="ek9-sebep" name="sebep" maxlength="600" rows="2"></textarea>
         <label for="ek9-beyan-tarihi">Başvuranın beyan ve rıza tarihi</label>
         <input id="ek9-beyan-tarihi" name="beyanTarihi" type="date" required />
         <label for="ek9-kimlik-turu">Eklenen kimlik belgesi</label>
@@ -232,7 +250,6 @@ export function ek9HazirlikAc(kayit, imzalar = {}, secenekler = {}) {
         <p data-paket-not></p>`;
       pencere.querySelector('[data-sebep-tr]').before(ek);
       form.elements.namedItem('tamAdres').value = String(kayit['Adres'] || '');
-      form.elements.namedItem('sebep').value = String(kayit['İhtida sebebi'] || '');
       form.elements.namedItem('beyanTarihi').value = secenekler.beyanTarihi || '';
       form.elements.namedItem('beyanTarihi').readOnly = Boolean(secenekler.imzali);
       form.elements.namedItem('belgeTuru').value = kayit['Kimlik belgesi türü'] || secenekler.belgeTuru || '';
@@ -255,13 +272,20 @@ export function ek9HazirlikAc(kayit, imzalar = {}, secenekler = {}) {
       const etiket = document.createElement('label');
       etiket.htmlFor = kimlik; etiket.textContent = ek9Basliklari[alan];
       const girdi = document.createElement('input');
-      Object.assign(girdi, { id: kimlik, type: 'text', maxLength: 120, autocomplete: 'off', value: ek9Ilk[alan] || '' });
+      Object.assign(girdi, { id: kimlik, type: 'text', maxLength: 120, autocomplete: 'off', required: true, value: ek9Ilk[alan] || '' });
       girdi.dataset.ek9Alan = alan;
+      // 16 Kas 2026 (v49): boş ya da «..», «-» gibi yer tutucu kabul edilmez (en az 2 harf); sunucu da aynı kuralı uygular.
+      const alanDogrula = () => girdi.setCustomValidity(ek9AlanTamam(girdi.value) ? '' : `${ek9Basliklari[alan]}: en az 2 harf yazın (bilinmiyorsa «Bilinmiyor / Inconnu»).`);
+      girdi.addEventListener('input', alanDogrula); alanDogrula();
       pencere.querySelector('[data-ek9-alanlar]').append(etiket, girdi);
       return girdi;
     });
     // 25 Eki 2026: sebebin Türkçesi (sunucunun belge ucundan gelen Google Çeviri önerisi; görevli düzeltebilir).
     form.elements.namedItem('sebepTr').value = String(secenekler.sebepTr || '');
+    const sebepAlani = form.elements.namedItem('sebep');
+    sebepAlani.value = String(kayit['İhtida sebebi'] || '');
+    const sebepDogrula = () => sebepAlani.setCustomValidity(ek9SebepTamam(sebepAlani.value) ? '' : 'İhtida sebebi zorunludur: en az 10 karakter ve 5 harf (başvuranın kendi ifadesi; «..» gibi işaretler kabul edilmez).');
+    sebepAlani.addEventListener('input', sebepDogrula); sebepDogrula();
     if (!String(kayit['İhtida sebebi'] || '').trim() && !secenekler.paket) pencere.querySelector('[data-sebep-tr]').hidden = true;
     const teslim = kayit['Belge teslim yeri'];
     const camiAdres = [kayit['Cami adresi'], kayit['Cami posta kodu'], kayit['Cami şehri']].filter(Boolean).join(', ');
@@ -334,10 +358,10 @@ export function ek9HazirlikAc(kayit, imzalar = {}, secenekler = {}) {
         alanlar: Object.fromEntries(ek9Girdiler.map(g => [g.dataset.ek9Alan, g.value.trim().replace(/\s+/g, ' ')])),
         ihtidaSebebiTr: form.elements.namedItem('sebepTr').value.trim().replace(/\s+/g, ' '),
         yedekSahitRizasi: yedekRiza.value,
+        ihtidaSebebi: sebepAlani.value.trim(),
       };
       if (secenekler.paket) Object.assign(sonuc, {
         adres: form.elements.namedItem('tamAdres').value.trim(),
-        ihtidaSebebi: form.elements.namedItem('sebep').value.trim(),
         beyanTarihi: form.elements.namedItem('beyanTarihi').value,
         belgeTuru: form.elements.namedItem('belgeTuru').value,
         teslimatYontemi: kayit['Belge teslim yeri'] === 'adres' ? 'adres' : 'cami',

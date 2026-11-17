@@ -4,6 +4,111 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 16 Kasım 2026 akşam — EK-9 ön yüz düzeni 2 (yetkili imza ve mühür alanı); Apps Script v50 CANLI
+
+Rıdvan'ın emriyle (16.11.2026: «hem online formda … her yerde» düzeltilsin) yayınlandı. Europe/Brussels: v50 dağıtımı ≈20.41, site push ≈20.43. Sıra: önce Apps Script, sonra site.
+
+- **Kapsam:** basılı adın üstünde Müşavir imzası/mührü için boş alan; yalnız konum değişti. Ayrıntı ve koordinat tablosu `docs/EK9-IMZA-YERI-DUZENI.md`.
+- **Commitler:** `2658f7fd` (düzen 2, v50) + `05451b45` (şablon önbellek koruması); `main`: `484fd02e` → `05451b45` (hızlı ileri sarma, dal `ek9-imza-yeri`, ayrı çalışma ağacı).
+- **Önbellek koruması:** `EK9_SABLON_YOLU` (`public/admin/ek9.js`) = şablon adresi + `?d=EK9_DUZEN`; yönetim paneli (`panel.js`) şablonu yalnız bunla çeker, tarayıcı sınaması aynı sabiti kullanır, `tests/ek9-duzen.test.mjs` düz adresin geri gelmesini engeller. Apps Script şablonu pakete gömülü taşır (siteden çekmez): Apps Script ile site arasında sıra bağımlılığı yoktur; yalnız ek9.js'nin önbellekteki eski sürümü kalırsa EK9_DUZEN 2 sabiti yeni şablonla eşleşmez (şablon adresi düzen sürümünü ek9.js'den alır).
+- **Apps Script paketi:** `D:/tmp/gas/pkg50-ek9duzen.gs` 9.366.431 bayt, SHA-256 `bea8759f9bb8bc800d9250ce02a54d2902bc39d00c046ba54aab01eccfd9fa0f`. Canlı kaynak (v49) doğrulanmış v49 kopyasıyla birebir aynıydı; paket farkı yalnız beklenen satırlar (SURUM, açıklama, gömülü şablon). Yazım sonrası yeniden okunan kod paketle birebir aynı. Sürücü `D:/tmp/gas/dagit_v50_ek9duzen.py` (`GAS_FIREFOX` ile); mevcut dağıtıma yeni sürüm (adres değişmedi). Not: ilk iki deneme editör ekran görüntüsü zaman aşımıyla yazım öncesi durdu (canlı kaynağa dokunulmadı, `--kuru` ile v49 olarak teyit edildi); üçüncü deneme ekran görüntüsü zaman aşımı 120 sn ile geçti. Geri alma kopyası (v49) `D:\tmp\gas\v50ek9duzen-oncesi-dogrulanmis.gs`. Canlı sağlık: `surum: 50`.
+- **Site:** Pages çalıştırması https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/43941932588 — başarılı. Canlı: TR ve FR ihtida başvuru sayfaları `data-asgari-servis-surumu="50"`; canlı şablon PDF düzen dedektörüyle `2`; canlı `admin/ek9.js` `EK9_DUZEN = 2` ve `EK9_SABLON_YOLU`.
+- **Testler:** `npm run test:ihtida` 108/108, `npm run test:ek9`, `tests/ek9-duzen.test.mjs` 4/4 (yeni önbellek testi dâhil), `ihtida:gas-derle`, `npm run build` (1995 sayfa). Tarayıcı sınaması (`tests/web/ihtida.spec.mjs`) bu oturumda koşulmadı.
+- **Koordinatörlük hattı:** `D:\app\ulucamii-site` ana klasöründe `public/admin/ek9.js` ve şablon PDF yayımlanan sürümle eşitlendi (yalnız bu iki dosya).
+- **Açık sınır / UYARI:** `D:/tmp/gas/dagit_v49_p7.py` (Dilim 4 / P7b, dal `dilim4-p7`) hâlâ «v49» numarasını taşır ve v48 üzerine kuruludur; olduğu gibi çalıştırılırsa bugünkü hem v49 hem v50 değişikliklerini silerdi. v51 olarak yeniden numaralanmalı, v50 üzerine yeniden derlenmeli ve sürücüsünün `var SURUM = 50` doğrulama/«beklenen eski» kopyası `v50ek9duzen-yeniden-okunan.gs` olmalıdır.
+- **Geri alma:** Apps Script: `v50ek9duzen-oncesi-dogrulanmis.gs` (v49) aynı sürücü kalıbıyla yeniden dağıtılır; site: `git revert 05451b45 2658f7fd`. Sunucu v49'a dönerse istemci `data-asgari-servis-surumu="50"` bekler ve «sistem güncelleniyor» gösterir; ikisi birlikte geri alınmalıdır.
+
+## 16 Kasım 2026 — İhtida formu: EK-9 alanları boş gitmesin (sebep zorunlu, yer tutucu reddi); Apps Script v49 CANLI
+
+Din görevlisinin açık onayıyla (16 Kasım 2026) yayınlandı. Europe/Brussels: v49 dağıtımı ≈12.59, site push 13.01. Sıra: önce Apps Script, sonra site.
+
+- **Kapsam:** ihtida sebebi zorunlu (en az 10 karakter + 5 harf); doğum yeri, uyruk, anne/baba adı, öğrenim, meslek, önceki din en az 2 Unicode harf («..», «-» reddedilir, «Bilinmiyor» geçer); yönetim penceresi (EK-9 hazırlığı) sekiz alan dolu olmadan nihai nüsha üretmez. Tasarım notu: `docs/IHTIDA-ZORUNLU-ALANLAR-v49.md`.
+- **Commit:** `e0549e98`; `main`: `1a36164c` → `e0549e98` (hızlı ileri sarma, dal `ihtida-zorunlu-v49`, ayrı çalışma ağacı).
+- **Apps Script paketi:** `ulucamii-v49.gs` 9.817.229 bayt, SHA-256 `03f1e5af33a0a3c3000b5b8da4988519b94806be7d154ffdfa04539f09afcf31`. Salt okunan canlı kaynak (v48) son yeniden okunan kopyayla birebir aynıydı; paket farkı yalnız beklenen 44 satır. Yazım sonrası yeniden okunan kod paketle birebir aynı. Sürücü `D:/tmp/gas/dagit_v49_ihtida.py` (`GAS_FIREFOX` ile); mevcut dağıtıma yeni sürüm (adres değişmedi). Yedek `D:\tmp\gas\v49ihtida-oncesi-20261116-125913-862002.gs`. Canlı sağlık: `surum: 49`, `ihtidaEk9Zorunlu: true`, `ihtidaAsgariYas: 18`, `ihtidaPaketHazir: true`.
+- **Site:** «Siteyi yayınla (GitHub Pages)» run [43862811117](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/43862811117) başarılı.
+- **Canlı denetim (yalnız GET, başvuru gönderilmedi):** `/tr/ihtida-basvurusu/` ve `/fr/demande-de-conversion/`: HTTP 200, `data-asgari-servis-surumu="49"`, `ihtidaSebebi` alanı `required` + `minlength="10"`, yeni uyarı metinleri var.
+- **Testler:** `npm run test:ihtida` 104/104.
+- **Açık sınırlar:** gerçek başvuruyla uçtan uca sınama yapılmadı (canlıya gönderim yasak). UYARI: `D:/tmp/gas/dagit_v49_p7.py` (Dilim 4 / P7b, dal `dilim4-p7`) da «v49» numarasını taşır ve v48 üzerine kuruludur; çalıştırılırsa bu v49 değişikliğini silerdi. O paket v50 olarak yeniden numaralanmalı ve bu v49 üzerine yeniden derlenmelidir.
+- **Geri alma:** Apps Script: `v49ihtida-oncesi-dogrulanmis.gs` (v48) aynı sürücüyle yeniden dağıtılır; site: `git revert e0549e98`. Sunucu v48'e dönerse istemci `data-asgari-servis-surumu="49"` bekler ve «sistem güncelleniyor» gösterir; ikisi birlikte geri alınmalıdır.
+
+## 12 Kasım 2026 (akşam, üçüncü) — vaaz: «İhlâs ve Samimiyet» (13 Kasım 2026 Cuma vaazı) beş dilde + duyuru
+
+- Zaman: 12 Kasım 2026, Europe/Brussels (CET). İki aşama:
+  - Türkçe: push 19.47 (`5226e235..25ebb881`), Pages
+    [run 43283490105](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/43283490105) **success**,
+    Türkçe sunum Release ≈19.54, canlı doğrulama 19.55.
+  - Çeviriler + duyurular: push 20.10 (`25ebb881..e1fecd70`), Pages
+    [run 43287492077](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/43287492077) **success**,
+    canlı doğrulama 20.16. **Yayımlandı ve canlı doğrulandı.**
+- Dayanak: kullanıcının isteği («geçtiğimiz haftalarda … paylaştığımız vaazlar gibi vaaz hazırla … full otonom ilerle,
+  bütün yetki ve karar sende»).
+- Kapsam:
+  - TR sayfa `src/content/vaazlar/ihlas-ve-samimiyet.md`: 19 temsilî sahne × 4 boy + `kapak-og.webp` (77 WebP), dört
+    ana fikir, 14 duraklı vaaz haritası, 29 Arapça blok, dokuz vektör şema, ihlâs sözleşmesi ve «Gündelik hayatta 40
+    niyet» eki.
+  - FR/EN/NL/DE çevirileri `src/content/vaaz-cevirileri/<dil>/ihlas-ve-samimiyet.md`.
+  - Beş dilde Word/PDF `public/vaazlar/…`: 15 sayfa; PDF'ler 0,88–1,06 MB.
+  - TR/FR duyuru `src/content/duyurular/{tr,fr}/cuma-vaazi-ihlas-ve-samimiyet.md` (FR duyuru bu hafta Fransızca
+    Word/PDF/sunuma bağlanır).
+- Release `vaaz-ihlas-ve-samimiyet` (Latest yapılmadı): 10 dosya (5 dil × PowerPoint + sunum PDF, 112 slayt).
+  Türkçe sunum ≈19.54, FR/EN/NL/DE sunumları 21.13'te eklendi; canlı denetimde on dosyanın SHA-256'sı yerel teslimle
+  eşit (21.15). 20.16–21.13 arasında çeviri sayfalarındaki sunum bağlantıları henüz boştu.
+- İçerik commit'leri `25ebb881` (80 dosya) ve `e1fecd70` (14 dosya), dernek kimliği.
+- Kalite:
+  - `npm run dogrula`: 29 aşamanın 28'i geçti (derleme 1995 sayfa, `test:vaaz-pdf` dâhil). Düşen tek aşama
+    `test:okuma`'nın ses dosyası denetimi (165 «dosya yok»): okuma sesleri Git'te değildir, yayın çalışma kopyasında
+    yoktur; vaazla ilgisi yok. Zincir orada durduğu için kalan `test:ibadet`, `test:yarisma`, `test:hoca-mfa` ayrıca
+    çalıştırıldı: üçü de çıkış 0.
+  - `web/web_kontrol.mjs` yerel: beş dil 22 görünüm, axe 0, 87 dosya SHA-256 eşit. Canlı (21.15): beş dil 22
+    görünüm, axe 0, 87 dosya ve 10 sunum dosyası SHA-256 eşit.
+  - Çeviri denetimi fr/en/nl/de: HATA 0 (word, web, sunum, figur). Word 5 dil 15 sayfa, yazım 0.
+  - Sunum 5 dil 112 slayt, taşma 0, yazım 0, çakışma 0. Çeviri sunumlarının ek slaytlarında «40 niyet» maddeleri
+    slayta sığması için kısaltıldı; Word ve web'de tam hâlleri yayımlandı.
+  - Meâl kapısı: 32 âyet meâli + 1 kudsî hadis kaynak kaydının birebir dilimi.
+- Açık sınırlar: `npm run test:web` bu yayında çalıştırılmadı (geçen haftaki Cuma bandı testleri vaazdan bağımsız
+  düşüyordu). Sahne görselleri yapay zekâ üretimi temsilî illüstrasyondur.
+
+## 12 Kasım 2026 (akşam, ikinci) — Hoca ekranı: isteğe bağlı iki adımlı doğrulama (TOTP) istemcisi; henüz hiçbir hesapta etkin değil
+
+Din görevlisinin 12 Kasım 2026 kararıyla yayınlandı (isteğe bağlı, yalnız istemci). Europe/Brussels: push yaklaşık 17.25 (CET). Canlı Firebase projesinde, kurallarda, işlevlerde ve hesaplarda hiçbir değişiklik yapılmadı; hiçbir gerçek hesapla giriş yapılmadı.
+
+- **Kapsam:** hoca ekranında girişte (şifre ve e-posta bağlantısı) `auth/multi-factor-auth-required` yakalanır ve 6 haneli kod ekranı açılır; Hesap sekmesinde etkinleştirme (yerel kare kod + anahtar + otpauth bağlantısı) ve onaylı kapatma. Proje düzeyinde TOTP kapalı olduğu için şu an ekran eskisi gibi davranır; faktörü olmayan hesap eskisi gibi girer. Giriş formunda ikinci adım arayüzü giriş öncesinde görünmez. Beş dilli metinler, `docs/HOCA-IKINCI-DOGRULAMA.md`.
+- **Değişen yollar:** `src/lib/hoca-mfa.ts`, `src/scripts/hoca-mfa.ts`, `src/scripts/hoca-ekrani.ts`, `src/i18n/hoca-metin/mfa.ts`, `src/styles/hoca-ilim-yolu.css`, `docs/HOCA-IKINCI-DOGRULAMA.md`, `docs/PROJE-HAFIZASI.md`, `package.json` (`test:hoca-mfa`, `dogrula` zinciri), `tests/hoca-mfa.test.mjs`, `tests/web/hoca-mfa.spec.mjs`, `tests/web/helpers/mektep.mjs`, `tests/csp-kaynak.test.mjs`; ayrı küçük düzeltme: `tests/yarisma-{veri,mantik,sayfa}.test.mjs`.
+- **Commit'ler:** `0786b46e` (istemci), `465c34e7` (ikinci göz bulguları), `426ff4c2` (yarışma testi önbellek yarışı); `main`: `82e279f2` → `426ff4c2`, fast-forward, force yok.
+- **Mevcut kusur düzeltmesi:** `tests/yarisma-veri.test.mjs` ile `tests/yarisma-mantik.test.mjs` paralel koşarken aynı `node_modules/.cache/yarisma-veri-test.mjs` dosyasını yazıyordu (esbuild çıktısı yarım okununca egitim yayınında bir kez `v.HASSAS` tanımsız çıktı). Her test dosyası artık kendi adıyla ön eklenmiş önbellek dosyasını yazar; üç dosya paralel altı turda (18 koşu) 18/18 geçti. Bu yayında «Düğüm testleri» (derle işi) ilk denemede geçti.
+- **Koşular:** Pages [43259560598](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/43259560598) success. egitim [43259560987](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/43259560987): derle ✓, yayinla ✓, canli ✗ (138/139: «çalışma: gerçek ses» denetimi, yanıt 206 olduğu hâlde işaretlendi; ses zamanlaması kaynaklı geçici); aynı denetim elle yeniden `npm run egitim:canli -- https://egitim.ulucamii.be` ile 139/139 geçti. Yayın etkilenmedi (yayinla işi başarılı).
+- **Canlı:** `https://ulucamii.be/hoca/` ve `https://egitim.ulucamii.be/hoca/` 200; beş arayüz dilinde (tr, fr, en, nl, de; dil cihazda seçilir, ayrı adres yok) başsız tarayıcıda giriş formu açılıyor, konsol hatası 0, CSP ihlali 0, ikinci adım kod alanı giriş öncesinde görünmüyor. Dağıtılan hoca betiğinde `multi-factor-auth-required` ve `invalid-multi-factor-session` var (her iki sitede). Sayfada yalnız cami hattı ve dernek kayıt numarası görünür; din görevlisi telefonu yok.
+- **Yerel kapılar:** `npm run dogrula:codex`: design:check, check, dogrula (`test:hoca-mfa` 60/60; düğüm testleri toplamı 1321 geçti), test:web 978 geçti, 120 atlandı, 4 başarısız (Perşembe günü beklenen `cuma-hatirlatma` Playwright başarısızlıkları, her iki projede 2'şer), egitim:build, test:egitim 1130 geçti, test:kurallar, test:ilim-yolu, test:hesap, test:veli-eposta, test:oto-kaydet, test:ogrenme geçti. `hoca-mfa.spec` (her projede 14) ve `hoca-dil.spec` hem masaüstü hem mobil projede geçti. Derlenmiş sayfa kontrolü (ana site ve egitim derlemesi, tr/fr, 360 ve 1280 px): taşma 0, konsol/CSP hatası 0.
+- **Açık sınırlar:** (1) Gerçek Firebase SDK ve sunucu davranışı emülatörde doğrulanamaz; kod akışı sahte (taklit) katmanla sınandı. (2) Proje düzeyinde TOTP henüz etkinleştirilmedi (Identity Platform yükseltmesi/sağlayıcı ayarı sonraki adım). (3) Din görevlisinin kaydı (etkinleştirme) bekliyor. (4) Kurtarma yolu, herhangi bir zorlamadan önce bir deneme hesabında sınanmalı. (5) Kurallarda zorlama yok; ikinci adım şimdilik yalnız istemci tarafında isteğe bağlıdır.
+- **Geri alma:** `git revert 426ff4c2 465c34e7 0786b46e` ve normal push (force yok).
+
+## 12 Kasım 2026 (akşam) — Kur'an kursu yıllık planı beş dilde (fr, en, nl, de gövde metni; taslak çeviri)
+
+Din görevlisinin 12 Kasım 2026 kararıyla yayınlandı (yıllık plan beş dilde; resmî olmayan çeviriler taslak işaretli). Europe/Brussels: push yaklaşık 16.25 (CET).
+
+- **Kapsam:** ana sitede `/{fr,en,nl,de}/…` yıllık plan sayfaları ve İlim Yolu'nda `/{fr,en,nl,de}/kurs/yillik-plan/`: ders başlıkları, blok başlıkları (Kazanım, Konu özeti, Etkinlik önerisi, Ezber) ve her dilde 892 gövde paragrafı çevrildi; çevrilmiş gövdeli her derste görünür «Taslak» etiketi (Brouillon / Draft / Concept / Entwurf, dil başına 261 ders) ve sayfa başında «makine destekli çeviri, ana dili o dil olan biri okumadı» notu. Türkçe sayfa değişmedi. Çevrilmemiş paragraf Türkçe kalır (`lang="tr"`).
+- **Değişen yollar:** `src/data/kurs-ceviri/{fr,en,nl,de}.json` (bölüm `plan`), `src/sayfalar/YillikPlan.astro`, `egitim/src/sayfalar/YillikPlan.astro`, `src/lib/kurs-ceviri-yukle.ts`, `src/lib/kurs-ceviri.mjs`, `tests/yillik-plan-ceviri.test.mjs`, `docs/KURS-CEVIRISI.md`, `docs/MUFREDAT-VE-YILLIK-PLAN.md`, `package.json`; 12 dosya.
+- **İçerik commit'leri:** `702fca14` (düzenek, başlıklar, taslak etiketi), `6fb4a658` (gövde dört dilde); `main`: `06453e5b` → `6fb4a658`, fast-forward, force yok (arada `main` başka commit almadı).
+- **Koşular:** Pages [43247524326](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/43247524326) success; egitim push [43247524352](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/43247524352) ilk koşuda `derle / Düğüm testleri` adımında failure: `tests/yarisma-veri.test.mjs` «hassas gizemli kutular…» `v.HASSAS` tanımsız (üç `yarisma-*.test.mjs` dosyası paralel çalışırken aynı `node_modules/.cache/yarisma-veri-test.mjs` çıktısını yazıyor; yarış durumu, bu işle ilgisiz; yerelde 3/3 geçiyor). Kod değişmeden `gh run rerun --failed` ile yeniden koşuldu: derle, yayinla, canli success; `workflow_run` ile tetiklenen [43248033763](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/43248033763) skipped (olağan). Araya zamanlanmış koşu girmedi.
+- **Canlı:** ana site `https://ulucamii.be/{tr/yillik-ders-plani, fr/plan-annuel-des-cours, en/yearly-lesson-plan, nl/jaarplanning-lessen, de/jahresplan-unterricht}/` ve İlim Yolu `https://egitim.ulucamii.be/{tr,fr,en,nl,de}/kurs/yillik-plan/`: hepsi HTTP 200; fr/en/nl/de'de çeviri dosyasından alınan bilinen bir cümle sayfada var; taslak etiketi fr 262 (261 ders + not), en/nl/de 261; tr sayfaları Türkçe (başlık «Gün Gün Yıllık Ders Planı 2026-2027») ve etiketsiz; imam telefonu dizgisi hiçbir sayfada yok. `npm run egitim:canli -- https://egitim.ulucamii.be`: 139/139 geçti.
+- **Sayfa ağırlığı (HTML, canlı):** tr 565 KB; fr 672 KB, en 633 KB, nl 655 KB, de 669 KB (İlim Yolu: tr 549, fr 703, en 660, nl 684, de 701 KB); yani Türkçeye göre +12…+28 %.
+- **Yerel kapılar:** `npm run dogrula:codex`: design:check, check, dogrula, egitim:build, test:egitim (Playwright 1130 geçti, 34 atlandı), test:kurallar, test:ilim-yolu (108 geçti, 0 başarısız), test:hesap, test:veli-eposta, test:oto-kaydet, test:ogrenme geçti; test:web 950 geçti, 4 başarısız (bilinen, ilgisiz: `cuma-hatirlatma` iki test × masaüstü/mobil, Perşembe tarihine bağlı), 120 atlandı. `node --test tests/yillik-plan-ceviri.test.mjs` 5/5. Derlenmiş sayfa (ana site ve İlim Yolu, tr/fr/en/nl/de, 360 ve 1280 px): gövde sayfa dilinde (Türkçe harf oranı < %0,1), yatay taşma 0, Almanca uzun metinde düzen bozulmadı.
+- **Açık sınırlar:** (1) çeviriler makine destekli taslaktır, ana dili o dil olan biri okumadı. (2) Âyet/hadis/dua metni taşıyan paragraflar depo dışında ayrı listelenmiştir; bunların resmî karşılığı bu yayında doğrulanmadı. (3) Müfredat sayfası gövdesi (`mufredat-2026-2027.html`) çevrilmedi. (4) Plan yeniden üretildiğinde metni değişen paragraflar çeviri anahtarıyla eşleşmez ve Türkçeye düşer; `node scripts/kurs-ceviri-kaynak.mjs` eksikleri listeler. (5) Playwright/axe ile bu sayfalar için ayrı erişilebilirlik taraması yapılmadı. (6) Yarış durumu veren üç `yarisma-*` testi düzeltilmedi (rerun ile geçti).
+- **Geri alma:** `git revert 6fb4a658 702fca14` ve normal push (force yok).
+
+## 12 Kasım 2026 (öğleden sonra, dördüncü) — İlim Yolu: «Kur'an okumanın fazileti» listesine 4. ve 5. hadis
+
+Din görevlisinin açık onayıyla (12 Kasım 2026: «İkisi de eklensin» = eklenir ve yayımlanır) yayınlandı. Europe/Brussels: push yaklaşık 12.50 (CET).
+
+- **Kapsam:** `b-kuran-fazileti-hadisleri` üç hadisten beşe çıktı. 4. hadis: Buhârî, Tefsîr (Abese), 1; Müslim, Müsâfirîn, 244 (Hadislerle İslam c. 1). 5. hadis: Müslim, Müsâfirîn, 269 (Riyâzü's-Sâlihîn c. 2, no. 1000). Türkçe lafızlar Diyanet çevirisinden aynen. İngilizce 4. hadiste resmî (Islam Through Hadiths 1, s. 595, aynen); diğer her şey çalışma çevirisi.
+- **Değişen yollar:** `src/data/ezber/bilgi/b-kuran-fazileti-hadisleri.json`, `docs/ILIM-YOLU-CEVIRI-KAYNAKLARI.md`, `docs/EGITIM-FAZ2-DINLEME.md`, `docs/ezber-bilgi-inceleme/ezber-bilgi-inceleme.html` (üreteçle), `tests/ezber-bilgi.test.mjs`, `tests/egitim/bilgi.spec.mjs`.
+- **İçerik commit'i:** `62e1c2b3` (önceki yerel `239fdfbf`, `4e89a739` üzerine rebase); `main`: `4e89a739` → `62e1c2b3`, fast-forward, force yok.
+- **Koşular:** Pages [43212799798](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/43212799798) success; egitim push [43212799801](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/43212799801) success; `workflow_run` ile tetiklenen [43213152375](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/43213152375) skipped (olağan).
+- **Canlı (`https://egitim.ulucamii.be/{tr,fr,en,nl,de}/calis/b-kuran-fazileti-hadisleri/`):** beş dilde HTTP 200, her sayfada 5 madde; tr sayfada 4. ve 5. hadisin Türkçe metni onaylı lafızla karakter karakter aynı; en sayfada resmî 4. hadis metni var; «Müsâfirîn, 269» künyesi beş dilde var. `npm run egitim:canli -- https://egitim.ulucamii.be`: 139/139 geçti.
+- **Yerel kapılar:** `dogrula:codex`: `check` (astro check 0 hata), `design:check`, `dogrula`, `egitim:build` (+ dist denetimi), `test:egitim` (Playwright 1130 geçti, 34 atlandı), `test:kurallar`, `test:ilim-yolu` (109 test: 108 geçti, 0 başarısız, 1 atlandı), `test:hesap`, `test:veli-eposta`, `test:oto-kaydet`, `test:ogrenme` GEÇTİ; `test:web` 950 geçti, 4 başarısız (bilinen, ilgisiz: `cuma-hatirlatma` iki test × masaüstü/mobil, Perşembe tarih bağımlılığı), 120 atlandı. Elle bakış (derlenmiş sayfa tr ve nl, 360 px ve masaüstü): beş hadis sırayla, künyeler görünür, nl taslak uyarısı doğru, yatay taşma 0.
+- **Açık sınırlar:** (1) fr, nl, de metinleri (ve en 5. hadis) Türkçeden hazırlanmış çalışma çevirisidir, resmî değildir; nl dosya düzeyinde yeniden taslağa girdi (ilk üç nl hadis de taslak uyarısı altında). (2) Arapça eklenmedi: `ar` alanı 60 karakterle sınırlı; 5. hadisin Arapçası arşivde yok. (3) Hadis dereceleri arşiv kaynaklarında belirtilmediğinden sayfada yazılı değil. (4) 5. hadis için çocuk açıklaması yazılmadı. (5) Seslendirme bu maddeyi kapsamaz (bilgi maddelerinde ses yok); eskiyen ses dosyası yok. (6) fr/nl/de için resmî karşılık taraması yalnız mevcut kitap listeleriyle yapıldı.
+- **Geri alma:** `git revert 62e1c2b3` (tek içerik commit'i) ve normal push; egitim ve Pages kendiliğinden yeniden yayınlanır.
+
 ## 12 Kasım 2026 (öğleden sonra, üçüncü) — İhtida formu: 18 yaş altı engeli, Ad/Soyad ayrımı, dilekçe tarihi; Apps Script v48 CANLI
 
 Din görevlisinin açık onayıyla (12 Kasım 2026) yayınlandı. Europe/Brussels: v48 dağıtımı 10:38, site push 10:40.

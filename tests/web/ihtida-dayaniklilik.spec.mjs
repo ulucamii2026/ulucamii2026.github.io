@@ -65,7 +65,7 @@ test('Gönderim kilidi çift isteği engeller; başarıdan sonra taslak yeniden 
   const bekle = new Promise(resolve => { bitir = resolve; });
   await page.route('**/macros/**', async r => {
     if (r.request().method() === 'POST') { post++; await bekle; }
-    await r.fulfill({ json: { ok: true, surum: 48, ihtidaPaketHazir: true, ref: 'IH-2099-9999' } });
+    await r.fulfill({ json: { ok: true, surum: 50, ihtidaPaketHazir: true, ref: 'IH-2099-9999' } });
   });
   await ac(page); await doldur(page);
   await form(page).evaluate(f => { f.requestSubmit(); f.requestSubmit(); });
@@ -87,7 +87,7 @@ test('Ağ hatasından sonra yeniden deneme aynı başvuru anahtarını korur', a
       gelen.push(r.request().postDataJSON());
       if (gelen.length === 1) return r.abort();
     }
-    await r.fulfill({ json: { ok: true, surum: 48, ihtidaPaketHazir: true, ref: 'IH-2099-9999' } });
+    await r.fulfill({ json: { ok: true, surum: 50, ihtidaPaketHazir: true, ref: 'IH-2099-9999' } });
   });
   await ac(page); await doldur(page);
   await form(page).locator('[type=submit]').click();
@@ -112,7 +112,7 @@ test('Ekran daraltıldığında çizilmiş imzanın tamamı PDF gövdesinde koru
   let gelen;
   await page.route('**/macros/**', r => {
     if (r.request().method() === 'POST') gelen = r.request().postDataJSON();
-    return r.fulfill({ json: { ok: true, surum: 48, ihtidaPaketHazir: true, ref: 'IH-2099-9999' } });
+    return r.fulfill({ json: { ok: true, surum: 50, ihtidaPaketHazir: true, ref: 'IH-2099-9999' } });
   });
   await page.setViewportSize({ width: 1280, height: 900 });
   await ac(page); await doldur(page);
@@ -186,7 +186,7 @@ test('İmza tuvali desteklenmiyorsa imzasız seçenek seçilmeden başvuru gönd
   let post = 0;
   await page.route('**/macros/**', r => {
     if (r.request().method() === 'POST') post++;
-    return r.fulfill({ json: { ok: true, surum: 48, ihtidaPaketHazir: true, ref: 'IH-2099-9999' } });
+    return r.fulfill({ json: { ok: true, surum: 50, ihtidaPaketHazir: true, ref: 'IH-2099-9999' } });
   });
   await ac(page); await doldur(page);
   await page.locator('#i-imza-yok').uncheck();

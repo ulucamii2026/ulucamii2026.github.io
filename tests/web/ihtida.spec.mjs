@@ -15,7 +15,7 @@ test('Admin aynı arşiv PDF’sini ve her alıcının gerçek gönderim durumun
   let teslim = false;
   await page.route('https://script.google.com/**', route => {
     const islem = new URL(route.request().url()).searchParams.get('islem');
-    if (islem === 'liste') return route.fulfill({ json: { ok: true, surum: 48, kayitlar: { basliklar: [], satirlar: [] }, ihtidalar: {
+    if (islem === 'liste') return route.fulfill({ json: { ok: true, surum: 50, kayitlar: { basliklar: [], satirlar: [] }, ihtidalar: {
       basliklar: ['Zaman damgası', 'Referans', 'Adı Soyadı', 'E-posta', 'PDF bağlantısı', 'Durum', 'Tam paket PDF'],
       satirlar: [['09.09.2026 12:00', 'IH-2099-9999', 'Deniz Örnek', 'deniz@example.test', 'https://drive.google.com/file/d/test-summary-file-123/view', 'Yeni başvuru', 'https://drive.google.com/file/d/test-packet-file-12345/view']],
     } } });
@@ -79,7 +79,7 @@ for (const [dil, yol] of Object.entries(yollar)) {
     const gonderilen = [];
     await page.route('**/macros/**', route => {
       if (route.request().method() === 'POST') gonderilen.push(route.request().postDataJSON());
-      return route.fulfill({ json: { ok: true, surum: 48, ihtidaPaketHazir: true, ref: 'IH-2099-9999' } });
+      return route.fulfill({ json: { ok: true, surum: 50, ihtidaPaketHazir: true, ref: 'IH-2099-9999' } });
     });
     await formSayfasiniAc(page, `/${dil}/${yol}/`);
     await expect(page.locator('#i-sahit-ekle')).not.toBeChecked();
@@ -328,11 +328,11 @@ test('Tarayıcıdaki yerel fontlarla EK-9 ve imzalı tam paket üretilir', async
   await page.addScriptTag({ url: '/vendor/pdf-lib.min.js' });
   await page.addScriptTag({ url: '/vendor/fontkit.umd.min.js' });
   const sonuc = await page.evaluate(async () => {
-    const { ek9Uret } = await import('/admin/ek9.js');
+    const { ek9Uret, EK9_SABLON_YOLU } = await import('/admin/ek9.js');
     const { ihtidaPaketiUret } = await import('/admin/ihtida-paket.js');
     const getir = async yol => { const r = await fetch(yol); if (!r.ok) throw new Error(yol); return new Uint8Array(await r.arrayBuffer()); };
     const [sablonBytes, fontBytes, fontKalinBytes, fontKaligrafiBytes, fontElYazisiBytes] = await Promise.all([
-      '/belgeler/ihtida/ihtida-belgesi-ek9-ornek.pdf', '/fonts/Lora-Regular.ttf', '/fonts/Lora-Bold.ttf', '/fonts/GreatVibes-Regular.ttf', '/fonts/Caveat-Medium.ttf',
+      EK9_SABLON_YOLU, '/fonts/Lora-Regular.ttf', '/fonts/Lora-Bold.ttf', '/fonts/GreatVibes-Regular.ttf', '/fonts/Caveat-Medium.ttf',
     ].map(getir));
     const kaynak = { pdfLib: window.PDFLib, fontkit: window.fontkit, sablonBytes, fontBytes, fontKalinBytes, fontKaligrafiBytes, fontElYazisiBytes,
       veri: { ref: 'IH-2099-9999', adSoyad: 'Deniz Élodie Örnek', anneAdi: 'İlknur', dogumYeri: 'Liège', dogumTarihi: '20/05/1990', adres: 'Rue du Test 12, 6900, Belçika', beyanTarihi: '09/09/2026', ihtidaTarihi: '08/09/2026', dil: 'fr' } };
@@ -386,7 +386,7 @@ for (const [dil, yol] of Object.entries(yollar)) {
     const gonderilen = [];
     await page.route('**/macros/**', route => {
       if (route.request().method() === 'POST') gonderilen.push(JSON.parse(route.request().postData()));
-      return route.fulfill({ json: { ok: true, surum: 48, ihtidaPaketHazir: true, ihtidaCamiSecimi: true, ref: 'IH-2099-9999' } });
+      return route.fulfill({ json: { ok: true, surum: 50, ihtidaPaketHazir: true, ihtidaCamiSecimi: true, ref: 'IH-2099-9999' } });
     });
     await formSayfasiniAc(page, `/${dil}/${yol}/`); await doldur(page);
     const kimlik = page.locator('input[name="camiId"]');
@@ -474,7 +474,7 @@ async function sahitImzaCiz(page, no) {
 async function sahitliHazirla(page, gonderilen, dil = 'tr', yol = 'ihtida-basvurusu') {
   await page.route('**/macros/**', route => {
     if (route.request().method() === 'POST') gonderilen.push(route.request().postDataJSON());
-    return route.fulfill({ json: { ok: true, surum: 48, ihtidaPaketHazir: true, ihtidaSahitImzasi: true, ref: 'IH-2099-9999' } });
+    return route.fulfill({ json: { ok: true, surum: 50, ihtidaPaketHazir: true, ihtidaSahitImzasi: true, ref: 'IH-2099-9999' } });
   });
   await formSayfasiniAc(page, `/${dil}/${yol}/`);
   await doldur(page);
@@ -659,7 +659,7 @@ for (const [dil, yol] of Object.entries(yollar)) {
     const gonderilen = [];
     await page.route('**/macros/**', route => {
       if (route.request().method() === 'POST') gonderilen.push(route.request().postDataJSON());
-      return route.fulfill({ json: { ok: true, surum: 48, ihtidaPaketHazir: true, ref: 'IH-2099-9999' } });
+      return route.fulfill({ json: { ok: true, surum: 50, ihtidaPaketHazir: true, ref: 'IH-2099-9999' } });
     });
     await formSayfasiniAc(page, `/${dil}/${yol}/`);
     await doldur(page);
@@ -698,7 +698,7 @@ for (const [dil, yol] of Object.entries(yollar)) {
 test('Sunucu yas-siniri derse form aynı bilgi metnini gösterir ve başvuru başarılı sayılmaz', async ({ page }) => {
   await page.route('**/macros/**', route => route.request().method() === 'POST'
     ? route.fulfill({ json: { ok: false, hata: 'yas-siniri' } })
-    : route.fulfill({ json: { ok: true, surum: 48, ihtidaPaketHazir: true } }));
+    : route.fulfill({ json: { ok: true, surum: 50, ihtidaPaketHazir: true } }));
   await formSayfasiniAc(page, '/tr/ihtida-basvurusu/'); await doldur(page);
   await page.locator('form[data-form="ihtida"] button[type="submit"]').click();
   await expect(page.locator('[data-mesaj]')).toContainText('Bu çevrim içi başvuru 18 yaşını doldurmuş kişiler içindir.');

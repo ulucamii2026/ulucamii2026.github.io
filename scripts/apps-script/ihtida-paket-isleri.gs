@@ -511,6 +511,11 @@ function ihtidaPaketOnayIsle(v) {
   try { kayit = ihtidaPaketKayit(v.ref).kayit; } catch (_) { return json({ ok: false, hata: "paket-onay-hatasi" }); }
   var camiId = kayit["Cami kimliği"] || "ulucamii-marche";
   if (!ihtidaPaketOnayDogrula(v.hazirlik, camiId) || !temizAnahtar(v.islemAnahtari)) return json({ ok: false, hata: "paket-onay-gecersiz" });
+  /* 16 Kas 2026 (v49): DHYS boş alanı reddeder. Kayıt + görevlinin düzeltmeleri birleşince sekiz EK-9 alanından biri boş ya da yer tutucu («..», «-»)
+     kalıyorsa ya da ihtida sebebi en az 10 karakter + 5 harf değilse nihai nüsha üretilmez. Eski boş kayıtlar yeniden onaylanırken tamamlanmalıdır. */
+  var e9Eksik = typeof IhtidaPdf.ek9Eksikleri === "function" ? IhtidaPdf.ek9Eksikleri(kayit, v.hazirlik.alanlar) : [];
+  if (e9Eksik.length) return json({ ok: false, hata: "ek9-alan-eksik", alanlar: e9Eksik });
+  if (!ihtidaSebepTamam(IhtidaPdf.sebepKaynagi(kayit, v.hazirlik))) return json({ ok: false, hata: "ek9-sebep-eksik" });
   var lock = LockService.getScriptLock(); lock.waitLock(30000);
   try {
     var is = ihtidaPaketIsiOku(v.ref);

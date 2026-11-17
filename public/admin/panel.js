@@ -1045,12 +1045,12 @@ async function ek9Hazirla() {
     if (!window.PDFLib) await betikYukle('/vendor/pdf-lib.min.js');
     if (!window.fontkit) await betikYukle('/vendor/fontkit.umd.min.js');
     const modul = await import('/admin/ek9.js');
-    ek9Modul = { pdfLib: window.PDFLib, fontkit: window.fontkit, uret: modul.ek9Uret };
+    ek9Modul = { pdfLib: window.PDFLib, fontkit: window.fontkit, uret: modul.ek9Uret, sablonYolu: modul.EK9_SABLON_YOLU };
   }
   if (!ek9Kaynak) {
     const getirBaytlari = (u) => fetch(u).then((r) => { if (!r.ok) throw new Error(u + ' alınamadı'); return r.arrayBuffer(); }).then((b) => new Uint8Array(b));
     const [sablon, font, fontKalin, fontKaligrafi, fontElYazisi, kalem, dilekceSablon, dilekceAdresSablon] = await Promise.all([
-      getirBaytlari('/belgeler/ihtida/ihtida-belgesi-ek9-ornek.pdf'),
+      getirBaytlari(ek9Modul.sablonYolu),   // düzen sürümü sorguda (EK9_SABLON_YOLU): önbellekteki eski şablon yeni koordinatla birleşmez
       getirBaytlari('/fonts/Lora-Regular.ttf'),
       getirBaytlari('/fonts/Lora-Bold.ttf'),
       getirBaytlari('/fonts/GreatVibes-Regular.ttf'),
@@ -1106,7 +1106,7 @@ async function ek9Uretimi(dugme) {
       durumYaz('Paket arşive ve gönderim sırasına alınıyor…');
       const anahtar = paketOnayAnahtari(ref, hazirlik);
       const cevap = await gasPost({ tur: 'ihtida-paket-onay', ref, hazirlik, islemAnahtari: anahtar });
-      if (!cevap.ok) throw new Error(cevap.hata || 'Paket kaydedilemedi.');
+      if (!cevap.ok) throw new Error(cevap.hata === 'ek9-alan-eksik' ? 'EK-9 alanları eksik ya da yer tutucu (' + (cevap.alanlar || []).join(', ') + '). Her alanda en az 2 harf yazın.' : cevap.hata === 'ek9-sebep-eksik' ? 'İhtida sebebi en az 10 karakter ve 5 harf olmalıdır.' : (cevap.hata || 'Paket kaydedilemedi.'));
       await paketDurumAc(ref);
       durumYaz(eskiMetin);
       dugme.disabled = false;

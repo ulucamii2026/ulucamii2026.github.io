@@ -18,11 +18,11 @@ import { ek10SurumuCoz } from '../public/admin/ek10.js';
 import { adBicimleri } from '../public/admin/kalem.js';
 import { pdfMetni } from './yardim/pdf-metin.mjs';
 
-const source = ['kimlik-sabitler.gs', 'veli-eposta-sablon.gs', 'ulucamii-Kod-v49.gs'].map(ad => readFileSync(new URL('../scripts/apps-script/' + ad, import.meta.url), 'utf8')).join('\n');
+const source = ['kimlik-sabitler.gs', 'veli-eposta-sablon.gs', 'ulucamii-Kod-v51.gs'].map(ad => readFileSync(new URL('../scripts/apps-script/' + ad, import.meta.url), 'utf8')).join('\n');
 function backend() { const ctx = vm.createContext({ console, PropertiesService: { getScriptProperties: () => ({ getProperty: () => null }) }, Utilities: { formatDate: (d, tz, f) => f === 'yyyy-MM-dd' ? new Intl.DateTimeFormat('en-CA', { timeZone: tz, year: 'numeric', month: '2-digit', day: '2-digit' }).format(d) : '' } }); vm.runInContext(source, ctx); ctx.IhtidaPdf = { camiCoz, imzaVektorCoz }; return ctx; }
 const govde = () => ({
   sir: 'ULUCAMII-IHTIDA-2026', dil: 'tr', gonderimAnahtari: 'test-islem-2099-9999',
-  basvuran: { adSoyad: 'Deniz Örnek', cinsiyet: 'kadin', dogumTarihi: '1990-05-20', dogumYeri: 'Namur', uyruk: 'Belçika', anneAdi: 'Anne', babaAdi: 'Baba', medeniHali: 'bekar', ogrenimDurumu: 'Lisans', meslek: 'Öğretmen', oncekiDin: 'Belirtilen inanç', eposta: 'deniz@example.test', telefon: '+32470000000', adres: 'Rue du Test 12, 6900, Marche-en-Famenne, Belçika', adresSokak: 'Rue du Test 12', postaKodu: '6900', sehir: 'Marche-en-Famenne', ulke: 'Belçika', torenDili: 'tr' },
+  basvuran: { adSoyad: 'Deniz Örnek', cinsiyet: 'kadin', dogumTarihi: '1990-05-20', dogumYeri: 'Namur', uyruk: 'Belçika', anneAdi: 'Anne', babaAdi: 'Baba', medeniHali: 'bekar', ogrenimDurumu: 'Lisans', meslek: 'Öğretmen', oncekiDin: 'Belirtilen inanç', ihtidaSebebi: 'Kendi araştırmam sonucunda karar verdim.', eposta: 'deniz@example.test', telefon: '+32470000000', adres: 'Rue du Test 12, 6900, Marche-en-Famenne, Belçika', adresSokak: 'Rue du Test 12', postaKodu: '6900', sehir: 'Marche-en-Famenne', ulke: 'Belçika', torenDili: 'tr' },
   teslimat: { yontem: 'adres' }, sahitSecimi: 'kendi', sahitler: [{ ad: 'Birinci Örnek' }, { ad: 'İkinci Örnek' }],
   fotografIzni: false, belgeTuru: 'pasaport', imzaYok: true,
   gorseller: { vesikalik: 'data:image/png;base64,' + 'A'.repeat(400), kimlikOn: 'data:image/png;base64,' + 'A'.repeat(400), kimlikArka: '', imza: '' },
@@ -232,7 +232,7 @@ test('EK-9 mavi el yazısında fontu tam gömer; sade seçenekte eski yazıya d�
     // Ortak şablonun kurum seçimi her üretilen PDF'de korunmalı; Müşavirlik üstü çizilmemeli.
     const ilkAkis = doc.getPage(0).node.Contents().asArray().map(ref => Buffer.from(pdfLib.decodePDFRawStream(doc.context.lookup(ref)).decode()).toString('latin1')).join('');
     const cizgiler = [...ilkAkis.matchAll(/([\d.]+) ([\d.]+) m\s+([\d.]+) ([\d.]+) l\s+\.8 w\s+\.08 \.2 \.48 RG S/g)].map(m => m.slice(1).map(Number));
-    const beklenen = [[144.593, 305.896, 232.859, 305.896], [328.213, 305.896, 411.465, 305.896], [256.38, 244.35, 304.441, 244.35], [434.936, 244.35, 477.344, 244.35]];
+    const beklenen = [[144.593, 312.396, 232.859, 312.396], [328.213, 312.396, 411.465, 312.396], [256.38, 254.6, 304.441, 254.6], [434.936, 254.6, 477.344, 254.6]];   // EK9_DUZEN 2: Türkçe +6,5 pt, İngilizce +10,25 pt (PDF y yukarı doğru)
     assert.equal(cizgiler.length, 4, 'Türkçe ve İngilizce dört kurum alternatifi çizilmeli');
     for (let i = 0; i < 4; i++) for (let j = 0; j < 4; j++) assert.ok(Math.abs(cizgiler[i][j] - beklenen[i][j]) < .02, 'Kurum çizgisi ilgili kelimenin üzerinde olmalı');
     const adlar = [];

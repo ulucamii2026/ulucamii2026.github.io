@@ -46,6 +46,23 @@ Türkçe kalmıştı → fr/en/nl/de'de çevrildi; takvim rozetleri ve tatil not
 rozetler `lang="tr"` ile işaretlendi (eskiden sayfa dilini taşıyan bölümde duruyordu). **Gövde bilerek Türkçe** (`lang="tr"`) ve
 sayfanın dilinde görünür not taşır («ayrıntılı plan Türkçe»).
 
+### Yıllık plan gövdesi: düzenek hazır, içerik pilot (12 Kasım 2026, imamın kararı: beş dilde olsun, resmî olmayanlar taslak)
+
+- **Düzenek:** gövde (kazanım, konu özeti, etkinlik, ezber paragrafı) `src/data/kurs-ceviri/<dil>.json` → `plan` bölümünde: Türkçe paragraf → çeviri
+  (en, nl, de ve yeni `fr.json`; fr dosyası yalnız bu bölümü taşır). Mantık `cevirici(dil).govde()` ve `planParagraflari()` (`src/lib/kurs-ceviri.mjs`).
+  Üretilen `yillik-plan-2026-2027.json`'a ve Word/`yillik-plan-cikar.py`'ye dokunulmadı; plan yeniden üretilince anahtar tutmayan paragraf Türkçeye düşer.
+- **Sayfalar:** ana site `src/sayfalar/YillikPlan.astro` (5 dil; yükleyici `src/lib/kurs-ceviri-yukle.ts`) ve İlim Yolu `egitim/src/sayfalar/YillikPlan.astro`.
+  Ders başlıkları artık `konular-<dil>.json`'dan (daha önce planda Türkçe kalıyordu); gövdesi çevrilmiş derste «Taslak/Brouillon/Draft/Concept/Entwurf»
+  etiketi görünür (egitim: `TaslakEtiketi`); çevrilmemiş paragraf `lang="tr"` ile Türkçe kalır, paragraf başına etiket konmaz (≈ 900 etiket gürültü olurdu);
+  durum sayfa başındaki notta beş dilde yazılı (başlıklar ve çeviriler makine destekli, ana dili o dil olan biri okumadı).
+- **Kapsam (pilot):** 892 tekil paragraftan 10'u her dilde (5 Eylül 2026 Kur'an, İtikat, İbadet dersleri ve 12 Eylül Kur'an dersi). Âyet, hadis ve dua **metni** içeren
+  paragraf bu 10'da yok; olanlar çevrilmez, olduğu gibi Türkçe bırakılır. Dinî terimler ezber kataloğundaki (`src/data/ezber/katalog.json`) ve `konular-<dil>.json`
+  karşılıklarıyla aynı (Kelime-i Tevhid/Şehadet adları, Basmala, mahreç).
+- **Test:** `tests/yillik-plan-ceviri.test.mjs` (`npm run test:gunluk` içinde): dört dilin anahtar kümesi eşit, her anahtar plandaki paragrafla birebir, biçim kuralları,
+  düşüş zinciri; kapsam sayısını bilgi olarak yazar (eksik başarısızlık değildir).
+- **Eksik paragrafı bulmak:** `planParagraflari(plan)` ile bindirmedeki anahtarların farkı; çeviri `plan` bölümüne eklenir, test geçmeli. Kalan hacim ve önerilen yol aşağıdaki değerlendirmede;
+  **Müfredat sayfası gövdesi (`mufredat-2026-2027.html`) bu işte çevrilmedi** (`mufredat-uret.py` depo dışında, dil başına HTML istiyor).
+
 ### Gövdeyi çevirmenin maliyeti (değerlendirme)
 
 - **Tek kaynak:** Word belgesi (`…/Ulu Camii Kuran Kursu/2026-2027 Mufredat ve Yillik Plan/`, bkz. MUFREDAT-VE-YILLIK-PLAN.md «Tekrar
