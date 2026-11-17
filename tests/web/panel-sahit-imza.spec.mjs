@@ -40,7 +40,7 @@ async function panelHazirla(page, imza = 'tamam') {
       } },
     });
     if (islem === 'belge') return route.fulfill({ json: { ok: true,
-      kayit: { 'Zaman damgası': '09.09.2026 12:00', 'Adı Soyadı': 'Deniz Örnek', 'Adres': 'Rue du Test 12, 6900, Marche-en-Famenne, Belçika',
+      kayit: { 'Zaman damgası': '09.09.2026 12:00', 'Adı Soyadı': 'Deniz Örnek', 'Anne adı': 'Anne Örnek', 'Baba adı': 'Baba Örnek', 'Medeni hali': 'bekar', 'Öğrenim durumu': 'lisans', 'Mesleği': 'Öğretmen', 'Önceki din/mezhep': 'ateist', 'İhtida sebebi': 'Kendi araştırmam sonucunda.', 'Adres': 'Rue du Test 12, 6900, Marche-en-Famenne, Belçika',
         'Doğum tarihi': '1990-05-20', 'Doğum yeri': 'Liège', 'Uyruk': 'Belçika', 'Telefon': '+32470000000', 'E-posta': 'deniz@example.test',
         'Form dili': 'fr', 'EK-10 rızası': 'Evet', 'EK-10 sürümü': '2026-10', 'İmza aktarım izni': 'Hayır', 'Belge teslim yeri': 'cami' },
       vesikalik: FOTO, basvuranImza: '', basvuranImzaVektor: '', gorseller: { imza: '', imzaVektor: '' } } });

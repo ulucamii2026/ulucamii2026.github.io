@@ -15,7 +15,7 @@ async function ac(page, dil = 'tr') {
   await page.locator('[data-adim-tumu]').click();
 }
 async function doldur(page) {
-  for (const [id, value] of Object.entries({ ad: 'Deniz', soyad: 'Örnek', dogum: '1990-05-20', 'dogum-yeri': 'Namur', uyruk: 'Belgique', anne: 'Anne Örnek', baba: 'Baba Örnek', ogrenim: 'Lisans', meslek: 'Öğretmen', eposta: 'deniz@example.test', telefon: '+32470000000', adres: 'Rue du Test 12', 'posta-kodu': '6900', sehir: 'Marche-en-Famenne', ulke: 'Belgique', 'onceki-din': 'Belirtilen inanç', beyan: 'Deniz Örnek' })) await page.locator(`#i-${id}`).fill(value);
+  for (const [id, value] of Object.entries({ ad: 'Deniz', soyad: 'Örnek', dogum: '1990-05-20', 'dogum-yeri': 'Namur', uyruk: 'Belgique', anne: 'Anne Örnek', baba: 'Baba Örnek', ogrenim: 'Lisans', meslek: 'Öğretmen', eposta: 'deniz@example.test', telefon: '+32470000000', adres: 'Rue du Test 12', 'posta-kodu': '6900', sehir: 'Marche-en-Famenne', ulke: 'Belgique', 'onceki-din': 'Belirtilen inanç', sebep: 'Kendi araştırmam sonucunda.', beyan: 'Deniz Örnek' })) await page.locator(`#i-${id}`).fill(value);
   await page.locator('#i-cins-kadin').check();
   await page.locator('#i-medeni').selectOption('bekar');
   await page.locator('#i-belge-pasaport').check();
