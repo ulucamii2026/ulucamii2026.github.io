@@ -144,11 +144,11 @@
       "de": "https://ulucamii.be/de/datenschutz/"
     },
     "veliPortali": {
-      "tr": "https://ulucamii.be/tr/veli-portali/",
-      "fr": "https://ulucamii.be/fr/portail-parents/",
-      "en": "https://ulucamii.be/en/parents-portal/",
-      "nl": "https://ulucamii.be/nl/ouderportaal/",
-      "de": "https://ulucamii.be/de/elternportal/"
+      "tr": "https://egitim.ulucamii.be/tr/veli/",
+      "fr": "https://egitim.ulucamii.be/fr/veli/",
+      "en": "https://egitim.ulucamii.be/en/veli/",
+      "nl": "https://egitim.ulucamii.be/nl/veli/",
+      "de": "https://egitim.ulucamii.be/de/veli/"
     },
     "banka": {
       "iban": "BE02 7320 0173 5240",

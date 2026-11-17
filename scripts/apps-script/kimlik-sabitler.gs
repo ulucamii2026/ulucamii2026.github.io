@@ -1,4 +1,4 @@
-/* ÜRETİLDİ — elle düzenleme; kaynak: D:/vektorel-calismalar/ulu-camii-kurumsal-kimlik/05-yazisma/kimlik.json; sürüm: 2026-09-21a; sha256: 7cab95a24cc7700d78f284e71569bb2b9e503a39fe9f01544283dc4a60f0a450 */
+/* ÜRETİLDİ — elle düzenleme; kaynak: D:/vektorel-calismalar/ulu-camii-kurumsal-kimlik/05-yazisma/kimlik.json; sürüm: 2026-09-21a; sha256: 9a94c824c3be6727a93f182db4461f03c4642f79fae8160bff768e6cc1072403 */
 var KIMLIK = {
   "aciklama": "Ulu Camii Marche-en-Famenne — kurumsal kimliğin MAKİNE OKUNUR TEK KAYNAĞI (13 Eylül 2026). E-posta şablonu, Word antet üreticisi, imzalar ve betikler bu dosyadan okur. Değişiklik yalnız burada yapılır; kopyalar üretilir.",
   "surum": "2026-09-21a",
@@ -145,11 +145,11 @@ var KIMLIK = {
       "de": "https://ulucamii.be/de/datenschutz/"
     },
     "veliPortali": {
-      "tr": "https://ulucamii.be/tr/veli-portali/",
-      "fr": "https://ulucamii.be/fr/portail-parents/",
-      "en": "https://ulucamii.be/en/parents-portal/",
-      "nl": "https://ulucamii.be/nl/ouderportaal/",
-      "de": "https://ulucamii.be/de/elternportal/"
+      "tr": "https://egitim.ulucamii.be/tr/veli/",
+      "fr": "https://egitim.ulucamii.be/fr/veli/",
+      "en": "https://egitim.ulucamii.be/en/veli/",
+      "nl": "https://egitim.ulucamii.be/nl/veli/",
+      "de": "https://egitim.ulucamii.be/de/veli/"
     },
     "banka": {
       "iban": "BE02 7320 0173 5240",
