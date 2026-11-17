@@ -4,6 +4,16 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 18 Kasım 2026 — kurumsal kimlik: veli portalı bağlantısı egitim adresine çevrildi (P7 açık sınır 4)
+
+Rıdvan'ın onayıyla («Evet, taşımadan sonra»). Europe/Brussels.
+
+- **Kapsam:** `kimlik.json` (`D:/vektorel-calismalar/ulu-camii-kurumsal-kimlik/05-yazisma/`, Git deposu değil) `iletisim.veliPortali` beş dilde `https://egitim.ulucamii.be/<dil>/veli/` (tr, fr, en, nl, de; hepsi canlıda HTTP 200). `npm run kimlik:uret` sonrası tek fark bu bağlantılar ve sha satırı.
+- **Değişen yollar / commit:** `src/data/kurumsal-kimlik.json`, `scripts/apps-script/kimlik-sabitler.gs`; commit `34b3bb60`, `main` `6b778434` → `34b3bb60`.
+- **Yayın:** Pages https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/44198847880 — başarılı; egitim yayını https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/44198847955 — başarılı (ikinci egitim koşusu 44199205207 atlandı). Site sayfaları bu veriyi kullanmaz (yalnız `eposta-onizle.mjs` ve Apps Script sabitleri); canlı sayfalarda görünür değişiklik yok.
+- **Testler:** `test:veli-eposta` 66/66, `test:kimlik` 31/31, `kimlik:denetle` eş, `npm run check` 0 hata.
+- **Açık sınırlar:** canlı Apps Script v51 eski sabiti taşır, v52 dağıtımında yeni bağlantı gelir; `portal-yonetim.py` davet e-postası (`VELI_YOLU`, `SITE`) ve `veli-cuma.gs` yedek okuma satırı hâlâ eski adresi sabit yazar (yönlendirilir, çalışır).
+
 ## 18 Kasım 2026 gece — P7 taşıması (veli portalı, hoca ekranı ve kurs sayfaları egitim.ulucamii.be'ye); Apps Script v50 → v51 CANLI
 
 Rıdvan'ın emriyle (17–18.11.2026 gecesi: «mümkünse hemen», «tam otonom devam et»). Europe/Brussels (CET): v51 dağıtımı ≈00.05, site push 00.07, Pages 00.10, egitim yayını 00.13, canlı denetim 00.13–00.17. Sıra: önce Apps Script, sonra site.
