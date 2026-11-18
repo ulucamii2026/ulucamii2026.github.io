@@ -226,7 +226,8 @@ test('Her sayfa manifest ve tema rengiyle bağlı; manifest alanları, kapsamı 
   assert.ok(sayfalar.length > 350, `yalnız ${sayfalar.length} sayfa`);
   const manifest = JSON.parse(readFileSync(dosya('manifest.webmanifest'), 'utf8'));
   // Kök (/) yalnız dile yönlendiren ince sayfadır (Taban kullanmaz); uygulama dil sayfalarından kurulur, başlangıç adresi `/` yönlendirmeyle dile gider.
-  for (const s of sayfalar.filter((x) => x !== join(DIST, 'index.html'))) {
+  // Google Search Console doğrulama dosyası (google<özet>.html) sayfa değil, düz metindir; manifest/tema taşımaz.
+  for (const s of sayfalar.filter((x) => x !== join(DIST, 'index.html') && !/[\\/]google[0-9a-f]{16}\.html$/.test(x))) {
     const html = readFileSync(s, 'utf8');
     // Veli portalı (/<dil>/veli/) kendi dil manifestini taşır (kapsam /<dil>/veli/); ortak manifest orada basılmaz.
     const veliDili = /[\\/](tr|fr|en|nl|de)[\\/]veli[\\/]index\.html$/.exec(s)?.[1];
