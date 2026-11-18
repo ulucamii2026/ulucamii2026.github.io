@@ -170,13 +170,20 @@ a.gorunmez:focus-visible { position: fixed !important; top: 0.75rem; left: 0.75r
 @media (max-width: 22.49rem) { .ust-eylem .dugme { padding-inline: 0.65rem; font-size: 0.86rem; } }
 /* Oturum durumu: oturum işareti varsa public/oturum-isareti.js <html data-oturum> koyar (Firebase'siz, boyamadan önce). */
 html:not([data-oturum]) [data-girisli], html[data-oturum] [data-misafir] { display: none !important; }
+/* Geniş ekranda iki satır: marka + hesap düğmeleri üstte, menü + dil anahtarı altta. Fransızca/Almanca/Felemenkçe marka adı ve menü tek satıra
+   sığmıyordu (marka harf harf kırılıyor, 1024 px'te yatay taşma). Tek satır yalnız 105rem'den (1680 px) itibaren; marka kelime içinde kırılmaz. */
 @media (min-width: 64rem) {
-  .ust-ic { grid-template-columns: auto 1fr auto auto; grid-template-areas: "damga menu diller sag"; gap: 1.5rem; padding-block: 0.9rem; }
-  .ust-menu { grid-area: menu; display: flex; justify-content: center; gap: 1.6rem; }
+  .ust-ic { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "damga sag" "menu diller"; gap: 0.5rem 1.5rem; padding-block: 0.9rem; }
+  .damga-ad { white-space: nowrap; overflow-wrap: normal; }
+  .ust-menu { grid-area: menu; display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 0 1.6rem; }
   .ust-menu a { display: inline-flex; align-items: center; gap: 0.35rem; min-height: 2.75rem; color: var(--murekkep); text-decoration: none; font: 600 1rem/1 var(--baslik); position: relative; }
   .ust-menu a[aria-current="page"]::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0.4rem; height: 4px;
     background: repeating-linear-gradient(90deg, var(--kokboya) 0 6px, var(--safran) 6px 12px); }
   .ust-menu a:hover { color: var(--kokboya-yazi); }
+}
+@media (min-width: 105rem) {
+  .ust-ic { grid-template-columns: auto 1fr auto auto; grid-template-areas: "damga menu diller sag"; gap: 1.5rem; }
+  .ust-menu { justify-content: center; }
 }
 
 /* ——— Düğmeler ——— */
