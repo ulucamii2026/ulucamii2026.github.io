@@ -26,6 +26,8 @@ const tasmaYok = (page) => page.evaluate(() => document.documentElement.scrollWi
 for (const dil of DILLER) {
   for (const s of SAYFALAR) {
     test(`${dil}/kurs/${s}: dizine açık, kanonik egitim + hreflang, bloklar, CSP 0, konsol 0, taşmasız${AXE(dil, s) ? ', iki temada axe' : ''}`, async ({ page }) => {
+      // Test ortamı düzeltmesi: müfredat sayfası çok büyük (iki temada axe ~30 sn sürer); iki işçi paralelken 30 sn sınırına takılıyordu.
+      if (AXE(dil, s)) test.setTimeout(120_000);
       const hatalar = [];
       page.on('pageerror', (e) => hatalar.push(e.message));
       page.on('console', (m) => { if (m.type() === 'error' && !/net::ERR_FAILED|Failed to load resource/.test(m.text())) hatalar.push(m.text()); });
