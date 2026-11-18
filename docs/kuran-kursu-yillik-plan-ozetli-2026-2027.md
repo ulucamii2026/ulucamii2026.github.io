@@ -4,8 +4,8 @@
 > düzeltmeler `mufredat/ozet-duzeltmeler.json` üzerinden yapılır.
 
 - **Kaynak:** Ulu Camii Kuran Kursu 2026-2027 Mufredat ve Yillik Ders Plani.docx + Ulu Camii Kuran Kursu 2026-2027 Yillik Plan.html
-- **Üretim:** 2026-09-24T17:37:12+02:00
-- **Kapsam:** 87 ders günü · 261 ders saati · beş ders alanı
+- **Üretim:** 2026-11-18T13:58:18+01:00
+- **Kapsam:** 86 ders günü · 258 ders saati · beş ders alanı
 
 ## Eylül 2026 — 8 ders günü
 
@@ -468,7 +468,7 @@ Kaynak: Camiye Gidiyorum 1 s. 197–204
 - *Konu özeti:* 32. ünite, çocukları "ibadet yerleri" teması etrafında kapsamlı bir yolculuğa çıkarır. Önce caminin Müslümanlar için taşıdığı anlam ve işlevler somut biçimde açıklanır: toplu ibadet, cemaat ruhu, ezan ve yardımlaşma. Ardından perspektif genişletilerek İslam, Yahudilik ve Hristiyanlığın ibadet mekânları (cami, havra, kilise) karşılaştırmalı bir bakışla ele alınır; her dinin özel gün ve kuralları tanıtılır. Üçüncü aşamada caminin iç dünyası ayrıntılandırılır: mihrap, minber, minare gibi mimari unsurlar görseller aracılığıyla öğretilir ve imam, müezzin, kayyum gibi görev sahipleri tanıtılır. Ünite, hac ibadetinin ihram, vakfe, şeytan taşlama, tavaf ve sa'y gibi temel rükünleriyle tamamlanır.
 - *Etkinlik önerisi:* Çok beğenilen bir caminin dış görüntüsünü çiz. / Caminin içini gösteren bir resim çiz. / Camide yaşanan anılarla ilgili kısa bir hikâye yaz.
 
-## Kasım 2026 — 9 ders günü
+## Kasım 2026 — 8 ders günü
 
 ### 1 Kasım 2026 · Pazar · Hafta 9
 
@@ -575,36 +575,17 @@ Kaynak: Camiye Gidiyorum 2 s. 58–63
 
 ### 15 Kasım 2026 · Pazar · Hafta 11
 
-**10:00-10:40 · Kur’an-ı Kerim · Sâkinlik Pekiştirmesi**  
-Kaynak: Elifbâ s. 14
+*Ders yapılmadı*
 
-- *Kazanım:* Öğrenci, sâkin ve şeddeli okuma örneklerini doğru uygular.
-- *Konu özeti:* Cezm ve şedde içeren karışık kelimeler kısa okuma sınavıyla tekrar edilir. Her öğrenciye bireysel okuma sırası verilir ve hatalı sesler anında düzeltilir.
-
-**11:00-11:40 · Siyer · Mekke dönemi: İlk vahiy ve İslam'a davet**  
-Kaynak: Camiye Gidiyorum 2 s. 75–78
-
-- *Kazanım:* Öğrenci, Hz. Muhammed'in (s.a.s.) kırk yaşına yaklaşırken Hira Mağarası'na çekilip tefekkür ettiğini ve orada Cebrail (a.s.) aracılığıyla ilk vahyi aldığını anlatır. • Öğrenci, ilk inen ayetlerin Alak sûresinin ilk beş ayeti olduğunu ve "Oku!" emriyle başladığını söyler. • Öğrenci, Hz. Hatice'nin Peygamberimizi teselli edişini ve Varaka'nın bu olayı Hz. Mûsâ ile Hz. Îsâ'ya gelen vahiyle ilişkilendirdiğini açıklar. • Öğrenci, Hz. Muhammed'in önce gizlice, sonra Safâ tepesinde açıkça tebliğe başladığını belirtir.
-- *Konu özeti:* Kırk yaşına yaklaşan Hz. Muhammed (s.a.s.), tefekkür için sık sık Nur Dağı'ndaki Hira Mağarası'na çekiliyordu. 610 yılı Ramazan ayında mağaradayken melek Cebrail (a.s.) ona görünüp 'Oku!' dedi ve Alak sûresinin ilk beş ayetini okuttu; böylece ilk vahiy gerçekleşti. Korku içinde evine dönen Peygamberimizi eşi Hz. Hatice teselli etti; onun akrabası Varaka, yaşananları Hz. Mûsâ ve Hz. Îsâ'ya gelen vahiyle karşılaştırıp bunun peygamberlik alâmeti olduğunu, ileride toplumunun onu bu topraklardan çıkarabileceğini söyledi. Peygamberimiz önce yakınlarına gizlice, sonra Safâ tepesine çıkıp Mekkelilere açıkça Allah'a iman etmeye ve kötülüklerden sakınmaya çağırarak tebliğe başladı.
-- *Etkinlik önerisi:*
-    - Alak sûresinin ilk beş ayetinin mealini ekrandan hep birlikte okuma.
-    - "Oku!" emrinin Hz. Muhammed'e ne hissettirmiş olabileceğini sözlü paylaşma.
-    - Varaka'nın Hz. Mûsâ ve Hz. Îsâ ile yaptığı benzetmeyi "Neden peygamberler zorluklarla karşılaşır?" sorusuyla tartışma.
-
-**12:00-12:40 · Ahlak · Güzel konuşur ve güzel davranırım**  
-Kaynak: Camiye Gidiyorum 1 s. 205–210
-
-- *Kazanım:* Öğrenci, güzel sözlerin ve kaba sözlerin insanlar üzerindeki farklı etkilerini karşılaştırarak açıklar. • Öğrenci, İslam geleneğinde kullanılan teşekkür, özür dileme ve selam verme ifadelerini tanır ve günlük hayatta uygular. • Öğrenci, 'Yankı' hikâyesinden hareketle söylediği sözlerin karşısındakine yansıyacağını örnekle ifade eder. • Öğrenci, Buhârî'den aktarılan hadisi ve Hac Suresi 30. ayeti okuyarak anlam ve mesajını kendi cümleleriyle açıklar. • Öğrenci, 'Cüzdan' hikâyesindeki olayları sıralayarak yalanın zararlarını ve dürüstlüğün önemini ifade eder. • Öğrenci, güzel söz ve davranışlarla kaba söz ve davranışları birbirinden ayırt ederek örnekler verir.
-- *Konu özeti:* 33. ünite, "Güzel konuşur ve güzel davranırım" başlığıyla çocuğu dil ve davranış ahlakının temelleriyle tanıştırmaktadır. Ünite boyunca güzel sözlerin insanı yücelteceği, kaba sözlerin ise hem söyleyene hem dinleyene zarar verdiği vurgulanmakta; bu gerçek "Yankı" adlı hikâye üzerinden somutlaştırılmaktadır: Bilal'in dağda bağırdığını duyması, çocuğa söylediklerinin karşısındakine aynen yansıyacağını öğretmektedir. Ardından günlük hayatta nezaketi pekiştiren teşekkür, özür dileme ve selam verme gibi İslam geleneğine özgü ifadeler ele alınmakta; bu ifadelerin hem dinî hem toplumsal boyutu öne çıkarılmaktadır. Ünite, 'Cüzdan' hikâyesiyle dürüstlüğün önemini işleyerek tamamlanır.
-- *Etkinlik önerisi:* Sınıfça 'güzel sözler ağacı' hazırlama: öğrenciler sevdikleri güzel sözleri yapraklara yazarak ağaca ekler. / Sınıfça 'kaba sözler ağacı' hazırlama: söylenmesini istemediğimiz ifadeler tespit edilerek ağaca asılır. / Sıra arkadaşıyla iyi ve kaba sözler karşısında nasıl davranılacağını gösteren afiş hazırlama.
+Ders yapılmayacak.
 
 ### 21 Kasım 2026 · Cumartesi · Hafta 12
 
 **10:00-10:40 · Kur’an-ı Kerim · İki Üstün**  
-Kaynak: Elifbâ s. 23
+Kaynak: Elifbâ s. 14; s. 23
 
 - *Kazanım:* Öğrenci, iki üstünlü kelimeleri doğru ses değeriyle okur.
-- *Konu özeti:* İki üstünün kelime sonunda en veya an sesi verdiği örneklerle öğretilir. Öğrenciler tenvinli harfleri tek tek okur ve kelime sonunda sesi düşürmeden tekrar eder.
+- *Konu özeti:* Derse yaklaşık on dakikalık bir sâkinlik pekiştirmesiyle (Elifbâ s. 14) başlanır. Cezm ve şedde içeren karışık kelimeler kısa okuma sınavıyla tekrar edilir. Her öğrenciye bireysel okuma sırası verilir ve hatalı sesler anında düzeltilir. Ardından iki üstünün kelime sonunda en veya an sesi verdiği örneklerle öğretilir. Öğrenciler tenvinli harfleri tek tek okur ve kelime sonunda sesi düşürmeden tekrar eder.
 
 **11:00-11:40 · İtikat · Allah'ın meleklerine inanıyorum: Görünmeyen varlıklar ve melekler**  
 Kaynak: Camiye Gidiyorum 2 s. 46–51
@@ -636,21 +617,29 @@ Kaynak: Elifbâ s. 24
 - *Konu özeti:* İki esrenin in sesini verdiği ve kelime sonundaki okunuşu anlatılır. Öğrenciler örnekleri önce yavaş, sonra akıcı okuyarak tenvin sesini pekiştirir.
 
 **11:00-11:40 · Siyer · Peygamber oluşu ve gizli davet**  
-Kaynak: Temel Dinî Bilgiler s. 267–270
+Kaynak: Camiye Gidiyorum 2 s. 75–78; Temel Dinî Bilgiler s. 267–270
 
 - *Kazanım:* Öğrenci, kırk yaşındaki Hz. Muhammed'e (s.a.s.) 610 yılı Ramazan ayında Hira Mağarası'nda Cebrail (a.s.) aracılığıyla Alak sûresinin ilk beş ayetinin indiğini anlatır. • Öğrenci, "vahyin fetret devri"ni ve bu dönemin ardından Müddessir sûresiyle vahyin yeniden başladığını açıklar. • Öğrenci, ilk Müslümanları (Hz. Hatice, Hz. Ali, Zeyd bin Hârise, Hz. Ebû Bekir) sayar ve gizli davetin üç yıl sürdüğünü söyler. • Öğrenci, müşriklerin baskısı yüzünden Müslümanların Habeşistan'a iki kafile halinde hicret ettiğini ve Kral Necâşî'nin onları haklı bulup koruduğunu anlatır.
-- *Konu özeti:* Kırk yaşındaki Hz. Muhammed'e (s.a.s.), 610 yılı Ramazan ayında Hira Mağarası'nda Cebrail (a.s.) görünüp Alak sûresinin ilk beş ayetini bildirdi; bu ilk vahiyden sonra bir süre vahiy kesildi (fetret devri), ardından Müddessir sûresiyle yeniden başladı. Peygamberimiz önce güvendiği kişileri gizlice İslam'a davet etti; ilk Müslümanlar eşi Hz. Hatice, Hz. Ali, Zeyd bin Hârise ve Hz. Ebû Bekir oldu; gizli davet üç yıl sürdü ve Müslümanların sayısı otuzu geçti. Müşriklerin artan eziyeti üzerine on bir erkek ve dört kadından oluşan ilk kafile (içlerinde Hz. Osman ve eşi Rukiye) Habeşistan'a hicret etti; bir yıl sonra Cafer-i Tayyar önderliğinde seksen kişilik ikinci grup da onlara katıldı. Hıristiyan Kral Necâşî, Mekkeli elçilerin isteğine rağmen Müslümanları haklı bulup himaye etti.
+- *Konu özeti:*
+    - Kırk yaşına yaklaşan Hz. Muhammed (s.a.s.), tefekkür için sık sık Nur Dağı'ndaki Hira Mağarası'na çekiliyordu. 610 yılı Ramazan ayında mağaradayken melek Cebrail (a.s.) ona görünüp 'Oku!' dedi ve Alak sûresinin ilk beş ayetini okuttu; böylece ilk vahiy gerçekleşti. Korku içinde evine dönen Peygamberimizi eşi Hz. Hatice teselli etti; onun akrabası Varaka, yaşananları Hz. Mûsâ ve Hz. Îsâ'ya gelen vahiyle karşılaştırıp bunun peygamberlik alâmeti olduğunu, ileride toplumunun onu bu topraklardan çıkarabileceğini söyledi. Bu ilk vahiyden sonra bir süre vahiy kesildi (fetret devri), ardından Müddessir sûresiyle yeniden başladı.
+    - Peygamberimiz önce güvendiği kişileri gizlice İslam'a davet etti; ilk Müslümanlar eşi Hz. Hatice, Hz. Ali, Zeyd bin Hârise ve Hz. Ebû Bekir oldu; gizli davet üç yıl sürdü ve Müslümanların sayısı otuzu geçti. Gizli davet döneminin ardından Peygamberimiz Safâ tepesine çıkıp Mekkelilere açıkça Allah'a iman etmeye ve kötülüklerden sakınmaya çağırdı. Müşriklerin artan eziyeti üzerine on bir erkek ve dört kadından oluşan ilk kafile (içlerinde Hz. Osman ve eşi Rukiye) Habeşistan'a hicret etti; bir yıl sonra Cafer-i Tayyar önderliğinde seksen kişilik ikinci grup da onlara katıldı. Hıristiyan Kral Necâşî, Mekkeli elçilerin isteğine rağmen Müslümanları haklı bulup himaye etti.
 - *Etkinlik önerisi:*
+    - Alak sûresinin ilk beş ayetinin mealini ekrandan hep birlikte okuma.
+    - "Oku!" emrinin Hz. Muhammed'e ne hissettirmiş olabileceğini sözlü paylaşma.
     - Fetret devrinin ne anlama geldiğini sözlü olarak tanımlama ve ilk vahiy ile Müddessir sûresi arasındaki bekleyişi zaman çizelgesinde gösterme.
     - İlk Müslümanların adlarını ekrana yansıtıp sırayla tekrar etme.
     - "Necâşî neden Müslümanları haklı buldu?" sorusunu sınıfça tartışma.
 
 **12:00-12:40 · Ahlak · Hz. Muhammed (s.a.s.) dedi ki**  
-Kaynak: Camiye Gidiyorum 1 s. 211–214
+Kaynak: Camiye Gidiyorum 1 s. 205–214
 
 - *Kazanım:* Öğrenci, hadis kavramını 'Hz. Peygamber'in söylediği sözler' olarak tanımlar. • Öğrenci, iyiliğe aracı olmanın sevap kazandırdığını somut bir örnekle açıklar. • Öğrenci, 'Güçlü adam öfkesini yenendir' hadisini ezberler ve anlamını kendi cümleleriyle ifade eder. • Öğrenci, Hz. Peygamber'in anneye hizmet ile ilgili öğüdünü ezberleyerek günlük hayatta nasıl uygulayabileceğine dair örnek verir. • Öğrenci, yalancılık ve ahlaksızlığın sonuçlarını ilgili hadis üzerinden açıklar. • Öğrenci, insanlara kolaylık gösterme ve müjdeleme ilkesini hadisle ilişkilendirerek kendi hayatından bir örnek üretir.
-- *Konu özeti:* 34. ünite, Hz. Peygamber'in (s.a.s.) hadislerini ve ahlakî öğütlerini merkeze alarak çocuklara İslam ahlakının temel değerlerini kazandırmayı amaçlamaktadır. Ünite, "İyilik sana döner" başlıklı bir hikâyeyle açılır: ailesiyle küs olan bir çocuğun soğuk kış gününde yabancı bir yaşlıya yardım etmesi ve bu iyiliğin sonunda kendi babasına dönmesi üzerinden iyiliğin ve yardımseverliğin somut karşılığı gösterilmektedir. Hz. Peygamber bu olayı yorumlayarak iyiliğe aracı olmanın bile sevap kazandırdığını öğretir; böylece çocuk iyiliğin zincirleme bir etki yarattığını kavrar. Ardından dört temel hadis ele alınmaktadır. Öfkeyi yenmek, anneye hizmet, dürüstlük ve kolaylık konuları işlenir.
-- *Etkinlik önerisi:* 'Kim bir hayra vesile olursa, ona o hayrı işleyenin ecri kadar sevap vardır.' (Müslim, İmâre 133) hadisini ezberleyerek hikâyeyi yansıtan bir resim çizme. / Hadisi ezberleyerek hadise uygun özgün bir hikâye yazma. / Hadisi ezberleyerek insanlara nasıl iyilik edilebileceğini deftere listeleme.
+- *Konu özeti:*
+    - 33. ünite, "Güzel konuşur ve güzel davranırım" başlığıyla çocuğu dil ve davranış ahlakının temelleriyle tanıştırmaktadır. Ünite boyunca güzel sözlerin insanı yücelteceği, kaba sözlerin ise hem söyleyene hem dinleyene zarar verdiği vurgulanmakta; bu gerçek "Yankı" adlı hikâye üzerinden somutlaştırılmaktadır: Bilal'in dağda bağırdığını duyması, çocuğa söylediklerinin karşısındakine aynen yansıyacağını öğretmektedir. Ardından günlük hayatta nezaketi pekiştiren teşekkür, özür dileme ve selam verme gibi İslam geleneğine özgü ifadeler ele alınmakta; bu ifadelerin hem dinî hem toplumsal boyutu öne çıkarılmaktadır. Ünite, 'Cüzdan' hikâyesiyle dürüstlüğün önemini işleyerek tamamlanır.
+    - 34. ünite, Hz. Peygamber'in (s.a.s.) hadislerini ve ahlakî öğütlerini merkeze alarak çocuklara İslam ahlakının temel değerlerini kazandırmayı amaçlamaktadır. Ünite, "İyilik sana döner" başlıklı bir hikâyeyle açılır: ailesiyle küs olan bir çocuğun soğuk kış gününde yabancı bir yaşlıya yardım etmesi ve bu iyiliğin sonunda kendi babasına dönmesi üzerinden iyiliğin ve yardımseverliğin somut karşılığı gösterilmektedir. Hz. Peygamber bu olayı yorumlayarak iyiliğe aracı olmanın bile sevap kazandırdığını öğretir; böylece çocuk iyiliğin zincirleme bir etki yarattığını kavrar. Ardından dört temel hadis ele alınmaktadır. Öfkeyi yenmek, anneye hizmet, dürüstlük ve kolaylık konuları işlenir.
+- *Etkinlik önerisi:*
+    - Sınıfça 'güzel sözler ağacı' hazırlama: öğrenciler sevdikleri güzel sözleri yapraklara yazarak ağaca ekler. / Sınıfça 'kaba sözler ağacı' hazırlama: söylenmesini istemediğimiz ifadeler tespit edilerek ağaca asılır. / Sıra arkadaşıyla iyi ve kaba sözler karşısında nasıl davranılacağını gösteren afiş hazırlama.
+    - 'Kim bir hayra vesile olursa, ona o hayrı işleyenin ecri kadar sevap vardır.' (Müslim, İmâre 133) hadisini ezberleyerek hikâyeyi yansıtan bir resim çizme. / Hadisi ezberleyerek hadise uygun özgün bir hikâye yazma. / Hadisi ezberleyerek insanlara nasıl iyilik edilebileceğini deftere listeleme.
 
 ### 28 Kasım 2026 · Cumartesi · Hafta 13
 
@@ -2394,10 +2383,10 @@ Kaynak: —
 
 | Ölçüt | Değer |
 | --- | --- |
-| Ders günü | 87 |
-| Ders saati | 261 |
-| Kur’an-ı Kerim | 87 |
+| Ders günü | 86 |
+| Ders saati | 258 |
+| Kur’an-ı Kerim | 86 |
 | İtikat | 44 |
 | İbadet | 44 |
-| Siyer | 43 |
-| Ahlak | 43 |
+| Siyer | 42 |
+| Ahlak | 42 |

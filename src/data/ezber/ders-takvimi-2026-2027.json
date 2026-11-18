@@ -1,7 +1,7 @@
 {
   "kaynak": "ulu-camii-kuran-kursu/veri/ezber-kosesi-2026-2027.json",
-  "kaynakSha256": "a0d2cf8de9805ae4c60bb1b7f9178b1574555d6c268877a13180e775b4b1f60b",
-  "uretim": "2026-10-29",
+  "kaynakSha256": "75b1272bcf645d3fb5593e76a416015f008ea7f8a6ad86328b4224b6d7fb8117",
+  "uretim": "2026-11-18",
   "gunler": [
     {"tarih":"2026-10-10","gun":"Cumartesi","kip":"tam-ders","yeni":[{"id":"d-euzu-besmele"},{"id":"d-kelime-i-tevhid"},{"id":"d-kelime-i-sehadet"},{"id":"s-fatiha","ayet":[1,4]}],"dinleme":[{"id":"s-fatiha","ayet":[5,7]}]},
     {"tarih":"2026-10-11","gun":"Pazar","kip":"kose","pekistir":[{"id":"s-fatiha","ayet":[1,4]},{"id":"d-euzu-besmele"},{"id":"d-kelime-i-tevhid"},{"id":"d-kelime-i-sehadet"}]},
@@ -16,7 +16,6 @@
     {"tarih":"2026-11-07","gun":"Cumartesi","kip":"kose","yeni":[{"id":"s-kevser"}]},
     {"tarih":"2026-11-08","gun":"Pazar","kip":"kose","pekistir":[{"id":"s-kevser"}]},
     {"tarih":"2026-11-14","gun":"Cumartesi","kip":"kose","yeni":[{"id":"d-ruku-tesbihi"},{"id":"d-tesmi-tahmid"},{"id":"d-secde-tesbihi"}]},
-    {"tarih":"2026-11-15","gun":"Pazar","kip":"kose","pekistir":[{"id":"d-ruku-tesbihi"},{"id":"d-tesmi-tahmid"},{"id":"d-secde-tesbihi"}]},
     {"tarih":"2026-11-21","gun":"Cumartesi","kip":"tekrar","pekistir":[{"id":"s-fatiha"},{"id":"s-ihlas"},{"id":"s-kevser"},{"id":"d-ruku-tesbihi"},{"id":"d-tesmi-tahmid"},{"id":"d-secde-tesbihi"}],"kalici":["d-euzu-besmele","d-kelime-i-tevhid","d-kelime-i-sehadet"]},
     {"tarih":"2026-11-22","gun":"Pazar","kip":"kose","pekistir":[{"id":"s-fatiha"},{"id":"s-ihlas"},{"id":"s-kevser"}]},
     {"tarih":"2026-11-28","gun":"Cumartesi","kip":"kose","yeni":[{"id":"d-ettehiyyatu","bolum":1}],"kalici":["s-fatiha"]},

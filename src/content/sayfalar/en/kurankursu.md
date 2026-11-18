@@ -39,7 +39,7 @@ Our school is also on holiday during school holiday periods:
 
 The regular curriculum is suspended during the month of Ramadan (**8 February – 8 March 2027**); lessons during this period focus on Ramadan-specific content. There are no lessons on the days of Eid al-Fitr and Eid al-Adha; on the eve of Eid al-Adha (**Saturday, 15 May 2027**), lessons cover topics specific to the festival.
 
-A total of **87 lesson days** and **261 lesson hours** are planned for the 2026-2027 period.
+A total of **86 lesson days** and **258 lesson hours** are planned for the 2026-2027 period.
 
 ## Curriculum
 
@@ -115,7 +115,7 @@ Our school also takes part in **knowledge competitions** held in the Namur regio
 
 - **23 students** (October 2025)
 - Lesson days: **Saturday – Sunday**
-- **261 lesson hours** per year
+- **258 lesson hours** per year
 - Registration and lessons are **entirely free of charge**
 
 ## Parents’ portal

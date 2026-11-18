@@ -263,7 +263,12 @@ const govdeVar = (d: Ders) => dil !== 'tr' && BLOK.some(([a]) => d[a].some((p) =
               </div>
 
               {g.tatil
-                ? (dil === 'tr'
+                ? (g.not?.startsWith('Ders yapılmadı')
+                  /* «Ders yapılmadı» notu kendi başına «ders yok» der: başına «Ders yapılmayacak.» eklenmez (18 Kas 2026). fr'de not Türkçe kalmasın diye «Pas de cours». */
+                  ? (dil === 'tr' ? <p class="tatil-notu" lang="tr">{g.not}</p>
+                    : dil === 'fr' ? <p class="tatil-notu" lang="fr"><b>{m.derssiz}.</b></p>
+                    : <p class="tatil-notu"><GunNotu dil={dil} not={g.not} /></p>)
+                  : dil === 'tr'
                   ? <p class="tatil-notu" lang="tr"><b>{m.derssiz}.</b> {g.not}</p>
                   : <p class="tatil-notu"><b lang={dil}>{m.derssiz}.</b> <GunNotu dil={dil} not={g.not ?? ''} /></p>)
                 : g.dersler.map((d) => (

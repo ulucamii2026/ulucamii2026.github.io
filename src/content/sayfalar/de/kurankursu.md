@@ -39,7 +39,7 @@ Während der Schulferien ist auch unsere Koranschule geschlossen:
 
 Während des Monats Ramadan (**8. Februar – 8. März 2027**) wird der reguläre Lehrplan ausgesetzt; der Unterricht behandelt in dieser Zeit Ramadan-spezifische Inhalte. An den Tagen des Ramadanfests und des Opferfests findet kein Unterricht statt; am Vorabend des Opferfests (**Samstag, 15. Mai 2027**) behandelt der Unterricht Themen rund um das Fest.
 
-Für das Schuljahr 2026-2027 sind insgesamt **87 Unterrichtstage** und **261 Unterrichtsstunden** geplant.
+Für das Schuljahr 2026-2027 sind insgesamt **86 Unterrichtstage** und **258 Unterrichtsstunden** geplant.
 
 ## Lehrplan
 
@@ -115,7 +115,7 @@ Unsere Koranschule nimmt außerdem an **Wissenswettbewerben** teil, die in der R
 
 - **23 Lernende** (Oktober 2025)
 - Unterrichtstage: **Samstag – Sonntag**
-- **261 Unterrichtsstunden** pro Jahr
+- **258 Unterrichtsstunden** pro Jahr
 - Anmeldung und Unterricht **völlig kostenlos**
 
 ## Elternportal

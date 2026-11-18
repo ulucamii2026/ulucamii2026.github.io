@@ -39,7 +39,7 @@ Okul tatili dönemlerinde kursumuz da tatildir:
 
 Ramazan ayı boyunca (**8 Şubat – 8 Mart 2027**) olağan müfredat askıya alınır; dersler bu dönemde Ramazan’a özel içeriklerle işlenir. Ramazan Bayramı ve Kurban Bayramı günlerinde ders yapılmaz; Kurban Bayramı arifesinde (**15 Mayıs 2027 Cumartesi**) derslerde bayrama özel konular işlenir.
 
-2026-2027 döneminde toplam **87 ders günü** ve **261 ders saati** planlanmıştır.
+2026-2027 döneminde toplam **86 ders günü** ve **258 ders saati** planlanmıştır.
 
 ## Müfredat
 
@@ -115,7 +115,7 @@ Kursumuz ayrıca Namur bölgesinde düzenlenen **bilgi yarışmalarına** katıl
 
 - **23 öğrenci** (Ekim 2025)
 - **cumartesi – pazar** ders günleri
-- Yılda **261 ders saati**
+- Yılda **258 ders saati**
 - Kayıt ve dersler **tamamen ücretsiz**
 
 ## Veli portalı

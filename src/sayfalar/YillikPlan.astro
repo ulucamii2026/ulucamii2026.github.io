@@ -265,7 +265,9 @@ const govdeVar = (d: Ders) => dil !== 'tr' && BLOK.some(([a]) => d[a].some((p) =
               </div>
 
               {g.tatil
-                ? <p class="tatil-notu" lang="tr"><b>{m.derssiz}.</b> {g.not}</p>
+                ? (g.not?.startsWith('Ders yapılmadı') /* not kendi başına «ders yok» der (18 Kas 2026) */
+                  ? (dil === 'tr' ? <p class="tatil-notu" lang="tr">{g.not}</p> : <p class="tatil-notu"><b lang={dil}>{m.derssiz}.</b></p>)
+                  : <p class="tatil-notu" lang="tr"><b>{m.derssiz}.</b> {g.not}</p>)
                 : g.dersler.map((d) => (
                     /* Dersin tamamı (başlık satırı da, gövde de) öğretim dili Türkçe:
                        lang tek yerde durur, her satıra tekrar yazılmaz. */

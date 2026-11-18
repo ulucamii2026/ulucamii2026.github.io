@@ -24,6 +24,23 @@ ediyordu, Oruç/Kurban/Mübarek geceler mevsiminden sonra işleniyordu, Siyer ü
 - **Sunum kapağı:** her ders sunumunun ilk slaydında «Kitabımızı açalım / Ouvrons notre livre: <kitap> · s. a–b» satırı var
   (kurs projesi kuralı, 24 Eylül 2026). 26-27 Eylül ve 3-4 Ekim sunumları bu satırla yeniden yüklendi.
 
+## 18 Kasım 2026 — 15 Kasım Pazar dersi yapılmadı («Sade güncelleme»)
+
+Kurs sorumlusunun kararıyla 15 Kasım'ın üç dersi sonraki hafta sonuna katıldı; sonraki haftalar değişmedi (**86 gün / 258 ders** ·
+kuran 86 · itikat 44 · ibadet 44 · siyer 42 · ahlak 42). Gösterim: ders **başlıkları aynı** (başlık çevirisi, konu tabloları ↔ plan denetimi ve
+cuma e-postası etkilenmez); yalnız `kaynak` ve özet/etkinlik genişledi — 21 Kasım Kur'an «Elifbâ s. 14; s. 23» (önce ≈10 dk sâkinlik tekrarı),
+22 Kasım Siyer «Camiye Gidiyorum 2 s. 75–78; Temel Dinî Bilgiler s. 267–270» (ilk vahiy önce), 22 Kasım Ahlak «Camiye Gidiyorum 1 s. 205–214»
+(33. ünite önce). 15 Kasım, 16 Mayıs 2027 ile aynı **işaret günü** (`tatil: true`, boş ders listesi); notu yalnız «Ders yapılmadı» (neden yazılmaz).
+- **Ders numarası (`no`) KAYMAZ.** Basılı defter (Sürüm 3, 261 ders sayfası) `basiliDefterSayfasi(no)` ile sayfaya bağlı; bu yüzden `no` 70–72 boş kalır
+  (üretici HTML'de işaret gününün `data-atla="3"` özniteliğiyle sayacı üç atlar; `ozet-nihai.json`'da 71 ve 72 kaydı silindi, 73/77/78 birleştirildi).
+  Defter kataloğu 258 kayıt (15 Kasım kayıtları çıkarıldı), `sayfa = no+50` sözleşmesi aynı; `tests/ogrenme-ilerleme.test.mjs` buna göre.
+- Kaynak Word + HTML + `ozet-nihai.json` düzenlendi (yedek: `…\2026-2027 Mufredat ve Yillik Plan\_yedek\2026-11-18 15 Kasim iptali oncesi\`);
+  `mufredat-denetim.py` `IPTAL` istisnası, `yillik-plan-cikar.py` `BEKLENEN` 86/258, `mufredat-uret.py` ve kurs `mufredat_denetle.py`/`uygula.py` güncellendi.
+- Sabit sayılar: `src/content/sayfalar/*/kurankursu.md`, `egitim/src/sayfalar/Mufredat.astro` (+ `src/sayfalar/Mufredat.astro`), `mufredat-test.py` (258).
+  Çeviri: `kurs-ceviri/<dil>.json` → `plan` (3 yeni paragraf, 8 sahipsiz anahtar silindi), `mufredat` (5 sayı anahtarı), `rozet` («Ders yapılmadı», en/nl/de).
+- Ezber takvimi: ders yapılmayan günün ezber satırı kaynaktan çıkarılır; içeriği sonraki ders gününe taşınır (15 Kasım satırı çıkarıldı; üç duanın pekiştirmesi 21 Kasım satırında zaten vardı, taşınacak bir şey kalmadı; kaynak yedeği `ulu-camii-kuran-kursu/veri/_yedek/`).
+- Plan sayfasında «Ders yapılmadı» notlu işaret günü yalnız notu gösterir (başına «Ders yapılmayacak.» eklenmez); 16 Mayıs aynı kaldı.
+
 ## Plan değişince siteye giden bağımlılar (hepsi birlikte güncellenir)
 
 | Site dosyası | Ne tutar | Nasıl güncellenir |
