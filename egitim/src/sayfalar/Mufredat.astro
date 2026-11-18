@@ -105,6 +105,13 @@ const ROZET: Record<string, { fr: string; en: string; nl: string; de: string }> 
   'Ramazan hazırlığı': { fr: 'Préparation au Ramadan', en: 'Ramadan preparation', nl: 'Voorbereiding op de ramadan', de: 'Vorbereitung auf den Ramadan' },
   'Kurban Bayramı arifesi': { fr: "Veille de l'Aïd al-Adha", en: 'Eve of Eid al-Adha', nl: 'Vooravond van het Offerfeest', de: 'Vorabend des Opferfests' },
   'Bayram tatili': { fr: "Congé de l'Aïd", en: 'Eid holiday', nl: 'Feestvakantie', de: 'Festferien' },
+  "Üç aylar ve Regaib Kandili — 10 Aralık 2026": { fr: "Les trois mois sacrés et la nuit bénie de Raghaïb — 10 décembre 2026", en: "The Three Holy Months and the Regaib blessed night — 10 December 2026", nl: "De drie gezegende maanden en Regaib Kandili — 10 december 2026", de: "Die drei heiligen Monate und Regaib Kandili — 10. Dezember 2026" },
+  "Mirac Kandili — 4 Ocak 2027": { fr: "Nuit bénie du Mi‘râj — 4 janvier 2027", en: "Mi‘raj blessed night — 4 January 2027", nl: "Miraç Kandili — 4 januari 2027", de: "Miraç Kandili — 4. Januar 2027" },
+  "Berat Kandili — 22 Ocak 2027": { fr: "Nuit bénie de Barâ’a — 22 janvier 2027", en: "Berat blessed night — 22 January 2027", nl: "Berat Kandili — 22 januari 2027", de: "Berat Kandili — 22. Januar 2027" },
+  "Kadir Gecesi — 5 Mart 2027": { fr: "Nuit du Destin — 5 mars 2027", en: "Night of Destiny — 5 March 2027", nl: "Kadir Gecesi (Nacht van de Beschikking) — 5 maart 2027", de: "Nacht der Bestimmung (Kadir Gecesi) — 5. März 2027" },
+  "Ramazan Bayramı ve arifesi — 8-11 Mart 2027": { fr: "Aïd al-Fitr et sa veille — 8–11 mars 2027", en: "Eid al-Fitr and its eve — 8–11 March 2027", nl: "Suikerfeest en de dag ervoor — 8-11 maart 2027", de: "Ramadanfest und Vorabend — 8.-11. März 2027" },
+  "Kurban Bayramı — 16-19 Mayıs 2027": { fr: "Aïd al-Adha — 16–19 mai 2027", en: "Eid al-Adha — 16–19 May 2027", nl: "Offerfeest — 16-19 mei 2027", de: "Opferfest — 16.-19. Mai 2027" },
+  "Hicrî yılbaşı — 1 Muharrem 1449": { fr: "Nouvel an de l’hégire — 1er muharram 1449", en: "Hijri New Year — 1 Muharram 1449", nl: "Islamitisch nieuwjaar — 1 Moeharram 1449", de: "Islamisches Neujahr — 1. Muharram 1449" },
 };
 /* Rozet adı + dili (12 Kasım 2026): tr kısa Türkçe ad; diğer dillerde önce elle yazılmış ROZET tablosu, sonra src/data/kurs-ceviri/<dil>.json,
    çevirisi olmayan Türkçe kalır ve `d: 'tr'` ile işaretlenir (eskiden lang=dil içinde Türkçe duruyordu). */
@@ -211,7 +218,7 @@ const METIN = {
   ozet: [
     ['Start van de lessen', 'zaterdag 5 september 2026'], ['Einde van de lessen', 'zondag 6 juni 2027'],
     ['Lesdagen', 'zaterdag en zondag · tijdens schoolvakantieweken ook maandag'],
-    ['Winter-/zomeruren', '10.00–12.40 uur · 11.00–13.40 uur'], ['Totaal', '87 lesdagen · 261 lessen'],
+    ['Winter- en zomeruren', '10.00–12.40 uur · 11.00–13.40 uur'], ['Totaal', '87 lesdagen · 261 lessen'],
   ],
   sonrakiEt: 'Eerstvolgende lesdag', bitti: 'Schooljaar afgelopen', bugunEt: 'vandaag',
   icindekiler: 'Inhoud', tocAlt: 'Ga naar het onderdeel',
@@ -240,7 +247,7 @@ const METIN = {
   ozet: [
     ['Unterrichtsbeginn', 'Samstag, 5. September 2026'], ['Unterrichtsende', 'Sonntag, 6. Juni 2027'],
     ['Unterrichtstage', 'Samstag und Sonntag · während der Schulferienwochen auch montags'],
-    ['Winter-/Sommerzeiten', '10:00–12:40 Uhr · 11:00–13:40 Uhr'], ['Insgesamt', '87 Unterrichtstage · 261 Lektionen'],
+    ['Winter-/Sommerzeit', '10:00–12:40 Uhr · 11:00–13:40 Uhr'], ['Insgesamt', '87 Unterrichtstage · 261 Lektionen'],
   ],
   sonrakiEt: 'Nächster Unterrichtstag', bitti: 'Schuljahr beendet', bugunEt: 'heute',
   icindekiler: 'Inhalt', tocAlt: 'Zum Abschnitt gehen',
@@ -263,8 +270,8 @@ const METIN = {
 } satisfies Record<Dil, unknown>;
 const m = METIN[dil];
 const SAAT_MODU: Record<string, Record<Dil, string>> = {
-  'Kış saati': { tr: 'Kış saati', fr: 'Horaire d’hiver', en: 'Winter hours', nl: 'Winteruren', de: 'Winterzeiten' },
-  'Yaz saati': { tr: 'Yaz saati', fr: 'Horaire d’été', en: 'Summer hours', nl: 'Zomeruren', de: 'Sommerzeiten' },
+  'Kış saati': { tr: 'Kış saati', fr: 'Horaire d’hiver', en: 'Winter hours', nl: 'Winteruren', de: 'Winterzeit' },
+  'Yaz saati': { tr: 'Yaz saati', fr: 'Horaire d’été', en: 'Summer hours', nl: 'Zomeruren', de: 'Sommerzeit' },
 };
 
 type AyGun = { tarih: string; tur: 'normal' | 'pazartesi' | 'ramazan' | 'tatil'; ad: string; gecti: boolean; bugun: boolean; dersYok: boolean };
