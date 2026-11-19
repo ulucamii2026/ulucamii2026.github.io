@@ -4,6 +4,56 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 19 Kasım 2026 (öğle) — vaaz: «Merhamet, Varlığın İlâhî Mayası» (20 Kasım 2026 Cuma vaazı) beş dilde + duyuru
+
+- Zaman: 19 Kasım 2026, Europe/Brussels (CET). İki aşama:
+  - Türkçe: push 12.20 (`91826e8f..ade9a7b7`), Pages
+    [run 44513994408](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/44513994408) **success**
+    (12.25), Türkçe sunum Release 12.21, canlı doğrulama 12.27.
+  - Çeviriler + duyurular: push 15.21 (`ade9a7b7..01b58d9d`), Pages
+    [run 44542771189](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/44542771189) **success**
+    (15.24), canlı doğrulama 15.27. **Yayımlandı ve canlı doğrulandı.**
+- Dayanak: kullanıcının isteği (19.11.2026: Cuma vaazı taslağını verdi; «Evet, yayımla» ve «Geçen haftaki gibi gönder»).
+- Kapsam:
+  - TR sayfa `src/content/vaazlar/merhamet-varligin-ilahi-mayasi.md` (4660 kelime): 19 temsilî sahne × 4 boy +
+    `kapak-og.webp` (77 WebP), dört ana fikir, 14 duraklı vaaz haritası, dokuz vektör şema, merhamet sözleşmesi ve
+    «Gurbette 40 merhamet» eki. Aynı adreste duran eski arşiv metninin (2267 kelime) yerini aldı.
+  - Türkçe Word/PDF `public/vaazlar/merhamet-varligin-ilahi-mayasi.{docx,pdf}`: 15 sayfa; docx SHA-256
+    `fa6b93b6…738e7f` (473 538 bayt), pdf `166f69a4…9a1c4d` (881 216 bayt).
+  - FR/EN/NL/DE çevirileri `src/content/vaaz-cevirileri/<dil>/merhamet-varligin-ilahi-mayasi.md` ve dört dilde
+    Word/PDF `public/vaazlar/<dil>/…` (15'er sayfa; PDF'ler 0,74–0,95 MB).
+  - TR/FR duyuru `src/content/duyurular/{tr,fr}/cuma-vaazi-merhamet-varligin-ilahi-mayasi.md` (FR duyuru Fransızca
+    Word/PDF/sunuma bağlanır).
+- Release `vaaz-merhamet-varligin-ilahi-mayasi` (Latest yapılmadı): 10 dosya (5 dil × PowerPoint + sunum PDF,
+  124'er slayt). Türkçe sunum 12.21 (`merhamet-varligin-ilahi-mayasi-sunum.pptx` SHA-256 `542981d3…f52fec`, `.pdf`
+  `8456b730…72440f`); FR/EN/NL/DE sunumları 15.19'da eklendi. Canlı denetimde on dosyanın SHA-256'sı yerel teslimle
+  eşit (15.27).
+- İçerik commit'leri `bf46ac33` (80 dosya, vaaz), `ade9a7b7` (28 dosya, aşağıdaki mevcut kusur) ve `01b58d9d`
+  (14 dosya, çeviriler + duyurular), dernek kimliği, fast-forward, zorlama yok.
+- **Mevcut kusur düzeltmesi (aynı push):** önceki yedi vaazın beş dildeki 28 sayfasında kaynakça notundaki
+  «görseller yapay zekâ ile üretilmiştir» ibaresi kaldırıldı (kullanıcının kalıcı kuralı: izleyicinin gördüğü hiçbir
+  metinde üretim aracı yazılmaz); cümle artık yalnız «temsilî illüstrasyon» der, gerisi aynı. «Dürüstlük» vaazındaki
+  ödev konulu «yapay zekâ aracı» cümlesi içeriktir, dokunulmadı.
+- Kalite (Türkçe aşama):
+  - `npm run dogrula`: 30 aşamanın 26'sı zincirde geçti (derleme 2000 sayfa, `test:vaaz-pdf` dâhil); zincir
+    `test:okuma`'nın ses dosyası denetiminde durdu (163 «dosya yok»: okuma sesleri Git'te değildir, yayın çalışma
+    kopyasında yoktur; vaazla ilgisi yok). Kalan `test:ibadet`, `test:yarisma`, `test:hoca-mfa` ayrıca çalıştırıldı:
+    üçü de çıkış 0.
+  - `web/web_kontrol.mjs` yerel (TR): 6 görünüm, axe 0, 79 dosya SHA-256 eşit. Canlı 12.27 (TR): 6 görünüm, axe 0,
+    79 dosya ve 2 sunum dosyası SHA-256 eşit.
+  - Word: 15 sayfa, yazım 0, yasak dizgi 0, 44 Arapça parça kaynak kaydıyla birebir, meâl kapısı 31 âyet + 9 hadis.
+    Sunum: 124 slayt, taşma 0, çakışma 0, yazım 0, PDF 124 sayfa.
+- Kalite (çeviri aşaması):
+  - `npm run check` 0 hata, `npm run build` 2000 sayfa, `test:vaaz-pdf` geçti (push'tan önce check, derleme push'la
+    eşzamanlı bitti). Tam `dogrula` zinciri bu aşamada yeniden çalıştırılmadı.
+  - `web/web_kontrol.mjs` canlı 15.27: beş dil 22 görünüm, axe 0, 87 dosya ve 10 sunum dosyası SHA-256 eşit.
+  - Çeviri denetimi fr/en/nl/de: HATA 0 (word, web, sunum, figur), çapa denetimi HATA 0. Word 4 dil 15 sayfa,
+    yazım 0. Sunum 4 dil 124 slayt, taşma 0, çakışma 0; ek slaytlarında ortak punto 15–17 pt, madde kısaltılmadı.
+  - Yasak dizgi taraması (ad, kurum, üretim aracı ibaresi, önceki haftanın başlığı): beş dilde 0.
+- Açık sınırlar: `npm run test:web` bu yayında çalıştırılmadı. Çeviri sunumlarının son üretiminden sonra EN ve FR
+  slaytları yeniden gözle taranmadı (önceki geçişte tarandı; son geçişte yalnız DE ve NL ek slaytları görüldü).
+  Felemenkçe sunumda bir kartta âyet alıntısı küçük harfle başlıyor (slayt 99).
+
 ## 19 Kasım 2026 (gece) — Cuma hatırlatma bandı: bayat bant düzeltmesi + hoca ekranı altın kaydı
 
 Rıdvan'ın emriyle (19.11.2026 gece, «ne gerekiyorsa yap, işleri tamamla, full otonom ilerle»). Europe/Brussels (CET): push 03.23, Pages ve egitim yayını ≈03.29'a kadar tamamlandı; canlı denetim 07.44 (yayını izleyen oturum yayın beklerken kesildiği için denetim ve bu kayıt sabah tamamlandı). **Yayında: push + deploy + canlı denetim doğrulandı.** E-posta/paylaşım yok; Apps Script ve Firestore'a dokunulmadı.
