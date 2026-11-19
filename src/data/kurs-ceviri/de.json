@@ -46,7 +46,11 @@
   "Ahirete İman Ediyorum": "Ich glaube an das Jenseits",
   "İbadet Yerlerini Öğreniyorum": "Ich lerne die Stätten des Gottesdienstes kennen",
   "Erdemli bir genç: Gençliği, evliliği ve en yakınları": "Ein tugendhafter junger Mensch: Jugend, Ehe und engste Angehörige",
-  "Ailem ve görevlerim": "Meine Familie und meine Pflichten"
+  "Ailem ve görevlerim": "Meine Familie und meine Pflichten",
+  "Allah'ın meleklerine inanıyorum": "Ich glaube an die Engel Allahs",
+  "Namaz ibadetini öğreniyorum": "Ich lerne das Gebet (Salat)",
+  "Peygamber oluşu ve gizli davet": "Die Berufung zum Propheten und die geheime Einladung",
+  "Hz. Muhammed (s.a.s.) dedi ki": "Der Prophet Muhammad (s.a.s.) sagte"
  },
  "sunumKonu": {
   "Elif grubu harfleri — Elif, Be, Te, Se, Cim, Ha": "Buchstaben der Elif-Gruppe — Elif, Be, Te, Se, Cim, Ha",
@@ -85,7 +89,10 @@
   "İbadet (kış saati)": "Gottesdienst (Winterzeit)",
   "Harekeli kelime okuma": "Wörter mit Vokalzeichen lesen",
   "Hareke pekiştirmesi": "Festigung der Vokalzeichen",
-  "Cezm": "Sukun"
+  "Cezm": "Sukun",
+  "İki Üstün": "Die zwei Fathas",
+  "İtikat · Görünmeyen varlıklar ve Âmentü": "Glaubenslehre · Die unsichtbaren Wesen und das Amantu",
+  "İki Esre": "Die zwei Kasras"
  },
  "hedef": {
   "Harflerin yazı ve ses özelliklerini ayırt ederim.": "Ich unterscheide die Schrift- und Lauteigenschaften der Buchstaben.",

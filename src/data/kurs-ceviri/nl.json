@@ -46,7 +46,11 @@
   "Ahirete İman Ediyorum": "Ik geloof in het hiernamaals",
   "İbadet Yerlerini Öğreniyorum": "Ik leer de plaatsen van aanbidding kennen",
   "Erdemli bir genç: Gençliği, evliliği ve en yakınları": "Een deugdzame jongeman: zijn jeugd, zijn huwelijk en zijn naasten",
-  "Ailem ve görevlerim": "Mijn gezin en mijn taken"
+  "Ailem ve görevlerim": "Mijn gezin en mijn taken",
+  "Allah'ın meleklerine inanıyorum": "Ik geloof in de engelen van Allah",
+  "Namaz ibadetini öğreniyorum": "Ik leer het gebed (salat)",
+  "Peygamber oluşu ve gizli davet": "De roeping tot profeet en de geheime oproep",
+  "Hz. Muhammed (s.a.s.) dedi ki": "Mohammed (vzmh) zei"
  },
  "sunumKonu": {
   "Elif grubu harfleri — Elif, Be, Te, Se, Cim, Ha": "Letters van de Alif-groep — Alif, Baa, Taa, Thaa, Djiem, Haa",
@@ -85,7 +89,10 @@
   "İbadet (kış saati)": "Eredienst (wintertijd)",
   "Harekeli kelime okuma": "Woorden met klinkertekens lezen",
   "Hareke pekiştirmesi": "Klinkertekens verstevigen",
-  "Cezm": "Soekoen"
+  "Cezm": "Soekoen",
+  "İki Üstün": "De twee fatha’s",
+  "İtikat · Görünmeyen varlıklar ve Âmentü": "Geloofsleer · De onzichtbare wezens en de Amantu",
+  "İki Esre": "De twee kasra’s"
  },
  "hedef": {
   "Harflerin yazı ve ses özelliklerini ayırt ederim.": "Ik herken het verschil tussen de letters in schrift en klank.",
