@@ -1,4 +1,5 @@
 import { cumaHatirlatmasi, type Gun } from '../lib/namaz';
+import { useEffect, useState } from 'preact/hooks';
 import { useDakikaSaati } from '../lib/saat';
 
 /**
@@ -17,7 +18,11 @@ interface Props {
 
 export default function CumaHatirlatma({ cumalar, sabit, metinler, sinif = '' }: Props) {
   const simdi = useDakikaSaati();
-  const h = cumaHatirlatmasi(cumalar, simdi, sabit);
+  // Derleme günü Perşembe/Cuma ise HTML'e bant gömülürdü; Preact uyuşmayan hidrasyonda o düğümü silmez (başka günde bayat bant kalırdı).
+  // Bu yüzden sunucuda ve ilk istemci çiziminde bant yok; gün/saat tarayıcıda hesaplanıp bant sonra basılır.
+  const [hazir, setHazir] = useState(false);
+  useEffect(() => setHazir(true), []);
+  const h = hazir ? cumaHatirlatmasi(cumalar, simdi, sabit) : null;
   if (!h) return null;
   const [once, sonra] = (h.tur === 'yarin' ? metinler.yarin : metinler.bugun).split('{saat}');
   return (
