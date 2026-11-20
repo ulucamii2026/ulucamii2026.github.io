@@ -4,6 +4,44 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 21 Kasım 2026 (gece) — veli portalı: ilk girişte kısa tanıtım turu (Driver.js)
+
+- Zaman: 21 Kasım 2026, Europe/Brussels (CET). Push 00.48 (`55348ff2..ed30536c`); Pages
+  [run 44839512483](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/44839512483) **success** (00.51);
+  egitim yayını [run 44839512505](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/44839512505)
+  **success** (00.53); canlı denetim 00.54. **Yayımlandı; canlıda dosya düzeyinde doğrulandı** (oturum açılmış veliyle
+  canlı deneme yapılmadı, aşağıda).
+- Dayanak: kullanıcının isteği (20.11.2026 akşam: «Veli portalında dene»; gece «Evet, geçince yayınla»).
+- Kapsam: `egitim.ulucamii.be/<dil>/veli/` panosunda ilk girişte bir kez açılan 4–5 adımlık tur (çocuğun sayfası,
+  haftalık bülten, bu hafta, devam durumu, hocaya bildir); «Hesap» bölümündeki «Tanıtım turu» düğmesiyle yeniden
+  izlenir. Beş dil (tr, fr, en, nl, de). Bülten yokken bülten adımı atlanır; iki adımdan azsa tur açılmaz; oturum
+  kapanınca açık tur kapatılır. Bayrak: `portalTercihleri` → `veliTuruGoruldu`.
+- Değişen yollar: `src/scripts/veli-turu.ts` (yeni), `src/scripts/veli-portali.ts`, `src/i18n/veli.ts` (`tur`),
+  `egitim/src/pages/[dil]/veli/index.astro`, `egitim/src/styles/veli.css`, `tests/egitim/veli-tur.spec.mjs` (yeni),
+  `tests/egitim/helpers/mektep.mjs`, `package.json` + `package-lock.json` (`driver.js` ^1.14.0, MIT,
+  `github.com/nilbuild/driver.js`). İçerik commit'i `ed30536c` (9 dosya), dernek kimliği, fast-forward, zorlama yok.
+- Güvenlik: Hosting CSP'si değişmedi (`script-src 'self' https://apis.google.com; style-src 'self'`). Driver yalnız
+  CSSOM kullanır; CSS dış dosyadır; kitaplık yalnız tur başlarken ayrı parça olarak yüklenir. Tur metinleri sabittir,
+  kişisel veri taşımaz.
+- Canlı denetim 00.54: `/tr/veli/` 200 ve `data-tanitim-turu` var; `/_astro/index.DgP1Zdtz.css` içinde tur stilleri;
+  pano betiği `driver.js.DU3qEXTs.js` parçasına bağlı, parça 200 (46 938 bayt); CSP başlığı aynı; `ulucamii.be/tr/` 200.
+- Kalite (yerel, yayın yapmayan sınamalar):
+  - `tests/egitim/veli-tur.spec.mjs` 6/6 (masaüstü + telefon, gerçek CSP başlıklarıyla); veli/portal/kilimim sınamaları
+    tek koşuda 142 geçti; `npm run egitim:build` (`astro check` dâhil) geçti; `test:tipografi` 7/7.
+  - `npm run dogrula:codex` (push'tan önce başlatıldı): `design:check`, `check`, `dogrula` zincirinin tamamı (derleme
+    dâhil) geçti. `test:web` push sırasında sürüyordu; kayıt anında 488 geçti, 1 düştü
+    (`tests/web/vitrin.spec.mjs:565`, ana sayfa vitrininde gizli afişin tembel yüklenmesi; turla ilgisi yok, aynı gün
+    daha önceki temiz koşuda 626 geçti / 0 düştü; gün dönümünden sonra düştü, ayrıca incelenecek).
+  - Bağımsız iki inceleme (dil, kod): bulunan beş kod kusuru ve dört cümle yayından önce düzeltildi.
+- Açık sınırlar:
+  - Canlıda gerçek veli oturumuyla tur açılıp tıklanmadı; yerelde sahte oturumla ve gerçek CSP başlıklarıyla sınandı.
+  - `dogrula:codex`'in `test:web` sonrası aşamaları (`egitim:build`, `test:egitim`, `test:kurallar`, `test:ilim-yolu`,
+    `test:hesap` …) bu kayıt yazılırken bitmemişti; sonraki oturumda yeniden koşulup buraya işlenir.
+  - Mevcut kusur (turdan bağımsız, 18 Kasım `faf11310` plan değişikliğinden beri): `test:ilim-yolu` 2 kırmızı — bilgi
+    kartı `ah-012` «Güzel konuşur ve güzel davranırım» konusu plandan çıktı (15 Kasım dersi 22 Kasım'a eklendi). Kartı
+    silmek ya da planı/sınamayı değiştirmek içerik kararıdır; Rıdvan'a sorulacak.
+  - Telefonda boyu ekrandan uzun bölümleri gösteren adımlarda kutu bölümün alt kısmını örter (Driver'ın davranışı).
+
 ## 19 Kasım 2026 (öğle) — vaaz: «Merhamet, Varlığın İlâhî Mayası» (20 Kasım 2026 Cuma vaazı) beş dilde + duyuru
 
 - Zaman: 19 Kasım 2026, Europe/Brussels (CET). İki aşama:

@@ -24,6 +24,7 @@ Bu dosya canlı durum garantisi veya yeni gönderim/yayın izni değildir.
 | Ortam, hesap sarmalayıcıları, genel testler | [Çalışma rehberi](CODEX-CALISMA.md) | `package.json`, `scripts/dogrula-codex.mjs`; `npm run dogrula:codex` |
 | Ana sayfa vitrini | [Ana sayfa vitrini](ANA-SAYFA-VITRINI.md) | `src/lib/vitrin-secimi.ts`, `src/components/GundemVitrini.astro`; `tests/web/vitrin.spec.mjs` |
 | Ana sayfa akışı | [Ana sayfa akışı](ANA-SAYFA-AKISI.md) | `src/components/AnaSayfaAkisi.astro`, `src/styles/ana-sayfa-akisi.css`; `tests/web/ana-sayfa-akisi.spec.mjs` |
+| Veli portalı tanıtım turu (Driver.js, 21 Kas 2026) | [Yayın kaydı](YAYIN-KAYITLARI.md) | `src/scripts/veli-turu.ts`, `src/i18n/veli.ts` (`tur`), `egitim/src/styles/veli.css`; `tests/egitim/veli-tur.spec.mjs`. Yeni pano sınaması `mektepAc`'i kullanır (tur orada kapalı tutulur); CSP gevşetilmez |
 | Mektep çalışma odası / öğrenci modu | [Öğrenci modu](OGRENCI-MODU-PORTAL.md) | `src/scripts/veli-portali.ts`, `src/scripts/hoca-ekrani.ts`, `src/lib/elifba-verisi.ts`, `src/lib/ezber-verisi.ts`, `src/lib/quiz-verisi.ts`; `npm run dogrula:codex` |
 | Birlikte öğrenme / aile rehberi / aralıklı tekrar | [Atölye](VELI-OGRENCI-ATOLYESI.md), [pedagojik araştırma](VELI-OGRENCI-PEDAGOJIK-ARASTIRMA.md) | `src/scripts/ogrenme-atolyesi.ts`, `src/lib/ogrenme-ilerleme.ts`; `npm run test:ogrenme` |
 | Haftalık bülten / kontrollü öğrenci kayıt temizliği | [Bülten ve idare](HAFTALIK-BULTEN-VE-IDARE.md) | `src/scripts/hoca-bulten.ts`, `src/lib/portal-idare.ts`; `tests/web/bulten-idare.spec.mjs`, `npm run test:kurallar` |
