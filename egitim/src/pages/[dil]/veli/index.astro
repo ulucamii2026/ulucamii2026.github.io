@@ -22,6 +22,7 @@ import '@ortak/styles/haftalik-bulten.css';
 import '@ortak/styles/portal-sinif.css';
 import '@ortak/styles/baski.css';
 import '@ortak/styles/ezber-kilim.css';
+import 'driver.js/dist/driver.css';
 import '../../../styles/uyum-jetonlari.css';
 import '../../../styles/veli.css';
 
@@ -66,7 +67,7 @@ const veri = {
   <div class="icerik uyum-ana">
     {/* Duyurular yalnız bu küçük bölgeden yapılır; panonun tamamı canlı bölge olursa her yeniden çizimde tüm içerik baştan okunur. */}
     <div id="veli-durum" role="status" aria-live="polite" class="ekran-okuyucu"></div>
-    <div id="veli-portal" data-dil={dil} class="portal">
+    <div id="veli-portal" data-dil={dil} data-tanitim-turu class="portal">
       <p class="not">{m.yukleniyor}</p>
       <noscript><p class="not">Bu sayfa JavaScript gerektirir. · Cette page nécessite JavaScript. · This page requires JavaScript. · Deze pagina vereist JavaScript. · Diese Seite benötigt JavaScript.</p></noscript>
     </div>

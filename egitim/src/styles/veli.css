@@ -637,3 +637,26 @@
     .portal .dalga-animasyon span { animation: none; }
     .portal .hadis-arapca-btn.oynuyor, .portal .hadis-meal-kutu.oynuyor, .portal .ezber-tiklanabilir-kutu.oynuyor { animation: none !important; }
   }
+
+  /* --- Tanıtım turu (Driver.js; src/scripts/veli-turu.ts) ---
+     Pencere gövdeye eklenir (.portal dışında), bu yüzden yalnız uyum-jetonlari.css/kilim.css jetonlarını kullanır; açık/koyu tema
+     jetonlardan kendiliğinden gelir. Satır içi stil yok: Driver yerleşimi CSSOM ile yazar (CSP `style-src 'self'` buna izin verir). */
+  .driver-popover.veli-tur { font-family: var(--font-sans); background: var(--zemin); color: var(--metin); border: 1px solid var(--cizgi-etkilesim); border-radius: var(--radius-kose); box-shadow: inset 0 5px 0 var(--vurgu), 0 12px 32px rgb(0 0 0 / 0.3); padding: 1.35rem 1.15rem 1rem; width: min(21rem, calc(100vw - 2rem)); min-width: 0; max-width: none; }
+  .driver-popover.veli-tur .driver-popover-title { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 600; line-height: 1.25; letter-spacing: -0.01em; color: var(--metin); padding-inline-end: 2.25rem; }
+  .driver-popover.veli-tur .driver-popover-description { font-size: 1rem; line-height: 1.5; color: var(--metin); }
+  .driver-popover.veli-tur .driver-popover-close-btn { top: 0.15rem; right: 0.15rem; width: 2.75rem; height: 2.75rem; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; line-height: 1; color: var(--metin-2); border-radius: var(--radius-kose); }
+  .driver-popover.veli-tur .driver-popover-close-btn:hover, .driver-popover.veli-tur .driver-popover-close-btn:focus-visible { color: var(--metin); }
+  .driver-popover.veli-tur .driver-popover-footer { flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }
+  .driver-popover.veli-tur .driver-popover-progress-text { font-family: var(--font-mono); font-size: 0.8rem; color: var(--metin-2); }
+  .driver-popover.veli-tur .driver-popover-footer-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 2.75rem; padding: 0.4rem 1rem; font: 600 0.95rem/1.2 var(--font-serif); color: var(--metin); background: var(--zemin); border: 2px solid var(--cizgi-etkilesim); border-radius: var(--radius-kose); transition: background-color 160ms, border-color 160ms; }
+  .driver-popover.veli-tur .driver-popover-footer-btn:hover { background: var(--zemin-2); }
+  .driver-popover.veli-tur .driver-popover-next-btn { color: #fff; background: var(--color-kiremit); border-color: var(--color-kiremit); }
+  .driver-popover.veli-tur .driver-popover-next-btn:hover { background: var(--color-kiremit-koyu); border-color: var(--color-kiremit-koyu); }
+  .driver-popover.veli-tur .driver-popover-btn-disabled { opacity: 0.45; }
+  .driver-popover.veli-tur :is(.driver-popover-close-btn, .driver-popover-footer-btn):focus-visible { outline: 3px solid var(--metin); outline-offset: 2px; }
+  .driver-popover.veli-tur .driver-popover-arrow-side-left { border-left-color: var(--zemin); }
+  .driver-popover.veli-tur .driver-popover-arrow-side-right { border-right-color: var(--zemin); }
+  .driver-popover.veli-tur .driver-popover-arrow-side-top { border-top-color: var(--zemin); }
+  .driver-popover.veli-tur .driver-popover-arrow-side-bottom { border-bottom-color: var(--zemin); }
+  .portal [data-tur-baslat] { min-height: 2.75rem; }
+  .driver-popover.veli-tur:not(.veli-tur-konumlu) { opacity: 0; pointer-events: none; }

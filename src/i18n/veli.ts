@@ -183,6 +183,15 @@ export const VELI_METIN = {
       rozetKazanildi: ' — Tebrikler!',
       rozetKilitli: ' — Yakında kazanacaksın!',
     },
+    /* Tanıtım turu (Driver.js; src/scripts/veli-turu.ts). İlk girişte bir kez gösterilir; Hesap bölümünden yeniden başlatılır. */
+    tur: {
+      ad: 'Tanıtım turu', sonraki: 'İleri', onceki: 'Geri', bitti: 'Tamam', kapat: 'Turu kapat', ilerleme: '{{current}} / {{total}}',
+      ozet: { baslik: 'Çocuğunuzun sayfası', aciklama: 'Çocuğunuzun adı ve kısa bir özeti burada görünür. Birden fazla çocuğunuz varsa altındaki sekmelerle aralarında geçebilirsiniz.' },
+      defter: { baslik: 'Haftalık bülten', aciklama: 'Hocanın her hafta hazırladığı bülten burada: dersler, evde yapılacaklar ve notlar. Okuduğunuzda işaretleyebilirsiniz.' },
+      hafta: { baslik: 'Bu hafta', aciklama: 'Haftanın dersleri, ezber ve evde tekrar edilecekler burada yer alır. Çocuğunuzla birlikte göz atmanız yeterli.' },
+      devam: { baslik: 'Devam durumu', aciklama: 'Çocuğunuzun hangi derslere geldiğini her ders günü sonrasında buradan görebilirsiniz.' },
+      bildir: { baslik: 'Hocaya bildir', aciklama: 'Çocuğunuz derse gelemeyecekse mazeretinizi ya da sorunuzu buradan hocaya iletebilirsiniz.' },
+    },
   },
 
   fr: {
@@ -360,6 +369,15 @@ export const VELI_METIN = {
       rozetKazanildi: ' — Félicitations !',
       rozetKilitli: ' — Continue tes efforts !',
     },
+    /* Tanıtım turu (Driver.js; src/scripts/veli-turu.ts). İlk girişte bir kez gösterilir; Hesap bölümünden yeniden başlatılır. */
+    tur: {
+      ad: 'Visite guidée', sonraki: 'Suivant', onceki: 'Précédent', bitti: 'Terminer', kapat: 'Fermer la visite', ilerleme: '{{current}} / {{total}}',
+      ozet: { baslik: 'La page de votre enfant', aciklama: 'Le nom de votre enfant et un bref résumé apparaissent ici. Si vous avez plusieurs enfants, passez de l’un à l’autre avec les onglets en dessous.' },
+      defter: { baslik: 'Bulletin de classe', aciklama: 'Le bulletin que l’enseignant prépare chaque semaine\u00a0: cours, travail à la maison et notes. Vous pouvez le marquer comme lu.' },
+      hafta: { baslik: 'Cette semaine', aciklama: 'Les cours de la semaine, la mémorisation et la révision à la maison sont indiqués ici. Un coup d’œil avec votre enfant suffit.' },
+      devam: { baslik: 'Présences', aciklama: 'Après chaque jour de cours, vous voyez ici à quels cours votre enfant a assisté.' },
+      bildir: { baslik: 'Informer l’enseignant', aciklama: 'Si votre enfant ne peut pas venir au cours, signalez l’absence ou posez votre question ici.' },
+    },
   },
 
   en: {
@@ -536,6 +554,15 @@ export const VELI_METIN = {
       elifbaAnimasyonu: 'Open Elif-Ba Animation',
       rozetKazanildi: ' — Well done!',
       rozetKilitli: ' — Keep going!',
+    },
+    /* Tanıtım turu (Driver.js; src/scripts/veli-turu.ts). İlk girişte bir kez gösterilir; Hesap bölümünden yeniden başlatılır. */
+    tur: {
+      ad: 'Quick tour', sonraki: 'Next', onceki: 'Back', bitti: 'Done', kapat: 'Close the tour', ilerleme: '{{current}} / {{total}}',
+      ozet: { baslik: 'Your child’s page', aciklama: 'Your child’s name and a short summary appear here. With more than one child, use the tabs below to switch between them.' },
+      defter: { baslik: 'Weekly class bulletin', aciklama: 'The bulletin the teacher prepares each week: lessons, things to do at home and notes. You can mark it as read.' },
+      hafta: { baslik: 'This week', aciklama: 'This week’s lessons, memorisation and revision at home are listed here. A quick look together with your child is enough.' },
+      devam: { baslik: 'Attendance', aciklama: 'After each lesson day you can see here which lessons your child attended.' },
+      bildir: { baslik: 'Tell the teacher', aciklama: 'If your child cannot come to a lesson, report the absence or ask the teacher a question here.' },
     },
   },
 
@@ -716,6 +743,15 @@ export const VELI_METIN = {
       rozetKazanildi: ' — Proficiat!',
       rozetKilitli: ' — Blijf oefenen!',
     },
+    /* Tanıtım turu (Driver.js; src/scripts/veli-turu.ts). İlk girişte bir kez gösterilir; Hesap bölümünden yeniden başlatılır. */
+    tur: {
+      ad: 'Rondleiding', sonraki: 'Volgende', onceki: 'Terug', bitti: 'Klaar', kapat: 'Rondleiding sluiten', ilerleme: '{{current}} / {{total}}',
+      ozet: { baslik: 'De pagina van uw kind', aciklama: 'Hier ziet u de naam van uw kind en een korte samenvatting. Hebt u meer kinderen, dan schakelt u met de tabbladen eronder tussen hen.' },
+      defter: { baslik: 'Weekbulletin van de klas', aciklama: 'Het bulletin dat de leerkracht elke week opstelt: lessen, wat thuis te doen is en notities. U kunt het als gelezen markeren.' },
+      hafta: { baslik: 'Deze week', aciklama: 'De lessen van deze week, de memorisatie en de herhaling thuis staan hier. Een blik samen met uw kind volstaat.' },
+      devam: { baslik: 'Aanwezigheid', aciklama: 'Na elke lesdag ziet u hier welke lessen uw kind heeft bijgewoond.' },
+      bildir: { baslik: 'De leerkracht informeren', aciklama: 'Kan uw kind niet naar de les komen, meld dat hier aan de leerkracht of stel uw vraag.' },
+    },
   },
 
   // 21 Eyl 2026 — Almanca. Veliye daima «Sie/Ihr»; öğrenci alanındaki cümleler çocuğa seslenir ve
@@ -894,6 +930,15 @@ export const VELI_METIN = {
       elifbaAnimasyonu: 'Die Elifba-Animation des Diyanet öffnen',
       rozetKazanildi: ' — Glückwunsch!',
       rozetKilitli: ' — Bleib dran!',
+    },
+    /* Tanıtım turu (Driver.js; src/scripts/veli-turu.ts). İlk girişte bir kez gösterilir; Hesap bölümünden yeniden başlatılır. */
+    tur: {
+      ad: 'Kurzer Rundgang', sonraki: 'Weiter', onceki: 'Zurück', bitti: 'Fertig', kapat: 'Rundgang schließen', ilerleme: '{{current}} / {{total}}',
+      ozet: { baslik: 'Die Seite Ihres Kindes', aciklama: 'Hier sehen Sie den Namen Ihres Kindes und eine kurze Übersicht. Bei mehreren Kindern wechseln Sie mit den Reitern darunter.' },
+      defter: { baslik: 'Wochenbulletin der Klasse', aciklama: 'Das Bulletin, das die Lehrkraft jede Woche erstellt: Unterricht, Aufgaben für zu Hause und Notizen. Sie können es als gelesen markieren.' },
+      hafta: { baslik: 'Diese Woche', aciklama: 'Die Stunden der Woche, das Memorieren und die Wiederholung zu Hause stehen hier. Ein kurzer Blick gemeinsam mit Ihrem Kind genügt.' },
+      devam: { baslik: 'Anwesenheit', aciklama: 'Nach jedem Unterrichtstag sehen Sie hier, an welchen Stunden Ihr Kind teilgenommen hat.' },
+      bildir: { baslik: 'Der Lehrkraft mitteilen', aciklama: 'Kann Ihr Kind nicht zum Unterricht kommen, melden Sie hier die Abwesenheit oder stellen Sie Ihre Frage.' },
     },
   },
 

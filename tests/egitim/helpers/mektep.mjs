@@ -2,6 +2,12 @@ import { build } from 'esbuild';
 import { readFileSync, existsSync } from 'node:fs';
 import { expect } from '@playwright/test';
 
+// Hosting'in gerçek başlıkları (firebase.json, egitim sitesi `**` kuralı); `csp: true` ile sınama sayfası bu CSP altında açılır (scripts/egitim-onizle.mjs ile aynı kaynak).
+const genelBaslik = () => {
+  const egitim = [JSON.parse(readFileSync('firebase.json', 'utf8')).hosting].flat().find((h) => h?.public === 'egitim/dist');
+  return Object.fromEntries(egitim.headers.find((k) => k.source === '**').headers.map(({ key, value }) => [key, value]));
+};
+
 const ORIGIN = 'http://127.0.0.1:' + (process.env.HOCA_PORT || 4402); // yerel paralel koşular için
 const kod={};
 const auth = `
@@ -269,13 +275,15 @@ async function bundle(hoca=false) {
   return kod[mode];
 }
 
-export async function mektepAc(page, context, { hoca=false, cloud={}, cloudError=false, dil = 'tr', ogrenci = true, oturumYok = false, mfa = null, records = {}, tarih = '2026-09-13T10:00:00Z', students = [{ref:'TEST-1',ad:'Örnek',soyad:'Talebe'}] } = {}) {
+export async function mektepAc(page, context, { hoca=false, cloud={}, cloudError=false, dil = 'tr', ogrenci = true, oturumYok = false, mfa = null, records = {}, tur = false, csp = false, tarih = '2026-09-13T10:00:00Z', students = [{ref:'TEST-1',ad:'Örnek',soyad:'Talebe'}] } = {}) {
   await context.route('**/*', r => new URL(r.request().url()).origin === ORIGIN ? r.continue() : r.abort());
   await context.routeWebSocket(/.*/, s => s.close());
   const yol = hoca?'hoca':{ tr: 'tr/veli', fr: 'fr/veli', en: 'en/veli' }[dil]; // Dilim 4: sayfalar egitim'de (egitim/dist); ulucamii.be'deki eski adresler yönlendirme sayfasıdır
   // Derlenmiş gerçek CSS ve iskelet, sahte aile/öğrenci, dış ağ yok.
   const html = readFileSync(`egitim/dist/${yol}/index.html`, 'utf8').replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, '');
-  await context.route(ORIGIN + '/mektep-test/', r => r.fulfill({ contentType: 'text/html', body: html }));
+  await context.route(ORIGIN + '/mektep-test/', r => r.fulfill({ contentType: 'text/html', headers: csp ? genelBaslik() : {}, body: html }));
+  const betik = await bundle(hoca);
+  if (csp) await context.route(ORIGIN + '/mektep-test/paket.js', r => r.fulfill({ contentType: 'text/javascript', body: betik }));
   await page.clock.install({ time: new Date(tarih) });
   await page.goto('/mektep-test/');
   const ids = [...readFileSync('src/lib/hadis-verisi.ts', 'utf8').matchAll(/id: '([^']+)'/g)].map(m => m[1]);
@@ -323,7 +331,9 @@ export async function mektepAc(page, context, { hoca=false, cloud={}, cloudError
     ] });
     document.body.appendChild(data);
   }, { dil, records, hadisSesleri, students,cloud,cloudError,hoca,ceviriOrigin: ORIGIN,oturumYok,mfa });
-  await page.addScriptTag({ content: await bundle(hoca) });
+  // Tanıtım turu (veli-turu.ts) bu sınamalarda kendiliğinden açılmasın: yer imi tek yerde yazılır. Turu sınayan sınama `tur: true` verir.
+  if (!tur) await page.evaluate(() => localStorage.setItem('veliTuruGoruldu', '1'));
+  await (csp ? page.addScriptTag({ url: '/mektep-test/paket.js' }) : page.addScriptTag({ content: betik }));
   await page.evaluate(hoca => hoca?window.MektepTest.hocaEkrani():window.MektepTest.veliPortali(),hoca);
   if(hoca){if(mfa?.baglanti){await expect(page.locator('[data-mfa-giris]')).toBeVisible();return;}if(oturumYok){await expect(page.locator('[data-form=giris]')).toBeVisible();return;}await expect(page.locator('[data-sekme=odev]')).toBeVisible();return;}
   await expect(page.locator('[data-eylem="ogrenciModu"]')).toBeVisible();

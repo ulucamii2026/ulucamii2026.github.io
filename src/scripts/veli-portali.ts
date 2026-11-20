@@ -12,6 +12,7 @@ import { veliBulteni } from './bulten-gorunumu';
 import { veliMetni, yerlestir, type VeliMetin } from '../i18n/veli';
 import { temizleHtml, metniSadelestir, zenginMi } from '../lib/zengin-metin';
 import { portalTercihleri } from '../lib/portal-tercihleri';
+import { veliTuru, turuKapat } from './veli-turu';
 import { EZBER_LISTESI } from '../lib/ezber-verisi';
 import { ELIFBA_HARFLERI, HARF_GRUPLARI, HAREKELER, gununHarfiGetir, type HarfGrup, type HarekeTuru } from '../lib/elifba-verisi';
 import { QUIZ_SORULARI } from '../lib/quiz-verisi';
@@ -386,6 +387,7 @@ export async function veliPortali(): Promise<void> {
 
   /* ---------------------------------------------------------------- giriş ekranı */
   const girisEkrani = (onMesaj = '') => {
+    turuKapat(); // açık tanıtım turu giriş ekranının üstünde kalmasın
     kok.innerHTML = `
       <div class="giris-sar">
         ${onMesaj ? `<p class="not basari">${esc(onMesaj)}</p>` : ''}
@@ -1382,7 +1384,7 @@ export async function veliPortali(): Promise<void> {
         ${o ? '<section class="haftalik-bulten genis" data-veli-bulten></section><section class="ogrenme-atolyesi genis" data-ogrenme></section>' : ''}
         ${haftalikKarneKarti()}
         ${kitapKarti()}
-        <section class="bolum r-iznik oncelik genis">
+        <section class="bolum r-iznik oncelik genis" data-tur="hafta">
           ${bas('kitap', m.buHafta, `${tarihYaz(pzt)} – ${tarihYaz(paz)}${haftaGunleri[0] ? ' · ' + yerlestir(m.hafta, { n: haftaGunleri[0].hafta }) : ''}`)}
           ${haftaGunleri.length ? `<div>${haftaGunleri.map((g) => `<div class="hafta-gun"><span class="g-tarih">${esc(tarihYaz(g.tarih, { weekday: 'long', day: 'numeric', month: 'short' }))}</span>
               <span class="g-dersler">${g.dersler.map((x) => `<span class="g-ders"><span class="g-no">${x.no}.</span> ${esc(alanAdi(x.kod))}: <span lang="tr">${esc(x.konu)}</span></span>`).join('')}
@@ -1395,7 +1397,7 @@ export async function veliPortali(): Promise<void> {
         </section>
         ${ezk && ezGorunum !== 'eski' ? ezk.veliKilimKarti(ezberKaydi, `kl-v${d.secili}`, kartYardimi) : ''}
 
-        <section class="bolum r-adacayi">
+        <section class="bolum r-adacayi" data-tur="devam">
           ${bas('takvim', m.yoklama)}
           ${yk.length ? `<p class="kucuk">${esc(yerlestir(m.yoklamaBilgi, { n: toplamDers }))}</p>
             <div class="devam-ozet"><span><b>${say.var}</b> ${esc(durumAd('var'))}</span>${say.yok ? `<span><b>${say.yok}</b> ${esc(durumAd('yok'))}</span>` : ''}${say.mazeret ? `<span><b>${say.mazeret}</b> ${esc(durumAd('mazeret'))}</span>` : ''}${say.gec ? `<span><b>${say.gec}</b> ${esc(durumAd('gec'))}</span>` : ''}</div>
@@ -1428,7 +1430,7 @@ export async function veliPortali(): Promise<void> {
           ${d.duyurular.length ? d.duyurular.slice(0, 10).map((x) => { const g = cok(x.metin); const uzun = duyuruDuz(g).length > 240; return `<article class="duyuru${uzun ? ' uzun' : ''}"><span class="d-tarih">${esc(tarihYaz(x.tarih, { day: 'numeric', month: 'long' }))}</span><h3>${esc(cok(x.baslik))}</h3><div class="d-govde">${duyuruHtml(g)}</div><button type="button" class="d-devam" data-devam>${esc(m.devaminiOku)}</button></article>`; }).join('') : bosDurum('duyuru', m.duyuruYok)}
         </section>
 
-        <section class="bolum r-adacayi">
+        <section class="bolum r-adacayi" data-tur="bildir">
           ${bas('gonder', m.bildir)}
           <p class="kucuk">${esc(m.bildirA)}</p>
           <form data-form="bildir" novalidate class="${duzen ? 'duzenleme' : ''}">
@@ -1457,6 +1459,7 @@ export async function veliPortali(): Promise<void> {
               <div class="satir-dugmeler"><button type="submit" class="dugme dugme-ikincil">${esc(m.kaydet)}</button></div>
             </form>
           </details>
+          <p class="ps-ust-095"><button type="button" class="dugme dugme-ikincil kucuk-dugme" data-tur-baslat>${esc(m.tur.ad)}</button></p>
         </section>
       </div>`;
     atolyeBagla();
@@ -1482,6 +1485,7 @@ export async function veliPortali(): Promise<void> {
     if (!durum) { kayitYokEkrani(); return; }
     panoCiz();
     if (onMesaj) kok.insertAdjacentHTML('afterbegin', `<p class="not basari">${esc(onMesaj)}</p>`);
+    veliTuru(kok, m); // ilk girişte bir kez; pano çizildikten sonra
     // Sayfayı başka dilde açmak kayıt formundaki iletişim tercihini değiştirmez.
     fs.updateDoc(fs.doc(db, 'aileler', durum.eposta), { sonGiris: new Date().toISOString() }).catch(() => {});
   };
@@ -1515,6 +1519,7 @@ export async function veliPortali(): Promise<void> {
     hedef.click();
   });
   kok.addEventListener('click', async (ev) => {
+    if ((ev.target as HTMLElement).closest('[data-tur-baslat]')) { veliTuru(kok, m, true); return; }
     const devamBtn = (ev.target as HTMLElement).closest<HTMLElement>('[data-devam]');
     if (devamBtn) { const art = devamBtn.closest('.duyuru'); if (art) { const acik = art.classList.toggle('acik'); devamBtn.textContent = acik ? m.dahaAz : m.devaminiOku; } return; }
     const kitapBtn = (ev.target as HTMLElement).closest<HTMLElement>('[data-kitap]');
