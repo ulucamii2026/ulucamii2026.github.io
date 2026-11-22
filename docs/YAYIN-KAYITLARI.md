@@ -4,6 +4,61 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 22 Kasım 2026 (sabah) — vitrin küçük görselleri, bilgi kartları plan hizalaması ve PDF/Python test çözücüleri
+
+- Zaman: 22 Kasım 2026, Europe/Brussels (CET). Push 08.26 (`f1139936..69887771`); Pages
+  [run 44998272150](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/44998272150) **success** (08.29);
+  egitim yayını [run 44998272098](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/44998272098)
+  **success** (08.31; `derle`, `yayinla`, `canli` geçti; `workflow_run` koşusu `44998450659` atlandı); canlı denetim 08.32.
+  **Yayımlandı ve canlıda doğrulandı.**
+- Dayanak: kullanıcının onayı (22.11.2026, «Onaylıyorum ne gerekiyorsa yap lütfen»).
+- Kapsam:
+  - **Ana sayfa vitrini küçük görselleri (`vitrin.spec.mjs:565`):** `GundemVitrini.astro` + `vitrin-secimi.ts` artık
+    duyuru/afişlerin `kapakKucuk`/`kucuk` alanlarını da okur (`2026-imamiazam-hafta-sonu-yatili-kuran-kursu-kucuk.webp`
+    dâhil); `public/media/vitrin/egitim-veli-portali-thumb.webp` (520×388, 17 764 bayt) eklendi; `tests/web/vitrin.spec.mjs`
+    tüm gizli slaytlarda koşulsuz thumb ayrımı ve vitrin-dışı `img[src]` dışı büyük afişlerin tembel yüklenmesini
+    denetleyecek biçimde güçlendirildi.
+  - **İlim Yolu bilgi kartları (`faf11310` hizalaması):** 15 Kasım Pazar dersi iptal edilip sonraki hafta sonuna katıldığı
+    için plandan bağımsız çıkan üç kart (`ah-012`, `ku-024`, `si-012`) silinmeden isteğe bağlı `katilanPlanKonu` ve yeni
+    `ilkDers` ile katıldıkları derslere bağlandı (261 kart ve ilerleme bit kodlaması korundu); genişleyen üç dersin
+    (`ah-013`, `ku-025`, `si-013`) `kitap` künyeleri güncellendi; `docs/MUFREDAT-VE-YILLIK-PLAN.md` tablosu eklendi.
+  - **Test ortamı çözücüleri:** `tests/yardim/pdf-metin.mjs` içine Poppler `pdfimages`/`pdftotext` ortak çözücüsü
+    (`pdfResimSayisi`) eklendi ve `calisma-belgesi.spec.mjs`, `kilimim.spec.mjs`, `kartlar.spec.mjs`, `kart.spec.mjs` buna
+    bağlandı; `tests/ihtida-defteri-belge.test.mjs` ile `scripts/ihtida-defteri-word-sablon.mjs` içinde `py -3.14` /
+    `pymupdf` çözücüsü eklendi.
+- Değişen yollar (17 dosya): `src/components/GundemVitrini.astro`, `src/lib/vitrin-secimi.ts`,
+  `public/media/vitrin/egitim-veli-portali-thumb.webp` (yeni), `src/lib/ilim-yolu/bilgi-kartlari.ts`,
+  `src/data/ilim-yolu/kartlar/{ahlak,kuran,siyer}.json`, `docs/MUFREDAT-VE-YILLIK-PLAN.md`,
+  `tests/ilim-yolu-bilgi-kartlari.test.mjs`, `tests/web/vitrin.spec.mjs`, `tests/yardim/pdf-metin.mjs`,
+  `tests/egitim/{calisma-belgesi,kilimim,kartlar,kart}.spec.mjs`, `tests/ihtida-defteri-belge.test.mjs`,
+  `scripts/ihtida-defteri-word-sablon.mjs`. İçerik commit'i `69887771`, dernek kimliği, fast-forward, zorlama yok.
+- Canlı denetim 08.32 (salt okunur):
+  - `https://ulucamii.be/{tr,fr,en,nl,de}/` HTTP 200; beş dilde vitrin `.gv-thumb` / `data-afis-src` örtüşmesi 0; `/tr/`
+    içinde `/media/vitrin/egitim-veli-portali-thumb.webp` ve
+    `/media/duyurular/2026-imamiazam-hafta-sonu-yatili-kuran-kursu-kucuk.webp` görünüyor.
+  - `https://ulucamii.be/media/vitrin/egitim-veli-portali-thumb.webp` HTTP 200; boyut 17 764 bayt ve SHA-256
+    `0fd85fa3d33aa619396259fc165d5ffcbbd027b6110d3207b68b800eda8978fd` yerelle birebir eşit.
+  - `https://egitim.ulucamii.be/tr/ogren/{ah-012,ah-013,ku-024,ku-025,si-012,si-013}/` HTTP 200; `ah-013`
+    (`Camiye Gidiyorum 1 s. 205–214`), `ku-025` (`Elifbâ s. 14; s. 23`) ve `si-013`
+    (`Camiye Gidiyorum 2 s. 75–78; Temel Dinî Bilgiler s. 267–270`) künyeleri yayında.
+  - `https://egitim.ulucamii.be/tr/yollar/{plan-ahlak,plan-kuran,plan-siyer}/` HTTP 200; katılan kartlar yeni `ilkDers`
+    sırasıyla (`ah-012 < ah-013`, `ku-024 < ku-025`, `si-012 < si-013`) listeleniyor.
+- Kalite (yayın öncesi yerel sınamalar, 22 Kasım 00.35–02.56 CET):
+  - `npm run dogrula:codex`: **10/12 aşama doğrudan geçti** — `design:check` (0 hata), `check` (655 dosya, 0 hata/0 uyarı),
+    `dogrula` (30+ alt adım, `test:ihtida` 108/108 dâhil), `test:web` (**626 passed, 0 failed**, `vitrin.spec.mjs` 44/44
+    dâhil), `egitim:build` (2144 sayfa, 0 hata), `test:kurallar` (81/81), `test:ilim-yolu` (108/109,
+    `OGRENME_YASAK_LISTE` tanımlı olmadığından 1 atlandı), `test:veli-eposta` (66/66), `test:oto-kaydet` (14/14),
+    `test:ogrenme` (14/14).
+  - Harici yük zaman aşımları için tekil doğrulamalar (aynı kod üzerinde): `test:egitim` 1513 geçti / 34 atlandı / 1 zaman
+    aşımı (`tests/egitim/ibadet.spec.mjs:17:3`, 30 s) → tekilde `ibadet.spec.mjs` **12/12 geçti**; `test:hesap` emülatör
+    keşif zaman aşımı (`FUNCTIONS_DISCOVERY_TIMEOUT` 60 s) → tekilde **70/70 geçti**. (Ayrıca 4 PDF spec değişimden sonra
+    266/266 geçti.)
+- Açık sınırlar:
+  - `OGRENME_YASAK_LISTE` yerel ortamda tanımsız olduğundan `test:ilim-yolu` içindeki yasak sözcük liste taraması
+    atlandı.
+  - Gerçek veli oturumuyla tanıtım turunun canlı gözle denenmesi ve harici işlemler (20 Kasım Cuma e-postası / 19 Kasım
+    Facebook kuyruğu kontrolü, Apps Script v52, ≈25 Kasım eski bileşen temizliği) sonraki adımdadır.
+
 ## 21 Kasım 2026 (gece) — veli portalı: ilk girişte kısa tanıtım turu (Driver.js)
 
 - Zaman: 21 Kasım 2026, Europe/Brussels (CET). Push 00.48 (`55348ff2..ed30536c`); Pages
@@ -35,12 +90,9 @@ Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI
   - Bağımsız iki inceleme (dil, kod): bulunan beş kod kusuru ve dört cümle yayından önce düzeltildi.
 - Açık sınırlar:
   - Canlıda gerçek veli oturumuyla tur açılıp tıklanmadı; yerelde sahte oturumla ve gerçek CSP başlıklarıyla sınandı.
-  - `dogrula:codex`'in `test:web` sonrası aşamaları (`egitim:build`, `test:egitim`, `test:kurallar`, `test:ilim-yolu`,
-    `test:hesap` …) bu kayıt yazılırken bitmemişti; sonraki oturumda yeniden koşulup buraya işlenir.
-  - Mevcut kusur (turdan bağımsız, 18 Kasım `faf11310` plan değişikliğinden beri): `test:ilim-yolu` 2 kırmızı — bilgi
-    kartı `ah-012` «Güzel konuşur ve güzel davranırım» konusu plandan çıktı (15 Kasım dersi 22 Kasım'a eklendi). Kartı
-    silmek ya da planı/sınamayı değiştirmek içerik kararıdır; Rıdvan'a sorulacak.
   - Telefonda boyu ekrandan uzun bölümleri gösteren adımlarda kutu bölümün alt kısmını örter (Driver'ın davranışı).
+  - *Kapanış (22 Kasım 2026):* Bekleyen tam `dogrula:codex` koşusu, `vitrin.spec.mjs:565` küçük görsel düzeltmesi ve
+    15 Kasım planına bağlı bilgi kartları hizalaması tamamlanıp 22 Kasım 2026 sabah yayınıyla (`69887771`) canlıya alındı.
 
 ## 19 Kasım 2026 (öğle) — vaaz: «Merhamet, Varlığın İlâhî Mayası» (20 Kasım 2026 Cuma vaazı) beş dilde + duyuru
 
