@@ -22,37 +22,44 @@
 // dosya adının içinde kalıp «I/O Error: Couldn't open file» veriyordu. argv doğrudan
 // verilince boşluklu yol da kendiliğinden doğru geçer.
 import { execFileSync, spawnSync } from 'node:child_process';
+import { rmSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-/** PATH dışındaki bilinen Poppler kurulumları (WinGet, Chocolatey, elle kurulum). */
-const BILINEN_YOLLAR = [
-  `${process.env.LOCALAPPDATA ?? ''}\\Microsoft\\WinGet\\Packages\\oschwartz10612.Poppler_Microsoft.Winget.Source_8wekyb3d8bbwe\\poppler-25.07.0\\Library\\bin\\pdftotext.exe`,
-  'C:\\Program Files\\poppler\\Library\\bin\\pdftotext.exe',
-  'C:\\ProgramData\\chocolatey\\bin\\pdftotext.exe',
-];
+/** PATH dışındaki bilinen Poppler kurulum klasörleri (WinGet, Chocolatey, elle kurulum). */
+const BILINEN_DIZINLER = [
+  process.env.LOCALAPPDATA
+    ? `${process.env.LOCALAPPDATA}\\Microsoft\\WinGet\\Packages\\oschwartz10612.Poppler_Microsoft.Winget.Source_8wekyb3d8bbwe\\poppler-25.07.0\\Library\\bin`
+    : '',
+  'C:\\Program Files\\poppler\\Library\\bin',
+  'C:\\ProgramData\\chocolatey\\bin',
+].filter(Boolean);
 
-let _motor;
+const _motorlar = new Map();
 
-/** Poppler sürümlü pdftotext'i bulur; yoksa ne yapılacağını söyleyerek durur. */
-function popplerBul() {
-  if (_motor) return _motor;
-  const adaylar = [process.env.PDFTOTEXT, 'pdftotext', ...BILINEN_YOLLAR].filter(Boolean);
+/** Poppler sürümlü `pdftotext` veya `pdfimages` yürütücüsünü bulur; yoksa ne yapılacağını söyleyerek durur. */
+function popplerBul(arac = 'pdftotext') {
+  const onbellek = _motorlar.get(arac);
+  if (onbellek) return onbellek;
+  const envYol = arac === 'pdfimages' ? process.env.PDFIMAGES : process.env.PDFTOTEXT;
+  const adaylar = [envYol, arac, ...BILINEN_DIZINLER.map((d) => `${d}\\${arac}.exe`)].filter(Boolean);
   const denenen = [];
   for (const aday of adaylar) {
     // DİKKAT: Poppler `-v` sürümünü stderr'e, Xpdf stdout'a yazar ve çıkış kodları da
     // tutarsızdır. Bu yüzden execFileSync değil spawnSync: iki akım da, çıkış kodu ne
     // olursa olsun okunur. (İlk sürüm yalnız stdout'a bakıyordu ve Poppler'ı ıskalıyordu.)
-    const sonuc = spawnSync(aday, ['-v'], { encoding: 'utf8' });
+    const sonuc = spawnSync(aday, ['-v'], { encoding: 'utf8', windowsHide: true });
     const surum = `${sonuc.stdout ?? ''}${sonuc.stderr ?? ''}`.trim();
     if (sonuc.error || !surum) { denenen.push(`${aday}: çalıştırılamadı`); continue; }
-    if (/poppler/i.test(surum)) { _motor = aday; return _motor; }
+    if (/poppler/i.test(surum)) { _motorlar.set(arac, aday); return aday; }
     denenen.push(`${aday}: ${surum.split('\n')[0].trim()} (Poppler değil)`);
   }
   throw new Error(
-    'Poppler sürümlü pdftotext bulunamadı; PDF metin kapıları çalıştırılamaz.\n' +
-    'Kurulum: winget install oschwartz10612.Poppler — ya da PDFTOTEXT ortam değişkeniyle tam yolu verin.\n' +
+    `Poppler sürümlü ${arac} bulunamadı; PDF kapıları çalıştırılamaz.\n` +
+    'Kurulum: winget install oschwartz10612.Poppler — ya da PDFTOTEXT / PDFIMAGES ortam değişkeniyle tam yolu verin.\n' +
     `Denenenler:\n  ${denenen.join('\n  ')}\n` +
-    'Not: Git Bash\'in /mingw64/bin altındaki Xpdf 4.06 sürümü -bbox-layout desteklemez.',
+    "Not: Git Bash'in /mingw64/bin altındaki Xpdf 4.06 sürümü -bbox-layout desteklemez.",
   );
 }
 
@@ -65,8 +72,22 @@ export function pdfMetni(dosya, ekArgumanlar = []) {
   const yol = dosya instanceof URL || String(dosya).startsWith('file:')
     ? fileURLToPath(dosya)
     : String(dosya);
-  return execFileSync(popplerBul(), ['-enc', 'UTF-8', ...ekArgumanlar, yol, '-'], {
+  return execFileSync(popplerBul('pdftotext'), ['-enc', 'UTF-8', ...ekArgumanlar, yol, '-'], {
     encoding: 'utf8',
     maxBuffer: 64 * 1024 * 1024,
+    windowsHide: true,
   });
+}
+
+/** PDF içindeki gömülü piksel görsellerinin sayısını Poppler `pdfimages -list` ile döndürür. */
+export function pdfResimSayisi(pdfVerisi) {
+  const dosya = join(tmpdir(), `pdfimages-${process.pid}-${Math.random().toString(36).slice(2)}.pdf`);
+  writeFileSync(dosya, pdfVerisi);
+  try {
+    const cikti = execFileSync(popplerBul('pdfimages'), ['-list', dosya], { encoding: 'utf8', windowsHide: true }).trim();
+    if (!cikti) return 0;
+    return Math.max(0, cikti.split(/\r?\n/).length - 2);
+  } finally {
+    rmSync(dosya, { force: true });
+  }
 }

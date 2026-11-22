@@ -2,9 +2,24 @@
 import { createRequire } from 'node:module';
 import { writeFile, mkdir } from 'node:fs/promises';
 import { join } from 'node:path';
-import { execFileSync } from 'node:child_process';
-// pymupdf'li yorumlayıcı: ULUCAMII_PYTHON ile seçilir; `py` başlatıcısı bu makinede başka projenin Python'una gidebiliyor.
-const PYTHON = process.env.ULUCAMII_PYTHON ?? 'python';
+import { execFileSync, spawnSync } from 'node:child_process';
+function pythonBul() {
+  const adaylar = process.env.ULUCAMII_PYTHON
+    ? [[process.env.ULUCAMII_PYTHON, []]]
+    : [
+        ['python', []],
+        ['py', ['-3.14']],
+        ['py', ['-3']],
+        ['python3', []],
+        ...(process.env.LOCALAPPDATA ? [[`${process.env.LOCALAPPDATA}\\Programs\\Python\\Python314\\python.exe`, []]] : []),
+      ];
+  for (const [cmd, onArgs] of adaylar) {
+    const r = spawnSync(cmd, [...onArgs, '-c', 'import zipfile, json, re'], { encoding: 'utf8', windowsHide: true });
+    if (!r.error && r.status === 0) return { cmd, onArgs };
+  }
+  throw new Error('Python bulunamadı; ULUCAMII_PYTHON ortam değişkeniyle tam yolu verin.');
+}
+const PY = pythonBul();
 import sharp from 'sharp';
 import { AY_YILDIZ_SVG } from '../public/admin/ay-yildiz.js';
 const require = createRequire(import.meta.url);
@@ -23,7 +38,7 @@ const doc = new Document({
 });
 await mkdir(new URL('../.codex/cikti/ihtida-defteri/', import.meta.url), { recursive: true });
 await writeFile(new URL('../.codex/cikti/ihtida-defteri/word-iskele.docx', import.meta.url), await Packer.toBuffer(doc));
-execFileSync(PYTHON, ['-X', 'utf8', '-c', `
+execFileSync(PY.cmd, [...PY.onArgs, '-X', 'utf8', '-c', `
 from pathlib import Path
 from zipfile import ZipFile
 import json,re

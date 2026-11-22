@@ -566,10 +566,10 @@ test('Görünmeyen büyük afiş indirilmez; seçildiğinde resim ve arka plan b
  await page.emulateMedia({reducedMotion:'reduce'});
  const requests=[];page.on('request',r=>requests.push(new URL(r.url()).pathname));
  await page.goto('/tr/',{waitUntil:'networkidle'});
- const slides=page.locator('.gv-sahne__slide');const last=slides.last();const img=last.locator('img.gv-afis');
- const url=await img.getAttribute('data-afis-src');expect(url).toBeTruthy();expect(requests).not.toContain(new URL(url,'https://ulucamii.be').pathname);
- await page.locator('.gv-thumb').last().click();await expect(img).not.toHaveAttribute('data-afis-src');
+ const disSrc=new Set(await page.locator('img').evaluateAll(els=>els.filter(el=>!el.closest('.gv-kapsayici')).map(el=>el.getAttribute('src')).filter(Boolean).map(s=>new URL(s,'https://ulucamii.be').pathname)));const slides=page.locator('.gv-sahne__slide');const count=await slides.count();let hedef=null;for(let i=1;i<count;i++){const u=await slides.nth(i).locator('img.gv-afis').getAttribute('data-afis-src');if(!u)continue;const p=new URL(u,'https://ulucamii.be').pathname;const thumbImg=page.locator('.gv-thumb').nth(i).locator('img');if(await thumbImg.count()>0){const tSrc=await thumbImg.getAttribute('src');if(tSrc)expect(new URL(tSrc,'https://ulucamii.be').pathname).not.toBe(p);}if(!disSrc.has(p)){expect(requests).not.toContain(p);hedef={idx:i,url:u,path:p};}}
+ expect(hedef).toBeTruthy();const slide=slides.nth(hedef.idx);const img=slide.locator('img.gv-afis');
+ await page.locator('.gv-thumb').nth(hedef.idx).click();await expect(img).not.toHaveAttribute('data-afis-src');
  await expect(img).toHaveJSProperty('complete',true);expect(await img.evaluate(e=>e.naturalWidth)).toBeGreaterThan(1);
- expect(requests).toContain(new URL(url,'https://ulucamii.be').pathname);
- expect(await last.locator('.gv-gorsel-kutu').evaluate(e=>e.style.getPropertyValue('--gv-afis-bg'))).toContain(url);
+ expect(requests).toContain(hedef.path);
+ expect(await slide.locator('.gv-gorsel-kutu').evaluate(e=>e.style.getPropertyValue('--gv-afis-bg'))).toContain(hedef.url);
 });

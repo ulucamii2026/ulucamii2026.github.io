@@ -16,9 +16,9 @@ import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import QRCode from 'qrcode';
 import { readFileSync, writeFileSync, rmSync } from 'node:fs';
-import { execFileSync } from 'node:child_process';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import { pdfMetni, pdfResimSayisi } from '../yardim/pdf-metin.mjs';
 
 const KOK = 'http://127.0.0.1:4402';
 const SITE = 'https://egitim.ulucamii.be';
@@ -311,15 +311,7 @@ test.describe('yazdırma', () => {
     return page.pdf({ preferCSSPageSize: true, printBackground: true });
   };
   const sayfaSayisi = (pdf) => (pdf.toString('latin1').match(/\/Type\s*\/Page(?![s\w])/g) ?? []).length;
-  const piksel = (pdf) => {
-    const dosya = join(tmpdir(), `kart-test-${process.pid}-${Math.random().toString(36).slice(2)}.pdf`);
-    writeFileSync(dosya, pdf);
-    try {
-      return execFileSync('pdfimages', ['-list', dosya], { encoding: 'utf8' }).trim().split('\n').length - 2;
-    } catch {
-      return (pdf.toString('latin1').match(/\/Subtype\s*\/Image/g) ?? []).length;
-    } finally { rmSync(dosya, { force: true }); }
-  };
+  const piksel = pdfResimSayisi;
   const A4 = (pdf) => {
     const m = /\/MediaBox\s*\[\s*0\s+0\s+([\d.]+)\s+([\d.]+)\s*\]/.exec(pdf.toString('latin1'));
     return m && Math.abs(Number(m[1]) - 595.3) < 1 && Math.abs(Number(m[2]) - 841.9) < 1;
@@ -366,8 +358,7 @@ test.describe('yazdırma', () => {
     const dosya = join(tmpdir(), `kart-metin-${process.pid}.pdf`);
     writeFileSync(dosya, pdf);
     let metin;
-    try { metin = execFileSync('pdftotext', ['-layout', dosya, '-'], { encoding: 'utf8' }); } catch { metin = null; } finally { rmSync(dosya, { force: true }); }
-    test.skip(metin === null, 'pdftotext yok');
+    try { metin = pdfMetni(dosya, ['-layout']); } finally { rmSync(dosya, { force: true }); }
     const sayfalar = metin.split('\f');
     const kodlar = (s) => s.match(/\b[1-8K]-\d\d\b/g) ?? [];
     const kod = (o) => `${o.seviye === 'kenar' ? 'K' : o.seviye}-${String(o.sira).padStart(2, '0')}`;

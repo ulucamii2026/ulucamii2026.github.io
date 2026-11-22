@@ -1127,7 +1127,8 @@
       "id": "si-012",
       "kod": "siyer",
       "planKonu": "Mekke dönemi: İlk vahiy ve İslam'a davet",
-      "ilkDers": "2026-11-15",
+      "katilanPlanKonu": "Peygamber oluşu ve gizli davet",
+      "ilkDers": "2026-11-22",
       "seviyeAlani": "siyer",
       "basamak": 2,
       "baslik": {
@@ -1246,7 +1247,7 @@
         "nl": "Na de eerste openbaring volgde een pauze (fatra); daarna kwam soera al-Muddaththir. De oproep bleef ongeveer drie jaar geheim: Khadija, Abu Bakr, Ali en Zayd waren onder de eerste moslims. Toen de vervolging toenam, week een groep moslims uit naar Abessinië.",
         "de": "Nach der ersten Offenbarung gab es eine Pause (Fatra); dann kam die Sure al-Muddaththir. Der Ruf blieb etwa drei Jahre geheim: Chadidscha, Abu Bakr, Ali und Zayd waren unter den ersten Muslimen. Als die Verfolgung zunahm, wanderte eine Gruppe Muslime nach Abessinien aus."
       },
-      "kitap": "Temel Dinî Bilgiler s. 267–270",
+      "kitap": "Camiye Gidiyorum 2 s. 75–78; Temel Dinî Bilgiler s. 267–270",
       "sorular": [
         {
           "id": "si-013-1",

@@ -1721,7 +1721,8 @@
       "id": "ku-024",
       "kod": "kuran",
       "planKonu": "Sâkinlik Pekiştirmesi",
-      "ilkDers": "2026-11-15",
+      "katilanPlanKonu": "İki Üstün",
+      "ilkDers": "2026-11-21",
       "seviyeAlani": "okuma",
       "basamak": 2,
       "baslik": {
@@ -1805,7 +1806,7 @@
         "nl": "De dubbele fatḥa (tanwīn) geeft aan het woordeinde een “-an”-klank. We lezen woorden met dubbele fatḥa met de juiste klankwaarde.",
         "de": "Die doppelte Fatha (Tanwīn) gibt am Wortende einen „-an“-Laut. Wir lesen Wörter mit doppelter Fatha mit dem richtigen Lautwert."
       },
-      "kitap": "Elifbâ s. 23",
+      "kitap": "Elifbâ s. 14; s. 23",
       "sorular": [
         {
           "id": "ku-025-1",

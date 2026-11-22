@@ -1,9 +1,25 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
-import { execFileSync } from 'node:child_process';
-// pymupdf'li yorumlayıcı: ULUCAMII_PYTHON ile seçilir; `py` başlatıcısı bu makinede başka projenin Python'una gidebiliyor.
-const PYTHON = process.env.ULUCAMII_PYTHON ?? 'python';
+import { execFileSync, spawnSync } from 'node:child_process';
+// pymupdf'li yorumlayıcı: ULUCAMII_PYTHON ile seçilir; yoksa PATH ve Windows başlatıcısından pymupdf içeren bulunur.
+function pythonBul() {
+  const adaylar = process.env.ULUCAMII_PYTHON
+    ? [[process.env.ULUCAMII_PYTHON, []]]
+    : [
+        ['python', []],
+        ['py', ['-3.14']],
+        ['py', ['-3']],
+        ['python3', []],
+        ...(process.env.LOCALAPPDATA ? [[`${process.env.LOCALAPPDATA}\\Programs\\Python\\Python314\\python.exe`, []]] : []),
+      ];
+  for (const [cmd, onArgs] of adaylar) {
+    const r = spawnSync(cmd, [...onArgs, '-c', 'import pymupdf'], { encoding: 'utf8', windowsHide: true });
+    if (!r.error && r.status === 0) return { cmd, onArgs };
+  }
+  throw new Error('pymupdf yüklü Python bulunamadı; ULUCAMII_PYTHON ortam değişkeniyle tam yolu verin.');
+}
+const PY = pythonBul();
 import * as pdfLib from 'pdf-lib';
 import fontkit from '@pdf-lib/fontkit';
 import { pdfUret, docxUret } from '../public/admin/ihtida-defteri.js';
@@ -20,7 +36,7 @@ test('Matbu PDF 50 yatay kayıt sayfası ve ayrı bekleyen ekini içerir; Word g
   assert.equal(pdf.getPageCount(), 53);
   for (const p of pdf.getPages()) assert.ok(p.getWidth() > p.getHeight());
   writeFileSync(out + '/defter.pdf', bytes); writeFileSync(out + '/defter.docx', docxUret(model));
-  const result = execFileSync(PYTHON, ['-X', 'utf8', '-c', `
+  const result = execFileSync(PY.cmd, [...PY.onArgs, '-X', 'utf8', '-c', `
 from zipfile import ZipFile
 import xml.etree.ElementTree as E
 import pymupdf as F
@@ -42,7 +58,7 @@ for i,p in enumerate(d):
  for b in p.get_text('blocks'):
   assert b[0]>=26 and b[2]<=817 and b[1]>=18 and b[3]<=581,(i,b[:4])
 print('ok')
-`], { encoding: 'utf8' });
+`], { encoding: 'utf8', windowsHide: true });
   assert.equal(result.trim(), 'ok');
 });
 test('Uzun işlem notu PDF ve Word kayıt ekinde eksiksiz korunur', async () => {
@@ -50,12 +66,12 @@ test('Uzun işlem notu PDF ve Word kayıt ekinde eksiksiz korunur', async () => 
   mkdirSync(out, { recursive: true });
   writeFileSync(out + '/uzun.pdf', await pdfUret(uzun, kaynak, pdfLib, fontkit));
   writeFileSync(out + '/uzun.docx', docxUret(uzun));
-  assert.match(execFileSync(PYTHON, ['-X', 'utf8', '-c', `
+  assert.match(execFileSync(PY.cmd, [...PY.onArgs, '-X', 'utf8', '-c', `
 import pymupdf as F
 from zipfile import ZipFile
 d=F.open('${out}/uzun.pdf'); t=''.join(p.get_text() for p in d)
 assert 'SON İŞLEM NOTU' in t and 'KAYIT AYRINTILARI' in t
 with ZipFile('${out}/uzun.docx') as z: assert 'SON İŞLEM NOTU' in z.read('word/document.xml').decode('utf-8')
 print('ok')
-`], { encoding: 'utf8' }), /ok/);
+`], { encoding: 'utf8', windowsHide: true }), /ok/);
 });

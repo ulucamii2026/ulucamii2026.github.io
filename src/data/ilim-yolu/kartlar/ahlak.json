@@ -1127,7 +1127,8 @@
       "id": "ah-012",
       "kod": "ahlak",
       "planKonu": "Güzel konuşur ve güzel davranırım",
-      "ilkDers": "2026-11-15",
+      "katilanPlanKonu": "Hz. Muhammed (s.a.s.) dedi ki",
+      "ilkDers": "2026-11-22",
       "seviyeAlani": "ahlak",
       "basamak": 1,
       "baslik": {
@@ -1246,7 +1247,7 @@
         "nl": "Een hadith is een uitspraak van de Profeet. Een middel tot het goede zijn levert beloning op. We leren: “De sterke is niet wie anderen verslaat bij het worstelen, maar wie zich beheerst als hij boos is”, en zijn raad over het dienen van de moeder, en leggen ze uit.",
         "de": "Ein Hadith ist ein Ausspruch des Propheten. Ein Mittel zum Guten zu sein bringt Lohn. Wir lernen auswendig: „Stark ist nicht, wer im Ringkampf andere besiegt, sondern wer sich im Zorn beherrscht“, sowie seinen Rat zum Dienst an der Mutter, und erklären sie mit eigenen Worten."
       },
-      "kitap": "Camiye Gidiyorum 1 s. 211–214",
+      "kitap": "Camiye Gidiyorum 1 s. 205–214",
       "sorular": [
         {
           "id": "ah-013-1",

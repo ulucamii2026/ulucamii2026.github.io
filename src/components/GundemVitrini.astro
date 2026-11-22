@@ -93,8 +93,8 @@ const dilNotu = DIL_NOTU[dil];
 const haberler = await duyurular(dil);
 const afisler = await getCollection('afisler', ({ data }) => !data.taslak);
 const adaylar: VitrinAdayi[] = [
-  ...haberler.map(d => ({ ...d.data, id: d.id, baslik: d.data.baslik, ozet: d.data.ozet ?? '', gorsel: d.data.kapak ?? '', href: yol(dil, 'duyurular', d.slug), tur: 'duyuru' as const, dil: icerikDili(dil) })),
-  ...afisler.map(a => ({ ...a.data, id: a.id, baslik: a.data.baslik[icerikDili(dil)] ?? a.data.baslik.tr, ozet: '', gorsel: a.data.gorsel,
+  ...haberler.map(d => ({ ...d.data, id: d.id, baslik: d.data.baslik, ozet: d.data.ozet ?? '', gorsel: d.data.kapak ?? '', gorselKucuk: d.data.kapakKucuk, href: yol(dil, 'duyurular', d.slug), tur: 'duyuru' as const, dil: icerikDili(dil) })),
+  ...afisler.map(a => ({ ...a.data, id: a.id, baslik: a.data.baslik[icerikDili(dil)] ?? a.data.baslik.tr, ozet: '', gorsel: a.data.gorsel, gorselKucuk: a.data.kucuk,
     href: a.data.sayfa && a.data.sayfa in yollar ? yol(dil, a.data.sayfa as SayfaAnahtari) : a.data.link ?? a.data.gorsel,
     tur: 'afis' as const, dil: a.data.baslik[icerikDili(dil)] ? icerikDili(dil) : 'tr' })),
 ];
@@ -105,7 +105,7 @@ const egitimPortalIlgiliMi = (y: VitrinAdayi) => {
 };
 const yayinlar = secilenler.map(y => {
   if (y.tur === 'duyuru' && !y.gorsel && egitimPortalIlgiliMi(y)) {
-    return { ...y, gorsel: '/media/vitrin/egitim-veli-portali.webp' };
+    return { ...y, gorsel: '/media/vitrin/egitim-veli-portali.webp', gorselKucuk: undefined };
   }
   return y;
 });
@@ -113,7 +113,7 @@ const hamKareler = yayinlar.length ? yayinlar : [{ id: 'cami', baslik: siteAdi, 
 
 const kareler = await Promise.all(hamKareler.map(async (k) => {
   const olcu = k.gorsel ? await gorselOlcu(k.gorsel) : null;
-  const thumbGorsel = k.gorsel ? (kucukSurum(k.gorsel) ?? k.gorsel) : null;
+  const thumbGorsel = k.gorsel ? (k.gorselKucuk ?? kucukSurum(k.gorsel) ?? k.gorsel) : null;
   return {
     ...k,
     genislik: olcu?.genislik ?? 800,

@@ -14,9 +14,9 @@
 import { test, expect } from '@playwright/test';
 import QRCode from 'qrcode';
 import { readFileSync, readdirSync, writeFileSync, rmSync } from 'node:fs';
-import { execFileSync } from 'node:child_process';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import { pdfMetni } from '../yardim/pdf-metin.mjs';
 
 const KOK = 'http://127.0.0.1:4402';
 const SITE = 'https://egitim.ulucamii.be';
@@ -191,11 +191,9 @@ test.describe('PDF çıktısı', () => {
       const dosya = join(tmpdir(), `kart-${id}-${process.pid}.pdf`);
       writeFileSync(dosya, veri);
       try {
-        const son = execFileSync('pdftotext', ['-f', String(adet), '-l', String(adet), '-layout', dosya, '-'], { encoding: 'utf8' });
+        const son = pdfMetni(dosya, ['-f', String(adet), '-l', String(adet), '-layout']);
         expect(son, `${id}: son sayfa künyeyle başlamamalı`).not.toMatch(/^\s*(Arapça metin|Arapça metin:|gruplamasıyla|Evdeki)/);
         expect(son, `${id}: son sayfada içerik öbeği olmalı`).toMatch(/(^|\n)\s*\d+(-\d+)?\s+\S/);
-      } catch (e) {
-        if (e?.code !== 'ENOENT') throw e;
       } finally {
         rmSync(dosya, { force: true });
       }

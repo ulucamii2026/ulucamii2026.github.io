@@ -9,7 +9,7 @@ import { IZINLI_ALAN, ON_EK, OZET_ENCOK } from '../src/lib/ilim-yolu/bilgi-kartl
 
 const DILLER = ['tr', 'fr', 'en', 'nl', 'de'];
 const KOK = 'src/data/ilim-yolu/kartlar';
-const KART_ALANLARI = new Set(['id', 'kod', 'planKonu', 'ilkDers', 'seviyeAlani', 'basamak', 'baslik', 'ozet', 'kitap', 'sorular', 'durum']);
+const KART_ALANLARI = new Set(['id', 'kod', 'planKonu', 'katilanPlanKonu', 'ilkDers', 'seviyeAlani', 'basamak', 'baslik', 'ozet', 'kitap', 'sorular', 'durum']);
 const SORU_ALANLARI = new Set(['id', 'soru', 'siklar', 'dogru', 'kaynak']);
 
 const plan = JSON.parse(readFileSync('src/data/yillik-plan-2026-2027.json', 'utf8'));
@@ -41,15 +41,24 @@ test('her kart geçerli: kimlik, plan bağı, alan, basamak, beş dil, kısa öz
     assert.match(k.id, new RegExp(`^${ON_EK[k.kod]}-\\d{3}$`), `${yer}: kimlik biçimi`);
     assert.ok(!kimlikler.has(k.id), `${yer}: kimlik tekrar`);
     kimlikler.add(k.id);
-    const p = planKonulari.get(`${k.kod}|${k.planKonu}`);
-    assert.ok(p, `${yer}: planda yok «${k.planKonu}»`);
-    assert.equal(k.ilkDers, p.ilk, `${yer}: ilkDers`);
+    if (k.katilanPlanKonu !== undefined) {
+      assert.ok(typeof k.katilanPlanKonu === 'string' && k.katilanPlanKonu.trim().length > 0, `${yer}: katilanPlanKonu boş`);
+      assert.ok(!planKonulari.has(`${k.kod}|${k.planKonu}`), `${yer}: asıl planKonu hâlâ planda, katilanPlanKonu gereksiz`);
+      const p = planKonulari.get(`${k.kod}|${k.katilanPlanKonu}`);
+      assert.ok(p, `${yer}: katilanPlanKonu planda yok «${k.katilanPlanKonu}»`);
+      assert.equal(k.ilkDers, p.ilk, `${yer}: ilkDers katıldığı dersin günüyle aynı olmalı`);
+      if (k.kitap !== undefined) assert.ok(typeof k.kitap === 'string' && k.kitap.trim().length > 0, `${yer}: kitap boş`);
+    } else {
+      const p = planKonulari.get(`${k.kod}|${k.planKonu}`);
+      assert.ok(p, `${yer}: planda yok «${k.planKonu}»`);
+      assert.equal(k.ilkDers, p.ilk, `${yer}: ilkDers`);
+      if (k.kitap !== undefined) assert.equal(k.kitap, p.kaynak, `${yer}: kitap planın kaynak alanıyla aynı olmalı`);
+    }
     assert.ok(IZINLI_ALAN[k.kod].includes(k.seviyeAlani), `${yer}: seviyeAlani ${k.seviyeAlani}`);
     assert.ok([1, 2, 3].includes(k.basamak), `${yer}: basamak`);
     metinDolu(k.baslik, `${yer}.baslik`);
     metinDolu(k.ozet, `${yer}.ozet`);
     for (const d of DILLER) assert.ok(k.ozet[d].length <= OZET_ENCOK, `${yer}.ozet.${d}: ${k.ozet[d].length} > ${OZET_ENCOK}`);
-    if (k.kitap !== undefined) assert.equal(k.kitap, p.kaynak, `${yer}: kitap planın kaynak alanıyla aynı olmalı`);
     assert.deepEqual(Object.keys(k.durum).sort(), [...DILLER].sort(), `${yer}: durum beş dil`);
     for (const d of DILLER) assert.ok(['taslak', 'onayli'].includes(k.durum[d]), `${yer}.durum.${d}`);
     assert.ok(Array.isArray(k.sorular), `${yer}: sorular dizi`);
@@ -74,7 +83,7 @@ test('kapsam: yazılmış her kod dosyası o koddaki bütün plan konularını t
   for (const a of dosyalar) {
     const kod = a.replace(/\.json$/, '');
     const beklenen = [...planKonulari.keys()].filter((k) => k.startsWith(`${kod}|`)).sort();
-    const olan = kartlar.filter((k) => k.kod === kod).map((k) => `${k.kod}|${k.planKonu}`).sort();
+    const olan = kartlar.filter((k) => k.kod === kod && !k.katilanPlanKonu).map((k) => `${k.kod}|${k.planKonu}`).sort();
     assert.deepEqual(olan, beklenen, `${a}: eksik/fazla konu`);
   }
 });

@@ -12,10 +12,8 @@
  */
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
-import { readFileSync, writeFileSync, rmSync } from 'node:fs';
-import { execFileSync } from 'node:child_process';
-import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { readFileSync } from 'node:fs';
+import { pdfResimSayisi } from '../yardim/pdf-metin.mjs';
 
 const KOK = 'http://127.0.0.1:4402';
 const SITE = 'https://egitim.ulucamii.be';
@@ -289,15 +287,7 @@ test.describe('yazdırma', () => {
     return page.pdf({ preferCSSPageSize: true, printBackground: true });
   };
   const sayfaSayisi = (pdf) => (pdf.toString('latin1').match(/\/Type\s*\/Page(?![s\w])/g) ?? []).length;
-  const piksel = (pdf) => {
-    const dosya = join(tmpdir(), `kilimim-test-${process.pid}-${Math.random().toString(36).slice(2)}.pdf`);
-    writeFileSync(dosya, pdf);
-    try {
-      return execFileSync('pdfimages', ['-list', dosya], { encoding: 'utf8' }).trim().split('\n').length - 2;
-    } catch {
-      return (pdf.toString('latin1').match(/\/Subtype\s*\/Image/g) ?? []).length;
-    } finally { rmSync(dosya, { force: true }); }
-  };
+  const piksel = pdfResimSayisi;
   const A4 = (pdf) => {
     const m = /\/MediaBox\s*\[\s*0\s+0\s+([\d.]+)\s+([\d.]+)\s*\]/.exec(pdf.toString('latin1'));
     return m && Math.abs(Number(m[1]) - 595.3) < 1 && Math.abs(Number(m[2]) - 841.9) < 1;

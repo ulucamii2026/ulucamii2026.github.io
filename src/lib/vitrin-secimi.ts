@@ -1,6 +1,6 @@
 /** Vitrin arşiv değildir: tarih sınırı Brüksel takvim gününe göre değerlendirilir. */
 export interface VitrinAdayi {
-  id: string; baslik: string; ozet: string; gorsel: string; href: string;
+  id: string; baslik: string; ozet: string; gorsel: string; gorselKucuk?: string; href: string;
   tarih: Date; tur: 'duyuru' | 'afis'; dil: string;
   vitrin?: 'otomatik' | 'goster' | 'gizle'; vitrinSon?: Date;
   oneCikan?: boolean; oneCikanSon?: Date;

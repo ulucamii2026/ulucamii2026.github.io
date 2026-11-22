@@ -28,6 +28,8 @@ export type BilgiKarti = {
   /** Plan bağı: `kod` + TR `konu` yıllık plandakiyle birebir aynı. */
   kod: PlanKodu;
   planKonu: string;
+  /** Ders iptali/birleşmesiyle başka bir plan dersine katılan kartın yeni plan başlığı; kart silinmez, `ilkDers` katıldığı günü gösterir. */
+  katilanPlanKonu?: string;
   /** Konunun planda ilk işlendiği gün (YYYY-MM-DD). */
   ilkDers: string;
   /** Seviye yolu: seviye testinin 7 alanından biri ve o alandaki basamak. */
