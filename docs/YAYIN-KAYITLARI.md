@@ -4,6 +4,20 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 24 Kasım 2026 (öğleden sonra) — duyuru: Değerler Eğitimi Programı 2026–2027 kış dönemi (13–17 yaş)
+
+- Zaman: 24 Kasım 2026, Europe/Brussels (CET). Push 16.25 (`3161f58c..1add526d`); Pages
+  [run 45425347773](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/45425347773) **success**; canlı
+  denetim 16.28 (TR, FR ve PDF 200; sayfada IBAN ve son gün metni var; ana sayfada öne çıkan). **Yayımlandı ve canlıda doğrulandı.**
+- Dayanak: Rıdvan, 24.11.2026: «Bu programı hem camimizin web sitesine koy, hem de Facebook hesabında paylaş … Bütün yetki
+  ve karar sende.» Kaynak: Müşavirlik (Vahi GENÇASLAN), Koordinatörler grubu 24.11 15.28.
+- Kapsam: `src/content/duyurular/{tr,fr}/degerler-egitimi-programi-kis-2026.md` (öne çıkan ve vitrin 29.11'e kadar, cami
+  ekranında 24–29.11); `public/belgeler/degerler-egitimi/` (veli bilgi notu TR/FR, veli izin belgesi, program kuralları,
+  gün gün program); `public/media/duyurular/degerler-egitimi-kis-2026-{tr,fr}[-thumb].webp` (kapak). `npm run dogrula`
+  geçti; derlenen HTML'de imam numarası yalnız `wa.me` bağlantısında.
+- Not: Başkanlığın program belgesindeki haftanın günleri geçen yılın şablonundan kalmış; sayfada 24.12.2026 Perşembe,
+  3.01.2027 Pazar olarak düzeltildi ve belgenin yanına not düşüldü.
+
 ## 22 Kasım 2026 (sabah) — vitrin küçük görselleri, bilgi kartları plan hizalaması ve PDF/Python test çözücüleri
 
 - Zaman: 22 Kasım 2026, Europe/Brussels (CET). Push 08.26 (`f1139936..69887771`); Pages
