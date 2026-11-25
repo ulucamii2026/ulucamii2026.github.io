@@ -1366,7 +1366,8 @@
       "id": "ib-014",
       "kod": "ibadet",
       "planKonu": "Vakit, cuma, bayram ve cenaze namazları",
-      "ilkDers": "2026-11-28",
+      "katilanPlanKonu": "Tekrar ve Değerlendirme 2",
+      "ilkDers": "2026-12-05",
       "seviyeAlani": "namaz",
       "basamak": 2,
       "baslik": {
@@ -1485,7 +1486,7 @@
         "nl": "We herhalen wassing, doe‘a en gebed: de verplichtingen van de wassing, soorten gebed, feest- en dodengebed. Vragen, antwoorden en korte schrijfoefeningen helpen ons onthouden.",
         "de": "Wir wiederholen Waschung, Dua und Gebet: die Pflichten der Waschung, Gebetsarten, Fest- und Totengebet. Fragen, Antworten und kurze Schreibaufgaben festigen das Gelernte."
       },
-      "kitap": "Camiye Gidiyorum 2 s. 13–20; s. 58–63; s. 98–109 (tekrar)",
+      "kitap": "Camiye Gidiyorum 2 s. 104–109; s. 13–20; s. 58–63; s. 98–103 (tekrar)",
       "sorular": [
         {
           "id": "ib-015-1",

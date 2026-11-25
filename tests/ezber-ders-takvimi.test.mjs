@@ -50,13 +50,13 @@ const KAYNAK_YOLU = process.env.EZBER_KOSESI_KAYNAK || uretici.VARSAYILAN_KAYNAK
 const kaynakVar = existsSync(KAYNAK_YOLU);
 
 // ——— Türev dosya ———
-test('türev dosya: üst alanlar, kaynak adı kişisel yol değil, özet 64 hane, 76 ders günü (10 Ekim 2026 → 6 Haziran 2027)', () => {
+test('türev dosya: üst alanlar, kaynak adı kişisel yol değil, özet 64 hane, 74 ders günü (10 Ekim 2026 → 6 Haziran 2027)', () => {
   assert.deepEqual(Object.keys(dosya), ['kaynak', 'kaynakSha256', 'uretim', 'gunler']);
   assert.equal(dosya.kaynak, 'ulu-camii-kuran-kursu/veri/ezber-kosesi-2026-2027.json');
   assert.doesNotMatch(dosya.kaynak, /^[a-z]:|\\|users|ridva/i);
   assert.match(dosya.kaynakSha256, /^[0-9a-f]{64}$/);
   assert.match(dosya.uretim, /^\d{4}-\d{2}-\d{2}$/);
-  assert.equal(dosya.gunler.length, 76); // kaynak değişince bilerek güncellenir (kurs planı: 76 ders günü; 18 Kas 2026: 15 Kasım yapılmadı, satırı çıktı)
+  assert.equal(dosya.gunler.length, 74); // kaynak değişince bilerek güncellenir (kurs planı: 74 ders günü; 18 Kas 2026: 15 Kasım, 25 Kas 2026: 28-29 Kasım yapılmadı, satırları çıktı)
   assert.equal(dosya.gunler[0].tarih, '2026-10-10');
   assert.equal(dosya.gunler.at(-1).tarih, '2027-06-06');
 });
@@ -278,9 +278,9 @@ test('gerçek veri: planın Kur’an dışı derslerindeki her ezber o günün e
 });
 
 // ——— Hafta sonları ———
-test('haftaSonlari: Cumartesi–Pazar–tatil Pazartesisi bir hafta sonu; boşluk ≤ 2 gün; 35 hafta sonu', () => {
+test('haftaSonlari: Cumartesi–Pazar–tatil Pazartesisi bir hafta sonu; boşluk ≤ 2 gün; 34 hafta sonu', () => {
   const h = k.HAFTA_SONLARI;
-  assert.equal(h.length, 35);
+  assert.equal(h.length, 34);
   assert.deepEqual(h.slice(0, 4).map((x) => [x.ilk, x.son, x.gunler.length]), [
     ['2026-10-10', '2026-10-11', 2], ['2026-10-17', '2026-10-19', 3], ['2026-10-24', '2026-10-26', 3], ['2026-10-31', '2026-11-01', 2],
   ]);
@@ -288,7 +288,7 @@ test('haftaSonlari: Cumartesi–Pazar–tatil Pazartesisi bir hafta sonu; boşlu
     for (let i = 1; i < x.gunler.length; i++) assert.ok(k.gunFarki(x.gunler[i - 1].tarih, x.gunler[i].tarih) <= k.HAFTA_SONU_BOSLUGU, `${x.ilk}: iç boşluk`);
   }
   for (let i = 1; i < h.length; i++) assert.ok(k.gunFarki(h[i - 1].son, h[i].ilk) > k.HAFTA_SONU_BOSLUGU, `${h[i].ilk}: haftalar ayrı`);
-  assert.equal(h.flatMap((x) => x.gunler).length, 76);
+  assert.equal(h.flatMap((x) => x.gunler).length, 74);
   // Tek günlük hafta sonu: 15 Mayıs 2027 (16 Mayıs Kurban Bayramı'nda ders yok).
   assert.deepEqual(h.find((x) => x.ilk === '2027-05-15').gunler.map((g) => g.tarih), ['2027-05-15']);
   // Üç gün: tatil Pazartesileri (Cumartesi, Pazar, Pazartesi) birlikte.

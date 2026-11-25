@@ -41,6 +41,25 @@ cuma e-postası etkilenmez); yalnız `kaynak` ve özet/etkinlik genişledi — 2
 - Ezber takvimi: ders yapılmayan günün ezber satırı kaynaktan çıkarılır; içeriği sonraki ders gününe taşınır (15 Kasım satırı çıkarıldı; üç duanın pekiştirmesi 21 Kasım satırında zaten vardı, taşınacak bir şey kalmadı; kaynak yedeği `ulu-camii-kuran-kursu/veri/_yedek/`).
 - Plan sayfasında «Ders yapılmadı» notlu işaret günü yalnız notu gösterir (başına «Ders yapılmayacak.» eklenmez); 16 Mayıs aynı kaldı.
 
+## 25 Kasım 2026 — 28–29 Kasım hafta sonu dersi yapılmadı (18 Kasım yöntemiyle)
+
+Kurs sorumlusu izinli (27.11–2.12.2026); 28 Cumartesi ve 29 Pazar dersi yapılmayacak, 5 Aralık Cumartesi 10.00'da devam. Altı ders (her gün 3) 5–6 Aralık hafta sonuna
+katıldı; sonraki haftalar değişmedi (**84 gün / 252 ders** · kuran 84 · itikat 43 · ibadet 43 · siyer 41 · ahlak 41). 28 ve 29 Kasım, 15 Kasım gibi **işaret günü**
+(`tatil: true`, boş ders listesi, not yalnız «Ders yapılmadı», `data-atla="3"`). Ders numarası KAYMAZ (no 79–84 boş; 5 Aralık 85–87, 6 Aralık 88–90).
+- Katılım: alan alanına göre bir sonraki derse, ders başlığı aynı; yalnız `kaynak`, özet ve etkinlik genişledi (var olan paragraflar yeniden kullanıldı, yeni çeviri gerekmedi):
+  5 Aralık Kur'an «Elifbâ s. 25; s. 23–25 (tekrar)», İtikat «Camiye Gidiyorum 2 s. 52–57; s. 6–12; s. 26–29; s. 46–51 (tekrar)», İbadet «CG2 s. 104–109; s. 13–20; s. 58–63; s. 98–103 (tekrar)»
+  (+ teşrik tekbiri ezberi); 6 Aralık Kur'an «Elifbâ s. 23–25 (tekrar); s. 15–18», Siyer «CG2 s. 30–39; s. 75–78 (tekrar); TDB s. 271–277», Ahlak «CG1 s. 221–227; s. 205–210; s. 211–214 (tekrar)».
+  İtikat/İbadet/Ahlak'ın «Tekrar ve Değerlendirme 2» dersleri iptal edilen konuyu önce işler, ardından tekrar yapar (başlık değişmedi).
+- Katalog: `ders-defteri-2026-2027.json` 252 kayıt (no 70–72 ve 79–84 boş, `sayfa = no+50`). Ezber takvimi 74 gün: 28–29 Kasım satırları çıktı; 28 Kasım'ın yeni dilimi
+  (Ettehiyyâtü bölüm 1) 5 Aralık'ta bölüm 2 ile birlikte «yeni» oldu, 28 Kasım'ın kalıcı Fâtiha'sı 5 Aralık kalıcı listesine katıldı (29 Kasım'ın pekiştirmesi 6 Aralık satırında zaten vardı).
+- İlim Yolu kartları: `ku-027`, `ku-028`, `it-014`, `ib-014`, `si-014`, `ah-014` silinmeden `katilanPlanKonu` + yeni `ilkDers` ile katıldıkları derslere bağlandı;
+  genişleyen altı dersin kartlarının (`ku-029`, `ku-030`, `it-015`, `ib-015`, `si-015`, `ah-015`) `kitap` künyesi güncellendi (261 kart ve bit kodlaması aynı).
+- Kaynak (Git dışı): Word + HTML + `ozet-nihai.json` (79–84 silindi, 85–90 birleşik), `yillik-plan-cikar.py` `BEKLENEN` 84/252, `mufredat-denetim.py` `IPTAL`/`IPTAL_KONULAR`/`BIRLESEN_KAYNAK`,
+  `mufredat-uret.py`; kurs `mufredat_denetle.py`/`uygula.py` (252), `ezber-kosesi-2026-2027.json`, `ders-iptal-gunler.json` (28–29 Kasım eklendi). Yedekler: `…\_yedek\2026-11-25 28-29 Kasim iptali oncesi\`
+  ve `D:/ulu-camii-kuran-kursu/veri/_yedek/2026-11-25-iptal-oncesi/`.
+- Sabit sayılar: `src/content/sayfalar/*/kurankursu.md`, `(egitim/)src/sayfalar/Mufredat.astro`, `kurs-ceviri/<dil>.json` (`mufredat` 7 sayı anahtarı; `plan` 5 sahipsiz anahtar silindi),
+  testler `ogrenme-ilerleme` (252/84), `ezber-ders-takvimi` (74 gün, 34 hafta sonu), `egitim/takvim.spec` (74/34), hoca ekranı altın kaydı (`hoca-dil-altin/tr.json`, 28–29 Kasım seçeneği çıktı).
+
 ## Plan değişince siteye giden bağımlılar (hepsi birlikte güncellenir)
 
 | Site dosyası | Ne tutar | Nasıl güncellenir |

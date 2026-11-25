@@ -1332,7 +1332,8 @@
       "id": "ah-014",
       "kod": "ahlak",
       "planKonu": "Dinim hayatım",
-      "ilkDers": "2026-11-29",
+      "katilanPlanKonu": "Tekrar ve Değerlendirme 2",
+      "ilkDers": "2026-12-06",
       "seviyeAlani": "ahlak",
       "basamak": 1,
       "baslik": {
@@ -1451,7 +1452,7 @@
         "nl": "We herhalen vriendelijk spreken, hadiths en de religieuze uitdrukkingen van het dagelijks leven. We herinneren wat we geleerd hebben met voorbeelden en korte opdrachten.",
         "de": "Wir wiederholen freundliches Sprechen, Hadithe und die religiösen Ausdrücke des Alltags. Wir rufen das Gelernte mit Beispielen und kurzen Übungen in Erinnerung."
       },
-      "kitap": "Camiye Gidiyorum 1 s. 205–210; s. 211–214; s. 221–227 (tekrar)",
+      "kitap": "Camiye Gidiyorum 1 s. 221–227; s. 205–210; s. 211–214 (tekrar)",
       "sorular": [
         {
           "id": "ah-015-1",

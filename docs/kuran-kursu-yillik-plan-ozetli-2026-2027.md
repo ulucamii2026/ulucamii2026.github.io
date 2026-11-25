@@ -4,8 +4,8 @@
 > düzeltmeler `mufredat/ozet-duzeltmeler.json` üzerinden yapılır.
 
 - **Kaynak:** Ulu Camii Kuran Kursu 2026-2027 Mufredat ve Yillik Ders Plani.docx + Ulu Camii Kuran Kursu 2026-2027 Yillik Plan.html
-- **Üretim:** 2026-11-18T13:58:18+01:00
-- **Kapsam:** 86 ders günü · 258 ders saati · beş ders alanı
+- **Üretim:** 2026-11-25T21:57:44+01:00
+- **Kapsam:** 84 ders günü · 252 ders saati · beş ders alanı
 
 ## Eylül 2026 — 8 ders günü
 
@@ -468,7 +468,7 @@ Kaynak: Camiye Gidiyorum 1 s. 197–204
 - *Konu özeti:* 32. ünite, çocukları "ibadet yerleri" teması etrafında kapsamlı bir yolculuğa çıkarır. Önce caminin Müslümanlar için taşıdığı anlam ve işlevler somut biçimde açıklanır: toplu ibadet, cemaat ruhu, ezan ve yardımlaşma. Ardından perspektif genişletilerek İslam, Yahudilik ve Hristiyanlığın ibadet mekânları (cami, havra, kilise) karşılaştırmalı bir bakışla ele alınır; her dinin özel gün ve kuralları tanıtılır. Üçüncü aşamada caminin iç dünyası ayrıntılandırılır: mihrap, minber, minare gibi mimari unsurlar görseller aracılığıyla öğretilir ve imam, müezzin, kayyum gibi görev sahipleri tanıtılır. Ünite, hac ibadetinin ihram, vakfe, şeytan taşlama, tavaf ve sa'y gibi temel rükünleriyle tamamlanır.
 - *Etkinlik önerisi:* Çok beğenilen bir caminin dış görüntüsünü çiz. / Caminin içini gösteren bir resim çiz. / Camide yaşanan anılarla ilgili kısa bir hikâye yaz.
 
-## Kasım 2026 — 8 ders günü
+## Kasım 2026 — 6 ders günü
 
 ### 1 Kasım 2026 · Pazar · Hafta 9
 
@@ -643,109 +643,90 @@ Kaynak: Camiye Gidiyorum 1 s. 205–214
 
 ### 28 Kasım 2026 · Cumartesi · Hafta 13
 
-**10:00-10:40 · Kur’an-ı Kerim · İki Ötre**  
-Kaynak: Elifbâ s. 25
+*Ders yapılmadı*
 
-- *Kazanım:* Öğrenci, iki ötreli kelimeleri doğru dudak hareketiyle okur.
-- *Konu özeti:* İki ötrenin un sesini verdiği dudak hareketiyle gösterilir. Öğrenciler iki ötreli örnekleri koro hâlinde okur, sonra öğretmenin işaret ettiği kelimeyi bireysel seslendirir.
-
-**11:00-11:40 · İtikat · Kur'an'da geçen melekler, şeytandan korunma ve tövbe**  
-Kaynak: Camiye Gidiyorum 2 s. 52–57
-
-- *Kazanım:* Öğrenci, meleklerin genel özelliklerinden (nurdan yaratılma, cinsiyetsizlik, yorulmama, günahsızlık) en az dört tanesini sayar. • Öğrenci, dört büyük meleğin (Cebrail, Azrail, Mikail, İsrafil) görevlerini Kirâmen Kâtibîn ile birlikte eşleştirir. • Öğrenci, şeytanın insanı kötülüğe ve ibadetten uzaklaştırmaya nasıl çalıştığını bir örnekle açıklar. • Öğrenci, tövbenin anlamını ve pişmanlığın Allah'a söz vermek olduğunu kendi cümleleriyle ifade eder. • Öğrenci, bâtıl inanç ile hurafe kavramlarını tanımlar ve dinimizle ilişkisi olmadığını fark eder.
-- *Konu özeti:* Bu ünite, önceki dersin devamında meleklerin genel özelliklerini, dört büyük meleği ve Kirâmen Kâtibîn'i tanıtarak şeytandan korunma ve tövbe konularına geçer. Meleklerin nurdan yaratılmış, cinsiyetsiz ve günahsız varlıklar olduğu; Cebrail, Azrail, Mikail ve İsrafil'in görevleri hatırlatılır. Şeytanın insanı kötülüğe ve namazdaki vesveseyle ibadetten uzaklaştırmaya çalıştığı, Cemerat'ta şeytan taşlama âdetiyle örneklendirilir. Tövbenin günaha pişmanlık duyup Allah'a söz vermek olduğu, en güzel tövbe duasının seyyidü'l-istiğfar olduğu anlatılır. Ünite, bâtıl inanç ve hurafelerin dinimizle ilgisi olmadığını hatırlatarak sona erer.
-- *Etkinlik önerisi:*
-    - Kümelere ayrılıp dört büyük melek ve Kirâmen Kâtibîn'i tanıtan bir afiş taslağını sınıfta sözlü olarak sunarız.
-    - Şeytandan korunmak için nasıl davranmamız gerektiğini sınıfça 'Huşû içinde namaz kılmak için yapacaklarım' başlığında maddeleyip tahtaya yazarız.
-    - Çevremizdeki yaygın bâtıl inançları (nazar boncuğu, kara kedi, uğursuz gün gibi) sınıfta tartışıp ortak bir 'bâtıl inanç' tanımı çıkarırız.
-
-**12:00-12:40 · İbadet · Vakit, cuma, bayram ve cenaze namazları**  
-Kaynak: Camiye Gidiyorum 2 s. 104–109
-
-- *Kazanım:* Öğrenci, beş vakit namaz ile cuma namazının rekât sayılarını (sünnet-farz-son sünnet) doğru sayar. • Öğrenci, bayram namazının vacip olduğunu, kılınış sırasını ve teşrik tekbirinin ne zaman okunduğunu açıklar. • Öğrenci, cenaze namazının tanımını, farz-ı kifaye niteliğini ve rükû-secdesiz dört tekbirle kılınışını anlatır. • Öğrenci, örnek olaydan (Enes, Esra, Furkan) hareketle namazı bozan davranışları (konuşmak, gülmek, yiyip içmek, kıbleden dönmek) listeler. • Öğrenci, namaz kılan bir insanın bireysel ve toplumsal özelliklerini örneklerle açıklar.
-- *Konu özeti:* Bu derste önce beş vakit namaz ile cuma namazının sünnet, farz ve son sünnet rekâtları tablo üzerinden hatırlanır. Ardından bayramların sevinç günü olduğu, bayram namazının vacip olduğu ve kılınış sırası (niyet, tekbirler, Fatiha, rükû, secde, selam, hutbe) anlatılır; Kurban Bayramı'nda okunan teşrik tekbiri tanıtılır. Cenaze namazının vefat eden kişi için cemaatle kılınan, rükû ve secdesi olmayan, dört tekbirle yapılan bir farz-ı kifaye olduğu öğretilir. Enes, Esra ve Furkan'ın hikâyesi üzerinden namazda konuşmanın, gülmenin, bir şey yiyip içmenin ve kıbleden dönmenin namazı bozduğu somutlaştırılır. Son olarak namaz kılan bir insanın bireysel (huzur, Allah'tan sakınma) ve toplumsal (yardımlaşma, başkalarını düşünme) özellikleri örneklerle işlenir.
-- *Etkinlik önerisi:*
-    - Beş vakit namazın sünnet-farz-son sünnet rekât sayılarını tahtadaki tabloda sınıfça tamamlama.
-    - Enes, Esra ve Furkan'ın hikâyesinden hareketle "namazı bozanlar listesi"ni sözlü olarak sınıfça çıkarıp defterlere yazma.
-    - Namaz kılan bir insanın bireysel ve toplumsal özelliklerini iki sütunlu bir tabloya defterde sınıfça örneklerle doldurma.
-- *Ezber:* Teşrik tekbiri: "Allâhu ekber, Allâhu ekber, lâ ilâhe illallâhu vallâhu ekber, Allâhu ekber ve lillâhi'l-hamd." (Kurban Bayramı'nda arefe sabahından bayramın dördüncü günü ikindiye kadar her farz namazın selamından sonra okunur.)
+Ders yapılmayacak.
 
 ### 29 Kasım 2026 · Pazar · Hafta 13
 
-**10:00-10:40 · Kur’an-ı Kerim · Tenvinli Kelime Okuma**  
-Kaynak: Elifbâ s. 23–25 (tekrar)
+*Ders yapılmadı*
 
-- *Kazanım:* Öğrenci, tenvin çeşitlerini kelime içinde doğru ayırt eder.
-- *Konu özeti:* Üç tenvin çeşidi karışık kısa kelimelerde çalışılır. Öğrenciler kelime sonundaki sesi işaretler, ardından kelimeyi bütün hâlinde ve doğru tempoyla okur.
-
-**11:00-11:40 · Siyer · Tekrar ve Değerlendirme 2**  
-Kaynak: Camiye Gidiyorum 2 s. 30–39; s. 75–78 (tekrar)
-
-- *Kazanım:* Öğrenci, işlenen konulardaki temel kavramları hatırlar ve örneklendirir.
-- *Konu özeti:* Bu bölüme kadar işlenen konuların soru-cevap, kısa yazılı ve grup çalışmasıyla pekiştirilmesi.
-- *Etkinlik önerisi:*
-    - Soru-cevap yarışması
-    - Kısa değerlendirme testi
-
-**12:00-12:40 · Ahlak · Dinim hayatım**  
-Kaynak: Camiye Gidiyorum 1 s. 221–227
-
-- *Kazanım:* Öğrenci, mutluluk, üzüntü, hastalık ve tehlike gibi farklı günlük yaşam durumlarında kullanılan dini ifadeleri (Elhamdülillah, İnnâ lillâh, Maşallah vb.) doğru bağlamıyla eşleştirir. • Öğrenci, hasta ziyareti, taziye, yeni doğan tebriği ve sağlık duası gibi toplumsal durumlarda söylenen Türkçe dua ve hayırdua sözlerini örnek verir. • Öğrenci, 'rahmet' ve 'hayırlı uzun ömür' kavramlarını tanımlayarak bunların İslam ahlakındaki yerini açıklar. • Öğrenci, Elhamdülillah duasını Arapçası ve Türkçe anlamıyla birlikte okur ve şükrün dindeki önemini açıklar. • Öğrenci, imanın şartları, cami, ibadet yerleri ve hadislerin özellikleri gibi temel din bilgisi konularını daha önce öğrendikleri bilgilerle örtüştürerek değerlendirme sorularını yanıtlar.
-- *Konu özeti:* 36. ünite olan "Dinim hayatım", İslam dininin günlük yaşamın her anına nasıl anlam ve yön kattığını çocuklara somut bağlamlar üzerinden öğretmektedir. Ünitenin açılışında, hasta bir arkadaşını ziyaret eden çocuklar örneği üzerinden dinî değerlerin sosyal ilişkileri güzelleştirdiği mesajı verilmektedir. Ardından mutluluk, üzüntü, hastalık, tehlike ve ölüm gibi farklı yaşam durumlarında Müslümanların hangi dinî ifadeleri kullandığı (Elhamdülillah, İnnâ lillâh, Maşallah gibi zikirler) örneklerle işlenmektedir. Öğrenciler bu ifadeleri hem anlamlandırır hem de doğru bağlamda kullanmayı pratik etkinliklerle öğrenir. Hasta ziyareti ve taziyede söylenen dua sözleri de öğretilir.
-- *Etkinlik önerisi:* Beş çocuğun anlattığı günlük yaşam durumlarını okuyup her birine uygun dinî ifadeyi (dua/zikir) bulma ve eşleştirme etkinliği. / Hastalara, vefat etmiş birinin yakınlarına, yeni doğan bebek sahibi ailelere ve sağlıklı kişilere söylenen dua/tebrik sözlerini içeren kartları doğru grupla eşleştir. / Sol ve sağ sütundaki yarım cümleleri anlamlarına göre noktalı çizgilerle birleştir; doğru sayını sayfanın altındaki kutuya yaz.
+Ders yapılmayacak.
 
 ## Aralık 2026 — 10 ders günü
 
 ### 5 Aralık 2026 · Cumartesi · Hafta 14
 
 **10:00-10:40 · Kur’an-ı Kerim · Tenvin Pekiştirmesi**  
-Kaynak: Elifbâ s. 23–25 (tekrar)
+Kaynak: Elifbâ s. 25; s. 23–25 (tekrar)
 
 - *Kazanım:* Öğrenci, tenvinli kelimeleri hatasız ve seri biçimde okur.
-- *Konu özeti:* Tenvinli kelimeler okuma kartları ve kısa eşleştirme oyunu ile tekrar edilir. Öğretmen her öğrencinin iki üstün, iki esre ve iki ötre okumasını bireysel kontrol eder.
+- *Konu özeti:*
+    - İki ötrenin un sesini verdiği dudak hareketiyle gösterilir. Öğrenciler iki ötreli örnekleri koro hâlinde okur, sonra öğretmenin işaret ettiği kelimeyi bireysel seslendirir.
+    - Tenvinli kelimeler okuma kartları ve kısa eşleştirme oyunu ile tekrar edilir. Öğretmen her öğrencinin iki üstün, iki esre ve iki ötre okumasını bireysel kontrol eder.
 
 **11:00-11:40 · İtikat · Tekrar ve Değerlendirme 2**  
-Kaynak: Camiye Gidiyorum 2 s. 6–12; s. 26–29; s. 46–57 (tekrar)
+Kaynak: Camiye Gidiyorum 2 s. 52–57; s. 6–12; s. 26–29; s. 46–51 (tekrar)
 
 - *Kazanım:* Öğrenci, işlenen konulardaki temel kavramları hatırlar ve örneklendirir.
-- *Konu özeti:* Bu bölüme kadar işlenen konuların soru-cevap, kısa yazılı ve grup çalışmasıyla pekiştirilmesi.
+- *Konu özeti:*
+    - Bu ünite, önceki dersin devamında meleklerin genel özelliklerini, dört büyük meleği ve Kirâmen Kâtibîn'i tanıtarak şeytandan korunma ve tövbe konularına geçer. Meleklerin nurdan yaratılmış, cinsiyetsiz ve günahsız varlıklar olduğu; Cebrail, Azrail, Mikail ve İsrafil'in görevleri hatırlatılır. Şeytanın insanı kötülüğe ve namazdaki vesveseyle ibadetten uzaklaştırmaya çalıştığı, Cemerat'ta şeytan taşlama âdetiyle örneklendirilir. Tövbenin günaha pişmanlık duyup Allah'a söz vermek olduğu, en güzel tövbe duasının seyyidü'l-istiğfar olduğu anlatılır. Ünite, bâtıl inanç ve hurafelerin dinimizle ilgisi olmadığını hatırlatarak sona erer.
+    - Bu bölüme kadar işlenen konuların soru-cevap, kısa yazılı ve grup çalışmasıyla pekiştirilmesi.
 - *Etkinlik önerisi:*
+    - Kümelere ayrılıp dört büyük melek ve Kirâmen Kâtibîn'i tanıtan bir afiş taslağını sınıfta sözlü olarak sunarız.
+    - Şeytandan korunmak için nasıl davranmamız gerektiğini sınıfça 'Huşû içinde namaz kılmak için yapacaklarım' başlığında maddeleyip tahtaya yazarız.
+    - Çevremizdeki yaygın bâtıl inançları (nazar boncuğu, kara kedi, uğursuz gün gibi) sınıfta tartışıp ortak bir 'bâtıl inanç' tanımı çıkarırız.
     - Soru-cevap yarışması
     - Kısa değerlendirme testi
 
 **12:00-12:40 · İbadet · Tekrar ve Değerlendirme 2**  
-Kaynak: Camiye Gidiyorum 2 s. 13–20; s. 58–63; s. 98–109 (tekrar)
+Kaynak: Camiye Gidiyorum 2 s. 104–109; s. 13–20; s. 58–63; s. 98–103 (tekrar)
 
 - *Kazanım:* Öğrenci, işlenen konulardaki temel kavramları hatırlar ve örneklendirir.
-- *Konu özeti:* Bu bölüme kadar işlenen konuların soru-cevap, kısa yazılı ve grup çalışmasıyla pekiştirilmesi.
+- *Konu özeti:*
+    - Bu derste önce beş vakit namaz ile cuma namazının sünnet, farz ve son sünnet rekâtları tablo üzerinden hatırlanır. Ardından bayramların sevinç günü olduğu, bayram namazının vacip olduğu ve kılınış sırası (niyet, tekbirler, Fatiha, rükû, secde, selam, hutbe) anlatılır; Kurban Bayramı'nda okunan teşrik tekbiri tanıtılır. Cenaze namazının vefat eden kişi için cemaatle kılınan, rükû ve secdesi olmayan, dört tekbirle yapılan bir farz-ı kifaye olduğu öğretilir. Enes, Esra ve Furkan'ın hikâyesi üzerinden namazda konuşmanın, gülmenin, bir şey yiyip içmenin ve kıbleden dönmenin namazı bozduğu somutlaştırılır. Son olarak namaz kılan bir insanın bireysel (huzur, Allah'tan sakınma) ve toplumsal (yardımlaşma, başkalarını düşünme) özellikleri örneklerle işlenir.
+    - Bu bölüme kadar işlenen konuların soru-cevap, kısa yazılı ve grup çalışmasıyla pekiştirilmesi.
 - *Etkinlik önerisi:*
+    - Beş vakit namazın sünnet-farz-son sünnet rekât sayılarını tahtadaki tabloda sınıfça tamamlama.
+    - Enes, Esra ve Furkan'ın hikâyesinden hareketle "namazı bozanlar listesi"ni sözlü olarak sınıfça çıkarıp defterlere yazma.
+    - Namaz kılan bir insanın bireysel ve toplumsal özelliklerini iki sütunlu bir tabloya defterde sınıfça örneklerle doldurma.
     - Soru-cevap yarışması
     - Kısa değerlendirme testi
+- *Ezber:* Teşrik tekbiri: "Allâhu ekber, Allâhu ekber, lâ ilâhe illallâhu vallâhu ekber, Allâhu ekber ve lillâhi'l-hamd." (Kurban Bayramı'nda arefe sabahından bayramın dördüncü günü ikindiye kadar her farz namazın selamından sonra okunur.)
 
 ### 6 Aralık 2026 · Pazar · Hafta 14
 
 **10:00-10:40 · Kur’an-ı Kerim · Med Harfleri**  
-Kaynak: Elifbâ s. 15–18
+Kaynak: Elifbâ s. 23–25 (tekrar); s. 15–18
 
 - *Kazanım:* Öğrenci, med harflerini tanır ve kelimedeki uzatmayı fark eder.
-- *Konu özeti:* Elif, vâv ve ye med harflerinin önceki harekeye göre uzatma yaptığı gösterilir. Öğrenciler kısa ve uzun okuma farkını el işaretiyle takip ederek örnek kelimeleri tekrar eder.
+- *Konu özeti:*
+    - Üç tenvin çeşidi karışık kısa kelimelerde çalışılır. Öğrenciler kelime sonundaki sesi işaretler, ardından kelimeyi bütün hâlinde ve doğru tempoyla okur.
+    - Elif, vâv ve ye med harflerinin önceki harekeye göre uzatma yaptığı gösterilir. Öğrenciler kısa ve uzun okuma farkını el işaretiyle takip ederek örnek kelimeleri tekrar eder.
 
 **11:00-11:40 · Siyer · Davetin açıklanması: Zulümler, Hz. Hamza ve Hz. Ömer'in Müslüman olması**  
-Kaynak: Temel Dinî Bilgiler s. 271–277
+Kaynak: Camiye Gidiyorum 2 s. 30–39; s. 75–78 (tekrar); Temel Dinî Bilgiler s. 271–277
 
 - *Kazanım:* Öğrenci, üç yıllık gizli davetin ardından âyetlerle emredilen açık davetin Safâ tepesinde nasıl başladığını anlatır. • Öğrenci, müşriklerin Müslümanlara yaptığı eziyetlere Hz. Bilâl, Ammâr b. Yâsir ve annesi Sümeyye örneğiyle sabrın önemini açıklar. • Öğrenci, Kureyş'in İslam'a düşman olma sebeplerini (eşitlik korkusu, ticaret kaygısı, atalardan kalan âdetlere bağlılık) sıralar. • Öğrenci, Hz. Hamza'nın ve Hz. Ömer'in Müslüman oluş hikâyelerini, imanın gönülleri nasıl değiştirdiğine örnek olarak anlatır.
-- *Konu özeti:* Üç yıllık gizli davetin ardından inen âyetlerle Peygamberimiz (s.a.s.) önce yakınlarını, sonra Safâ tepesinde bütün Mekke halkını açıkça İslam'a davet etti; amcası Ebû Leheb bu davete karşı çıktı. Müşrikler Müslümanlara ağır eziyetler yaptı; Hz. Bilâl-i Habeşî'yi Hz. Ebû Bekir satın alıp kurtardı, Ammâr b. Yâsir'in annesi Sümeyye ile babası Yâsir işkenceyle şehid oldu, ilk İslam şehidleri sayıldılar. Ebû Cehil ve Ebû Leheb gibi düşmanlar Kureyş'in eşitlik ve ticaret kaygısıyla İslam'a karşı çıkmasını körüklediler; müşrikler Ebû Tâlib'e baskı yaptıysa da o, yeğenini korumaktan vazgeçmedi. Ebû Cehil'in Peygamberimize hakaretine kızan amcası Hz. Hamza Müslüman oldu. Peygamberimizi öldürmeye giden Hz. Ömer, kız kardeşi Fatma'nın evinde Tâ-Hâ sûresini dinleyip kalbi yumuşayarak Müslüman oldu ve Müslümanlar ilk kez Kâbe'de açıkça namaz kıldılar.
+- *Konu özeti:*
+    - Bu bölüme kadar işlenen konuların soru-cevap, kısa yazılı ve grup çalışmasıyla pekiştirilmesi.
+    - Üç yıllık gizli davetin ardından inen âyetlerle Peygamberimiz (s.a.s.) önce yakınlarını, sonra Safâ tepesinde bütün Mekke halkını açıkça İslam'a davet etti; amcası Ebû Leheb bu davete karşı çıktı. Müşrikler Müslümanlara ağır eziyetler yaptı; Hz. Bilâl-i Habeşî'yi Hz. Ebû Bekir satın alıp kurtardı, Ammâr b. Yâsir'in annesi Sümeyye ile babası Yâsir işkenceyle şehid oldu, ilk İslam şehidleri sayıldılar. Ebû Cehil ve Ebû Leheb gibi düşmanlar Kureyş'in eşitlik ve ticaret kaygısıyla İslam'a karşı çıkmasını körüklediler; müşrikler Ebû Tâlib'e baskı yaptıysa da o, yeğenini korumaktan vazgeçmedi. Ebû Cehil'in Peygamberimize hakaretine kızan amcası Hz. Hamza Müslüman oldu. Peygamberimizi öldürmeye giden Hz. Ömer, kız kardeşi Fatma'nın evinde Tâ-Hâ sûresini dinleyip kalbi yumuşayarak Müslüman oldu ve Müslümanlar ilk kez Kâbe'de açıkça namaz kıldılar.
 - *Etkinlik önerisi:*
+    - Soru-cevap yarışması
+    - Kısa değerlendirme testi
     - Hz. Hamza ve Hz. Ömer'in Müslüman oluş hikâyelerini sözlü olarak karşılaştırma: "İkisini de İslam'a ne getirdi?"
     - "Zorlukla karşılaşan bir arkadaşımıza nasıl destek oluruz?" sorusunu Hz. Ebû Bekir'in Bilâl'i kurtarmasından yola çıkarak tartışma.
     - Açık davetin Safâ tepesinde başlamasını zaman çizelgesinde gösterme.
 
 **12:00-12:40 · Ahlak · Tekrar ve Değerlendirme 2**  
-Kaynak: Camiye Gidiyorum 1 s. 205–210; s. 211–214; s. 221–227 (tekrar)
+Kaynak: Camiye Gidiyorum 1 s. 221–227; s. 205–210; s. 211–214 (tekrar)
 
 - *Kazanım:* Öğrenci, işlenen konulardaki temel kavramları hatırlar ve örneklendirir.
-- *Konu özeti:* Bu bölüme kadar işlenen konuların soru-cevap, kısa yazılı ve grup çalışmasıyla pekiştirilmesi.
+- *Konu özeti:*
+    - 36. ünite olan "Dinim hayatım", İslam dininin günlük yaşamın her anına nasıl anlam ve yön kattığını çocuklara somut bağlamlar üzerinden öğretmektedir. Ünitenin açılışında, hasta bir arkadaşını ziyaret eden çocuklar örneği üzerinden dinî değerlerin sosyal ilişkileri güzelleştirdiği mesajı verilmektedir. Ardından mutluluk, üzüntü, hastalık, tehlike ve ölüm gibi farklı yaşam durumlarında Müslümanların hangi dinî ifadeleri kullandığı (Elhamdülillah, İnnâ lillâh, Maşallah gibi zikirler) örneklerle işlenmektedir. Öğrenciler bu ifadeleri hem anlamlandırır hem de doğru bağlamda kullanmayı pratik etkinliklerle öğrenir. Hasta ziyareti ve taziyede söylenen dua sözleri de öğretilir.
+    - Bu bölüme kadar işlenen konuların soru-cevap, kısa yazılı ve grup çalışmasıyla pekiştirilmesi.
 - *Etkinlik önerisi:*
+    - Beş çocuğun anlattığı günlük yaşam durumlarını okuyup her birine uygun dinî ifadeyi (dua/zikir) bulma ve eşleştirme etkinliği. / Hastalara, vefat etmiş birinin yakınlarına, yeni doğan bebek sahibi ailelere ve sağlıklı kişilere söylenen dua/tebrik sözlerini içeren kartları doğru grupla eşleştir. / Sol ve sağ sütundaki yarım cümleleri anlamlarına göre noktalı çizgilerle birleştir; doğru sayını sayfanın altındaki kutuya yaz.
     - Soru-cevap yarışması
     - Kısa değerlendirme testi
 
@@ -2383,10 +2364,10 @@ Kaynak: —
 
 | Ölçüt | Değer |
 | --- | --- |
-| Ders günü | 86 |
-| Ders saati | 258 |
-| Kur’an-ı Kerim | 86 |
-| İtikat | 44 |
-| İbadet | 44 |
-| Siyer | 42 |
-| Ahlak | 42 |
+| Ders günü | 84 |
+| Ders saati | 252 |
+| Kur’an-ı Kerim | 84 |
+| İtikat | 43 |
+| İbadet | 43 |
+| Siyer | 41 |
+| Ahlak | 41 |

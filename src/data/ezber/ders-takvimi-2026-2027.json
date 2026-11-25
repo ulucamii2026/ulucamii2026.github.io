@@ -1,7 +1,7 @@
 {
   "kaynak": "ulu-camii-kuran-kursu/veri/ezber-kosesi-2026-2027.json",
-  "kaynakSha256": "75b1272bcf645d3fb5593e76a416015f008ea7f8a6ad86328b4224b6d7fb8117",
-  "uretim": "2026-11-18",
+  "kaynakSha256": "1ad30ccaaceade2d887383bf1c9554472f1ef2fc5fcfe56469d9bf98f7a4b1bd",
+  "uretim": "2026-11-25",
   "gunler": [
     {"tarih":"2026-10-10","gun":"Cumartesi","kip":"tam-ders","yeni":[{"id":"d-euzu-besmele"},{"id":"d-kelime-i-tevhid"},{"id":"d-kelime-i-sehadet"},{"id":"s-fatiha","ayet":[1,4]}],"dinleme":[{"id":"s-fatiha","ayet":[5,7]}]},
     {"tarih":"2026-10-11","gun":"Pazar","kip":"kose","pekistir":[{"id":"s-fatiha","ayet":[1,4]},{"id":"d-euzu-besmele"},{"id":"d-kelime-i-tevhid"},{"id":"d-kelime-i-sehadet"}]},
@@ -18,9 +18,7 @@
     {"tarih":"2026-11-14","gun":"Cumartesi","kip":"kose","yeni":[{"id":"d-ruku-tesbihi"},{"id":"d-tesmi-tahmid"},{"id":"d-secde-tesbihi"}]},
     {"tarih":"2026-11-21","gun":"Cumartesi","kip":"tekrar","pekistir":[{"id":"s-fatiha"},{"id":"s-ihlas"},{"id":"s-kevser"},{"id":"d-ruku-tesbihi"},{"id":"d-tesmi-tahmid"},{"id":"d-secde-tesbihi"}],"kalici":["d-euzu-besmele","d-kelime-i-tevhid","d-kelime-i-sehadet"]},
     {"tarih":"2026-11-22","gun":"Pazar","kip":"kose","pekistir":[{"id":"s-fatiha"},{"id":"s-ihlas"},{"id":"s-kevser"}]},
-    {"tarih":"2026-11-28","gun":"Cumartesi","kip":"kose","yeni":[{"id":"d-ettehiyyatu","bolum":1}],"kalici":["s-fatiha"]},
-    {"tarih":"2026-11-29","gun":"Pazar","kip":"kose","pekistir":[{"id":"d-ettehiyyatu","bolum":1}]},
-    {"tarih":"2026-12-05","gun":"Cumartesi","kip":"kose","yeni":[{"id":"d-ettehiyyatu","bolum":2}],"kalici":["d-subhaneke","d-tekbir"]},
+    {"tarih":"2026-12-05","gun":"Cumartesi","kip":"kose","yeni":[{"id":"d-ettehiyyatu","bolum":1},{"id":"d-ettehiyyatu","bolum":2}],"kalici":["s-fatiha","d-subhaneke","d-tekbir"]},
     {"tarih":"2026-12-06","gun":"Pazar","kip":"kose","pekistir":[{"id":"d-ettehiyyatu","bolum":1},{"id":"d-ettehiyyatu","bolum":2}]},
     {"tarih":"2026-12-12","gun":"Cumartesi","kip":"kose","yeni":[{"id":"d-ettehiyyatu","bolum":3}],"kalici":["s-ihlas"]},
     {"tarih":"2026-12-13","gun":"Pazar","kip":"kose","pekistir":[{"id":"d-ettehiyyatu"}]},

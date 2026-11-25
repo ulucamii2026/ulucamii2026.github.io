@@ -39,7 +39,7 @@ Tijdens de schoolvakanties is onze koranschool ook gesloten:
 
 Tijdens de maand Ramadan (**8 februari – 8 maart 2027**) wordt het gewone leerplan opgeschort; de lessen behandelen in die periode inhoud die specifiek op Ramadan gericht is. Op de dagen van het Suikerfeest en het Offerfeest is er geen les; op de vooravond van het Offerfeest (**zaterdag 15 mei 2027**) behandelen de lessen thema’s die specifiek met het feest te maken hebben.
 
-Voor het schooljaar 2026-2027 zijn in totaal **86 lesdagen** en **258 lesuren** gepland.
+Voor het schooljaar 2026-2027 zijn in totaal **84 lesdagen** en **252 lesuren** gepland.
 
 ## Leerplan
 
@@ -115,7 +115,7 @@ Onze koranschool neemt ook deel aan **kennisquizzen** die in de regio Namen word
 
 - **23 leerlingen** (oktober 2025)
 - Lesdagen: **zaterdag – zondag**
-- **258 lesuren** per jaar
+- **252 lesuren** per jaar
 - Inschrijving en lessen **volledig gratis**
 
 ## Ouderportaal

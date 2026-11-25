@@ -5,7 +5,7 @@ Marche-en-Famenne / Belçika · Kur'an-ı Kerim · İtikat · İbadet · Siyer �
 - **Ders başlangıcı:** 5 Eylül 2026 Cumartesi · **bitişi:** 6 Haziran 2027 Pazar
 - **Ders günleri:** Cumartesi ve Pazar; okulların tam hafta tatilinde Pazartesi de
 - **Saatler:** kış 10:00–12:40 · yaz 11:00–13:40 (3 ders × 40 dk, 20 dk teneffüs)
-- **Toplam:** 86 ders günü · 258 ders saati (Kur'an 86, İtikat 44, İbadet 44, Siyer 42, Ahlak 42)
+- **Toplam:** 84 ders günü · 252 ders saati (Kur'an 84, İtikat 43, İbadet 43, Siyer 41, Ahlak 41)
 - **Kaynak kitaplar:** Camiye Gidiyorum 1 · 2 (DİTİB) · Temel Dinî Bilgiler, Seyfettin Yazıcı (DİB)
 - **Takvim:** Fédération Wallonie-Bruxelles 2026-2027 okul takvimi
 
@@ -19,7 +19,7 @@ Marche-en-Famenne / Belçika · Kur'an-ı Kerim · İtikat · İbadet · Siyer �
 Programın uygulama takvimi, ders saatleri, dönüşüm mantığı ve özel dönem kuralları bu bölümde özetlenmiştir.
 
 | **Konu** | **Açıklama** |
-|:--:|----|
+|----|----|
 | Öğretim yılı | 5 Eylül 2026 Cumartesi - 6 Haziran 2027 Pazar (Haziran'ın ilk haftası) |
 | Ders günleri | Her hafta Cumartesi ve Pazar. Okulların tam hafta tatil olduğu dönemlerde ayrıca Pazartesi (haftada 3 gün). |
 | Günlük süre | 3 ders saati. Her ders 40 dakika, dersler arası 20 dakika teneffüs. |
@@ -28,35 +28,35 @@ Programın uygulama takvimi, ders saatleri, dönüşüm mantığı ve özel dön
 | Saat geçişleri | Kış saati: 25 Ekim 2026 Pazar · Yaz saati: 28 Mart 2027 Pazar |
 | 1\. ders saati | Her gün istisnasız Kur'an-ı Kerim. |
 | 2\. ve 3. ders saatleri | İtikat -\> İbadet -\> Siyer -\> Ahlak sırasıyla dönüşümlü (her gün sıradaki iki ders). |
-| Toplam | 86 ders günü + 1 bayram tatili + 1 ders yapılmayan gün · 258 ders saati (Kur'an-ı Kerim 86, İtikat 44, İbadet 44, Siyer 42, Ahlak 42) |
+| Toplam | 84 ders günü + 1 bayram tatili + 3 ders yapılmayan gün · 252 ders saati (Kur'an-ı Kerim 84, İtikat 43, İbadet 43, Siyer 41, Ahlak 41) |
 
 ### 1.1. Günlük Ders Çizelgesi
 
 | **Ders** | **Yaz saati** | **Kış saati** | **Ders alanı** | **Açıklama**            |
-|:--------:|---------------|---------------|----------------|-------------------------|
-| 1\. ders | 11:00-11:40   | 10:00-10:40   | Kur'an-ı Kerim | Her gün sabit           |
-| Teneffüs | 11:40-12:00   | 10:40-11:00   | \-             | 20 dakika               |
-| 2\. ders | 12:00-12:40   | 11:00-11:40   | Dönüşümlü      | Sıradaki 1. branş dersi |
-| Teneffüs | 12:40-13:00   | 11:40-12:00   | \-             | 20 dakika               |
-| 3\. ders | 13:00-13:40   | 12:00-12:40   | Dönüşümlü      | Sıradaki 2. branş dersi |
+|:--------:|:-------------:|:-------------:|----------------|-------------------------|
+| 1\. ders |  11:00-11:40  |  10:00-10:40  | Kur'an-ı Kerim | Her gün sabit           |
+| Teneffüs |  11:40-12:00  |  10:40-11:00  | \-             | 20 dakika               |
+| 2\. ders |  12:00-12:40  |  11:00-11:40  | Dönüşümlü      | Sıradaki 1. branş dersi |
+| Teneffüs |  12:40-13:00  |  11:40-12:00  | \-             | 20 dakika               |
+| 3\. ders |  13:00-13:40  |  12:00-12:40  | Dönüşümlü      | Sıradaki 2. branş dersi |
 
 ### 1.2. Branş Dersleri Dönüşüm Düzeni
 
 İtikat - İbadet - Siyer - Ahlak sırası kesintisiz döner; her ders günü bu sıradan iki ders işlenir. Böylece iki ders gününde dört branşın tamamı bir tur tamamlanmış olur.
 
-|    **Ders günü**    | **2. ders** | **3. ders** | **Sonuç**        |
-|:-------------------:|-------------|-------------|------------------|
-| 1\. gün (Cumartesi) | İtikat      | İbadet      | Turun ilk yarısı |
-|   2\. gün (Pazar)   | Siyer       | Ahlak       | Tur tamamlandı   |
-|       3\. gün       | İtikat      | İbadet      | Yeni tur başlar  |
-|       4\. gün       | Siyer       | Ahlak       | ...              |
+| **Ders günü**       | **2. ders** | **3. ders** | **Sonuç**        |
+|---------------------|:-----------:|:-----------:|------------------|
+| 1\. gün (Cumartesi) |   İtikat    |   İbadet    | Turun ilk yarısı |
+| 2\. gün (Pazar)     |    Siyer    |    Ahlak    | Tur tamamlandı   |
+| 3\. gün             |   İtikat    |   İbadet    | Yeni tur başlar  |
+| 4\. gün             |    Siyer    |    Ahlak    | ...              |
 
 ### 1.3. Okul Tatilleri ve İlâve Pazartesi Dersleri
 
 Fédération Wallonie-Bruxelles 2026-2027 okul takviminde tam hafta tatil olan dönemler ve bu dönemlerde programa eklenen Pazartesi ders günleri:
 
 | **Tatil dönemi** | **Tarih aralığı** | **İlâve Pazartesi ders günleri** |
-|:--:|----|----|
+|----|:--:|----|
 | Sonbahar tatili (Congé d'automne) | 19-30 Ekim 2026 | 19 Ekim 2026, 26 Ekim 2026 |
 | Kış tatili (Vacances d'hiver) | 21 Aralık 2026 - 1 Ocak 2027 | 21 Aralık 2026, 28 Aralık 2026 |
 | Dinlenme tatili (Congé de détente) | 22 Şubat - 5 Mart 2027 | 22 Şubat 2027, 1 Mart 2027 |
@@ -65,7 +65,7 @@ Fédération Wallonie-Bruxelles 2026-2027 okul takviminde tam hafta tatil olan d
 ### 1.4. Dinî Günler: Bayram Tatilleri ve Ramazan Programı
 
 | **Dinî gün / dönem** | **Tarih** | **Programa etkisi** |
-|:--:|----|----|
+|----|:--:|----|
 | Ramazan ayı | 8 Şubat - 8 Mart 2027 | Bu dönemdeki bütün dersler Ramazan'a özel programla işlenir (bk. Bölüm 2.6). |
 | Ramazan'a hazırlık hafta sonu | 6-7 Şubat 2027 | Ramazan programının giriş dersleri işlenir. |
 | Ramazan Bayramı | 9-11 Mart 2027 (Salı-Perşembe) | Ders yok. Hafta içine denk geldiğinden ders günlerini etkilemez. |
@@ -82,7 +82,7 @@ Kaynak kitaplardan çıkarılan konular, ders alanlarına göre sıralanmış ve
 
 Konular kitap sırasına göre (Camiye Gidiyorum 1 -\> Camiye Gidiyorum 2 -\> Temel Dinî Bilgiler) kolaydan zora doğru dizilmiştir.
 
-### 2.1. Kur'an-ı Kerim (toplam 86 ders saati · genel program 74 ders)
+### 2.1. Kur'an-ı Kerim (toplam 84 ders saati · genel program 74 ders)
 
 | **No** | **Ders konusu** | **Kaynak** | **Kazanım** |
 |:--:|----|----|----|
@@ -161,7 +161,7 @@ Konular kitap sırasına göre (Camiye Gidiyorum 1 -\> Camiye Gidiyorum 2 -\> Te
 | 73 | Beyyine Suresi | Elifbâ / Kur'an-ı Kerim | • Öğrenci, Beyyine suresini bölümler hâlinde takip eder ve ezber okumasına başlar. |
 | 74 | Yıl Sonu Değerlendirmesi | Temel Dinî Bilgiler s. 325–330 | • Öğrenci, yıl sonunda Kur'an-ı Kerim okuma ve ezber kazanımlarını öğretmene gösterir. |
 
-### 2.2. İtikat (toplam 44 ders saati · genel program 33 ders)
+### 2.2. İtikat (toplam 43 ders saati · genel program 33 ders)
 
 | **No** | **Ders konusu** | **Kaynak** | **Kazanım** |
 |:--:|----|----|----|
@@ -199,7 +199,7 @@ Konular kitap sırasına göre (Camiye Gidiyorum 1 -\> Camiye Gidiyorum 2 -\> Te
 | 32 | Kader ve kazaya iman | Temel Dinî Bilgiler s. 63–66 | • Öğrenci, kader ve kaza kavramlarını dinî terim olarak tanımlar. • Öğrenci, insanın kendi isteği dışındaki işler ile isteğine bağlı işler arasındaki farkı örnekle açıklar. • Öğrenci, kadere inanmanın insana çalışma gücü ve sorumluluk duygusu kazandırdığını ifade eder. • Öğrenci, rızık ve ecel kavramlarını tanımlar ve bunların kaderle ilişkisini kurar. |
 | 33 | Tevekkül ve çalışmak | Temel Dinî Bilgiler s. 67–71 | • Öğrenci, tevekkülün 'elinden geleni yapıp sonucu Allah'a bırakmak' anlamına geldiğini çiftçi örneğiyle açıklar. • Öğrenci, 'önce deveni bağla, sonra tevekkül et' hadisinden çıkan dersi kendi cümleleriyle ifade eder. • Öğrenci, helal kazanç için çalışmanın İslam'da ibadet değeri taşıdığını örnekle açıklar. • Öğrenci, odun kesen adamın hikâyesinden hareketle çalışmanın dilencilikten daha hayırlı olduğunu ifade eder. |
 
-### 2.3. İbadet (toplam 44 ders saati · genel program 32 ders)
+### 2.3. İbadet (toplam 43 ders saati · genel program 32 ders)
 
 | **No** | **Ders konusu** | **Kaynak** | **Kazanım** |
 |:--:|----|----|----|
@@ -236,7 +236,7 @@ Konular kitap sırasına göre (Camiye Gidiyorum 1 -\> Camiye Gidiyorum 2 -\> Te
 | 31 | Yolcu namazı, kaza namazı, tilavet secdesi ve cenaze namazı | Temel Dinî Bilgiler s. 143–150 | • Öğrenci, oturarak veya ima ile namaz kılmanın hangi durumlarda uygulandığını açıklar. • Öğrenci, yolcu (misafir) sayılmanın şartlarını ve yolcuya tanınan namaz kolaylıklarını (dört rekâtı iki kılmak gibi) sıralar. • Öğrenci, eda ile kaza arasındaki farkı açıklar ve hangi namazların kaza edilebileceğini belirtir. • Öğrenci, tilavet secdesinin ne zaman vacip olduğunu ve namaz içinde/dışında nasıl yapıldığını anlatır. • Öğrenci, cenaze namazının şartlarını, dört tekbirle kılınışını ve farz-ı kifaye niteliğini açıklar. |
 | 32 | Resimlerle namazın kılınışı | Temel Dinî Bilgiler s. 337–347 | • Öğrenci, sabah namazının iki rekât farzını niyetten selama kadar doğru sırayla uygulamalı kılar. • Öğrenci, namazın her hareketinde (tekbir, kıyam, rükû, secde, oturuş, selam) erkek ve kadınların duruş farklarını örnekleriyle gösterir. • Öğrenci, namaz sonunda dua ederken ellerin nasıl açılıp tutulacağını uygular. |
 
-### 2.4. Siyer (toplam 42 ders saati · genel program 31 ders)
+### 2.4. Siyer (toplam 41 ders saati · genel program 31 ders)
 
 | **No** | **Ders konusu** | **Kaynak** | **Kazanım** |
 |:--:|----|----|----|
@@ -272,7 +272,7 @@ Konular kitap sırasına göre (Camiye Gidiyorum 1 -\> Camiye Gidiyorum 2 -\> Te
 | 30 | Peygamberimizin çocukları, Aşere-i mübeşşere ve ashabı | Temel Dinî Bilgiler s. 311–312 | • Öğrenci, Peygamberimizin (s.a.s.) vefatının ardından Hz. Ebû Bekir'in halife seçildiğini ve Peygamberimizin dünya malı olarak miras bırakmadığını, en büyük mirasının İslam'ın nuru ve ahlak ilkeleri olduğunu söyler. • Öğrenci, Peygamberimizin yedi çocuğunu (Kasım, Abdullah, İbrahim; Zeynep, Rukiye, Ümmügülsüm, Fâtıma) sayar ve oğlu İbrahim'in vefatında güneş tutulmasıyla ilgili yanlış inanışı Peygamberimizin nasıl düzelttiğini anlatır. • Öğrenci, "Aşere-i Mübeşşere" kavramını ve cennetle müjdelenen on sahâbenin adlarını sayar. • Öğrenci, "Ashap", "Muhacir" ve "Ensar" kavramlarını tanımlar. |
 | 31 | Hz. Muhammed'in (s.a.s.) insanlığa ışık tutan yüksek ahlakı | Temel Dinî Bilgiler s. 313–315 | • Öğrenci, Peygamberimizin (s.a.s.) insanlara ve hayvanlara gösterdiği merhameti (susayan kediye su vermesi, çocukları sevmesi, Hz. Hasan ve Hüseyin'e hoşgörüsü) örneklerle anlatır. • Öğrenci, Peygamberimizin alçakgönüllülüğünü, sadeliğini ve kimseyi azarlamayan yumuşak huyunu (Enes'in tanıklığı) açıklar. • Öğrenci, Peygamberimizin doğruluğu sebebiyle "Muhammedü'l-Emin" (Güvenilir Muhammed) diye tanındığını ve cömertliğini, bağışlayıcılığını örneklerle söyler. • Öğrenci, Peygamberimizin temizliğe, kadınlara iyi davranmaya ve çalışkanlığa verdiği önemi kendi hayatından bir örnekle ilişkilendirir. |
 
-### 2.5. Ahlak (toplam 42 ders saati · genel program 33 ders)
+### 2.5. Ahlak (toplam 41 ders saati · genel program 33 ders)
 
 | **No** | **Ders konusu** | **Kaynak** | **Kazanım** |
 |:--:|----|----|----|
@@ -315,7 +315,7 @@ Konular kitap sırasına göre (Camiye Gidiyorum 1 -\> Camiye Gidiyorum 2 -\> Te
 Ramazan ayı boyunca genel müfredat askıya alınır; her ders alanı Ramazan temasıyla işlenir. Kur'an-ı Kerim dersi Ramazan-Kur'an ilişkisi ve mukabele üzerine kurgulanmıştır. Toplam 12 ders günü (36 ders saati).
 
 | **Ders alanı** | **Ders konusu** | **İçerik** | **Kazanım / Etkinlik** |
-|:--:|----|----|----|
+|----|----|----|----|
 | Kur'an-ı Kerim | Ramazan: Kur'an Ayı | Ramazan ayının Kur'an-ı Kerim'in indirildiği ay olduğu, Bakara suresi 185. ayet ışığında anlatılır. Kur'an ile Ramazan arasındaki bağ, çocuğun kendi okuma hedefini belirlemesiyle somutlaştırılır. | • Öğrenci, Ramazan ayının Kur'an'ın indirildiği ay olduğunu ayete dayanarak açıklar. · Her öğrenci 'Bu Ramazan'da Kur'an hedefim' kartını doldurup panoya asar. |
 | Kur'an-ı Kerim | Mukabele Nedir, Nasıl Yapılır? | Mukabele geleneği; bir kişinin okuyup diğerlerinin takip etmesi usulü tanıtılır. Camide mukabeleye katılma adabı ve dinleme edebi uygulamalı gösterilir. | • Öğrenci, mukabelenin ne olduğunu açıklar ve dinleyici olarak uygun edebi sergiler. · Sınıfta küçük bir mukabele halkası kurulur; her öğrenci birer satır okur. |
 | Kur'an-ı Kerim | Kur'an'ın İndirilişi ve İlk Vahiy: Alak Suresi 1-5 | İlk vahyin geliş anı ve 'Oku!' emri işlenir. Alak suresinin ilk beş ayeti harf harf, hareke hareke okutulur; meali çocuk diliyle açıklanır. | • Öğrenci, Alak suresinin ilk beş ayetini doğru okur ve mealini kendi cümleleriyle anlatır. · 'İlk emir: Oku' başlıklı afiş çalışması. |
@@ -356,7 +356,7 @@ Ramazan ayı boyunca genel müfredat askıya alınır; her ders alanı Ramazan t
 ### 2.7. Kurban Bayramı Arifesi Programı (15 Mayıs 2027 Cumartesi)
 
 | **Ders alanı** | **Ders konusu** | **İçerik** | **Kazanım / Etkinlik** |
-|:--:|----|----|----|
+|----|----|----|----|
 | Kur'an-ı Kerim | Kevser Suresi ve Kurban Ayeti | Kevser suresi okunur ve meali işlenir; 'Rabbin için namaz kıl ve kurban kes' ayeti üzerinde durulur. | • Öğrenci, Kevser suresini doğru okur ve kurbanla ilişkisini açıklar. · Sure mealini resimleme. |
 | İtikat | Hz. İbrahim ve Hz. İsmail'in Teslimiyeti | Kurban ibadetinin dayandığı teslimiyet kıssası anlatılır; Allah'a güven ve itaat kavramları işlenir. | • Öğrenci, kurbanın dayandığı kıssayı ve teslimiyetin anlamını anlatır. · Kıssayı kendi cümleleriyle anlatma. |
 | İbadet | Kurban İbadeti, Bayram Namazı ve Bayram Adabı | Kurbanın hükmü, kimlere vacip olduğu, etinin paylaşımı; bayram namazı ve teşrik tekbirleri öğretilir. | • Öğrenci, kurban etinin nasıl paylaşılacağını ve teşrik tekbirini söyler. · Kurban paylaşım şeması çizimi. |
@@ -367,15 +367,15 @@ Ramazan ayı boyunca genel müfredat askıya alınır; her ders alanı Ramazan t
 
 Ders günleri tarih sırasına göre verilmiştir. Aynı güne ait ikinci ve üçüncü satırlarda tarih/gün hücreleri bilinçli olarak boş bırakılmıştır.
 
-**86 ders günü · 258 ders saati · Kur'an 86 / İtikat 44 / İbadet 44 / Siyer 42 / Ahlak 42**
+**84 ders günü · 252 ders saati · Kur'an 84 / İtikat 43 / İbadet 43 / Siyer 41 / Ahlak 41**
 
 **Renk Lejandı**
 
 | **Kur'an-ı Kerim** | **İtikat** | **İbadet** | **Siyer** | **Ahlak** | **Özel gün / tatil** |
-|:--:|----|----|----|----|----|
+|:--:|:--:|:--:|:--:|:--:|:--:|
 
 | **Hf.** | **Tarih** | **Gün** | **Saat** | **Ders** | **Konu** | **Kaynak / Not** |
-|:--:|----|----|----|----|----|----|
+|:--:|:--:|:--:|:--:|----|----|----|
 | 1 | 5 Eylül 2026 | Cumartesi | 11:00-11:40 | Kur'an-ı Kerim | Elif Grubu Harfleri | Elifbâ / Kur'an-ı Kerim |
 |  |  |  | 12:00-12:40 | İtikat | Benim dinim İslam'dır | Camiye Gidiyorum 1 s. 11–16 |
 |  |  |  | 13:00-13:40 | İbadet | İslam'ın şartları | Camiye Gidiyorum 1 s. 17–24 |
@@ -452,18 +452,14 @@ Ders günleri tarih sırasına göre verilmiştir. Aynı güne ait ikinci ve ü�
 | 12 | 22 Kasım 2026 | Pazar | 10:00-10:40 | Kur'an-ı Kerim | İki Esre | Elifbâ s. 24 |
 |  |  |  | 11:00-11:40 | Siyer | Peygamber oluşu ve gizli davet | Camiye Gidiyorum 2 s. 75–78; Temel Dinî Bilgiler s. 267–270 |
 |  |  |  | 12:00-12:40 | Ahlak | Hz. Muhammed (s.a.s.) dedi ki | Camiye Gidiyorum 1 s. 205–214 |
-| 13 | 28 Kasım 2026 | Cumartesi | 10:00-10:40 | Kur'an-ı Kerim | İki Ötre | Elifbâ s. 25 |
-|  |  |  | 11:00-11:40 | İtikat | Kur'an'da geçen melekler, şeytandan korunma ve tövbe | Camiye Gidiyorum 2 s. 52–57 |
-|  |  |  | 12:00-12:40 | İbadet | Vakit, cuma, bayram ve cenaze namazları | Camiye Gidiyorum 2 s. 104–109 |
-| 13 | 29 Kasım 2026 | Pazar | 10:00-10:40 | Kur'an-ı Kerim | Tenvinli Kelime Okuma | Elifbâ s. 23–25 (tekrar) |
-|  |  |  | 11:00-11:40 | Siyer | Tekrar ve Değerlendirme 2 | Camiye Gidiyorum 2 s. 30–39; s. 75–78 (tekrar) |
-|  |  |  | 12:00-12:40 | Ahlak | Dinim hayatım | Camiye Gidiyorum 1 s. 221–227 |
-| 14 | 5 Aralık 2026 | Cumartesi | 10:00-10:40 | Kur'an-ı Kerim | Tenvin Pekiştirmesi | Elifbâ s. 23–25 (tekrar) |
-|  |  |  | 11:00-11:40 | İtikat | Tekrar ve Değerlendirme 2 | Camiye Gidiyorum 2 s. 6–12; s. 26–29; s. 46–57 (tekrar) |
-|  |  |  | 12:00-12:40 | İbadet | Tekrar ve Değerlendirme 2 | Camiye Gidiyorum 2 s. 13–20; s. 58–63; s. 98–109 (tekrar) |
-| 14 | 6 Aralık 2026 | Pazar | 10:00-10:40 | Kur'an-ı Kerim | Med Harfleri | Elifbâ s. 15–18 |
-|  |  |  | 11:00-11:40 | Siyer | Davetin açıklanması: Zulümler, Hz. Hamza ve Hz. Ömer'in Müslüman olması | Temel Dinî Bilgiler s. 271–277 |
-|  |  |  | 12:00-12:40 | Ahlak | Tekrar ve Değerlendirme 2 | Camiye Gidiyorum 1 s. 205–210; s. 211–214; s. 221–227 (tekrar) |
+| **13** | **28 Kasım 2026** | **Cumartesi** | **-** | **TATİL** | **Ders yapılmadı** |  |
+| **13** | **29 Kasım 2026** | **Pazar** | **-** | **TATİL** | **Ders yapılmadı** |  |
+| 14 | 5 Aralık 2026 | Cumartesi | 10:00-10:40 | Kur'an-ı Kerim | Tenvin Pekiştirmesi | Elifbâ s. 25; s. 23–25 (tekrar) |
+|  |  |  | 11:00-11:40 | İtikat | Tekrar ve Değerlendirme 2 | Camiye Gidiyorum 2 s. 52–57; s. 6–12; s. 26–29; s. 46–51 (tekrar) |
+|  |  |  | 12:00-12:40 | İbadet | Tekrar ve Değerlendirme 2 | Camiye Gidiyorum 2 s. 104–109; s. 13–20; s. 58–63; s. 98–103 (tekrar) |
+| 14 | 6 Aralık 2026 | Pazar | 10:00-10:40 | Kur'an-ı Kerim | Med Harfleri | Elifbâ s. 23–25 (tekrar); s. 15–18 |
+|  |  |  | 11:00-11:40 | Siyer | Davetin açıklanması: Zulümler, Hz. Hamza ve Hz. Ömer'in Müslüman olması | Camiye Gidiyorum 2 s. 30–39; s. 75–78 (tekrar); Temel Dinî Bilgiler s. 271–277 |
+|  |  |  | 12:00-12:40 | Ahlak | Tekrar ve Değerlendirme 2 | Camiye Gidiyorum 1 s. 221–227; s. 205–210; s. 211–214 (tekrar) |
 | 15 | 12 Aralık 2026 | Cumartesi | 10:00-10:40 | Kur'an-ı Kerim | Medli Kelime Okuma | Elifbâ s. 19 |
 |  |  |  | 11:00-11:40 | İtikat | Kur'an bize kendisini tanıtıyor | Camiye Gidiyorum 2 s. 71–74 |
 |  |  |  | 12:00-12:40 | İbadet | Mübarek gün ve geceler | Temel Dinî Bilgiler s. 179–183 |

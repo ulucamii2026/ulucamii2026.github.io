@@ -8,15 +8,15 @@ const sandbox={module:{exports:{}}};
 runInNewContext(buildSync({entryPoints:['src/lib/ogrenme-ilerleme.ts'],bundle:true,write:false,format:'cjs',platform:'node'}).outputFiles[0].text,sandbox);
 const {bosKayit,kaydiOku,tekrarKaydet,gunlukSec,tarihEkle}=sandbox.module.exports;
 
-test('Dijital kayıt kimlikleri korunur; ders numarası basılı Sürüm 3 sayfaları 55–315 ile eşleşir (15 Kasım yapılmadı: 258 ders, no 70–72 boş)',()=>{
+test('Dijital kayıt kimlikleri korunur; ders numarası basılı Sürüm 3 sayfaları 55–315 ile eşleşir (15, 28 ve 29 Kasım yapılmadı: 252 ders, no 70–72 ve 79–84 boş)',()=>{
  const basili={module:{exports:{}}};
  runInNewContext(buildSync({entryPoints:['src/lib/basili-defter.ts'],bundle:true,write:false,format:'cjs',platform:'node'}).outputFiles[0].text,basili);
  const {basiliDefterSayfasi}=basili.module.exports;
  const plan=JSON.parse(readFileSync('src/data/yillik-plan-2026-2027.json','utf8'));
  const katalog=JSON.parse(readFileSync('src/data/ders-defteri-2026-2027.json','utf8'));
  const dersler=plan.gunler.flatMap(g=>g.dersler.map(d=>({tarih:g.tarih,...d})));
- assert.equal(katalog.length,258);assert.equal(new Set(katalog.map(d=>d.tarih)).size,86);
- assert.equal(new Set(katalog.map(d=>d.id)).size,258);
+ assert.equal(katalog.length,252);assert.equal(new Set(katalog.map(d=>d.tarih)).size,84);
+ assert.equal(new Set(katalog.map(d=>d.id)).size,252);
  for(const [i,d]of katalog.entries()){
   const k=dersler[i];assert.equal(d.id,k.tarih+'_'+k.sira);assert.equal(d.no,k.no);assert.equal(d.sayfa,d.no+50); /* no sabit: 15 Kasım dersleri (no 70–72) planda yok, basılı sayfalar kaymaz (18 Kas 2026) */
   assert.equal(basiliDefterSayfasi(d),d.no+54);

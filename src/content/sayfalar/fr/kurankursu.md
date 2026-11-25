@@ -39,7 +39,7 @@ Les cours sont suspendus pendant les congés scolaires :
 
 Pendant le mois de Ramadan (**8 février – 8 mars 2027**), le programme habituel est suspendu et les cours sont consacrés à des thèmes propres au Ramadan. Aucun cours n’a lieu les jours de l’Aïd al-Fitr et de l’Aïd al-Adha ; la veille de l’Aïd al-Adha (**samedi 15 mai 2027**), un contenu spécial est consacré à la fête.
 
-Au total, **86 jours de cours** et **258 heures de cours** sont prévus pour l’année 2026-2027.
+Au total, **84 jours de cours** et **252 heures de cours** sont prévus pour l’année 2026-2027.
 
 ## Programme pédagogique
 
@@ -115,7 +115,7 @@ Notre école participe également aux **concours de connaissances religieuses** 
 
 - **23 élèves** (octobre 2025)
 - Cours les **samedi et dimanche**
-- **258 heures** de cours par an
+- **252 heures** de cours par an
 - Inscription et cours **entièrement gratuits**
 
 ## Portail des parents

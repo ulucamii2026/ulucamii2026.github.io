@@ -1923,7 +1923,8 @@
       "id": "ku-027",
       "kod": "kuran",
       "planKonu": "İki Ötre",
-      "ilkDers": "2026-11-28",
+      "katilanPlanKonu": "Tenvin Pekiştirmesi",
+      "ilkDers": "2026-12-05",
       "seviyeAlani": "okuma",
       "basamak": 2,
       "baslik": {
@@ -1990,7 +1991,8 @@
       "id": "ku-028",
       "kod": "kuran",
       "planKonu": "Tenvinli Kelime Okuma",
-      "ilkDers": "2026-11-29",
+      "katilanPlanKonu": "Med Harfleri",
+      "ilkDers": "2026-12-06",
       "seviyeAlani": "okuma",
       "basamak": 2,
       "baslik": {
@@ -2074,7 +2076,7 @@
         "nl": "We oefenen door herhaling om woorden met tanwīn foutloos en vlot te lezen.",
         "de": "Wir üben durch Wiederholung, um Wörter mit Tanwīn fehlerfrei und zügig zu lesen."
       },
-      "kitap": "Elifbâ s. 23–25 (tekrar)",
+      "kitap": "Elifbâ s. 25; s. 23–25 (tekrar)",
       "sorular": [
         {
           "id": "ku-029-1",
@@ -2141,7 +2143,7 @@
         "nl": "Madd betekent de klank van een letter verlengen. Er zijn drie madd-letters: alif, wāw en yā’. We herkennen de verlenging in het woord en houden haar duur gelijk.",
         "de": "Madd bedeutet, den Laut eines Buchstabens zu dehnen. Es gibt drei Madd-Buchstaben: Alif, Wāw und Yā’. Wir erkennen die Dehnung im Wort und halten ihre Dauer gleichmäßig."
       },
-      "kitap": "Elifbâ s. 15–18",
+      "kitap": "Elifbâ s. 23–25 (tekrar); s. 15–18",
       "sorular": [
         {
           "id": "ku-030-1",

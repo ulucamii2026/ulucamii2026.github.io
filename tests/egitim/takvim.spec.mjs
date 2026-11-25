@@ -4,7 +4,7 @@
  *    tatil) seçer; gün kartları, gruplar, çalışma sayfası bağlantıları, «Bugün» işareti (`aria-current="date"`); yıl bitince kısa not;
  *    cihaz saat diliminden bağımsızlık (Los Angeles'ta Brüksel'in ertesi günü);
  *  - JavaScript kapalıyken yanlış bir hafta gösterilmez: band gizli, yerine takvime tek bağlantılı sabit paragraf;
- *  - takvim sayfası: sunucuda eksiksiz çizilir (77 gün, 35 hafta sonu, her kimlik adıyla), bugünün haftası vurgulanır, ay bağlantıları, çalışma
+ *  - takvim sayfası: sunucuda eksiksiz çizilir (74 gün, 34 hafta sonu, her kimlik adıyla), bugünün haftası vurgulanır, ay bağlantıları, çalışma
  *    sayfası olmayan ezber düz metin; derin bağlantı (`#g-…`) kaydırmayı ezmez; JavaScript olmadan da eksiksiz;
  *  - çalışma sayfasındaki «Derste:» satırı: sıradaki gün ve grup, bitince gizli, takvimde hiç geçmeyen ezberde hiç çizilmez;
  *  - beş dilde sayfa (başlık, kanonik adres, hreflang), iki temada axe, 320 px yatay taşma yok, CSP ihlali yok, dış ağ yok, cihaza yazma yok;
@@ -20,7 +20,7 @@ const SITE = 'https://egitim.ulucamii.be';
 const DILLER = ['tr', 'fr', 'en', 'nl', 'de'];
 const takvim = JSON.parse(readFileSync(new URL('../../src/data/ezber/ders-takvimi-2026-2027.json', import.meta.url), 'utf8'));
 const GUN_SAYISI = takvim.gunler.length;
-const HAFTA_SAYISI = 35;
+const HAFTA_SAYISI = 34;
 // Varsayılan «şimdi»: 28 Ekim 2026 Çarşamba (sonbahar tatili bitti, sıradaki ders 31 Ekim).
 const VARSAYILAN = '2026-10-28T10:00:00Z';
 const saat = (page, iso) => page.clock.setFixedTime(new Date(iso));
@@ -148,7 +148,7 @@ test.describe('JavaScript kapalı', () => {
     await expect(page.locator('.ders-bandi .tk-gun')).toHaveCount(0);
   });
 
-  test('takvim sayfası JavaScript olmadan da eksiksiz: 77 gün, 35 hafta sonu, «Bugün» yok', async ({ page }) => {
+  test('takvim sayfası JavaScript olmadan da eksiksiz: 74 gün, 34 hafta sonu, «Bugün» yok', async ({ page }) => {
     await page.goto('/tr/takvim/');
     await expect(page.locator('[data-tk-gun]')).toHaveCount(GUN_SAYISI);
     await expect(page.locator('[data-tk-hafta]')).toHaveCount(HAFTA_SAYISI);

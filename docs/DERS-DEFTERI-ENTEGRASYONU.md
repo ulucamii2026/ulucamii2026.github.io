@@ -319,7 +319,7 @@ dosyasının A grubu aylık hedefleri ve `scratchpad/defter-v2/son-v2/sayfa-hari
 Etkinlik kaynağı SHA-256:
 `bedeef6da3cdb1c996b7fd33acfa503bf5384c75aa05e51b07a07ae88e04b343`.
 
-`src/data/ders-defteri-2026-2027.json` yalnız 86 gün / 258 derslik (18 Kas 2026: 15 Kasım yapılmadı; no 70–72 boş, basılı sayfa eşlemesi aynı) kişisel olmayan
+`src/data/ders-defteri-2026-2027.json` yalnız 84 gün / 252 derslik (18 Kas 2026: 15 Kasım, 25 Kas 2026: 28–29 Kasım yapılmadı; no 70–72 ve 79–84 boş, basılı sayfa eşlemesi aynı) kişisel olmayan
 müfredatı içerir. TR/FR hedef ve etkinlik metinleri basılı kaynaktan alınmıştır.
 İlk entegrasyonun katalog/depo `sayfa` alanı 51–311 aralığını taşır ve kayıt
 kimliğinin parçasıdır. Güncel **324 sayfalık Sürüm 3'te dersler 55–315** arasındadır.
@@ -358,7 +358,7 @@ verilmez.
 yükleme, kesinti, çakışma, vazgeçme, seçili öğrenci çıktısı, JSON, bültene aktarım,
 açık/koyu tema ve axe. `tests/kurallar/firestore.test.mjs`: yalnız demo emülatöründe
 yetki, sürüm, gerçek transaction ve seçili öğrenci temizliği. `test:ogrenme`:
-ders numarası ↔ basılı sayfa eşleştirmesi (258 kayıt; 261 basılı sayfa). Gerçek öğrenci hesabına test kaydı yazılmaz.
+ders numarası ↔ basılı sayfa eşleştirmesi (252 kayıt; 261 basılı sayfa). Gerçek öğrenci hesabına test kaydı yazılmaz.
 
 14 Eylül 2026 (defter çevirisi): `npm run test:ceviri` 6/6, `npm run test:kurallar`
 41/41, `astro check` 0 hata, üç hoca ekranı Playwright dosyası 60/60; kurallar
