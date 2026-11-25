@@ -4,6 +4,15 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 25 Kasım 2026 (gece) — 28–29 Kasım hafta sonu dersi yapılmadı: yıllık plan, müfredat sayfası/PDF, defter kataloğu, ezber takvimi, bilgi kartları (84 gün / 252 ders)
+
+- Zaman: 25 Kasım 2026, Europe/Brussels (CET). İçerik commit'i `399d8b4e` (önceki `e3145b4a`); Pages [run 45702310184](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/45702310184) **success**; egitim [run 45702310171](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/45702310171) **success**.
+- Dayanak: Rıdvan, 25.11.2026: «Bu hafta sonu camimizde ders yok izinliyim … ne gerekiyorsa yap» (izin 27.11–2.12; 5 Aralık Cumartesi 10.00'da devam). Yöntem: 18 Kasım `faf11310` (15 Kasım) ile aynı; ayrıntı `docs/MUFREDAT-VE-YILLIK-PLAN.md` «25 Kasım 2026».
+- Kapsam: 28 ve 29 Kasım işaret günü (`tatil: true`, «Ders yapılmadı»); altı ders alan alanına 5 Aralık (Kur'an, İtikat, İbadet) ve 6 Aralık (Kur'an, Siyer, Ahlak) derslerine katıldı (başlıklar aynı, `kaynak`/özet/etkinlik genişledi; teşrik tekbiri ezberi 5 Aralık'a). 86/258 → **84 gün / 252 ders** (kuran 84, itikat 43, ibadet 43, siyer 41, ahlak 41); `no` sabit (79–84 boş). Defter kataloğu 252; ezber takvimi 74 gün (28 Kasım yeni dilimi 5 Aralık'ta bölüm 2 ile birlikte); 6 İlim Yolu kartı `katilanPlanKonu`.
+- Testler: `npm run dogrula` çıkış 0; `test:ogrenme` 14/14, `test:ilim-yolu` 108/108, `test:veli-eposta` 66/66.
+- Canlı denetim (yalnız okuma): `egitim.ulucamii.be/{tr,fr}/kurs/yillik-plan/` — 28 ve 29 Kasım «Ders yapılmadı», 5 Aralık sıradaki ders günü, 84/252 görünür, 258 yok.
+- Açık sınırlar: (1) müfredat PDF'i Apps Script Drive kopyasına yüklenmedi (`mufredat-yukle`, panel anahtarı gerekir; kayıt formu e-postası eski PDF'i ekler); (2) Playwright takımı (`takvim.spec`, `hoca-dil`) koşulmadı, yalnız sabitleri/altın kaydı güncellendi; (3) 28–29 Kasım için kurs materyali üretilmeyecek; kurs `bireysel_haftalar.py` GUNLER listesi 28–29 Kasım'ı hâlâ içeriyor (kurs projesi işi); (4) velilere bildirim gönderilmedi.
+
 ## 24 Kasım 2026 (öğleden sonra) — duyuru: Değerler Eğitimi Programı 2026–2027 kış dönemi (13–17 yaş)
 
 - Zaman: 24 Kasım 2026, Europe/Brussels (CET). Push 16.25 (`3161f58c..1add526d`); Pages
