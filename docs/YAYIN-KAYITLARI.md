@@ -4,6 +4,24 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 26 Kasım 2026 (öğle) — egitim.ulucamii.be Tur 2: Sesli Çarkıfelek, renkli Abdest/Namaz sahneleri ve 2 yaş grubu A4 PDF yaprak arşivi
+
+- Zaman: 26 Kasım 2026, 12:02 Europe/Brussels (CET). İçerik commit'leri: `ffc7036f` (rebase'li Tur 2) ve `389b6370` (PDF yolu `/dosyalar/yapraklar/`).
+- Deploy: GitHub Actions `egitim-yayinla.yml` [run 45805757170](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/45805757170) **success** (`derle` success, `yayinla` success, `canli` success; önceki ara deneme `ffc7036f` [run 45804049177](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/45804049177) `kurs-icerik.test.mjs` `belgeler/` yasağı nedeniyle düşüp `/dosyalar/yapraklar/` ile giderildi).
+- Dayanak: Büşra Zengin Hoca'nın 26.11.2026 09:57 WhatsApp geri bildirimi (Tur 2) ve Rıdvan'ın tam otonomi talimatı.
+- Kapsam:
+  - **Sesli Çarkıfelek (`/[dil]/okuma/cark/`):** `egitim/src/i18n/cark.ts`, `cark-yardim.ts`, `egitim/src/pages/[dil]/okuma/cark.astro`, `egitim/src/styles/cark.css`, `egitim/src/scripts/cark.ts` (7 resmî Diyanet destesi `o1/o2/o4/o5/o6/o8/o9`, `1.0×` / `0.8×` hız, turdan çıkarma, SVG `transform` döndürme, CSP temiz); `okuma/index.astro`, `yarisma/index.astro` ve `[dil]/index.astro` kartlarından bağlandı.
+  - **Renkli Abdest ve Namaz sahneleri:** `egitim/src/assets/cizim/ibadet/` altındaki 28 SVG (`12 abdest`, `10 namaz`, `6 ui`) sıcak cami/şadırvan arka planlı ve İznik paletli renkli sahnelere dönüştürüldü (`svg-denetim.mjs`: 28/28, 0 sorun); `IbadetBas.astro`, `abdest.astro`, `namaz/index.astro` kapak görselleriyle güncellendi.
+  - **2 yaş grubuna göre PDF çalışma yaprakları (`/[dil]/yapraklar/`):** `src/data/yillik-plan-2026-2027.json` müfredatına bağlı **4–8 Yaş (Minikler)** ve **9–13 Yaş (Büyükler)** için 8 adet 1 sayfalık QR kodlu A4 PDF (`egitim/public/dosyalar/yapraklar/*.pdf`), `egitim/src/i18n/yapraklar.ts`, `egitim/src/styles/yapraklar.css`, `egitim/src/pages/[dil]/yapraklar.astro`.
+- Canlı URL'ler (örnek TR):
+  - `https://egitim.ulucamii.be/tr/okuma/cark/`
+  - `https://egitim.ulucamii.be/tr/ibadet/namaz/` ve `https://egitim.ulucamii.be/tr/ibadet/abdest/`
+  - `https://egitim.ulucamii.be/tr/yapraklar/` ve `https://egitim.ulucamii.be/dosyalar/yapraklar/4-8-elifba-harfler.pdf` … `9-13-siyer-mekke-medine.pdf`
+- Doğrulama:
+  - Son commit `389b6370` sonrası `npm run egitim:build` (0 hata, 0 uyarı), CI Düğüm testleri **89/89** (`kurs-icerik`, `barindirma`, `cevrimdisi`, `dist-denetle`, `yarisma` vb.), Playwright `tests/egitim/cark-yapraklar.spec.mjs` **14/14** geçti.
+  - Canlı: `npm run egitim:canli -- https://egitim.ulucamii.be` **155/155** geçti (`2026-11-26T11:02:22Z`).
+- Açık sınırlar: PDF çalışma yaprakları şimdilik Türkçe müfredat baskısıdır (`fr`/`nl` çift dilli baskılar 3. tur geri bildirimine göre eklenecektir); `/dosyalar/yapraklar/` PDF yolu değişimi sonrası yalnız `cark-yapraklar.spec.mjs` yeniden koşulmuş, kalan tüm Playwright spec'leri canlı CI kapısı (`45805757170`) ve `egitim:canli` (155/155) ile doğrulanmıştır.
+
 ## 26 Kasım 2026 (öğleden önce) — Cuma vaazı «Engelli Kardeşlerimize Karşı Sorumluluklarımız» (TR) ve cami ekranı APK'larının geçici indirme bağlantısı
 
 - Zaman: 26 Kasım 2026, Europe/Brussels (CET).
