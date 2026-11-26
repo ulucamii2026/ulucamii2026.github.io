@@ -28,4 +28,6 @@ taslak: false
 
 **İndir:** [Word](/vaazlar/engelli-kardeslerimize-karsi-sorumluluklarimiz.docx) · [PDF](/vaazlar/engelli-kardeslerimize-karsi-sorumluluklarimiz.pdf) · [Sunum (PowerPoint)](https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/vaaz-engelli-kardeslerimize-karsi-sorumluluklarimiz/engelli-kardeslerimize-karsi-sorumluluklarimiz-sunum.pptx) · [Sunum (PDF)](https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/vaaz-engelli-kardeslerimize-karsi-sorumluluklarimiz/engelli-kardeslerimize-karsi-sorumluluklarimiz-sunum.pdf)
 
+**Diğer dillerde:** [Français](/fr/vaaz/engelli-kardeslerimize-karsi-sorumluluklarimiz/) · [English](/en/vaaz/engelli-kardeslerimize-karsi-sorumluluklarimiz/) · [Nederlands](/nl/vaaz/engelli-kardeslerimize-karsi-sorumluluklarimiz/) · [Deutsch](/de/vaaz/engelli-kardeslerimize-karsi-sorumluluklarimiz/)
+
 Bütün vaazlarımız: [Vaazlar](/tr/vaazlar/)

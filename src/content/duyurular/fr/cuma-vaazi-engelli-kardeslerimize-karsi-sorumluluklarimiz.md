@@ -1,7 +1,7 @@
 ---
 baslik: "Prédication du vendredi : nos frères et sœurs en situation de handicap"
 tarih: 2026-11-27
-ozet: "Le texte intégral de notre prédication du vendredi 27 novembre 2026, « Nos responsabilités envers nos frères et sœurs en situation de handicap : Allah regarde les cœurs, non les apparences », est en ligne : Word, PDF et diaporama."
+ozet: "Le texte intégral de notre prédication du vendredi 27 novembre 2026, « Nos responsabilités envers nos frères et sœurs en situation de handicap : Allah ne regarde pas les apparences, mais les cœurs », est en ligne : Word, PDF et diaporama."
 kapak: /media/vaazlar/engelli-kardeslerimize-karsi-sorumluluklarimiz/kapak-sabah-ezani-1600.webp
 kapakKucuk: /media/vaazlar/engelli-kardeslerimize-karsi-sorumluluklarimiz/kapak-sabah-ezani-480.webp
 kapakAlt: "Une rue pavée mouillée avant l’aube, bordée de maisons en briques ; au loin, une petite mosquée au minaret simple et fin, les lampadaires allumés et la première lueur à l’horizon. Scène illustrative."
@@ -24,8 +24,15 @@ Le texte intégral de notre prédication du vendredi 27 novembre 2026 est en lig
 
 **En annexe, 40 gestes pour une communauté sans obstacle :** une ligne par semaine ; à la mosquée, à la maison, dans la rue, à l’école, au travail et à l’écran, pour les familles concernées. [Voir la liste →](/fr/vaaz/engelli-kardeslerimize-karsi-sorumluluklarimiz/#gurbette-40-adim)
 
-**[Lire la prédication →](/fr/vaaz/engelli-kardeslerimize-karsi-sorumluluklarimiz/)**
+**[Lire la prédication en français →](/fr/vaaz/engelli-kardeslerimize-karsi-sorumluluklarimiz/)**
 
-**Télécharger :** [Word](/vaazlar/engelli-kardeslerimize-karsi-sorumluluklarimiz.docx) · [PDF](/vaazlar/engelli-kardeslerimize-karsi-sorumluluklarimiz.pdf) · [Diaporama (PowerPoint)](https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/vaaz-engelli-kardeslerimize-karsi-sorumluluklarimiz/engelli-kardeslerimize-karsi-sorumluluklarimiz-sunum.pptx) · [Diaporama (PDF)](https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/vaaz-engelli-kardeslerimize-karsi-sorumluluklarimiz/engelli-kardeslerimize-karsi-sorumluluklarimiz-sunum.pdf)
+**Télécharger :** [Word](/vaazlar/fr/nos-freres-et-soeurs-en-situation-de-handicap.docx) · [PDF](/vaazlar/fr/nos-freres-et-soeurs-en-situation-de-handicap.pdf) · [Diaporama (PowerPoint)](https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/vaaz-engelli-kardeslerimize-karsi-sorumluluklarimiz/nos-freres-et-soeurs-en-situation-de-handicap-diaporama.pptx) · [Diaporama (PDF)](https://github.com/ulucamii2026/ulucamii2026.github.io/releases/download/vaaz-engelli-kardeslerimize-karsi-sorumluluklarimiz/nos-freres-et-soeurs-en-situation-de-handicap-diaporama.pdf)
+
+**Dans d’autres langues :**
+
+- English: [Brothers and Sisters with Disabilities](/en/vaaz/engelli-kardeslerimize-karsi-sorumluluklarimiz/)
+- Nederlands: [Broeders en zusters met een beperking](/nl/vaaz/engelli-kardeslerimize-karsi-sorumluluklarimiz/)
+- Deutsch: [Geschwister mit Behinderung](/de/vaaz/engelli-kardeslerimize-karsi-sorumluluklarimiz/)
+- Türkçe: [Engelli Kardeşlerimize Karşı Sorumluluklarımız](/tr/vaaz/engelli-kardeslerimize-karsi-sorumluluklarimiz/)
 
 Toutes nos prédications : [Prédications](/fr/sermons/)

@@ -61,6 +61,11 @@ div.vaaz-govde figure.vz-acilis span.vz-temsil {
   display: block; margin-top: .55rem; font-family: var(--font-sans); font-size: .76rem; letter-spacing: .02em; color: rgb(253 251 247 / .86);
 }
 
+/* Çeviri sayfalarında açılış sözü Türkçeden uzun: görselin üstüne bindirmek yerine görselin altına, kartta göster */
+html:not([lang="tr"]) div.vaaz-govde figure.vz-acilis figcaption { position: static; padding: 1.1rem 1.4rem 1.2rem; background: var(--vz-kart); }
+html:not([lang="tr"]) div.vaaz-govde figure.vz-acilis p.vz-acilis-soz { color: var(--metin); max-width: none; }
+html:not([lang="tr"]) div.vaaz-govde figure.vz-acilis span.vz-temsil { color: var(--metin-2); }
+
 /* ——— Dört ana fikir ——— */
 div.vaaz-govde section.vz-ozet {
   margin: 0 0 2.25rem; padding: 1.25rem 1.35rem 1.35rem;
