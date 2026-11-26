@@ -4,6 +4,35 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 26 Kasım 2026 (öğleden sonra) — Cuma vaazı «Engelli Kardeşlerimize Karşı Sorumluluklarımız»: FR/EN/NL/DE çevirileri (beş dil tamam)
+
+- Zaman: 26 Kasım 2026, Europe/Brussels (CET). Release yüklemeleri 14.20–14.30; commit `db89e52e` (`9c997654..db89e52e`, push 14.32); Pages [run 45830058570](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/45830058570) **success**; canlı kontrol 14.40.
+- Dayanak: Rıdvan, 26.11.2026 `/goal` (vaazı hazırla, yayınla, önceki haftaların listesine ilet; «bütün yetki ve karar sende») ve aynı gün öğleden sonra «kaldığımız yerden devam et … işleri tamamla». Türkçe sayfanın kaydı bir alttaki başlıktadır; bu kayıt onu tamamlar.
+- Kapsam:
+  - `src/content/vaaz-cevirileri/{fr,en,nl,de}/engelli-kardeslerimize-karsi-sorumluluklarimiz.md` (dört çeviri sayfası).
+  - `public/vaazlar/fr/nos-freres-et-soeurs-en-situation-de-handicap.{docx,pdf}`: sha256 `92e35a62…` / `9b575a13…`.
+  - `public/vaazlar/en/brothers-and-sisters-with-disabilities.{docx,pdf}`: `e6a3afd5…` / `2adad822…`.
+  - `public/vaazlar/nl/broeders-en-zusters-met-een-beperking.{docx,pdf}`: `f2623a1e…` / `5696d495…`.
+  - `public/vaazlar/de/geschwister-mit-behinderung.{docx,pdf}`: `52b2c5a5…` / `9f5ae8ad…`. Dört nüsha da 15 sayfa, Word yazım denetimi 0.
+  - `src/content/duyurular/{tr,fr}/cuma-vaazi-engelli-kardeslerimize-karsi-sorumluluklarimiz.md`: diğer dil bağlantıları; FR duyurusu FR sayfasına ve FR dosyalarına bağlandı, başlık canlı FR başlığıyla eşitlendi.
+  - `src/styles/vaaz-sahne.css`: `html:not([lang="tr"])` ile üç kural; çeviri sayfalarında açılış sözü masaüstünde görselin altında kartta durur (uzun metin görselin üstünden kesiliyordu). Türkçe sayfa aynı. Ortak dosya olduğu için önceki haftaların çeviri sayfaları da aynı düzeni alır.
+  - Release `vaaz-engelli-kardeslerimize-karsi-sorumluluklarimiz` (Latest değil), 8 yeni dosya, toplam 10; her sunum 132 slayt:
+    - `nos-freres-et-soeurs-en-situation-de-handicap-diaporama.pptx` (13 767 313 B, sha256 `252a527c…`) ve `.pdf` (5 627 402 B, `299a3e25…`).
+    - `brothers-and-sisters-with-disabilities-slides.pptx` (13 727 221 B, `8f91fae6…`) ve `.pdf` (5 405 261 B, `28a97010…`).
+    - `broeders-en-zusters-met-een-beperking-presentatie.pptx` (13 737 672 B, `2056cf16…`) ve `.pdf` (5 477 426 B, `0e9bb2ab…`).
+    - `geschwister-mit-behinderung-folien.pptx` (13 762 549 B, `e4d0eaa1…`) ve `.pdf` (5 504 224 B, `4192117b…`).
+- Testler:
+  - Çeviri denetimleri (4 dil, 1555 kayıt): `denetle.py` HATA 0, `capa_denetle.py` HATA 0 / UYARI 0.
+  - Çalışma ağacında `npm run check` 0 hata / 0 uyarı; build 2015 sayfa (rebase öncesi taban üzerinde).
+  - Sunumlar: PowerPoint taşma ölçümü dört dilde 0; slayt görüntüleri gözle denetlendi.
+  - `web_kontrol.mjs` yerelde ve canlıda (`https://ulucamii.be`, tr+fr+en+nl+de): 22 görünüm, axe 0, 87 dosya, 10 sunum dosyası, 10 diğer-dil bağlantısı; çıkış 0.
+- Canlı (HTTP 200): `/tr/`, `/fr/`, `/en/`, `/nl/`, `/de/` + `vaaz/engelli-kardeslerimize-karsi-sorumluluklarimiz/`; TR ve FR duyuru; dört dilin Word/PDF'i; Release'teki 10 sunum dosyası.
+- Yan etki: aynı push `egitim yayını` iş akışını da tetikledi ([run 45830058626](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/45830058626) **success**); eğitim sitesinin içeriğinde bu commit'ten gelen değişiklik yok.
+- Açık sınırlar:
+  1. Rebase sonrası yerel build tekrarlanmadı; CI derlemesi ve canlı kontrol başarılı.
+  2. `npm run dogrula:codex` koşulmadı; içerik, ikili dosya ve üç CSS kuralı eklendi. Check, build ve web_kontrol yapıldı.
+  3. Cami ekranı APK'ları (`public/indir/`) hâlâ geçici olarak yayında; Rıdvan «sil» deyince kaldırılacak.
+
 ## 26 Kasım 2026 (öğleden sonra) — egitim.ulucamii.be Tur 3: Bilgi Yarışması 524 soru, 2–4 takım/fon müziği/kutlama sesi ve Sesli Çarkıfelek 5 soru çarkı + 2 takım sayacı
 
 - Zaman: 26 Kasım 2026, 14:13 Europe/Brussels (CET). İçerik commit'i: `f868636a` (`egitim: Bilgi Yarismasi 524 soru, takim modu, ses/fon ve Cark soru desteleri`).
