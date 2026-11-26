@@ -142,7 +142,7 @@ const carkY = await getir('/tr/okuma/cark/');
 kontrol('/tr/okuma/cark/ 200 ve veri', carkY.status === 200 && (await carkY.text()).includes('data-cark'), carkY.status);
 const ypY = await getir('/tr/yapraklar/');
 kontrol('/tr/yapraklar/ 200 ve liste', ypY.status === 200 && (await ypY.text()).includes('4-8-elifba-harfler.pdf'), ypY.status);
-const pdfY = await getir('/belgeler/yapraklar/4-8-elifba-harfler.pdf');
+const pdfY = await getir('/dosyalar/yapraklar/4-8-elifba-harfler.pdf');
 kontrol('çalışma yaprağı PDF 200', pdfY.status === 200 && (pdfY.headers.get('content-type') ?? '').includes('pdf'), pdfY.status);
 // Kart seslendirmesi (12 Kasım 2026: beş dil): her dilde manifestten üç örnek — kart sayfasında oynatıcı düğmesi, MP3 200 + audio/mpeg, bayt ve sha256 manifestle aynı;
 // manifestte sesi olmayan kartta (tecvid ku-044, tr dışı) düğme yok ve dosya 404. Tüm dosyaların tam doğrulaması: node scripts/egitim-ses-getir.mjs --hedef <geçici klasör>.

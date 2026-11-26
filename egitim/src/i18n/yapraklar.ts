@@ -22,7 +22,7 @@ export const YAPRAK_LISTESI: readonly YaprakKart[] = [
     id: '4-8-elifba-harfler',
     yas: '4-8',
     alan: 'kuran',
-    pdf: '/belgeler/yapraklar/4-8-elifba-harfler.pdf',
+    pdf: '/dosyalar/yapraklar/4-8-elifba-harfler.pdf',
     sayfa: 'okuma/cark/',
     baslik: {
       tr: 'Elifbâ Harfleri: Tanı, Eşleştir ve Boya',
@@ -50,7 +50,7 @@ export const YAPRAK_LISTESI: readonly YaprakKart[] = [
     id: '4-8-iman-ve-islam',
     yas: '4-8',
     alan: 'itikat',
-    pdf: '/belgeler/yapraklar/4-8-iman-ve-islam.pdf',
+    pdf: '/dosyalar/yapraklar/4-8-iman-ve-islam.pdf',
     sayfa: 'yollar/plan-itikat/',
     baslik: {
       tr: 'Benim Dinim İslam ve İman Ağacımız',
@@ -78,7 +78,7 @@ export const YAPRAK_LISTESI: readonly YaprakKart[] = [
     id: '4-8-abdest-adimlari',
     yas: '4-8',
     alan: 'ibadet',
-    pdf: '/belgeler/yapraklar/4-8-abdest-adimlari.pdf',
+    pdf: '/dosyalar/yapraklar/4-8-abdest-adimlari.pdf',
     sayfa: 'ibadet/abdest/',
     baslik: {
       tr: 'Abdest Alıyorum, Temizleniyorum',
@@ -106,7 +106,7 @@ export const YAPRAK_LISTESI: readonly YaprakKart[] = [
     id: '4-8-guzel-ahlak-evde-10dk',
     yas: '4-8',
     alan: 'ahlak',
-    pdf: '/belgeler/yapraklar/4-8-guzel-ahlak-evde-10dk.pdf',
+    pdf: '/dosyalar/yapraklar/4-8-guzel-ahlak-evde-10dk.pdf',
     sayfa: 'ezber/',
     baslik: {
       tr: 'Güzel Söz, Selamlaşma ve Evde 10 Dakika',
@@ -134,7 +134,7 @@ export const YAPRAK_LISTESI: readonly YaprakKart[] = [
     id: '9-13-tecvid-uygulama',
     yas: '9-13',
     alan: 'kuran',
-    pdf: '/belgeler/yapraklar/9-13-tecvid-uygulama.pdf',
+    pdf: '/dosyalar/yapraklar/9-13-tecvid-uygulama.pdf',
     sayfa: 'okuma/cark/',
     baslik: {
       tr: 'Cezm, Şedde, Tenvin, Med ve Tecvid Uygulaması',
@@ -162,7 +162,7 @@ export const YAPRAK_LISTESI: readonly YaprakKart[] = [
     id: '9-13-abdest-namaz-rekatlar',
     yas: '9-13',
     alan: 'ibadet',
-    pdf: '/belgeler/yapraklar/9-13-abdest-namaz-rekatlar.pdf',
+    pdf: '/dosyalar/yapraklar/9-13-abdest-namaz-rekatlar.pdf',
     sayfa: 'ibadet/namaz/',
     baslik: {
       tr: 'Abdest Farzları, Beş Vakit Rekâtlar ve Dualar',
@@ -190,7 +190,7 @@ export const YAPRAK_LISTESI: readonly YaprakKart[] = [
     id: '9-13-iman-ve-temel-kaynaklar',
     yas: '9-13',
     alan: 'itikat',
-    pdf: '/belgeler/yapraklar/9-13-iman-ve-temel-kaynaklar.pdf',
+    pdf: '/dosyalar/yapraklar/9-13-iman-ve-temel-kaynaklar.pdf',
     sayfa: 'yollar/plan-itikat/',
     baslik: {
       tr: 'İmanın 6 Şartı, İslam’ın 5 Şartı ve Dinî Kaynaklar',
@@ -218,7 +218,7 @@ export const YAPRAK_LISTESI: readonly YaprakKart[] = [
     id: '9-13-siyer-mekke-medine',
     yas: '9-13',
     alan: 'siyer',
-    pdf: '/belgeler/yapraklar/9-13-siyer-mekke-medine.pdf',
+    pdf: '/dosyalar/yapraklar/9-13-siyer-mekke-medine.pdf',
     sayfa: 'yollar/plan-siyer/',
     baslik: {
       tr: 'Siyer-i Nebî: Mekke’den Medine’ye Zaman Çizelgesi',
