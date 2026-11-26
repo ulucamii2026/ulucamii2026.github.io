@@ -4,6 +4,24 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 26 Kasım 2026 (sabah) — egitim.ulucamii.be: renkli bölüm kapakları, Kahoot tarzı Bilgi Yarışması ve canlı İznik vurguları
+
+- Zaman: 26 Kasım 2026, 09:32 Europe/Brussels (CET). İçerik commit'leri: `10f58bf4` ve `5398b61b` (`399d8b4e..5398b61b`).
+- Deploy: GitHub Actions `egitim-yayinla.yml` [run 45783127597](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/45783127597) **success** (`derle` 1m32s, `yayinla` 37s, `canli` 2m10s; önceki ara push `10f58bf4` [run 45782327638](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/45782327638) **success**).
+- Dayanak: Rıdvan'ın 26.11.2026 talimatı ve Belçika geneli ortak eğitim platformu istişaresi kapsamında Büşra Zengin Hoca'nın ilk görsel-renklilik geri bildirimi.
+- Kapsam:
+  - Yeni renkli kapaklar (`egitim/public/media/yollar/`): `abdest`, `yeni-musluman`, `yarisma`, `kurs` (`1600×900` ve `640×360` WebP), `egitim/src/lib/yol-kapaklari.ts` (`bolumKapagi`) ve `egitim/docs/KAPAK-KUNYE.md`.
+  - Canlı İznik vurgu jetonları (açık + koyu temada WCAG AA): `egitim/src/styles/kilim.css` (`--cini`, `--kobalt`, `--murdum`, `--kehribar` ve `-dolgu`/`-soluk` türevleri).
+  - Ana sayfa (`egitim/src/pages/[dil]/index.astro`, `egitim/src/styles/ilim.css`): tüm yol kartlarına kapak görselleri, renkli sol şeritler ve `9.5rem` hizalı ızgara.
+  - Bilgi Yarışması (`egitim/src/pages/[dil]/yarisma/index.astro`, `egitim/src/styles/yarisma.css`, `egitim/src/scripts/yarisma-oyna.ts`): giriş kapağı, Kahoot tarzı 4 renkli/şekilli seçenek karosu, Web Audio API sıfır-depolama ses geri bildirimi.
+  - Abdest ve Namaz (`egitim/src/pages/[dil]/ibadet/index.astro`, `egitim/src/styles/ibadet.css`) ile Kur'an Okuma (`egitim/src/pages/[dil]/okuma/index.astro`, `egitim/src/styles/okuma.css`): kapak görselleri, vakit ve adım renk vurguları.
+- Testler ve canlı doğrulama:
+  - `npm run egitim:build`: 2144 sayfa, 0 hata/0 uyarı, kart/okuma ses denetimleri geçti, `egitim/dist` kapısı 3818 dosya (taban 3805).
+  - Birim testleri: `test:yarisma` 27/27, `test:ibadet` geçti, `test:okuma` 29/29, `test:ilim-yolu` 108/108 (1 atlanan), `barindirma + cevrimdisi + dist-denetle` 32/32.
+  - Playwright: son `ilim.css` düzenlemesinden sonra `tests/egitim/ana-kilim.spec.mjs` 14/14 geçti; önceki `.ya-puan-ad` kontrast düzeltmesi sonrası `tests/egitim/yarisma.spec.mjs` 26/26 geçti (tam paket koşusu 1504 geçtiğinde yalnız `.ya-puan-ad` kalmıştı ve düzeltilip doğrulandı).
+  - Canlı: `npm run egitim:canli -- https://egitim.ulucamii.be` **152/152** geçti; canlı yeni kapaklar HTTP 200 (`abdest-640x360.webp` 33032 B, `kurs-640x360.webp` 33842 B, `yarisma-640x360.webp` 18110 B, `yeni-musluman-640x360.webp` 23080 B).
+- Açık sınırlar: `egitim:canli` ve `yarisma.spec.mjs` dışındaki diğer modül Playwright testleri `5398b61b` (`ilim.css` tek kural düzeltmesi) sonrası tüm paket olarak yeniden koşulmadı, `ana-kilim.spec.mjs` ve masaüstü/mobil ekran görüntüleri gözle doğrulandı.
+
 ## 25 Kasım 2026 (gece) — 28–29 Kasım hafta sonu dersi yapılmadı: yıllık plan, müfredat sayfası/PDF, defter kataloğu, ezber takvimi, bilgi kartları (84 gün / 252 ders)
 
 - Zaman: 25 Kasım 2026, Europe/Brussels (CET). İçerik commit'i `399d8b4e` (önceki `e3145b4a`); Pages [run 45702310184](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/45702310184) **success**; egitim [run 45702310171](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/45702310171) **success**.
