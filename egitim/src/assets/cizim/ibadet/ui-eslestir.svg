@@ -1,3 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
-<rect x="14" y="78" width="70" height="84" rx="0" fill="#9B2C22" stroke="#1E4D3B" stroke-width="3"/><rect x="156" y="78" width="70" height="84" rx="0" fill="#1E4D3B" stroke="#1E4D3B" stroke-width="3"/><line x1="84" y1="120" x2="156" y2="120" stroke="#1E4D3B" stroke-width="12" stroke-linecap="butt"/><circle cx="120" cy="120" r="16" fill="#D7A23E" stroke="#1E4D3B" stroke-width="3"/>
+<rect x="0" y="0" width="240" height="240" fill="#FFF8EC"/>
+    <rect x="16" y="72" width="72" height="96" rx="6" fill="#B83B2A" stroke="#6E1E14" stroke-width="3"/>
+    <rect x="152" y="72" width="72" height="96" rx="6" fill="#1F4E8C" stroke="#112E54" stroke-width="3"/>
+    <line x1="88" y1="120" x2="152" y2="120" stroke="#1E6B52" stroke-width="10"/>
+    <circle cx="120" cy="120" r="18" fill="#E5B24B" stroke="#7A5212" stroke-width="3"/>
 </svg>

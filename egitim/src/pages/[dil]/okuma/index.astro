@@ -9,6 +9,8 @@ import { dilListesi } from '@ortak/i18n/utils';
 import { PLAN, YOL } from '@ortak/lib/okuma/yol';
 import Ikon from '../../../components/Ikon.astro';
 import { ilimMetinleri } from '../../../i18n/ilim';
+import { carkMetinleri } from '../../../i18n/cark';
+import { yaprakMetinleri } from '../../../i18n/yapraklar';
 import { doldur, okumaMetinleri } from '../../../i18n/okuma';
 import { bolumKapagi } from '../../../lib/yol-kapaklari';
 import Taban from '../../../layouts/Taban.astro';
@@ -22,6 +24,8 @@ export function getStaticPaths() {
 
 const dil = Astro.params.dil as Dil;
 const t = okumaMetinleri(dil);
+const ck = carkMetinleri(dil);
+const yp = yaprakMetinleri(dil);
 const il = ilimMetinleri(dil);
 const kapak = bolumKapagi('okuma');
 const motifler = ['m-goz', 'm-yildiz', 'm-sevron', 'm-mihrap'] as const;
@@ -47,6 +51,16 @@ const izler = [
         <p>{t.bugunMetin}</p>
         <p class="ok-ozet" data-okuma-bugun data-plan={JSON.stringify(PLAN)} data-sablon={t.bugunOzet}></p>
         <a class="dugme birincil" href={`/${dil}/okuma/bugun/`}>{t.bugunBasla} <Ikon ad="ok" /></a>
+      </div>
+    </section>
+
+    <section class="iy-kart ok-cark-bant" aria-labelledby="cark-baslik">
+      <div class="iy-kart-govde">
+        <div class="ok-cark-metin">
+          <h2 id="cark-baslik">{ck.ad}</h2>
+          <p>{ck.giris}</p>
+        </div>
+        <a class="dugme birincil" href={`/${dil}/okuma/cark/`}>{ck.ad} <Ikon ad="ok" /></a>
       </div>
     </section>
 
@@ -79,6 +93,7 @@ const izler = [
     ))}
 
     <aside class="ok-notlar" aria-label={t.ad}>
+      <p class="yl-not"><a href={`/${dil}/yapraklar/`}>{yp.ad}</a> — {yp.aciklama}</p>
       <p class="yl-not">{t.sinirNot}</p>
       <p class="yl-not">{t.kaynakNot}</p>
       <p class="yl-not">{t.hesapNot}</p>

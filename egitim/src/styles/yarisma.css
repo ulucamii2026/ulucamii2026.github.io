@@ -9,6 +9,11 @@
 
 /* Giriş: ayarlar */
 .ya-ayar, .ya-kisayol { display: grid; gap: 1rem; padding: 1.1rem; background: var(--yuz); border: 1.5px solid var(--cizgi-koyu); border-radius: var(--r); min-width: 0; }
+.ya-cark-bant { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem 1.25rem; padding: 1.1rem; background: var(--yuz); border: 1.5px solid var(--cizgi-koyu); border-inline-start: 6px solid var(--kobalt); border-radius: var(--r); min-width: 0; }
+.ya-cark-metin { display: grid; gap: 0.25rem; max-width: 38rem; }
+.ya-cark-metin h2 { font-size: 1.25rem; color: var(--kobalt); }
+.ya-cark-bant .dugme.birincil { background: var(--kobalt-dolgu); border-color: var(--kobalt-dolgu); }
+.ya-cark-bant .dugme.birincil:hover { background: var(--murdum-dolgu); border-color: var(--murdum-dolgu); }
 .ya-ayar h2, .ya-kisayol h2 { font-size: 1.35rem; }
 .ya-grup { margin: 0; padding: 0; border: 0; min-width: 0; display: grid; gap: 0.5rem; }
 .ya-grup legend { padding: 0; font-weight: 700; font-size: 1.05rem; margin-bottom: 0.3rem; }

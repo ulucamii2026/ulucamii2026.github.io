@@ -1,0 +1,70 @@
+---
+/**
+ * Yazdırılabilir Çalışma Yaprakları Arşivi (26 Kasım 2026): hafta sonu Kur'an kursları için yıllık müfredata göre iki yaş grubuna
+ * (4–8 yaş ve 9–13 yaş) ayrılmış, QR kodlu A4 PDF yaprakları. Her kartta tek tıkla PDF indirme ve platformdaki etkileşimli sayfaya geçiş yer alır.
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import { dilListesi } from '@ortak/i18n/utils';
+import Ikon from '../../components/Ikon.astro';
+import { YAPRAK_LISTESI, yaprakMetinleri } from '../../i18n/yapraklar';
+import { bolumKapagi } from '../../lib/yol-kapaklari';
+import Taban from '../../layouts/Taban.astro';
+import '../../styles/yollar.css';
+import '../../styles/yapraklar.css';
+
+export function getStaticPaths() {
+  return dilListesi.map((dil) => ({ params: { dil } }));
+}
+
+const dil = Astro.params.dil as Dil;
+const t = yaprakMetinleri(dil);
+const kapak = bolumKapagi('kurs');
+const gruplar = [
+  { kod: '4-8' as const, baslik: t.grup48Baslik, aciklama: t.grup48Aciklama, kartlar: YAPRAK_LISTESI.filter((y) => y.yas === '4-8') },
+  { kod: '9-13' as const, baslik: t.grup913Baslik, aciklama: t.grup913Aciklama, kartlar: YAPRAK_LISTESI.filter((y) => y.yas === '9-13') },
+];
+---
+<Taban dil={dil} baslik={t.ad} aciklama={t.aciklama} yol="yapraklar" oturum={false}>
+  <article class="icerik yl-sayfa yp-sayfa">
+    <div>
+      <a class="yl-geri-baglanti" href={`/${dil}/`}><Ikon ad="geri" /> {t.geri}</a>
+    </div>
+    <header class="yl-bas">
+      <img class="yl-kapak" src={kapak.kucuk} srcset={kapak.srcset} sizes="(max-width: 48rem) 100vw, 46rem" width="1600" height="900" alt="" decoding="async" />
+      <h1>{t.ad}</h1>
+      <p class="yl-ozet">{t.giris}</p>
+      <p class="yl-not">{t.pdfNot}</p>
+    </header>
+
+    {gruplar.map((g) => (
+      <section class="yp-bolum" data-yas={g.kod} aria-labelledby={`yp-bas-${g.kod}`}>
+        <h2 id={`yp-bas-${g.kod}`}>{g.baslik}</h2>
+        <p class="yp-aciklama">{g.aciklama}</p>
+        <ul class="yp-izgara">
+          {g.kartlar.map((k) => (
+            <li class="yp-kart" data-alan={k.alan}>
+              <div class="yp-kart-ust">
+                <span class="yp-alan">{t.alanlar[k.alan]}</span>
+                <h3>{k.baslik[dil]}</h3>
+                <p class="yp-ozet">{k.ozet[dil]}</p>
+                <p class="yp-kaynak">{k.kaynak[dil]}</p>
+              </div>
+              <div class="yp-eylem">
+                <a class="dugme birincil kucuk" href={k.pdf} download>
+                  <Ikon ad="indir" /> {t.indir}
+                </a>
+                <a class="dugme ikincil kucuk" href={`/${dil}/${k.sayfa}`}>
+                  {t.sayfayaGit} <Ikon ad="ok" />
+                </a>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+  </article>
+</Taban>
+
+<script>
+  import '../../scripts/dil';
+</script>

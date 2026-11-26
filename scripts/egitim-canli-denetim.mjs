@@ -127,7 +127,7 @@ for (const d of DILLER) {
 const harita = await getir('/sitemap-0.xml');
 const locs = [...(await harita.text()).matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, a]) => a).sort();
 const beklenen = DILLER.flatMap((d) => [`https://egitim.ulucamii.be/${d}/`, `https://egitim.ulucamii.be/${d}/ezber/`, `https://egitim.ulucamii.be/${d}/calisma-belgesi/`, `https://egitim.ulucamii.be/${d}/kilimim/`, `https://egitim.ulucamii.be/${d}/kartlar/`, `https://egitim.ulucamii.be/${d}/takvim/`, `https://egitim.ulucamii.be/${d}/gizlilik/`, `https://egitim.ulucamii.be/${d}/yollar/`,
-  ...['ibadet', 'ibadet/abdest', 'ibadet/namaz', ...['sabah', 'ogle', 'ikindi', 'aksam', 'yatsi'].map((v) => `ibadet/namaz/${v}`), 'okuma', 'yarisma', ...[1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => `okuma/o${n}`)].map((y) => `https://egitim.ulucamii.be/${d}/${y}/`),
+  ...['ibadet', 'ibadet/abdest', 'ibadet/namaz', ...['sabah', 'ogle', 'ikindi', 'aksam', 'yatsi'].map((v) => `ibadet/namaz/${v}`), 'yapraklar', 'okuma', 'okuma/cark', 'yarisma', ...[1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => `okuma/o${n}`)].map((y) => `https://egitim.ulucamii.be/${d}/${y}/`),
   ...yolSayfalari.map((y) => `https://egitim.ulucamii.be/${d}/yollar/${y}/`),
   ...yeniYolSayfalari.map((k) => `https://egitim.ulucamii.be/${d}/yollar/yeni-musluman/${k}/`),
   ...kartKimlikleri.map((k) => `https://egitim.ulucamii.be/${d}/ogren/${k}/`),
@@ -137,6 +137,13 @@ const beklenen = DILLER.flatMap((d) => [`https://egitim.ulucamii.be/${d}/`, `htt
   // Basılı karekod sesli dersleri: dizin + 73 kod (`test` ulucamii.be'de kalır, egitim'de noindex, haritada yok).
   ['https://egitim.ulucamii.be/e/', ...BASILI_KODLAR.filter((k) => k !== 'test').map((k) => `https://egitim.ulucamii.be/e/${k}/`)]).sort();
 kontrol(`site haritası ${beklenen.length} adres`, harita.status === 200 && JSON.stringify(locs) === JSON.stringify(beklenen), `${harita.status}, ${locs.length} adres`);
+// Sesli Çarkıfelek, Çalışma Yaprakları Arşivi ve PDF dosyası canlıda 200 döner.
+const carkY = await getir('/tr/okuma/cark/');
+kontrol('/tr/okuma/cark/ 200 ve veri', carkY.status === 200 && (await carkY.text()).includes('data-cark'), carkY.status);
+const ypY = await getir('/tr/yapraklar/');
+kontrol('/tr/yapraklar/ 200 ve liste', ypY.status === 200 && (await ypY.text()).includes('4-8-elifba-harfler.pdf'), ypY.status);
+const pdfY = await getir('/belgeler/yapraklar/4-8-elifba-harfler.pdf');
+kontrol('çalışma yaprağı PDF 200', pdfY.status === 200 && (pdfY.headers.get('content-type') ?? '').includes('pdf'), pdfY.status);
 // Kart seslendirmesi (12 Kasım 2026: beş dil): her dilde manifestten üç örnek — kart sayfasında oynatıcı düğmesi, MP3 200 + audio/mpeg, bayt ve sha256 manifestle aynı;
 // manifestte sesi olmayan kartta (tecvid ku-044, tr dışı) düğme yok ve dosya 404. Tüm dosyaların tam doğrulaması: node scripts/egitim-ses-getir.mjs --hedef <geçici klasör>.
 const sesManifest = JSON.parse(readFileSync(new URL('../src/data/ilim-yolu/kart-ses.json', import.meta.url), 'utf8'));

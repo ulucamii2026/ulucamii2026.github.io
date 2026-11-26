@@ -1,3 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
-<circle cx="120" cy="120" r="84" fill="#DCE8DF" stroke="#1E4D3B" stroke-width="2.5"/><path d="M166 56 A64 64 0 0 0 166 184 A80 80 0 0 1 166 56 Z" fill="#9B2C22" stroke="#1E4D3B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="184" cy="96" r="6" fill="#D7A23E"/>
+<rect x="0" y="0" width="240" height="240" fill="#EDF8FC"/>
+  <path d="M18 206 V86 Q18 18 120 18 Q222 18 222 86 V206 Z" fill="#FFFDF8" stroke="#8CCAD6" stroke-width="3"/>
+  <rect x="18" y="168" width="204" height="38" fill="#178596"/>
+  <path d="M18 168 H222" stroke="#E0A538" stroke-width="3"/>
+  <rect x="34" y="178" width="14" height="14" transform="rotate(45 41 185)" fill="#7AD4E4" opacity="0.55"/>
+  <rect x="86" y="178" width="14" height="14" transform="rotate(45 93 185)" fill="#7AD4E4" opacity="0.55"/>
+  <rect x="140" y="178" width="14" height="14" transform="rotate(45 147 185)" fill="#7AD4E4" opacity="0.55"/>
+  <rect x="192" y="178" width="14" height="14" transform="rotate(45 199 185)" fill="#7AD4E4" opacity="0.55"/>
+  <rect x="8" y="206" width="224" height="26" fill="#E8DEC8" stroke="#6E563F" stroke-width="2"/>
+
+    <circle cx="120" cy="112" r="68" fill="#177D68" stroke="#E3A735" stroke-width="4"/>
+    <circle cx="120" cy="112" r="56" fill="#EAF8FC" stroke="#178596" stroke-width="2"/>
+    <path d="M142 74 A42 42 0 1 0 142 150 A34 34 0 1 1 142 74 Z" fill="#177D68" stroke="#0F4D40" stroke-width="2"/>
+    <polygon points="154,90 158,101 170,101 160,108 164,119 154,112 144,119 148,108 138,101 150,101" fill="#E3A735" stroke="#8F5608" stroke-width="1.5"/>
+    <circle cx="72" cy="70" r="4.5" fill="#E3A735"/>
+    <circle cx="176" cy="138" r="4" fill="#2CB7DF"/>
 </svg>

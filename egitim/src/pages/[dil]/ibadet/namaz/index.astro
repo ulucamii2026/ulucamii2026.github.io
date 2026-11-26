@@ -15,6 +15,7 @@ import IbadetSirala from '../../../../components/IbadetSirala.astro';
 import { adimAdi, doldur, ibadetMetinleri } from '../../../../i18n/ibadet';
 import { sembolSeti } from '../../../../lib/ibadet-cizim';
 import { adimKartlari, altMetni, hukumAdi, kaynakSatiri } from '../../../../lib/ibadet-sayfa';
+import { bolumKapagi } from '../../../../lib/yol-kapaklari';
 import Taban from '../../../../layouts/Taban.astro';
 import '../../../../styles/yollar.css';
 import '../../../../styles/ibadet.css';
@@ -49,7 +50,7 @@ const sprite = sembolSeti([...NAMAZ.adimlar.map((a) => a.ikon), 'ui-seccade']);
 <Taban dil={dil} baslik={m.namazBaslik} aciklama={m.namazAciklama} yol="ibadet/namaz">
   <article class="icerik yl-sayfa ib-sayfa" data-ibadet-sayfa>
     <Fragment set:html={sprite} />
-    <IbadetBas dil={dil} baslik={m.namazBaslik} lead={m.namazLead} etiket={NAMAZ.etiket[dil]} kaynakSatiri={kaynakSatiri(dil, NAMAZ)} />
+    <IbadetBas dil={dil} baslik={m.namazBaslik} lead={m.namazLead} etiket={NAMAZ.etiket[dil]} kaynakSatiri={kaynakSatiri(dil, NAMAZ)} kapak={bolumKapagi('namaz')} />
 
     <IbadetAdimlar dil={dil} konu="namaz" kartlar={kartlar} />
 

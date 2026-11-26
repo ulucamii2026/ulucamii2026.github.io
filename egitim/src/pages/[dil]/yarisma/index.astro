@@ -10,6 +10,7 @@ import { ozetSatirlari } from '@ortak/lib/yarisma/veri';
 import { ADETLER, SEVIYELER, VARSAYILAN, ayarYaz } from '@ortak/lib/yarisma/tur';
 import { BICIMLER, KONULAR } from '@ortak/lib/yarisma/tipler';
 import CevrimdisiKutu from '../../../components/CevrimdisiKutu.astro';
+import { carkMetinleri } from '../../../i18n/cark';
 import { doldur, yarismaMetinleri } from '../../../i18n/yarisma';
 import { bolumKapagi } from '../../../lib/yol-kapaklari';
 import Taban from '../../../layouts/Taban.astro';
@@ -22,6 +23,7 @@ export function getStaticPaths() {
 
 const dil = Astro.params.dil as Dil;
 const m = yarismaMetinleri(dil);
+const ck = carkMetinleri(dil);
 const kapak = bolumKapagi('yarisma');
 const veri = {
   ozet: ozetSatirlari(),
@@ -83,6 +85,14 @@ const varsayilanBag = `/${dil}/yarisma/oyna/#${ayarYaz({ ...VARSAYILAN, tohum: '
         <a class="dugme birincil ya-basla" href={varsayilanBag} data-basla>{m.basla}</a>
       </div>
       <noscript><p class="yl-not">{m.jsGerek}</p></noscript>
+    </section>
+
+    <section class="ya-cark-bant" aria-labelledby="ya-cark-baslik">
+      <div class="ya-cark-metin">
+        <h2 id="ya-cark-baslik">{ck.ad}</h2>
+        <p>{ck.giris}</p>
+      </div>
+      <a class="dugme birincil" href={`/${dil}/okuma/cark/`}>{ck.ad}</a>
     </section>
 
     <section class="ya-kisayol" aria-labelledby="ya-kisayol-baslik">

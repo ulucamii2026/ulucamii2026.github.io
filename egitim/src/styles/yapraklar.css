@@ -1,0 +1,36 @@
+/* İlim Yolu · Yazdırılabilir Çalışma Yaprakları Arşivi (26 Kasım 2026) */
+
+.yp-sayfa { display: grid; gap: 1.75rem; align-content: start; max-width: 60rem; }
+.yp-sayfa > .yl-bas { max-width: none; }
+
+.yp-bolum { display: grid; gap: 0.9rem; padding: 1.15rem; background: var(--yuz); border: 1.5px solid var(--cizgi-koyu); border-radius: var(--r); min-width: 0; }
+.yp-bolum[data-yas="4-8"] { border-inline-start: 6px solid var(--cini); }
+.yp-bolum[data-yas="9-13"] { border-inline-start: 6px solid var(--kobalt); }
+.yp-bolum h2 { font-size: 1.4rem; }
+.yp-bolum[data-yas="4-8"] h2 { color: var(--cini); }
+.yp-bolum[data-yas="9-13"] h2 { color: var(--kobalt); }
+.yp-aciklama { color: var(--murekkep-2); max-width: 44em; }
+
+.yp-izgara { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.85rem; }
+@media (min-width: 46rem) { .yp-izgara { grid-template-columns: 1fr 1fr; } }
+
+.yp-kart { display: grid; gap: 0.55rem; align-content: space-between; padding: 1rem; background: var(--yun);
+  border: 1.5px solid var(--cizgi-koyu); border-inline-start: 5px solid var(--yesil); border-radius: var(--r); min-width: 0; }
+.yp-kart[data-alan="kuran"] { border-inline-start-color: var(--kokboya); }
+.yp-kart[data-alan="itikat"] { border-inline-start-color: var(--kobalt); }
+.yp-kart[data-alan="ibadet"] { border-inline-start-color: var(--cini); }
+.yp-kart[data-alan="siyer"] { border-inline-start-color: var(--kehribar); }
+.yp-kart[data-alan="ahlak"] { border-inline-start-color: var(--murdum); }
+
+.yp-kart-ust { display: grid; gap: 0.35rem; }
+.yp-alan { justify-self: start; display: inline-block; padding: 0.05rem 0.55rem; font: 700 0.78rem/1.4 var(--baslik);
+  letter-spacing: 0.06em; text-transform: uppercase; border-radius: var(--r); background: var(--yuz);
+  border: 1.5px solid var(--cizgi-koyu); color: var(--murekkep); }
+.yp-kart h3 { font-size: 1.15rem; overflow-wrap: anywhere; }
+.yp-ozet { font-size: 0.96rem; color: var(--murekkep-2); line-height: 1.5; }
+.yp-kaynak { font-size: 0.86rem; font-weight: 650; color: var(--safran-yazi); }
+.yp-eylem { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.35rem; }
+
+@media (max-width: 26rem) {
+  .yp-bolum, .yp-kart { padding: 0.85rem; }
+}

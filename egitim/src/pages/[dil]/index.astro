@@ -22,6 +22,8 @@ import { ilimMetinleri } from '../../i18n/ilim';
 import { ibadetMetinleri } from '../../i18n/ibadet';
 import { okumaMetinleri } from '../../i18n/okuma';
 import { yarismaMetinleri } from '../../i18n/yarisma';
+import { carkMetinleri } from '../../i18n/cark';
+import { yaprakMetinleri } from '../../i18n/yapraklar';
 import { kilimimMetinleri } from '../../i18n/kilimim';
 import { metin } from '../../i18n/metinler';
 import { sablonlar } from '../../i18n/sablon';
@@ -43,6 +45,8 @@ const il = ilimMetinleri(dil);
 const ok = okumaMetinleri(dil).anaKart;
 const ib = ibadetMetinleri(dil);
 const ya = yarismaMetinleri(dil);
+const ck = carkMetinleri(dil);
+const yp = yaprakMetinleri(dil);
 const m = metin(dil);
 const km = kilimimMetinleri(dil);
 const tm = tekrarMetinleri(dil);
@@ -200,6 +204,25 @@ const veri = {
           </li>
         ))}
       </ul>
+    </section>
+
+    <section class="iy-bolum" aria-label={`${ck.ad} · ${yp.ad}`}>
+      <div class="iy-araclar">
+        <article class="iy-arac">
+          <div>
+            <h3>{ck.ad}</h3>
+            <p>{ck.giris}</p>
+          </div>
+          <a class="dugme ikincil kucuk" href={`/${dil}/okuma/cark/`}>{ck.cevir} <Ikon ad="ok" /></a>
+        </article>
+        <article class="iy-arac yp">
+          <div>
+            <h3>{yp.ad}</h3>
+            <p>{yp.aciklama}</p>
+          </div>
+          <a class="dugme ikincil kucuk" href={`/${dil}/yapraklar/`}>{yp.indir} <Ikon ad="ok" /></a>
+        </article>
+      </div>
     </section>
 
     <section class="iy-bolum" id="kurs" aria-labelledby="kurs-baslik">

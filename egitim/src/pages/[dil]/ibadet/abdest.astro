@@ -15,6 +15,7 @@ import IbadetSirala from '../../../components/IbadetSirala.astro';
 import { adimAdi, ibadetMetinleri } from '../../../i18n/ibadet';
 import { sembolSeti } from '../../../lib/ibadet-cizim';
 import { adimKartlari, altMetni, hukumAdi, kaynakSatiri } from '../../../lib/ibadet-sayfa';
+import { bolumKapagi } from '../../../lib/yol-kapaklari';
 import Taban from '../../../layouts/Taban.astro';
 import '../../../styles/yollar.css';
 import '../../../styles/ibadet.css';
@@ -36,7 +37,7 @@ const sprite = sembolSeti(ABDEST.adimlar.map((a) => a.ikon));
 <Taban dil={dil} baslik={m.abdestBaslik} aciklama={m.abdestAciklama} yol="ibadet/abdest">
   <article class="icerik yl-sayfa ib-sayfa" data-ibadet-sayfa>
     <Fragment set:html={sprite} />
-    <IbadetBas dil={dil} baslik={m.abdestBaslik} lead={m.abdestLead} etiket={ABDEST.etiket[dil]} kaynakSatiri={kaynakSatiri(dil, ABDEST)} />
+    <IbadetBas dil={dil} baslik={m.abdestBaslik} lead={m.abdestLead} etiket={ABDEST.etiket[dil]} kaynakSatiri={kaynakSatiri(dil, ABDEST)} kapak={bolumKapagi('ibadet')} />
     <IbadetAdimlar dil={dil} konu="abdest" kartlar={kartlar} />
     <IbadetSirala dil={dil} konu="abdest" baslik={m.siralaBaslik} yonerge={m.siralaAbdest} ogeler={sirala} baslikId="sirala-baslik" />
     <IbadetEslestir dil={dil} konu="abdest" baslik={m.eslesBaslik} yonerge={m.eslesYonerge} ciftler={ciftler} adet={6} baslikId="esles-baslik" />

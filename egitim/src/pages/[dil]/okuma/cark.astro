@@ -1,0 +1,153 @@
+---
+/**
+ * Sesli Çarkıfelek (İlim Yolu · Kur'an Okuma, 26 Kasım 2026): sınıf tahtası veya telefon için resmî Diyanet sesli okuma çarkı.
+ * Öğretmen Elifbâ harfleri, harekeli heceler, cezm/şedde/tenvin/med, kısa kelimeler, tecvid ve kısa âyet destelerinden birini seçer,
+ * çarkı çevirir ve gelen maddenin resmî Diyanet telaffuzunu 1,0× veya 0,8× hızda dinletir. Hesap, Firebase ve depolama YOK (`oturum={false}`).
+ * CSP: satır içi betik/stil yok; SVG dilim dönüşü `transform` özniteliğiyle yapılır.
+ */
+import type { Dil } from '@ortak/i18n/ui';
+import { dilListesi } from '@ortak/i18n/utils';
+import Ikon from '../../../components/Ikon.astro';
+import { CARK_DESTELERI, carkMetinleri, doldurCark } from '../../../i18n/cark-yardim';
+import { okumaYuku } from '../../../lib/okuma-veri';
+import Taban from '../../../layouts/Taban.astro';
+import '../../../styles/yollar.css';
+import '../../../styles/cark.css';
+
+export function getStaticPaths() {
+  return dilListesi.map((dil) => ({ params: { dil } }));
+}
+
+const dil = Astro.params.dil as Dil;
+const t = carkMetinleri(dil);
+const y = okumaYuku(dil);
+
+const desteler = Object.fromEntries(CARK_DESTELERI.map((kod) => [kod, y.o[kod] ?? []]));
+const veri = {
+  onek: y.onek,
+  etiket: y.etiket,
+  desteler,
+  m: {
+    kalan: t.kalan,
+    cevir: t.cevir,
+    donuyor: t.donuyor,
+    dinle: t.dinle,
+    durdur: t.durdur,
+    yavas: t.yavas,
+    normal: t.normal,
+    havuzBitti: t.havuzBitti,
+    cikarildi: t.cikarildi,
+    sifirlandi: t.sifirlandi,
+    sesHata: t.sesHata,
+    ilkDurum: t.ilkDurum,
+  },
+};
+
+const RENKLER = ['#9B2C22', '#1F4E8C', '#1E6B52', '#B56D0A', '#0E6375', '#6E2B62', '#C04D1F', '#295B9E'] as const;
+const ilkDilimler = (desteler.o1 ?? []).slice(0, 8);
+const dilimYolu = (indis: number, adet: number): string => {
+  const step = (2 * Math.PI) / adet;
+  const a0 = -Math.PI / 2 - step / 2 + indis * step;
+  const a1 = a0 + step;
+  const r = 186;
+  const x0 = 200 + r * Math.cos(a0);
+  const y0 = 200 + r * Math.sin(a0);
+  const x1 = 200 + r * Math.cos(a1);
+  const y1 = 200 + r * Math.sin(a1);
+  return `M 200 200 L ${x0.toFixed(2)} ${y0.toFixed(2)} A ${r} ${r} 0 0 1 ${x1.toFixed(2)} ${y1.toFixed(2)} Z`;
+};
+---
+<Taban dil={dil} baslik={t.ad} aciklama={t.aciklama} yol="okuma/cark" oturum={false}>
+  <article class="icerik yl-sayfa ck-sayfa" data-cark data-veri={JSON.stringify(veri)}>
+    <div>
+      <a class="yl-geri-baglanti" href={`/${dil}/okuma/`}><Ikon ad="geri" /> {t.geri}</a>
+    </div>
+    <header class="yl-bas">
+      <h1>{t.ad}</h1>
+      <p class="yl-ozet">{t.giris}</p>
+      <noscript><p class="yl-not">{t.jsGerek}</p></noscript>
+    </header>
+
+    <section class="ck-desteler" aria-labelledby="ck-deste-baslik">
+      <div class="ck-desteler-bas">
+        <h2 id="ck-deste-baslik">{t.desteBaslik}</h2>
+        <p class="ck-sayac" data-sayac>{doldurCark(t.kalan, { n: desteler.o1?.length ?? 28, m: desteler.o1?.length ?? 28 })}</p>
+      </div>
+      <div class="ck-deste-liste" role="group" aria-labelledby="ck-deste-baslik">
+        {CARK_DESTELERI.map((kod, i) => (
+          <button type="button" class="ck-deste-btn" data-deste={kod} aria-pressed={i === 0 ? 'true' : 'false'}>
+            {t.desteler[kod]}
+          </button>
+        ))}
+      </div>
+    </section>
+
+    <div class="ck-alan">
+      <section class="ck-sahne" aria-label={t.ad}>
+        <div class="ck-kasa">
+          <svg class="ck-ok" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+            <polygon points="20,38 5,8 35,8" fill="#D7A23E" stroke="#2B1B14" stroke-width="3" stroke-linejoin="round" />
+          </svg>
+          <svg class="ck-svg" viewBox="0 0 400 400" role="img" aria-label={t.ad} focusable="false">
+            <circle cx="200" cy="200" r="192" fill="#FFFAF0" stroke="#2B1B14" stroke-width="5" />
+            <g data-cark-govde transform="rotate(0 200 200)">
+              {ilkDilimler.map((oge, i) => {
+                const aci = (360 / ilkDilimler.length) * i;
+                return (
+                  <g>
+                    <path d={dilimYolu(i, ilkDilimler.length)} fill={RENKLER[i % RENKLER.length]} stroke="#FFFAF0" stroke-width="2.5" />
+                    <text x="200" y="74" text-anchor="middle" dominant-baseline="central" class="ck-dilim-yazi" transform={`rotate(${aci} 200 200)`}>
+                      {oge[0]}
+                    </text>
+                  </g>
+                );
+              })}
+            </g>
+            <circle cx="200" cy="200" r="24" class="ck-merkez-nokta" />
+            <circle cx="200" cy="200" r="10" class="ck-merkez-ic" />
+          </svg>
+        </div>
+
+        <div class="ck-ana-eylem">
+          <button type="button" class="dugme birincil ck-cevir" data-cevir>{t.cevir}</button>
+          <label class="ck-efekt">
+            <input type="checkbox" data-efekt checked />
+            <span>{t.efektAcik}</span>
+          </label>
+        </div>
+      </section>
+
+      <section class="ck-sonuc" aria-labelledby="ck-sonuc-baslik">
+        <p class="ck-sonuc-bas" id="ck-sonuc-baslik">{t.sonucBaslik}</p>
+        <p class="ck-ar" lang="ar" dir="rtl" data-ar>{ilkDilimler[0]?.[0] ?? ''}</p>
+        <p class="ck-etiket" data-etiket>{y.etiket[ilkDilimler[0]?.[4] ?? 0] ?? ''}</p>
+        <p class="ck-durum" role="status" aria-live="polite" data-durum>{t.ilkDurum}</p>
+
+        <div class="ck-ses-cubuk">
+          <button type="button" class="dugme birincil ck-dinle" data-dinle>
+            <Ikon ad="cal" sinif="ikon-cal" />
+            <Ikon ad="durdur" sinif="ikon-dur" />
+            <span data-dinle-yazi>{t.dinle}</span>
+          </button>
+          <button type="button" class="dugme ikincil ck-yavas" data-yavas aria-pressed="false">{t.yavas}</button>
+        </div>
+
+        <div class="ck-tur-cubuk">
+          <button type="button" class="dugme ikincil kucuk" data-cikar>{t.cikar}</button>
+          <button type="button" class="dugme ikincil kucuk" data-sifirla>{t.sifirla}</button>
+        </div>
+
+        <p class="ck-kisayol">{t.kisayol}</p>
+      </section>
+    </div>
+
+    <aside class="ok-notlar" aria-label={t.ad}>
+      <p class="yl-not">{t.kaynakNot}</p>
+    </aside>
+  </article>
+</Taban>
+
+<script>
+  import '../../../scripts/dil';
+  import '../../../scripts/cark';
+</script>

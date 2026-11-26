@@ -1,3 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
-<path transform="translate(120 118) scale(7)" d="M0 -15 C 7 -5 10 1 10 6 A10 10 0 0 1 -10 6 C -10 1 -7 -5 0 -15 Z" fill="#DCE8DF" stroke="#1E4D3B" stroke-width="0.3" stroke-linejoin="round"/><circle cx="100" cy="150" r="7" fill="#D7A23E"/>
+<rect x="0" y="0" width="240" height="240" fill="#EDF8FC"/>
+    <path d="M120 24 C162 84 186 122 186 154 A66 66 0 0 1 54 154 C54 122 78 84 120 24 Z" fill="#25B2D9" stroke="#0C5D73" stroke-width="4" stroke-linejoin="round"/>
+    <ellipse cx="96" cy="148" rx="14" ry="26" fill="#AEEBF9"/>
+    <circle cx="176" cy="64" r="9" fill="#53CBE5" stroke="#0C5D73" stroke-width="2"/>
 </svg>

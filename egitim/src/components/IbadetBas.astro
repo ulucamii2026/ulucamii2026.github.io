@@ -5,16 +5,18 @@
  */
 import type { Dil } from '@ortak/i18n/ui';
 import { ibadetMetinleri } from '../i18n/ibadet';
+import type { Kapak } from '../lib/yol-kapaklari';
 import Ikon from './Ikon.astro';
 
-interface Props { dil: Dil; baslik: string; lead: string; etiket?: string; geriHref?: string; geriAd?: string; kaynakSatiri?: string }
-const { dil, baslik, lead, etiket, geriHref = `/${dil}/ibadet/`, geriAd, kaynakSatiri } = Astro.props;
+interface Props { dil: Dil; baslik: string; lead: string; etiket?: string; geriHref?: string; geriAd?: string; kaynakSatiri?: string; kapak?: Kapak }
+const { dil, baslik, lead, etiket, geriHref = `/${dil}/ibadet/`, geriAd, kaynakSatiri, kapak } = Astro.props;
 const m = ibadetMetinleri(dil);
 ---
 <div>
   <a class="yl-geri-baglanti" href={geriHref}><Ikon ad="geri" /> {geriAd ?? m.geri}</a>
 </div>
 <header class="yl-bas">
+  {kapak && <img class="yl-kapak" src={kapak.kucuk} srcset={kapak.srcset} sizes="(max-width: 48rem) 100vw, 46rem" width="1600" height="900" alt="" decoding="async" />}
   <h1>{baslik}</h1>
   {etiket && <p class="ib-etiket">{etiket}</p>}
   <p class="yl-ozet">{lead}</p>

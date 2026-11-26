@@ -1,10 +1,25 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
-<rect x="14" y="206" width="212" height="12" rx="0" fill="#9B2C22" stroke="#1E4D3B" stroke-width="2"/><rect x="26" y="210" width="22" height="4" rx="0" fill="#D7A23E" stroke="#D7A23E" stroke-width="0"/><rect x="192" y="210" width="22" height="4" rx="0" fill="#D7A23E" stroke="#D7A23E" stroke-width="0"/>
-<line x1="110" y1="116" x2="110" y2="158" stroke="#F6EEDF" stroke-width="24" stroke-linecap="round"/><line x1="110" y1="116" x2="110" y2="158" stroke="#1E4D3B" stroke-width="20" stroke-linecap="round"/>
-<line x1="110" y1="158" x2="110" y2="198" stroke="#F6EEDF" stroke-width="21" stroke-linecap="round"/><line x1="110" y1="158" x2="110" y2="198" stroke="#1E4D3B" stroke-width="17" stroke-linecap="round"/>
-<polygon points="103,196 114,196 132,204 132,206 103,206" fill="#DCE8DF" stroke="#1E4D3B" stroke-width="2" stroke-linejoin="round"/>
-<polygon points="94,62 126,62 132,100 134,144 86,144 88,100" fill="#1E4D3B" stroke="#F6EEDF" stroke-width="2" stroke-linejoin="round"/>
-<line x1="110" y1="70" x2="120" y2="90" stroke="#F6EEDF" stroke-width="16" stroke-linecap="round"/><line x1="110" y1="70" x2="120" y2="90" stroke="#1E4D3B" stroke-width="12" stroke-linecap="round"/><line x1="120" y1="90" x2="123" y2="66" stroke="#1E4D3B" stroke-width="13" stroke-linecap="round"/><line x1="120" y1="90" x2="123" y2="66" stroke="#DCE8DF" stroke-width="9" stroke-linecap="round"/><rect x="119" y="44" width="11" height="22" rx="4" fill="#DCE8DF" stroke="#1E4D3B" stroke-width="2"/><line x1="123" y1="47" x2="123" y2="62" stroke="#1E4D3B" stroke-width="1.6" stroke-linecap="round"/><line x1="127" y1="47" x2="127" y2="62" stroke="#1E4D3B" stroke-width="1.6" stroke-linecap="round"/>
-<line x1="110" y1="62" x2="110" y2="59" stroke="#1E4D3B" stroke-width="12" stroke-linecap="round"/><line x1="110" y1="62" x2="110" y2="59" stroke="#DCE8DF" stroke-width="8" stroke-linecap="round"/>
-<circle cx="111" cy="47" r="12" fill="#DCE8DF" stroke="#1E4D3B" stroke-width="2"/>
+<rect x="0" y="0" width="240" height="240" fill="#FAF0DC"/>
+  <path d="M20 206 V82 Q20 18 120 18 Q220 18 220 82 V206 Z" fill="#FFFBF2" stroke="#D8BF94" stroke-width="3"/>
+  <rect x="20" y="164" width="200" height="42" fill="#157A8C"/>
+  <path d="M20 164 H220" stroke="#D7A23E" stroke-width="3"/>
+  <rect x="44" y="176" width="12" height="12" transform="rotate(45 50 182)" fill="#F6EEDF" opacity="0.45"/>
+  <rect x="184" y="176" width="12" height="12" transform="rotate(45 190 182)" fill="#F6EEDF" opacity="0.45"/>
+  <line x1="194" y1="18" x2="194" y2="44" stroke="#9C7125" stroke-width="2.5"/>
+  <path d="M184 52 Q194 40 204 52 L201 64 H187 Z" fill="#E5A938" stroke="#7A5212" stroke-width="2"/>
+  <circle cx="194" cy="54" r="3.5" fill="#FFF7C8"/>
+  <rect x="14" y="204" width="212" height="18" fill="#A62F24" stroke="#5E2018" stroke-width="2.2"/>
+  <rect x="22" y="208" width="196" height="10" fill="none" stroke="#E5B24B" stroke-width="2"/>
+  <rect x="14" y="222" width="212" height="18" fill="#DFD1B8"/>
+
+    <line x1="112" y1="126" x2="112" y2="196" stroke="#1E4976" stroke-width="22" stroke-linecap="round"/>
+    <polygon points="104,194 118,194 134,202 134,204 104,204" fill="#F2C49B" stroke="#5E3820" stroke-width="2"/>
+    <polygon points="94,66 130,66 136,144 88,144" fill="#1D6E53" stroke="#114635" stroke-width="2.2" stroke-linejoin="round"/>
+    <line x1="114" y1="74" x2="126" y2="94" stroke="#114635" stroke-width="14" stroke-linecap="round"/>
+    <line x1="114" y1="74" x2="126" y2="94" stroke="#2A8C6B" stroke-width="10" stroke-linecap="round"/>
+    <line x1="126" y1="94" x2="129" y2="66" stroke="#F2C49B" stroke-width="9" stroke-linecap="round"/>
+    <rect x="122" y="44" width="12" height="22" rx="4" fill="#F2C49B" stroke="#5E3820" stroke-width="2"/>
+    <circle cx="128" cy="54" r="16" fill="none" stroke="#E3A735" stroke-width="2.5" stroke-dasharray="4 3"/>
+    <circle cx="114" cy="48" r="14" fill="#F2C49B" stroke="#5E3820" stroke-width="2.2"/>
+    <path d="M100 42 Q114 30 128 42 Z" fill="#FFFDF8" stroke="#114635" stroke-width="2"/>
 </svg>

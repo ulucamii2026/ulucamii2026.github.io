@@ -1,3 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
-<path d="M70 214 V90 Q70 48 120 24 Q170 48 170 90 V214 Z" fill="#9B2C22" stroke="#1E4D3B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M84 202 V94 Q84 62 120 44 Q156 62 156 94 V202 Z" fill="none" stroke="#D7A23E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><line x1="76" y1="214" x2="76" y2="228" stroke="#1E4D3B" stroke-width="3" stroke-linecap="butt"/><line x1="87" y1="214" x2="87" y2="228" stroke="#1E4D3B" stroke-width="3" stroke-linecap="butt"/><line x1="98" y1="214" x2="98" y2="228" stroke="#1E4D3B" stroke-width="3" stroke-linecap="butt"/><line x1="109" y1="214" x2="109" y2="228" stroke="#1E4D3B" stroke-width="3" stroke-linecap="butt"/><line x1="120" y1="214" x2="120" y2="228" stroke="#1E4D3B" stroke-width="3" stroke-linecap="butt"/><line x1="131" y1="214" x2="131" y2="228" stroke="#1E4D3B" stroke-width="3" stroke-linecap="butt"/><line x1="142" y1="214" x2="142" y2="228" stroke="#1E4D3B" stroke-width="3" stroke-linecap="butt"/><line x1="153" y1="214" x2="153" y2="228" stroke="#1E4D3B" stroke-width="3" stroke-linecap="butt"/><line x1="164" y1="214" x2="164" y2="228" stroke="#1E4D3B" stroke-width="3" stroke-linecap="butt"/><path d="M104 110 Q104 92 120 82 Q136 92 136 110 Z" fill="#D7A23E" stroke="#D7A23E" stroke-width="0" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="0" y="0" width="240" height="240" fill="#FFF8EC"/>
+    <rect x="58" y="16" width="124" height="202" rx="4" fill="#1E6B52" stroke="#124232" stroke-width="3"/>
+    <path d="M72 206 V86 Q72 48 120 26 Q168 48 168 86 V206 Z" fill="#A62F24" stroke="#E5B24B" stroke-width="3"/>
+    <path d="M86 192 V92 Q86 64 120 46 Q154 64 154 92 V192 Z" fill="none" stroke="#F6EEDF" stroke-width="2.5"/>
+    <path d="M104 114 Q104 94 120 82 Q136 94 136 114 Z" fill="#E5B24B"/>
+    <line x1="74" y1="218" x2="74" y2="232" stroke="#7A4C2B" stroke-width="3"/>
+    <line x1="92" y1="218" x2="92" y2="232" stroke="#7A4C2B" stroke-width="3"/>
+    <line x1="110" y1="218" x2="110" y2="232" stroke="#7A4C2B" stroke-width="3"/>
+    <line x1="128" y1="218" x2="128" y2="232" stroke="#7A4C2B" stroke-width="3"/>
+    <line x1="146" y1="218" x2="146" y2="232" stroke="#7A4C2B" stroke-width="3"/>
+    <line x1="164" y1="218" x2="164" y2="232" stroke="#7A4C2B" stroke-width="3"/>
 </svg>

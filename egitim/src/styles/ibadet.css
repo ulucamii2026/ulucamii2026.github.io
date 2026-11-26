@@ -39,7 +39,7 @@
 .ib-adimlar { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.9rem; }
 .ib-adim { display: grid; grid-template-columns: minmax(5rem, 8rem) minmax(0, 1fr); gap: 0.9rem; padding: 0.85rem; background: var(--yun); border: 1.5px solid var(--cizgi-koyu); border-inline-start: 5px solid var(--cini); border-radius: var(--r); }
 .ib-adim[hidden] { display: none; }
-.ib-adim > .ib-cizim { background: var(--cini-soluk); border: 1.5px solid var(--cini); border-radius: var(--r); }
+.ib-adim > .ib-cizim { background: #FFFDF7; border: 2px solid var(--cini); border-radius: var(--r); }
 .ib-adim-govde { display: grid; gap: 0.45rem; align-content: start; min-width: 0; }
 .ib-adim-no { display: flex; align-items: center; gap: 0.5rem; font-size: 1.1rem; }
 .ib-no-rozet { display: inline-grid; place-items: center; min-width: 2rem; height: 2rem; padding-inline: 0.35rem; font-weight: 700; color: #fff; background: var(--cini-dolgu); border-radius: var(--r); }

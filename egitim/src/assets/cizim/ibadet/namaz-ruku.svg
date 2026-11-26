@@ -1,13 +1,24 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
-<rect x="14" y="206" width="212" height="12" rx="0" fill="#9B2C22" stroke="#1E4D3B" stroke-width="2"/><rect x="26" y="210" width="22" height="4" rx="0" fill="#D7A23E" stroke="#D7A23E" stroke-width="0"/><rect x="192" y="210" width="22" height="4" rx="0" fill="#D7A23E" stroke="#D7A23E" stroke-width="0"/>
-<line x1="92" y1="120" x2="95" y2="158" stroke="#F6EEDF" stroke-width="26" stroke-linecap="round"/><line x1="92" y1="120" x2="95" y2="158" stroke="#1E4D3B" stroke-width="22" stroke-linecap="round"/>
-<line x1="95" y1="158" x2="98" y2="198" stroke="#F6EEDF" stroke-width="22" stroke-linecap="round"/><line x1="95" y1="158" x2="98" y2="198" stroke="#1E4D3B" stroke-width="18" stroke-linecap="round"/>
-<polygon points="91,196 102,196 120,204 120,206 91,206" fill="#DCE8DF" stroke="#1E4D3B" stroke-width="2" stroke-linejoin="round"/>
-<polygon points="84,126 138,130 140,156 88,156" fill="#1E4D3B" stroke="#F6EEDF" stroke-width="2" stroke-linejoin="round"/>
-<line x1="92" y1="116" x2="146" y2="114" stroke="#F6EEDF" stroke-width="40" stroke-linecap="round"/><line x1="92" y1="116" x2="146" y2="114" stroke="#1E4D3B" stroke-width="36" stroke-linecap="round"/>
-<line x1="142" y1="122" x2="122" y2="140" stroke="#F6EEDF" stroke-width="16" stroke-linecap="round"/><line x1="142" y1="122" x2="122" y2="140" stroke="#1E4D3B" stroke-width="12" stroke-linecap="round"/>
-<line x1="122" y1="140" x2="102" y2="153" stroke="#1E4D3B" stroke-width="13" stroke-linecap="round"/><line x1="122" y1="140" x2="102" y2="153" stroke="#DCE8DF" stroke-width="9" stroke-linecap="round"/>
-<line x1="152" y1="114" x2="160" y2="114" stroke="#1E4D3B" stroke-width="12" stroke-linecap="round"/><line x1="152" y1="114" x2="160" y2="114" stroke="#DCE8DF" stroke-width="8" stroke-linecap="round"/>
-<circle cx="172" cy="114" r="12" fill="#DCE8DF" stroke="#1E4D3B" stroke-width="2"/>
-<circle cx="100" cy="155" r="7" fill="#DCE8DF" stroke="#1E4D3B" stroke-width="2"/>
+<rect x="0" y="0" width="240" height="240" fill="#FAF0DC"/>
+  <path d="M20 206 V82 Q20 18 120 18 Q220 18 220 82 V206 Z" fill="#FFFBF2" stroke="#D8BF94" stroke-width="3"/>
+  <rect x="20" y="164" width="200" height="42" fill="#157A8C"/>
+  <path d="M20 164 H220" stroke="#D7A23E" stroke-width="3"/>
+  <rect x="44" y="176" width="12" height="12" transform="rotate(45 50 182)" fill="#F6EEDF" opacity="0.45"/>
+  <rect x="184" y="176" width="12" height="12" transform="rotate(45 190 182)" fill="#F6EEDF" opacity="0.45"/>
+  <line x1="194" y1="18" x2="194" y2="44" stroke="#9C7125" stroke-width="2.5"/>
+  <path d="M184 52 Q194 40 204 52 L201 64 H187 Z" fill="#E5A938" stroke="#7A5212" stroke-width="2"/>
+  <circle cx="194" cy="54" r="3.5" fill="#FFF7C8"/>
+  <rect x="14" y="204" width="212" height="18" fill="#A62F24" stroke="#5E2018" stroke-width="2.2"/>
+  <rect x="22" y="208" width="196" height="10" fill="none" stroke="#E5B24B" stroke-width="2"/>
+  <rect x="14" y="222" width="212" height="18" fill="#DFD1B8"/>
+
+    <line x1="90" y1="124" x2="96" y2="196" stroke="#1E4976" stroke-width="22" stroke-linecap="round"/>
+    <polygon points="88,194 102,194 120,202 120,204 88,204" fill="#F2C49B" stroke="#5E3820" stroke-width="2"/>
+    <polygon points="82,126 138,128 140,154 86,154" fill="#1D6E53" stroke="#114635" stroke-width="2"/>
+    <line x1="88" y1="116" x2="148" y2="114" stroke="#1D6E53" stroke-width="34" stroke-linecap="round"/>
+    <line x1="142" y1="122" x2="104" y2="152" stroke="#2A8C6B" stroke-width="11" stroke-linecap="round"/>
+    <circle cx="100" cy="155" r="7" fill="#F2C49B" stroke="#5E3820" stroke-width="2"/>
+    <circle cx="172" cy="114" r="13.5" fill="#F2C49B" stroke="#5E3820" stroke-width="2.2"/>
+    <path d="M170 100 Q186 106 184 124 L170 124 Z" fill="#FFFDF8" stroke="#114635" stroke-width="2"/>
+    <line x1="88" y1="90" x2="152" y2="90" stroke="#E3A735" stroke-width="3" stroke-dasharray="5 4"/>
 </svg>

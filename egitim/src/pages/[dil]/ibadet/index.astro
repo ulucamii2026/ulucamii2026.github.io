@@ -10,6 +10,7 @@ import { NAMAZ, VAKIT_IDLERI } from '@ortak/lib/ibadet/ibadet-veri';
 import CevrimdisiKutu from '../../../components/CevrimdisiKutu.astro';
 import IbadetCizim from '../../../components/IbadetCizim.astro';
 import { doldur, ibadetMetinleri } from '../../../i18n/ibadet';
+import { yaprakMetinleri } from '../../../i18n/yapraklar';
 import { sembolSeti } from '../../../lib/ibadet-cizim';
 import { bolumKapagi } from '../../../lib/yol-kapaklari';
 import Taban from '../../../layouts/Taban.astro';
@@ -23,6 +24,7 @@ export function getStaticPaths() {
 
 const dil = Astro.params.dil as Dil;
 const m = ibadetMetinleri(dil);
+const yp = yaprakMetinleri(dil);
 const sprite = sembolSeti(['abdest-yuz', 'namaz-ruku', 'ui-seccade']);
 const ana = [
   { konu: 'abdest', ad: m.abdestBaslik, ozet: m.abdestOzet, cizim: 'abdest-yuz', kapak: bolumKapagi('ibadet'), href: `/${dil}/ibadet/abdest/` },
@@ -72,6 +74,7 @@ const veri = { m: { bolumTamam: m.bolumTamam, basla: m.basla, devam: m.devam }, 
         ))}
       </ul>
     </section>
+    <p class="yl-not"><a href={`/${dil}/yapraklar/`}>{yp.ad}</a> — {yp.aciklama}</p>
     <CevrimdisiKutu dil={dil} ozel={{ id: 'ibadet', ad: m.ad, yol: `/${dil}/ibadet/`, ek: cevrimdisiYollari, sesler: [] }} />
     <p class="yl-not">{m.hocaNotu}</p>
   </div>
