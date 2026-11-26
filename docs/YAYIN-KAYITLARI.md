@@ -4,6 +4,23 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 26 Kasım 2026 (öğleden sonra) — egitim.ulucamii.be Tur 3: Bilgi Yarışması 524 soru, 2–4 takım/fon müziği/kutlama sesi ve Sesli Çarkıfelek 5 soru çarkı + 2 takım sayacı
+
+- Zaman: 26 Kasım 2026, 14:13 Europe/Brussels (CET). İçerik commit'i: `f868636a` (`egitim: Bilgi Yarismasi 524 soru, takim modu, ses/fon ve Cark soru desteleri`).
+- Deploy: GitHub Actions `egitim-yayinla.yml` [run 45826270167](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/45826270167) **success** (`derle` success, `yayinla` success, `canli` success).
+- Dayanak: Büşra Zengin Hoca'nın 26.11.2026 12:35 ve 12:42 WhatsApp geri bildirimleri (Tur 3: soru çeşitlerinin çoğaltılması, hafif fon müziği + tam başarı motivasyon sesi, arkadaşlarla/takım rekabeti) ve Rıdvan'ın tam otonomi talimatı.
+- Kapsam:
+  - **524 soruluk Bilgi Yarışması bankası (`src/data/yarisma/sorular.json`, `scripts/yarisma-uret.mjs`):** Onaylı 5 dilli tüm eğitim kartlarından (`itikat`, `ibadet`, `siyer`, `ahlak`, `kuran`, hassas olmayanlar) türetilen **524 soru** (**459** sınav sorusu, 14 sıralama, 11 gruplama, 16 eşleştirme, 24 gizemli kutu; ilk 93 özgün soru sırası korundu).
+  - **Bilgi Yarışması 2–4 Takım / Arkadaş modu, ses ve paylaşım (`src/lib/yarisma/tur.ts`, `egitim/src/i18n/yarisma.ts`, `egitim/src/pages/[dil]/yarisma/{index.astro,oyna/index.astro}`, `egitim/src/scripts/{yarisma,yarisma-oyna}.ts`, `egitim/src/styles/yarisma.css`):** İsteğe bağlı 2–4 takım seçimi (`&t=2|3|4`) ve sıra devri/kartı, `Aynı soruları paylaş` bağlantı kopyalama, sıfır harici dosyalı Web Audio API pentatonik fon müziği aç/kapa düğmesi, ses efektleri aç/kapa düğmesi, bütün turları hatasız/doğru tamamlayınca özel kutlama melodisi ve `tamPuanRozet` rozeti.
+  - **Sesli Çarkıfelek 9 resmî Diyanet okuma destesi + 5 konulu Bilgi Soruları çarkı (`egitim/src/i18n/{cark,cark-yardim}.ts`, `egitim/src/pages/[dil]/okuma/cark.astro`, `egitim/src/scripts/cark.ts`, `egitim/src/styles/cark.css`):** Resmî Diyanet okuma desteleri (`o1`–`o9`) yanında 5 konulu soru çarkı (`s-itikat`, `s-ibadet`, `s-siyer`, `s-ahlak`, `s-kuran`, 450+ şıklı soru, `Cevabı göster` aç/kapa) ve isteğe bağlı `1. Takım` / `2. Takım` `+1 puan` sayacı.
+- Canlı URL'ler (örnek TR):
+  - `https://egitim.ulucamii.be/tr/yarisma/` ve 2 takımlı örnek `https://egitim.ulucamii.be/tr/yarisma/oyna/#f=quiz&k=itikat,ibadet,siyer,ahlak,kuran&d=1-2&n=10&s=tur3&t=2`
+  - `https://egitim.ulucamii.be/tr/okuma/cark/`
+- Doğrulama:
+  - Yerel: `npm run test:yarisma` (**27/27** geçti), `npm run egitim:build` (`astro check` 0 hata, `astro build` ve ses bekçisi 165/165 geçti), CI Düğüm testleri **89/89** geçti, Playwright `tests/egitim/yarisma.spec.mjs` + `tests/egitim/cark-yapraklar.spec.mjs` **44/44** geçti (Soru Çarkı `s-siyer` + 2 takım sayacı ve Bilgi Yarışması 2 takım + fon müziği + paylaşım + açık/koyu Axe WCAG AA ve CSP kontrolleri dahil); görseller (`yarisma-takim-masaustu.png`, `cark-soru-masaustu.png`) tarayıcı ekran görüntüsüyle incelendi.
+  - Canlı: `npm run egitim:canli -- https://egitim.ulucamii.be` **155/155** geçti (`2026-11-26T13:13:16.180Z`) + CI `canli` işi tüm ses/sha256 ve sayfa kapılarını geçti.
+- Açık sınırlar: `egitim:canli` canlı URL bazlı genel platform kapısıdır (155 kontrol); yeni Tur 3 etkileşimleri (`&t=2`, fon müziği/efekt, `s-siyer` soru çarkı) `dist` üzerinde Playwright **44/44** ile doğrulandı, canlıda ise Büşra Hoca'nın saha denemesiyle doğrulanacaktır.
+
 ## 26 Kasım 2026 (öğle) — egitim.ulucamii.be Tur 2: Sesli Çarkıfelek, renkli Abdest/Namaz sahneleri ve 2 yaş grubu A4 PDF yaprak arşivi
 
 - Zaman: 26 Kasım 2026, 12:02 Europe/Brussels (CET). İçerik commit'leri: `ffc7036f` (rebase'li Tur 2) ve `389b6370` (PDF yolu `/dosyalar/yapraklar/`).
