@@ -4,6 +4,34 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 26 Kasım 2026 (öğleden önce) — Cuma vaazı «Engelli Kardeşlerimize Karşı Sorumluluklarımız» (TR) ve cami ekranı APK'larının geçici indirme bağlantısı
+
+- Zaman: 26 Kasım 2026, Europe/Brussels (CET).
+  - APK: commit `f5872af3` (`b5db75df..f5872af3`, push 10.03); Pages [run 45788471595](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/45788471595) **success** (10.06).
+  - Vaaz TR: Release 10.25; commit `182d282a` (push 10.26). Kendi Pages koşusu [run 45791912835](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/45791912835) «higher priority waiting request» yüzünden **cancelled**; içerik, hemen üstüne gelen namaz vakti commit'i `597a44a0` ile başlayan Pages [run 45791963671](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/45791963671) **success** (10.29) ile yayına çıktı. **Yayımlandı ve canlıda doğrulandı** (10.35).
+- Dayanak: Rıdvan, 26.11.2026 `/goal`: bu haftanın vaazını hazırlayıp yayınlamak ve önceki haftaların listesine WhatsApp'tan iletmek («bütün yetki ve karar sende»). APK için aynı gün: «APK'yı web sitemizde uygun bir isimle yükle … işimi bitirdiğimde o dosyayı oradan sileriz».
+- Kapsam (vaaz):
+  - `src/content/vaazlar/engelli-kardeslerimize-karsi-sorumluluklarimiz.md`: 4810 kelime, kategori `toplum`, 19 sahne, 9 vektör şekil.
+  - `src/content/duyurular/{tr,fr}/cuma-vaazi-engelli-kardeslerimize-karsi-sorumluluklarimiz.md`.
+  - `public/vaazlar/engelli-kardeslerimize-karsi-sorumluluklarimiz.{docx,pdf}`: 15 sayfa; sha256 docx `726e7f20…`, pdf `0285a05c…`.
+  - `public/media/vaazlar/engelli-kardeslerimize-karsi-sorumluluklarimiz/`: 77 WebP.
+  - Release `vaaz-engelli-kardeslerimize-karsi-sorumluluklarimiz` (Latest değil): `engelli-kardeslerimize-karsi-sorumluluklarimiz-sunum.pptx` (13 720 252 B, 132 slayt) ve `.pdf` (5 481 737 B).
+- Kapsam (APK, GEÇİCİ):
+  - `public/indir/ulu-camii-ekran.apk`: `be.ulucamii.ekran` 1.3.31 (48), ana salon; 7 910 210 B, sha256 `fb00b6af…`.
+  - `public/indir/ulu-camii-ekran-tcl.apk`: 1.3.32-tcl-ezan (49), giriş; 15 642 410 B, sha256 `55b28a95…`.
+  - İkisi de dernek imzalı (sertifika sha256 `8ef17517…`). Kaynakları `D:/cami-panel/calisma/b3/claude-surum/48/` ve `D:/cami-panel/calisma/e/tcl-ezan/apk-49/`.
+- Testler:
+  - Çalışma ağacında `npm run check` 0 hata / 0 uyarı; build 2015 sayfa.
+  - `web_kontrol.mjs` (TR) yerelde ve canlıda: 6 görünüm, axe 0, 79 dosya + 2 sunum dosyası.
+  - APK'lar canlıdan indirildi; sha256 kaynakla aynı, `Content-Type: application/vnd.android.package-archive`.
+- Canlı (HTTP 200):
+  - TR sayfa, TR ve FR duyuru, Word, PDF, kapak.
+  - `https://ulucamii.be/indir/ulu-camii-ekran.apk` ve `…/ulu-camii-ekran-tcl.apk`.
+- Açık sınırlar:
+  1. FR/EN/NL/DE sayfaları ve sunumları üretimde; aynı gün ayrı commit'le yayınlanacak.
+  2. APK dosyaları Rıdvan «sil» deyince `public/indir/` altından kaldırılacak (geçici yayın).
+  3. `npm run dogrula:codex` koşulmadı; yalnız içerik ve ikili dosya eklendi. Check, build ve web_kontrol yapıldı.
+
 ## 26 Kasım 2026 (sabah) — egitim.ulucamii.be: renkli bölüm kapakları, Kahoot tarzı Bilgi Yarışması ve canlı İznik vurguları
 
 - Zaman: 26 Kasım 2026, 09:32 Europe/Brussels (CET). İçerik commit'leri: `10f58bf4` ve `5398b61b` (`399d8b4e..5398b61b`).
