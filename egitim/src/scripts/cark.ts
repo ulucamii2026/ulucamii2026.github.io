@@ -1,22 +1,35 @@
 /**
- * Sesli Çarkıfelek istemcisi (26 Kasım 2026): sınıf tahtasında veya telefonda seçili Elifbâ/Tecvid/Kur'an destesinden rastgele madde çeker,
- * 8 dilimli SVG çarkını `transform` özniteliğiyle çevirir (CSP temiz: satır içi stil yok), ardından resmî Diyanet MP3 kaydını çalar.
+ * Sesli Çarkıfelek istemcisi (26 Kasım 2026): seçili Elifbâ/Tecvid/Kur'an destesinden (9 Diyanet sesli deste) veya
+ * Sınıf Bilgi Soruları destesinden (5 konu, 450+ onaylı soru) rastgele madde çeker, 8 dilimli SVG çarkını `transform`
+ * özniteliğiyle çevirir (CSP temiz: satır içi stil yok), ardından resmî Diyanet MP3 kaydını çalar veya şıklı soruyu açar.
  * Hiçbir veri localStorage / sessionStorage / ağa yazılmaz.
  */
-import type { CarkDeste } from '../i18n/cark';
+import type { CarkDeste, CarkOkumaDeste, CarkSoruDeste } from '../i18n/cark';
 
 type MaddeSatiri = [ar: string, onek: number, dosya: string, vurgu: number[][] | 0, etiket: number];
+type SoruSatiri = [soru: string, secenekler: string[], dogru: number];
 interface Veri {
   onek: string[];
   etiket: string[];
-  desteler: Record<CarkDeste, MaddeSatiri[]>;
-  m: Record<'kalan' | 'cevir' | 'donuyor' | 'dinle' | 'durdur' | 'yavas' | 'normal' | 'havuzBitti' | 'cikarildi' | 'sifirlandi' | 'sesHata' | 'ilkDurum', string>;
+  desteler: Record<CarkOkumaDeste, MaddeSatiri[]>;
+  soruDesteleri: Record<CarkSoruDeste, SoruSatiri[]>;
+  m: Record<
+    | 'kalan' | 'cevir' | 'donuyor' | 'dinle' | 'durdur' | 'yavas' | 'normal'
+    | 'cevabiGoster' | 'dogruTebrik' | 'tekrarDene'
+    | 'havuzBitti' | 'cikarildi' | 'sifirlandi' | 'sesHata' | 'ilkDurum',
+    string
+  >;
 }
 interface Oge {
+  tur: 'okuma' | 'soru';
   indis: number;
-  ar: string;
-  ses: string;
-  etiket: string;
+  dilimEtiket: string;
+  ar?: string;
+  ses?: string;
+  etiket?: string;
+  soru?: string;
+  secenekler?: string[];
+  dogru?: number;
 }
 
 const SVG_NS = 'http://www.w3.org/2000/svg';
@@ -60,8 +73,13 @@ function kur(kok: HTMLElement, v: Veri): void {
   const sayac = sor<HTMLElement>('[data-sayac]');
   const cevirBtn = sor<HTMLButtonElement>('[data-cevir]');
   const efektKutu = sor<HTMLInputElement>('[data-efekt]');
+  const okumaAlan = sor<HTMLElement>('[data-okuma-alan]');
   const arEl = sor<HTMLElement>('[data-ar]');
   const etiketEl = sor<HTMLElement>('[data-etiket]');
+  const soruAlan = sor<HTMLElement>('[data-soru-alan]');
+  const soruMetinEl = sor<HTMLElement>('[data-soru-metin]');
+  const soruSiklarEl = sor<HTMLElement>('[data-soru-siklar]');
+  const cevapGosterBtn = sor<HTMLButtonElement>('[data-cevap-goster]');
   const durumEl = sor<HTMLElement>('[data-durum]');
   const dinleBtn = sor<HTMLButtonElement>('[data-dinle]');
   const dinleYazi = sor<HTMLElement>('[data-dinle-yazi]');
@@ -69,6 +87,9 @@ function kur(kok: HTMLElement, v: Veri): void {
   const cikarBtn = sor<HTMLButtonElement>('[data-cikar]');
   const sifirlaBtn = sor<HTMLButtonElement>('[data-sifirla]');
   const desteBtnler = [...kok.querySelectorAll<HTMLButtonElement>('[data-deste]')];
+  const takimPuanEls = [...kok.querySelectorAll<HTMLOutputElement>('[data-takim-puan]')];
+  const takimArtiBtnler = [...kok.querySelectorAll<HTMLButtonElement>('[data-takim-arti]')];
+  const takimSifirlaBtn = sor<HTMLButtonElement>('[data-takim-sifirla]');
   const m = v.m;
 
   let aktifDeste: CarkDeste = 'o1';
@@ -78,6 +99,11 @@ function kur(kok: HTMLElement, v: Veri): void {
   let aci = 0;
   let donuyor = false;
   let yavas = false;
+  let takimPuanlari = [0, 0];
+
+  const isSoruDestesi = (kod: CarkDeste): kod is CarkSoruDeste => kod.startsWith('s-');
+  const desteUzunlugu = (kod: CarkDeste): number =>
+    isSoruDestesi(kod) ? (v.soruDesteleri[kod]?.length ?? 0) : (v.desteler[kod]?.length ?? 0);
 
   // Resmî Diyanet ses çaları (yalnız src üzerinden)
   const ses = new Audio();
@@ -101,7 +127,6 @@ function kur(kok: HTMLElement, v: Veri): void {
     ses.play().catch((e: unknown) => {
       if ((e as { name?: string })?.name === 'AbortError') return;
       dugmeDurum(false);
-      // Otomatik çalma engellenirse kullanıcı «Diyanet sesiyle dinle»ye basabilir
       if (e instanceof Error && e.name !== 'NotAllowedError') {
         durumEl.textContent = m.sesHata;
       }
@@ -115,16 +140,16 @@ function kur(kok: HTMLElement, v: Veri): void {
     }
   });
 
-  // Web Audio tık + iniş çanı (0 depolama, 0 ağ)
+  // Web Audio tık + iniş çanı + kutlama sesi (0 depolama, 0 ağ)
   let sesCtx: AudioContext | null = null;
-  const efektCal = (tur: 'tik' | 'inis') => {
+  const efektCal = (tur: 'tik' | 'inis' | 'dogru') => {
     if (!efektKutu.checked) return;
     try {
       const Ctx = window.AudioContext || (window as unknown as { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
       if (!Ctx) return;
       sesCtx ??= new Ctx();
       if (sesCtx.state === 'suspended') void sesCtx.resume();
-      const notalar = tur === 'tik' ? [680] : [523.25, 659.25];
+      const notalar = tur === 'tik' ? [680] : tur === 'dogru' ? [523.25, 659.25, 783.99] : [523.25, 659.25];
       notalar.forEach((f, idx) => {
         if (!sesCtx) return;
         const osc = sesCtx.createOscillator();
@@ -144,20 +169,51 @@ function kur(kok: HTMLElement, v: Veri): void {
     }
   };
 
-  const ogeGetir = (kod: CarkDeste, indis: number): Oge | null => {
-    const satir = v.desteler[kod]?.[indis];
-    if (!satir) return null;
-    return { indis, ar: satir[0], ses: v.onek[satir[1]] + satir[2], etiket: v.etiket[satir[4]] ?? '' };
-  };
-
   const kisalt = (ar: string): string => {
     const parca = ar.trim().split(/\s+/);
     return parca.length <= 2 ? ar : `${parca[0]} ${parca[1]}…`;
   };
 
+  const ogeGetir = (kod: CarkDeste, indis: number): Oge | null => {
+    if (isSoruDestesi(kod)) {
+      const satir = v.soruDesteleri[kod]?.[indis];
+      if (!satir) return null;
+      return {
+        tur: 'soru',
+        indis,
+        dilimEtiket: `? ${indis + 1}`,
+        soru: satir[0],
+        secenekler: satir[1],
+        dogru: satir[2],
+      };
+    }
+    const satir = v.desteler[kod]?.[indis];
+    if (!satir) return null;
+    return {
+      tur: 'okuma',
+      indis,
+      dilimEtiket: kisalt(satir[0]),
+      ar: satir[0],
+      ses: v.onek[satir[1]] + satir[2],
+      etiket: v.etiket[satir[4]] ?? '',
+    };
+  };
+
+  const cevabiAc = (o: Oge) => {
+    if (o.tur !== 'soru') return;
+    [...soruSiklarEl.querySelectorAll<HTMLButtonElement>('button')].forEach((b) => {
+      const idx = Number(b.dataset.sikIdx);
+      b.dataset.durum = idx === o.dogru ? 'dogru' : 'elendi';
+      b.disabled = true;
+    });
+    cevapGosterBtn.disabled = true;
+  };
+
   const sonucYaz = (o: Oge | null) => {
     seciliOge = o;
     if (!o) {
+      okumaAlan.hidden = false;
+      soruAlan.hidden = true;
       arEl.textContent = '—';
       arEl.removeAttribute('data-uzun');
       etiketEl.textContent = '';
@@ -165,16 +221,51 @@ function kur(kok: HTMLElement, v: Veri): void {
       cikarBtn.disabled = true;
       return;
     }
-    arEl.textContent = o.ar;
-    if (o.ar.length > 14) arEl.setAttribute('data-uzun', '1');
+    if (o.tur === 'soru') {
+      okumaAlan.hidden = true;
+      soruAlan.hidden = false;
+      soruMetinEl.textContent = o.soru ?? '';
+      soruSiklarEl.replaceChildren();
+      (o.secenekler ?? []).forEach((metin, k) => {
+        const li = document.createElement('li');
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'ck-soru-sik';
+        btn.dataset.k = String(k % 4);
+        btn.dataset.sikIdx = String(k);
+        btn.textContent = `${['A', 'B', 'C', 'D'][k % 4]}. ${metin}`;
+        btn.addEventListener('click', () => {
+          if (k === o.dogru) {
+            efektCal('dogru');
+            durumEl.textContent = m.dogruTebrik;
+            cevabiAc(o);
+          } else {
+            btn.dataset.durum = 'elendi';
+            btn.disabled = true;
+            durumEl.textContent = m.tekrarDene;
+          }
+        });
+        li.appendChild(btn);
+        soruSiklarEl.appendChild(li);
+      });
+      cevapGosterBtn.disabled = false;
+      cikarBtn.disabled = !kalanIndisler.includes(o.indis);
+      return;
+    }
+    okumaAlan.hidden = false;
+    soruAlan.hidden = true;
+    const ar = o.ar ?? '';
+    arEl.textContent = ar;
+    if (ar.length > 14) arEl.setAttribute('data-uzun', '1');
     else arEl.removeAttribute('data-uzun');
-    etiketEl.textContent = o.etiket;
+    etiketEl.textContent = o.etiket ?? '';
     dinleBtn.disabled = false;
     cikarBtn.disabled = !kalanIndisler.includes(o.indis);
   };
 
   const carkCiz = (ornekOge?: Oge) => {
     const kaynak = kalanIndisler.map((i) => ogeGetir(aktifDeste, i)!).filter(Boolean);
+    const toplam = desteUzunlugu(aktifDeste);
     if (!kaynak.length) {
       gosterilenDilimler = [];
       govde.replaceChildren();
@@ -183,16 +274,15 @@ function kur(kok: HTMLElement, v: Veri): void {
       govde.setAttribute('transform', 'rotate(0 200 200)');
       aci = 0;
       cevirBtn.disabled = true;
-      sayac.textContent = doldur(m.kalan, { n: 0, m: v.desteler[aktifDeste].length });
+      sayac.textContent = doldur(m.kalan, { n: 0, m: toplam });
       return;
     }
-    // Çarkta en fazla 8 dilim göster: hedef öğe varsa ilk dilimlerden birine yerleştir
     const karisik = [...kaynak];
     for (let i = karisik.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [karisik[i], karisik[j]] = [karisik[j], karisik[i]];
     }
-    let dilimler = karisik.slice(0, 8);
+    const dilimler = karisik.slice(0, 8);
     if (ornekOge && !dilimler.some((x) => x.indis === ornekOge.indis)) {
       dilimler[0] = ornekOge;
     }
@@ -208,7 +298,6 @@ function kur(kok: HTMLElement, v: Veri): void {
         'stroke-width': '2.5',
       }));
       const dAci = (360 / n) * i;
-      const yaziMetin = kisalt(o.ar);
       const yazi = svgOge('text', {
         x: '200',
         y: n === 1 ? '100' : '76',
@@ -217,20 +306,22 @@ function kur(kok: HTMLElement, v: Veri): void {
         class: 'ck-dilim-yazi',
         transform: `rotate(${dAci.toFixed(2)} 200 200)`,
       });
-      if (yaziMetin.length > 7) yazi.setAttribute('data-uzun', '1');
-      yazi.textContent = yaziMetin;
+      if (o.tur === 'soru') yazi.setAttribute('data-soru', '1');
+      else if (o.dilimEtiket.length > 7) yazi.setAttribute('data-uzun', '1');
+      yazi.textContent = o.dilimEtiket;
       g.appendChild(yazi);
       govde.appendChild(g);
     });
     cevirBtn.disabled = false;
-    sayac.textContent = doldur(m.kalan, { n: kalanIndisler.length, m: v.desteler[aktifDeste].length });
+    sayac.textContent = doldur(m.kalan, { n: kalanIndisler.length, m: toplam });
   };
 
   const desteKur = (kod: CarkDeste) => {
     durdur();
     aktifDeste = kod;
     desteBtnler.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.deste === kod)));
-    kalanIndisler = (v.desteler[kod] ?? []).map((_, i) => i);
+    const len = desteUzunlugu(kod);
+    kalanIndisler = Array.from({ length: len }, (_, i) => i);
     const ilk = ogeGetir(kod, 0);
     carkCiz(ilk ?? undefined);
     aci = 0;
@@ -256,7 +347,6 @@ function kur(kok: HTMLElement, v: Veri): void {
     carkCiz(hedef);
     const dilimIndisi = gosterilenDilimler.findIndex((x) => x.indis === hedef.indis);
     const dilimAci = 360 / gosterilenDilimler.length;
-    // Dilim i merkezi saat 12 yönüne göre (i * dilimAci) açısındadır; tepe oku saat 12 (0°)'dedir.
     const hedefMod = ((360 - dilimIndisi * dilimAci) % 360 + 360) % 360;
     const basAci = aci;
     const suAnkiMod = ((basAci % 360) + 360) % 360;
@@ -271,9 +361,13 @@ function kur(kok: HTMLElement, v: Veri): void {
       cevirBtn.disabled = false;
       cevirBtn.textContent = m.cevir;
       sonucYaz(hedef);
-      durumEl.textContent = `${hedef.etiket}`;
       efektCal('inis');
-      diyanetCal(hedef.ses);
+      if (hedef.tur === 'okuma') {
+        durumEl.textContent = hedef.etiket ?? '';
+        if (hedef.ses) diyanetCal(hedef.ses);
+      } else {
+        durumEl.textContent = m.ilkDurum;
+      }
     };
 
     if (azalt) {
@@ -312,7 +406,7 @@ function kur(kok: HTMLElement, v: Veri): void {
 
   dinleBtn.addEventListener('click', () => {
     if (caliyor) durdur();
-    else if (seciliOge) diyanetCal(seciliOge.ses);
+    else if (seciliOge?.tur === 'okuma' && seciliOge.ses) diyanetCal(seciliOge.ses);
   });
 
   yavasBtn.addEventListener('click', () => {
@@ -322,25 +416,49 @@ function kur(kok: HTMLElement, v: Veri): void {
     ses.defaultPlaybackRate = ses.playbackRate = yavas ? 0.8 : 1;
   });
 
+  cevapGosterBtn.addEventListener('click', () => {
+    if (seciliOge?.tur === 'soru') {
+      cevabiAc(seciliOge);
+      durumEl.textContent = seciliOge.secenekler?.[seciliOge.dogru ?? 0] ?? '';
+    }
+  });
+
   cikarBtn.addEventListener('click', () => {
     if (donuyor || !seciliOge) return;
     kalanIndisler = kalanIndisler.filter((x) => x !== seciliOge!.indis);
     cikarBtn.disabled = true;
-    if (!kalanIndisler.length) {
-      carkCiz();
-      durumEl.textContent = m.havuzBitti;
-    } else {
-      carkCiz();
-      durumEl.textContent = m.cikarildi;
-    }
+    carkCiz();
+    durumEl.textContent = kalanIndisler.length ? m.cikarildi : m.havuzBitti;
   });
 
   sifirlaBtn.addEventListener('click', () => {
     if (donuyor) return;
-    kalanIndisler = (v.desteler[aktifDeste] ?? []).map((_, i) => i);
+    const len = desteUzunlugu(aktifDeste);
+    kalanIndisler = Array.from({ length: len }, (_, i) => i);
     carkCiz(seciliOge ?? undefined);
     cikarBtn.disabled = !seciliOge;
     durumEl.textContent = m.sifirlandi;
+  });
+
+  const takimCiz = () => {
+    takimPuanEls.forEach((el) => {
+      const idx = Number(el.dataset.takimPuan);
+      el.textContent = String(takimPuanlari[idx] ?? 0);
+    });
+  };
+  takimArtiBtnler.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const idx = Number(btn.dataset.takimArti);
+      if (idx === 0 || idx === 1) {
+        takimPuanlari[idx] += 1;
+        takimCiz();
+        efektCal('dogru');
+      }
+    });
+  });
+  takimSifirlaBtn.addEventListener('click', () => {
+    takimPuanlari = [0, 0];
+    takimCiz();
   });
 
   document.addEventListener('keydown', (e) => {
@@ -350,7 +468,7 @@ function kur(kok: HTMLElement, v: Veri): void {
       if (tag === 'BUTTON' || tag === 'A') return;
       e.preventDefault();
       cevir();
-    } else if ((e.key === 'r' || e.key === 'R') && seciliOge) {
+    } else if ((e.key === 'r' || e.key === 'R') && seciliOge?.tur === 'okuma' && seciliOge.ses) {
       diyanetCal(seciliOge.ses);
     }
   });

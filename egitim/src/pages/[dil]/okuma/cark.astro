@@ -1,14 +1,15 @@
 ---
 /**
- * Sesli Çarkıfelek (İlim Yolu · Kur'an Okuma, 26 Kasım 2026): sınıf tahtası veya telefon için resmî Diyanet sesli okuma çarkı.
- * Öğretmen Elifbâ harfleri, harekeli heceler, cezm/şedde/tenvin/med, kısa kelimeler, tecvid ve kısa âyet destelerinden birini seçer,
- * çarkı çevirir ve gelen maddenin resmî Diyanet telaffuzunu 1,0× veya 0,8× hızda dinletir. Hesap, Firebase ve depolama YOK (`oturum={false}`).
- * CSP: satır içi betik/stil yok; SVG dilim dönüşü `transform` özniteliğiyle yapılır.
+ * Sesli Çarkıfelek (İlim Yolu · 26 Kasım 2026): sınıf tahtası veya telefon için resmî Diyanet sesli okuma (9 deste)
+ * ve 5 konulu Bilgi Soruları (450+ soru) çarkı + isteğe bağlı 2 takım puan sayacı.
+ * Hesap, Firebase ve depolama YOK (`oturum={false}`). CSP: satır içi betik/stil yok; SVG `transform` özniteliğiyle döner.
  */
 import type { Dil } from '@ortak/i18n/ui';
 import { dilListesi } from '@ortak/i18n/utils';
+import { KONULAR } from '@ortak/lib/yarisma/tipler';
+import { yerellestir } from '@ortak/lib/yarisma/veri';
 import Ikon from '../../../components/Ikon.astro';
-import { CARK_DESTELERI, carkMetinleri, doldurCark } from '../../../i18n/cark-yardim';
+import { CARK_OKUMA_DESTELERI, CARK_SORU_DESTELERI, carkMetinleri, doldurCark } from '../../../i18n/cark-yardim';
 import { okumaYuku } from '../../../lib/okuma-veri';
 import Taban from '../../../layouts/Taban.astro';
 import '../../../styles/yollar.css';
@@ -22,11 +23,22 @@ const dil = Astro.params.dil as Dil;
 const t = carkMetinleri(dil);
 const y = okumaYuku(dil);
 
-const desteler = Object.fromEntries(CARK_DESTELERI.map((kod) => [kod, y.o[kod] ?? []]));
+const desteler = Object.fromEntries(CARK_OKUMA_DESTELERI.map((kod) => [kod, y.o[kod] ?? []]));
+const tumQuiz = yerellestir(dil).filter((s) => s.format === 'quiz');
+const soruDesteleri = Object.fromEntries(
+  KONULAR.map((k) => [
+    `s-${k}`,
+    tumQuiz
+      .filter((s) => s.topic === k)
+      .map((s) => [s.soru, s.secenekler, s.dogru] as const),
+  ]),
+);
+
 const veri = {
   onek: y.onek,
   etiket: y.etiket,
   desteler,
+  soruDesteleri,
   m: {
     kalan: t.kalan,
     cevir: t.cevir,
@@ -35,6 +47,9 @@ const veri = {
     durdur: t.durdur,
     yavas: t.yavas,
     normal: t.normal,
+    cevabiGoster: t.cevabiGoster,
+    dogruTebrik: t.dogruTebrik,
+    tekrarDene: t.tekrarDene,
     havuzBitti: t.havuzBitti,
     cikarildi: t.cikarildi,
     sifirlandi: t.sifirlandi,
@@ -73,9 +88,18 @@ const dilimYolu = (indis: number, adet: number): string => {
         <h2 id="ck-deste-baslik">{t.desteBaslik}</h2>
         <p class="ck-sayac" data-sayac>{doldurCark(t.kalan, { n: desteler.o1?.length ?? 28, m: desteler.o1?.length ?? 28 })}</p>
       </div>
-      <div class="ck-deste-liste" role="group" aria-labelledby="ck-deste-baslik">
-        {CARK_DESTELERI.map((kod, i) => (
-          <button type="button" class="ck-deste-btn" data-deste={kod} aria-pressed={i === 0 ? 'true' : 'false'}>
+      <p class="ck-grup-bas">{t.okumaGrupBaslik}</p>
+      <div class="ck-deste-liste" role="group" aria-label={t.okumaGrupBaslik}>
+        {CARK_OKUMA_DESTELERI.map((kod, i) => (
+          <button type="button" class="ck-deste-btn" data-deste={kod} data-tur="okuma" aria-pressed={i === 0 ? 'true' : 'false'}>
+            {t.desteler[kod]}
+          </button>
+        ))}
+      </div>
+      <p class="ck-grup-bas">{t.soruGrupBaslik}</p>
+      <div class="ck-deste-liste" role="group" aria-label={t.soruGrupBaslik}>
+        {CARK_SORU_DESTELERI.map((kod) => (
+          <button type="button" class="ck-deste-btn" data-deste={kod} data-tur="soru" aria-pressed="false">
             {t.desteler[kod]}
           </button>
         ))}
@@ -115,22 +139,54 @@ const dilimYolu = (indis: number, adet: number): string => {
             <span>{t.efektAcik}</span>
           </label>
         </div>
+
+        <div class="ck-takim-kutu" data-cark-takimlar>
+          <p class="ck-takim-bas">{t.takimBaslik}</p>
+          <div class="ck-takimlar">
+            <div class="ck-takim">
+              <div class="ck-takim-bilgi">
+                <span class="ck-takim-ad">{t.takim1}</span>
+                <output class="ck-takim-sayi" data-takim-puan="0">0</output>
+              </div>
+              <button type="button" class="dugme ikincil kucuk" data-takim-arti="0">{t.artiBir}</button>
+            </div>
+            <div class="ck-takim iki">
+              <div class="ck-takim-bilgi">
+                <span class="ck-takim-ad">{t.takim2}</span>
+                <output class="ck-takim-sayi" data-takim-puan="1">0</output>
+              </div>
+              <button type="button" class="dugme ikincil kucuk" data-takim-arti="1">{t.artiBir}</button>
+            </div>
+          </div>
+          <button type="button" class="dugme ikincil kucuk ck-takim-sifirla" data-takim-sifirla>{t.puanSifirla}</button>
+        </div>
       </section>
 
       <section class="ck-sonuc" aria-labelledby="ck-sonuc-baslik">
         <p class="ck-sonuc-bas" id="ck-sonuc-baslik">{t.sonucBaslik}</p>
-        <p class="ck-ar" lang="ar" dir="rtl" data-ar>{ilkDilimler[0]?.[0] ?? ''}</p>
-        <p class="ck-etiket" data-etiket>{y.etiket[ilkDilimler[0]?.[4] ?? 0] ?? ''}</p>
-        <p class="ck-durum" role="status" aria-live="polite" data-durum>{t.ilkDurum}</p>
 
-        <div class="ck-ses-cubuk">
-          <button type="button" class="dugme birincil ck-dinle" data-dinle>
-            <Ikon ad="cal" sinif="ikon-cal" />
-            <Ikon ad="durdur" sinif="ikon-dur" />
-            <span data-dinle-yazi>{t.dinle}</span>
-          </button>
-          <button type="button" class="dugme ikincil ck-yavas" data-yavas aria-pressed="false">{t.yavas}</button>
+        <div class="ck-okuma-alan" data-okuma-alan>
+          <p class="ck-ar" lang="ar" dir="rtl" data-ar>{ilkDilimler[0]?.[0] ?? ''}</p>
+          <p class="ck-etiket" data-etiket>{y.etiket[ilkDilimler[0]?.[4] ?? 0] ?? ''}</p>
+          <div class="ck-ses-cubuk">
+            <button type="button" class="dugme birincil ck-dinle" data-dinle>
+              <Ikon ad="cal" sinif="ikon-cal" />
+              <Ikon ad="durdur" sinif="ikon-dur" />
+              <span data-dinle-yazi>{t.dinle}</span>
+            </button>
+            <button type="button" class="dugme ikincil ck-yavas" data-yavas aria-pressed="false">{t.yavas}</button>
+          </div>
         </div>
+
+        <div class="ck-soru-alan" data-soru-alan hidden>
+          <p class="ck-soru-metin" data-soru-metin></p>
+          <ul class="ck-soru-siklar" data-soru-siklar></ul>
+          <div class="ck-ses-cubuk">
+            <button type="button" class="dugme ikincil kucuk" data-cevap-goster>{t.cevabiGoster}</button>
+          </div>
+        </div>
+
+        <p class="ck-durum" role="status" aria-live="polite" data-durum>{t.ilkDurum}</p>
 
         <div class="ck-tur-cubuk">
           <button type="button" class="dugme ikincil kucuk" data-cikar>{t.cikar}</button>

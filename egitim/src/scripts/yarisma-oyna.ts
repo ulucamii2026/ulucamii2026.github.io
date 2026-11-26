@@ -58,6 +58,8 @@ function dugme(sinif: string, metin: string, oz: Record<string, string> = {}): H
 
 function oyna(oyun: HTMLElement, v: Veri): void {
   const m = v.m;
+  const sinifYeri = oyun.querySelector<HTMLElement>('[data-sinif]')!;
+  const takimlarEl = oyun.querySelector<HTMLElement>('[data-takimlar]')!;
   const sahne = oyun.querySelector<HTMLElement>('[data-sahne]')!;
   const durumYeri = oyun.querySelector<HTMLElement>('[data-durum]')!;
   const puanYeri = oyun.querySelector<HTMLOutputElement>('[data-puan]')!;
@@ -67,6 +69,9 @@ function oyna(oyun: HTMLElement, v: Veri): void {
   const ipucuD = oyun.querySelector<HTMLButtonElement>('[data-ipucu]')!;
   const sonrakiD = oyun.querySelector<HTMLButtonElement>('[data-sonraki]')!;
   const geriD = oyun.querySelector<HTMLButtonElement>('[data-geri]')!;
+  const muzikD = oyun.querySelector<HTMLButtonElement>('[data-muzik]')!;
+  const efektD = oyun.querySelector<HTMLButtonElement>('[data-efekt]')!;
+  const paylasD = oyun.querySelector<HTMLButtonElement>('[data-paylas]')!;
   const tamD = oyun.querySelector<HTMLButtonElement>('[data-tam]')!;
   puanYeri.setAttribute('aria-live', 'off');
 
@@ -76,35 +81,94 @@ function oyna(oyun: HTMLElement, v: Veri): void {
   let t: Tur;
   let evre: Evre = 'soru';
   let puanlar: number[] = [];
+  let takimSayisi = 1;
+  let aktifTakim = 0;
+  let takimGecmisi: number[] = [];
   let odak: string | null = null;
+  let efektAcik = true;
+  let muzikAcik = false;
+  let muzikZamanlayici: number | null = null;
+  let muzikAdim = 0;
 
   const duyur = (s: string) => { durumYeri.textContent = s; };
   const toplam = () => toplamPuan(puanlar);
+  const takimPuanlari = (): number[] => {
+    const dizi = Array.from({ length: takimSayisi }, () => 0);
+    puanlar.forEach((p, idx) => {
+      const tk = takimGecmisi[idx] ?? (idx % takimSayisi);
+      if (tk >= 0 && tk < takimSayisi) dizi[tk] += p;
+    });
+    return dizi;
+  };
 
-  // Sıfır depolama ve sıfır ağ isteği ile yumuşak oyun sesleri (desteklenmezse sessiz geçer).
+  // Sıfır depolama ve sıfır ağ isteği ile yumuşak oyun sesleri ve isteğe bağlı sakin fon müziği.
   let sesCtx: AudioContext | null = null;
-  function sesCal(tur: 'dogru' | 'yanlis' | 'son') {
+  const audioCtx = (): AudioContext | null => {
     try {
       const Ctx = window.AudioContext || (window as unknown as { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
-      if (!Ctx) return;
+      if (!Ctx) return null;
       sesCtx ??= new Ctx();
       if (sesCtx.state === 'suspended') void sesCtx.resume();
-      const notalar = tur === 'dogru' ? [523.25, 659.25] : tur === 'son' ? [523.25, 659.25, 783.99] : [311.13];
+      return sesCtx;
+    } catch { return null; }
+  };
+  function sesCal(tur: 'dogru' | 'yanlis' | 'son' | 'kutlama') {
+    if (!efektAcik) return;
+    try {
+      const ctx = audioCtx();
+      if (!ctx) return;
+      const notalar = tur === 'dogru' ? [523.25, 659.25, 783.99]
+        : tur === 'kutlama' ? [523.25, 659.25, 783.99, 1046.5, 783.99, 1046.5]
+        : tur === 'son' ? [523.25, 659.25, 783.99]
+        : [311.13];
       notalar.forEach((frekans, k) => {
-        if (!sesCtx) return;
-        const osc = sesCtx.createOscillator();
-        const gain = sesCtx.createGain();
-        const t0 = sesCtx.currentTime + k * 0.09;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        const t0 = ctx.currentTime + k * (tur === 'kutlama' ? 0.1 : 0.09);
         osc.type = 'triangle';
         osc.frequency.setValueAtTime(frekans, t0);
-        gain.gain.setValueAtTime(0.06, t0);
-        gain.gain.exponentialRampToValueAtTime(0.001, t0 + 0.16);
+        gain.gain.setValueAtTime(tur === 'kutlama' ? 0.07 : 0.06, t0);
+        gain.gain.exponentialRampToValueAtTime(0.001, t0 + 0.19);
         osc.connect(gain);
-        gain.connect(sesCtx.destination);
+        gain.connect(ctx.destination);
         osc.start(t0);
-        osc.stop(t0 + 0.18);
+        osc.stop(t0 + 0.21);
       });
     } catch { /* ses yoksa sessiz devam */ }
+  }
+  const FON_NOTALARI = [523.25, 587.33, 659.25, 783.99, 659.25, 880.0, 783.99, 659.25];
+  function fonNotaCal() {
+    if (!muzikAcik || document.hidden) return;
+    try {
+      const ctx = audioCtx();
+      if (!ctx) return;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      const t0 = ctx.currentTime;
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(FON_NOTALARI[muzikAdim % FON_NOTALARI.length], t0);
+      muzikAdim++;
+      gain.gain.setValueAtTime(0.001, t0);
+      gain.gain.linearRampToValueAtTime(0.018, t0 + 0.08);
+      gain.gain.exponentialRampToValueAtTime(0.0008, t0 + 0.58);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(t0);
+      osc.stop(t0 + 0.6);
+    } catch { /* ses yoksa sessiz devam */ }
+  }
+  function muzikAyarla(acik: boolean) {
+    muzikAcik = acik;
+    muzikD.setAttribute('aria-pressed', acik ? 'true' : 'false');
+    muzikD.textContent = acik ? m.muzikKapat : m.muzikAc;
+    if (muzikZamanlayici !== null) {
+      window.clearInterval(muzikZamanlayici);
+      muzikZamanlayici = null;
+    }
+    if (acik) {
+      fonNotaCal();
+      muzikZamanlayici = window.setInterval(fonNotaCal, 680);
+    }
   }
 
   /* ——— Başlangıç ——— */
@@ -118,11 +182,15 @@ function oyna(oyun: HTMLElement, v: Veri): void {
     hashBaglantilari();
     turlar = turDagit(v.sorular, ayar);
     puanlar = [];
+    takimSayisi = ayar.takim ?? 1;
+    aktifTakim = 0;
+    takimGecmisi = [];
     i = 0;
     if (!turlar.length) {
       evre = 'son';
       sahne.replaceChildren(e('h2', 'ya-soru', m.bosHavuz));
       kontrolD.hidden = ipucuD.hidden = sonrakiD.hidden = geriD.hidden = true;
+      takimlarEl.hidden = true;
       turYazi.textContent = '';
       karolar.replaceChildren();
       duyur(m.bosHavuz);
@@ -158,9 +226,41 @@ function oyna(oyun: HTMLElement, v: Veri): void {
     }
   }
 
+  function takimCiz() {
+    if (!takimlarEl) return;
+    if (takimSayisi < 2) {
+      takimlarEl.hidden = true;
+      takimlarEl.replaceChildren();
+      return;
+    }
+    takimlarEl.hidden = false;
+    const tlar = takimPuanlari();
+    takimlarEl.replaceChildren(...tlar.map((tp, k) => {
+      const li = document.createElement('li');
+      const secili = evre !== 'son' && k === aktifTakim;
+      const b = dugme('ya-takim-btn', '', {
+        'data-takim-btn': String(k),
+        'data-aktif': secili ? '1' : '0',
+        'aria-pressed': String(secili),
+      });
+      b.append(
+        e('span', 'ya-takim-ad', doldur(m.takimAd, { n: k + 1 })),
+        e('span', 'ya-takim-puan', String(tp)),
+      );
+      li.append(b);
+      return li;
+    }));
+  }
+
   /* ——— Çizim ——— */
   function ciz() {
     puanYeri.textContent = String(toplam());
+    if (sinifYeri) {
+      sinifYeri.textContent = takimSayisi >= 2 && evre !== 'son'
+        ? `${m.sinifimiz} · ${doldur(m.siraTakim, { ad: doldur(m.takimAd, { n: aktifTakim + 1 }) })}`
+        : m.sinifimiz;
+    }
+    takimCiz();
     turYazi.textContent = evre === 'son' ? '' : doldur(m.turSayaci, { n: i + 1, m: turlar.length });
     karolar.replaceChildren(...puanlar.map((p, n) => karo(p, n)));
     sahne.replaceChildren();
@@ -495,6 +595,7 @@ function oyna(oyun: HTMLElement, v: Veri): void {
     const p = s.format === 'gizemli' ? gizemliPuani(t.acik, cozuldu) : turPuani(t.kontrol, cozuldu);
     t.puan = p;
     puanlar.push(p);
+    takimGecmisi.push(aktifTakim);
     evre = 'geri';
     odak = 'sonraki';
     sesCal(cozuldu ? 'dogru' : 'yanlis');
@@ -505,10 +606,14 @@ function oyna(oyun: HTMLElement, v: Veri): void {
 
   function sonraki() {
     if (evre !== 'geri') return;
-    if (i + 1 < turlar.length) return turuAc(i + 1);
+    if (i + 1 < turlar.length) {
+      if (takimSayisi >= 2) aktifTakim = (aktifTakim + 1) % takimSayisi;
+      return turuAc(i + 1);
+    }
     evre = 'son';
     odak = 'baslik';
-    sesCal('son');
+    const tamBasari = turlar.length > 0 && puanlar.length === turlar.length && puanlar.every((p) => p > 0);
+    sesCal(tamBasari ? 'kutlama' : 'son');
     ciz();
     duyur(`${m.sonBaslik} ${m.sonPuan}: ${toplam()}. ${bantMetni()}`);
   }
@@ -518,6 +623,8 @@ function oyna(oyun: HTMLElement, v: Veri): void {
     const r = turGeri(puanlar, i, evre, turlar.length);
     if (!r) return;
     puanlar = r.puanlar;
+    takimGecmisi = takimGecmisi.slice(0, puanlar.length);
+    if (takimSayisi >= 2) aktifTakim = r.i % takimSayisi;
     turuAc(r.i);
     duyur(`${m.geriYapildi} ${doldur(m.turSayaci, { n: r.i + 1, m: turlar.length })} · ${m.ortakPuan}: ${toplam()}.`);
   }
@@ -528,6 +635,26 @@ function oyna(oyun: HTMLElement, v: Veri): void {
     sahne.append(e('h2', 'ya-soru', m.sonBaslik, { tabindex: '-1', 'data-odak': 'baslik' }));
     const kutu = e('div', 'ya-son');
     kutu.append(e('p', 'ya-son-ad', m.sonPuan), e('p', 'ya-son-sayi', String(toplam())), e('p', 'ya-bant', bantMetni()));
+    const tamBasari = turlar.length > 0 && puanlar.length === turlar.length && puanlar.every((p) => p > 0);
+    if (tamBasari) kutu.append(e('p', 'ya-tam-rozet', m.tamPuanRozet));
+    if (takimSayisi >= 2) {
+      const tlar = takimPuanlari();
+      const enYuksek = Math.max(...tlar);
+      const oncler = tlar.map((p, k) => (p === enYuksek ? k : -1)).filter((k) => k >= 0);
+      const tSon = e('div', 'ya-takim-son');
+      tSon.append(e('h3', '', m.takimSonBaslik));
+      const liste = e('ul', 'ya-takim-son-liste');
+      tlar.forEach((tp, k) => {
+        const kart = e('li', 'ya-takim-kart', '', { 'data-birinci': tp === enYuksek ? '1' : '0' });
+        kart.append(e('span', '', doldur(m.takimAd, { n: k + 1 })), e('span', '', String(tp)));
+        liste.append(kart);
+      });
+      const ondeMetin = oncler.length === 1
+        ? doldur(m.takimOnde, { ad: doldur(m.takimAd, { n: oncler[0] + 1 }) })
+        : m.takimBerabere;
+      tSon.append(liste, e('p', 'ya-yonerge', ondeMetin));
+      kutu.append(tSon);
+    }
     const eylem = e('div', 'ya-cubuk');
     const ayni = dugme('dugme birincil ya-dugme', m.ayniOyun, { 'data-odak': 'ayni' });
     const yeni = dugme('dugme ikincil ya-dugme', m.yeniOyun, { 'data-odak': 'yeni' });
@@ -548,6 +675,30 @@ function oyna(oyun: HTMLElement, v: Veri): void {
     odak = t.acik < s.ipuclari.length ? 'ipucu' : 'k' + ilkSecenek(s.secenekler.length);
     ciz();
     duyur(m.yeniIpucu);
+  });
+  takimlarEl?.addEventListener('click', (ev) => {
+    if (evre === 'son' || takimSayisi < 2) return;
+    const btn = (ev.target as HTMLElement | null)?.closest<HTMLButtonElement>('[data-takim-btn]');
+    if (!btn) return;
+    const k = Number(btn.dataset.takimBtn);
+    if (!Number.isInteger(k) || k < 0 || k >= takimSayisi || k === aktifTakim) return;
+    aktifTakim = k;
+    ciz();
+    duyur(doldur(m.siraTakim, { ad: doldur(m.takimAd, { n: aktifTakim + 1 }) }));
+  });
+  muzikD?.addEventListener('click', () => { muzikAyarla(!muzikAcik); });
+  efektD?.addEventListener('click', () => {
+    efektAcik = !efektAcik;
+    efektD.setAttribute('aria-pressed', efektAcik ? 'true' : 'false');
+    efektD.textContent = efektAcik ? m.efektKapat : m.efektAc;
+    if (efektAcik) sesCal('dogru');
+  });
+  paylasD?.addEventListener('click', () => {
+    if (navigator.clipboard?.writeText) {
+      void navigator.clipboard.writeText(location.href).then(() => duyur(m.paylasildi)).catch(() => duyur(m.paylasildi));
+    } else {
+      duyur(m.paylasildi);
+    }
   });
   const tamEkranDegistir = () => {
     if (!document.fullscreenEnabled) return;

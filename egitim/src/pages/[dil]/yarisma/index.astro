@@ -7,7 +7,7 @@
 import type { Dil } from '@ortak/i18n/ui';
 import { dilListesi } from '@ortak/i18n/utils';
 import { ozetSatirlari } from '@ortak/lib/yarisma/veri';
-import { ADETLER, SEVIYELER, VARSAYILAN, ayarYaz } from '@ortak/lib/yarisma/tur';
+import { ADETLER, SEVIYELER, TAKIMLAR, VARSAYILAN, ayarYaz } from '@ortak/lib/yarisma/tur';
 import { BICIMLER, KONULAR } from '@ortak/lib/yarisma/tipler';
 import CevrimdisiKutu from '../../../components/CevrimdisiKutu.astro';
 import { carkMetinleri } from '../../../i18n/cark';
@@ -76,6 +76,15 @@ const varsayilanBag = `/${dil}/yarisma/oyna/#${ayarYaz({ ...VARSAYILAN, tohum: '
         <div class="ya-secenekler">
           {ADETLER.map((n) => (
             <label class="ya-secenek"><input type="radio" name="adet" value={String(n)} checked={n === VARSAYILAN.adet} /><span>{doldur(m.adetBirim, { n })}</span></label>
+          ))}
+        </div>
+      </fieldset>
+
+      <fieldset class="ya-grup">
+        <legend>{m.takimEtiket}</legend>
+        <div class="ya-secenekler">
+          {TAKIMLAR.map((tk) => (
+            <label class="ya-secenek"><input type="radio" name="takim" value={String(tk)} checked={tk === 1} /><span>{tk === 1 ? m.takimTek : doldur(m.takimCok, { n: tk })}</span></label>
           ))}
         </div>
       </fieldset>

@@ -67,3 +67,54 @@ test('tr: Çalışma Yaprakları arşivindeki 8 A4 PDF dosyasının tamamı 200 
     expect(r.headers()['content-type'], href).toContain('application/pdf');
   }
 });
+
+test('tr: Sesli Çarkıfelek soru çarkı (s-siyer) soruyu açar, cevabı gösterir ve takım puanını artırır', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/tr/okuma/cark/');
+  await page.locator('[data-deste="s-siyer"]').click();
+  await expect(page.locator('[data-deste="s-siyer"]')).toHaveAttribute('aria-pressed', 'true');
+  await page.locator('[data-cevir]').click();
+  await expect(page.locator('[data-soru-alan]')).toBeVisible();
+  await expect(page.locator('.ck-soru-metin')).not.toBeEmpty();
+  expect(await page.locator('.ck-soru-siklar .ck-soru-sik').count()).toBeGreaterThanOrEqual(2);
+  await page.locator('[data-cevap-goster]').click();
+  expect(await page.locator('.ck-soru-sik[data-durum="dogru"]').count()).toBe(1);
+  await page.locator('[data-takim-arti="0"]').click();
+  await expect(page.locator('[data-takim-puan="0"]')).toHaveText('1');
+});
+
+test('tr: Bilgi Yarışması 2 takım ve fon müzik/efekt/paylaşım modu ışık ve koyu temada çalışır', async ({ page }) => {
+  const hatalar = [];
+  page.on('pageerror', (e) => hatalar.push(e.message));
+  await page.goto('/tr/yarisma/oyna/#f=quiz&k=itikat,ibadet,siyer,ahlak,kuran&d=1-2&n=5&s=takim1&t=2');
+  await expect(page.locator('[data-takimlar]')).toBeVisible();
+  expect(await page.locator('[data-takim-btn]').count()).toBe(2);
+  await expect(page.locator('[data-takim-btn="0"]')).toHaveAttribute('data-aktif', '1');
+
+  // İlk sorunun doğru şıkkını sayfadaki gömülü veriden bulup işaretleyerek 1. Takım puanının 3 olmasını doğrula.
+  const id = await page.locator('[data-sahne]').getAttribute('data-soru-id');
+  const metinler = await page.locator('[data-ya-oyun]').evaluate((el, soruId) => {
+    const v = JSON.parse(el.getAttribute('data-veri') || '{}');
+    const s = (v.sorular || []).find((x) => x.id === soruId);
+    return s && s.secenekler ? s.secenekler[s.dogru] : null;
+  }, id);
+  expect(metinler).toBeTruthy();
+  await page.locator('.ya-sec', { hasText: metinler }).click();
+  await page.locator('[data-kontrol]').click();
+  await expect(page.locator('[data-takim-btn="0"] .ya-takim-puan')).toHaveText('3');
+
+  await page.locator('[data-sonraki]').click();
+  await expect(page.locator('[data-takim-btn="1"]')).toHaveAttribute('data-aktif', '1');
+
+  await page.locator('[data-muzik]').click();
+  await expect(page.locator('[data-muzik]')).toHaveAttribute('aria-pressed', 'true');
+  await page.locator('[data-paylas]').click();
+
+  for (const colorScheme of ['light', 'dark']) {
+    await page.emulateMedia({ colorScheme, reducedMotion: 'reduce' });
+    const sonuc = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
+    expect(sonuc.violations.map((v) => ({ id: v.id, nodes: v.nodes.map((n) => n.target) }))).toEqual([]);
+  }
+  expect(hatalar).toEqual([]);
+  expect(await page.evaluate(() => window.__csp)).toEqual([]);
+});

@@ -4,7 +4,7 @@
  * CSP: satır içi betik/stil yok; DOM'a yalnız `textContent` yazılır.
  */
 import { BICIMLER, KONULAR, type Konu } from '@ortak/lib/yarisma/tipler';
-import { ADETLER, SEVIYELER, ayarYaz, havuz, type Ayar, type Kunye, type Seviye } from '@ortak/lib/yarisma/tur';
+import { ADETLER, SEVIYELER, TAKIMLAR, ayarYaz, havuz, type Ayar, type Kunye, type Seviye } from '@ortak/lib/yarisma/tur';
 import { doldur } from './kip-ortak';
 
 interface Veri { ozet: Kunye[]; oynaYolu: string; m: { sayim: string; sayimAz: string; sayimYok: string } }
@@ -22,12 +22,15 @@ if (kok) {
     const b = secili('bicim');
     const sev = secili('seviye') as Seviye;
     const adet = Number(secili('adet'));
+    const takimHam = Number(secili('takim'));
+    const takim = (TAKIMLAR as readonly number[]).includes(takimHam) && takimHam > 1 ? (takimHam as 2 | 3 | 4) : undefined;
     return {
       bicim: b === 'karisik' || (BICIMLER as readonly string[]).includes(b) ? (b as Ayar['bicim']) : 'karisik',
       konular: [...kok.querySelectorAll<HTMLInputElement>('input[name="konu"]:checked')].map((x) => x.value).filter((x): x is Konu => (KONULAR as readonly string[]).includes(x)),
       seviye: SEVIYELER.includes(sev) ? sev : '1-2',
       adet: (ADETLER as readonly number[]).includes(adet) ? adet : 10,
       tohum,
+      ...(takim ? { takim } : {}),
     };
   };
 

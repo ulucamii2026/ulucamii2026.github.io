@@ -19,14 +19,34 @@ ku-030-2 ku-050-1 ku-051-2 ku-055-2 ku-081-1 ku-081-2
 `.split(/\s+/).filter(Boolean);
 const altKonuQ={'ib-002-2':'abdest','ib-003-1':'abdest','ib-005-1':'namaz','ib-005-2':'namaz','ib-008-1':'namaz','ib-011-2':'abdest','ib-037-1':'namaz','ib-043-2':'namaz','ib-017-1':'zekat','ib-029-2':'zekat','ib-009-1':'abdest','ib-010-1':'genel','ib-011-1':'namaz','ib-023-2':'oruc','ib-030-1':'oruc','ib-016-2':'oruc','ib-041-2':'bayram'};
 const NEG=/değildir|değil\?|yanlıştır|nelerden biri değil/i;
+const KALP=/[❤♥❣\u{1F493}-\u{1F49F}\u{1F90D}\u{1F90E}\u{1F9E1}\u{1FA75}-\u{1FA77}]/u;
+const KOTU=/undefined|\bnull\b|TODO|lorem|\{\{|\}\}/i;
+const gecerliKartSorusu=(q)=>{
+  if(!q?.soru||LANGS.some(l=>typeof q.soru[l]!=='string'||!q.soru[l].trim()||q.soru[l]!==q.soru[l].trim()||KOTU.test(q.soru[l])||KALP.test(q.soru[l])))return false;
+  if(NEG.test(q.soru.tr))return false;
+  if(!Array.isArray(q.siklar)||q.siklar.length<3||q.siklar.length>4)return false;
+  if(!Number.isInteger(q.dogru)||q.dogru<0||q.dogru>=q.siklar.length)return false;
+  if(q.siklar.some(s=>!s||LANGS.some(l=>typeof s[l]!=='string'||!s[l].trim()||s[l]!==s[l].trim()||KOTU.test(s[l])||KALP.test(s[l]))))return false;
+  if(LANGS.some(l=>new Set(q.siklar.map(s=>s[l].trim().toLowerCase())).size!==q.siklar.length))return false;
+  return true;
+};
+const qidSet=new Set(quizListe);
 for(const qid of quizListe){
   const {k,q}=soruBul(qid);
-  const bozuk=q.siklar.some(s=>!s||!s.tr||LANGS.some(l=>!s[l]))||q.siklar.length<3;
-  if(bozuk){uyar.push('quiz atlandı (seçenek eksik): '+qid);continue;}
-  if(NEG.test(q.soru.tr)){uyar.push('quiz atlandı (olumsuz soru): '+qid);continue;}
+  if(!gecerliKartSorusu(q)){uyar.push('quiz atlandı: '+qid);continue;}
   const o={topic:konuOf(k.id),level:k.basamak,kaynak:[k.id,qid],soru:{...q.soru},secenekler:q.siklar.map(s=>({...s})),dogru:q.dogru};
   if(altKonuQ[qid])o.altKonu=altKonuQ[qid];
   ekle('quiz',o);
+}
+for(const k of Object.values(kart).sort((a,b)=>a.id.localeCompare(b.id))){
+  for(const q of k.sorular||[]){
+    if(qidSet.has(q.id))continue;
+    if(!gecerliKartSorusu(q)){uyar.push('ek kart sorusu atlandı: '+q.id);continue;}
+    qidSet.add(q.id);
+    const o={topic:konuOf(k.id),level:k.basamak,kaynak:[k.id,q.id],soru:{...q.soru},secenekler:q.siklar.map(s=>({...s})),dogru:q.dogru};
+    if(altKonuQ[q.id])o.altKonu=altKonuQ[q.id];
+    ekle('quiz',o);
+  }
 }
 
 // ---------- 2) SIRALAMA ----------

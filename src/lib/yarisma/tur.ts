@@ -13,7 +13,10 @@ export type Seviye = '1' | '1-2' | '2-3';
 export const SEVIYELER: readonly Seviye[] = ['1', '1-2', '2-3'];
 export const ADETLER = [5, 10, 15] as const;
 
-export interface Ayar { readonly bicim: 'karisik' | Biçim; readonly konular: readonly Konu[]; readonly seviye: Seviye; readonly adet: number; readonly tohum: string }
+export type TakimSayisi = 1 | 2 | 3 | 4;
+export const TAKIMLAR: readonly TakimSayisi[] = [1, 2, 3, 4];
+
+export interface Ayar { readonly bicim: 'karisik' | Biçim; readonly konular: readonly Konu[]; readonly seviye: Seviye; readonly adet: number; readonly tohum: string; readonly takim?: 2 | 3 | 4 }
 export const VARSAYILAN: Omit<Ayar, 'tohum'> = { bicim: 'karisik', konular: KONULAR, seviye: '1-2', adet: 10, };
 
 /** «Karışık» kipte 10 tur başına sabit dağılım (ölçek oranı): 4 sınav, 2 sıralama, 1 gruplama, 1 eşleştirme, 2 gizemli. */
@@ -118,7 +121,7 @@ const rastgeleTohum = (): string => Math.floor(Math.random() * 0xffffffff).toStr
 
 /** Adres çubuğunun `#` kısmı: `f=quiz&k=siyer,ibadet&d=1-2&n=10&s=abc`. */
 export const ayarYaz = (a: Ayar): string =>
-  `f=${a.bicim}&k=${a.konular.join(',')}&d=${a.seviye}&n=${a.adet}&s=${encodeURIComponent(a.tohum)}`;
+  `f=${a.bicim}&k=${a.konular.join(',')}&d=${a.seviye}&n=${a.adet}&s=${encodeURIComponent(a.tohum)}${a.takim && a.takim > 1 ? `&t=${a.takim}` : ''}`;
 
 /** `#` kısmından ayar; bozuk ya da eksik parçalar varsayılana düşer (asla hata fırlatmaz). Tohum yoksa `uret` ile (ya da rastgele) yenisi atanır. */
 export function ayarOku(hash: string, uret: () => string = rastgeleTohum): Ayar {
@@ -129,11 +132,14 @@ export function ayarOku(hash: string, uret: () => string = rastgeleTohum): Ayar 
   const d = p.get('d') as Seviye;
   const n = Number(p.get('n'));
   const s = (p.get('s') ?? '').slice(0, 32);
+  const tHam = Number(p.get('t'));
+  const takim = tHam === 2 || tHam === 3 || tHam === 4 ? (tHam as 2 | 3 | 4) : undefined;
   return {
     bicim,
     konular: k.length ? KONULAR.filter((x) => k.includes(x)) : VARSAYILAN.konular,
     seviye: SEVIYELER.includes(d) ? d : VARSAYILAN.seviye,
     adet: (ADETLER as readonly number[]).includes(n) ? n : VARSAYILAN.adet,
     tohum: /^[\w-]+$/.test(s) ? s : uret(),
+    ...(takim ? { takim } : {}),
   };
 }

@@ -33,9 +33,10 @@ const veri = { dil, sorular: yerellestir(dil), m };
     </svg>
 
     <header class="ya-ust">
-      <p class="ya-sinif">{m.sinifimiz}</p>
+      <p class="ya-sinif" data-sinif>{m.sinifimiz}</p>
       <p class="ya-puan"><span class="ya-puan-ad">{m.ortakPuan}</span><output class="ya-puan-sayi" data-puan>0</output></p>
       <p class="ya-tur" data-tur-yazi></p>
+      <ul class="ya-takimlar" data-takimlar hidden></ul>
       <ol class="ya-karolar" data-karolar></ol>
     </header>
 
@@ -50,6 +51,9 @@ const veri = { dil, sorular: yerellestir(dil), m };
       <button type="button" class="dugme ikincil ya-dugme" data-ipucu hidden>{m.sonrakiIpucu}</button>
       <button type="button" class="dugme birincil ya-dugme" data-sonraki hidden>{m.sonraki}</button>
       <button type="button" class="dugme ikincil ya-dugme" data-geri hidden>{m.turGeri}</button>
+      <button type="button" class="dugme ikincil ya-dugme" data-muzik aria-pressed="false">{m.muzikAc}</button>
+      <button type="button" class="dugme ikincil ya-dugme" data-efekt aria-pressed="true">{m.efektKapat}</button>
+      <button type="button" class="dugme ikincil ya-dugme" data-paylas>{m.paylas}</button>
       <button type="button" class="dugme ikincil ya-dugme" data-tam hidden>{m.tamEkran}</button>
       <a class="dugme ikincil ya-dugme" href={`/${dil}/yarisma/`}>{m.ayarlaraDon}</a>
     </div>
