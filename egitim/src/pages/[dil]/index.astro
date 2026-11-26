@@ -29,7 +29,7 @@ import { tekrarMetinleri } from '../../i18n/sina';
 import { yollarMetinleri } from '../../i18n/yollar';
 import { KARTLAR } from '../../lib/bilgi-karti-verisi';
 import { BILGI_ID_LISTESI } from '../../lib/bilgi-yolu';
-import { ezberKapagi } from '../../lib/yol-kapaklari';
+import { bolumKapagi, ezberKapagi } from '../../lib/yol-kapaklari';
 import Taban from '../../layouts/Taban.astro';
 import '../../styles/ilim.css';
 import '../../styles/okuma.css';
@@ -129,7 +129,7 @@ const veri = {
           <div class="iy-yol-sag"><a class="dugme ikincil kucuk" href={`/${dil}/ezber/`}>{il.yolaBak}</a></div>
         </article>
         <article class="iy-yol okuma">
-          <div class="iy-yol-motif" aria-hidden="true"><svg viewBox="0 0 100 100"><use href={`#${yolMotifleri[0]}`} /></svg></div>
+          <div class="iy-yol-motif kapakli" aria-hidden="true"><img src={bolumKapagi('okuma').kucuk} width="640" height="360" alt="" loading="lazy" decoding="async" /></div>
           <div class="iy-yol-metin">
             <h3>{ok.ad} <small>{ok.rozet}</small></h3>
             <p class="acik">{ok.metin}</p>
@@ -137,7 +137,7 @@ const veri = {
           <div class="iy-yol-sag"><a class="dugme ikincil kucuk" href={`/${dil}/okuma/`}>{ok.git}</a></div>
         </article>
         <article class="iy-yol ibadet">
-          <div class="iy-yol-motif" aria-hidden="true"><svg viewBox="0 0 100 100"><use href={`#${yolMotifleri[3]}`} /></svg></div>
+          <div class="iy-yol-motif kapakli" aria-hidden="true"><img src={bolumKapagi('ibadet').kucuk} width="640" height="360" alt="" loading="lazy" decoding="async" /></div>
           <div class="iy-yol-metin">
             <h3>{ib.ad}</h3>
             <p class="acik">{ib.hubAciklama}</p>
@@ -145,7 +145,7 @@ const veri = {
           <div class="iy-yol-sag"><a class="dugme ikincil kucuk" href={`/${dil}/ibadet/`}>{ib.basla}</a></div>
         </article>
         <article class="iy-yol yarisma">
-          <div class="iy-yol-motif" aria-hidden="true"><svg viewBox="0 0 100 100"><use href={`#${yolMotifleri[2]}`} /></svg></div>
+          <div class="iy-yol-motif kapakli" aria-hidden="true"><img src={bolumKapagi('yarisma').kucuk} width="640" height="360" alt="" loading="lazy" decoding="async" /></div>
           <div class="iy-yol-metin">
             <h3>{ya.ad}</h3>
             <p class="acik">{ya.hubAciklama}</p>
@@ -153,7 +153,7 @@ const veri = {
           <div class="iy-yol-sag"><a class="dugme ikincil kucuk" href={`/${dil}/yarisma/`}>{ya.anaKartGit}</a></div>
         </article>
         <article class="iy-yol kurs">
-          <div class="iy-yol-motif" aria-hidden="true"><svg viewBox="0 0 100 100"><use href={`#${yolMotifleri[1]}`} /></svg></div>
+          <div class="iy-yol-motif kapakli" aria-hidden="true"><img src={bolumKapagi('kurs').kucuk} width="640" height="360" alt="" loading="lazy" decoding="async" /></div>
           <div class="iy-yol-metin">
             <h3>{il.yolKursAd} <small>{il.yolKursRozet}</small></h3>
             <p class="acik">{il.yolKursMetin}</p>
@@ -161,7 +161,7 @@ const veri = {
           <div class="iy-yol-sag"><a class="dugme ikincil kucuk" href={`/${dil}/yollar/#plan`}>{il.yolaBak}</a></div>
         </article>
         <article class="iy-yol seviye">
-          <div class="iy-yol-motif" aria-hidden="true"><svg viewBox="0 0 100 100"><use href={`#${yolMotifleri[2]}`} /></svg></div>
+          <div class="iy-yol-motif kapakli" aria-hidden="true"><img src={bolumKapagi('seviye').kucuk} width="640" height="360" alt="" loading="lazy" decoding="async" /></div>
           <div class="iy-yol-metin">
             <h3>{il.yolSeviyeAd} <small>{il.yolSeviyeRozet}</small></h3>
             <ul class="iy-alanlar" aria-label={il.yolSeviyeRozet}>{il.alanlar.map((a) => <li>{a}</li>)}</ul>
@@ -169,7 +169,7 @@ const veri = {
           <div class="iy-yol-sag"><a class="dugme ikincil kucuk" href={`/${dil}/yollar/#seviye`}>{il.yolaBak}</a></div>
         </article>
         <article class="iy-yol yeni">
-          <div class="iy-yol-motif" aria-hidden="true"><svg viewBox="0 0 100 100"><use href={`#${yolMotifleri[3]}`} /></svg></div>
+          <div class="iy-yol-motif kapakli" aria-hidden="true"><img src={bolumKapagi('yeni').kucuk} width="640" height="360" alt="" loading="lazy" decoding="async" /></div>
           <div class="iy-yol-metin">
             <h3>{il.yolYeniAd} <small>{il.yolYeniRozet}</small></h3>
             <p class="acik">{il.yolYeniMetin}</p>
@@ -322,17 +322,17 @@ const veri = {
           </article>
         ))}
         <article class="iy-yol kurs">
-          <div class="iy-yol-motif" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#m-yildiz" /></svg></div>
+          <div class="iy-yol-motif kapakli" aria-hidden="true"><img src={bolumKapagi('kurs').kucuk} width="640" height="360" alt="" loading="lazy" decoding="async" /></div>
           <div class="iy-yol-metin"><h3>{il.yolKursAd} <small>{il.yolKursRozet}</small></h3><p class="acik">{il.yolKursMetin}</p></div>
           <div class="iy-yol-sag"><a class="dugme ikincil kucuk" href={`/${dil}/yollar/#plan`}>{il.yolaBak}</a></div>
         </article>
         <article class="iy-yol seviye">
-          <div class="iy-yol-motif" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#m-sevron" /></svg></div>
+          <div class="iy-yol-motif kapakli" aria-hidden="true"><img src={bolumKapagi('seviye').kucuk} width="640" height="360" alt="" loading="lazy" decoding="async" /></div>
           <div class="iy-yol-metin"><h3>{il.yolSeviyeAd} <small>{il.yolSeviyeRozet}</small></h3></div>
           <div class="iy-yol-sag"><a class="dugme ikincil kucuk" href={`/${dil}/yollar/#seviye`}>{il.yolaBak}</a></div>
         </article>
         <article class="iy-yol yeni">
-          <div class="iy-yol-motif" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#m-mihrap" /></svg></div>
+          <div class="iy-yol-motif kapakli" aria-hidden="true"><img src={bolumKapagi('yeni').kucuk} width="640" height="360" alt="" loading="lazy" decoding="async" /></div>
           <div class="iy-yol-metin"><h3>{il.yolYeniAd} <small>{il.yolYeniRozet}</small></h3><p class="acik">{il.yolYeniMetin}</p></div>
           <div class="iy-yol-sag"><a class="dugme ikincil kucuk" href={`/${dil}/yollar/yeni-musluman/`}>{il.yolaBak}</a></div>
         </article>

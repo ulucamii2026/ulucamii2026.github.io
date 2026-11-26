@@ -39,6 +39,19 @@
   --cizgi-koyu: #C9B28E;
   --girdi-kenar: #8A6F55;    /* form alanı kenarı (4,5:1) */
   --koyu-zemin: #1E4D3B;     /* alt bilgi, koyu bant */
+  /* İznik/Anadolu çocuk dostu canlı vurgu jetonları (açık tema WCAG AA ≥ 4.5:1) */
+  --cini: #0E6375;
+  --cini-dolgu: #0E6375;
+  --cini-soluk: #D7EEF2;
+  --kobalt: #1F4E8C;
+  --kobalt-dolgu: #1F4E8C;
+  --kobalt-soluk: #DCE8F8;
+  --murdum: #6E2B62;
+  --murdum-dolgu: #6E2B62;
+  --murdum-soluk: #F1DFEE;
+  --kehribar: #8F5608;
+  --kehribar-dolgu: #8F5608;
+  --kehribar-soluk: #FBE9C4;
   /* Eski adlar (Çini Panosu) → kilim paleti */
   --astar: var(--yun);
   --karo: var(--yuz);
@@ -75,6 +88,10 @@
     --yesil: #2A6B52; --yesil-2: #357B60; --yesil-soluk: #1B2B24;
     --safran-soluk: #3A2D14; --safran-yazi: #E3B964; --krem-yazi: #F6EEDF;
     --cizgi: #3A2B22; --cizgi-koyu: #54402F; --girdi-kenar: #9A8266; --koyu-zemin: #12261E;
+    --cini: #5CC8DC; --cini-dolgu: #136D80; --cini-soluk: #14323A;
+    --kobalt: #7AB0F2; --kobalt-dolgu: #265CA3; --kobalt-soluk: #16263E;
+    --murdum: #DF95D2; --murdum-dolgu: #7F3472; --murdum-soluk: #32182D;
+    --kehribar: #E8B454; --kehribar-dolgu: #995D0A; --kehribar-soluk: #38280E;
     --sir-motif: #F6EEDF; --motif: color-mix(in oklab, #F0A090 70%, var(--yuz)); --yesil-bag: #7FCBA9; --kokboya-yazi: #F0A090;
     --kenar-zemin: color-mix(in oklab, #F0A090 8%, var(--yuz));
     --sp-yuz: #241914; --sp-yesil: #2A6B52; --sp-kok: #C0443A; --sp-cizgi: #54402F; --sp-soluk: #9A8266;
@@ -87,6 +104,10 @@
   --yesil: #2A6B52; --yesil-2: #357B60; --yesil-soluk: #1B2B24;
   --safran-soluk: #3A2D14; --safran-yazi: #E3B964; --krem-yazi: #F6EEDF;
   --cizgi: #3A2B22; --cizgi-koyu: #54402F; --girdi-kenar: #9A8266; --koyu-zemin: #12261E;
+  --cini: #5CC8DC; --cini-dolgu: #136D80; --cini-soluk: #14323A;
+  --kobalt: #7AB0F2; --kobalt-dolgu: #265CA3; --kobalt-soluk: #16263E;
+  --murdum: #DF95D2; --murdum-dolgu: #7F3472; --murdum-soluk: #32182D;
+  --kehribar: #E8B454; --kehribar-dolgu: #995D0A; --kehribar-soluk: #38280E;
   --sir-motif: #F6EEDF; --motif: color-mix(in oklab, #F0A090 70%, var(--yuz)); --yesil-bag: #7FCBA9; --kokboya-yazi: #F0A090;
   --kenar-zemin: color-mix(in oklab, #F0A090 8%, var(--yuz));
   --sp-yuz: #241914; --sp-yesil: #2A6B52; --sp-kok: #C0443A; --sp-cizgi: #54402F; --sp-soluk: #9A8266;

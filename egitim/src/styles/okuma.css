@@ -3,12 +3,27 @@
 
 .ok-lead { font-size: 1.15rem; line-height: 1.6; max-width: 42em; }
 .ok-ozet { font-weight: 650; min-height: 1.5em; }
-.ok-adim-no { font: 700 0.8rem/1.4 var(--baslik); letter-spacing: 0.12em; text-transform: uppercase; color: var(--kokboya-yazi); }
-.ok-cubuk { display: block; width: 100%; height: 0.5rem; border: 0; border-radius: var(--r); background: var(--cizgi); accent-color: var(--yesil); overflow: hidden; -webkit-appearance: none; appearance: none; }
+.ok-adim-no { display: inline-block; padding: 0.05rem 0.5rem; margin-bottom: 0.25rem; font: 700 0.78rem/1.4 var(--baslik); letter-spacing: 0.1em; text-transform: uppercase; color: var(--kokboya-yazi); background: var(--kokboya-soluk); border-radius: var(--r); }
+.ok-cubuk { display: block; width: 100%; height: 0.55rem; border: 0; border-radius: var(--r); background: var(--cizgi); accent-color: var(--yesil); overflow: hidden; -webkit-appearance: none; appearance: none; }
 .ok-cubuk::-webkit-progress-bar { background: var(--cizgi); }
 .ok-cubuk::-webkit-progress-value { background: var(--yesil); }
 .ok-cubuk::-moz-progress-bar { background: var(--yesil); }
-.yl-yol[data-okuma-aralik][data-durum="2"] { border-color: var(--yesil); border-width: 2px; }
+.yl-yol[data-okuma-aralik] { border-inline-start: 6px solid var(--cini); }
+.yl-yol[data-okuma-aralik][data-adim="o1"], .yl-yol[data-okuma-aralik][data-adim="o6"] { border-inline-start-color: var(--kokboya); }
+.yl-yol[data-okuma-aralik][data-adim="o1"] .yl-yol-motif, .yl-yol[data-okuma-aralik][data-adim="o6"] .yl-yol-motif { background: var(--kokboya-soluk); }
+.yl-yol[data-okuma-aralik][data-adim="o2"], .yl-yol[data-okuma-aralik][data-adim="o7"] { border-inline-start-color: var(--cini); }
+.yl-yol[data-okuma-aralik][data-adim="o2"] .yl-yol-motif, .yl-yol[data-okuma-aralik][data-adim="o7"] .yl-yol-motif { background: var(--cini-soluk); }
+.yl-yol[data-okuma-aralik][data-adim="o2"] .ok-adim-no, .yl-yol[data-okuma-aralik][data-adim="o7"] .ok-adim-no { color: var(--cini); background: var(--cini-soluk); }
+.yl-yol[data-okuma-aralik][data-adim="o3"], .yl-yol[data-okuma-aralik][data-adim="o8"] { border-inline-start-color: var(--kobalt); }
+.yl-yol[data-okuma-aralik][data-adim="o3"] .yl-yol-motif, .yl-yol[data-okuma-aralik][data-adim="o8"] .yl-yol-motif { background: var(--kobalt-soluk); }
+.yl-yol[data-okuma-aralik][data-adim="o3"] .ok-adim-no, .yl-yol[data-okuma-aralik][data-adim="o8"] .ok-adim-no { color: var(--kobalt); background: var(--kobalt-soluk); }
+.yl-yol[data-okuma-aralik][data-adim="o4"], .yl-yol[data-okuma-aralik][data-adim="o9"] { border-inline-start-color: var(--kehribar); }
+.yl-yol[data-okuma-aralik][data-adim="o4"] .yl-yol-motif, .yl-yol[data-okuma-aralik][data-adim="o9"] .yl-yol-motif { background: var(--kehribar-soluk); }
+.yl-yol[data-okuma-aralik][data-adim="o4"] .ok-adim-no, .yl-yol[data-okuma-aralik][data-adim="o9"] .ok-adim-no { color: var(--kehribar); background: var(--kehribar-soluk); }
+.yl-yol[data-okuma-aralik][data-adim="o5"] { border-inline-start-color: var(--murdum); }
+.yl-yol[data-okuma-aralik][data-adim="o5"] .yl-yol-motif { background: var(--murdum-soluk); }
+.yl-yol[data-okuma-aralik][data-adim="o5"] .ok-adim-no { color: var(--murdum); background: var(--murdum-soluk); }
+.yl-yol[data-okuma-aralik][data-durum="2"] { border-color: var(--yesil); border-width: 2px; border-inline-start-width: 6px; }
 .ok-notlar { display: grid; gap: 0.5rem; margin-top: 2rem; max-width: 42em; }
 
 /* Adım sayfası: ders listesi */

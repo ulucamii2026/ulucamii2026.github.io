@@ -11,6 +11,7 @@ import { ADETLER, SEVIYELER, VARSAYILAN, ayarYaz } from '@ortak/lib/yarisma/tur'
 import { BICIMLER, KONULAR } from '@ortak/lib/yarisma/tipler';
 import CevrimdisiKutu from '../../../components/CevrimdisiKutu.astro';
 import { doldur, yarismaMetinleri } from '../../../i18n/yarisma';
+import { bolumKapagi } from '../../../lib/yol-kapaklari';
 import Taban from '../../../layouts/Taban.astro';
 import '../../../styles/yollar.css';
 import '../../../styles/yarisma.css';
@@ -21,6 +22,7 @@ export function getStaticPaths() {
 
 const dil = Astro.params.dil as Dil;
 const m = yarismaMetinleri(dil);
+const kapak = bolumKapagi('yarisma');
 const veri = {
   ozet: ozetSatirlari(),
   oynaYolu: `/${dil}/yarisma/oyna/`,
@@ -31,6 +33,7 @@ const varsayilanBag = `/${dil}/yarisma/oyna/#${ayarYaz({ ...VARSAYILAN, tohum: '
 <Taban dil={dil} baslik={m.ad} aciklama={m.hubAciklama} yol="yarisma" oturum={false}>
   <article class="icerik yl-sayfa ya-sayfa" data-ya-hub data-veri={JSON.stringify(veri)}>
     <header class="yl-bas">
+      <img class="yl-kapak" src={kapak.kucuk} srcset={kapak.srcset} sizes="(max-width: 48rem) 100vw, 46rem" width="1600" height="900" alt="" decoding="async" />
       <h1>{m.ad}</h1>
       <p class="yl-ozet">{m.hubLead}</p>
       <p class="yl-not">{m.kaydedilmez}</p>

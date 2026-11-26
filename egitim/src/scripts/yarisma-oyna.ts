@@ -81,6 +81,32 @@ function oyna(oyun: HTMLElement, v: Veri): void {
   const duyur = (s: string) => { durumYeri.textContent = s; };
   const toplam = () => toplamPuan(puanlar);
 
+  // Sıfır depolama ve sıfır ağ isteği ile yumuşak oyun sesleri (desteklenmezse sessiz geçer).
+  let sesCtx: AudioContext | null = null;
+  function sesCal(tur: 'dogru' | 'yanlis' | 'son') {
+    try {
+      const Ctx = window.AudioContext || (window as unknown as { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
+      if (!Ctx) return;
+      sesCtx ??= new Ctx();
+      if (sesCtx.state === 'suspended') void sesCtx.resume();
+      const notalar = tur === 'dogru' ? [523.25, 659.25] : tur === 'son' ? [523.25, 659.25, 783.99] : [311.13];
+      notalar.forEach((frekans, k) => {
+        if (!sesCtx) return;
+        const osc = sesCtx.createOscillator();
+        const gain = sesCtx.createGain();
+        const t0 = sesCtx.currentTime + k * 0.09;
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(frekans, t0);
+        gain.gain.setValueAtTime(0.06, t0);
+        gain.gain.exponentialRampToValueAtTime(0.001, t0 + 0.16);
+        osc.connect(gain);
+        gain.connect(sesCtx.destination);
+        osc.start(t0);
+        osc.stop(t0 + 0.18);
+      });
+    } catch { /* ses yoksa sessiz devam */ }
+  }
+
   /* ——— Başlangıç ——— */
   function hashBaglantilari() {
     for (const a of document.querySelectorAll<HTMLAnchorElement>('a[hreflang]')) a.href = `${a.href.split('#')[0]}${location.hash}`;
@@ -471,6 +497,7 @@ function oyna(oyun: HTMLElement, v: Veri): void {
     puanlar.push(p);
     evre = 'geri';
     odak = 'sonraki';
+    sesCal(cozuldu ? 'dogru' : 'yanlis');
     ciz();
     const ilk = cozuldu ? `✓ ${m.dogru}.` : `${m.birlikteOgrendik}. ${m.dogruGosterildi}`;
     duyur(`${ilk} ${p > 0 ? doldur(m.puanArtti, { n: p }) : m.puanYok} ${m.ortakPuan}: ${toplam()}.`);
@@ -481,6 +508,7 @@ function oyna(oyun: HTMLElement, v: Veri): void {
     if (i + 1 < turlar.length) return turuAc(i + 1);
     evre = 'son';
     odak = 'baslik';
+    sesCal('son');
     ciz();
     duyur(`${m.sonBaslik} ${m.sonPuan}: ${toplam()}. ${bantMetni()}`);
   }

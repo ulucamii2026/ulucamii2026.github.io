@@ -31,3 +31,18 @@ export const yolKapagi = (yol: string): Kapak | null => (KAPAK_KODU[yol] ? kapak
 
 /** Ezber Kilimi girişinin kapağı (ana sayfa kartı). */
 export const ezberKapagi = (): Kapak => kapakOlustur('ezber');
+
+const BOLUM_KAPAGI: Readonly<Record<string, string>> = {
+  ezber: 'ezber',
+  okuma: 'kuran-okuma',
+  ibadet: 'abdest',
+  namaz: 'namaz',
+  yarisma: 'yarisma',
+  kurs: 'kurs',
+  seviye: 'itikat',
+  yeni: 'yeni-musluman',
+};
+
+/** Ana sayfa ve bölüm girişleri için renkli kapak görseli. */
+export const bolumKapagi = (bolum: keyof typeof BOLUM_KAPAGI | string): Kapak =>
+  kapakOlustur(BOLUM_KAPAGI[bolum] ?? 'ezber');

@@ -11,6 +11,7 @@ import CevrimdisiKutu from '../../../components/CevrimdisiKutu.astro';
 import IbadetCizim from '../../../components/IbadetCizim.astro';
 import { doldur, ibadetMetinleri } from '../../../i18n/ibadet';
 import { sembolSeti } from '../../../lib/ibadet-cizim';
+import { bolumKapagi } from '../../../lib/yol-kapaklari';
 import Taban from '../../../layouts/Taban.astro';
 import '../../../styles/yollar.css';
 import '../../../styles/ibadet.css';
@@ -24,8 +25,8 @@ const dil = Astro.params.dil as Dil;
 const m = ibadetMetinleri(dil);
 const sprite = sembolSeti(['abdest-yuz', 'namaz-ruku', 'ui-seccade']);
 const ana = [
-  { konu: 'abdest', ad: m.abdestBaslik, ozet: m.abdestOzet, cizim: 'abdest-yuz', href: `/${dil}/ibadet/abdest/` },
-  { konu: 'namaz', ad: m.namazBaslik, ozet: m.namazOzet, cizim: 'namaz-ruku', href: `/${dil}/ibadet/namaz/` },
+  { konu: 'abdest', ad: m.abdestBaslik, ozet: m.abdestOzet, cizim: 'abdest-yuz', kapak: bolumKapagi('ibadet'), href: `/${dil}/ibadet/abdest/` },
+  { konu: 'namaz', ad: m.namazBaslik, ozet: m.namazOzet, cizim: 'namaz-ruku', kapak: bolumKapagi('namaz'), href: `/${dil}/ibadet/namaz/` },
 ] as const;
 const vakitler = VAKIT_IDLERI.map((id) => ({ konu: id, ad: doldur(m.vakitAd, { ad: NAMAZ.vakitler.find((v) => v.id === id)!.ad[dil] }), href: `/${dil}/ibadet/namaz/${id}/` }));
 // Çevrim dışı kutu: giriş + abdest + namaz + beş vakit sayfası birlikte (sesli içerik yok).
@@ -44,6 +45,7 @@ const veri = { m: { bolumTamam: m.bolumTamam, basla: m.basla, devam: m.devam }, 
     <ul class="yl-yollar iki">
       {ana.map((k) => (
         <li class="yl-yol" data-konu-kart={k.konu}>
+          <img class="yl-yol-kapak" src={k.kapak.kucuk} srcset={k.kapak.srcset} sizes="(max-width: 40rem) 100vw, 24rem" width="640" height="360" alt="" loading="lazy" decoding="async" />
           <div class="yl-yol-motif"><IbadetCizim ad={k.cizim} /></div>
           <div class="yl-yol-metin">
             <h3><a href={k.href}>{k.ad}</a></h3>
@@ -59,7 +61,7 @@ const veri = { m: { bolumTamam: m.bolumTamam, basla: m.basla, devam: m.devam }, 
       <p class="ib-not-satir">{m.vakitlerMetin}</p>
       <ul class="yl-yollar iki">
         {vakitler.map((k) => (
-          <li class="yl-yol" data-konu-kart={k.konu}>
+          <li class="yl-yol ib-vakit-kart" data-konu-kart={k.konu} data-vakit={k.konu}>
             <div class="yl-yol-motif"><IbadetCizim ad="ui-seccade" /></div>
             <div class="yl-yol-metin">
               <h3><a href={k.href}>{k.ad}</a></h3>

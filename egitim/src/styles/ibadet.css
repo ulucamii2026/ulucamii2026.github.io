@@ -37,12 +37,31 @@
 
 /* Adım kartları */
 .ib-adimlar { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.9rem; }
-.ib-adim { display: grid; grid-template-columns: minmax(5rem, 8rem) minmax(0, 1fr); gap: 0.9rem; padding: 0.8rem; background: var(--yun); border: 1.5px solid var(--cizgi-koyu); border-radius: var(--r); }
+.ib-adim { display: grid; grid-template-columns: minmax(5rem, 8rem) minmax(0, 1fr); gap: 0.9rem; padding: 0.85rem; background: var(--yun); border: 1.5px solid var(--cizgi-koyu); border-inline-start: 5px solid var(--cini); border-radius: var(--r); }
 .ib-adim[hidden] { display: none; }
-.ib-adim > .ib-cizim { background: var(--yesil-soluk); border: 1.5px solid var(--murekkep); }
+.ib-adim > .ib-cizim { background: var(--cini-soluk); border: 1.5px solid var(--cini); border-radius: var(--r); }
 .ib-adim-govde { display: grid; gap: 0.45rem; align-content: start; min-width: 0; }
 .ib-adim-no { display: flex; align-items: center; gap: 0.5rem; font-size: 1.1rem; }
-.ib-no-rozet { display: inline-grid; place-items: center; min-width: 1.9rem; height: 1.9rem; padding-inline: 0.3rem; font-weight: 700; color: var(--krem-yazi); background: var(--yesil); border-radius: var(--r); }
+.ib-no-rozet { display: inline-grid; place-items: center; min-width: 2rem; height: 2rem; padding-inline: 0.35rem; font-weight: 700; color: #fff; background: var(--cini-dolgu); border-radius: var(--r); }
+.ib-adim:nth-child(4n+2) { border-inline-start-color: var(--yesil); }
+.ib-adim:nth-child(4n+2) .ib-no-rozet { background: var(--yesil); }
+.ib-adim:nth-child(4n+3) { border-inline-start-color: var(--kehribar); }
+.ib-adim:nth-child(4n+3) .ib-no-rozet { background: var(--kehribar-dolgu); }
+.ib-adim:nth-child(4n+4) { border-inline-start-color: var(--kobalt); }
+.ib-adim:nth-child(4n+4) .ib-no-rozet { background: var(--kobalt-dolgu); }
+
+/* Vakit renk şeritleri */
+.ib-vakit-kart { border-inline-start: 6px solid var(--yesil); }
+.ib-vakit-kart[data-vakit="sabah"] { border-inline-start-color: var(--cini); }
+.ib-vakit-kart[data-vakit="sabah"] .yl-yol-motif { background: var(--cini-soluk); }
+.ib-vakit-kart[data-vakit="ogle"] { border-inline-start-color: var(--kehribar); }
+.ib-vakit-kart[data-vakit="ogle"] .yl-yol-motif { background: var(--kehribar-soluk); }
+.ib-vakit-kart[data-vakit="ikindi"] { border-inline-start-color: var(--safran); }
+.ib-vakit-kart[data-vakit="ikindi"] .yl-yol-motif { background: var(--safran-soluk); }
+.ib-vakit-kart[data-vakit="aksam"] { border-inline-start-color: var(--kokboya); }
+.ib-vakit-kart[data-vakit="aksam"] .yl-yol-motif { background: var(--kokboya-soluk); }
+.ib-vakit-kart[data-vakit="yatsi"] { border-inline-start-color: var(--kobalt); }
+.ib-vakit-kart[data-vakit="yatsi"] .yl-yol-motif { background: var(--kobalt-soluk); }
 .ib-adim-metin { font-size: 1.05rem; line-height: 1.55; }
 .ib-yan-not { color: var(--murekkep-2); font-size: 0.97rem; }
 .ib-kismi { font-size: 0.93rem; padding: 0.35rem 0.6rem; background: var(--safran-soluk); border-inline-start: 4px solid var(--safran-yazi); color: var(--murekkep); }
