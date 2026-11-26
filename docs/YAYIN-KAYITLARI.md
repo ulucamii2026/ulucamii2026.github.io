@@ -4,6 +4,26 @@ Kalıcı kural: [AGENTS.md](../AGENTS.md). Tarihler Europe/Brussels saat dilimin
 Kayıtlar içerik yayınının kanıtıdır; sırf kayıt güncelleyen belge commit'i yeni içerik yayını değildir.
 Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI.md`.
 
+## 26 Kasım 2026 (akşam) — Görüntülenme sayacı onarımı: sayı çekimi, saklama, sıfır gizleme
+
+- Zaman: 26 Kasım 2026, Europe/Brussels (CET). Commit `9aaf161b` (`f66f4dc3..9aaf161b`, push 18.11); Pages [run 45865445369](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/45865445369) **success**; canlı kontrol 18.16.
+- Dayanak: Rıdvan, 26.11.2026 akşam: «vaazların kaç defa görüntülendiğini gösteren sayaçla ilgili bir sorun olabilir mi? … bütün hataları düzelt … bütün yetki ve karar sende».
+- Bulgu:
+  1. Sayım çalışıyor (GoatCounter kaydediyor); bozuk olan sitenin sayıları çekme adımıydı. API saniyede 4 istek kabul ediyor (`x-rate-limit-limit: 4`); yol + olay sayısı 400'ü geçince beşinci sayfa HTTP 429 alıyor, betik bütün tazelemeyi atlıyordu. Aynı gün 13.32 UTC koşusunda ilk istekte geçici bir 404 de görüldü (run 45830058570).
+  2. Tazeleme başarısız olunca site depodaki 7 Eylül kopyasıyla derleniyordu: altbilgide toplam 628 (gerçek ≈ 3000), vaaz listesinde «okunma» sayıları yok, vaaz sayfalarında başlangıç sayısı 0.
+  3. Yeni vaaz sayfasında «0 görüntülenme» yazıyordu; bileşenin kendi kuralı sıfırda gizlemekti.
+- Kapsam:
+  - `scripts/istatistik-cek.mjs`: istekler arası 350 ms; 429, 404, 5xx ve ağ hatasında artan beklemeyle 5 deneme; sayfalama bitmeden yarım liste yazılmaz; başarıda `GITHUB_OUTPUT`'a `tazelendi=true`.
+  - `.github/workflows/deploy.yml`: `actions/cache/restore` ve `actions/cache/save` (v6.1.0, SHA ile sabit) `src/data/istatistik.json` için; tazeleme başarısızsa son başarılı dosya kullanılır.
+  - `src/data/istatistik.json`: 26 Kasım verisi (352 yol, 40 olay, toplam 2925); yollarda sorgu dizesi ve kişisel veri yok (tarandı).
+  - `src/components/Goruntulenme.astro`: sayı 0 iken öge gizli (sunucu ve istemci tarafı).
+- Testler: çalışma kopyasında `npm run check` 0 hata / 0 uyarı; `npm run build` 2015 sayfa; `playwright test` `vaazlar`, `design-visual`, `site` 84/84 geçti; betik gerçek API'ye karşı koştu (5 sayfa, 429 yok). `npm run dogrula:codex`: `design:check`, `check`, `test:kurallar`, `test:hesap`, `test:veli-eposta`, `test:oto-kaydet`, `test:ogrenme` geçti; `dogrula`, `egitim:build`, `test:ilim-yolu` çalışma kopyasında ses dosyaları Git'te olmadığı için düştü (sayaçla ilgisiz), buna bağlı `test:web` ve `test:egitim` tam koşulmadı.
+- Canlı (18.16): yayın koşusunda `istatistik-cek: 352 yol, 40 olay, toplam 2925`, önbellek `istatistik-45865445369-1` kaydedildi. `/tr/vaaz/engelli-kardeslerimize-karsi-sorumluluklarimiz/` «3 görüntülenme»; aynı vaazın Almanca sayfasında (0) öge gizli; altbilgi «2.925 sayfa görüntülenmesi»; `/tr/vaazlar/` listesinde «okunma» sayıları geri geldi.
+- Açık sınırlar:
+  1. Önbelleğin geri konması ilk kez bir sonraki koşuda sınanacak (bu koşuda henüz kayıt yoktu: «Cache not found» beklenen sonuç).
+  2. Sayfalama dışlama listesini adreste taşır; yol sayısı çok büyürse uç uzun adresi reddedebilir (betikte `shortcut` notu).
+  3. Herkese açık anlık sayaç ucu yeni sayfalarda saatlerce 0 döndürüyor (GoatCounter önbelleği); sayfadaki sayı günlük derlemeyle tazelenir.
+
 ## 26 Kasım 2026 (öğleden sonra) — Cuma vaazı «Engelli Kardeşlerimize Karşı Sorumluluklarımız»: FR/EN/NL/DE çevirileri (beş dil tamam)
 
 - Zaman: 26 Kasım 2026, Europe/Brussels (CET). Release yüklemeleri 14.20–14.30; commit `db89e52e` (`9c997654..db89e52e`, push 14.32); Pages [run 45830058570](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/45830058570) **success**; canlı kontrol 14.40.
