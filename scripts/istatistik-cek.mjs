@@ -8,11 +8,12 @@
  *
  * Belirteç: GOATCOUNTER_TOKEN ortam değişkeni (yalnız «Read statistics» yetkisi).
  * Depoda YOKTUR — GitHub Actions sırrı. Belirteç yoksa ya da uç nokta erişilemezse
- * dosyaya dokunulmaz; site sayısız çalışır (özellik sessizce kapanır).
+ * dosyaya dokunulmaz; site eldeki son sayılarla derlenir (yayın iş akışı son başarılı
+ * dosyayı önbellekten geri koyar, o da yoksa depodaki kopya kalır).
  *
  * Kullanım: node scripts/istatistik-cek.mjs
  */
-import { writeFileSync, readFileSync, existsSync } from 'node:fs';
+import { writeFileSync, readFileSync, existsSync, appendFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
@@ -26,13 +27,33 @@ const bitir = (mesaj) => { console.log(`istatistik-cek: ${mesaj} — mevcut dosy
 
 if (!belirtec) bitir('GOATCOUNTER_TOKEN yok');
 
+const bekle = (ms) => new Promise((r) => setTimeout(r, ms));
+
+/* Uç nokta saniyede 4 istek kabul eder (x-rate-limit-limit: 4). 26 Kas 2026'da yol + olay sayısı
+   400'ü geçince beşinci sayfa HTTP 429 aldı ve bütün tazeleme çöpe gitti; aynı gün ilk istekte
+   geçici bir 404 de görüldü. Site her seferinde 7 Eylül'ün depodaki kopyasına düşüyordu.
+   Bu yüzden istekler aralıklı atılır; 429, 404, 5xx ve ağ hatası artan beklemeyle yeniden denenir. */
 const getir = async (yol) => {
-  const y = await fetch(UC + yol, {
-    headers: { Authorization: `Bearer ${belirtec}`, 'Content-Type': 'application/json' },
-    signal: AbortSignal.timeout(25000),
-  });
-  if (!y.ok) throw new Error(`${yol} → HTTP ${y.status}`);
-  return y.json();
+  let son;
+  for (let deneme = 0; deneme < 5; deneme++) {
+    if (deneme) await bekle(1500 * deneme);
+    try {
+      const y = await fetch(UC + yol, {
+        headers: { Authorization: `Bearer ${belirtec}`, 'Content-Type': 'application/json' },
+        signal: AbortSignal.timeout(25000),
+      });
+      if (y.ok) {
+        const veri = await y.json();
+        await bekle(350);
+        return veri;
+      }
+      son = new Error(`${yol.split('?')[0]} → HTTP ${y.status}`);
+      if (y.status !== 404 && y.status !== 429 && y.status < 500) break; // 400/401/403: beklemek çözmez
+    } catch (e) {
+      son = e;
+    }
+  }
+  throw son;
 };
 
 /* 🛑 GÜVENLİK (12 Eyl 2026): GoatCounter yolu SORGU DİZESİYLE birlikte veriyor ve bu dosya
@@ -46,11 +67,14 @@ const yolNormalle = (yol) => String(yol ?? '').split('#')[0].split('?')[0] || '/
 
 try {
   /* Uç nokta bir turda en çok 100 yol verir ve sayfalama «exclude_paths» ile yapılır:
-     görülen path_id'ler dışlanınca bir sonraki 100 gelir. Olaylar (indir-pdf/… gibi) ayrı tutulur. */
+     görülen path_id'ler dışlanınca bir sonraki 100 gelir. Olaylar (indir-pdf/… gibi) ayrı tutulur.
+     shortcut: dışlama listesi adresin içinde taşınır ve yol başına ~9 bayt büyür; uç bir gün uzun
+     adresi reddederse (HTTP 400/414) GoatCounter'ın dışa aktarım API'sine geçilir. */
   const yollar = {};
   const olaylar = {};
   const gorulen = [];
-  for (let tur = 0; tur < 20; tur++) {
+  let tamam = false;
+  for (let tur = 0; tur < 50; tur++) {
     const p = new URLSearchParams({ start: BASLANGIC, limit: '100', daily: 'true' });
     if (gorulen.length) p.set('exclude_paths', gorulen.join(',')); // virgüllü liste: tekrarlı parametre uzun URL'de 400 veriyor
     const veri = await getir(`/stats/hits?${p}`);
@@ -60,8 +84,9 @@ try {
       hedef[anahtar] = (hedef[anahtar] ?? 0) + h.count;
       gorulen.push(String(h.path_id));
     }
-    if (!veri.more || !(veri.hits ?? []).length) break;
+    if (!veri.more || !(veri.hits ?? []).length) { tamam = true; break; }
   }
+  if (!tamam) bitir('sayfalama 50 turda bitmedi (yarım liste yazılmaz)');
 
   const toplam = Object.values(yollar).reduce((a, b) => a + b, 0);
   if (!Object.keys(yollar).length) bitir('uçtan boş liste geldi');
@@ -76,6 +101,8 @@ try {
   const onceki = existsSync(HEDEF) ? readFileSync(HEDEF, 'utf8') : '';
   const yeni = JSON.stringify(cikti, null, 1) + '\n';
   if (onceki !== yeni) writeFileSync(HEDEF, yeni);
+  // Yayın iş akışı bu işarete bakarak taze dosyayı sonraki derlemeler için saklar (deploy.yml).
+  if (process.env.GITHUB_OUTPUT) appendFileSync(process.env.GITHUB_OUTPUT, 'tazelendi=true\n');
   console.log(`istatistik-cek: ${Object.keys(yollar).length} yol, ${Object.keys(olaylar).length} olay, toplam ${toplam}`);
 } catch (e) {
   bitir(String(e.message ?? e).slice(0, 120));

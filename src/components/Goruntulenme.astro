@@ -23,7 +23,7 @@ const adlar = {
 }[kapsam];
 const ad = adlar[dil];
 const yerel = yerelKodu[dil];
-const hazirMetin = typeof baslangic === 'number'
+const hazirMetin = typeof baslangic === 'number' && baslangic > 0
   ? `${onek}${new Intl.NumberFormat(yerel).format(baslangic)} ${baslangic === 1 ? ad[0] : ad[1]}`
   : '';
 ---
@@ -50,6 +50,7 @@ const hazirMetin = typeof baslangic === 'number'
           // Derleme anındaki sayı, sayaç ucunun önbelleğinden yeni olabilir → büyüğü gösterilir.
           const taban = Number(o.dataset.baslangic || 0);
           const n = Math.max(gelen, Number.isFinite(taban) ? taban : 0);
+          if (n < 1) continue; // yeni sayfa: «0 görüntülenme» yazılmaz, öge gizli kalır
           const sayi = new Intl.NumberFormat(o.dataset.yerel || 'tr-TR').format(n);
           o.textContent = `${o.dataset.onek || ''}${sayi} ${n === 1 ? o.dataset.tekil : o.dataset.cogul}`;
           o.hidden = false;

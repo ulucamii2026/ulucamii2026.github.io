@@ -30,10 +30,27 @@ jobs:
       # Vaaz listesindeki «okunma» sayıları derleme anındaki veriden gelir; site her gün
       # yeniden yayımlandığı için sayılar günlük tazelenir. Belirteç yoksa veya uç nokta
       # erişilemezse betik dosyaya dokunmadan çıkar — yayın hiçbir durumda düşmez.
+      # Tazeleme başarısız olursa site son başarılı derlemenin sayılarıyla çıkar: dosya önbellekte
+      # saklanır ve her koşuda geri konur (26 Kas 2026'ya dek başarısızlıkta 7 Eylül'ün depodaki
+      # kopyasına düşülüyor, toplam ve «okunma» sayıları geri gidiyordu).
+      - name: Son başarılı istatistik dosyasını geri koy
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: src/data/istatistik.json
+          key: istatistik-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: istatistik-
       - name: Ziyaret istatistiklerini tazele (GoatCounter)
+        id: istatistik
         run: node scripts/istatistik-cek.mjs
         env:
           GOATCOUNTER_TOKEN: ${{ secrets.GOATCOUNTER_TOKEN }}
+      - name: Taze istatistik dosyasını sonraki derlemeler için sakla
+        if: steps.istatistik.outputs.tazelendi == 'true'
+        continue-on-error: true
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: src/data/istatistik.json
+          key: istatistik-${{ github.run_id }}-${{ github.run_attempt }}
       - name: Astro ile derle ve yükle
         uses: withastro/action@e84f40bd8d2caa9e768ec82ad30dd81f0b280853 # v6.1.2
         with:
