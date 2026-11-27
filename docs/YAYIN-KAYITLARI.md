@@ -28,7 +28,8 @@ Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI
 
 - Zaman: 27 Kasım 2026, Europe/Brussels. Dayanak: koordinatörün aynı günkü talimatı.
 - Kapsam: `public/media/duyurular/degerler-egitimi-kis-2026-{tr,fr}.mp4` sesli sürümlerle (H.264 + AAC, 1080×1920; TR 33,2 sn 5 584 295 B, FR 36,6 sn 6 212 053 B) üzerine yazıldı; dosya adları ve kapak resimleri aynı. Önbellek için duyuru sayfalarındaki video adreslerine `?v=2` eklendi; oynatıcı `muted` değil, kontrollü, otomatik oynatma yok.
-- Deploy ve canlı doğrulama: aşağıda.
+- Deploy: commit `efa1e982`; Pages [run 45981718111](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/45981718111) **success**.
+- Canlı (ulucamii.be): iki mp4 200 `video/mp4`, 5 584 295 B (TR) ve 6 212 053 B (FR); ffprobe: h264 video + aac ses, 33,23 sn ve 36,60 sn; sayfalarda `?v=2` adresi var.
 
 ## 27 Kasım 2026 — Değerler Eğitimi kış programı duyurusuna tanıtım videosu ve «son başvuru» vurgusu (TR + FR)
 
