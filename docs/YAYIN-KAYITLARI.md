@@ -24,6 +24,12 @@ Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI
   2. Sayfalama dışlama listesini adreste taşır; yol sayısı çok büyürse uç uzun adresi reddedebilir (betikte `shortcut` notu).
   3. Herkese açık anlık sayaç ucu yeni sayfalarda saatlerce 0 döndürüyor (GoatCounter önbelleği); sayfadaki sayı günlük derlemeyle tazelenir.
 
+## 27 Kasım 2026 (öğleden sonra) — Değerler Eğitimi duyuru videoları seslendirilmiş sürümle değiştirildi (TR + FR)
+
+- Zaman: 27 Kasım 2026, Europe/Brussels. Dayanak: koordinatörün aynı günkü talimatı.
+- Kapsam: `public/media/duyurular/degerler-egitimi-kis-2026-{tr,fr}.mp4` sesli sürümlerle (H.264 + AAC, 1080×1920; TR 33,2 sn 5 584 295 B, FR 36,6 sn 6 212 053 B) üzerine yazıldı; dosya adları ve kapak resimleri aynı. Önbellek için duyuru sayfalarındaki video adreslerine `?v=2` eklendi; oynatıcı `muted` değil, kontrollü, otomatik oynatma yok.
+- Deploy ve canlı doğrulama: aşağıda.
+
 ## 27 Kasım 2026 — Değerler Eğitimi kış programı duyurusuna tanıtım videosu ve «son başvuru» vurgusu (TR + FR)
 
 - Zaman: 27 Kasım 2026, Europe/Brussels. Dayanak: Rıdvan'ın aynı günkü emri.
