@@ -29,7 +29,8 @@ Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI
 - Zaman: 27 Kasım 2026, Europe/Brussels. Dayanak: Rıdvan'ın aynı günkü emri.
 - Kapsam: `src/content/duyurular/{tr,fr}/degerler-egitimi-programi-kis-2026.md` en üste vurgulu satır (TR «Son başvuru: 29 Kasım Pazar akşamı.» · FR «Date limite : dimanche 29 novembre au soir.») ve yerel `<video>` (controls, playsinline, preload=metadata, poster; 1080×1920, 21,5 sn, sessiz); dosyalar `public/media/duyurular/degerler-egitimi-kis-2026-{tr,fr}.mp4` (~3,9 MB) ve `...-video-{tr,fr}-kapak.jpg`. Fiyat, tarih ve diğer bilgiler değişmedi; iletişim bilgisi eklenmedi. Vitrin/öne çıkan kartında «Son 3 gün» için mevcut alan yok, bileşen eklenmedi.
 - Test: `npm run dogrula` çıkış 0.
-- Deploy ve canlı doğrulama: aşağıdaki satırda.
+- Deploy: içerik commit'i `93e6e05b`; Pages [run 45973672140](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/45973672140) **success**.
+- Canlı (ulucamii.be): TR ve FR sayfa 200; `degerler-egitimi-kis-2026-{tr,fr}.mp4` 200 `video/mp4` (3 842 449 / 3 936 687 B); kapak JPG'ler 200; vurgulu satır iki sayfada da var; imamın telefonu sayfada yok.
 
 ## 26 Kasım 2026 (öğleden sonra) — Cuma vaazı «Engelli Kardeşlerimize Karşı Sorumluluklarımız»: FR/EN/NL/DE çevirileri (beş dil tamam)
 
