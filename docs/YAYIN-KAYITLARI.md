@@ -24,6 +24,13 @@ Kaynak proje: `D:/ulu-camii-kuran-kursu`; kurs indeksi `belgeler/YAYIN-KAYITLARI
   2. Sayfalama dışlama listesini adreste taşır; yol sayısı çok büyürse uç uzun adresi reddedebilir (betikte `shortcut` notu).
   3. Herkese açık anlık sayaç ucu yeni sayfalarda saatlerce 0 döndürüyor (GoatCounter önbelleği); sayfadaki sayı günlük derlemeyle tazelenir.
 
+## 27 Kasım 2026 — Değerler Eğitimi kış programı duyurusuna tanıtım videosu ve «son başvuru» vurgusu (TR + FR)
+
+- Zaman: 27 Kasım 2026, Europe/Brussels. Dayanak: Rıdvan'ın aynı günkü emri.
+- Kapsam: `src/content/duyurular/{tr,fr}/degerler-egitimi-programi-kis-2026.md` en üste vurgulu satır (TR «Son başvuru: 29 Kasım Pazar akşamı.» · FR «Date limite : dimanche 29 novembre au soir.») ve yerel `<video>` (controls, playsinline, preload=metadata, poster; 1080×1920, 21,5 sn, sessiz); dosyalar `public/media/duyurular/degerler-egitimi-kis-2026-{tr,fr}.mp4` (~3,9 MB) ve `...-video-{tr,fr}-kapak.jpg`. Fiyat, tarih ve diğer bilgiler değişmedi; iletişim bilgisi eklenmedi. Vitrin/öne çıkan kartında «Son 3 gün» için mevcut alan yok, bileşen eklenmedi.
+- Test: `npm run dogrula` çıkış 0.
+- Deploy ve canlı doğrulama: aşağıdaki satırda.
+
 ## 26 Kasım 2026 (öğleden sonra) — Cuma vaazı «Engelli Kardeşlerimize Karşı Sorumluluklarımız»: FR/EN/NL/DE çevirileri (beş dil tamam)
 
 - Zaman: 26 Kasım 2026, Europe/Brussels (CET). Release yüklemeleri 14.20–14.30; commit `db89e52e` (`9c997654..db89e52e`, push 14.32); Pages [run 45830058570](https://github.com/ulucamii2026/ulucamii2026.github.io/actions/runs/45830058570) **success**; canlı kontrol 14.40.

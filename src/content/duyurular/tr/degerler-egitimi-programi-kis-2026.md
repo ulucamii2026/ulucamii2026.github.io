@@ -20,6 +20,10 @@ ekranBasligi: "Gençlere kış programı (13–17 yaş)"
 ekranMetni: "24 Aralık – 3 Ocak, Ankara ve İstanbul. Katılım 345 € + uçak bileti. Son başvuru 29 Kasım; din görevlimize başvurun."
 ---
 
+**Son başvuru: 29 Kasım Pazar akşamı.**
+
+<video controls playsinline preload="metadata" poster="/media/duyurular/degerler-egitimi-kis-2026-video-tr-kapak.jpg" aria-label="Değerler Eğitimi Programı tanıtım videosu" style="display:block;width:100%;max-width:360px;height:auto;aspect-ratio:9/16;margin:1rem auto;border-radius:12px;background:#000"><source src="/media/duyurular/degerler-egitimi-kis-2026-tr.mp4" type="video/mp4"></video>
+
 **Diyanet İşleri Başkanlığının Değerler Eğitimi Programı bu kış 24 Aralık 2026 – 3 Ocak 2027 tarihleri arasında Türkiye’de yapılacak.** 13–17 yaş arası kız ve erkek öğrencilerimiz bir hafta Ankara Kızılcahamam’daki eğitim kampında, bir hafta da İstanbul’da; dersler, spor ve gezilerle dolu 11 gün geçirecek.
 
 **Son başvuru: 29 Kasım Pazar.** Süre kısa; çocuğunu göndermek isteyen velilerimizin bu hafta camimizin din görevlisine başvurması gerekiyor.

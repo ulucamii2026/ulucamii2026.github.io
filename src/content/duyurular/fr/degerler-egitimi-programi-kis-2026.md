@@ -20,6 +20,10 @@ ekranBasligi: "Programme d’hiver pour les 13-17 ans"
 ekranMetni: "Du 24 décembre au 3 janvier, Ankara et Istanbul. 345 € + billet d’avion. Inscription jusqu’au 29 novembre auprès de l’imam."
 ---
 
+**Date limite : dimanche 29 novembre au soir.**
+
+<video controls playsinline preload="metadata" poster="/media/duyurular/degerler-egitimi-kis-2026-video-fr-kapak.jpg" aria-label="Vidéo de présentation du programme d’éducation aux valeurs" style="display:block;width:100%;max-width:360px;height:auto;aspect-ratio:9/16;margin:1rem auto;border-radius:12px;background:#000"><source src="/media/duyurular/degerler-egitimi-kis-2026-fr.mp4" type="video/mp4"></video>
+
 **Le Programme d’éducation aux valeurs de la Diyanet (Présidence des Affaires religieuses de Turquie) aura lieu cet hiver en Turquie, du 24 décembre 2026 au 3 janvier 2027.** Les filles et garçons de 13 à 17 ans passeront onze jours bien remplis : une semaine en camp de formation à Kızılcahamam, près d’Ankara, puis une semaine à Istanbul, entre cours, sport et visites.
 
 **Date limite d’inscription : dimanche 29 novembre.** Le délai est court : les parents qui souhaitent inscrire leur enfant doivent s’adresser cette semaine à l’imam de la mosquée.
